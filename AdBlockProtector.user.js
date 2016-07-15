@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0.9
+// @version 1.0.10
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -98,6 +98,10 @@
             //Temporary solution: Disable setTimeout() and lock scriptfailed()
             activateSetTimeoutFilter();
             setReadOnly("scriptfailed", function () { });
+            break;
+        case "bollywood.divyabhaskar.co.in":
+            //Semi-permanent solution: Lock canABP to true 
+            setReadOnly("canABP", true);
             break;
         default:
             //Debug mode
