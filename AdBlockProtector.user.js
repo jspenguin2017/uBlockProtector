@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0.1
+// @version 1.0.2
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -41,7 +41,7 @@
                 console.warn(data);
             }
             //Apply filter
-            if (filter.test(str)) {
+            if (filter.test(data)) {
                 //Not allowed (will always log)
                 if (doThrow) {
                     throw errMsg;
@@ -54,7 +54,7 @@
                     console.log(passMsg);
                 }
                 //Allowed
-                return _eval(str);
+                return _eval(data);
             }
         };
     };
