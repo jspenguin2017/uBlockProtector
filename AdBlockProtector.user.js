@@ -74,28 +74,28 @@
     switch (document.domain) {
         case "www.blockadblock.com":
         case "blockadblock.com":
-            //Filter keyword
+            //Semi-permanent solution: Filter keyword from eval()
             activateEvalFilter(/blockadblock/i);
             break;
         case "www.gogi.in":
         case "gogi.in":
-            //Temporary solution: Disable setInterval
+            //Temporary solution: Disable setInterval()
             activateSetIntervalFilter();
             break;
         case "www.comprovendolibri.it":
         case "comprovendolibri.it":
-            //Lock TestPage()
+            //Semi-permanent solution: Lock TestPage()
             setReadOnly("TestPage", function () { });
             break;
         case "www.nordpresse.be":
         case "nordpresse.be":
-            //Create message read cookie
+            //Semi-permanent solution: Create message read cookie
             document.cookie = "anCookie=true";
             console.error(errMsg);
             break;
         case "www.sc2casts.com":
         case "sc2casts.com":
-            //Temporary solution: Disable setTimeout and lock scriptfailed()
+            //Temporary solution: Disable setTimeout() and lock scriptfailed()
             activateSetTimeoutFilter();
             setReadOnly("scriptfailed", function () { });
             break;
