@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0.6
+// @version 1.0.8
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -38,7 +38,9 @@
             //Debug - Log when called
             if (debugMode) {
                 console.warn(func + callMsg);
-                console.warn(arguments);
+                for (let i = 0; i < arguments.length; i++) {
+                    console.warn(arguments[i].toString());
+                }
             }
             //Apply filter
             for (let i = 0; i < arguments.length; i++) {
@@ -83,6 +85,12 @@
         case "comprovendolibri.it":
             //Lock TestPage()
             setReadOnly("TestPage", function () { });
+            break;
+        case "www.nordpresse.be":
+        case "nordpresse.be":
+            //Create message read cookie
+            document.cookie = "anCookie=true";
+            console.error(errMsg);
             break;
         default:
             //Debug mode
