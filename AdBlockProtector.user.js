@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0.4
+// @version 1.0.5
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -34,14 +34,14 @@
         }
         //Replace function
         const original = unsafeWindow[func];
-        unsafeWindow[func] = function (data) {
+        unsafeWindow[func] = function (data, interval) {
             //Debug - Log when called
             if (debugMode) {
                 console.warn(callMsg + func + ". ");
                 console.warn(data);
             }
             //Apply filter
-            if (filter.test(data)) {
+            if (filter.test(data.toString())) {
                 //Not allowed (will always log)
                 return console.error(errMsg);
             } else {
@@ -50,7 +50,11 @@
                     console.log(passMsg);
                 }
                 //Allowed
-                return _eval(data);
+                if (func === "eval") {
+                    return original(data);
+                } else {
+                    return original(data, interval);
+                }
             }
         };
     };
