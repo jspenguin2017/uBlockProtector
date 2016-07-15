@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0.5
+// @version 1.0.6
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -19,43 +19,40 @@
     //=====Common Functions=====
     //Activate Filters: Prevent a string or function with specific keyword from executing, works for: eval, setInterval
     //@param func (string): The name of the function to filter
-    //@param [optional default=/\S\s/] filter (RegExp): Filter to apply, block everything if missing
+    //@param [optional default=/.*/] filter (RegExp): Filter to apply, block everything if missing
     const activateFilter = function (func, filter) {
         //Messages
-        const callMsg = "The following string or function will be filtered then executed if allowed by ";
-        const passMsg = "Last string or function passed the test and will be executed. ";
+        const callMsg = " is called with these arguments: ";
+        const passMsg = "Test passed. ";
         //Debug - Log when activated
         if (debugMode) {
             console.warn("Filter activating on " + func);
         }
         //Check filter
         if (filter === undefined) {
-            filter = /\S\s/;
+            filter = /.*/;
         }
         //Replace function
         const original = unsafeWindow[func];
-        unsafeWindow[func] = function (data, interval) {
+        unsafeWindow[func] = function () {
             //Debug - Log when called
             if (debugMode) {
-                console.warn(callMsg + func + ". ");
-                console.warn(data);
+                console.warn(func + callMsg);
+                console.warn(arguments);
             }
             //Apply filter
-            if (filter.test(data.toString())) {
-                //Not allowed (will always log)
-                return console.error(errMsg);
-            } else {
-                //Debug - Log when passed
-                if (debugMode) {
-                    console.log(passMsg);
-                }
-                //Allowed
-                if (func === "eval") {
-                    return original(data);
-                } else {
-                    return original(data, interval);
+            for (let i = 0; i < arguments.length; i++) {
+                if (filter.test(arguments[i].toString())) {
+                    //Not allowed (will always log)
+                    return console.error(errMsg);
                 }
             }
+            //Debug - Log when passed
+            if (debugMode) {
+                console.info(passMsg);
+            }
+            //Allowed
+            return original.apply(unsafeWindow, arguments);
         };
     };
     const activateEvalFilter = activateFilter.bind(null, "eval");
