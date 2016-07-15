@@ -56,8 +56,8 @@
                 //Allowed
                 return _eval(str);
             }
-        }
-    }
+        };
+    };
     const activateEvalFilter = activateFilter.bind(null, "eval");
     const activateSetIntervalFilter = activateFilter.bind(null, "setInterval");
     //=====Rules=====
