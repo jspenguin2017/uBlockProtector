@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0 beta 3
+// @version 1.0 beta 4
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -24,7 +24,7 @@
         unsafeWindow.eval = function (str) {
             //Debug mode
             if (debugMode) {
-                console.warn("eval() just received a call: ");
+                console.warn("The following string will be filtered then executed if allowed: ");
                 console.warn(str);
             }
             //Check if the string is allowed
@@ -47,6 +47,7 @@
     };
     //=====Rules=====
     switch (document.domain) {
+        case "www.blockadblock.com":
         case "blockadblock.com":
             activateEvalFilter(/blockadblock/i);
             break;
