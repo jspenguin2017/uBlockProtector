@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0 beta 1
+// @version 1.0 beta 2
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -13,7 +13,7 @@
 
 (function () {
     'use strict';
-    debugMode = true;
+    let debugMode = true;
     //=====Common Functions=====
     //ActivateEval Filter: prevent string with specific keywords from executing
     //@param filter (RegExp): Filter used to test string before it goes into eval()
