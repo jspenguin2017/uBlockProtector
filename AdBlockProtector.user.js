@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0 beta 5
+// @version 1.0.1
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -13,48 +13,65 @@
 
 (function () {
     'use strict';
-    let debugMode = true;
+    //Constants
+    const debugMode = true;
     //=====Common Functions=====
-    //ActivateEval Filter: prevent string with specific keywords from executing
-    //@param filter (RegExp): Filter used to test string before it goes into eval()
-    //@param [optional default=false] doThrow (boolean): If true, eval() will throw when the string did not pass the test
-    const activateEvalFilter = function (filter, doThrow) {
+    //Activate Filters: Prevent a string or function with specific keyword from executing, works for: eval, setInterval
+    //@param func (string): The name of the function to filter
+    //@param [optional default=/\S\s/] filter (RegExp): Filter to apply, block everything if missing
+    const activateFilter = function (func, filter) {
+        //Messages
         const errMsg = "Uncaught AdBlock Error: AdBlocker detectors are not allowed. ";
-        let _eval = unsafeWindow.eval;
-        unsafeWindow.eval = function (str) {
-            //Debug mode
+        const callMsg = "The following string or function will be filtered then executed if allowed by ";
+        const passMsg = "Last string or function passed the test and will be executed. ";
+        //Debug - Log when activated
+        if (debugMode) {
+            console.warn("Filter activating on " + func);
+        }
+        //Check filter
+        if (filter === undefined) {
+            filter = /\S\s/;
+        }
+        //Replace function
+        const original = unsafeWindow[func];
+        unsafeWindow[func] = function (data) {
+            //Debug - Log when called
             if (debugMode) {
-                console.warn("The following string will be filtered then executed if allowed: ");
-                console.warn(str);
+                console.warn(callMsg + func + ". ");
+                console.warn(data);
             }
-            //Check if the string is allowed
+            //Apply filter
             if (filter.test(str)) {
-                //Not allowed
+                //Not allowed (will always log)
                 if (doThrow) {
                     throw errMsg;
                 } else {
                     return console.error(errMsg);
                 }
             } else {
+                //Debug - Log when passed
+                if (debugMode) {
+                    console.log(passMsg);
+                }
                 //Allowed
                 return _eval(str);
             }
-        };
-        //Debug mode
-        if(debugMode){
-            console.warn("Eval Filter activated. ");
         }
-    };
+    }
+    const activateEvalFilter = activateFilter.bind(null, "eval");
+    const activateSetIntervalFilter = activateFilter.bind(null, "setInterval");
     //=====Rules=====
     switch (document.domain) {
         case "www.blockadblock.com":
         case "blockadblock.com":
+            //Filter keyword
             activateEvalFilter(/blockadblock/i);
             break;
         case "www.gogi.in":
-            if (debugMode) {
-                activateEvalFilter(/debug/);
-            }
+        case "gogi.in":
+            //Temporary solution: Disable setInterval
+            activateSetIntervalFilter();
+            break;
         default:
             //Debug mode
             if (debugMode) {
