@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0.8
+// @version 1.0.9
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -59,6 +59,7 @@
     };
     const activateEvalFilter = activateFilter.bind(null, "eval");
     const activateSetIntervalFilter = activateFilter.bind(null, "setInterval");
+    const activateSetTimeoutFilter = activateFilter.bind(null, "setTimeout");
     //Define read-only property
     //@param name (string): The name of the property to define on unsafeWindow
     //@param val (mix): The value of the property
@@ -91,6 +92,12 @@
             //Create message read cookie
             document.cookie = "anCookie=true";
             console.error(errMsg);
+            break;
+        case "www.sc2casts.com":
+        case "sc2casts.com":
+            //Temporary solution: Disable setTimeout and lock scriptfailed()
+            activateSetTimeoutFilter();
+            setReadOnly("scriptfailed", function () { });
             break;
         default:
             //Debug mode
