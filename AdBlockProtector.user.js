@@ -43,11 +43,7 @@
             //Apply filter
             if (filter.test(data)) {
                 //Not allowed (will always log)
-                if (doThrow) {
-                    throw errMsg;
-                } else {
-                    return console.error(errMsg);
-                }
+                return console.error(errMsg);
             } else {
                 //Debug - Log when passed
                 if (debugMode) {
