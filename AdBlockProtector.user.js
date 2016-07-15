@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0.2
+// @version 1.0.3
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -21,7 +21,7 @@
     //@param [optional default=/\S\s/] filter (RegExp): Filter to apply, block everything if missing
     const activateFilter = function (func, filter) {
         //Messages
-        const errMsg = "Uncaught AdBlock Error: AdBlocker detectors are not allowed. ";
+        const errMsg = "Uncaught AdBlock Error: AdBlocker detectors are not allowed on this device. ";
         const callMsg = "The following string or function will be filtered then executed if allowed by ";
         const passMsg = "Last string or function passed the test and will be executed. ";
         //Debug - Log when activated
@@ -56,6 +56,13 @@
     };
     const activateEvalFilter = activateFilter.bind(null, "eval");
     const activateSetIntervalFilter = activateFilter.bind(null, "setInterval");
+    //Define read-only property
+    const setReadOnly = function (name, val) {
+        Object.defineProperty(unsafeWindow, name, {
+            value: val,
+            writable: false
+        });
+    };
     //=====Rules=====
     switch (document.domain) {
         case "www.blockadblock.com":
@@ -67,6 +74,11 @@
         case "gogi.in":
             //Temporary solution: Disable setInterval
             activateSetIntervalFilter();
+            break;
+        case "www.comprovendolibri.it":
+        case "comprovendolibri.it":
+            //Lock TestPage()
+            setReadOnly("TestPage", function () { });
             break;
         default:
             //Debug mode
