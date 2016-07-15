@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0.3
+// @version 1.0.4
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -14,6 +14,7 @@
 (function () {
     'use strict';
     //Constants
+    const errMsg = "Uncaught AdBlock Error: AdBlocker detectors are not allowed on this device. ";
     const debugMode = true;
     //=====Common Functions=====
     //Activate Filters: Prevent a string or function with specific keyword from executing, works for: eval, setInterval
@@ -21,7 +22,6 @@
     //@param [optional default=/\S\s/] filter (RegExp): Filter to apply, block everything if missing
     const activateFilter = function (func, filter) {
         //Messages
-        const errMsg = "Uncaught AdBlock Error: AdBlocker detectors are not allowed on this device. ";
         const callMsg = "The following string or function will be filtered then executed if allowed by ";
         const passMsg = "Last string or function passed the test and will be executed. ";
         //Debug - Log when activated
@@ -57,11 +57,14 @@
     const activateEvalFilter = activateFilter.bind(null, "eval");
     const activateSetIntervalFilter = activateFilter.bind(null, "setInterval");
     //Define read-only property
+    //@param name (string): The name of the property to define on unsafeWindow
+    //@param val (mix): The value of the property
     const setReadOnly = function (name, val) {
         Object.defineProperty(unsafeWindow, name, {
             value: val,
             writable: false
         });
+        console.error(errMsg);
     };
     //=====Rules=====
     switch (document.domain) {
@@ -83,8 +86,9 @@
         default:
             //Debug mode
             if (debugMode) {
-                console.warn("This website is not supported");
+                console.warn("This website is not supported by AdBlock Protector");
             }
+            break;
     }
     //Debug mode
     if (debugMode) {
