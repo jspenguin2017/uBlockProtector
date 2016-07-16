@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0.13
+// @version 1.0.14
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -24,10 +24,6 @@
         //Messages
         const callMsg = " is called with these arguments: ";
         const passMsg = "Test passed. ";
-        //Debug - Log when activated
-        if (debugMode) {
-            console.warn("Filter activating on " + func);
-        }
         //Check filter
         if (filter === undefined) {
             filter = /.*/;
@@ -56,6 +52,10 @@
             //Allowed
             return original.apply(unsafeWindow, arguments);
         };
+        //Debug - Log when activated
+        if (debugMode) {
+            console.warn("Filter activated on " + func);
+        }
     };
     const activateEvalFilter = activateFilter.bind(null, "eval");
     const activateSetIntervalFilter = activateFilter.bind(null, "setInterval");
@@ -122,8 +122,19 @@
             console.error(errMsg);
             break;
         case "infotainment.jagranjunction.com":
+            //Semi-permanent solution: Lock canRunAds and isAdsDisplayed to true
             setReadOnly("canRunAds", true);
             setReadOnly("isAdsDisplayed", true);
+            break;
+        case "www.dogefaucet.com":
+            //Temporary solution: Undo block - Those elements will show for a few seconds
+            unsafeWindow.addEventListener("load", function () {
+                $("#loading_frame").removeClass("blocked");
+                $(".loader").hide();
+                $("#inputSecurity").val("");
+                $("#ask_form").find(".loading").attr("disabled", false);
+            });
+            console.error(errMsg);
             break;
         default:
             //Debug mode
