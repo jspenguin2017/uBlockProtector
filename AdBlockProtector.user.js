@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0.10
+// @version 1.0.11
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -19,7 +19,7 @@
     //=====Common Functions=====
     //Activate Filters: Prevent a string or function with specific keyword from executing, works for: eval, setInterval
     //@param func (string): The name of the function to filter
-    //@param [optional default=/.*/] filter (RegExp): Filter to apply, block everything if missing
+    //@param [optional default=/.*/] filter (RegExp): Filter to apply, block everything if this argument is missing
     const activateFilter = function (func, filter) {
         //Messages
         const callMsg = " is called with these arguments: ";
@@ -78,30 +78,30 @@
             activateEvalFilter(/blockadblock/i);
             break;
         case "www.gogi.in":
-        case "gogi.in":
             //Temporary solution: Disable setInterval()
             activateSetIntervalFilter();
             break;
         case "www.comprovendolibri.it":
-        case "comprovendolibri.it":
             //Semi-permanent solution: Lock TestPage()
             setReadOnly("TestPage", function () { });
             break;
-        case "www.nordpresse.be":
         case "nordpresse.be":
             //Semi-permanent solution: Create message read cookie
             document.cookie = "anCookie=true";
             console.error(errMsg);
             break;
-        case "www.sc2casts.com":
         case "sc2casts.com":
-            //Temporary solution: Disable setTimeout() and lock scriptfailed()
-            activateSetTimeoutFilter();
+            //Temporary solution: Lock scriptfailed() and disable setTimeout()
             setReadOnly("scriptfailed", function () { });
+            activateSetTimeoutFilter();
             break;
         case "bollywood.divyabhaskar.co.in":
-            //Semi-permanent solution: Lock canABP to true 
+            //Semi-permanent solution: Lock canABP to true
             setReadOnly("canABP", true);
+            break;
+        case "graffica.info":
+            //Temporary solution: Diable setTimeout()
+            activateSetTimeoutFilter();
             break;
         default:
             //Debug mode
