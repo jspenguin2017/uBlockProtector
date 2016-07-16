@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0.11
+// @version 1.0.12
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -102,6 +102,12 @@
         case "graffica.info":
             //Temporary solution: Diable setTimeout()
             activateSetTimeoutFilter();
+            break;
+        case "www.dawn.com":
+            //Semi-permanent solution: Homemade FuckAdBlock, can be countered the same way
+            setReadOnly("DetectAdBlock", function () { });
+            Object.freeze(unsafeWindow.DetectAdBlock.prototype);
+            setReadOnly("detectAdBlock", new unsafeWindow.DetectAdBlock());
             break;
         default:
             //Debug mode
