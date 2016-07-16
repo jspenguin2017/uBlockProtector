@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0.12
+// @version 1.0.13
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -14,8 +14,8 @@
 (function () {
     'use strict';
     //Constants
-    const errMsg = "Uncaught AdBlock Error: AdBlocker detectors are not allowed on this device. ";
     const debugMode = true;
+    const errMsg = "Uncaught AdBlock Error: AdBlocker detectors are not allowed on this device. ";
     //=====Common Functions=====
     //Activate Filters: Prevent a string or function with specific keyword from executing, works for: eval, setInterval
     //@param func (string): The name of the function to filter
@@ -71,6 +71,10 @@
         console.error(errMsg);
     };
     //=====Rules=====
+    //Debug - Log domain
+    if (debugMode) {
+        console.warn("Domain: " + document.domain);
+    }
     switch (document.domain) {
         case "www.blockadblock.com":
         case "blockadblock.com":
@@ -109,15 +113,23 @@
             Object.freeze(unsafeWindow.DetectAdBlock.prototype);
             setReadOnly("detectAdBlock", new unsafeWindow.DetectAdBlock());
             break;
+        case "www.trovesaurus.com":
+            //Temporary solution: Remove elements when page loads - Those elements will show for a few seconds
+            unsafeWindow.addEventListener("load", function () {
+                $("#blocked").remove();
+                $("a.btn.btn-success:contains('adverts with a donation')").remove();
+            });
+            console.error(errMsg);
+            break;
+        case "infotainment.jagranjunction.com":
+            setReadOnly("canRunAds", true);
+            setReadOnly("isAdsDisplayed", true);
+            break;
         default:
             //Debug mode
             if (debugMode) {
-                console.warn("This website is not supported by AdBlock Protector");
+                console.warn(document.domain + " is not supported by AdBlock Protector");
             }
             break;
-    }
-    //Debug mode
-    if (debugMode) {
-        console.warn("Domain: " + document.domain);
     }
 })();
