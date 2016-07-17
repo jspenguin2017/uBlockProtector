@@ -2,12 +2,13 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0.17
+// @version 1.0.18
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
 // @grant unsafeWindow
 // @run-at document-start
+// @supportURL https://github.com/X01X012013/AdBlockProtector/issues
 // @downloadURL https://x01x012013.github.io/AdBlockProtector/AdBlockProtector.user.js
 // ==/UserScript==
 
