@@ -19,14 +19,14 @@
     //=====Common Functions=====
     //Activate Filters: Prevent a string or function with specific keyword from executing, works for: eval, setInterval
     //@param func (string): The name of the function to filter
-    //@param [optional default=/.*/] filter (RegExp): Filter to apply, block everything if this argument is missing
+    //@param [optional default=/[\S\s]/] filter (RegExp): Filter to apply, block everything if this argument is missing
     const activateFilter = function (func, filter) {
         //Messages
         const callMsg = " is called with these arguments: ";
         const passMsg = "Test passed. ";
         //Check filter
         if (filter === undefined) {
-            filter = /.*/;
+            filter = /[\S\s]/;
         }
         //Replace function
         const original = unsafeWindow[func];
@@ -137,6 +137,7 @@
             console.error(errMsg);
             break;
         case "www.australianfrequentflyer.com.au":
+            //Temporary solution: Disable eval()
             activateEvalFilter();
             break;
         default:

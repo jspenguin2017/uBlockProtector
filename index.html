@@ -36,6 +36,13 @@
     <div class="jumbotron">
         <div class="container">
             <h1>AdBlockProtector</h1>
+            <a class="link" href="#how" id="howLink">Jump to &quot;How do I use it?&quot;</a>
+            <script>
+                $("#howLink").click(function (e) {
+                    e.preventDefault();
+                    $("html, body").animate({ scrollTop: $("#how").offset().top }, "fast");
+                });
+            </script>
         </div>
     </div>
     <!-- Why use AdBlockers -->
@@ -65,14 +72,10 @@
         </div>
     </div>
     <!-- How do I use it? -->
-    <div class="jumbotron">
+    <div class="jumbotron" id="how">
         <div class="container">
             <h2>How do I use it? </h2>
-            <p>1. Install Tampermonkey, it supports major browsers such as Chrome and Opera: </p>
-            <a class="link" href="https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo" target="_blank">Chrome</a>
-            <br />
-            <a class="link" href="https://addons.opera.com/extensions/details/tampermonkey-beta/" target="_blank">Opera</a>
-            <p class="endLink">If your browser is not supported, you can try Greasemonkey or Violent monkey. We will try to support all browsers, but Opera and Chrome with Tampermonkey for sure. </p>
+            <p>1. Install a script host such as Tampermonkey, you should already have it installed. I will try to offer support for all major browsers and script hosts, but Chrome and Opera with Tampermonkey for sure. </p>
             <p>2. Install our script: </p>
             <a class="link" href="https://x01x012013.github.io/AdBlockProtector/AdBlockProtector.user.js" target="_blank">Click here</a>
         </div>
