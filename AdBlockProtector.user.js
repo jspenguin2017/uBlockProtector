@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0.14
+// @version 1.0.15
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -135,6 +135,9 @@
                 $("#ask_form").find(".loading").attr("disabled", false);
             });
             console.error(errMsg);
+            break;
+        case "www.australianfrequentflyer.com.au":
+            activateEvalFilter();
             break;
         default:
             //Debug mode
