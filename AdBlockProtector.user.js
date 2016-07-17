@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0.15
+// @version 1.0.17
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -100,6 +100,7 @@
             activateSetTimeoutFilter();
             break;
         case "bollywood.divyabhaskar.co.in":
+        case "bollywood.bhaskar.com":
             //Semi-permanent solution: Lock canABP to true
             setReadOnly("canABP", true);
             break;
@@ -139,6 +140,10 @@
         case "www.australianfrequentflyer.com.au":
             //Temporary solution: Disable eval()
             activateEvalFilter();
+            break;
+        case "www.jagran.com":
+            //Semi-permanent solution: Lock canRun to true
+            setReadOnly("canRun", true);
             break;
         default:
             //Debug mode
