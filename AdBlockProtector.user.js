@@ -76,7 +76,7 @@
     const runOnLoad = function (func) {
         unsafeWindow.addEventListener("load", func);
         console.error(errMsg);
-    }
+    };
     //Shortcut to document.domain
     const Domain = document.domain;
     //=====Rules=====
