@@ -183,7 +183,7 @@
     if (Domain.indexOf(".bhaskar.com") != -1) {
         //Semi-permanent solution: Lock canABP to true
         setReadOnly("canABP", true);
-    } else if (Domain.indexOf(".gamepedia.com" != -1)) {
+    } else if (Domain.indexOf(".gamepedia.com") != -1) {
         //Temporary solution: Remove element - Those elements will show for a few seconds
         runOnLoad(function () {
             $("#atflb").remove();
