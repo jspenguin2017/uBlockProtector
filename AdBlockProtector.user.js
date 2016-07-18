@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0.27
+// @version 1.0.28
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -155,6 +155,10 @@
         case "scambiofile.info":
             //Stable solution: Lock iExist to true
             setReadOnly("iExist", true);
+            break;
+        case "www.lasprovincias.es":
+            //Stable solution: Create variable Vocento.checkAdBlock and set it to 1
+            unsafeWindow.Vocento = { checkAdBlock: 1 };
             break;
         default:
             //Debug - Log when not in exact match list
