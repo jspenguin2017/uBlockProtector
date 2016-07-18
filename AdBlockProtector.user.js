@@ -147,6 +147,7 @@
             setReadOnly("canRun", true);
             break;
         default:
+            //Not supported
             console.warn(document.domain + " is not supported by AdBlock Protector");
             break;
     }
