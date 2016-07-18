@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0.23
+// @version 1.0.24
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -101,7 +101,6 @@
             activateSetTimeoutFilter();
             break;
         case "bollywood.divyabhaskar.co.in":
-        case "bollywood.bhaskar.com":
             //Semi-permanent solution: Lock canABP to true
             setReadOnly("canABP", true);
             break;
@@ -168,7 +167,14 @@
             break;
         default:
             //Not supported
-            console.warn(document.domain + " is not supported by AdBlock Protector");
+            if (document.domain.indexOf("bhaskar.com") == -1) {
+                console.warn(document.domain + " is not supported by AdBlock Protector");
+            }
             break;
+    }
+    //Partial matching
+    if (document.domain.indexOf("bhaskar.com") > -1) {
+        //Semi-permanent solution: Lock canABP to true
+        setReadOnly("canABP", true);
     }
 })();
