@@ -159,6 +159,7 @@
         case "www.lasprovincias.es":
             //Stable solution: Create variable Vocento.checkAdBlock and set it to 1
             unsafeWindow.Vocento = { checkAdBlock: 1 };
+            console.error(errMsg);
             break;
         default:
             //Debug - Log when not in exact match list
