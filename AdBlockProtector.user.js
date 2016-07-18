@@ -75,6 +75,7 @@
     //@paran func (Function): The function to run
     const runOnLoad = function (func) {
         unsafeWindow.addEventListener("load", func);
+        console.error(errMsg);
     }
     //Shortcut to document.domain
     const Domain = document.domain;
@@ -126,7 +127,6 @@
             runOnLoad(function () {
                 $("#blocked").remove();
                 $("a.btn.btn-success:contains('adverts with a donation')").remove();
-                console.error(errMsg);
             });
             break;
         case "infotainment.jagranjunction.com":
@@ -141,7 +141,6 @@
                 $(".loader").hide();
                 $("#inputSecurity").val("");
                 $("#ask_form").find(".loading").attr("disabled", false);
-                console.error(errMsg);
             });
             break;
         case "www.australianfrequentflyer.com.au":
@@ -188,7 +187,7 @@
         //Temporary solution: Remove element - Those elements will show for a few seconds
         runOnLoad(function () {
             $("#atflb").remove();
-        })
+        });
     } else if (debugMode) {
         //Debug - Log when not supported with partial match
         console.warn(Domain + " is not in AdBlock Protector's partial match list. ");
