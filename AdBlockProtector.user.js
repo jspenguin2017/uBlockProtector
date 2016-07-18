@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0.19
+// @version 1.0.20
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -145,6 +145,15 @@
         case "www.jagran.com":
             //Semi-permanent solution: Lock canRun to true
             setReadOnly("canRun", true);
+            break;
+        case "www.qbasic.net":
+            //Semi-permanent solution: Lock dload to a special version
+            setReadOnly("dload", function (dlID, fileID) {
+                ga('send', 'event', 'Download', 'Submit', fileID);
+                location.href = 'http://' + window.location.hostname + '/dl.php?id=' + dlID + '&file=' + fileID;
+                window.success = true;
+                return success;
+            });
             break;
         default:
             //Not supported
