@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0.26
+// @version 1.0.27
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -87,7 +87,7 @@
     switch (Domain) {
         case "www.blockadblock.com":
         case "blockadblock.com":
-            //Semi-permanent solution: Filter keyword from eval()
+            //Stable solution: Filter keyword from eval()
             activateEvalFilter(/blockadblock/i);
             break;
         case "www.gogi.in":
@@ -95,11 +95,11 @@
             activateSetIntervalFilter();
             break;
         case "www.comprovendolibri.it":
-            //Semi-permanent solution: Lock TestPage()
+            //Stable solution: Lock TestPage()
             setReadOnly("TestPage", function () { });
             break;
         case "nordpresse.be":
-            //Semi-permanent solution: Create message read cookie
+            //Stable solution: Create message read cookie
             document.cookie = "anCookie=true";
             console.error(errMsg);
             break;
@@ -109,7 +109,7 @@
             activateSetTimeoutFilter();
             break;
         case "bollywood.divyabhaskar.co.in":
-            //Semi-permanent solution: Lock canABP to true
+            //Stable solution: Lock canABP to true
             setReadOnly("canABP", true);
             break;
         case "graffica.info":
@@ -117,31 +117,15 @@
             activateSetTimeoutFilter();
             break;
         case "www.dawn.com":
-            //Semi-permanent solution: Homemade FuckAdBlock, can be countered the same way
+            //Stable solution: Homemade FuckAdBlock, can be countered the same way
             setReadOnly("DetectAdBlock", function () { });
             Object.freeze(unsafeWindow.DetectAdBlock.prototype);
             setReadOnly("detectAdBlock", new unsafeWindow.DetectAdBlock());
             break;
-        case "www.trovesaurus.com":
-            //Temporary solution: Remove elements when page loads - Those elements will show for a few seconds
-            runOnLoad(function () {
-                $("#blocked").remove();
-                $("a.btn.btn-success:contains('adverts with a donation')").remove();
-            });
-            break;
         case "infotainment.jagranjunction.com":
-            //Semi-permanent solution: Lock canRunAds and isAdsDisplayed to true
+            //Stable solution: Lock canRunAds and isAdsDisplayed to true
             setReadOnly("canRunAds", true);
             setReadOnly("isAdsDisplayed", true);
-            break;
-        case "www.dogefaucet.com":
-            //Temporary solution: Undo block - Those elements will show for a few seconds
-            runOnLoad(function () {
-                $("#loading_frame").removeClass("blocked");
-                $(".loader").hide();
-                $("#inputSecurity").val("");
-                $("#ask_form").find(".loading").attr("disabled", false);
-            });
             break;
         case "www.australianfrequentflyer.com.au":
             //Temporary solution: Disable eval()
@@ -150,11 +134,11 @@
         case "www.jagran.com":
         case "timesofindia.indiatimes.com":
         case "www.hindustantimes.com":
-            //Semi-permanent solution: Lock canRun to true
+            //Stable solution: Lock canRun to true
             setReadOnly("canRun", true);
             break;
         case "www.qbasic.net":
-            //Semi-permanent solution: Lock dload to a special version
+            //Stable solution: Lock dload to a special version
             setReadOnly("dload", function (dlID, fileID) {
                 ga('send', 'event', 'Download', 'Submit', fileID);
                 location.href = 'http://' + window.location.hostname + '/dl.php?id=' + dlID + '&file=' + fileID;
@@ -163,17 +147,17 @@
             });
             break;
         case "www.happytrips.com":
-            //Semi-permanent solution: Lock canRun to true and detector to an empty function
+            //Stable solution: Lock canRun to true and detector to an empty function
             setReadOnly("canRun", true);
             setReadOnly("detector", function () { });
             break;
         case "www.scambiofile.info":
         case "scambiofile.info":
-            //Semi-permanent solution: Lock iExist to true
+            //Stable solution: Lock iExist to true
             setReadOnly("iExist", true);
             break;
         default:
-            //Debug - Log when not supported with exact match
+            //Debug - Log when not in exact match list
             if (debugMode) {
                 console.warn(Domain + " is not in AdBlock Protector's exact match list. ");
             }
@@ -181,15 +165,15 @@
     }
     //Partial matching
     if (Domain.indexOf(".bhaskar.com") != -1) {
-        //Semi-permanent solution: Lock canABP to true
+        //Stable solution: Lock canABP to true
         setReadOnly("canABP", true);
     } else if (Domain.indexOf(".gamepedia.com") != -1) {
-        //Temporary solution: Remove element - Those elements will show for a few seconds
+        //Temporary workaround: Remove element
         runOnLoad(function () {
             $("#atflb").remove();
         });
     } else if (debugMode) {
-        //Debug - Log when not supported with partial match
+        //Debug - Log when not in partial match list
         console.warn(Domain + " is not in AdBlock Protector's partial match list. ");
     }
 })();

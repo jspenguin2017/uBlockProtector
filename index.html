@@ -6,20 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="X01X012013">
-    <title>AdBlockProtector</title>
+    <title>AdBlock Protector</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
     <!-- Custom CSS -->
     <style>
-        a.link {
-            font-size: 1.5em;
-        }
-
-        p.endLink {
-            padding-top: 0.9em;
-        }
-
         ol {
             font-size: 1.5em;
         }
@@ -35,21 +27,15 @@
     <!-- Title -->
     <div class="jumbotron">
         <div class="container">
-            <h1>AdBlockProtector</h1>
-            <a class="link" href="#how" id="howLink">Jump to &quot;How do I use it?&quot;</a>
-            <script>
-                $("#howLink").click(function (e) {
-                    e.preventDefault();
-                    $("html, body").animate({ scrollTop: $("#how").offset().top }, "fast");
-                });
-            </script>
+            <h1>AdBlock Protector</h1>
+            <a style="font-size:1.5em;" href="#how" class="howLink">Jump to &quot;How do I use it?&quot;</a>
         </div>
     </div>
     <!-- Why use AdBlockers -->
     <div class="jumbotron">
         <div class="container">
             <h2>Why use AdBlockers? </h2>
-            <p>Ads are important for websites to sustain themselves. However, some websites use ads that are annoying or even force the user to click them. If you believe websites should be allowed to use any form of ads they want, then many websites use tracking methods to display targeted ads, and that can go wrong. The company might promise you to only use that information for targeted ads, but why should you trust them? You should have the control over your privacy, and choose which website to trust. </p>
+            <p>Ads are important for websites to sustain themselves. However, some websites use ads that are annoying or even force the user to click them. If you believe websites should be allowed to use any form of ads they want, then many websites use tracking methods to display targeted ads, and that can go wrong. The company might promise you to only use that information to choose ads, but why should you trust them? You should have the control over your privacy, and choose which website to trust. </p>
             <p>Recently, many websites start to employ methods to detect and sometimes track AdBlockers and ask or sometimes even force the user to disable them even though trying to detect AdBlockers is illegal in some places. The good news is, there are ways to protect AdBlockers from being detected. </p>
         </div>
     </div>
@@ -58,16 +44,16 @@
         <div class="container">
             <h2>How to protect my AdBlockers? </h2>
             <p>1. Adblock Warning Removal List</p>
-            <a class="link" href="https://github.com/reek/anti-adblock-killer" target="_blank">2. Anti-AdBlock Killer</a>
-            <p class="endLink">You should have both of them installed, along with this project if needed. </p>
-            <p style="color:darkred;"><b>When a protection mechanism is implemented into one of these larger projects, it will be removed from this one, our project is meant to be a temporary solution. </b></p>
+            <p>2. <a href="https://github.com/reek/anti-adblock-killer" target="_blank">Anti-Adblock Killer</a></p>
+            <p>3. <a href="#how" class="howLink">This project: AdBlock Protector</a></p>
+            <p style="color:darkred;"><b>When a protection mechanism is implemented into one of the larger projects, it will be removed from this one, you should keep all of these installed. </b></p>
         </div>
     </div>
     <!-- Why not create pull requests to existing projects? -->
     <div class="jumbotron">
         <div class="container">
             <h2>Why not create pull requests to existing projects? </h2>
-            <p>It will take time before it gets added, and our goal is quick solutions. We will send our solution descriptions to larger project such as Anti-AdBlock Killer. </p>
+            <p>It will take time before it gets added, and our goal is quick solutions. We will send our solution descriptions to larger project such as Anti-Adblock Killer. </p>
             <p>Some of our codes will be quite inneficient, but that is the tradeoff for quick solutions. </p>
         </div>
     </div>
@@ -76,48 +62,85 @@
         <div class="container">
             <h2>How do I use it? </h2>
             <p>1. Install a script host such as Tampermonkey, you should already have it installed. I will try to offer support for all major browsers and script hosts, but Chrome and Opera with Tampermonkey for sure. </p>
-            <p>2. Install our Userscript: </p>
-            <a class="link" href="https://x01x012013.github.io/AdBlockProtector/AdBlockProtector.user.js" target="_blank">Click here</a>
-            <p class="endLink">Some websites require special Userscript, scroll down to the end to see. </p>
+            <p>2. Install our <a href="https://x01x012013.github.io/AdBlockProtector/AdBlockProtector.user.js" target="_blank">Userscript</a>. </p>
+            <p>3. See if your website requires <a href="#special" id="specialLink">special rules or scripts</a>. </p>
         </div>
     </div>
     <!-- How do I report a bug or a website? -->
     <div class="jumbotron">
         <div class="container">
             <h2>How do I report a bug or a website? </h2>
-            <p>If you have a bug or a suggestion that you want to let me know, or have a website that is not supported to report, please create an issue here: </p>
-            <a class="link" href="https://github.com/X01X012013/AdBlockProtector/issues" target="_blank">Click here</a>
-            <p class="endLink">If you are reporting a website, please provide the link to the website in question, and a screenshot, also, you should report it to a larger project as well. </p>
+            <p>If you have a bug or a suggestion that you want to let me know, or have a website that is not supported to report, please create an issue <a href="https://github.com/X01X012013/AdBlockProtector/issues" target="_blank">here</a>. </p>
+            <p>If you are reporting a website, please provide the link to the website in question, and a screenshot, also, you should report it to a larger project as well. </p>
         </div>
     </div>
     <!-- Which websites are supported? -->
     <div class="jumbotron">
         <div class="container">
             <h2>Which websites are supported? </h2>
+            <!-- Stable -->
+            <h3>Stable: </h3>
             <ol>
-                <li>www.blockadblock.com blockadblock.com - Will be supported by Anti-AdBlock Killer soon</li>
-                <li>www.gogi.in</li>
+                <li>www.blockadblock.com</li>
+                <li>blockadblock.com</li>
                 <li>www.comprovendolibri.it</li>
                 <li>nordpresse.be</li>
-                <li>sc2casts.com</li>
-                <li>bollywood.divyabhaskar.co.in - Will be supported by Anti-AdBlock Killer soon</li>
-                <li>graffica.info - Will be supported by Anti-AdBlock Killer soon</li>
-                <li>www.dawn.com - Will be supported by Anti-AdBlock Killer soon</li>
-                <li>www.trovesaurus.com - Blocked message will show for a brief moment</li>
+                <li>bollywood.divyabhaskar.co.in</li>
+                <li>www.dawn.com</li>
                 <li>infotainment.jagranjunction.com</li>
-                <li>www.dogefaucet.com - Blocked message will show for a brief moment</li>
-                <li>www.australianfrequentflyer.com.au</li>
                 <li>www.jagran.com</li>
                 <li>timesofindia.indiatimes.com</li>
                 <li>www.hindustantimes.com</li>
-                <li>fox.com.tr <a href="https://gist.github.com/X01X012013/cfcf4cce605fccc89045613dbb3afbfc" target="_blank">This website requires a special userscript, click here to view. </a></li>
                 <li>www.qbasic.net</li>
                 <li>www.happytrips.com</li>
-                <li>www.scambiofile.info scambiofile.info</li>
+                <li>www.scambiofile.info</li>
+                <li>scambiofile.info</li>
                 <li>*.bhaskar.com</li>
-                <li>*.gamepedia.com - Blocked message will show for a brief moment</li>
+            </ol>
+            <!-- Working for now -->
+            <h3>Working for now: </h3>
+            <ol>
+                <li>www.gogi.in</li>
+                <li>sc2casts.com</li>
+                <li>graffica.info</li>
+                <li>www.australianfrequentflyer.com.au</li>
+            </ol>
+            <!-- Temporary workaround -->
+            <h3>Temporary workaround: </h3>
+            <p>These websites may show their ads for a few seconds. </p>
+            <ol>
+                <li>*.gamepedia.com</li>
             </ol>
         </div>
     </div>
+    <!-- Require special rule or script -->
+    <div class="jumbotron">
+        <div class="container">
+            <h2 id="special">Require specials rules or scripts: </h2>
+            <!-- Require special rules -->
+            <h3 id="rule">Rules: </h3>
+            <ol>
+                <li>www.trovesaurus.com <a href="https://github.com/reek/anti-adblock-killer/issues/1770" target="_blank">View rules</a></li>
+                <li>www.dogefaucet.com <a href="https://github.com/reek/anti-adblock-killer/issues/1770" target="_blank">View rules</a></li>
+                <li>fox.com.tr <a href="https://github.com/reek/anti-adblock-killer/issues/1771#issuecomment-233428820" target="_blank">View rules</a></li>
+            </ol>
+            <!-- Require special script -->
+            <h3>Scripts: </h3>
+            <ol>
+                <li>NONE</li>
+            </ol>
+        </div>
+    </div>
+    <script>
+        //Set up animated scrolling
+        $(".howLink").click(function (e) {
+            e.preventDefault();
+            $("html, body").animate({ scrollTop: $("#how").offset().top }, "fast");
+        });
+        $("#specialLink").click(function (e) {
+            e.preventDefault();
+            $("html, body").animate({ scrollTop: $("#special").offset().top }, "fast");
+        });
+    </script>
 </body>
 </html>
