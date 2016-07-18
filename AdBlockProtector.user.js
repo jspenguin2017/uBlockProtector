@@ -166,9 +166,9 @@
             setReadOnly("iExist", true);
             break;
         default:
-            //Not supported
-            if (document.domain.indexOf("bhaskar.com") == -1) {
-                console.warn(document.domain + " is not supported by AdBlock Protector");
+            //Debug - Log when not supported with exact match
+            if (debugMode) {
+                console.warn(document.domain + " is not in AdBlock Protector's exact match list. ");
             }
             break;
     }
@@ -176,5 +176,8 @@
     if (document.domain.indexOf("bhaskar.com") > -1) {
         //Semi-permanent solution: Lock canABP to true
         setReadOnly("canABP", true);
+    } else if (debugMode) {
+        //Debug - Log when not supported with partial match
+        console.warn(document.domain + " is not in AdBlock Protector's partial match list. ");
     }
 })();
