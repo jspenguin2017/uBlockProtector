@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0.24
+// @version 1.0.25
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -143,6 +143,7 @@
             break;
         case "www.jagran.com":
         case "timesofindia.indiatimes.com":
+        case "www.hindustantimes.com":
             //Semi-permanent solution: Lock canRun to true
             setReadOnly("canRun", true);
             break;
