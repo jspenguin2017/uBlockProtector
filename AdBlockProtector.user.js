@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0.21
+// @version 1.0.22
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -155,6 +155,10 @@
                 window.success = true;
                 return success;
             });
+            break;
+        case "www.happytrips.com":
+            setReadOnly("canRun", true);
+            setReadOnly("detector", function () { });
             break;
         default:
             //Not supported
