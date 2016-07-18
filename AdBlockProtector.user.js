@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0.18
+// @version 1.0.19
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -120,8 +120,8 @@
             unsafeWindow.addEventListener("load", function () {
                 $("#blocked").remove();
                 $("a.btn.btn-success:contains('adverts with a donation')").remove();
+                console.error(errMsg);
             });
-            console.error(errMsg);
             break;
         case "infotainment.jagranjunction.com":
             //Semi-permanent solution: Lock canRunAds and isAdsDisplayed to true
@@ -135,8 +135,8 @@
                 $(".loader").hide();
                 $("#inputSecurity").val("");
                 $("#ask_form").find(".loading").attr("disabled", false);
+                console.error(errMsg);
             });
-            console.error(errMsg);
             break;
         case "www.australianfrequentflyer.com.au":
             //Temporary solution: Disable eval()
