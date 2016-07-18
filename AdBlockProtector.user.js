@@ -147,10 +147,7 @@
             setReadOnly("canRun", true);
             break;
         default:
-            //Debug mode
-            if (debugMode) {
-                console.warn(document.domain + " is not supported by AdBlock Protector");
-            }
+            console.warn(document.domain + " is not supported by AdBlock Protector");
             break;
     }
 })();
