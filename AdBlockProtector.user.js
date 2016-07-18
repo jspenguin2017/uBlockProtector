@@ -173,7 +173,7 @@
             break;
     }
     //Partial matching
-    if (document.domain.indexOf("bhaskar.com") > -1) {
+    if (document.domain.indexOf(".bhaskar.com") != -1) {
         //Semi-permanent solution: Lock canABP to true
         setReadOnly("canABP", true);
     } else if (debugMode) {
