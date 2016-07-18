@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0.22
+// @version 1.0.23
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -157,8 +157,14 @@
             });
             break;
         case "www.happytrips.com":
+            //Semi-permanent solution: Lock canRun to true and detector to an empty function
             setReadOnly("canRun", true);
             setReadOnly("detector", function () { });
+            break;
+        case "www.scambiofile.info":
+        case "scambiofile.info":
+            //Semi-permanent solution: Lock iExist to true
+            setReadOnly("iExist", true);
             break;
         default:
             //Not supported
