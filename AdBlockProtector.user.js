@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0.25
+// @version 1.0.26
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -71,12 +71,19 @@
         });
         console.error(errMsg);
     };
+    //Run when page loads
+    //@paran func (Function): The function to run
+    const runOnLoad = function (func) {
+        unsafeWindow.addEventListener("load", func);
+    }
+    //Shortcut to document.domain
+    const Domain = document.domain;
     //=====Rules=====
     //Debug - Log domain
     if (debugMode) {
-        console.warn("Domain: " + document.domain);
+        console.warn("Domain: " + Domain);
     }
-    switch (document.domain) {
+    switch (Domain) {
         case "www.blockadblock.com":
         case "blockadblock.com":
             //Semi-permanent solution: Filter keyword from eval()
@@ -116,7 +123,7 @@
             break;
         case "www.trovesaurus.com":
             //Temporary solution: Remove elements when page loads - Those elements will show for a few seconds
-            unsafeWindow.addEventListener("load", function () {
+            runOnLoad(function () {
                 $("#blocked").remove();
                 $("a.btn.btn-success:contains('adverts with a donation')").remove();
                 console.error(errMsg);
@@ -129,7 +136,7 @@
             break;
         case "www.dogefaucet.com":
             //Temporary solution: Undo block - Those elements will show for a few seconds
-            unsafeWindow.addEventListener("load", function () {
+            runOnLoad(function () {
                 $("#loading_frame").removeClass("blocked");
                 $(".loader").hide();
                 $("#inputSecurity").val("");
@@ -169,16 +176,21 @@
         default:
             //Debug - Log when not supported with exact match
             if (debugMode) {
-                console.warn(document.domain + " is not in AdBlock Protector's exact match list. ");
+                console.warn(Domain + " is not in AdBlock Protector's exact match list. ");
             }
             break;
     }
     //Partial matching
-    if (document.domain.indexOf(".bhaskar.com") != -1) {
+    if (Domain.indexOf(".bhaskar.com") != -1) {
         //Semi-permanent solution: Lock canABP to true
         setReadOnly("canABP", true);
+    } else if (Domain.indexOf(".gamepedia.com" != -1)) {
+        //Temporary solution: Remove element - Those elements will show for a few seconds
+        runOnLoad(function () {
+            $("#atflb").remove();
+        })
     } else if (debugMode) {
         //Debug - Log when not supported with partial match
-        console.warn(document.domain + " is not in AdBlock Protector's partial match list. ");
+        console.warn(Domain + " is not in AdBlock Protector's partial match list. ");
     }
 })();
