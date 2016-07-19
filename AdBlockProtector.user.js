@@ -84,6 +84,7 @@
     if (debugMode) {
         console.warn("Domain: " + Domain);
     }
+    //Exact matching
     switch (Domain) {
         case "www.blockadblock.com":
         case "blockadblock.com":
