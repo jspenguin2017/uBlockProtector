@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0.29
+// @version 1.0.30
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -65,11 +65,15 @@
     //@param name (string): The name of the property to define on unsafeWindow
     //@param val (mix): The value of the property
     const setReadOnly = function (name, val) {
-        Object.defineProperty(unsafeWindow, name, {
-            value: val,
-            writable: false
-        });
-        console.error(errMsg);
+        try {
+            Object.defineProperty(unsafeWindow, name, {
+                value: val,
+                writable: false
+            });
+            console.error(errMsg);
+        } catch (err) {
+            console.error("AdBlock Protector failed to define read-only property " + name + "! ");
+        }
     };
     //Run when page loads
     //@paran func (Function): The function to run
