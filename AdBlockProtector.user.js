@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0.34
+// @version 1.0.35
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -179,6 +179,11 @@
             runOnLoad(function () {
                 unsafeWindow.abgo = function () { };
             });
+            //Skip countdown
+            const _setInterval = unsafeWindow.setInterval;
+            unsafeWindow.setInterval = function (func) {
+                _setInterval(func, 10);
+            };
             break;
         default:
             //Debug - Log when not in exact match list
