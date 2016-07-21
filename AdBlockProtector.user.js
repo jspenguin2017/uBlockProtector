@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0.36
+// @version 1.0.37
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -174,6 +174,7 @@
             console.error(errMsg);
             break;
         case "www.badtaste.it":
+        case "www.badtv.it":
             //Stable solution: Lock isAdBlockActive to false and set cookie adBlockChecked to disattivo
             setReadOnly("isAdBlockActive", false);
             document.cookie = "adBlockChecked=disattivo";
