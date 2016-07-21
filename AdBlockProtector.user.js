@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0.32
+// @version 1.0.33
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -189,6 +189,9 @@
         runOnLoad(function () {
             $("#atflb").remove();
         });
+    } else if (Domain.indexOf(".cbox.ws") != -1) {
+        //Stable solution: Lock koddostu_com_adblock_yok to true
+        setReadOnly("koddostu_com_adblock_yok", true);
     } else if (debugMode) {
         //Debug - Log when not in partial match list
         console.warn(Domain + " is not in AdBlock Protector's partial match list. ");
