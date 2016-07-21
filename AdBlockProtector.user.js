@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0.45
+// @version 1.0.46
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -193,6 +193,15 @@
                 return _setInterval(func, 10);
             };
             break;
+        case "www.15min.lt":
+            //Stable solution: Homemade FuckAdBlock, can be countered the same way
+            setReadOnly("blocker", function () {
+                this.hasAdblock = function () { return false; };
+                this.onBlock = function () { };
+                this.runTests = function () { };
+                this.test = function () { };
+                this.testAll = function () { };
+            });
         default:
             //Debug - Log when not in exact match list
             if (debugMode) {
