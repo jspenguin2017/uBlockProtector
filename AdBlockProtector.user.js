@@ -8,6 +8,7 @@
 // @include https://*/*
 // @grant unsafeWindow
 // @run-at document-start
+// @homepage https://x01x012013.github.io/AdBlockProtector/
 // @supportURL https://github.com/X01X012013/AdBlockProtector/issues
 // @downloadURL https://x01x012013.github.io/AdBlockProtector/AdBlockProtector.user.js
 // ==/UserScript==
@@ -171,11 +172,6 @@
             //Stable solution: Lock isAdBlockActive to false and set cookie adBlockChecked to disattivo
             setReadOnly("isAdBlockActive", false);
             document.cookie = "adBlockChecked=disattivo";
-            break;
-        case "www.turkleech.com":
-        case "turkleech.com":
-            //Stable solution: Lock koddostu_com_adblock_yok to true
-            setReadOnly("koddostu_com_adblock_yok", true);
             break;
         default:
             //Debug - Log when not in exact match list
