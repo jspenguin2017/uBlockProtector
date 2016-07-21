@@ -171,7 +171,7 @@
         case "www.lasprovincias.es":
             //Stable solution: Create variable Vocento.checkAdBlock and set it to 1
             unsafeWindow.Vocento = { checkAdBlock: 1 };
-            console.error("AdBlock Protector failed to activate on " + Domain + "! ");
+            console.error(errMsg);
             break;
         case "www.badtaste.it":
             //Stable solution: Lock isAdBlockActive to false and set cookie adBlockChecked to disattivo
