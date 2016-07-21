@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0.49
+// @version 1.0.50
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -150,6 +150,7 @@
         case "www.jagran.com":
         case "www.hindustantimes.com":
         case "www.mid-day.com":
+        case "malayalam.samayam.com":
             //Stable solution: Lock canRun to true
             setReadOnly("canRun", true);
             break;
