@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0.44
+// @version 1.0.45
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -192,10 +192,6 @@
             unsafeWindow.setInterval = function (func) {
                 return _setInterval(func, 10);
             };
-            break;
-        case "www.15min.lt":
-            //Temporary solution: Lock __adblock_config to an empty string
-            setReadOnly("__adblock_config", "");
             break;
         default:
             //Debug - Log when not in exact match list
