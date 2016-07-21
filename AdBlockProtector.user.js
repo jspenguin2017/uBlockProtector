@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0.42
+// @version 1.0.43
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -192,11 +192,6 @@
             unsafeWindow.setInterval = function (func) {
                 return _setInterval(func, 10);
             };
-            break;
-        case "www.aktualne.cz":
-            //Stable solution: Create variable adb_campaign.test_pass and set it to true
-            unsafeWindow.adb_campaign = { test_pass: true };
-            console.error(errMsg);
             break;
         default:
             //Debug - Log when not in exact match list
