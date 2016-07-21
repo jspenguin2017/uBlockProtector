@@ -32,31 +32,35 @@
         }
         //Replace function
         const original = unsafeWindow[func];
-        unsafeWindow[func] = function () {
-            //Debug - Log when called
-            if (debugMode) {
-                console.warn(func + callMsg);
+        try {
+            unsafeWindow[func] = function () {
+                //Debug - Log when called
+                if (debugMode) {
+                    console.warn(func + callMsg);
+                    for (let i = 0; i < arguments.length; i++) {
+                        console.warn(arguments[i].toString());
+                    }
+                }
+                //Apply filter
                 for (let i = 0; i < arguments.length; i++) {
-                    console.warn(arguments[i].toString());
+                    if (filter.test(arguments[i].toString())) {
+                        //Not allowed (will always log)
+                        return console.error(errMsg);
+                    }
                 }
-            }
-            //Apply filter
-            for (let i = 0; i < arguments.length; i++) {
-                if (filter.test(arguments[i].toString())) {
-                    //Not allowed (will always log)
-                    return console.error(errMsg);
+                //Debug - Log when passed
+                if (debugMode) {
+                    console.info(passMsg);
                 }
-            }
-            //Debug - Log when passed
+                //Allowed
+                return original.apply(unsafeWindow, arguments);
+            };
+            //Debug - Log when activated
             if (debugMode) {
-                console.info(passMsg);
+                console.warn("Filter activated on " + func);
             }
-            //Allowed
-            return original.apply(unsafeWindow, arguments);
-        };
-        //Debug - Log when activated
-        if (debugMode) {
-            console.warn("Filter activated on " + func);
+        } catch (err) {
+            console.error("AdBlock Protector failed to activate filter on " + func + "! ");
         }
     };
     const activateEvalFilter = activateFilter.bind(null, "eval");
@@ -167,7 +171,7 @@
         case "www.lasprovincias.es":
             //Stable solution: Create variable Vocento.checkAdBlock and set it to 1
             unsafeWindow.Vocento = { checkAdBlock: 1 };
-            console.error(errMsg);
+            console.error("AdBlock Protector failed to activate on " + Domain + "! ");
             break;
         case "www.badtaste.it":
             //Stable solution: Lock isAdBlockActive to false and set cookie adBlockChecked to disattivo
