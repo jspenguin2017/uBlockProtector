@@ -202,6 +202,7 @@
                 this.test = function () { };
                 this.testAll = function () { };
             });
+            break;
         default:
             //Debug - Log when not in exact match list
             if (debugMode) {
