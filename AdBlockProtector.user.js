@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0.39
+// @version 1.0.40
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -144,7 +144,6 @@
             activateEvalFilter();
             break;
         case "www.jagran.com":
-        case "timesofindia.indiatimes.com":
         case "www.hindustantimes.com":
             //Stable solution: Lock canRun to true
             setReadOnly("canRun", true);
@@ -212,6 +211,9 @@
     } else if (Domain.indexOf(".cbox.ws") != -1) {
         //Stable solution: Lock koddostu_com_adblock_yok to true
         setReadOnly("koddostu_com_adblock_yok", true);
+    } else if (Domain.indexOf(".indiatimes.com") != -1) {
+        //Stable solution: Lock canRun to true
+        setReadOnly("canRun", true);
     } else if (debugMode) {
         //Debug - Log when not in partial match list
         console.warn(Domain + " is not in AdBlock Protector's partial match list. ");
