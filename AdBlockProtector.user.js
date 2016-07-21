@@ -95,6 +95,10 @@
     }
     //Exact matching
     switch (Domain) {
+        case "x01x012013.github.io":
+            //Installation test of homepage
+            setReadOnly("test", true);
+            break;
         case "www.blockadblock.com":
         case "blockadblock.com":
             //Stable solution: Filter keyword from eval()
