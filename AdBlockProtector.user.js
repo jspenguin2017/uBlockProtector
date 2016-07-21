@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0.31
+// @version 1.0.32
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -171,6 +171,11 @@
             //Stable solution: Lock isAdBlockActive to false and set cookie adBlockChecked to disattivo
             setReadOnly("isAdBlockActive", false);
             document.cookie = "adBlockChecked=disattivo";
+            break;
+        case "www.turkleech.com":
+        case "turkleech.com":
+            //Stable solution: Lock koddostu_com_adblock_yok to true
+            setReadOnly("koddostu_com_adblock_yok", true);
             break;
         default:
             //Debug - Log when not in exact match list
