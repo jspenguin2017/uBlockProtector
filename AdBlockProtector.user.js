@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0.35
+// @version 1.0.36
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -135,6 +135,7 @@
             break;
         case "www.australianfrequentflyer.com.au":
         case "www.livenewschat.eu":
+        case "www.zahitvstation.com":
             //Temporary solution: Disable eval()
             activateEvalFilter();
             break;
