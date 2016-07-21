@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0.37
+// @version 1.0.38
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -180,7 +180,7 @@
             document.cookie = "adBlockChecked=disattivo";
             break;
         case "ay.gy":
-            //Temporary solution: Disable open() and set abgo to an empty function when the page loads
+            //Temporary solution: Disable open() before page starts to load and set abgo to an empty function when the page loads
             setReadOnly("open", function () { });
             runOnLoad(function () {
                 unsafeWindow.abgo = function () { };
@@ -188,7 +188,7 @@
             //Skip countdown
             const _setInterval = unsafeWindow.setInterval;
             unsafeWindow.setInterval = function (func) {
-                _setInterval(func, 10);
+                return _setInterval(func, 10);
             };
             break;
         default:
