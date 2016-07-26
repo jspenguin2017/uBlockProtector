@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0.51
+// @version 1.0.52
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -18,10 +18,12 @@
     //Constants
     const debugMode = true;
     const errMsg = "Uncaught AdBlock Error: AdBlocker detectors are not allowed on this device. ";
-    //=====Common Functions=====
-    //Activate Filters: Prevent a string or function with specific keyword from executing, works for: eval, setInterval
-    //@param func (string): The name of the function to filter
+    //=====Library=====
+    //Activate Filters: Prevent a string or function with specific keyword from executing
+    //Use RegExp to combine filters, do not activate multiple times on the same function
+    //@param func (string): The name of the function to filter, supports eval, setInterval, and setTimeout
     //@param [optional default=/[\S\s]/] filter (RegExp): Filter to apply, block everything if this argument is missing
+    //@return: True if succeed, False otherwise
     const activateFilter = function (func, filter) {
         //Messages
         const callMsg = " is called with these arguments: ";
@@ -61,14 +63,18 @@
             }
         } catch (err) {
             console.error("AdBlock Protector failed to activate filter on " + func + "! ");
+            return false;
         }
+        return true;
     };
+    //Shortcuts for activateFilter()
     const activateEvalFilter = activateFilter.bind(null, "eval");
     const activateSetIntervalFilter = activateFilter.bind(null, "setInterval");
     const activateSetTimeoutFilter = activateFilter.bind(null, "setTimeout");
-    //Define read-only property
+    //Define read-only property to unsafeWindow
     //@param name (string): The name of the property to define on unsafeWindow
-    //@param val (mix): The value of the property
+    //@param val (any type): The value of the property
+    //@return: True if succeed, False otherwise
     const setReadOnly = function (name, val) {
         try {
             Object.defineProperty(unsafeWindow, name, {
@@ -78,7 +84,9 @@
             console.error(errMsg);
         } catch (err) {
             console.error("AdBlock Protector failed to define read-only property " + name + "! ");
+            return false;
         }
+        return true;
     };
     //Run when page loads
     //@paran func (Function): The function to run
@@ -88,7 +96,7 @@
     };
     //Shortcut to document.domain
     const Domain = document.domain;
-    //=====Rules=====
+    //=====Main=====
     //Debug - Log domain
     if (debugMode) {
         console.warn("Domain: " + Domain);
