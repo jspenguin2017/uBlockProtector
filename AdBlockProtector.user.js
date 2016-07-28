@@ -242,7 +242,7 @@
         setReadOnly("koddostu_com_adblock_yok", true);
     } else if (Domain.indexOf(".indiatimes.com") != -1) {
         //Temporary solution: Lock _0x89ff to an empty string
-        setReadOnly("_0x89ff", "")
+        setReadOnly("_0x89ff", "");
     } else if (debugMode) {
         //Debug - Log when not in partial match list
         console.warn(Domain + " is not in AdBlock Protector's partial match list. ");
