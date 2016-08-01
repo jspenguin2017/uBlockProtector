@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0.54
+// @version 1.0.55
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -222,8 +222,8 @@
             setReadOnly("checkAds", function () { });
             break;
         case "www.ndtv.com":
-            //Stable solution: Lock _ll to 0
-            setReadOnly("_ll", 0);
+            //Stable solution: Lock getNoTopLatestNews to an empty function
+            setReadOnly("getNoTopLatestNews", function () { });
             break;
         default:
             //Debug - Log when not in exact match list
