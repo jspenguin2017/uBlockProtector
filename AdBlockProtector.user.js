@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0.57
+// @version 1.0.58
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -221,10 +221,6 @@
             //Stable solution: Lock checkAds to an empty function
             setReadOnly("checkAds", function () { });
             break;
-        case "www.ndtv.com":
-            //Stable solution: Lock getNoTopLatestNews to an empty function
-            setReadOnly("getNoTopLatestNews", function () { });
-            break;
         case "www.businesstoday.in":
             //Stable solution: Lock checkAds to an empty function
             setReadOnly("checkAds", function () { });
@@ -251,6 +247,9 @@
     } else if (Domain.indexOf(".indiatimes.com") != -1) {
         //Temporary solution: Lock _0x17a5 to an empty string
         setReadOnly("_0x17a5", "");
+    } else if (Domain.indexOf(".ndtv.com") != -1) {
+        //Stable solution: Lock getNoTopLatestNews to an empty function
+        setReadOnly("getNoTopLatestNews", function () { });
     } else if (debugMode) {
         //Debug - Log when not in partial match list
         console.warn(Domain + " is not in AdBlock Protector's partial match list. ");
