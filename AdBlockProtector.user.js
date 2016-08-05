@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0.56
+// @version 1.0.57
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -249,8 +249,8 @@
         //Stable solution: Lock koddostu_com_adblock_yok to true
         setReadOnly("koddostu_com_adblock_yok", true);
     } else if (Domain.indexOf(".indiatimes.com") != -1) {
-        //Temporary solution: Lock _0x89ff to an empty string
-        setReadOnly("_0x89ff", "");
+        //Temporary solution: Lock _0x17a5 to an empty string
+        setReadOnly("_0x17a5", "");
     } else if (debugMode) {
         //Debug - Log when not in partial match list
         console.warn(Domain + " is not in AdBlock Protector's partial match list. ");
