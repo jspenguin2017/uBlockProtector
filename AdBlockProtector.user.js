@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0.58
+// @version 1.0.59
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -233,21 +233,21 @@
             break;
     }
     //Partial matching
-    if (Domain.indexOf(".bhaskar.com") != -1) {
+    if (Domain.endsWith(".bhaskar.com")) {
         //Stable solution: Lock canABP to true
         setReadOnly("canABP", true);
-    } else if (Domain.indexOf(".gamepedia.com") != -1) {
+    } else if (Domain.endsWith(".gamepedia.com")) {
         //Temporary workaround: Remove element
         runOnLoad(function () {
             $("#atflb").remove();
         });
-    } else if (Domain.indexOf(".cbox.ws") != -1) {
+    } else if (Domain.endsWith(".cbox.ws")) {
         //Stable solution: Lock koddostu_com_adblock_yok to true
         setReadOnly("koddostu_com_adblock_yok", true);
-    } else if (Domain.indexOf(".indiatimes.com") != -1) {
+    } else if (Domain.endsWith(".indiatimes.com")) {
         //Temporary solution: Lock _0x17a5 to an empty string
         setReadOnly("_0x17a5", "");
-    } else if (Domain.indexOf(".ndtv.com") != -1) {
+    } else if (Domain.endsWith(".ndtv.com")) {
         //Stable solution: Lock getNoTopLatestNews to an empty function
         setReadOnly("getNoTopLatestNews", function () { });
     } else if (debugMode) {
