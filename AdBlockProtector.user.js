@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0.59
+// @version 1.0.60
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -14,16 +14,28 @@
 // ==/UserScript==
 
 (function () {
-    'use strict';
-    //Constants
+    "use strict";
+    /**
+     * Whether or not debug string should be logged. 
+     * @const {boolean}
+     */
     const debugMode = true;
+    /**
+     * The error message to show when this script takes effect. 
+     * @const {string}
+     */
     const errMsg = "Uncaught AdBlock Error: AdBlocker detectors are not allowed on this device. ";
     //=====Library=====
-    //Activate Filters: Prevent a string or function with specific keyword from executing
-    //Use RegExp to combine filters, do not activate multiple times on the same function
-    //@param func (string): The name of the function to filter, supports eval, setInterval, and setTimeout
-    //@param [optional default=/[\S\s]/] filter (RegExp): Filter to apply, block everything if this argument is missing
-    //@return: True if succeed, False otherwise
+    /** 
+     * Prevent a string or function with specific keyword from executing. 
+     * Use RegExp to combine filters, do not activate filter multiple times on the same function. 
+     * One of the shortcuts should be used instead of directly calling this function. 
+     * @private
+     * @function
+     * @param {string} func - The name of the function to filter, supports "eval", "setInterval", and "setTimeout". 
+     * @param {RegExp} [filter=/[\S\s]/] - Filter to apply, block everything if this argument is missing. 
+     * @return {boolean} True if the operation was successful, false otherwise. 
+     */
     const activateFilter = function (func, filter) {
         //Messages
         const callMsg = " is called with these arguments: ";
@@ -67,14 +79,37 @@
         }
         return true;
     };
-    //Shortcuts for activateFilter()
+    /**
+     * Activate filter on "eval". 
+     * A shortcut for {@see activateFilter}. 
+     * @function
+     * @param {RegExp} [filter=/[\S\s]/] - Filter to apply, block everything if this argument is missing. 
+     * @return {boolean} True if the operation was successful, false otherwise. 
+     */
     const activateEvalFilter = activateFilter.bind(null, "eval");
+    /**
+     * Activate filter on "setInterval". 
+     * A shortcut for {@see activateFilter}. 
+     * @function
+     * @param {RegExp} [filter=/[\S\s]/] - Filter to apply, block everything if this argument is missing. 
+     * @return {boolean} True if the operation was successful, false otherwise. 
+     */
     const activateSetIntervalFilter = activateFilter.bind(null, "setInterval");
+    /**
+     * Activate filter on "setTimeout". 
+     * A shortcut for {@see activateFilter}. 
+     * @function
+     * @param {RegExp} [filter=/[\S\s]/] - Filter to apply, block everything if this argument is missing. 
+     * @return {boolean} True if the operation was successful, false otherwise. 
+     */
     const activateSetTimeoutFilter = activateFilter.bind(null, "setTimeout");
-    //Define read-only property to unsafeWindow
-    //@param name (string): The name of the property to define on unsafeWindow
-    //@param val (any type): The value of the property
-    //@return: True if succeed, False otherwise
+    /**
+     * Defines a read-only property to unsafeWindow. 
+     * @function
+     * @param {string} name - The name of the property to define. 
+     * @param {*} val - The value to set. 
+     * @return {boolean} True if the operation was successful, false otherwise. 
+     */
     const setReadOnly = function (name, val) {
         try {
             Object.defineProperty(unsafeWindow, name, {
@@ -88,13 +123,19 @@
         }
         return true;
     };
-    //Run when page loads
-    //@paran func (Function): The function to run
+    /**
+     * Run a function when the page loads. 
+     * @function
+     * @param {Function} func - The function to run. 
+     */
     const runOnLoad = function (func) {
         unsafeWindow.addEventListener("load", func);
         console.error(errMsg);
     };
-    //Shortcut to document.domain
+    /**
+     * Shortcut to document.domain. 
+     * @const {string}
+     */
     const Domain = document.domain;
     //=====Main=====
     //Debug - Log domain
