@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0.61
+// @version 1.0.62
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -86,7 +86,7 @@
      * @param {RegExp} [filter=/[\S\s]/] - Filter to apply, block everything if this argument is missing.
      * @return {boolean} True if the operation was successful, false otherwise.
      */
-    const activateEvalFilter = activateFilter.bind(null, "eval");
+    const activateEvalFilter = activateFilter.bind(undefined, "eval");
     /**
      * Activate filter on "setInterval".
      * A shortcut for {@see activateFilter}.
@@ -94,7 +94,7 @@
      * @param {RegExp} [filter=/[\S\s]/] - Filter to apply, block everything if this argument is missing.
      * @return {boolean} True if the operation was successful, false otherwise.
      */
-    const activateSetIntervalFilter = activateFilter.bind(null, "setInterval");
+    const activateSetIntervalFilter = activateFilter.bind(undefined, "setInterval");
     /**
      * Activate filter on "setTimeout".
      * A shortcut for {@see activateFilter}.
@@ -102,7 +102,7 @@
      * @param {RegExp} [filter=/[\S\s]/] - Filter to apply, block everything if this argument is missing.
      * @return {boolean} True if the operation was successful, false otherwise.
      */
-    const activateSetTimeoutFilter = activateFilter.bind(null, "setTimeout");
+    const activateSetTimeoutFilter = activateFilter.bind(undefined, "setTimeout");
     /**
      * Defines a read-only property to unsafeWindow.
      * @function
