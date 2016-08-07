@@ -43,10 +43,7 @@
                 $("html, body").animate({ scrollTop: $("#special").offset().top }, "fast");
             });
             //Check if AdBlock Protector is installed
-            try {
-                window.testVar = false;
-            } catch (err) { };
-            if (!testVar) {
+            if (typeof AdBlock_Protector_testVar === "undefined") {
                 $("#testDiv").removeClass("hide");
             }
         });
