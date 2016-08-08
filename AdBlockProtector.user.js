@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0.64
+// @version 1.0.65
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -36,7 +36,9 @@
      * @param {RegExp} [filter=/[\S\s]/] - Filter to apply, block everything if this argument is missing.
      * @return {boolean} True if the operation was successful, false otherwise.
      */
-    const activateFilter = function (func, filter = /[\S\s]/) {
+    const activateFilter = function (func, filter) {
+        //Default parameter
+        filter = filter || /[\S\s]/;
         //Messages
         const callMsg = " is called with these arguments: ";
         const passMsg = "Test passed. ";
