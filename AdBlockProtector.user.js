@@ -37,7 +37,7 @@
      * @return {boolean} True if the operation was successful, false otherwise.
      */
     const activateFilter = function (func, filter) {
-        //Default parameter
+        //Default parameters
         filter = filter || /[\S\s]/;
         //Messages
         const callMsg = " is called with these arguments: ";
