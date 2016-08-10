@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0.65
+// @version 1.0.66
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -149,7 +149,10 @@
         case "www.blockadblock.com":
         case "blockadblock.com":
             //Stable solution: Filter keyword from eval()
-            activateEvalFilter(/blockadblock/i);
+            activateEvalFilter(/BlockAdblock/);
+            runOnLoad(function () {
+                $("#babasbmsgx").remove();
+            });
             break;
         case "www.gogi.in":
             //Temporary solution: Disable setInterval()
