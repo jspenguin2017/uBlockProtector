@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0.67
+// @version 1.0.68
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -260,8 +260,8 @@
             });
             break;
         case "indiatoday.intoday.in":
-            //Stable solution: Lock checkAds to an empty function
-            setReadOnly("checkAds", function () { });
+            //Stable solution: Lock adBlock to false
+            setReadOnly("adBlock", false);
             break;
         case "www.businesstoday.in":
             //Stable solution: Lock checkAds to an empty function
