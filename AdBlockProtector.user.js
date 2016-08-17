@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0.69
+// @version 1.0.70
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -271,6 +271,10 @@
         case "indianexpress.com":
             //Stable solution: Lock RunAds to true
             setReadOnly("RunAds", true);
+            break;
+        case "www.livemint.com":
+            //Stable solution: Lock canRun1 to true
+            setReadOnly("canRun1", true);
             break;
         default:
             //Debug - Log when not in exact match list
