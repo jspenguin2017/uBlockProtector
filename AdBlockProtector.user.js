@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0.71
+// @version 1.0.72
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -276,6 +276,11 @@
         case "www.livemint.com":
             //Stable solution: Lock canRun1 to true
             setReadOnly("canRun1", true);
+            break;
+        case "www.business-standard.com":
+            //Stable solution: Lock isBannerActive and adsLoaded to true
+            setReadOnly("isBannerActive", true);
+            setReadOnly("adsLoaded", true);
             break;
         default:
             //Debug - Log when not in exact match list
