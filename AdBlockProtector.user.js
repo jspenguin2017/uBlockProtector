@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0.73
+// @version 1.0.74
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -270,6 +270,7 @@
             break;
         case "indianexpress.com":
         case "www.jansatta.com":
+        case "www.financialexpress.com":
             //Stable solution: Lock RunAds to true
             setReadOnly("RunAds", true);
             break;
