@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.0.74
+// @version 1.0.75
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -303,8 +303,8 @@
         //Stable solution: Lock koddostu_com_adblock_yok to true
         setReadOnly("koddostu_com_adblock_yok", true);
     } else if (Domain.endsWith(".indiatimes.com")) {
-        //Temporary solution: Lock _0x8cae to an empty string
-        setReadOnly("_0x8cae", "");
+        //Temporary solution: Filter keyword from setTimeout()
+        activateSetTimeoutFilter(/function \(\)\{if\(\!\_0x/);
     } else if (Domain.endsWith(".ndtv.com")) {
         //Stable solution: Lock getNoTopLatestNews to an empty function
         setReadOnly("getNoTopLatestNews", function () { });
