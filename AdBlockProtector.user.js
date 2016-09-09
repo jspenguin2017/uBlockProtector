@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.1.0
+// @version 1.1.1
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -314,8 +314,7 @@
             break;
         case "www.ahmedabadmirror.com":
         case "ahmedabadmirror.com":
-            //Stable solution: Lock detector to an empty function and activate filter on setTimeout and document.addEventListener
-            setReadOnly("detector", function () { });
+            //Stable solution: Activate filter on setTimeout and document.addEventListener
             activateSetTimeoutFilter(/function \(\)\{if\(\!\_0x/);
             activateDocumentAddEventListenerFilter(/function \(\_0x/);
             break;
