@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.1.0
+// @version 1.0.75
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -32,7 +32,7 @@
      * One of the shortcuts should be used instead of directly calling this function.
      * @private
      * @function
-     * @param {string} func - The name of the function to filter, supports "eval", "setInterval", "setTimeout", and "document.addEventListener".
+     * @param {string} func - The name of the function to filter, supports "eval", "setInterval", and "setTimeout".
      * @param {RegExp} [filter=/[\S\s]/] - Filter to apply, block everything if this argument is missing.
      * @return {boolean} True if the operation was successful, false otherwise.
      */
@@ -42,59 +42,38 @@
         //Messages
         const callMsg = " is called with these arguments: ";
         const passMsg = "Test passed. ";
-        //The original function, will be set later
-        let original;
-        //The function with filters
-        const newFunc = function () {
-            //Debug - Log when called
-            if (debugMode) {
-                console.warn(((typeof func === "string") ? func : func.join(".")) + callMsg);
-                for (let i = 0; i < arguments.length; i++) {
-                    console.warn(arguments[i].toString());
-                }
-            }
-            //Apply filter
-            for (let i = 0; i < arguments.length; i++) {
-                if (filter.test(arguments[i].toString())) {
-                    //Not allowed (will always log)
-                    return console.error(errMsg);
-                }
-            }
-            //Debug - Log when passed
-            if (debugMode) {
-                console.info(passMsg);
-            }
-            //Allowed
-            return original.apply(unsafeWindow, arguments);
-        };
         //Replace function
-        if (func.includes(".")) {
-            func = func.split(".");
-            original = unsafeWindow[func[0]][func[1]];
-            try {
-                unsafeWindow[func[0]][func[1]] = newFunc;
-                //Debug - Log when activated
+        const original = unsafeWindow[func];
+        try {
+            unsafeWindow[func] = function () {
+                //Debug - Log when called
                 if (debugMode) {
-                    console.warn("Filter activated on " + func.join("."));
+                    console.warn(func + callMsg);
+                    for (let i = 0; i < arguments.length; i++) {
+                        console.warn(arguments[i].toString());
+                    }
                 }
-            } catch (err) {
-                //Failed to activate (will always log)
-                console.error("AdBlock Protector failed to activate filter on " + func.join(".") + "! ");
-                return false;
-            }
-        } else {
-            original = unsafeWindow[func];
-            try {
-                unsafeWindow[func] = newFunc;
-                //Debug - Log when activated
+                //Apply filter
+                for (let i = 0; i < arguments.length; i++) {
+                    if (filter.test(arguments[i].toString())) {
+                        //Not allowed (will always log)
+                        return console.error(errMsg);
+                    }
+                }
+                //Debug - Log when passed
                 if (debugMode) {
-                    console.warn("Filter activated on " + func);
+                    console.info(passMsg);
                 }
-            } catch (err) {
-                //Failed to activate (will always log)
-                console.error("AdBlock Protector failed to activate filter on " + func + "! ");
-                return false;
+                //Allowed
+                return original.apply(unsafeWindow, arguments);
+            };
+            //Debug - Log when activated
+            if (debugMode) {
+                console.warn("Filter activated on " + func);
             }
+        } catch (err) {
+            console.error("AdBlock Protector failed to activate filter on " + func + "! ");
+            return false;
         }
         return true;
     };
@@ -122,14 +101,6 @@
      * @return {boolean} True if the operation was successful, false otherwise.
      */
     const activateSetTimeoutFilter = activateFilter.bind(undefined, "setTimeout");
-    /**
-     * Activate filter on "document.addEventListener".
-     * A shortcut for {@see activateFilter}.
-     * @function
-     * @param {RegExp} [filter=/[\S\s]/] - Filter to apply, block everything if this argument is missing.
-     * @return {boolean} True if the operation was successful, false otherwise.
-     */
-    const activateDocumentAddEventListenerFilter = activateFilter.bind(undefined, "document.addEventListener");
     /**
      * Defines a read-only property to unsafeWindow.
      * @function
@@ -311,13 +282,6 @@
             //Stable solution: Lock isBannerActive and adsLoaded to true
             setReadOnly("isBannerActive", true);
             setReadOnly("adsLoaded", true);
-            break;
-        case "www.ahmedabadmirror.com":
-        case "ahmedabadmirror.com":
-            //Stable solution: Lock detector to an empty function and activate filter on setTimeout and document.addEventListener
-            setReadOnly("detector", function () { });
-            activateSetTimeoutFilter(/function \(\)\{if\(\!\_0x/);
-            activateDocumentAddEventListenerFilter(/function \(\_0x/);
             break;
         default:
             //Debug - Log when not in exact match list
