@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.1.1
+// @version 1.1.2
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -65,7 +65,11 @@
                 console.info(passMsg);
             }
             //Allowed
-            return original.apply(unsafeWindow, arguments);
+            if (typeof func === "string") {
+                return original.apply(unsafeWindow, arguments);
+            } else {
+                return original.apply(unsafeWindow[func[0]], arguments);
+            }
         };
         //Replace function
         if (func.includes(".")) {
@@ -312,12 +316,6 @@
             setReadOnly("isBannerActive", true);
             setReadOnly("adsLoaded", true);
             break;
-        case "www.ahmedabadmirror.com":
-        case "ahmedabadmirror.com":
-            //Stable solution: Activate filter on setTimeout and document.addEventListener
-            activateSetTimeoutFilter(/function \(\)\{if\(\!\_0x/);
-            activateDocumentAddEventListenerFilter(/function \(\_0x/);
-            break;
         default:
             //Debug - Log when not in exact match list
             if (debugMode) {
@@ -337,9 +335,10 @@
     } else if (Domain.endsWith(".cbox.ws")) {
         //Stable solution: Lock koddostu_com_adblock_yok to true
         setReadOnly("koddostu_com_adblock_yok", true);
-    } else if (Domain.endsWith(".indiatimes.com")) {
-        //Temporary solution: Filter keyword from setTimeout()
+    } else if (Domain.endsWith(".indiatimes.com") || Domain.endsWith(".ahmedabadmirror.com")) {
+        //Temporary solution: Filter keyword from setTimeout() and document.addEventListener()
         activateSetTimeoutFilter(/function \(\)\{if\(\!\_0x/);
+        activateDocumentAddEventListenerFilter(/function \(\_0x/);
     } else if (Domain.endsWith(".ndtv.com")) {
         //Stable solution: Lock getNoTopLatestNews to an empty function
         setReadOnly("getNoTopLatestNews", function () { });
