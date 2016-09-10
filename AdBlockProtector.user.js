@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.1.2
+// @version 1.1.3
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -40,8 +40,10 @@
         //Default parameters
         filter = filter || /[\S\s]/;
         //Messages
-        const callMsg = " is called with these arguments: ";
-        const passMsg = "Test passed. ";
+        const callMsg = " is called with these arguments: ",
+              passMsg = "Test passed. ",
+              activateMsg = "Filter activated on ",
+              failedMsg = "AdBlock Protector failed to activate filter on ";
         //The original function, will be set later
         let original;
         //The function with filters
@@ -79,11 +81,11 @@
                 unsafeWindow[func[0]][func[1]] = newFunc;
                 //Debug - Log when activated
                 if (debugMode) {
-                    console.warn("Filter activated on " + func.join("."));
+                    console.warn(activateMsg + func.join("."));
                 }
             } catch (err) {
                 //Failed to activate (will always log)
-                console.error("AdBlock Protector failed to activate filter on " + func.join(".") + "! ");
+                console.error(failedMsg + func.join(".") + "! ");
                 return false;
             }
         } else {
@@ -92,11 +94,11 @@
                 unsafeWindow[func] = newFunc;
                 //Debug - Log when activated
                 if (debugMode) {
-                    console.warn("Filter activated on " + func);
+                    console.warn(activateMsg + func);
                 }
             } catch (err) {
                 //Failed to activate (will always log)
-                console.error("AdBlock Protector failed to activate filter on " + func + "! ");
+                console.error(failedMsg + func + "! ");
                 return false;
             }
         }
