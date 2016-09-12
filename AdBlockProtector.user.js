@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.1.3
+// @version 1.1.4
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -231,6 +231,7 @@
         case "www.zahitvstation.com":
         case "haxoff.com":
         case "fullstuff.co":
+        case "www.usapoliticstoday.com":
             //Temporary solution: Disable eval()
             activateEvalFilter();
             break;
