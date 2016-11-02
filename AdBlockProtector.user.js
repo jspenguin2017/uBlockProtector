@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.1.4
+// @version 1.2.0
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -20,19 +20,17 @@
      * @const {boolean}
      */
     const debugMode = true;
+    //=====Library=====
     /**
      * The error message to show when this script takes effect.
      * @const {string}
      */
     const errMsg = "Uncaught AdBlock Error: AdBlocker detectors are not allowed on this device. ";
-    //=====Library=====
     /**
      * Prevent a string or function with specific keyword from executing.
      * Use RegExp to combine filters, do not activate filter multiple times on the same function.
-     * One of the shortcuts should be used instead of directly calling this function.
-     * @private
      * @function
-     * @param {string} func - The name of the function to filter, supports "eval", "setInterval", "setTimeout", and "document.addEventListener".
+     * @param {string} func - The name of the function to filter.
      * @param {RegExp} [filter=/[\S\s]/] - Filter to apply, block everything if this argument is missing.
      * @return {boolean} True if the operation was successful, false otherwise.
      */
@@ -45,7 +43,7 @@
               activateMsg = "Filter activated on ",
               failedMsg = "AdBlock Protector failed to activate filter on ";
         //The original function, will be set later
-        let original;
+        let original, fNames;
         //The function with filters
         const newFunc = function () {
             //Debug - Log when called
@@ -67,75 +65,34 @@
                 console.info(passMsg);
             }
             //Allowed
-            if (typeof func === "string") {
+            if (typeof fNames === "undefined") {
                 return original.apply(unsafeWindow, arguments);
             } else {
-                return original.apply(unsafeWindow[func[0]], arguments);
+                return original.apply(unsafeWindow[fNames[0]], arguments);
             }
         };
-        //Replace function
-        if (func.includes(".")) {
-            func = func.split(".");
-            original = unsafeWindow[func[0]][func[1]];
-            try {
-                unsafeWindow[func[0]][func[1]] = newFunc;
-                //Debug - Log when activated
-                if (debugMode) {
-                    console.warn(activateMsg + func.join("."));
-                }
-            } catch (err) {
-                //Failed to activate (will always log)
-                console.error(failedMsg + func.join(".") + "! ");
-                return false;
-            }
-        } else {
-            original = unsafeWindow[func];
-            try {
+        //Try to replace the function
+        try {
+            //Replace function
+            if (func.includes(".")) {
+                fNames = func.split(".");
+                original = unsafeWindow[fNames[0]][fNames[1]];
+                unsafeWindow[fNames[0]][fNames[1]] = newFunc;
+            } else {
+                original = unsafeWindow[func];
                 unsafeWindow[func] = newFunc;
-                //Debug - Log when activated
-                if (debugMode) {
-                    console.warn(activateMsg + func);
-                }
-            } catch (err) {
-                //Failed to activate (will always log)
-                console.error(failedMsg + func + "! ");
-                return false;
             }
+            //Debug - Log when activated
+            if (debugMode) {
+                console.warn(activateMsg + func);
+            }
+        } catch (err) {
+            //Failed to activate (will always log)
+            console.error(failedMsg + func + "! ");
+            return false;
         }
         return true;
     };
-    /**
-     * Activate filter on "eval".
-     * A shortcut for {@see activateFilter}.
-     * @function
-     * @param {RegExp} [filter=/[\S\s]/] - Filter to apply, block everything if this argument is missing.
-     * @return {boolean} True if the operation was successful, false otherwise.
-     */
-    const activateEvalFilter = activateFilter.bind(undefined, "eval");
-    /**
-     * Activate filter on "setInterval".
-     * A shortcut for {@see activateFilter}.
-     * @function
-     * @param {RegExp} [filter=/[\S\s]/] - Filter to apply, block everything if this argument is missing.
-     * @return {boolean} True if the operation was successful, false otherwise.
-     */
-    const activateSetIntervalFilter = activateFilter.bind(undefined, "setInterval");
-    /**
-     * Activate filter on "setTimeout".
-     * A shortcut for {@see activateFilter}.
-     * @function
-     * @param {RegExp} [filter=/[\S\s]/] - Filter to apply, block everything if this argument is missing.
-     * @return {boolean} True if the operation was successful, false otherwise.
-     */
-    const activateSetTimeoutFilter = activateFilter.bind(undefined, "setTimeout");
-    /**
-     * Activate filter on "document.addEventListener".
-     * A shortcut for {@see activateFilter}.
-     * @function
-     * @param {RegExp} [filter=/[\S\s]/] - Filter to apply, block everything if this argument is missing.
-     * @return {boolean} True if the operation was successful, false otherwise.
-     */
-    const activateDocumentAddEventListenerFilter = activateFilter.bind(undefined, "document.addEventListener");
     /**
      * Defines a read-only property to unsafeWindow.
      * @function
@@ -144,25 +101,36 @@
      * @return {boolean} True if the operation was successful, false otherwise.
      */
     const setReadOnly = function (name, val) {
+        //Try to set read only variable
         try {
-            Object.defineProperty(unsafeWindow, name, {
-                value: val,
-                writable: false
-            });
+            if (name.includes(".")) {
+                let nameArray = name.split(".");
+                Object.defineProperty(unsafeWindow[nameArray[1]], nameArray[2], {
+                    value: val,
+                    writable: false
+                });
+            } else {
+                Object.defineProperty(unsafeWindow, name, {
+                    value: val,
+                    writable: false
+                });
+            }
             console.error(errMsg);
         } catch (err) {
+            //Failed to activate (will always log)
             console.error("AdBlock Protector failed to define read-only property " + name + "! ");
             return false;
         }
         return true;
     };
     /**
-     * Run a function when the page loads.
+     * Run a function when an event triggers.
      * @function
+     * @param {string} event - The name of the event.
      * @param {Function} func - The function to run.
      */
-    const runOnLoad = function (func) {
-        unsafeWindow.addEventListener("load", func);
+    const onEvent = function (event, func) {
+        unsafeWindow.addEventListener(event, func);
         console.error(errMsg);
     };
     /**
@@ -184,14 +152,14 @@
         case "www.blockadblock.com":
         case "blockadblock.com":
             //Stable solution: Filter keyword from eval()
-            activateEvalFilter(/BlockAdblock/);
-            runOnLoad(function () {
+            activateFilter("eval", /BlockAdblock/);
+            onEvent("load", function () {
                 $("#babasbmsgx").remove();
             });
             break;
         case "www.gogi.in":
             //Temporary solution: Disable setInterval()
-            activateSetIntervalFilter();
+            activateFilter("setInterval");
             break;
         case "www.comprovendolibri.it":
             //Stable solution: Lock TestPage()
@@ -205,7 +173,7 @@
         case "sc2casts.com":
             //Temporary solution: Lock scriptfailed() and disable setTimeout()
             setReadOnly("scriptfailed", function () { });
-            activateSetTimeoutFilter();
+            activateFilter("setTimeout");
             break;
         case "bollywood.divyabhaskar.co.in":
             //Stable solution: Lock canABP to true
@@ -213,7 +181,7 @@
             break;
         case "graffica.info":
             //Temporary solution: Diable setTimeout()
-            activateSetTimeoutFilter();
+            activateFilter("setTimeout");
             break;
         case "www.dawn.com":
             //Stable solution: Homemade FuckAdBlock, can be countered the same way
@@ -233,7 +201,7 @@
         case "fullstuff.co":
         case "www.usapoliticstoday.com":
             //Temporary solution: Disable eval()
-            activateEvalFilter();
+            activateFilter("eval");
             break;
         case "www.jagran.com":
         case "www.hindustantimes.com":
@@ -277,7 +245,7 @@
         case "ay.gy":
             //Temporary solution: Disable open() before page starts to load and set abgo to an empty function when the page loads
             setReadOnly("open", function () { });
-            runOnLoad(function () {
+            onEvent("load", function () {
                 unsafeWindow.abgo = function () { };
             });
             //Skip countdown
@@ -332,7 +300,7 @@
         setReadOnly("canABP", true);
     } else if (Domain.endsWith(".gamepedia.com")) {
         //Temporary workaround: Remove element
-        runOnLoad(function () {
+        onEvent("load", function () {
             $("#atflb").remove();
         });
     } else if (Domain.endsWith(".cbox.ws")) {
@@ -340,8 +308,8 @@
         setReadOnly("koddostu_com_adblock_yok", true);
     } else if (Domain.endsWith(".indiatimes.com") || Domain.endsWith(".ahmedabadmirror.com")) {
         //Temporary solution: Filter keyword from setTimeout() and document.addEventListener()
-        activateSetTimeoutFilter(/function \(\)\{if\(\!\_0x/);
-        activateDocumentAddEventListenerFilter(/function \(\_0x/);
+        activateFilter("setTimeout", /function \(\)\{if\(\!\_0x/);
+        activateFilter("document.addEventListener", /function \(\_0x/);
     } else if (Domain.endsWith(".ndtv.com")) {
         //Stable solution: Lock getNoTopLatestNews to an empty function
         setReadOnly("getNoTopLatestNews", function () { });
