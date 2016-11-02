@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.2.2
+// @version 1.2.3
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -291,9 +291,10 @@
         case "userscloud.com":
             //Temporary solution: Show hidden div and remove block screen
             onEvent("load", function () {
-                $("#dl_link").show()
-                $("#adblock_msg").remove()
+                $("#dl_link").show();
+                $("#adblock_msg").remove();
             });
+            break;
         default:
             //Debug - Log when not in exact match list
             if (debugMode) {
