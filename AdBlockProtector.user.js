@@ -30,7 +30,7 @@
      * Prevent a string or function with specific keyword from executing.
      * Use RegExp to combine filters, do not activate filter multiple times on the same function.
      * @function
-     * @param {string} func - The name of the function to filter, use "." to separate multiple layers, max 2 layers
+     * @param {string} func - The name of the function to filter, use "." to separate multiple layers, max 2 layers.
      * @param {RegExp} [filter=/[\S\s]/] - Filter to apply, block everything if this argument is missing.
      * @return {boolean} True if the operation was successful, false otherwise.
      */
@@ -78,10 +78,12 @@
         try {
             //Replace function
             if (func.includes(".")) {
+                //Multiple layers
                 fNames = func.split(".");
                 original = unsafeWindow[fNames[0]][fNames[1]];
                 unsafeWindow[fNames[0]][fNames[1]] = newFunc;
             } else {
+                //One layer
                 original = unsafeWindow[func];
                 unsafeWindow[func] = newFunc;
             }
@@ -107,12 +109,14 @@
         //Try to set read only variable
         try {
             if (name.includes(".")) {
+                //Multiple layers
                 let nameArray = name.split(".");
                 Object.defineProperty(unsafeWindow[nameArray[0]], nameArray[1], {
                     value: val,
                     writable: false
                 });
             } else {
+                //One layer
                 Object.defineProperty(unsafeWindow, name, {
                     value: val,
                     writable: false
