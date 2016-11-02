@@ -106,7 +106,7 @@
         try {
             if (name.includes(".")) {
                 let nameArray = name.split(".");
-                Object.defineProperty(unsafeWindow[nameArray[1]], nameArray[2], {
+                Object.defineProperty(unsafeWindow[nameArray[0]], nameArray[1], {
                     value: val,
                     writable: false
                 });
