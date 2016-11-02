@@ -30,7 +30,7 @@
      * Prevent a string or function with specific keyword from executing.
      * Use RegExp to combine filters, do not activate filter multiple times on the same function.
      * @function
-     * @param {string} func - The name of the function to filter.
+     * @param {string} func - The name of the function to filter, use "." to separate multiple layers, max 2 layers
      * @param {RegExp} [filter=/[\S\s]/] - Filter to apply, block everything if this argument is missing.
      * @return {boolean} True if the operation was successful, false otherwise.
      */
@@ -43,7 +43,9 @@
               activateMsg = "Filter activated on ",
               failedMsg = "AdBlock Protector failed to activate filter on ";
         //The original function, will be set later
-        let original, fNames;
+        let original;
+        //The function names array, will be set later if there is more than one layer
+        let fNames;
         //The function with filters
         const newFunc = function () {
             // [native code]
