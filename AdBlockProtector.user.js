@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.2.1
+// @version 1.2.2
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -214,8 +214,8 @@
         case "www.qbasic.net":
             //Stable solution: Lock dload to a special version
             setReadOnly("dload", function (dlID, fileID) {
-                ga('send', 'event', 'Download', 'Submit', fileID);
-                location.href = 'http://' + window.location.hostname + '/dl.php?id=' + dlID + '&file=' + fileID;
+                ga("send", "event", "Download", "Submit", fileID);
+                location.href = "http://" + window.location.hostname + "/dl.php?id=" + dlID + "&file=" + fileID;
                 window.success = true;
                 return success;
             });
@@ -288,6 +288,12 @@
             setReadOnly("isBannerActive", true);
             setReadOnly("adsLoaded", true);
             break;
+        case "userscloud.com":
+            //Temporary solution: Show hidden div and remove block screen
+            onEvent("load", function () {
+                $("#dl_link").show()
+                $("#adblock_msg").remove()
+            });
         default:
             //Debug - Log when not in exact match list
             if (debugMode) {
