@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.2.0
+// @version 1.2.1
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -46,6 +46,7 @@
         let original, fNames;
         //The function with filters
         const newFunc = function () {
+            // [native code]
             //Debug - Log when called
             if (debugMode) {
                 console.warn(((typeof func === "string") ? func : func.join(".")) + callMsg);
@@ -309,7 +310,7 @@
     } else if (Domain.endsWith(".indiatimes.com") || Domain.endsWith(".ahmedabadmirror.com")) {
         //Temporary solution: Filter keyword from setTimeout() and document.addEventListener()
         activateFilter("setTimeout", /function \(\)\{if\(\!\_0x/);
-        activateFilter("document.addEventListener", /function \(\_0x/);
+        activateFilter("document.addEventListener", /function \_0x/);
     } else if (Domain.endsWith(".ndtv.com")) {
         //Stable solution: Lock getNoTopLatestNews to an empty function
         setReadOnly("getNoTopLatestNews", function () { });
