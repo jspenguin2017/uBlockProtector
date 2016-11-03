@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.2.9
+// @version 1.2.10
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -328,10 +328,6 @@
     } else if (Domain.endsWith(".ndtv.com")) {
         //Stable solution: Lock getNoTopLatestNews to an empty function
         setReadOnly("getNoTopLatestNews", function () { });
-    } else if (Domain.endsWith(".tvn.pl")) {
-        //=====Not working=====
-        //Temporary workaround: Lock TvnAdBlockBoardUtils to false - Needs to manually pick quality - Thanks to MajkiIT
-        setReadOnly("TvnAdBlockBoardUtils", false);
     } else if (debugMode) {
         //Debug - Log when not in partial match list
         console.warn(Domain + " is not in AdBlock Protector's partial match list. ");
