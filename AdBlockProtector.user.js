@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.2.6
+// @version 1.2.7
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -322,9 +322,8 @@
     } else if (Domain.endsWith(".cbox.ws")) {
         //Stable solution: Lock koddostu_com_adblock_yok to true
         setReadOnly("koddostu_com_adblock_yok", true);
-    } else if (Domain.endsWith(".indiatimes.com") || Domain.endsWith(".ahmedabadmirror.com")) {
-        //Temporary solution: Filter keyword from setTimeout() and document.addEventListener()
-        activateFilter("setTimeout", /function \(\)\{if\(\!\_0x/);
+    } else if (Domain === "indiatimes.com" || Domain.endsWith(".indiatimes.com") || Domain.endsWith(".ahmedabadmirror.com")) {
+        //Temporary solution: Filter keyword from document.addEventListener()
         activateFilter("document.addEventListener", /function \_0x/);
     } else if (Domain.endsWith(".ndtv.com")) {
         //Stable solution: Lock getNoTopLatestNews to an empty function
