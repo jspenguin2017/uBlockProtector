@@ -98,7 +98,7 @@
             <h2>How do I use it? </h2>
             <p>1. Install a script host such as Tampermonkey, you should already have it installed. I will try to offer support for all major browsers and script hosts, but Chrome and Opera with Tampermonkey for sure. </p>
             <p>2. Install our <a href="https://x01x012013.github.io/AdBlockProtector/AdBlockProtector.user.js">Userscript</a>. </p>
-            <p>3. See if your website requires <a href="#special" id="specialLink">special rules or scripts</a>. </p>
+            <p>3. See if the website you are visiting requires <a href="#special" id="specialLink">a half manual workaround, special rules, or a special script</a>. </p>
         </div>
     </div>
     <!-- How do I report a bug or a website? -->
@@ -166,19 +166,13 @@
                 <li>*.ahmedabadmirror.com</li>
             </ol>
             <!-- Temporary workaround -->
-            <h3>Temporary workaround: </h3>
-            <p>These websites may show their ads for a few seconds. </p>
+            <h3 id="special">Temporary workaround: </h3>
             <ol>
-                <li>*.gamepedia.com</li>
+                <li>*.gamepedia.com - Ads will show for a few seconds</li>
+                <li>*.tvn.pl - Needs to manually pick quality</li>
             </ol>
-        </div>
-    </div>
-    <!-- Require special rule or script -->
-    <div class="jumbotron">
-        <div class="container">
-            <h2 id="special">Require specials rules or scripts: </h2>
-            <!-- Require special rules -->
-            <h3 id="rule">Rules: </h3>
+            <!-- Special rules -->
+            <h3>Special rules: </h3>
             <ol>
                 <li>www.trovesaurus.com <a href="https://github.com/reek/anti-adblock-killer/issues/1770" target="_blank">View</a></li>
                 <li>www.dogefaucet.com <a href="https://github.com/reek/anti-adblock-killer/issues/1770" target="_blank">View</a></li>
@@ -189,8 +183,8 @@
                 <li>*.wp.pl <a href="https://github.com/X01X012013/AdBlockProtector/issues/21#issuecomment-248399944" target="_blank">View</a></li>
                 <li>*.tvn.pl <a href="https://github.com/X01X012013/AdBlockProtector/issues/23#issuecomment-257990498" target="_blank">View</a></li>
             </ol>
-            <!-- Require special script -->
-            <h3>Scripts: </h3>
+            <!-- Special script -->
+            <h3>Special scripts: </h3>
             <ol>
                 <li>NONE</li>
             </ol>

@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.2.5
+// @version 1.2.6
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -68,17 +68,19 @@
                 console.info(passMsg);
             }
             //Allowed
-            if (typeof fNames === "undefined") {
-                return original.apply(unsafeWindow, arguments);
-            } else {
+            if (typeof fNames === "object") {
+                //Two layers
                 return original.apply(unsafeWindow[fNames[0]], arguments);
+            } else {
+                //One layer
+                return original.apply(unsafeWindow, arguments);
             }
         };
         //Try to replace the function
         try {
             //Replace function
             if (func.includes(".")) {
-                //Multiple layers
+                //Two layers
                 fNames = func.split(".");
                 original = unsafeWindow[fNames[0]][fNames[1]];
                 unsafeWindow[fNames[0]][fNames[1]] = newFunc;
@@ -109,7 +111,7 @@
         //Try to set read only variable
         try {
             if (name.includes(".")) {
-                //Multiple layers
+                //Two layers
                 let nameArray = name.split(".");
                 Object.defineProperty(unsafeWindow[nameArray[0]], nameArray[1], {
                     value: val,
@@ -327,6 +329,9 @@
     } else if (Domain.endsWith(".ndtv.com")) {
         //Stable solution: Lock getNoTopLatestNews to an empty function
         setReadOnly("getNoTopLatestNews", function () { });
+    } else if (Domain.endsWith(".tvn.pl")) {
+        //Temporary workaround: Lock TvnAdBlockBoardUtils to an empty function - Needs to manually pick quality - Thanks to MajkiIT
+        setReadOnly("TvnAdBlockBoardUtils", function () { });
     } else if (debugMode) {
         //Debug - Log when not in partial match list
         console.warn(Domain + " is not in AdBlock Protector's partial match list. ");
