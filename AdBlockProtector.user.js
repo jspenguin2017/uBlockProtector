@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.2.8
+// @version 1.2.9
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -329,7 +329,8 @@
         //Stable solution: Lock getNoTopLatestNews to an empty function
         setReadOnly("getNoTopLatestNews", function () { });
     } else if (Domain.endsWith(".tvn.pl")) {
-        //Temporary workaround: Lock TvnAdBlockBoardUtils to an empty function - Needs to manually pick quality - Thanks to MajkiIT
+        //=====Not working=====
+        //Temporary workaround: Lock TvnAdBlockBoardUtils to false - Needs to manually pick quality - Thanks to MajkiIT
         setReadOnly("TvnAdBlockBoardUtils", false);
     } else if (debugMode) {
         //Debug - Log when not in partial match list
