@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Temporary solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.2.4
+// @version 1.2.5
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -48,7 +48,7 @@
         let fNames;
         //The function with filters
         const newFunc = function () {
-            // [native code]
+            // [native code] Anti detection
             //Debug - Log when called
             if (debugMode) {
                 console.warn(((typeof func === "string") ? func : func.join(".")) + callMsg);
