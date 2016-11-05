@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.2.12
+// @version 1.2.13
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -309,7 +309,7 @@
     //Partial matching
     if (Domain === "x01x012013.github.io" || (debugMode && Domain === "localhost")) {
         //Installation test of homepage
-        setReadOnly("AdBlock_Protector_testVar", true);
+        unsafeWindow.AdBlock_Protector_testVar = true;
     } else if (Domain.endsWith(".bhaskar.com")) {
         //Stable solution: Lock canABP to true
         setReadOnly("canABP", true);
