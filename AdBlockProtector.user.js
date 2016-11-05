@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.2.13
+// @version 1.2.14
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -299,6 +299,12 @@
                 $("#adblock_msg").remove();
             });
             break;
+        case "www.vidlox.tv":
+        case "vidlox.tv":
+            //Stable solution: Lock xRds to false and cRAds to true
+            setReadOnly("xRds", false);
+            setReadOnly("cRAds", true);
+            break;
         default:
             //Debug - Log when not in exact match list
             if (debugMode) {
@@ -327,6 +333,10 @@
     } else if (Domain.endsWith(".ndtv.com")) {
         //Stable solution: Lock getNoTopLatestNews to an empty function
         setReadOnly("getNoTopLatestNews", function () { });
+    } else if (Domain.endsWith(".pinkrod.com") || Domain.endsWith(".wetplace.com")) {
+        //Stable solution: Lock getAd and getUtm to an empty function
+        setReadOnly("getAd", function () { });
+        setReadOnly("getUtm", function () { });
     } else if (debugMode) {
         //Debug - Log when not in partial match list
         console.warn(Domain + " is not in AdBlock Protector's partial match list. ");
