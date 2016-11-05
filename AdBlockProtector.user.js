@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.3.0
+// @version 1.3.1
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -381,6 +381,8 @@
     } else if (Domain === "indiatimes.com" || Domain.endsWith(".indiatimes.com") || Domain.endsWith(".ahmedabadmirror.com")) {
         //Temporary solution: Filter keyword from document.addEventListener()
         activateFilter("document.addEventListener", /function \_0x/);
+        //document.addEventListener should not be native code, but they are expecting native code, strange...
+        filterStrings[1] = "function addEventListener() { [native code] }";
     } else if (Domain.endsWith(".ndtv.com")) {
         //Stable solution: Lock getNoTopLatestNews to an empty function
         setReadOnly("getNoTopLatestNews", function () { });
