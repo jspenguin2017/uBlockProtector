@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.2.11
+// @version 1.2.12
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -154,10 +154,6 @@
     }
     //Exact matching
     switch (Domain) {
-        case "x01x012013.github.io":
-            //Installation test of homepage
-            setReadOnly("AdBlock_Protector_testVar", true);
-            break;
         case "www.blockadblock.com":
         case "blockadblock.com":
             //Stable solution: Filter keyword from eval()
@@ -311,7 +307,10 @@
             break;
     }
     //Partial matching
-    if (Domain.endsWith(".bhaskar.com")) {
+    if (Domain === "x01x012013.github.io" || (debugMode && Domain === "localhost")) {
+        //Installation test of homepage
+        setReadOnly("AdBlock_Protector_testVar", true);
+    } else if (Domain.endsWith(".bhaskar.com")) {
         //Stable solution: Lock canABP to true
         setReadOnly("canABP", true);
     } else if (Domain.endsWith(".gamepedia.com")) {
