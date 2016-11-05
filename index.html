@@ -42,10 +42,6 @@
                 e.preventDefault();
                 $("html, body").animate({ scrollTop: $("#special").offset().top }, "fast");
             });
-            //Check if AdBlock Protector is installed
-            if (typeof AdBlock_Protector_testVar === "undefined") {
-                $("#testDiv").removeClass("hide");
-            }
         });
     </script>
 </head>
@@ -55,21 +51,31 @@
     <div class="jumbotron">
         <div class="container">
             <h1>AdBlock Protector</h1>
-            <p>Temporary solutions against AdBlock detectors</p>
+            <p>Solutions against AdBlock detectors</p>
             <div id="banner-ads">
                 <p style="color:red;">Your AdBlocker is not active! </p>
             </div>
-            <div id="testDiv" class="hide">
+            <div id="testDiv">
                 <p style="color:red;">AdBlock Protector is not installed or not enabled! </p>
             </div>
             <p><a href="#how" class="howLink">Jump to &quot;How do I use it?&quot;</a></p>
+            <script>
+                "use strict";
+
+                /**
+                 * Check if AdBlock Protector is installed, the test variable should be set before the page loads, so we can run the check here
+                 */
+                if (typeof AdBlock_Protector_testVar !== "undefined") {
+                    $("#testDiv").addClass("hide");
+                }
+            </script>
         </div>
     </div>
     <!-- Why use AdBlockers -->
     <div class="jumbotron">
         <div class="container">
             <h2>Why use AdBlockers? </h2>
-            <p>Ads are important for websites to sustain themselves. However, some advertiser use ads to track users' activity and sometimes use exploits to install malwares onto users' device, and an AdBlocker can stop these from happening. </p>
+            <p>Ads are important for websites to sustain themselves. However, some advertiser use ads to track users' activities and sometimes use exploits to install malwares onto users' devices, and an AdBlocker can stop these from happening. </p>
             <p>Recently, many websites start to employ methods to detect and sometimes track AdBlockers and ask or sometimes even force the user to disable them. The good news is, there are ways to protect AdBlockers from being detected. </p>
         </div>
     </div>

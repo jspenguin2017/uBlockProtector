@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name AdBlock Protector
-// @description Temporary solutions against AdBlock detectors
+// @description Solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.2.10
+// @version 1.2.11
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
