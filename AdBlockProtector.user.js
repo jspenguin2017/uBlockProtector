@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.2.15
+// @version 1.2.16
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -337,10 +337,10 @@
         //Stable solution: Lock getAd and getUtm to an empty function
         setReadOnly("getAd", function () { });
         setReadOnly("getUtm", function () { });
-    } else if (Domain.endsWith(".tvn.pl")) {
+    } else if (Domain.endsWith(".tvn.pl") && document.location.href !== "http://www.tvn.pl/") {
         //Temporary workaround: Replace the player - Thanks to mikhoul for your help
         onEvent("load", function () {
-            $(".innerVideoModule").after($("<iframe width='100%' height='500'>").attr("src", $(".videoPlayer5").data("src"))).remove();
+            $(".videoPlayer5").parent().after($("<iframe width='100%' height='500'>").attr("src", $(".videoPlayer5").data("src"))).remove();
         });
     } else if (debugMode) {
         //Debug - Log when not in partial match list
