@@ -338,7 +338,7 @@
         setReadOnly("getAd", function () { });
         setReadOnly("getUtm", function () { });
     } else if (Domain.endsWith(".tvn.pl")) {
-        //Temporary workaround: Replace the player
+        //Temporary workaround: Replace the player - Thanks to mikhoul for your help
         onEvent("load", function () {
             $(".innerVideoModule").after($("<iframe width='100%' height='500'>").attr("src", $(".videoPlayer5").data("src"))).remove();
         });
