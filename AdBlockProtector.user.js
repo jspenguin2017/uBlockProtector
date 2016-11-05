@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.2.20
+// @version 1.3.0
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -27,6 +27,53 @@
      */
     const errMsg = "Uncaught AdBlock Error: AdBlocker detectors are not allowed on this device. ";
     /**
+     * Pointers to functions to hide.
+     * This array and {@link filterString} are parallel arrays, and is used in {@link hideFilter}.
+     * @var {Function}
+     */
+    let filterPointers = [];
+    /**
+     * The string values of the real function.
+     * This array and {@link filterPointer} are parallel arrays, and is used in {@link hideFilter}.
+     * @var {string}
+     */
+    let filterStrings = [];
+    /**
+     * Replace Function.prototype.toString() in order to prevent filters from being detected.
+     * Do not call this function multiple times.
+     * @function
+     */
+    const hideFilter = function () {
+        //The original function
+        const original = unsafeWindow.Function.prototype.toString;
+        //New function
+        const newFunc = function () {
+            //Check if this function is in the protected list
+            const index = filterPointers.indexOf(this);
+            if (index !== -1) {
+                //Protected, return the string value of the real function instead
+                return filterStrings[index];
+            } else {
+                //Not protected, use original function to proceed
+                return original.apply(this);
+            }
+        };
+        //Try to replace the function
+        try {
+            //Replace function
+            unsafeWindow.Function.prototype.toString = newFunc;
+            //Hide this function as well
+            filterPointers.push(newFunc);
+            filterStrings.push(original.toString());
+            //Debug - Log when activated
+            if (debugMode) {
+                console.warn("Filters hidden. ");
+            }
+        } catch (err) {
+            console.error("Failed to hide filters! ");
+        }
+    };
+    /**
      * Prevent a string or function with specific keyword from executing.
      * Use RegExp to combine filters, do not activate filter multiple times on the same function.
      * @function
@@ -48,7 +95,6 @@
         let fNames;
         //The function with filters
         const newFunc = function () {
-            // [native code] Anti detection
             //Debug - Log when called
             if (debugMode) {
                 console.warn(((typeof func === "string") ? func : func.join(".")) + callMsg);
@@ -89,6 +135,9 @@
                 original = unsafeWindow[func];
                 unsafeWindow[func] = newFunc;
             }
+            //Add filter to protection list
+            filterPointers.push(newFunc);
+            filterStrings.push(original.toString());
             //Debug - Log when activated
             if (debugMode) {
                 console.warn(activateMsg + func);
@@ -152,6 +201,8 @@
     if (debugMode) {
         console.warn("Domain: " + Domain);
     }
+    //Hide filters
+    hideFilter();
     //Exact matching
     switch (Domain) {
         case "www.blockadblock.com":
@@ -343,7 +394,7 @@
     }
     //TV Nowa
     (function () {
-        //Thanks to mikhoul and xxcriticxx for your precious help! 
+        //Thanks to mikhoul and xxcriticxx for your precious help!
         let domainExact = []; //"tvnfabula.pl", "itvnextra.pl", "tvn24bis.pl", "ttv.pl", "player.pl", "x-news.pl"
         let domainPartial = [".tvn.pl", ".tvnstyle.pl", ".tvnturbo.pl"]; //".tvn7.pl", ".itvn.pl"
         let homePages = ["http://www.tvn.pl/", "http://www.tvn7.pl/", "http://www.tvnstyle.pl/", "http://www.tvnturbo.pl/"];
