@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.3.2
+// @version 1.3.3
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -42,6 +42,7 @@
      * Replace Function.prototype.toString() in order to prevent filters from being detected.
      * Do not call this function multiple times.
      * @function
+     * @return {boolean} True if the operation was successful, false otherwise.
      */
     const hideFilter = function () {
         //The original function
@@ -72,7 +73,9 @@
         } catch (err) {
             //Failed to activate (will always log)
             console.error("Failed to hide filters! ");
+            return false;
         }
+        return true;
     };
     /**
      * Prevent a string or function with specific keyword from executing.
