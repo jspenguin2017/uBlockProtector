@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.2.17
+// @version 1.2.18
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -343,17 +343,17 @@
     }
     //TV Nowa
     (function () {
-        domainExact = []; //["tvnfabula.pl", "itvnextra.pl", "tvn24bis.pl", "ttv.pl", "player.pl", "x-news.pl"];
-        domainPartial = [".tvn.pl", ".tvnstyle.pl", ".tvnturbo.pl"]; //[, ".tvn7.pl", , ".itvn.pl"];
-        homePages = ["http://www.tvn.pl/", "http://www.tvn7.pl/", "http://www.tvnstyle.pl/", "http://www.tvnturbo.pl/", ];
+        let domainExact = []; //["tvnfabula.pl", "itvnextra.pl", "tvn24bis.pl", "ttv.pl", "player.pl", "x-news.pl"];
+        let domainPartial = [".tvn.pl", ".tvnstyle.pl", ".tvnturbo.pl"]; //[, ".tvn7.pl", , ".itvn.pl"];
+        let homePages = ["http://www.tvn.pl/", "http://www.tvn7.pl/", "http://www.tvnstyle.pl/", "http://www.tvnturbo.pl/", ];
         //Check homepage first
         if (homePages.includes(document.location.href)) {
             //Apply home page patch
         } else {
             //Check exact domain
-            isTVN = domainExact.includes(Domain);
+            let isTVN = domainExact.includes(Domain);
             //Check partial domain
-            for (let i = 0; i < domianPartial.length; i++) {
+            for (let i = 0; i < domainPartial.length; i++) {
                 if (Domain.endsWith(domainPartial[i])) {
                     isTVN = true;
                     break;
