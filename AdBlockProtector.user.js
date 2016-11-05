@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.2.19
+// @version 1.2.20
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -364,7 +364,7 @@
             if (isTVN) {
                 //Temporary workaround: Replace the player
                 onEvent("load", function () {
-                    $(".videoPlayer5").parent().after($("<iframe width='100%' height='500'>").attr("src", $(".videoPlayer5").data("src"))).remove();
+                    $(".videoPlayer").parent().after($("<iframe width='100%' height='500'>").attr("src", $(".videoPlayer").data("src"))).remove();
                 });
             }
         }
