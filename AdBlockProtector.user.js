@@ -364,7 +364,7 @@
             if (isTVN) {
                 //Temporary workaround: Replace the player
                 onEvent("load", function () {
-                    $(".videoPlayer").parent().after($("<iframe width='100%' height='500'>").attr("src", $(".videoPlayer").data("src"))).remove();
+                    $(".videoPlayer").parent().after($("<iframe width='100%' height='500px'>").attr("src", $(".videoPlayer").data("src"))).remove();
                 });
             }
         }
