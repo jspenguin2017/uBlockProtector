@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.2.18
+// @version 1.2.19
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -343,9 +343,10 @@
     }
     //TV Nowa
     (function () {
-        let domainExact = []; //["tvnfabula.pl", "itvnextra.pl", "tvn24bis.pl", "ttv.pl", "player.pl", "x-news.pl"];
-        let domainPartial = [".tvn.pl", ".tvnstyle.pl", ".tvnturbo.pl"]; //[, ".tvn7.pl", , ".itvn.pl"];
-        let homePages = ["http://www.tvn.pl/", "http://www.tvn7.pl/", "http://www.tvnstyle.pl/", "http://www.tvnturbo.pl/", ];
+        //Thanks to mikhoul and xxcriticxx for your precious help! 
+        let domainExact = []; //"tvnfabula.pl", "itvnextra.pl", "tvn24bis.pl", "ttv.pl", "player.pl", "x-news.pl"
+        let domainPartial = [".tvn.pl", ".tvnstyle.pl", ".tvnturbo.pl"]; //".tvn7.pl", ".itvn.pl"
+        let homePages = ["http://www.tvn.pl/", "http://www.tvn7.pl/", "http://www.tvnstyle.pl/", "http://www.tvnturbo.pl/"];
         //Check homepage first
         if (homePages.includes(document.location.href)) {
             //Apply home page patch
@@ -361,7 +362,7 @@
             }
             //Apply video patch
             if (isTVN) {
-                //Temporary workaround: Replace the player - Thanks to mikhoul for your help
+                //Temporary workaround: Replace the player
                 onEvent("load", function () {
                     $(".videoPlayer5").parent().after($("<iframe width='100%' height='500'>").attr("src", $(".videoPlayer5").data("src"))).remove();
                 });
