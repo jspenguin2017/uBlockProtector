@@ -42,6 +42,10 @@
                 e.preventDefault();
                 $("html, body").animate({ scrollTop: $("#special").offset().top }, "fast");
             });
+            //We run this again when the page is fully loaded to make sure there will not be any false positives
+            if (typeof AdBlock_Protector_testVar !== "undefined") {
+                $("#testDiv").addClass("hide");
+            }
         });
     </script>
 </head>
