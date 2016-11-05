@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.2.16
+// @version 1.2.17
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -337,13 +337,35 @@
         //Stable solution: Lock getAd and getUtm to an empty function
         setReadOnly("getAd", function () { });
         setReadOnly("getUtm", function () { });
-    } else if (Domain.endsWith(".tvn.pl") && document.location.href !== "http://www.tvn.pl/") {
-        //Temporary workaround: Replace the player - Thanks to mikhoul for your help
-        onEvent("load", function () {
-            $(".videoPlayer5").parent().after($("<iframe width='100%' height='500'>").attr("src", $(".videoPlayer5").data("src"))).remove();
-        });
     } else if (debugMode) {
         //Debug - Log when not in partial match list
         console.warn(Domain + " is not in AdBlock Protector's partial match list. ");
     }
+    //TV Nowa
+    (function () {
+        domainExact = []; //["tvnfabula.pl", "itvnextra.pl", "tvn24bis.pl", "ttv.pl", "player.pl", "x-news.pl"];
+        domainPartial = [".tvn.pl", ".tvnstyle.pl", ".tvnturbo.pl"]; //[, ".tvn7.pl", , ".itvn.pl"];
+        homePages = ["http://www.tvn.pl/", "http://www.tvn7.pl/", "http://www.tvnstyle.pl/", "http://www.tvnturbo.pl/", ];
+        //Check homepage first
+        if (homePages.includes(document.location.href)) {
+            //Apply home page patch
+        } else {
+            //Check exact domain
+            isTVN = domainExact.includes(Domain);
+            //Check partial domain
+            for (let i = 0; i < domianPartial.length; i++) {
+                if (Domain.endsWith(domainPartial[i])) {
+                    isTVN = true;
+                    break;
+                }
+            }
+            //Apply video patch
+            if (isTVN) {
+                //Temporary workaround: Replace the player - Thanks to mikhoul for your help
+                onEvent("load", function () {
+                    $(".videoPlayer5").parent().after($("<iframe width='100%' height='500'>").attr("src", $(".videoPlayer5").data("src"))).remove();
+                });
+            }
+        }
+    })();
 })();
