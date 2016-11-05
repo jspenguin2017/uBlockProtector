@@ -2,7 +2,7 @@
 // @name AdBlock Protector
 // @description Solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.3.1
+// @version 1.3.2
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -62,7 +62,7 @@
         try {
             //Replace function
             unsafeWindow.Function.prototype.toString = newFunc;
-            //Hide this function as well
+            //Protect this function as well
             filterPointers.push(newFunc);
             filterStrings.push(original.toString());
             //Debug - Log when activated
@@ -70,6 +70,7 @@
                 console.warn("Filters hidden. ");
             }
         } catch (err) {
+            //Failed to activate (will always log)
             console.error("Failed to hide filters! ");
         }
     };
@@ -135,7 +136,7 @@
                 original = unsafeWindow[func];
                 unsafeWindow[func] = newFunc;
             }
-            //Add filter to protection list
+            //Add this filter to protection list
             filterPointers.push(newFunc);
             filterStrings.push(original.toString());
             //Debug - Log when activated
@@ -197,12 +198,12 @@
      */
     const Domain = document.domain;
     //=====Main=====
+    //Hide filters
+    hideFilter();
     //Debug - Log domain
     if (debugMode) {
         console.warn("Domain: " + Domain);
     }
-    //Hide filters
-    hideFilter();
     //Exact matching
     switch (Domain) {
         case "www.blockadblock.com":
