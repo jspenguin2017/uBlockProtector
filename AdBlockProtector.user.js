@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name AdBlock Protector
+// @name AdBlock Protector Script
 // @description Solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.3.3
+// @version 1.3.4
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -407,6 +407,7 @@
         //Check homepage first
         if (homePages.includes(document.location.href)) {
             //Apply home page patch
+            //Work in progress
         } else {
             //Check exact domain
             let isTVN = domainExact.includes(Domain);
