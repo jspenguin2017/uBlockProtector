@@ -24,8 +24,22 @@
     <script src="https://code.jquery.com/jquery-3.1.0.min.js" charset="utf-8"></script>
     <script src="https://code.jquery.com/color/jquery.color.plus-names-2.1.2.min.js" charset="utf-8"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" charset="utf-8" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="listTest.js" charset="utf-8"></script>
     <script>
         "use strict";
+
+        /**
+         * Check if the script and list is working properly
+         * @function
+         */
+        const checkInstallation = function () {
+            if (typeof AdBlock_Protector_Script !== "undefined") {
+                $("#scriptTestDiv").addClass("hide");
+            }
+            if (typeof AdBlock_Protector_List === "undefined") {
+                $("#listTestDiv").addClass("hide");
+            }
+        }
 
         /**
          * When the document is ready, set up scrolling animation and check whether or not AdBlock Protector is installed
@@ -43,9 +57,7 @@
                 $("html, body").animate({ scrollTop: $("#special").offset().top }, "fast");
             });
             //We run this again when the page is fully loaded to make sure there will not be any false positives
-            if (typeof AdBlock_Protector_testVar !== "undefined") {
-                $("#testDiv").addClass("hide");
-            }
+            checkInstallation();
         });
     </script>
 </head>
@@ -59,22 +71,17 @@
             <div id="banner-ads">
                 <p style="color:red;">Your AdBlocker is not active! </p>
             </div>
-            <div id="testDiv">
+            <div id="scriptTestDiv">
                 <p style="color:red;">AdBlock Protector Script is not installed or not enabled! </p>
             </div>
-            <div id="testList">
+            <div id="listTestDiv">
                 <p style="color:red;">AdBlock Protector List is not installed or not enabled! </p>
             </div>
             <p><a href="#how" class="howLink">Jump to &quot;How do I use it?&quot;</a></p>
             <script>
                 "use strict";
 
-                /**
-                 * Check if AdBlock Protector is installed, the test variable should be set before the page loads, so we can run the check here
-                 */
-                if (typeof AdBlock_Protector_testVar !== "undefined") {
-                    $("#testDiv").addClass("hide");
-                }
+                checkInstallation();
             </script>
         </div>
     </div>
