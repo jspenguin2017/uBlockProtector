@@ -1,11 +1,11 @@
 [Adblock Plus 2.0]
 ! Title: AdBlock Protector List
-! Version: 1.3
+! Version: 1.4
 ! Expires: 1 days
 ! Homepage: https://x01x012013.github.io/AdBlockProtector/
 !
 ! Home page test
-||x01x012013.github.io/AdBlockProtector/listTest.js
+||x01x012013.github.io/AdBlockProtector/listTest.js|
 ! www.trovesaurus.com
 trovesaurus.com##div#blocked
 ! *.dogefaucet.com
@@ -16,7 +16,7 @@ trovesaurus.com##div#blocked
 @@|http://imasdk.googleapis.com/js/sdkloader/$domain=htmlgames.com
 ! www.mindgames.com
 @@|http://imasdk.googleapis.com/js/sdkloader/$domain=mindgames.com
-! TV Nowa Home pages
+! TV Nowa home pages
 www.tvn.pl#div(id*=_videoDriverContent)
 www.tvn7.pl##div.vjs-abDetected
 www.tvnstyle.pl##div.vjs-abDetected

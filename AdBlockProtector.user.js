@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.3.5
+// @version 1.3.6
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -406,8 +406,7 @@
         let homePages = ["http://www.tvn.pl/", "http://www.tvn7.pl/", "http://www.tvnstyle.pl/", "http://www.tvnturbo.pl/"];
         //Check homepage first
         if (homePages.includes(document.location.href)) {
-            //Apply home page patch
-            //Work in progress
+            //Home pages are currently handled by List
         } else {
             //Check exact domain
             let isTVN = domainExact.includes(Domain);
