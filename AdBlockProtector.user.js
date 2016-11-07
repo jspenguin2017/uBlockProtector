@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name AdBlock Protector Script
-// @description Solutions against AdBlock detectors
+// @description Quick solutions against AdBlock detectors
 // @author X01X012013
 // @version 2.0.0
 // @encoding utf-8
@@ -259,11 +259,6 @@
                 return success;
             });
             break;
-        case "www.lasprovincias.es":
-            //Stable solution: Create variable Vocento.checkAdBlock and set it to 1
-            unsafeWindow.Vocento = { checkAdBlock: 1 };
-            console.error(errMsg);
-            break;
         case "www.badtaste.it":
         case "www.badtv.it":
         case "www.badcomics.it":
@@ -283,24 +278,6 @@
             unsafeWindow.setInterval = function (func) {
                 return _setInterval(func, 10);
             };
-            break;
-        case "www.15min.lt":
-            //Stable solution: Homemade FuckAdBlock, can be countered the same way
-            setReadOnly("blocker", function () {
-                this.hasAdblock = function () { return false; };
-                this.onBlock = function () { };
-                this.runTests = function () { };
-                this.test = function () { };
-                this.testAll = function () { };
-            });
-            break;
-        case "indiatoday.intoday.in":
-            //Stable solution: Lock adBlock to false
-            setReadOnly("adBlock", false);
-            break;
-        case "www.businesstoday.in":
-            //Stable solution: Lock checkAds to an empty function
-            setReadOnly("checkAds", function () { });
             break;
         case "indianexpress.com":
         case "www.jansatta.com":
