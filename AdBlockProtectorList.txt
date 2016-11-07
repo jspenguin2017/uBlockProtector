@@ -1,23 +1,23 @@
 [Adblock Plus 2.0]
 ! Title: AdBlock Protector List
-! Version: 2.0
+! Version: 2.1
 ! Expires: 1 days
 ! Homepage: https://x01x012013.github.io/AdBlockProtector/
 !
-! Home page test
+!>> Home page test
 ||x01x012013.github.io/AdBlockProtector/listTest.js|
-! *.dogefaucet.com
+!>> *.dogefaucet.com
 @@||www.dogefaucet.com/static/js/ads.js|
-! portal.abczdrowie.pl
+!>> portal.abczdrowie.pl
 @@dot.wp.pl
-! www.htmlgames.com
+!>> www.htmlgames.com
 @@|http://imasdk.googleapis.com/js/sdkloader/$domain=htmlgames.com
-! www.mindgames.com
+!>> www.mindgames.com
 @@|http://imasdk.googleapis.com/js/sdkloader/$domain=mindgames.com
-! TV Nowa home pages
+!>> TV Nowa home pages (Workaround)
 www.tvn.pl#div(id*=_videoDriverContent)
 www.tvn7.pl##div.vjs-abDetected
 www.tvnstyle.pl##div.vjs-abDetected
 www.tvnturbo.pl##div.vjs-abDetected
-! *.wp.pl
+!>> *.wp.pl
 @@||adv.wp.pl/RM/Box/empty.gif|

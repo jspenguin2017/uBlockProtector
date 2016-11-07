@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Quick solutions against AdBlock detectors
 // @author X01X012013
-// @version 2.0.1
+// @version 2.0.2
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -213,34 +213,34 @@
     switch (Domain) {
         case "www.blockadblock.com":
         case "blockadblock.com":
-            //Stable solution: Filter keyword from eval()
+            //Filter keyword from eval()
             activateFilter("eval", /BlockAdblock/);
             onEvent("load", function () {
                 $("#babasbmsgx").remove();
             });
             break;
         case "sc2casts.com":
-            //Temporary solution: Lock scriptfailed() and disable setTimeout()
+            //Lock scriptfailed() and disable setTimeout()
             setReadOnly("scriptfailed", function () { });
             activateFilter("setTimeout");
             break;
         case "infotainment.jagranjunction.com":
-            //Stable solution: Lock canRunAds and isAdsDisplayed to true
+            //Lock canRunAds and isAdsDisplayed to true
             setReadOnly("canRunAds", true);
             setReadOnly("isAdsDisplayed", true);
             break;
         case "haxoff.com":
         case "fullstuff.co":
         case "www.usapoliticstoday.com":
-            //Temporary solution: Disable eval()
+            //Disable eval()
             activateFilter("eval");
             break;
         case "malayalam.samayam.com":
-            //Stable solution: Lock canRun to true
+            //Lock canRun to true
             setReadOnly("canRun", true);
             break;
         case "www.qbasic.net":
-            //Stable solution: Lock dload to a special version
+            //Lock dload to a special version
             setReadOnly("dload", function (dlID, fileID) {
                 ga("send", "event", "Download", "Submit", fileID);
                 location.href = "http://" + window.location.hostname + "/dl.php?id=" + dlID + "&file=" + fileID;
@@ -252,12 +252,12 @@
         case "www.badtv.it":
         case "www.badcomics.it":
         case "www.badgames.it":
-            //Stable solution: Lock isAdBlockActive to false and set cookie adBlockChecked to disattivo
+            //Lock isAdBlockActive to false and set cookie adBlockChecked to disattivo
             setReadOnly("isAdBlockActive", false);
             document.cookie = "adBlockChecked=disattivo";
             break;
         case "ay.gy":
-            //Temporary solution: Disable open() before page starts to load and set abgo to an empty function when the page loads
+            //Disable open() before page starts to load and set abgo to an empty function when the page loads
             setReadOnly("open", function () { });
             onEvent("load", function () {
                 unsafeWindow.abgo = function () { };
@@ -271,20 +271,20 @@
         case "indianexpress.com":
         case "www.jansatta.com":
         case "www.financialexpress.com":
-            //Stable solution: Lock RunAds to true
+            //Lock RunAds to true
             setReadOnly("RunAds", true);
             break;
         case "www.livemint.com":
-            //Stable solution: Lock canRun1 to true
+            //SLock canRun1 to true
             setReadOnly("canRun1", true);
             break;
         case "www.business-standard.com":
-            //Stable solution: Lock isBannerActive and adsLoaded to true
+            //Lock isBannerActive and adsLoaded to true
             setReadOnly("isBannerActive", true);
             setReadOnly("adsLoaded", true);
             break;
         case "userscloud.com":
-            //Temporary solution: Show hidden div and remove block screen
+            //Show hidden div and remove block screen
             onEvent("load", function () {
                 $("#dl_link").show();
                 $("#adblock_msg").remove();
@@ -292,7 +292,7 @@
             break;
         case "www.vidlox.tv":
         case "vidlox.tv":
-            //Stable solution: Lock xRds to false and cRAds to true
+            //Lock xRds to false and cRAds to true
             setReadOnly("xRds", false);
             setReadOnly("cRAds", true);
             break;
@@ -308,27 +308,27 @@
         //Installation test of homepage
         unsafeWindow.AdBlock_Protector_Script = true;
     } else if (Domain.endsWith(".gamepedia.com")) {
-        //Temporary workaround: Remove element
+        //(Workaround) Remove element
         onEvent("load", function () {
             $("#atflb").remove();
         });
     } else if (Domain.endsWith(".cbox.ws")) {
-        //Stable solution: Lock koddostu_com_adblock_yok to true
+        //Lock koddostu_com_adblock_yok to true
         setReadOnly("koddostu_com_adblock_yok", true);
     } else if (Domain === "indiatimes.com" || Domain.endsWith(".indiatimes.com") || Domain.endsWith(".ahmedabadmirror.com")) {
-        //Temporary solution: Filter keyword from document.addEventListener()
+        //Filter keyword from document.addEventListener()
         activateFilter("document.addEventListener", /function \_0x/);
         //document.addEventListener should not be native code, but they are expecting native code, strange...
         filterStrings[1] = "function addEventListener() { [native code] }";
     } else if (Domain.endsWith(".pinkrod.com") || Domain.endsWith(".wetplace.com")) {
-        //Stable solution: Lock getAd and getUtm to an empty function
+        //Lock getAd and getUtm to an empty function
         setReadOnly("getAd", function () { });
         setReadOnly("getUtm", function () { });
     } else if (debugMode) {
         //Debug - Log when not in partial match list
         console.warn(Domain + " is not in AdBlock Protector's partial match list. ");
     }
-    //TV Nowa
+    //TV Nowa (Workaround)
     (function () {
         //Thanks to mikhoul and xxcriticxx for your precious help!
         let domainExact = []; //"tvnfabula.pl", "itvnextra.pl", "tvn24bis.pl", "ttv.pl", "player.pl", "x-news.pl"
