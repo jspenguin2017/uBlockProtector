@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.3.6
+// @version 1.3.7
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -368,7 +368,7 @@
             break;
     }
     //Partial matching
-    if (Domain === "x01x012013.github.io" || (debugMode && Domain === "localhost")) {
+    if (Domain === "x01x012013.github.io" && document.location.href.indexOf("x01x012013.github.io/AdBlockProtector") !== -1) {
         //Installation test of homepage
         unsafeWindow.AdBlock_Protector_Script = true;
     } else if (Domain.endsWith(".bhaskar.com")) {
