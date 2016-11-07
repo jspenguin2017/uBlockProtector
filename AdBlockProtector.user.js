@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Quick solutions against AdBlock detectors
 // @author X01X012013
-// @version 2.0.0
+// @version 2.0.1
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -219,17 +219,9 @@
                 $("#babasbmsgx").remove();
             });
             break;
-        case "www.gogi.in":
-            //Temporary solution: Disable setInterval()
-            activateFilter("setInterval");
-            break;
         case "sc2casts.com":
             //Temporary solution: Lock scriptfailed() and disable setTimeout()
             setReadOnly("scriptfailed", function () { });
-            activateFilter("setTimeout");
-            break;
-        case "graffica.info":
-            //Temporary solution: Diable setTimeout()
             activateFilter("setTimeout");
             break;
         case "infotainment.jagranjunction.com":
@@ -237,9 +229,6 @@
             setReadOnly("canRunAds", true);
             setReadOnly("isAdsDisplayed", true);
             break;
-        case "www.australianfrequentflyer.com.au":
-        case "www.livenewschat.eu":
-        case "www.zahitvstation.com":
         case "haxoff.com":
         case "fullstuff.co":
         case "www.usapoliticstoday.com":
@@ -318,9 +307,6 @@
     if (Domain === "x01x012013.github.io" && document.location.href.indexOf("x01x012013.github.io/AdBlockProtector") !== -1) {
         //Installation test of homepage
         unsafeWindow.AdBlock_Protector_Script = true;
-    } else if (Domain.endsWith(".bhaskar.com")) {
-        //Stable solution: Lock canABP to true
-        setReadOnly("canABP", true);
     } else if (Domain.endsWith(".gamepedia.com")) {
         //Temporary workaround: Remove element
         onEvent("load", function () {
@@ -334,9 +320,6 @@
         activateFilter("document.addEventListener", /function \_0x/);
         //document.addEventListener should not be native code, but they are expecting native code, strange...
         filterStrings[1] = "function addEventListener() { [native code] }";
-    } else if (Domain.endsWith(".ndtv.com")) {
-        //Stable solution: Lock getNoTopLatestNews to an empty function
-        setReadOnly("getNoTopLatestNews", function () { });
     } else if (Domain.endsWith(".pinkrod.com") || Domain.endsWith(".wetplace.com")) {
         //Stable solution: Lock getAd and getUtm to an empty function
         setReadOnly("getAd", function () { });
