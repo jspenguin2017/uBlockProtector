@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.3.8
+// @version 2.0.0
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -223,33 +223,14 @@
             //Temporary solution: Disable setInterval()
             activateFilter("setInterval");
             break;
-        case "www.comprovendolibri.it":
-            //Stable solution: Lock TestPage()
-            setReadOnly("TestPage", function () { });
-            break;
-        case "nordpresse.be":
-            //Stable solution: Set cookie anCookie to true
-            document.cookie = "anCookie=true";
-            console.error(errMsg);
-            break;
         case "sc2casts.com":
             //Temporary solution: Lock scriptfailed() and disable setTimeout()
             setReadOnly("scriptfailed", function () { });
             activateFilter("setTimeout");
             break;
-        case "bollywood.divyabhaskar.co.in":
-            //Stable solution: Lock canABP to true
-            setReadOnly("canABP", true);
-            break;
         case "graffica.info":
             //Temporary solution: Diable setTimeout()
             activateFilter("setTimeout");
-            break;
-        case "www.dawn.com":
-            //Stable solution: Homemade FuckAdBlock, can be countered the same way
-            setReadOnly("DetectAdBlock", function () { });
-            Object.freeze(unsafeWindow.DetectAdBlock.prototype);
-            setReadOnly("detectAdBlock", new unsafeWindow.DetectAdBlock());
             break;
         case "infotainment.jagranjunction.com":
             //Stable solution: Lock canRunAds and isAdsDisplayed to true
@@ -265,9 +246,6 @@
             //Temporary solution: Disable eval()
             activateFilter("eval");
             break;
-        case "www.jagran.com":
-        case "www.hindustantimes.com":
-        case "www.mid-day.com":
         case "malayalam.samayam.com":
             //Stable solution: Lock canRun to true
             setReadOnly("canRun", true);
@@ -280,16 +258,6 @@
                 window.success = true;
                 return success;
             });
-            break;
-        case "www.happytrips.com":
-            //Stable solution: Lock canRun to true and detector to an empty function
-            setReadOnly("canRun", true);
-            setReadOnly("detector", function () { });
-            break;
-        case "www.scambiofile.info":
-        case "scambiofile.info":
-            //Stable solution: Lock iExist to true
-            setReadOnly("iExist", true);
             break;
         case "www.lasprovincias.es":
             //Stable solution: Create variable Vocento.checkAdBlock and set it to 1
