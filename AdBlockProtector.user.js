@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Solutions against AdBlock detectors
 // @author X01X012013
-// @version 1.3.7
+// @version 1.3.8
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -168,12 +168,14 @@
                 let nameArray = name.split(".");
                 Object.defineProperty(unsafeWindow[nameArray[0]], nameArray[1], {
                     value: val,
+                    configurable: false,
                     writable: false
                 });
             } else {
                 //One layer
                 Object.defineProperty(unsafeWindow, name, {
                     value: val,
+                    configurable: false,
                     writable: false
                 });
             }
