@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Quick solutions against AdBlock detectors
 // @author X01X012013
-// @version 2.0.2
+// @version 2.0.3
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -295,6 +295,11 @@
             //Lock xRds to false and cRAds to true
             setReadOnly("xRds", false);
             setReadOnly("cRAds", true);
+            break;
+        case "www.cwtv.com":
+        case "cwtv.com":
+            //Lock wallConfig to false - Thanks to szymon1118
+            setReadOnly("wallConfig", false);
             break;
         default:
             //Debug - Log when not in exact match list
