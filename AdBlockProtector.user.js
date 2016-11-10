@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Quick solutions against AdBlock detectors
 // @author X01X012013
-// @version 2.0.3
+// @version 2.0.4
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -329,6 +329,9 @@
         //Lock getAd and getUtm to an empty function
         setReadOnly("getAd", function () { });
         setReadOnly("getUtm", function () { });
+    } else if (Domain.endsWith(".ndtv.com")) {
+        //Lock getNoTopLatestNews to an empty function
+        setReadOnly("getNoTopLatestNews", function () { });
     } else if (debugMode) {
         //Debug - Log when not in partial match list
         console.warn(Domain + " is not in AdBlock Protector's partial match list. ");
