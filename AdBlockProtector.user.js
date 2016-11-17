@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Quick solutions against AdBlock detectors
 // @author X01X012013
-// @version 3.0.0
+// @version 3.0.1
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -28,13 +28,13 @@
     const errMsg = "Uncaught AdBlock Error: AdBlocker detectors are not allowed on this device. ";
     /**
      * Pointers to functions to hide.
-     * This array and {@link filterString} are parallel arrays, and is used in {@link hideFilter}.
+     * This array and {@link filterString} are parallel arrays, and is used in {@link hideFilters}.
      * @var {Function}
      */
     let filterPointers = [];
     /**
      * The string values of the real function.
-     * This array and {@link filterPointer} are parallel arrays, and is used in {@link hideFilter}.
+     * This array and {@link filterPointer} are parallel arrays, and is used in {@link hideFilters}.
      * @var {string}
      */
     let filterStrings = [];
@@ -44,7 +44,7 @@
      * @function
      * @return {boolean} True if the operation was successful, false otherwise.
      */
-    const hideFilter = function () {
+    const hideFilters = function () {
         //The original function
         const original = unsafeWindow.Function.prototype.toString;
         //New function
@@ -204,7 +204,7 @@
     const Domain = document.domain;
     //=====Main=====
     //Hide filters
-    hideFilter();
+    hideFilters();
     //Debug - Log domain
     if (debugMode) {
         console.warn("Domain: " + Domain);
