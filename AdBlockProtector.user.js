@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Quick solutions against AdBlock detectors
 // @author X01X012013
-// @version 2.0.4
+// @version 3.0.0
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -229,34 +229,12 @@
             setReadOnly("canRunAds", true);
             setReadOnly("isAdsDisplayed", true);
             break;
-        case "haxoff.com":
-        case "fullstuff.co":
         case "www.usapoliticstoday.com":
             //Disable eval()
             activateFilter("eval");
             break;
-        case "malayalam.samayam.com":
-            //Lock canRun to true
-            setReadOnly("canRun", true);
-            break;
-        case "www.qbasic.net":
-            //Lock dload to a special version
-            setReadOnly("dload", function (dlID, fileID) {
-                ga("send", "event", "Download", "Submit", fileID);
-                location.href = "http://" + window.location.hostname + "/dl.php?id=" + dlID + "&file=" + fileID;
-                window.success = true;
-                return success;
-            });
-            break;
-        case "www.badtaste.it":
-        case "www.badtv.it":
-        case "www.badcomics.it":
-        case "www.badgames.it":
-            //Lock isAdBlockActive to false and set cookie adBlockChecked to disattivo
-            setReadOnly("isAdBlockActive", false);
-            document.cookie = "adBlockChecked=disattivo";
-            break;
         case "ay.gy":
+            //This fix is currently better than AAK's fix, so we are keeping this for now
             //Disable open() before page starts to load and set abgo to an empty function when the page loads
             setReadOnly("open", function () { });
             onEvent("load", function () {
@@ -268,20 +246,13 @@
                 return _setInterval(func, 10);
             };
             break;
-        case "indianexpress.com":
         case "www.jansatta.com":
-        case "www.financialexpress.com":
             //Lock RunAds to true
             setReadOnly("RunAds", true);
             break;
         case "www.livemint.com":
             //SLock canRun1 to true
             setReadOnly("canRun1", true);
-            break;
-        case "www.business-standard.com":
-            //Lock isBannerActive and adsLoaded to true
-            setReadOnly("isBannerActive", true);
-            setReadOnly("adsLoaded", true);
             break;
         case "userscloud.com":
             //Show hidden div and remove block screen
@@ -320,7 +291,7 @@
     } else if (Domain.endsWith(".cbox.ws")) {
         //Lock koddostu_com_adblock_yok to true
         setReadOnly("koddostu_com_adblock_yok", true);
-    } else if (Domain === "indiatimes.com" || Domain.endsWith(".indiatimes.com") || Domain.endsWith(".ahmedabadmirror.com")) {
+    } else if (Domain.endsWith(".ahmedabadmirror.com")) {
         //Filter keyword from document.addEventListener()
         activateFilter("document.addEventListener", /function \_0x/);
         //document.addEventListener should not be native code, but they are expecting native code, strange...
@@ -329,9 +300,6 @@
         //Lock getAd and getUtm to an empty function
         setReadOnly("getAd", function () { });
         setReadOnly("getUtm", function () { });
-    } else if (Domain.endsWith(".ndtv.com")) {
-        //Lock getNoTopLatestNews to an empty function
-        setReadOnly("getNoTopLatestNews", function () { });
     } else if (debugMode) {
         //Debug - Log when not in partial match list
         console.warn(Domain + " is not in AdBlock Protector's partial match list. ");
