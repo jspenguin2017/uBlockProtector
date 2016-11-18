@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Quick solutions against AdBlock detectors
 // @author X01X012013
-// @version 3.0.4
+// @version 3.0.5
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -78,7 +78,7 @@
         return true;
     };
     /**
-     * Prevent a string or function with specific keyword from executing.
+     * Adds a filter to another function so arguments with forbidden keywords are not allowed.
      * Use RegExp to combine filters, do not activate filter multiple times on the same function.
      * @function
      * @param {string} func - The name of the function to filter, use "." to separate multiple layers, max 2 layers.
