@@ -300,7 +300,7 @@
         //Lock getAd and getUtm to an empty function
         setReadOnly("getAd", function () { });
         setReadOnly("getUtm", function () { });
-    } else if (Domain.contains(".hackintosh.")) {
+    } else if (Domain.includes(".hackintosh.")) {
         //Undo BlockAdblock styles
         setReadOnly('eval', function () {
             var c = "babasbmsgx";
