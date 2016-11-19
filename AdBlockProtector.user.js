@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Quick solutions against AdBlock detectors
 // @author X01X012013
-// @version 3.0.5
+// @version 3.0.6
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -271,6 +271,17 @@
         case "cwtv.com":
             //Lock wallConfig to false - Thanks to szymon1118
             setReadOnly("wallConfig", false);
+            break;
+        case "www.hackintosh.zone":
+            //Undo BlockAdBlock styles
+            unsafeWindow.eval = function () {
+                var c = "babasbmsgx";
+                document.getElementById(c).style.setProperty('visibility', 'hidden', 'important');
+                document.getElementById(c).style.setProperty('display', 'none', 'important');
+                document.getElementById(c).style.setProperty('opacity', '0', 'important');
+                document.getElementById(c).style.setProperty('animation', 'none', 'important');
+                document.body.style.setProperty('visibility', 'visible', 'important');
+            };
             break;
         default:
             //Debug - Log when not in exact match list
