@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Quick solutions against AdBlock detectors
 // @author X01X012013
-// @version 3.0.6
+// @version 3.0.7
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -272,17 +272,6 @@
             //Lock wallConfig to false - Thanks to szymon1118
             setReadOnly("wallConfig", false);
             break;
-        case "www.hackintosh.zone":
-            //Undo BlockAdBlock styles
-            unsafeWindow.eval = function () {
-                var c = "babasbmsgx";
-                document.getElementById(c).style.setProperty('visibility', 'hidden', 'important');
-                document.getElementById(c).style.setProperty('display', 'none', 'important');
-                document.getElementById(c).style.setProperty('opacity', '0', 'important');
-                document.getElementById(c).style.setProperty('animation', 'none', 'important');
-                document.body.style.setProperty('visibility', 'visible', 'important');
-            };
-            break;
         default:
             //Debug - Log when not in exact match list
             if (debugMode) {
@@ -311,6 +300,16 @@
         //Lock getAd and getUtm to an empty function
         setReadOnly("getAd", function () { });
         setReadOnly("getUtm", function () { });
+    } else if (Domain.contains(".hackintosh.")) {
+        //Undo BlockAdblock styles
+        setReadOnly('eval', function () {
+            var c = "babasbmsgx";
+            document.getElementById(c).style.setProperty("visibility", "hidden", "important");
+            document.getElementById(c).style.setProperty("display", "none", "important");
+            document.getElementById(c).style.setProperty("opacity", "0", "important");
+            document.getElementById(c).style.setProperty("animation", "none", "important");
+            document.body.style.setProperty("visibility", "visible", "important");
+        });
     } else if (debugMode) {
         //Debug - Log when not in partial match list
         console.warn(Domain + " is not in AdBlock Protector's partial match list. ");
