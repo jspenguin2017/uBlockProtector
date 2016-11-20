@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Quick solutions against AdBlock detectors
 // @author X01X012013
-// @version 3.0.7
+// @version 3.0.8
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -302,7 +302,7 @@
         setReadOnly("getUtm", function () { });
     } else if (Domain.includes(".hackintosh.")) {
         //Undo BlockAdblock styles
-        setReadOnly('eval', function () {
+        setReadOnly("eval", function () {
             var c = "babasbmsgx";
             document.getElementById(c).style.setProperty("visibility", "hidden", "important");
             document.getElementById(c).style.setProperty("display", "none", "important");
