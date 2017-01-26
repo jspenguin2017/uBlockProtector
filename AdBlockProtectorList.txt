@@ -1,6 +1,6 @@
 [Adblock Plus 2.0]
 ! Title: AdBlock Protector List
-! Version: 3.1
+! Version: 3.2
 ! Expires: 1 days
 ! Homepage: https://x01x012013.github.io/AdBlockProtector/
 !
@@ -15,8 +15,6 @@ www.tvn.pl#div(id*=_videoDriverContent)
 www.tvn7.pl##div.vjs-abDetected
 www.tvnstyle.pl##div.vjs-abDetected
 www.tvnturbo.pl##div.vjs-abDetected
-!>> *.wp.pl
-@@||adv.wp.pl/RM/Box/empty.gif|
 !>> *.pudelek.tv
 @@||pagead2.googlesyndication.com^$domain=pudelek.tv
 !>> *.money.pl

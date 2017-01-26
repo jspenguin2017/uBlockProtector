@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Quick solutions against AdBlock detectors
 // @author X01X012013
-// @version 3.0.12
+// @version 3.0.13
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -325,6 +325,62 @@
             document.getElementById(c).style.setProperty("opacity", "0", "important");
             document.getElementById(c).style.setProperty("animation", "none", "important");
             document.body.style.setProperty("visibility", "visible", "important");
+        });
+    } if (Domain.endsWith("wp.pl") || Domain.endsWith("money.pl")) {
+        onEvent("load", function () {
+            //Get tags
+            const tags = $("meta[name=keywords]").attr("content");
+            //Request data JSON
+            $.get("http://wp.tv/api/article_related.json", {
+                tags: tags,
+                domain: Domain,
+                type: "default"
+            }, function (data) {
+                //Try to find media ID
+                let mid;
+                try {
+                    mid = data.clips[0].mid;
+                }
+                catch (err) {
+                    console.error("AdBlock Protector failed to find media ID! ");
+                }
+                //Check if we got the media ID
+                if (mid) {
+                    //Found media ID, request media data JSON
+                    $.get("http://wp.tv/player/mid," + mid.toString() + ",embed.json", function (data) {
+                        //Try to find media URL
+                        let url, res;
+                        try {
+                            for (let i = 0; i < data.clip.url.length; i++) {
+                                let item = data.clip.url[i];
+                                if (item.quality === "HQ" && item.type.startsWith("mp4")) {
+                                    url = item.url;
+                                    res = item.resolution.split("x");
+                                    break;
+                                }
+                            }
+                            if (!url || !res) {
+                                throw "Not Found";
+                            }
+                        } catch (err) {
+                            console.error("AdBlock Protector failed to find media URL! ");
+                        }
+                        //Check if we got the media URL
+                        if (url && res) {
+                            //Found media URL, replace player
+                            const replace = function () {
+                                //Check if the player is loaded, wait if it is still loading
+                                if ($(".wp-player-outer").length === 0) {
+                                    unsafeWindow.setTimeout(replace, 500);
+                                } else {
+                                    $(".wp-player-outer").first().after($("<iframe width='100%' height='" + res[1].toString() + "'>").attr("src", url)).remove();
+                                }
+                            };
+                            replace();
+                        }
+                    }); //End request media data JSON
+                }
+            }); //End request data JSON
         });
     } else if (debugMode) {
         //Debug - Log when not in partial match list
