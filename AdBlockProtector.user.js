@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Quick solutions against AdBlock detectors
 // @author X01X012013
-// @version 3.0.13
+// @version 3.0.14
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -360,7 +360,7 @@
                                 }
                             }
                             if (!url || !res) {
-                                throw "Not Found";
+                                throw "Media URL Not Found";
                             }
                         } catch (err) {
                             console.error("AdBlock Protector failed to find media URL! ");
@@ -373,7 +373,7 @@
                                 if ($(".wp-player-outer").length === 0) {
                                     unsafeWindow.setTimeout(replace, 500);
                                 } else {
-                                    $(".wp-player-outer").first().after($("<iframe width='100%' height='" + res[1].toString() + "'>").attr("src", url)).remove();
+                                    $(".wp-player-outer").first().after($("<iframe width='100%' height='" + res[1].toString() + "'>").attr("src", url)).hide();
                                 }
                             };
                             replace();
