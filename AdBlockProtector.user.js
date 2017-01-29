@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Quick solutions against AdBlock detectors
 // @author X01X012013
-// @version 3.0.15
+// @version 3.0.14
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -327,7 +327,6 @@
             document.body.style.setProperty("visibility", "visible", "important");
         });
     } if (Domain.endsWith("wp.pl") || Domain.endsWith("money.pl")) {
-        //(Workaround) Replace video player - Thanks to szymon1118
         onEvent("load", function () {
             //Get tags
             const tags = $("meta[name=keywords]").attr("content");
@@ -382,23 +381,6 @@
                     }); //End request media data JSON
                 }
             }); //End request data JSON
-        });
-    } else if (Domain.endsWith("tvregionalna24.pl")) {
-        //Patch videojs to show YouTube iframe immediately - Thanks to F4z
-        let text = [];
-        setReadOnly("videojs", function (a, b, func) {
-            let temp = "(" + func.toString().match(/var _ended=(.*);var _skipButton/)[1] + ")();";
-            temp = temp.replace("player.dispose();", "");
-            text.push(temp);
-        });
-        onEvent("load", function replace() {
-            if (text.length > 0 && $(".vjs-poster").length > 0) {
-                for (let i = 0; i < text.length; i++) {
-                    unsafeWindow.eval(text[i]);
-                }
-            } else {
-                unsafeWindow.setTimeout(replace, 1000);
-            }
         });
     } else if (debugMode) {
         //Debug - Log when not in partial match list
