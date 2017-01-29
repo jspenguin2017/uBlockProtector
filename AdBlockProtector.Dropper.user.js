@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script Dropper
 // @description This is a dropper as a workaround for Greasemonkey
 // @author X01X012013
-// @version 1.0.2
+// @version 1.0.3
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -19,7 +19,7 @@ request.open('GET', 'https://x01x012013.github.io/AdBlockProtector/AdBlockProtec
 request.send(null);
 //Check load state and drop script
 if (request.status === 200) {
-    eval(request.responseText.replace(/unsafeWindow/g, "window"));
+    eval(request.responseText.replace("(function () {", "(function () { var unsafeWindow = window;"));
 } else {
     alert('Could not load AdBlock Protector. ');
 }
