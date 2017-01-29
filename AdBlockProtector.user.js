@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Quick solutions against AdBlock detectors
 // @author X01X012013
-// @version 3.0.16
+// @version 3.0.17
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -208,7 +208,7 @@
     switch (Domain) {
         case "www.blockadblock.com":
         case "blockadblock.com":
-            //Filter keyword from eval() and remove element with ID babasbmsgx on load
+            //Disable eval() and remove element with ID babasbmsgx on load
             activateFilter("eval");
             onEvent("load", function () {
                 $("#babasbmsgx").remove();
