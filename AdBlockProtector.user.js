@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Quick solutions against AdBlock detectors
 // @author X01X012013
-// @version 3.0.15
+// @version 3.0.16
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -209,7 +209,7 @@
         case "www.blockadblock.com":
         case "blockadblock.com":
             //Filter keyword from eval() and remove element with ID babasbmsgx on load
-            activateFilter("eval", /aa2thYWHXUFDUPDzUOTno0dHipqbceHjaZ2dCQkLSLy/);
+            activateFilter("eval");
             onEvent("load", function () {
                 $("#babasbmsgx").remove();
             });
