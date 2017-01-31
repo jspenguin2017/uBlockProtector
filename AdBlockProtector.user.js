@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Quick solutions against AdBlock detectors
 // @author X01X012013
-// @version 3.0.17
+// @version 3.0.18
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -287,6 +287,11 @@
                 };
                 setTimeout(blockScreenRemover, 500);
             });
+            break;
+        case "www.ratemyprofessors.com":
+            //Lock adBlocker to false and prevent listening resize event (window self-destroys on resize, bug or feature?)
+            setReadOnly("adBlocker", false);
+            activateFilter("addEventListener", "/resize/i");
             break;
         default:
             //Debug - Log when not in exact match list
