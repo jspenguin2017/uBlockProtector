@@ -2,11 +2,13 @@
 // @name AdBlock Protector Script
 // @description Quick solutions against AdBlock detectors
 // @author X01X012013
-// @version 3.0.18
+// @version 3.0.19
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
 // @grant unsafeWindow
+// @grant GM_xmlhttpRequest
+// @connect *.ngenix.net
 // @run-at document-start
 // @homepage https://x01x012013.github.io/AdBlockProtector/
 // @supportURL https://github.com/X01X012013/AdBlockProtector/issues
@@ -292,6 +294,19 @@
             //Lock adBlocker to false and prevent listening resize event (window self-destroys on resize, bug or feature?)
             setReadOnly("adBlocker", false);
             activateFilter("addEventListener", "/resize/i");
+            break;
+        case "tvrain.ru":
+            //Load all.js and run it in sloppy mode
+            onEvent("load", function () {
+                const source = $("script[src*='/static/app/build/all.js']").attr("src");
+                GM_xmlhttpRequest({
+                    method: "GET",
+                    url: source,
+                    onload: function (response) {
+                        unsafeWindow.eval(response.responseText.replace(/\"use strict\";/g, ""));
+                    }
+                });
+            });
             break;
         default:
             //Debug - Log when not in exact match list
