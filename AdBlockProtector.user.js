@@ -296,7 +296,7 @@
             activateFilter("addEventListener", "/resize/i");
             break;
         case "tvrain.ru":
-            //Load all.js and run it in sloppy mode
+            //(Workaround) Load all.js and run it in sloppy mode
             onEvent("load", function () {
                 const source = $("script[src*='/static/app/build/all.js']").attr("src");
                 GM_xmlhttpRequest({
