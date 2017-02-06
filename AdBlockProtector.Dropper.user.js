@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script Dropper
 // @description This is a dropper as a workaround for Greasemonkey
 // @author X01X012013
-// @version 1.0.4
+// @version 1.0.5
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -16,6 +16,7 @@
 // ==/UserScript==
 
 (function () {
+    alert("The dropper is currently broken, please wait for an update");
     //Load script
     GM_xmlhttpRequest({
         method: "GET",
