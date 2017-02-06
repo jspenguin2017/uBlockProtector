@@ -15,10 +15,6 @@
         ol {
             font-size: 1.5em;
         }
-        /* Hide an element, used to set visibility of AdBlock Protector not enabled warning. */
-        .hide {
-            display: none;
-        }
     </style>
     <!-- JS -->
     <script src="https://code.jquery.com/jquery-3.1.0.min.js" charset="utf-8"></script>
@@ -29,20 +25,20 @@
         "use strict";
 
         /**
-         * Check if the script and list is working properly.
+         * Check installation of AdBlocker and AdBlock Protector Script and List.
          * @function
          */
         const checkInstallation = function () {
             if (typeof AdBlock_Protector_Script !== "undefined") {
-                $("#scriptTestDiv").addClass("hide");
+                $("#scriptTestDiv").hide();
             }
             if (typeof AdBlock_Protector_List === "undefined") {
-                $("#listTestDiv").addClass("hide");
+                $("#listTestDiv").hide();
             }
         }
 
         /**
-         * When the document is ready, set up scrolling animation and check whether or not AdBlock Protector is installed.
+         * When the document is ready, set up scrolling animation and check installation.
          * @function
          * @listens $(document).ready
          */
@@ -68,7 +64,7 @@
             <p>Quick solutions against AdBlock detectors</p>
             <p>It can take a few seconds to check installation, please look into any issues in your configuration if any of the warning messages do not disappear 5 seconds after page loads. </p>
             <div id="banner-ads">
-                <p style="color:red;">Your AdBlocker is not active! </p>
+                <p style="color:red;">Your AdBlocker is not enabled! </p>
             </div>
             <div id="scriptTestDiv">
                 <p style="color:red;">AdBlock Protector Script is not installed or not enabled! </p>
@@ -91,8 +87,8 @@
     <div class="jumbotron">
         <div class="container">
             <h2>Why use AdBlockers? </h2>
-            <p>Ads are important for websites to sustain themselves. However, some advertiser use ads to track users' activities and sometimes use exploits to install malwares onto users' devices, and an AdBlocker can stop these from happening. </p>
-            <p>Recently, many websites start to employ methods to detect and sometimes track AdBlockers and ask or sometimes even force the user to disable them. The good news is, there are ways to protect AdBlockers from being detected. </p>
+            <p>Ads are important for websites to sustain themselves. However, some advertiser tracks your activities and sometimes use exploits to install malware onto your devices, and an AdBlocker can stop these from happening. </p>
+            <p>Recently, many websites start to use methods to detect and sometimes track AdBlockers and ask or sometimes even force you to disable them. The good news is, there are ways to protect AdBlockers from being detected. </p>
         </div>
     </div>
     <!-- How to protect my AdBlockers? -->
@@ -103,26 +99,29 @@
             <p>2. <a href="https://github.com/reek/anti-adblock-killer" target="_blank">Anti-Adblock Killer</a></p>
             <p>3. <a href="#how" class="howLink">This project: AdBlock Protector</a></p>
             <p style="color:red;"><strong>Make sure to install AdBlock Protector LAST for compatibility! </strong></p>
-            <p style="color:darkred;"><strong>When a protection mechanism is implemented into one of the larger projects, it will be removed from this one. This project is meant to be a quick solution while waiting for larger projects to update. You should keep all of these projects installed. </strong></p>
+            <p style="color:darkred;"><strong>When a protection mechanism is implemented into Anti-Adblock Killer, it will be removed from this one. This project is meant to be a quick solution while waiting for Anti-Adblock Killer to update. You should keep all of these projects installed. </strong></p>
         </div>
     </div>
     <!-- Why not create pull requests to existing projects? -->
     <div class="jumbotron">
         <div class="container">
             <h2>Why not create pull requests to existing projects? </h2>
-            <p>It will take time before it gets added, and our goal is quick solutions. We will send our solutions to larger projects such as Anti-Adblock Killer. </p>
-            <p>Some of our codes can be unstable or inneficient, but that is the tradeoff for quick solutions. </p>
+            <p>It will take time before it gets added, and our goal is quick solutions. We will send our solutions to Anti-Adblock Killer. </p>
+            <p>Some of our codes can be unstable or inefficient, but that is the tradeoff for quick solutions. </p>
         </div>
     </div>
     <!-- How do I use it? -->
     <div class="jumbotron" id="how">
         <div class="container">
             <h2>How do I use it? </h2>
+            <p>1. Check if your setup is supported, it is highly recommended that you configure your setup so it is officially supported by us. You may still try to install this project if your setup is not supported, but it might not work properly. </p>
+            <p>2. Install from install links below. </p>
+            <br />
             <p><strong>Setups we support: </strong></p>
-            <p>Browser: Opera, Chrome, Firefox</p>
-            <p>Script host: Tampermonkey</p>
-            <p>AdBocker: Adblock Plus</p>
-            <p>I will make sure that this project will work on a setup that is supported, and I will offer support for Greasemonkey script host when asked. </p>
+            <p>Browser: Opera (desktop), Chrome (desktop), Firefox (desktop)</p>
+            <p>Script host: Tampermonkey (desktop), Greasemonkey(unsafe) (desktop)</p>
+            <p>AdBocker: Adblock Plus (desktop)</p>
+            <p><i>Support for Android is coming soon! </i></p>
             <br />
             <p><strong>Install links: </strong></p>
             <p>1. <a href="https://x01x012013.github.io/AdBlockProtector/AdBlockProtector.user.js">Userscript</a></p>
@@ -130,7 +129,7 @@
             <p><strong>Note: </strong>You need both the Userscript and the List. </p>
             <p><strong>Note: </strong><a href="#special" id="specialLink">Click here</a> to see if there is something you need to know about your website. </p>
             <br />
-            <h3>Special install link for Greasemonkey: </h3>
+            <p><strong>Special install link for Greasemonkey: </strong></p>
             <p>Instead of using the Userscript install link above, use <a href="https://x01x012013.github.io/AdBlockProtector/AdBlockProtector.Dropper.user.js">this dropper</a>. You still need to install List from above. </p>
             <p><strong style="color:red;">Warning: </strong>Because of the broken security policies of Greasemonkey, we have no other choice to expose privileged functions. These functions can be abused to steal your information. If this concerns you, please use Tampermonkey as script host. </p>
         </div>
@@ -138,9 +137,9 @@
     <!-- How do I report a bug or a website? -->
     <div class="jumbotron">
         <div class="container">
-            <h2>How do I report a bug or a website? </h2>
+            <h2>How do I report a website or a bug? </h2>
             <p>Please <a href="https://github.com/X01X012013/AdBlockProtector/issues" target="_blank">open an issue</a> if you have a website, a bug, a typo, or a suggestion to report. </p>
-            <p>If you are reporting a website, please provide the link to the website in question, and a screenshot, also, you should report it to larger projects as well. </p>
+            <p>If you are reporting a website, please provide the link to the website in question, include a screenshot if you think that can help. </p>
         </div>
     </div>
     <!-- Which websites are supported? -->
@@ -178,7 +177,7 @@
                 <li>*.money.pl</li>
             </ol>
             <!-- Workaround -->
-            <h3 id="special">Workaround: </h3>
+            <h3 id="special">Workarounds that you might want to know: </h3>
             <ol>
                 <li>TV Nowa <a href="https://github.com/X01X012013/AdBlockProtector/issues/23#issuecomment-258627653" target="_blank">Click to view full list</a> - It may take a few seconds to replace the player, home page partially working</li>
                 <li>www.tweaktown.com [Script] - Block screen will show for a split second</li>
