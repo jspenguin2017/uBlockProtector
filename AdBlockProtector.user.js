@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Quick solutions against AdBlock detectors
 // @author X01X012013
-// @version 3.0.19
+// @version 3.0.20
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -348,7 +348,13 @@
         });
     } if (Domain.endsWith("wp.pl") || Domain.endsWith("money.pl")) {
         //(Workaround) Replace video player - Thanks to szymon1118
-        onEvent("load", function () {
+        let data; //Data JSON
+        let url = null, res = null; //URL and resolution of next video
+        let replaceCounter = 0;
+        let loadCounter = 0; //The index of next item to load
+        let networkBusy = false;
+        //Load data JSON
+        const init = function () {
             //Get tags
             const tags = $("meta[name=keywords]").attr("content");
             //Request data JSON
@@ -356,53 +362,71 @@
                 tags: tags,
                 domain: Domain,
                 type: "default"
-            }, function (data) {
-                //Try to find media ID
+            }).done(function (response) {
+                data = response;
+                //This is very light weight, and we have a network busy flag, we should be fine
+                unsafeWindow.setInterval(loadNextVideo, 1000);
+            }).fail(function () {
+                console.error("AdBlock Protector failed to load data JSON! ");
+            });
+        };
+        //Load next video
+        const loadNextVideo = function () {
+            //See if we need to load next URL
+            if (loadCounter === replaceCounter) {
+                //Check flag
+                if (networkBusy) {
+                    return;
+                }
+                //Get media ID
                 let mid;
                 try {
-                    mid = data.clips[0].mid;
-                }
-                catch (err) {
+                    mid = data.clips[loadCounter].mid;
+                } catch (err) {
                     console.error("AdBlock Protector failed to find media ID! ");
+                    return;
                 }
-                //Check if we got the media ID
-                if (mid) {
-                    //Found media ID, request media data JSON
-                    $.get("http://wp.tv/player/mid," + mid.toString() + ",embed.json", function (data) {
-                        //Try to find media URL
-                        let url, res;
-                        try {
-                            for (let i = 0; i < data.clip.url.length; i++) {
-                                let item = data.clip.url[i];
-                                if (item.quality === "HQ" && item.type.startsWith("mp4")) {
-                                    url = item.url;
-                                    res = item.resolution.split("x");
-                                    break;
-                                }
+                //Get media JSON, we don't need to check if mid is found since the function will return if it is not
+                networkBusy = true;
+                $.get("http://wp.tv/player/mid," + mid.toString() + ",embed.json").done(function (response) {
+                    //Try to find media URL
+                    try {
+                        for (let i = 0; i < response.clip.url.length; i++) {
+                            let item = response.clip.url[i];
+                            if (item.quality === "HQ" && item.type.startsWith("mp4")) {
+                                url = item.url;
+                                res = item.resolution.split("x");
+                                break;
                             }
-                            if (!url || !res) {
-                                throw "Media URL Not Found";
-                            }
-                        } catch (err) {
-                            console.error("AdBlock Protector failed to find media URL! ");
                         }
-                        //Check if we got the media URL
-                        if (url && res) {
-                            //Found media URL, replace player
-                            const replace = function () {
-                                //Check if the player is loaded, wait if it is still loading
-                                if ($(".wp-player-outer").length === 0) {
-                                    unsafeWindow.setTimeout(replace, 500);
-                                } else {
-                                    $(".wp-player-outer").first().after($("<iframe width='100%' height='" + res[1].toString() + "'>").attr("src", url)).hide();
-                                }
-                            };
-                            replace();
+                        //Check if we found the URL
+                        if (!url || !res) {
+                            throw "Media URL Not Found";
                         }
-                    }); //End request media data JSON
+                        //Update counter
+                        loadCounter++;
+                    } catch (err) {
+                        console.error("AdBlock Protector failed to find media URL! ");
+                    }
+                }).fail(function () {
+                    console.error("AdBlock Protector failed to load media JSON! ");
+                }).always(function () {
+                    //Update flag
+                    networkBusy = false;
+                });
+            } else {
+                //Patch player
+                if ($(".wp-player-outer").length > 0) {
+                    $(".wp-player-outer").first().after($("<video width='100%' height='" + res[1].toString() + "' controls>").html("<source src='" + url +"' type='video/mp4'>")).remove();
+                    //Update variables and counter
+                    url = null;
+                    res = null;
+                    replaceCounter++;
                 }
-            }); //End request data JSON
-        });
+            }
+        };
+        //Init
+        onEvent("load", init);
     } else if (Domain.endsWith("tvregionalna24.pl")) {
         //Patch videojs to show YouTube iframe immediately - Thanks to F4z
         let text = [];
