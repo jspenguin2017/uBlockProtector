@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Quick solutions against AdBlock detectors
 // @author X01X012013
-// @version 4.0.0
+// @version 4.0.1
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -346,8 +346,62 @@
             document.getElementById(c).style.setProperty("animation", "none", "important");
             document.body.style.setProperty("visibility", "visible", "important");
         });
-    } if (Domain.endsWith("wp.pl") || Domain.endsWith("money.pl")) {
-        //Replace video player - Thanks to szymon1118
+    } else if (Domain.endsWith(".tvregionalna24.pl")) {
+        //Patch videojs to show YouTube iframe immediately - Thanks to F4z
+        let text = [];
+        setReadOnly("videojs", function (a, b, func) {
+            let temp = "(" + func.toString().match(/var _ended=(.*);var _skipButton/)[1] + ")();";
+            temp = temp.replace("player.dispose();", "");
+            text.push(temp);
+        });
+        onEvent("load", function replace() {
+            if (text.length > 0 && $(".vjs-poster").length > 0) {
+                for (let i = 0; i < text.length; i++) {
+                    unsafeWindow.eval(text[i]);
+                }
+            } else {
+                unsafeWindow.setTimeout(replace, 1000);
+            }
+        });
+    } else if (debugMode) {
+        //Debug - Log when not in partial match list
+        console.warn(Domain + " is not in AdBlock Protector's partial match list. ");
+    }
+    //tvn.pl and related (Workaround)
+    (function () {
+        //Thanks to mikhoul, szymon1118, and xxcriticxx
+        const domainExact = []; //"tvnfabula.pl", "itvnextra.pl", "tvn24bis.pl", "ttv.pl", "player.pl", "x-news.pl"
+        const domainPartial = [".tvn.pl", ".tvnstyle.pl", ".tvnturbo.pl"]; //".tvn7.pl", ".itvn.pl"
+        const homePages = ["http://www.tvn.pl/", "http://www.tvn7.pl/", "http://www.tvnstyle.pl/", "http://www.tvnturbo.pl/"];
+        //Check homepage first
+        if (homePages.includes(document.location.href)) {
+            //Home pages are currently handled by List
+        } else {
+            //Check exact domain
+            let isTVN = domainExact.includes(Domain);
+            //Check partial domain
+            for (let i = 0; i < domainPartial.length; i++) {
+                if (Domain.endsWith(domainPartial[i])) {
+                    isTVN = true;
+                    break;
+                }
+            }
+            //Apply patch
+            if (isTVN) {
+                //(Workaround) Replace the player
+                onEvent("load", function () {
+                    $(".videoPlayer").parent().after($("<iframe width='100%' height='500px'>").attr("src", $(".videoPlayer").data("src"))).remove();
+                });
+            }
+        }
+    })();
+    //wp.pl and related (Workaround)
+    (function () {
+        //Thanks to szymon1118
+        const domainEndings = [".abczdrowie.pl", ".autokrata.pl", ".autokult.pl", ".biztok.pl", ".gadzetomania.pl", ".hotmoney.pl", ".kafeteria.pl",
+                               ".kafeteria.tv", ".komediowo.pl", ".komorkomania.pl", ".money.pl", ".pudelek.tv", ".sfora.pl", ".snobka.pl",
+                               ".wawalove.pl", ".wp.pl", ".wp.tv", ".wrzuta.pl", ".pudelek.pl"];
+        //Variables
         let mid; //Media ID of next video
         let midArray = []; //Media IDs
         let url = null, res = null; //URL and resolution of next video
@@ -419,57 +473,14 @@
                 }
             }
         };
-        //Start
-        onEvent("load", function () {
-            //This function is quite light weight, we should be fine
-            unsafeWindow.setInterval(main, 1000);
-        });
-    } else if (Domain.endsWith("tvregionalna24.pl")) {
-        //Patch videojs to show YouTube iframe immediately - Thanks to F4z
-        let text = [];
-        setReadOnly("videojs", function (a, b, func) {
-            let temp = "(" + func.toString().match(/var _ended=(.*);var _skipButton/)[1] + ")();";
-            temp = temp.replace("player.dispose();", "");
-            text.push(temp);
-        });
-        onEvent("load", function replace() {
-            if (text.length > 0 && $(".vjs-poster").length > 0) {
-                for (let i = 0; i < text.length; i++) {
-                    unsafeWindow.eval(text[i]);
-                }
-            } else {
-                unsafeWindow.setTimeout(replace, 1000);
-            }
-        });
-    } else if (debugMode) {
-        //Debug - Log when not in partial match list
-        console.warn(Domain + " is not in AdBlock Protector's partial match list. ");
-    }
-    //TV Nowa (Workaround)
-    (function () {
-        //Thanks to mikhoul, szymon1118, and xxcriticxx
-        const domainExact = []; //"tvnfabula.pl", "itvnextra.pl", "tvn24bis.pl", "ttv.pl", "player.pl", "x-news.pl"
-        const domainPartial = [".tvn.pl", ".tvnstyle.pl", ".tvnturbo.pl"]; //".tvn7.pl", ".itvn.pl"
-        const homePages = ["http://www.tvn.pl/", "http://www.tvn7.pl/", "http://www.tvnstyle.pl/", "http://www.tvnturbo.pl/"];
-        //Check homepage first
-        if (homePages.includes(document.location.href)) {
-            //Home pages are currently handled by List
-        } else {
-            //Check exact domain
-            let isTVN = domainExact.includes(Domain);
-            //Check partial domain
-            for (let i = 0; i < domainPartial.length; i++) {
-                if (Domain.endsWith(domainPartial[i])) {
-                    isTVN = true;
-                    break;
-                }
-            }
-            //Apply patch
-            if (isTVN) {
-                //(Workaround) Replace the player
+        //Check domain
+        for (let i = 0; i < domainEndings.length; i++) {
+            if (Domain.endsWith(domainEndings[i])) {
                 onEvent("load", function () {
-                    $(".videoPlayer").parent().after($("<iframe width='100%' height='500px'>").attr("src", $(".videoPlayer").data("src"))).remove();
+                    //This function is quite light weight, we should be fine
+                    unsafeWindow.setInterval(main, 1000);
                 });
+                break;
             }
         }
     })();
