@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Quick solutions against AdBlock detectors
 // @author X01X012013
-// @version 3.0.20
+// @version 3.0.21
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -347,31 +347,26 @@
             document.body.style.setProperty("visibility", "visible", "important");
         });
     } if (Domain.endsWith("wp.pl") || Domain.endsWith("money.pl")) {
-        //(Workaround) Replace video player - Thanks to szymon1118
-        let data; //Data JSON
+        //Replace video player - Thanks to szymon1118
+        let mid; //Media ID of next video
+        let midArray = []; //Media IDs
         let url = null, res = null; //URL and resolution of next video
-        let replaceCounter = 0;
+        let replaceCounter = 0; //The number of video players that are replaced
         let loadCounter = 0; //The index of next item to load
-        let networkBusy = false;
-        //Load data JSON
-        const init = function () {
-            //Get tags
-            const tags = $("meta[name=keywords]").attr("content");
-            //Request data JSON
-            $.get("http://wp.tv/api/article_related.json", {
-                tags: tags,
-                domain: Domain,
-                type: "default"
-            }).done(function (response) {
-                data = response;
-                //This is very light weight, and we have a network busy flag, we should be fine
-                unsafeWindow.setInterval(loadNextVideo, 1000);
-            }).fail(function () {
-                console.error("AdBlock Protector failed to load data JSON! ");
-            });
-        };
-        //Load next video
-        const loadNextVideo = function () {
+        let networkBusy = false; //A flag to prevent sending a new request before the first one is done
+        //Main function
+        const main = function () {
+            //Check if we have more media ID
+            if ($(".wp-player-outer").length > 0) {
+                const elem = $(".wp-player-outer").first().find(".titlecont a.title");
+                let thisMid = elem.attr("href");
+                //Check if we got the element
+                if (thisMid) {
+                    midArray.push(thisMid.match(/mid[=,]([0-9]+)/)[1].toString());
+                    //We will destroy the player anyway, we can just remove this so we don't grab it twice
+                    elem.remove();
+                }
+            }
             //See if we need to load next URL
             if (loadCounter === replaceCounter) {
                 //Check flag
@@ -380,15 +375,14 @@
                 }
                 //Get media ID
                 let mid;
-                try {
-                    mid = data.clips[loadCounter].mid;
-                } catch (err) {
-                    console.error("AdBlock Protector failed to find media ID! ");
+                if (midArray.length > loadCounter) {
+                    mid = midArray[loadCounter];
+                } else {
                     return;
                 }
                 //Get media JSON, we don't need to check if mid is found since the function will return if it is not
                 networkBusy = true;
-                $.get("http://wp.tv/player/mid," + mid.toString() + ",embed.json").done(function (response) {
+                $.get("http://wp.tv/player/mid," + mid + ",embed.json").done(function (response) {
                     //Try to find media URL
                     try {
                         for (let i = 0; i < response.clip.url.length; i++) {
@@ -417,7 +411,7 @@
             } else {
                 //Patch player
                 if ($(".wp-player-outer").length > 0) {
-                    $(".wp-player-outer").first().after($("<video width='100%' height='" + res[1].toString() + "' controls>").html("<source src='" + url +"' type='video/mp4'>")).remove();
+                    $(".wp-player-outer").first().after($("<video width='100%' height='" + res[1].toString() + "' controls>").html("<source src='" + url + "' type='video/mp4'>")).remove();
                     //Update variables and counter
                     url = null;
                     res = null;
@@ -425,8 +419,11 @@
                 }
             }
         };
-        //Init
-        onEvent("load", init);
+        //Start
+        onEvent("load", function () {
+            //This function is quite light weight, we should be fine
+            unsafeWindow.setInterval(main, 1000);
+        });
     } else if (Domain.endsWith("tvregionalna24.pl")) {
         //Patch videojs to show YouTube iframe immediately - Thanks to F4z
         let text = [];
