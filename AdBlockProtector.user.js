@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 5.1
+// @version 5.2
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -409,9 +409,9 @@
             });
         }
     }
-    if (domCmp([".abczdrowie.pl", ".autokrata.pl", ".autokult.pl", ".biztok.pl", ".gadzetomania.pl", ".hotmoney.pl", ".kafeteria.pl",
-                ".kafeteria.tv", ".komediowo.pl", ".komorkomania.pl", ".money.pl", ".pudelek.tv", ".sfora.pl", ".snobka.pl",
-                ".wawalove.pl", ".wp.pl", ".wp.tv", ".wrzuta.pl", ".pudelek.pl"])) {
+    if (domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadzetomania.pl", "hotmoney.pl", "kafeteria.pl",
+                "kafeteria.tv", "komediowo.pl", "komorkomania.pl", "money.pl", "pudelek.tv", "sfora.pl", "snobka.pl",
+                "wawalove.pl", "wp.pl", "wp.tv", "wrzuta.pl", "pudelek.pl"])) {
         //Variables
         let mid; //Media ID of next video
         let midArray = []; //Media IDs
