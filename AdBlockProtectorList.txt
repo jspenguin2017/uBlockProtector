@@ -1,6 +1,6 @@
 [Adblock Plus 2.0]
 ! Title: AdBlock Protector List
-! Version: 5.1
+! Version: 5.2
 ! Expires: 1 days
 ! Homepage: https://x01x012013.github.io/AdBlockProtector/
 !
@@ -17,27 +17,12 @@ www.tvnstyle.pl##div.vjs-abDetected
 www.tvnturbo.pl##div.vjs-abDetected
 !>> pudelek.tv
 @@||pagead2.googlesyndication.com^$domain=pudelek.tv
-!>> money.pl
-@@||pagead2.googlesyndication.com^$domain=money.pl
 !>> komorkomania.pl
 komorkomania.pl###like-us-adblock-modal
 !
 !
 ! =====Anti-Adblock Killer by Reek=====
-! Title: AakList (Anti-Adblock Killer)
-! Author: Reek | http://reeksite.com/
-! Version: 10.0
-! Expires: 1 days
-! License: https://creativecommons.org/licenses/by-sa/4.0/
-! Homepage: https://github.com/reek/anti-adblock-killer/
-! Twitter: https://twitter.com/antiadbkiller
-! Contact: https://reek.github.io/anti-adblock-killer/#contact
-! Support: https://github.com/reek/anti-adblock-killer/issues
-! Contribution: https://github.com/reek/anti-adblock-killer#donate
-! WritingRules: https://adblockplus.org/filters
-! RedundantRules: https://arestwo.org/famlam/redundantRuleChecker.html
-! RegExpVisualizer http://www.regexper.com/
-!
+! Meta block is removed to prevent undesired behavior
 ! ----- Anti-Adblockers ------------------------------------------------------------------------------------------------------------------- !
 !
 ! ----- Generic ----- !
