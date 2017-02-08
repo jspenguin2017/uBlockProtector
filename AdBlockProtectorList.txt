@@ -1,24 +1,26 @@
 [Adblock Plus 2.0]
 ! Title: AdBlock Protector List
-! Version: 5.0
+! Version: 5.1
 ! Expires: 1 days
 ! Homepage: https://x01x012013.github.io/AdBlockProtector/
 !
-!>> Home page test
+!>> Installation test of homepage
 ||x01x012013.github.io/AdBlockProtector/listTest.js|
-!>> *.dogefaucet.com
+!>> dogefaucet.com
 @@||www.dogefaucet.com/static/js/ads.js|
 !>> portal.abczdrowie.pl
 @@dot.wp.pl
-!>> TV Nowa home pages (Workaround)
+!>> tvn.pl and related domains
 www.tvn.pl#div(id*=_videoDriverContent)
 www.tvn7.pl##div.vjs-abDetected
 www.tvnstyle.pl##div.vjs-abDetected
 www.tvnturbo.pl##div.vjs-abDetected
-!>> *.pudelek.tv
+!>> pudelek.tv
 @@||pagead2.googlesyndication.com^$domain=pudelek.tv
-!>> *.money.pl
+!>> money.pl
 @@||pagead2.googlesyndication.com^$domain=money.pl
+!>> komorkomania.pl
+komorkomania.pl###like-us-adblock-modal
 !
 !
 ! =====Anti-Adblock Killer by Reek=====

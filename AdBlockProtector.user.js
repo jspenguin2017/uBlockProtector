@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 5.0.0
+// @version 5.1
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -31,35 +31,42 @@
 
 (function () {
     "use strict";
-    /**
-     * Whether or not debug strings should be logged.
-     * @const {boolean}
-     */
-    const debugMode = true;
+    //=====Configurations=====
+    const debugMode = true; //Whether debug strings should be logged
+    //=====Constants=====
+    //The error message to show
+    const errMsg = "Uncaught AdBlock Error: AdBlocker detectors are not allowed on this device. ";
+    //The source of minimized jQuery Core 3.1.1
+    const jQuerySource = "https://code.jquery.com/jquery-3.1.1.min.js";
     //=====Library=====
     /**
-     * The error message to show.
-     * @const {string}
+     * Check if current domain is in the list.
+     * @function
+     * @param {Array.<string>} domList - The list of domains to compare.
+     * @returns {boolean} True if current domain is in the list, false otherwise.
      */
-    const errMsg = "Uncaught AdBlock Error: AdBlocker detectors are not allowed on this device. ";
-    /**
-     * Pointers to functions to hide.
-     * This array and {@link filterString} are parallel arrays, and is used in the function {@link hideFilters}.
-     * @var {Function}
-     */
-    let filterPointers = [];
-    /**
-     * The string values of the real functions.
-     * This array and {@link filterPointer} are parallel arrays, and is used in the function {@link hideFilters}.
-     * @var {string}
-     */
-    let filterStrings = [];
+    const domCmp = function (domList) {
+        //Loop though each element
+        for (let i = 0; i < domList.length; i++) {
+            //Check if current domain is exactly listed or ends with it
+            if (unsafeWindow.document.domain === domList[i] || unsafeWindow.document.domain.endsWith("." + domList[i])) {
+                //Show error message when matched
+                unsafeWindow.console.error(errMsg);
+                return true;
+            }
+        }
+        return false;
+    };
     /**
      * Replace Function.prototype.toString() in order to prevent filters from being detected.
      * Do not call this function multiple times.
      * @function
      * @returns {boolean} True if the operation was successful, false otherwise.
      */
+    //The pointers to filter functions, used to prevent detection
+    let filterPointers = [];
+    //The original string values of filtered functions
+    let filterStrings = [];
     const hideFilters = function () {
         //The original function
         const original = unsafeWindow.Function.prototype.toString;
@@ -84,11 +91,11 @@
             filterStrings.push(original.toString());
             //Debug - Log when activated
             if (debugMode) {
-                console.warn("Filters hidden. ");
+                unsafeWindow.console.warn("Filters hidden. ");
             }
         } catch (err) {
             //Failed to activate (will always log)
-            console.error("AdBlock Protector failed to hide filters! ");
+            unsafeWindow.console.error("AdBlock Protector failed to hide filters! ");
             return false;
         }
         return true;
@@ -112,21 +119,21 @@
         const newFunc = function () {
             //Debug - Log when called
             if (debugMode) {
-                console.warn(func + " is called with these arguments: ");
+                unsafeWindow.console.warn(func + " is called with these arguments: ");
                 for (let i = 0; i < arguments.length; i++) {
-                    console.warn(arguments[i].toString());
+                    unsafeWindow.console.warn(arguments[i].toString());
                 }
             }
             //Apply filter
             for (let i = 0; i < arguments.length; i++) {
                 if (filter.test(arguments[i].toString())) {
                     //Not allowed (will always log)
-                    return console.error(errMsg);
+                    unsafeWindow.console.error(errMsg);
                 }
             }
             //Debug - Log when passed
             if (debugMode) {
-                console.info("Tests passed. ");
+                unsafeWindow.console.info("Tests passed. ");
             }
             //Allowed
             if (typeof fNames === "object") {
@@ -155,11 +162,11 @@
             filterStrings.push(original.toString());
             //Debug - Log when activated
             if (debugMode) {
-                console.warn("Filter activated on " + func);
+                unsafeWindow.console.warn("Filter activated on " + func);
             }
         } catch (err) {
             //Failed to activate (will always log)
-            console.error("AdBlock Protector failed to activate filter on " + func + "! ");
+            unsafeWindow.console.error("AdBlock Protector failed to activate filter on " + func + "! ");
             return false;
         }
         return true;
@@ -177,27 +184,49 @@
             if (name.includes(".")) {
                 //Two layers
                 let nameArray = name.split(".");
-                Object.defineProperty(unsafeWindow[nameArray[0]], nameArray[1], {
+                unsafeWindow.Object.defineProperty(unsafeWindow[nameArray[0]], nameArray[1], {
                     value: val,
                     configurable: false,
                     writable: false
                 });
             } else {
                 //One layer
-                Object.defineProperty(unsafeWindow, name, {
+                unsafeWindow.Object.defineProperty(unsafeWindow, name, {
                     value: val,
                     configurable: false,
                     writable: false
                 });
             }
-            console.error(errMsg);
         } catch (err) {
             //Failed to activate (will always log)
-            console.error("AdBlock Protector failed to define read-only property " + name + "! ");
+            unsafeWindow.console.error("AdBlock Protector failed to define read-only property " + name + "! ");
             return false;
         }
         return true;
     };
+    /**
+     * Generate a player with controls but not autoplay.
+     * @function
+     * @param {string} width - The width of the player, can be "100%".
+     * @param {string} height - The height of the player, can be "100%".
+     * @param {string} source - The source of the video.
+     * @param {string} type - The type of the video.
+     * @returns {string} A HTML string of the video player.
+     */
+    const genPlayer = function (width, height, source, type) {
+        return `<video width='${width}' height='${height}' controls><source src='${source}' type='${type}'></video>`
+    };
+    /**
+     * Load a library to unsafeWindow.
+     * This may not work if Content Security Policy disallow it.
+     * @function
+     * @param {string} source - The source of the library.
+     */
+    const loadLibrary = function (source) {
+        let lib = unsafeWindow.document.createElement("script");
+        lib.src = source;
+        unsafeWindow.document.head.appendChild(lib);
+    }
     /**
      * Run a function when an event triggers.
      * @function
@@ -206,151 +235,140 @@
      */
     const onEvent = function (event, func) {
         unsafeWindow.addEventListener(event, func);
-        console.error(errMsg);
     };
-    /**
-     * Shortcut to document.domain.
-     * @const {string}
-     */
-    const Domain = document.domain;
-    //=====Main=====
+    //=====Init=====
     //Hide filters
     hideFilters();
     //Debug - Log domain
     if (debugMode) {
-        console.warn("Domain: " + Domain);
+        unsafeWindow.console.warn("Domain: " + unsafeWindow.document.domain);
     }
-    //Exact matching
-    switch (Domain) {
-        case "www.blockadblock.com":
-        case "blockadblock.com":
-            //Disable eval() and remove element with ID babasbmsgx on load
-            activateFilter("eval");
-            onEvent("load", function () {
-                $("#babasbmsgx").remove();
-            });
-            break;
-        case "sc2casts.com":
-            //Lock scriptfailed() and disable setTimeout()
-            setReadOnly("scriptfailed", function () { });
-            activateFilter("setTimeout");
-            break;
-        case "infotainment.jagranjunction.com":
-            //Lock canRunAds and isAdsDisplayed to true
-            setReadOnly("canRunAds", true);
-            setReadOnly("isAdsDisplayed", true);
-            break;
-        case "www.usapoliticstoday.com":
-            //Disable eval()
-            activateFilter("eval");
-            break;
-        case "ay.gy":
-            //This fix is currently better than AAK's fix, so we are keeping this for now
-            //Disable open() before page starts to load and set abgo to an empty function when the page loads
-            setReadOnly("open", function () { });
-            onEvent("load", function () {
-                unsafeWindow.abgo = function () { };
-            });
-            //Skip countdown
-            const _setInterval = unsafeWindow.setInterval;
-            unsafeWindow.setInterval = function (func) {
-                return _setInterval(func, 10);
-            };
-            break;
-        case "www.jansatta.com":
-            //Lock RunAds to true
-            setReadOnly("RunAds", true);
-            break;
-        case "www.livemint.com":
-            //Lock canRun1 to true
-            setReadOnly("canRun1", true);
-            break;
-        case "userscloud.com":
-            //Show hidden div and remove block screen
-            onEvent("load", function () {
-                $("#dl_link").show();
-                $("#adblock_msg").remove();
-            });
-            break;
-        case "www.vidlox.tv":
-        case "vidlox.tv":
-            //Lock xRds to false and cRAds to true
-            setReadOnly("xRds", false);
-            setReadOnly("cRAds", true);
-            break;
-        case "www.cwtv.com":
-        case "cwtv.com":
-            //Lock wallConfig to false - Thanks to szymon1118
-            setReadOnly("wallConfig", false);
-            break;
-        case "www.theinquirer.net":
-            //Lock _r3z to true
-            setReadOnly("_r3z", true);
-            break;
-        case "www.tweaktown.com":
-            //(Workaround) Apply important styles and remove block screen
-            onEvent("load", function () {
-                //Force enable scrolling
-                $("head").append("<style> html, body { overflow: scroll !important; } </style>");
-                //Watch and remove block screen
-                const blockScreenRemover = function () {
-                    if ($("body").children("div").last().text().indexOf("Ads slowing you down?") > -1) {
-                        $("body").children("div").last().remove();
-                        $("body").children("div").last().remove();
-                    } else {
-                        setTimeout(blockScreenRemover, 500);
-                    }
-                };
-                setTimeout(blockScreenRemover, 500);
-            });
-            break;
-        case "www.ratemyprofessors.com":
-            //Lock adBlocker to false and prevent listening resize event (window self-destroys on resize, bug or feature?)
-            setReadOnly("adBlocker", false);
-            activateFilter("addEventListener", "/resize/i");
-            break;
-        case "tvrain.ru":
-            //(Workaround) Load all.js and run it in sloppy mode
-            onEvent("load", function () {
-                const source = $("script[src*='/static/app/build/all.js']").attr("src");
-                GM_xmlhttpRequest({
-                    method: "GET",
-                    url: source,
-                    onload: function (response) {
-                        unsafeWindow.eval(response.responseText.replace(/\"use strict\";/g, ""));
-                    }
-                });
-            });
-            break;
-        default:
-            //Debug - Log when not in exact match list
-            if (debugMode) {
-                console.warn(Domain + " is not in AdBlock Protector's exact match list. ");
-            }
-            break;
-    }
-    //Partial matching
-    if (Domain === "x01x012013.github.io" && document.location.href.includes("x01x012013.github.io/AdBlockProtector")) {
+    //=====Rules=====
+    if (domCmp(["x01x012013.github.io"]) && unsafeWindow.document.location.href.includes("x01x012013.github.io/AdBlockProtector")) {
         //Installation test of homepage
         unsafeWindow.AdBlock_Protector_Script = true;
-    } else if (Domain.endsWith(".gamepedia.com")) {
+    }
+    if (domCmp(["blockadblock.com"])) {
+        //Disable eval() and remove element with ID babasbmsgx on load
+        activateFilter("eval");
+        onEvent("load", function () {
+            $("#babasbmsgx").remove();
+        });
+    }
+    if (domCmp(["sc2casts.com"])) {
+        //Lock scriptfailed() and disable setTimeout()
+        setReadOnly("scriptfailed", function () { });
+        activateFilter("setTimeout");
+    }
+    if (domCmp(["jagranjunction.com"])) {
+        //Lock canRunAds and isAdsDisplayed to true
+        setReadOnly("canRunAds", true);
+        setReadOnly("isAdsDisplayed", true);
+    }
+    if (domCmp(["usapoliticstoday.com"])) {
+        //Disable eval()
+        activateFilter("eval");
+    }
+    if (domCmp(["ay.gy"])) {
+        //This fix is currently better than AAK's fix, so we are keeping this for now
+        //Disable open() before page starts to load and set abgo to an empty function when the page loads
+        setReadOnly("open", function () { });
+        onEvent("load", function () {
+            unsafeWindow.abgo = function () { };
+        });
+        //Skip countdown
+        const _setInterval = unsafeWindow.setInterval;
+        unsafeWindow.setInterval = function (func) {
+            return _setInterval(func, 10);
+        };
+    }
+    if (domCmp(["jansatta.com"])) {
+        //Lock RunAds to true
+        setReadOnly("RunAds", true);
+    }
+    if (domCmp(["livemint.com"])) {
+        //Lock canRun1 to true
+        setReadOnly("canRun1", true);
+    }
+    if (domCmp(["userscloud.com"])) {
+        //Show hidden div and remove block screen
+        onEvent("load", function () {
+            $("#dl_link").show();
+            $("#adblock_msg").remove();
+        });
+    }
+    if (domCmp(["vidlox.tv"])) {
+        //NSFW!
+        //Lock xRds to false and cRAds to true
+        setReadOnly("xRds", false);
+        setReadOnly("cRAds", true);
+    }
+    if (domCmp(["cwtv.com"])) {
+        //Lock wallConfig to false - Thanks to szymon1118
+        setReadOnly("wallConfig", false);
+    }
+    if (domCmp(["theinquirer.net"])) {
+        //Lock _r3z to true
+        setReadOnly("_r3z", true);
+    }
+    if (domCmp(["tweaktown.com"])) {
+        //(Workaround) Apply important styles and remove block screen
+        onEvent("load", function () {
+            //Force enable scrolling
+            $("head").append("<style> html, body { overflow: scroll !important; } </style>");
+            //Watch and remove block screen
+            const blockScreenRemover = function () {
+                if ($("body").children("div").last().text().indexOf("Ads slowing you down?") > -1) {
+                    $("body").children("div").last().remove();
+                    $("body").children("div").last().remove();
+                } else {
+                    setTimeout(blockScreenRemover, 500);
+                }
+            };
+            setTimeout(blockScreenRemover, 500);
+        });
+    }
+    if (domCmp(["ratemyprofessors.com"])) {
+        //Lock adBlocker to false and prevent listening resize event (window self-destroys on resize, bug or feature?)
+        setReadOnly("adBlocker", false);
+        activateFilter("addEventListener", "/resize/i");
+    }
+    if (domCmp(["tvrain.ru"])) {
+        //(Workaround) Load all.js and run it in sloppy mode
+        onEvent("load", function () {
+            const source = $("script[src*='/static/app/build/all.js']").attr("src");
+            GM_xmlhttpRequest({
+                method: "GET",
+                url: source,
+                onload: function (response) {
+                    unsafeWindow.eval(response.responseText.replace(/\"use strict\";/g, ""));
+                }
+            });
+        });
+    }
+    if (domCmp(["gamepedia.com"])) {
         //(Workaround) Remove element
         onEvent("load", function () {
             $("#atflb").remove();
         });
-    } else if (Domain.endsWith(".cbox.ws")) {
+    }
+    if (domCmp(["cbox.ws"])) {
         //Lock koddostu_com_adblock_yok to true
         setReadOnly("koddostu_com_adblock_yok", true);
-    } else if (Domain.endsWith(".ahmedabadmirror.com")) {
+    }
+    if (domCmp(["ahmedabadmirror.com"])) {
         //Filter keyword from document.addEventListener()
         activateFilter("document.addEventListener", /function \_0x/);
         //document.addEventListener should not be native code, but they are expecting native code
         filterStrings[1] = "function addEventListener() { [native code] }";
-    } else if (Domain.endsWith(".pinkrod.com") || Domain.endsWith(".wetplace.com")) {
+    }
+    if (domCmp(["pinkrod.com", "wetplace.com"])) {
+        //NSFW!
         //Lock getAd and getUtm to an empty function
         setReadOnly("getAd", function () { });
         setReadOnly("getUtm", function () { });
-    } else if (Domain.includes(".hackintosh.")) {
+    }
+    if (unsafeWindow.document.domain.includes(".hackintosh.")) {
         //Undo BlockAdblock styles
         setReadOnly("eval", function () {
             var c = "babasbmsgx";
@@ -360,7 +378,8 @@
             document.getElementById(c).style.setProperty("animation", "none", "important");
             document.body.style.setProperty("visibility", "visible", "important");
         });
-    } else if (Domain.endsWith(".tvregionalna24.pl")) {
+    }
+    if (domCmp(["tvregionalna24.pl"])) {
         //Patch videojs to show YouTube iframe immediately - Thanks to F4z
         let text = [];
         setReadOnly("videojs", function (a, b, func) {
@@ -377,44 +396,22 @@
                 unsafeWindow.setTimeout(replace, 1000);
             }
         });
-    } else if (debugMode) {
-        //Debug - Log when not in partial match list
-        console.warn(Domain + " is not in AdBlock Protector's partial match list. ");
     }
-    //tvn.pl and related (Workaround)
-    (function () {
-        //Thanks to mikhoul, szymon1118, and xxcriticxx
-        const domainExact = []; //"tvnfabula.pl", "itvnextra.pl", "tvn24bis.pl", "ttv.pl", "player.pl", "x-news.pl"
-        const domainPartial = [".tvn.pl", ".tvnstyle.pl", ".tvnturbo.pl"]; //".tvn7.pl", ".itvn.pl"
+    if (domCmp(["tvn.pl", "tvnstyle.pl", "tvnturbo.pl"])) {
+        //tvn.pl and related
+        //(Workaround) Replace player - Thanks to mikhoul, szymon1118, and xxcriticxx
+        //Potential related domains:  "tvnfabula.pl", "itvnextra.pl", "tvn24bis.pl", "ttv.pl", "player.pl", "x-news.pl", "tvn7.pl", "itvn.pl"
         const homePages = ["http://www.tvn.pl/", "http://www.tvn7.pl/", "http://www.tvnstyle.pl/", "http://www.tvnturbo.pl/"];
-        //Check homepage first
-        if (homePages.includes(document.location.href)) {
-            //Home pages are currently handled by List
-        } else {
-            //Check exact domain
-            let isTVN = domainExact.includes(Domain);
-            //Check partial domain
-            for (let i = 0; i < domainPartial.length; i++) {
-                if (Domain.endsWith(domainPartial[i])) {
-                    isTVN = true;
-                    break;
-                }
-            }
-            //Apply patch
-            if (isTVN) {
-                //(Workaround) Replace the player
-                onEvent("load", function () {
-                    $(".videoPlayer").parent().after($("<iframe width='100%' height='500px'>").attr("src", $(".videoPlayer").data("src"))).remove();
-                });
-            }
+        //Homepages are partially fixed and are handled by List
+        if (!homePages.includes(unsafeWindow.document.location.href)) {
+            onEvent("load", function () {
+                $(".videoPlayer").parent().after($("<iframe width='100%' height='500px'>").attr("src", $(".videoPlayer").data("src"))).remove();
+            });
         }
-    })();
-    //wp.pl and related (Workaround)
-    (function () {
-        //Thanks to szymon1118
-        const domainEndings = [".abczdrowie.pl", ".autokrata.pl", ".autokult.pl", ".biztok.pl", ".gadzetomania.pl", ".hotmoney.pl", ".kafeteria.pl",
-                               ".kafeteria.tv", ".komediowo.pl", ".komorkomania.pl", ".money.pl", ".pudelek.tv", ".sfora.pl", ".snobka.pl",
-                               ".wawalove.pl", ".wp.pl", ".wp.tv", ".wrzuta.pl", ".pudelek.pl"];
+    }
+    if (domCmp([".abczdrowie.pl", ".autokrata.pl", ".autokult.pl", ".biztok.pl", ".gadzetomania.pl", ".hotmoney.pl", ".kafeteria.pl",
+                ".kafeteria.tv", ".komediowo.pl", ".komorkomania.pl", ".money.pl", ".pudelek.tv", ".sfora.pl", ".snobka.pl",
+                ".wawalove.pl", ".wp.pl", ".wp.tv", ".wrzuta.pl", ".pudelek.pl"])) {
         //Variables
         let mid; //Media ID of next video
         let midArray = []; //Media IDs
@@ -479,7 +476,7 @@
             } else {
                 //Patch player
                 if ($(".wp-player-outer").length > 0) {
-                    $(".wp-player-outer").first().after($("<video width='100%' height='" + res[1].toString() + "' controls>").html("<source src='" + url + "' type='video/mp4'>")).remove();
+                    $(".wp-player-outer").first().after(genPlayer("100%", res[1].toString(), url, "video/mp4")).remove();
                     //Update variables and counter
                     url = null;
                     res = null;
@@ -487,17 +484,16 @@
                 }
             }
         };
-        //Check domain
-        for (let i = 0; i < domainEndings.length; i++) {
-            if (Domain.endsWith(domainEndings[i])) {
-                onEvent("load", function () {
-                    //This function is quite light weight, we should be fine
-                    unsafeWindow.setInterval(main, 1000);
-                });
-                break;
+        //Init
+        onEvent("load", function () {
+            //Check if jQuery is present
+            if (!$) {
+                loadLibrary(jQuerySource);
             }
-        }
-    })();
+            //This function is quite light weight, we should be fine
+            unsafeWindow.setInterval(main, 1000);
+        });
+    }
 })();
 
 // =====Anti-Adblock Killer by Reek=====
