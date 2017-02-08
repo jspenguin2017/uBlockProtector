@@ -61,7 +61,8 @@
     <div class="jumbotron">
         <div class="container">
             <h1>AdBlock Protector</h1>
-            <p>Quick solutions against AdBlock detectors</p>
+            <p>Ultimate solution against AdBlock detectors</p>
+            <p>Powered by <a href="https://github.com/reek/anti-adblock-killer" target="_blank">Anti-Adblock Killer 10.0</a> (by Reek)</p>
             <p>It can take a few seconds to check installation, please look into any issues in your configuration if any of the warning messages below do not disappear 5 seconds after page loads. </p>
             <div id="banner-ads">
                 <p style="color:red;">Your AdBlocker is not enabled! </p>
@@ -95,21 +96,8 @@
     <div class="jumbotron">
         <div class="container">
             <h2>How to protect my AdBlockers? </h2>
-            <p>1. Adblock Warning Removal List (Check your AdBlocker settings)</p>
-            <p>2. <a href="https://github.com/reek/anti-adblock-killer" target="_blank">Anti-Adblock Killer</a></p>
-            <p>3. <a href="#how" class="howLink">This project: AdBlock Protector</a></p>
-            <p style="color:red;"><strong>Make sure to install AdBlock Protector LAST for compatibility! </strong></p>
-            <p style="color:darkred;"><strong>When a protection mechanism is implemented into Anti-Adblock Killer, it will be removed from this one. This project is meant to be a quick solution while waiting for Anti-Adblock Killer to update. You should keep all of these projects installed. </strong></p>
-            <br />
-            <p>Looks like Reek, the author of Anti-Adblock Killer disappeared again, should we merge Anti-Adblock Killer into this project? <a href="https://github.com/X01X012013/AdBlockProtector/issues/44" target="_blank">Let me know. </a></p>
-        </div>
-    </div>
-    <!-- Why not create pull requests to existing projects? -->
-    <div class="jumbotron">
-        <div class="container">
-            <h2>Why not create pull requests to existing projects? </h2>
-            <p>It will take time before it gets added, and our goal is quick solutions. </p>
-            <p>Some of our codes can be unstable or inefficient, but that is the tradeoff for quick solutions. </p>
+            <p>1. Enable Adblock Warning Removal List (Check your AdBlocker settings)</p>
+            <p>2. <a href="#how" class="howLink">Install AdBlock Protector</a></p>
         </div>
     </div>
     <!-- How do I use it? -->
@@ -121,20 +109,16 @@
             <br />
             <p><strong>Setups we support: </strong></p>
             <p>Browser: Opera (desktop), Chrome (desktop), Firefox (desktop)</p>
-            <p>Script host: Tampermonkey (desktop), Greasemonkey(unsafe) (desktop)</p>
+            <p>Script host: Tampermonkey (desktop)</p>
+            <p><i>Note: script host Greasemonkey is known to not work. </i></p>
             <p>AdBocker: Adblock Plus (desktop)</p>
-            <p><i>Support for Android is coming soon! </i></p>
-            <p><i>We might drop Greasemonkey support soon. </i></p>
+            <p><i>Android support coming soon! </i></p>
             <br />
             <p><strong>Install links: </strong></p>
             <p>1. <a href="https://x01x012013.github.io/AdBlockProtector/AdBlockProtector.user.js">Userscript</a></p>
             <p>2. <a href="abp:subscribe?location=https://x01x012013.github.io/AdBlockProtector/AdBlockProtectorList.txt&title=Adblock Protector List">List</a></p>
             <p><strong>Note: </strong>You need both the Userscript and the List. </p>
-            <p><strong>Note: </strong><a href="#special" id="specialLink">Click here</a> to see if there is something you need to know about your website. </p>
-            <br />
-            <p><strong>Special install link for Greasemonkey: </strong></p>
-            <p>Instead of using the Userscript install link above, use <a href="https://x01x012013.github.io/AdBlockProtector/AdBlockProtector.Dropper.user.js">this dropper</a>. You still need to install List from above. </p>
-            <p><strong style="color:red;">Warning: </strong>Because of the broken security policies of Greasemonkey, we have no other choice to expose privileged functions. These functions can be abused to steal your information. If this concerns you, please use Tampermonkey as script host. </p>
+            <p><strong>Note: </strong><a href="#special" id="specialLink">Click here</a> to see the list of supported websites. </p>
         </div>
     </div>
     <!-- How do I report a bug or a website? -->
@@ -147,8 +131,8 @@
     </div>
     <!-- Which websites are supported? -->
     <div class="jumbotron">
-        <div class="container">
-            <h2>Which websites are supported? </h2>
+        <div class="container" id="special">
+            <h2>Which websites are supported? [This section needs to be cleaned up]</h2>
             <p>Please use Ctrl+F to search if needed. </p>
             <!-- Script -->
             <h3>Script: </h3>
@@ -181,7 +165,7 @@
                 <li>*.money.pl</li>
             </ol>
             <!-- Workaround -->
-            <h3 id="special">Workarounds that you might want to know: </h3>
+            <h3>Workarounds that you might want to know: </h3>
             <ol>
                 <li>www.tweaktown.com [Script] - Block screen will show for a split second</li>
                 <li>tvrain.ru [Script] - Some functionalities may not work properly</li>
@@ -189,6 +173,7 @@
                 <li>tvn.pl and <a href="https://github.com/X01X012013/AdBlockProtector/blob/gh-pages/Related%20Domains.md" target="_blank">related domains</a> [Script] - It may take a few seconds to replace the player, home page video does not play</li>
                 <li>wp.pl and <a href="https://github.com/X01X012013/AdBlockProtector/blob/gh-pages/Related%20Domains.md" target="_blank">related domains</a> [Script] - It may take a few seconds to replace the player</li>
             </ol>
+            <h3>And all websites supported by <a href="https://github.com/reek/anti-adblock-killer" target="_blank">Anti-Adblock Killer</a></h3>
         </div>
     </div>
     <!-- Source code -->
@@ -197,10 +182,6 @@
             <h2>Source code and license</h2>
             <p><a href="https://github.com/X01X012013/AdBlockProtector" target="_blank">View on GitHub</a></p>
         </div>
-    </div>
-    <!-- Footer -->
-    <div class="container theme-showcase">
-        <a style="color:gray; font-size:12px;" href="https://X01X012013.github.io/Global/license.html" target="_blank">AdBlock Protector by X01X012013 - Click to view license</a>
     </div>
 </body>
 </html>
