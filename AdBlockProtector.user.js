@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 5.2
+// @version 5.3
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -405,7 +405,7 @@
         //Homepages are partially fixed and are handled by List
         if (!homePages.includes(unsafeWindow.document.location.href)) {
             onEvent("load", function () {
-                $(".videoPlayer").parent().after($("<iframe width='100%' height='500px'>").attr("src", $(".videoPlayer").data("src"))).remove();
+                $(".videoPlayer").parent().after(genPlayer("100%", "500px", $(".videoPlayer").data("src"), "video/mp4")).remove();
             });
         }
     }
@@ -465,10 +465,10 @@
                         //Update counter
                         loadCounter++;
                     } catch (err) {
-                        console.error("AdBlock Protector failed to find media URL! ");
+                        unsafeWindow.console.error("AdBlock Protector failed to find media URL! ");
                     }
                 }).fail(function () {
-                    console.error("AdBlock Protector failed to load media JSON! ");
+                    unsafeWindow.console.error("AdBlock Protector failed to load media JSON! ");
                 }).always(function () {
                     //Update flag
                     networkBusy = false;
