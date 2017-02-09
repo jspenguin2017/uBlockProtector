@@ -1,6 +1,6 @@
 [Adblock Plus 2.0]
 ! Title: AdBlock Protector List
-! Version: 5.2
+! Version: 5.3
 ! Expires: 1 days
 ! Homepage: https://x01x012013.github.io/AdBlockProtector/
 !
@@ -19,6 +19,8 @@ www.tvnturbo.pl##div.vjs-abDetected
 @@||pagead2.googlesyndication.com^$domain=pudelek.tv
 !>> komorkomania.pl
 komorkomania.pl###like-us-adblock-modal
+!>> NSFW! zone-anime.net
+zone-anime.net###adblockinfo
 !
 !
 ! =====Anti-Adblock Killer by Reek=====
