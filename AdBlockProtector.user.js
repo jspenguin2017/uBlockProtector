@@ -211,7 +211,7 @@
      * @param {string} [width="100%"] - The width of the player, can be "100%".
      * @param {string} [height="auto"] - The height of the player, can be "100%".
      * @param {string} [type=Auto Detect] - The type of the video, will be automatically detected if not supplied.
-     * @returns {string} A HTML string of the video player.
+     * @returns {string} An HTML string of the video player.
      */
     const genNativePlayer = function (source, widthIn, heightIn, typeIn) {
         //Check width and height
