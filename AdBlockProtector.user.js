@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 5.5
+// @version 5.6
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -4420,6 +4420,7 @@
                     Aak.setCookie('ABCABC', true);
                 },
                 onIdle: function () {
+                    return; //Fixed in AdBlock Protector
 
                     Aak.hasElement('.wp-player', function () {
 
@@ -4549,6 +4550,8 @@
                 // test: http://tinyurl.com/o6d9h66, http://tinyurl.com/z77m4zh
                 host: ['tvn.pl', 'tvn24.pl', 'player.pl'],
                 onEnd: function () {
+                    return; //Fixed in AdBlock Protector
+
                     Aak.hasElement('header.detailImage', function (thisElement) {
                         if (Aak.getCookie('country_code') && Aak.getSession('generateToken')) {
                             var parts = document.location.href.split(/[.,]/);
@@ -4838,6 +4841,8 @@
                 // test: http://tinyurl.com/nwp85t, http://tinyurl.com/nwp85t
                 host: ['vgtv.no', 'vg.no'],
                 onEnd: function () {
+                    return; //Code commented out by Reek
+
                     var oldHash = null;
                     var videoId = null;
                     var videoIdRegex = /#\!\/video\/(\d+)\//;
@@ -5011,6 +5016,19 @@
                 host: ['rutube.ru'],
                 onEnd: function () {
                     Aak.hasElement('#rutubePlayerHolder', function () {            //dmFyIG9wdHMgPSBBYWsuZ2V0RWxlbWVudCgiI29wdGlvbnMiKTsNCiAgICAgICAgICAgIHZhciBvID0gQWFrLmludG9PYmplY3Qob3B0cy5kYXRhc2V0LnZhbHVlKTsNCiAgICAgICAgICAgIHZhciBtM3U4VXJsID0gby52aWRlb19iYWxhbmNlci5tM3U4Ow0KICAgICAgICAgICAgY29uc29sZS5sb2cobTN1OFVybCk7DQoNCiAgICAgICAgICAgIHZhciBQbGF5ZXIgPSBuZXcgQWFrLnBsYXllcigpOw0KICAgICAgICAgICAgUGxheWVyLnZpZGVvanMoJyNydXR1YmVQbGF5ZXJIb2xkZXInLCB7DQogICAgICAgICAgICAgICAgc291cmNlIDogbTN1OFVybCwNCiAgICAgICAgICAgICAgICB0eXBlIDogJ2hscycsDQogICAgICAgICAgICAgICAgLy9wcm94eTogdHJ1ZSwNCiAgICAgICAgICAgICAgICBhdXRvcGxheSA6IHRydWUNCiAgICAgICAgICAgICAgfTsgKTs=
+                        /* decode: 
+                        var opts = Aak.getElement("#options");
+            var o = Aak.intoObject(opts.dataset.value);
+            var m3u8Url = o.video_balancer.m3u8;
+            console.log(m3u8Url);
+
+            var Player = new Aak.player();
+            Player.videojs('#rutubePlayerHolder', {
+                source : m3u8Url,
+                type : 'hls',
+                //proxy: true,
+                autoplay : true
+              }; );*/
                     });
                 }
             },
