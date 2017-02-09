@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 5.4
+// @version 5.5
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -205,15 +205,40 @@
         return true;
     };
     /**
-     * Generate a player with controls but not autoplay.
+     * Generate a native HTML5 player with controls but not autoplay.
      * @function
-     * @param {string} width - The width of the player, can be "100%".
-     * @param {string} height - The height of the player, can be "100%".
      * @param {string} source - The source of the video.
-     * @param {string} type - The type of the video.
+     * @param {string} [width="100%"] - The width of the player, can be "100%".
+     * @param {string} [height="auto"] - The height of the player, can be "100%".
+     * @param {string} [type=Auto Detect] - The type of the video, will be automatically detected if not supplied.
      * @returns {string} A HTML string of the video player.
      */
-    const genPlayer = function (width, height, source, type) {
+    const genNativePlayer = function (source, widthIn, heightIn, typeIn) {
+        //Check width and height
+        const width = widthIn || "100%";
+        const height = heightIn || "auto";
+        //Detect type
+        let type;
+        if (typeIn) {
+            type = typeIn;
+        } else {
+            const temp = source.split(".");
+            switch (temp[temp.length - 1]) {
+                case "webm":
+                    type = "video/webm";
+                    break;
+                case "mp4":
+                    type = "video/mp4";
+                    break;
+                case "ogg":
+                    type = "video/ogg";
+                    break;
+                default:
+                    type = "video/mp4";
+                    break;
+            }
+        }
+        //Construct HTML string
         return `<video width='${width}' height='${height}' controls><source src='${source}' type='${type}'></video>`
     };
     /**
@@ -403,7 +428,7 @@
         //Homepages are partially fixed and are handled by List
         if (!homePages.includes(unsafeWindow.document.location.href)) {
             onEvent("load", function () {
-                $(".videoPlayer").parent().after(genPlayer("100%", "500px", $(".videoPlayer").data("src"), "video/mp4")).remove();
+                $(".videoPlayer").parent().after(genNativePlayer($(".videoPlayer").data("src"))).remove();
             });
         }
     }
@@ -413,7 +438,7 @@
         //Variables
         let mid; //Media ID of next video
         let midArray = []; //Media IDs
-        let url = null, res = null; //URL and resolution of next video
+        let url = null; //URL of the next video
         let replaceCounter = 0; //The number of video players that are replaced
         let loadCounter = 0; //The index of next item to load
         let networkBusy = false; //A flag to prevent sending a new request before the first one is done
@@ -452,12 +477,11 @@
                             let item = response.clip.url[i];
                             if (item.quality === "HQ" && item.type.startsWith("mp4")) {
                                 url = item.url;
-                                res = item.resolution.split("x");
                                 break;
                             }
                         }
                         //Check if we found the URL
-                        if (!url || !res) {
+                        if (!url) {
                             throw "Media URL Not Found";
                         }
                         //Update counter
@@ -474,10 +498,9 @@
             } else {
                 //Patch player
                 if ($(".wp-player-outer").length > 0) {
-                    $(".wp-player-outer").first().after(genPlayer("100%", res[1].toString(), url, "video/mp4")).remove();
+                    $(".wp-player-outer").first().after(genNativePlayer(url)).remove();
                     //Update variables and counter
                     url = null;
-                    res = null;
                     replaceCounter++;
                 }
             }
