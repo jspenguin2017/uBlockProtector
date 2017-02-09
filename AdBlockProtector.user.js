@@ -211,8 +211,8 @@
      * @function
      * @param {string} source - The source of the video.
      * @param {string} [typeIn=Auto Detect] - The type of the video, will be automatically detected if not supplied.
-     * @param {string} [widthIn="100%"] - The width of the player, can be "100%".
-     * @param {string} [heightIn="auto"] - The height of the player, can be "100%".
+     * @param {string} [widthIn="100%"] - The width of the player.
+     * @param {string} [heightIn="auto"] - The height of the player.
      * @returns {string} An HTML string of the video player.
      */
     const genNativePlayer = function (source, typeIn, widthIn, heightIn) {
@@ -233,6 +233,7 @@
                     type = "video/ogg";
                     break;
                 default:
+                    //Defaults to MP4
                     type = "video/mp4";
                     break;
             }
