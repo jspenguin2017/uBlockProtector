@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 5.6
+// @version 5.7
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -33,6 +33,8 @@
     "use strict";
     //=====Configurations=====
     const debugMode = true; //Whether debug strings should be logged
+    const facebookModJumpToTop = true; //Whether Jump To Top button should be added to Facebook page
+    const facebookModHidePeopleYouMayKnow = true; //Whether People You May Know should be hidden from Facebook
     //=====Constants=====
     //The error message to show
     const errMsg = "Uncaught AdBlock Error: AdBlocker detectors are not allowed on this device. ";
@@ -208,15 +210,12 @@
      * Generate a native HTML5 player with controls but not autoplay.
      * @function
      * @param {string} source - The source of the video.
-     * @param {string} [width="100%"] - The width of the player, can be "100%".
-     * @param {string} [height="auto"] - The height of the player, can be "100%".
-     * @param {string} [type=Auto Detect] - The type of the video, will be automatically detected if not supplied.
+     * @param {string} [typeIn=Auto Detect] - The type of the video, will be automatically detected if not supplied.
+     * @param {string} [widthIn="100%"] - The width of the player, can be "100%".
+     * @param {string} [heightIn="auto"] - The height of the player, can be "100%".
      * @returns {string} An HTML string of the video player.
      */
-    const genNativePlayer = function (source, widthIn, heightIn, typeIn) {
-        //Check width and height
-        const width = widthIn || "100%";
-        const height = heightIn || "auto";
+    const genNativePlayer = function (source, typeIn, widthIn, heightIn) {
         //Detect type
         let type;
         if (typeIn) {
@@ -238,6 +237,9 @@
                     break;
             }
         }
+        //Assign width and height
+        const width = widthIn || "100%";
+        const height = heightIn || "auto";
         //Construct HTML string
         return `<video width='${width}' height='${height}' controls><source src='${source}' type='${type}'></video>`
     };
@@ -272,6 +274,75 @@
     if (domCmp(["x01x012013.github.io"]) && unsafeWindow.document.location.href.includes("x01x012013.github.io/AdBlockProtector")) {
         //Installation test of homepage
         unsafeWindow.AdBlock_Protector_Script = true;
+    }
+    if (domCmp(["facebook.com"])) {
+        //Add Jump To Top button
+        if (facebookModJumpToTop) {
+            //Stop if the button already exist, this shouldn't be needed, but just to be sure
+            if ($("#fbtools_jumptotop_btn").length > 0) {
+                return;
+            }
+            //Check if the nav bar is there
+            const navBar = $("div[role='navigation']");
+            if (navBar.length) {
+                //Present, insert button
+                navBar.first().append(`<div class="_4kny _2s24" id="fbtools_jumptotop_btn"><div class="_4q39"><a class="_2s25" href="javascript: void(0);">Top</a></div></div>`);
+                $("#fbtools_jumptotop_btn").click(function () {
+                    $("html, body").scrollTop(0);
+                });
+            } else {
+                //Not there yet, we'll wait a little bit for the window to load
+                unsafeWindow.setTimeout(jumpToTop, 1000);
+            }
+        }
+        //Hide People You May Know
+        if (facebookModHidePeopleYouMayKnow) {
+            //Based on Facebook unsponsored by solskido
+            //https://greasyfork.org/en/scripts/22210-facebook-unsponsored
+            const hidePeopleYouMayKnow = function () {
+                //If body is not loaded, we'll wait a bit, for some reason load event isn't working
+                if (!$("body").length) {
+                    unsafeWindow.setTimeout(hidePeopleYouMayKnow, 1000);
+                    return;
+                }
+                //Selector constants
+                const streamSelector = "div[id^='topnews_main_stream']";
+                const feedSelector = "div[id^='hyperfeed_story_id']";
+                const badSelectors = ["a[href^='/friends/requests/']"];
+                //Mutation handler
+                const handler = function () {
+                    const stream = unsafeWindow.document.querySelector(streamSelector);
+                    if (!stream) {
+                        return;
+                    }
+                    const feed = stream.querySelectorAll(feedSelector);
+                    if (!feed.length) {
+                        return;
+                    }
+                    for (let i = 0; i < feed.length; i++) {
+                        remove(feed[i]);
+                    }
+                };
+                //Feed remover
+                const remove = function (feed) {
+                    if (!feed) {
+                        return;
+                    }
+                    for (let i = 0; i < badSelectors.length; i++) {
+                        if (feed.querySelectorAll(badSelectors[i]).length) {
+                            feed.remove();
+                        }
+                    }
+                };
+                //Set up mutation observer
+                const observer = new unsafeWindow.MutationObserver(handler);
+                observer.observe(unsafeWindow.document.querySelector("body"), {
+                    "childList": true,
+                    "subtree": true
+                });
+            };
+            hidePeopleYouMayKnow();
+        }
     }
     if (domCmp(["blockadblock.com"])) {
         //Disable eval() and remove element with ID babasbmsgx on load
