@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 5.7
+// @version 5.8
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -277,70 +277,74 @@
     }
     if (domCmp(["facebook.com"])) {
         //Add Jump To Top button
-        if (facebookModJumpToTop) {
+        const addJumpToTop = function () {
             //Stop if the button already exist, this shouldn't be needed, but just to be sure
-            if ($("#fbtools_jumptotop_btn").length > 0) {
+            if (unsafeWindow.document.querySelector("#fbtools_jumptotop_btn")) {
                 return;
             }
             //Check if the nav bar is there
-            const navBar = $("div[role='navigation']");
-            if (navBar.length) {
+            const navBar = unsafeWindow.document.querySelector("div[role='navigation']");
+            if (navBar) {
                 //Present, insert button
-                navBar.first().append(`<div class="_4kny _2s24" id="fbtools_jumptotop_btn"><div class="_4q39"><a class="_2s25" href="javascript: void(0);">Top</a></div></div>`);
-                $("#fbtools_jumptotop_btn").click(function () {
-                    $("html, body").scrollTop(0);
+                navBar.insertAdjacentHTML("beforeend", `<div class="_4kny _2s24" id="fbtools_jumptotop_btn"><div class="_4q39"><a class="_2s25" href="javascript: void(0);">Top</a></div></div>`);
+                unsafeWindow.document.querySelector("#fbtools_jumptotop_btn").addEventListener("click", function () {
+                    unsafeWindow.scrollTo(unsafeWindow.scrollX, 0);
                 });
             } else {
-                //Not there yet, we'll wait a little bit for the window to load
-                unsafeWindow.setTimeout(jumpToTop, 1000);
+                //Wait a little bit for the window to load, for some reason load event isn't working
+                unsafeWindow.setTimeout(addJumpToTop, 1000);
             }
         }
         //Hide People You May Know
-        if (facebookModHidePeopleYouMayKnow) {
-            //Based on Facebook unsponsored by solskido
-            //https://greasyfork.org/en/scripts/22210-facebook-unsponsored
-            const hidePeopleYouMayKnow = function () {
-                //If body is not loaded, we'll wait a bit, for some reason load event isn't working
-                if (!$("body").length) {
-                    unsafeWindow.setTimeout(hidePeopleYouMayKnow, 1000);
+        //Based on Facebook unsponsored by solskido
+        //https://greasyfork.org/en/scripts/22210-facebook-unsponsored
+        const hidePeopleYouMayKnow = function () {
+            //If body is not loaded, we'll wait a bit, for some reason load event isn't working
+            if (!unsafeWindow.document.querySelector("body")) {
+                unsafeWindow.setTimeout(hidePeopleYouMayKnow, 1000);
+                return;
+            }
+            //Selector constants
+            const streamSelector = "div[id^='topnews_main_stream']";
+            const feedSelector = "div[id^='hyperfeed_story_id']";
+            const badSelectors = ["a[href^='/friends/requests/']"];
+            //Mutation handler
+            const handler = function () {
+                const stream = unsafeWindow.document.querySelector(streamSelector);
+                if (!stream) {
                     return;
                 }
-                //Selector constants
-                const streamSelector = "div[id^='topnews_main_stream']";
-                const feedSelector = "div[id^='hyperfeed_story_id']";
-                const badSelectors = ["a[href^='/friends/requests/']"];
-                //Mutation handler
-                const handler = function () {
-                    const stream = unsafeWindow.document.querySelector(streamSelector);
-                    if (!stream) {
-                        return;
-                    }
-                    const feed = stream.querySelectorAll(feedSelector);
-                    if (!feed.length) {
-                        return;
-                    }
-                    for (let i = 0; i < feed.length; i++) {
-                        remove(feed[i]);
-                    }
-                };
-                //Feed remover
-                const remove = function (feed) {
-                    if (!feed) {
-                        return;
-                    }
-                    for (let i = 0; i < badSelectors.length; i++) {
-                        if (feed.querySelectorAll(badSelectors[i]).length) {
-                            feed.remove();
-                        }
-                    }
-                };
-                //Set up mutation observer
-                const observer = new unsafeWindow.MutationObserver(handler);
-                observer.observe(unsafeWindow.document.querySelector("body"), {
-                    "childList": true,
-                    "subtree": true
-                });
+                const feed = stream.querySelectorAll(feedSelector);
+                if (!feed.length) {
+                    return;
+                }
+                for (let i = 0; i < feed.length; i++) {
+                    remove(feed[i]);
+                }
             };
+            //Feed remover
+            const remove = function (feed) {
+                if (!feed) {
+                    return;
+                }
+                for (let i = 0; i < badSelectors.length; i++) {
+                    if (feed.querySelectorAll(badSelectors[i]).length) {
+                        feed.remove();
+                    }
+                }
+            };
+            //Set up mutation observer
+            const observer = new unsafeWindow.MutationObserver(handler);
+            observer.observe(unsafeWindow.document.querySelector("body"), {
+                "childList": true,
+                "subtree": true
+            });
+        };
+        //Check configurations
+        if (facebookModJumpToTop) {
+            addJumpToTop();
+        }
+        if (facebookModHidePeopleYouMayKnow) {
             hidePeopleYouMayKnow();
         }
     }
