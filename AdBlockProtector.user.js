@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 5.3
+// @version 5.4
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -298,8 +298,7 @@
         });
     }
     if (domCmp(["vidlox.tv"])) {
-        //NSFW!
-        //Lock xRds to false and cRAds to true
+        //NSFW! Lock xRds to false and cRAds to true
         setReadOnly("xRds", false);
         setReadOnly("cRAds", true);
     }
@@ -363,8 +362,7 @@
         filterStrings[1] = "function addEventListener() { [native code] }";
     }
     if (domCmp(["pinkrod.com", "wetplace.com"])) {
-        //NSFW!
-        //Lock getAd and getUtm to an empty function
+        //NSFW! Lock getAd and getUtm to an empty function
         setReadOnly("getAd", function () { });
         setReadOnly("getUtm", function () { });
     }
