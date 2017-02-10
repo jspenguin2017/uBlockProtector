@@ -1,3 +1,3 @@
 [submodule "anti-adblock-killer"]
 	path = anti-adblock-killer
-	url = ../../reek/anti-adblock-killer.git
+	url = https://github.com/reek/anti-adblock-killer.git
