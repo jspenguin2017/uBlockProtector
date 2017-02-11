@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 5.11
+// @version 5.12
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -274,7 +274,7 @@
         unsafeWindow.console.warn("Domain: " + unsafeWindow.document.domain);
     }
     //=====Rules=====
-    if (domCmp(["x01x012013.github.io"]) && unsafeWindow.document.location.href.includes("x01x012013.github.io/AdBlockProtector")) {
+    if (domCmp(["x01x012013.github.io"], true) && unsafeWindow.document.location.href.includes("x01x012013.github.io/AdBlockProtector")) {
         //Installation test of homepage
         unsafeWindow.AdBlock_Protector_Script = true;
     }
