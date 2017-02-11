@@ -1,0 +1,9 @@
+[Adblock Plus 2.0]
+!>> https://github.com/X01X012013/AdBlockProtector/issues/46
+@@||wp.pl^$script,image
+@@||admin.brightcove.com^$object-subrequest,domain=tvn24.pl
+@@||ad.filmweb.pl/adbanner/reklamy/adx.js$script
+||lib.onet.pl^*/adp/adp.js$script
+@@||kozaczek.pl/js/ads.js$script,domain=kozaczek.pl
+@@||play.wtk.insys.pl/Scripts/InsysPlayer.v0.1.0/adTest.png$image
+@@||ad.adview.pl/ad/$xmlhttprequest,domain=play.wtk.insys.pl
