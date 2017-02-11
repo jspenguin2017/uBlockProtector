@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 5.8
+// @version 5.9
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -16,7 +16,6 @@
 // @grant GM_addStyle
 // @grant GM_getValue
 // @grant GM_setValue
-// @grant GM_xmlhttpRequest
 // @grant GM_registerMenuCommand
 // @grant GM_deleteValue
 // @grant GM_listValues
@@ -45,15 +44,18 @@
      * Check if current domain is in the list.
      * @function
      * @param {Array.<string>} domList - The list of domains to compare.
+     * @param {boolean} [noErr=false] - Set to true to prevent showing error message.
      * @returns {boolean} True if current domain is in the list, false otherwise.
      */
-    const domCmp = function (domList) {
+    const domCmp = function (domList, noErr) {
         //Loop though each element
         for (let i = 0; i < domList.length; i++) {
             //Check if current domain is exactly listed or ends with it
             if (unsafeWindow.document.domain === domList[i] || unsafeWindow.document.domain.endsWith("." + domList[i])) {
-                //Show error message when matched
-                unsafeWindow.console.error(errMsg);
+                if (!noErr) {
+                    //Show error message when matched
+                    unsafeWindow.console.error(errMsg);
+                }
                 return true;
             }
         }
@@ -518,17 +520,37 @@
         let replaceCounter = 0; //The number of video players that are replaced
         let loadCounter = 0; //The index of next item to load
         let networkBusy = false; //A flag to prevent sending a new request before the first one is done
+        let isInBackground = false; //A flag to prevent excessive CPU usage when the tab is in background
         //Main function
         const main = function () {
-            //Check if we have more media ID
-            if ($(".wp-player-outer").length > 0) {
-                const elem = $(".wp-player-outer").first().find(".titlecont a.title");
-                let thisMid = elem.attr("href");
-                //Check if we got the element
-                if (thisMid) {
-                    midArray.push(thisMid.match(/mid[=,]([0-9]+)/)[1].toString());
-                    //We will destroy the player anyway, we can just remove this so we don't grab it twice
-                    elem.remove();
+            //Do not tick when in background
+            if (isInBackground) {
+                return;
+            }
+            if (domCmp(["sportowefakty.wp.pl"], true)) {
+                //This sub domain is special
+                if (unsafeWindow.WP.player.list.length > midArray.length) {
+                    let thisMid;
+                    try {
+                        thisMid = unsafeWindow.WP.player.list[midArray.length].p.url;
+                    } catch (err) {
+                        unsafeWindow.console.error("AdBlock Protector failed to find media ID! ");
+                    }
+                    if (thisMid) {
+                        midArray.push(thisMid.split("=")[1]);
+                    }
+                }
+            } else {
+                //Check if we have more media ID
+                if ($(".wp-player-outer").length > 0) {
+                    const elem = $(".wp-player-outer").first().find(".titlecont a.title");
+                    let thisMid = elem.attr("href");
+                    //Check if we got the element
+                    if (thisMid) {
+                        midArray.push(thisMid.match(/mid[=,]([0-9]+)/)[1].toString());
+                        //We will destroy the player anyway, we can just remove this so we don't grab it twice
+                        elem.remove();
+                    }
                 }
             }
             //See if we need to load next URL
@@ -589,6 +611,13 @@
             }
             //This function is quite light weight, we should be fine
             unsafeWindow.setInterval(main, 1000);
+        });
+        //Update is in background flag
+        onEvent("focus", function () {
+            isInBackground = false;
+        });
+        onEvent("blur", function () {
+            isInBackground = true;
         });
     }
 })();
