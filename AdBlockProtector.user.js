@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 5.9
+// @version 5.10
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -4410,7 +4410,7 @@
                 // issue: https://github.com/reek/anti-adblock-killer/issues/178
                 // issue: https://github.com/reek/anti-adblock-killer/issues/196
                 // issue: https://github.com/reek/anti-adblock-killer/issues/56
-                host: ['kissanime.com', 'kissanime.to'],
+                host: ['kissanime.com', 'kissanime.to', 'kissanime.ru'],  //https://github.com/reek/anti-adblock-killer/issues/2828
                 onStart: function () {
                     // Masking ads
                     Aak.addStyle('iframe[id^="adsIfrme"], .divCloseBut { display:none; }');
@@ -4446,7 +4446,7 @@
             },
             Kisscartoon_me: {
                 // issue: https://github.com/reek/anti-adblock-killer/issues/488
-                host: ['kisscartoon.me'],
+                host: ['kisscartoon.me', 'kisscartoon.se'], //https://github.com/reek/anti-adblock-killer/issues/2828
                 onAlways: function () {
                     Aak.uw.xaZlE = function () { };
                 },
