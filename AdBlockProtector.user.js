@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 5.10
+// @version 5.11
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -515,11 +515,13 @@
                 "wawalove.pl", "wp.pl", "wp.tv", "wrzuta.pl", "pudelek.pl"])) {
         //Variables
         let mid; //Media ID of next video
-        let midArray = []; //Media IDs
+        let midArray1 = []; //Media IDs method 1
+        let midArray2 = []; //Media IDs method 2
         let url = null; //URL of the next video
         let replaceCounter = 0; //The number of video players that are replaced
         let loadCounter = 0; //The index of next item to load
         let networkBusy = false; //A flag to prevent sending a new request before the first one is done
+        let networkErrorCounter = 0; //Will stop sending request if this is over 5
         let isInBackground = false; //A flag to prevent excessive CPU usage when the tab is in background
         //Main function
         const main = function () {
@@ -527,40 +529,38 @@
             if (isInBackground) {
                 return;
             }
-            if (domCmp(["sportowefakty.wp.pl"], true)) {
-                //This sub domain is special
-                if (unsafeWindow.WP.player.list.length > midArray.length) {
-                    let thisMid;
-                    try {
-                        thisMid = unsafeWindow.WP.player.list[midArray.length].p.url;
-                    } catch (err) {
-                        unsafeWindow.console.error("AdBlock Protector failed to find media ID! ");
-                    }
-                    if (thisMid) {
-                        midArray.push(thisMid.split("=")[1]);
-                    }
+            //Mid grabbing method 1
+            if (unsafeWindow.WP.player.list.length > midArray1.length) {
+                let thisMid;
+                try {
+                    thisMid = unsafeWindow.WP.player.list[midArray1.length].p.url;
+                } catch (err) {
+                    unsafeWindow.console.error("AdBlock Protector failed to find media ID! ");
                 }
-            } else {
-                //Check if we have more media ID
-                if ($(".wp-player-outer").length > 0) {
-                    const elem = $(".wp-player-outer").first().find(".titlecont a.title");
-                    let thisMid = elem.attr("href");
-                    //Check if we got the element
-                    if (thisMid) {
-                        midArray.push(thisMid.match(/mid[=,]([0-9]+)/)[1].toString());
-                        //We will destroy the player anyway, we can just remove this so we don't grab it twice
-                        elem.remove();
-                    }
+                if (thisMid) {
+                    midArray1.push(thisMid.split("=")[1]);
+                }
+            }
+            //Mid grabbing method 2
+            if ($(".wp-player-outer").length > 0) {
+                const elem = $(".wp-player-outer").first().find(".titlecont a.title");
+                let thisMid = elem.attr("href");
+                //Check if we got the element
+                if (thisMid) {
+                    midArray2.push(thisMid.match(/mid[=,]([0-9]+)/)[1].toString());
+                    //We will destroy the player anyway, we can just remove this so we don't grab it twice
+                    elem.remove();
                 }
             }
             //See if we need to load next URL
             if (loadCounter === replaceCounter) {
                 //Check flag
-                if (networkBusy) {
+                if (networkBusy || networkErrorCounter > 5) {
                     return;
                 }
                 //Get media ID
                 let mid;
+                let midArray = (midArray1.length > midArray2.length) ? midArray1 : midArray2;
                 if (midArray.length > loadCounter) {
                     mid = midArray[loadCounter];
                 } else {
@@ -584,11 +584,15 @@
                         }
                         //Update counter
                         loadCounter++;
+                        //Reset error counter
+                        networkErrorCounter = 0;
                     } catch (err) {
                         unsafeWindow.console.error("AdBlock Protector failed to find media URL! ");
+                        networkErrorCounter += 1;
                     }
                 }).fail(function () {
                     unsafeWindow.console.error("AdBlock Protector failed to load media JSON! ");
+                    networkErrorCounter += 0.5;
                 }).always(function () {
                     //Update flag
                     networkBusy = false;
