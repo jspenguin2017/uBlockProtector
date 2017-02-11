@@ -554,7 +554,7 @@
             }
             //See if we need to load next URL
             if (loadCounter === replaceCounter) {
-                //Check flag
+                //Check flag and error counter
                 if (networkBusy || networkErrorCounter > 5) {
                     return;
                 }
