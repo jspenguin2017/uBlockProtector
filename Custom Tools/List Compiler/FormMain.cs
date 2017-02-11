@@ -87,7 +87,7 @@ namespace List_Compiler
                 for (int i = 0; i < originalAAKList.Length; i++)
                 {
                     string t = originalAAKList[i];
-                    if (t[0] == '!')
+                    if (t == string.Empty || t[0] == '!')
                     {
                         //Skip comments
                         commentCounter++;
