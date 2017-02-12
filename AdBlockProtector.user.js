@@ -449,11 +449,11 @@
                 return this;
             }).bind(this);
         };
+        //Define FuckAdBlock to unsafeWindow and create its instance
         if (enforce) {
             setReadOnly(constructorName, FuckAdBlock);
             setReadOnly(instanceName, new unsafeWindow[constructorName]);
         } else {
-            //Define FuckAdBlock to unsafeWindow and create its instance
             if (setStealthyObj(constructorName, FuckAdBlock, true)) {
                 if (instanceName !== undefined) {
                     //Unmask constructor, all we want is making the constructor non-writtable, we don't want it to throw errors
