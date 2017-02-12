@@ -83,11 +83,6 @@ b-website.com#@##adsense
 #@#div[itemtype="http://schema.org/WPAdBlock"]
 /kill-adblock//js/function.js$script
 /kill-adblock/js/function.js$script
-fuckadblock.sitexw.fr#@#.pub_300x250
-/fuckadblock.js$script
-/blockadblock.js$script
-/fuckadblock.min.js$script
-/blockadblock.min.js$script
 gq.com#@#.pub_300x250
 gq.com#@#.pub_300x250m
 gq.com#@#.pub_728x90

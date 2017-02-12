@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 5.19
+// @version 5.20
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -263,7 +263,7 @@
     };
     /**
      * Set an object to unsafeWindow, wirtting to it will not change its value (may not work for properties of the object).
-     * It will not be accessible before first write (returns undefine).
+     * It will not be accessible before first write (returns undefined).
      * If protected, calling toString() on it will return the string value of the object that was last written to it.
      * @function
      * @param {string} name - The name of the property to define, max 2 layers.
@@ -272,24 +272,27 @@
      * @returns {boolean} True if the operation was successful, false otherwise.
      */
     const setStealthyObj = function (name, obj, protect) {
-        //Flag for first write, can be reset by writting undefined or null into the variable
-        let written = false;
+        //Keeps track of what is written into the object
+        let written;
         //The index of the filterStrings associated to the object
         const filterIndex = filterStrings.length;
         //Setter
         const setter = function (val) {
-            if (val === undefined && val === null) {
+            if (val === undefined || val === null) {
                 //Update flag
-                written = false;
-            } else if (protect) {
-                //Update filter string if needed
-                filterStrings[filterIndex] = val.toString();
+                written = val;
+            } else {
+                written = true;
+                if (protect) {
+                    //Update filter string if needed
+                    filterStrings[filterIndex] = val.toString();
+                }
             }
         };
         //Getter
         const getter = function () {
             if (!written) {
-                return undefined;
+                return written;
             } else {
                 return obj;
             }
@@ -316,7 +319,7 @@
             //Add to protected list if needed
             if (protect) {
                 filterPointers.push(obj);
-                filterStrings.push("placeholder");
+                filterStrings.push("");
             }
         } catch (err) {
             //Failed to activate (will always log)
@@ -383,9 +386,92 @@
     const onEvent = function (event, func) {
         unsafeWindow.addEventListener(event, func);
     };
-    //=====Init and Mods=====
+    /**
+     * Create a stealthy FuckAdBlock constructor and instance.
+     * @function
+     * @param {string} constructorName - The name of the constructor.
+     * @param {string} [instanceName=undefined] - The name of the instance, will not create one if this argument is omitted.
+     * @returns {boolean} True if the operation was successful, false otherwise.
+     */
+    const fakeFuckAdBlock = function (constructorName, instanceName) {
+        const FuckAdBlock = function () {
+            //===Init===
+            //On not detected callbacks
+            this._callbacks = [];
+            //Add on load event
+            onEvent("load", (function () {
+                this.emitEvent();
+            }).bind(this));
+            //===Methods (v3)===
+            //Set options, do nothing
+            this.setOption = function () {
+                return this;
+            };
+            //Check, call on not detected callbacks
+            this.check = function () {
+                this.emitEvent();
+                return true;
+            };
+            //Call on not detected callbacks
+            this.emitEvent = function () {
+                for (let i = 0; i < this._callbacks.length; i++) {
+                    this._callbacks[i]();
+                }
+                return this;
+            };
+            //Clear events, empty callback array
+            this.clearEvent = function () {
+                this._callbacks = [];
+            };
+            //Add event handler
+            this.on = function (detected, func) {
+                if (!detected) {
+                    this._callbacks.push(func);
+                }
+                return this;
+            };
+            //Add on detected handler, do nothing
+            this.onDetected = function () {
+                return this;
+            };
+            //Add on not detected handler
+            this.onNotDetected = function (func) {
+                return this.on(false, func);
+            };
+            //===Methods (v4)===
+            this.debug = {};
+            this.debug.set = (function () {
+                return this;
+            }).bind(this);
+        };
+        //Define FuckAdBlock to unsafeWindow and create its instance
+        if (setStealthyObj(constructorName, FuckAdBlock, true)) {
+            if (instanceName !== undefined) {
+                //Unmask constructor, all we want is making the constructor non-writtable, we don't want it to throw errors
+                //It also comes with some extra protection against toString()
+                unsafeWindow[constructorName] = "";
+                try {
+                    //Create instance, this doesn't need to be protected
+                    unsafeWindow[instanceName] = new unsafeWindow[constructorName]();
+                } catch (err) {
+                    //Something went wrong
+                    console.error("AdBlock Protector failed to create fake FuckAdBlock instance! ");
+                    return false;
+                }
+            }
+            return true;
+        } else {
+            //Something went wrong
+            console.error("AdBlock Protector failed to create fake FuckAdBlock constructor! ");
+            return false;
+        }
+    };
+    //=====Init, Generic, and Mods=====
     //Hide filters
     hideFilters();
+    //Add fake FuckAdBlock
+    fakeFuckAdBlock("FuckAdBlock", "fuckAdBlock");
+    fakeFuckAdBlock("BlockAdBlock", "blockAdBlock");
     //Debug - Log domain
     if (debugMode) {
         unsafeWindow.console.warn("Domain: " + unsafeWindow.document.domain);
@@ -5850,8 +5936,8 @@
                     // demo v4: http://al.ly/qBbXH
                     // issue: https://github.com/reek/anti-adblock-killer/issues/888
                     // issue: https://github.com/reek/anti-adblock-killer/issues/824
-                    Aak.fakeFuckAdBlock('fuckAdBlock', 'FuckAdBlock');
-                    Aak.fakeFuckAdBlock('blockAdBlock', 'BlockAdBlock');
+                    //   Aak.fakeFuckAdBlock('fuckAdBlock', 'FuckAdBlock');
+                    //   Aak.fakeFuckAdBlock('blockAdBlock', 'BlockAdBlock');
 
                     // canRunAds
                     // repo: https://github.com/MatthewGross/CanRunAds
