@@ -1,5 +1,3 @@
-[This file needs cleaned up]
-
 ## If you are reporting a website that belongs to one of these groups, please let us know which group it belongs to. 
 
 # Domains related to tvn.pl
