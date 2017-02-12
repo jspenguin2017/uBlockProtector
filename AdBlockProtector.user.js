@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 5.25
+// @version 5.26
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -266,16 +266,16 @@
         return true;
     };
     /**
-     * Set an object to unsafeWindow, wirtting to it will not change its value (may not work for properties of the object).
-     * It will not be accessible before first write (returns undefined).
-     * If protected, calling toString() on it will return the string value of the object that was last written to it.
+     * Define a property to unsafeWindow, wirtting to it will not change its value.
+     * It will not be accessible before first write, and will become non-accessible again if undefined or null is written into it.
+     * If protected, calling toString() on it will return the string value of the function that was last written to it.
      * @function
      * @param {string} name - The name of the property to define, max 2 layers.
-     * @param {Object} obj - The object to set.
-     * @param {boolean} [protect=false] - If the object should be protected (may not work on some type of object, works best with functions).
+     * @param {*} value - The property to set.
+     * @param {boolean} [protect=false] - If it should be protected from toString(), only work for functions.
      * @returns {boolean} True if the operation was successful, false otherwise.
      */
-    const setStealthyObj = function (name, obj, protect) {
+    const setStealthily = function (name, value, protect) {
         //Keeps track of what is written into the object
         let written;
         //The index of the filterStrings associated to the object
@@ -298,7 +298,7 @@
             if (!written) {
                 return written;
             } else {
-                return obj;
+                return value;
             }
         };
         //Set property
@@ -322,7 +322,7 @@
             }
             //Add to protected list if needed
             if (protect) {
-                filterPointers.push(obj);
+                filterPointers.push(value);
                 filterStrings.push("");
             }
         } catch (err) {
@@ -454,7 +454,7 @@
             setReadOnly(constructorName, FuckAdBlock);
             setReadOnly(instanceName, new unsafeWindow[constructorName]);
         } else {
-            if (setStealthyObj(constructorName, FuckAdBlock, true)) {
+            if (setStealthily(constructorName, FuckAdBlock, true)) {
                 if (instanceName !== undefined) {
                     //Unmask constructor, all we want is making the constructor non-writtable, we don't want it to throw errors
                     //It also comes with some extra protection against toString()
