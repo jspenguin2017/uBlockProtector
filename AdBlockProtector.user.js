@@ -407,7 +407,6 @@
         activateFilter("eval");
     }
     if (domCmp(["ay.gy"])) {
-        //This fix is currently better than AAK's fix, so we are keeping this for now
         //Disable open() before page starts to load and set abgo to an empty function when the page loads
         setReadOnly("open", function () { });
         onEvent("load", function () {
@@ -4186,7 +4185,7 @@
                         elems[i].appendChild(node);
                     }
 
-                },
+                }/*, //This is useless and significantly impact performance
                 onBeforeScript: function () {
                     return [{
                         contains: 'disable ADBlock completely',
@@ -4194,7 +4193,7 @@
                         remove: true
                     }
                     ];
-                }
+                }*/
             },
             privateinsta_com: {
                 host: ['privateinsta.com'],
