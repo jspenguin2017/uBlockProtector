@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 5.16
+// @version 5.17
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -31,9 +31,15 @@
 (function () {
     "use strict";
     //=====Configurations=====
-    const debugMode = true; //Whether debug strings should be logged
-    const facebookModJumpToTop = true; //Whether Jump To Top button should be added to Facebook page
-    const facebookModHidePeopleYouMayKnow = true; //Whether People You May Know should be hidden from Facebook
+    //Whether debug strings should be logged
+    const debugMode = true;
+    //Whether Jump To Top button should be added to Facebook page
+    const facebookModJumpToTop = true;
+    //Whether People You May Know should be hidden from Facebook
+    const facebookModHidePeopleYouMayKnow = true;
+    //Whether blogspot blogs should be automatically redirected to NCR (No Country Redirect) version
+    //Doesn't work if the blog is loaded inside an iframe
+    const blogspotModAutoNCR = true;
     //=====Constants=====
     //The error message to show
     const errMsg = "Uncaught AdBlock Error: AdBlocker detectors are not allowed on this device! ";
@@ -62,6 +68,19 @@
             }
         }
         return false;
+    };
+    /**
+     * Check if this script is running on top frame.
+     * @function
+     * @returns {boolean} True if this script is running on top frame, false otherwise.
+     */
+    const isTopFrame = function () {
+        try {
+            return unsafeWindow.self === unsafeWindow.top;
+        } catch (err) {
+            //unsafeWindow.top was not accessible due to security policies
+            return true;
+        }
     };
     /**
      * Replace Function.prototype.toString() in order to prevent filters from being detected.
@@ -300,19 +319,18 @@
     const onEvent = function (event, func) {
         unsafeWindow.addEventListener(event, func);
     };
-    //=====Init=====
+    //=====Init and Mods=====
     //Hide filters
     hideFilters();
     //Debug - Log domain
     if (debugMode) {
         unsafeWindow.console.warn("Domain: " + unsafeWindow.document.domain);
     }
-    //=====Rules=====
     if (domCmp(["x01x012013.github.io"], true) && unsafeWindow.document.location.href.includes("x01x012013.github.io/AdBlockProtector")) {
         //Installation test of homepage
         unsafeWindow.AdBlock_Protector_Script = true;
     }
-    if (domCmp(["facebook.com"])) {
+    if (domCmp(["facebook.com"], true)) {
         //Add Jump To Top button
         const addJumpToTop = function () {
             //Stop if the button already exist, this shouldn't be needed, but just to be sure
@@ -385,6 +403,13 @@
             hidePeopleYouMayKnow();
         }
     }
+    if (blogspotModAutoNCR && unsafeWindow.document.domain.includes(".blogspot.") && !unsafeWindow.document.domain.endsWith(".com") && isTopFrame()) {
+        //Auto NCR (No Country Redirect)
+        const name = unsafeWindow.document.domain.replace("www.", "").split(".")[0];
+        const path = unsafeWindow.location.href.split("/").slice(3).join('/');
+        unsafeWindow.location.href = "http://" + name + ".blogspot.com/ncr/" + path;
+    }
+    //=====Rules=====
     if (domCmp(["blockadblock.com"])) {
         //Disable eval() and remove element with ID babasbmsgx on load
         activateFilter("eval");
@@ -2255,6 +2280,8 @@
                 // test: http://tinyurl.com/nomcxkc
                 host: ['.blogspot.'],
                 onStart: function () {
+                    return; //implemented to ABP
+
                     if (Aak.isTopframe) { // fix rediretion loop
                         var blog = location.host.replace('www.', '').split(".");
                         if (blog[blog.length - 1] != "com") {
