@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 5.23
+// @version 5.24
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -242,16 +242,20 @@
                 //Two layers
                 let nameArray = name.split(".");
                 unsafeWindow.Object.defineProperty(unsafeWindow[nameArray[0]], nameArray[1], {
-                    value: val,
                     configurable: false,
-                    writable: false
+                    set: function () { },
+                    get: function () {
+                        return val;
+                    }
                 });
             } else {
                 //One layer
                 unsafeWindow.Object.defineProperty(unsafeWindow, name, {
-                    value: val,
                     configurable: false,
-                    writable: false
+                    set: function () { },
+                    get: function () {
+                        return val;
+                    }
                 });
             }
         } catch (err) {
