@@ -7,9 +7,3 @@
 @@||kozaczek.pl/js/ads.js$script,domain=kozaczek.pl
 @@||play.wtk.insys.pl/Scripts/InsysPlayer.v0.1.0/adTest.png$image
 @@||ad.adview.pl/ad/$xmlhttprequest,domain=play.wtk.insys.pl
-!>> FuckAdBlock is now handled by Script
-fuckadblock.sitexw.fr#@#.pub_300x250
-/fuckadblock.js$script
-/blockadblock.js$script
-/fuckadblock.min.js$script
-/blockadblock.min.js$script
