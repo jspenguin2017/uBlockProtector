@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 5.20
+// @version 5.21
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -645,7 +645,7 @@
     }
     if (domCmp(["tvrain.ru"])) {
         //(Workaround) Load all.js and run it in sloppy mode
-        onEvent("load", function () {
+       /* onEvent("load", function () {
             const source = $("script[src*='/static/app/build/all.js']").attr("src");
             GM_xmlhttpRequest({
                 method: "GET",
@@ -654,7 +654,7 @@
                     unsafeWindow.eval(response.responseText.replace(/\"use strict\";/g, ""));
                 }
             });
-        });
+        });*/
     }
     if (domCmp(["gamepedia.com"])) {
         //(Workaround) Remove element
