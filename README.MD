@@ -10,4 +10,5 @@ Everything else (starting version 4.0) falls under GNU GPL v3 license: https://g
 
 1. Build a tool to automate supported website listing
 2. Seperate core library and build a dev kit
-3. Build a tool to automate versioning
+3. Build a tool to compress Script and List
+4. Build a tool to automate versioning?
