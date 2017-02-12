@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 5.24
+// @version 5.25
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -486,7 +486,7 @@
         "microsoft.com", "msn.com", "paypal.com", "pinterest.com", "preloaders.net", "qq.com", "reddit.com", "stackoverflow.com",
         "tampermonkey.net", "twitter.com", "vimeo.com", "wikipedia.org", "w3schools.com", "yandex.ru", "youtu.be", "youtube.com",
         "xemvtv.net", "vod.pl", "agar.io", "pandoon.info", "fsf.org", "adblockplus.org", "plnkr.co", "exacttarget.com", "dolldivine.com",
-        "popmech.ru", "calm.com", "tvrain.ru"], true)) {
+        "popmech.ru", "calm.com"], true)) {
         //Check partial domains
         const dom = unsafeWindow.document.domain;
         const partialDomains = [".google.", ".amazon.", ".yahoo."];
@@ -672,10 +672,6 @@
         //Lock adBlocker to false and prevent listening resize event (window self-destroys on resize, bug or feature?)
         setReadOnly("adBlocker", false);
         activateFilter("addEventListener", "/resize/i");
-    }
-    if (domCmp(["tvrain.ru"])) {
-        //Set fake FuckAdBlock without enforcing
-        fakeFuckAdBlock("FuckAdBlock", "fuckAdBlock");
     }
     if (domCmp(["gamepedia.com"])) {
         //(Workaround) Remove element
