@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 5.17
+// @version 5.18
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -38,7 +38,7 @@
     //Whether People You May Know should be hidden from Facebook
     const facebookModHidePeopleYouMayKnow = true;
     //Whether blogspot blogs should be automatically redirected to NCR (No Country Redirect) version
-    //Doesn't work if the blog is loaded inside an iframe
+    //Does not work if the blog is not top frame
     const blogspotModAutoNCR = true;
     //=====Constants=====
     //The error message to show
@@ -78,8 +78,8 @@
         try {
             return unsafeWindow.self === unsafeWindow.top;
         } catch (err) {
-            //unsafeWindow.top was not accessible due to security policies
-            return true;
+            //unsafeWindow.top was not accessible due to security policies (means we are not top frame)
+            return false;
         }
     };
     /**
