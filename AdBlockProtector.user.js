@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 5.15
+// @version 5.16
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -36,7 +36,7 @@
     const facebookModHidePeopleYouMayKnow = true; //Whether People You May Know should be hidden from Facebook
     //=====Constants=====
     //The error message to show
-    const errMsg = "Uncaught AdBlock Error: AdBlocker detectors are not allowed on this device. ";
+    const errMsg = "Uncaught AdBlock Error: AdBlocker detectors are not allowed on this device! ";
     //The source of minimized jQuery Core 3.1.1
     const jQuerySource = "https://code.jquery.com/jquery-3.1.1.min.js";
     //A string that will crash any JavaScript by syntax error when added to anywhere of its code
@@ -660,6 +660,12 @@
     if (domCmp(["thewindowsclub.com"])) {
         //Inject syntax breaker to "(function(a,b,c,d,e){e=a.createElement(b);"
         crashScript("(function(a,b,c,d,e){e=a.createElement(b);");
+    }
+    if (domCmp(["foxvalleyfoodie.com"])) {
+        //Only allow certain includes
+        patchHTML(function (html) {
+            return html.replace(/<script.*\/wp-includes\/js\/(?!jquery|comment|wp-embed).*<\/script>/g, "<script>console.error('Uncaught AdBlock Error: Admiral is not allowed on this device! ');</script>");
+        });
     }
 })();
 
