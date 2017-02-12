@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 5.18
+// @version 5.19
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -231,7 +231,7 @@
     /**
      * Defines a read-only property to unsafeWindow.
      * @function
-     * @param {string} name - The name of the property to define.
+     * @param {string} name - The name of the property to define, max 2 layers.
      * @param {*} val - The value to set.
      * @returns {boolean} True if the operation was successful, false otherwise.
      */
@@ -261,6 +261,70 @@
         }
         return true;
     };
+    /**
+     * Set an object to unsafeWindow, wirtting to it will not change its value (may not work for properties of the object).
+     * It will not be accessible before first write (returns undefine).
+     * If protected, calling toString() on it will return the string value of the object that was last written to it.
+     * @function
+     * @param {string} name - The name of the property to define, max 2 layers.
+     * @param {Object} obj - The object to set.
+     * @param {boolean} [protect=false] - If the object should be protected (may not work on some type of object, works best with functions).
+     * @returns {boolean} True if the operation was successful, false otherwise.
+     */
+    const setStealthyObj = function (name, obj, protect) {
+        //Flag for first write, can be reset by writting undefined or null into the variable
+        let written = false;
+        //The index of the filterStrings associated to the object
+        const filterIndex = filterStrings.length;
+        //Setter
+        const setter = function (val) {
+            if (val === undefined && val === null) {
+                //Update flag
+                written = false;
+            } else if (protect) {
+                //Update filter string if needed
+                filterStrings[filterIndex] = val.toString();
+            }
+        };
+        //Getter
+        const getter = function () {
+            if (!written) {
+                return undefined;
+            } else {
+                return obj;
+            }
+        };
+        //Set property
+        try {
+            //Try to set the properly
+            if (name.includes(".")) {
+                //Two layers
+                let nameArray = name.split(".");
+                unsafeWindow.Object.defineProperty(unsafeWindow[nameArray[0]], nameArray[1], {
+                    configurable: false,
+                    set: setter,
+                    get: getter
+                });
+            } else {
+                //One layer
+                unsafeWindow.Object.defineProperty(unsafeWindow, name, {
+                    configurable: false,
+                    set: setter,
+                    get: getter
+                });
+            }
+            //Add to protected list if needed
+            if (protect) {
+                filterPointers.push(obj);
+                filterStrings.push("placeholder");
+            }
+        } catch (err) {
+            //Failed to activate (will always log)
+            unsafeWindow.console.error("AdBlock Protector failed to define stealthy object " + name + "! ");
+            return false;
+        }
+        return true;
+    }
     /**
      * Generate a native HTML5 player with controls but not autoplay.
      * @function
