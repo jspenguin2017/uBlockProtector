@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 5.12
+// @version 5.13
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -39,6 +39,8 @@
     const errMsg = "Uncaught AdBlock Error: AdBlocker detectors are not allowed on this device. ";
     //The source of minimized jQuery Core 3.1.1
     const jQuerySource = "https://code.jquery.com/jquery-3.1.1.min.js";
+    //A string that will crash any JavaScript by syntax error
+    const syntaxBreaker = `"'\`])} \n\r \r\n */ ])}`;
     //=====Library=====
     /**
      * Check if current domain is in the list.
@@ -174,6 +176,38 @@
             return false;
         }
         return true;
+    };
+    /**
+     * Patch the HTML file and replace current one.
+     * @function
+     * @param {Function} patcher - A function that patches the HTML file, it must return the patched HTML.
+     */
+    const patchHTML = function (patcher) {
+        //Stop the webpage
+        unsafeWindow.stop();
+        //Get content
+        GM_xmlhttpRequest({
+            method: "GET",
+            url: unsafeWindow.document.location.href,
+            headers: {
+                "Referer": unsafeWindow.document.referrer
+            },
+            onload: function (result) {
+                const html = patcher(result.responseText);
+                unsafeWindow.document.write(html);
+            }
+        })
+    };
+    /**
+     * Inject syntax breaker to code matched in order to crash it.
+     * This is the easiest way to break "stand alone" in-line code.
+     * @function
+     * @param {string} matcher - A sample of the code to crash.
+     */
+    const scriptCrash = function (matcher) {
+        patchHTML(function (html) {
+            return html.replace(matcher, syntaxBreaker);
+        })
     };
     /**
      * Defines a read-only property to unsafeWindow.
@@ -623,6 +657,10 @@
         onEvent("blur", function () {
             isInBackground = true;
         });
+    }
+    if (domCmp(["thewindowsclub.com"])) {
+        //Inject syntax breaker to "(function(a,b,c,d,e){e=a.createElement(b);"
+        scriptCrash("(function(a,b,c,d,e){e=a.createElement(b);");
     }
 })();
 
