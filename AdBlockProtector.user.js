@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 5.22
+// @version 5.23
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -672,16 +672,6 @@
     if (domCmp(["tvrain.ru"])) {
         //Set fake FuckAdBlock without enforcing
         fakeFuckAdBlock("FuckAdBlock", "fuckAdBlock");
-        /* onEvent("load", function () {
-             const source = $("script[src*='/static/app/build/all.js']").attr("src");
-             GM_xmlhttpRequest({
-                 method: "GET",
-                 url: source,
-                 onload: function (response) {
-                     unsafeWindow.eval(response.responseText.replace(/\"use strict\";/g, ""));
-                 }
-             });
-         });*/
     }
     if (domCmp(["gamepedia.com"])) {
         //(Workaround) Remove element
@@ -868,11 +858,6 @@
         patchHTML(function (html) {
             return html.replace(/<script.*\/wp-includes\/js\/(?!jquery|comment|wp-embed).*<\/script>/g, "<script>console.error('Uncaught AdBlock Error: Admiral is not allowed on this device! ');</script>");
         });
-    }
-    if (domCmp(["sitexw.fr"])) {
-        //Enforce FuckAdBlock instance
-        setReadOnly("fuckAdBlock", new unsafeWindow.FuckAdBlock());
-        setReadOnly("blockAdBlock", new unsafeWindow.FuckAdBlock());
     }
 })();
 
