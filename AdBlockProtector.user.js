@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 5.13
+// @version 5.14
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -39,8 +39,8 @@
     const errMsg = "Uncaught AdBlock Error: AdBlocker detectors are not allowed on this device. ";
     //The source of minimized jQuery Core 3.1.1
     const jQuerySource = "https://code.jquery.com/jquery-3.1.1.min.js";
-    //A string that will crash any JavaScript by syntax error
-    const syntaxBreaker = `"'\`])} \n\r \r\n */ ])}`;
+    //A string that will crash any JavaScript by syntax error when added to anywhere of its code
+    const syntaxBreaker = `])}"'\`])} \n\r \r\n */ ])}`;
     //=====Library=====
     /**
      * Check if current domain is in the list.
@@ -178,9 +178,9 @@
         return true;
     };
     /**
-     * Patch the HTML file and replace current one.
+     * Patch the HTML, this must be ran on document-start.
      * @function
-     * @param {Function} patcher - A function that patches the HTML file, it must return the patched HTML.
+     * @param {Function} patcher - A function that patches the HTML, it must return the patched HTML.
      */
     const patchHTML = function (patcher) {
         //Stop the webpage
@@ -199,14 +199,14 @@
         })
     };
     /**
-     * Inject syntax breaker to code matched in order to crash it.
-     * This is the easiest way to break "stand alone" in-line code.
+     * Replace a sample of code by syntax breaker.
+     * This is the easiest way to break "stand alone" in-line JavaScript.
      * @function
-     * @param {string} matcher - A sample of the code to crash.
+     * @param {string} sample - A sample of code.
      */
-    const scriptCrash = function (matcher) {
+    const crashScript = function (sample) {
         patchHTML(function (html) {
-            return html.replace(matcher, syntaxBreaker);
+            return html.replace(sample, syntaxBreaker);
         })
     };
     /**
@@ -660,46 +660,27 @@
     }
     if (domCmp(["thewindowsclub.com"])) {
         //Inject syntax breaker to "(function(a,b,c,d,e){e=a.createElement(b);"
-        scriptCrash("(function(a,b,c,d,e){e=a.createElement(b);");
+        crashScript("(function(a,b,c,d,e){e=a.createElement(b);");
     }
 })();
 
 // =====Anti-Adblock Killer by Reek=====
 // ==UserScript==
-// @name Anti-Adblock Killer | Reek
-// @namespace https://userscripts.org/scripts/show/155840
-// @description Helps you keep your Ad-Blocker active, when you visit a website and it asks you to disable.
-// @author Reek | reeksite.com
-// @version 10.0
-// @encoding utf-8
-// @license https://creativecommons.org/licenses/by-sa/4.0/
-// @icon https://raw.github.com/reek/anti-adblock-killer/master/anti-adblock-killer-icon.png
-// @homepage https://github.com/reek/anti-adblock-killer/
-// @twitterURL https://twitter.com/antiadbkiller
-// @contactURL https://reek.github.io/anti-adblock-killer/#contact
-// @supportURL https://github.com/reek/anti-adblock-killer/issues
-// @contributionURL https://github.com/reek/anti-adblock-killer#donate
-// @updateURL https://raw.githubusercontent.com/reek/anti-adblock-killer/master/anti-adblock-killer.user.js
-// @downloadURL https://raw.githubusercontent.com/reek/anti-adblock-killer/master/anti-adblock-killer.user.js
-// @include http://*/*
-// @include https://*/*
-// @grant unsafeWindow
-// @grant GM_addStyle
-// @grant GM_getValue
-// @grant GM_setValue
-// @grant GM_xmlhttpRequest
-// @grant GM_registerMenuCommand
-// @grant GM_deleteValue
-// @grant GM_listValues
-// @grant GM_getResourceText
-// @grant GM_getResourceURL
-// @grant GM_log
-// @grant GM_openInTab
-// @grant GM_setClipboard
-// @grant GM_info
-// @grant GM_getMetadata
-// @run-at document-start
-// @connect *
+// name Anti-Adblock Killer | Reek
+// namespace https://userscripts.org/scripts/show/155840
+// description Helps you keep your Ad-Blocker active, when you visit a website and it asks you to disable.
+// author Reek | reeksite.com
+// version 10.0
+// encoding utf-8
+// license https://creativecommons.org/licenses/by-sa/4.0/
+// icon https://raw.github.com/reek/anti-adblock-killer/master/anti-adblock-killer-icon.png
+// homepage https://github.com/reek/anti-adblock-killer/
+// twitterURL https://twitter.com/antiadbkiller
+// contactURL https://reek.github.io/anti-adblock-killer/#contact
+// supportURL https://github.com/reek/anti-adblock-killer/issues
+// contributionURL https://github.com/reek/anti-adblock-killer#donate
+// updateURL https://raw.githubusercontent.com/reek/anti-adblock-killer/master/anti-adblock-killer.user.js
+// downloadURL https://raw.githubusercontent.com/reek/anti-adblock-killer/master/anti-adblock-killer.user.js
 // ==/UserScript==
 /*jshint evil:true newcap:false*/
 /*global unsafeWindow, GM_addStyle, GM_getValue, GM_setValue, GM_xmlhttpRequest, GM_registerMenuCommand, GM_deleteValue, GM_listValues, GM_getResourceText, GM_getResourceURL, GM_log, GM_openInTab, GM_setClipboard, GM_info, GM_getMetadata, $, document, console, location, setInterval, setTimeout, clearInterval*/
