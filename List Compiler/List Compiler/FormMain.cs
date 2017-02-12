@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -57,7 +53,7 @@ namespace List_Compiler
                 string[] rmList;
                 try
                 {
-                    rmList = File.ReadAllLines(Path.Combine(gitRoot, "ListCompiler.ToRemove.txt"));
+                    rmList = File.ReadAllLines(Path.Combine(gitRoot, "List Compiler\\ListCompiler.ToRemove.txt"));
                     putLog("To remove list read, " + rmList.Length.ToString() + " entries found. ");
                 }
                 catch (Exception err)
@@ -108,7 +104,7 @@ namespace List_Compiler
                 string[] mainFile;
                 try
                 {
-                    mainFile = File.ReadAllLines(Path.Combine(gitRoot, "ListCompiler.Main.txt"));
+                    mainFile = File.ReadAllLines(Path.Combine(gitRoot, "List Compiler\\ListCompiler.Main.txt"));
                     putLog("Main file read, " + mainFile.Length.ToString() + " entries found. ");
                 }
                 catch (Exception err)

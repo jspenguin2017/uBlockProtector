@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 5.14
+// @version 5.15
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -40,7 +40,7 @@
     //The source of minimized jQuery Core 3.1.1
     const jQuerySource = "https://code.jquery.com/jquery-3.1.1.min.js";
     //A string that will crash any JavaScript by syntax error when added to anywhere of its code
-    const syntaxBreaker = `])}"'\`])} \n\r \r\n */ ])}`;
+    const syntaxBreaker = "])}\"'`])} \n\r \r\n */ ])}";
     //=====Library=====
     /**
      * Check if current domain is in the list.

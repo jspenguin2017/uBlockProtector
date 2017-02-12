@@ -1,11 +1,11 @@
 [Adblock Plus 2.0]
 ! Title: AdBlock Protector List
-! Version: 5.5
+! Version: 5.6
 ! Expires: 1 days
 ! Homepage: https://x01x012013.github.io/AdBlockProtector/
 !
 !>> Installation test of homepage
-||x01x012013.github.io/AdBlockProtector/listTest.js|
+||x01x012013.github.io/AdBlockProtector/Other/listTest.js|
 !>> dogefaucet.com
 @@||www.dogefaucet.com/static/js/ads.js|
 !>> portal.abczdrowie.pl
