@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 5.26
+// @version 5.28
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -33,6 +33,8 @@
     //=====Configurations=====
     //Whether debug strings should be logged
     const debugMode = true;
+    //Whether Anti-AdBlock Killer should run
+    const runAAK = true;
     //Whether Jump To Top button should be added to Facebook page
     const facebookModJumpToTop = true;
     //Whether People You May Know should be hidden from Facebook
@@ -400,6 +402,8 @@
      */
     const fakeFuckAdBlock = function (constructorName, instanceName, enforce) {
         const FuckAdBlock = function () {
+            //Based on FuckAdBlock by sitexw
+            //https://github.com/sitexw/FuckAdBlock
             //===Init===
             //On not detected callbacks
             this._callbacks = [];
@@ -477,6 +481,10 @@
         }
     };
     //=====Init, Generic, and Mods=====
+    //Debug - Log domain
+    if (debugMode) {
+        unsafeWindow.console.warn("Domain: " + unsafeWindow.document.domain);
+    }
     //Hide filters
     hideFilters();
     //Generic
@@ -494,6 +502,7 @@
         for (let i = 0; i < partialDomains.length; i++) {
             if (dom.includes(partialDomains[i])) {
                 flag = false;
+                break;
             }
         }
         if (flag) {
@@ -502,14 +511,11 @@
             fakeFuckAdBlock("BlockAdBlock", "blockAdBlock", true);
         }
     }
-    //Debug - Log domain
-    if (debugMode) {
-        unsafeWindow.console.warn("Domain: " + unsafeWindow.document.domain);
-    }
+    //Installation test of homepage
     if (domCmp(["x01x012013.github.io"], true) && unsafeWindow.document.location.href.includes("x01x012013.github.io/AdBlockProtector")) {
-        //Installation test of homepage
         unsafeWindow.AdBlock_Protector_Script = true;
     }
+    //Facebook mods
     if (domCmp(["facebook.com"], true)) {
         //Add Jump To Top button
         const addJumpToTop = function () {
@@ -583,6 +589,7 @@
             hidePeopleYouMayKnow();
         }
     }
+    //Blogspot mods
     if (blogspotModAutoNCR && unsafeWindow.document.domain.includes(".blogspot.") && !unsafeWindow.document.domain.endsWith(".com") && isTopFrame()) {
         //Auto NCR (No Country Redirect)
         const name = unsafeWindow.document.domain.replace("www.", "").split(".")[0];
@@ -623,7 +630,7 @@
             return _setInterval(func, 10);
         };
     }
-    if (domCmp(["jansatta.com"])) {
+    if (domCmp(["jansatta.com", "financialexpress.com", "indianexpress.com"])) {
         //Lock RunAds to true
         setReadOnly("RunAds", true);
     }
@@ -859,6 +866,23 @@
             return html.replace(/<script.*\/wp-includes\/js\/(?!jquery|comment|wp-embed).*<\/script>/g, "<script>console.error('Uncaught AdBlock Error: Admiral is not allowed on this device! ');</script>");
         });
     }
+    if (domCmp(["mid-day.com", "happytrips.com"])) {
+        //Lock canRun to true
+        setReadOnly("canRun", true);
+    }
+    if (domCmp(["ewallstreeter.com"])) {
+        //Lock OAS_rdl to 1
+        setReadOnly("OAS_rdl", 1);
+    }
+    if (domCmp["megogo.net"]) {
+        //Lock adBlock to false and showAdBlockMessage to an empty function
+        setReadOnly("adBlock", false);
+        setReadOnly("showAdBlockMessage", function () { });
+    }
+    //=====Run AAK=====
+    if (runAAK) {
+        AAK(window); //Why I feel this should be unsafeWindow instead? 
+    }
 })();
 
 // =====Anti-Adblock Killer by Reek=====
@@ -915,7 +939,7 @@
   Script
 ======================================================*/
 
-(function (window) {
+function AAK(window) {
     "use strict";
 
     var Aak = {
@@ -2943,26 +2967,11 @@
                     ];
                 }
             },
-            happytrips_com: {
-                // issue: https://github.com/reek/anti-adblock-killer/issues?q=happytrips
-                // source: http://pastebin.com/EWSEbnvv
-                host: ['happytrips.com'],
-                onStart: function () {
-                    Aak.setReadOnly('canRun', true);
-                }
-            },
             lg_firmware_rom_com: {
                 // issue: https://github.com/reek/anti-adblock-killer/issues?q=lg-firmware-rom.com
                 host: ['lg-firmware-rom.com'],
                 onStart: function () {
                     Aak.setReadOnly('killads', true);
-                }
-            },
-            mid_day_com: {
-                // issue: https://github.com/reek/anti-adblock-killer/issues?q=mid-day.com
-                host: ['mid-day.com'],
-                onStart: function () {
-                    Aak.setReadOnly('canRun', true);
                 }
             },
             badtv_network: {
@@ -2993,27 +3002,12 @@
                     Aak.setReadOnly('allowads', 1);
                 }
             },
-            ewallstreeter_com: {
-                // issue: https://github.com/reek/anti-adblock-killer/issues?q=ewallstreeter.com
-                host: ['ewallstreeter.com'],
-                onStart: function () {
-                    Aak.setReadOnly('OAS_rdl', 1);
-                }
-            },
             business_standard_com: {
                 // issue: https://github.com/reek/anti-adblock-killer/issues?q=business-standard.com
                 host: ['business-standard.com'],
                 onStart: function () {
                     Aak.setReadOnly('adsLoaded', 1);
                     Aak.setCookie('_pw', 't');
-                }
-            },
-            express_network: {
-                // issue: https://github.com/reek/anti-adblock-killer/issues?q=financialexpress.com
-                // issue: https://github.com/reek/anti-adblock-killer/issues?q=indianexpress.com
-                host: ['financialexpress.com', 'indianexpress.com'],
-                onStart: function () {
-                    Aak.setReadOnly('RunAds', 1);
                 }
             },
             indiatimes_com: {
@@ -3401,25 +3395,6 @@
                 onIdle: function () {
                     Aak.removeElement('#header_overlay');
                     Aak.removeElement('#message_modal');
-                }
-            },
-            megogo_net: {
-                // issue: PM
-                // source1: http://pastebin.com/ccHQg3hn
-                // source2: http://pastebin.com/gk0vEQHN
-                // note: two adblock check
-                host: ['megogo.net'],
-                onStart: function () {
-                    Object.defineProperty(Aak.uw, "adBlock", {
-                        enumerable: true,
-                        writable: false,
-                        value: false
-                    });
-                    Object.defineProperty(Aak.uw, "showAdBlockMessage", {
-                        enumerable: true,
-                        writable: false,
-                        value: function () { }
-                    });
                 }
             },
             libertaddigital_com: {
@@ -6639,4 +6614,4 @@
 
     Aak.initialize();
 
-})(window);
+};
