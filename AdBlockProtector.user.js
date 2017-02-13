@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 5.28
+// @version 5.29
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -496,11 +496,10 @@
         "xemvtv.net", "vod.pl", "agar.io", "pandoon.info", "fsf.org", "adblockplus.org", "plnkr.co", "exacttarget.com", "dolldivine.com",
         "popmech.ru", "calm.com"], true)) {
         //Check partial domains
-        const dom = unsafeWindow.document.domain;
         const partialDomains = [".google.", ".amazon.", ".yahoo."];
         let flag = true;
         for (let i = 0; i < partialDomains.length; i++) {
-            if (dom.includes(partialDomains[i])) {
+            if (unsafeWindow.document.domain.includes(partialDomains[i])) {
                 flag = false;
                 break;
             }
