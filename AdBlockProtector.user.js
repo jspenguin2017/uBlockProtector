@@ -878,7 +878,7 @@
             fakeFuckAdBlock("BlockAdBlock", "blockAdBlock", true);
             //Run AAK
             if (runAAK) {
-                AAK(window); //Why I feel this should be unsafeWindow instead? 
+                AAK(window); //Why I feel this should be unsafeWindow instead?
             }
         } else if (debugMode) {
             //Debug - Log when excluded
