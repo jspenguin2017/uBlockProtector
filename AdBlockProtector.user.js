@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 5.34
+// @version 5.35
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -859,6 +859,10 @@
     if (domCmp(["elektroda.pl"])) {
         //Filter keywords from setTimeout
         activateFilter("setTimeout", /adBlockTest\.offsetHeight/);
+    }
+    if (domCmp("anandabazar.com")) {
+        //Lock canRunAds to false and exclude this domain from generic and AAK
+        setReadOnly("canRunAds", false);
     }
     //=====Generic and AAK=====
     if (!domCmp(["360.cn", "apple.com", "ask.com", "baidu.com", "bing.com", "bufferapp.com", "chatango.com",
