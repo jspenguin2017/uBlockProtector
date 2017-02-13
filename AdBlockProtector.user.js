@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 5.35
+// @version 5.36
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -33,7 +33,7 @@
     //=====Configurations=====
     //Whether debug strings should be logged
     const debugMode = true;
-    //Whether Anti-AdBlock Killer should run
+    //Whether a patched version of Anti-AdBlock Killer should run
     const runAAK = true;
     //Whether Jump To Top button should be added to Facebook page
     const facebookModJumpToTop = true;
