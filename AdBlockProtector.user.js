@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 5.32
+// @version 5.33
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -156,6 +156,7 @@
                 if (filter.test(arguments[i].toString())) {
                     //Not allowed (will always log)
                     unsafeWindow.console.error(errMsg);
+                    return;
                 }
             }
             //Debug - Log when passed
@@ -854,6 +855,10 @@
         //Lock adBlock to false and showAdBlockMessage to an empty function
         setReadOnly("adBlock", false);
         setReadOnly("showAdBlockMessage", function () { });
+    }
+    if (domCmp(["elektroda.pl"])) {
+        //Filter keywords from setTimeout
+        activateFilter("setTimeout", /adBlockTest\.offsetHeight/);
     }
     //=====Generic and AAK=====
     if (!domCmp(["360.cn", "apple.com", "ask.com", "baidu.com", "bing.com", "bufferapp.com", "chatango.com",
