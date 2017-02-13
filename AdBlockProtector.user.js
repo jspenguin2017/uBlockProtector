@@ -464,14 +464,14 @@
                         unsafeWindow[instanceName] = new unsafeWindow[constructorName]();
                     } catch (err) {
                         //Something went wrong
-                        console.error("AdBlock Protector failed to create fake FuckAdBlock instance! ");
+                        unsafeWindow.console.error("AdBlock Protector failed to create fake FuckAdBlock instance! ");
                         return false;
                     }
                 }
                 return true;
             } else {
                 //Something went wrong
-                console.error("AdBlock Protector failed to create fake FuckAdBlock constructor! ");
+                unsafeWindow.console.error("AdBlock Protector failed to create fake FuckAdBlock constructor! ");
                 return false;
             }
         }
