@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 5.40
+// @version 5.41
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -759,7 +759,7 @@
         let networkBusy = false; //A flag to prevent sending a new request before the first one is done
         let networkErrorCounter = 0; //Will stop sending request if this is over 5
         let isInBackground = false; //A flag to prevent excessive CPU usage when the tab is in background
-        const method2Matcher = domCmp(["wp.tv"], true) ? ".player__container" : ".wp-player-outer";
+        const containerMatcher = domCmp(["wp.tv"], true) ? ".player__container" : ".wp-player-outer";
         //Main function
         const main = function () {
             //Do not tick when in background
@@ -779,7 +779,7 @@
                 }
             }
             //Mid grabbing method 2
-            if ($(method2Matcher).length > 0) {
+            if ($(containerMatcher).length > 0) {
                 const elem = $(".wp-player-outer").first().find(".titlecont a.title");
                 let thisMid = elem.attr("href");
                 //Check if we got the element
@@ -836,8 +836,8 @@
                 });
             } else {
                 //Patch player
-                if ($(".wp-player-outer").length > 0) {
-                    $(".wp-player-outer").first().after(genNativePlayer(url)).remove();
+                if ($(containerMatcher).length > 0) {
+                    $(containerMatcher).first().after(genNativePlayer(url)).remove();
                     //Update variables and counter
                     url = null;
                     replaceCounter++;
