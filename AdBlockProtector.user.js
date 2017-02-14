@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 5.39
+// @version 5.40
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -53,7 +53,8 @@
     const syntaxBreaker = "])}\"'`])} \n\r \r\n */ ])}";
     //=====Library=====
     /**
-     * Check if current domain is in the list.
+     * Check if current domain ends with one of the domains in the list.
+     * Example: "google.com" will match "google.com" and domains that ends with ".google.com"
      * @function
      * @param {Array.<string>} domList - The list of domains to compare.
      * @param {boolean} [noErr=false] - Set to true to prevent showing error message.
@@ -64,6 +65,28 @@
         for (let i = 0; i < domList.length; i++) {
             //Check if current domain is exactly listed or ends with it
             if (unsafeWindow.document.domain === domList[i] || unsafeWindow.document.domain.endsWith("." + domList[i])) {
+                if (!noErr) {
+                    //Show error message when matched
+                    unsafeWindow.console.error(errMsg);
+                }
+                return true;
+            }
+        }
+        return false;
+    };
+    /**
+     * Check if current domain includes one of the strings that is in the list.
+     * Example: "google" will match domains starting with "google." and domains that includes ".google."
+     * @function
+     * @param {Array.<string>} domList - The list of strings to compare.
+     * @param {boolean} [noErr=false] - Set to true to prevent showing error message.
+     * @returns {boolean} True if current domain is in the list, false otherwise.
+     */
+    const domInc = function (domList, noErr) {
+        //Loop though each element
+        for (let i = 0; i < domList.length; i++) {
+            //Check if current domain is exactly listed or ends with it
+            if (unsafeWindow.document.domain.startsWith(domList[i] + ".") || unsafeWindow.document.domain.includes("." + domList[i] + ".")) {
                 if (!noErr) {
                     //Show error message when matched
                     unsafeWindow.console.error(errMsg);
@@ -87,25 +110,25 @@
         }
     };
     /**
-     * Replace Function.prototype.toString() in order to prevent filters from being detected.
+     * Replace Function.prototype.toString() in order to prevent protected functions from being detected.
      * Do not call this function multiple times.
      * @function
      * @returns {boolean} True if the operation was successful, false otherwise.
      */
-    //The pointers to filter functions, used to prevent detection
-    let filterPointers = [];
-    //The original string values of filtered functions
-    let filterStrings = [];
-    const hideFilters = function () {
+    //The pointers to protected functions
+    let protectedFuncPointers = [];
+    //The original string values of protected functions
+    let protectedFuncOriginalStrings = [];
+    const protectFunctions = function () {
         //The original function
         const original = unsafeWindow.Function.prototype.toString;
         //New function
         const newFunc = function () {
             //Check if function "this" is in the protected list
-            const index = filterPointers.indexOf(this);
+            const index = protectedFuncPointers.indexOf(this);
             if (index !== -1) {
                 //Protected, return the string value of the real function instead
-                return filterStrings[index];
+                return protectedFuncOriginalStrings[index];
             } else {
                 //Not protected, use original function to proceed
                 return original.apply(this);
@@ -116,8 +139,8 @@
             //Replace function
             unsafeWindow.Function.prototype.toString = newFunc;
             //Protect this function as well
-            filterPointers.push(newFunc);
-            filterStrings.push(original.toString());
+            protectedFuncPointers.push(newFunc);
+            protectedFuncOriginalStrings.push(original.toString());
             //Debug - Log when activated
             if (debugMode) {
                 unsafeWindow.console.warn("Filters hidden. ");
@@ -188,8 +211,8 @@
                 unsafeWindow[func] = newFunc;
             }
             //Add this filter to protection list
-            filterPointers.push(newFunc);
-            filterStrings.push(original.toString());
+            protectedFuncPointers.push(newFunc);
+            protectedFuncOriginalStrings.push(original.toString());
             //Debug - Log when activated
             if (debugMode) {
                 unsafeWindow.console.warn("Filter activated on " + func);
@@ -283,8 +306,8 @@
     const setStealthily = function (name, value, protect) {
         //Keeps track of what is written into the object
         let written;
-        //The index of the filterStrings associated to the object
-        const filterIndex = filterStrings.length;
+        //The index of the protectedFuncOriginalStrings associated to the object
+        const filterIndex = protectedFuncOriginalStrings.length;
         //Setter
         const setter = function (val) {
             if (val === undefined || val === null) {
@@ -294,7 +317,7 @@
                 written = true;
                 if (protect) {
                     //Update filter string if needed
-                    filterStrings[filterIndex] = val.toString();
+                    protectedFuncOriginalStrings[filterIndex] = val.toString();
                 }
             }
         };
@@ -327,8 +350,8 @@
             }
             //Add to protected list if needed
             if (protect) {
-                filterPointers.push(value);
-                filterStrings.push("");
+                protectedFuncPointers.push(value);
+                protectedFuncOriginalStrings.push("");
             }
         } catch (err) {
             //Failed to define (will always log)
@@ -490,8 +513,8 @@
     if (debugMode) {
         unsafeWindow.console.warn("Domain: " + unsafeWindow.document.domain);
     }
-    //Hide filters
-    hideFilters();
+    //Protect functions
+    protectedFunctions();
     //Installation test of homepage
     if (domCmp(["x01x012013.github.io"], true) && unsafeWindow.document.location.href.includes("x01x012013.github.io/AdBlockProtector")) {
         unsafeWindow.AdBlock_Protector_Script = true;
@@ -571,7 +594,7 @@
         }
     }
     //Blogspot mods
-    if (blogspotModAutoNCR && unsafeWindow.document.domain.includes(".blogspot.") && !unsafeWindow.document.domain.endsWith(".com") && isTopFrame()) {
+    if (blogspotModAutoNCR && domInc("blogspot", true) && !domCmp("blogspot.com", true) && isTopFrame()) {
         //Auto NCR (No Country Redirect)
         const name = unsafeWindow.document.domain.replace("www.", "").split(".")[0];
         const path = unsafeWindow.location.href.split("/").slice(3).join('/');
@@ -675,14 +698,14 @@
         //Filter keyword from document.addEventListener()
         activateFilter("document.addEventListener", /function \_0x/);
         //document.addEventListener should not be native code, but they are expecting native code
-        filterStrings[1] = "function addEventListener() { [native code] }";
+        protectedFuncOriginalStrings[1] = "function addEventListener() { [native code] }";
     }
     if (domCmp(["pinkrod.com", "wetplace.com"])) {
         //NSFW! Lock getAd and getUtm to an empty function
         setReadOnly("getAd", function () { });
         setReadOnly("getUtm", function () { });
     }
-    if (unsafeWindow.document.domain.includes(".hackintosh.")) {
+    if (domInc("hackintosh")) {
         //Undo BlockAdblock styles
         setReadOnly("eval", function () {
             var c = "babasbmsgx";
@@ -736,6 +759,7 @@
         let networkBusy = false; //A flag to prevent sending a new request before the first one is done
         let networkErrorCounter = 0; //Will stop sending request if this is over 5
         let isInBackground = false; //A flag to prevent excessive CPU usage when the tab is in background
+        const method2Matcher = domCmp(["wp.tv"], true) ? ".player__container" : ".wp-player-outer";
         //Main function
         const main = function () {
             //Do not tick when in background
@@ -755,7 +779,7 @@
                 }
             }
             //Mid grabbing method 2
-            if ($(".wp-player-outer").length > 0) {
+            if ($(method2Matcher).length > 0) {
                 const elem = $(".wp-player-outer").first().find(".titlecont a.title");
                 let thisMid = elem.attr("href");
                 //Check if we got the element
@@ -878,16 +902,9 @@
         "tampermonkey.net", "twitter.com", "vimeo.com", "wikipedia.org", "w3schools.com", "yandex.ru", "youtu.be", "youtube.com",
         "xemvtv.net", "vod.pl", "agar.io", "pandoon.info", "fsf.org", "adblockplus.org", "plnkr.co", "exacttarget.com", "dolldivine.com",
         "popmech.ru", "calm.com", "anandabazar.com"];
-        const partialDomains = [".google.", ".amazon.", ".yahoo."];
-        //Check domain
-        let flag = !domCmp(completeDomains, true);
-        for (let i = 0; i < partialDomains.length; i++) {
-            if (unsafeWindow.document.domain.includes(partialDomains[i])) {
-                flag = false;
-                break;
-            }
-        }
-        if (flag) {
+        const partialDomains = ["google", "amazon", "yahoo"];
+        //Check domains
+        if (!domCmp(completeDomains, true) && !(domInc(partialDomains, true))) {
             //Add fake FuckAdBlock
             fakeFuckAdBlock("FuckAdBlock", "fuckAdBlock", true);
             fakeFuckAdBlock("BlockAdBlock", "blockAdBlock", true);
