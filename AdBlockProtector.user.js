@@ -514,7 +514,7 @@
         unsafeWindow.console.warn("Domain: " + unsafeWindow.document.domain);
     }
     //Protect functions
-    protectedFunctions();
+    protectFunctions();
     //Installation test of homepage
     if (domCmp(["x01x012013.github.io"], true) && unsafeWindow.document.location.href.includes("x01x012013.github.io/AdBlockProtector")) {
         unsafeWindow.AdBlock_Protector_Script = true;
