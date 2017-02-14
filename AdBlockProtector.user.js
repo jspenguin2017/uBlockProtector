@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 5.36
+// @version 5.37
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -28,11 +28,27 @@
 // @grant GM_getMetadata
 // ==/UserScript==
 
+//These are for debugging purposes only
+function debugBeforeInit() {
+    //
+};
+function debugBeforeRules() {
+    //
+};
+function debugBeforeGeneric() {
+    //
+};
+function debugBeforeEnd() {
+    //
+};
+//AdBlock Protector main closure
 (function () {
     "use strict";
     //=====Configurations=====
     //Whether debug strings should be logged
     const debugMode = true;
+    //Whether generic protectors should run, setting this to false will prevent AAK to run regardless of the value of runAAK
+    const allowGeneric = true;
     //Whether a patched version of Anti-AdBlock Killer should run
     const runAAK = true;
     //Whether Jump To Top button should be added to Facebook page
@@ -121,7 +137,7 @@
                 unsafeWindow.console.warn("Filters hidden. ");
             }
         } catch (err) {
-            //Failed to activate (will always log)
+            //Failed to hide (will always log)
             unsafeWindow.console.error("AdBlock Protector failed to hide filters! ");
             return false;
         }
@@ -262,14 +278,14 @@
                 });
             }
         } catch (err) {
-            //Failed to activate (will always log)
+            //Failed to define (will always log)
             unsafeWindow.console.error("AdBlock Protector failed to define read-only property " + name + "! ");
             return false;
         }
         return true;
     };
     /**
-     * Define a property to unsafeWindow, wirtting to it will not change its value.
+     * Stealthily define a property to unsafeWindow, wirtting to it will not change its value.
      * It will not be accessible before first write, and will become non-accessible again if undefined or null is written into it.
      * If protected, calling toString() on it will return the string value of the function that was last written to it.
      * @function
@@ -329,8 +345,8 @@
                 filterStrings.push("");
             }
         } catch (err) {
-            //Failed to activate (will always log)
-            unsafeWindow.console.error("AdBlock Protector failed to define stealthy object " + name + "! ");
+            //Failed to define (will always log)
+            unsafeWindow.console.error("AdBlock Protector failed to define stealthy property " + name + "! ");
             return false;
         }
         return true;
@@ -395,6 +411,9 @@
     };
     /**
      * Create a stealthy FuckAdBlock constructor and instance.
+     * In enforce mode, instanceName must be supplied, both constructor and instance will be defined using setReadOnly().
+     * In stealthy mode, constructor will be defined using setStealthily() and instanceName will be set directly, it will be editable and deletable.
+     * Also, costructor will be unmasked if instanceName is supplied, it can be remasked if needed.
      * @function
      * @param {string} constructorName - The name of the constructor.
      * @param {string} [instanceName=undefined] - The name of the instance, will not create one if this argument is omitted.
@@ -412,7 +431,7 @@
             onEvent("load", (function () {
                 this.emitEvent();
             }).bind(this));
-            //===Methods (v3)===
+            //===v3 Methods===
             //Set options, do nothing
             this.setOption = function () {
                 return this;
@@ -448,7 +467,7 @@
             this.onNotDetected = function (func) {
                 return this.on(false, func);
             };
-            //===Methods (v4)===
+            //===v4 Methods===
             this.debug = {};
             this.debug.set = (function () {
                 return this;
@@ -456,8 +475,7 @@
         };
         //Define FuckAdBlock to unsafeWindow and create its instance
         if (enforce) {
-            setReadOnly(constructorName, FuckAdBlock);
-            setReadOnly(instanceName, new unsafeWindow[constructorName]);
+            return setReadOnly(constructorName, FuckAdBlock) && setReadOnly(instanceName, new unsafeWindow[constructorName]);
         } else {
             if (setStealthily(constructorName, FuckAdBlock, true)) {
                 if (instanceName !== undefined) {
@@ -482,9 +500,10 @@
         }
     };
     //=====Init and Mods=====
-    //Debug - Log domain
+    //Debug - Log domain and run debug function
     if (debugMode) {
         unsafeWindow.console.warn("Domain: " + unsafeWindow.document.domain);
+        debugBeforeInit();
     }
     //Hide filters
     hideFilters();
@@ -574,6 +593,10 @@
         unsafeWindow.location.href = "http://" + name + ".blogspot.com/ncr/" + path;
     }
     //=====Rules=====
+    if (debugMode) {
+        //Debug - Run debug function
+        debugBeforeRules();
+    }
     if (domCmp(["blockadblock.com"])) {
         //Disable eval() and remove element with ID babasbmsgx on load
         activateFilter("eval");
@@ -864,17 +887,23 @@
         //Lock canRunAds to false and exclude this domain from generic and AAK
         setReadOnly("canRunAds", false);
     }
-    //=====Generic and AAK=====
-    if (!domCmp(["360.cn", "apple.com", "ask.com", "baidu.com", "bing.com", "bufferapp.com", "chatango.com",
+    //=====Generic Protectors and AAK=====
+    if (debugMode) {
+        //Debug - Run debug function
+        debugBeforeGeneric();
+    }
+    if (allowGeneric) {
+        //Excluded domains
+        const completeDomains = ["360.cn", "apple.com", "ask.com", "baidu.com", "bing.com", "bufferapp.com", "chatango.com",
         "chromeactions.com", "easyinplay.net", "ebay.com", "facebook.com", "flattr.com", "flickr.com", "ghacks.net",
         "imdb.com", "imgbox.com", "imgur.com", "instagram.com", "jsbin.com", "jsfiddle.net", "linkedin.com", "live.com", "mail.ru",
         "microsoft.com", "msn.com", "paypal.com", "pinterest.com", "preloaders.net", "qq.com", "reddit.com", "stackoverflow.com",
         "tampermonkey.net", "twitter.com", "vimeo.com", "wikipedia.org", "w3schools.com", "yandex.ru", "youtu.be", "youtube.com",
         "xemvtv.net", "vod.pl", "agar.io", "pandoon.info", "fsf.org", "adblockplus.org", "plnkr.co", "exacttarget.com", "dolldivine.com",
-        "popmech.ru", "calm.com", "anandabazar.com"], true)) {
-        //Check partial domains
+        "popmech.ru", "calm.com", "anandabazar.com"];
         const partialDomains = [".google.", ".amazon.", ".yahoo."];
-        let flag = true;
+        //Check domain
+        let flag = !domCmp(completeDomains, true);
         for (let i = 0; i < partialDomains.length; i++) {
             if (unsafeWindow.document.domain.includes(partialDomains[i])) {
                 flag = false;
@@ -893,9 +922,10 @@
             //Debug - Log when excluded
             unsafeWindow.console.warn("This domain is excluded from generic and AAK. ");
         }
-    } else if (debugMode) {
-        //Debug - Log when excluded
-        unsafeWindow.console.warn("This domain is excluded from generic and AAK. ");
+    }
+    if (debugMode) {
+        //Debug - Run debug function
+        debugBeforeExit();
     }
 })();
 
