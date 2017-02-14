@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 5.41
+// @version 5.42
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -891,6 +891,10 @@
     if (domCmp("anandabazar.com")) {
         //Lock canRunAds to false and exclude this domain from generic and AAK
         setReadOnly("canRunAds", false);
+    }
+    if (domCmp(["wtkplay.pl"])) {
+        //Lock can_run_ads to true
+        setReadOnly("can_run_ads", true);
     }
     //=====Generic Protectors and AAK=====
     if (allowGeneric) {
