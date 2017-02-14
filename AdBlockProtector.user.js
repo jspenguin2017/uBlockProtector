@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 5.38
+// @version 5.39
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -28,20 +28,6 @@
 // @grant GM_getMetadata
 // ==/UserScript==
 
-//These are for debugging purposes only
-function debugBeforeInit() {
-    //
-};
-function debugBeforeRules() {
-    //
-};
-function debugBeforeGeneric() {
-    //
-};
-function debugBeforeEnd() {
-    //
-};
-//AdBlock Protector main closure
 (function () {
     "use strict";
     //=====Configurations=====
@@ -49,7 +35,7 @@ function debugBeforeEnd() {
     const debugMode = true;
     //Whether generic protectors should run, setting this to false will prevent AAK to run regardless of the value of runAAK
     const allowGeneric = true;
-    //Whether a patched version of Anti-AdBlock Killer should run
+    //Whether a patched version of Anti-Adblock Killer should run
     const runAAK = true;
     //Whether Jump To Top button should be added to Facebook page
     const facebookModJumpToTop = true;
@@ -500,10 +486,9 @@ function debugBeforeEnd() {
         }
     };
     //=====Init and Mods=====
-    //Debug - Log domain and run debug function
+    //Debug - Log domain
     if (debugMode) {
         unsafeWindow.console.warn("Domain: " + unsafeWindow.document.domain);
-        debugBeforeInit();
     }
     //Hide filters
     hideFilters();
@@ -593,10 +578,6 @@ function debugBeforeEnd() {
         unsafeWindow.location.href = "http://" + name + ".blogspot.com/ncr/" + path;
     }
     //=====Rules=====
-    if (debugMode) {
-        //Debug - Run debug function
-        debugBeforeRules();
-    }
     if (domCmp(["blockadblock.com"])) {
         //Disable eval() and remove element with ID babasbmsgx on load
         activateFilter("eval");
@@ -888,10 +869,6 @@ function debugBeforeEnd() {
         setReadOnly("canRunAds", false);
     }
     //=====Generic Protectors and AAK=====
-    if (debugMode) {
-        //Debug - Run debug function
-        debugBeforeGeneric();
-    }
     if (allowGeneric) {
         //Excluded domains
         const completeDomains = ["360.cn", "apple.com", "ask.com", "baidu.com", "bing.com", "bufferapp.com", "chatango.com",
@@ -920,12 +897,8 @@ function debugBeforeEnd() {
             }
         } else if (debugMode) {
             //Debug - Log when excluded
-            unsafeWindow.console.warn("This domain is excluded from generic and AAK. ");
+            unsafeWindow.console.warn("This domain is excluded from generic protectors and Anti-Adblock Killer. ");
         }
-    }
-    if (debugMode) {
-        //Debug - Run debug function
-        debugBeforeEnd();
     }
 })();
 
