@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 5.42
+// @version 5.43
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -34,9 +34,9 @@
     //Whether debug strings should be logged
     const debugMode = true;
     //Whether generic protectors should run, setting this to false will prevent AAK to run regardless of the value of runAAK
-    const allowGeneric = true;
+    let allowGeneric = true;
     //Whether a patched version of Anti-Adblock Killer should run
-    const runAAK = true;
+    let runAAK = true;
     //Whether Jump To Top button should be added to Facebook page
     const facebookModJumpToTop = true;
     //Whether People You May Know should be hidden from Facebook
@@ -885,7 +885,7 @@
         setReadOnly("showAdBlockMessage", function () { });
     }
     if (domCmp(["elektroda.pl"])) {
-        //Filter keywords from setTimeout
+        //Filter keywords from setTimeout()
         activateFilter("setTimeout", /adBlockTest\.offsetHeight/);
     }
     if (domCmp("anandabazar.com")) {
@@ -895,6 +895,10 @@
     if (domCmp(["wtkplay.pl"])) {
         //Lock can_run_ads to true
         setReadOnly("can_run_ads", true);
+    }
+    if (domCmp(["betterdocs.net"])) {
+        //Filter keywords from eval()
+        activateFilter("eval", /eval\(function\(p\,a\,c\,k\,e\,d\)/);
     }
     //=====Generic Protectors and AAK=====
     if (allowGeneric) {
