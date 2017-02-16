@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 5.45
+// @version 5.46
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -903,6 +903,12 @@
     if (domCmp(["webqc.org"])) {
         //Filter keywords from setTimeout()
         activateFilter("setTimeout", /function\(\)\{R\(e\)\}/);
+    }
+    if (domCmp(["wired.com"])) {
+        //Lock google_onload_fired to true
+        //Note: Also relies on a generic protector
+        setReadOnly("google_onload_fired", true);
+        allowGeneric = true;
     }
     //=====Generic Protectors and AAK=====
     if (allowGeneric) {
