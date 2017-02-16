@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 5.44
+// @version 5.45
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -899,6 +899,10 @@
     if (domCmp(["betterdocs.net"])) {
         //Filter keywords from eval()
         activateFilter("eval", /eval\(function\(p\,a\,c\,k\,e\,d\)/);
+    }
+    if (domCmp(["webqc.org"])) {
+        //Filter keywords from setTimeout()
+        activateFilter("setTimeout", /function\(\)\{R\(e\)\}/);
     }
     //=====Generic Protectors and AAK=====
     if (allowGeneric) {
