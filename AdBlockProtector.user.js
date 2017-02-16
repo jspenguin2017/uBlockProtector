@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 5.43
+// @version 5.44
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -594,7 +594,7 @@
         }
     }
     //Blogspot mods
-    if (blogspotModAutoNCR && domInc("blogspot", true) && !domCmp("blogspot.com", true) && isTopFrame()) {
+    if (blogspotModAutoNCR && domInc(["blogspot"], true) && !domCmp(["blogspot.com"], true) && isTopFrame()) {
         //Auto NCR (No Country Redirect)
         const name = unsafeWindow.document.domain.replace("www.", "").split(".")[0];
         const path = unsafeWindow.location.href.split("/").slice(3).join('/');
@@ -705,7 +705,7 @@
         setReadOnly("getAd", function () { });
         setReadOnly("getUtm", function () { });
     }
-    if (domInc("hackintosh")) {
+    if (domInc(["hackintosh"])) {
         //Undo BlockAdblock styles
         setReadOnly("eval", function () {
             var c = "babasbmsgx";
@@ -879,7 +879,7 @@
         //Lock OAS_rdl to 1
         setReadOnly("OAS_rdl", 1);
     }
-    if (domCmp["megogo.net"]) {
+    if (domCmp(["megogo.net"])) {
         //Lock adBlock to false and showAdBlockMessage to an empty function
         setReadOnly("adBlock", false);
         setReadOnly("showAdBlockMessage", function () { });
@@ -888,7 +888,7 @@
         //Filter keywords from setTimeout()
         activateFilter("setTimeout", /adBlockTest\.offsetHeight/);
     }
-    if (domCmp("anandabazar.com")) {
+    if (domCmp(["anandabazar.com"])) {
         //Lock canRunAds to false and exclude this domain from generic and AAK
         setReadOnly("canRunAds", false);
     }
