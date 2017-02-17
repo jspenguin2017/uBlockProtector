@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 5.46
+// @version 5.47
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -889,8 +889,9 @@
         activateFilter("setTimeout", /adBlockTest\.offsetHeight/);
     }
     if (domCmp(["anandabazar.com"])) {
-        //Lock canRunAds to false and exclude this domain from generic and AAK
+        //Lock canRunAds to false and exclude this domain from generic protectors
         setReadOnly("canRunAds", false);
+        allowGeneric = false;
     }
     if (domCmp(["wtkplay.pl"])) {
         //Lock can_run_ads to true
@@ -905,8 +906,7 @@
         activateFilter("setTimeout", /function\(\)\{R\(e\)\}/);
     }
     if (domCmp(["wired.com"])) {
-        //Lock google_onload_fired to true
-        //Note: Also relies on a generic protector
+        //Lock google_onload_fired to true and include this domain from generic protectors
         setReadOnly("google_onload_fired", true);
         allowGeneric = true;
     }
@@ -919,7 +919,7 @@
         "microsoft.com", "msn.com", "paypal.com", "pinterest.com", "preloaders.net", "qq.com", "reddit.com", "stackoverflow.com",
         "tampermonkey.net", "twitter.com", "vimeo.com", "wikipedia.org", "w3schools.com", "yandex.ru", "youtu.be", "youtube.com",
         "xemvtv.net", "vod.pl", "agar.io", "pandoon.info", "fsf.org", "adblockplus.org", "plnkr.co", "exacttarget.com", "dolldivine.com",
-        "popmech.ru", "calm.com", "anandabazar.com"];
+        "popmech.ru", "calm.com"];
         const partialDomains = ["google", "amazon", "yahoo"];
         //Check domains
         if (!domCmp(completeDomains, true) && !(domInc(partialDomains, true))) {
@@ -1139,6 +1139,7 @@ function AAK(window) {
         }
         ],
         addCommands: function (cmd) {
+            return;
             if (Aak.useGM && Aak.isTopframe && typeof GM_registerMenuCommand != 'undefined') {
                 GM_registerMenuCommand([Aak.name, Aak.getVersion(), cmd.caption].join(' '), cmd.execute);
             }
@@ -1293,6 +1294,7 @@ function AAK(window) {
             }, 1e3);
         },
         notification: function (message, delay) {
+            return;
             if (Aak.isTopframe) {
 
                 // remove old notification
@@ -1329,6 +1331,7 @@ function AAK(window) {
             }
         },
         checkList: function () {
+            return;
             if (Aak.useGM && Aak.opts.checkList && Aak.isTopframe) {
                 Aak.schedule(1, 'nextchecklist', function () {
                     Aak.ready(function () {
@@ -1353,7 +1356,7 @@ function AAK(window) {
             }
         },
         checkUpdate: function (auto) {
-
+            return;
             var check = function (notifyFalse) {
                 Aak.request({
                     url: Aak.downloadURL,
@@ -2416,7 +2419,7 @@ function AAK(window) {
             settings: {
                 host: ['localhost', 'reek.github.io', 'reeksite.com'],
                 onEnd: function () {
-
+                    return;
                     if (/\/anti-adblock-killer(-pages)?\/$/.test(location.pathname)) {
                         var settingsBox = Aak.getElement('#aak-settings-box');
                         var settingsNotice = Aak.getElement('#aak-settings-notice');
@@ -2479,6 +2482,7 @@ function AAK(window) {
             userscripts_domains: { // Redirect to Github
                 host: ['userscripts.org', 'userscripts.org:8080', 'userscripts-mirror.org'],
                 onStart: function () {
+                    return;
                     if (/155840$/.test(location.pathname)) {
                         Aak.go(Aak.homeURL);
                     }
@@ -2487,6 +2491,7 @@ function AAK(window) {
             openuserjs_org: {
                 host: ['openuserjs.org'],
                 onIdle: function () {
+                    return;
                     var element = Aak.getElement('a[href$="/issues"]');
                     if (/Anti-Adblock_Killer_Reek/.test(location.pathname) && element) {
                         Aak.confirmReport(element);
@@ -2496,6 +2501,7 @@ function AAK(window) {
             greasyfork_org: {
                 host: ['greasyfork.org'],
                 onIdle: function () {
+                    return;
                     var element = Aak.getElement('a[href$="/feedback"]');
                     if (/-anti-adblock-killer-reek/.test(location.pathname) && element) {
                         Aak.confirmReport(element);
@@ -2505,6 +2511,7 @@ function AAK(window) {
             monkeyguts_com: {
                 host: ['monkeyguts.com'],
                 onIdle: function () {
+                    return;
                     var element = Aak.getElement('a[href*="code.php?nav=forum"]');
                     if (/monkeyguts.com\/code.php\?id=351/.test(location.href) && element) {
                         Aak.confirmReport(element);
