@@ -4,8 +4,8 @@
 // @author X01X012013
 // @version 5.48
 // @encoding utf-8
-// @include http://*/*
-// @include https://*/*
+// @include http://*
+// @include https://*
 // @grant unsafeWindow
 // @grant GM_xmlhttpRequest
 // @connect *
