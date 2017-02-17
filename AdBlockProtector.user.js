@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 5.47
+// @version 5.48
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -51,6 +51,19 @@
     const jQuerySource = "https://code.jquery.com/jquery-3.1.1.min.js";
     //A string that will crash any JavaScript by syntax error when added to anywhere of its code
     const syntaxBreaker = "])}\"'`])} \n\r \r\n */ ])}";
+    //Shortcut to unsafeWindow.document.domain
+    const dom = unsafeWindow.document.domain;
+    //Excluded domains
+    const excludedDomCmp = ["360.cn", "apple.com", "ask.com", "baidu.com", "bing.com", "bufferapp.com", "chatango.com",
+"chromeactions.com", "easyinplay.net", "ebay.com", "facebook.com", "flattr.com", "flickr.com", "ghacks.net",
+"imdb.com", "imgbox.com", "imgur.com", "instagram.com", "jsbin.com", "jsfiddle.net", "linkedin.com", "live.com", "mail.ru",
+"microsoft.com", "msn.com", "paypal.com", "pinterest.com", "preloaders.net", "qq.com", "reddit.com", "stackoverflow.com",
+"tampermonkey.net", "twitter.com", "vimeo.com", "wikipedia.org", "w3schools.com", "yandex.ru", "youtu.be", "youtube.com",
+"xemvtv.net", "vod.pl", "agar.io", "pandoon.info", "fsf.org", "adblockplus.org", "plnkr.co", "exacttarget.com", "dolldivine.com",
+"popmech.ru", "calm.com"];
+    const excludedDomInc = ["google", "amazon", "yahoo"];
+    //How excluded domain is treated depends on the rules
+    let domExcluded; //This will be assigned at the beginning of init
     //=====Library=====
     /**
      * Check if current domain ends with one of the domains in the list.
@@ -64,7 +77,7 @@
         //Loop though each element
         for (let i = 0; i < domList.length; i++) {
             //Check if current domain is exactly listed or ends with it
-            if (unsafeWindow.document.domain === domList[i] || unsafeWindow.document.domain.endsWith("." + domList[i])) {
+            if (dom === domList[i] || dom.endsWith("." + domList[i])) {
                 if (!noErr) {
                     //Show error message when matched
                     unsafeWindow.console.error(errMsg);
@@ -86,7 +99,7 @@
         //Loop though each element
         for (let i = 0; i < domList.length; i++) {
             //Check if current domain is exactly listed or ends with it
-            if (unsafeWindow.document.domain.startsWith(domList[i] + ".") || unsafeWindow.document.domain.includes("." + domList[i] + ".")) {
+            if (dom.startsWith(domList[i] + ".") || dom.includes("." + domList[i] + ".")) {
                 if (!noErr) {
                     //Show error message when matched
                     unsafeWindow.console.error(errMsg);
@@ -143,11 +156,11 @@
             protectedFuncOriginalStrings.push(original.toString());
             //Debug - Log when activated
             if (debugMode) {
-                unsafeWindow.console.warn("Filters hidden. ");
+                unsafeWindow.console.warn("Functions protected. ");
             }
         } catch (err) {
             //Failed to hide (will always log)
-            unsafeWindow.console.error("AdBlock Protector failed to hide filters! ");
+            unsafeWindow.console.error("AdBlock Protector failed to protect functions! ");
             return false;
         }
         return true;
@@ -511,10 +524,16 @@
     //=====Init and Mods=====
     //Debug - Log domain
     if (debugMode) {
-        unsafeWindow.console.warn("Domain: " + unsafeWindow.document.domain);
+        unsafeWindow.console.warn("Domain: " + dom);
     }
-    //Protect functions
-    protectFunctions();
+    //Check excluded domains
+    domExcluded = domCmp(excludedDomCmp, true) || domInc(excludedDomInc, true);
+    if (domExcluded) {
+        unsafeWindow.console.warn("This domain is in excluded list. ");
+    } else {
+        //Protect functions
+        protectFunctions();
+    }
     //Installation test of homepage
     if (domCmp(["x01x012013.github.io"], true) && unsafeWindow.document.location.href.includes("x01x012013.github.io/AdBlockProtector")) {
         unsafeWindow.AdBlock_Protector_Script = true;
@@ -596,7 +615,7 @@
     //Blogspot mods
     if (blogspotModAutoNCR && domInc(["blogspot"], true) && !domCmp(["blogspot.com"], true) && isTopFrame()) {
         //Auto NCR (No Country Redirect)
-        const name = unsafeWindow.document.domain.replace("www.", "").split(".")[0];
+        const name = dom.replace("www.", "").split(".")[0];
         const path = unsafeWindow.location.href.split("/").slice(3).join('/');
         unsafeWindow.location.href = "http://" + name + ".blogspot.com/ncr/" + path;
     }
@@ -911,28 +930,13 @@
         allowGeneric = true;
     }
     //=====Generic Protectors and AAK=====
-    if (allowGeneric) {
-        //Excluded domains
-        const completeDomains = ["360.cn", "apple.com", "ask.com", "baidu.com", "bing.com", "bufferapp.com", "chatango.com",
-        "chromeactions.com", "easyinplay.net", "ebay.com", "facebook.com", "flattr.com", "flickr.com", "ghacks.net",
-        "imdb.com", "imgbox.com", "imgur.com", "instagram.com", "jsbin.com", "jsfiddle.net", "linkedin.com", "live.com", "mail.ru",
-        "microsoft.com", "msn.com", "paypal.com", "pinterest.com", "preloaders.net", "qq.com", "reddit.com", "stackoverflow.com",
-        "tampermonkey.net", "twitter.com", "vimeo.com", "wikipedia.org", "w3schools.com", "yandex.ru", "youtu.be", "youtube.com",
-        "xemvtv.net", "vod.pl", "agar.io", "pandoon.info", "fsf.org", "adblockplus.org", "plnkr.co", "exacttarget.com", "dolldivine.com",
-        "popmech.ru", "calm.com"];
-        const partialDomains = ["google", "amazon", "yahoo"];
-        //Check domains
-        if (!domCmp(completeDomains, true) && !(domInc(partialDomains, true))) {
-            //Add fake FuckAdBlock
-            fakeFuckAdBlock("FuckAdBlock", "fuckAdBlock", true);
-            fakeFuckAdBlock("BlockAdBlock", "blockAdBlock", true);
-            //Run AAK
-            if (runAAK) {
-                AAK(window); //Why I feel this should be unsafeWindow instead?
-            }
-        } else if (debugMode) {
-            //Debug - Log when excluded
-            unsafeWindow.console.warn("This domain is excluded from generic protectors and Anti-Adblock Killer. ");
+    if (allowGeneric && !domExcluded) {
+        //Add fake FuckAdBlock
+        fakeFuckAdBlock("FuckAdBlock", "fuckAdBlock", true);
+        fakeFuckAdBlock("BlockAdBlock", "blockAdBlock", true);
+        //Run AAK
+        if (runAAK) {
+            AAK(window); //Why I feel this should be unsafeWindow instead?
         }
     }
 })();
