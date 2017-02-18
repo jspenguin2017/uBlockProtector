@@ -1,9 +1,10 @@
 [Adblock Plus 2.0]
 ! Title: AdBlock Protector List
-! Version: 5.10
+! Version: 5.11
 ! Expires: 1 days
+! Redirect: https://github.com/X01X012013/AdBlockProtector/raw/master/AdBlockProtectorList.txt
 ! Homepage: https://x01x012013.github.io/AdBlockProtector/
-||x01x012013.github.io/AdBlockProtector/Other/listTest.js|
+||x01x012013.github.io/AdBlockProtector/listTest.js|
 @@||www.dogefaucet.com/static/js/ads.js|
 @@dot.wp.pl
 www.tvn.pl#div(id*=_videoDriverContent)

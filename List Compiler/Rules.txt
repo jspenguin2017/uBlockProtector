@@ -1,5 +1,5 @@
 !>> Installation test of homepage
-||x01x012013.github.io/AdBlockProtector/Other/listTest.js|
+||x01x012013.github.io/AdBlockProtector/listTest.js|
 !>> dogefaucet.com
 @@||www.dogefaucet.com/static/js/ads.js|
 !>> portal.abczdrowie.pl

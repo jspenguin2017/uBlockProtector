@@ -193,7 +193,17 @@ a.c.errMsg = "Uncaught AdBlock Error: AdBlocker detectors are not allowed on thi
  * The home page of this project.
  * @const {string}
  */
+a.c.settingsPage = "https://x01x012013.github.io/AdBlockProtector/settings.html";
+/**
+ * The home page of this project.
+ * @const {string}
+ */
 a.c.homePage = "https://x01x012013.github.io/AdBlockProtector/";
+/**
+ * The home page of this project.
+ * @const {string}
+ */
+a.c.supportPage = "https://github.com/X01X012013/AdBlockProtector/issues";
 /**
  * A string that will crash any JavaScript by syntax error when added to anywhere of its code.
  * @const {string}
@@ -226,6 +236,16 @@ a.init = function (excludedDomCmp, excludedDomInc) {
     //Load configurations
     a.config();
     a.config.domExcluded = a.domCmp(excludedDomCmp, true) || a.domInc(excludedDomInc, true);
+    //Set menu commands
+    GM_registerMenuCommand("AdBlock Protector Settings Page", function () {
+        a.win.open(a.c.settingsPage);
+    });
+    GM_registerMenuCommand("AdBlock Protector Home Page", function () {
+        a.win.open(a.c.homePage);
+    });
+    GM_registerMenuCommand("AdBlock Protector Support Page", function () {
+        a.win.open(a.c.supportPage);
+    });
     //Log excluded or protect functions
     if (a.config.domExcluded) {
         a.out.warn("This domain is in excluded list. ");
