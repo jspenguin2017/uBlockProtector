@@ -49,9 +49,9 @@
             this.BtnBuildRelease.Font = new System.Drawing.Font("SimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.BtnBuildRelease.Location = new System.Drawing.Point(11, 38);
             this.BtnBuildRelease.Name = "BtnBuildRelease";
-            this.BtnBuildRelease.Size = new System.Drawing.Size(526, 39);
+            this.BtnBuildRelease.Size = new System.Drawing.Size(500, 39);
             this.BtnBuildRelease.TabIndex = 6;
-            this.BtnBuildRelease.Text = "Build Release";
+            this.BtnBuildRelease.Text = "Build Release (To File)";
             this.BtnBuildRelease.UseVisualStyleBackColor = true;
             this.BtnBuildRelease.Click += new System.EventHandler(this.BtnBuildRelease_Click);
             // 
@@ -77,11 +77,11 @@
             // BtnBuildDev
             // 
             this.BtnBuildDev.Font = new System.Drawing.Font("SimSun", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.BtnBuildDev.Location = new System.Drawing.Point(543, 38);
+            this.BtnBuildDev.Location = new System.Drawing.Point(517, 38);
             this.BtnBuildDev.Name = "BtnBuildDev";
-            this.BtnBuildDev.Size = new System.Drawing.Size(329, 39);
+            this.BtnBuildDev.Size = new System.Drawing.Size(355, 39);
             this.BtnBuildDev.TabIndex = 8;
-            this.BtnBuildDev.Text = "Build Dev";
+            this.BtnBuildDev.Text = "Build Dev (To Clipboard)";
             this.BtnBuildDev.UseVisualStyleBackColor = true;
             this.BtnBuildDev.Click += new System.EventHandler(this.BtnBuildDev_Click);
             // 
