@@ -1,4 +1,7 @@
 //AdBlock Protector Core Library
+"use strict";
+
+//=====Declaration=====
 /**
  * Get a description string of this library.
  * @function
@@ -12,6 +15,46 @@ const a = function () {
  * @const {string}
  */
 a.VERSION = "0.1";
+
+//=====Configurations=====
+a.config = {};
+/**
+ * Whether debug strings should be logged.
+ * @var {bool}
+ */
+a.config.debugMode = true;
+/**
+ * Whether generic protectors should run.
+ * This settings can be overwritten by a rule.
+ * @var {bool}
+ */
+a.config.allowGeneric = true;
+
+//=====Mods=====
+/**
+ * Apply all mods.
+ * @function
+ */
+a.mod = function () {
+
+};
+/**
+ * Whether Jump To Top button should be added to Facebook page.
+ * @const {bool}
+ */
+a.mod.facebookModJumpToTop = true;
+/**
+ * Whether People You May Know should be hidden from Facebook.
+ * @const {bool}
+ */
+a.mod.facebookModHidePeopleYouMayKnow = true;
+/**
+ * Whether blogspot blogs should be automatically redirected to NCR (No Country Redirect) version.
+ * Does not work if the blog is not top frame.
+ * @const {bool}
+ */
+a.mod.blogspotModAutoNCR = true;
+
 //=====Common Constants=====
 /**
  * The unsafeWindow.
@@ -35,6 +78,7 @@ a.topFrame = (function () {
         return false;
     }
 })();
+
 //=====Initializers=====
 /**
  * Initialize constants, protect functions, and activate mods.

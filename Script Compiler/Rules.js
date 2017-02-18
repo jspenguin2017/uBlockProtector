@@ -1,18 +1,7 @@
-//=====Configurations=====
-//Whether debug strings should be logged
-a.config.default.debugMode = true;
-//Whether generic protectors should run, setting this to false will prevent AAK to run regardless of the value of runAAK
-a.config.default.allowGeneric = true;
-//Whether Jump To Top button should be added to Facebook page
-a.config.default.facebookModJumpToTop = true;
-//Whether People You May Know should be hidden from Facebook
-a.config.default.facebookModHidePeopleYouMayKnow = true;
-//Whether blogspot blogs should be automatically redirected to NCR (No Country Redirect) version
-//Does not work if the blog is not top frame
-a.config.default.blogspotModAutoNCR = true;
-//=====Init=====
+//Init
+"use strict";
 a.init();
-//=====Rules=====
+//Start
 if (a.domCmp(["blockadblock.com"])) {
     //Disable eval() and remove element with ID babasbmsgx on load
     a.filter("eval");
