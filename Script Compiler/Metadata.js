@@ -9,6 +9,7 @@
 // @grant unsafeWindow
 // @grant GM_xmlhttpRequest
 // @grant GM_registerMenuCommand
+// @grant GM_openInTab
 // @connect *
 // @run-at document-start
 // @homepage https://x01x012013.github.io/AdBlockProtector/
@@ -27,7 +28,6 @@
 // grant GM_getResourceText
 // grant GM_getResourceURL
 // grant GM_log
-// grant GM_openInTab
 // grant GM_setClipboard
 // grant GM_info
 // grant GM_getMetadata

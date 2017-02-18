@@ -7,10 +7,6 @@ a.init(["360.cn", "apple.com", "ask.com", "baidu.com", "bing.com", "bufferapp.co
 "tampermonkey.net", "twitter.com", "vimeo.com", "wikipedia.org", "w3schools.com", "yandex.ru", "youtu.be", "youtube.com",
 "xemvtv.net", "vod.pl", "agar.io", "pandoon.info", "fsf.org", "adblockplus.org", "plnkr.co", "exacttarget.com", "dolldivine.com",
 "popmech.ru", "calm.com"], ["google", "amazon", "yahoo"]);
-//Installation test of homepage
-if (a.domCmp(["x01x012013.github.io"], true) && a.doc.location.href.includes("x01x012013.github.io/AdBlockProtector")) {
-    a.win.AdBlock_Protector_Script = true;
-}
 //Start
 if (a.domCmp(["blockadblock.com"])) {
     //Disable eval() and remove element with ID babasbmsgx on load
@@ -316,6 +312,10 @@ if (a.domCmp(["wired.com"])) {
     //Lock google_onload_fired to true and include this domain from generic protectors
     a.readOnly("google_onload_fired", true);
     a.config.allowGeneric = true;
+}
+if (a.domInc(["knowlet3389.blogspot"])) {
+    //Filter keywords from setTimeout
+    a.filter("setTimeout", /\$\(\"\#gAds\"\)\.height\(\)/);
 }
 //Generic, excluded domain check is built in
 a.generic();

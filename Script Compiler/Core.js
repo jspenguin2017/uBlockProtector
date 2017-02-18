@@ -238,13 +238,13 @@ a.init = function (excludedDomCmp, excludedDomInc) {
     a.config.domExcluded = a.domCmp(excludedDomCmp, true) || a.domInc(excludedDomInc, true);
     //Set menu commands
     GM_registerMenuCommand("AdBlock Protector Settings Page", function () {
-        a.win.open(a.c.settingsPage);
+        GM_openInTab(a.c.settingsPage);
     });
     GM_registerMenuCommand("AdBlock Protector Home Page", function () {
-        a.win.open(a.c.homePage);
+        GM_openInTab(a.c.homePage);
     });
     GM_registerMenuCommand("AdBlock Protector Support Page", function () {
-        a.win.open(a.c.supportPage);
+        GM_openInTab(a.c.supportPage);
     });
     //Log excluded or protect functions
     if (a.config.domExcluded) {
@@ -254,6 +254,14 @@ a.init = function (excludedDomCmp, excludedDomInc) {
     }
     //Apply mods
     a.mods();
+    //Home page installation test
+    if (a.domCmp(["x01x012013.github.io"], true) && a.doc.location.href.includes("x01x012013.github.io/AdBlockProtector")) {
+        a.win.AdBlock_Protector_Script = true;
+    }
+    //Settings page
+    if (a.domCmp(["x01x012013.github.io"], true) && a.doc.location.href.includes("x01x012013.github.io/AdBlockProtector/settings.html")) {
+        a.win.alert("Coming soon... ");
+    }
     //Debug - Log domain
     if (a.config.debugMode) {
         a.out.warn("Domain: " + a.dom);
