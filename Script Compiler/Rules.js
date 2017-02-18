@@ -313,9 +313,9 @@ if (a.domCmp(["wired.com"])) {
     a.readOnly("google_onload_fired", true);
     a.config.allowGeneric = true;
 }
-if (a.domInc(["knowlet3389.blogspot"])) {
-    //Filter keywords from setTimeout
-    a.filter("setTimeout", /\$\(\"\#gAds\"\)\.height\(\)/);
+if (a.domCmp(["freegameserverhost.com"])) {
+    //Inject CSS
+    a.css("#fab13 { height: 11px; }");
 }
 //Generic, excluded domain check is built in
 a.generic();
