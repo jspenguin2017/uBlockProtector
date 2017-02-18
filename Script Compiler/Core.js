@@ -222,7 +222,7 @@ a.c.topFrame = (function () {
     }
 })();
 
-//=====Initializers=====
+//=====Initializer=====
 /**
  * Initialize constants, protect functions, and activate mods.
  * @function
@@ -262,10 +262,8 @@ a.init = function (excludedDomCmp, excludedDomInc) {
     if (a.domCmp(["x01x012013.github.io"], true) && a.doc.location.href.includes("x01x012013.github.io/AdBlockProtector/settings.html")) {
         a.win.alert("Coming soon... ");
     }
-    //Debug - Log domain
-    if (a.config.debugMode) {
-        a.out.warn("Domain: " + a.dom);
-    }
+    //Log domain
+    a.out.warn("Domain: " + a.dom);
 };
 
 //=====Common Functions=====
@@ -348,12 +346,10 @@ a.protectFunc = function () {
         //Protect this function as well
         a.protectFunc.pointers.push(newFunc);
         a.protectFunc.masks.push(original.toString());
-        //Debug - Log when activated
-        if (a.config.debugMode) {
-            a.out.warn("Functions protected. ");
-        }
+        //Log when activated
+        a.out.warn("Functions protected. ");
     } catch (err) {
-        //Failed to hide (will always log)
+        //Failed to hide
         a.out.error("AdBlock Protector failed to protect functions! ");
         return false;
     }
@@ -430,12 +426,10 @@ a.filter = function (func, filter) {
         //Add this filter to protection list
         a.protectFunc.pointers.push(newFunc);
         a.protectFunc.masks.push(original.toString());
-        //Debug - Log when activated
-        if (a.config.debugMode) {
-            a.out.warn("Filter activated on " + func);
-        }
+        //Log when activated
+        a.out.warn("Filter activated on " + func);
     } catch (err) {
-        //Failed to activate (will always log)
+        //Failed to activate
         a.out.error("AdBlock Protector failed to activate filter on " + func + "! ");
         return false;
     }
@@ -504,7 +498,7 @@ a.readOnly = function (name, val) {
             });
         }
     } catch (err) {
-        //Failed to define (will always log)
+        //Failed to define property
         a.out.error("AdBlock Protector failed to define read-only property " + name + "! ");
         return false;
     }
@@ -776,6 +770,9 @@ a.generic = function () {
             childList: true,
             subtree: true
         });
+    } else {
+        //Generic protectors disabled
+        a.out.warn("Generic protectors are disabled on this domain. ");
     }
 };
 /**
