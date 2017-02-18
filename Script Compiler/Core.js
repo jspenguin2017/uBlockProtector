@@ -582,7 +582,7 @@ a.generic = function () {
         a.readOnly("isAdBlockActive", false);
         //===document-idle===
         a.on("DOMContentLoaded", function () {
-            // AdBlock Detector (XenForo Rellect)
+            //AdBlock Detector (XenForo Rellect)
             if (a.win.XenForo && typeof a.win.XenForo.rellect == 'object') {
                 a.win.XenForo.rellect = {
                     AdBlockDetector: {
@@ -590,13 +590,13 @@ a.generic = function () {
                     }
                 };
             }
-            // Adbuddy
+            //Adbuddy
             if (typeof a.win.closeAdbuddy === 'function') {
                 a.win.closeAdbuddy();
             }
-            // AdBlock Alerter (WP)
+            //AdBlock Alerter (WP)
             if (a.$("div.adb_overlay > div.adb_modal_img").length > 0) {
-                // Remove Alert + Allow Scroll
+                //Remove alert and allow scrolling
                 a.$("div.adb_overlay").remove();
                 a.css("html,body {height:auto; overflow: auto;}");
             }
@@ -622,12 +622,12 @@ a.generic = function () {
                     }
                 }
             }
-            //Antiblock.org v3, BetterStopAdblock, BlockAdBlock
+            //Antiblock.org v3, BetterStopAdblock, and BlockAdBlock
             for (let prop in a.win) {
                 try {
                     if (!/^webkit/.test(prop) && /^[a-z0-9]{4,12}$/i.test(prop) && prop !== "document" && (a.win[prop] instanceof HTMLDocument) === false && a.win.hasOwnProperty(prop) && typeof a.win[prop] === "object") {
                         const method = win[prop];
-                        //Antiblock.org v3 & BetterStopAdblock
+                        //Antiblock.org v3 and BetterStopAdblock
                         if (method.deferExecution &&
                             method.displayMessage &&
                             method.getElementBy &&
@@ -639,14 +639,14 @@ a.generic = function () {
                             } else {
                                 data.abo3 = prop;
                             }
-                            a.win[prop] = null; // kill instance
+                            a.win[prop] = null; //Remove instance
                         }
                         //BlockAdBlock
-                        if (method.bab) { // variant 1
+                        if (method.bab) { //Variant 1
                             win[prop] = null;
                         } else if (Object.keys(method).length === 3 && Object.keys(method).map(function (value, index) {
                             return value;
-                        }).join().length === 32) { // variant 2
+                        }).join().length === 32) { //Variant 2
                             win[prop] = null;
                         }
                     }
@@ -684,7 +684,6 @@ a.generic = function () {
             const reImgId = /^(xd|gd)$/;
             const reImgSrc = /\/ads\/banner.jpg/;
             const reIframeSrc = /(\/adhandler\/|\/adimages\/|ad.html)/;
-            //Communs
             if (insertedNode.id &&
                 reImgId.test(insertedNode.id) &&
                 insertedNode.nodeName === "IMG" &&
@@ -700,7 +699,6 @@ a.generic = function () {
             const reClass = /^[a-z]{8} [a-z]{8}/;
             const reBg = /^[a-z]{8}-bg$/;
             const reMessage = /Il semblerait que vous utilisiez un bloqueur de publicité !/;
-            //Communs
             if (typeof a.win.vtfab !== "undefined" &&
                 typeof Aak.uw.adblock_antib !== "undefined" &&
               insertedNode.parentNode &&
@@ -743,7 +741,7 @@ a.generic = function () {
                 reMsgId.test(insertedNode.id) &&
                 reTag1.test(insertedNode.nodeName) &&
                 reTag2.test(insertedNode.firstChild.nodeName)) {
-                //Kill audio message
+                //Stop audio message
                 const audio = insertedNode.querySelector("audio[loop]");
                 if (audio) {
                     audio.pause();
@@ -774,7 +772,6 @@ a.generic = function () {
                 }
             });
         });
-        //Observe
         observer.observe(a.doc, {
             childList: true,
             subtree: true
