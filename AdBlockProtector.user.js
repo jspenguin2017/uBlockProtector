@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 6.2
+// @version 6.3
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -190,7 +190,7 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
     let networkBusy = false; //A flag to prevent sending a new request before the first one is done
     let networkErrorCounter = 0; //Will stop sending request if this is over 5
     let isInBackground = false; //A flag to prevent excessive CPU usage when the tab is in background
-    const containerMatcher = domCmp(["wp.tv"], true) ? ".player__container" : ".wp-player-outer";
+    const containerMatcher = a.domCmp(["wp.tv"], true) ? ".player__container" : ".wp-player-outer";
     //Main function
     const main = function () {
         //Do not tick when in background
@@ -521,8 +521,8 @@ if (a.domCmp(["happy-hack.ru"])) {
 if (a.domCmp(["forbes.com"])) {
     //Skip daily block screen
     if (a.win.location.pathname.includes("/welcome")) {
-        cookie("welcomeAd", "true", 86400000, "/");
-        cookie("dailyWelcomeCookie", "true", 86400000, "/");
+        a.cookie("welcomeAd", "true", 86400000, "/");
+        a.cookie("dailyWelcomeCookie", "true", 86400000, "/");
         a.win.location = cookie("toUrl") || "http://www.forbes.com/";
     }
 }
@@ -642,7 +642,7 @@ if (a.domCmp(["thechive.com"])) {
 }
 if (a.domCmp(["richonrails.com"])) {
     //Load a JS on idle
-    on("DOMContentLoaded", function () {
+    a.on("DOMContentLoaded", function () {
         const adsByGoogleHtml = `"<ins+id="aswift_0_expand"+style="display:inline-table;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:750px;background-color:transparent"><ins+id="aswift_0_anchor"+style="display:block;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:750px;background-color:transparent"><iframe+marginwidth="0"+marginheight="0"+vspace="0"+hspace="0"+allowtransparency="true"+scrolling="no"+allowfullscreen="true"+onload="var+i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else+if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}"+id="aswift_0"+name="aswift_0"+style="left:0;position:absolute;top:0;"+width="750"+frameborder="0"+height="90"></iframe></ins></ins>"`;
         a.$.ajax({
             url: $(".article-content").data("url"),
