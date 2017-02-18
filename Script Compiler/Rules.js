@@ -470,12 +470,9 @@ if (a.domCmp(["mobile-tracker-free.com"])) {
 }
 if (a.domCmp(["workupload.com"])) {
     //Inject CSS
-    const f = function () {
+    a.always(function () {
         a.css(".adBlock, .adsbygoogle, #sad { height: 11px; }");
-    };
-    f();
-    a.on("DOMContentLoaded", f);
-    a.on("load", f);
+    });
 }
 if (a.domCmp(["intoday.in", "businesstoday.in"])) {
     //Inject style and lock openPopup to an empty function
@@ -638,6 +635,25 @@ if (a.domCmp(["richonrails.com"])) {
 if (a.domCmp(["rmprepusb.com"])) {
     //Add a cookie
     a.cookie("jot_viewer", "3");
+}
+if (a.domCmp(["cubeupload.com"])) {
+    //Filter document.write
+    a.filter("document.write", /Please consider removing adblock to help us pay our bills/);
+}
+if (a.domCmp(["neodrive.co"])) {
+    //Redirect to the real video
+    a.on("load", function () {
+        if (a.$(".player2").length > 0) {
+            a.win.location = a.$(".player2").attr("href").split("'")[1];
+        }
+    });
+}
+if (a.domCmp(["hentaihaven.org"])) {
+    //NSFW! Set cookies
+    a.always(function () {
+        Aak.setCookie('hh_ppndr1', 1);
+        Aak.setCookie('hh_ppndr2', 1);
+    });
 }
 //Generic, excluded domain check is built in
 a.generic();

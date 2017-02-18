@@ -561,7 +561,7 @@ a.cookie = function (key, val, time, path) {
         //Set mode
         let expire = new Date();
         expire.setTime(new Date().getTime() + (time || 31536000000));
-        a.doc.cookie = name + "=" + encodeURIComponent(value) + ";expires=" + expires.toGMTString() + ";path=" + (path || "/");
+        a.doc.cookie = name + "=" + encodeURIComponent(val) + ";expires=" + expire.toGMTString() + ";path=" + (path || "/");
     }
 }
 /**
@@ -601,6 +601,16 @@ a.nativePlayer = function (source, typeIn, widthIn, heightIn) {
     const height = heightIn || "auto";
     //Construct HTML string
     return `<video width='${width}' height='${height}' controls><source src='${source}' type='${type}'></video>`
+};
+/**
+ * Run function that is passed in on document-start, document-idle, and document-end
+ * @function
+ * @param {Function} func - The function to run.
+ */
+a.always = function (func) {
+    func();
+    a.on("DOMContentLoaded", func);
+    a.on("load", func);
 };
 
 //=====Specialized Functions=====
