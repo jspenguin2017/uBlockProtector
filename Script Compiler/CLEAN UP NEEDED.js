@@ -1,13 +1,4 @@
 ﻿
-// issue: https://github.com/gorhill/uBlock/issues/1340
-if (a.domCmp(["hentaihaven.org"])) { 
-    //Inject CSS
-    onAlways: function () {
-        // Prevent popunder
-        Aak.setCookie('hh_ppndr1', 1);
-        Aak.setCookie('hh_ppndr2', 1);
-    }
-
     if (a.domCmp(["primeshare.tv"])) { 
         //Inject CSS
 
@@ -1615,18 +1606,7 @@ if (a.domCmp(["hentaihaven.org"])) {
                                                                                                                                                                                                                                                                             }
                                                                                                                                                                                                                                                                         }
                                                                                                                                                                                                                                                                     },
-                                                                                                                                                                                                                                                                    // Poland
-                                                                                                                                                                                                                                                                    wp_domains: {
-                                                                                                                                                                                                                                                                        // Note: disable EasyPrivacy
-                                                                                                                                                                                                                                                                        // issue: https://github.com/reek/anti-adblock-killer/issues/956
-                                                                                                                                                                                                                                                                        // issue: https://github.com/reek/anti-adblock-killer/issues/905
-                                                                                                                                                                                                                                                                        // issue: https://github.com/reek/anti-adblock-killer/issues/300
-                                                                                                                                                                                                                                                                        if (a.domCmp(["biztok.pl', 'wp.tv', 'wp.pl', 'sportowefakty.pl', 'kafeteria.tv', 'kafeteria.pl', '.wrzuta.pl', 'pudelek.tv', 'komediowo.pl', 'sfora.pl', 'autokrata.pl', 'sportfan.pl', 'wawalove.pl', 'hotmoney.pl', 'aleseriale.pl', 'babol.pl', 'snobka.pl', 'nocoty.pl', 'money.pl', 'abczdrowie.pl', 'gadzetomania.pl', 'autokult.pl', 'komorkomania.pl"])) { 
-                                                                                                                                                                                                                                                                            //Inject CSS
-
-                                                                                                                                                                                                                                                                            // prevent popup anti-adblock from abczdrowie.pl
-                                                                                                                                                                                                                                                                            Aak.setCookie('ABCABC', true);
-                                                                                                                                                                                                                                                                        },
+                                                                                                                                                                                                                                                                    
 
                                                                                                                                                                                                                                                                         // issue: https://github.com/reek/anti-adblock-killer/issues/1010
                                                                                                                                                                                                                                                                         // source: http://pastebin.com/7G2RBnqq
