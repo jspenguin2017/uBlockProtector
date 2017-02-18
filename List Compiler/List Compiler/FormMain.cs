@@ -20,7 +20,7 @@ namespace List_Compiler
         /// <summary>
         /// Default git root directory
         /// </summary>
-        private const string DefaultGitRoot = "C:\\Data\\Git\\AdBlockProtector";
+        private const string DefaultGitRoot = "D:\\Git\\AdBlockProtector";
 
         /// <summary>
         /// Form load event handler
@@ -53,7 +53,7 @@ namespace List_Compiler
                 string[] rmList;
                 try
                 {
-                    rmList = File.ReadAllLines(Path.Combine(gitRoot, "List Compiler\\ListCompiler.ToRemove.txt"));
+                    rmList = File.ReadAllLines(Path.Combine(gitRoot, "List Compiler\\Remove.txt"));
                     putLog("To remove list read, " + rmList.Length.ToString() + " entries found. ");
                 }
                 catch (Exception err)
@@ -104,7 +104,7 @@ namespace List_Compiler
                 string[] mainFile;
                 try
                 {
-                    mainFile = File.ReadAllLines(Path.Combine(gitRoot, "List Compiler\\ListCompiler.Main.txt"));
+                    mainFile = File.ReadAllLines(Path.Combine(gitRoot, "List Compiler\\Main.txt"));
                     putLog("Main file read, " + mainFile.Length.ToString() + " entries found. ");
                 }
                 catch (Exception err)
