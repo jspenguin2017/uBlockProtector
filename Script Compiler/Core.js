@@ -512,12 +512,58 @@ a.readOnly = function (name, val) {
 a.css = function (str) {
     let temp = str.split(";");
     for (let i = 0; i < temp.length - 1; i++) {
-        if (!temp[i].endsWith(" !important")) {
+        if (!temp[i].endsWith("!important")) {
             temp[i] += " !important";
         }
     }
     GM_addStyle(temp.join(";"));
 };
+/**
+ * Add a bait element.
+ * @function
+ * @param {string} type - The type of the element, example: div.
+ * @param {string} identifier - The class or id, example: .test (class) #test (id).
+ */
+a.bait = function (type, identifier) {
+    //Create element
+    let elem = a.$("<" + type + ">");
+    //Add identifier
+    if (identifier.startsWith("#")) {
+        elem.attr("id", identifier.substr(1));
+    } else if (identifier.startsWith(".")) {
+        elem.addClass(identifier.substr(1));
+    }
+    //Add content
+    elem.html("<br>");
+    //Add to html
+    a.$("html").append(elem);
+};
+/**
+ * Set or get a cookie
+ * @function
+ * @param {string} key - The key of the cookie.
+ * @param {string} [val=undefined] - The value to set, omit this to get the cookie.
+ * @param {string} [time=31536000000] - In how many milliseconds will it expire, defaults to 1 year.
+ * @param {string} [path=undefined] - The path to set, defaults to /.
+ * @returns {string} The value of the cookie, null will be returned if the cookie doesn't exist, and undefined will be returned in set mode.
+ */
+a.cookie = function (key, val, time, path) {
+    if (typeof val === "undefined") {
+        //Get mode
+        const value = "; " + a.doc.cookie;
+        let parts = value.split("; " + key + "=");
+        if (parts.length == 2) {
+            return parts.pop().split(";").shift();
+        } else {
+            return null;
+        }
+    } else {
+        //Set mode
+        let expire = new Date();
+        expire.setTime(new Date().getTime() + (time || 31536000000));
+        a.doc.cookie = name + "=" + encodeURIComponent(value) + ";expires=" + expires.toGMTString() + ";path=" + (path || "/");
+    }
+}
 /**
  * Generate a native HTML5 player with controls but not autoplay.
  * @function
@@ -695,14 +741,14 @@ a.generic = function () {
             const reMessage = /Il semblerait que vous utilisiez un bloqueur de publicité !/;
             if (typeof a.win.vtfab !== "undefined" &&
                 typeof Aak.uw.adblock_antib !== "undefined" &&
-              insertedNode.parentNode &&
-              insertedNode.parentNode.nodeName === "BODY" &&
-              insertedNode.id &&
-              reId.test(insertedNode.id) &&
-              insertedNode.nodeName === "DIV" &&
-              insertedNode.nextSibling &&
-              insertedNode.nextSibling.className &&
-              insertedNode.nextSibling.nodeName === "DIV") {
+                insertedNode.parentNode &&
+                insertedNode.parentNode.nodeName === "BODY" &&
+                insertedNode.id &&
+                reId.test(insertedNode.id) &&
+                insertedNode.nodeName === "DIV" &&
+                insertedNode.nextSibling &&
+                insertedNode.nextSibling.className &&
+                insertedNode.nextSibling.nodeName === "DIV") {
                 if (insertedNode.className &&
                     reClass.test(insertedNode.className) &&
                     reBg.test(insertedNode.nextSibling.className) &&
