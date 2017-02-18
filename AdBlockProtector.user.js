@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 6.1
+// @version 6.2
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -276,7 +276,7 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
         }
     };
     //Init
-    onEvent("load", function () {
+    a.on("load", function () {
         //This function is quite light weight, we should be fine
         a.win.setInterval(main, 1000);
     });

@@ -252,7 +252,7 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
         }
     };
     //Init
-    onEvent("load", function () {
+    a.on("load", function () {
         //This function is quite light weight, we should be fine
         a.win.setInterval(main, 1000);
     });
