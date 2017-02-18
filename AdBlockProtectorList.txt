@@ -1,25 +1,17 @@
 [Adblock Plus 2.0]
 ! Title: AdBlock Protector List
-! Version: 5.9
+! Version: 5.10
 ! Expires: 1 days
 ! Homepage: https://x01x012013.github.io/AdBlockProtector/
-!
-!>> Installation test of homepage
 ||x01x012013.github.io/AdBlockProtector/Other/listTest.js|
-!>> dogefaucet.com
 @@||www.dogefaucet.com/static/js/ads.js|
-!>> portal.abczdrowie.pl
 @@dot.wp.pl
-!>> tvn.pl and related domains
 www.tvn.pl#div(id*=_videoDriverContent)
 www.tvn7.pl##div.vjs-abDetected
 www.tvnstyle.pl##div.vjs-abDetected
 www.tvnturbo.pl##div.vjs-abDetected
-!>> pudelek.tv
 @@||pagead2.googlesyndication.com^$domain=pudelek.tv
-!>> komorkomania.pl
 komorkomania.pl###like-us-adblock-modal
-!>> NSFW! zone-anime.net
 zone-anime.net###adblockinfo
 ! =====Patched AAK List=====
 ||trymask.com/api/$third-party

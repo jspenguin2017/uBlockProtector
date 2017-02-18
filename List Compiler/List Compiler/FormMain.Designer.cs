@@ -47,16 +47,16 @@
             // TBGitRoot
             // 
             this.TBGitRoot.Location = new System.Drawing.Point(73, 7);
-            this.TBGitRoot.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TBGitRoot.Margin = new System.Windows.Forms.Padding(2);
             this.TBGitRoot.Name = "TBGitRoot";
-            this.TBGitRoot.Size = new System.Drawing.Size(389, 23);
+            this.TBGitRoot.Size = new System.Drawing.Size(761, 23);
             this.TBGitRoot.TabIndex = 1;
             // 
             // BtnGo
             // 
             this.BtnGo.Location = new System.Drawing.Point(10, 36);
             this.BtnGo.Name = "BtnGo";
-            this.BtnGo.Size = new System.Drawing.Size(451, 39);
+            this.BtnGo.Size = new System.Drawing.Size(823, 39);
             this.BtnGo.TabIndex = 2;
             this.BtnGo.Text = "Go";
             this.BtnGo.UseVisualStyleBackColor = true;
@@ -66,7 +66,7 @@
             // 
             this.TBLog.Location = new System.Drawing.Point(10, 81);
             this.TBLog.Name = "TBLog";
-            this.TBLog.Size = new System.Drawing.Size(452, 348);
+            this.TBLog.Size = new System.Drawing.Size(823, 423);
             this.TBLog.TabIndex = 3;
             this.TBLog.Text = "";
             this.TBLog.WordWrap = false;
@@ -75,14 +75,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(473, 441);
+            this.ClientSize = new System.Drawing.Size(845, 516);
             this.Controls.Add(this.TBLog);
             this.Controls.Add(this.BtnGo);
             this.Controls.Add(this.TBGitRoot);
             this.Controls.Add(this.LabelGitRoot);
-            this.Font = new System.Drawing.Font("宋体", 10F);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Font = new System.Drawing.Font("SimSun", 10F);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "List Compiler";
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.ResumeLayout(false);

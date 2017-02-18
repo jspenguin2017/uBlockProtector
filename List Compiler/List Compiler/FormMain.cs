@@ -49,49 +49,50 @@ namespace List_Compiler
             //Start main process
             await Task.Run(() =>
             {
-                //Load to remove list (hard coded file name)
-                string[] rmList;
+                //Load everything into RAM
+                string[] metadata;
+                string[] rules;
+                string[] remove;
+                string[] originalAAKList;
+                //Metadata
                 try
                 {
-                    rmList = File.ReadAllLines(Path.Combine(gitRoot, "List Compiler\\Remove.txt"));
-                    putLog("To remove list read, " + rmList.Length.ToString() + " entries found. ");
+                    string path = Path.Combine(gitRoot, "List Compiler\\Metadata.txt");
+                    putLog("Reading data from " + path);
+                    metadata = File.ReadAllLines(path);
+                    putLog(metadata.Length.ToString() + " entries read. ");
                 }
                 catch (Exception err)
                 {
-                    putLog("Cannot read to remove list! Error message: ");
+                    putLog("Cannot read file, error message: ");
                     putLog(err.Message);
                     return;
                 }
-                //Load AAK List
-                string[] originalAAKList;
-                try
+                //Other 3
+                if (!loadSkipComments(Path.Combine(gitRoot, "List Compiler\\Rules.txt"), out rules))
                 {
-                    originalAAKList = File.ReadAllLines(Path.Combine(gitRoot, "anti-adblock-killer\\anti-adblock-killer-filters.txt"));
-                    putLog("Original AAK List read, " + originalAAKList.Length.ToString() + " entries found. ");
+                    return;
                 }
-                catch (Exception err)
+                if (!loadSkipComments(Path.Combine(gitRoot, "List Compiler\\Remove.txt"), out remove))
                 {
-                    putLog("Cannot read original AAK List! Error message: ");
-                    putLog(err.Message);
+                    return;
+                }
+                if (!loadSkipComments(Path.Combine(gitRoot, "anti-adblock-killer\\anti-adblock-killer-filters.txt"), out originalAAKList))
+                {
                     return;
                 }
                 //Patch AAK List
+                putLog("Patching AAK list... ");
                 List<string> patchedAAKList = new List<string>();
                 patchedAAKList.Add("! =====Patched AAK List=====");
-                int commentCounter = 0;
-                int removeCounter = 0;
+                int counter = 0;
                 for (int i = 0; i < originalAAKList.Length; i++)
                 {
                     string t = originalAAKList[i];
-                    if (t == string.Empty || t[0] == '!')
-                    {
-                        //Skip comments
-                        commentCounter++;
-                    }
-                    else if (rmList.Contains(t))
+                    if (remove.Contains(t))
                     {
                         //Skip removed entries
-                        removeCounter++;
+                        counter++;
                     }
                     else
                     {
@@ -99,30 +100,21 @@ namespace List_Compiler
                         patchedAAKList.Add(t);
                     }
                 }
-                putLog("Patching finished, " + commentCounter.ToString() + " comments skipped, " + removeCounter.ToString() + " entries removed. ");
-                //Read main file
-                string[] mainFile;
-                try
-                {
-                    mainFile = File.ReadAllLines(Path.Combine(gitRoot, "List Compiler\\Main.txt"));
-                    putLog("Main file read, " + mainFile.Length.ToString() + " entries found. ");
-                }
-                catch (Exception err)
-                {
-                    putLog("Cannot read main file! Error message: ");
-                    putLog(err.Message);
-                    return;
-                }
+                putLog(counter.ToString() + " entries removed. ");
                 //Combine entries
-                string[] toWrite = mainFile.Concat(patchedAAKList.ToArray()).ToArray();
+                string[] toWrite = metadata.Concat(rules).ToArray();
+                toWrite = toWrite.Concat(patchedAAKList.ToArray()).ToArray();
+                //Write to file
                 try
                 {
-                    File.WriteAllLines(Path.Combine(gitRoot, "AdBlockProtectorList.txt"), toWrite);
-                    putLog("Compiling finished, " + toWrite.Length.ToString() + " entries wrote. ");
+                    string path = Path.Combine(gitRoot, "AdBlockProtectorList.txt");
+                    putLog("Writting data to " + path);
+                    File.WriteAllLines(path, toWrite);
+                    putLog(toWrite.Length.ToString() + " entries wrote. ");
                 }
                 catch (Exception err)
                 {
-                    putLog("Cannot write to output file! Error message: ");
+                    putLog("Cannot write file, error message: ");
                     putLog(err.Message);
                     return;
                 }
@@ -130,6 +122,52 @@ namespace List_Compiler
             //Unlock elements
             BtnGo.Enabled = true;
             TBGitRoot.Enabled = true;
+        }
+
+        /// <summary>
+        /// Load a file and filter comments
+        /// </summary>
+        /// <param name="filePath">The path to the file to read</param>
+        /// <param name="data">The output variable</param>
+        /// <returns>True if successful, false otherwise</returns>
+        private bool loadSkipComments(string filePath, out string[] data)
+        {
+            string[] original;
+            List<string> filtered = new List<string>();
+            //Read file
+            try
+            {
+                putLog("Reading data from " + filePath + "... ");
+                original = File.ReadAllLines(filePath);
+                putLog(original.Length.ToString() + " entries read. ");
+            }
+            catch (Exception err)
+            {
+                putLog("Cannot read file, error message: ");
+                putLog(err.Message);
+                data = new string[0];
+                return false;
+            }
+            //Filter list
+            int counter = 0;
+            for (int i = 0; i < original.Length; i++)
+            {
+                string t = original[i];
+                if (t == string.Empty || t[0] == '!')
+                {
+                    //Skip comments and update counter
+                    counter++;
+                }
+                else
+                {
+                    //Put into filtered list
+                    filtered.Add(t);
+                }
+            }
+            putLog(counter.ToString() + " comments removed. ");
+            //Return result
+            data = filtered.ToArray();
+            return true;
         }
 
         /// <summary>
