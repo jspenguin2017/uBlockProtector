@@ -94,10 +94,10 @@ if (a.domCmp(["theinquirer.net"])) {
     a.readOnly("_r3z", true);
 }
 if (a.domCmp(["tweaktown.com"])) {
-    //(Workaround) Apply important styles and remove block screen
+    //(Workaround) Inject CSS and remove block screen
     a.on("load", function () {
         //Force enable scrolling
-        a.$("head").append("<style> html, body { overflow: scroll !important; } </style>");
+        a.css("html, body { overflow: scroll; }");
         //Watch and remove block screen
         const blockScreenRemover = function () {
             if (a.$("body").children("div").last().text().indexOf("Ads slowing you down?") > -1) {
@@ -116,7 +116,7 @@ if (a.domCmp(["ratemyprofessors.com"])) {
     a.filter("addEventListener", "/resize/i");
 }
 if (a.domCmp(["gamepedia.com"])) {
-    //(Workaround) Remove element
+    //(Workaround) Remove element on load
     a.on("load", function () {
         a.$("#atflb").remove();
     });
@@ -167,7 +167,7 @@ if (a.domCmp(["tvregionalna24.pl"])) {
 }
 if (a.domCmp(["tvn.pl", "tvnstyle.pl", "tvnturbo.pl"])) {
     //tvn.pl and related
-    //(Workaround) Replace player - Thanks to mikhoul, szymon1118, and xxcriticxx
+    //Replace player - Thanks to mikhoul, szymon1118, and xxcriticxx
     //Potential related domains:  "tvnfabula.pl", "itvnextra.pl", "tvn24bis.pl", "ttv.pl", "player.pl", "x-news.pl", "tvn7.pl", "itvn.pl"
     const homePages = ["http://www.tvn.pl/", "http://www.tvn7.pl/", "http://www.tvnstyle.pl/", "http://www.tvnturbo.pl/"];
     //Homepages are partially fixed and are handled by List
@@ -180,8 +180,10 @@ if (a.domCmp(["tvn.pl", "tvnstyle.pl", "tvnturbo.pl"])) {
 if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadzetomania.pl", "hotmoney.pl", "kafeteria.pl",
             "kafeteria.tv", "komediowo.pl", "komorkomania.pl", "money.pl", "pudelek.tv", "sfora.pl", "snobka.pl",
             "wawalove.pl", "wp.pl", "wp.tv", "wrzuta.pl", "pudelek.pl"])) {
+    //wp.pl and related
     //Set a cookie to prevent block screen
     a.cookie("ABCABC", "true");
+    //Replace player - Thanks to szymon1118
     //Variables
     let mid; //Media ID of next video
     let midArray1 = []; //Media IDs method 1
@@ -295,7 +297,7 @@ if (a.domCmp(["thewindowsclub.com"])) {
     a.crashScript("(function(a,b,c,d,e){e=a.createElement(b);");
 }
 if (a.domCmp(["foxvalleyfoodie.com"])) {
-    //Only allow certain includes
+    //Only allow certain script includes
     a.patchHTML(function (html) {
         return html.replace(/<script.*\/wp-includes\/js\/(?!jquery|comment|wp-embed).*<\/script>/g, "<script>console.error('Uncaught AdBlock Error: Admiral is not allowed on this device! ');</script>");
     });
@@ -340,7 +342,7 @@ if (a.domCmp(["wired.com"])) {
     a.config.allowGeneric = true;
 }
 if (a.domInc(["knowlet3389.blogspot"])) {
-    //(Could be redundant) Filter keywords from setTimeout
+    //(Could be redundant) Filter keywords from setTimeout()
     a.filter("setTimeout", /\$\(\"\#gAds\"\)\.height\(\)/);
 }
 if (a.domCmp(["freegameserverhost.com"])) {
@@ -466,7 +468,7 @@ if (a.domCmp(["wakanim.tv"])) {
     a.css("#nopub { display: block; }");
 }
 if (a.domCmp(["simply-debrid.com"])) {
-    //Assign variable to unsafeWindow
+    //Assign unsafeWindow.adsbygoogle.loaded to true
     a.win.adsbygoogle = {};
     a.win.adsbygoogle.loaded = true;
 }
@@ -518,7 +520,7 @@ if (a.domCmp(["happy-hack.ru"])) {
     a.css("#blockblockF4 {visibility:invisible;display:none;} #blockblockF4 td {visibility:invisible;display:none;} #blockblockF4 td p {visibility:invisible;display:none;} #blockblockD3 {visibility:visible;display:block;}");
 }
 if (a.domCmp(["forbes.com"])) {
-    //Skip daily block screen
+    //Set cookies and skip daily block screen
     if (a.win.location.pathname.includes("/welcome")) {
         a.cookie("welcomeAd", "true", 86400000, "/");
         a.cookie("dailyWelcomeCookie", "true", 86400000, "/");
@@ -587,9 +589,9 @@ if (a.domCmp(["stream4free.eu"])) {
 }
 if (a.domCmp(["lg-firmware-rom.com"])) {
     //Lock killads to true
-    a.readOnly('killads', true);
+    a.readOnly("killads", true);
 }
-if (a.domCmp(["badtv.it', 'badtaste.it', 'badgames.it', 'badcomics.it"])) {
+if (a.domCmp(["badtv.it", "badtaste.it", "badgames.it", "badcomics.it"])) {
     //Set cookie
     a.cookie("adBlockChecked", "disattivo");
 }
@@ -655,11 +657,11 @@ if (a.domCmp(["richonrails.com"])) {
                 a.win.eval(exec);
             }
         });
-        a.$(".article-content").after('<div class="article-content-2"></div>').remove();
+        a.$(".article-content").after(`<div class="article-content-2"></div>`).remove();
     });
 }
 if (a.domCmp(["rmprepusb.com"])) {
-    //Add a cookie
+    //Set a cookie
     a.cookie("jot_viewer", "3");
 }
 if (a.domCmp(["cubeupload.com"])) {
@@ -677,8 +679,8 @@ if (a.domCmp(["neodrive.co"])) {
 if (a.domCmp(["hentaihaven.org"])) {
     //NSFW! Set cookies
     a.always(function () {
-        Aak.setCookie('hh_ppndr1', 1);
-        Aak.setCookie('hh_ppndr2', 1);
+        a.cookie("hh_ppndr1", 1);
+        a.Cookie("hh_ppndr2", 1);
     });
 }
 //Generic, excluded domain check is built in
