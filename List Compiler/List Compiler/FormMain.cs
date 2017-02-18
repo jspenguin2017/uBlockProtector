@@ -34,15 +34,15 @@ namespace List_Compiler
         }
 
         /// <summary>
-        /// Go button click handler
+        /// Build button click handler
         /// Start compiling
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void BtnGo_Click(object sender, EventArgs e)
+        private async void BtnBuild_Click(object sender, EventArgs e)
         {
             //Lock elements
-            BtnGo.Enabled = false;
+            BtnBuild.Enabled = false;
             TBGitRoot.Enabled = false;
             //Cache git root
             string gitRoot = TBGitRoot.Text;
@@ -120,7 +120,7 @@ namespace List_Compiler
                 }
             });
             //Unlock elements
-            BtnGo.Enabled = true;
+            BtnBuild.Enabled = true;
             TBGitRoot.Enabled = true;
         }
 
