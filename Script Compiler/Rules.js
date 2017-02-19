@@ -600,7 +600,7 @@ if (a.domCmp(["pinoy1tv."])) {
     a.readOnly("allowads", 1);
 }
 if (a.domCmp(["business-standard.com"])) {
-    //Lock adsLoaded to 1 and set a cookie
+    //Lock adsLoaded to 1 and set cookie
     a.readOnly("adsLoaded", 1);
     a.cookie("_pw", "t");
 }
@@ -650,7 +650,7 @@ if (a.domCmp(["richonrails.com"])) {
     });
 }
 if (a.domCmp(["rmprepusb.com"])) {
-    //Set a cookie
+    //Set cookie
     a.cookie("jot_viewer", "3");
 }
 if (a.domCmp(["cubeupload.com"])) {
@@ -826,13 +826,13 @@ if (a.domCmp(["mangahost.com"])) {
     a.readOnly("testDisplay", false);
 }
 if (a.domCmp(["videowood.tv"])) {
-    //Disable open() then lock config to an empty object and adb_remind to false
+    //Disable open() and lock adb_remind to false
     a.filter("open");
-    a.readOnly("config", {});
+    a.win.config = {};
     a.readOnly("adb_remind", false);
 }
 if (a.domCmp(["infojobs.com.br"])) {
-    //Set a read-only properly, this has 3 layers and a.readOnly() can't handle it
+    //Set properly webUI, this has 3 layers and a.readOnly() can't handle it
     a.win.webUI = {};
     a.win.webUI.Utils = {};
     Object.defineProperty(a.win.webUI.Utils, "StopAdBlock", {
@@ -848,7 +848,7 @@ if (a.domCmp(["cloudwebcopy.com"])) {
     a.filter("setTimeout");
 }
 if (a.domCmp(["narkive.com"])) {
-    //Lock adblock_status to a funciton that always returns false
+    //Lock adblock_status to a funciton that always return false
     a.readOnly("adblock_status", function () {
         return false;
     });
@@ -868,6 +868,12 @@ if (a.domCmp(["onvasortir.com"])) {
 if (a.domCmp(["fullhdzevki.com"])) {
     //Lock check to an empty function
     a.readOnly("check", function () { });
+}
+if (a.domCmp(["freecoins4.me"])) {
+    //Lock check to a function that always return false
+    a.readOnly("check", function () {
+        return false;
+    });
 }
 if (a.domCmp(["ville-ideale.com"])) {
     //Lock execsp to an empty function
@@ -890,7 +896,7 @@ if (a.domCmp(["15min.lt"])) {
     a.crashScript("window.__adblock_config");
 }
 if (a.domCmp(["anizm.com"])) {
-    //Set stopAdBlock to an empty object
+    //Set property stopAdBlock to an empty object
     a.always(function () {
         a.win.stopAdBlock = {};
     });
@@ -899,5 +905,233 @@ if (a.domCmp(["diarioinformacion.com"])) {
     //Lock pr_okvalida to true
     a.readOnly("pr_okvalida", true);
 }
+if (a.domCmp(["cnbeta.com"])) {
+    //Lock JB to an empty function
+    a.readOnly("JB", function () { });
+}
+if (a.domCmp(["themarker.com", "haaretz.co.il"])) {
+    //Set property AdBlockUtil to an empty object
+    a.win.AdBlockUtil = {};
+}
+if (a.domCmp(["pipocas.tv"])) {
+    //Set cookie
+    a.cookie("popup_user_login", "yes");
+}
+if (a.domCmp(["sc2casts.com"])) {
+    //Set property _gaq then lock showdialog and showPopup2 to empty functions
+    a.win._gaq = { push: function () { } }
+    a.readOnly("showdialog", function () { });
+    a.readOnly("showPopup2", function () { });
+}
+if (a.domCmp(["vgunetwork.com"])) {
+    //Set cookie and click on close button on idle
+    a.on("DOMContentLoaded", function () {
+        a.cookie("stopIt", "1");
+        a.$("#some_ad_block_key_close").click()
+    });
+}
+if (a.domCmp(["eventosppv.me"])) {
+    //Remove element on idle
+    a.on("DOMContentLoaded", function () {
+        a.$("#nf37").remove();
+    });
+}
+if (a.domCmp(["bolor-toli.com"])) {
+    //Edit elements on load
+    a.on("load", function () {
+        a.$(".banner").html("<br>").css("height", "1px");
+    });
+}
+if (a.domCmp(["vivo.sx"])) {
+    //Remove block elements
+    a.on("load", function aa() {
+        a.$("#alert-throttle").remove();
+        a.$("button#access").removeAttr("id").removeAttr("disabled").html("Continue To Video");
+        a.win.setTimeout(function () {
+            $("input[name='throttle']").remove();
+        }, 1000);
+    });
+}
+if (a.domCmp(["luxyad.com"])) {
+    //Skip to real URL
+    a.on("DOMContentLoaded", function () {
+        if (a.win.location.pathname === "/Information.php") {
+            const href = location.href;
+            a.win.location.href = href.substr(href.indexOf("url=") + 4, href.length);
+        }
+    });
+}
+if (a.domCmp(["mrpiracy.xyz", "mrpiracy.club"])) {
+    //Crash script by keywords
+    a.crashScript("Desativa o AdBlock para continuar");
+}
+if (a.domCmp(["dbplanet.net"])) {
+    //Set cookie
+    a.cookie("newnoMoreAdsNow", "1");
+}
+if (a.domCmp(["aidemu.fr"])) {
+    //Set cookie
+    a.cookie("adblockPopup", true);
+}
+if (a.domCmp(["eami.in"])) {
+    //Set cookie
+    a.always(function () {
+        a.cookie("ad_locked", "1");
+    });
+}
+if (a.domCmp(["bigdownloader.com"])) {
+    //Remove element on idle
+    a.on("DOMContentLoaded", function () {
+        a.$("#anti_adblock").remove();
+    });
+}
+if (a.domCmp(["freeskier.com"])) {
+    //Edit elements on idle
+    a.on("DOMContentLoaded", function () {
+        a.$("#adb-not-enabled").css("display", "");
+        a.$("#videoContainer").css("display", "");
+    });
+}
+if (a.domCmp(["gametrailers.com"])) {
+    //Remove element on idle
+    a.on("DOMContentLoaded", function () {
+        a.$("#ad_blocking").remove();
+    });
+}
+if (a.domCmp(["scan-mx.com", "onepiece-mx.net", "naruto-mx.net"])) {
+    //Lock ad_block_test to an empty function and edit element on idle
+    a.readOnly("ad_block_test", function () { });
+    a.on("DOMContentLoaded", function () {
+        a.$("#yop").attr("id", "");
+    });
+}
+if (a.domCmp(["freebitcoins.nx.tc", "getbitcoins.nx.tc"])) {
+    //Lock ad_block_test to a function that always return false
+    a.readOnly("ad_block_test", function () {
+        return false;
+    });
+}
+if (a.domCmp(["bitcoinker.com"])) {
+    //Lock claim to a function that always return true and remove element on idle
+    a.readOnly("claim", function () {
+        return true;
+    });
+    a.on("DOMContentLoaded", function () {
+        a.$("#E33FCCcX2fW").remove();
+    });
+}
+if (a.domCmp(["moondoge.co.in", "moonliteco.in", "moonbit.co.in", "bitcoinzebra.com"])) {
+    //Remove elements on idle
+    a.on("", function () {
+        a.$("#AB, #E442Dv, #eCC5h").remove();
+    });
+}
+if (a.domCmp(["bitcoiner.net', 'litecoiner.net"])) {
+    //Add bait elements
+    a.bait("div", "#tester");
+    a.bait("div", "#ad-top");
+}
+if (a.domCmp(["torrent-tv.ru"])) {
+    //Lock c_Oo_Advert_Shown to true
+    a.readOnly("c_Oo_Advert_Shown", true);
+}
+if (a.domCmp(["cwtv.com"])) {
+    //Lock CWTVIsAdBlocking to undefined
+    a.readOnly("CWTVIsAdBlocking", undefined);
+}
+if (a.domCmp(["inn.co.il"])) {
+    //Set property TRC
+    a.win.TRC = {};
+    a.win.TRC.blocker = {
+        states: {
+            ABP_DETECTION_DISABLED: -2,
+            ABP_NOT_DETECTED: 0,
+            ABP_DETECTED: 1
+        },
+        createBlockDetectionDiv: function () {
+            return document.createElement("div");
+        },
+        isBlockDetectedOnDiv: function () {
+            return 0;
+        },
+        isBlockDetectedOnClassNames: function () {
+            return 0;
+        },
+        getBlockedState: function () {
+            return 0;
+        }
+    };
+}
+if (a.domCmp(["bhaskar.com", "divyabhaskar.co.in"])) {
+    //Lock openPopUpForBreakPage to an empty funciton then canABP and canCheckAds to true
+    a.readOnly("openPopUpForBreakPage", function () { });
+    a.readOnly("canABP", true);
+    a.readOnly("canCheckAds", true);
+}
+if (a.domCmp(["turkanime.tv"])) {
+    //Set properties
+    a.always(function () {
+        a.win.adblockblock = function () { };
+        a.win.BlokKontrol = {};
+    });
+}
+if (a.domCmp(["wtfbit.ch"])) {
+    //Lock writeHTMLasJS to an empty function
+    a.readOnly("writeHTMLasJS", function () { });
+}
+if (a.domCmp(["aranzulla.it"])) {
+    //Crash script by keyworkds and inject style
+    a.crashScript("navigator.userAgent||navigator.vendor||window.opera");
+    a.css("#abt1 + STYLE + div[id][class] {display:none;}");
+}
+if (a.domCmp(["ndtv.com"])) {
+    //Lock ___p__p to 1 and getNoTopLatestNews to an empty function
+    a.readOnly("___p__p", 1);
+    a.readOnly("getNoTopLatestNews", function () { });
+}
+if (a.domCmp(["lesechos.fr", "lesechos.com"])) {
+    //Lock checkAdBlock and aywall_adblock_article to empty functions then call_Ad to 1
+    a.readOnly("checkAdBlock", function () { });
+    a.readOnly("paywall_adblock_article", function () { });
+    a.readOnly("call_Ad", 1);
+}
+if (a.domCmp(["bitvisits.com"])) {
+    //Lock blockAdblockUser to an empty function
+    a.readOnly("blockAdblockUser", function () { });
+}
+if (a.domCmp(["exrapidleech.info"])) {
+    //Set cookies, style, read only variables, filter open(), and create an element
+    let tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    //Cookies
+    a.cookie("popcashpuCap", 1);
+    a.cookie("popcashpu", 1);
+    a.cookie("nopopatall", tomorrow.getTime().toString());
+    a.cookie("noadvtday", 0);
+    //Style
+    a.css("div.alert.alert-danger.lead {opacity:0;}");
+    //Read only variables
+    a.readOnly("bdvbnr_pid", []);
+    a.readOnly("PopAds", 1);
+    //Filter open()
+    a.filter("open");
+    //Create element
+    a.$("<iframe>").attr("src", "http://bdfrm.bidvertiser.com/BidVertiser.dbm?pid=383865&bid=1737418&RD=")
+.attr("id", bdvi).css("display", "none").appendTo("html");
+}
+if (a.domCmp(["vipleague.is", "vipleague.ws", "vipleague.tv", "vipleague.se", "vipleague.tv", "vipleague.me",
+"vipleague.mobi", "vipleague.co", "vipleague.sx", "vipleague.ch", "vipbox.tv", "vipbox.co", "vipbox.biz",
+"vipbox.sx", "vipbox.eu", "vipbox.so", "vipbox.nu", "vipboxsa.co", "strikeout.co", "strikeout.me",
+"homerun.re", "vipboxtv.co", "vipapp.me"])) {
+    //Set read only variable, cookie, and styles
+    a.readOnly("iExist", true);
+    a.cookie("xclsvip", 1);
+    a.css(".vip_052x003 { height: 250px; }");
+    a.css(".vip_09x827 { height: 26px; }");
+    a.css("#overlay { display: none; }");
+}
+
 //Generic, excluded domain check is built in
 a.generic();
+
+//TODO: Check if any domCmp ends/starts with "."

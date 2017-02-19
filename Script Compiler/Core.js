@@ -392,7 +392,7 @@ a.filter = function (func, filter) {
         //Apply filter
         for (let i = 0; i < arguments.length; i++) {
             if (filter.test(arguments[i].toString())) {
-                //Not allowed (will always log)
+                //Not allowed
                 a.err();
                 return;
             }
