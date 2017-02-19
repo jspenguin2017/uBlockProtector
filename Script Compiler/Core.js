@@ -18,7 +18,7 @@ a.VERSION = "0.1";
 
 //=====Configurations=====
 /**
- * Load configurations.
+ * Load configurations, includes mods configurations.
  * @function
  */
 a.config = function () {
@@ -49,7 +49,7 @@ a.config.domExcluded = null;
  * @function
  */
 a.mods = function () {
-    //Facebook mods
+    //===Facebook mods===
     if (a.domCmp(["facebook.com"], true)) {
         //Add Jump To Top button
         const addJumpToTop = function () {
@@ -123,7 +123,7 @@ a.mods = function () {
             hidePeopleYouMayKnow();
         }
     }
-    //Blogspot mods
+    //===Blogspot mods===
     if (a.mods.Blogspot_AutoNCR && a.domInc(["blogspot"], true) && !a.domCmp(["blogspot.com"], true) && a.c.topFrame) {
         //Auto NCR (No Country Redirect)
         const name = a.dom.replace("www.", "").split(".")[0];
@@ -132,7 +132,7 @@ a.mods = function () {
     }
 };
 /**
- * Whether Jump To Top button should be added to Facebook page.
+ * Whether a Jump To Top button should be added to Facebook.
  * @const {bool}
  */
 a.mods.Facebook_JumpToTop = true;
@@ -170,14 +170,15 @@ a.out = a.win.console;
  */
 a.dom = a.doc.domain;
 /**
- * addEventListener of unsafeWindow.
+ * The addEventListener of unsafeWindow.
+ * We must wrap it like this or it will throw errors.
  * @const {Object}
  */
 a.on = function (event, func) {
     a.win.addEventListener(event, func);
 };
 /**
- * jQuery, will be available after a.init() is called.
+ * jQuery with Color plug-in, will be available after a.init() is called.
  * @const {Object}
  */
 a.$ = null;
@@ -185,12 +186,12 @@ a.$ = null;
 //=====Constants=====
 a.c = {};
 /**
- * The error message.
+ * The generic error message.
  * @const {string}
  */
 a.c.errMsg = "Uncaught AdBlock Error: AdBlocker detectors are not allowed on this device! ";
 /**
- * The home page of this project.
+ * The settings page of this project.
  * @const {string}
  */
 a.c.settingsPage = "https://x01x012013.github.io/AdBlockProtector/settings.html";
@@ -200,7 +201,7 @@ a.c.settingsPage = "https://x01x012013.github.io/AdBlockProtector/settings.html"
  */
 a.c.homePage = "https://x01x012013.github.io/AdBlockProtector/";
 /**
- * The home page of this project.
+ * The support (issues) page of this project.
  * @const {string}
  */
 a.c.supportPage = "https://github.com/X01X012013/AdBlockProtector/issues";
@@ -230,7 +231,7 @@ a.c.topFrame = (function () {
  * @param {Array.<string>} excludedDomInc - The list of domains to exclude, a.domInc() will be used to process this.
  */
 a.init = function (excludedDomCmp, excludedDomInc) {
-    //Load jQuery
+    //Load jQuery and Color plug-in
     a.$ = jQueryFactory(a.win, true);
     jQueryColorLoader(a.$);
     //Load configurations
@@ -261,6 +262,7 @@ a.init = function (excludedDomCmp, excludedDomInc) {
     //Settings page
     if (a.domCmp(["x01x012013.github.io"], true) && a.doc.location.href.includes("x01x012013.github.io/AdBlockProtector/settings.html")) {
         a.win.alert("Coming soon... ");
+        //TODO: Implement this
     }
     //Log domain
     a.out.warn("Domain: " + a.dom);
@@ -268,7 +270,7 @@ a.init = function (excludedDomCmp, excludedDomInc) {
 
 //=====Common Functions=====
 /**
- * Write error message to console.
+ * Write generic error message to console.
  * @function
  */
 a.err = function () {
@@ -276,7 +278,7 @@ a.err = function () {
 };
 /**
  * Check if current domain ends with one of the domains in the list.
- * Example: "google.com" will match "google.com" and domains that ends with ".google.com"
+ * Example: "google.com" will match "google.com" and domains ending with ".google.com"
  * @function
  * @param {Array.<string>} domList - The list of domains to compare.
  * @param {boolean} [noErr=false] - Set to true to prevent showing error message.
@@ -298,7 +300,7 @@ a.domCmp = function (domList, noErr) {
 };
 /**
  * Check if current domain includes one of the strings that is in the list.
- * Example: "google" will match domains starting with "google." and domains that includes ".google."
+ * Example: "google" will match domains starting with "google." and domains that include ".google."
  * @function
  * @param {Array.<string>} domList - The list of strings to compare.
  * @param {boolean} [noErr=false] - Set to true to prevent showing error message.
@@ -331,17 +333,16 @@ a.protectFunc = function () {
     const newFunc = function () {
         //Check if function "this" is in the protected list
         const index = a.protectFunc.pointers.indexOf(this);
-        if (index !== -1) {
-            //Protected, return the string value of the real function instead
-            return a.protectFunc.masks[index];
-        } else {
+        if (index === -1) {
             //Not protected, use original function to proceed
             return original.apply(this);
+        } else {
+            //Protected, return the mask string
+            return a.protectFunc.masks[index];
         }
     };
-    //Try to replace the function
+    //Try to replace toString()
     try {
-        //Replace function
         a.win.Function.prototype.toString = newFunc;
         //Protect this function as well
         a.protectFunc.pointers.push(newFunc);
@@ -349,7 +350,7 @@ a.protectFunc = function () {
         //Log when activated
         a.out.warn("Functions protected. ");
     } catch (err) {
-        //Failed to hide
+        //Failed to protect
         a.out.error("AdBlock Protector failed to protect functions! ");
         return false;
     }
@@ -374,7 +375,7 @@ a.protectFunc.masks = [];
  * @returns {boolean} True if the operation was successful, false otherwise.
  */
 a.filter = function (func, filter) {
-    //Default parameters
+    //Check parameters
     filter = filter || /[\S\s]/;
     //The original function, will be set later
     let original;
@@ -412,7 +413,6 @@ a.filter = function (func, filter) {
     };
     //Try to replace the function
     try {
-        //Replace function
         if (func.includes(".")) {
             //Two layers
             fNames = func.split(".");
@@ -441,7 +441,7 @@ a.filter = function (func, filter) {
  * @param {Function} patcher - A function that patches the HTML, it must return the patched HTML.
  */
 a.patchHTML = function (patcher) {
-    //Stop the webpage
+    //Stop loading
     a.win.stop();
     //Get content
     GM_xmlhttpRequest({
@@ -451,14 +451,15 @@ a.patchHTML = function (patcher) {
             "Referer": a.doc.referrer
         },
         onload: function (result) {
-            const html = patcher(result.responseText);
-            a.doc.write(html);
+            //Apply patched content
+            a.doc.write(patcher(result.responseText));
         }
     })
 };
 /**
  * Replace a sample of code by syntax breaker.
  * This is the easiest way to break "stand alone" in-line JavaScript.
+ * Can only crash one in-line block.
  * @function
  * @param {string} sample - A sample of code.
  */
@@ -470,12 +471,11 @@ a.crashScript = function (sample) {
 /**
  * Defines a read-only property to unsafeWindow.
  * @function
- * @param {string} name - The name of the property to define, max 2 layers.
+ * @param {string} name - The name of the property to define, use "." to separate multiple layers, max 2 layers.
  * @param {*} val - The value to set.
  * @returns {boolean} True if the operation was successful, false otherwise.
  */
 a.readOnly = function (name, val) {
-    //Try to set read only variable
     try {
         if (name.includes(".")) {
             //Two layers
@@ -510,12 +510,14 @@ a.readOnly = function (name, val) {
  * @param {string} str - The CSS to inject, !important will be added automatically.
  */
 a.css = function (str) {
+    //Add !important
     let temp = str.split(";");
     for (let i = 0; i < temp.length - 1; i++) {
         if (!temp[i].endsWith("!important")) {
             temp[i] += " !important";
         }
     }
+    //Inject CSS
     GM_addStyle(temp.join(";"));
 };
 /**
@@ -533,10 +535,8 @@ a.bait = function (type, identifier) {
     } else if (identifier.startsWith(".")) {
         elem.addClass(identifier.substr(1));
     }
-    //Add content
-    elem.html("<br>");
-    //Add to html
-    a.$("html").append(elem);
+    //Add content and append to HTML
+    elem.html("<br>").appendTo("html");
 };
 /**
  * Set or get a cookie
@@ -544,12 +544,13 @@ a.bait = function (type, identifier) {
  * @param {string} key - The key of the cookie.
  * @param {string} [val=undefined] - The value to set, omit this to get the cookie.
  * @param {string} [time=31536000000] - In how many milliseconds will it expire, defaults to 1 year.
- * @param {string} [path=undefined] - The path to set, defaults to /.
+ * @param {string} [path=/] - The path to set.
  * @returns {string} The value of the cookie, null will be returned if the cookie doesn't exist, and undefined will be returned in set mode.
  */
 a.cookie = function (key, val, time, path) {
     if (typeof val === "undefined") {
         //Get mode
+        //http://stackoverflow.com/questions/10730362/get-cookie-by-name
         const value = "; " + a.doc.cookie;
         let parts = value.split("; " + key + "=");
         if (parts.length == 2) {
@@ -568,7 +569,7 @@ a.cookie = function (key, val, time, path) {
  * Generate a native HTML5 player with controls but not autoplay.
  * @function
  * @param {string} source - The source of the video.
- * @param {string} [typeIn=Auto Detect] - The type of the video, will be automatically detected if not supplied.
+ * @param {string} [typeIn=Auto Detect] - The type of the video, will be automatically detected if not supplied, and defaults to MP4 if detection failed.
  * @param {string} [widthIn="100%"] - The width of the player.
  * @param {string} [heightIn="auto"] - The height of the player.
  * @returns {string} An HTML string of the video player.
@@ -600,10 +601,38 @@ a.nativePlayer = function (source, typeIn, widthIn, heightIn) {
     const width = widthIn || "100%";
     const height = heightIn || "auto";
     //Construct HTML string
-    return `<video width='${width}' height='${height}' controls><source src='${source}' type='${type}'></video>`
+    return `<video width='${width}' height='${height}' controls><source src='${source}' type='${type}'></video>`;
 };
 /**
- * Run function that is passed in on document-start, document-idle, and document-end
+ * Generate a videoJS player with controls but not autoplay.
+ * @function
+ * @param {Array.<string>} sources - The sources of the video.
+ * @param {Array.<string>} types - The types of the video.
+ * @param {string} width - The width of the player.
+ * @param {string} height - The height of the player.
+ * @returns {string} An HTML string of the video player.
+ */
+a.videoJS = function (sources, types, width, height) {
+    //Build HTML string
+    let html = `<video id="AdBlock_Protector_Video_Player" class="video-js vjs-default-skin" controls preload="auto" width="${width}" height="${height}" data-setup="{}">`
+    for (let i = 0; i < sources.length; i++) {
+        html += `<source src="${sources[i]}" type="${types[i]}">`;
+    }
+    html += `</video>`;
+    return html;
+}
+/**
+ * Initialize videoJS.
+ * @function
+ */
+a.videoJS.init = function () {
+    //Disable telemetry
+    a.win.HELP_IMPROVE_VIDEOJS = false;
+    //Load components
+    a.$("head").append(`<link href="//vjs.zencdn.net/5.4.6/video-js.min.css" rel="stylesheet"><script src="//vjs.zencdn.net/5.4.6/video.min.js"></script>`);
+}
+/**
+ * Run function that is passed in on document-start, document-idle, and document-end.
  * @function
  * @param {Function} func - The function to run.
  */
@@ -612,10 +641,29 @@ a.always = function (func) {
     a.on("DOMContentLoaded", func);
     a.on("load", func);
 };
+/**
+ * Returns a unique ID that is also a valid variable name.
+ * @function
+ * @returns {string} Unique ID.
+ */
+a.uid = function () {
+    const chars = "abcdefghijklnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let str = "";
+    for (let i = 0; i < 10; ++i) {
+        str += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    a.uid.counter++;
+    return str + a.uid.counter.toString();;
+};
+/**
+ * Unique ID counter, will be appended to randomly generated string to ensure uniqueness.
+ * var {integer}
+ */
+a.uid.counter = 0;
 
 //=====Specialized Functions=====
 /**
- * Activate all generic filters.
+ * Activate all generic protectors.
  * @function
  */
 a.generic = function () {
@@ -693,11 +741,11 @@ a.generic = function () {
                         }
                         //BlockAdBlock
                         if (method.bab) { //Variant 1
-                            win[prop] = null;
-                        } else if (Object.keys(method).length === 3 && Object.keys(method).map(function (value, index) {
+                            a.win[prop] = null;
+                        } else if (a.win.Object.keys(method).length === 3 && a.win.Object.keys(method).map(function (value, index) {
                             return value;
                         }).join().length === 32) { //Variant 2
-                            win[prop] = null;
+                            a.win[prop] = null;
                         }
                     }
                 } catch (err) { }
@@ -750,7 +798,7 @@ a.generic = function () {
             const reBg = /^[a-z]{8}-bg$/;
             const reMessage = /Il semblerait que vous utilisiez un bloqueur de publicité !/;
             if (typeof a.win.vtfab !== "undefined" &&
-                typeof Aak.uw.adblock_antib !== "undefined" &&
+                typeof a.win.adblock_antib !== "undefined" &&
                 insertedNode.parentNode &&
                 insertedNode.parentNode.nodeName === "BODY" &&
                 insertedNode.id &&
@@ -812,7 +860,7 @@ a.generic = function () {
                 }
             }
         };
-        //Set up observer
+        //===Set up observer===
         const observer = new MutationObserver(function (mutations) {
             mutations.forEach(function (mutation) {
                 if (mutation.addedNodes.length) {
@@ -887,6 +935,7 @@ a.generic.FuckAdBlock = function (constructorName, instanceName) {
         };
         //===v4 Methods===
         this.debug = {};
+        //Set debug state, do nothing
         this.debug.set = (function () {
             return this;
         }).bind(this);
