@@ -108,7 +108,7 @@ namespace Script_Compiler
                 {
                     return;
                 }
-                if (!loadFile(Path.Combine(gitRoot, "jQuery\\Color.Factory.2.1.2.min.js"), out color))
+                if (!loadFile(Path.Combine(gitRoot, "jQuery\\Color.Loader.2.1.2.min.js"), out color))
                 {
                     return;
                 }

@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 6.5
+// @version 6.6
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -112,7 +112,7 @@ if (a.domCmp(["tweaktown.com"])) {
     });
 }
 if (a.domCmp(["ratemyprofessors.com"])) {
-    //Lock adBlocker to false and prevent listening resize event (window self-destroys on resize, bug or feature?)
+    //Lock adBlocker to false and filter keywords from addEventListener()
     a.readOnly("adBlocker", false);
     a.filter("addEventListener", "/resize/i");
 }
@@ -127,7 +127,7 @@ if (a.domCmp(["cbox.ws"])) {
     a.readOnly("koddostu_com_adblock_yok", true);
 }
 if (a.domCmp(["ahmedabadmirror.com"])) {
-    //Filter keyword from document.addEventListener()
+    //Filter keywords from document.addEventListener()
     a.filter("document.addEventListener", /function \_0x/);
     //document.addEventListener should not be native code, but they are expecting native code
     a.protectFunc.masks[1] = "function addEventListener() { [native code] }";
@@ -169,12 +169,12 @@ if (a.domCmp(["tvregionalna24.pl"])) {
 if (a.domCmp(["tvn.pl", "tvnstyle.pl", "tvnturbo.pl"])) {
     //tvn.pl and related
     //Replace player - Thanks to mikhoul, szymon1118, and xxcriticxx
-    //Potential related domains:  "tvnfabula.pl", "itvnextra.pl", "tvn24bis.pl", "ttv.pl", "player.pl",
+    //Potential related domains: "tvnfabula.pl", "itvnextra.pl", "tvn24bis.pl", "ttv.pl", "player.pl",
     //"x-news.pl", "tvn7.pl", "itvn.pl"
     const homePages = ["http://www.tvn.pl/", "http://www.tvn7.pl/", "http://www.tvnstyle.pl/",
 "http://www.tvnturbo.pl/"];
     //Homepages are partially fixed and are handled by List
-    if (!homePages.includes(unsafeWindow.document.location.href)) {
+    if (!homePages.includes(a.doc.location.href)) {
         a.on("load", function () {
             a.$(".videoPlayer").parent().after(a.nativePlayer(a.$(".videoPlayer").data("src"))).remove();
         });
@@ -678,11 +678,11 @@ if (a.domCmp(["rmprepusb.com"])) {
     a.cookie("jot_viewer", "3");
 }
 if (a.domCmp(["cubeupload.com"])) {
-    //Filter document.write
+    //Filter keywords from document.write()
     a.filter("document.write", /Please consider removing adblock to help us pay our bills/);
 }
-if (a.domCmp(["neodrive.co"])) {
-    //Redirect to the real video
+if (a.config.allowExperimental && a.domCmp(["neodrive.co"])) {
+    //(Experimenal) Show the real video URL to the user
     a.on("load", function () {
         if (a.$(".player2").length > 0) {
             a.win.prompt("AdBlock Protector says: \nThis *might* be the real link, we could not redirect " +
@@ -694,8 +694,8 @@ if (a.domCmp(["neodrive.co"])) {
 if (a.domCmp(["hentaihaven.org"])) {
     //NSFW! Set cookies
     a.always(function () {
-        a.cookie("hh_ppndr1", 1);
-        a.cookie("hh_ppndr2", 1);
+        a.cookie("hh_ppndr1", "1");
+        a.cookie("hh_ppndr2", "1");
     });
 }
 if (a.domCmp(["primeshare.tv"])) {
@@ -785,7 +785,7 @@ if (a.domCmp(["drivearabia.com", "putlocker.com", "doatoolsita.altervista.org", 
 }
 if (a.domCmp(["generatupremium.biz"])) {
     //Set cookie
-    a.cookie("genera", false);
+    a.cookie("genera", "false");
 }
 if (a.domCmp(["newstatesman.com"])) {
     //Set cookie
@@ -859,7 +859,7 @@ if (a.domCmp(["infojobs.com.br"])) {
     //Set properly webUI, this has 3 layers and a.readOnly() can't handle it
     a.win.webUI = {};
     a.win.webUI.Utils = {};
-    Object.defineProperty(a.win.webUI.Utils, "StopAdBlock", {
+    a.win.Object.defineProperty(a.win.webUI.Utils, "StopAdBlock", {
         configurable: false,
         set: function () { },
         get: function () {
@@ -995,7 +995,7 @@ if (a.domCmp(["dbplanet.net"])) {
 }
 if (a.domCmp(["aidemu.fr"])) {
     //Set cookie
-    a.cookie("adblockPopup", true);
+    a.cookie("adblockPopup", "true");
 }
 if (a.domCmp(["eami.in"])) {
     //Set cookie
@@ -1073,7 +1073,7 @@ if (a.domCmp(["inn.co.il"])) {
             ABP_DETECTED: 1
         },
         createBlockDetectionDiv: function () {
-            return document.createElement("div");
+            return a.doc.createElement("div");
         },
         isBlockDetectedOnDiv: function () {
             return 0;
@@ -1124,14 +1124,14 @@ if (a.domCmp(["bitvisits.com"])) {
     a.readOnly("blockAdblockUser", function () { });
 }
 if (a.domCmp(["exrapidleech.info"])) {
-    //Set cookies, style, read only variables, filter open(), and create an element
-    let tomorrow = new Date();
+    //Set cookies, style, read only variables, disable open(), and create an element
+    let tomorrow = new a.win.Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
     //Cookies
-    a.cookie("popcashpuCap", 1);
-    a.cookie("popcashpu", 1);
+    a.cookie("popcashpuCap", "1");
+    a.cookie("popcashpu", "1");
     a.cookie("nopopatall", tomorrow.getTime().toString());
-    a.cookie("noadvtday", 0);
+    a.cookie("noadvtday", "0");
     //Style
     a.css("div.alert.alert-danger.lead {opacity:0;}");
     //Read only variables
@@ -1149,7 +1149,7 @@ if (a.domCmp(["vipleague.is", "vipleague.ws", "vipleague.tv", "vipleague.se", "v
 "homerun.re", "vipboxtv.co", "vipapp.me"])) {
     //Set read only variable, cookie, and styles
     a.readOnly("iExist", true);
-    a.cookie("xclsvip", 1);
+    a.cookie("xclsvip", "1");
     a.css(".vip_052x003 { height: 250px; }");
     a.css(".vip_09x827 { height: 26px; }");
     a.css("#overlay { display: none; }");
@@ -1181,7 +1181,7 @@ if (a.domCmp(["lol.moa.tw"])) {
 }
 if (a.domCmp(["multiup.org"])) {
     //Set cookie and set hi to an empty function
-    a.cookie("visit", 1);
+    a.cookie("visit", "1");
     a.readOnly("hi", function () { });
 }
 if (a.domCmp(["dailybitcoins.org"])) {
@@ -1214,10 +1214,10 @@ if (a.domCmp(["psarips.com"])) {
 }
 if (a.domCmp(["extratorrent.cc", "extratorrent.com"])) {
     //Set cookies
-    a.cookie("ppu_delay", 1);
-    a.cookie("ppu_main", 1);
-    a.cookie("ppu_sub", 1);
-    a.cookie("ppu_show_on", 1);
+    a.cookie("ppu_delay", "1");
+    a.cookie("ppu_main", "1");
+    a.cookie("ppu_sub", "1");
+    a.cookie("ppu_show_on", "1");
 }
 if (a.domCmp(["tny.cz", "pasted.co"])) {
     //Set cookies
@@ -1270,12 +1270,12 @@ if (a.domInc(["slideplayer"])) {
         a.win.force_remove_ads = true;
         const slide_id = a.win.get_current_slide_id();
         const slide_srv = a.doc.getElementById("player_frame").src.split("/")[3];
-        const time = 86400 + Math.floor(Date.now() / 1000);
-        const secret = encodeURIComponent(a.win.strtr(a.win.MD5.base64("secret_preved slideplayer never solved " +
+        const time = 86400 + a.win.Math.floor(a.win.Date.now() / 1000);
+        const secret = a.win.encodeURIComponent(a.win.strtr(a.win.MD5.base64("secret_preved slideplayer never solved " +
 time + slide_id + ".ppt"), "+/", "- "));
         const url = "http://player.slideplayer.org/download/" + slide_srv + "/" + slide_id + "/" + secret + "/" +
 time + "/" + slide_id + ".ppt";
-        let links = document.querySelectorAll("a.download_link");
+        let links = a.doc.querySelectorAll("a.download_link");
         for (let i = 0; i < links.length; i++) {
             let events = a.win.$._data(links[i]).events.click;
             events.splice(0, events.length);
@@ -1372,8 +1372,8 @@ if (a.domCmp(["4shared.com"])) {
 }
 if (a.domCmp(["pro-zik.ws", "pro-tect.ws", "pro-ddl.ws", "pro-sport.ws"])) {
     //Set cookies
-    a.cookie("visitedf", true);
-    a.cookie("visitedh", true);
+    a.cookie("visitedf", "true");
+    a.cookie("visitedh", "true");
 }
 if (a.domCmp(["comptoir-hardware.com"])) {
     //Lock adblock to non
@@ -1518,7 +1518,7 @@ if (a.domCmp(["play.radio1.se", "play.bandit.se", "play.lugnafavoriter.com", "pl
 }
 if (a.domCmp(["dplay.com", "dplay.dk", "dplay.se"])) {
     //Set cookie
-    let date = new Date();
+    let date = new a.win.Date();
     date.setDate(date.getDate() + 365);
     const timestamp = date.getTime().toString();
     const value = JSON.stringify({
@@ -1529,7 +1529,7 @@ if (a.domCmp(["dplay.com", "dplay.dk", "dplay.se"])) {
     a.cookie("dsc-adblock", value);
 }
 if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "play.tv3.lt", "tv3play.tv3.ee"])) {
-    //Replace player on load
+    //(Experimental) Replace player on load
     const handler = function () {
         //Find player
         const elem = a.$("#video-player");
@@ -1548,12 +1548,10 @@ if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "pl
         GM_xmlhttpRequest({
             method: "GET",
             url: "http://playapi.mtgx.tv/v3/videos/stream/" + videoID,
-            synchronous: true,
             onload: function (result) {
                 parser(result.responseText);
             }
         });
-
     };
     const parser = function (data) {
         //Parse response
@@ -1577,7 +1575,7 @@ if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "pl
             types.push("application/x-mpegURL");
         } else if (streams.medium && streams.medium !== "") {
             sources.push(streams.medium);
-            types.push(streams.medium.indexOf("rtmp") === 0 ? "rtmp/mp4" : "application/f4m+xml");
+            types.push(streams.medium.startsWith("rtmp") ? "rtmp/mp4" : "application/f4m+xml");
         } else {
             a.out.err("AdBlock Protector failed to find video URL! ");
             return;
@@ -1586,12 +1584,12 @@ if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "pl
         a.videoJS.init();
         const height = a.$("#video-player").height();
         const width = a.$("#video-player").width();
-        a.out.log(a.videoJS(sources, types, width, height));
         a.$("#video-player").after(a.videoJS(sources, types, width, height)).remove();
         //Activate hander again
         a.win.setTimeout(handler, 1000);
     };
-    if (a.win.confirm("AdBlock Protector says: \nThe fix might not work, would you want to try it anyway? ")) {
+    if (a.config.allowExperimental && a.win.confirm("AdBlock Protector says: \nThis fix is experimental " +
+"and might not work, would you want to try it anyway? ")) {
         //Can't seem to find real source of the stream, Geo Lock in my area? 
         handler();
     }
@@ -1735,7 +1733,6 @@ if (a.domCmp(["europe1.fr"])) {
 }
 if (a.domCmp(["newyorker.com"])) {
     //Call generic protector against FuckAdBlock
-
     a.generic.FuckAdBlock("SniffAdBlock", "sniffAdBlock");
 }
 if (a.domCmp(["mangasproject.com.br", "mangasproject.net.br", "mangas.zlx.com.br"])) {

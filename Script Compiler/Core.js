@@ -36,8 +36,15 @@ a.config.debugMode = true;
  */
 a.config.allowGeneric = true;
 /**
- * Whether current domain is excluded.
+ * Whether experimental features should run.
+ * If it is a rule, the user will be asked before it runs.
+ * @var {bool}
+ */
+a.config.allowExperimental = true;
+/**
+ * Whether current domain is "excluded".
  * How this will be treated depends on the rules.
+ * Generic protectors will not run if this is true.
  * Will be assigned in a.init()
  * @const {bool}
  */
@@ -54,15 +61,15 @@ a.mods = function () {
         //Add Jump To Top button
         const addJumpToTop = function () {
             //Stop if the button already exist, this shouldn't be needed, but just to be sure
-            if (a.$("#fbtools_jumptotop_btn").length > 0) {
+            if (a.$("#AdBlock_Protector_FBMod_JumpToTop").length > 0) {
                 return;
             }
             //Check if the nav bar is there
             const navBar = a.$("div[role='navigation']");
             if (navBar.length > 0) {
                 //Present, insert button
-                navBar.append(`<div class="_4kny _2s24" id="fbtools_jumptotop_btn"><div class="_4q39"><a class="_2s25" href="javascript: void(0);">Top</a></div></div>`);
-                a.$("#fbtools_jumptotop_btn").click(function () {
+                navBar.append(`<div class="_4kny _2s24" id="AdBlock_Protector_FBMod_JumpToTop"><div class="_4q39"><a class="_2s25" href="javascript: void(0);">Top</a></div></div>`);
+                a.$("#AdBlock_Protector_FBMod_JumpToTop").click(function () {
                     a.win.scrollTo(a.win.scrollX, 0);
                 });
             } else {
@@ -127,7 +134,7 @@ a.mods = function () {
     if (a.mods.Blogspot_AutoNCR && a.domInc(["blogspot"], true) && !a.domCmp(["blogspot.com"], true) && a.c.topFrame) {
         //Auto NCR (No Country Redirect)
         const name = a.dom.replace("www.", "").split(".")[0];
-        const path = a.win.location.href.split("/").slice(3).join('/');
+        const path = a.win.location.href.split("/").slice(3).join("/");
         a.win.location.href = "http://" + name + ".blogspot.com/ncr/" + path;
     }
 };
@@ -227,8 +234,8 @@ a.c.topFrame = (function () {
 /**
  * Initialize constants, protect functions, and activate mods.
  * @function
- * @param {Array.<string>} excludedDomCmp - The list of domains to exclude, a.domCmp() will be used to process this.
- * @param {Array.<string>} excludedDomInc - The list of domains to exclude, a.domInc() will be used to process this.
+ * @param {Array.<string>} excludedDomCmp - The list of domains to exclude, a.domCmp() will be used to compare this.
+ * @param {Array.<string>} excludedDomInc - The list of domains to exclude, a.domInc() will be used to compare this.
  */
 a.init = function (excludedDomCmp, excludedDomInc) {
     //Load jQuery and Color plug-in
@@ -237,6 +244,14 @@ a.init = function (excludedDomCmp, excludedDomInc) {
     //Load configurations
     a.config();
     a.config.domExcluded = a.domCmp(excludedDomCmp, true) || a.domInc(excludedDomInc, true);
+    //Log excluded or protect functions
+    if (a.config.domExcluded) {
+        a.out.warn("This domain is in excluded list. ");
+    } else {
+        a.protectFunc();
+    }
+    //Apply mods
+    a.mods();
     //Set menu commands
     GM_registerMenuCommand("AdBlock Protector Settings Page", function () {
         GM_openInTab(a.c.settingsPage);
@@ -247,14 +262,6 @@ a.init = function (excludedDomCmp, excludedDomInc) {
     GM_registerMenuCommand("AdBlock Protector Support Page", function () {
         GM_openInTab(a.c.supportPage);
     });
-    //Log excluded or protect functions
-    if (a.config.domExcluded) {
-        a.out.warn("This domain is in excluded list. ");
-    } else {
-        a.protectFunc();
-    }
-    //Apply mods
-    a.mods();
     //Home page installation test
     if (a.domCmp(["x01x012013.github.io"], true) && a.doc.location.href.includes("x01x012013.github.io/AdBlockProtector")) {
         a.win.AdBlock_Protector_Script = true;
@@ -560,9 +567,9 @@ a.cookie = function (key, val, time, path) {
         }
     } else {
         //Set mode
-        let expire = new Date();
-        expire.setTime(new Date().getTime() + (time || 31536000000));
-        a.doc.cookie = name + "=" + encodeURIComponent(val) + ";expires=" + expire.toGMTString() + ";path=" + (path || "/");
+        let expire = new a.win.Date();
+        expire.setTime((new a.win.Date()).getTime() + (time || 31536000000));
+        a.doc.cookie = name + "=" + a.win.encodeURIComponent(val) + ";expires=" + expire.toGMTString() + ";path=" + (path || "/");
     }
 }
 /**
@@ -605,6 +612,7 @@ a.nativePlayer = function (source, typeIn, widthIn, heightIn) {
 };
 /**
  * Generate a videoJS player with controls but not autoplay.
+ * Don't forget to call a.videoJS.init()
  * @function
  * @param {Array.<string>} sources - The sources of the video.
  * @param {Array.<string>} types - The types of the video.
@@ -650,7 +658,7 @@ a.uid = function () {
     const chars = "abcdefghijklnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     let str = "";
     for (let i = 0; i < 10; ++i) {
-        str += chars.charAt(Math.floor(Math.random() * chars.length));
+        str += chars.charAt(a.win.Math.floor(a.win.Math.random() * chars.length));
     }
     a.uid.counter++;
     return str + a.uid.counter.toString();;
@@ -661,7 +669,7 @@ a.uid = function () {
  */
 a.uid.counter = 0;
 
-//=====Specialized Functions=====
+//=====Generic Protectors=====
 /**
  * Activate all generic protectors.
  * @function
@@ -681,7 +689,7 @@ a.generic = function () {
         //===document-idle===
         a.on("DOMContentLoaded", function () {
             //AdBlock Detector (XenForo Rellect)
-            if (a.win.XenForo && typeof a.win.XenForo.rellect == 'object') {
+            if (a.win.XenForo && typeof a.win.XenForo.rellect === "object") {
                 a.win.XenForo.rellect = {
                     AdBlockDetector: {
                         start: function () { }
@@ -689,7 +697,7 @@ a.generic = function () {
                 };
             }
             //Adbuddy
-            if (typeof a.win.closeAdbuddy === 'function') {
+            if (typeof a.win.closeAdbuddy === "function") {
                 a.win.closeAdbuddy();
             }
             //AdBlock Alerter (WP)
@@ -699,7 +707,7 @@ a.generic = function () {
                 a.css("html,body {height:auto; overflow: auto;}");
             }
             //Block screen
-            if (a.$("#blockdiv").html() === "disable ad blocking or use another browser without any adblocker when you visit") {
+            if (a.$("#blockdiv").html().toLowerCase() === "disable ad blocking or use another browser without any adblocker when you visit") {
                 a.$("#blockdiv").remove();
             }
             //Antiblock.org v2
@@ -720,12 +728,12 @@ a.generic = function () {
                     }
                 }
             }
-            //Antiblock.org v3, BetterStopAdblock, and BlockAdBlock
+            //BetterStopAdblock, Antiblock.org v3, and BlockAdBlock
             for (let prop in a.win) {
                 try {
-                    if (!/^webkit/.test(prop) && /^[a-z0-9]{4,12}$/i.test(prop) && prop !== "document" && (a.win[prop] instanceof HTMLDocument) === false && a.win.hasOwnProperty(prop) && typeof a.win[prop] === "object") {
+                    if (!prop.startsWith("webkit") && /^[a-z0-9]{4,12}$/i.test(prop) && prop !== "document" && (a.win[prop] instanceof a.win.HTMLDocument) === false && a.win.hasOwnProperty(prop) && typeof a.win[prop] === "object") {
                         const method = win[prop];
-                        //Antiblock.org v3 and BetterStopAdblock
+                        //BetterStopAdblock and Antiblock.org v3
                         if (method.deferExecution &&
                             method.displayMessage &&
                             method.getElementBy &&
@@ -790,6 +798,7 @@ a.generic = function () {
                 reIframeId.test(insertedNode.id) &&
                 insertedNode.nodeName === "IFRAME" &&
                 reIframeSrc.test(insertedNode.src)) {
+                //Remove
                 insertedNode.remove();
             }
             //Adunblock
@@ -813,8 +822,8 @@ a.generic = function () {
                     insertedNode.nextSibling.style &&
                     insertedNode.nextSibling.style.display !== "none") {
                     //Full Screen Message (Premium)
-                    insertedNode.nextSibling.remove(); //Overlay
-                    insertedNode.remove(); //Box
+                    insertedNode.nextSibling.remove();
+                    insertedNode.remove();
                 } else if (insertedNode.nextSibling.id &&
                            reId.test(insertedNode.nextSibling.id) &&
                            reMessage.test(insertedNode.innerHTML)) {
@@ -845,11 +854,11 @@ a.generic = function () {
                     audio.pause();
                     audio.remove();
                 } else if ((data.abo2 && insertedNode.id === data.abo2) ||
-                         (insertedNode.firstChild.hasChildNodes() && reWords1.test(insertedNode.firstChild.innerHTML) && reWords2.test(insertedNode.firstChild.innerHTML))) {
+                           (insertedNode.firstChild.hasChildNodes() && reWords1.test(insertedNode.firstChild.innerHTML) && reWords2.test(insertedNode.firstChild.innerHTML))) {
                     //Antiblock.org v2
                     insertedNode.remove();
                 } else if ((data.abo3 && insertedNode.id === data.abo3) ||
-                         (insertedNode.firstChild.hasChildNodes() && insertedNode.firstChild.firstChild.nodeName === "IMG" && /^data:image\/png;base64/.test(insertedNode.firstChild.firstChild.src))) {
+                           (insertedNode.firstChild.hasChildNodes() && insertedNode.firstChild.firstChild.nodeName === "IMG" && /^data:image\/png;base64/.test(insertedNode.firstChild.firstChild.src))) {
                     //Antiblock.org v3
                     a.win[data.abo3] = null;
                     insertedNode.remove();
@@ -861,10 +870,10 @@ a.generic = function () {
             }
         };
         //===Set up observer===
-        const observer = new MutationObserver(function (mutations) {
+        const observer = new a.win.MutationObserver(function (mutations) {
             mutations.forEach(function (mutation) {
                 if (mutation.addedNodes.length) {
-                    Array.prototype.forEach.call(mutation.addedNodes, function (addedNode) {
+                    a.win.Array.prototype.forEach.call(mutation.addedNodes, function (addedNode) {
                         onInsertHandler(addedNode);
                     });
                 }
