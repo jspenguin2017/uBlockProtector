@@ -463,8 +463,8 @@ a.patchHTML = function (patcher) {
  * @param {string} sample - A sample of code.
  */
 a.crashScript = function (sample) {
-    patchHTML(function (html) {
-        return html.replace(sample, syntaxBreaker);
+    a.patchHTML(function (html) {
+        return html.replace(sample, a.c.syntaxBreaker);
     })
 };
 /**

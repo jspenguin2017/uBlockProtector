@@ -2,11 +2,12 @@
 "use strict";
 a.init(["360.cn", "apple.com", "ask.com", "baidu.com", "bing.com", "bufferapp.com", "chatango.com",
 "chromeactions.com", "easyinplay.net", "ebay.com", "facebook.com", "flattr.com", "flickr.com", "ghacks.net",
-"imdb.com", "imgbox.com", "imgur.com", "instagram.com", "jsbin.com", "jsfiddle.net", "linkedin.com", "live.com", "mail.ru",
-"microsoft.com", "msn.com", "paypal.com", "pinterest.com", "preloaders.net", "qq.com", "reddit.com", "stackoverflow.com",
-"tampermonkey.net", "twitter.com", "vimeo.com", "wikipedia.org", "w3schools.com", "yandex.ru", "youtu.be", "youtube.com",
-"xemvtv.net", "vod.pl", "agar.io", "pandoon.info", "fsf.org", "adblockplus.org", "plnkr.co", "exacttarget.com", "dolldivine.com",
-"popmech.ru", "calm.com"], ["google", "amazon", "yahoo"]);
+"imdb.com", "imgbox.com", "imgur.com", "instagram.com", "jsbin.com", "jsfiddle.net", "linkedin.com", "live.com",
+"mail.ru", "microsoft.com", "msn.com", "paypal.com", "pinterest.com", "preloaders.net", "qq.com", "reddit.com",
+"stackoverflow.com", "tampermonkey.net", "twitter.com", "vimeo.com", "wikipedia.org", "w3schools.com",
+"yandex.ru", "youtu.be", "youtube.com", "xemvtv.net", "vod.pl", "agar.io", "pandoon.info", "fsf.org",
+"adblockplus.org", "plnkr.co", "exacttarget.com", "dolldivine.com", "popmech.ru", "calm.com"],
+["google", "amazon", "yahoo"]);
 //Start
 if (a.domCmp(["blockadblock.com"])) {
     //Disable eval() and remove element with ID babasbmsgx on load
@@ -132,7 +133,7 @@ if (a.domCmp(["tvregionalna24.pl"])) {
         text.push(temp);
     });
     a.on("load", function replace() {
-        if (text.length > 0 && $(".vjs-poster").length > 0) {
+        if (text.length > 0 && a.$(".vjs-poster").length > 0) {
             for (let i = 0; i < text.length; i++) {
                 a.win.eval(text[i]);
             }
@@ -144,8 +145,10 @@ if (a.domCmp(["tvregionalna24.pl"])) {
 if (a.domCmp(["tvn.pl", "tvnstyle.pl", "tvnturbo.pl"])) {
     //tvn.pl and related
     //Replace player - Thanks to mikhoul, szymon1118, and xxcriticxx
-    //Potential related domains:  "tvnfabula.pl", "itvnextra.pl", "tvn24bis.pl", "ttv.pl", "player.pl", "x-news.pl", "tvn7.pl", "itvn.pl"
-    const homePages = ["http://www.tvn.pl/", "http://www.tvn7.pl/", "http://www.tvnstyle.pl/", "http://www.tvnturbo.pl/"];
+    //Potential related domains:  "tvnfabula.pl", "itvnextra.pl", "tvn24bis.pl", "ttv.pl", "player.pl",
+    //"x-news.pl", "tvn7.pl", "itvn.pl"
+    const homePages = ["http://www.tvn.pl/", "http://www.tvn7.pl/", "http://www.tvnstyle.pl/",
+"http://www.tvnturbo.pl/"];
     //Homepages are partially fixed and are handled by List
     if (!homePages.includes(unsafeWindow.document.location.href)) {
         a.on("load", function () {
@@ -153,9 +156,9 @@ if (a.domCmp(["tvn.pl", "tvnstyle.pl", "tvnturbo.pl"])) {
         });
     }
 }
-if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadzetomania.pl", "hotmoney.pl", "kafeteria.pl",
-            "kafeteria.tv", "komediowo.pl", "komorkomania.pl", "money.pl", "pudelek.tv", "sfora.pl", "snobka.pl",
-            "wawalove.pl", "wp.pl", "wp.tv", "wrzuta.pl", "pudelek.pl"])) {
+if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadzetomania.pl", "hotmoney.pl",
+"kafeteria.pl", "kafeteria.tv", "komediowo.pl", "komorkomania.pl", "money.pl", "pudelek.tv", "sfora.pl",
+"snobka.pl", "wawalove.pl", "wp.pl", "wp.tv", "wrzuta.pl", "pudelek.pl"])) {
     //wp.pl and related
     //Set a cookie to prevent block screen
     a.cookie("ABCABC", "true");
@@ -275,7 +278,8 @@ if (a.domCmp(["thewindowsclub.com"])) {
 if (a.domCmp(["foxvalleyfoodie.com"])) {
     //Only allow certain script includes
     a.patchHTML(function (html) {
-        return html.replace(/<script.*\/wp-includes\/js\/(?!jquery|comment|wp-embed).*<\/script>/g, "<script>console.error('Uncaught AdBlock Error: Admiral is not allowed on this device! ');</script>");
+        return html.replace(/<script.*\/wp-includes\/js\/(?!jquery|comment|wp-embed).*<\/script>/g,
+"<script>console.error('Uncaught AdBlock Error: Admiral is not allowed on this device! ');</script>");
     });
 }
 if (a.domCmp(["mid-day.com", "happytrips.com"])) {
@@ -493,7 +497,8 @@ if (a.domCmp(["mariage-franco-marocain.net"])) {
 }
 if (a.domCmp(["happy-hack.ru"])) {
     //Inject CSS
-    a.css("#blockblockF4 {visibility:invisible;display:none;} #blockblockF4 td {visibility:invisible;display:none;} #blockblockF4 td p {visibility:invisible;display:none;} #blockblockD3 {visibility:visible;display:block;}");
+    a.css("#blockblockF4 {visibility:invisible;display:none;} #blockblockF4 td {visibility:invisible;display:" +
+"none;} #blockblockF4 td p {visibility:invisible;display:none;} #blockblockD3 {visibility:visible;display:block;}");
 }
 if (a.domCmp(["forbes.com"])) {
     //Set cookies and skip daily block screen
@@ -505,13 +510,13 @@ if (a.domCmp(["forbes.com"])) {
 }
 if (a.domCmp(["bitcoinaliens.com"])) {
     //Add bait element
-    a.bait("ins.adsbygoogle");
+    a.bait("ins", ".adsbygoogle");
 }
 if (a.domCmp(["osoarcade.com", "d3brid4y0u.info", "fileice.net", "nosteam.ro", "openrunner.com", "easybillets.com",
 "spox.fr", "yovoyages.com", "tv3.co.nz", "freeallmusic.info", "putlocker.com", "sockshare.com", "dramapassion.com",
 "yooclick.com", "online.ua"])) {
     //Add bait element
-    a.bait("div#tester");
+    a.bait("div", "#tester");
 }
 if (a.domCmp(["filecom.net", "upshare.org", "skippyfile.com", "mwfiles.net", "up-flow.org"])) {
     //Add bait element
@@ -620,9 +625,17 @@ if (a.domCmp(["thechive.com"])) {
 if (a.domCmp(["richonrails.com"])) {
     //Load a JS on idle
     a.on("DOMContentLoaded", function () {
-        const adsByGoogleHtml = `"<ins+id="aswift_0_expand"+style="display:inline-table;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:750px;background-color:transparent"><ins+id="aswift_0_anchor"+style="display:block;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:750px;background-color:transparent"><iframe+marginwidth="0"+marginheight="0"+vspace="0"+hspace="0"+allowtransparency="true"+scrolling="no"+allowfullscreen="true"+onload="var+i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else+if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}"+id="aswift_0"+name="aswift_0"+style="left:0;position:absolute;top:0;"+width="750"+frameborder="0"+height="90"></iframe></ins></ins>"`;
+        const adsByGoogleHtml = `"<ins+id="aswift_0_expand"+style="display:inline-table;border:none;height:90px;` +
+`margin:0;padding:0;position:relative;visibility:visible;width:750px;background-color:transparent"><ins+id="aswi` +
+`ft_0_anchor"+style="display:block;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visib` +
+`le;width:750px;background-color:transparent"><iframe+marginwidth="0"+marginheight="0"+vspace="0"+hspace="0"+all` +
+`owtransparency="true"+scrolling="no"+allowfullscreen="true"+onload="var+i=this.id,s=window.google_iframe_oncopy` +
+`,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&am` +
+`p;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else+if(h.match){try{h=s.upd(h,i)}catch(e){}w.` +
+`location.replace(h)}}"+id="aswift_0"+name="aswift_0"+style="left:0;position:absolute;top:0;"+width="750"+frameb` +
+`order="0"+height="90"></iframe></ins></ins>"`;
         a.$.ajax({
-            url: $(".article-content").data("url"),
+            url: a.$(".article-content").data("url"),
             dataType: "script",
             method: "post",
             data: {
@@ -648,7 +661,9 @@ if (a.domCmp(["neodrive.co"])) {
     //Redirect to the real video
     a.on("load", function () {
         if (a.$(".player2").length > 0) {
-            a.win.prompt("AdBlock Protector says: \nThis should be the real link, we could not redirect you automatically, please copy it and paste it into address bar manually: ", a.$(".player2").attr("href").split("'")[1]);
+            a.win.prompt("AdBlock Protector says: \nThis should be the real link, we could not redirect " +
+"you automatically, please copy it and paste it into address bar manually: ", a.$(".player2").attr("href")
+.split("'")[1]);
         }
     });
 }
@@ -656,8 +671,233 @@ if (a.domCmp(["hentaihaven.org"])) {
     //NSFW! Set cookies
     a.always(function () {
         a.cookie("hh_ppndr1", 1);
-        a.Cookie("hh_ppndr2", 1);
+        a.cookie("hh_ppndr2", 1);
     });
+}
+if (a.domCmp(["primeshare.tv"])) {
+    //Add bait element
+    a.bait("div", "#adblock");
+}
+if (a.domCmp(["debridnet.com", "livedebrid.com"])) {
+    //Inject CSS and add bait element
+    a.css(".myTestAd2 { height: 5px; }");
+    a.bait("div", ".myTestAd2");
+}
+if (a.domCmp(["bluesatoshi.com"])) {
+    //Inject CSS and add bait element
+    a.css("#test { height: 280px; }");
+    a.bait("div", "#test");
+}
+if (a.domCmp(["razercrypt.com"])) {
+    //Inject CSS and add bait element
+    a.css("#test { height: 250px; }");
+    a.bait("div", "#test");
+}
+if (a.domCmp(["satoshiempire.com"])) {
+    //Inject CSS and add bait element
+    a.css("#test { height: 250px; }");
+    a.bait("div", "#test");
+}
+if (a.domCmp(["oneadfaucet.com"])) {
+    //Inject CSS and add bait element
+    a.css("#test { height: 250px; }");
+    a.bait("div", "#test");
+}
+if (a.domCmp(["jkanime.net"])) {
+    //Add bait element
+    a.bait("div", "#reco");
+}
+if (a.domCmp(["720pmkv.com"])) {
+    //Add bait element
+    a.bait("div", "#advert");
+}
+if (a.domCmp(["paidverts.com"])) {
+    //Add bait element
+    a.bait("div", ".afs_ads");
+}
+if (a.domCmp(["italiatv.org"])) {
+    //Add bait element
+    a.bait("div", "#fab13");
+}
+if (a.domCmp(["eventhubs.com"])) {
+    //Add bait element
+    a.bait("div", "#blahyblaci1");
+}
+if (a.domCmp(["superanimes.com"])) {
+    //Add bait element
+    a.bait("div", "#bannerLoja");
+}
+if (a.domCmp(["forum.pac-rom.com"])) {
+    //Add bait element
+    a.bait("div", ".banner_ads");
+}
+if (a.domCmp(["litv.tv"])) {
+    //Add bait element
+    a.bait("div", ".player_mask");
+}
+if (a.domCmp(["leveldown.fr"])) {
+    //Add bait elements
+    a.bait("div", "#adblock");
+    a.bait("div", "#adblocktest");
+}
+if (a.domCmp(["globeslot.com"])) {
+    //Add bait elements
+    a.bait("div", "#add");
+    a.bait("div", "#add1");
+}
+if (a.domCmp(["antennesport.com", "serverhd.eu"])) {
+    //Skip to player
+    a.on("DOMContentLoaded", function () {
+        a.$("#pub .pubclose").remove();
+        a.$("#pub .embed iframe").attr("src", "/embed/embed.php");
+    });
+}
+if (a.domCmp(["drivearabia.com", "putlocker.com", "doatoolsita.altervista.org", "sockshare.com",
+"free-movie-home.com", "pc.online143.com", "kooora.com", "str3amtv.co.nr", "str3amtv.altervista.org",
+"str3am.altervista.org", "filecom.net", "pipocas.tv", "generatupremium.biz", "mega-debrid.eu",
+"premiumst0re.blogspot.com", "dl-protect.com", "newsinlevels.com", "vipracing.biz", "businesstoday.in"])) {
+    //Disable alert()
+    a.filter("alert");
+}
+if (a.domCmp(["generatupremium.biz"])) {
+    //Set cookie
+    a.cookie("genera", false);
+}
+if (a.domCmp(["newstatesman.com"])) {
+    //Set cookie
+    a.cookie("donationPopup", "hide");
+}
+if (a.domCmp(["yes.fm"])) {
+    //Lock com_adswizz_synchro_initialize to an empty function
+    a.readOnly("com_adswizz_synchro_initialize", function () { });
+}
+if (a.domCmp(["tek.no", "gamer.no", "teknofil.no", "insidetelecom.no", "prisguide.no", "diskusjon.no",
+"teknojobb.no", "akam.no", "hardware.no", "amobil.no"])) {
+    //Add element to body
+    a.on("DOMContentLoaded", function () {
+        a.$("<div>").attr("id", "google_ads_iframe_").html("<p></p>").appendTo("body");
+    });
+}
+if (a.domInc(["planetatvonlinehd.blogspot"]) || a.domCmp(["planetatvonlinehd.com"])) {
+    //Inject CSS
+    a.css(".adsantilok { height: 1px; }");
+}
+if (a.domCmp(["beta.speedtest.net"])) {
+    //Lock adsOoklaComReachable to true and scriptsLoaded to an empty function
+    a.readOnly("adsOoklaComReachable", true);
+    a.readOnly("scriptsLoaded", function () { });
+}
+if (a.domCmp(["binbucks.com"])) {
+    //Lock testJuicyPay and testSensePay to true
+    a.readOnly("testJuicyPay", true);
+    a.readOnly("testSensePay", true);
+}
+if (a.domCmp(["whiskyprijzen.com", "whiskyprices.co.uk", "whiskypreise.com", "whiskyprix.fr"])) {
+    //Lock OA_show to true
+    a.readOnly("OA_show", true);
+}
+if (a.domCmp(["di.se"])) {
+    //Remove elements on idle
+    a.on("DOMContentLoaded", function () {
+        a.$("#header_overlay").remove();
+        a.$("#message_modal").remove();
+    });
+}
+if (a.domCmp(["libertaddigital.com"])) {
+    //Lock ad_already_played and puedeMostrarAds to true
+    a.readOnly("ad_already_played", true);
+    a.readOnly("puedeMostrarAds", true);
+}
+if (a.domCmp(["folha.uol.com.br"])) {
+    //Lock paywall_access and folha_ads to true
+    a.readOnly("paywall_access", true);
+    a.readOnly("folha_ads", true);
+}
+if (a.domCmp(["gamer.com.tw"])) {
+    //Lock AntiAd to null
+    a.readOnly("AntiAd", null);
+};
+if (a.domCmp(["armorgames.com"])) {
+    //Lock ga_detect to null
+    a.readOnly("ga_detect", null);
+}
+if (a.domCmp(["mangahost.com"])) {
+    //Lock testDisplay to false
+    a.readOnly("testDisplay", false);
+}
+if (a.domCmp(["videowood.tv"])) {
+    //Disable open() then lock config to an empty object and adb_remind to false
+    a.filter("open");
+    a.readOnly("config", {});
+    a.readOnly("adb_remind", false);
+}
+if (a.domCmp(["infojobs.com.br"])) {
+    //Set a read-only properly, this has 3 layers and a.readOnly() can't handle it
+    a.win.webUI = {};
+    a.win.webUI.Utils = {};
+    Object.defineProperty(a.win.webUI.Utils, "StopAdBlock", {
+        configurable: false,
+        set: function () { },
+        get: function () {
+            return function () { };
+        }
+    });
+}
+if (a.domCmp(["cloudwebcopy.com"])) {
+    //Disable setTimeout()
+    a.filter("setTimeout");
+}
+if (a.domCmp(["narkive.com"])) {
+    //Lock adblock_status to a funciton that always returns false
+    a.readOnly("adblock_status", function () {
+        return false;
+    });
+}
+if (a.domCmp(["pregen.net"])) {
+    //Set cookie
+    a.cookie("pgn", "1");
+}
+if (a.domCmp(["phys.org"])) {
+    //Lock chkAB to an empty funciton
+    a.readOnly("chkAB", function () { });
+}
+if (a.domCmp(["onvasortir.com"])) {
+    //Lock JeBloque to an empty function
+    a.readOnly("JeBloque", function () { });
+}
+if (a.domCmp(["fullhdzevki.com"])) {
+    //Lock check to an empty function
+    a.readOnly("check", function () { });
+}
+if (a.domCmp(["ville-ideale.com"])) {
+    //Lock execsp to an empty function
+    a.readOnly("execsp", function () { });
+}
+if (a.domCmp(["notre-planete.info"])) {
+    //Lock pubpop to an empty function
+    a.readOnly("pubpop", function () { });
+}
+if (a.domCmp(["apkmirror.com"])) {
+    //Lock doCheck to an empty function
+    a.readOnly("doCheck", function () { });
+}
+if (a.domCmp(["mtlblog.com"])) {
+    //Lock puabs to an empty function
+    a.readOnly("puabs", function () { });
+}
+if (a.domCmp(["15min.lt"])) {
+    //Crash script by keywords
+    a.crashScript("window.__adblock_config");
+}
+if (a.domCmp(["anizm.com"])) {
+    //Set stopAdBlock to an empty object
+    a.always(function () {
+        a.win.stopAdBlock = {};
+    });
+}
+if (a.domCmp(["diarioinformacion.com"])) {
+    //Lock pr_okvalida to true
+    a.readOnly("pr_okvalida", true);
 }
 //Generic, excluded domain check is built in
 a.generic();
