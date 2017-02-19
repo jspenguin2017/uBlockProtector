@@ -1022,7 +1022,7 @@ if (a.domCmp(["bitcoinker.com"])) {
 }
 if (a.domCmp(["moondoge.co.in", "moonliteco.in", "moonbit.co.in", "bitcoinzebra.com"])) {
     //Remove elements on idle
-    a.on("", function () {
+    a.on("DOMContentLoaded", function () {
         a.$("#AB, #E442Dv, #eCC5h").remove();
     });
 }
@@ -1129,6 +1129,380 @@ if (a.domCmp(["vipleague.is", "vipleague.ws", "vipleague.tv", "vipleague.se", "v
     a.css(".vip_052x003 { height: 250px; }");
     a.css(".vip_09x827 { height: 26px; }");
     a.css("#overlay { display: none; }");
+}
+if (a.domCmp(["zoomtv.me"])) {
+    //Lock iaxpEnabled to true
+    a.readOnly("iaxpEnabled", true);
+}
+if (a.domCmp(["vg.no", "e24.no"])) {
+    //Lock __AB__ to an empty function
+    a.readOnly("__AB__", function () { });
+}
+if (a.domCmp(["pornve.com"])) {
+    //NSFW! Lock adxjwupdate to 1
+    a.readOnly("adxjwupdate", 1);
+}
+if (a.domCmp(["lol.moa.tw"])) {
+    //Set property MoaObj on idle
+    a.on("DOMContentLoaded", function () {
+        a.win.MoaObj = a.win.MoaObj || {};
+        a.win.MoaObj.ad = a.win.MoaObj.ad || {};
+        a.win.MoaObj.ad.hasAdblock = function () {
+            return false;
+        };
+        a.win.MoaObj.ad.checkABP = function () {
+            return false;
+        };
+    });
+}
+if (a.domCmp(["multiup.org"])) {
+    //Set cookie and set hi to an empty function
+    a.cookie("visit", 1);
+    a.readOnly("hi", function () { });
+}
+if (a.domCmp(["dailybitcoins.org"])) {
+    //Remove element on idle
+    a.on("DOMContentLoaded", function () {
+        a.$(".ad-img").remove();
+    });
+}
+if (a.domCmp(["kozaczek.pl", "zeberka.pl"])) {
+    //Set cookies
+    a.cookie("ablc", "1");
+    a.cookie("cookie_policy", "1");
+}
+if (a.domCmp(["spankwire.com", "keezmovies.com", "extremetube.com", "mofosex.com"])) {
+    //Set cookies
+    a.cookie("abClosed", "true");
+    a.cookie("hide_ad_msg", "1");
+}
+if (a.domCmp(["youporn.com", "youporngay.com"])) {
+    //Set cookie
+    a.cookie("adblock_message", "closed");
+}
+if (a.domCmp(["citationmachine.net"])) {
+    //Set cookie
+    a.cookie("sbm_cm_citations", "0");
+}
+if (a.domCmp(["psarips.com"])) {
+    //Add bait element
+    a.bait("div", "#advert");
+}
+if (a.domCmp(["extratorrent.cc", "extratorrent.com"])) {
+    //Set cookies
+    a.cookie("ppu_delay", 1);
+    a.cookie("ppu_main", 1);
+    a.cookie("ppu_sub", 1);
+    a.cookie("ppu_show_on", 1);
+}
+if (a.domCmp(["tny.cz", "pasted.co"])) {
+    //Set cookies
+    a.cookie("__.popunderCap", "1");
+    a.cookie("__.popunder", "1");
+}
+if (a.domCmp(["clubedohardware.com.br"])) {
+    //Add style and bait element then call functions and remove element on idle
+    if (a.win.location.host.includes("forum")) {
+        a.css("#banner, script { height: 51px; }");
+        a.bait("div", "#banner");
+    } else {
+        a.bait("div", ".banner_topo");
+    }
+    a.on("DOMContentLoaded", function () {
+        if (a.win.location.host.includes("forum")) {
+            a.win.addBlocking.hide();
+            a.win.addBlocking.kill();
+        } else {
+            a.doc.body.id = "";
+            a.$(".adblock").remove();
+        }
+    });
+}
+if (a.domCmp(["debrastagi.com"])) {
+    //Remove elements on idle
+    a.on("DOMContentLoaded", function () {
+        a.$("#stp-main").remove();
+        a.$("#stp-bg").remove();
+    });
+}
+if (a.domCmp(["ddlfrench.org"])) {
+    //Edit elements on idle
+    a.on("DOMContentLoaded", function () {
+        a.$("#dle-content .d-content").removeClass();
+        a.$("#content").attr("id", "");
+    });
+}
+if (a.domCmp(["mega-debrid.eu"])) {
+    //Edit element on load
+    a.on("load", function () {
+        const elem = a.$(".realbutton")[0];
+        elem.setAttribute("onclick", "");
+        elem.setAttribute("type", "submit");
+    });
+}
+if (a.domInc(["slideplayer"])) {
+    //Set property force_remove_ads and skip share to download on load
+    a.on("load", function () {
+        a.win.force_remove_ads = true;
+        const slide_id = a.win.get_current_slide_id();
+        const slide_srv = a.doc.getElementById("player_frame").src.split("/")[3];
+        const time = 86400 + Math.floor(Date.now() / 1000);
+        const secret = encodeURIComponent(a.win.strtr(a.win.MD5.base64("secret_preved slideplayer never solved " +
+time + slide_id + ".ppt"), "+/", "- "));
+        const url = "http://player.slideplayer.org/download/" + slide_srv + "/" + slide_id + "/" + secret + "/" +
+time + "/" + slide_id + ".ppt";
+        let links = document.querySelectorAll("a.download_link");
+        for (let i = 0; i < links.length; i++) {
+            let events = $._data(links[i]).events.click;
+            events.splice(0, events.length);
+            links[i].href = url;
+        }
+    });
+}
+if (a.domCmp(["bokepspot.com"])) {
+    //Set cookie and remove element on idle
+    a.cookie("hideDialog", "hide");
+    a.on("DOMContentLoaded", function () {
+        a.$("#tupiklan").remove();
+    });
+}
+if (a.domCmp(["picload.org"])) {
+    //Set cookie then set properties and remove element on idle
+    a.cookie("pl_adblocker", "false");
+    a.on("DOMContentLoaded", function () {
+        a.win.ads_loaded = true;
+        a.win.imageAds = false;
+        a.$("div[oncontextmenu='return false;']").remove();
+    });
+}
+if (a.domCmp(["freezedownload.com"])) {
+    //Remove element on idle
+    a.on("DOMContentLoaded", function () {
+        if (a.win.location.href.includes("freezedownload.com/download/")) {
+            a.$("body > div[id]").remove();
+        }
+    });
+}
+if (a.domCmp(["monnsutogatya.com"])) {
+    //Inject style and remove element on idle
+    a.on("DOMContentLoaded", function () {
+        a.css("#site-box {display:block;}");
+        a.$("#for-ad-blocker").remove();
+    });
+}
+if (a.domCmp(["rapid8.com"])) {
+    //Remove elements on idle
+    a.on("DOMContentLoaded", function () {
+        a.$("div.backk + #blcokMzg").remove();
+        a.$("div.backk").remove();
+    });
+}
+if (a.domCmp(["turkdown.com"])) {
+    //Remove element on idle
+    a.on("DOMContentLoaded", function () {
+        a.$("#duyuru").remove();
+    });
+}
+if (a.domCmp(["privateinsta.com"])) {
+    //Set property dont_scroll and remove elements on idle
+    a.on("DOMContentLoaded", function () {
+        a.win.dont_scroll = false;
+        a.$("#overlay_div").remove();
+        a.$("#overlay_main_div").remove();
+    });
+}
+if (a.domCmp(["oneplaylist.eu.pn"])) {
+    //Lock makePopunder to false
+    a.readOnly("makePopunder", false);
+}
+if (a.domCmp(["onmeda.de"])) {
+    //Lock $ADP to true then sas_callAd and sas_callAds to empty functions
+    a.readOnly("$ADP", true);
+    a.readOnly("sas_callAd", function () { });
+    a.readOnly("sas_callAds", function () { });
+}
+if (a.domCmp(["rockfile.eu"])) {
+    //Add element on idle
+    a.on("DOMContentLoaded", function () {
+        a.$("<iframe>").attr("src", "about:blank").css("visibility", "hidden").appendTo("body");
+    });
+}
+if (a.domCmp(["referencemega.com", "fpabd.com", "crackacc.com"])) {
+    //Set cookie
+    a.cookie("_lbGatePassed", "true");
+}
+if (a.domCmp(["link.tl"])) {
+    //Inject CSS and lock adblocker to false
+    a.css(".adblock { height:1px; }");
+    a.readOnly("adblocker", false);
+}
+if (a.domCmp(["wstream.video"])) {
+    //Inject CSS
+    a.css("#adiv { height:4px; }");
+}
+if (a.domCmp(["4shared.com"])) {
+    //Edit element on idle
+    a.on("DOMContentLoaded", function () {
+        a.$("body").removeClass("jsBlockDetect");
+    });
+}
+if (a.domCmp(["pro-zik.ws", "pro-tect.ws", "pro-ddl.ws", "pro-sport.ws"])) {
+    //Set cookies
+    a.cookie("visitedf", true);
+    a.cookie("visitedh", true);
+}
+if (a.domCmp(["comptoir-hardware.com"])) {
+    //Lock adblock to non
+    a.readOnly("adblock", "non");
+}
+if (a.domCmp(["bakersfield.com"])) {
+    //Lock AD_SLOT_RENDERED to true
+    a.readOnly("AD_SLOT_RENDERED", true);
+}
+if (a.domCmp(["ekstrabladet.dk", "eb.dk"])) {
+    //Set property ADTECH
+    a.always(function () {
+        a.win.ADTECH = {};
+    });
+}
+if (a.domCmp(["pcgames-download.net"])) {
+    //Set cookie and property mgCanLoad30547
+    a.always(function () {
+        a.cookie("noAdblockNiceMessage", "1");
+        Aak.uw.mgCanLoad30547 = true;
+    });
+}
+if (a.domCmp(["lachainemeteo.com"])) {
+    //Lock js_loaded to true
+    a.readOnly("js_loaded", true);
+}
+if (a.domCmp(["mac4ever.com"])) {
+    //Lock coquinou to an empty function
+    a.readOnly("coquinou", function () { });
+}
+if (a.domCmp(["5278bbs.com"])) {
+    //Lock myaabpfun12 to an empty function
+    a.readOnly("myaabpfun12", function () { });
+}
+if (a.domCmp(["thesimsresource.com"])) {
+    //Lock gadsize and iHaveLoadedAds to true
+    a.readOnly("gadsize", true);
+    a.readOnly("iHaveLoadedAds", true);
+}
+if (a.domCmp(["yellowbridge.com"])) {
+    //Lock finalizePage to an empty function
+    a.readOnly("finalizePage", function () { });
+}
+if (a.domCmp(["game-debate.com"])) {
+    //Lock ad_block_test to an empty function
+    a.readOnly("ad_block_test", function () { });
+}
+if (a.domCmp(["kissanime.com", "kissanime.to", "kissanime.ru"])) {
+    //Inject CSS and remove block screen on idle
+    a.css("iframe[id^='adsIfrme'], .divCloseBut { display:none; }");
+    a.on("DOMContentLoaded", function () {
+        const divContentVideo = a.doc.querySelector("#divContentVideo");
+        if (a.win.DoDetect2) {
+            a.win.DoDetect2 = null;
+            a.win.CheckAdImage = null;
+        } else if (divContentVideo) {
+            const divDownload = a.doc.querySelector("#divDownload").cloneNode(true);
+            a.win.setTimeout(function () {
+                divContentVideo.innerHTML = "";
+                a.win.DoHideFake();
+                divContentVideo.appendChild(divDownload);
+                a.$("iframe[id^='adsIfrme'], .divCloseBut").remove();
+            }, 5500);
+        }
+    });
+}
+if (a.domCmp(["kisscartoon.me", "kisscartoon.se"])) {
+    //Lock xaZlE to an empty function and remove element on idle
+    a.readOnly("xaZlE", function () { });
+    a.on("DOMContentLoaded", function () {
+        a.$("iframe[id^='adsIfrme']").remove();
+    });
+}
+if (a.domCmp(["openload.co", "openload.io", "openload.tv"])) {
+    //Lock adblock and adblock2 to false then popAdsLoaded to true
+    a.readOnly("adblock", false);
+    a.readOnly("adblock2", false);
+    a.readOnly("popAdsLoaded", true);
+}
+if (a.domCmp(["youwatch.org", "chouhaa.info", "ahzahg6ohb.com", "ahzahg6ohb.com"])) {
+    //Lock adsShowPopup1 to 1 and remove element on idle
+    a.readOnly("adsShowPopup1", 1);
+    a.on("DOMContentLoaded", function () {
+        a.$("#player_imj, #player_imj + div[id]").remove();
+    });
+}
+if (a.domCmp(["exashare.com", "chefti.info", "bojem3a.info", "ajihezo.info", "yahmaib3ai.com",
+"yahmaib3ai.com"])) {
+    //Lock adsShowPopup1 to 1 and remove element on idle
+    a.readOnly("adsShowPopup1", 1);
+    a.on("DOMContentLoaded", function () {
+        a.$("#player_gaz, #player_gaz + div[id]").remove();
+    });
+}
+if (a.domCmp(["an1me.se"])) {
+    //Lock isBlockAds2 to false
+    a.readOnly("isBlockAds2", false);
+}
+if (a.domCmp(["hqq.tv"])) {
+    //Submit a form on idle
+    a.on("DOMContentLoaded", function () {
+        if (a.win.location.pathname === "/player/embed_player.php") {
+            a.$("form[id^='form-']").submit();
+        }
+    });
+}
+if (a.domCmp(["koscian.net"])) {
+    //Remove element on idle
+    a.on("DOMContentLoaded", function () {
+        a.$(".ban").remove();
+    });
+}
+if (a.domCmp(["eclypsia.com"])) {
+    //Call generic protector against FuckAdBlock
+    a.generic.FuckAdBlock("MggAbd", "mggAbd");
+}
+if (a.domCmp(["gamingroom.tv"])) {
+    //Lock a few variables to empty functions
+    a.readOnly("adblock_detect", function () { });
+    a.readOnly("GR_adblock_hide_video", function () { });
+    a.readOnly("adblock_video_msg_start", function () { });
+    a.readOnly("adblock_video_msg_stop", function () { });
+    a.readOnly("disable_chat", function () { });
+}
+if (a.domCmp(["rtl.de"])) {
+    //Replace player
+    a.on("DOMContentLoaded", function () {
+        a.$("div[data-widget='video']").each(function () {
+            const url = $(this).data("playerLayerCfg").videoinfo.mp4url;
+            $(this).after(a.nativePlayer(url));
+            $(this).remove();
+        });
+    });
+}
+if (a.domCmp(["play.radio1.se", "play.bandit.se", "play.lugnafavoriter.com", "play.rixfm.se"])) {
+    //Call a function
+    a.on("load", function () {
+        a.win.setTimeout(function () {
+            a.win.player_load_live(a.win.stream_id);
+        }, 1000);
+    });
+}
+if (a.domCmp(["dplay.com", "dplay.dk", "dplay.se"])) {
+    //Set cookie
+    let date = new Date();
+    date.setDate(date.getDate() + 365);
+    const timestamp = date.getTime().toString();
+    const value = JSON.stringify({
+        "notificationSubmission": "submitted",
+        "reportingExpiry": timestamp,
+        "notificationExpiry": timestamp
+    });
+    a.cookie("dsc-adblock", value);
 }
 
 //Generic, excluded domain check is built in
