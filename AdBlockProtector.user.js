@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 6.9
+// @version 6.10
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -22,8 +22,8 @@
 // @require https://github.com/X01X012013/AdBlockProtector/raw/master/jQuery/Color.Loader.2.1.2.min.js
 // @require https://github.com/X01X012013/AdBlockProtector/raw/master/Script%20Compiler/Core.js
 // ==/UserScript==
-//Init, pass in excluded domains
 "use strict";
+//Init, pass in excluded domains
 a.init(["360.cn", "apple.com", "ask.com", "baidu.com", "bing.com", "bufferapp.com", "chatango.com",
 "chromeactions.com", "easyinplay.net", "ebay.com", "facebook.com", "flattr.com", "flickr.com", "ghacks.net",
 "imdb.com", "imgbox.com", "imgur.com", "instagram.com", "jsbin.com", "jsfiddle.net", "linkedin.com", "live.com",

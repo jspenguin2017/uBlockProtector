@@ -54,7 +54,7 @@ a.init = function (excludedDomCmp, excludedDomInc) {
     }
     //Settings page
     if (a.domCmp(["x01x012013.github.io"], true) && a.doc.location.href.includes("x01x012013.github.io/AdBlockProtector/settings.html")) {
-        on("load", function () {
+        a.on("load", function () {
             a.win.init([a.config.debugMode, a.config.allowExperimental, a.mods.Facebook_JumpToTop, a.mods.Facebook_HidePeopleYouMayKnow, a.mods.Blogspot_AutoNCR], a.config.update)
         });
     }
