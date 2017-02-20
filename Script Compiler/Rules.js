@@ -1812,5 +1812,9 @@ if (a.domCmp(["emuparadise.me"])) {
         a.$("h2:contains('Bandwidth is expensive')").parent().remove();
     });
 }
+if (a.domCmp(["sapib.ca"])) {
+    //Lock Abd_Detector to an empty function
+    a.readOnly("Abd_Detector", function () { });
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
