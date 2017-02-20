@@ -105,7 +105,7 @@
             $("#loadingMsg").remove();
             //Apply settings
             for (let i = 0; i < data.length; i++) {
-                $("#cb" + (i + 1).toString()).bootstrapToggle(data[i] ? "on" : "off");
+                $("#cb" + i.toString()).bootstrapToggle(data[i] ? "on" : "off");
             }
             //Bind event handler
             $(".settingsCheckbox").change(function () {
