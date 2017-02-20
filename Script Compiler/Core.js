@@ -477,6 +477,7 @@ a.patchHTML = function (patcher) {
     GM_xmlhttpRequest({
         method: "GET",
         url: a.doc.location.href,
+        synchronous: true,
         headers: {
             "Referer": a.doc.referrer
         },
