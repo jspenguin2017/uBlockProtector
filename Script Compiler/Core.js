@@ -707,7 +707,7 @@ a.generic = function () {
                 a.css("html,body {height:auto; overflow: auto;}");
             }
             //Block screen
-            if (a.$("#blockdiv").html().toLowerCase() === "disable ad blocking or use another browser without any adblocker when you visit") {
+            if (a.$("#blockdiv").html() === "disable ad blocking or use another browser without any adblocker when you visit") {
                 a.$("#blockdiv").remove();
             }
             //Antiblock.org v2
