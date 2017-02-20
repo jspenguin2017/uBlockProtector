@@ -110,7 +110,7 @@
             //Bind event handler
             $(".settingsCheckbox").change(function () {
                 $("#savedAlert").show();
-                callback(parseInt(this.id.substr(this.id.length - 1)), this.checked);
+                callback(parseInt(this.id.substr(this.id.length - 1)) - 1, this.checked);
             });
             //Show table
             $("#settingsTable").show();

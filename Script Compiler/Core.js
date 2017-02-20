@@ -16,14 +16,76 @@ const a = function () {
  */
 a.VERSION = "1.0";
 
+//=====Initializer=====
+/**
+ * Initialize constants, protect functions, and activate mods.
+ * @function
+ * @param {Array.<string>} excludedDomCmp - The list of domains to exclude, a.domCmp() will be used to compare this.
+ * @param {Array.<string>} excludedDomInc - The list of domains to exclude, a.domInc() will be used to compare this.
+ */
+a.init = function (excludedDomCmp, excludedDomInc) {
+    //Load jQuery and Color plug-in
+    a.$ = jQueryFactory(a.win, true);
+    jQueryColorLoader(a.$);
+    //Load configurations
+    a.config();
+    a.config.domExcluded = a.domCmp(excludedDomCmp, true) || a.domInc(excludedDomInc, true);
+    //Log excluded or protect functions
+    if (a.config.domExcluded) {
+        a.out.warn("This domain is in excluded list. ");
+    } else {
+        a.protectFunc();
+    }
+    //Apply mods
+    a.mods();
+    //Set menu commands
+    GM_registerMenuCommand("AdBlock Protector Settings Page", function () {
+        GM_openInTab(a.c.settingsPage);
+    });
+    GM_registerMenuCommand("AdBlock Protector Home Page", function () {
+        GM_openInTab(a.c.homePage);
+    });
+    GM_registerMenuCommand("AdBlock Protector Support Page", function () {
+        GM_openInTab(a.c.supportPage);
+    });
+    //Home page installation test
+    if (a.domCmp(["x01x012013.github.io"], true) && a.doc.location.href.includes("x01x012013.github.io/AdBlockProtector")) {
+        a.win.AdBlock_Protector_Script = true;
+    }
+    //Settings page
+    if (a.domCmp(["x01x012013.github.io"], true) && a.doc.location.href.includes("x01x012013.github.io/AdBlockProtector/settings.html")) {
+        on("load", function () {
+            a.win.init([a.config.debugMode, a.config.allowExperimental, a.mods.Facebook_JumpToTop, a.mods.Facebook_HidePeopleYouMayKnow, a.mods.Blogspot_AutoNCR], a.config.update)
+        });
+    }
+    //Log domain
+    a.out.warn("Domain: " + a.dom);
+};
+
 //=====Configurations=====
 /**
  * Load configurations, includes mods configurations.
  * @function
  */
 a.config = function () {
-    //TODO: Implement this
+    //Configuration
+    a.config.debugMode = GM_getValue("config_debugMode", a.config.debugMode);
+    a.config.allowExperimental = GM_getValue("config_allowExperimental", a.config.allowExperimental);
+    //Mods
+    a.mods.Facebook_JumpToTop = GM_getValue("mods_Facebook_JumpToTop", a.mods.Facebook_JumpToTop);
+    a.mods.Facebook_HidePeopleYouMayKnow = GM_getValue("mods_Facebook_HidePeopleYouMayKnow", a.mods.Facebook_HidePeopleYouMayKnow);
+    a.mods.Blogspot_AutoNCR = GM_getValue("mods_Blogspot_AutoNCR", a.mods.Blogspot_AutoNCR);
 };
+/**
+ * Update a configuration.
+ * @function
+ * @param {integer} id - The ID of the configuration.
+ * @param {bool} val - The value of the configuration.
+ */
+a.config.update = function (id, val) {
+    const names = ["config_debugMode", "config_allowExperimental", "mods_Facebook_HidePeopleYouMayKnow", "mods_Blogspot_AutoNCR"];
+    GM_setValue(names[id], val);
+}
 /**
  * Whether debug strings should be logged.
  * The default value is true.
@@ -41,7 +103,7 @@ a.config.allowGeneric = true;
  * Whether experimental features should run.
  * If it is a rule, the user will be asked before it runs.
  * The default value is true.
- * @var {bool}
+ * @const {bool}
  */
 a.config.allowExperimental = true;
 /**
@@ -52,6 +114,81 @@ a.config.allowExperimental = true;
  * @const {bool}
  */
 a.config.domExcluded = null;
+
+//=====Constants=====
+a.c = {};
+/**
+ * The generic error message.
+ * @const {string}
+ */
+a.c.errMsg = "Uncaught AdBlock Error: AdBlocker detectors are not allowed on this device! ";
+/**
+ * The settings page of this project.
+ * @const {string}
+ */
+a.c.settingsPage = "https://x01x012013.github.io/AdBlockProtector/settings.html";
+/**
+ * The home page of this project.
+ * @const {string}
+ */
+a.c.homePage = "https://x01x012013.github.io/AdBlockProtector/";
+/**
+ * The support (issues) page of this project.
+ * @const {string}
+ */
+a.c.supportPage = "https://github.com/X01X012013/AdBlockProtector/issues";
+/**
+ * A string that will crash any JavaScript by syntax error when added to anywhere of its code.
+ * @const {string}
+ */
+a.c.syntaxBreaker = "])}\"'`])} \n\r \r\n */ ])}";
+/**
+ * Whether this script is running on the top frame.
+ * @const {boolean}
+ */
+a.c.topFrame = (function () {
+    try {
+        return a.win.self === a.win.top;
+    } catch (err) {
+        //a.win.top was not accessible due to security policies (means we are not top frame)
+        return false;
+    }
+})();
+
+//=====Shortcuts and jQuery=====
+/**
+ * The unsafeWindow.
+ * @const {Object}
+ */
+a.win = unsafeWindow;
+/**
+ * The document of unsafeWindow.
+ * @const {Object}
+ */
+a.doc = a.win.document;
+/**
+ * The console of unsafeWindow.
+ * @const {Object}
+ */
+a.out = a.win.console;
+/**
+ * The domain of current document.
+ * @const {string}
+ */
+a.dom = a.doc.domain;
+/**
+ * The addEventListener of unsafeWindow.
+ * We must wrap it like this or it will throw errors.
+ * @const {Function}
+ */
+a.on = function (event, func) {
+    a.win.addEventListener(event, func);
+};
+/**
+ * jQuery with Color plug-in, will be available after a.init() is called.
+ * @const {Object}
+ */
+a.$ = null;
 
 //=====Mods=====
 /**
@@ -161,125 +298,6 @@ a.mods.Facebook_HidePeopleYouMayKnow = true;
  */
 a.mods.Blogspot_AutoNCR = true;
 
-//=====Shortcuts and jQuery=====
-/**
- * The unsafeWindow.
- * @const {Object}
- */
-a.win = unsafeWindow;
-/**
- * The document of unsafeWindow.
- * @const {Object}
- */
-a.doc = a.win.document;
-/**
- * The console of unsafeWindow.
- * @const {Object}
- */
-a.out = a.win.console;
-/**
- * The domain of current document.
- * @const {string}
- */
-a.dom = a.doc.domain;
-/**
- * The addEventListener of unsafeWindow.
- * We must wrap it like this or it will throw errors.
- * @const {Object}
- */
-a.on = function (event, func) {
-    a.win.addEventListener(event, func);
-};
-/**
- * jQuery with Color plug-in, will be available after a.init() is called.
- * @const {Object}
- */
-a.$ = null;
-
-//=====Constants=====
-a.c = {};
-/**
- * The generic error message.
- * @const {string}
- */
-a.c.errMsg = "Uncaught AdBlock Error: AdBlocker detectors are not allowed on this device! ";
-/**
- * The settings page of this project.
- * @const {string}
- */
-a.c.settingsPage = "https://x01x012013.github.io/AdBlockProtector/settings.html";
-/**
- * The home page of this project.
- * @const {string}
- */
-a.c.homePage = "https://x01x012013.github.io/AdBlockProtector/";
-/**
- * The support (issues) page of this project.
- * @const {string}
- */
-a.c.supportPage = "https://github.com/X01X012013/AdBlockProtector/issues";
-/**
- * A string that will crash any JavaScript by syntax error when added to anywhere of its code.
- * @const {string}
- */
-a.c.syntaxBreaker = "])}\"'`])} \n\r \r\n */ ])}";
-/**
- * Whether this script is running on the top frame.
- * @const {boolean}
- */
-a.c.topFrame = (function () {
-    try {
-        return a.win.self === a.win.top;
-    } catch (err) {
-        //a.win.top was not accessible due to security policies (means we are not top frame)
-        return false;
-    }
-})();
-
-//=====Initializer=====
-/**
- * Initialize constants, protect functions, and activate mods.
- * @function
- * @param {Array.<string>} excludedDomCmp - The list of domains to exclude, a.domCmp() will be used to compare this.
- * @param {Array.<string>} excludedDomInc - The list of domains to exclude, a.domInc() will be used to compare this.
- */
-a.init = function (excludedDomCmp, excludedDomInc) {
-    //Load jQuery and Color plug-in
-    a.$ = jQueryFactory(a.win, true);
-    jQueryColorLoader(a.$);
-    //Load configurations
-    a.config();
-    a.config.domExcluded = a.domCmp(excludedDomCmp, true) || a.domInc(excludedDomInc, true);
-    //Log excluded or protect functions
-    if (a.config.domExcluded) {
-        a.out.warn("This domain is in excluded list. ");
-    } else {
-        a.protectFunc();
-    }
-    //Apply mods
-    a.mods();
-    //Set menu commands
-    GM_registerMenuCommand("AdBlock Protector Settings Page", function () {
-        GM_openInTab(a.c.settingsPage);
-    });
-    GM_registerMenuCommand("AdBlock Protector Home Page", function () {
-        GM_openInTab(a.c.homePage);
-    });
-    GM_registerMenuCommand("AdBlock Protector Support Page", function () {
-        GM_openInTab(a.c.supportPage);
-    });
-    //Home page installation test
-    if (a.domCmp(["x01x012013.github.io"], true) && a.doc.location.href.includes("x01x012013.github.io/AdBlockProtector")) {
-        a.win.AdBlock_Protector_Script = true;
-    }
-    //Settings page
-    if (a.domCmp(["x01x012013.github.io"], true) && a.doc.location.href.includes("x01x012013.github.io/AdBlockProtector/settings.html")) {
-        //TODO: Implement this
-    }
-    //Log domain
-    a.out.warn("Domain: " + a.dom);
-};
-
 //=====Common Functions=====
 /**
  * Write generic error message to console.
@@ -370,12 +388,12 @@ a.protectFunc = function () {
 };
 /**
  * Pointers to protected functions.
- * @const {Array.<Function>}
+ * @var {Array.<Function>}
  */
 a.protectFunc.pointers = [];
 /**
  * Mask of protected functions.
- * @const {Array.<string>}
+ * @var {Array.<string>}
  */
 a.protectFunc.masks = [];
 /**
@@ -670,7 +688,7 @@ a.uid = function () {
 };
 /**
  * Unique ID counter, will be appended to randomly generated string to ensure uniqueness.
- * var {integer}
+ * @var {integer}
  */
 a.uid.counter = 0;
 
