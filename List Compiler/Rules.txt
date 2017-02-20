@@ -17,3 +17,5 @@ komorkomania.pl###like-us-adblock-modal
 zone-anime.net###adblockinfo
 !>> urlex.org
 @@||urlex.org^$generichide
+!>> video.gazeta.pl
+@@||video.gazeta.pl/cdn/ads/ad/banner/_adsense_/_adserver/_adview_.ad.json$xmlhttprequest,domain=video.gazeta.pl

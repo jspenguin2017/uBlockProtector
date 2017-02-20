@@ -7,3 +7,7 @@
 @@||kozaczek.pl/js/ads.js$script,domain=kozaczek.pl
 @@||play.wtk.insys.pl/Scripts/InsysPlayer.v0.1.0/adTest.png$image
 @@||ad.adview.pl/ad/$xmlhttprequest,domain=play.wtk.insys.pl
+@@||vstrim.pl/js/ads.js$script,domain=vstrim.pl
+@@||squid.gazeta.pl/info/squid/fprint.js$script,domain=wyborcza.pl|gazeta.pl
+@@||squid.gazeta.pl/sqpwgl/pwfpl$xmlhttprequest,domain=wyborcza.pl|gazeta.pl
+@@||squid.gazeta.pl/sqpwgl/pwif$subdocument,domain=wyborcza.pl|gazeta.pl
