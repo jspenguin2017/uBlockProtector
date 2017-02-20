@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -57,27 +57,27 @@
                     <tr>
                         <th>Debug Mode</th>
                         <td>Whether debug strings should be logged to console. Turning off can marginally speed up some webpages. </td>
-                        <td><input type="checkbox" class="settingsCheckbox" id="cb1" data-toggle="toggle"></td>
+                        <td><input type="checkbox" class="settingsCheckbox" id="cb0" data-toggle="toggle"></td>
                     </tr>
                     <tr>
                         <th>Experimental Features</th>
                         <td>Whether experimental features should be enabled. If it is specific to a website, you will be asked before the code rans. We recommend you to keep this on, and report any problems you encounter. </td>
-                        <td><input type="checkbox" class="settingsCheckbox" id="cb2" data-toggle="toggle"></td>
+                        <td><input type="checkbox" class="settingsCheckbox" id="cb1" data-toggle="toggle"></td>
                     </tr>
                     <tr>
                         <th>Facebook Mod: <br />Jump To Top</th>
                         <td>Whether a &quot;Jump To Top&quot; button should be added to Facebook. </td>
-                        <td><input type="checkbox" class="settingsCheckbox" id="cb3" data-toggle="toggle"></td>
+                        <td><input type="checkbox" class="settingsCheckbox" id="cb2" data-toggle="toggle"></td>
                     </tr>
                     <tr>
                         <th>Facebook Mod: <br />Hide People You May Know</th>
                         <td>Whether &quot;People You May Know&quot; should be hidden from Facebook. </td>
-                        <td><input type="checkbox" class="settingsCheckbox" id="cb4" data-toggle="toggle"></td>
+                        <td><input type="checkbox" class="settingsCheckbox" id="cb3" data-toggle="toggle"></td>
                     </tr>
                     <tr>
                         <th>Blogspot Mod: <br />Auto NCR Redirect</th>
                         <td>Whether you should be automatically redirected to No Country Redirect (NCR) version of Blogspot blogs that you are visiting. </td>
-                        <td><input type="checkbox" class="settingsCheckbox" id="cb5" data-toggle="toggle"></td>
+                        <td><input type="checkbox" class="settingsCheckbox" id="cb4" data-toggle="toggle"></td>
                     </tr>
                 </tbody>
             </table>
@@ -110,7 +110,7 @@
             //Bind event handler
             $(".settingsCheckbox").change(function () {
                 $("#savedAlert").show();
-                callback(parseInt(this.id.substr(this.id.length - 1)) - 1, this.checked);
+                callback(parseInt(this.id.substr(this.id.length - 1)), this.checked);
             });
             //Show table
             $("#settingsTable").show();

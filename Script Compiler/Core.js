@@ -83,7 +83,7 @@ a.config = function () {
  * @param {bool} val - The value of the configuration.
  */
 a.config.update = function (id, val) {
-    const names = ["config_debugMode", "config_allowExperimental", "mods_Facebook_HidePeopleYouMayKnow", "mods_Blogspot_AutoNCR"];
+    const names = ["config_debugMode", "config_allowExperimental", "mods_Facebook_JumpToTop", "mods_Facebook_HidePeopleYouMayKnow", "mods_Blogspot_AutoNCR"];
     GM_setValue(names[id], val);
 }
 /**
