@@ -1806,5 +1806,5 @@ if (a.domCmp(["watchgeneration.fr", "turbo.fr", "24matins.fr", "foot01.com", "cl
     //Crash script by keywords
     a.crashScript("uabInject");
 }
-//Generic, excluded domain check is built in
+//Activate generic protectors, excluded domains check is handled inside
 a.generic();

@@ -10,15 +10,10 @@
     <title>AdBlock Protector</title>
     <!-- CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
-    <style>
-        /* Set font size of website lists. */
-        ol {
-            font-size: 1.5em;
-        }
-    </style>
     <!-- JS -->
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" charset="utf-8" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" charset="utf-8" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://x01x012013.github.io/Global/disqusLoader.js" charset="utf-8"></script>
     <script src="listTest.js" charset="utf-8"></script>
     <script>
         "use strict";
@@ -33,32 +28,59 @@
             }
             if (typeof AdBlock_Protector_List === "undefined") {
                 $("#listTestDiv").hide();
+            } else {
+                $("#listTestDiv").show();
             }
         }
 
         /**
-         * When the document is ready, set up scrolling animation and check installation.
+         * When the document is ready, set up scrolling animation and load Disqus.
          * @function
          * @listens $(document).ready
          */
         $(document).ready(function () {
             //Set up scrolling animation
-            $(".howLink").click(function (e) {
+            $(".howLinks").click(function (e) {
                 e.preventDefault();
                 $("html, body").animate({ scrollTop: $("#how").offset().top }, "fast");
             });
-            $("#specialLink").click(function (e) {
+            $(".chatLinks").click(function (e) {
                 e.preventDefault();
-                $("html, body").animate({ scrollTop: $("#special").offset().top }, "fast");
+                $("html, body").animate({ scrollTop: $("#chat").offset().top }, "fast");
             });
+            //Load Disqus
+            disqusLoader("adblock-protector", "https://x01x012013.github.io/AdBlockProtector/", "home_page", "AdBlock Protector Home Page");
         });
     </script>
 </head>
 <body>
-    <div style="height:20px;"></div>
-    <!-- Title -->
-    <div class="jumbotron">
+    <!-- Navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Show Menu</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div class="navbar-header">
+                <a class="navbar-brand">AdBlock Protector</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="howLinks"><a>Help</a></li>
+                    <li class="chatLinks"><a>Chat</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="settings.html" target="_blank">Settings</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div style="height:80px;"></div>
+    <!-- Wecome -->
+    <div class="container">
+        <div class="jumbotron">
             <h1>AdBlock Protector</h1>
             <p>Ultimate solution against AdBlock detectors</p>
             <p>Powered by <a href="https://github.com/reek/anti-adblock-killer" target="_blank">Anti-Adblock Killer 10.0</a> (by Reek)</p>
@@ -72,7 +94,9 @@
             <div id="listTestDiv">
                 <p style="color:red;">AdBlock Protector List is not installed or not enabled! </p>
             </div>
-            <p><a href="#how" class="howLink">Jump to &quot;How do I use it?&quot;</a></p>
+            <button type="button" class="btn btn-primary btn-lg howLinks">Jump to &quot;How do I use it?&quot;</button>
+            <button type="button" class="btn btn-default btn-lg chatLinks">Jump to chat board</button>
+            <a href="settings.html" target="_blank" type="button" class="btn btn-danger btn-lg">Open settings page</a>
             <script>
                 "use strict";
 
@@ -83,25 +107,25 @@
             </script>
         </div>
     </div>
-    <!-- Why use AdBlockers -->
-    <div class="jumbotron">
-        <div class="container">
+    <!-- Why use AdBlockers? -->
+    <div class="container">
+        <div class="jumbotron">
             <h2>Why use AdBlockers? </h2>
             <p>Ads are important for websites to sustain themselves. However, some advertiser tracks your activities and sometimes use exploits to install malware onto your devices, and an AdBlocker can stop these from happening. </p>
             <p>Recently, many websites start to use methods to detect and sometimes track AdBlockers and ask or sometimes even force you to disable them. The good news is, there are ways to protect AdBlockers from being detected. </p>
         </div>
     </div>
     <!-- How to protect my AdBlockers? -->
-    <div class="jumbotron">
-        <div class="container">
+    <div class="container">
+        <div class="jumbotron">
             <h2>How to protect my AdBlockers? </h2>
             <p>1. Enable Adblock Warning Removal List (Check your AdBlocker settings)</p>
-            <p>2. <a href="#how" class="howLink">Install AdBlock Protector</a></p>
+            <p>2. <a class="howLinks">Install AdBlock Protector</a></p>
         </div>
     </div>
     <!-- How do I use it? -->
-    <div class="jumbotron">
-        <div class="container" id="how">
+    <div class="container" id="how">
+        <div class="jumbotron">
             <h2>How do I use it? </h2>
             <p>1. Check if your setup is supported, it is highly recommended that you configure your setup so it is officially supported by us. You may still try to install this project if your setup is not supported, but it might not work properly. </p>
             <p>2. Install from install links below. </p>
@@ -117,39 +141,35 @@
             <p>1. <a href="https://github.com/X01X012013/AdBlockProtector/raw/master/AdBlockProtector.user.js">Userscript</a></p>
             <p>2. <a href="abp:subscribe?location=https://github.com/X01X012013/AdBlockProtector/raw/master/AdBlockProtectorList.txt&title=Adblock Protector List">List</a></p>
             <p><strong>Note: </strong>You need both the Userscript and the List. </p>
-            <p><strong>Note: </strong><a href="#special" id="specialLink">Click here</a> to see the list of supported websites. </p>
+        </div>
+    </div>
+    <!-- Tampermonkey warns me something about cross origin requests, what are those? -->
+    <div class="container">
+        <div class="jumbotron">
+            <h2>Tampermonkey warns me something about cross origin requests, what are those? </h2>
+            <p>Cross origin requests are requests to another domain than the domain you are visiting. This means AdBlock Protector is loading some data from somewhere on the Internet. We only do this if it is really needed. It is quite common on video sites since we need to find the URL of the media file.
         </div>
     </div>
     <!-- How do I report a bug or a website? -->
-    <div class="jumbotron">
-        <div class="container">
+    <div class="container">
+        <div class="jumbotron">
             <h2>How do I report a website or a bug? </h2>
-            <p>Please <a href="https://github.com/X01X012013/AdBlockProtector/issues" target="_blank">open an issue</a> if you have a question or have something to report. </p>
+            <p>Please <a href="https://github.com/X01X012013/AdBlockProtector/issues" target="_blank">open an issue</a> if you have something to report. </p>
             <p>If you are reporting a website, please provide the link to the website in question, include a screenshot if you think that can help. </p>
+            <p>If you just have a quick question, you can simply leave a comment below. </p>
         </div>
     </div>
-    <!-- Which websites are supported? -->
-    <div class="jumbotron">
-        <div class="container" id="special">
-            <h2>Which websites are supported? </h2>
-            <p>Please use Ctrl+F to search if needed. </p>
-            <ol>
-                <li>Clean up in progress... </li>
-            </ol>
-            <!-- Workaround -->
-            <h2>Things that you need to be aware of: </h2>
-            <ol>
-                <li>tweaktown.com - Block screen will show for a split second</li>
-                <li>tvrain.ru - Some functionalities may not work properly</li>
-                <li>gamepedia.com - Ads will show for a few seconds</li>
-                <li>tvn.pl and related domains - It may take a few seconds to replace the player, home page videos do not work</li>
-                <li>wp.pl and related domains - It may take a few seconds to replace the player</li>
-            </ol>
+    <!-- Disqus -->
+    <div class="container" id="chat">
+        <div class="jumbotron">
+            <h2>Chat Board</h2>
+            <p>Note: Comments with link(s) will be held for my approval. </p>
+            <div id="disqus_thread"></div>
         </div>
     </div>
     <!-- Source code -->
-    <div class="jumbotron">
-        <div class="container">
+    <div class="container">
+        <div class="jumbotron">
             <h2>Source code and license</h2>
             <p><a href="https://github.com/X01X012013/AdBlockProtector" target="_blank">View on GitHub</a></p>
         </div>
