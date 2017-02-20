@@ -1820,5 +1820,11 @@ if (a.domCmp(["allmusic.com"])) {
     //Filter keywords from setTimeout()
     a.filter("setTimeout", /\_0x6176x12/);
 }
+if (a.domCmp(["wowhead.com"])) {
+    //Remove elements on idle
+    a.on("DOMContentLoaded", function () {
+        a.$("div[id^='ad-']").parent().parent().parent().remove();
+    });
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();

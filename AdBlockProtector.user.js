@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 6.15
+// @version 6.16
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -1843,6 +1843,12 @@ if (a.domCmp(["sapib.ca"])) {
 if (a.domCmp(["allmusic.com"])) {
     //Filter keywords from setTimeout()
     a.filter("setTimeout", /\_0x6176x12/);
+}
+if (a.domCmp(["wowhead.com"])) {
+    //Remove elements on idle
+    a.on("DOMContentLoaded", function () {
+        a.$("div[id^='ad-']").parent().parent().parent().remove();
+    });
 }
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
