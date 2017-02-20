@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 6.12
+// @version 6.13
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -1839,6 +1839,10 @@ if (a.domCmp(["emuparadise.me"])) {
 if (a.domCmp(["sapib.ca"])) {
     //Lock Abd_Detector to an empty function
     a.readOnly("Abd_Detector", function () { });
+}
+if (a.domCmp(["urlex.org"])) {
+    //Crash script by keywords
+    a.crashScript("project expanding millions of URLs");
 }
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
