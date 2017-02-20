@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 6.7
+// @version 6.8
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -1829,6 +1829,12 @@ if (a.domCmp(["watchgeneration.fr", "turbo.fr", "24matins.fr", "foot01.com", "cl
 "prosieben", "kabeleins", "sat1gold", "sixx", "prosiebenmaxx", "the-voice-of-germany"])) {
     //Crash script by keywords
     a.crashScript("uabInject");
+}
+if (a.domCmp(["emuparadise.me"])) {
+    //Remove element
+    a.always(function () {
+        a.$("h2:contains('Bandwidth is expensive')").parent().remove();
+    });
 }
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();

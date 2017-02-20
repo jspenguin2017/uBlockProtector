@@ -268,7 +268,6 @@ a.init = function (excludedDomCmp, excludedDomInc) {
     }
     //Settings page
     if (a.domCmp(["x01x012013.github.io"], true) && a.doc.location.href.includes("x01x012013.github.io/AdBlockProtector/settings.html")) {
-        a.win.alert("Coming soon... ");
         //TODO: Implement this
     }
     //Log domain

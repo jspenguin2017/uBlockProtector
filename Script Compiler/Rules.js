@@ -1806,5 +1806,11 @@ if (a.domCmp(["watchgeneration.fr", "turbo.fr", "24matins.fr", "foot01.com", "cl
     //Crash script by keywords
     a.crashScript("uabInject");
 }
+if (a.domCmp(["emuparadise.me"])) {
+    //Remove element
+    a.always(function () {
+        a.$("h2:contains('Bandwidth is expensive')").parent().remove();
+    });
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
