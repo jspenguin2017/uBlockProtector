@@ -1816,9 +1816,5 @@ if (a.domCmp(["sapib.ca"])) {
     //Lock Abd_Detector to an empty function
     a.readOnly("Abd_Detector", function () { });
 }
-if (a.domCmp(["urlex.org"])) {
-    //Crash script by keywords
-    a.crashScript("project expanding millions of URLs");
-}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();

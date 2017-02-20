@@ -1,6 +1,6 @@
 [Adblock Plus 2.0]
 ! Title: AdBlock Protector List
-! Version: 6.3
+! Version: 6.4
 ! Expires: 1 days
 ! Redirect: https://github.com/X01X012013/AdBlockProtector/raw/master/AdBlockProtectorList.txt
 ! Homepage: https://x01x012013.github.io/AdBlockProtector/
@@ -14,6 +14,7 @@ www.tvnturbo.pl##div.vjs-abDetected
 @@||pagead2.googlesyndication.com^$domain=pudelek.tv
 komorkomania.pl###like-us-adblock-modal
 zone-anime.net###adblockinfo
+@@||urlex.org^$generichide
 ! =====Patched AAK List=====
 ||trymask.com/api/$third-party
 @@||adworkmedia.com/gLoader.php?GID=$script,third-party

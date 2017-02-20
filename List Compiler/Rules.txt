@@ -15,3 +15,5 @@ www.tvnturbo.pl##div.vjs-abDetected
 komorkomania.pl###like-us-adblock-modal
 !>> NSFW! zone-anime.net
 zone-anime.net###adblockinfo
+!>> urlex.org
+@@||urlex.org^$generichide
