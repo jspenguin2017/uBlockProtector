@@ -14,7 +14,7 @@ const a = function () {
  * The version of this library.
  * @const {string}
  */
-a.VERSION = "0.1";
+a.VERSION = "1.0";
 
 //=====Configurations=====
 /**
@@ -26,11 +26,13 @@ a.config = function () {
 };
 /**
  * Whether debug strings should be logged.
+ * The default value is true.
  * @const {bool}
  */
 a.config.debugMode = true;
 /**
  * Whether generic protectors should run.
+ * This settings is currently not exposed to the user.
  * This settings can be overwritten by a rule.
  * @var {bool}
  */
@@ -38,6 +40,7 @@ a.config.allowGeneric = true;
 /**
  * Whether experimental features should run.
  * If it is a rule, the user will be asked before it runs.
+ * The default value is true.
  * @var {bool}
  */
 a.config.allowExperimental = true;
@@ -140,16 +143,19 @@ a.mods = function () {
 };
 /**
  * Whether a Jump To Top button should be added to Facebook.
+ * The default value is true.
  * @const {bool}
  */
 a.mods.Facebook_JumpToTop = true;
 /**
  * Whether People You May Know should be hidden from Facebook.
+ * The default value is true.
  * @const {bool}
  */
 a.mods.Facebook_HidePeopleYouMayKnow = true;
 /**
  * Whether blogspot blogs should be automatically redirected to NCR (No Country Redirect) version.
+ * The default value is true.
  * Does not work if the blog is not top frame.
  * @const {bool}
  */
