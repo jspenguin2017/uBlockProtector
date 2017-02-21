@@ -55,7 +55,7 @@ a.init = function (excludedDomCmp, excludedDomInc) {
     //Settings page
     if (a.domCmp(["x01x012013.github.io"], true) && a.doc.location.href.includes("x01x012013.github.io/AdBlockProtector/settings.html")) {
         a.on("load", function () {
-            a.win.init([a.config.debugMode, a.config.allowExperimental, a.mods.Facebook_JumpToTop, a.mods.Facebook_HidePeopleYouMayKnow, a.mods.Blogspot_AutoNCR], a.config.update)
+            a.win.init([a.config.debugMode, a.config.allowExperimental, a.mods.Facebook_JumpToTop, a.mods.Facebook_HidePeopleYouMayKnow, a.mods.Blogspot_AutoNCR, a.mods.GS24_NoAutoplay], a.config.update)
         });
     }
     //Log domain
@@ -75,6 +75,7 @@ a.config = function () {
     a.mods.Facebook_JumpToTop = GM_getValue("mods_Facebook_JumpToTop", a.mods.Facebook_JumpToTop);
     a.mods.Facebook_HidePeopleYouMayKnow = GM_getValue("mods_Facebook_HidePeopleYouMayKnow", a.mods.Facebook_HidePeopleYouMayKnow);
     a.mods.Blogspot_AutoNCR = GM_getValue("mods_Blogspot_AutoNCR", a.mods.Blogspot_AutoNCR);
+    a.mods.GS24_NoAutoplay = GM_getValue("mods_GS24_NoAutoplay", a.mods.GS24_NoAutoplay)
 };
 /**
  * Update a configuration.
@@ -83,7 +84,7 @@ a.config = function () {
  * @param {bool} val - The value of the configuration.
  */
 a.config.update = function (id, val) {
-    const names = ["config_debugMode", "config_allowExperimental", "mods_Facebook_JumpToTop", "mods_Facebook_HidePeopleYouMayKnow", "mods_Blogspot_AutoNCR"];
+    const names = ["config_debugMode", "config_allowExperimental", "mods_Facebook_JumpToTop", "mods_Facebook_HidePeopleYouMayKnow", "mods_Blogspot_AutoNCR", "mods_GS24_NoAutoplay"];
     GM_setValue(names[id], val);
 }
 /**
@@ -240,6 +241,27 @@ a.mods = function () {
         const path = a.win.location.href.split("/").slice(3).join("/");
         a.win.location.href = "http://" + name + ".blogspot.com/ncr/" + path;
     }
+    //===GS24 mods===
+    if (a.mods.GS24_NoAutoplay) {
+        //Watch video tag insertion
+        a.observe("insert", function (node) {
+            if (node.tagName === "VIDEO") {
+                node.onplay = (function () {
+                    //We need to pause twice
+                    let playCount = 2;
+                    return function () {
+                        playCount--
+                        this.pause();
+                        //Paused twice, detach event handler
+                        if (playCount === 0) {
+                            this.onplay = null;
+                        }
+                    }
+                })();
+                a.out.log(a.$(node));
+            }
+        });
+    }
 };
 /**
  * Whether a Jump To Top button should be added to Facebook.
@@ -260,6 +282,12 @@ a.mods.Facebook_HidePeopleYouMayKnow = true;
  * @const {bool}
  */
 a.mods.Blogspot_AutoNCR = true;
+/**
+ * Whether autoplay should be disabled on gs24.pl.
+ * The default value is true.
+ * @const {bool}
+ */
+a.mods.GS24_NoAutoplay = true;
 
 //=====Common Functions=====
 /**
