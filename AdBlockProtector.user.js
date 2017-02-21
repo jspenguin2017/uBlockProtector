@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 6.17
+// @version 6.18
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -1853,6 +1853,10 @@ if (a.domCmp(["wowhead.com"])) {
 if (a.domCmp(["cmacapps.com"])) {
     //Filter keywords from eval()
     a.filter("eval", /Place this code snippet near the footer of your page before the close of the/);
+}
+if (a.domCmp(["epiotrkow.pl"])) {
+    //Add bait element
+    a.bait("div", "#adboxx");
 }
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
