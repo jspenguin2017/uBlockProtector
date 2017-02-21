@@ -252,8 +252,8 @@ a.mods = function () {
                     return function () {
                         playCount--
                         this.pause();
-                        //Paused twice, detach event handler
                         if (playCount === 0) {
+                            //Paused twice, detach event handler
                             this.onplay = null;
                         }
                     }
