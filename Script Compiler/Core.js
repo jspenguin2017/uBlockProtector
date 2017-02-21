@@ -242,7 +242,7 @@ a.mods = function () {
         a.win.location.href = "http://" + name + ".blogspot.com/ncr/" + path;
     }
     //===GS24 mods===
-    if (a.mods.GS24_NoAutoplay && a.domCmp(["gs24.pl"], true)) {
+    if (a.mods.GS24_NoAutoplay && a.domCmp(["x-link.pl"], true)) {
         //Watch video tag insertion
         a.observe("insert", function (node) {
             if (node.tagName === "VIDEO") {
