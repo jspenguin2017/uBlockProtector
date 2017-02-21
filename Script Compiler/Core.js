@@ -218,8 +218,6 @@ a.mods = function () {
             }
         }
         //Hide People You May Know
-        //Based on Facebook unsponsored by solskido
-        //https://greasyfork.org/en/scripts/22210-facebook-unsponsored
         const hidePeopleYouMayKnow = function () {
             a.observe("insert", function (node) {
                 if (node.querySelector && node.querySelector("a[href^='/friends/requests/']")) {
