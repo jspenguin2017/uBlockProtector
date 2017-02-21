@@ -221,46 +221,11 @@ a.mods = function () {
         //Based on Facebook unsponsored by solskido
         //https://greasyfork.org/en/scripts/22210-facebook-unsponsored
         const hidePeopleYouMayKnow = function () {
-            //If body is not loaded, we'll wait a bit, for some reason load event isn't working
-            if (a.$("body").length === 0) {
-                a.win.setTimeout(hidePeopleYouMayKnow, 1000);
-                return;
-            }
-            //Selector constants
-            const streamSelector = "div[id^='topnews_main_stream']";
-            const feedSelector = "div[id^='hyperfeed_story_id']";
-            const badSelectors = ["a[href^='/friends/requests/']"];
-            //Mutation handler
-            const handler = function () {
-                const stream = a.doc.querySelector(streamSelector);
-                if (!stream) {
-                    return;
+            a.observe("insert", function (node) {
+                if (node.querySelector && node.querySelector("a[href^='/friends/requests/']")) {
+                    node.remove();
                 }
-                const feed = stream.querySelectorAll(feedSelector);
-                if (!feed.length) {
-                    return;
-                }
-                for (let i = 0; i < feed.length; i++) {
-                    remove(feed[i]);
-                }
-            };
-            //Feed remover
-            const remove = function (feed) {
-                if (!feed) {
-                    return;
-                }
-                for (let i = 0; i < badSelectors.length; i++) {
-                    if (feed.querySelectorAll(badSelectors[i]).length) {
-                        feed.remove();
-                    }
-                }
-            };
-            //Set up mutation observer
-            const observer = new a.win.MutationObserver(handler);
-            observer.observe(a.doc.querySelector("body"), {
-                "childList": true,
-                "subtree": true
-            });
+            })
         };
         //Check configurations
         if (a.mods.Facebook_JumpToTop) {
@@ -271,7 +236,7 @@ a.mods = function () {
         }
     }
     //===Blogspot mods===
-    if (a.mods.Blogspot_AutoNCR && a.domInc(["blogspot"], true) && !a.domCmp(["blogspot.com"], true) && a.c.topFrame) {
+    if (a.c.topFrame && a.mods.Blogspot_AutoNCR && a.domInc(["blogspot"], true) && !a.domCmp(["blogspot.com"], true)) {
         //Auto NCR (No Country Redirect)
         const name = a.dom.replace("www.", "").split(".")[0];
         const path = a.win.location.href.split("/").slice(3).join("/");
@@ -692,6 +657,59 @@ a.uid = function () {
  * @var {integer}
  */
 a.uid.counter = 0;
+/**
+ * Observe mutations to document.
+ * @function
+ * @param {string} type - The type of mutation to observe. Currently only "insert" is accepted, this argument is for future expansion.
+ * @param {Function} callback - The callback function, relevant data will be passed in.
+ */
+a.observe = function (type, callback) {
+    //Initialize observer
+    if (!a.observe.init.done) {
+        a.observe.init.done = true;
+        a.observe.init()
+    }
+    //Add to callback array
+    if (type === "insert") {
+        a.observe.insertCallbacks.push(callback);
+    }
+    //More types will be added when needed
+};
+/**
+ * Initialize MutationObserver.
+ * This should only be called once by a.observe()
+ * @function
+ */
+a.observe.init = function () {
+    //Set up observer
+    const observer = new a.win.MutationObserver(function (mutations) {
+        for (let i = 0; i < mutations.length; i++) {
+            //Insert
+            if (mutations[i].addedNodes.length) {
+                for (let ii = 0; ii < a.observe.insertCallbacks.length; ii++) {
+                    for (let iii = 0; iii < mutations[i].addedNodes.length; iii++) {
+                        a.observe.insertCallbacks[ii](mutations[i].addedNodes[iii]);
+                    }
+                }
+            }
+            //More types will be added when needed
+        }
+    });
+    observer.observe(a.doc, {
+        childList: true,
+        subtree: true
+    });
+}
+/**
+ * Whether initialization is done.
+ * @var {bool}
+ */
+a.observe.init.done = false;
+/**
+ * The callback function of insert mutations.
+ * @var {Array.<Function>}
+ */
+a.observe.insertCallbacks = [];
 
 //=====Generic Protectors=====
 /**
@@ -894,19 +912,7 @@ a.generic = function () {
             }
         };
         //===Set up observer===
-        const observer = new a.win.MutationObserver(function (mutations) {
-            mutations.forEach(function (mutation) {
-                if (mutation.addedNodes.length) {
-                    a.win.Array.prototype.forEach.call(mutation.addedNodes, function (addedNode) {
-                        onInsertHandler(addedNode);
-                    });
-                }
-            });
-        });
-        observer.observe(a.doc, {
-            childList: true,
-            subtree: true
-        });
+        a.observe("insert", onInsertHandler);
     } else {
         //Generic protectors disabled
         a.out.warn("Generic protectors are disabled on this domain. ");
