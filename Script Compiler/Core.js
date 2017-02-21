@@ -625,8 +625,9 @@ a.nativePlayer = function (source, typeIn, widthIn, heightIn) {
     return `<video width='${width}' height='${height}' controls><source src='${source}' type='${type}'></video>`;
 };
 /**
- * Generate a videoJS player with controls but not autoplay.
+ * Generate a videoJS 5.4.6 player with controls but not autoplay.
  * Don't forget to call a.videoJS.init()
+ * Parameters sources and types must be parallel arrays. Unlike native player, all parameters must be supplied.
  * @function
  * @param {Array.<string>} sources - The sources of the video.
  * @param {Array.<string>} types - The types of the video.
@@ -644,12 +645,15 @@ a.videoJS = function (sources, types, width, height) {
     return html;
 }
 /**
- * Initialize videoJS.
+ * Initialize videoJS 5.4.6.
+ * Do not call this function multiple times.
  * @function
  */
 a.videoJS.init = function () {
     //Disable telemetry
-    a.win.HELP_IMPROVE_VIDEOJS = false;
+    try {
+        a.win.HELP_IMPROVE_VIDEOJS = false;
+    } catch (err) { }
     //Load components
     a.$("head").append(`<link href="//vjs.zencdn.net/5.4.6/video-js.min.css" rel="stylesheet"><script src="//vjs.zencdn.net/5.4.6/video.min.js"></script>`);
 }
