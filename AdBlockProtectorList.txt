@@ -1,6 +1,6 @@
 [Adblock Plus 2.0]
 ! Title: AdBlock Protector List
-! Version: 6.7
+! Version: 6.8
 ! Expires: 1 days
 ! Redirect: https://github.com/X01X012013/AdBlockProtector/raw/master/AdBlockProtectorList.txt
 ! Homepage: https://x01x012013.github.io/AdBlockProtector/
@@ -47,7 +47,6 @@ zone-anime.net###adblockinfo
 /js/bsa-script-doctype.js$script
 /js/bsa-script-no-doctype.js$script
 /AdblockDetector/handler.min.js$script
-/AdblockDetector.js$script
 ||stopadblock.org/adblocker-deaktivieren$subdocument
 /wp-content/plugins/ad-blocking-advisor/*$script,stylesheet
 /wp-content/plugins/ad-block-defender/*$script
@@ -1262,7 +1261,6 @@ filechoco.com#@#.adsbox
 @@||boxfaucet.net/banner.gif$image
 @@||ksl.com/myAds/
 ||online.wsj.com/javascript/abm.js$script
-@@||politiken.dk/static/content/js/ads.js$script
 linkdecode.com#@#.adsbygoogle
 @@||nbcudigitaladops.com/hosted/pubads.js$script,domain=nbc.com
 nbc.com##.video-player__overlay.video-player__overlay--pause
@@ -1491,7 +1489,6 @@ hulkusc.com#@#.adsbox
 hulkusc.com###bab_popup
 @@||pagead2.googlesyndication.com/pagead/js/*/show_ads_impl.js$domain=thehomestyle.co
 @@||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js$domain=thehomestyle.co
-||adage.com/assets/js/min/adBlockDetector.js$script
 gelbooru.com##.noticeError
 ||p.mprd.se/js/bscripts*.js$script,domain=emuparadise.me
 @@||yafud.pl^$generichide
