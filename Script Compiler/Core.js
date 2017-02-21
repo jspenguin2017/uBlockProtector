@@ -258,7 +258,6 @@ a.mods = function () {
                         }
                     }
                 })();
-                a.out.log(a.$(node));
             }
         });
     }
