@@ -20,4 +20,4 @@ zone-anime.net###adblockinfo
 !>> video.gazeta.pl
 @@||video.gazeta.pl/cdn/ads/ad/banner/_adsense_/_adserver/_adview_.ad.json$xmlhttprequest,domain=video.gazeta.pl
 !>> fox.com.tr
-@@||imasdk.googleapis.com/js/sdkloader/ima3.js$domain=fox.com.tr
+@@||imasdk.googleapis.com/js/sdkloader/ima3.js$domain=fox.com.tr|turknettv.com
