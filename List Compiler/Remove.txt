@@ -11,3 +11,13 @@
 @@||squid.gazeta.pl/info/squid/fprint.js$script,domain=wyborcza.pl|gazeta.pl
 @@||squid.gazeta.pl/sqpwgl/pwfpl$xmlhttprequest,domain=wyborcza.pl|gazeta.pl
 @@||squid.gazeta.pl/sqpwgl/pwif$subdocument,domain=wyborcza.pl|gazeta.pl
+!>> https://github.com/X01X012013/AdBlockProtector/issues/58
+fox.com.tr#@#.pub_300x250
+fox.com.tr#@#.pub_300x250m
+fox.com.tr#@#.pub_728x90
+fox.com.tr#@#.text-ad
+fox.com.tr#@#.textAd
+fox.com.tr#@#.text_ad
+fox.com.tr#@#.text_ads
+fox.com.tr#@#.text-ads
+fox.com.tr#@#.text-ad-links

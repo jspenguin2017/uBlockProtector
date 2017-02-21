@@ -1834,5 +1834,11 @@ if (a.domCmp(["epiotrkow.pl"])) {
     //Add bait element
     a.bait("div", "#adboxx");
 }
+if (a.domCmp(["fox.com.tr"])) {
+    //Lock adblockDetector to an object
+    a.readOnly("adblockDetector", {
+        init: function () { }
+    });
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();

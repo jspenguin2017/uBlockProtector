@@ -1,6 +1,6 @@
 [Adblock Plus 2.0]
 ! Title: AdBlock Protector List
-! Version: 6.5
+! Version: 6.6
 ! Expires: 1 days
 ! Redirect: https://github.com/X01X012013/AdBlockProtector/raw/master/AdBlockProtectorList.txt
 ! Homepage: https://x01x012013.github.io/AdBlockProtector/
@@ -16,6 +16,7 @@ komorkomania.pl###like-us-adblock-modal
 zone-anime.net###adblockinfo
 @@||urlex.org^$generichide
 @@||video.gazeta.pl/cdn/ads/ad/banner/_adsense_/_adserver/_adview_.ad.json$xmlhttprequest,domain=video.gazeta.pl
+@@||imasdk.googleapis.com/js/sdkloader/ima3.js$domain=fox.com.tr
 ! =====Patched AAK List=====
 ||trymask.com/api/$third-party
 @@||adworkmedia.com/gLoader.php?GID=$script,third-party
@@ -1432,24 +1433,6 @@ reuters.com##.RTVSyndicatedPlayer
 @@||ojogo.pt/common/scripts/ads.js$script
 ojogo.pt###AdBloquer
 filterbypass.me##.adhome-728
-fox.com.tr#@#.pub_300x250
-fox.com.tr#@#.pub_300x250m
-fox.com.tr#@#.pub_728x90
-fox.com.tr#@#.text-ad
-fox.com.tr#@#.textAd
-fox.com.tr#@#.text_ad
-fox.com.tr#@#.text_ads
-fox.com.tr#@#.text-ads
-fox.com.tr#@#.text-ad-links
-fox.com.tr#@#.pub_300x250
-fox.com.tr#@#.pub_300x250m
-fox.com.tr#@#.pub_728x90
-fox.com.tr#@#.text-ad
-fox.com.tr#@#.textAd
-fox.com.tr#@#.text_ad
-fox.com.tr#@#.text_ads
-fox.com.tr#@#.text-ads
-fox.com.tr#@#.text-ad-links
 lfg.co,leasticoulddo.com#@##ad_test
 lfg.co,leasticoulddo.com#@#.img_ad
 lfg.co,leasticoulddo.com#@#.ad_300x250
