@@ -21,3 +21,5 @@ zone-anime.net###adblockinfo
 @@||video.gazeta.pl/cdn/ads/ad/banner/_adsense_/_adserver/_adview_.ad.json$xmlhttprequest,domain=video.gazeta.pl
 !>> fox.com.tr
 @@||imasdk.googleapis.com/js/sdkloader/ima3.js$domain=fox.com.tr|turknettv.com
+!>> fullmatchesandshows.com
+@@||aka-cdn-ns.adtechus.com/images/5205_adwords_300x250V1.jpg$image,domain=fullmatchesandshows.com
