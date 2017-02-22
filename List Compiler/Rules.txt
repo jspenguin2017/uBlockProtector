@@ -22,4 +22,4 @@ zone-anime.net###adblockinfo
 !>> fox.com.tr
 @@||imasdk.googleapis.com/js/sdkloader/ima3.js$domain=fox.com.tr|turknettv.com
 !>> fullmatchesandshows.com (Only work on uBlock Origin) - Thanks to uBlock-user
-||adtechus.com/images^$image,redirect=32x32-transparent.png
+||adtechus.com/images^$image,redirect=32x32-transparent.png,domain=fullmatchesandshows.com|playwire.com
