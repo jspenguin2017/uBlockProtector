@@ -24,4 +24,4 @@ zone-anime.net###adblockinfo
 !>> latimes.com - Thanks to okiehsch
 ||tribdss.com/meter/assets$script,domain=www.latimes.com
 !>> thewindowsclub.com - Thanks to uBlock-user
-||$third-party,script,domain=thewindowsclub.com
+||concernrain.com$script,domain=thewindowsclub.com
