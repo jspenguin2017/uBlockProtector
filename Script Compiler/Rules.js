@@ -209,7 +209,7 @@ a.win.encodeURIComponent(api);
                     return;
                 }
                 //Patch player
-                elem.after(a.nativePlayer(url)).remove();
+                elem.html("").append(a.nativePlayer(url));
             }
         });
     });

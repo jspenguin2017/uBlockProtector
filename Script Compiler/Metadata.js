@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 6.36
+// @version 6.37
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
