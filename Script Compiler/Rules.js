@@ -1851,5 +1851,16 @@ if (a.domCmp(["hanime.tv"])) {
     //NSFW! Lock BetterJsPop to an empty function
     a.readOnly("BetterJsPop", function () { });
 }
+if (a.domCmp(["latimes.com"])) {
+    //Watch and remove block screen
+    a.filter("addEventListener", /return\"undefined\"\!\=\=typeof\ e/);
+    a.css("html,body {overflow:scroll;}");
+    a.observe("insert", function (node) {
+        if (node.innerHTML &&
+            node.innerHTML.includes("please turn off your ad blocker or subscribe")) {
+            node.remove();
+        }
+    });
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
