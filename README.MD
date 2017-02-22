@@ -10,3 +10,4 @@ Unless otherwise specified, everything else (starting version 4.0) falls under G
 
 1. `a.out` master switch
 2. `a.filter` takes in RegExp but it's not really needed
+3. Only enable jQuery Color when needed
