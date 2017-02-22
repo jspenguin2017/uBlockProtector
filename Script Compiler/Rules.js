@@ -153,6 +153,10 @@ if (a.domCmp(["tvn.pl", "tvnstyle.pl", "tvnturbo.pl", "player.pl"])) {
     if (!homePages.includes(a.doc.location.href)) {
         a.on("load", function () {
             a.$(".videoPlayer").parent().after(a.nativePlayer(a.$(".videoPlayer").data("src"))).remove();
+            if (a.domCmp(["player.pl"], true)) {
+                a.$("video").first().remove();
+                a.$(".geoLocationDisabled").hide();
+            }
         });
     }
 }
