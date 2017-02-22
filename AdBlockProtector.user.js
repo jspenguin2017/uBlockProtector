@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 6.28
+// @version 6.29
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -1870,6 +1870,10 @@ if (a.domCmp(["thebatavian.com"])) {
 if (a.domCmp(["zrabatowani.pl"])) {
     //Set cookie and the rest will be taken care by generic protectors
     a.cookie("adblockAlert", "yes");
+}
+if (a.domCmp(["hanime.tv"])) {
+    //NSFW! Lock BetterJsPop to an empty function
+    a.readOnly("BetterJsPop", function () { });
 }
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();

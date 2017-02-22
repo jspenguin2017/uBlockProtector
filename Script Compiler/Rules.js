@@ -1847,5 +1847,9 @@ if (a.domCmp(["zrabatowani.pl"])) {
     //Set cookie and the rest will be taken care by generic protectors
     a.cookie("adblockAlert", "yes");
 }
+if (a.domCmp(["hanime.tv"])) {
+    //NSFW! Lock BetterJsPop to an empty function
+    a.readOnly("BetterJsPop", function () { });
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
