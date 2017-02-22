@@ -142,10 +142,10 @@ if (a.domCmp(["tvregionalna24.pl"])) {
         }
     });
 }
-if (a.domCmp(["tvn.pl", "tvnstyle.pl", "tvnturbo.pl"])) {
+if (a.domCmp(["tvn.pl", "tvnstyle.pl", "tvnturbo.pl", "player.pl"])) {
     //tvn.pl and related
     //Replace player - Thanks to mikhoul, szymon1118, and xxcriticxx
-    //Potential related domains: "tvnfabula.pl", "itvnextra.pl", "tvn24bis.pl", "ttv.pl", "player.pl",
+    //Potential related domains: "tvnfabula.pl", "itvnextra.pl", "tvn24bis.pl", "ttv.pl",
     //"x-news.pl", "tvn7.pl", "itvn.pl"
     const homePages = ["http://www.tvn.pl/", "http://www.tvn7.pl/", "http://www.tvnstyle.pl/",
 "http://www.tvnturbo.pl/"];
