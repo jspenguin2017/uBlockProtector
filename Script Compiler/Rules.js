@@ -271,10 +271,6 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
         isInBackground = true;
     });
 }
-if (a.domCmp(["thewindowsclub.com"])) {
-    //Crash script by keywords
-    a.crashScript("(function(a,b,c,d,e){e=a.createElement(b);");
-}
 if (a.domCmp(["foxvalleyfoodie.com"])) {
     //Only allow certain script includes
     a.patchHTML(function (html) {

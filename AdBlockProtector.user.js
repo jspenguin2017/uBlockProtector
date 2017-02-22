@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 6.32
+// @version 6.33
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -294,10 +294,6 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
     a.on("blur", function () {
         isInBackground = true;
     });
-}
-if (a.domCmp(["thewindowsclub.com"])) {
-    //Crash script by keywords
-    a.crashScript("(function(a,b,c,d,e){e=a.createElement(b);");
 }
 if (a.domCmp(["foxvalleyfoodie.com"])) {
     //Only allow certain script includes
