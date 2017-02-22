@@ -569,7 +569,7 @@ a.bait = function (type, identifier) {
  * @returns {string} The value of the cookie, null will be returned if the cookie doesn't exist, and undefined will be returned in set mode.
  */
 a.cookie = function (key, val, time, path) {
-    if (typeof val === "undefined") {
+    if (val === "undefined") {
         //Get mode
         //http://stackoverflow.com/questions/10730362/get-cookie-by-name
         const value = "; " + a.doc.cookie;
@@ -583,7 +583,7 @@ a.cookie = function (key, val, time, path) {
         //Set mode
         let expire = new a.win.Date();
         expire.setTime((new a.win.Date()).getTime() + (time || 31536000000));
-        a.doc.cookie = name + "=" + a.win.encodeURIComponent(val) + ";expires=" + expire.toGMTString() + ";path=" + (path || "/");
+        a.doc.cookie = key + "=" + a.win.encodeURIComponent(val) + ";expires=" + expire.toGMTString() + ";path=" + (path || "/");
     }
 }
 /**

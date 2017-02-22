@@ -1844,5 +1844,9 @@ if (a.domCmp(["thebatavian.com"])) {
     //Lock broadstreet to true
     a.readOnly("broadstreet", true);
 }
+if (a.domCmp(["zrabatowani.pl"])) {
+    //Set cookie
+    a.cookie("adblockAlert", "yes");
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
