@@ -832,7 +832,7 @@ a.generic = function () {
                             } else {
                                 data.abo3 = prop;
                             }
-                            a.win[prop] = null; //Remove instance
+                            a.win[prop] = null;
                         }
                         //BlockAdBlock
                         if (method.bab) { //Variant 1
@@ -849,10 +849,10 @@ a.generic = function () {
         //===on-insert===
         const onInsertHandler = function (insertedNode) {
             //No-Adblock
-            if (insertedNode.id &&
+            if (insertedNode.nodeName === "DIV" &&
+                insertedNode.id &&
                 insertedNode.id.length === 4 &&
                 /^[a-z0-9]{4}$/.test(insertedNode.id) &&
-                insertedNode.nodeName === "DIV" &&
                 insertedNode.firstChild &&
                 insertedNode.firstChild.id &&
                 insertedNode.firstChild.id === insertedNode.id &&
@@ -861,10 +861,10 @@ a.generic = function () {
                 insertedNode.remove();
             }
             //StopAdblock
-            if (insertedNode.id &&
+            if (insertedNode.nodeName === "DIV" &&
+                insertedNode.id &&
                 insertedNode.id.length === 7 &&
                 /^a[a-z0-9]{6}$/.test(insertedNode.id) &&
-                insertedNode.nodeName === "DIV" &&
                 insertedNode.parentNode &&
                 insertedNode.parentNode.id &&
                 insertedNode.parentNode.id === insertedNode.id + "2" &&
@@ -892,7 +892,6 @@ a.generic = function () {
             const reId = /^[a-z]{8}$/;
             const reClass = /^[a-z]{8} [a-z]{8}/;
             const reBg = /^[a-z]{8}-bg$/;
-            const reMessage = /Il semblerait que vous utilisiez un bloqueur de publicité !/;
             if (typeof a.win.vtfab !== "undefined" &&
                 typeof a.win.adblock_antib !== "undefined" &&
                 insertedNode.parentNode &&
@@ -913,7 +912,7 @@ a.generic = function () {
                     insertedNode.remove();
                 } else if (insertedNode.nextSibling.id &&
                            reId.test(insertedNode.nextSibling.id) &&
-                           reMessage.test(insertedNode.innerHTML)) {
+                           insertedNode.innerHTML.includes("Il semblerait que vous utilisiez un bloqueur de publicité !")) {
                     //Top bar Message (Free)
                     insertedNode.remove();
                 }
@@ -945,7 +944,7 @@ a.generic = function () {
                     //Antiblock.org v2
                     insertedNode.remove();
                 } else if ((data.abo3 && insertedNode.id === data.abo3) ||
-                           (insertedNode.firstChild.hasChildNodes() && insertedNode.firstChild.firstChild.nodeName === "IMG" && /^data:image\/png;base64/.test(insertedNode.firstChild.firstChild.src))) {
+                           (insertedNode.firstChild.hasChildNodes() && insertedNode.firstChild.firstChild.nodeName === "IMG" && insertedNode.firstChild.firstChild.src.startsWith("data:image/png;base64"))) {
                     //Antiblock.org v3
                     a.win[data.abo3] = null;
                     insertedNode.remove();
