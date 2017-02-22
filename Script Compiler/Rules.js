@@ -317,9 +317,8 @@ if (a.domCmp(["webqc.org"])) {
     a.filter("setTimeout", /function\(\)\{R\(e\)\}/);
 }
 if (a.domCmp(["wired.com"])) {
-    //Lock google_onload_fired to true and include this domain from generic protectors
+    //Lock google_onload_fired to true and the rest will be taken care by generic protectors
     a.readOnly("google_onload_fired", true);
-    a.config.allowGeneric = true;
 }
 if (a.domInc(["knowlet3389.blogspot"])) {
     //(Could be redundant) Filter keywords from setTimeout()
@@ -1845,7 +1844,7 @@ if (a.domCmp(["thebatavian.com"])) {
     a.readOnly("broadstreet", true);
 }
 if (a.domCmp(["zrabatowani.pl"])) {
-    //Set cookie
+    //Set cookie and the rest will be taken care by generic protectors
     a.cookie("adblockAlert", "yes");
 }
 //Activate generic protectors, excluded domains check is handled inside
