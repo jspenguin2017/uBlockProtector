@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 6.25
+// @version 6.26
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -1589,7 +1589,7 @@ if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "pl
     };
     if (a.config.allowExperimental && a.win.confirm("AdBlock Protector says: \nThis fix is experimental " +
 "and might not work, would you want to try it anyway? ")) {
-        //Can't seem to find real source of the stream, Geo Lock in my area? 
+        //Can't seem to find real source of the stream, Geo Lock in my area?
         handler();
     }
 }
@@ -1870,6 +1870,22 @@ if (a.domCmp(["thebatavian.com"])) {
 if (a.domCmp(["zrabatowani.pl"])) {
     //Set cookie and the rest will be taken care by generic protectors
     a.cookie("adblockAlert", "yes");
+}
+if (a.domCmp(["fullmatchesandshows.com", "playwire.com"])) {
+    //Modify property on read
+    let val;
+    a.win.Object.defineProperty(a.win, "Zeus", {
+        configurable: false,
+        set: function (v) {
+            val = v;
+        },
+        get: function () {
+            try {
+                val._adBlockDetected = false;
+            } catch (err) { }
+            return val;
+        }
+    });
 }
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
