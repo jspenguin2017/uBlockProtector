@@ -23,5 +23,3 @@ zone-anime.net###adblockinfo
 @@||imasdk.googleapis.com/js/sdkloader/ima3.js$domain=fox.com.tr|turknettv.com
 !>> latimes.com - Thanks to okiehsch
 ||tribdss.com/meter/assets$script,domain=www.latimes.com
-!>> firstonetv.eu
-@@||firstonetv.eu$xmlhttprequest,domain=www.firstonetv.eu

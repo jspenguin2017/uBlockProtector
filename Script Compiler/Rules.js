@@ -1851,5 +1851,10 @@ if (a.domCmp(["hanime.tv"])) {
     //NSFW! Lock BetterJsPop to an empty function
     a.readOnly("BetterJsPop", function () { });
 }
+if (a.domCmp(["firstonetv.eu"])) {
+    //Lock blocked and adFuckBlock to empty functions
+    a.readOnly("blocked", function () { });
+    a.readOnly("adFuckBlock", function () { });
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
