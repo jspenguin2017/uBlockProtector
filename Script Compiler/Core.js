@@ -14,7 +14,7 @@ const a = function () {
  * The version of this library.
  * @const {string}
  */
-a.VERSION = "1.0";
+a.VERSION = "1.1";
 
 //=====Initializer=====
 /**
@@ -757,6 +757,22 @@ a.generic = function () {
         a.readOnly("canRunAds", true);
         a.readOnly("canShowAds", true);
         a.readOnly("isAdBlockActive", false);
+        //Playwire
+        let playwireZeus;
+        a.win.Object.defineProperty(a.win, "Zeus", {
+            configurable: false,
+            set: function (val) {
+                playwireZeus = val;
+            },
+            get: function () {
+                try {
+                    playwireZeus.AdBlockTester = {
+                        check: function (a) { a(); }
+                    };
+                } catch (err) { }
+                return playwireZeus;
+            }
+        });
         //===document-idle===
         a.on("DOMContentLoaded", function () {
             //AdBlock Detector (XenForo Rellect)

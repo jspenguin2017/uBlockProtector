@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 6.26
+// @version 6.27
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -1870,22 +1870,6 @@ if (a.domCmp(["thebatavian.com"])) {
 if (a.domCmp(["zrabatowani.pl"])) {
     //Set cookie and the rest will be taken care by generic protectors
     a.cookie("adblockAlert", "yes");
-}
-if (a.domCmp(["fullmatchesandshows.com", "playwire.com"])) {
-    //Modify property on read
-    let val;
-    a.win.Object.defineProperty(a.win, "Zeus", {
-        configurable: false,
-        set: function (v) {
-            val = v;
-        },
-        get: function () {
-            try {
-                val._adBlockDetected = false;
-            } catch (err) { }
-            return val;
-        }
-    });
 }
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
