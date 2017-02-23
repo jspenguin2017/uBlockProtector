@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 6.43
+// @version 6.44
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -349,7 +349,8 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
     });
 }
 if (a.domCmp(["foxvalleyfoodie.com"])) {
-    //Only allow certain script includes
+    //(Workaround) Only allow certain script includes
+    //Breaks uBlock Origin element picker
     a.patchHTML(function (html) {
         return html.replace(/<script.*\/wp-includes\/js\/(?!jquery|comment|wp-embed).*<\/script>/g,
 "<script>console.error('Uncaught AdBlock Error: Admiral is not allowed on this device! ');</script>");
@@ -674,11 +675,11 @@ if (a.domCmp(["business-standard.com"])) {
 }
 if (a.domCmp(["indiatimes.com", "samayam.com", "bangaloremirror.com"])) {
     //Patch HTML
-    a.patchHTML(function (html) {
-        html = html.replace("\\\\x61\\\\x64\\\\x62", a.c.syntaxBreaker);
-        html = html.replace("function initBlock", a.c.syntaxBreaker);
-        return html;
-    })
+    //a.patchHTML(function (html) {
+    //    html = html.replace("\\\\x61\\\\x64\\\\x62", a.c.syntaxBreaker);
+    //    html = html.replace("function initBlock", a.c.syntaxBreaker);
+    //    return html;
+    //});
 }
 if (a.domCmp(["thechive.com"])) {
     //Lock stephaneDetector to an object
