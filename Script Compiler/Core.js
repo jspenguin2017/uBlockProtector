@@ -475,7 +475,7 @@ a.filter = function (func, filter) {
 };
 /**
  * Patch the HTML, this must be ran on document-start.
- * Warning: This can break uBlock Origin element picker.
+ * Warning: This breaks uBlock Origin element picker.
  * @function
  * @param {Function} patcher - A function that patches the HTML, it must return the patched HTML.
  */
@@ -498,7 +498,7 @@ a.patchHTML = function (patcher) {
 };
 /**
  * Replace a sample of code by syntax breaker.
- * Warning: This can break uBlock Origin element picker.
+ * Warning: This breaks uBlock Origin element picker.
  * This is the easiest way to break "stand alone" in-line JavaScript.
  * Can only crash one in-line block.
  * @function
@@ -546,7 +546,7 @@ a.readOnly = function (name, val) {
     return true;
 };
 /**
- * Defines a property to unsafeWindow that crashes scripts that tries to access it.
+ * Defines a property to unsafeWindow that (tries to) crash scripts who access it.
  * @function
  * @param {string} name - The name of the property to define, use "." to separate multiple layers, max 2 layers.
  * @returns {boolean} True if the operation was successful, false otherwise.
