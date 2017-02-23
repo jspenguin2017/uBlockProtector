@@ -1902,5 +1902,14 @@ if (a.domCmp(["firstonetv.eu"])) {
     a.readOnly("blocked", function () { });
     a.readOnly("adFuckBlock", function () { });
 }
+if (a.domCmp(["8muses.com"])) {
+    //NSFW! (Workaround) Detect block page and auto-refresh
+    a.on("DOMContentLoaded", function () {
+        if(a.$("h1").first().html().includes("This website completely relies on Ads " +
+"to support itself")) {
+            a.win.location.reload();
+        }
+    });
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();

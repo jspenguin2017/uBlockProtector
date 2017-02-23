@@ -5,10 +5,10 @@
 !>> portal.abczdrowie.pl
 @@dot.wp.pl
 !>> tvn.pl and related domains
-www.tvn.pl#div(id*=_videoDriverContent)
-www.tvn7.pl##div.vjs-abDetected
-www.tvnstyle.pl##div.vjs-abDetected
-www.tvnturbo.pl##div.vjs-abDetected
+tvn.pl#div(id*=_videoDriverContent)
+tvn7.pl##div.vjs-abDetected
+tvnstyle.pl##div.vjs-abDetected
+tvnturbo.pl##div.vjs-abDetected
 !>> pudelek.tv
 @@||pagead2.googlesyndication.com^$domain=pudelek.tv
 !>> komorkomania.pl
@@ -25,3 +25,5 @@ zone-anime.net###adblockinfo
 ||tribdss.com/meter/assets$script,domain=www.latimes.com
 !>> thewindowsclub.com - Thanks to uBlock-user
 ||concernrain.com$script,domain=thewindowsclub.com
+!>> NSFW! 8muses.com
+8muses.com##.top-warning

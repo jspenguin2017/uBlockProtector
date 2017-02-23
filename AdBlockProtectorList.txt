@@ -1,16 +1,16 @@
 [Adblock Plus 2.0]
 ! Title: AdBlock Protector List
-! Version: 6.17
+! Version: 6.18
 ! Expires: 1 days
 ! Redirect: https://github.com/X01X012013/AdBlockProtector/raw/master/AdBlockProtectorList.txt
 ! Homepage: https://x01x012013.github.io/AdBlockProtector/
 ||x01x012013.github.io/AdBlockProtector/listTest.js|
 @@||www.dogefaucet.com/static/js/ads.js|
 @@dot.wp.pl
-www.tvn.pl#div(id*=_videoDriverContent)
-www.tvn7.pl##div.vjs-abDetected
-www.tvnstyle.pl##div.vjs-abDetected
-www.tvnturbo.pl##div.vjs-abDetected
+tvn.pl#div(id*=_videoDriverContent)
+tvn7.pl##div.vjs-abDetected
+tvnstyle.pl##div.vjs-abDetected
+tvnturbo.pl##div.vjs-abDetected
 @@||pagead2.googlesyndication.com^$domain=pudelek.tv
 komorkomania.pl###like-us-adblock-modal
 zone-anime.net###adblockinfo
@@ -19,6 +19,7 @@ zone-anime.net###adblockinfo
 @@||imasdk.googleapis.com/js/sdkloader/ima3.js$domain=fox.com.tr|turknettv.com
 ||tribdss.com/meter/assets$script,domain=www.latimes.com
 ||concernrain.com$script,domain=thewindowsclub.com
+8muses.com##.top-warning
 ! =====Patched AAK List=====
 ||trymask.com/api/$third-party
 @@||adworkmedia.com/gLoader.php?GID=$script,third-party
