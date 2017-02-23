@@ -166,18 +166,6 @@ if (a.domCmp(["player.pl"])) {
         } else {
             return;
         }
-        //Serializer
-        //http://stackoverflow.com/questions/6566456/how-to-serialize-an-object-into-a-list-of-parameters
-        const serialize = function (obj) {
-            var str = "";
-            for (var key in obj) {
-                if (str != "") {
-                    str += "&";
-                }
-                str += key + "=" + encodeURIComponent(obj[key]);
-            }
-            return str;
-        };
         //Get ID
         const parts = a.doc.location.href.split(/[.,]/);
         const id = parts[parts.length - 2];
@@ -190,7 +178,7 @@ if (a.domCmp(["player.pl"])) {
             m: "getItem",
             id: id
         };
-        const api = "https://api.tvnplayer.pl/api/?" + serialize(params);
+        const api = "https://api.tvnplayer.pl/api/?" + a.serialize(params);
         const proxy = "http://www.proxy.xmc.pl/index.php?hl=3e5&q=";
         //Send request
         const requestURL = (a.cookie("tvn_location2") === "1") ? api : proxy +
@@ -640,10 +628,6 @@ if (a.domCmp(["independent.co.uk"])) {
     //Set cookie
     a.cookie("adblock_detected", "ignored");
 }
-if (a.domCmp(["8muses.com"])) {
-    //Crash script by keywords
-    a.crashScript("typeof exo");
-}
 if (a.domCmp(["3dnews.ru"])) {
     //Do a few things
     a.cookie("adblockwarn", "1");
@@ -952,8 +936,8 @@ if (a.domCmp(["mtlblog.com"])) {
     a.readOnly("puabs", function () { });
 }
 if (a.domCmp(["15min.lt"])) {
-    //Crash script by keywords
-    a.crashScript("window.__adblock_config");
+    //Block access to __adblock_config
+    a.noAccess("__adblock_config");
 }
 if (a.domCmp(["anizm.com"])) {
     //Set property stopAdBlock to an empty object
@@ -1023,7 +1007,7 @@ if (a.domCmp(["luxyad.com"])) {
 }
 if (a.domCmp(["mrpiracy.xyz", "mrpiracy.club"])) {
     //Crash script by keywords
-    a.crashScript("Desativa o AdBlock para continuar");
+    //a.crashScript("Desativa o AdBlock para continuar");
 }
 if (a.domCmp(["dbplanet.net"])) {
     //Set cookie
@@ -1141,7 +1125,7 @@ if (a.domCmp(["wtfbit.ch"])) {
 }
 if (a.domCmp(["aranzulla.it"])) {
     //Crash script by keyworkds and inject style
-    a.crashScript("navigator.userAgent||navigator.vendor||window.opera");
+    //a.crashScript("navigator.userAgent||navigator.vendor||window.opera");
     a.css("#abt1 + STYLE + div[id][class] {display:none;}");
 }
 if (a.domCmp(["ndtv.com"])) {
@@ -1835,7 +1819,7 @@ if (a.domCmp(["linkdrop.net", "revclouds.com", "leporno.org", "uploadshub.com", 
 }
 if (a.domCmp(["commentcamarche.net", "journaldesfemmes.com", "linternaute.com"])) {
     //Crash script by keywords
-    a.crashScript("Asl.prototype.inject");
+    //a.crashScript("Asl.prototype.inject");
 }
 if (a.domCmp(["fourchette-et-bikini.fr", "meteocity.com"])) {
     //Lock adProtect to 1
@@ -1846,12 +1830,12 @@ if (a.domCmp(["demo-phoenix.com", "dpstream.net", "gum-gum-streaming.com", "jeu.
 "filmvf.net", "hentaihaven.org", "narutoshippudenvf.com", "thebadbuzz.com", "manga-news.com", "jeu.video",
 "mangas-fr.com"])) {
     //Crash script by keywords and inject CSS
-    a.crashScript("PHENV");
+    //a.crashScript("PHENV");
     a.css("body {visibility: visible;}");
 }
 if (a.domCmp(["tvspielfilm.de", "finanzen.ch"])) {
     //Crash script by keywords
-    a.crashScript("UABPInject");
+    //a.crashScript("UABPInject");
 }
 if (a.domCmp(["watchgeneration.fr", "turbo.fr", "24matins.fr", "foot01.com", "clubic.com", "macg.co",
 "begeek.fr", "igen.fr", "gamestar.de", "focus.de", "stern.de", "fem.com", "wetter.com",
@@ -1864,7 +1848,7 @@ if (a.domCmp(["watchgeneration.fr", "turbo.fr", "24matins.fr", "foot01.com", "cl
 "webfail.com", "computerbild.de", "finanzen.net", "comunio.de", "medisite.fr"]) || a.domInc(["sat1",
 "prosieben", "kabeleins", "sat1gold", "sixx", "prosiebenmaxx", "the-voice-of-germany"])) {
     //Crash script by keywords
-    a.crashScript("uabInject");
+    //a.crashScript("uabInject");
 }
 if (a.domCmp(["emuparadise.me"])) {
     //Remove element

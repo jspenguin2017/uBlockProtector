@@ -117,6 +117,41 @@ a.config.allowExperimental = true;
  */
 a.config.domExcluded = null;
 
+//=====Shortcuts and jQuery=====
+/**
+ * The unsafeWindow.
+ * @const {Object}
+ */
+a.win = unsafeWindow;
+/**
+ * The document of unsafeWindow.
+ * @const {Object}
+ */
+a.doc = a.win.document;
+/**
+ * The console of unsafeWindow.
+ * @const {Object}
+ */
+a.out = a.win.console;
+/**
+ * The domain of current document.
+ * @const {string}
+ */
+a.dom = a.doc.domain;
+/**
+ * The addEventListener of unsafeWindow.
+ * We must wrap it like this or it will throw errors.
+ * @const {Function}
+ */
+a.on = function (event, func) {
+    a.win.addEventListener(event, func);
+};
+/**
+ * jQuery with Color plug-in, will be available after a.init() is called.
+ * @const {Object}
+ */
+a.$ = null;
+
 //=====Constants=====
 a.c = {};
 /**
@@ -156,41 +191,6 @@ a.c.topFrame = (function () {
         return false;
     }
 })();
-
-//=====Shortcuts and jQuery=====
-/**
- * The unsafeWindow.
- * @const {Object}
- */
-a.win = unsafeWindow;
-/**
- * The document of unsafeWindow.
- * @const {Object}
- */
-a.doc = a.win.document;
-/**
- * The console of unsafeWindow.
- * @const {Object}
- */
-a.out = a.win.console;
-/**
- * The domain of current document.
- * @const {string}
- */
-a.dom = a.doc.domain;
-/**
- * The addEventListener of unsafeWindow.
- * We must wrap it like this or it will throw errors.
- * @const {Function}
- */
-a.on = function (event, func) {
-    a.win.addEventListener(event, func);
-};
-/**
- * jQuery with Color plug-in, will be available after a.init() is called.
- * @const {Object}
- */
-a.$ = null;
 
 //=====Mods=====
 /**
@@ -475,6 +475,7 @@ a.filter = function (func, filter) {
 };
 /**
  * Patch the HTML, this must be ran on document-start.
+ * Warning: This can break uBlock Origin element picker.
  * @function
  * @param {Function} patcher - A function that patches the HTML, it must return the patched HTML.
  */
@@ -493,10 +494,11 @@ a.patchHTML = function (patcher) {
             //Apply patched content
             a.doc.write(patcher(result.responseText));
         }
-    })
+    });
 };
 /**
  * Replace a sample of code by syntax breaker.
+ * Warning: This can break uBlock Origin element picker.
  * This is the easiest way to break "stand alone" in-line JavaScript.
  * Can only crash one in-line block.
  * @function
@@ -544,6 +546,45 @@ a.readOnly = function (name, val) {
     return true;
 };
 /**
+ * Defines a property to unsafeWindow that crashes scripts that tries to access it.
+ * @function
+ * @param {string} name - The name of the property to define, use "." to separate multiple layers, max 2 layers.
+ * @returns {boolean} True if the operation was successful, false otherwise.
+ */
+a.noAccess = function (name) {
+    try {
+        if (name.includes(".")) {
+            //Two layers
+            let nameArray = name.split(".");
+            a.win.Object.defineProperty(a.win[nameArray[0]], nameArray[1], {
+                configurable: false,
+                set: function () {
+                    throw a.c.errMsg;
+                },
+                get: function () {
+                    throw a.c.errMsg;
+                }
+            });
+        } else {
+            //One layer
+            a.win.Object.defineProperty(a.win, name, {
+                configurable: false,
+                set: function () {
+                    throw a.c.errMsg;
+                },
+                get: function () {
+                    throw a.c.errMsg;
+                }
+            });
+        }
+    } catch (err) {
+        //Failed to define property
+        a.out.error("AdBlock Protector failed to define non accessible property " + name + "! ");
+        return false;
+    }
+    return true;
+};
+/**
  * Inject CSS into HTML.
  * @function
  * @param {string} str - The CSS to inject, !important will be added automatically.
@@ -578,7 +619,7 @@ a.bait = function (type, identifier) {
     elem.html("<br>").appendTo("html");
 };
 /**
- * Set or get a cookie
+ * Set or get a cookie.
  * @function
  * @param {string} key - The key of the cookie.
  * @param {string} [val=undefined] - The value to set, omit this to get the cookie.
@@ -604,6 +645,23 @@ a.cookie = function (key, val, time, path) {
         a.doc.cookie = key + "=" + a.win.encodeURIComponent(val) + ";expires=" + expire.toGMTString() + ";path=" + (path || "/");
     }
 }
+/**
+ * Serialize an object.
+ * http://stackoverflow.com/questions/6566456/how-to-serialize-an-object-into-a-list-of-parameters
+ * @function
+ * @param {Object} obj - The object to serialize.
+ * @returns {string} The serialized string.
+ */
+a.serialize = function (obj) {
+    var str = "";
+    for (var key in obj) {
+        if (str != "") {
+            str += "&";
+        }
+        str += key + "=" + a.win.encodeURIComponent(obj[key]);
+    }
+    return str;
+};
 /**
  * Generate a native HTML5 player with controls but not autoplay.
  * @function
