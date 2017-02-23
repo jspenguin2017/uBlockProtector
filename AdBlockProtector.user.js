@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 6.37
+// @version 6.38
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -227,13 +227,22 @@ a.win.encodeURIComponent(api);
                 let url;
                 try {
                     let data = JSON.parse(result.responseText);
-                    url = data.item.videos.main.video_content[1].url;
+                    let vidSources = data.item.videos.main.video_content;
+                    if (vidSources[1].url) {
+                        //Native player
+                        elem.html("").append(a.nativePlayer(vidSources[1].url));
+                        a.$("video").css("max-height", "540px");
+                    } else {
+                        return; //Doesn't work
+                        //Video JS
+                        a.videoJS.init();
+                        elem.html("").append(a.videoJS([vidSources[0].src, vidSources[1].src],
+["video/x-ms-wmv", "video/x-ms-wmv"], "960px", "540px"));
+                    }
                 } catch (err) {
                     a.out.error("AdBlock Protector failed to find media URL! ");
                     return;
                 }
-                //Patch player
-                elem.html("").append(a.nativePlayer(url));
             }
         });
     });
