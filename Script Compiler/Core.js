@@ -270,9 +270,7 @@ a.mods = function () {
                     const player = a.$("video").first();
                     //Block play
                     player[0].onplay = function () {
-                        if (a.$(this).attr("poster")) {
-                            this.pause();
-                        }
+                        this.pause();
                     };
                     //Replace player
                     player.parents().eq(5).after(a.nativePlayer(player.attr("src"))).remove();
