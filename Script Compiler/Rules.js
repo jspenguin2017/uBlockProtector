@@ -210,7 +210,7 @@ a.win.encodeURIComponent(api);
                         a.$("video").css("max-height", "540px");
                     } else if (vidSources[0].src) {
                         //DRM protected
-                        a.out.error("AdBlock Protector could not patch the video player " +
+                        a.out.error("AdBlock Protector will not replace this video player " +
 "because it is DRM prtected. ");
                     }
                 } catch (err) {

@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 6.39
+// @version 6.40
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -234,7 +234,7 @@ a.win.encodeURIComponent(api);
                         a.$("video").css("max-height", "540px");
                     } else if (vidSources[0].src) {
                         //DRM protected
-                        a.out.error("AdBlock Protector could not patch the video player " +
+                        a.out.error("AdBlock Protector will not replace this video player " +
 "because it is DRM prtected. ");
                     }
                 } catch (err) {
