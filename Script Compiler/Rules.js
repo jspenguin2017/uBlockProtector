@@ -1911,5 +1911,13 @@ if (a.domCmp(["whosampled.com"])) {
     //Lock showAdBlockerOverlay to an empty functions
     a.readOnly("showAdBlockerOverlay", function () { });
 }
+if (a.domCmp(["pornhub.com"])) {
+    //NSFW! Patch open()
+    a.win.open = function (arg) {
+        if (arg.includes("pornhub.com")) {
+            a.win.location.href = arg;
+        }
+    };
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();

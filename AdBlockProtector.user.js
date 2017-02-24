@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 6.48
+// @version 6.49
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2218,5 +2218,12 @@ if (a.domCmp(["firstonetv.eu"])) {
 }
 if (a.domCmp(["whosampled.com"])) {
     a.readOnly("showAdBlockerOverlay", function () { });
+}
+if (a.domCmp(["pornhub.com"])) {
+    a.win.open = function (arg) {
+        if (arg.includes("pornhub.com")) {
+            a.win.location.href = arg;
+        }
+    };
 }
 a.generic();
