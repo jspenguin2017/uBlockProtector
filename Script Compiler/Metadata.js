@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 6.47
+// @version 6.48
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -18,6 +18,4 @@
 // @homepage https://x01x012013.github.io/AdBlockProtector/
 // @supportURL https://github.com/X01X012013/AdBlockProtector/issues
 // @downloadURL https://github.com/X01X012013/AdBlockProtector/raw/master/AdBlockProtector.user.js
-// @require https://github.com/X01X012013/AdBlockProtector/raw/master/jQuery/Core.Factory.3.1.1.min.js
-// @require https://github.com/X01X012013/AdBlockProtector/raw/master/Script%20Compiler/Core.js
 // ==/UserScript==

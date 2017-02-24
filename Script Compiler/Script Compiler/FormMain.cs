@@ -47,21 +47,9 @@ namespace Script_Compiler
             //Start main process
             await Task.Run(() =>
             {
-                //All we need to do in release build is to combine these 2 files together
-                //Other libraries will be loaded via @require tags
-                //Load everything into RAM
-                string[] metadata;
-                string[] rules;
-                if (!loadFile(Path.Combine(gitRoot, "Script Compiler\\Metadata.js"), out metadata))
-                {
-                    return;
-                }
-                if (!loadFile(Path.Combine(gitRoot, "Script Compiler\\Rules.js"), out rules))
-                {
-                    return;
-                }
-                //Write to file
-                string[] toWrite = metadata.Concat(rules).ToArray();
+                //Build file
+                string[] toWrite = build(gitRoot);
+                //Write file
                 try
                 {
                     string path = Path.Combine(gitRoot, "AdBlockProtector.user.js");
@@ -93,57 +81,9 @@ namespace Script_Compiler
             //Start main process
             await Task.Run(() =>
             {
-                //We need to remove @require tags and then combines all 5 files together
-                //Load everything into RAM
-                string[] metadata;
-                string[] jQuery;
-                string[] color; //The jQuery plug-in
-                string[] core;
-                string[] rules;
-                if (!loadFile(Path.Combine(gitRoot, "Script Compiler\\Metadata.js"), out metadata))
-                {
-                    return;
-                }
-                if (!loadFile(Path.Combine(gitRoot, "jQuery\\Core.Factory.3.1.1.min.js"), out jQuery))
-                {
-                    return;
-                }
-                if (!loadFile(Path.Combine(gitRoot, "jQuery\\Color.Loader.2.1.2.min.js"), out color))
-                {
-                    return;
-                }
-                if (!loadFile(Path.Combine(gitRoot, "Script Compiler\\Core.js"), out core))
-                {
-                    return;
-                }
-                if (!loadFile(Path.Combine(gitRoot, "Script Compiler\\Rules.js"), out rules))
-                {
-                    return;
-                }
-                //Patch metadata
-                putLog("Patching metadata... ");
-                List<string> newMetadata = new List<string>();
-                int counter = 0;
-                for (int i = 0; i < metadata.Length; i++)
-                {
-                    string t = metadata[i];
-                    if (t.StartsWith("// @require"))
-                    {
-                        //Skip @require tags
-                        counter++;
-                    }
-                    else
-                    {
-                        //Put into patched list
-                        newMetadata.Add(t);
-                    }
-                }
-                putLog(counter.ToString() + " @require tags removed. ");
+                //Build file
+                string[] data = build(gitRoot);
                 //Copy to clipboard
-                string[] data = newMetadata.ToArray().Concat(jQuery).ToArray();
-                data = data.Concat(color).ToArray();
-                data = data.Concat(core).ToArray();
-                data = data.Concat(rules).ToArray();
                 try
                 {
                     //We need a new STA thread to access clipboard
@@ -166,6 +106,49 @@ namespace Script_Compiler
             });
             //Unlock UI
             updateUI(false);
+        }
+
+        /// <summary>
+        /// Build the script and returns it
+        /// </summary>
+        /// <param name="gitRoot">The git root</param>
+        /// <returns>The build result, an empty array if failed</returns>
+        private string[] build(string gitRoot)
+        {
+            //Load everything into RAM
+            string[] metadata;
+            string[] jQuery;
+            string[] color; //The jQuery Color plug-in
+            string[] core;
+            string[] rules;
+            if (!loadFile(Path.Combine(gitRoot, "Script Compiler\\Metadata.js"), false, out metadata))
+            {
+                return new string[0];
+            }
+            if (!loadFile(Path.Combine(gitRoot, "jQuery\\Core.Factory.3.1.1.min.js"), false, out jQuery))
+            {
+                return new string[0];
+            }
+            if (!loadFile(Path.Combine(gitRoot, "jQuery\\Color.Loader.2.1.2.min.js"), false, out color))
+            {
+                return new string[0];
+            }
+            if (!loadFile(Path.Combine(gitRoot, "Script Compiler\\Core.js"), true, out core))
+            {
+                return new string[0];
+            }
+            if (!loadFile(Path.Combine(gitRoot, "Script Compiler\\Rules.js"), true, out rules))
+            {
+                return new string[0];
+            }
+            //Put everything together
+            string[] data = metadata.ToArray().Concat(jQuery).ToArray();
+            //Uncomment the following line to enable the Color plug-in
+            //data = data.Concat(color).ToArray();
+            putLog("jQuery Color plug-in is not enabled. ");
+            data = data.Concat(core).ToArray();
+            data = data.Concat(rules).ToArray();
+            return data;
         }
 
         /// <summary>
@@ -197,9 +180,10 @@ namespace Script_Compiler
         /// Safely load a file
         /// </summary>
         /// <param name="filePath">The path to the file to read</param>
+        /// <param name="rmComments">Whether comments should be removed</param>
         /// <param name="data">The output variable</param>
         /// <returns>True if successful, false otherwise</returns>
-        private bool loadFile(string filePath, out string[] data)
+        private bool loadFile(string filePath, bool rmComments, out string[] data)
         {
             string[] dataRead;
             //Read file
@@ -208,9 +192,45 @@ namespace Script_Compiler
                 putLog("Reading data from " + filePath + "... ");
                 dataRead = File.ReadAllLines(filePath);
                 putLog(dataRead.Length.ToString() + " lines read. ");
-                //Return result
-                data = dataRead;
-                return true;
+                if (rmComments)
+                {
+                    //Remove comments
+                    List<string> dataOut = new List<string>();
+                    bool commentBlockFlag = false;
+                    for (int i = 0; i < dataRead.Length; i++)
+                    {
+                        string line = dataRead[i].Trim();
+                        //Skip comments
+                        //This algorithm wouldn't work for any JS file, but for ours, it will work
+                        if (line.StartsWith("//") || line == string.Empty)
+                        {
+                            continue;
+                        }
+                        if (line.StartsWith("/*"))
+                        {
+                            commentBlockFlag = true;
+                        }
+                        if (line.EndsWith("*/"))
+                        {
+                            commentBlockFlag = false;
+                            continue;
+                        }
+                        //Check flag and write to output
+                        if (!commentBlockFlag)
+                        {
+                            dataOut.Add(dataRead[i]);
+                        }
+                    }
+                    //Return result
+                    data = dataOut.ToArray();
+                    return true;
+                }
+                else
+                {
+                    //Directly return result
+                    data = dataRead;
+                    return true;
+                }
             }
             catch (Exception err)
             {
