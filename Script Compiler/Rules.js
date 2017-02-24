@@ -1911,5 +1911,9 @@ if (a.domCmp(["8muses.com"])) {
         }
     });
 }
+if (a.domCmp(["whosampled.com"])) {
+    //Lock showAdBlockerOverlay to an empty functions
+    a.readOnly("showAdBlockerOverlay", function () { });
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();

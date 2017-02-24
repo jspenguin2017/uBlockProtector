@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 6.45
+// @version 6.46
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -1934,6 +1934,10 @@ if (a.domCmp(["8muses.com"])) {
             a.win.location.reload();
         }
     });
+}
+if (a.domCmp(["whosampled.com"])) {
+    //Lock showAdBlockerOverlay to an empty functions
+    a.readOnly("showAdBlockerOverlay", function () { });
 }
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
