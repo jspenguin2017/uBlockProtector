@@ -10,6 +10,4 @@ Unless otherwise specified, everything else (starting version 4.0) falls under G
 
 1. `a.out` master switch
 2. `a.filter()` takes in RegExp but it's not really needed
-3. Only enable jQuery Color when needed through `a.init.$color()`
-4. Remove `a()` (and `a.VERSION`?)
-5. Make `a.protectFunc()` controlled from rules
+3. Remove `a()` (and `a.VERSION`?)
