@@ -26,4 +26,5 @@ zone-anime.net###adblockinfo
 !>> thewindowsclub.com - Thanks to uBlock-user
 ||concernrain.com$script,domain=thewindowsclub.com
 !>> NSFW! 8muses.com
-8muses.com##.top-warning
+||8muses.com^$inline-script
+@@||8muses.com/comix/picture^$inline-script

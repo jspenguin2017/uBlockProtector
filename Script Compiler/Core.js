@@ -26,15 +26,15 @@ a.VERSION = "1.1";
 a.init = function (excludedDomCmp, excludedDomInc) {
     //Load jQuery and Color plug-in
     a.$ = jQueryFactory(a.win, true);
-    jQueryColorLoader(a.$);
+    //The Color plug-in is never used, to enable it, uncomment the following line and @require the line after in metadata
+    //jQueryColorLoader(a.$);
+    //https://github.com/X01X012013/AdBlockProtector/raw/master/jQuery/Color.Loader.2.1.2.min.js
     //Load configurations
     a.config();
     a.config.domExcluded = a.domCmp(excludedDomCmp, true) || a.domInc(excludedDomInc, true);
     //Log excluded or protect functions
     if (a.config.domExcluded) {
         a.out.warn("This domain is in excluded list. ");
-    } else {
-        a.protectFunc();
     }
     //Apply mods
     a.mods();
@@ -218,14 +218,14 @@ a.mods = function () {
                 //Wait a little bit for the window to load, for some reason load event isn't working
                 a.win.setTimeout(addJumpToTop, 1000);
             }
-        }
+        };
         //Hide People You May Know
         const hidePeopleYouMayKnow = function () {
             a.observe("insert", function (node) {
                 if (node.querySelector && node.querySelector("a[href^='/friends/requests/']")) {
                     node.remove();
                 }
-            })
+            });
         };
         //Check configurations
         if (a.mods.Facebook_JumpToTop) {
@@ -252,13 +252,13 @@ a.mods = function () {
                         //We need to pause twice
                         let playCount = 2;
                         return function () {
-                            playCount--
+                            playCount--;
                             this.pause();
                             if (playCount === 0) {
                                 //Paused twice, detach event handler
                                 this.onplay = null;
                             }
-                        }
+                        };
                     })();
                 }
             });
@@ -360,11 +360,13 @@ a.domInc = function (domList, noErr) {
 };
 /**
  * Replace Function.prototype.toString() in order to prevent protected functions from being detected.
- * Do not call this function multiple times.
+ * This function should be called from rules once if needed.
  * @function
  * @returns {boolean} True if the operation was successful, false otherwise.
  */
 a.protectFunc = function () {
+    //Update flag
+    a.protectFunc.enabled = true;
     //The original function
     const original = a.win.Function.prototype.toString;
     //New function
@@ -394,6 +396,11 @@ a.protectFunc = function () {
     }
     return true;
 };
+/**
+ * Whether protect functions is enabled.
+ * @var {bool}
+ */
+a.protectFunc.enabled = false;
 /**
  * Pointers to protected functions.
  * @var {Array.<Function>}
@@ -462,8 +469,10 @@ a.filter = function (func, filter) {
             a.win[func] = newFunc;
         }
         //Add this filter to protection list
-        a.protectFunc.pointers.push(newFunc);
-        a.protectFunc.masks.push(original.toString());
+        if (a.protectFunc.enabled) {
+            a.protectFunc.pointers.push(newFunc);
+            a.protectFunc.masks.push(original.toString());
+        }
         //Log when activated
         a.out.warn("Filter activated on " + func);
     } catch (err) {
@@ -507,7 +516,7 @@ a.patchHTML = function (patcher) {
 a.crashScript = function (sample) {
     a.patchHTML(function (html) {
         return html.replace(sample, a.c.syntaxBreaker);
-    })
+    });
 };
 /**
  * Defines a read-only property to unsafeWindow.
@@ -579,7 +588,7 @@ a.noAccess = function (name) {
         }
     } catch (err) {
         //Failed to define property
-        a.out.error("AdBlock Protector failed to define non accessible property " + name + "! ");
+        a.out.error("AdBlock Protector failed to define non-accessible property " + name + "! ");
         return false;
     }
     return true;
@@ -644,7 +653,7 @@ a.cookie = function (key, val, time, path) {
         expire.setTime((new a.win.Date()).getTime() + (time || 31536000000));
         a.doc.cookie = key + "=" + a.win.encodeURIComponent(val) + ";expires=" + expire.toGMTString() + ";path=" + (path || "/");
     }
-}
+};
 /**
  * Serialize an object.
  * http://stackoverflow.com/questions/6566456/how-to-serialize-an-object-into-a-list-of-parameters
@@ -655,7 +664,7 @@ a.cookie = function (key, val, time, path) {
 a.serialize = function (obj) {
     var str = "";
     for (var key in obj) {
-        if (str != "") {
+        if (str !== "") {
             str += "&";
         }
         str += key + "=" + a.win.encodeURIComponent(obj[key]);
@@ -713,13 +722,13 @@ a.nativePlayer = function (source, typeIn, widthIn, heightIn) {
  */
 a.videoJS = function (sources, types, width, height) {
     //Build HTML string
-    let html = `<video id="AdBlock_Protector_Video_Player" class="video-js vjs-default-skin" controls preload="auto" width="${width}" height="${height}" data-setup="{}">`
+    let html = `<video id="AdBlock_Protector_Video_Player" class="video-js vjs-default-skin" controls preload="auto" width="${width}" height="${height}" data-setup="{}">`;
     for (let i = 0; i < sources.length; i++) {
         html += `<source src="${sources[i]}" type="${types[i]}">`;
     }
     html += `</video>`;
     return html;
-}
+};
 /**
  * Initialize videoJS 5.4.6.
  * Do not call this function multiple times.
@@ -732,7 +741,7 @@ a.videoJS.init = function () {
     } catch (err) { }
     //Load components
     a.$("head").append(`<link href="//vjs.zencdn.net/5.4.6/video-js.min.css" rel="stylesheet"><script src="//vjs.zencdn.net/5.4.6/video.min.js"></script>`);
-}
+};
 /**
  * Run function that is passed in on document-start, document-idle, and document-end.
  * @function
@@ -755,7 +764,7 @@ a.uid = function () {
         str += chars.charAt(a.win.Math.floor(a.win.Math.random() * chars.length));
     }
     a.uid.counter++;
-    return str + a.uid.counter.toString();;
+    return str + a.uid.counter.toString();
 };
 /**
  * Unique ID counter, will be appended to randomly generated string to ensure uniqueness.
@@ -772,7 +781,7 @@ a.observe = function (type, callback) {
     //Initialize observer
     if (!a.observe.init.done) {
         a.observe.init.done = true;
-        a.observe.init()
+        a.observe.init();
     }
     //Add to callback array
     if (type === "insert") {
@@ -804,7 +813,7 @@ a.observe.init = function () {
         childList: true,
         subtree: true
     });
-}
+};
 /**
  * Whether initialization is done.
  * @var {bool}
@@ -895,7 +904,7 @@ a.generic = function () {
             for (let prop in a.win) {
                 try {
                     if (!prop.startsWith("webkit") && /^[a-z0-9]{4,12}$/i.test(prop) && prop !== "document" && (a.win[prop] instanceof a.win.HTMLDocument) === false && a.win.hasOwnProperty(prop) && typeof a.win[prop] === "object") {
-                        const method = win[prop];
+                        const method = a.win[prop];
                         //BetterStopAdblock and Antiblock.org v3
                         if (method.deferExecution &&
                             method.displayMessage &&
@@ -911,11 +920,9 @@ a.generic = function () {
                             a.win[prop] = null;
                         }
                         //BlockAdBlock
-                        if (method.bab) { //Variant 1
+                        if (method.bab) {
                             a.win[prop] = null;
-                        } else if (a.win.Object.keys(method).length === 3 && a.win.Object.keys(method).map(function (value, index) {
-                            return value;
-                        }).join().length === 32) { //Variant 2
+                        } else if (a.win.Object.keys(method).length === 3 && a.win.Object.keys(method).join().length === 32) {
                             a.win[prop] = null;
                         }
                     }
@@ -1100,5 +1107,5 @@ a.generic.FuckAdBlock = function (constructorName, instanceName) {
         }).bind(this);
     };
     //Define FuckAdBlock to unsafeWindow and create its instance, error checks are done in a.readOnly()
-    return a.readOnly(constructorName, patchedFuckAdBlock) && a.readOnly(instanceName, new a.win[constructorName]);
+    return a.readOnly(constructorName, patchedFuckAdBlock) && a.readOnly(instanceName, new a.win[constructorName]());
 };

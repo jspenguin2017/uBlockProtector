@@ -1,6 +1,6 @@
 [Adblock Plus 2.0]
 ! Title: AdBlock Protector List
-! Version: 6.18
+! Version: 6.20
 ! Expires: 1 days
 ! Redirect: https://github.com/X01X012013/AdBlockProtector/raw/master/AdBlockProtectorList.txt
 ! Homepage: https://x01x012013.github.io/AdBlockProtector/
@@ -19,7 +19,8 @@ zone-anime.net###adblockinfo
 @@||imasdk.googleapis.com/js/sdkloader/ima3.js$domain=fox.com.tr|turknettv.com
 ||tribdss.com/meter/assets$script,domain=www.latimes.com
 ||concernrain.com$script,domain=thewindowsclub.com
-8muses.com##.top-warning
+||8muses.com^$inline-script
+@@||8muses.com/comix/picture^$inline-script
 ! =====Patched AAK List=====
 ||trymask.com/api/$third-party
 @@||adworkmedia.com/gLoader.php?GID=$script,third-party

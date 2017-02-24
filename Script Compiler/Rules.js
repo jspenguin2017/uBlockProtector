@@ -104,6 +104,7 @@ if (a.domCmp(["cbox.ws"])) {
 }
 if (a.domCmp(["ahmedabadmirror.com"])) {
     //Filter keywords from document.addEventListener()
+    a.protectFunc();
     a.filter("document.addEventListener", /function \_0x/);
     //document.addEventListener should not be native code, but they are expecting native code
     a.protectFunc.masks[1] = "function addEventListener() { [native code] }";
@@ -649,14 +650,16 @@ if (a.domCmp(["business-standard.com"])) {
     a.readOnly("adsLoaded", 1);
     a.cookie("_pw", "t");
 }
+/*
 if (a.domCmp(["indiatimes.com", "samayam.com", "bangaloremirror.com"])) {
     //Patch HTML
-    //a.patchHTML(function (html) {
-    //    html = html.replace("\\\\x61\\\\x64\\\\x62", a.c.syntaxBreaker);
-    //    html = html.replace("function initBlock", a.c.syntaxBreaker);
-    //    return html;
-    //});
+    a.patchHTML(function (html) {
+        html = html.replace("\\\\x61\\\\x64\\\\x62", a.c.syntaxBreaker);
+        html = html.replace("function initBlock", a.c.syntaxBreaker);
+        return html;
+    });
 }
+*/
 if (a.domCmp(["thechive.com"])) {
     //Lock stephaneDetector to an object
     a.readOnly("stephaneDetector", {
@@ -1006,10 +1009,12 @@ if (a.domCmp(["luxyad.com"])) {
         }
     });
 }
+/*
 if (a.domCmp(["mrpiracy.xyz", "mrpiracy.club"])) {
     //Crash script by keywords
-    //a.crashScript("Desativa o AdBlock para continuar");
+    a.crashScript("Desativa o AdBlock para continuar");
 }
+*/
 if (a.domCmp(["dbplanet.net"])) {
     //Set cookie
     a.cookie("newnoMoreAdsNow", "1");
@@ -1124,11 +1129,6 @@ if (a.domCmp(["wtfbit.ch"])) {
     //Lock writeHTMLasJS to an empty function
     a.readOnly("writeHTMLasJS", function () { });
 }
-if (a.domCmp(["aranzulla.it"])) {
-    //Crash script by keyworkds and inject style
-    //a.crashScript("navigator.userAgent||navigator.vendor||window.opera");
-    a.css("#abt1 + STYLE + div[id][class] {display:none;}");
-}
 if (a.domCmp(["ndtv.com"])) {
     //Lock ___p__p to 1 and getNoTopLatestNews to an empty function
     a.readOnly("___p__p", 1);
@@ -1157,6 +1157,7 @@ if (a.domCmp(["exrapidleech.info"])) {
     a.css("div.alert.alert-danger.lead {opacity:0;}");
     //Read only variables
     a.readOnly("bdvbnr_pid", []);
+    //a.readOnly("adblock", false);
     a.readOnly("PopAds", 1);
     //Filter open()
     a.filter("open");
@@ -1818,10 +1819,12 @@ if (a.domCmp(["linkdrop.net", "revclouds.com", "leporno.org", "uploadshub.com", 
     //Filter keywords from setTimeout()
     a.filter("setTimeout", /bab\_elementid/);
 }
+/*
 if (a.domCmp(["commentcamarche.net", "journaldesfemmes.com", "linternaute.com"])) {
     //Crash script by keywords
-    //a.crashScript("Asl.prototype.inject");
+    a.crashScript("Asl.prototype.inject");
 }
+*/
 if (a.domCmp(["fourchette-et-bikini.fr", "meteocity.com"])) {
     //Lock adProtect to 1
     a.readOnly("adProtect", 1);
@@ -1834,9 +1837,10 @@ if (a.domCmp(["demo-phoenix.com", "dpstream.net", "gum-gum-streaming.com", "jeu.
     //a.crashScript("PHENV");
     a.css("body {visibility: visible;}");
 }
+/*
 if (a.domCmp(["tvspielfilm.de", "finanzen.ch"])) {
     //Crash script by keywords
-    //a.crashScript("UABPInject");
+    a.crashScript("UABPInject");
 }
 if (a.domCmp(["watchgeneration.fr", "turbo.fr", "24matins.fr", "foot01.com", "clubic.com", "macg.co",
 "begeek.fr", "igen.fr", "gamestar.de", "focus.de", "stern.de", "fem.com", "wetter.com",
@@ -1849,8 +1853,9 @@ if (a.domCmp(["watchgeneration.fr", "turbo.fr", "24matins.fr", "foot01.com", "cl
 "webfail.com", "computerbild.de", "finanzen.net", "comunio.de", "medisite.fr"]) || a.domInc(["sat1",
 "prosieben", "kabeleins", "sat1gold", "sixx", "prosiebenmaxx", "the-voice-of-germany"])) {
     //Crash script by keywords
-    //a.crashScript("uabInject");
+    a.crashScript("uabInject");
 }
+*/
 if (a.domCmp(["emuparadise.me"])) {
     //Remove element
     a.always(function () {
@@ -1901,15 +1906,6 @@ if (a.domCmp(["firstonetv.eu"])) {
     //Lock blocked and adFuckBlock to empty functions
     a.readOnly("blocked", function () { });
     a.readOnly("adFuckBlock", function () { });
-}
-if (a.domCmp(["8muses.com"])) {
-    //NSFW! (Workaround) Detect block page and auto-refresh
-    a.on("DOMContentLoaded", function () {
-        if(a.$("h1").first().html().includes("This website completely relies on Ads " +
-"to support itself")) {
-            a.win.location.reload();
-        }
-    });
 }
 if (a.domCmp(["whosampled.com"])) {
     //Lock showAdBlockerOverlay to an empty functions
