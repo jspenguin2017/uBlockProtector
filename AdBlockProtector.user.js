@@ -2192,9 +2192,6 @@ if (a.domCmp(["wowhead.com"])) {
         a.$("div[id^='ad-']").parent().parent().parent().remove();
     });
 }
-if (a.domCmp(["cmacapps.com"])) {
-    a.filter("eval", /Place this code snippet near the footer of your page before the close of the/);
-}
 if (a.domCmp(["epiotrkow.pl"])) {
     a.bait("div", "#adboxx");
 }
