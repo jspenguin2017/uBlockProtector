@@ -227,6 +227,7 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
     let networkBusy = false; //A flag to prevent sending a new request before the first one is done
     let networkErrorCounter = 0; //Will stop sending request if this is over 5
     let isInBackground = false; //A flag to prevent excessive CPU usage when the tab is in background
+    //The player container matcher
     let containerMatcher = ".wp-player-outer";
     if (a.domCmp(["wp.tv"], true)) {
         containerMatcher = ".player__container";
