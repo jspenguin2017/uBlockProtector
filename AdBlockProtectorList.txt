@@ -1,6 +1,6 @@
 [Adblock Plus 2.0]
 ! Title: AdBlock Protector List
-! Version: 6.21
+! Version: 6.22
 ! Expires: 1 days
 ! Redirect: https://github.com/X01X012013/AdBlockProtector/raw/master/AdBlockProtectorList.txt
 ! Homepage: https://x01x012013.github.io/AdBlockProtector/
@@ -1945,10 +1945,6 @@ urlchecker.net###ads_notify
 urlchecker.org###adchecker
 urlchecker.org###adchecker_btn
 urlchecker.org###ads_notify
-###k2Uw7isHrMm5JXP1Vwdxc567ZKc1aZ4I
-||reek.github.io/anti-adblock-killer/k2Uw7isHrMm5JXP1Vwdxc567ZKc1aZ4I.js|$script
-@@||githubusercontent.com/reek/anti-adblock-killer/
-@@||github.com/reek/anti-adblock-killer/
 @@||cdn.jsdelivr.net/jwplayer/5.10/jwplayer.js$script
 @@||vjs.zencdn.net/4.12/video.js$script
 @@||jwpsrv.com/library/5V3tOP97EeK2SxIxOUCPzg.js$script
