@@ -229,10 +229,14 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
     let isInBackground = false; //A flag to prevent excessive CPU usage when the tab is in background
     let containerMatcher = ".wp-player-outer";
     if (a.domCmp(["wp.tv"], true)) {
-        containerMatcher = ".player__container";
+        if (a.domCmp(["wiadomosci.wp.pl"], true)) {
+            containerMatcher = ".wp-player";
+        } else {
+            containerMatcher = ".player__container";
+        }
     }
-    if (a.domCmp(["wiadomosci.wp.pl"], true)) {
-        containerMatcher = ".wp-player";
+    if (a.domCmp(["autokult.pl"], true)) {
+        containerMatcher = ".embed-container";
     }
     //Main function
     const main = function () {
