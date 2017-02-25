@@ -1907,10 +1907,10 @@ if (a.domCmp(["whosampled.com"])) {
     //Lock showAdBlockerOverlay to an empty functions
     a.readOnly("showAdBlockerOverlay", function () { });
 }
-if (a.domCmp(["pornhub.com"])) {
+if (a.domCmp(["pornhub.com", "redtube.com", "youporn.com", "tube8.com"])) {
     //NSFW! Patch open()
     a.win.open = function (arg) {
-        if (arg.includes("pornhub.com")) {
+        if (arg.includes(a.dom)) {
             a.win.location.href = arg;
         }
     };
