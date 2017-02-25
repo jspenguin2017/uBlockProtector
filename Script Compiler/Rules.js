@@ -273,34 +273,40 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
             }
             //Get media JSON, we don't need to check if mid is found since the function will return if it is not
             networkBusy = true;
-            a.$.get("http://wp.tv/player/mid," + mid + ",embed.json").done(function (response) {
-                //Try to find media URL
-                try {
-                    for (let i = 0; i < response.clip.url.length; i++) {
-                        let item = response.clip.url[i];
-                        if (item.quality === "HQ" && item.type.startsWith("mp4")) {
-                            url = item.url;
-                            break;
+            GM_xmlhttpRequest({
+                method: "GET",
+                url: "http://wp.tv/player/mid," + mid + ",embed.json",
+                onload: function (response) {
+                    //Try to find media URL
+                    try {
+                        for (let i = 0; i < response.clip.url.length; i++) {
+                            let item = response.clip.url[i];
+                            if (item.quality === "HQ" && item.type.startsWith("mp4")) {
+                                url = item.url;
+                                break;
+                            }
                         }
+                        //Check if we found the URL
+                        if (!url) {
+                            throw "Media URL Not Found";
+                        }
+                        //Update counter
+                        loadCounter++;
+                        //Reset error counter
+                        networkErrorCounter = 0;
+                    } catch (err) {
+                        a.out.error("AdBlock Protector failed to find media URL! ");
+                        networkErrorCounter += 1;
                     }
-                    //Check if we found the URL
-                    if (!url) {
-                        throw "Media URL Not Found";
-                    }
-                    //Update counter
-                    loadCounter++;
-                    //Reset error counter
-                    networkErrorCounter = 0;
-                } catch (err) {
-                    a.out.error("AdBlock Protector failed to find media URL! ");
-                    networkErrorCounter += 1;
+                    //Update flag
+                    networkBusy = false;
+                },
+                onerror: function () {
+                    a.out.error("AdBlock Protector failed to load media JSON! ");
+                    networkErrorCounter += 0.5;
+                    //Update flag
+                    networkBusy = false;
                 }
-            }).fail(function () {
-                a.out.error("AdBlock Protector failed to load media JSON! ");
-                networkErrorCounter += 0.5;
-            }).always(function () {
-                //Update flag
-                networkBusy = false;
             });
         } else {
             //Patch player

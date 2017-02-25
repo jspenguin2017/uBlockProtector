@@ -28,3 +28,5 @@ filez.tv###adblockinfo
 !>> NSFW! 8muses.com
 ||8muses.com^$inline-script
 @@||8muses.com/comix/picture^$inline-script
+!>> wp.pl and related domains
+autokult.pl###like-us-adblock-modal

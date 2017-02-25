@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 6.51
+// @version 6.52
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -906,29 +906,34 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
                 return;
             }
             networkBusy = true;
-            a.$.get("http://wp.tv/player/mid," + mid + ",embed.json").done(function (response) {
-                try {
-                    for (let i = 0; i < response.clip.url.length; i++) {
-                        let item = response.clip.url[i];
-                        if (item.quality === "HQ" && item.type.startsWith("mp4")) {
-                            url = item.url;
-                            break;
+            GM_xmlhttpRequest({
+                method: "GET",
+                url: "http://wp.tv/player/mid," + mid + ",embed.json",
+                onload: function (response) {
+                    try {
+                        for (let i = 0; i < response.clip.url.length; i++) {
+                            let item = response.clip.url[i];
+                            if (item.quality === "HQ" && item.type.startsWith("mp4")) {
+                                url = item.url;
+                                break;
+                            }
                         }
+                        if (!url) {
+                            throw "Media URL Not Found";
+                        }
+                        loadCounter++;
+                        networkErrorCounter = 0;
+                    } catch (err) {
+                        a.out.error("AdBlock Protector failed to find media URL! ");
+                        networkErrorCounter += 1;
                     }
-                    if (!url) {
-                        throw "Media URL Not Found";
-                    }
-                    loadCounter++;
-                    networkErrorCounter = 0;
-                } catch (err) {
-                    a.out.error("AdBlock Protector failed to find media URL! ");
-                    networkErrorCounter += 1;
+                    networkBusy = false;
+                },
+                onerror: function () {
+                    a.out.error("AdBlock Protector failed to load media JSON! ");
+                    networkErrorCounter += 0.5;
+                    networkBusy = false;
                 }
-            }).fail(function () {
-                a.out.error("AdBlock Protector failed to load media JSON! ");
-                networkErrorCounter += 0.5;
-            }).always(function () {
-                networkBusy = false;
             });
         } else {
             if (a.$(containerMatcher).length > 0) {
