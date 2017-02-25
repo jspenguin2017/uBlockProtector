@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 6.52
+// @version 6.53
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -870,7 +870,13 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
     let networkBusy = false; //A flag to prevent sending a new request before the first one is done
     let networkErrorCounter = 0; //Will stop sending request if this is over 5
     let isInBackground = false; //A flag to prevent excessive CPU usage when the tab is in background
-    const containerMatcher = a.domCmp(["wp.tv"], true) ? ".player__container" : ".wp-player-outer";
+    let containerMatcher = ".wp-player-outer";
+    if (a.domCmp(["wp.tv"], true)) {
+        containerMatcher = ".player__container";
+    }
+    if (a.domCmp(["wiadomosci.wp.pl"], true)) {
+        containerMatcher = ".wp-player";
+    }
     const main = function () {
         if (isInBackground) {
             return;
@@ -909,8 +915,9 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
             GM_xmlhttpRequest({
                 method: "GET",
                 url: "http://wp.tv/player/mid," + mid + ",embed.json",
-                onload: function (response) {
+                onload: function (res) {
                     try {
+                        const response = JSON.parse(res.responseText);
                         for (let i = 0; i < response.clip.url.length; i++) {
                             let item = response.clip.url[i];
                             if (item.quality === "HQ" && item.type.startsWith("mp4")) {
