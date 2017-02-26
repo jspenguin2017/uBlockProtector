@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 6.55
+// @version 6.56
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2238,5 +2238,8 @@ if (a.domCmp(["pornhub.com", "redtube.com", "youporn.com", "tube8.com", "pornmd.
             a.win.location.href = arg;
         }
     };
+}
+if (a.domCmp(["pastebin.com"])) {
+    a.readOnly("abdd", "");
 }
 a.generic();

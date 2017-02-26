@@ -1933,5 +1933,9 @@ if (a.domCmp(["pornhub.com", "redtube.com", "youporn.com", "tube8.com", "pornmd.
         }
     };
 }
+if (a.domCmp(["pastebin.com"])) {
+    //Lock abdd to an empty string
+    a.readOnly("abdd", "");
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
