@@ -256,18 +256,26 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
                 a.out.error("AdBlock Protector failed to find media ID with method 1! ");
             }
             if (thisMid) {
-                midArray1.push(thisMid.split("=")[1]);
+                thisMid = thisMid.split("=")[1];
+            }
+            //Extra safety check
+            if (thisMid) {
+                midArray1.push(thisMid);
             }
         }
         //Mid grabbing method 2
         if (a.$(containerMatcher).length > 0) {
-            const elem = a.$(".wp-player-outer").first().find(".titlecont a.title");
+            const elem = a.$(containerMatcher).first().find(".titlecont a.title");
             let thisMid = elem.attr("href");
             //Check if we got the element
             if (thisMid) {
-                midArray2.push(thisMid.match(/mid[=,]([0-9]+)/)[1].toString());
+                thisMid = thisMid.match(/mid[=,]([0-9]+)/)[1].toString();
                 //We will destroy the player anyway, we can just remove this so we don't grab it twice
                 elem.remove();
+            }
+            //Extra safety check
+            if (thisMid) {
+                midArray2.push(thisMid);
             }
         }
         //See if we need to load next URL
