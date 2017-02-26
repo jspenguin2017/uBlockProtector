@@ -30,7 +30,7 @@ if (a.domCmp(["usapoliticstoday.com"])) {
     //Disable eval()
     a.filter("eval");
 }
-if (a.domCmp(["adf.ly", "ay.gy", "j.gs"])) {
+if (a.domCmp(["adf.ly", "ay.gy", "j.gs", "q.gs"])) {
     //adf.ly and related domains
     //Disable open() before page starts to load and set abgo to an empty function when the page loads
     a.readOnly("open", function () { });
