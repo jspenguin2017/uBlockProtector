@@ -228,9 +228,10 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
     let networkErrorCounter = 0; //Will stop sending request if this is over 5
     let isInBackground = false; //A flag to prevent excessive CPU usage when the tab is in background
     //The player container matcher
-    let containerMatcher = ".wp-player-outer";
+    let containerMatcher = ".wp-player-outer, .player__container, .wp-player, .embed-container";
+    /*
     if (a.domCmp(["wp.tv"], true)) {
-        containerMatcher = ".player__container";
+        containerMatcher = "";
     }
     if (a.domCmp(["wiadomosci.wp.pl"], true)) {
         containerMatcher = ".wp-player";
@@ -238,6 +239,7 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
     if (a.domCmp(["autokult.pl"], true)) {
         containerMatcher = ".embed-container";
     }
+    */
     //Main function
     const main = function () {
         //Do not tick when in background

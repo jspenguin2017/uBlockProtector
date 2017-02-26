@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 6.57
+// @version 6.58
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -870,16 +870,7 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
     let networkBusy = false; //A flag to prevent sending a new request before the first one is done
     let networkErrorCounter = 0; //Will stop sending request if this is over 5
     let isInBackground = false; //A flag to prevent excessive CPU usage when the tab is in background
-    let containerMatcher = ".wp-player-outer";
-    if (a.domCmp(["wp.tv"], true)) {
-        containerMatcher = ".player__container";
-    }
-    if (a.domCmp(["wiadomosci.wp.pl"], true)) {
-        containerMatcher = ".wp-player";
-    }
-    if (a.domCmp(["autokult.pl"], true)) {
-        containerMatcher = ".embed-container";
-    }
+    let containerMatcher = ".wp-player-outer, .player__container, .wp-player, .embed-container";
     const main = function () {
         if (isInBackground) {
             return;
