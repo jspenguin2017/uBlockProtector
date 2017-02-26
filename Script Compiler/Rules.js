@@ -30,7 +30,8 @@ if (a.domCmp(["usapoliticstoday.com"])) {
     //Disable eval()
     a.filter("eval");
 }
-if (a.domCmp(["ad.fly", "ay.gy", "j.gs"])) {
+if (a.domCmp(["adf.ly", "ay.gy", "j.gs"])) {
+    //adf.ly and related domains
     //Disable open() before page starts to load and set abgo to an empty function when the page loads
     a.readOnly("open", function () { });
     a.on("load", function () {
@@ -144,7 +145,7 @@ if (a.domCmp(["tvregionalna24.pl"])) {
     });
 }
 if (a.domCmp(["tvn.pl", "tvnstyle.pl", "tvnturbo.pl"])) {
-    //tvn.pl and related
+    //tvn.pl and related domains
     //Replace player - Thanks to mikhoul, szymon1118, and xxcriticxx
     //Potential related domains: "tvnfabula.pl", "itvnextra.pl", "tvn24bis.pl", "ttv.pl",
     //"x-news.pl", "tvn7.pl", "itvn.pl"
@@ -213,7 +214,7 @@ a.win.encodeURIComponent(api);
 if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadzetomania.pl", "hotmoney.pl",
 "kafeteria.pl", "kafeteria.tv", "komediowo.pl", "komorkomania.pl", "money.pl", "pudelek.tv", "sfora.pl",
 "snobka.pl", "wawalove.pl", "wp.pl", "wp.tv", "wrzuta.pl", "pudelek.pl"])) {
-    //wp.pl and related
+    //wp.pl and related domains
     //Set a cookie to prevent block screen
     a.cookie("ABCABC", "true");
     //Replace player - Thanks to szymon1118

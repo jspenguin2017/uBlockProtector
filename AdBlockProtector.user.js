@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 6.59
+// @version 6.60
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -708,7 +708,7 @@ if (a.domCmp(["jagranjunction.com"])) {
 if (a.domCmp(["usapoliticstoday.com"])) {
     a.filter("eval");
 }
-if (a.domCmp(["ad.fly", "ay.gy", "j.gs"])) {
+if (a.domCmp(["adf.ly", "ay.gy", "j.gs"])) {
     a.readOnly("open", function () { });
     a.on("load", function () {
         a.win.abgo = function () { };
