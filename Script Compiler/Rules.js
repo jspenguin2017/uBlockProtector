@@ -30,7 +30,7 @@ if (a.domCmp(["usapoliticstoday.com"])) {
     //Disable eval()
     a.filter("eval");
 }
-if (a.domCmp(["ay.gy", "j.gs"])) {
+if (a.domCmp(["ad.fly", "ay.gy", "j.gs"])) {
     //Disable open() before page starts to load and set abgo to an empty function when the page loads
     a.readOnly("open", function () { });
     a.on("load", function () {
