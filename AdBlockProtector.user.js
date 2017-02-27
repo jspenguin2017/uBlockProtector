@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 6.63
+// @version 6.64
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -713,16 +713,33 @@ if (a.domCmp(["usapoliticstoday.com"])) {
     a.filter("eval");
 }
 if (a.domCmp(["adf.ly", "ay.gy", "j.gs", "q.gs"])) {
-    a.readOnly("open", function () { });
-    a.on("load", function () {
-        a.win.abgo = function () { };
-    });
-    const _setInterval = a.win.setInterval;
-    a.win.setInterval = function (func) {
-        return _setInterval(func, 10);
-    };
     //Based on: AdsBypasser
     //License: https://github.com/adsbypasser/adsbypasser/blob/master/LICENSE
+    a.doc.write = function () { };
+    a.win.btoa = function () { };
+    a.on("DOMContentLoaded", function () {
+        a.win.cookieCheck = function () { };
+        let encodedURL = a.doc.head.innerHTML.match(/var eu = '(?!false)(.*)'/)[1];
+        const index = encodedURL.indexOf('!HiTommy');
+        if (index >= 0) {
+            encodedURL = encodedURL.substring(0, index);
+        }
+        let var1 = "",var2 = "";
+        for (let i = 0; i < encodedURL.length; ++i) {
+            if (i % 2 === 0) {
+                var1 = var1 + encodedURL.charAt(i);
+            } else {
+                var2 = encodedURL.charAt(i) + var2;
+            }
+        }
+        let decodedURL = a.win.atob(var1 + var2);
+        decodedURL = decodedURL.substr(2);
+        if (a.win.location.hash) {
+            decodedURL += a.win.location.hash;
+        }
+        a.win.onbeforeunload = null;
+        a.win.location.href = decodedURL;
+    });
 }
 if (a.domCmp(["jansatta.com", "financialexpress.com", "indianexpress.com"])) {
     a.readOnly("RunAds", true);
@@ -818,6 +835,8 @@ if (a.domCmp(["tvn.pl", "tvnstyle.pl", "tvnturbo.pl"])) {
     }
 }
 if (a.domCmp(["player.pl"])) {
+    //Based on: solution from Anti-Adblock Killer
+    //License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
     a.on("load", function () {
         let elem;
         if (a.$("header.detailImage").length > 0) {

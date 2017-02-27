@@ -32,7 +32,7 @@ if (a.domCmp(["usapoliticstoday.com"])) {
 }
 if (a.domCmp(["adf.ly", "ay.gy", "j.gs", "q.gs"])) {
     //adf.ly and related domains
-    
+    /*
     //Old solution: 
     //Disable open() before page starts to load and set abgo to an empty function when the page loads
     a.readOnly("open", function () { });
@@ -44,10 +44,42 @@ if (a.domCmp(["adf.ly", "ay.gy", "j.gs", "q.gs"])) {
     a.win.setInterval = function (func) {
         return _setInterval(func, 10);
     };
-    
+    */
     //New solution: 
     //Based on: AdsBypasser
     //License: https://github.com/adsbypasser/adsbypasser/blob/master/LICENSE
+    //Remove document.write() and btoa() on start
+    a.doc.write = function () { };
+    a.win.btoa = function () { };
+    //Parse URL and redirect on idle
+    a.on("DOMContentLoaded", function () {
+        //Remove cookieCheck()
+        a.win.cookieCheck = function () { };
+        //Find encoded URL
+        let encodedURL = a.doc.head.innerHTML.match(/var eu = '(?!false)(.*)'/)[1];
+        const index = encodedURL.indexOf('!HiTommy');
+        if (index >= 0) {
+            encodedURL = encodedURL.substring(0, index);
+        }
+        //Decode URL
+        let var1 = "",var2 = "";
+        for (let i = 0; i < encodedURL.length; ++i) {
+            if (i % 2 === 0) {
+                var1 = var1 + encodedURL.charAt(i);
+            } else {
+                var2 = encodedURL.charAt(i) + var2;
+            }
+        }
+        let decodedURL = a.win.atob(var1 + var2);
+        decodedURL = decodedURL.substr(2);
+        if (a.win.location.hash) {
+            decodedURL += a.win.location.hash;
+        }
+        //Redirect
+        a.win.onbeforeunload = null;
+        //a.win.onunload = null;
+        a.win.location.href = decodedURL;
+    });
 }
 if (a.domCmp(["jansatta.com", "financialexpress.com", "indianexpress.com"])) {
     //Lock RunAds to true
@@ -165,7 +197,8 @@ if (a.domCmp(["tvn.pl", "tvnstyle.pl", "tvnturbo.pl"])) {
     }
 }
 if (a.domCmp(["player.pl"])) {
-    //Solution from Anti-Adblock Killer
+    //Based on: solution from Anti-Adblock Killer
+    //License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
     a.on("load", function () {
         //Check element
         let elem;
