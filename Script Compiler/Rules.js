@@ -45,7 +45,7 @@ if (a.domCmp(["adf.ly", "ay.gy", "j.gs", "q.gs"])) {
         return _setInterval(func, 10);
     };
     */
-    //New solution: 
+    //New solution - Thanks to ghajini: 
     //Based on: AdsBypasser
     //License: https://github.com/adsbypasser/adsbypasser/blob/master/LICENSE
     //Remove document.write() and btoa() on start
