@@ -49,6 +49,11 @@ namespace Script_Compiler
             {
                 //Build file
                 string[] toWrite = build(gitRoot);
+                //Check if build failed
+                if (toWrite.Length == 0)
+                {
+                    return;
+                }
                 //Write file
                 try
                 {
@@ -83,6 +88,11 @@ namespace Script_Compiler
             {
                 //Build file
                 string[] data = build(gitRoot);
+                //Check if build failed
+                if (data.Length == 0)
+                {
+                    return;
+                }
                 //Copy to clipboard
                 try
                 {
@@ -202,7 +212,7 @@ namespace Script_Compiler
                         string line = dataRead[i].Trim();
                         //Skip comments
                         //This algorithm wouldn't work for any JS file, but for ours, it will work
-                        if (line.StartsWith("//") || line == string.Empty)
+                        if (line.StartsWith("//") && !line.StartsWith("//Based on") && !line.StartsWith("//License") || line == string.Empty)
                         {
                             continue;
                         }

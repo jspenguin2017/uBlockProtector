@@ -32,6 +32,8 @@ if (a.domCmp(["usapoliticstoday.com"])) {
 }
 if (a.domCmp(["adf.ly", "ay.gy", "j.gs", "q.gs"])) {
     //adf.ly and related domains
+    
+    //Old solution: 
     //Disable open() before page starts to load and set abgo to an empty function when the page loads
     a.readOnly("open", function () { });
     a.on("load", function () {
@@ -42,6 +44,10 @@ if (a.domCmp(["adf.ly", "ay.gy", "j.gs", "q.gs"])) {
     a.win.setInterval = function (func) {
         return _setInterval(func, 10);
     };
+    
+    //New solution: 
+    //Based on: AdsBypasser
+    //License: https://github.com/adsbypasser/adsbypasser/blob/master/LICENSE
 }
 if (a.domCmp(["jansatta.com", "financialexpress.com", "indianexpress.com"])) {
     //Lock RunAds to true

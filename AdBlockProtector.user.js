@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimage solution against AdBlock detectors
 // @author X01X012013
-// @version 6.62
+// @version 6.63
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -460,6 +460,8 @@ a.observe.init = function () {
 a.observe.init.done = false;
 a.observe.insertCallbacks = [];
 a.generic = function () {
+    //Based on: generic killers of Anti-Adblock Killer
+    //License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
     if (a.config.allowGeneric && !a.config.domExcluded) {
         const data = {};
         a.generic.FuckAdBlock("FuckAdBlock", "fuckAdBlock");
@@ -643,6 +645,8 @@ a.generic = function () {
 };
 a.generic.FuckAdBlock = function (constructorName, instanceName) {
     const patchedFuckAdBlock = function () {
+        //Based on: FuckAdBlock by sitexw
+        //License: https://github.com/sitexw/FuckAdBlock/blob/master/LICENSE
         this._callbacks = [];
         a.on("load", (function () {
             this.emitEvent();
@@ -717,6 +721,8 @@ if (a.domCmp(["adf.ly", "ay.gy", "j.gs", "q.gs"])) {
     a.win.setInterval = function (func) {
         return _setInterval(func, 10);
     };
+    //Based on: AdsBypasser
+    //License: https://github.com/adsbypasser/adsbypasser/blob/master/LICENSE
 }
 if (a.domCmp(["jansatta.com", "financialexpress.com", "indianexpress.com"])) {
     a.readOnly("RunAds", true);

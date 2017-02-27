@@ -84,7 +84,8 @@ namespace List_Compiler
                 //Patch AAK List
                 putLog("Patching AAK list... ");
                 List<string> patchedAAKList = new List<string>();
-                patchedAAKList.Add("! =====Patched AAK List=====");
+                patchedAAKList.Add("! =====Patched Anti-Adblock Killer List=====");
+                patchedAAKList.Add("! License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE");
                 int counter = 0;
                 for (int i = 0; i < originalAAKList.Length; i++)
                 {

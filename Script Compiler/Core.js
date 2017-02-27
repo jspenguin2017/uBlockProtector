@@ -830,7 +830,8 @@ a.observe.insertCallbacks = [];
  * @function
  */
 a.generic = function () {
-    //Based on generic killers of Anti-Adblock Killer
+    //Based on: generic killers of Anti-Adblock Killer
+    //License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
     if (a.config.allowGeneric && !a.config.domExcluded) {
         const data = {};
         //===document-start===
@@ -1053,8 +1054,8 @@ a.generic = function () {
  */
 a.generic.FuckAdBlock = function (constructorName, instanceName) {
     const patchedFuckAdBlock = function () {
-        //Based on FuckAdBlock by sitexw
-        //https://github.com/sitexw/FuckAdBlock
+        //Based on: FuckAdBlock by sitexw
+        //License: https://github.com/sitexw/FuckAdBlock/blob/master/LICENSE
         //===Init===
         //On not detected callbacks
         this._callbacks = [];
