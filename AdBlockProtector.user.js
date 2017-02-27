@@ -724,7 +724,7 @@ if (a.domCmp(["adf.ly", "ay.gy", "j.gs", "q.gs"])) {
         if (index >= 0) {
             encodedURL = encodedURL.substring(0, index);
         }
-        let var1 = "",var2 = "";
+        let var1 = "", var2 = "";
         for (let i = 0; i < encodedURL.length; ++i) {
             if (i % 2 === 0) {
                 var1 = var1 + encodedURL.charAt(i);
