@@ -286,21 +286,24 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
         if (isInBackground) {
             return;
         }
+        //Debug - Log media ID arrays
+        if (a.config.debugMode) {
+            a.out.log(midArray1, midArray2);
+        }
         //Mid grabbing method 1
-        if (a.win.WP.player.list.length > midArray1.length) {
-            let thisMid;
-            try {
-                thisMid = a.win.WP.player.list[midArray1.length].p.url;
-            } catch (err) {
-                a.out.error("AdBlock Protector failed to find media ID with method 1! ");
+        try {
+            if (a.win.WP.player.list.length > midArray1.length) {
+                let thisMid = a.win.WP.player.list[midArray1.length].p.url;
+                if (thisMid) {
+                    thisMid = thisMid.split("=")[1];
+                }
+                //Extra safety check
+                if (thisMid) {
+                    midArray1.push(thisMid);
+                }
             }
-            if (thisMid) {
-                thisMid = thisMid.split("=")[1];
-            }
-            //Extra safety check
-            if (thisMid) {
-                midArray1.push(thisMid);
-            }
+        } catch (err) {
+            a.out.error("AdBlock Protector failed to find media ID with method 1! ");
         }
         //Mid grabbing method 2
         if (a.$(containerMatcher).length > 0) {
@@ -325,6 +328,7 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
             }
             //Get media ID
             let mid;
+            //Prefer media ID grabbing method 2
             let midArray = (midArray1.length > midArray2.length) ? midArray1 : midArray2;
             if (midArray.length > loadCounter) {
                 mid = midArray[loadCounter];
@@ -370,8 +374,13 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
                 }
             });
         } else {
-            //Patch player
             if (a.$(containerMatcher).length > 0) {
+                //Debug - Log element to be replace
+                if (a.config.debugMode) {
+                    a.out.log("Replacing player... ");
+                    a.out.log(a.$(containerMatcher)[0]);
+                }
+                //Replace player
                 a.$(containerMatcher).first().after(a.nativePlayer(url)).remove();
                 //Update variables and counter
                 url = null;

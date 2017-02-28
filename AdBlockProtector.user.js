@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.65
+// @version 6.66
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -900,19 +900,21 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
         if (isInBackground) {
             return;
         }
-        if (a.win.WP.player.list.length > midArray1.length) {
-            let thisMid;
-            try {
-                thisMid = a.win.WP.player.list[midArray1.length].p.url;
-            } catch (err) {
-                a.out.error("AdBlock Protector failed to find media ID with method 1! ");
+        if (a.config.debugMode) {
+            a.out.log(midArray1, midArray2);
+        }
+        try {
+            if (a.win.WP.player.list.length > midArray1.length) {
+                let thisMid = a.win.WP.player.list[midArray1.length].p.url;
+                if (thisMid) {
+                    thisMid = thisMid.split("=")[1];
+                }
+                if (thisMid) {
+                    midArray1.push(thisMid);
+                }
             }
-            if (thisMid) {
-                thisMid = thisMid.split("=")[1];
-            }
-            if (thisMid) {
-                midArray1.push(thisMid);
-            }
+        } catch (err) {
+            a.out.error("AdBlock Protector failed to find media ID with method 1! ");
         }
         if (a.$(containerMatcher).length > 0) {
             const elem = a.$(containerMatcher).first().find(".titlecont a.title");
@@ -969,6 +971,10 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
             });
         } else {
             if (a.$(containerMatcher).length > 0) {
+                if (a.config.debugMode) {
+                    a.out.log("Replacing player... ");
+                    a.out.log(a.$(containerMatcher)[0]);
+                }
                 a.$(containerMatcher).first().after(a.nativePlayer(url)).remove();
                 url = null;
                 replaceCounter++;
