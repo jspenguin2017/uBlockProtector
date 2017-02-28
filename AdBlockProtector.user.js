@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.66
+// @version 6.67
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -68,7 +68,7 @@ a.config.update = function (id, val) {
     const names = ["config_debugMode", "config_allowExperimental", "mods_Facebook_JumpToTop", "mods_Facebook_HidePeopleYouMayKnow", "mods_Blogspot_AutoNCR", "mods_NoAutoplay"];
     GM_setValue(names[id], val);
 }
-a.config.debugMode = true;
+a.config.debugMode = false;
 a.config.allowGeneric = true;
 a.config.allowExperimental = true;
 a.config.domExcluded = null;

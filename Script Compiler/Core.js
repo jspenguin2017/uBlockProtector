@@ -88,11 +88,11 @@ a.config.update = function (id, val) {
     GM_setValue(names[id], val);
 }
 /**
- * Whether debug strings should be logged.
- * The default value is true.
+ * Whether debug data should be logged.
+ * The default value is false.
  * @const {bool}
  */
-a.config.debugMode = true;
+a.config.debugMode = false;
 /**
  * Whether generic protectors should run.
  * This settings is currently not exposed to the user.
