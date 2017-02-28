@@ -30,3 +30,5 @@ filez.tv###adblockinfo
 @@||8muses.com/comix/picture^$inline-script
 !>> wp.pl and related domains
 autokult.pl###like-us-adblock-modal
+!>> allmusic.com
+||allmusic.com^$inline-script

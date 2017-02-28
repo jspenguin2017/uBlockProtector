@@ -1933,10 +1933,13 @@ if (a.domCmp(["sapib.ca"])) {
     //Lock Abd_Detector to an empty function
     a.readOnly("Abd_Detector", function () { });
 }
+/*
+//Fixed by List
 if (a.domCmp(["allmusic.com"])) {
     //Filter keywords from setTimeout()
     a.filter("setTimeout", /\_0x6176x12/);
 }
+*/
 if (a.domCmp(["wowhead.com"])) {
     //Remove elements on idle
     a.on("DOMContentLoaded", function () {
