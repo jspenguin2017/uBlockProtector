@@ -1,6 +1,6 @@
 [Adblock Plus 2.0]
 ! Title: AdBlock Protector List
-! Version: 6.25
+! Version: 6.26
 ! Expires: 1 days
 ! Redirect: https://github.com/X01X012013/AdBlockProtector/raw/master/AdBlockProtectorList.txt
 ! Homepage: https://x01x012013.github.io/AdBlockProtector/
@@ -23,6 +23,8 @@ filez.tv###adblockinfo
 @@||8muses.com/comix/picture^$inline-script
 autokult.pl###like-us-adblock-modal
 ||allmusic.com^$inline-script
+||debridnet.com/stat*^$subdocument
+||amazon-adsystem.com^$subdocument,redirect=noopframe,domain=debridnet.com
 ! =====Patched Anti-Adblock Killer List=====
 ! License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
 ||trymask.com/api/$third-party

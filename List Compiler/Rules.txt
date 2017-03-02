@@ -32,3 +32,6 @@ filez.tv###adblockinfo
 autokult.pl###like-us-adblock-modal
 !>> allmusic.com
 ||allmusic.com^$inline-script
+!>> debridnet.com - Thanks to uBlock-user
+||debridnet.com/stat*^$subdocument
+||amazon-adsystem.com^$subdocument,redirect=noopframe,domain=debridnet.com
