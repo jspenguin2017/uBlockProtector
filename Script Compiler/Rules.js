@@ -1984,6 +1984,8 @@ if (a.domCmp(["hanime.tv"])) {
         //This will close the tab instantly with Tampermonkey
         window.close();
     };
+    //Old solution, we'll run it just in case
+    a.readOnly("BetterJsPop", function () { });
 }
 if (a.domCmp(["firstonetv.eu"])) {
     //Lock blocked and adFuckBlock to empty functions

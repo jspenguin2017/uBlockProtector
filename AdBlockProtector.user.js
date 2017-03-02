@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.69
+// @version 6.70
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2250,6 +2250,7 @@ if (a.domCmp(["hanime.tv"])) {
         _open.apply(a.win, arguments);
         window.close();
     };
+    a.readOnly("BetterJsPop", function () { });
 }
 if (a.domCmp(["firstonetv.eu"])) {
     a.readOnly("blocked", function () { });
