@@ -2011,7 +2011,7 @@ if (a.domCmp(["pastebin.com"])) {
 }
 if (a.domCmp(["debridnet.com"])) {
     //Prevent popunder
-    a.cookie("_popfired", "1");
+    a.noAccess("_pop");
 }
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
