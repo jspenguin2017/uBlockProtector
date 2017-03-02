@@ -2009,5 +2009,9 @@ if (a.domCmp(["pastebin.com"])) {
     //Lock abdd to an empty string
     a.readOnly("abdd", "");
 }
+if (a.domCmp(["debridnet.com"])) {
+    //Prevent popunder
+    a.cookie("_popfired", "1");
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
