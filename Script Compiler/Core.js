@@ -1054,7 +1054,7 @@ a.generic = function () {
  */
 a.generic.FuckAdBlock = function (constructorName, instanceName) {
     const patchedFuckAdBlock = function () {
-        //Based on: FuckAdBlock by sitexw
+        //Based on: FuckAdBlock
         //License: https://github.com/sitexw/FuckAdBlock/blob/master/LICENSE
         //===Init===
         //On not detected callbacks

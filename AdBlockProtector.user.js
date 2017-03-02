@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.68
+// @version 6.69
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -12,6 +12,7 @@
 // @grant GM_getValue
 // @grant GM_setValue
 // @grant GM_openInTab
+// @grant window.close
 // @grant GM_registerMenuCommand
 // @connect *
 // @run-at document-start
@@ -645,7 +646,7 @@ a.generic = function () {
 };
 a.generic.FuckAdBlock = function (constructorName, instanceName) {
     const patchedFuckAdBlock = function () {
-        //Based on: FuckAdBlock by sitexw
+        //Based on: FuckAdBlock
         //License: https://github.com/sitexw/FuckAdBlock/blob/master/LICENSE
         this._callbacks = [];
         a.on("load", (function () {
@@ -2244,7 +2245,11 @@ if (a.domCmp(["zrabatowani.pl"])) {
     a.cookie("adblockAlert", "yes");
 }
 if (a.domCmp(["hanime.tv"])) {
-    a.readOnly("BetterJsPop", function () { });
+    const _open = a.win.open;
+    a.win.open = function () {
+        _open.apply(a.win, arguments);
+        window.close();
+    };
 }
 if (a.domCmp(["firstonetv.eu"])) {
     a.readOnly("blocked", function () { });

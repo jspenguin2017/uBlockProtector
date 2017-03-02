@@ -1,3 +1,5 @@
+//Dump window vars: JSON.stringify(Object.keys(window));
+
 "use strict";
 //Init, pass in excluded domains
 a.init(["360.cn", "apple.com", "ask.com", "baidu.com", "bing.com", "bufferapp.com", "chatango.com",
@@ -1974,8 +1976,14 @@ if (a.domCmp(["zrabatowani.pl"])) {
     a.cookie("adblockAlert", "yes");
 }
 if (a.domCmp(["hanime.tv"])) {
-    //NSFW! Lock BetterJsPop to an empty function
-    a.readOnly("BetterJsPop", function () { });
+    //NSFW!
+    //Issue: https://github.com/X01X012013/AdBlockProtector/issues/76
+    const _open = a.win.open;
+    a.win.open = function () {
+        _open.apply(a.win, arguments);
+        //This will close the tab instantly with Tampermonkey
+        window.close();
+    };
 }
 if (a.domCmp(["firstonetv.eu"])) {
     //Lock blocked and adFuckBlock to empty functions

@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.68
+// @version 6.69
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -12,6 +12,7 @@
 // @grant GM_getValue
 // @grant GM_setValue
 // @grant GM_openInTab
+// @grant window.close
 // @grant GM_registerMenuCommand
 // @connect *
 // @run-at document-start
