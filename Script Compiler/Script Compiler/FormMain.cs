@@ -207,6 +207,7 @@ namespace Script_Compiler
                     //Remove comments
                     List<string> dataOut = new List<string>();
                     bool commentBlockFlag = false;
+                    int counter = 0;
                     for (int i = 0; i < dataRead.Length; i++)
                     {
                         string line = dataRead[i].Trim();
@@ -214,6 +215,7 @@ namespace Script_Compiler
                         //This algorithm wouldn't work for any JS file, but for ours, it will work
                         if (line.StartsWith("//") && !line.StartsWith("//Based on") && !line.StartsWith("//License") || line == string.Empty)
                         {
+                            counter++;
                             continue;
                         }
                         if (line.StartsWith("/*"))
@@ -222,6 +224,7 @@ namespace Script_Compiler
                         }
                         if (line.EndsWith("*/"))
                         {
+                            counter++;
                             commentBlockFlag = false;
                             continue;
                         }
@@ -230,7 +233,12 @@ namespace Script_Compiler
                         {
                             dataOut.Add(dataRead[i]);
                         }
+                        else
+                        {
+                            counter++;
+                        }
                     }
+                    putLog(counter.ToString() + " comments removed. ");
                     //Return result
                     data = dataOut.ToArray();
                     return true;

@@ -32,6 +32,7 @@ if (a.domCmp(["usapoliticstoday.com"])) {
 }
 if (a.domCmp(["adf.ly", "ay.gy", "j.gs", "q.gs"])) {
     //adf.ly and related domains
+    //Issue: https://github.com/X01X012013/AdBlockProtector/issues/71
     /*
     //Old solution: 
     //Disable open() before page starts to load and set abgo to an empty function when the page loads
@@ -792,11 +793,10 @@ if (a.config.allowExperimental && a.domCmp(["neodrive.co"])) {
     });
 }
 if (a.domCmp(["hentaihaven.org"])) {
-    //NSFW! Set cookies
-    a.always(function () {
-        a.cookie("hh_ppndr1", "1");
-        a.cookie("hh_ppndr2", "1");
-    });
+    //NSFW!
+    //Thanks to uBlock-user
+    //Issue: https://github.com/X01X012013/AdBlockProtector/issues/76
+    a.noAccess("desktop_variants");
 }
 if (a.domCmp(["primeshare.tv"])) {
     //Add bait element

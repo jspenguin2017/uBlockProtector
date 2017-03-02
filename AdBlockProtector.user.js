@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.67
+// @version 6.68
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -1294,10 +1294,7 @@ if (a.config.allowExperimental && a.domCmp(["neodrive.co"])) {
     });
 }
 if (a.domCmp(["hentaihaven.org"])) {
-    a.always(function () {
-        a.cookie("hh_ppndr1", "1");
-        a.cookie("hh_ppndr2", "1");
-    });
+    a.noAccess("desktop_variants");
 }
 if (a.domCmp(["primeshare.tv"])) {
     a.bait("div", "#adblock");
