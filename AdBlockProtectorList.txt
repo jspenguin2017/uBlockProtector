@@ -1,10 +1,11 @@
 [Adblock Plus 2.0]
 ! Title: AdBlock Protector List
-! Version: 6.26
+! Version: 6.27
 ! Expires: 1 days
 ! Redirect: https://github.com/X01X012013/AdBlockProtector/raw/master/AdBlockProtectorList.txt
 ! Homepage: https://x01x012013.github.io/AdBlockProtector/
 ||x01x012013.github.io/AdBlockProtector/listTest.js|
+###like-us-adblock-modal
 @@||www.dogefaucet.com/static/js/ads.js|
 @@dot.wp.pl
 tvn.pl#div(id*=_videoDriverContent)
@@ -12,7 +13,6 @@ tvn7.pl##div.vjs-abDetected
 tvnstyle.pl##div.vjs-abDetected
 tvnturbo.pl##div.vjs-abDetected
 @@||pagead2.googlesyndication.com^$domain=pudelek.tv
-komorkomania.pl###like-us-adblock-modal
 filez.tv###adblockinfo
 @@||urlex.org^$generichide
 @@||video.gazeta.pl/cdn/ads/ad/banner/_adsense_/_adserver/_adview_.ad.json$xmlhttprequest,domain=video.gazeta.pl
@@ -21,7 +21,6 @@ filez.tv###adblockinfo
 ||concernrain.com$script,domain=thewindowsclub.com
 ||8muses.com^$inline-script
 @@||8muses.com/comix/picture^$inline-script
-autokult.pl###like-us-adblock-modal
 ||allmusic.com^$inline-script
 ||debridnet.com/stat*^$subdocument
 ||amazon-adsystem.com^$subdocument,redirect=noopframe,domain=debridnet.com
