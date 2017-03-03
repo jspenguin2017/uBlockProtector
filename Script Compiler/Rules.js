@@ -255,7 +255,8 @@ a.win.encodeURIComponent(api);
 }
 if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadzetomania.pl", "hotmoney.pl",
 "kafeteria.pl", "kafeteria.tv", "komediowo.pl", "komorkomania.pl", "money.pl", "pudelek.tv", "sfora.pl",
-"snobka.pl", "wawalove.pl", "wp.pl", "wp.tv", "wrzuta.pl", "pudelek.pl"])) {
+"snobka.pl", "wawalove.pl", "wp.pl", "wp.tv", "wrzuta.pl", "pudelek.pl", "fotoblogia.pl"]) &&
+!a.domCmp(["i.wp.pl"], true)) {
     //wp.pl and related domains
     //Set a cookie to prevent block screen
     a.cookie("ABCABC", "true");
@@ -391,11 +392,8 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
             }
         }
     };
-    //Init
-    a.on("load", function () {
-        //This function is quite light weight, we should be fine
-        a.win.setInterval(main, 1000);
-    });
+    //This function is quite light weight, we should be fine
+    a.win.setInterval(main, 1000);
     //Update is in background flag
     a.on("focus", function () {
         isInBackground = false;

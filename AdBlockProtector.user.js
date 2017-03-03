@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.72
+// @version 6.73
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -885,7 +885,8 @@ a.win.encodeURIComponent(api);
 }
 if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadzetomania.pl", "hotmoney.pl",
 "kafeteria.pl", "kafeteria.tv", "komediowo.pl", "komorkomania.pl", "money.pl", "pudelek.tv", "sfora.pl",
-"snobka.pl", "wawalove.pl", "wp.pl", "wp.tv", "wrzuta.pl", "pudelek.pl"])) {
+"snobka.pl", "wawalove.pl", "wp.pl", "wp.tv", "wrzuta.pl", "pudelek.pl", "fotoblogia.pl"]) &&
+!a.domCmp(["i.wp.pl"], true)) {
     a.cookie("ABCABC", "true");
     let mid; //Media ID of next video
     let midArray1 = []; //Media IDs method 1
@@ -982,9 +983,7 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
             }
         }
     };
-    a.on("load", function () {
-        a.win.setInterval(main, 1000);
-    });
+    a.win.setInterval(main, 1000);
     a.on("focus", function () {
         isInBackground = false;
     });
