@@ -2013,7 +2013,7 @@ if (a.domCmp(["debridnet.com"])) {
 }
 if (a.domCmp(["xnxx.com"])) {
     //Prevent popup
-    a.cookie("wpn-popunder", "1");
+    a.cookie("wpn-popupunder", "1");
 }
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
