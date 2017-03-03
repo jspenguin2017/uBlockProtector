@@ -2011,5 +2011,9 @@ if (a.domCmp(["debridnet.com"])) {
     //Prevent popunder
     a.noAccess("_pop");
 }
+if (a.domCmp(["xnxx.com"])) {
+    //Prevent popup
+    a.cookie("wpn-popunder", "1");
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();

@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.73
+// @version 6.74
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2271,5 +2271,8 @@ if (a.domCmp(["pastebin.com"])) {
 }
 if (a.domCmp(["debridnet.com"])) {
     a.noAccess("_pop");
+}
+if (a.domCmp(["xnxx.com"])) {
+    a.cookie("wpn-popunder", "1");
 }
 a.generic();
