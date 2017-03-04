@@ -2019,6 +2019,7 @@ if (a.domCmp(["debridnet.com"])) {
 if (a.domCmp(["xnxx.com"])) {
     //Prevent popup
     a.cookie("wpn-popupunder", "1");
+    a.readOnly("openpop", function () { });
 }
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();

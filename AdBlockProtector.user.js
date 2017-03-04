@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.77
+// @version 6.78
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2278,5 +2278,6 @@ if (a.domCmp(["debridnet.com"])) {
 }
 if (a.domCmp(["xnxx.com"])) {
     a.cookie("wpn-popupunder", "1");
+    a.readOnly("openpop", function () { });
 }
 a.generic();
