@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.75
+// @version 6.76
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -713,7 +713,7 @@ if (a.domCmp(["jagranjunction.com"])) {
 if (a.domCmp(["usapoliticstoday.com"])) {
     a.filter("eval");
 }
-if (a.domCmp(["adf.ly", "ay.gy", "j.gs", "q.gs"])) {
+if (a.domCmp(["adf.ly", "ay.gy", "j.gs", "q.gs", "gamecopyworld.click"])) {
     //Based on: AdsBypasser
     //License: https://github.com/adsbypasser/adsbypasser/blob/master/LICENSE
     a.doc.write = function () { };
