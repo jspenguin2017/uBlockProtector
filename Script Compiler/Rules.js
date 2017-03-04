@@ -54,34 +54,39 @@ if (a.domCmp(["adf.ly", "ay.gy", "j.gs", "q.gs", "gamecopyworld.click"])) {
     //Remove document.write() and btoa() on start
     a.doc.write = function () { };
     a.win.btoa = function () { };
-    //Parse URL and redirect on idle
+    //Check HTML and parse URL on idle
     a.on("DOMContentLoaded", function () {
-        //Remove cookieCheck()
-        a.win.cookieCheck = function () { };
-        //Find encoded URL
-        let encodedURL = a.doc.head.innerHTML.match(/var eu = '(?!false)(.*)'/)[1];
-        const index = encodedURL.indexOf('!HiTommy');
-        if (index >= 0) {
-            encodedURL = encodedURL.substring(0, index);
-        }
-        //Decode URL
-        let var1 = "", var2 = "";
-        for (let i = 0; i < encodedURL.length; ++i) {
-            if (i % 2 === 0) {
-                var1 = var1 + encodedURL.charAt(i);
-            } else {
-                var2 = encodedURL.charAt(i) + var2;
+        //Check if the page is an adf.ly page
+        if (a.$("html").attr("id") === "main_html" && a.$("body").attr("id") === "home") {
+            //Remove cookieCheck()
+            a.win.cookieCheck = function () { };
+            //Find encoded URL
+            let encodedURL = a.doc.head.innerHTML.match(/var eu = '(?!false)(.*)'/)[1];
+            const index = encodedURL.indexOf('!HiTommy');
+            if (index >= 0) {
+                encodedURL = encodedURL.substring(0, index);
             }
+            //Decode URL
+            let var1 = "", var2 = "";
+            for (let i = 0; i < encodedURL.length; ++i) {
+                if (i % 2 === 0) {
+                    var1 = var1 + encodedURL.charAt(i);
+                } else {
+                    var2 = encodedURL.charAt(i) + var2;
+                }
+            }
+            let decodedURL = a.win.atob(var1 + var2);
+            decodedURL = decodedURL.substr(2);
+            if (a.win.location.hash) {
+                decodedURL += a.win.location.hash;
+            }
+            //Redirect
+            a.win.onbeforeunload = null;
+            //a.win.onunload = null;
+            a.win.location.href = decodedURL;
+        } else {
+            a.out.info("This page isn't an adf.ly page");
         }
-        let decodedURL = a.win.atob(var1 + var2);
-        decodedURL = decodedURL.substr(2);
-        if (a.win.location.hash) {
-            decodedURL += a.win.location.hash;
-        }
-        //Redirect
-        a.win.onbeforeunload = null;
-        //a.win.onunload = null;
-        a.win.location.href = decodedURL;
     });
 }
 if (a.domCmp(["jansatta.com", "financialexpress.com", "indianexpress.com"])) {
