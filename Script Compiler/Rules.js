@@ -2021,5 +2021,10 @@ if (a.domCmp(["xnxx.com"])) {
     a.cookie("wpn-popupunder", "1");
     a.readOnly("openpop", function () { });
 }
+if (a.domCmp(["sidereel.com"])) {
+    //Protect functions then activate filter on setTimeout()
+    a.protectFunc();
+    a.filter("setTimeout", /function \_0x[a-z0-9]{4,8}\(\)\{try\{var/);
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
