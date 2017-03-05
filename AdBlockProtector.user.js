@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.80
+// @version 6.81
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -82,7 +82,6 @@ a.on = function (event, func) {
 };
 a.$ = null;
 a.c = {};
-a.c.errMsg = "Uncaught AdBlock Error: AdBlocker detectors are not allowed on this device! ";
 a.c.settingsPage = "https://x01x012013.github.io/AdBlockProtector/settings.html";
 a.c.homePage = "https://x01x012013.github.io/AdBlockProtector/";
 a.c.supportPage = "https://github.com/X01X012013/AdBlockProtector/issues";
@@ -164,8 +163,13 @@ a.mods.Facebook_JumpToTop = true;
 a.mods.Facebook_HidePeopleYouMayKnow = true;
 a.mods.Blogspot_AutoNCR = true;
 a.mods.NoAutoplay = true;
-a.err = function () {
-    a.out.error(a.c.errMsg);
+a.err = function (name) {
+    if (name) {
+        name = name + " ";
+    } else {
+        name = "";
+    }
+    a.out.error(`Uncaught AdBlock Error: ${name}AdBlocker detectors are not allowed on this device! `);
 };
 a.domCmp = function (domList, noErr) {
     for (let i = 0; i < domList.length; i++) {
@@ -306,26 +310,27 @@ a.readOnly = function (name, val) {
     return true;
 };
 a.noAccess = function (name) {
+    const errMsg = "AdBlock Error: This property may not be accessed! ";
     try {
         if (name.includes(".")) {
             let nameArray = name.split(".");
             a.win.Object.defineProperty(a.win[nameArray[0]], nameArray[1], {
                 configurable: false,
                 set: function () {
-                    throw a.c.errMsg;
+                    throw errMsg;
                 },
                 get: function () {
-                    throw a.c.errMsg;
+                    throw errMsg;
                 }
             });
         } else {
             a.win.Object.defineProperty(a.win, name, {
                 configurable: false,
                 set: function () {
-                    throw a.c.errMsg;
+                    throw errMsg;
                 },
                 get: function () {
-                    throw a.c.errMsg;
+                    throw errMsg;
                 }
             });
         }
@@ -477,6 +482,7 @@ a.generic = function () {
                 playwireZeus = val;
             },
             get: function () {
+                a.config.debugMode && a.err("Playwire");
                 try {
                     playwireZeus.AdBlockTester = {
                         check: function (a) { a(); }
@@ -487,6 +493,7 @@ a.generic = function () {
         });
         a.on("DOMContentLoaded", function () {
             if (a.win.XenForo && typeof a.win.XenForo.rellect === "object") {
+                a.config.debugMode && a.err("XenForo");
                 a.win.XenForo.rellect = {
                     AdBlockDetector: {
                         start: function () { }
@@ -494,13 +501,16 @@ a.generic = function () {
                 };
             }
             if (typeof a.win.closeAdbuddy === "function") {
+                a.config.debugMode && a.err("Adbuddy");
                 a.win.closeAdbuddy();
             }
             if (a.$("div.adb_overlay > div.adb_modal_img").length > 0) {
+                a.config.debugMode && a.err("AdBlock Alerter");
                 a.$("div.adb_overlay").remove();
                 a.css("html,body {height:auto; overflow: auto;}");
             }
             if (a.$("#blockdiv").html() === "disable ad blocking or use another browser without any adblocker when you visit") {
+                a.config.debugMode && a.out.err("Uncaught AdBlock Error: Generic block screens are not allowed on this device! ");
                 a.$("#blockdiv").remove();
             }
             const styles = document.querySelectorAll("style");
@@ -514,6 +524,7 @@ a.generic = function () {
                     if (pattern.test(cssText)) {
                         const id = pattern.exec(cssText)[1];
                         if (a.$("script:contains(w.addEventListener('load'," + id + ",false))")) {
+                            a.config.debugMode && a.err("Antiblock.org v2");
                             data.abo2 = id;
                             break;
                         }
@@ -531,15 +542,19 @@ a.generic = function () {
                             method.insert &&
                             method.nextFunction) {
                             if (method.toggle) {
+                                a.config.debugMode && a.err("BetterStopAdblock");
                                 data.bsa = prop;
                             } else {
+                                a.config.debugMode && a.err("Antiblock.org v3");
                                 data.abo3 = prop;
                             }
                             a.win[prop] = null;
                         }
                         if (method.bab) {
+                            a.config.debugMode && a.err("BlockAdBlock");
                             a.win[prop] = null;
                         } else if (a.win.Object.keys(method).length === 3 && a.win.Object.keys(method).join().length === 32) {
+                            a.config.debugMode && a.err("BlockAdBlock");
                             a.win[prop] = null;
                         }
                     }
@@ -555,6 +570,7 @@ a.generic = function () {
                 insertedNode.firstChild.id &&
                 insertedNode.firstChild.id === insertedNode.id &&
                 insertedNode.innerHTML.includes("no-adblock.com")) {
+                a.config.debugMode && a.err("No-Adblock");
                 insertedNode.remove();
             }
             if (insertedNode.nodeName === "DIV" &&
@@ -565,6 +581,7 @@ a.generic = function () {
                 insertedNode.parentNode.id &&
                 insertedNode.parentNode.id === insertedNode.id + "2" &&
                 insertedNode.innerHTML.includes("stopadblock.org")) {
+                a.config.debugMode && a.err("StopAdblock");
                 insertedNode.remove();
             }
             const reIframeId = /^(zd|wd)$/;
@@ -579,6 +596,7 @@ a.generic = function () {
                 reIframeId.test(insertedNode.id) &&
                 insertedNode.nodeName === "IFRAME" &&
                 reIframeSrc.test(insertedNode.src)) {
+                a.config.debugMode && a.err("AntiAdblock");
                 insertedNode.remove();
             }
             const reId = /^[a-z]{8}$/;
@@ -599,11 +617,13 @@ a.generic = function () {
                     reBg.test(insertedNode.nextSibling.className) &&
                     insertedNode.nextSibling.style &&
                     insertedNode.nextSibling.style.display !== "none") {
+                    a.config.debugMode && a.err("Adunblock Premium");
                     insertedNode.nextSibling.remove();
                     insertedNode.remove();
                 } else if (insertedNode.nextSibling.id &&
                            reId.test(insertedNode.nextSibling.id) &&
                            insertedNode.innerHTML.includes("Il semblerait que vous utilisiez un bloqueur de publicité !")) {
+                    a.config.debugMode && a.err("Adunblock Free");
                     insertedNode.remove();
                 }
             }
@@ -622,6 +642,7 @@ a.generic = function () {
                 reMsgId.test(insertedNode.id) &&
                 reTag1.test(insertedNode.nodeName) &&
                 reTag2.test(insertedNode.firstChild.nodeName)) {
+                a.config.debugMode && a.err("Antiblock.org");
                 const audio = insertedNode.querySelector("audio[loop]");
                 if (audio) {
                     audio.pause();
