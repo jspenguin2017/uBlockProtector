@@ -2027,5 +2027,10 @@ if (a.domCmp(["sidereel.com"])) {
     a.protectFunc();
     a.filter("setTimeout", /function \_0x[a-z0-9]{4,8}\(/);
 }
+if (a.domCmp(["burning-feed.com"])) {
+    //Thanks to uBlock-user
+    a.readOnly("testab", "1");
+    a.readOnly("ads_enable", "true");
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
