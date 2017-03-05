@@ -9,5 +9,5 @@ Unless otherwise specified, everything else (starting version 4.0) falls under G
 ### Possible optimizations
 
 1. `a.out` master switch
-2. `a.filter()` takes in RegExp but it's not really needed
+2. `a.filter()` takes in RegExp but it's ~~not really needed~~ needed once
 3. Remove `a()` (and `a.VERSION`?)
