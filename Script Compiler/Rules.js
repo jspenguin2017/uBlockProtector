@@ -2022,7 +2022,8 @@ if (a.domCmp(["xnxx.com"])) {
     a.readOnly("openpop", function () { });
 }
 if (a.domCmp(["sidereel.com"])) {
-    //Protect functions then activate filter on setTimeout()
+    //Issue: https://github.com/X01X012013/AdBlockProtector/issues/83
+    //This also works for allmusic.com
     a.protectFunc();
     a.filter("setTimeout", /function \_0x[a-z0-9]{4,8}\(/);
 }
