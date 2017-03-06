@@ -307,7 +307,7 @@ a.mods.NoAutoplay = true;
  * @param {string} [name=""] - The name of the AdBlocker detector.
  */
 a.err = function (name) {
-    //Check arguments
+    //Check argument
     if (name) {
         name = name + " ";
     } else {
