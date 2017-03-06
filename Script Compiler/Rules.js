@@ -85,7 +85,7 @@ if (a.domCmp(["adf.ly", "ay.gy", "j.gs", "q.gs", "gamecopyworld.click"])) {
             //a.win.onunload = null;
             a.win.location.href = decodedURL;
         } else {
-            a.out.info("This page isn't an adf.ly page");
+            a.config.debugMode && a.out.info("This page isn't an adf.ly page");
         }
     });
 }
@@ -247,11 +247,11 @@ a.win.encodeURIComponent(api);
                         a.$("video").css("max-height", "540px");
                     } else if (vidSources[0].src) {
                         //DRM protected
-                        a.out.error("AdBlock Protector will not replace this video player " +
+                        a.config.debugMode && a.out.error("AdBlock Protector will not replace this video player " +
 "because it is DRM prtected. ");
                     }
                 } catch (err) {
-                    a.out.error("AdBlock Protector failed to find media URL! ");
+                    a.config.debugMode && a.out.error("AdBlock Protector failed to find media URL! ");
                     return;
                 }
             }
@@ -295,10 +295,8 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
         if (isInBackground) {
             return;
         }
-        //Debug - Log media ID arrays
-        if (a.config.debugMode) {
-            a.out.log(midArray1, midArray2);
-        }
+        //Log media ID arrays
+        a.config.debugMode && a.out.log(midArray1, midArray2);
         //Mid grabbing method 1
         try {
             if (a.win.WP.player.list.length > midArray1.length) {
@@ -312,7 +310,7 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
                 }
             }
         } catch (err) {
-            a.out.error("AdBlock Protector failed to find media ID with method 1! ");
+            a.config.debugMode && a.out.error("AdBlock Protector failed to find media ID with method 1! ");
         }
         //Mid grabbing method 2
         if (a.$(containerMatcher).length > 0) {
@@ -369,14 +367,14 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
                         //Reset error counter
                         networkErrorCounter = 0;
                     } catch (err) {
-                        a.out.error("AdBlock Protector failed to find media URL! ");
+                        a.config.debugMode && a.out.error("AdBlock Protector failed to find media URL! ");
                         networkErrorCounter += 1;
                     }
                     //Update flag
                     networkBusy = false;
                 },
                 onerror: function () {
-                    a.out.error("AdBlock Protector failed to load media JSON! ");
+                    a.config.debugMode && a.out.error("AdBlock Protector failed to load media JSON! ");
                     networkErrorCounter += 0.5;
                     //Update flag
                     networkBusy = false;
@@ -384,7 +382,7 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
             });
         } else {
             if (a.$(containerMatcher).length > 0) {
-                //Debug - Log element to be replace
+                //Log element to be replace
                 if (a.config.debugMode) {
                     a.out.log("Replacing player... ");
                     a.out.log(a.$(containerMatcher)[0]);
@@ -1663,7 +1661,7 @@ if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "pl
             const parsedData = JSON.parse(data);
             streams = parsedData.streams
         } catch (err) {
-            a.out.err("AdBlock Protector failed to find video URL! ");
+            a.config.debugMode && a.out.err("AdBlock Protector failed to find video URL! ");
             //Activate hander again
             a.win.setTimeout(handler, 1000);
             return;
@@ -1680,7 +1678,7 @@ if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "pl
             sources.push(streams.medium);
             types.push(streams.medium.startsWith("rtmp") ? "rtmp/mp4" : "application/f4m+xml");
         } else {
-            a.out.err("AdBlock Protector failed to find video URL! ");
+            a.config.debugMode && a.out.err("AdBlock Protector failed to find video URL! ");
             return;
         }
         //Replace player
@@ -2032,6 +2030,10 @@ if (a.domCmp(["burning-feed.com"])) {
     //a.readOnly("testab", "1");
     //a.readOnly("ads_enable", "true");
     a.readOnly("ads_enable", function () { });
+}
+if (a.domCmp(["comicbook.com"])) {
+    //Issue: https://github.com/X01X012013/AdBlockProtector/issues/85
+    a.noAccess("stop");
 }
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();

@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.84
+// @version 6.85
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -33,7 +33,7 @@ a.init = function (excludedDomCmp, excludedDomInc) {
     a.$ = jQueryFactory(a.win, true);
     a.config();
     a.config.domExcluded = a.domCmp(excludedDomCmp, true) || a.domInc(excludedDomInc, true);
-    if (a.config.domExcluded) {
+    if (a.config.debugMode && a.config.domExcluded) {
         a.out.warn("This domain is in excluded list. ");
     }
     a.mods();
@@ -55,7 +55,7 @@ a.init = function (excludedDomCmp, excludedDomInc) {
 a.mods.NoAutoplay], a.config.update);
         });
     }
-    a.out.warn("Domain: " + a.dom);
+    a.config.debugMode && a.out.warn("Domain: " + a.dom);
 };
 a.config = function () {
     a.config.debugMode = GM_getValue("config_debugMode", a.config.debugMode);
@@ -174,7 +174,7 @@ a.err = function (name) {
 a.domCmp = function (domList, noErr) {
     for (let i = 0; i < domList.length; i++) {
         if (a.dom === domList[i] || a.dom.endsWith("." + domList[i])) {
-            if (!noErr) {
+            if (a.config.debugMode && !noErr) {
                 a.err();
             }
             return true;
@@ -185,7 +185,7 @@ a.domCmp = function (domList, noErr) {
 a.domInc = function (domList, noErr) {
     for (let i = 0; i < domList.length; i++) {
         if (a.dom.startsWith(domList[i] + ".") || a.dom.includes("." + domList[i] + ".")) {
-            if (!noErr) {
+            if (a.config.debugMode && !noErr) {
                 a.err();
             }
             return true;
@@ -208,9 +208,9 @@ a.protectFunc = function () {
         a.win.Function.prototype.toString = newFunc;
         a.protectFunc.pointers.push(newFunc);
         a.protectFunc.masks.push(original.toString());
-        a.out.warn("Functions protected. ");
+        a.config.debugMode && a.out.warn("Functions protected. ");
     } catch (err) {
-        a.out.error("AdBlock Protector failed to protect functions! ");
+        a.config.debugMode && a.out.error("AdBlock Protector failed to protect functions! ");
         return false;
     }
     return true;
@@ -231,13 +231,11 @@ a.filter = function (func, filter) {
         }
         for (let i = 0; i < arguments.length; i++) {
             if (filter.test(arguments[i].toString())) {
-                a.err();
+                a.config.debugMode && a.err();
                 return;
             }
         }
-        if (a.config.debugMode) {
-            a.out.info("Tests passed. ");
-        }
+        a.config.debugMode && a.out.info("Tests passed. ");
         if (typeof fNames === "object") {
             return original.apply(a.win[fNames[0]], arguments);
         } else {
@@ -257,9 +255,9 @@ a.filter = function (func, filter) {
             a.protectFunc.pointers.push(newFunc);
             a.protectFunc.masks.push(original.toString());
         }
-        a.out.warn("Filter activated on " + func);
+        a.config.debugMode && a.out.warn("Filter activated on " + func);
     } catch (err) {
-        a.out.error("AdBlock Protector failed to activate filter on " + func + "! ");
+        a.config.debugMode && a.out.error("AdBlock Protector failed to activate filter on " + func + "! ");
         return false;
     }
     return true;
@@ -304,7 +302,7 @@ a.readOnly = function (name, val) {
             });
         }
     } catch (err) {
-        a.out.error("AdBlock Protector failed to define read-only property " + name + "! ");
+        a.config.debugMode && a.out.error("AdBlock Protector failed to define read-only property " + name + "! ");
         return false;
     }
     return true;
@@ -335,7 +333,7 @@ a.noAccess = function (name) {
             });
         }
     } catch (err) {
-        a.out.error("AdBlock Protector failed to define non-accessible property " + name + "! ");
+        a.config.debugMode && a.out.error("AdBlock Protector failed to define non-accessible property " + name + "! ");
         return false;
     }
     return true;
@@ -661,7 +659,7 @@ a.generic = function () {
             }
         };
         a.observe("insert", onInsertHandler);
-    } else {
+    } else if (a.config.debugMode) {
         a.out.warn("Generic protectors are disabled on this domain. ");
     }
 };
@@ -763,7 +761,7 @@ if (a.domCmp(["adf.ly", "ay.gy", "j.gs", "q.gs", "gamecopyworld.click"])) {
             a.win.onbeforeunload = null;
             a.win.location.href = decodedURL;
         } else {
-            a.out.info("This page isn't an adf.ly page");
+            a.config.debugMode && a.out.info("This page isn't an adf.ly page");
         }
     });
 }
@@ -897,11 +895,11 @@ a.win.encodeURIComponent(api);
                         elem.html("").append(a.nativePlayer(vidSources[1].url));
                         a.$("video").css("max-height", "540px");
                     } else if (vidSources[0].src) {
-                        a.out.error("AdBlock Protector will not replace this video player " +
+                        a.config.debugMode && a.out.error("AdBlock Protector will not replace this video player " +
 "because it is DRM prtected. ");
                     }
                 } catch (err) {
-                    a.out.error("AdBlock Protector failed to find media URL! ");
+                    a.config.debugMode && a.out.error("AdBlock Protector failed to find media URL! ");
                     return;
                 }
             }
@@ -927,9 +925,7 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
         if (isInBackground) {
             return;
         }
-        if (a.config.debugMode) {
-            a.out.log(midArray1, midArray2);
-        }
+        a.config.debugMode && a.out.log(midArray1, midArray2);
         try {
             if (a.win.WP.player.list.length > midArray1.length) {
                 let thisMid = a.win.WP.player.list[midArray1.length].p.url;
@@ -941,7 +937,7 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
                 }
             }
         } catch (err) {
-            a.out.error("AdBlock Protector failed to find media ID with method 1! ");
+            a.config.debugMode && a.out.error("AdBlock Protector failed to find media ID with method 1! ");
         }
         if (a.$(containerMatcher).length > 0) {
             const elem = a.$(containerMatcher).first().find(".titlecont a.title");
@@ -985,13 +981,13 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
                         loadCounter++;
                         networkErrorCounter = 0;
                     } catch (err) {
-                        a.out.error("AdBlock Protector failed to find media URL! ");
+                        a.config.debugMode && a.out.error("AdBlock Protector failed to find media URL! ");
                         networkErrorCounter += 1;
                     }
                     networkBusy = false;
                 },
                 onerror: function () {
-                    a.out.error("AdBlock Protector failed to load media JSON! ");
+                    a.config.debugMode && a.out.error("AdBlock Protector failed to load media JSON! ");
                     networkErrorCounter += 0.5;
                     networkBusy = false;
                 }
@@ -2029,7 +2025,7 @@ if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "pl
             const parsedData = JSON.parse(data);
             streams = parsedData.streams
         } catch (err) {
-            a.out.err("AdBlock Protector failed to find video URL! ");
+            a.config.debugMode && a.out.err("AdBlock Protector failed to find video URL! ");
             a.win.setTimeout(handler, 1000);
             return;
         }
@@ -2044,7 +2040,7 @@ if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "pl
             sources.push(streams.medium);
             types.push(streams.medium.startsWith("rtmp") ? "rtmp/mp4" : "application/f4m+xml");
         } else {
-            a.out.err("AdBlock Protector failed to find video URL! ");
+            a.config.debugMode && a.out.err("AdBlock Protector failed to find video URL! ");
             return;
         }
         a.videoJS.init();
@@ -2307,5 +2303,8 @@ if (a.domCmp(["sidereel.com"])) {
 }
 if (a.domCmp(["burning-feed.com"])) {
     a.readOnly("ads_enable", function () { });
+}
+if (a.domCmp(["comicbook.com"])) {
+    a.noAccess("stop");
 }
 a.generic();

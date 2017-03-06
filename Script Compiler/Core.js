@@ -31,8 +31,8 @@ a.init = function (excludedDomCmp, excludedDomInc) {
     //Load configurations
     a.config();
     a.config.domExcluded = a.domCmp(excludedDomCmp, true) || a.domInc(excludedDomInc, true);
-    //Log excluded or protect functions
-    if (a.config.domExcluded) {
+    //Excluded log
+    if (a.config.debugMode && a.config.domExcluded) {
         a.out.warn("This domain is in excluded list. ");
     }
     //Apply mods
@@ -59,7 +59,7 @@ a.mods.NoAutoplay], a.config.update);
         });
     }
     //Log domain
-    a.out.warn("Domain: " + a.dom);
+    a.config.debugMode && a.out.warn("Domain: " + a.dom);
 };
 
 //=====Configurations=====
@@ -329,7 +329,7 @@ a.domCmp = function (domList, noErr) {
     for (let i = 0; i < domList.length; i++) {
         //Check if current domain is exactly listed or ends with it
         if (a.dom === domList[i] || a.dom.endsWith("." + domList[i])) {
-            if (!noErr) {
+            if (a.config.debugMode && !noErr) {
                 //Show error message when matched
                 a.err();
             }
@@ -351,7 +351,7 @@ a.domInc = function (domList, noErr) {
     for (let i = 0; i < domList.length; i++) {
         //Check if current domain is exactly listed or ends with it
         if (a.dom.startsWith(domList[i] + ".") || a.dom.includes("." + domList[i] + ".")) {
-            if (!noErr) {
+            if (a.config.debugMode && !noErr) {
                 //Show error message when matched
                 a.err();
             }
@@ -389,11 +389,11 @@ a.protectFunc = function () {
         //Protect this function as well
         a.protectFunc.pointers.push(newFunc);
         a.protectFunc.masks.push(original.toString());
-        //Log when activated
-        a.out.warn("Functions protected. ");
+        //Activate log
+        a.config.debugMode && a.out.warn("Functions protected. ");
     } catch (err) {
         //Failed to protect
-        a.out.error("AdBlock Protector failed to protect functions! ");
+        a.config.debugMode && a.out.error("AdBlock Protector failed to protect functions! ");
         return false;
     }
     return true;
@@ -430,7 +430,7 @@ a.filter = function (func, filter) {
     let fNames;
     //The function with filters
     const newFunc = function () {
-        //Debug - Log when called
+        //Call log
         if (a.config.debugMode) {
             a.out.warn(func + " is called with these arguments: ");
             for (let i = 0; i < arguments.length; i++) {
@@ -441,14 +441,12 @@ a.filter = function (func, filter) {
         for (let i = 0; i < arguments.length; i++) {
             if (filter.test(arguments[i].toString())) {
                 //Not allowed
-                a.err();
+                a.config.debugMode && a.err();
                 return;
             }
         }
-        //Debug - Log when passed
-        if (a.config.debugMode) {
-            a.out.info("Tests passed. ");
-        }
+        //Tests passed log
+        a.config.debugMode && a.out.info("Tests passed. ");
         //Allowed
         if (typeof fNames === "object") {
             //Two layers
@@ -475,11 +473,11 @@ a.filter = function (func, filter) {
             a.protectFunc.pointers.push(newFunc);
             a.protectFunc.masks.push(original.toString());
         }
-        //Log when activated
-        a.out.warn("Filter activated on " + func);
+        //Activate log
+        a.config.debugMode && a.out.warn("Filter activated on " + func);
     } catch (err) {
         //Failed to activate
-        a.out.error("AdBlock Protector failed to activate filter on " + func + "! ");
+        a.config.debugMode && a.out.error("AdBlock Protector failed to activate filter on " + func + "! ");
         return false;
     }
     return true;
@@ -551,7 +549,7 @@ a.readOnly = function (name, val) {
         }
     } catch (err) {
         //Failed to define property
-        a.out.error("AdBlock Protector failed to define read-only property " + name + "! ");
+        a.config.debugMode && a.out.error("AdBlock Protector failed to define read-only property " + name + "! ");
         return false;
     }
     return true;
@@ -591,7 +589,7 @@ a.noAccess = function (name) {
         }
     } catch (err) {
         //Failed to define property
-        a.out.error("AdBlock Protector failed to define non-accessible property " + name + "! ");
+        a.config.debugMode && a.out.error("AdBlock Protector failed to define non-accessible property " + name + "! ");
         return false;
     }
     return true;
@@ -854,7 +852,7 @@ a.generic = function () {
                 playwireZeus = val;
             },
             get: function () {
-                //Debug log
+                //Log
                 a.config.debugMode && a.err("Playwire");
                 //Patch and return
                 try {
@@ -869,7 +867,7 @@ a.generic = function () {
         a.on("DOMContentLoaded", function () {
             //AdBlock Detector (XenForo Rellect)
             if (a.win.XenForo && typeof a.win.XenForo.rellect === "object") {
-                //Debug log
+                //Log
                 a.config.debugMode && a.err("XenForo");
                 //Patch detector
                 a.win.XenForo.rellect = {
@@ -880,14 +878,14 @@ a.generic = function () {
             }
             //Adbuddy
             if (typeof a.win.closeAdbuddy === "function") {
-                //Debug log
+                //Log
                 a.config.debugMode && a.err("Adbuddy");
                 //Disable
                 a.win.closeAdbuddy();
             }
             //AdBlock Alerter (WP)
             if (a.$("div.adb_overlay > div.adb_modal_img").length > 0) {
-                //Debug log
+                //Log
                 a.config.debugMode && a.err("AdBlock Alerter");
                 //Remove alert and allow scrolling
                 a.$("div.adb_overlay").remove();
@@ -895,7 +893,7 @@ a.generic = function () {
             }
             //Block screen
             if (a.$("#blockdiv").html() === "disable ad blocking or use another browser without any adblocker when you visit") {
-                //Debug log
+                //Log
                 a.config.debugMode && a.out.err("Uncaught AdBlock Error: Generic block screens are not allowed on this device! ");
                 //Remove block screen
                 a.$("#blockdiv").remove();
@@ -912,7 +910,7 @@ a.generic = function () {
                     if (pattern.test(cssText)) {
                         const id = pattern.exec(cssText)[1];
                         if (a.$("script:contains(w.addEventListener('load'," + id + ",false))")) {
-                            //Debug log
+                            //Log
                             a.config.debugMode && a.err("Antiblock.org v2");
                             //Set data for future uses
                             data.abo2 = id;
@@ -934,12 +932,12 @@ a.generic = function () {
                             method.insert &&
                             method.nextFunction) {
                             if (method.toggle) {
-                                //Debug log
+                                //Log
                                 a.config.debugMode && a.err("BetterStopAdblock");
                                 //Set data for future uses
                                 data.bsa = prop;
                             } else {
-                                //Debug log
+                                //Log
                                 a.config.debugMode && a.err("Antiblock.org v3");
                                 //Set data for future uses
                                 data.abo3 = prop;
@@ -948,12 +946,12 @@ a.generic = function () {
                         }
                         //BlockAdBlock
                         if (method.bab) {
-                            //Debug log
+                            //Log
                             a.config.debugMode && a.err("BlockAdBlock");
                             //Remove property
                             a.win[prop] = null;
                         } else if (a.win.Object.keys(method).length === 3 && a.win.Object.keys(method).join().length === 32) {
-                            //Debug log
+                            //Log
                             a.config.debugMode && a.err("BlockAdBlock");
                             //Remove property
                             a.win[prop] = null;
@@ -973,7 +971,7 @@ a.generic = function () {
                 insertedNode.firstChild.id &&
                 insertedNode.firstChild.id === insertedNode.id &&
                 insertedNode.innerHTML.includes("no-adblock.com")) {
-                //Debug log
+                //Log
                 a.config.debugMode && a.err("No-Adblock");
                 //Remove element
                 insertedNode.remove();
@@ -987,7 +985,7 @@ a.generic = function () {
                 insertedNode.parentNode.id &&
                 insertedNode.parentNode.id === insertedNode.id + "2" &&
                 insertedNode.innerHTML.includes("stopadblock.org")) {
-                //Debug log
+                //Log
                 a.config.debugMode && a.err("StopAdblock");
                 //Remove element
                 insertedNode.remove();
@@ -1005,7 +1003,7 @@ a.generic = function () {
                 reIframeId.test(insertedNode.id) &&
                 insertedNode.nodeName === "IFRAME" &&
                 reIframeSrc.test(insertedNode.src)) {
-                //Debug log
+                //Log
                 a.config.debugMode && a.err("AntiAdblock");
                 //Remove element
                 insertedNode.remove();
@@ -1029,7 +1027,7 @@ a.generic = function () {
                     reBg.test(insertedNode.nextSibling.className) &&
                     insertedNode.nextSibling.style &&
                     insertedNode.nextSibling.style.display !== "none") {
-                    //Debug log
+                    //Log
                     a.config.debugMode && a.err("Adunblock Premium");
                     //Full Screen Message (Premium)
                     insertedNode.nextSibling.remove();
@@ -1037,7 +1035,7 @@ a.generic = function () {
                 } else if (insertedNode.nextSibling.id &&
                            reId.test(insertedNode.nextSibling.id) &&
                            insertedNode.innerHTML.includes("Il semblerait que vous utilisiez un bloqueur de publicité !")) {
-                    //Debug log
+                    //Log
                     a.config.debugMode && a.err("Adunblock Free");
                     //Top bar Message (Free)
                     insertedNode.remove();
@@ -1059,7 +1057,7 @@ a.generic = function () {
                 reMsgId.test(insertedNode.id) &&
                 reTag1.test(insertedNode.nodeName) &&
                 reTag2.test(insertedNode.firstChild.nodeName)) {
-                //Debug log
+                //Log
                 a.config.debugMode && a.err("Antiblock.org");
                 //Stop audio message
                 const audio = insertedNode.querySelector("audio[loop]");
@@ -1084,8 +1082,8 @@ a.generic = function () {
         };
         //===Set up observer===
         a.observe("insert", onInsertHandler);
-    } else {
-        //Generic protectors disabled
+    } else if (a.config.debugMode) {
+        //Generic protectors disabled log
         a.out.warn("Generic protectors are disabled on this domain. ");
     }
 };
