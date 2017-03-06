@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.83
+// @version 6.84
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2306,7 +2306,6 @@ if (a.domCmp(["sidereel.com"])) {
     a.filter("setTimeout", /function \_0x[a-z0-9]{4,8}\(/);
 }
 if (a.domCmp(["burning-feed.com"])) {
-    a.readOnly("testab", "1");
-    a.readOnly("ads_enable", "true");
+    a.readOnly("ads_enable", function () { });
 }
 a.generic();

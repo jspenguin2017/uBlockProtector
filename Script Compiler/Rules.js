@@ -2029,8 +2029,9 @@ if (a.domCmp(["sidereel.com"])) {
 }
 if (a.domCmp(["burning-feed.com"])) {
     //Thanks to uBlock-user
-    a.readOnly("testab", "1");
-    a.readOnly("ads_enable", "true");
+    //a.readOnly("testab", "1");
+    //a.readOnly("ads_enable", "true");
+    a.readOnly("ads_enable", function () { });
 }
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
