@@ -354,7 +354,7 @@ a.bait = function (type, identifier) {
     } else if (identifier.startsWith(".")) {
         elem.addClass(identifier.substr(1));
     }
-    elem.html("<br>").appendTo("html");
+    elem.html("<br>").prependTo("html");
 };
 a.cookie = function (key, val, time, path) {
     if (val === "undefined") {

@@ -625,8 +625,8 @@ a.bait = function (type, identifier) {
     } else if (identifier.startsWith(".")) {
         elem.addClass(identifier.substr(1));
     }
-    //Add content and append to HTML
-    elem.html("<br>").appendTo("html");
+    //Add content and prepend to HTML
+    elem.html("<br>").prependTo("html");
 };
 /**
  * Set or get a cookie.
