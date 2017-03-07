@@ -2035,5 +2035,8 @@ if (a.domCmp(["comicbook.com"])) {
     //Issue: https://github.com/X01X012013/AdBlockProtector/issues/85
     a.noAccess("stop");
 }
+if (a.domCmp(["ghame.ru"])) {
+    a.$("<p class='adsbygoogle' style='display:none;'>hi</p>").prependTo("html");
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
