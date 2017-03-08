@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.86
+// @version 6.87
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2309,5 +2309,8 @@ if (a.domCmp(["comicbook.com"])) {
 }
 if (a.domCmp(["ghame.ru"])) {
     a.$("<p class='adsbygoogle' style='display:none;'>hi</p>").prependTo("html");
+}
+if (a.domCmp(["thevideo.me"])) {
+    a.win.open = function () { };
 }
 a.generic();

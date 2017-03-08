@@ -2038,5 +2038,9 @@ if (a.domCmp(["comicbook.com"])) {
 if (a.domCmp(["ghame.ru"])) {
     a.$("<p class='adsbygoogle' style='display:none;'>hi</p>").prependTo("html");
 }
+if (a.domCmp(["thevideo.me"])) {
+    //Issue: https://github.com/X01X012013/AdBlockProtector/issues/86
+    a.win.open = function () { };
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
