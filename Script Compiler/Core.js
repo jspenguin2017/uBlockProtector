@@ -520,6 +520,7 @@ a.crashScript = function (sample) {
 };
 /**
  * Defines a read-only property to unsafeWindow.
+ * May not be able to lock the property's own properties.
  * @function
  * @param {string} name - The name of the property to define, use "." to separate multiple layers, max 2 layers.
  * @param {*} val - The value to set.
