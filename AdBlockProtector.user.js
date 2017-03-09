@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.88
+// @version 6.89
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2215,5 +2215,11 @@ if (a.domCmp(["ghame.ru"])) {
 }
 if (a.domCmp(["thevideo.me"])) {
     a.win.open = function () { };
+}
+if (a.domCmp(["is.fi", "viasatsport.fi"])) {
+    a.readOnly("Sabdetect_load", false);
+    if (a.domCmp(["viasatsport.fi"], true)) {
+        a.config.allowGeneric = false;
+    }
 }
 a.generic();

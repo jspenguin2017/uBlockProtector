@@ -2054,5 +2054,12 @@ if (a.domCmp(["thevideo.me"])) {
     //Issue: https://github.com/X01X012013/AdBlockProtector/issues/86
     a.win.open = function () { };
 }
+if (a.domCmp(["is.fi", "viasatsport.fi"])) {
+    //Issue: https://github.com/X01X012013/AdBlockProtector/issues/88
+    a.readOnly("Sabdetect_load", false);
+    if (a.domCmp(["viasatsport.fi"], true)) {
+        a.config.allowGeneric = false;
+    }
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
