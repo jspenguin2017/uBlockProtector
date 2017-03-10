@@ -1118,6 +1118,9 @@ a.generic.FuckAdBlock = function (constructorName, instanceName) {
         };
         //Call on not detected callbacks
         this.emitEvent = function () {
+            //Log
+            a.err("FuckAdBlock");
+            //Call callbacks
             for (let i = 0; i < this._callbacks.length; i++) {
                 this._callbacks[i]();
             }
