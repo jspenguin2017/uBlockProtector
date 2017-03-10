@@ -77,7 +77,7 @@ namespace List_Compiler
                 {
                     return;
                 }
-                if (!loadSkipComments(Path.Combine(gitRoot, "anti-adblock-killer\\anti-adblock-killer-filters.txt"), out originalAAKList))
+                if (!loadSkipComments(Path.Combine(gitRoot, "List Compiler\\AAK 10.0 Cache.txt"), out originalAAKList))
                 {
                     return;
                 }
