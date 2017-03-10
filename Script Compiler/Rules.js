@@ -259,14 +259,15 @@ a.win.encodeURIComponent(api);
     });
 }
 /*
-Old solution: 
 if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadzetomania.pl", "hotmoney.pl",
 "kafeteria.pl", "kafeteria.tv", "komediowo.pl", "komorkomania.pl", "money.pl", "pudelek.tv", "sfora.pl",
 "snobka.pl", "wawalove.pl", "wp.pl", "wp.tv", "wrzuta.pl", "pudelek.pl", "fotoblogia.pl"]) &&
 !a.domCmp(["i.wp.pl"], true)) {
+*/
+if (a.domCmp(["money.pl"], true)) {
     //wp.pl and related domains
     //Set a cookie to prevent block screen
-    a.cookie("ABCABC", "true");
+    //a.cookie("ABCABC", "true");
     //Replace player - Thanks to szymon1118
     //Variables
     let mid; //Media ID of next video
@@ -405,7 +406,6 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
         isInBackground = true;
     });
 }
-*/
 if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadzetomania.pl", "hotmoney.pl",
 "kafeteria.pl", "kafeteria.tv", "komediowo.pl", "komorkomania.pl", "money.pl", "pudelek.tv", "sfora.pl",
 "snobka.pl", "wawalove.pl", "wp.pl", "wp.tv", "wrzuta.pl", "pudelek.pl", "fotoblogia.pl"])) {
@@ -422,7 +422,8 @@ if (a.domCmp(["foxvalleyfoodie.com"])) {
     //Breaks uBlock Origin element picker
     a.patchHTML(function (html) {
         return html.replace(/<script.*\/wp-includes\/js\/(?!jquery|comment|wp-embed).*<\/script>/g,
-"<script>console.error('Uncaught AdBlock Error: Admiral is not allowed on this device! ');</script>");
+"<script>console.error('Uncaught AdBlock Error: Admiral AdBlock detectors are not allowed on this " +
+"device! ');</script>");
     });
 }
 if (a.domCmp(["mid-day.com", "happytrips.com"])) {

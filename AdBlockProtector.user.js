@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.89
+// @version 6.90
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -906,6 +906,108 @@ a.win.encodeURIComponent(api);
         });
     });
 }
+if (a.domCmp(["money.pl"], true)) {
+    let mid; //Media ID of next video
+    let midArray1 = []; //Media IDs method 1
+    let midArray2 = []; //Media IDs method 2
+    let url = null; //URL of the next video
+    let replaceCounter = 0; //The number of video players that are replaced
+    let loadCounter = 0; //The index of next item to load
+    let networkBusy = false; //A flag to prevent sending a new request before the first one is done
+    let networkErrorCounter = 0; //Will stop sending request if this is over 5
+    let isInBackground = false; //A flag to prevent excessive CPU usage when the tab is in background
+    let containerMatcher = ".wp-player-outer, .player__container, .wp-player, .embed-container";
+    const main = function () {
+        if (isInBackground) {
+            return;
+        }
+        a.config.debugMode && a.out.log(midArray1, midArray2);
+        try {
+            if (a.win.WP.player.list.length > midArray1.length) {
+                let thisMid = a.win.WP.player.list[midArray1.length].p.url;
+                if (thisMid) {
+                    thisMid = thisMid.split("=")[1];
+                }
+                if (thisMid) {
+                    midArray1.push(thisMid);
+                }
+            }
+        } catch (err) {
+            a.config.debugMode && a.out.error("AdBlock Protector failed to find media ID with method 1! ");
+        }
+        if (a.$(containerMatcher).length > 0) {
+            const elem = a.$(containerMatcher).first().find(".titlecont a.title");
+            let thisMid = elem.attr("href");
+            if (thisMid) {
+                thisMid = thisMid.match(/mid[=,]([0-9]+)/)[1].toString();
+                elem.remove();
+            }
+            if (thisMid) {
+                midArray2.push(thisMid);
+            }
+        }
+        if (loadCounter === replaceCounter) {
+            if (networkBusy || networkErrorCounter > 5) {
+                return;
+            }
+            let mid;
+            let midArray = (midArray1.length > midArray2.length) ? midArray1 : midArray2;
+            if (midArray.length > loadCounter) {
+                mid = midArray[loadCounter];
+            } else {
+                return;
+            }
+            networkBusy = true;
+            GM_xmlhttpRequest({
+                method: "GET",
+                url: "http://wp.tv/player/mid," + mid + ",embed.json",
+                onload: function (res) {
+                    try {
+                        const response = JSON.parse(res.responseText);
+                        for (let i = 0; i < response.clip.url.length; i++) {
+                            let item = response.clip.url[i];
+                            if (item.quality === "HQ" && item.type.startsWith("mp4")) {
+                                url = item.url;
+                                break;
+                            }
+                        }
+                        if (!url) {
+                            throw "Media URL Not Found";
+                        }
+                        loadCounter++;
+                        networkErrorCounter = 0;
+                    } catch (err) {
+                        a.config.debugMode && a.out.error("AdBlock Protector failed to find media URL! ");
+                        networkErrorCounter += 1;
+                    }
+                    networkBusy = false;
+                },
+                onerror: function () {
+                    a.config.debugMode && a.out.error("AdBlock Protector failed to load media JSON! ");
+                    networkErrorCounter += 0.5;
+                    networkBusy = false;
+                }
+            });
+        } else {
+            if (a.$(containerMatcher).length > 0) {
+                if (a.config.debugMode) {
+                    a.out.log("Replacing player... ");
+                    a.out.log(a.$(containerMatcher)[0]);
+                }
+                a.$(containerMatcher).first().after(a.nativePlayer(url)).remove();
+                url = null;
+                replaceCounter++;
+            }
+        }
+    };
+    a.win.setInterval(main, 1000);
+    a.on("focus", function () {
+        isInBackground = false;
+    });
+    a.on("blur", function () {
+        isInBackground = true;
+    });
+}
 if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadzetomania.pl", "hotmoney.pl",
 "kafeteria.pl", "kafeteria.tv", "komediowo.pl", "komorkomania.pl", "money.pl", "pudelek.tv", "sfora.pl",
 "snobka.pl", "wawalove.pl", "wp.pl", "wp.tv", "wrzuta.pl", "pudelek.pl", "fotoblogia.pl"])) {
@@ -918,7 +1020,8 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
 if (a.domCmp(["foxvalleyfoodie.com"])) {
     a.patchHTML(function (html) {
         return html.replace(/<script.*\/wp-includes\/js\/(?!jquery|comment|wp-embed).*<\/script>/g,
-"<script>console.error('Uncaught AdBlock Error: Admiral is not allowed on this device! ');</script>");
+"<script>console.error('Uncaught AdBlock Error: Admiral AdBlock detectors are not allowed on this " +
+"device! ');</script>");
     });
 }
 if (a.domCmp(["mid-day.com", "happytrips.com"])) {
