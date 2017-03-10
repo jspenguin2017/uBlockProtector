@@ -1,35 +1,38 @@
-!>> Installation test of homepage
+! === Installation test of homepage
 ||x01x012013.github.io/AdBlockProtector/listTest.js|
-!>> GENERIC
+! === GENERIC
 ###like-us-adblock-modal
-!>> dogefaucet.com
+! === dogefaucet.com
 @@||www.dogefaucet.com/static/js/ads.js|
-!>> portal.abczdrowie.pl
+! === portal.abczdrowie.pl
 @@dot.wp.pl
-!>> tvn.pl and related domains
+! === tvn.pl and related domains
 tvn.pl#div(id*=_videoDriverContent)
 tvn7.pl##div.vjs-abDetected
 tvnstyle.pl##div.vjs-abDetected
 tvnturbo.pl##div.vjs-abDetected
-!>> pudelek.tv
+! === pudelek.tv
 @@||pagead2.googlesyndication.com^$domain=pudelek.tv
-!>> NSFW! zone-anime.net
+! === NSFW! zone-anime.net
 filez.tv###adblockinfo
-!>> urlex.org
+! === urlex.org
 @@||urlex.org^$generichide
-!>> video.gazeta.pl
+! === video.gazeta.pl
 @@||video.gazeta.pl/cdn/ads/ad/banner/_adsense_/_adserver/_adview_.ad.json$xmlhttprequest,domain=video.gazeta.pl
-!>> fox.com.tr
+! === fox.com.tr
 @@||imasdk.googleapis.com/js/sdkloader/ima3.js$domain=fox.com.tr|turknettv.com
-!>> latimes.com - Thanks to okiehsch
+! === latimes.com - Thanks to okiehsch
 ||tribdss.com/meter/assets$script,domain=www.latimes.com
-!>> thewindowsclub.com - Thanks to uBlock-user
+! === thewindowsclub.com - Thanks to uBlock-user
 ||concernrain.com$script,domain=thewindowsclub.com
-!>> NSFW! 8muses.com
+! === NSFW! 8muses.com
 ||8muses.com^$inline-script
 @@||8muses.com/comix/picture^$inline-script
-!>> allmusic.com
+! === allmusic.com
 ||allmusic.com^$inline-script
-!>> debridnet.com - Thanks to uBlock-user
+! === debridnet.com - Thanks to uBlock-user
 ||debridnet.com/stat*^$subdocument
 ||amazon-adsystem.com^$subdocument,redirect=noopframe,domain=debridnet.com
+! === xmovies8.org
+! === Issue: https://github.com/X01X012013/AdBlockProtector/issues/90
+||xmovies8.org/ads_*.js$xmlhttprequest,first-party,redirect=noopjs
