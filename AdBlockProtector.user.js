@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.90
+// @version 6.91
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -679,6 +679,7 @@ a.generic.FuckAdBlock = function (constructorName, instanceName) {
             return true;
         };
         this.emitEvent = function () {
+            a.err("FuckAdBlock");
             for (let i = 0; i < this._callbacks.length; i++) {
                 this._callbacks[i]();
             }
@@ -2310,7 +2311,7 @@ if (a.domCmp(["sidereel.com"])) {
 if (a.domCmp(["burning-feed.com"])) {
     a.readOnly("ads_enable", function () { });
 }
-if (a.domCmp(["comicbook.com"])) {
+if (a.domCmp(["comicbook.com", "chip.de"])) {
     a.noAccess("stop");
 }
 if (a.domCmp(["ghame.ru"])) {

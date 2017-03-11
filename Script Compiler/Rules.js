@@ -2044,7 +2044,7 @@ if (a.domCmp(["burning-feed.com"])) {
     //a.readOnly("ads_enable", "true");
     a.readOnly("ads_enable", function () { });
 }
-if (a.domCmp(["comicbook.com"])) {
+if (a.domCmp(["comicbook.com", "chip.de"])) {
     //Issue: https://github.com/X01X012013/AdBlockProtector/issues/85
     a.noAccess("stop");
 }
