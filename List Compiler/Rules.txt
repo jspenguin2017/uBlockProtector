@@ -2,6 +2,7 @@
 ||x01x012013.github.io/AdBlockProtector/listTest.js|
 ! === GENERIC
 ###like-us-adblock-modal
+##.popup-premium__apla
 ! === dogefaucet.com
 @@||www.dogefaucet.com/static/js/ads.js|
 ! === portal.abczdrowie.pl
