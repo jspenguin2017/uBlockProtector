@@ -1,6 +1,6 @@
 [uBlock Origin]
 ! Title: AdBlock Protector List
-! Version: 6.29
+! Version: 6.30
 ! Expires: 1 days
 ! Redirect: https://github.com/X01X012013/AdBlockProtector/raw/master/AdBlockProtectorList.txt
 ! Homepage: https://x01x012013.github.io/AdBlockProtector/
@@ -25,6 +25,7 @@ filez.tv###adblockinfo
 ||debridnet.com/stat*^$subdocument
 ||amazon-adsystem.com^$subdocument,redirect=noopframe,domain=debridnet.com
 ||xmovies8.org/ads_*.js^$xmlhttprequest,first-party,redirect=noopjs
+tune.pk###annoy-wrapper
 ! =====Patched Anti-Adblock Killer List=====
 ! License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
 ||trymask.com/api/$third-party
