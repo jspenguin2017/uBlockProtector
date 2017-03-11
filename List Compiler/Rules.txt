@@ -5,7 +5,7 @@
 ! === dogefaucet.com
 @@||www.dogefaucet.com/static/js/ads.js|
 ! === portal.abczdrowie.pl
-@@dot.wp.pl
+@@||dot.wp.pl^
 ! === tvn.pl and related domains
 tvn.pl#div(id*=_videoDriverContent)
 tvn7.pl##div.vjs-abDetected
@@ -24,7 +24,7 @@ filez.tv###adblockinfo
 ! === latimes.com - Thanks to okiehsch
 ||tribdss.com/meter/assets$script,domain=www.latimes.com
 ! === thewindowsclub.com - Thanks to uBlock-user
-||concernrain.com$script,domain=thewindowsclub.com
+||concernrain.com^$script,domain=thewindowsclub.com
 ! === NSFW! 8muses.com
 ||8muses.com^$inline-script
 @@||8muses.com/comix/picture^$inline-script
@@ -35,4 +35,4 @@ filez.tv###adblockinfo
 ||amazon-adsystem.com^$subdocument,redirect=noopframe,domain=debridnet.com
 ! === xmovies8.org
 ! === Issue: https://github.com/X01X012013/AdBlockProtector/issues/90
-||xmovies8.org/ads_*.js$xmlhttprequest,first-party,redirect=noopjs
+||xmovies8.org/ads_*.js^$xmlhttprequest,first-party,redirect=noopjs
