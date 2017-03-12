@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.91
+// @version 6.92
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -1049,7 +1049,7 @@ if (a.domCmp(["betterdocs.net"])) {
     a.filter("eval", /eval\(function\(p\,a\,c\,k\,e\,d\)/);
 }
 if (a.domCmp(["webqc.org"])) {
-    a.filter("setTimeout", /function\(\)\{R\(e\)\}/);
+    a.filter("setTimeout");
 }
 if (a.domCmp(["wired.com"])) {
     a.readOnly("google_onload_fired", true);

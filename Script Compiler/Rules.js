@@ -457,8 +457,8 @@ if (a.domCmp(["betterdocs.net"])) {
     a.filter("eval", /eval\(function\(p\,a\,c\,k\,e\,d\)/);
 }
 if (a.domCmp(["webqc.org"])) {
-    //Filter keywords from setTimeout()
-    a.filter("setTimeout", /function\(\)\{R\(e\)\}/);
+    //Disable setTimeout()
+    a.filter("setTimeout");
 }
 if (a.domCmp(["wired.com"])) {
     //Lock google_onload_fired to true and the rest will be taken care by generic protectors
