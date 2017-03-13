@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.92
+// @version 6.93
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2287,7 +2287,7 @@ if (a.domCmp(["whosampled.com"])) {
     a.readOnly("showAdBlockerOverlay", function () { });
 }
 if (a.domCmp(["pornhub.com", "redtube.com", "youporn.com", "tube8.com", "pornmd.com",
-"thumbzilla.com", "xtube.com", "peeperz.com"])) {
+"thumbzilla.com", "xtube.com", "peeperz.com", "czechhq.net", "29443kmq.video"])) {
     a.win.open = function (arg) {
         if (arg.includes(a.dom)) {
             a.win.location.href = arg;

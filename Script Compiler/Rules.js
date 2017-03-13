@@ -2011,7 +2011,7 @@ if (a.domCmp(["whosampled.com"])) {
     a.readOnly("showAdBlockerOverlay", function () { });
 }
 if (a.domCmp(["pornhub.com", "redtube.com", "youporn.com", "tube8.com", "pornmd.com",
-"thumbzilla.com", "xtube.com", "peeperz.com"])) {
+"thumbzilla.com", "xtube.com", "peeperz.com", "czechhq.net", "29443kmq.video"])) {
     //NSFW! Patch open()
     a.win.open = function (arg) {
         if (arg.includes(a.dom)) {
