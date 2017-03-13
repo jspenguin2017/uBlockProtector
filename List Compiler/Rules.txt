@@ -40,3 +40,6 @@ filez.tv###adblockinfo
 ! === tune.pk
 ! === Issue: https://github.com/X01X012013/AdBlockProtector/issues/92
 tune.pk###annoy-wrapper
+! === 29443kmq.video
+! === Issue: https://github.com/X01X012013/AdBlockProtector/issues/93
+29443kmq.video###a
