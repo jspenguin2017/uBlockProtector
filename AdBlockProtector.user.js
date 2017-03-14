@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.94
+// @version 6.95
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -679,7 +679,7 @@ a.generic.FuckAdBlock = function (constructorName, instanceName) {
             return true;
         };
         this.emitEvent = function () {
-            a.err("FuckAdBlock");
+            a.config.debugMode && this._callbacks.length && a.err("FuckAdBlock");
             for (let i = 0; i < this._callbacks.length; i++) {
                 this._callbacks[i]();
             }
