@@ -24,16 +24,16 @@ a.VERSION = "1.1";
  * @param {Array.<string>} excludedDomInc - The list of domains to exclude, a.domInc() will be used to compare this.
  */
 a.init = function (excludedDomCmp, excludedDomInc) {
-    //Log domain
-    a.config.debugMode && a.out.warn("Domain: " + a.dom);
     //Load jQuery and Color plug-in
     a.$ = jQueryFactory(a.win, true);
     //The Color plug-in is never used, to enable it, update the compiler and uncomment the following line
     //jQueryColorLoader(a.$);
     //Load configurations
     a.config();
+    //Log domain
+    a.config.debugMode && a.out.warn("Domain: " + a.dom);
+    //Check excluded domains
     a.config.domExcluded = a.domCmp(excludedDomCmp, true) || a.domInc(excludedDomInc, true);
-    //Excluded log
     if (a.config.debugMode && a.config.domExcluded) {
         a.out.warn("This domain is in excluded list. ");
     }

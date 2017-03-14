@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.96
+// @version 6.97
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -30,9 +30,9 @@ const a = function () {
 };
 a.VERSION = "1.1";
 a.init = function (excludedDomCmp, excludedDomInc) {
-    a.config.debugMode && a.out.warn("Domain: " + a.dom);
     a.$ = jQueryFactory(a.win, true);
     a.config();
+    a.config.debugMode && a.out.warn("Domain: " + a.dom);
     a.config.domExcluded = a.domCmp(excludedDomCmp, true) || a.domInc(excludedDomInc, true);
     if (a.config.debugMode && a.config.domExcluded) {
         a.out.warn("This domain is in excluded list. ");
