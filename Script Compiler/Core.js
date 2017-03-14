@@ -24,6 +24,8 @@ a.VERSION = "1.1";
  * @param {Array.<string>} excludedDomInc - The list of domains to exclude, a.domInc() will be used to compare this.
  */
 a.init = function (excludedDomCmp, excludedDomInc) {
+    //Log domain
+    a.config.debugMode && a.out.warn("Domain: " + a.dom);
     //Load jQuery and Color plug-in
     a.$ = jQueryFactory(a.win, true);
     //The Color plug-in is never used, to enable it, update the compiler and uncomment the following line
@@ -58,8 +60,6 @@ a.init = function (excludedDomCmp, excludedDomInc) {
 a.mods.NoAutoplay], a.config.update);
         });
     }
-    //Log domain
-    a.config.debugMode && a.out.warn("Domain: " + a.dom);
 };
 
 //=====Configurations=====

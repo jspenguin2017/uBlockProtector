@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.95
+// @version 6.96
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -30,6 +30,7 @@ const a = function () {
 };
 a.VERSION = "1.1";
 a.init = function (excludedDomCmp, excludedDomInc) {
+    a.config.debugMode && a.out.warn("Domain: " + a.dom);
     a.$ = jQueryFactory(a.win, true);
     a.config();
     a.config.domExcluded = a.domCmp(excludedDomCmp, true) || a.domInc(excludedDomInc, true);
@@ -55,7 +56,6 @@ a.init = function (excludedDomCmp, excludedDomInc) {
 a.mods.NoAutoplay], a.config.update);
         });
     }
-    a.config.debugMode && a.out.warn("Domain: " + a.dom);
 };
 a.config = function () {
     a.config.debugMode = GM_getValue("config_debugMode", a.config.debugMode);
