@@ -2020,6 +2020,18 @@ if (a.domCmp(["pornhub.com", "redtube.com", "youporn.com", "tube8.com", "pornmd.
         }
     };
 }
+/*
+//Breaks videos
+if (a.domCmp(["czechhq.net"], true)) {
+    //NSFW! Disable popup
+    a.filter("document.addEventListener", /^mousedown$/);
+}
+if (a.domCmp(["29443kmq.video"], true)) {
+    //NSFW! Disable popup
+    a.readOnly("_pop", []);
+    //a.noAccess("_pop");
+}
+*/
 if (a.domCmp(["pastebin.com"])) {
     //Lock abdd to an empty string
     a.readOnly("abdd", "");
