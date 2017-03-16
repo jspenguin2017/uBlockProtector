@@ -1,4 +1,7 @@
-# AdBlock Protector List by X01X012013
+# AdBlock Protector List
+# Ultimate solution against AdBlock detectors
+# By X01X012013
+# Version 6.35
 # Homepage: https://x01x012013.github.io/AdBlockProtector/
-# Download URL: https://github.com/X01X012013/AdBlockProtector/raw/master/AdBlockProtectorList.txt
-# Version: 6.34
+# Support: https://github.com/X01X012013/AdBlockProtector/issues
+# Download: https://github.com/X01X012013/AdBlockProtector/raw/master/AdBlockProtectorList.txt
