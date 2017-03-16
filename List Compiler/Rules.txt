@@ -46,3 +46,7 @@ tune.pk###annoy-wrapper
 ! === engineeringtoolbox.com
 engineeringtoolbox.com##.adblo
 engineeringtoolbox.com##.contentDocumentAd
+! === ps4news.com - Thanks to okiehsch
+ps4news.com##script:inject(noeval.js)
+ps4news.com##body > *[id^="blockblock"]:style(visibility: visible !important; display: block !important;)
+ps4news.com##table[id^='blockblock']

@@ -1,9 +1,7 @@
-[uBlock Origin]
-! Title: AdBlock Protector List
-! Version: 6.34
-! Expires: 1 days
-! Redirect: https://github.com/X01X012013/AdBlockProtector/raw/master/AdBlockProtectorList.txt
-! Homepage: https://x01x012013.github.io/AdBlockProtector/
+# AdBlock Protector List by X01X012013
+# Homepage: https://x01x012013.github.io/AdBlockProtector/
+# Download URL: https://github.com/X01X012013/AdBlockProtector/raw/master/AdBlockProtectorList.txt
+# Version: 6.34
 ||x01x012013.github.io/AdBlockProtector/listTest.js|
 ###like-us-adblock-modal
 ##.popup-premium__apla
@@ -30,6 +28,9 @@ tune.pk###annoy-wrapper
 29443kmq.video###a
 engineeringtoolbox.com##.adblo
 engineeringtoolbox.com##.contentDocumentAd
+ps4news.com##script:inject(noeval.js)
+ps4news.com##body > *[id^="blockblock"]:style(visibility: visible !important; display: block !important;)
+ps4news.com##table[id^='blockblock']
 ! =====Patched Anti-Adblock Killer List=====
 ! License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
 ||trymask.com/api/$third-party
