@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.97
+// @version 6.98
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2325,5 +2325,8 @@ if (a.domCmp(["is.fi", "viasatsport.fi"])) {
     if (a.domCmp(["viasatsport.fi"], true)) {
         a.config.allowGeneric = false;
     }
+}
+if (a.domCmp(["mooseroots.com"])) {
+    a.css("html,body { overflow-y: scroll; } .BOX-wrap { display: none; }");
 }
 a.generic();
