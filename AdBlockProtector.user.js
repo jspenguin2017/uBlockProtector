@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.99
+// @version 6.100
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -68,7 +68,7 @@ a.config = function () {
 a.config.update = function (id, val) {
     const names = ["config_debugMode", "config_allowExperimental", "mods_Facebook_JumpToTop", "mods_Facebook_HidePeopleYouMayKnow", "mods_Blogspot_AutoNCR", "mods_NoAutoplay"];
     GM_setValue(names[id], val);
-}
+};
 a.config.debugMode = false;
 a.config.allowGeneric = true;
 a.config.allowExperimental = true;
@@ -2317,7 +2317,7 @@ if (a.domCmp(["comicbook.com", "chip.de"])) {
 if (a.domCmp(["ghame.ru"])) {
     a.$("<p class='adsbygoogle' style='display:none;'>hi</p>").prependTo("html");
 }
-if (a.domCmp(["thevideo.me"])) {
+if (a.domCmp(["thevideo.me", "fmovies.to", "fmovies.se", "fmovies.is"])) {
     a.win.open = function () { };
 }
 if (a.domCmp(["is.fi", "viasatsport.fi"])) {

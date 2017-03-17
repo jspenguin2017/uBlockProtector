@@ -2064,8 +2064,9 @@ if (a.domCmp(["comicbook.com", "chip.de"])) {
 if (a.domCmp(["ghame.ru"])) {
     a.$("<p class='adsbygoogle' style='display:none;'>hi</p>").prependTo("html");
 }
-if (a.domCmp(["thevideo.me"])) {
+if (a.domCmp(["thevideo.me", "fmovies.to", "fmovies.se", "fmovies.is"])) {
     //Issue: https://github.com/X01X012013/AdBlockProtector/issues/86
+    //Issue: https://github.com/X01X012013/AdBlockProtector/issues/99
     a.win.open = function () { };
 }
 if (a.domCmp(["is.fi", "viasatsport.fi"])) {

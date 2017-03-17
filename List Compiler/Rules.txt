@@ -50,3 +50,6 @@ engineeringtoolbox.com##.contentDocumentAd
 ps4news.com##script:inject(noeval.js)
 ps4news.com##body > *[id^="blockblock"]:style(visibility: visible !important; display: block !important;)
 ps4news.com##table[id^='blockblock']
+! === 7636ca6cb9fc.com
+! === Issue: https://github.com/X01X012013/AdBlockProtector/issues/99
+||7636ca6cb9fc.com^

@@ -86,7 +86,7 @@ a.config = function () {
 a.config.update = function (id, val) {
     const names = ["config_debugMode", "config_allowExperimental", "mods_Facebook_JumpToTop", "mods_Facebook_HidePeopleYouMayKnow", "mods_Blogspot_AutoNCR", "mods_NoAutoplay"];
     GM_setValue(names[id], val);
-}
+};
 /**
  * Whether debug data should be logged.
  * The default value is false.
