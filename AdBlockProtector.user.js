@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.103
+// @version 6.104
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -802,7 +802,7 @@ if (a.domCmp(["userscloud.com"])) {
         a.$("#adblock_msg").remove();
     });
 }
-if (a.domCmp(["vidlox.tv", "29443kmq.video"])) {
+if (a.domCmp(["vidlox.tv", "29443kmq.video", "dato.porn"])) {
     a.readOnly("xRds", false);
     a.readOnly("cRAds", true);
 }

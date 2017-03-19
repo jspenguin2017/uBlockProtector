@@ -113,7 +113,7 @@ if (a.domCmp(["userscloud.com"])) {
         a.$("#adblock_msg").remove();
     });
 }
-if (a.domCmp(["vidlox.tv", "29443kmq.video"])) {
+if (a.domCmp(["vidlox.tv", "29443kmq.video", "dato.porn"])) {
     //NSFW! Lock xRds to false and cRAds to true
     a.readOnly("xRds", false);
     a.readOnly("cRAds", true);
