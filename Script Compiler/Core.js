@@ -216,8 +216,11 @@ a.mods = function () {
         //Hide People You May Know
         const hidePeopleYouMayKnow = function () {
             a.observe("insert", function (node) {
-                if (node.querySelector && node.querySelector("a[href^='/friends/requests/']")) {
-                    node.remove();
+                let elem;
+                if (node.querySelector && (elem = node.querySelector("a[href^='/friends/requests/']"), elem)) {
+                    if (!elem.innerHTML.includes("See All")) {
+                        node.remove();
+                    }
                 }
             });
         };
@@ -225,7 +228,7 @@ a.mods = function () {
         if (a.mods.Facebook_JumpToTop) {
             addJumpToTop();
         }
-        if (a.mods.Facebook_HidePeopleYouMayKnow) {
+        if (!a.win.location.pathname === "/friends/requests/" && a.mods.Facebook_HidePeopleYouMayKnow) {
             hidePeopleYouMayKnow();
         }
     }

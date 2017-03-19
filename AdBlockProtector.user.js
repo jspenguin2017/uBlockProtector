@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.100
+// @version 6.101
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -111,15 +111,18 @@ a.mods = function () {
         };
         const hidePeopleYouMayKnow = function () {
             a.observe("insert", function (node) {
-                if (node.querySelector && node.querySelector("a[href^='/friends/requests/']")) {
-                    node.remove();
+                let elem;
+                if (node.querySelector && (elem = node.querySelector("a[href^='/friends/requests/']"), elem)) {
+                    if (!elem.innerHTML.includes("See All")) {
+                        node.remove();
+                    }
                 }
             });
         };
         if (a.mods.Facebook_JumpToTop) {
             addJumpToTop();
         }
-        if (a.mods.Facebook_HidePeopleYouMayKnow) {
+        if (!a.win.location.pathname === "/friends/requests/" && a.mods.Facebook_HidePeopleYouMayKnow) {
             hidePeopleYouMayKnow();
         }
     }
