@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.104
+// @version 6.105
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -731,6 +731,9 @@ a.generic.FuckAdBlock = function (constructorName, instanceName) {
 };
 "use strict";
 a.init.racer = function () {
+    if (a.domCmp(["29443kmq.video", "dato.porn"])) {
+        a.readOnly("cRAds", true);
+    }
 };
 a.init(["360.cn", "apple.com", "ask.com", "baidu.com", "bing.com", "bufferapp.com", "chatango.com",
 "chromeactions.com", "easyinplay.net", "ebay.com", "facebook.com", "flattr.com", "flickr.com", "ghacks.net",
@@ -802,7 +805,7 @@ if (a.domCmp(["userscloud.com"])) {
         a.$("#adblock_msg").remove();
     });
 }
-if (a.domCmp(["vidlox.tv", "29443kmq.video", "dato.porn"])) {
+if (a.domCmp(["vidlox.tv"])) {
     a.readOnly("xRds", false);
     a.readOnly("cRAds", true);
 }

@@ -3,6 +3,10 @@
 "use strict";
 //Racer function
 a.init.racer = function () {
+    if (a.domCmp(["29443kmq.video", "dato.porn"])) {
+        //NSFW!
+        a.readOnly("cRAds", true);
+    }
     /*
     if (a.domCmp(["sandiegouniontribune.com"])) {
         //Issue: https://github.com/X01X012013/AdBlockProtector/issues/95
@@ -113,7 +117,7 @@ if (a.domCmp(["userscloud.com"])) {
         a.$("#adblock_msg").remove();
     });
 }
-if (a.domCmp(["vidlox.tv", "29443kmq.video", "dato.porn"])) {
+if (a.domCmp(["vidlox.tv"])) {
     //NSFW! Lock xRds to false and cRAds to true
     a.readOnly("xRds", false);
     a.readOnly("cRAds", true);
