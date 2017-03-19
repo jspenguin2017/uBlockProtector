@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.102
+// @version 6.103
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -731,9 +731,6 @@ a.generic.FuckAdBlock = function (constructorName, instanceName) {
 };
 "use strict";
 a.init.racer = function () {
-    if (a.domCmp(["sandiegouniontribune.com"])) {
-        a.setUA(a.c.latestUA.FireFox);
-    }
 };
 a.init(["360.cn", "apple.com", "ask.com", "baidu.com", "bing.com", "bufferapp.com", "chatango.com",
 "chromeactions.com", "easyinplay.net", "ebay.com", "facebook.com", "flattr.com", "flickr.com", "ghacks.net",
