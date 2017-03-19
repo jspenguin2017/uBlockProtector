@@ -277,7 +277,7 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
 "snobka.pl", "wawalove.pl", "wp.pl", "wp.tv", "wrzuta.pl", "pudelek.pl", "fotoblogia.pl"]) &&
 !a.domCmp(["i.wp.pl"], true)) {
 */
-if (a.domCmp(["money.pl"], true)) {
+if (a.domCmp(["money.pl", "parenting.pl"], true)) {
     //wp.pl and related domains
     //Set a cookie to prevent block screen
     //a.cookie("ABCABC", "true");
@@ -421,13 +421,14 @@ if (a.domCmp(["money.pl"], true)) {
 }
 if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadzetomania.pl", "hotmoney.pl",
 "kafeteria.pl", "kafeteria.tv", "komediowo.pl", "komorkomania.pl", "money.pl", "pudelek.tv", "sfora.pl",
-"snobka.pl", "wawalove.pl", "wp.pl", "wp.tv", "wrzuta.pl", "pudelek.pl", "fotoblogia.pl"])) {
+"snobka.pl", "wawalove.pl", "wp.pl", "wp.tv", "wrzuta.pl", "pudelek.pl", "fotoblogia.pl", "parenting.pl",
+"echirurgia.pl"])) {
     //Issue: https://github.com/X01X012013/AdBlockProtector/issues/70
     //Thanks to ghajini
     //Based on: AdGuard
     //License: https://github.com/AdguardTeam/AdguardBrowserExtension/blob/master/LICENSE
     a.cookie("ABCABC", "true");
-    a.filter("addEventListener", /advertisement/);
+    a.filter("addEventListener", /^advertisement$/);
     a.readOnly("hasSentinel", function () { return false; });
 }
 if (a.domCmp(["foxvalleyfoodie.com"])) {
