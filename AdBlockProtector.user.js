@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.101
+// @version 6.102
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -30,6 +30,7 @@ const a = function () {
 };
 a.VERSION = "1.1";
 a.init = function (excludedDomCmp, excludedDomInc) {
+    a.init.racer();
     a.$ = jQueryFactory(a.win, true);
     a.config();
     a.config.debugMode && a.out.warn("Domain: " + a.dom);
@@ -57,6 +58,7 @@ a.mods.NoAutoplay], a.config.update);
         });
     }
 };
+a.init.racer = function () { };
 a.config = function () {
     a.config.debugMode = GM_getValue("config_debugMode", a.config.debugMode);
     a.config.allowExperimental = GM_getValue("config_allowExperimental", a.config.allowExperimental);
@@ -93,6 +95,10 @@ a.c.topFrame = (function () {
         return false;
     }
 })();
+a.c.latestUA = {};
+a.c.latestUA.FireFox = "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0";
+a.c.latestUA.Opera = "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36 OPR/43.0.2442.1144";
+a.c.latestUA.Chrome = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.98 Safari/537.36";
 a.mods = function () {
     if (a.domCmp(["facebook.com"], true)) {
         const addJumpToTop = function () {
@@ -337,6 +343,19 @@ a.noAccess = function (name) {
         }
     } catch (err) {
         a.config.debugMode && a.out.error("AdBlock Protector failed to define non-accessible property " + name + "! ");
+        return false;
+    }
+    return true;
+};
+a.setUA = function (newUA) {
+    try {
+        a.win.Object.defineProperty(a.win.navigator, "userAgent", {
+            get: function () {
+                return newUA;
+            }
+        });
+    } catch (err) {
+        a.config.debugMode && a.out.error("AdBlock Protector failed to edit user agent string! ");
         return false;
     }
     return true;
@@ -711,6 +730,11 @@ a.generic.FuckAdBlock = function (constructorName, instanceName) {
     return a.readOnly(constructorName, patchedFuckAdBlock) && a.readOnly(instanceName, new a.win[constructorName]());
 };
 "use strict";
+a.init.racer = function () {
+    if (a.domCmp(["sandiegouniontribune.com"])) {
+        a.setUA(a.c.latestUA.FireFox);
+    }
+};
 a.init(["360.cn", "apple.com", "ask.com", "baidu.com", "bing.com", "bufferapp.com", "chatango.com",
 "chromeactions.com", "easyinplay.net", "ebay.com", "facebook.com", "flattr.com", "flickr.com", "ghacks.net",
 "imdb.com", "imgbox.com", "imgur.com", "instagram.com", "jsbin.com", "jsfiddle.net", "linkedin.com", "live.com",

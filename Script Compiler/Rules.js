@@ -1,6 +1,13 @@
 //Dump window vars: JSON.stringify(Object.keys(window));
 
 "use strict";
+//Racer function
+a.init.racer = function () {
+    if (a.domCmp(["sandiegouniontribune.com"])) {
+        //Issue: https://github.com/X01X012013/AdBlockProtector/issues/95
+        a.setUA(a.c.latestUA.FireFox);
+    }
+};
 //Init, pass in excluded domains
 a.init(["360.cn", "apple.com", "ask.com", "baidu.com", "bing.com", "bufferapp.com", "chatango.com",
 "chromeactions.com", "easyinplay.net", "ebay.com", "facebook.com", "flattr.com", "flickr.com", "ghacks.net",

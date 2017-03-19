@@ -24,6 +24,8 @@ a.VERSION = "1.1";
  * @param {Array.<string>} excludedDomInc - The list of domains to exclude, a.domInc() will be used to compare this.
  */
 a.init = function (excludedDomCmp, excludedDomInc) {
+    //Call racer function
+    a.init.racer();
     //Load jQuery and Color plug-in
     a.$ = jQueryFactory(a.win, true);
     //The Color plug-in is never used, to enable it, update the compiler and uncomment the following line
@@ -61,6 +63,12 @@ a.mods.NoAutoplay], a.config.update);
         });
     }
 };
+/**
+ * The racer function, this will be called very early duing init. Set it to a function before calling init.
+ * Many functionalities will not be available inside racer function, including jQuery and settings overriding.
+ * @var {Function}
+ */
+a.init.racer = function () { };
 
 //=====Configurations=====
 /**
@@ -185,6 +193,23 @@ a.c.topFrame = (function () {
         return false;
     }
 })();
+//===Latest Browsers User Agent Strings===
+a.c.latestUA = {};
+/**
+ * The user agent string of latest FireFox
+ * @const {string}
+ */
+a.c.latestUA.FireFox = "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0";
+/**
+ * The user agent string of latest Opera
+ * @const {string}
+ */
+a.c.latestUA.Opera = "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36 OPR/43.0.2442.1144";
+/**
+ * The user agent string of latest Chrome
+ * @const {string}
+ */
+a.c.latestUA.Chrome = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.98 Safari/537.36";
 
 //=====Mods=====
 /**
@@ -594,6 +619,25 @@ a.noAccess = function (name) {
     } catch (err) {
         //Failed to define property
         a.config.debugMode && a.out.error("AdBlock Protector failed to define non-accessible property " + name + "! ");
+        return false;
+    }
+    return true;
+};
+/**
+ * Edit navigator.userAgent.
+ * @function
+ * @param {string} newUA - The user agent string to set.
+ * @returns {boolean} True if the operation was successful, false otherwise.
+ */
+a.setUA = function (newUA) {
+    try {
+        a.win.Object.defineProperty(a.win.navigator, "userAgent", {
+            get: function () {
+                return newUA;
+            }
+        });
+    } catch (err) {
+        a.config.debugMode && a.out.error("AdBlock Protector failed to edit user agent string! ");
         return false;
     }
     return true;
