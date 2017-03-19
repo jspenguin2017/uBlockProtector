@@ -6,7 +6,7 @@ a.init.racer = function () {
     /*
     if (a.domCmp(["sandiegouniontribune.com"])) {
         //Issue: https://github.com/X01X012013/AdBlockProtector/issues/95
-        a.setUA(a.c.latestUA.Opera);
+        //Well... none of our solutions actually works
     }
     */
 };
