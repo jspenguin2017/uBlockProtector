@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.105
+// @version 6.106
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -877,7 +877,7 @@ if (a.domCmp(["tvregionalna24.pl"])) {
         }
     });
 }
-if (a.domCmp(["tvn.pl", "tvnstyle.pl", "tvnturbo.pl"])) {
+if (a.domCmp(["tvn.pl", "tvnstyle.pl", "tvnturbo.pl", "kuchniaplus.pl"])) {
     const homePages = ["http://www.tvn.pl/", "http://www.tvn7.pl/", "http://www.tvnstyle.pl/",
 "http://www.tvnturbo.pl/"];
     if (!homePages.includes(a.doc.location.href)) {

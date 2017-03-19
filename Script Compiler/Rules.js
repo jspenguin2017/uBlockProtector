@@ -203,7 +203,7 @@ if (a.domCmp(["tvregionalna24.pl"])) {
         }
     });
 }
-if (a.domCmp(["tvn.pl", "tvnstyle.pl", "tvnturbo.pl"])) {
+if (a.domCmp(["tvn.pl", "tvnstyle.pl", "tvnturbo.pl", "kuchniaplus.pl"])) {
     //tvn.pl and related domains
     //Replace player - Thanks to mikhoul, szymon1118, and xxcriticxx
     //Potential related domains: "tvnfabula.pl", "itvnextra.pl", "tvn24bis.pl", "ttv.pl",
