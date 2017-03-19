@@ -1,7 +1,7 @@
 # AdBlock Protector List
 # Ultimate solution against AdBlock detectors
 # By X01X012013
-# Version 6.36
+# Version 6.37
 # Homepage: https://x01x012013.github.io/AdBlockProtector/
 # Support: https://github.com/X01X012013/AdBlockProtector/issues
 # Download: https://github.com/X01X012013/AdBlockProtector/raw/master/AdBlockProtectorList.txt
@@ -28,7 +28,15 @@ filez.tv###adblockinfo
 ||amazon-adsystem.com^$subdocument,redirect=noopframe,domain=debridnet.com
 ||xmovies8.org/ads_*.js$xmlhttprequest,first-party,redirect=noopjs
 tune.pk###annoy-wrapper
-29443kmq.video###a
+29443kmq.video,dato.porn###a
+||$third-party,domain=czechhq.net
+@@||fonts.googleapis.com^$domain=czechhq.net
+@@||pixhost.org^$image,domain=czechhq.net
+@@||wordpress.org^$domain=czechhq.net
+@@||29443kmq.video^$domain=czechhq.net
+@@||dato.porn^$domain=czechhq.net
+@@||userapi.com^$image,domain=czechhq.net
+@@||theporndude.com^$image,domain=czechhq.net
 engineeringtoolbox.com##.adblo
 engineeringtoolbox.com##.contentDocumentAd
 ps4news.com##script:inject(noeval.js)

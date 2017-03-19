@@ -40,9 +40,17 @@ filez.tv###adblockinfo
 ! === tune.pk
 ! === Issue: https://github.com/X01X012013/AdBlockProtector/issues/92
 tune.pk###annoy-wrapper
-! === NSFW! 29443kmq.video
+! === NSFW! 29443kmq.video - Thanks to uBlock-user
 ! === Issue: https://github.com/X01X012013/AdBlockProtector/issues/93
-29443kmq.video###a
+29443kmq.video,dato.porn###a
+||$third-party,domain=czechhq.net
+@@||fonts.googleapis.com^$domain=czechhq.net
+@@||pixhost.org^$image,domain=czechhq.net
+@@||wordpress.org^$domain=czechhq.net
+@@||29443kmq.video^$domain=czechhq.net
+@@||dato.porn^$domain=czechhq.net
+@@||userapi.com^$image,domain=czechhq.net
+@@||theporndude.com^$image,domain=czechhq.net
 ! === engineeringtoolbox.com
 engineeringtoolbox.com##.adblo
 engineeringtoolbox.com##.contentDocumentAd
