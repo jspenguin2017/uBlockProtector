@@ -639,7 +639,8 @@ if (a.domCmp(["workupload.com"])) {
         a.css(".adBlock, .adsbygoogle, #sad { height: 11px; }");
     });
 }
-if (a.domCmp(["intoday.in", "businesstoday.in"])) {
+if (a.domCmp(["intoday.in", "businesstoday.in", "lovesutras.com"])) {
+    //https://github.com/X01X012013/AdBlockProtector/issues/109
     //Inject style and lock openPopup to an empty function
     a.css("#adbocker_alt { display: none; }");
     a.readOnly("openPopup", function () { });

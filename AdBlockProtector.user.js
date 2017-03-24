@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.108
+// @version 6.109
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -1206,7 +1206,7 @@ if (a.domCmp(["workupload.com"])) {
         a.css(".adBlock, .adsbygoogle, #sad { height: 11px; }");
     });
 }
-if (a.domCmp(["intoday.in", "businesstoday.in"])) {
+if (a.domCmp(["intoday.in", "businesstoday.in", "lovesutras.com"])) {
     a.css("#adbocker_alt { display: none; }");
     a.readOnly("openPopup", function () { });
 }
