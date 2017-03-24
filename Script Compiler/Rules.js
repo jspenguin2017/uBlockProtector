@@ -7,7 +7,14 @@ a.init.racer = function () {
         //NSFW!
         a.readOnly("cRAds", true);
     }
-    if (a.domCmp(["sandiegouniontribune.com"])) {
+    if (a.domCmp(["sandiegouniontribune.com", "baltimoresun.com", "boston.com", "capitalgazette.com",
+"carrollcountytimes.com", "celebuzz.com", "celebslam.com", "chicagotribune.com", "computershopper.com",
+"courant.com", "dailypress.com", "deathandtaxesmag.com", "extremetech.com", "gamerevolution.com",
+"geek.com", "gofugyourself.com", "hearthhead.com", "infinitiev.com", "lolking.net", "mcall.com",
+"mmo-champion.com", "nasdaq.com", "orlandosentinel.com", "pcmag.com", "ranker.com", "saveur.com",
+"sherdog.com", "spin.com", "sporcle.com", "stereogum.com", "sun-sentinel.com", "thefrisky.com",
+"thesuperficial.com", "timeanddate.com", "tmn.today", "twincities.com", "vancouversun.com", "vibe.com",
+"weather.com", "wowhead.com", "legacy.com"])) {
         //Issue: https://github.com/X01X012013/AdBlockProtector/issues/95
         //Thanks to uBlock-user
         a.noAccess("i10c");
