@@ -7,12 +7,13 @@ a.init.racer = function () {
         //NSFW!
         a.readOnly("cRAds", true);
     }
-    /*
     if (a.domCmp(["sandiegouniontribune.com"])) {
         //Issue: https://github.com/X01X012013/AdBlockProtector/issues/95
-        //Well... none of our solutions actually works
+        //Thanks to uBlock-user
+        a.noAccess("i10c");
+        a.noAccess("I10C");
+        a.noAccess("INSTART");
     }
-    */
 };
 //Init, pass in excluded domains
 a.init(["360.cn", "apple.com", "ask.com", "baidu.com", "bing.com", "bufferapp.com", "chatango.com",
