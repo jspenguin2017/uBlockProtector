@@ -2112,5 +2112,12 @@ if (a.domCmp(["mooseroots.com", "insidegov.com"])) {
     //Issue: https://github.com/X01X012013/AdBlockProtector/issues/96
     a.css("html,body { overflow-y: scroll; } .BOX-wrap { display: none; }");
 }
+if (a.domCmp(["sandiegouniontribune.com"])) {
+    //Remove overlay
+    a.on("load", setTimeout(function () {
+        a.css("html, body { overflow: scroll; } #reg-overlay { width: 0px; }");
+    }, 1000));
+    a.filter("addEventListener", /^scroll$/);
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
