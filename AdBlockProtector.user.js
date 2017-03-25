@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.113
+// @version 6.114
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2358,9 +2358,14 @@ if (a.domCmp(["mooseroots.com", "insidegov.com"])) {
     a.css("html,body { overflow-y: scroll; } .BOX-wrap { display: none; }");
 }
 if (a.domCmp(["sandiegouniontribune.com"])) {
-    a.on("load", setTimeout(function () {
-        a.css("html, body { overflow: scroll; } #reg-overlay { width: 0px; }");
-    }, 1000));
+    const token = a.win.setInterval(function () {
+        if (a.$("#reg-overlay").length) {
+            a.$("#reg-overlay").remove()
+            a.$("<style> html[data-dss-meterup], [data-dss-meterup] body { o" +
+"verflow: scroll !important; } </style>").appendTo("head");
+            a.win.clearInterval(token);
+        }
+    }, 1000);
     a.filter("addEventListener", /^scroll$/);
 }
 a.generic();

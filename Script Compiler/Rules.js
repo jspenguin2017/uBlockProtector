@@ -2114,9 +2114,14 @@ if (a.domCmp(["mooseroots.com", "insidegov.com"])) {
 }
 if (a.domCmp(["sandiegouniontribune.com"])) {
     //Remove overlay
-    a.on("load", setTimeout(function () {
-        a.css("html, body { overflow: scroll; } #reg-overlay { width: 0px; }");
-    }, 1000));
+    const token = a.win.setInterval(function () {
+        if (a.$("#reg-overlay").length) {
+            a.$("#reg-overlay").remove()
+            a.$("<style> html[data-dss-meterup], [data-dss-meterup] body { o" +
+"verflow: scroll !important; } </style>").appendTo("head");
+            a.win.clearInterval(token);
+        }
+    }, 1000);
     a.filter("addEventListener", /^scroll$/);
 }
 //Activate generic protectors, excluded domains check is handled inside
