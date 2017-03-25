@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.111
+// @version 6.112
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -733,18 +733,6 @@ a.generic.FuckAdBlock = function (constructorName, instanceName) {
 a.init.racer = function () {
     if (a.domCmp(["29443kmq.video", "dato.porn"])) {
         a.readOnly("cRAds", true);
-    }
-    if (a.domCmp(["sandiegouniontribune.com", "baltimoresun.com", "boston.com", "capitalgazette.com",
-"carrollcountytimes.com", "celebuzz.com", "celebslam.com", "chicagotribune.com", "computershopper.com",
-"courant.com", "dailypress.com", "deathandtaxesmag.com", "extremetech.com", "gamerevolution.com",
-"geek.com", "gofugyourself.com", "hearthhead.com", "infinitiev.com", "lolking.net", "mcall.com",
-"mmo-champion.com", "nasdaq.com", "orlandosentinel.com", "pcmag.com", "ranker.com", "saveur.com",
-"sherdog.com", "spin.com", "sporcle.com", "stereogum.com", "sun-sentinel.com", "thefrisky.com",
-"thesuperficial.com", "timeanddate.com", "tmn.today", "twincities.com", "vancouversun.com", "vibe.com",
-"weather.com", "wowhead.com", "legacy.com"])) {
-        a.noAccess("i10c");
-        a.noAccess("I10C");
-        a.noAccess("INSTART");
     }
 };
 a.init(["360.cn", "apple.com", "ask.com", "baidu.com", "bing.com", "bufferapp.com", "chatango.com",

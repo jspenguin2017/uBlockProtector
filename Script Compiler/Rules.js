@@ -7,6 +7,7 @@ a.init.racer = function () {
         //NSFW!
         a.readOnly("cRAds", true);
     }
+    /*
     if (a.domCmp(["sandiegouniontribune.com", "baltimoresun.com", "boston.com", "capitalgazette.com",
 "carrollcountytimes.com", "celebuzz.com", "celebslam.com", "chicagotribune.com", "computershopper.com",
 "courant.com", "dailypress.com", "deathandtaxesmag.com", "extremetech.com", "gamerevolution.com",
@@ -21,6 +22,7 @@ a.init.racer = function () {
         a.noAccess("I10C");
         a.noAccess("INSTART");
     }
+    */
 };
 //Init, pass in excluded domains
 a.init(["360.cn", "apple.com", "ask.com", "baidu.com", "bing.com", "bufferapp.com", "chatango.com",
