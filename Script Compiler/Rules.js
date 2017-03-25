@@ -8,7 +8,8 @@ a.init.racer = function () {
         a.readOnly("cRAds", true);
     }
     /*
-    if (a.domCmp(["sandiegouniontribune.com", "baltimoresun.com", "boston.com", "capitalgazette.com",
+    //Nope, broke again...
+    if (false && a.domCmp(["sandiegouniontribune.com", "baltimoresun.com", "boston.com", "capitalgazette.com",
 "carrollcountytimes.com", "celebuzz.com", "celebslam.com", "chicagotribune.com", "computershopper.com",
 "courant.com", "dailypress.com", "deathandtaxesmag.com", "extremetech.com", "gamerevolution.com",
 "geek.com", "gofugyourself.com", "hearthhead.com", "infinitiev.com", "lolking.net", "mcall.com",
@@ -18,9 +19,15 @@ a.init.racer = function () {
 "weather.com", "wowhead.com", "legacy.com"])) {
         //Issue: https://github.com/X01X012013/AdBlockProtector/issues/95
         //Thanks to uBlock-user
+        //Doesn't work any more
         a.noAccess("i10c");
         a.noAccess("I10C");
         a.noAccess("INSTART");
+        //Breaks videos and images
+        a.patchHTML(function (html) {
+            return html.replace(/\b(:?I10C|INSTART)\b/, a.c.syntaxBreaker);
+        });
+
     }
     */
 };
