@@ -111,8 +111,8 @@ if (a.domCmp(["adf.ly", "ay.gy", "j.gs", "q.gs", "gamecopyworld.click", "babblec
                 decodedURL += a.win.location.hash;
             }
             //Nuke body since we got the link
-            a.doc.body.innerHTML = `<div><h2>Adfly bypassed. Redirecting to real link: ` +
-`<a href="${decodedURL}">${decodedURL}</a></h2></div>`;
+            a.doc.body.innerHTML = `<div><h2>Adfly bypassed by AdBlock Protector. ` +
+`Redirecting to real link: <a href="${decodedURL}">${decodedURL}</a></h2></div>`;
             //Redirect
             a.win.onbeforeunload = null;
             //a.win.onunload = null;
@@ -1678,6 +1678,7 @@ if (a.domCmp(["dplay.com", "dplay.dk", "dplay.se"])) {
     });
     a.cookie("dsc-adblock", value);
 }
+/*
 if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "play.tv3.lt", "tv3play.tv3.ee"])) {
     //(Experimental) Replace player on load
     const handler = function () {
@@ -1744,6 +1745,7 @@ if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "pl
         handler();
     }
 }
+*/
 if (a.domCmp(["firstrow.co", "firstrows.ru", "firstrows.tv", "firstrows.org", "firstrows.co",
 "firstrows.biz", "firstrowus.eu", "firstrow1us.eu", "firstsrowsports.eu", "firstrowsportes.tv",
 "firstrowsportes.com", "justfirstrowsports.com", "hahasport.me", "wiziwig.ru", "wiziwig.sx",
@@ -2127,6 +2129,39 @@ if (a.domCmp(["sandiegouniontribune.com"])) {
         }
     }, 1000);
     a.filter("addEventListener", /^scroll$/);
+}
+if (a.domCmp(["adz.bz"])) {
+    //Issue: https://github.com/X01X012013/AdBlockProtector/issues/106
+    let val;
+    a.win.Object.defineProperty(a.win, "linkVM", {
+        configurable: false,
+        set: function (arg) {
+            val = arg;
+        },
+        get: function () {
+            if (val.verify) {
+                val.verify = (function () {
+                    callAPI("publishing", "VerifyLinkClick", {
+                        linkRef: val.linkRef(),
+                        linkClickRef: $("#LinkClickRef")[0].value,
+                        recaptchaResponse: val.recaptchaResponse()
+                    }, 'Verify', 'Verifying',
+                    function (response) {
+                        if (response.result) {
+                            window.location.href = response.linkURL;
+                        } else {
+                            showMessageModal('Verify failed', response.resultHtml, response.result);
+                        }
+                    },
+                    null,
+                    function () {
+                        grecaptcha.reset();
+                    });
+                }).bind(val);
+            }
+            return val;
+        }
+    });
 }
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
