@@ -119,6 +119,7 @@ if (a.domCmp(["adf.ly", "ay.gy", "j.gs", "q.gs", "gamecopyworld.click", "babblec
             a.win.location.href = decodedURL;
         } else {
             a.config.debugMode && a.out.info("This page isn't an Adfly page");
+            //We may need to restore write and btoa, no breakage report yet
         }
     });
 }
