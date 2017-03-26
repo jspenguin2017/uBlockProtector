@@ -110,12 +110,15 @@ if (a.domCmp(["adf.ly", "ay.gy", "j.gs", "q.gs", "gamecopyworld.click", "babblec
             if (a.win.location.hash) {
                 decodedURL += a.win.location.hash;
             }
+            //Nuke body since we got the link
+            a.doc.body.innerHTML = `<div><h2>Adfly bypassed. Redirecting to real link: ` +
+`<a href="${decodedURL}">${decodedURL}</a></h2></div>`;
             //Redirect
             a.win.onbeforeunload = null;
             //a.win.onunload = null;
             a.win.location.href = decodedURL;
         } else {
-            a.config.debugMode && a.out.info("This page isn't an adf.ly page");
+            a.config.debugMode && a.out.info("This page isn't an Adfly page");
         }
     });
 }
