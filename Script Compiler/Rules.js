@@ -2130,7 +2130,7 @@ if (a.domCmp(["sandiegouniontribune.com"])) {
     }, 1000);
     a.filter("addEventListener", /^scroll$/);
 }
-if (a.domCmp(["adz.bz"])) {
+if (a.domCmp(["adz.bz", "mellow.link", "hop.bz"])) {
     //Issue: https://github.com/X01X012013/AdBlockProtector/issues/106
     let val;
     a.win.Object.defineProperty(a.win, "linkVM", {

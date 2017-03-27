@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.116
+// @version 6.117
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2314,7 +2314,7 @@ if (a.domCmp(["sandiegouniontribune.com"])) {
     }, 1000);
     a.filter("addEventListener", /^scroll$/);
 }
-if (a.domCmp(["adz.bz"])) {
+if (a.domCmp(["adz.bz", "mellow.link", "hop.bz"])) {
     let val;
     a.win.Object.defineProperty(a.win, "linkVM", {
         configurable: false,
