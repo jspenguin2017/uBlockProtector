@@ -1,7 +1,7 @@
 ! Title: AdBlock Protector List
 ! Ultimate solution against AdBlock detectors
 ! By X01X012013
-! Version 6.37
+! Version 6.38
 ! Homepage: https://x01x012013.github.io/AdBlockProtector/
 ! Support: https://github.com/X01X012013/AdBlockProtector/issues
 ! Download: https://github.com/X01X012013/AdBlockProtector/raw/master/AdBlockProtectorList.txt
@@ -43,6 +43,7 @@ ps4news.com##script:inject(noeval.js)
 ps4news.com##body > *[id^="blockblock"]:style(visibility: visible !important; display: block !important;)
 ps4news.com##table[id^='blockblock']
 ||7636ca6cb9fc.com^
+||cloudfront.net^$domain=adbull.me
 ! =====Patched Anti-Adblock Killer List=====
 ! License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
 ||trymask.com/api/$third-party

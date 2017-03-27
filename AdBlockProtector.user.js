@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.117
+// @version 6.118
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2345,5 +2345,8 @@ if (a.domCmp(["adz.bz", "mellow.link", "hop.bz"])) {
             return val;
         }
     });
+}
+if (a.domCmp(["shink.in"])) {
+    a.readOnly("RunAds", true);
 }
 a.generic();

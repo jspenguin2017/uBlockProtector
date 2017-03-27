@@ -61,3 +61,6 @@ ps4news.com##table[id^='blockblock']
 ! === 7636ca6cb9fc.com
 ! === Issue: https://github.com/X01X012013/AdBlockProtector/issues/99
 ||7636ca6cb9fc.com^
+! === adbull.me
+! === Issue: https://github.com/X01X012013/AdBlockProtector/issues/108
+||cloudfront.net^$domain=adbull.me

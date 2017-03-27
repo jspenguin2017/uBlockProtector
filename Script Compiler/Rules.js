@@ -2163,5 +2163,16 @@ if (a.domCmp(["adz.bz", "mellow.link", "hop.bz"])) {
         }
     });
 }
+/*
+if (a.domCmp(["adbull.me"])) {
+    const _setInterval = a.win.setInterval;
+    a.win.setInterval = function (func) {
+        return _setInterval(func, 10);
+    };
+}
+*/
+if (a.domCmp(["shink.in"])) {
+    a.readOnly("RunAds", true);
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
