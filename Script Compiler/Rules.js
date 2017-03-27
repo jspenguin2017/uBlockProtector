@@ -2180,5 +2180,8 @@ if (a.domCmp(["shink.in"])) {
     }
     //TODO: Block popup
 }
+if (a.domCmp(["gamezhero.com"])) {
+    a.readOnly("ads", true);
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();

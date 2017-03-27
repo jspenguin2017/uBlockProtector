@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.120
+// @version 6.121
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2360,5 +2360,8 @@ if (a.domCmp(["shink.in"])) {
             a.$("#countdown").remove();
         });
     }
+}
+if (a.domCmp(["gamezhero.com"])) {
+    a.readOnly("ads", true);
 }
 a.generic();
