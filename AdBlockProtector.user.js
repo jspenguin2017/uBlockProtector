@@ -2324,22 +2324,28 @@ if (a.domCmp(["adz.bz", "mellow.link", "hop.bz"])) {
         get: function () {
             if (val.verify) {
                 val.verify = (function () {
-                    callAPI("publishing", "VerifyLinkClick", {
-                        linkRef: val.linkRef(),
-                        linkClickRef: $("#LinkClickRef")[0].value,
-                        recaptchaResponse: val.recaptchaResponse()
-                    }, 'Verify', 'Verifying',
-                    function (response) {
-                        if (response.result) {
-                            window.location.href = response.linkURL;
-                        } else {
-                            showMessageModal('Verify failed', response.resultHtml, response.result);
+                    callAPI(
+                        "publishing",
+                        "VerifyLinkClick",
+                        {
+                            linkRef: val.linkRef(),
+                            linkClickRef: $("#LinkClickRef")[0].value,
+                            recaptchaResponse: val.recaptchaResponse()
+                        },
+                        "Verify",
+                        "Verifying",
+                        function (response) {
+                            if (response.result) {
+                                window.location.href = response.linkURL;
+                            } else {
+                                showMessageModal("Verify failed", response.resultHtml, response.result);
+                            }
+                        },
+                        null,
+                        function () {
+                            grecaptcha.reset();
                         }
-                    },
-                    null,
-                    function () {
-                        grecaptcha.reset();
-                    });
+                    );
                 }).bind(val);
             }
             return val;
