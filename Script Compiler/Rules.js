@@ -2171,6 +2171,14 @@ if (a.domCmp(["adbull.me"])) {
 }
 if (a.domCmp(["shink.in"])) {
     a.readOnly("RunAds", true);
+    //Not tested: Remove countdown and enable get link button
+    if (a.config.debugMode) {
+        a.on("load", function () {
+            a.$("a#btn-main").removeAttr("disabled");
+            a.$("#countdown").remove();
+        });
+    }
+    //TODO: Block popup
 }
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
