@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.121
+// @version 6.122
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -267,6 +267,37 @@ a.filter = function (func, filter) {
         a.config.debugMode && a.out.warn("Filter activated on " + func);
     } catch (err) {
         a.config.debugMode && a.out.error("AdBlock Protector failed to activate filter on " + func + "! ");
+        return false;
+    }
+    return true;
+};
+a.timewarp = function (func, filter, ratio) {
+    filter = filter || /[\S\s]/;
+    ratio = ratio || 0.02;
+    const original = a.win[func];
+    const newFunc = function (arg, time) {
+        if (a.config.debugMode) {
+            a.out.warn("Timewarpped " + func + " is called with these arguments: ");
+            a.out.warn(arg.toString());
+            a.out.warn(time.toString());
+        }
+        if (filter.test(arg.toString())) {
+            a.config.debugMode && a.out.info("Timewarpped. ");
+            return original(arg, time * ratio);
+        } else {
+            a.config.debugMode && a.out.info("Not timewarpped. ");
+            return original(arg, time);
+        }
+    };
+    try {
+        a.win[func] = newFunc;
+        if (a.protectFunc.enabled) {
+            a.protectFunc.pointers.push(newFunc);
+            a.protectFunc.masks.push(original.toString());
+        }
+        a.config.debugMode && a.out.warn("Timewarp activated on " + func);
+    } catch (err) {
+        a.config.debugMode && a.out.error("AdBlock Protector failed to apply timewarp on " + func + "! ");
         return false;
     }
     return true;
@@ -2353,21 +2384,15 @@ if (a.domCmp(["adz.bz", "mellow.link", "hop.bz"])) {
     });
 }
 if (a.domCmp(["adbull.me"])) {
-    const _setInterval = a.win.setInterval;
-    a.win.setInterval = function (func) {
-        return _setInterval(func, 10);
-    };
+    a.timewarp("setInterval");
 }
 if (a.domCmp(["shink.in"])) {
     a.readOnly("RunAds", true);
-    if (a.config.debugMode) {
-        a.on("load", function () {
-            a.$("a#btn-main").removeAttr("disabled");
-            a.$("#countdown").remove();
-        });
-    }
+    a.readOnly("jsPopunder", function () { });
+    a.timewarp("setInterval");
 }
 if (a.domCmp(["gamezhero.com"])) {
     a.readOnly("ads", true);
+    a.timewarp("setInterval", null, 0.01);
 }
 a.generic();

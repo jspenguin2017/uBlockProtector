@@ -516,13 +516,13 @@ a.filter = function (func, filter) {
  * @function
  * @param {string} func - The name of the function to patch, can be "setTimeout" or "setInterval".
  * @param {RegExp} [filter=/[\S\s]/] - Functions matching this filter will have its execution delay changed, match all functions by default.
- * @param {float} [ratio=0.01] - The boost ratio, between 0 and 1 for speed up, larger than 1 for slow down, defaults to speed up 100 times.
+ * @param {float} [ratio=0.01] - The boost ratio, between 0 and 1 for speed up, larger than 1 for slow down, defaults to speed up 50 times.
  * @returns {boolean} True if the operation was successful, false otherwise.
  */
 a.timewarp = function (func, filter, ratio) {
     //Check parameters
     filter = filter || /[\S\s]/;
-    ratio = ratio || 0.01;
+    ratio = ratio || 0.02;
     //The original function
     const original = a.win[func];
     //The function with timewarp
@@ -537,7 +537,7 @@ a.timewarp = function (func, filter, ratio) {
         //Check if we need to timewarp this function
         if (filter.test(arg.toString())) {
             //Timewarp
-            a.config.debugMode && a.out.error("Timewarpped. ");
+            a.config.debugMode && a.out.info("Timewarpped. ");
             return original(arg, time * ratio);
         } else {
             //Do not timewarp

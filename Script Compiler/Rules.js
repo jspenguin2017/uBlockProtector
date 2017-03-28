@@ -73,10 +73,7 @@ if (a.domCmp(["adf.ly", "ay.gy", "j.gs", "q.gs", "gamecopyworld.click", "babblec
         a.win.abgo = function () { };
     });
     //Skip countdown
-    const _setInterval = a.win.setInterval;
-    a.win.setInterval = function (func) {
-        return _setInterval(func, 10);
-    };
+    a.timewarp("setInterval");
     */
     //New solution - Thanks to ghajini: 
     //Based on: AdsBypasser
@@ -2170,24 +2167,16 @@ if (a.domCmp(["adz.bz", "mellow.link", "hop.bz"])) {
     });
 }
 if (a.domCmp(["adbull.me"])) {
-    const _setInterval = a.win.setInterval;
-    a.win.setInterval = function (func) {
-        return _setInterval(func, 10);
-    };
+    a.timewarp("setInterval");
 }
 if (a.domCmp(["shink.in"])) {
     a.readOnly("RunAds", true);
-    //Not tested: Remove countdown and enable get link button
-    if (a.config.debugMode) {
-        a.on("load", function () {
-            a.$("a#btn-main").removeAttr("disabled");
-            a.$("#countdown").remove();
-        });
-    }
-    //TODO: Block popup
+    a.readOnly("jsPopunder", function () { });
+    a.timewarp("setInterval");
 }
 if (a.domCmp(["gamezhero.com"])) {
     a.readOnly("ads", true);
+    a.timewarp("setInterval", null, 0.01);
 }
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
