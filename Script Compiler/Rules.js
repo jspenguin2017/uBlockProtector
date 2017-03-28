@@ -2176,7 +2176,7 @@ if (a.domCmp(["shink.in"])) {
 }
 if (a.domCmp(["gamezhero.com"])) {
     a.readOnly("ads", true);
-    a.timewarp("setInterval", null, 0.01);
+    a.timewarp("setInterval");
 }
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
