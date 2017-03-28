@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.123
+// @version 6.124
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -281,7 +281,7 @@ a.timewarp = function (func, filter, ratio) {
             a.out.warn(arg.toString());
             a.out.warn(time.toString());
         }
-        if (filter.test(arg.toString())) {
+        if (filter.test(arg.toString()) || filter.test(time.toString())) {
             a.config.debugMode && a.out.info("Timewarpped. ");
             return original(arg, time * ratio);
         } else {
@@ -2384,12 +2384,11 @@ if (a.domCmp(["adz.bz", "mellow.link", "hop.bz"])) {
     });
 }
 if (a.domCmp(["adbull.me"])) {
-    a.timewarp("setInterval");
+    a.timewarp("setInterval", /^1000$/);
 }
 if (a.domCmp(["shink.in"])) {
     a.readOnly("RunAds", true);
-    a.readOnly("jsPopunder", function () { });
-    a.timewarp("setInterval");
+    a.timewarp("setInterval", /^1000$/);
 }
 if (a.domCmp(["gamezhero.com"])) {
     a.readOnly("ads", true);

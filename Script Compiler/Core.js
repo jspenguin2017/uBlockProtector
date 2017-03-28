@@ -515,7 +515,7 @@ a.filter = function (func, filter) {
  * Change the execution delay for setTimeout or setInterval.
  * @function
  * @param {string} func - The name of the function to patch, can be "setTimeout" or "setInterval".
- * @param {RegExp} [filter=/[\S\s]/] - Functions matching this filter will have its execution delay changed, match all functions by default.
+ * @param {RegExp} [filter=/[\S\s]/] - Change execution delay if this filter is matched, match everything by default.
  * @param {float} [ratio=0.01] - The boost ratio, between 0 and 1 for speed up, larger than 1 for slow down, defaults to speed up 50 times.
  * @returns {boolean} True if the operation was successful, false otherwise.
  */
@@ -535,7 +535,7 @@ a.timewarp = function (func, filter, ratio) {
             a.out.warn(time.toString());
         }
         //Check if we need to timewarp this function
-        if (filter.test(arg.toString())) {
+        if (filter.test(arg.toString()) || filter.test(time.toString())) {
             //Timewarp
             a.config.debugMode && a.out.info("Timewarpped. ");
             return original(arg, time * ratio);

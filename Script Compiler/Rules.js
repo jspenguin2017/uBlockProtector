@@ -2167,12 +2167,12 @@ if (a.domCmp(["adz.bz", "mellow.link", "hop.bz"])) {
     });
 }
 if (a.domCmp(["adbull.me"])) {
-    a.timewarp("setInterval");
+    a.timewarp("setInterval", /^1000$/);
 }
 if (a.domCmp(["shink.in"])) {
     a.readOnly("RunAds", true);
-    a.readOnly("jsPopunder", function () { });
-    a.timewarp("setInterval");
+    //a.readOnly("jsPopunder", function () { });
+    a.timewarp("setInterval", /^1000$/);
 }
 if (a.domCmp(["gamezhero.com"])) {
     a.readOnly("ads", true);
