@@ -458,6 +458,7 @@ a.filter = function (func, filter) {
     let fNames;
     //The function with filters
     const newFunc = function () {
+        //Note: can sometimes crash if the argument doesn't have toString property
         //Call log
         if (a.config.debugMode) {
             a.out.warn(func + " is called with these arguments: ");
@@ -506,6 +507,57 @@ a.filter = function (func, filter) {
     } catch (err) {
         //Failed to activate
         a.config.debugMode && a.out.error("AdBlock Protector failed to activate filter on " + func + "! ");
+        return false;
+    }
+    return true;
+};
+/**
+ * Change the execution delay for setTimeout or setInterval.
+ * @function
+ * @param {string} func - The name of the function to patch, can be "setTimeout" or "setInterval".
+ * @param {RegExp} [filter=/[\S\s]/] - Functions matching this filter will have its execution delay changed, match all functions by default.
+ * @param {float} [ratio=0.01] - The boost ratio, between 0 and 1 for speed up, larger than 1 for slow down, defaults to speed up 100 times.
+ * @returns {boolean} True if the operation was successful, false otherwise.
+ */
+a.timewarp = function (func, filter, ratio) {
+    //Check parameters
+    filter = filter || /[\S\s]/;
+    ratio = ratio || 0.01;
+    //The original function
+    const original = a.win[func];
+    //The function with timewarp
+    const newFunc = function (arg, time) {
+        //Note: can sometimes crash if the argument doesn't have toString property
+        //Call log
+        if (a.config.debugMode) {
+            a.out.warn("Timewarpped " + func + " is called with these arguments: ");
+            a.out.warn(arg.toString());
+            a.out.warn(time.toString());
+        }
+        //Check if we need to timewarp this function
+        if (filter.test(arg.toString())) {
+            //Timewarp
+            a.config.debugMode && a.out.error("Timewarpped. ");
+            return original(arg, time * ratio);
+        } else {
+            //Do not timewarp
+            a.config.debugMode && a.out.info("Not timewarpped. ");
+            return original(arg, time);
+        }
+    };
+    //Try to replace the function
+    try {
+        a.win[func] = newFunc;
+        //Add this filter to protection list
+        if (a.protectFunc.enabled) {
+            a.protectFunc.pointers.push(newFunc);
+            a.protectFunc.masks.push(original.toString());
+        }
+        //Activate log
+        a.config.debugMode && a.out.warn("Timewarp activated on " + func);
+    } catch (err) {
+        //Failed to activate
+        a.config.debugMode && a.out.error("AdBlock Protector failed to apply timewarp on " + func + "! ");
         return false;
     }
     return true;
