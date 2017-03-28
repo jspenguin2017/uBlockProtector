@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.126
+// @version 6.127
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2398,13 +2398,6 @@ if (a.domCmp(["shink.in"])) {
                 return null;
             case "iframe":
                 let elem = _createElement.apply(a.doc, arguments);
-                elem.onload = function () {
-                    try {
-                        elem.contentWindow.open = function () { };
-                        elem.contentWindow.document.createElement = function () { };
-                    } catch (err) {
-                    }
-                };
                 return elem;
             default:
                 return _createElement.apply(a.doc, arguments);

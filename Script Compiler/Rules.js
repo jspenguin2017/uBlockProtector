@@ -2183,15 +2183,18 @@ if (a.domCmp(["shink.in"])) {
                 return null;
             case "iframe":
                 let elem = _createElement.apply(a.doc, arguments);
-                elem.onload = function () {
-                    try {
-                        //Remove open and createElement
-                        elem.contentWindow.open = function () { };
-                        elem.contentWindow.document.createElement = function () { };
-                    } catch (err) {
-                        //reCaptcha frame, ignore
-                    }
-                };
+                /*
+                //Cause some problems
+                    elem.onload = function () {
+                        try {
+                            //Remove open and createElement
+                            elem.contentWindow.open = function () { };
+                            elem.contentWindow.document.createElement = function () { };
+                        } catch (err) {
+                            //reCaptcha frame, ignore
+                        }
+                    };
+                */
                 return elem;
             default:
                 return _createElement.apply(a.doc, arguments);
