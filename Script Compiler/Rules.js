@@ -2175,8 +2175,28 @@ if (a.domCmp(["shink.in"])) {
     a.timewarp("setInterval", /^1000$/);
     //Block popup
     a.win.open = function () { };
-    a.filter("document.createElement", /^a$/);
     a.readOnly("jsPopunder", function () { });
+    const _createElement = a.doc.createElement;
+    a.doc.createElement = function (name) {
+        switch (name.toLowerCase()) {
+            case "a":
+                return null;
+            case "iframe":
+                let elem = _createElement.apply(a.doc, arguments);
+                elem.onload = function () {
+                    try {
+                        //Remove open and createElement
+                        elem.contentWindow.open = function () { };
+                        elem.contentWindow.document.createElement = function () { };
+                    } catch (err) {
+                        //reCaptcha frame, ignore
+                    }
+                };
+                return elem;
+            default:
+                return _createElement.apply(a.doc, arguments);
+        }
+    };
 }
 if (a.domCmp(["gamezhero.com"])) {
     a.readOnly("ads", true);
