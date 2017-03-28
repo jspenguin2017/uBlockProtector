@@ -2170,9 +2170,13 @@ if (a.domCmp(["adbull.me"])) {
     a.timewarp("setInterval", /^1000$/);
 }
 if (a.domCmp(["shink.in"])) {
+    //Remove block screen and skip countdown
     a.readOnly("RunAds", true);
-    //a.readOnly("jsPopunder", function () { });
     a.timewarp("setInterval", /^1000$/);
+    //Block popup
+    a.win.open = function () { };
+    a.filter("document.createElement", /^a$/);
+    a.readOnly("jsPopunder", function () { });
 }
 if (a.domCmp(["gamezhero.com"])) {
     a.readOnly("ads", true);
