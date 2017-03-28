@@ -537,7 +537,7 @@ a.timewarp = function (func, filter, ratio) {
         //Check if we need to timewarp this function
         if (filter.test(arg.toString()) || filter.test(time.toString())) {
             //Timewarp
-            a.config.debugMode && a.out.info("Timewarpped. ");
+            a.config.debugMode && a.out.warn("Timewarpped. ");
             return original(arg, time * ratio);
         } else {
             //Do not timewarp

@@ -282,7 +282,7 @@ a.timewarp = function (func, filter, ratio) {
             a.out.warn(time.toString());
         }
         if (filter.test(arg.toString()) || filter.test(time.toString())) {
-            a.config.debugMode && a.out.info("Timewarpped. ");
+            a.config.debugMode && a.out.warn("Timewarpped. ");
             return original(arg, time * ratio);
         } else {
             a.config.debugMode && a.out.info("Not timewarpped. ");
