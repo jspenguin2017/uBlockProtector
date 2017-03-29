@@ -6,9 +6,10 @@ a.init.racer = function () {
     if (a.domCmp(["29443kmq.video", "dato.porn"])) {
         //NSFW!
         a.readOnly("cRAds", true);
+        //Popup handled in List
     }
     /*
-    //Nope, broke again...
+    //Fixed by uBO-Extra
     if (false && a.domCmp(["sandiegouniontribune.com", "baltimoresun.com", "boston.com", "capitalgazette.com",
 "carrollcountytimes.com", "celebuzz.com", "celebslam.com", "chicagotribune.com", "computershopper.com",
 "courant.com", "dailypress.com", "deathandtaxesmag.com", "extremetech.com", "gamerevolution.com",
@@ -1676,6 +1677,7 @@ if (a.domCmp(["dplay.com", "dplay.dk", "dplay.se"])) {
     a.cookie("dsc-adblock", value);
 }
 /*
+//Old solution from AAK, doesn't actually work
 if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "play.tv3.lt", "tv3play.tv3.ee"])) {
     //(Experimental) Replace player on load
     const handler = function () {
@@ -2055,18 +2057,6 @@ if (a.domCmp(["pornhub.com", "redtube.com", "youporn.com", "tube8.com", "pornmd.
         }
     };
 }
-/*
-//Breaks videos
-if (a.domCmp(["czechhq.net"], true)) {
-    //NSFW! Disable popup
-    a.filter("document.addEventListener", /^mousedown$/);
-}
-if (a.domCmp(["29443kmq.video"], true)) {
-    //NSFW! Disable popup
-    a.readOnly("_pop", []);
-    //a.noAccess("_pop");
-}
-*/
 if (a.domCmp(["pastebin.com"])) {
     //Lock abdd to an empty string
     a.readOnly("abdd", "");
@@ -2185,15 +2175,15 @@ if (a.domCmp(["shink.in"])) {
                 let elem = _createElement.apply(a.doc, arguments);
                 /*
                 //Cause some problems
-                    elem.onload = function () {
-                        try {
-                            //Remove open and createElement
-                            elem.contentWindow.open = function () { };
-                            elem.contentWindow.document.createElement = function () { };
-                        } catch (err) {
-                            //reCaptcha frame, ignore
-                        }
-                    };
+                elem.onload = function () {
+                    try {
+                        //Remove open and createElement
+                        elem.contentWindow.open = function () { };
+                        elem.contentWindow.document.createElement = function () { };
+                    } catch (err) {
+                        //reCaptcha frame, ignore
+                    }
+                };
                 */
                 return elem;
             default:
