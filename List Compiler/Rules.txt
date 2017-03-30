@@ -64,3 +64,6 @@ ps4news.com##table[id^='blockblock']
 ! === adbull.me and shink.in
 ! === Issue: https://github.com/X01X012013/AdBlockProtector/issues/108
 ||cloudfront.net^$domain=adbull.me|shink.in
+! === okazje.co
+! === Issue: https://github.com/X01X012013/AdBlockProtector/issues/114
+okazje.co###AdBlockDetected
