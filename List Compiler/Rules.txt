@@ -76,3 +76,5 @@ pornvibe.org##.special-message-content
 ||$third-party,script,domain=pornvibe.org
 @@||openload.co/embed^$third-party,domain=pornvibe.org
 @@||oloadcdn.net^$domain=pornvibe.org
+! === answers.com
+answers.com##.end_of_slideshow

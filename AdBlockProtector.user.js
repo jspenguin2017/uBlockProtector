@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.128
+// @version 6.129
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -760,7 +760,6 @@ a.generic.FuckAdBlock = function (constructorName, instanceName) {
     };
     return a.readOnly(constructorName, patchedFuckAdBlock) && a.readOnly(instanceName, new a.win[constructorName]());
 };
-"use strict";
 a.init.racer = function () {
     if (a.domCmp(["29443kmq.video", "dato.porn"])) {
         a.readOnly("cRAds", true);
