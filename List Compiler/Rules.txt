@@ -71,3 +71,8 @@ okazje.co###AdBlockDetected
 ! === Issue: https://github.com/X01X012013/AdBlockProtector/issues/118
 @@||cdn.tvdez.com^$domain=www.estadiofutebol.com
 ||cdn.tvdez.com^$subdocument,domain=www.televisaofutebol.com
+! === NSFW! pornvibe.org
+! === Issue: https://github.com/X01X012013/AdBlockProtector/issues/119
+pornvibe.org##.special-message-content
+||jzlzdnvvktcf.com^$domain=pornvibe.org
+||lskzcjgerhzn.com^$domain=pornvibe.org
