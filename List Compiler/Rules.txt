@@ -69,7 +69,10 @@ ps4news.com##table[id^='blockblock']
 okazje.co###AdBlockDetected
 ! === televisaofutebol.com (iframe of estadiofutebol.com)
 ! === Issue: https://github.com/X01X012013/AdBlockProtector/issues/118
-@@||cdn.tvdez.com^$images,domain=www.estadiofutebol.com
-! === NSFW! pornvibe.org
+@@||cdn.tvdez.com^$image,domain=www.estadiofutebol.com
+! === NSFW! pornvibe.org - Thanks to uBlock-user
 ! === Issue: https://github.com/X01X012013/AdBlockProtector/issues/119
 pornvibe.org##.special-message-content
+||$third-party,script,domain=pornvibe.org
+@@||openload.co/embed^$third-party,domain=pornvibe.org
+@@||oloadcdn.net^$domain=pornvibe.org

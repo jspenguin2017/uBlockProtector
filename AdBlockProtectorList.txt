@@ -1,7 +1,7 @@
 ! Title: AdBlock Protector List
 ! Ultimate solution against AdBlock detectors
 ! By X01X012013
-! Version: 6.43
+! Version: 6.44
 ! Homepage: https://x01x012013.github.io/AdBlockProtector/
 ! Support: https://github.com/X01X012013/AdBlockProtector/issues
 ! Download: https://github.com/X01X012013/AdBlockProtector/raw/master/AdBlockProtectorList.txt
@@ -45,8 +45,11 @@ ps4news.com##table[id^='blockblock']
 ||7636ca6cb9fc.com^
 ||cloudfront.net^$domain=adbull.me|shink.in
 okazje.co###AdBlockDetected
-@@||cdn.tvdez.com^$images,domain=www.estadiofutebol.com
+@@||cdn.tvdez.com^$image,domain=www.estadiofutebol.com
 pornvibe.org##.special-message-content
+||$third-party,script,domain=pornvibe.org
+@@||openload.co/embed^$third-party,domain=pornvibe.org
+@@||oloadcdn.net^$domain=pornvibe.org
 ! =====Patched Anti-Adblock Killer List=====
 ! License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
 ||trymask.com/api/$third-party
