@@ -1,6 +1,5 @@
 //Dump window vars: JSON.stringify(Object.keys(window));
 
-"use strict";
 //Racer function
 a.init.racer = function () {
     if (a.domCmp(["29443kmq.video", "dato.porn"])) {
