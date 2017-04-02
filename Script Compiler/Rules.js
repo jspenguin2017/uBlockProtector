@@ -2194,5 +2194,9 @@ if (a.domCmp(["gamezhero.com"])) {
     a.readOnly("ads", true);
     a.timewarp("setInterval", /^function\ \(\)\{var \_0x/);
 }
+if (a.domCmp(["freetvall.com"])) {
+    //Forcefully enable right click
+    a.readOnly("clickNS", function () { });
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
