@@ -295,7 +295,7 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
 "snobka.pl", "wawalove.pl", "wp.pl", "wp.tv", "wrzuta.pl", "pudelek.pl", "fotoblogia.pl"]) &&
 !a.domCmp(["i.wp.pl"], true)) {
 */
-if (a.domCmp(["money.pl", "parenting.pl"], true)) {
+if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl"], true)) {
     //wp.pl and related domains
     //Set a cookie to prevent block screen
     //a.cookie("ABCABC", "true");
@@ -2197,6 +2197,11 @@ if (a.domCmp(["gamezhero.com"])) {
 if (a.domCmp(["freetvall.com"])) {
     //Forcefully enable right click
     a.readOnly("clickNS", function () { });
+}
+if (a.domCmp(["hotslogs.com"])) {
+    //Issue: https://github.com/X01X012013/AdBlockProtector/issues/121
+    a.win.MonkeyBroker = {}
+    a.noAccess("MonkeyBroker.regSlotsMap");
 }
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();

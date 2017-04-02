@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.130
+// @version 6.131
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -966,7 +966,7 @@ a.win.encodeURIComponent(api);
         });
     });
 }
-if (a.domCmp(["money.pl", "parenting.pl"], true)) {
+if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl"], true)) {
     let mid; //Media ID of next video
     let midArray1 = []; //Media IDs method 1
     let midArray2 = []; //Media IDs method 2
@@ -2409,5 +2409,9 @@ if (a.domCmp(["gamezhero.com"])) {
 }
 if (a.domCmp(["freetvall.com"])) {
     a.readOnly("clickNS", function () { });
+}
+if (a.domCmp(["hotslogs.com"])) {
+    a.win.MonkeyBroker = {}
+    a.noAccess("MonkeyBroker.regSlotsMap");
 }
 a.generic();
