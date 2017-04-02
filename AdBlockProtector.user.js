@@ -2411,7 +2411,7 @@ if (a.domCmp(["freetvall.com"])) {
     a.readOnly("clickNS", function () { });
 }
 if (a.domCmp(["hotslogs.com"])) {
-    a.win.MonkeyBroker = {}
+    a.win.MonkeyBroker = {};
     a.noAccess("MonkeyBroker.regSlotsMap");
 }
 a.generic();

@@ -2200,7 +2200,7 @@ if (a.domCmp(["freetvall.com"])) {
 }
 if (a.domCmp(["hotslogs.com"])) {
     //Issue: https://github.com/X01X012013/AdBlockProtector/issues/121
-    a.win.MonkeyBroker = {}
+    a.win.MonkeyBroker = {};
     a.noAccess("MonkeyBroker.regSlotsMap");
 }
 //Activate generic protectors, excluded domains check is handled inside
