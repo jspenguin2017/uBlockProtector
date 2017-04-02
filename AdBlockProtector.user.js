@@ -410,7 +410,7 @@ a.bait = function (type, identifier) {
     elem.html("<br>").prependTo("html");
 };
 a.cookie = function (key, val, time, path) {
-    if (val === "undefined") {
+    if (typeof val === "undefined") {
         const value = "; " + a.doc.cookie;
         let parts = value.split("; " + key + "=");
         if (parts.length == 2) {
