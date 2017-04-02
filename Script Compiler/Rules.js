@@ -2206,5 +2206,12 @@ if (a.domCmp(["hotslogs.com"])) {
 if (a.domCmp(["undeniable.info"])) {
     a.bait("div", "#testadblock");
 }
+if (a.domInc(["gamereactor"])) {
+    //Issue: https://github.com/X01X012013/AdBlockProtector/issues/124
+    //Currently patched by EasyList, one white-list was overwritten by List
+    //to properly block ads
+    //a.readOnly("detectAdblockUser", function () { });
+    a.cookie("countdownToAd", "-1");
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
