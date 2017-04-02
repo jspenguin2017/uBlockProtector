@@ -738,7 +738,7 @@ a.bait = function (type, identifier) {
  * @returns {string} The value of the cookie, null will be returned if the cookie doesn't exist, and undefined will be returned in set mode.
  */
 a.cookie = function (key, val, time, path) {
-    if (val === "undefined") {
+    if (typeof val === "undefined") {
         //Get mode
         //http://stackoverflow.com/questions/10730362/get-cookie-by-name
         const value = "; " + a.doc.cookie;
