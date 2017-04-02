@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.131
+// @version 6.132
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2413,5 +2413,8 @@ if (a.domCmp(["freetvall.com"])) {
 if (a.domCmp(["hotslogs.com"])) {
     a.win.MonkeyBroker = {};
     a.noAccess("MonkeyBroker.regSlotsMap");
+}
+if (a.domCmp(["undeniable.info"])) {
+    a.bait("div", "#testadblock");
 }
 a.generic();

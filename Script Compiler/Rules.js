@@ -2203,5 +2203,8 @@ if (a.domCmp(["hotslogs.com"])) {
     a.win.MonkeyBroker = {};
     a.noAccess("MonkeyBroker.regSlotsMap");
 }
+if (a.domCmp(["undeniable.info"])) {
+    a.bait("div", "#testadblock");
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
