@@ -741,6 +741,7 @@ a.generic.FuckAdBlock = function (constructorName, instanceName) {
             this._callbacks = [];
         };
         this.on = function (detected, func) {
+            a.config.debugMode && a.err("FuckAdBlock");
             if (!detected) {
                 this._callbacks.push(func);
             }
@@ -751,7 +752,6 @@ a.generic.FuckAdBlock = function (constructorName, instanceName) {
             return this;
         };
         this.onNotDetected = function (func) {
-            a.config.debugMode && a.err("FuckAdBlock");
             return this.on(false, func);
         };
         this.debug = {};

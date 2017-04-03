@@ -1229,6 +1229,8 @@ a.generic.FuckAdBlock = function (constructorName, instanceName) {
         };
         //Add event handler
         this.on = function (detected, func) {
+            //Log
+            a.config.debugMode && a.err("FuckAdBlock");
             if (!detected) {
                 this._callbacks.push(func);
             }
@@ -1242,8 +1244,6 @@ a.generic.FuckAdBlock = function (constructorName, instanceName) {
         };
         //Add on not detected handler
         this.onNotDetected = function (func) {
-            //Log
-            a.config.debugMode && a.err("FuckAdBlock");
             return this.on(false, func);
         };
         //===v4 Methods===
