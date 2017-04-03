@@ -733,7 +733,7 @@ a.bait = function (type, identifier) {
  * @function
  * @param {string} key - The key of the cookie.
  * @param {string} [val=undefined] - The value to set, omit this to get the cookie.
- * @param {string} [time=31536000000] - In how many milliseconds will it expire, defaults to 1 year.
+ * @param {integer} [time=31536000000] - In how many milliseconds will it expire, defaults to 1 year.
  * @param {string} [path=/] - The path to set.
  * @returns {string} The value of the cookie, null will be returned if the cookie doesn't exist, and undefined will be returned in set mode.
  */
