@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.133
+// @version 6.134
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2419,5 +2419,9 @@ if (a.domCmp(["undeniable.info"])) {
 }
 if (a.domInc(["gamereactor"])) {
     a.cookie("countdownToAd", "-1");
+}
+if (a.domCmp(["dasolo.co"])) {
+    a.win.eval = function () { };
+    a.noAccess("adblockblock");
 }
 a.generic();

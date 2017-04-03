@@ -2208,10 +2208,12 @@ if (a.domCmp(["undeniable.info"])) {
 }
 if (a.domInc(["gamereactor"])) {
     //Issue: https://github.com/X01X012013/AdBlockProtector/issues/124
-    //Currently patched by EasyList, one white-list was overwritten by List
-    //to properly block ads
     //a.readOnly("detectAdblockUser", function () { });
     a.cookie("countdownToAd", "-1");
+}
+if (a.domCmp(["dasolo.co"])) {
+    a.win.eval = function () { };
+    a.noAccess("adblockblock");
 }
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();

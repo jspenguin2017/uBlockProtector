@@ -80,4 +80,4 @@ pornvibe.org##.special-message-content
 answers.com##.end_of_slideshow
 ! === gamereactor
 ! === Issue: https://github.com/X01X012013/AdBlockProtector/issues/124
-||openx.gamereactor.dk/multi.php$script,important
+@@||openx.gamereactor.dk/multi.php?$script,badfilter
