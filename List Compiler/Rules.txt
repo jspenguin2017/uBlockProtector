@@ -82,3 +82,13 @@ answers.com##.end_of_slideshow
 ! === gamereactor
 ! === Issue: https://github.com/X01X012013/AdBlockProtector/issues/124
 @@||openx.gamereactor.dk/multi.php?$script,badfilter
+! === animmex.* - Thanks to uBlock-user
+! === https://github.com/X01X012013/AdBlockProtector/issues/125
+animmex.*##script:inject(bab-defuser.js)
+@@||4553t5pugtt1qslvsnmpc0tpfz5fo.xyz^$domain=animmex.*
+4553t5pugtt1qslvsnmpc0tpfz5fo.xyz##script:inject(bab-defuser.js)
+4553t5pugtt1qslvsnmpc0tpfz5fo.xyz##script:inject(abort-on-property-read.js, _gunggo)
+4553t5pugtt1qslvsnmpc0tpfz5fo.xyz###babasbmsgx
+animmex.*###M148617ScriptRootC75329
+animmex.*##a[href^="https://forum.animmex.com/viewtopic.php"]
+||$third-party,script,domain=animmex.*
