@@ -2208,12 +2208,15 @@ if (a.domCmp(["undeniable.info"])) {
 }
 if (a.domInc(["gamereactor"])) {
     //Issue: https://github.com/X01X012013/AdBlockProtector/issues/124
+    //One filter from EasyList marked as $badfilter by List
     //a.readOnly("detectAdblockUser", function () { });
     a.cookie("countdownToAd", "-1");
 }
 if (a.domCmp(["dasolo.co"])) {
+    //Issue: https://github.com/X01X012013/AdBlockProtector/issues/126
     a.win.eval = function () { };
     a.noAccess("adblockblock");
+    a.bait("div", "#loveyou");
 }
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();

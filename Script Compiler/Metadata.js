@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.134
+// @version 6.135
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
