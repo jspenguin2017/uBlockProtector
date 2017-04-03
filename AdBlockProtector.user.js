@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.136
+// @version 6.137
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -909,9 +909,9 @@ if (a.domCmp(["tvregionalna24.pl"])) {
         }
     });
 }
-if (a.domCmp(["tvn.pl", "tvn24.pl", "tvnstyle.pl", "tvnturbo.pl", "kuchniaplus.pl"])) {
-    const homePages = ["http://www.tvn.pl/", "http://www.tvn7.pl/", "http://www.tvnstyle.pl/",
-"http://www.tvnturbo.pl/"];
+if (a.domCmp(["tvn.pl", "tvn24.pl", "tvnstyle.pl", "tvnturbo.pl", "kuchniaplus.pl",
+"miniminiplus.pl"])) {
+    const homePages = ["http://www.tvn.pl/", "http://www.tvnstyle.pl/", "http://www.tvnturbo.pl/"];
     if (!homePages.includes(a.doc.location.href)) {
         a.on("load", function () {
             a.$(".videoPlayer").parent().after(a.nativePlayer(a.$(".videoPlayer").data("src"))).remove();
@@ -2424,5 +2424,8 @@ if (a.domCmp(["dasolo.co"])) {
     a.win.eval = function () { };
     a.noAccess("adblockblock");
     a.bait("div", "#loveyou");
+}
+if (a.domCmp(["titulky.com"])) {
+    a.generic.FuckAdBlock("FADB", "fADB");
 }
 a.generic();

@@ -221,13 +221,13 @@ if (a.domCmp(["tvregionalna24.pl"])) {
         }
     });
 }
-if (a.domCmp(["tvn.pl", "tvn24.pl", "tvnstyle.pl", "tvnturbo.pl", "kuchniaplus.pl"])) {
+if (a.domCmp(["tvn.pl", "tvn24.pl", "tvnstyle.pl", "tvnturbo.pl", "kuchniaplus.pl",
+"miniminiplus.pl"])) {
     //tvn.pl and related domains
     //Replace player - Thanks to mikhoul, szymon1118, and xxcriticxx
     //Potential related domains: "tvnfabula.pl", "itvnextra.pl", "tvn24bis.pl", "ttv.pl",
     //"x-news.pl", "tvn7.pl", "itvn.pl"
-    const homePages = ["http://www.tvn.pl/", "http://www.tvn7.pl/", "http://www.tvnstyle.pl/",
-"http://www.tvnturbo.pl/"];
+    const homePages = ["http://www.tvn.pl/", "http://www.tvnstyle.pl/", "http://www.tvnturbo.pl/"];
     //Homepages are partially fixed and are handled by List
     if (!homePages.includes(a.doc.location.href)) {
         a.on("load", function () {
@@ -2217,6 +2217,10 @@ if (a.domCmp(["dasolo.co"])) {
     a.win.eval = function () { };
     a.noAccess("adblockblock");
     a.bait("div", "#loveyou");
+}
+if (a.domCmp(["titulky.com"])) {
+    //Issue: https://github.com/X01X012013/AdBlockProtector/issues/128
+    a.generic.FuckAdBlock("FADB", "fADB");
 }
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
