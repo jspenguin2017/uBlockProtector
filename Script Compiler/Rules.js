@@ -443,7 +443,7 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
 "echirurgia.pl", "pudelekx.pl"])) {
     //Issue: https://github.com/X01X012013/AdBlockProtector/issues/70
     //Thanks to ghajini
-    //Based on: AdGuard
+    //Based on: Adguard
     //License: https://github.com/AdguardTeam/AdguardBrowserExtension/blob/master/LICENSE
     a.cookie("ABCABC", "true");
     a.filter("addEventListener", /^advertisement$/);

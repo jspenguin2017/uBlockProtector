@@ -1073,7 +1073,7 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
 "kafeteria.pl", "kafeteria.tv", "komediowo.pl", "komorkomania.pl", "money.pl", "pudelek.tv", "sfora.pl",
 "snobka.pl", "wawalove.pl", "wp.pl", "wp.tv", "wrzuta.pl", "pudelek.pl", "fotoblogia.pl", "parenting.pl",
 "echirurgia.pl", "pudelekx.pl"])) {
-    //Based on: AdGuard
+    //Based on: Adguard
     //License: https://github.com/AdguardTeam/AdguardBrowserExtension/blob/master/LICENSE
     a.cookie("ABCABC", "true");
     a.filter("addEventListener", /^advertisement$/);
