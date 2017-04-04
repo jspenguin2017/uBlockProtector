@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.139
+// @version 6.140
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2425,6 +2425,10 @@ if (a.domCmp(["dasolo.co"])) {
     a.win.eval = function () { };
     a.noAccess("adblockblock");
     a.bait("div", "#loveyou");
+    a.readOnly("nocontext", null);
+    a.readOnly("mischandler", null);
+    a.readOnly("disableselect", null);
+    a.filter("document.addEventListener", /^contextmenu$/);
 }
 if (a.domCmp(["titulky.com"])) {
     a.generic.FuckAdBlock("FADB", "fADB");

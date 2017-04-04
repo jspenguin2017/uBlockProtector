@@ -2217,6 +2217,12 @@ if (a.domCmp(["dasolo.co"])) {
     a.win.eval = function () { };
     a.noAccess("adblockblock");
     a.bait("div", "#loveyou");
+    //Remove right click and shortcut keys blocker
+    //a.readOnly will crash function declaration, so these are enough
+    a.readOnly("nocontext", null);
+    a.readOnly("mischandler", null);
+    a.readOnly("disableselect", null);
+    a.filter("document.addEventListener", /^contextmenu$/);
 }
 if (a.domCmp(["titulky.com"])) {
     //Issue: https://github.com/X01X012013/AdBlockProtector/issues/128
