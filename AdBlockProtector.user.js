@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.140
+// @version 6.141
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -107,12 +107,12 @@ a.mods = function () {
             }
             const navBar = a.$("div[role='navigation']");
             if (navBar.length > 0) {
-                navBar.append(`<div class="_4kny _2s24" id="AdBlock_Protector_FBMod_JumpToTop"><div class="_4q39"><a class="_2s25" href="javascript: void(0);">Top</a></div></div>`);
+                navBar.fist().append(`<div class="_4kny _2s24" id="AdBlock_Protector_FBMod_JumpToTop"><div class="_4q39"><a class="_2s25" href="javascript: void(0);">Top</a></div></div>`);
                 a.$("#AdBlock_Protector_FBMod_JumpToTop").click(function () {
                     a.win.scrollTo(a.win.scrollX, 0);
                 });
             } else {
-                a.win.setTimeout(addJumpToTop, 1000);
+                a.win.setTimeout(addJumpToTop, 500);
             }
         };
         const hidePeopleYouMayKnow = function () {
