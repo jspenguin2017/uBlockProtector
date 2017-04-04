@@ -440,7 +440,7 @@ if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl"], true)) {
 if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadzetomania.pl", "hotmoney.pl",
 "kafeteria.pl", "kafeteria.tv", "komediowo.pl", "komorkomania.pl", "money.pl", "pudelek.tv", "sfora.pl",
 "snobka.pl", "wawalove.pl", "wp.pl", "wp.tv", "wrzuta.pl", "pudelek.pl", "fotoblogia.pl", "parenting.pl",
-"echirurgia.pl"])) {
+"echirurgia.pl", "pudelekx.pl"])) {
     //Issue: https://github.com/X01X012013/AdBlockProtector/issues/70
     //Thanks to ghajini
     //Based on: AdGuard

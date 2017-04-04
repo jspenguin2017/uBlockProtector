@@ -88,3 +88,5 @@ answers.com##.end_of_slideshow
 4553t5pugtt1qslvsnmpc0tpfz5fo.xyz###babasbmsgx
 animmex.*###M148617ScriptRootC75329
 animmex.*##a[href^="https://forum.animmex.com/viewtopic.php"]
+! === gry.pl
+||flakyfeast.com^$domain=gry.pl

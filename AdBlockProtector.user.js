@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.138
+// @version 6.139
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -1072,7 +1072,7 @@ if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl"], true)) {
 if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadzetomania.pl", "hotmoney.pl",
 "kafeteria.pl", "kafeteria.tv", "komediowo.pl", "komorkomania.pl", "money.pl", "pudelek.tv", "sfora.pl",
 "snobka.pl", "wawalove.pl", "wp.pl", "wp.tv", "wrzuta.pl", "pudelek.pl", "fotoblogia.pl", "parenting.pl",
-"echirurgia.pl"])) {
+"echirurgia.pl", "pudelekx.pl"])) {
     //Based on: AdGuard
     //License: https://github.com/AdguardTeam/AdguardBrowserExtension/blob/master/LICENSE
     a.cookie("ABCABC", "true");

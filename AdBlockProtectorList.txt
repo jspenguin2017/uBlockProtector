@@ -1,7 +1,7 @@
 ! Title: AdBlock Protector List
 ! Ultimate solution against AdBlock detectors
 ! By X01X012013
-! Version: 6.50
+! Version: 6.51
 ! Homepage: https://x01x012013.github.io/AdBlockProtector/
 ! Support: https://github.com/X01X012013/AdBlockProtector/issues
 ! Download: https://github.com/X01X012013/AdBlockProtector/raw/master/AdBlockProtectorList.txt
@@ -56,6 +56,7 @@ answers.com##.end_of_slideshow
 4553t5pugtt1qslvsnmpc0tpfz5fo.xyz###babasbmsgx
 animmex.*###M148617ScriptRootC75329
 animmex.*##a[href^="https://forum.animmex.com/viewtopic.php"]
+||flakyfeast.com^$domain=gry.pl
 ! =====Patched Anti-Adblock Killer List=====
 ! License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
 ||trymask.com/api/$third-party
