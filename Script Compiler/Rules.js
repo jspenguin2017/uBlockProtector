@@ -62,7 +62,8 @@ if (a.domCmp(["usapoliticstoday.com"])) {
     //Disable eval()
     a.filter("eval");
 }
-if (a.domCmp(["adf.ly", "ay.gy", "j.gs", "q.gs", "gamecopyworld.click", "babblecase.com", "pintient.com"])) {
+if (a.domCmp(["adf.ly", "ay.gy", "j.gs", "q.gs", "gamecopyworld.click", "babblecase.com",
+"pintient.com", "atominik.com"])) {
     //adf.ly and related domains
     //Issue: https://github.com/X01X012013/AdBlockProtector/issues/71
     /*
