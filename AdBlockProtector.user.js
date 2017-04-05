@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.142
+// @version 6.143
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -471,8 +471,14 @@ a.videoJS.init = function () {
     try {
         a.win.HELP_IMPROVE_VIDEOJS = false;
     } catch (err) { }
-    a.$("head").append(`<link href="//vjs.zencdn.net/5.4.6/video-js.min.css" rel="stylesheet"><script src="//vjs.zencdn.net/5.4.6/video.min.js"></script>`);
+    let plugins = "";
+    if (arguments.length > 0) {
+        plugins = a.win.Array.prototype.slice.call(arguments).join();
+    }
+    a.$("head").append(`<link href="//vjs.zencdn.net/5.4.6/video-js.min.css" rel="stylesheet"><script src="//vjs.zencdn.net/5.4.6/video.min.js"></script>${plugins}`);
 };
+a.videoJS.plugins = {};
+a.videoJS.plugins.hls = `<script src="//cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.4.0/videojs-contrib-hls.min.js"></script>`;
 a.always = function (func) {
     func();
     a.on("DOMContentLoaded", func);
@@ -2066,6 +2072,59 @@ if (a.domCmp(["dplay.com", "dplay.dk", "dplay.se"])) {
         "notificationExpiry": timestamp
     });
     a.cookie("dsc-adblock", value);
+}
+if (a.config.debugMode &&
+    a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "play.tv3.lt", "tv3play.tv3.ee"])) {
+    const handler = function () {
+        const elem = a.$("#video-player");
+        if (elem.length === 0) {
+            a.win.setTimeout(handler, 1000);
+            return;
+        }
+        let videoID = a.win.vfAvodpConfig.videoId;
+        if (!videoID) {
+            a.win.setTimeout(handler, 1000);
+            return;
+        }
+        const proxy = "http://www.sagkjeder.no/p/browse.php?u=";
+        GM_xmlhttpRequest({
+            method: "GET",
+            url: proxy + "http://playapi.mtgx.tv/v3/videos/stream/" + videoID,
+            onload: function (result) {
+                parser(result.responseText);
+            }
+        });
+    };
+    const parser = function (data) {
+        let streams;
+        try {
+            const parsedData = JSON.parse(data);
+            streams = parsedData.streams
+        } catch (err) {
+            a.config.debugMode && a.out.error("AdBlock Protector failed to find video URL! ");
+            return;
+        }
+        let sources = [], types = [];
+        if (streams.high && streams.high !== "") {
+            sources.push(streams.high);
+            types.push("video/mp4");
+        } else if (streams.hls && streams.hls !== "") {
+            sources.push(streams.hls);
+            types.push("application/x-mpegURL");
+        } else if (streams.medium && streams.medium !== "") {
+            sources.push(streams.medium);
+            types.push(streams.medium.startsWith("rtmp") ? "rtmp/mp4" : "application/f4m+xml");
+        } else {
+            a.config.debugMode && a.out.error("AdBlock Protector failed to find video URL! ");
+            return;
+        }
+        a.videoJS.init(a.videoJS.plugins.hls);
+        const height = a.$("#video-player").height();
+        const width = a.$("#video-player").width();
+        a.$("#video-player").after(a.videoJS(sources, types, width, height)).remove();
+        handler();
+    };
+    handler();
 }
 if (a.domCmp(["firstrow.co", "firstrows.ru", "firstrows.tv", "firstrows.org", "firstrows.co",
 "firstrows.biz", "firstrowus.eu", "firstrow1us.eu", "firstsrowsports.eu", "firstrowsportes.tv",

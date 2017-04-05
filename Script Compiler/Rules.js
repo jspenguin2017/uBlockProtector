@@ -1676,10 +1676,10 @@ if (a.domCmp(["dplay.com", "dplay.dk", "dplay.se"])) {
     });
     a.cookie("dsc-adblock", value);
 }
-/*
-//Old solution from AAK, doesn't actually work
-if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "play.tv3.lt", "tv3play.tv3.ee"])) {
-    //(Experimental) Replace player on load
+if (a.config.debugMode &&
+    a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "play.tv3.lt", "tv3play.tv3.ee"])) {
+    //(Debug) Replace player on load
+    //Might need to pause handler when the page is in the background...
     const handler = function () {
         //Find player
         const elem = a.$("#video-player");
@@ -1688,16 +1688,17 @@ if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "pl
             return;
         }
         //Find ID
-        let videoID = elem.attr("poster").split("/");
-        videoID = videoID[videoID.length - 2];
+        let videoID = a.win.vfAvodpConfig.videoId;
         if (!videoID) {
             a.win.setTimeout(handler, 1000);
             return;
         }
         //Request data JSON
+        //We might want to check if we actually need proxy in some way...
+        const proxy = "http://www.sagkjeder.no/p/browse.php?u=";
         GM_xmlhttpRequest({
             method: "GET",
-            url: "http://playapi.mtgx.tv/v3/videos/stream/" + videoID,
+            url: proxy + "http://playapi.mtgx.tv/v3/videos/stream/" + videoID,
             onload: function (result) {
                 parser(result.responseText);
             }
@@ -1710,9 +1711,7 @@ if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "pl
             const parsedData = JSON.parse(data);
             streams = parsedData.streams
         } catch (err) {
-            a.config.debugMode && a.out.err("AdBlock Protector failed to find video URL! ");
-            //Activate hander again
-            a.win.setTimeout(handler, 1000);
+            a.config.debugMode && a.out.error("AdBlock Protector failed to find video URL! ");
             return;
         }
         //Check source and type
@@ -1727,24 +1726,20 @@ if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "pl
             sources.push(streams.medium);
             types.push(streams.medium.startsWith("rtmp") ? "rtmp/mp4" : "application/f4m+xml");
         } else {
-            a.config.debugMode && a.out.err("AdBlock Protector failed to find video URL! ");
+            a.config.debugMode && a.out.error("AdBlock Protector failed to find video URL! ");
             return;
         }
         //Replace player
-        a.videoJS.init();
+        a.videoJS.init(a.videoJS.plugins.hls);
         const height = a.$("#video-player").height();
         const width = a.$("#video-player").width();
         a.$("#video-player").after(a.videoJS(sources, types, width, height)).remove();
-        //Activate hander again
-        a.win.setTimeout(handler, 1000);
-    };
-    if (a.config.allowExperimental && a.win.confirm("AdBlock Protector says: \nThis fix is experimental " +
-"and might not work, would you want to try it anyway? ")) {
-        //Can't seem to find real source of the stream, Geo Lock in my area?
+        //Watch for more video players
         handler();
-    }
+    };
+    //Start
+    handler();
 }
-*/
 if (a.domCmp(["firstrow.co", "firstrows.ru", "firstrows.tv", "firstrows.org", "firstrows.co",
 "firstrows.biz", "firstrowus.eu", "firstrow1us.eu", "firstsrowsports.eu", "firstrowsportes.tv",
 "firstrowsportes.com", "justfirstrowsports.com", "hahasport.me", "wiziwig.ru", "wiziwig.sx",

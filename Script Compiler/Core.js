@@ -833,6 +833,7 @@ a.videoJS = function (sources, types, width, height) {
 /**
  * Initialize videoJS 5.4.6.
  * Do not call this function multiple times.
+ * @param {string} [plugins=""] - Plug-ins to load, pass multiple arguments to load more than 1 plug-in. Omit if no plug-in is needed.
  * @function
  */
 a.videoJS.init = function () {
@@ -840,9 +841,19 @@ a.videoJS.init = function () {
     try {
         a.win.HELP_IMPROVE_VIDEOJS = false;
     } catch (err) { }
+    let plugins = "";
+    if (arguments.length > 0) {
+        plugins = a.win.Array.prototype.slice.call(arguments).join();
+    }
     //Load components
-    a.$("head").append(`<link href="//vjs.zencdn.net/5.4.6/video-js.min.css" rel="stylesheet"><script src="//vjs.zencdn.net/5.4.6/video.min.js"></script>`);
+    a.$("head").append(`<link href="//vjs.zencdn.net/5.4.6/video-js.min.css" rel="stylesheet"><script src="//vjs.zencdn.net/5.4.6/video.min.js"></script>${plugins}`);
 };
+a.videoJS.plugins = {};
+/**
+ * VideoJS plug-in, HLS parser.
+ * @const
+ */
+a.videoJS.plugins.hls = `<script src="//cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.4.0/videojs-contrib-hls.min.js"></script>`;
 /**
  * Run function that is passed in on document-start, document-idle, and document-end.
  * @function
