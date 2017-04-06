@@ -756,7 +756,7 @@ a.cookie = function (key, val, time, path) {
     }
 };
 /**
- * Serialize an object.
+ * Serialize an object into GET request parameters.
  * http://stackoverflow.com/questions/6566456/how-to-serialize-an-object-into-a-list-of-parameters
  * @function
  * @param {Object} obj - The object to serialize.
@@ -884,7 +884,7 @@ a.uid = function () {
  */
 a.uid.counter = 0;
 /**
- * Observe mutations to document.
+ * Observe mutations of the document.
  * @function
  * @param {string} type - The type of mutation to observe. Currently only "insert" is accepted, this argument is for future expansion.
  * @param {Function} callback - The callback function, relevant data will be passed in.
