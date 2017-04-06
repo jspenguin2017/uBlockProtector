@@ -2225,7 +2225,7 @@ if (a.domCmp(["titulky.com"])) {
     a.generic.FuckAdBlock("FADB", "fADB");
 }
 if (a.domCmp(["discoveryrom.org"])) {
-    a.readOnly("adsbygoogle", function () { });
+    a.win.adsbygoogle = [];
 }
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();

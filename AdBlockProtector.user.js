@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.144
+// @version 6.145
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2494,6 +2494,6 @@ if (a.domCmp(["titulky.com"])) {
     a.generic.FuckAdBlock("FADB", "fADB");
 }
 if (a.domCmp(["discoveryrom.org"])) {
-    a.readOnly("adsbygoogle", function () { });
+    a.win.adsbygoogle = [];
 }
 a.generic();
