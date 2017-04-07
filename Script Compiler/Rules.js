@@ -2238,5 +2238,52 @@ if (a.domCmp(["titulky.com"])) {
 if (a.domCmp(["discoveryrom.org"])) {
     a.win.adsbygoogle = [];
 }
+if (a.domCmp(["sthelensstar.co.uk", "runcornandwidnesworld.co.uk", "leighjournal.co.uk",
+"warringtonguardian.co.uk", "northwichguardian.co.uk", "middlewichguardian.co.uk",
+"knutsfordguardian.co.uk", "wilmslowguardian.co.uk", "creweguardian.co.uk",
+"thewestmorlandgazette.co.uk", "newsquest.co.uk", "messengernewspapers.co.uk",
+"lancashiretelegraph.co.uk", "asianimage.co.uk", "chorleycitizen.co.uk",
+"theboltonnews.co.uk", "burytimes.co.uk", "prestwichandwhitefieldguide.co.uk",
+"wirralglobe.co.uk", "autoexchange.co.uk", "chesterlestreetadvertiser.co.uk",
+"consettstanleyadvertiser.co.uk", "darlingtonaycliffesedgefieldadvertiser.co.uk",
+"darlingtonandstocktontimes.co.uk", "durhamadvertiser.co.uk",
+"edition.pagesuite-professional.co.uk", "durhamtimes.co.uk", "northyorkshireadvertiser.co.uk",
+"thenorthernecho.co.uk", "northernfarmer.co.uk", "wearvalleyadvertiser.co.uk",
+"gazetteherald.co.uk", "yorkpress.co.uk", "cravenherald.co.uk", "ilkleygazette.co.uk",
+"keighleynews.co.uk", "thetelegraphandargus.co.uk", "wharfedaleobserver.co.uk",
+"herefordtimes.com", "ludlowadvertiser.co.uk", "redditchadvertiser.co.uk",
+"bromsgroveadvertiser.co.uk", "droitwichadvertiser.co.uk", "cotswoldjournal.co.uk",
+"eveshamjournal.co.uk", "tewkesburyadmag.co.uk", "dudleynews.co.uk", "halesowennews.co.uk",
+"stourbridgenews.co.uk", "kidderminstershuttle.co.uk", "ledburyreporter.co.uk",
+"malverngazette.co.uk", "worcesternews.co.uk", "southendstandard.co.uk",
+"essexcountystandard.co.uk", "gazette-news.co.uk", "clactonandfrintongazette.co.uk",
+"harwichandmanningtreestandard.co.uk", "braintreeandwithamtimes.co.uk", "halsteadgazette.co.uk",
+"guardian-series.co.uk", "brentwoodweeklynews.co.uk", "chelmsfordweeklynews.co.uk",
+"maldonandburnhamstandard.co.uk", "thurrockgazette.co.uk", "basildonrecorder.co.uk",
+"echo-news.co.uk", "bucksfreepress.co.uk", "theargus.co.uk", "redhillandreigatelife.co.uk",
+"romseyadvertiser.co.uk", "dailyecho.co.uk", "hampshirechronicle.co.uk",
+"basingstokegazette.co.uk", "andoveradvertiser.co.uk", "stalbansreview.co.uk",
+"watfordobserver.co.uk", "heraldseries.co.uk", "banburycake.co.uk", "bicesteradvertiser.net",
+"oxfordmail.co.uk", "oxfordtimes.co.uk", "witneygazette.co.uk", "falmouthpacket.co.uk",
+"smallholder.co.uk", "southwestfarmer.co.uk", "dorsetecho.co.uk", "bournmouthecho.co.uk",
+"bridportnews.co.uk", "wiltsglosstandard.co.uk", "gazetteseries.co.uk", "bridgwatermercury.co.uk",
+"burnhamandhighbridgeweeklynews.co.uk", "chardandilminsternews.co.uk", "middevonstar.co.uk",
+"somersetcountygazette.co.uk", "thisisthewestcountry.co.uk", "yeovilexpress.co.uk",
+"wiltshiretimes.co.uk", "swindonadvertiser.co.uk", "salisburyjournal.co.uk",
+"boxingnewsonline.net", "engagedinvestor.co.uk", "globalreinsurance.com", "insurancetimes.co.uk",
+"pensions-insight.co.uk", "strategic-risk-global.com", "reward-guide.co.uk", "thestrad.com",
+"times-series.co.uk", "borehamwoodtimes.co.uk", "ealingtimes.co.uk", "enfieldindependent.co.uk",
+"haringeyindependent.co.uk", "harrowtimes.co.uk", "hillingdontimes.co.uk", "newsshopper.co.uk",
+"croydonguardian.co.uk", "epsomguardian.co.uk", "streathamguardian.co.uk", "suttonguardian.co.uk",
+"wandsworthguardian.co.uk", "wimbledonguardian.co.uk", "surreycomet.co.uk", "kingstonguardian.co.uk",
+"richmondandtwickenhamtimes.co.uk", "campaignseries.co.uk", "southwalesguardian.co.uk",
+"milfordmercury.co.uk", "pembrokeshirecountyliving.co.uk", "westerntelegraph.co.uk",
+"tivysideadvertiser.co.uk", "southwalesargus.co.uk", "cotswoldessence.co.uk",
+"freepressseries.co.uk", "monmouthshirecountylife.co.uk", "barryanddistrictnews.co.uk",
+"penarthtimes.co.uk", "eveningtimes.co.uk", "s1cars.com", "s1community.com", "s1homes.com",
+"s1jobs.com", "s1rental.com", "thescottishfarmer.co.uk", "heraldscotland.com", "thenational.scot"])) {
+    //Issue: https://github.com/X01X012013/AdBlockProtector/issues/137
+    a.readOnly("_sp_", null);
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
