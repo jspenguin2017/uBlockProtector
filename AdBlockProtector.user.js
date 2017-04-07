@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.145
+// @version 6.146
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -95,10 +95,6 @@ a.c.topFrame = (function () {
         return false;
     }
 })();
-a.c.latestUA = {};
-a.c.latestUA.FireFox = "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0";
-a.c.latestUA.Opera = "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36 OPR/43.0.2442.1144";
-a.c.latestUA.Chrome = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.98 Safari/537.36";
 a.mods = function () {
     if (a.domCmp(["facebook.com"], true)) {
         const addJumpToTop = function () {
@@ -374,19 +370,6 @@ a.noAccess = function (name) {
         }
     } catch (err) {
         a.config.debugMode && a.out.error("AdBlock Protector failed to define non-accessible property " + name + "! ");
-        return false;
-    }
-    return true;
-};
-a.setUA = function (newUA) {
-    try {
-        a.win.Object.defineProperty(a.win.navigator, "userAgent", {
-            get: function () {
-                return newUA;
-            }
-        });
-    } catch (err) {
-        a.config.debugMode && a.out.error("AdBlock Protector failed to edit user agent string! ");
         return false;
     }
     return true;
@@ -2091,6 +2074,8 @@ if (a.config.debugMode &&
             method: "GET",
             url: proxy + "http://playapi.mtgx.tv/v3/videos/stream/" + videoID,
             onload: function (result) {
+                a.out.info("Response received: ");
+                a.out.info(result.responseText);
                 parser(result.responseText);
             }
         });
@@ -2118,6 +2103,10 @@ if (a.config.debugMode &&
             a.config.debugMode && a.out.error("AdBlock Protector failed to find video URL! ");
             return;
         }
+        a.out.info("Potential media URLs: ");
+        a.out.info([streams.high, streams.hls, streams.medium]);
+        a.out.info("Used media URL: ");
+        a.out.info(sources);
         a.videoJS.init(a.videoJS.plugins.hls);
         const height = a.$("#video-player").height();
         const width = a.$("#video-player").width();

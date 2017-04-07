@@ -1679,6 +1679,7 @@ if (a.domCmp(["dplay.com", "dplay.dk", "dplay.se"])) {
 if (a.config.debugMode &&
     a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "play.tv3.lt", "tv3play.tv3.ee"])) {
     //(Debug) Replace player on load
+    //2 block of debug code to remove when releasing
     //Might need to pause handler when the page is in the background...
     const handler = function () {
         //Find player
@@ -1700,6 +1701,10 @@ if (a.config.debugMode &&
             method: "GET",
             url: proxy + "http://playapi.mtgx.tv/v3/videos/stream/" + videoID,
             onload: function (result) {
+                //=====Debug only=====
+                a.out.info("Response received: ");
+                a.out.info(result.responseText);
+                //===End debug only===
                 parser(result.responseText);
             }
         });
@@ -1729,6 +1734,12 @@ if (a.config.debugMode &&
             a.config.debugMode && a.out.error("AdBlock Protector failed to find video URL! ");
             return;
         }
+        //=====Debug only=====
+        a.out.info("Potential media URLs: ");
+        a.out.info([streams.high, streams.hls, streams.medium]);
+        a.out.info("Used media URL: ");
+        a.out.info(sources);
+        //===End debug only===
         //Replace player
         a.videoJS.init(a.videoJS.plugins.hls);
         const height = a.$("#video-player").height();

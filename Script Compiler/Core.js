@@ -193,23 +193,6 @@ a.c.topFrame = (function () {
         return false;
     }
 })();
-//===Latest Browsers User Agent Strings===
-a.c.latestUA = {};
-/**
- * The user agent string of latest FireFox
- * @const {string}
- */
-a.c.latestUA.FireFox = "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0";
-/**
- * The user agent string of latest Opera
- * @const {string}
- */
-a.c.latestUA.Opera = "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36 OPR/43.0.2442.1144";
-/**
- * The user agent string of latest Chrome
- * @const {string}
- */
-a.c.latestUA.Chrome = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.98 Safari/537.36";
 
 //=====Mods=====
 /**
@@ -681,6 +664,10 @@ a.noAccess = function (name) {
  * @param {string} newUA - The user agent string to set.
  * @returns {boolean} True if the operation was successful, false otherwise.
  */
+/*
+//Commenting out, never used and not properly implemented
+//This does not take in account the operating system the user is using
+//A proper way to implement this is to take in the old user agent, and patch it to get the new one
 a.setUA = function (newUA) {
     try {
         a.win.Object.defineProperty(a.win.navigator, "userAgent", {
@@ -694,6 +681,7 @@ a.setUA = function (newUA) {
     }
     return true;
 };
+*/
 /**
  * Inject CSS into HTML.
  * @function
