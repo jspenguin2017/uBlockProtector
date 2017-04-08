@@ -2531,6 +2531,6 @@ if (a.domCmp(["sthelensstar.co.uk", "runcornandwidnesworld.co.uk", "leighjournal
     a.readOnly("_sp_", null);
 }
 if (a.domCmp(["securenetsystems.net"])) {
-    a.readOnly("adBlockerPresent", false);
+    a.readOnly("iExist", true);
 }
 a.generic();
