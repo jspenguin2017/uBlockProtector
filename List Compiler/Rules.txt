@@ -83,7 +83,7 @@ answers.com##.end_of_slideshow
 ! === Issue: https://github.com/X01X012013/AdBlockProtector/issues/124
 ||openx.gamereactor.dk/multi.php$script,important
 ! === animmex.* - Thanks to uBlock-user
-! === https://github.com/X01X012013/AdBlockProtector/issues/125
+! === Issue: https://github.com/X01X012013/AdBlockProtector/issues/125
 ||finalservers.net^$inline-script
 finalservers.net###babasbmsgx
 finalservers.net##script:inject(abort-on-property-read.js, _gunggo)
