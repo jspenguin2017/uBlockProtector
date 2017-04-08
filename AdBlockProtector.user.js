@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.147
+// @version 6.148
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2529,5 +2529,8 @@ if (a.domCmp(["sthelensstar.co.uk", "runcornandwidnesworld.co.uk", "leighjournal
 "penarthtimes.co.uk", "eveningtimes.co.uk", "s1cars.com", "s1community.com", "s1homes.com",
 "s1jobs.com", "s1rental.com", "thescottishfarmer.co.uk", "heraldscotland.com", "thenational.scot"])) {
     a.readOnly("_sp_", null);
+}
+if (a.domCmp(["securenetsystems.net"])) {
+    a.readOnly("adBlockerPresent", false);
 }
 a.generic();

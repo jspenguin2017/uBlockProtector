@@ -2285,5 +2285,8 @@ if (a.domCmp(["sthelensstar.co.uk", "runcornandwidnesworld.co.uk", "leighjournal
     //Issue: https://github.com/X01X012013/AdBlockProtector/issues/137
     a.readOnly("_sp_", null);
 }
+if (a.domCmp(["securenetsystems.net"])) {
+    a.readOnly("adBlockerPresent", false);
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
