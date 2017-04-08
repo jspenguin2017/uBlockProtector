@@ -84,8 +84,9 @@ answers.com##.end_of_slideshow
 ||openx.gamereactor.dk/multi.php$script,important
 ! === animmex.* - Thanks to uBlock-user
 ! === https://github.com/X01X012013/AdBlockProtector/issues/125
-4553t5pugtt1qslvsnmpc0tpfz5fo.xyz##script:inject(abort-on-property-read.js, _gunggo)
-4553t5pugtt1qslvsnmpc0tpfz5fo.xyz###babasbmsgx
+||finalservers.net^$inline-script
+finalservers.net###babasbmsgx
+finalservers.net##script:inject(abort-on-property-read.js, _gunggo)
 animmex.*###M148617ScriptRootC75329
 animmex.*##a[href^="https://forum.animmex.com/viewtopic.php"]
 ! === gry.pl
