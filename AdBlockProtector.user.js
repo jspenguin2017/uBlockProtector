@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.148
+// @version 6.149
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2532,5 +2532,10 @@ if (a.domCmp(["sthelensstar.co.uk", "runcornandwidnesworld.co.uk", "leighjournal
 }
 if (a.domCmp(["securenetsystems.net"])) {
     a.readOnly("iExist", true);
+}
+if (a.domCmp(["finalservers.net"])) {
+    a.on("DOMContentLoaded", function () {
+        a.win.videojs("video_1").videoJsResolutionSwitcher();
+    });
 }
 a.generic();

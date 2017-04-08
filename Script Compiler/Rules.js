@@ -2288,5 +2288,11 @@ if (a.domCmp(["sthelensstar.co.uk", "runcornandwidnesworld.co.uk", "leighjournal
 if (a.domCmp(["securenetsystems.net"])) {
     a.readOnly("iExist", true);
 }
+if (a.domCmp(["finalservers.net"])) {
+    //Issue: https://github.com/X01X012013/AdBlockProtector/issues/125
+    a.on("DOMContentLoaded", function () {
+        a.win.videojs("video_1").videoJsResolutionSwitcher();
+    });
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
