@@ -169,7 +169,7 @@ if (a.domCmp(["tweaktown.com"])) {
 if (a.domCmp(["ratemyprofessors.com"])) {
     //Lock adBlocker to false and filter keywords from addEventListener()
     a.readOnly("adBlocker", false);
-    a.filter("addEventListener", "/resize/i");
+    a.filter("addEventListener", /^resize$/i);
 }
 if (a.domCmp(["gamepedia.com"])) {
     //(Workaround) Remove element on load
@@ -2080,7 +2080,7 @@ if (a.domCmp(["sidereel.com"])) {
     //Issue: https://github.com/X01X012013/AdBlockProtector/issues/83
     //This also works for allmusic.com
     a.protectFunc();
-    a.filter("setTimeout", /function \_0x[a-z0-9]{4,8}\(/);
+    a.filter("setTimeout", /function\ \_0x[a-z0-9]{4,8}\(/);
 }
 if (a.domCmp(["burning-feed.com"])) {
     //Thanks to uBlock-user
@@ -2300,6 +2300,11 @@ if (a.domCmp(["filmy.to", "histock.info"])) {
     a.win.open = function () {
         return { closed: false };
     };
+}
+if (a.domCmp(["flashx.tv"])) {
+    //Block popup
+    //Issue: https://github.com/X01X012013/AdBlockProtector/issues/130
+    a.filter("document.addEventListener", /^mousedown$/);
 }
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();

@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.150
+// @version 6.151
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -853,7 +853,7 @@ if (a.domCmp(["tweaktown.com"])) {
 }
 if (a.domCmp(["ratemyprofessors.com"])) {
     a.readOnly("adBlocker", false);
-    a.filter("addEventListener", "/resize/i");
+    a.filter("addEventListener", /^resize$/i);
 }
 if (a.domCmp(["gamepedia.com"])) {
     a.on("load", function () {
@@ -2359,7 +2359,7 @@ if (a.domCmp(["xnxx.com"])) {
 }
 if (a.domCmp(["sidereel.com"])) {
     a.protectFunc();
-    a.filter("setTimeout", /function \_0x[a-z0-9]{4,8}\(/);
+    a.filter("setTimeout", /function\ \_0x[a-z0-9]{4,8}\(/);
 }
 if (a.domCmp(["burning-feed.com"])) {
     a.readOnly("ads_enable", function () { });
@@ -2542,5 +2542,8 @@ if (a.domCmp(["filmy.to", "histock.info"])) {
     a.win.open = function () {
         return { closed: false };
     };
+}
+if (a.domCmp(["flashx.tv"])) {
+    a.filter("document.addEventListener", /^mousedown$/);
 }
 a.generic();
