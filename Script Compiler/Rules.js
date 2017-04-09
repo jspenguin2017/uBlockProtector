@@ -2313,6 +2313,8 @@ if (a.domCmp(["flashx.tv"])) {
                 _open(url);
             }
         };
+        a.win.eval = function () { };
+        a.noAccess("r3D");
     }
 }
 //Activate generic protectors, excluded domains check is handled inside

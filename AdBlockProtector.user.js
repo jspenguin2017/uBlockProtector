@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.152
+// @version 6.153
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2552,6 +2552,8 @@ if (a.domCmp(["flashx.tv"])) {
                 _open(url);
             }
         };
+        a.win.eval = function () { };
+        a.noAccess("r3D");
     }
 }
 a.generic();
