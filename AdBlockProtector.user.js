@@ -2544,7 +2544,7 @@ if (a.domCmp(["filmy.to", "histock.info"])) {
     };
 }
 if (a.domCmp(["flashx.tv"])) {
-    a.filter("document.addEventListener", /^mousedown|keydown|contextmenu$/);
+    a.filter("document.addEventListener", /^(mousedown|keydown|contextmenu)$/);
     if (a.config.debugMode) {
         const _open = a.win.open;
         a.win.open = function (url) {
