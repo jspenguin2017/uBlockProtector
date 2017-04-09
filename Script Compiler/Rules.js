@@ -2294,5 +2294,12 @@ if (a.domCmp(["finalservers.net"])) {
         a.win.videojs("video_1").videoJsResolutionSwitcher();
     });
 }
+if (a.domCmp(["filmy.to", "histock.info"])) {
+    //Block popup
+    //Issue: https://github.com/X01X012013/AdBlockProtector/issues/130
+    a.win.open = function () {
+        return { closed: false };
+    };
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
