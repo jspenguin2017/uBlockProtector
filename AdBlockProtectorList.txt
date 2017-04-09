@@ -60,6 +60,7 @@ animmex.*##a[href^="https://forum.animmex.com/viewtopic.php"]
 ||flakyfeast.com^$domain=gry.pl
 pixiv.net##.popular-introduction-block
 youtube.com###companion
+||flashx.tv/checkembed.php
 ! =====Patched Anti-Adblock Killer List=====
 ! License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
 ||trymask.com/api/$third-party

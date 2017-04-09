@@ -95,3 +95,5 @@ animmex.*##a[href^="https://forum.animmex.com/viewtopic.php"]
 pixiv.net##.popular-introduction-block
 ! === youtube.com
 youtube.com###companion
+! === flashx.tv
+||flashx.tv/checkembed.php

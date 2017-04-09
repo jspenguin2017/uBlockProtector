@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.151
+// @version 6.152
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2544,6 +2544,14 @@ if (a.domCmp(["filmy.to", "histock.info"])) {
     };
 }
 if (a.domCmp(["flashx.tv"])) {
-    a.filter("document.addEventListener", /^mousedown$/);
+    a.filter("document.addEventListener", /^mousedown|keydown|contextmenu$/);
+    if (a.config.debugMode) {
+        const _open = a.win.open;
+        a.win.open = function (url) {
+            if (url.startsWith("https://www.flashx.tv/downloadthis")) {
+                _open(url);
+            }
+        };
+    }
 }
 a.generic();

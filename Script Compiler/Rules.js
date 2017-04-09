@@ -2304,7 +2304,16 @@ if (a.domCmp(["filmy.to", "histock.info"])) {
 if (a.domCmp(["flashx.tv"])) {
     //Block popup
     //Issue: https://github.com/X01X012013/AdBlockProtector/issues/130
-    a.filter("document.addEventListener", /^mousedown$/);
+    a.filter("document.addEventListener", /^mousedown|keydown|contextmenu$/);
+    //Debug code
+    if (a.config.debugMode) {
+        const _open = a.win.open;
+        a.win.open = function (url) {
+            if (url.startsWith("https://www.flashx.tv/downloadthis")) {
+                _open(url);
+            }
+        };
+    }
 }
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
