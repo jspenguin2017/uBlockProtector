@@ -2107,7 +2107,7 @@ if (a.domCmp(["is.fi", "viasatsport.fi"])) {
         a.config.allowGeneric = false;
     }
 }
-if (a.domCmp(["mooseroots.com", "insidegov.com"])) {
+if (a.domCmp(["mooseroots.com", "insidegov.com", "gearsuite.com"])) {
     //Issue: https://github.com/X01X012013/AdBlockProtector/issues/96
     a.css("html,body { overflow-y: scroll; } .BOX-wrap { display: none; }");
 }
