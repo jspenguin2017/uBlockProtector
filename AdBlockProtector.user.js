@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.155
+// @version 6.156
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -113,11 +113,13 @@ a.mods = function () {
             }
         };
         const hidePeopleYouMayKnow = function () {
+            return;
             a.config.debugMode && a.out.info("Facebook Mod: Hide people you may know enabled. ");
             a.observe("insert", function (node) {
-                let elem;
+                let elem, anchor;
                 if (node.querySelector && (elem = node.querySelector("a[href^='/friends/requests/']"), elem)) {
-                    if (!elem.innerHTML.includes("See All")) {
+                    if (!elem.querySelector("input[role=combobox]") &&
+                        !(anchor = elem.querySelector("a[class=seeMore]"), anchor && anchor.href.includes("/friends/requests"))) {
                         a.config.debugMode && a.out.log(node);
                         node.remove();
                     }
@@ -127,7 +129,7 @@ a.mods = function () {
         if (a.mods.Facebook_JumpToTop) {
             addJumpToTop();
         }
-        if (!a.win.location.pathname === "/friends/requests/" && a.mods.Facebook_HidePeopleYouMayKnow) {
+        if (a.mods.Facebook_HidePeopleYouMayKnow && a.win.location.pathname !== "/friends/requests/") {
             hidePeopleYouMayKnow();
         }
     }
@@ -1367,15 +1369,6 @@ if (a.domCmp(["rmprepusb.com"])) {
 }
 if (a.domCmp(["cubeupload.com"])) {
     a.filter("document.write", /Please consider removing adblock to help us pay our bills/);
-}
-if (a.config.allowExperimental && a.domCmp(["neodrive.co"])) {
-    a.on("load", function () {
-        if (a.$(".player2").length > 0) {
-            a.win.prompt("AdBlock Protector says: \nThis *might* be the real link, we could not redirect " +
-"you automatically, please copy it and paste it into address bar manually: ", a.$(".player2").attr("href")
-.split("'")[1]);
-        }
-    });
 }
 if (a.domCmp(["hentaihaven.org"])) {
     a.noAccess("desktop_variants");

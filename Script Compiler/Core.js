@@ -224,11 +224,14 @@ a.mods = function () {
         };
         //Hide People You May Know
         const hidePeopleYouMayKnow = function () {
+            return;
+            //This functionality is currently broken
             a.config.debugMode && a.out.info("Facebook Mod: Hide people you may know enabled. ");
             a.observe("insert", function (node) {
-                let elem;
+                let elem, anchor;
                 if (node.querySelector && (elem = node.querySelector("a[href^='/friends/requests/']"), elem)) {
-                    if (!elem.innerHTML.includes("See All")) {
+                    if (!elem.querySelector("input[role=combobox]") &&
+                        !(anchor = elem.querySelector("a[class=seeMore]"), anchor && anchor.href.includes("/friends/requests"))) {
                         a.config.debugMode && a.out.log(node);
                         node.remove();
                     }
@@ -239,7 +242,7 @@ a.mods = function () {
         if (a.mods.Facebook_JumpToTop) {
             addJumpToTop();
         }
-        if (!a.win.location.pathname === "/friends/requests/" && a.mods.Facebook_HidePeopleYouMayKnow) {
+        if (a.mods.Facebook_HidePeopleYouMayKnow && a.win.location.pathname !== "/friends/requests/") {
             hidePeopleYouMayKnow();
         }
     }

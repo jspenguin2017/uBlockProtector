@@ -832,6 +832,8 @@ if (a.domCmp(["cubeupload.com"])) {
     //Filter keywords from document.write()
     a.filter("document.write", /Please consider removing adblock to help us pay our bills/);
 }
+/*
+//The website is down
 if (a.config.allowExperimental && a.domCmp(["neodrive.co"])) {
     //(Experimenal) Show the real video URL to the user
     a.on("load", function () {
@@ -842,6 +844,7 @@ if (a.config.allowExperimental && a.domCmp(["neodrive.co"])) {
         }
     });
 }
+*/
 if (a.domCmp(["hentaihaven.org"])) {
     //NSFW!
     //Thanks to uBlock-user
