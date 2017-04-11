@@ -216,6 +216,7 @@ a.mods = function () {
                 a.$("#AdBlock_Protector_FBMod_JumpToTop").click(function () {
                     a.win.scrollTo(a.win.scrollX, 0);
                 });
+                a.config.debugMode && a.out.info("Facebook Mod: Jump to Top button added. ");
             } else {
                 //Wait a little bit for the window to load, for some reason load event isn't working
                 a.win.setTimeout(addJumpToTop, 500);
@@ -223,10 +224,12 @@ a.mods = function () {
         };
         //Hide People You May Know
         const hidePeopleYouMayKnow = function () {
+            a.config.debugMode && a.out.info("Facebook Mod: Hide people you may know enabled. ");
             a.observe("insert", function (node) {
                 let elem;
                 if (node.querySelector && (elem = node.querySelector("a[href^='/friends/requests/']"), elem)) {
                     if (!elem.innerHTML.includes("See All")) {
+                        a.config.debugMode && a.out.log(node);
                         node.remove();
                     }
                 }
@@ -245,6 +248,7 @@ a.mods = function () {
         //Auto NCR (No Country Redirect)
         const name = a.dom.replace("www.", "").split(".")[0];
         const path = a.win.location.href.split("/").slice(3).join("/");
+        a.config.debugMode && a.out.info("Blogspot Mod: Redirecting to NCR... ");
         a.win.location.href = "http://" + name + ".blogspot.com/ncr/" + path;
     }
     //===No autoplay mods===
@@ -267,6 +271,7 @@ a.mods = function () {
                     })();
                 }
             });
+            a.config.debugMode && a.out.info("No Autoplay Mod: Autoplay disabled. ");
         }
         if (a.domCmp(["komputerswiat.pl"], true)) {
             let token = a.win.setInterval(function () {
@@ -282,6 +287,7 @@ a.mods = function () {
                     a.win.clearInterval(token);
                 }
             }, 1000);
+            a.config.debugMode && a.out.info("No Autoplay Mod: Autoplay disabled. ");
         }
     }
 };

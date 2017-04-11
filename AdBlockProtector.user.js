@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author X01X012013
-// @version 6.154
+// @version 6.155
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -107,15 +107,18 @@ a.mods = function () {
                 a.$("#AdBlock_Protector_FBMod_JumpToTop").click(function () {
                     a.win.scrollTo(a.win.scrollX, 0);
                 });
+                a.config.debugMode && a.out.info("Facebook Mod: Jump to Top button added. ");
             } else {
                 a.win.setTimeout(addJumpToTop, 500);
             }
         };
         const hidePeopleYouMayKnow = function () {
+            a.config.debugMode && a.out.info("Facebook Mod: Hide people you may know enabled. ");
             a.observe("insert", function (node) {
                 let elem;
                 if (node.querySelector && (elem = node.querySelector("a[href^='/friends/requests/']"), elem)) {
                     if (!elem.innerHTML.includes("See All")) {
+                        a.config.debugMode && a.out.log(node);
                         node.remove();
                     }
                 }
@@ -131,6 +134,7 @@ a.mods = function () {
     if (a.c.topFrame && a.mods.Blogspot_AutoNCR && a.domInc(["blogspot"], true) && !a.domCmp(["blogspot.com"], true)) {
         const name = a.dom.replace("www.", "").split(".")[0];
         const path = a.win.location.href.split("/").slice(3).join("/");
+        a.config.debugMode && a.out.info("Blogspot Mod: Redirecting to NCR... ");
         a.win.location.href = "http://" + name + ".blogspot.com/ncr/" + path;
     }
     if (a.mods.NoAutoplay) {
@@ -149,6 +153,7 @@ a.mods = function () {
                     })();
                 }
             });
+            a.config.debugMode && a.out.info("No Autoplay Mod: Autoplay disabled. ");
         }
         if (a.domCmp(["komputerswiat.pl"], true)) {
             let token = a.win.setInterval(function () {
@@ -161,6 +166,7 @@ a.mods = function () {
                     a.win.clearInterval(token);
                 }
             }, 1000);
+            a.config.debugMode && a.out.info("No Autoplay Mod: Autoplay disabled. ");
         }
     }
 };
