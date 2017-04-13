@@ -1,7 +1,7 @@
 ! Title: AdBlock Protector List
-! Ultimate solution against AdBlock detectors
-! By jspenguin2017
-! Version: 6.55
+! Redirect: https://github.com/jspenguin2017/AdBlockProtector/raw/master/AdBlockProtectorList.txt
+! ===Parsable header ends===
+! Description: Ultimate solution against AdBlock detectors
+! Author: jspenguin2017
 ! Homepage: https://jspenguin2017.github.io/AdBlockProtector/
 ! Support: https://github.com/jspenguin2017/AdBlockProtector/issues
-! Download: https://github.com/jspenguin2017/AdBlockProtector/raw/master/AdBlockProtectorList.txt
