@@ -52,11 +52,11 @@ a.init = function (excludedDomCmp, excludedDomInc) {
         GM_openInTab(a.c.supportPage);
     });
     //Home page installation test
-    if (a.domCmp(["x01x012013.github.io"], true) && a.doc.location.href.includes("x01x012013.github.io/AdBlockProtector")) {
+    if (a.domCmp(["jspenguin2017.github.io"], true) && a.doc.location.href.includes("jspenguin2017.github.io/AdBlockProtector")) {
         a.win.AdBlock_Protector_Script = true;
     }
     //Settings page
-    if (a.domCmp(["x01x012013.github.io"], true) && a.doc.location.href.includes("x01x012013.github.io/AdBlockProtector/settings.html")) {
+    if (a.domCmp(["jspenguin2017.github.io"], true) && a.doc.location.href.includes("jspenguin2017.github.io/AdBlockProtector/settings.html")) {
         a.on("load", function () {
             a.win.init([a.config.debugMode, a.config.allowExperimental, a.mods.Facebook_JumpToTop, a.mods.Facebook_HidePeopleYouMayKnow, a.mods.Blogspot_AutoNCR,
 a.mods.NoAutoplay], a.config.update);
@@ -165,17 +165,17 @@ a.c = {};
  * The settings page of this project.
  * @const {string}
  */
-a.c.settingsPage = "https://x01x012013.github.io/AdBlockProtector/settings.html";
+a.c.settingsPage = "https://jspenguin2017.github.io/AdBlockProtector/settings.html";
 /**
  * The home page of this project.
  * @const {string}
  */
-a.c.homePage = "https://x01x012013.github.io/AdBlockProtector/";
+a.c.homePage = "https://jspenguin2017.github.io/AdBlockProtector/";
 /**
  * The support (issues) page of this project.
  * @const {string}
  */
-a.c.supportPage = "https://github.com/X01X012013/AdBlockProtector/issues";
+a.c.supportPage = "https://github.com/jspenguin2017/AdBlockProtector/issues";
 /**
  * A string that will crash any JavaScript by syntax error when added to anywhere of its code.
  * @const {string}

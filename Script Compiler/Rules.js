@@ -17,7 +17,7 @@ a.init.racer = function () {
 "sherdog.com", "spin.com", "sporcle.com", "stereogum.com", "sun-sentinel.com", "thefrisky.com",
 "thesuperficial.com", "timeanddate.com", "tmn.today", "twincities.com", "vancouversun.com", "vibe.com",
 "weather.com", "wowhead.com", "legacy.com"])) {
-        //Issue: https://github.com/X01X012013/AdBlockProtector/issues/95
+        //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/95
         //Thanks to uBlock-user
         //Doesn't work any more
         a.noAccess("i10c");
@@ -65,7 +65,7 @@ if (a.domCmp(["usapoliticstoday.com"])) {
 if (a.domCmp(["adf.ly", "ay.gy", "j.gs", "q.gs", "gamecopyworld.click", "babblecase.com",
 "pintient.com", "atominik.com"])) {
     //adf.ly and related domains
-    //Issue: https://github.com/X01X012013/AdBlockProtector/issues/71
+    //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/71
     /*
     //Old solution: 
     //Disable open() before page starts to load and set abgo to an empty function when the page loads
@@ -442,7 +442,7 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
 "kafeteria.pl", "kafeteria.tv", "komediowo.pl", "komorkomania.pl", "money.pl", "pudelek.tv", "sfora.pl",
 "snobka.pl", "wawalove.pl", "wp.pl", "wp.tv", "wrzuta.pl", "pudelek.pl", "fotoblogia.pl", "parenting.pl",
 "echirurgia.pl", "pudelekx.pl"])) {
-    //Issue: https://github.com/X01X012013/AdBlockProtector/issues/70
+    //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/70
     //Thanks to ghajini
     //Based on: Adguard
     //License: https://github.com/AdguardTeam/AdguardBrowserExtension/blob/master/LICENSE
@@ -659,7 +659,7 @@ if (a.domCmp(["workupload.com"])) {
     });
 }
 if (a.domCmp(["intoday.in", "businesstoday.in", "lovesutras.com"])) {
-    //https://github.com/X01X012013/AdBlockProtector/issues/109
+    //https://github.com/jspenguin2017/AdBlockProtector/issues/109
     //Inject style and lock openPopup to an empty function
     a.css("#adbocker_alt { display: none; }");
     a.readOnly("openPopup", function () { });
@@ -848,7 +848,7 @@ if (a.config.allowExperimental && a.domCmp(["neodrive.co"])) {
 if (a.domCmp(["hentaihaven.org"])) {
     //NSFW!
     //Thanks to uBlock-user
-    //Issue: https://github.com/X01X012013/AdBlockProtector/issues/76
+    //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/76
     a.noAccess("desktop_variants");
 }
 if (a.domCmp(["primeshare.tv"])) {
@@ -2037,7 +2037,7 @@ if (a.domCmp(["zrabatowani.pl"])) {
 }
 if (a.domCmp(["hanime.tv"])) {
     //NSFW!
-    //Issue: https://github.com/X01X012013/AdBlockProtector/issues/76
+    //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/76
     const _open = a.win.open;
     a.win.open = function () {
         _open.apply(a.win, arguments);
@@ -2080,7 +2080,7 @@ if (a.domCmp(["xnxx.com"])) {
     a.readOnly("openpop", function () { });
 }
 if (a.domCmp(["sidereel.com"])) {
-    //Issue: https://github.com/X01X012013/AdBlockProtector/issues/83
+    //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/83
     //This also works for allmusic.com
     a.protectFunc();
     a.filter("setTimeout", /function\ \_0x[a-z0-9]{4,8}\(/);
@@ -2092,26 +2092,26 @@ if (a.domCmp(["burning-feed.com"])) {
     a.readOnly("ads_enable", function () { });
 }
 if (a.domCmp(["comicbook.com", "chip.de"])) {
-    //Issue: https://github.com/X01X012013/AdBlockProtector/issues/85
+    //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/85
     a.noAccess("stop");
 }
 if (a.domCmp(["ghame.ru"])) {
     a.$("<p class='adsbygoogle' style='display:none;'>hi</p>").prependTo("html");
 }
 if (a.domCmp(["thevideo.me", "fmovies.to", "fmovies.se", "fmovies.is"])) {
-    //Issue: https://github.com/X01X012013/AdBlockProtector/issues/86
-    //Issue: https://github.com/X01X012013/AdBlockProtector/issues/99
+    //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/86
+    //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/99
     a.win.open = function () { };
 }
 if (a.domCmp(["is.fi", "viasatsport.fi"])) {
-    //Issue: https://github.com/X01X012013/AdBlockProtector/issues/88
+    //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/88
     a.readOnly("Sabdetect_load", false);
     if (a.domCmp(["viasatsport.fi"], true)) {
         a.config.allowGeneric = false;
     }
 }
 if (a.domCmp(["mooseroots.com", "insidegov.com", "gearsuite.com"])) {
-    //Issue: https://github.com/X01X012013/AdBlockProtector/issues/96
+    //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/96
     a.css("html,body { overflow-y: scroll; } .BOX-wrap { display: none; }");
 }
 if (a.domCmp(["sandiegouniontribune.com"])) {
@@ -2127,7 +2127,7 @@ if (a.domCmp(["sandiegouniontribune.com"])) {
     a.filter("addEventListener", /^scroll$/);
 }
 if (a.domCmp(["adz.bz", "mellow.link", "hop.bz"])) {
-    //Issue: https://github.com/X01X012013/AdBlockProtector/issues/106
+    //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/106
     let val;
     a.win.Object.defineProperty(a.win, "linkVM", {
         configurable: false,
@@ -2209,7 +2209,7 @@ if (a.domCmp(["freetvall.com"])) {
     a.readOnly("clickNS", function () { });
 }
 if (a.domCmp(["hotslogs.com"])) {
-    //Issue: https://github.com/X01X012013/AdBlockProtector/issues/121
+    //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/121
     a.win.MonkeyBroker = {};
     a.noAccess("MonkeyBroker.regSlotsMap");
 }
@@ -2217,13 +2217,13 @@ if (a.domCmp(["undeniable.info"])) {
     a.bait("div", "#testadblock");
 }
 if (a.domInc(["gamereactor"])) {
-    //Issue: https://github.com/X01X012013/AdBlockProtector/issues/124
+    //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/124
     //One filter from EasyList marked as $badfilter by List
     //a.readOnly("detectAdblockUser", function () { });
     a.cookie("countdownToAd", "-1");
 }
 if (a.domCmp(["dasolo.co"])) {
-    //Issue: https://github.com/X01X012013/AdBlockProtector/issues/126
+    //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/126
     a.win.eval = function () { };
     a.noAccess("adblockblock");
     a.bait("div", "#loveyou");
@@ -2235,7 +2235,7 @@ if (a.domCmp(["dasolo.co"])) {
     a.filter("document.addEventListener", /^contextmenu$/);
 }
 if (a.domCmp(["titulky.com"])) {
-    //Issue: https://github.com/X01X012013/AdBlockProtector/issues/128
+    //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/128
     a.generic.FuckAdBlock("FADB", "fADB");
 }
 if (a.domCmp(["discoveryrom.org"])) {
@@ -2285,28 +2285,28 @@ if (a.domCmp(["sthelensstar.co.uk", "runcornandwidnesworld.co.uk", "leighjournal
 "freepressseries.co.uk", "monmouthshirecountylife.co.uk", "barryanddistrictnews.co.uk",
 "penarthtimes.co.uk", "eveningtimes.co.uk", "s1cars.com", "s1community.com", "s1homes.com",
 "s1jobs.com", "s1rental.com", "thescottishfarmer.co.uk", "heraldscotland.com", "thenational.scot"])) {
-    //Issue: https://github.com/X01X012013/AdBlockProtector/issues/137
+    //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/137
     a.readOnly("_sp_", null);
 }
 if (a.domCmp(["securenetsystems.net"])) {
     a.readOnly("iExist", true);
 }
 if (a.domCmp(["finalservers.net"])) {
-    //Issue: https://github.com/X01X012013/AdBlockProtector/issues/125
+    //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/125
     a.on("DOMContentLoaded", function () {
         a.win.videojs("video_1").videoJsResolutionSwitcher();
     });
 }
 if (a.domCmp(["filmy.to", "histock.info"])) {
     //Block popup
-    //Issue: https://github.com/X01X012013/AdBlockProtector/issues/130
+    //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/130
     a.win.open = function () {
         return { closed: false };
     };
 }
 if (a.domCmp(["flashx.tv"])) {
     //Block popup
-    //Issue: https://github.com/X01X012013/AdBlockProtector/issues/130
+    //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/130
     a.filter("document.addEventListener", /^(mousedown|keydown|contextmenu)$/);
     //Debug code
     if (a.config.debugMode) {
