@@ -24,8 +24,8 @@ filez.tv###adblockinfo
 @@||imasdk.googleapis.com/js/sdkloader/ima3.js$domain=fox.com.tr|turknettv.com
 ! === latimes.com - Thanks to okiehsch
 ||tribdss.com/meter/assets$script,domain=www.latimes.com
-! === thewindowsclub.com - Thanks to uBlock-user
-||concernrain.com^$script,domain=thewindowsclub.com
+! === thewindowsclub.com
+*$xmlhttprequest,domain=thewindowsclub.com
 ! === NSFW! 8muses.com
 ||8muses.com^$inline-script
 @@||8muses.com/comix/picture^$inline-script
