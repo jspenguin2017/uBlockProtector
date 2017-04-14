@@ -97,3 +97,6 @@ pixiv.net##.popular-introduction-block
 youtube.com###companion
 ! === flashx.tv
 ||flashx.tv/checkembed.php
+! === linkneverdie.com
+! === Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/146
+linkneverdie.com#@#.adsbygoogle

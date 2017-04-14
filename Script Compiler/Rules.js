@@ -2345,6 +2345,8 @@ if (a.domCmp(["multiup.org", "multiup.eu"])) {
     });
 }
 if (a.config.debugMode && a.domCmp(["linkneverdie.com"])) {
+    //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/146
+    //Need to white list .adsbygoogle element
     a.readOnly("eval", function () {
         //Remove block screen
         a.$("div").each(function () {
@@ -2352,6 +2354,14 @@ if (a.config.debugMode && a.domCmp(["linkneverdie.com"])) {
                 this.remove();
             }
         });
+    });
+    a.on("DOMContentLoaded", function () {
+        a.$(".SC_TBlock").each(function () {
+            if (a.$(this).text() === "loading...") {
+                this.remove();
+            }
+        });
+        a.$("#wrapper").show();
     });
 }
 //Activate generic protectors, excluded domains check is handled inside
