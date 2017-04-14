@@ -2344,7 +2344,7 @@ if (a.domCmp(["multiup.org", "multiup.eu"])) {
         elem.text().includes("Loading...") && elem.remove();
     });
 }
-if (a.config.debugMode && a.domCmp(["linkneverdie.com"])) {
+if (a.domCmp(["linkneverdie.com"])) {
     //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/146
     //Need to white list .adsbygoogle element
     a.readOnly("eval", function () {
