@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 6.157
+// @version 6.158
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -53,8 +53,14 @@ a.init = function (excludedDomCmp, excludedDomInc) {
     }
     if (a.domCmp(["jspenguin2017.github.io"], true) && a.doc.location.href.includes("jspenguin2017.github.io/AdBlockProtector/settings.html")) {
         a.on("load", function () {
-            a.win.init([a.config.debugMode, a.config.allowExperimental, a.mods.Facebook_JumpToTop, a.mods.Facebook_HidePeopleYouMayKnow, a.mods.Blogspot_AutoNCR,
-a.mods.NoAutoplay], a.config.update);
+            a.win.init({
+                "config_debugMode": a.config.debugMode,
+                "config_allowExperimental": a.config.allowExperimental,
+                "config_aggressiveAdflySkiper": a.config.aggressiveAdflySkiper,
+                "mods_Facebook_JumpToTop": a.mods.Facebook_JumpToTop,
+                "mods_Blogspot_AutoNCR": a.mods.Blogspot_AutoNCR,
+                "mods_NoAutoplay": a.mods.NoAutoplay
+            }, a.config.update);
         });
     }
 };
@@ -62,18 +68,22 @@ a.init.racer = function () { };
 a.config = function () {
     a.config.debugMode = GM_getValue("config_debugMode", a.config.debugMode);
     a.config.allowExperimental = GM_getValue("config_allowExperimental", a.config.allowExperimental);
+    a.config.aggressiveAdflySkiper = GM_getValue("config_aggressiveAdflySkiper", a.config.aggressiveAdflySkiper);
     a.mods.Facebook_JumpToTop = GM_getValue("mods_Facebook_JumpToTop", a.mods.Facebook_JumpToTop);
     a.mods.Facebook_HidePeopleYouMayKnow = GM_getValue("mods_Facebook_HidePeopleYouMayKnow", a.mods.Facebook_HidePeopleYouMayKnow);
     a.mods.Blogspot_AutoNCR = GM_getValue("mods_Blogspot_AutoNCR", a.mods.Blogspot_AutoNCR);
     a.mods.NoAutoplay = GM_getValue("mods_NoAutoplay", a.mods.NoAutoplay);
 };
 a.config.update = function (id, val) {
-    const names = ["config_debugMode", "config_allowExperimental", "mods_Facebook_JumpToTop", "mods_Facebook_HidePeopleYouMayKnow", "mods_Blogspot_AutoNCR", "mods_NoAutoplay"];
-    GM_setValue(names[id], val);
+    const names = ["config_debugMode", "config_allowExperimental", "config_aggressiveAdflySkiper", "mods_Facebook_JumpToTop", "mods_Facebook_HidePeopleYouMayKnow", "mods_Blogspot_AutoNCR", "mods_NoAutoplay"];
+    if (names.includes(id)) {
+        GM_setValue(id, Boolean(val));
+    }
 };
 a.config.debugMode = false;
 a.config.allowGeneric = true;
 a.config.allowExperimental = true;
+a.config.aggressiveAdflySkiper = false;
 a.config.domExcluded = null;
 a.win = unsafeWindow;
 a.doc = a.win.document;
@@ -770,6 +780,49 @@ a.init(["360.cn", "apple.com", "ask.com", "baidu.com", "bing.com", "bufferapp.co
 "yandex.ru", "youtu.be", "youtube.com", "xemvtv.net", "vod.pl", "agar.io", "pandoon.info", "fsf.org",
 "adblockplus.org", "plnkr.co", "exacttarget.com", "dolldivine.com", "popmech.ru", "calm.com"],
 ["google", "amazon", "yahoo"]);
+if (a.config.aggressiveAdflySkiper || a.domCmp(["adf.ly", "ay.gy", "j.gs", "q.gs",
+"gamecopyworld.click", "babblecase.com", "pintient.com", "atominik.com",
+"sostieni.ilwebmaster21.com"])) {
+    //Based on: AdsBypasser
+    //License: https://github.com/adsbypasser/adsbypasser/blob/master/LICENSE
+    const parseURL = function () {
+        let encodedURL = a.doc.head.innerHTML.match(/var eu = '(?!false)(.*)'/)[1];
+        if (!encodedURL) {
+            return false;
+        }
+        const index = encodedURL.indexOf('!HiTommy');
+        if (index >= 0) {
+            encodedURL = encodedURL.substring(0, index);
+        }
+        let var1 = "", var2 = "";
+        for (let i = 0; i < encodedURL.length; ++i) {
+            if (i % 2 === 0) {
+                var1 = var1 + encodedURL.charAt(i);
+            } else {
+                var2 = encodedURL.charAt(i) + var2;
+            }
+        }
+        let decodedURL = a.win.atob(var1 + var2);
+        decodedURL = decodedURL.substr(2);
+        if (a.win.location.hash) {
+            decodedURL += a.win.location.hash;
+        }
+        return decodedURL;
+    };
+    a.on("DOMContentLoaded", function () {
+        let url = parseURL();
+        if (a.$("html").attr("id") === "main_html" && a.$("body").attr("id") === "home"
+            && url !== false && url.length) { //Here, comparing to false is needed
+            a.win.stop();
+            a.doc.body.innerHTML = `<div><h2>Adfly bypassed by AdBlock Protector. ` +
+`Redirecting to real link: <a href="${url}">${url}</a></h2></div>`;
+            a.win.onbeforeunload = null;
+            a.win.location.href = url;
+        } else {
+            a.config.debugMode && a.out.info("This page isn't an Adfly page");
+        }
+    });
+}
 if (a.domCmp(["blockadblock.com"])) {
     a.filter("eval");
     a.on("load", function () {
@@ -786,42 +839,6 @@ if (a.domCmp(["jagranjunction.com"])) {
 }
 if (a.domCmp(["usapoliticstoday.com"])) {
     a.filter("eval");
-}
-if (a.domCmp(["adf.ly", "ay.gy", "j.gs", "q.gs", "gamecopyworld.click", "babblecase.com",
-"pintient.com", "atominik.com"])) {
-    //Based on: AdsBypasser
-    //License: https://github.com/adsbypasser/adsbypasser/blob/master/LICENSE
-    a.doc.write = function () { };
-    a.win.btoa = function () { };
-    a.on("DOMContentLoaded", function () {
-        if (a.$("html").attr("id") === "main_html" && a.$("body").attr("id") === "home") {
-            a.win.cookieCheck = function () { };
-            let encodedURL = a.doc.head.innerHTML.match(/var eu = '(?!false)(.*)'/)[1];
-            const index = encodedURL.indexOf('!HiTommy');
-            if (index >= 0) {
-                encodedURL = encodedURL.substring(0, index);
-            }
-            let var1 = "", var2 = "";
-            for (let i = 0; i < encodedURL.length; ++i) {
-                if (i % 2 === 0) {
-                    var1 = var1 + encodedURL.charAt(i);
-                } else {
-                    var2 = encodedURL.charAt(i) + var2;
-                }
-            }
-            let decodedURL = a.win.atob(var1 + var2);
-            decodedURL = decodedURL.substr(2);
-            if (a.win.location.hash) {
-                decodedURL += a.win.location.hash;
-            }
-            a.doc.body.innerHTML = `<div><h2>Adfly bypassed by AdBlock Protector. ` +
-`Redirecting to real link: <a href="${decodedURL}">${decodedURL}</a></h2></div>`;
-            a.win.onbeforeunload = null;
-            a.win.location.href = decodedURL;
-        } else {
-            a.config.debugMode && a.out.info("This page isn't an Adfly page");
-        }
-    });
 }
 if (a.domCmp(["jansatta.com", "financialexpress.com", "indianexpress.com"])) {
     a.readOnly("RunAds", true);

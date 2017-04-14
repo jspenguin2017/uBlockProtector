@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -55,35 +55,41 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr id="row_config_debugMode" style="display:none;">
                         <th>Debug Mode</th>
                         <td>Whether development code should run (instead of stable code) and debug data should be logged into console. Please keep this off unless you know what you are doing. </td>
-                        <td><input type="checkbox" class="settingsCheckbox" id="cb0" data-toggle="toggle"></td>
+                        <td><input type="checkbox" id="cb_config_debugMode" data-toggle="toggle"></td>
                     </tr>
-                    <tr>
+                    <tr id="row_config_allowExperimental" style="display:none;">
                         <th>Experimental Features</th>
                         <td>Whether experimental features should be enabled. We recommend you to keep this on, and report any problems you encounter. Currently, there are 0 experimental features. </td>
-                        <td><input type="checkbox" class="settingsCheckbox" id="cb1" data-toggle="toggle"></td>
+                        <td><input type="checkbox" id="cb_config_allowExperimental" data-toggle="toggle"></td>
                     </tr>
-                    <tr>
+                    <tr id="row_config_aggressiveAdflySkiper" style="display:none;">
+                        <th>Aggressive Adfly Skipper</th>
+                        <td>Whether Adfly skipper should run on every page. The page will not be touched if it is not an Adfly page. Please open an issue if this functionality breaks any web page. If you wish to not use this, you are free to report any Adfly domains that are not in our hard coded list. </td>
+                        <td><input type="checkbox" id="cb_config_aggressiveAdflySkiper" data-toggle="toggle"></td>
+                    </tr>
+                    <tr id="row_mods_Facebook_JumpToTop" style="display:none;">
                         <th>Facebook Mod: <br />Jump To Top</th>
                         <td>Whether a &quot;Jump To Top&quot; button should be added to Facebook. </td>
-                        <td><input type="checkbox" class="settingsCheckbox" id="cb2" data-toggle="toggle"></td>
+                        <td><input type="checkbox" id="cb_mods_Facebook_JumpToTop" data-toggle="toggle"></td>
                     </tr>
-                    <tr style="display:none;"><!-- Currently broken -->
+                    <tr id="row_mods_Facebook_HidePeopleYouMayKnow" style="display:none;">
+                        <!-- Currently broken -->
                         <th>Facebook Mod: <br />Hide People You May Know</th>
                         <td>Whether &quot;People You May Know&quot; should be hidden from Facebook. </td>
-                        <td><input type="checkbox" class="settingsCheckbox" id="cb3" data-toggle="toggle"></td>
+                        <td><input type="checkbox" id="cb_mods_Facebook_HidePeopleYouMayKnow" data-toggle="toggle"></td>
                     </tr>
-                    <tr>
+                    <tr id="row_mods_Blogspot_AutoNCR" style="display:none;">
                         <th>Blogspot Mod: <br />Auto NCR Redirect</th>
                         <td>Whether you should be automatically redirected to No Country Redirect (NCR) version of Blogspot blogs that you are visiting. Does not work in iframes. </td>
-                        <td><input type="checkbox" class="settingsCheckbox" id="cb4" data-toggle="toggle"></td>
+                        <td><input type="checkbox" id="cb_mods_Blogspot_AutoNCR" data-toggle="toggle"></td>
                     </tr>
-                    <tr>
+                    <tr id="row_mods_NoAutoplay" style="display:none;">
                         <th>Disable Autoplay</th>
                         <td>Whether autoplay should be disabled on supported websites. <br />Currently support: x-link.pl(iframe of gs24.pl), komputerswiat.pl</td>
-                        <td><input type="checkbox" class="settingsCheckbox" id="cb5" data-toggle="toggle"></td>
+                        <td><input type="checkbox" id="cb_mods_NoAutoplay" data-toggle="toggle"></td>
                     </tr>
                 </tbody>
             </table>
@@ -107,18 +113,19 @@
          * @param {Function} callback - The function to call when a settings is changed, the ID and state will be supplied.
          */
         var init = function (data, callback) {
-            //Hide loading message
-            $("#loadingMsg").remove();
-            //Apply settings
-            for (let i = 0; i < data.length; i++) {
-                $("#cb" + i.toString()).bootstrapToggle(data[i] ? "on" : "off");
+            for (let i in data) {
+                //Apply settings
+                $("#cb_" + i.toString()).bootstrapToggle(data[i] ? "on" : "off");
+                //Bind event handler
+                $("#cb_" + i.toString()).change(function () {
+                    $("#savedAlert").show();
+                    callback(this.id.substr(3), this.checked);
+                })
+                //Show row
+                $("#row_" + i.toString()).show();
             }
-            //Bind event handler
-            $(".settingsCheckbox").change(function () {
-                $("#savedAlert").show();
-                callback(parseInt(this.id.substr(this.id.length - 1)), this.checked);
-            });
-            //Show table
+            //Hide loading message and show table
+            $("#loadingMsg").remove();
             $("#settingsTable").show();
         }
     </script>

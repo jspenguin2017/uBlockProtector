@@ -58,8 +58,15 @@ a.init = function (excludedDomCmp, excludedDomInc) {
     //Settings page
     if (a.domCmp(["jspenguin2017.github.io"], true) && a.doc.location.href.includes("jspenguin2017.github.io/AdBlockProtector/settings.html")) {
         a.on("load", function () {
-            a.win.init([a.config.debugMode, a.config.allowExperimental, a.mods.Facebook_JumpToTop, a.mods.Facebook_HidePeopleYouMayKnow, a.mods.Blogspot_AutoNCR,
-a.mods.NoAutoplay], a.config.update);
+            a.win.init({
+                "config_debugMode": a.config.debugMode,
+                "config_allowExperimental": a.config.allowExperimental,
+                "config_aggressiveAdflySkiper": a.config.aggressiveAdflySkiper,
+                "mods_Facebook_JumpToTop": a.mods.Facebook_JumpToTop,
+                //"mods_Facebook_HidePeopleYouMayKnow": a.mods.Facebook_HidePeopleYouMayKnow,
+                "mods_Blogspot_AutoNCR": a.mods.Blogspot_AutoNCR,
+                "mods_NoAutoplay": a.mods.NoAutoplay
+            }, a.config.update);
         });
     }
 };
@@ -79,6 +86,7 @@ a.config = function () {
     //Configuration
     a.config.debugMode = GM_getValue("config_debugMode", a.config.debugMode);
     a.config.allowExperimental = GM_getValue("config_allowExperimental", a.config.allowExperimental);
+    a.config.aggressiveAdflySkiper = GM_getValue("config_aggressiveAdflySkiper", a.config.aggressiveAdflySkiper);
     //Mods
     a.mods.Facebook_JumpToTop = GM_getValue("mods_Facebook_JumpToTop", a.mods.Facebook_JumpToTop);
     a.mods.Facebook_HidePeopleYouMayKnow = GM_getValue("mods_Facebook_HidePeopleYouMayKnow", a.mods.Facebook_HidePeopleYouMayKnow);
@@ -92,8 +100,11 @@ a.config = function () {
  * @param {bool} val - The value of the configuration.
  */
 a.config.update = function (id, val) {
-    const names = ["config_debugMode", "config_allowExperimental", "mods_Facebook_JumpToTop", "mods_Facebook_HidePeopleYouMayKnow", "mods_Blogspot_AutoNCR", "mods_NoAutoplay"];
-    GM_setValue(names[id], val);
+    const names = ["config_debugMode", "config_allowExperimental", "config_aggressiveAdflySkiper", "mods_Facebook_JumpToTop", "mods_Facebook_HidePeopleYouMayKnow", "mods_Blogspot_AutoNCR", "mods_NoAutoplay"];
+    //Sanity check then save settings
+    if (names.includes(id)) {
+        GM_setValue(id, Boolean(val));
+    }
 };
 /**
  * Whether debug data should be logged.
@@ -110,11 +121,17 @@ a.config.debugMode = false;
 a.config.allowGeneric = true;
 /**
  * Whether experimental features should run.
- * If it is a rule, the user will be asked before it runs.
  * The default value is true.
  * @const {bool}
  */
 a.config.allowExperimental = true;
+/**
+ * Whether Adfly skipper should run on all pages.
+ * The handler will check to make sure the page is an Adfly page.
+ * The default value is false.
+ * @const {bool}
+ */
+a.config.aggressiveAdflySkiper = false;
 /**
  * Whether current domain is "excluded".
  * How this will be treated depends on the rules.
