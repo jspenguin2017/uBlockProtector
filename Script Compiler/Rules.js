@@ -2332,5 +2332,17 @@ if (a.domCmp(["flashx.tv"])) {
         a.noAccess("r3D");
     }
 }
+if (a.domCmp(["multiup.org", "multiup.eu"])) {
+    a.readOnly("hi", function () { });
+    a.on("DOMContentLoaded", function () {
+        a.$(".alert").each(function () {
+            if (a.$(this).text().includes("Tired of ads ? Remove them")) {
+                a.$(this).remove();
+            }
+        });
+        const elem = a.$("#M130814ScriptRootC54591");
+        elem.text().includes("Loading...") && elem.remove();
+    });
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();

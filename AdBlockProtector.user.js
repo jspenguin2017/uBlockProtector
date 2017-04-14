@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 6.159
+// @version 6.160
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2572,5 +2572,17 @@ if (a.domCmp(["flashx.tv"])) {
         a.win.eval = function () { };
         a.noAccess("r3D");
     }
+}
+if (a.domCmp(["multiup.org", "multiup.eu"])) {
+    a.readOnly("hi", function () { });
+    a.on("DOMContentLoaded", function () {
+        a.$(".alert").each(function () {
+            if (a.$(this).text().includes("Tired of ads ? Remove them")) {
+                a.$(this).remove();
+            }
+        });
+        const elem = a.$("#M130814ScriptRootC54591");
+        elem.text().includes("Loading...") && elem.remove();
+    });
 }
 a.generic();
