@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -107,9 +107,9 @@
 
         /**
          * Hide loading message, put in current settings to settings table, bind event handlers, and show the table.
-         * This function should be called from AdBlock Protector Script
+         * This function should be called once from AdBlock Protector Script.
          * @function
-         * @param {Array.<bool>} data - A boolean array of current state of settings.
+         * @param {Object} data - A data object where keys are settings entry ID and values are the state of the settings.
          * @param {Function} callback - The function to call when a settings is changed, the ID and state will be supplied.
          */
         var init = function (data, callback) {
