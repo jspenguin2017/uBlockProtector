@@ -2344,5 +2344,15 @@ if (a.domCmp(["multiup.org", "multiup.eu"])) {
         elem.text().includes("Loading...") && elem.remove();
     });
 }
+if (a.config.debugMode && a.domCmp(["linkneverdie.com"])) {
+    a.readOnly("eval", function () {
+        //Remove block screen
+        a.$("div").each(function () {
+            if (this.id.length === 30) {
+                this.remove();
+            }
+        });
+    });
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
