@@ -65,10 +65,11 @@ if (a.config.aggressiveAdflySkiper || a.domCmp(["adf.ly", "ay.gy", "j.gs", "q.gs
     //URL parser
     const parseURL = function () {
         //Get URL
-        let encodedURL = a.doc.head.innerHTML.match(/var eu = '(?!false)(.*)'/)[1];
+        let encodedURL = a.doc.head.innerHTML.match(/var eu = '(?!false)(.*)'/);
         if (!encodedURL) {
             return false;
         }
+        encodedURL = encodedURL[1];
         const index = encodedURL.indexOf('!HiTommy');
         if (index >= 0) {
             encodedURL = encodedURL.substring(0, index);

@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 6.158
+// @version 6.159
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -786,10 +786,11 @@ if (a.config.aggressiveAdflySkiper || a.domCmp(["adf.ly", "ay.gy", "j.gs", "q.gs
     //Based on: AdsBypasser
     //License: https://github.com/adsbypasser/adsbypasser/blob/master/LICENSE
     const parseURL = function () {
-        let encodedURL = a.doc.head.innerHTML.match(/var eu = '(?!false)(.*)'/)[1];
+        let encodedURL = a.doc.head.innerHTML.match(/var eu = '(?!false)(.*)'/);
         if (!encodedURL) {
             return false;
         }
+        encodedURL = encodedURL[1];
         const index = encodedURL.indexOf('!HiTommy');
         if (index >= 0) {
             encodedURL = encodedURL.substring(0, index);
