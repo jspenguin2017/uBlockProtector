@@ -2360,7 +2360,7 @@ if (a.domCmp(["linkneverdie.com"])) {
         a.$("#wrapper").show();
     });
 }
-if (a.domCmp(["ally.sh"])) {
+if (a.domCmp(["ally.sh", "al.ly"])) {
     a.timewarp("setInterval", /^1000$/);
     a.win.open = null;
 }

@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 6.165
+// @version 6.166
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2599,7 +2599,7 @@ if (a.domCmp(["linkneverdie.com"])) {
         a.$("#wrapper").show();
     });
 }
-if (a.domCmp(["ally.sh"])) {
+if (a.domCmp(["ally.sh", "al.ly"])) {
     a.timewarp("setInterval", /^1000$/);
     a.win.open = null;
 }
