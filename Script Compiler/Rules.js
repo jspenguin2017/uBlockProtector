@@ -2364,5 +2364,8 @@ if (a.domCmp(["ally.sh"])) {
     a.timewarp("setInterval", /^1000$/);
     a.win.open = null;
 }
+if (a.domCmp(["nbc.com"])) {
+    a.noAccess("mps");
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
