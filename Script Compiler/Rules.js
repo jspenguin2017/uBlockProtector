@@ -2360,5 +2360,9 @@ if (a.domCmp(["linkneverdie.com"])) {
         a.$("#wrapper").show();
     });
 }
+if (a.domCmp(["ally.sh"])) {
+    a.timewarp("setInterval", /^1000$/)
+    a.win.open = null;
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
