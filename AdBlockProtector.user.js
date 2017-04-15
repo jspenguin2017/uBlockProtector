@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 6.162
+// @version 6.163
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -1775,10 +1775,6 @@ if (a.domCmp(["lol.moa.tw"])) {
         };
     });
 }
-if (a.domCmp(["multiup.org"])) {
-    a.cookie("visit", "1");
-    a.readOnly("hi", function () { });
-}
 if (a.domCmp(["dailybitcoins.org"])) {
     a.on("DOMContentLoaded", function () {
         a.$(".ad-img").remove();
@@ -2574,6 +2570,7 @@ if (a.domCmp(["flashx.tv"])) {
     }
 }
 if (a.domCmp(["multiup.org", "multiup.eu"])) {
+    a.cookie("visit", "1");
     a.readOnly("hi", function () { });
     a.on("DOMContentLoaded", function () {
         a.$(".alert").each(function () {

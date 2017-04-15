@@ -1342,11 +1342,6 @@ if (a.domCmp(["lol.moa.tw"])) {
         };
     });
 }
-if (a.domCmp(["multiup.org"])) {
-    //Set cookie and set hi to an empty function
-    a.cookie("visit", "1");
-    a.readOnly("hi", function () { });
-}
 if (a.domCmp(["dailybitcoins.org"])) {
     //Remove element on idle
     a.on("DOMContentLoaded", function () {
@@ -2333,6 +2328,7 @@ if (a.domCmp(["flashx.tv"])) {
     }
 }
 if (a.domCmp(["multiup.org", "multiup.eu"])) {
+    a.cookie("visit", "1");
     a.readOnly("hi", function () { });
     a.on("DOMContentLoaded", function () {
         a.$(".alert").each(function () {
