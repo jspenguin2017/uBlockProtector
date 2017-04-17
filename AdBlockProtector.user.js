@@ -2613,6 +2613,6 @@ if (a.domCmp(["filmyiseriale.net"])) {
 }
 if (a.domCmp(["tf2center.com"])) {
     a.filter("setInterval", /\"\/adblock\"/);
-    a.filter("setTimeout", /^function\(\)\{B\(F\+1\)\}$/);
+    a.filter("setTimeout", /^function \(\)\{B\(F\+1\)\}$/);
 }
 a.generic();
