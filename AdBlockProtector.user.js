@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 6.167
+// @version 6.168
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2610,5 +2610,8 @@ if (a.domCmp(["filmyiseriale.net"])) {
     a.on("DOMContentLoaded", function () {
         a.win.konik = 1;
     });
+}
+if (a.domCmp(["tf2center.com"])) {
+    a.filter("setInterval", /\"\/adblock\"/);
 }
 a.generic();

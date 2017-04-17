@@ -2373,6 +2373,9 @@ if (a.domCmp(["filmyiseriale.net"])) {
         a.win.konik = 1;
     });
 }
-
+if (a.domCmp(["tf2center.com"])) {
+    //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/141
+    a.filter("setInterval", /\"\/adblock\"/);
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
