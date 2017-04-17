@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 6.166
+// @version 6.167
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2605,5 +2605,10 @@ if (a.domCmp(["ally.sh", "al.ly"])) {
 }
 if (a.domCmp(["nbc.com"])) {
     a.noAccess("mps");
+}
+if (a.domCmp(["filmyiseriale.net"])) {
+    a.on("DOMContentLoaded", function () {
+        a.win.konik = 1;
+    });
 }
 a.generic();

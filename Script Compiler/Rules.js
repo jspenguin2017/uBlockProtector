@@ -2367,5 +2367,12 @@ if (a.domCmp(["ally.sh", "al.ly"])) {
 if (a.domCmp(["nbc.com"])) {
     a.noAccess("mps");
 }
+if (a.domCmp(["filmyiseriale.net"])) {
+    //https://github.com/jspenguin2017/AdBlockProtector/issues/152
+    a.on("DOMContentLoaded", function () {
+        a.win.konik = 1;
+    });
+}
+
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
