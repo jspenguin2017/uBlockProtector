@@ -2376,6 +2376,7 @@ if (a.domCmp(["filmyiseriale.net"])) {
 if (a.domCmp(["tf2center.com"])) {
     //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/141
     a.filter("setInterval", /\"\/adblock\"/);
+    a.filter("setTimeout", /^function\(\)\{B\(F\+1\)\}$/);
 }
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
