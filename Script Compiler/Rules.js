@@ -43,7 +43,7 @@ a.init(["360.cn", "apple.com", "ask.com", "baidu.com", "bing.com", "bufferapp.co
 //Adfly skipper
 if (a.config.aggressiveAdflySkiper || a.domCmp(["adf.ly", "ay.gy", "j.gs", "q.gs",
 "gamecopyworld.click", "babblecase.com", "pintient.com", "atominik.com",
-"sostieni.ilwebmaster21.com"])) {
+"sostieni.ilwebmaster21.com", "auto-login-xxx.com"])) {
     //adf.ly and related domains
     //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/71
     /*

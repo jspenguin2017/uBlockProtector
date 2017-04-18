@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 6.169
+// @version 6.170
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -782,7 +782,7 @@ a.init(["360.cn", "apple.com", "ask.com", "baidu.com", "bing.com", "bufferapp.co
 ["google", "amazon", "yahoo"]);
 if (a.config.aggressiveAdflySkiper || a.domCmp(["adf.ly", "ay.gy", "j.gs", "q.gs",
 "gamecopyworld.click", "babblecase.com", "pintient.com", "atominik.com",
-"sostieni.ilwebmaster21.com"])) {
+"sostieni.ilwebmaster21.com", "auto-login-xxx.com"])) {
     //Based on: AdsBypasser
     //License: https://github.com/adsbypasser/adsbypasser/blob/master/LICENSE
     const parseURL = function () {
