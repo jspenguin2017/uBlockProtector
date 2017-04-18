@@ -6,7 +6,7 @@ Installation instructions, along with many other relevant information are availa
 
 ### Building
 
-We use a custom compilers, the source code for the compilers along with prebuilt binaries are located in `Script Compiler` and `List Compiler` folders. 
+We use custom compilers, the source code for the compilers along with prebuilt binaries are located in `Script Compiler` and `List Compiler` folders. 
 
 The compilers are built with Visual Studio 2015. 
 
@@ -14,7 +14,7 @@ The compilers are built with Visual Studio 2015.
 
 Anti-Adblock Killer Script is completely re-implemented. 
 
-Anti-Adblock Killer Filter is mostly copied and concatenated to List. 
+Anti-Adblock Killer Filter is mostly copied and concatenated to List. Comments and [these](https://github.com/jspenguin2017/AdBlockProtector/blob/master/List%20Compiler/Remove.txt) are removed. 
 
 Code from Anti-Adblock Killer inherits its original license: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
 
