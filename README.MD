@@ -1,9 +1,5 @@
 # AdBlock Protector
 
-Ultimate solution against AdBlock detectors
-
-## Using
-
 Installation instructions, along with many other relevant information are available on [our website](http://jspenguin2017.github.io/AdBlockProtector/). 
 
 ## Building
