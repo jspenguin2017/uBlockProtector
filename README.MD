@@ -18,7 +18,7 @@ Anti-Adblock Killer Filter is mostly copied and concatenated to List. Comments a
 
 Code from Anti-Adblock Killer inherits its original [license](https://github.com/reek/anti-adblock-killer/blob/master/LICENSE). 
 
-This project was completely redesigned on version 4.0, but the name of the project was kept. This was also when the license changed to GNU GPL v3. Everything else, unless otherwise specified, falls under this license. 
+This project was completely redesigned on version 4.0, but the name of the project was kept. This was also when the license changed to GNU GPL v3. Files that are not from Anti-Adblock Killer falls under this license unless otherwise specified. 
 
 ### To-do
 
