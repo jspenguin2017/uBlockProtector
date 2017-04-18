@@ -2,7 +2,7 @@
 
 ### Using
 
-Installation instructions, along with many other relevant information are available on our website: http://jspenguin2017.github.io/AdBlockProtector/
+Installation instructions, along with many other relevant information are available on [our website](http://jspenguin2017.github.io/AdBlockProtector/). 
 
 ### Building
 
@@ -16,7 +16,7 @@ Anti-Adblock Killer Script is completely re-implemented.
 
 Anti-Adblock Killer Filter is mostly copied and concatenated to List. Comments and [these](https://github.com/jspenguin2017/AdBlockProtector/blob/master/List%20Compiler/Remove.txt) are removed. 
 
-Code from Anti-Adblock Killer inherits its original license: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
+Code from Anti-Adblock Killer inherits its original [license](https://github.com/reek/anti-adblock-killer/blob/master/LICENSE). 
 
 Unless otherwise specified, everything else (starting version 4.0) falls under GNU GPL v3 license. 
 
