@@ -22,6 +22,6 @@ Unless otherwise specified, everything else (starting version 4.0) falls under G
 
 ### To-do
 
-1. `a.filter()` redesign, make matching has string mode, exact match mode, RegExp mode, and callback mode. 
+1. `a.filter()` redesign, make matching has string mode, exact match mode, RegExp mode, and callback mode. Also fix craches when arguments are not `toString`-able. 
 2. Remove `a()` and `a.VERSION`, they are used precisely 0 times. 
 3. Add contribution guideline and other documentation for transparency and clarity. 
