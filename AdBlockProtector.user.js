@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 6.170
+// @version 6.171
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2377,7 +2377,7 @@ if (a.domCmp(["sidereel.com"])) {
 if (a.domCmp(["burning-feed.com"])) {
     a.readOnly("ads_enable", function () { });
 }
-if (a.domCmp(["comicbook.com", "chip.de"])) {
+if (a.domCmp(["comicbook.com", "chip.de", "businessinsider.com"])) {
     a.noAccess("stop");
 }
 if (a.domCmp(["ghame.ru"])) {
