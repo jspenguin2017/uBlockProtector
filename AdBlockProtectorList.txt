@@ -68,6 +68,7 @@ pogdesign.co.uk##.replace
 ally.sh##script:inject(popads.net.js)
 @@||al.ly^$generichide
 al.ly##script:inject(popads.net.js)
+||hackintosh.*/donate/donate.php
 ! =====Patched Anti-Adblock Killer List=====
 ! License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
 ||trymask.com/api/$third-party
