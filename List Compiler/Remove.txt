@@ -1,5 +1,5 @@
 [Adblock Plus 2.0]
-!>> https://github.com/X01X012013/AdBlockProtector/issues/46
+! === https://github.com/X01X012013/AdBlockProtector/issues/46
 @@||wp.pl^$script,image
 @@||admin.brightcove.com^$object-subrequest,domain=tvn24.pl
 @@||ad.filmweb.pl/adbanner/reklamy/adx.js$script
@@ -11,7 +11,7 @@
 @@||squid.gazeta.pl/info/squid/fprint.js$script,domain=wyborcza.pl|gazeta.pl
 @@||squid.gazeta.pl/sqpwgl/pwfpl$xmlhttprequest,domain=wyborcza.pl|gazeta.pl
 @@||squid.gazeta.pl/sqpwgl/pwif$subdocument,domain=wyborcza.pl|gazeta.pl
-!>> https://github.com/X01X012013/AdBlockProtector/issues/58
+! === https://github.com/X01X012013/AdBlockProtector/issues/58
 fox.com.tr#@#.pub_300x250
 fox.com.tr#@#.pub_300x250m
 fox.com.tr#@#.pub_728x90
@@ -23,10 +23,13 @@ fox.com.tr#@#.text-ads
 fox.com.tr#@#.text-ad-links
 @@||politiken.dk/static/content/js/ads.js$script
 ||adage.com/assets/js/min/adBlockDetector.js$script
-!>> Included by Easy List
+! === Included by Easy List
 /AdblockDetector.js$script
-!>> AAK Internal test rules, not needed for this project
+! === AAK Internal test rules, not needed for this project
 ###k2Uw7isHrMm5JXP1Vwdxc567ZKc1aZ4I
 ||reek.github.io/anti-adblock-killer/k2Uw7isHrMm5JXP1Vwdxc567ZKc1aZ4I.js|$script
 @@||githubusercontent.com/reek/anti-adblock-killer/
 @@||github.com/reek/anti-adblock-killer/
+! === https://github.com/jspenguin2017/AdBlockProtector/issues/154
+@@|http://$script,domain=sport1.de
+@@|https://$script,domain=sport1.de

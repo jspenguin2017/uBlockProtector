@@ -1037,8 +1037,6 @@ cekresi.com##.pleasehideadblkuc.popio
 creativeuncut.com###g_abox
 @@||go.cz.bbelements.com/bb/bb_one2n.$script,domain=hrej.cz
 @@||nu.nl/static/js/advertising.js$script
-@@|http://$script,domain=sport1.de
-@@|https://$script,domain=sport1.de
 mocospace.com#@#.dfp_ad
 mocospace.com#@#.ads1x1
 @@/html/images/blank.png$image,domain=mocospace.com
