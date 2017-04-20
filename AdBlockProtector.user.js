@@ -764,7 +764,7 @@ a.init(["360.cn", "apple.com", "ask.com", "baidu.com", "bing.com", "bufferapp.co
 "adblockplus.org", "plnkr.co", "exacttarget.com", "dolldivine.com", "popmech.ru", "calm.com"],
 ["google", "amazon", "yahoo"]);
 if (a.config.aggressiveAdflySkiper || a.domCmp(["adf.ly", "ay.gy", "j.gs", "q.gs",
-"gamecopyworld.click", "babblecase.com", "pintient.com", "atominik.com",
+"gamecopyworld.click", "babblecase.com", "pintient.com", "atominik.com", "bluenik.com",
 "sostieni.ilwebmaster21.com", "auto-login-xxx.com", "microify.com", "riffhold.com"])) {
     //Based on: AdsBypasser
     //License: https://github.com/adsbypasser/adsbypasser/blob/master/LICENSE
