@@ -113,3 +113,6 @@ al.ly##script:inject(popads.net.js)
 ! === hackintosh.zone and related domains - Thanks to F4z
 ! === Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/35
 ||hackintosh.*/donate/donate.php
+! === ovar.io
+! === Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/155
+@@||imasdk.googleapis.com^$third-party,domain=ovar.io
