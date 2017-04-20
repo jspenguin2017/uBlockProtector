@@ -239,10 +239,10 @@ a.mods = function () {
                 a.win.setTimeout(addJumpToTop, 500);
             }
         };
+        /*
         //Hide People You May Know
+        //This is taken over by uBlock Origin
         const hidePeopleYouMayKnow = function () {
-            return;
-            //This functionality is currently broken
             a.config.debugMode && a.out.info("Facebook Mod: Hide people you may know enabled. ");
             a.observe("insert", function (node) {
                 let elem, anchor;
@@ -255,13 +255,16 @@ a.mods = function () {
                 }
             });
         };
+        */
         //Check configurations
         if (a.mods.Facebook_JumpToTop) {
             addJumpToTop();
         }
+        /*
         if (a.mods.Facebook_HidePeopleYouMayKnow && a.win.location.pathname !== "/friends/requests/") {
             hidePeopleYouMayKnow();
         }
+        */
     }
     //===Blogspot mods===
     if (a.c.topFrame && a.mods.Blogspot_AutoNCR && a.domInc(["blogspot"], true) && !a.domCmp(["blogspot.com"], true)) {

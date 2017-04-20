@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 6.173
+// @version 6.174
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -122,25 +122,8 @@ a.mods = function () {
                 a.win.setTimeout(addJumpToTop, 500);
             }
         };
-        const hidePeopleYouMayKnow = function () {
-            return;
-            a.config.debugMode && a.out.info("Facebook Mod: Hide people you may know enabled. ");
-            a.observe("insert", function (node) {
-                let elem, anchor;
-                if (node.querySelector && (elem = node.querySelector("a[href^='/friends/requests/']"), elem)) {
-                    if (!elem.querySelector("input[role=combobox]") &&
-                        !(anchor = elem.querySelector("a[class=seeMore]"), anchor && anchor.href.includes("/friends/requests"))) {
-                        a.config.debugMode && a.out.log(node);
-                        node.remove();
-                    }
-                }
-            });
-        };
         if (a.mods.Facebook_JumpToTop) {
             addJumpToTop();
-        }
-        if (a.mods.Facebook_HidePeopleYouMayKnow && a.win.location.pathname !== "/friends/requests/") {
-            hidePeopleYouMayKnow();
         }
     }
     if (a.c.topFrame && a.mods.Blogspot_AutoNCR && a.domInc(["blogspot"], true) && !a.domCmp(["blogspot.com"], true)) {
