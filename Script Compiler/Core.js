@@ -125,10 +125,10 @@ a.config.allowExperimental = true;
 /**
  * Whether Adfly skipper should run on all pages.
  * The handler will check to make sure the page is an Adfly page.
- * The default value is false.
+ * The default value is true.
  * @const {bool}
  */
-a.config.aggressiveAdflySkiper = false;
+a.config.aggressiveAdflySkiper = true;
 /**
  * Whether current domain is "excluded".
  * How this will be treated depends on the rules.
@@ -1219,7 +1219,12 @@ a.generic.AdflySkipper = function () {
     //Based on: AdsBypasser
     //License: https://github.com/adsbypasser/adsbypasser/blob/master/LICENSE
     const handler = function (encodedURL) {
-        const index = encodedURL.indexOf('!HiTommy');
+        if (a.doc.body) {
+            //This isn't an Adfly page
+            return;
+        }
+        //Some checking
+        const index = encodedURL.indexOf("!HiTommy");
         if (index >= 0) {
             encodedURL = encodedURL.substring(0, index);
         }
@@ -1253,14 +1258,19 @@ a.generic.AdflySkipper = function () {
     //Setup variable hijacker
     try {
         let val;
+        //Prevent running multiple times
+        let flag = true;
         a.win.Object.defineProperty(a.win, "ysmm", {
             configurable: false,
             set: function (value) {
-                try {
-                    if (typeof value === "string") {
-                        handler(value);
-                    }
-                } catch (err) { }
+                if (flag) {
+                    flag = false;
+                    try {
+                        if (typeof value === "string") {
+                            handler(value);
+                        }
+                    } catch (err) { }
+                }
                 //In case this isn't an Adfly page, we want this variable to be functional
                 val = value;
             },

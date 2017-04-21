@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 6.176
+// @version 6.177
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -84,7 +84,7 @@ a.config.update = function (id, val) {
 a.config.debugMode = false;
 a.config.allowGeneric = true;
 a.config.allowExperimental = true;
-a.config.aggressiveAdflySkiper = false;
+a.config.aggressiveAdflySkiper = true;
 a.config.domExcluded = null;
 a.win = unsafeWindow;
 a.doc = a.win.document;
@@ -710,7 +710,10 @@ a.generic.AdflySkipper = function () {
     //Based on: AdsBypasser
     //License: https://github.com/adsbypasser/adsbypasser/blob/master/LICENSE
     const handler = function (encodedURL) {
-        const index = encodedURL.indexOf('!HiTommy');
+        if (a.doc.body) {
+            return;
+        }
+        const index = encodedURL.indexOf("!HiTommy");
         if (index >= 0) {
             encodedURL = encodedURL.substring(0, index);
         }
@@ -735,14 +738,18 @@ a.generic.AdflySkipper = function () {
     };
     try {
         let val;
+        let flag = true;
         a.win.Object.defineProperty(a.win, "ysmm", {
             configurable: false,
             set: function (value) {
-                try {
-                    if (typeof value === "string") {
-                        handler(value);
-                    }
-                } catch (err) { }
+                if (flag) {
+                    flag = false;
+                    try {
+                        if (typeof value === "string") {
+                            handler(value);
+                        }
+                    } catch (err) { }
+                }
                 val = value;
             },
             get: function () {
