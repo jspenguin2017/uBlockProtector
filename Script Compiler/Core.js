@@ -1251,15 +1251,22 @@ a.generic.AdflySkipper = function () {
         }
     };
     //Setup variable hijacker
-    try{
+    try {
+        let val;
         a.win.Object.defineProperty(a.win, "ysmm", {
             configurable: false,
             set: function (value) {
-                if (typeof value === "string") {
-                    handler(value);
-                }
+                try {
+                    if (typeof value === "string") {
+                        handler(value);
+                    }
+                } catch (err) { }
+                //In case this isn't an Adfly page, we want this variable to be functional
+                val = value;
             },
-            get: function () {}
+            get: function () {
+                return val;
+            }
         });
     } catch (err) {
         a.config.debugMode && a.out.error("AdBlock Protector could not set up Adfly skipper. ");

@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 6.175
+// @version 6.176
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -733,15 +733,21 @@ a.generic.AdflySkipper = function () {
             a.win.location.href = decodedURL;
         }
     };
-    try{
+    try {
+        let val;
         a.win.Object.defineProperty(a.win, "ysmm", {
             configurable: false,
             set: function (value) {
-                if (typeof value === "string") {
-                    handler(value);
-                }
+                try {
+                    if (typeof value === "string") {
+                        handler(value);
+                    }
+                } catch (err) { }
+                val = value;
             },
-            get: function () {}
+            get: function () {
+                return val;
+            }
         });
     } catch (err) {
         a.config.debugMode && a.out.error("AdBlock Protector could not set up Adfly skipper. ");
