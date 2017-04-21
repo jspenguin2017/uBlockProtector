@@ -1212,7 +1212,7 @@ a.generic = function () {
     }
 };
 /**
- * Setup generic Adfly skipper, this function should be called once from a.init.
+ * Setup generic Adfly skipper, this function should be called once from a.init() if needed.
  * @function
  */
 a.generic.AdflySkipper = function () {

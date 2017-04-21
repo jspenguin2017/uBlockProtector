@@ -1,7 +1,7 @@
 //Dump window vars: JSON.stringify(Object.keys(window));
 
-//Racer function
 (function () {
+    //===Racer function===
     if (a.domCmp(["29443kmq.video", "dato.porn"])) {
         //NSFW!
         a.readOnly("cRAds", true);
@@ -27,14 +27,11 @@
         a.patchHTML(function (html) {
             return html.replace(/\b(:?I10C|INSTART)\b/, a.c.syntaxBreaker);
         });
-
     }
     */
-})();
-//Init
-(function () {
+    //===Init===
     //Excluded domains
-    const excludedDomCmp = ["360.cn", "apple.com", "ask.com", "baidu.com", "bing.com", "bufferapp.com", 
+    const excludedDomCmp = ["360.cn", "apple.com", "ask.com", "baidu.com", "bing.com", "bufferapp.com",
 "chromeactions.com", "easyinplay.net", "ebay.com", "facebook.com", "flattr.com", "flickr.com", "ghacks.net",
 "imdb.com", "imgbox.com", "imgur.com", "instagram.com", "jsbin.com", "jsfiddle.net", "linkedin.com", "live.com",
 "mail.ru", "microsoft.com", "msn.com", "paypal.com", "pinterest.com", "preloaders.net", "qq.com", "reddit.com",
@@ -43,8 +40,8 @@
 "adblockplus.org", "plnkr.co", "exacttarget.com", "dolldivine.com", "popmech.ru", "calm.com", "chatango.com"];
     const excludedDomInc = ["google", "amazon", "yahoo"];
     //Adfly domains
-    const AdflyMatchDomCmp = ["adf.ly", "ay.gy", "j.gs", "q.gs","gamecopyworld.click", "babblecase.com", 
-"pintient.com", "atominik.com", "bluenik.com", "sostieni.ilwebmaster21.com", "auto-login-xxx.com", 
+    const AdflyMatchDomCmp = ["adf.ly", "ay.gy", "j.gs", "q.gs", "gamecopyworld.click", "babblecase.com",
+"pintient.com", "atominik.com", "bluenik.com", "sostieni.ilwebmaster21.com", "auto-login-xxx.com",
 "microify.com", "riffhold.com"];
     //const AdflyUnmatchDomCmp = [];
     //Compare and init
