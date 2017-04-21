@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 6.177
+// @version 6.178
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -34,10 +34,10 @@ a.init = function (excluded, AdflyMatch, AdflyUnmatch) {
     a.config();
     a.config.debugMode && a.out.warn("Domain: " + a.dom);
     a.config.domExcluded = excluded;
-    if (a.config.debugMode && a.config.domExcluded) {
+    if (a.config.debugMode && excluded) {
         a.out.warn("This domain is in excluded list. ");
     }
-    if (AdflyMatch || (a.config.aggressiveAdflySkiper && !AdflyUnmatch)) {
+    if (!excluded && (AdflyMatch || (a.config.aggressiveAdflySkiper && !AdflyUnmatch))) {
         a.generic.AdflySkipper();
     }
     a.mods();

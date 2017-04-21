@@ -35,11 +35,11 @@ a.init = function (excluded, AdflyMatch, AdflyUnmatch) {
     a.config.debugMode && a.out.warn("Domain: " + a.dom);
     //Check excluded domains
     a.config.domExcluded = excluded;
-    if (a.config.debugMode && a.config.domExcluded) {
+    if (a.config.debugMode && excluded) {
         a.out.warn("This domain is in excluded list. ");
     }
     //Check Adfly
-    if (AdflyMatch || (a.config.aggressiveAdflySkiper && !AdflyUnmatch)) {
+    if (!excluded && (AdflyMatch || (a.config.aggressiveAdflySkiper && !AdflyUnmatch))) {
         a.generic.AdflySkipper();
     }
     //Apply mods
