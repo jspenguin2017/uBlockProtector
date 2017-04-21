@@ -215,7 +215,7 @@ a.c.topFrame = (function () {
  */
 a.mods = function () {
     //===Facebook mods===
-    if (a.domCmp(["facebook.com"], true)) {
+    if (a.c.topFrame && a.domCmp(["facebook.com"], true)) {
         //Add Jump To Top button
         const addJumpToTop = function () {
             //Stop if the button already exist, this shouldn't be needed, but just to be sure
@@ -868,7 +868,15 @@ a.videoJS.plugins = {};
  */
 a.videoJS.plugins.hls = `<script src="//cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.4.0/videojs-contrib-hls.min.js"></script>`;
 /**
- * Run function that is passed in on document-start, document-idle, and document-end.
+ * Run a function on document-idle (DOMContentLoaded).
+ * @function
+ * @param {Function} func - The function to run.
+ */
+a.ready = function (func) {
+    a.on("DOMContentLoaded", func);
+};
+/**
+ * Run function that is passed in on document-start (now), document-idle (DOMContentLoaded), and document-end (load).
  * @function
  * @param {Function} func - The function to run.
  */
@@ -988,7 +996,7 @@ a.generic = function () {
             }
         });
         //===document-idle===
-        a.on("DOMContentLoaded", function () {
+        a.ready(function () {
             //AdBlock Detector (XenForo Rellect)
             if (a.win.XenForo && typeof a.win.XenForo.rellect === "object") {
                 //Log
