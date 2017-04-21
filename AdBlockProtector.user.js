@@ -471,7 +471,7 @@ a.always = function (func) {
 a.uid = function () {
     const chars = "abcdefghijklnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     let str = "";
-    for (let i = 0; i < 10; ++i) {
+    for (let i = 0; i < 10; i++) {
         str += chars.charAt(a.win.Math.floor(a.win.Math.random() * chars.length));
     }
     a.uid.counter++;
