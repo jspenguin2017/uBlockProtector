@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 6.179
+// @version 6.180
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2625,6 +2625,8 @@ if (a.domCmp(["up-4ever.com"])) {
     a.filter("setTimeout", /console\.log\(document\.getElementsByTagName/);
     a.ready(function () {
         a.$("#hiddensection").show();
+        a.$("#hiddensection2").remove();
     });
+    a.readOnly("remaining", "0");
 }
 a.generic();

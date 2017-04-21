@@ -2323,7 +2323,9 @@ if (a.domCmp(["up-4ever.com"])) {
     a.filter("setTimeout", /console\.log\(document\.getElementsByTagName/);
     a.ready(function () {
         a.$("#hiddensection").show();
+        a.$("#hiddensection2").remove();
     });
+    a.readOnly("remaining", "0");
 }
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
