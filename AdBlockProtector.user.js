@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 6.174
+// @version 6.175
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -29,14 +29,16 @@ const a = function () {
     return "AdBlock Protector Core Library " + a.VERSION;
 };
 a.VERSION = "1.1";
-a.init = function (excludedDomCmp, excludedDomInc) {
-    a.init.racer();
+a.init = function (excluded, AdflyMatch, AdflyUnmatch) {
     a.$ = jQueryFactory(a.win, true);
     a.config();
     a.config.debugMode && a.out.warn("Domain: " + a.dom);
-    a.config.domExcluded = a.domCmp(excludedDomCmp, true) || a.domInc(excludedDomInc, true);
+    a.config.domExcluded = excluded;
     if (a.config.debugMode && a.config.domExcluded) {
         a.out.warn("This domain is in excluded list. ");
+    }
+    if (AdflyMatch || (a.config.aggressiveAdflySkiper && !AdflyUnmatch)) {
+        a.generic.AdflySkipper();
     }
     a.mods();
     GM_registerMenuCommand("AdBlock Protector Settings Page", function () {
@@ -64,7 +66,6 @@ a.init = function (excludedDomCmp, excludedDomInc) {
         });
     }
 };
-a.init.racer = function () { };
 a.config = function () {
     a.config.debugMode = GM_getValue("config_debugMode", a.config.debugMode);
     a.config.allowExperimental = GM_getValue("config_allowExperimental", a.config.allowExperimental);
@@ -705,6 +706,47 @@ a.generic = function () {
         a.out.warn("Generic protectors are disabled on this domain. ");
     }
 };
+a.generic.AdflySkipper = function () {
+    //Based on: AdsBypasser
+    //License: https://github.com/adsbypasser/adsbypasser/blob/master/LICENSE
+    const handler = function (encodedURL) {
+        const index = encodedURL.indexOf('!HiTommy');
+        if (index >= 0) {
+            encodedURL = encodedURL.substring(0, index);
+        }
+        let var1 = "", var2 = "";
+        for (let i = 0; i < encodedURL.length; ++i) {
+            if (i % 2 === 0) {
+                var1 = var1 + encodedURL.charAt(i);
+            } else {
+                var2 = encodedURL.charAt(i) + var2;
+            }
+        }
+        let decodedURL = a.win.atob(var1 + var2);
+        decodedURL = decodedURL.substr(2);
+        if (a.win.location.hash) {
+            decodedURL += a.win.location.hash;
+        }
+        if (decodedURL.length > 3 && decodedURL.includes(".")) {
+            a.win.stop();
+            a.win.onbeforeunload = null;
+            a.win.location.href = decodedURL;
+        }
+    };
+    try{
+        a.win.Object.defineProperty(a.win, "ysmm", {
+            configurable: false,
+            set: function (value) {
+                if (typeof value === "string") {
+                    handler(value);
+                }
+            },
+            get: function () {}
+        });
+    } catch (err) {
+        a.config.debugMode && a.out.error("AdBlock Protector could not set up Adfly skipper. ");
+    }
+};
 a.generic.FuckAdBlock = function (constructorName, instanceName) {
     const patchedFuckAdBlock = function () {
         //Based on: FuckAdBlock
@@ -750,63 +792,29 @@ a.generic.FuckAdBlock = function (constructorName, instanceName) {
     };
     return a.readOnly(constructorName, patchedFuckAdBlock) && a.readOnly(instanceName, new a.win[constructorName]());
 };
-a.init.racer = function () {
+(function () {
     if (a.domCmp(["29443kmq.video", "dato.porn"])) {
         a.readOnly("cRAds", true);
     }
-};
-a.init(["360.cn", "apple.com", "ask.com", "baidu.com", "bing.com", "bufferapp.com", "chatango.com",
+})();
+(function () {
+    const excludedDomCmp = ["360.cn", "apple.com", "ask.com", "baidu.com", "bing.com", "bufferapp.com", 
 "chromeactions.com", "easyinplay.net", "ebay.com", "facebook.com", "flattr.com", "flickr.com", "ghacks.net",
 "imdb.com", "imgbox.com", "imgur.com", "instagram.com", "jsbin.com", "jsfiddle.net", "linkedin.com", "live.com",
 "mail.ru", "microsoft.com", "msn.com", "paypal.com", "pinterest.com", "preloaders.net", "qq.com", "reddit.com",
 "stackoverflow.com", "tampermonkey.net", "twitter.com", "vimeo.com", "wikipedia.org", "w3schools.com",
 "yandex.ru", "youtu.be", "youtube.com", "xemvtv.net", "vod.pl", "agar.io", "pandoon.info", "fsf.org",
-"adblockplus.org", "plnkr.co", "exacttarget.com", "dolldivine.com", "popmech.ru", "calm.com"],
-["google", "amazon", "yahoo"]);
-if (a.config.aggressiveAdflySkiper || a.domCmp(["adf.ly", "ay.gy", "j.gs", "q.gs",
-"gamecopyworld.click", "babblecase.com", "pintient.com", "atominik.com", "bluenik.com",
-"sostieni.ilwebmaster21.com", "auto-login-xxx.com", "microify.com", "riffhold.com"])) {
-    //Based on: AdsBypasser
-    //License: https://github.com/adsbypasser/adsbypasser/blob/master/LICENSE
-    const parseURL = function () {
-        let encodedURL = a.doc.head.innerHTML.match(/var eu = '(?!false)(.*)'/);
-        if (!encodedURL) {
-            return false;
-        }
-        encodedURL = encodedURL[1];
-        const index = encodedURL.indexOf('!HiTommy');
-        if (index >= 0) {
-            encodedURL = encodedURL.substring(0, index);
-        }
-        let var1 = "", var2 = "";
-        for (let i = 0; i < encodedURL.length; ++i) {
-            if (i % 2 === 0) {
-                var1 = var1 + encodedURL.charAt(i);
-            } else {
-                var2 = encodedURL.charAt(i) + var2;
-            }
-        }
-        let decodedURL = a.win.atob(var1 + var2);
-        decodedURL = decodedURL.substr(2);
-        if (a.win.location.hash) {
-            decodedURL += a.win.location.hash;
-        }
-        return decodedURL;
-    };
-    a.on("DOMContentLoaded", function () {
-        let url = parseURL();
-        if (a.$("html").attr("id") === "main_html" && a.$("body").attr("id") === "home"
-            && url !== false && url.length) { //Here, comparing to false is needed
-            a.win.stop();
-            a.doc.body.innerHTML = `<div><h2>Adfly bypassed by AdBlock Protector. ` +
-`Redirecting to real link: <a href="${url}">${url}</a></h2></div>`;
-            a.win.onbeforeunload = null;
-            a.win.location.href = url;
-        } else {
-            a.config.debugMode && a.out.info("This page isn't an Adfly page");
-        }
-    });
-}
+"adblockplus.org", "plnkr.co", "exacttarget.com", "dolldivine.com", "popmech.ru", "calm.com", "chatango.com"];
+    const excludedDomInc = ["google", "amazon", "yahoo"];
+    const AdflyMatchDomCmp = ["adf.ly", "ay.gy", "j.gs", "q.gs","gamecopyworld.click", "babblecase.com", 
+"pintient.com", "atominik.com", "bluenik.com", "sostieni.ilwebmaster21.com", "auto-login-xxx.com", 
+"microify.com", "riffhold.com"];
+    a.init(
+        a.domCmp(excludedDomCmp, true) || a.domInc(excludedDomInc, true),
+        a.domCmp(AdflyMatchDomCmp),
+        false
+    );
+})();
 if (a.domCmp(["blockadblock.com"])) {
     a.filter("eval");
     a.on("load", function () {

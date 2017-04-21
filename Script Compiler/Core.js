@@ -20,12 +20,11 @@ a.VERSION = "1.1";
 /**
  * Initialize constants, protect functions, and activate mods.
  * @function
- * @param {Array.<string>} excludedDomCmp - The list of domains to exclude, a.domCmp() will be used to compare this.
- * @param {Array.<string>} excludedDomInc - The list of domains to exclude, a.domInc() will be used to compare this.
+ * @param {boolean} excluded - Whether this domain should be excluded from generic protectors.
+ * @param {boolean} AdflyMatch - Whether this domain is an Adfly domain.
+ * @param {boolean} AdflyMatch - Whether this domain should be excluded from Adfly skipper.
  */
-a.init = function (excludedDomCmp, excludedDomInc) {
-    //Call racer function
-    a.init.racer();
+a.init = function (excluded, AdflyMatch, AdflyUnmatch) {
     //Load jQuery and Color plug-in
     a.$ = jQueryFactory(a.win, true);
     //The Color plug-in is never used, to enable it, update the compiler and uncomment the following line
@@ -35,9 +34,13 @@ a.init = function (excludedDomCmp, excludedDomInc) {
     //Log domain
     a.config.debugMode && a.out.warn("Domain: " + a.dom);
     //Check excluded domains
-    a.config.domExcluded = a.domCmp(excludedDomCmp, true) || a.domInc(excludedDomInc, true);
+    a.config.domExcluded = excluded;
     if (a.config.debugMode && a.config.domExcluded) {
         a.out.warn("This domain is in excluded list. ");
+    }
+    //Check Adfly
+    if (AdflyMatch || (a.config.aggressiveAdflySkiper && !AdflyUnmatch)) {
+        a.generic.AdflySkipper();
     }
     //Apply mods
     a.mods();
@@ -70,12 +73,6 @@ a.init = function (excludedDomCmp, excludedDomInc) {
         });
     }
 };
-/**
- * The racer function, this will be called very early duing init. Set it to a function before calling init.
- * Many functionalities will not be available inside racer function, including jQuery and settings overriding.
- * @var {Function}
- */
-a.init.racer = function () { };
 
 //=====Configurations=====
 /**
@@ -955,7 +952,7 @@ a.observe.insertCallbacks = [];
 
 //=====Generic Protectors=====
 /**
- * Activate all generic protectors.
+ * Activate all generic protectors, this function should be called once from rules.
  * @function
  */
 a.generic = function () {
@@ -1212,6 +1209,60 @@ a.generic = function () {
     } else if (a.config.debugMode) {
         //Generic protectors disabled log
         a.out.warn("Generic protectors are disabled on this domain. ");
+    }
+};
+/**
+ * Setup generic Adfly skipper, this function should be called once from a.init.
+ * @function
+ */
+a.generic.AdflySkipper = function () {
+    //Based on: AdsBypasser
+    //License: https://github.com/adsbypasser/adsbypasser/blob/master/LICENSE
+    const handler = function (encodedURL) {
+        const index = encodedURL.indexOf('!HiTommy');
+        if (index >= 0) {
+            encodedURL = encodedURL.substring(0, index);
+        }
+        //Decode URL
+        let var1 = "", var2 = "";
+        for (let i = 0; i < encodedURL.length; ++i) {
+            if (i % 2 === 0) {
+                var1 = var1 + encodedURL.charAt(i);
+            } else {
+                var2 = encodedURL.charAt(i) + var2;
+            }
+        }
+        let decodedURL = a.win.atob(var1 + var2);
+        decodedURL = decodedURL.substr(2);
+        if (a.win.location.hash) {
+            decodedURL += a.win.location.hash;
+        }
+        //Make sure the URL is not obviously bad
+        if (decodedURL.length > 3 && decodedURL.includes(".")) {
+            //Stop the window
+            a.win.stop();
+            //Nuke body since we got the link
+            //We would be so fast that the body isn't loaded
+            //a.doc.body.innerHTML = `<div><h2>Adfly bypassed by AdBlock Protector. Redirecting to real link: <a href="${decodedURL}">${decodedURL}</a></h2></div>`;
+            //Redirect
+            a.win.onbeforeunload = null;
+            //a.win.onunload = null;
+            a.win.location.href = decodedURL;
+        }
+    };
+    //Setup variable hijacker
+    try{
+        a.win.Object.defineProperty(a.win, "ysmm", {
+            configurable: false,
+            set: function (value) {
+                if (typeof value === "string") {
+                    handler(value);
+                }
+            },
+            get: function () {}
+        });
+    } catch (err) {
+        a.config.debugMode && a.out.error("AdBlock Protector could not set up Adfly skipper. ");
     }
 };
 /**

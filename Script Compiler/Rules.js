@@ -1,7 +1,7 @@
 //Dump window vars: JSON.stringify(Object.keys(window));
 
 //Racer function
-a.init.racer = function () {
+(function () {
     if (a.domCmp(["29443kmq.video", "dato.porn"])) {
         //NSFW!
         a.readOnly("cRAds", true);
@@ -30,87 +30,30 @@ a.init.racer = function () {
 
     }
     */
-};
-//Init, pass in excluded domains
-a.init(["360.cn", "apple.com", "ask.com", "baidu.com", "bing.com", "bufferapp.com", "chatango.com",
+})();
+//Init
+(function () {
+    //Excluded domains
+    const excludedDomCmp = ["360.cn", "apple.com", "ask.com", "baidu.com", "bing.com", "bufferapp.com", 
 "chromeactions.com", "easyinplay.net", "ebay.com", "facebook.com", "flattr.com", "flickr.com", "ghacks.net",
 "imdb.com", "imgbox.com", "imgur.com", "instagram.com", "jsbin.com", "jsfiddle.net", "linkedin.com", "live.com",
 "mail.ru", "microsoft.com", "msn.com", "paypal.com", "pinterest.com", "preloaders.net", "qq.com", "reddit.com",
 "stackoverflow.com", "tampermonkey.net", "twitter.com", "vimeo.com", "wikipedia.org", "w3schools.com",
 "yandex.ru", "youtu.be", "youtube.com", "xemvtv.net", "vod.pl", "agar.io", "pandoon.info", "fsf.org",
-"adblockplus.org", "plnkr.co", "exacttarget.com", "dolldivine.com", "popmech.ru", "calm.com"],
-["google", "amazon", "yahoo"]);
-//Adfly skipper
-if (a.config.aggressiveAdflySkiper || a.domCmp(["adf.ly", "ay.gy", "j.gs", "q.gs",
-"gamecopyworld.click", "babblecase.com", "pintient.com", "atominik.com", "bluenik.com",
-"sostieni.ilwebmaster21.com", "auto-login-xxx.com", "microify.com", "riffhold.com"])) {
-    //adf.ly and related domains
-    //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/71
-    /*
-    //Old solution: 
-    //Disable open() before page starts to load and set abgo to an empty function when the page loads
-    a.readOnly("open", function () { });
-    a.on("load", function () {
-        a.win.abgo = function () { };
-    });
-    //Skip countdown
-    a.timewarp("setInterval");
-    */
-    //New solution - Thanks to ghajini: 
-    //Based on: AdsBypasser
-    //License: https://github.com/adsbypasser/adsbypasser/blob/master/LICENSE
-    //Remove document.write() and btoa() on start
-    //a.doc.write = function () { };
-    //a.win.btoa = function () { };
-    //URL parser
-    const parseURL = function () {
-        //Get URL
-        let encodedURL = a.doc.head.innerHTML.match(/var eu = '(?!false)(.*)'/);
-        if (!encodedURL) {
-            return false;
-        }
-        encodedURL = encodedURL[1];
-        const index = encodedURL.indexOf('!HiTommy');
-        if (index >= 0) {
-            encodedURL = encodedURL.substring(0, index);
-        }
-        //Decode URL
-        let var1 = "", var2 = "";
-        for (let i = 0; i < encodedURL.length; ++i) {
-            if (i % 2 === 0) {
-                var1 = var1 + encodedURL.charAt(i);
-            } else {
-                var2 = encodedURL.charAt(i) + var2;
-            }
-        }
-        let decodedURL = a.win.atob(var1 + var2);
-        decodedURL = decodedURL.substr(2);
-        if (a.win.location.hash) {
-            decodedURL += a.win.location.hash;
-        }
-        //Return decoded URL
-        return decodedURL;
-    };
-    //Check HTML and skip Adfly if needed
-    a.on("DOMContentLoaded", function () {
-        //Check if the page is an adf.ly page
-        let url = parseURL();
-        if (a.$("html").attr("id") === "main_html" && a.$("body").attr("id") === "home"
-            && url !== false && url.length) { //Here, comparing to false is needed
-            //Stop the window
-            a.win.stop();
-            //Nuke body since we got the link
-            a.doc.body.innerHTML = `<div><h2>Adfly bypassed by AdBlock Protector. ` +
-`Redirecting to real link: <a href="${url}">${url}</a></h2></div>`;
-            //Redirect
-            a.win.onbeforeunload = null;
-            //a.win.onunload = null;
-            a.win.location.href = url;
-        } else {
-            a.config.debugMode && a.out.info("This page isn't an Adfly page");
-        }
-    });
-}
+"adblockplus.org", "plnkr.co", "exacttarget.com", "dolldivine.com", "popmech.ru", "calm.com", "chatango.com"];
+    const excludedDomInc = ["google", "amazon", "yahoo"];
+    //Adfly domains
+    const AdflyMatchDomCmp = ["adf.ly", "ay.gy", "j.gs", "q.gs","gamecopyworld.click", "babblecase.com", 
+"pintient.com", "atominik.com", "bluenik.com", "sostieni.ilwebmaster21.com", "auto-login-xxx.com", 
+"microify.com", "riffhold.com"];
+    //const AdflyUnmatchDomCmp = [];
+    //Compare and init
+    a.init(
+        a.domCmp(excludedDomCmp, true) || a.domInc(excludedDomInc, true),
+        a.domCmp(AdflyMatchDomCmp),
+        false
+    );
+})();
 //Start
 if (a.domCmp(["blockadblock.com"])) {
     //Disable eval() and remove element with ID babasbmsgx on load
