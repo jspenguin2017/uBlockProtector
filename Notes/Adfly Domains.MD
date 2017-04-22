@@ -36,11 +36,11 @@ http://babblecase.com/2Sv
 `bluenik.com`
 http://bluenik.com/7VT
 
-`auto-login-xxx.com`
-http://redir2.auto-login-xxx.com/14557011/sexart
-
 `gamecopyworld.click`
 http://rd1.gamecopyworld.click/OrPg
+
+`auto-login-xxx.com`
+http://redir2.auto-login-xxx.com/14557011/sexart
 
 #### Third level domains
 
