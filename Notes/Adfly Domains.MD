@@ -1,5 +1,7 @@
 ### These are the known Adfly domains and test links: 
 
+#### Second level ("normal") domains
+
 `adf.ly`
 http://adf.ly/1mHisY
 http://adf.ly/1XHJoS
