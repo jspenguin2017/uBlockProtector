@@ -1256,7 +1256,7 @@ a.generic.AdflySkipper = function () {
             a.win.stop();
             //Nuke body since we got the link
             //We would be so fast that the body isn't loaded
-            //a.doc.body.innerHTML = `<div><h2>Adfly bypassed by AdBlock Protector. Redirecting to real link: <a href="${decodedURL}">${decodedURL}</a></h2></div>`;
+            //a.doc.body.innerHTML = `<div><h2>Adfly skipped by AdBlock Protector. Redirecting to real link: <a href="${decodedURL}">${decodedURL}</a></h2></div>`;
             //Redirect
             a.win.onbeforeunload = null;
             //a.win.onunload = null;
