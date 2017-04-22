@@ -36,10 +36,13 @@ http://babblecase.com/2Sv
 `bluenik.com`
 http://bluenik.com/7VT
 
-#### Third level domains
+`auto-login-xxx.com`
+http://redir2.auto-login-xxx.com/14557011/sexart
 
-`rd1.gamecopyworld.click`
+`gamecopyworld.click`
 http://rd1.gamecopyworld.click/OrPg
+
+#### Third level domains
 
 `sostieni.ilwebmaster21.com`
 http://sostieni.ilwebmaster21.com/15p
