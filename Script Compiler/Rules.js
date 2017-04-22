@@ -2327,5 +2327,9 @@ if (a.domCmp(["up-4ever.com"])) {
     });
     a.readOnly("remaining", "0");
 }
+if (a.domCmp(["gaybeeg.info"])) {
+    //NSFW!
+    a.readOnly("_blocked", 0);
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
