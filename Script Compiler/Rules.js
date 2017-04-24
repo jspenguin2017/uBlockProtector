@@ -242,6 +242,18 @@ a.win.encodeURIComponent(api);
         });
     });
 }
+if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadzetomania.pl", "hotmoney.pl",
+"kafeteria.pl", "kafeteria.tv", "komediowo.pl", "komorkomania.pl", "money.pl", "pudelek.tv", "sfora.pl",
+"snobka.pl", "wawalove.pl", "wp.pl", "wp.tv", "wrzuta.pl", "pudelek.pl", "fotoblogia.pl", "parenting.pl",
+"echirurgia.pl", "pudelekx.pl", "o2.pl"])) {
+    //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/70
+    //Thanks to ghajini
+    //Based on: Adguard
+    //License: https://github.com/AdguardTeam/AdguardBrowserExtension/blob/master/LICENSE
+    a.cookie("ABCABC", "true");
+    a.filter("addEventListener", /^advertisement$/);
+    a.readOnly("hasSentinel", function () { return false; });
+}
 /*
 if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadzetomania.pl", "hotmoney.pl",
 "kafeteria.pl", "kafeteria.tv", "komediowo.pl", "komorkomania.pl", "money.pl", "pudelek.tv", "sfora.pl",
@@ -250,8 +262,6 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
 */
 if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl"], true)) {
     //wp.pl and related domains
-    //Set a cookie to prevent block screen
-    //a.cookie("ABCABC", "true");
     //Replace player - Thanks to szymon1118
     //Variables
     let mid; //Media ID of next video
@@ -389,18 +399,6 @@ if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl"], true)) {
     a.on("blur", function () {
         isInBackground = true;
     });
-}
-if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadzetomania.pl", "hotmoney.pl",
-"kafeteria.pl", "kafeteria.tv", "komediowo.pl", "komorkomania.pl", "money.pl", "pudelek.tv", "sfora.pl",
-"snobka.pl", "wawalove.pl", "wp.pl", "wp.tv", "wrzuta.pl", "pudelek.pl", "fotoblogia.pl", "parenting.pl",
-"echirurgia.pl", "pudelekx.pl"])) {
-    //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/70
-    //Thanks to ghajini
-    //Based on: Adguard
-    //License: https://github.com/AdguardTeam/AdguardBrowserExtension/blob/master/LICENSE
-    a.cookie("ABCABC", "true");
-    a.filter("addEventListener", /^advertisement$/);
-    a.readOnly("hasSentinel", function () { return false; });
 }
 if (a.domCmp(["foxvalleyfoodie.com"])) {
     //(Workaround) Only allow certain script includes
