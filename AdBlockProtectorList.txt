@@ -69,6 +69,7 @@ ally.sh##script:inject(popads.net.js)
 @@||al.ly^$generichide
 al.ly##script:inject(popads.net.js)
 ||hackintosh.*/donate/donate.php
+hackintosh.computer##.adsbygoogle
 @@||imasdk.googleapis.com^$third-party,domain=ovar.io
 ! =====Patched Anti-Adblock Killer List=====
 ! License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE

@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 6.182
+// @version 6.183
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -905,13 +905,12 @@ if (a.domCmp(["pinkrod.com", "wetplace.com"])) {
 }
 if (a.domInc(["hackintosh"])) {
     a.readOnly("eval", function () {
-        var c = "babasbmsgx";
-        document.getElementById(c).style.setProperty("visibility", "hidden", "important");
-        document.getElementById(c).style.setProperty("display", "none", "important");
-        document.getElementById(c).style.setProperty("opacity", "0", "important");
-        document.getElementById(c).style.setProperty("animation", "none", "important");
-        document.body.style.setProperty("visibility", "visible", "important");
+        a.$("#babasbmsgx").remove();
+        a.doc.body.style.setProperty("visibility", "visible", "important");
     });
+    if (a.domCmp(["hackintosh.computer"], true)) {
+        a.noAccess("google_jobrunner");
+    }
 }
 if (a.domCmp(["tvregionalna24.pl"])) {
     let text = [];

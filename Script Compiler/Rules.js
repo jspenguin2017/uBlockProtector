@@ -148,13 +148,13 @@ if (a.domCmp(["pinkrod.com", "wetplace.com"])) {
 if (a.domInc(["hackintosh"])) {
     //Undo BlockAdblock styles
     a.readOnly("eval", function () {
-        var c = "babasbmsgx";
-        document.getElementById(c).style.setProperty("visibility", "hidden", "important");
-        document.getElementById(c).style.setProperty("display", "none", "important");
-        document.getElementById(c).style.setProperty("opacity", "0", "important");
-        document.getElementById(c).style.setProperty("animation", "none", "important");
-        document.body.style.setProperty("visibility", "visible", "important");
+        a.$("#babasbmsgx").remove();
+        a.doc.body.style.setProperty("visibility", "visible", "important");
     });
+    //Prevent article hidding
+    if (a.domCmp(["hackintosh.computer"], true)) {
+        a.noAccess("google_jobrunner");
+    }
 }
 if (a.domCmp(["tvregionalna24.pl"])) {
     //Patch videojs to show YouTube iframe immediately - Thanks to F4z
