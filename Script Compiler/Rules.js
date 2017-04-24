@@ -2329,7 +2329,18 @@ if (a.domCmp(["up-4ever.com"])) {
 }
 if (a.domCmp(["gaybeeg.info"])) {
     //NSFW!
-    a.readOnly("_blocked", 0);
+    a.observe("insert", function (node) {
+        if (node.innerHTML && node.innerHTML.includes("AdBloker Detected")) {
+            node.remove();
+        }
+    });
+    a.filter("eval");
+    a.ready(function () {
+        a.$(".download a.button").each(function (i, el) {
+            a.$(el).removeClass("locked").attr("href", a.$(el).data("href"))
+                .removeAttr("data-href");
+        });
+    });
 }
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();

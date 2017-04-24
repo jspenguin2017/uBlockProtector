@@ -70,7 +70,6 @@ ally.sh##script:inject(popads.net.js)
 al.ly##script:inject(popads.net.js)
 ||hackintosh.*/donate/donate.php
 @@||imasdk.googleapis.com^$third-party,domain=ovar.io
-gaybeeg.info##.bugme
 ! =====Patched Anti-Adblock Killer List=====
 ! License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
 ||trymask.com/api/$third-party

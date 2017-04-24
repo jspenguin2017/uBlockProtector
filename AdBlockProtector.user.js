@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 6.181
+// @version 6.182
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2630,6 +2630,17 @@ if (a.domCmp(["up-4ever.com"])) {
     a.readOnly("remaining", "0");
 }
 if (a.domCmp(["gaybeeg.info"])) {
-    a.readOnly("_blocked", 0);
+    a.observe("insert", function (node) {
+        if (node.innerHTML && node.innerHTML.includes("AdBloker Detected")) {
+            node.remove();
+        }
+    });
+    a.filter("eval");
+    a.ready(function () {
+        a.$(".download a.button").each(function (i, el) {
+            a.$(el).removeClass("locked").attr("href", a.$(el).data("href"))
+                .removeAttr("data-href");
+        });
+    });
 }
 a.generic();

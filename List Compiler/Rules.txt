@@ -116,5 +116,3 @@ al.ly##script:inject(popads.net.js)
 ! === ovar.io
 ! === Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/155
 @@||imasdk.googleapis.com^$third-party,domain=ovar.io
-! === NSFW! gaybeeg.info
-gaybeeg.info##.bugme
