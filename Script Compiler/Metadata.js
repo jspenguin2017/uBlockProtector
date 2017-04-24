@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 6.184
+// @version 6.185
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*

@@ -2340,5 +2340,8 @@ if (a.domCmp(["gaybeeg.info"])) {
         });
     });
 }
+if (a.domCmp(["mma-core.com"])) {
+    a.noAccess("displayAdBlockedVideo");
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
