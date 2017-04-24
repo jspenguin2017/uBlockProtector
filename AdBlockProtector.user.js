@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 6.185
+// @version 6.186
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2644,5 +2644,13 @@ if (a.domCmp(["gaybeeg.info"])) {
 }
 if (a.domCmp(["mma-core.com"])) {
     a.noAccess("displayAdBlockedVideo");
+}
+if (a.domCmp(["menshealth.pl", "womenshealth.pl", "runners-world.pl",
+"auto-motor-i-sport.pl", "motocykl-online.pl", "mojeauto.pl"])) {
+    a.ready(function () {
+        if (a.win.location.pathname.startsWith("/welcome-page")) {
+            a.win.location.href = a.$("#timeLink").attr("href");
+        }
+    });
 }
 a.generic();

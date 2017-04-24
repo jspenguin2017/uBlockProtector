@@ -2343,5 +2343,13 @@ if (a.domCmp(["gaybeeg.info"])) {
 if (a.domCmp(["mma-core.com"])) {
     a.noAccess("displayAdBlockedVideo");
 }
+if (a.domCmp(["menshealth.pl", "womenshealth.pl", "runners-world.pl",
+"auto-motor-i-sport.pl", "motocykl-online.pl", "mojeauto.pl"])) {
+    a.ready(function () {
+        if (a.win.location.pathname.startsWith("/welcome-page")) {
+            a.win.location.href = a.$("#timeLink").attr("href");
+        }
+    });
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
