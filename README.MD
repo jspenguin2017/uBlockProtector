@@ -24,3 +24,4 @@ This project was completely redesigned on version 4.0, but the name of the proje
 2. Remove `a()` and `a.VERSION`, they are used precisely 0 times. 
 3. Add contribution guideline and other documentation for transparency and clarity. 
 4. Make compilers to automatically scroll log output to the bottom. 
+5. Add license awareness to List Compiler. 
