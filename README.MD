@@ -25,5 +25,5 @@ This project was completely redesigned on version 4.0, but the name of the proje
     * Remove `a()` and `a.VERSION`, they are used precisely 0 times. Put `jQueryFactory` and `jQueryColorLoader` to `a` namespace. 
     * Other general Core optimization and clean up. 
 2. Add contribution guideline and other documentation for transparency and clarity. 
-3. Make compilers to automatically scroll log output to the bottom. 
+3. Make compilers to automatically scroll log output to the bottom (or clear the log on compiling start?). 
 4. Add license awareness to List Compiler. 
