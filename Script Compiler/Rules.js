@@ -2352,6 +2352,7 @@ if (a.domCmp(["menshealth.pl", "womenshealth.pl", "runners-world.pl",
     });
 }
 if (a.domCmp(["netdna-storage.com"])) {
+    //NSFW!
     //Temporary fix
     //Need to patch Core so this works: 
     //a.filter("Element.prototype.addEventListener", "error");

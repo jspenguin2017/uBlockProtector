@@ -2665,6 +2665,6 @@ if (a.domCmp(["netdna-storage.com"])) {
         } else {
             return _createElement.apply(a.doc, arguments);
         }
-    }
+    };
 }
 a.generic();
