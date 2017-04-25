@@ -20,8 +20,10 @@ This project was completely redesigned on version 4.0, but the name of the proje
 
 ## To-do
 
-1. `a.filter()` redesign, make matching has string mode, exact match mode, RegExp mode, and callback mode. Also fix craches when arguments are not `toString`-able. 
-2. Remove `a()` and `a.VERSION`, they are used precisely 0 times. 
-3. Add contribution guideline and other documentation for transparency and clarity. 
-4. Make compilers to automatically scroll log output to the bottom. 
-5. Add license awareness to List Compiler. 
+1. Next round optimizations: 
+    * `a.filter()` redesign, make matching has string mode, exact match mode, RegExp mode, and callback mode. Also fix craches when arguments are not `toString`-able (use `String(...)` instead). 
+    * Remove `a()` and `a.VERSION`, they are used precisely 0 times. Put `jQueryFactory` and `jQueryColorLoader` to `a` namespace. 
+    * Other general Core optimization and clean up. 
+2. Add contribution guideline and other documentation for transparency and clarity. 
+3. Make compilers to automatically scroll log output to the bottom. 
+4. Add license awareness to List Compiler. 
