@@ -2366,7 +2366,7 @@ if (a.domCmp(["netdna-storage.com"])) {
         } else {
             return _createElement.apply(a.doc, arguments);
         }
-    }
+    };
 }
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
