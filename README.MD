@@ -4,7 +4,7 @@ Installation instructions, along with many other relevant information are availa
 
 ## Building
 
-We use custom compilers, the source code for the compilers along with prebuilt binaries are located in `Script Compiler` and `List Compiler` folders. 
+We use custom compilers, the source code for the compilers along with prebuilt binaries for Windows 10 are located in `Script Compiler` and `List Compiler` folders. 
 
 The compilers are built with Visual Studio 2015. 
 
@@ -27,3 +27,6 @@ This project was completely redesigned on version 4.0, but the name of the proje
 2. Add contribution guideline and other documentation for transparency and clarity. 
 3. Make compilers to automatically scroll log output to the bottom (or clear the log on compiling start?). 
 4. Add license awareness to List Compiler. 
+5. Redesign Core functions that patches properties, they needs to be able to handle properties that are arbitrarily deep. 
+6. Grant cross origin XHR on install time. 
+7. Redesign compilers so they can work on Linux. 
