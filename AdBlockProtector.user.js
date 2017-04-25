@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 6.187
+// @version 6.188
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2652,19 +2652,5 @@ if (a.domCmp(["menshealth.pl", "womenshealth.pl", "runners-world.pl",
             a.win.location.href = a.$("#timeLink").attr("href");
         }
     });
-}
-if (a.domCmp(["netdna-storage.com"])) {
-    const _createElement = a.doc.createElement;
-    a.doc.createElement = function (what) {
-        if (what === "script") {
-            let elem = _createElement.apply(a.doc, arguments);
-            elem.addEventListener("error", function (e) {
-                e.stopPropagation();
-            });
-            return elem;
-        } else {
-            return _createElement.apply(a.doc, arguments);
-        }
-    };
 }
 a.generic();
