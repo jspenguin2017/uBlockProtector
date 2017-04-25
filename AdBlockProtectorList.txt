@@ -72,6 +72,7 @@ al.ly##script:inject(popads.net.js)
 hackintosh.computer##.adsbygoogle
 @@||imasdk.googleapis.com^$third-party,domain=ovar.io
 futbolchile.net##script:inject(bab-defuser.js)
+||damoh.*^$media
 ! =====Patched Anti-Adblock Killer List=====
 ! License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
 ||trymask.com/api/$third-party
