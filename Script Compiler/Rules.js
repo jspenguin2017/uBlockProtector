@@ -2351,5 +2351,22 @@ if (a.domCmp(["menshealth.pl", "womenshealth.pl", "runners-world.pl",
         }
     });
 }
+if (a.domCmp(["netdna-storage.com"])) {
+    //Temporary fix
+    //Need to patch Core so this works: 
+    //a.filter("Element.prototype.addEventListener", "script");
+    const _createElement = a.doc.createElement;
+    a.doc.createElement = function (what) {
+        if (what === "script") {
+            let elem = _createElement.apply(a.doc, arguments);
+            elem.addEventListener("error", function (e) {
+                e.stopPropagation();
+            });
+            return elem;
+        } else {
+            return _createElement.apply(a.doc, arguments);
+        }
+    }
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
