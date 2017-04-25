@@ -126,3 +126,5 @@ futbolchile.net##script:inject(bab-defuser.js)
 ! === NSFW! netdna-storage.com
 ! === Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/164
 ||adnetworkperformance.com^$script,redirect=noopjs,domain=netdna-storage.com
+||allanalpass.com^$script,redirect=noopjs,domain=netdna-storage.com
+||popcash.net^$script,redirect=noopjs,domain=netdna-storage.com
