@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 6.188
+// @version 6.189
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2651,6 +2651,12 @@ if (a.domCmp(["menshealth.pl", "womenshealth.pl", "runners-world.pl",
         if (a.win.location.pathname.startsWith("/welcome-page")) {
             a.win.location.href = a.$("#timeLink").attr("href");
         }
+    });
+}
+if (a.domCmp(["dovathd.com"])) {
+    a.ready(function () {
+        a.$(".onp-sl-social-buttons-enabled").remove();
+        a.$(".onp-sl-content").show();
     });
 }
 a.generic();

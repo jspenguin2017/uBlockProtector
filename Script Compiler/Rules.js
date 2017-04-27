@@ -2351,5 +2351,11 @@ if (a.domCmp(["menshealth.pl", "womenshealth.pl", "runners-world.pl",
         }
     });
 }
+if (a.domCmp(["dovathd.com"])) {
+    a.ready(function () {
+        a.$(".onp-sl-social-buttons-enabled").remove();
+        a.$(".onp-sl-content").show();
+    });
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
