@@ -1,4 +1,4 @@
-﻿//AdBlock Protector Core Library
+//AdBlock Protector Core Library
 "use strict";
 
 //=====Declaration=====
@@ -516,7 +516,7 @@ a.filter = function (func, filter) {
  * @function
  * @param {string} func - The name of the function to patch, can be "setTimeout" or "setInterval".
  * @param {RegExp} [filter=/[\S\s]/] - Change execution delay if this filter is matched, match everything by default.
- * @param {float} [ratio=0.01] - The boost ratio, between 0 and 1 for speed up, larger than 1 for slow down, defaults to speed up 50 times.
+ * @param {float} [ratio=0.02] - The boost ratio, between 0 and 1 for speed up, larger than 1 for slow down, defaults to speed up 50 times.
  * @returns {boolean} True if the operation was successful, false otherwise.
  */
 a.timewarp = function (func, filter, ratio) {
