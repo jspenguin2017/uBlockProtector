@@ -2645,7 +2645,7 @@ if (a.domCmp(["gaybeeg.info"])) {
     });
     a.ready(function () {
         a.$("script").each(function (i, elem) {
-            if (!elem) {
+            if (!elem || !elem.innerHTML) {
                 return;
             }
             if (a.hash(elem.innerHTML) === 861935216) {
