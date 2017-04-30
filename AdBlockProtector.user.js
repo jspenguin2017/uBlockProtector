@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 6.191
+// @version 6.192
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2687,5 +2687,8 @@ if (a.domCmp(["dovathd.com"])) {
         a.$(".onp-sl-social-buttons-enabled").remove();
         a.$(".onp-sl-content").show();
     });
+}
+if (a.domCmp(["freepdf-books.com"])) {
+    a.timewarp("setInterval", /^1000$/);
 }
 a.generic();

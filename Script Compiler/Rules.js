@@ -2382,5 +2382,8 @@ if (a.domCmp(["dovathd.com"])) {
         a.$(".onp-sl-content").show();
     });
 }
+if (a.domCmp(["freepdf-books.com"])) {
+    a.timewarp("setInterval", /^1000$/);
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
