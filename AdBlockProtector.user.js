@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 6.189
+// @version 6.190
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -214,7 +214,7 @@ a.protectFunc = function () {
     try {
         a.win.Function.prototype.toString = newFunc;
         a.protectFunc.pointers.push(newFunc);
-        a.protectFunc.masks.push(original.toString());
+        a.protectFunc.masks.push(String(original));
         a.config.debugMode && a.out.warn("Functions protected. ");
     } catch (err) {
         a.config.debugMode && a.out.error("AdBlock Protector failed to protect functions! ");
@@ -233,11 +233,11 @@ a.filter = function (func, filter) {
         if (a.config.debugMode) {
             a.out.warn(func + " is called with these arguments: ");
             for (let i = 0; i < arguments.length; i++) {
-                a.out.warn(arguments[i].toString());
+                a.out.warn(String(arguments[i]));
             }
         }
         for (let i = 0; i < arguments.length; i++) {
-            if (filter.test(arguments[i].toString())) {
+            if (filter.test(String(arguments[i]))) {
                 a.config.debugMode && a.err();
                 return;
             }
@@ -260,7 +260,7 @@ a.filter = function (func, filter) {
         }
         if (a.protectFunc.enabled) {
             a.protectFunc.pointers.push(newFunc);
-            a.protectFunc.masks.push(original.toString());
+            a.protectFunc.masks.push(String(original));
         }
         a.config.debugMode && a.out.warn("Filter activated on " + func);
     } catch (err) {
@@ -276,10 +276,10 @@ a.timewarp = function (func, filter, ratio) {
     const newFunc = function (arg, time) {
         if (a.config.debugMode) {
             a.out.warn("Timewarpped " + func + " is called with these arguments: ");
-            a.out.warn(arg.toString());
-            a.out.warn(time.toString());
+            a.out.warn(String(arg));
+            a.out.warn(String(time));
         }
-        if (filter.test(arg.toString()) || filter.test(time.toString())) {
+        if (filter.test(String(arg)) || filter.test(String(time))) {
             a.config.debugMode && a.out.warn("Timewarpped. ");
             return original(arg, time * ratio);
         } else {
@@ -291,7 +291,7 @@ a.timewarp = function (func, filter, ratio) {
         a.win[func] = newFunc;
         if (a.protectFunc.enabled) {
             a.protectFunc.pointers.push(newFunc);
-            a.protectFunc.masks.push(original.toString());
+            a.protectFunc.masks.push(String(original));
         }
         a.config.debugMode && a.out.warn("Timewarp activated on " + func);
     } catch (err) {

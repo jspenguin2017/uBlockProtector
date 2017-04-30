@@ -425,7 +425,7 @@ a.protectFunc = function () {
         a.win.Function.prototype.toString = newFunc;
         //Protect this function as well
         a.protectFunc.pointers.push(newFunc);
-        a.protectFunc.masks.push(original.toString());
+        a.protectFunc.masks.push(String(original));
         //Activate log
         a.config.debugMode && a.out.warn("Functions protected. ");
     } catch (err) {
@@ -467,17 +467,16 @@ a.filter = function (func, filter) {
     let fNames;
     //The function with filters
     const newFunc = function () {
-        //Note: can sometimes crash if the argument doesn't have toString property
         //Call log
         if (a.config.debugMode) {
             a.out.warn(func + " is called with these arguments: ");
             for (let i = 0; i < arguments.length; i++) {
-                a.out.warn(arguments[i].toString());
+                a.out.warn(String(arguments[i]));
             }
         }
         //Apply filter
         for (let i = 0; i < arguments.length; i++) {
-            if (filter.test(arguments[i].toString())) {
+            if (filter.test(String(arguments[i]))) {
                 //Not allowed
                 a.config.debugMode && a.err();
                 return;
@@ -509,7 +508,7 @@ a.filter = function (func, filter) {
         //Add this filter to protection list
         if (a.protectFunc.enabled) {
             a.protectFunc.pointers.push(newFunc);
-            a.protectFunc.masks.push(original.toString());
+            a.protectFunc.masks.push(String(original));
         }
         //Activate log
         a.config.debugMode && a.out.warn("Filter activated on " + func);
@@ -536,15 +535,14 @@ a.timewarp = function (func, filter, ratio) {
     const original = a.win[func];
     //The function with timewarp
     const newFunc = function (arg, time) {
-        //Note: can sometimes crash if the argument doesn't have toString property
         //Call log
         if (a.config.debugMode) {
             a.out.warn("Timewarpped " + func + " is called with these arguments: ");
-            a.out.warn(arg.toString());
-            a.out.warn(time.toString());
+            a.out.warn(String(arg));
+            a.out.warn(String(time));
         }
         //Check if we need to timewarp this function
-        if (filter.test(arg.toString()) || filter.test(time.toString())) {
+        if (filter.test(String(arg)) || filter.test(String(time))) {
             //Timewarp
             a.config.debugMode && a.out.warn("Timewarpped. ");
             return original(arg, time * ratio);
@@ -560,7 +558,7 @@ a.timewarp = function (func, filter, ratio) {
         //Add this filter to protection list
         if (a.protectFunc.enabled) {
             a.protectFunc.pointers.push(newFunc);
-            a.protectFunc.masks.push(original.toString());
+            a.protectFunc.masks.push(String(original));
         }
         //Activate log
         a.config.debugMode && a.out.warn("Timewarp activated on " + func);

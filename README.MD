@@ -21,7 +21,7 @@ This project was completely redesigned on version 4.0, but the name of the proje
 ## To-do
 
 1. Next round optimizations: 
-    * `a.filter()` redesign, make matching has string mode, exact match mode, RegExp mode, and callback mode. Also fix craches when arguments are not `toString`-able (use `String(...)` instead). 
+    * `a.filter()` redesign, make matching has string mode, exact match mode, RegExp mode, and callback mode. 
     * Remove `a()` and `a.VERSION`, they are used precisely 0 times. Put `jQueryFactory` and `jQueryColorLoader` to `a` namespace. 
     * Other general Core optimization and clean up. 
 2. Add contribution guideline and other documentation for transparency and clarity. 
@@ -30,3 +30,4 @@ This project was completely redesigned on version 4.0, but the name of the proje
 5. Redesign Core functions that patches properties, they needs to be able to handle properties that are arbitrarily deep. 
 6. Grant cross origin XHR on install time. 
 7. Redesign compilers so they can work on Linux. 
+8. Redesign compilers so they can automatically detect git root. 
