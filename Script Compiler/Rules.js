@@ -2332,8 +2332,33 @@ if (a.domCmp(["gaybeeg.info"])) {
             node.remove();
         }
     });
-    a.filter("eval");
     a.ready(function () {
+        //Execute some in-line scripts manually
+        a.$("script").each(function (i, elem) {
+            if (!elem) {
+                return;
+            }
+            //Emoji script
+            if (a.hash(elem.innerHTML) === 861935216) {
+                a.win.eval(elem.innerHTML);
+                return;
+            }
+            //Archive
+            if (elem.innerHTML.includes("/*  Collapse Functions, version 2.0")) {
+                const temp = elem.innerHTML.split("/*  Collapse Functions, version 2.0");
+                if (temp.length === 2 && a.hash(temp[1]) === -1728731483) {
+                    a.win.eval(elem.innerHTML);
+                    return;
+                }
+            }
+            //Log blocked code
+            if (a.config.debugMode) {
+                a.out.warn("This inline script is not executed: ")
+                a.out.warn(elem.innerHTML);
+                a.out.warn("Hash: " + a.hash(elem.innerHTML).toString());
+            }
+        })
+        //Patch download button
         a.$(".download a.button").each(function (i, el) {
             a.$(el).removeClass("locked").attr("href", a.$(el).data("href"))
                 .removeAttr("data-href");

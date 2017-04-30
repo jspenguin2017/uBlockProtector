@@ -123,8 +123,9 @@ futbolchile.net##script:inject(bab-defuser.js)
 ! === tv.aftonbladet.se - Thanks to uBlock-user
 ! === Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/163
 ||damoh.*^$media
-! === NSFW! netdna-storage.com
+! === NSFW! gaybeeg.info, netdna-storage.com
 ! === Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/164
+||gaybeeg.info^$inline-script
 ||adnetworkperformance.com^$script,redirect=noopjs,domain=netdna-storage.com
 ||allanalpass.com^$script,redirect=noopjs,domain=netdna-storage.com
 ||popcash.net^$script,redirect=noopjs,domain=netdna-storage.com

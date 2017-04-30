@@ -73,6 +73,7 @@ hackintosh.computer##.adsbygoogle
 @@||imasdk.googleapis.com^$third-party,domain=ovar.io
 futbolchile.net##script:inject(bab-defuser.js)
 ||damoh.*^$media
+||gaybeeg.info^$inline-script
 ||adnetworkperformance.com^$script,redirect=noopjs,domain=netdna-storage.com
 ||allanalpass.com^$script,redirect=noopjs,domain=netdna-storage.com
 ||popcash.net^$script,redirect=noopjs,domain=netdna-storage.com

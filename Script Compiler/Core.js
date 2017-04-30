@@ -3,18 +3,10 @@
 
 //=====Declaration=====
 /**
- * Get a description string of this library.
- * @function
- * @returns {string} A description string of this library.
+ * The main Core namespace
+ * @var {Object}
  */
-const a = function () {
-    return "AdBlock Protector Core Library " + a.VERSION;
-};
-/**
- * The version of this library.
- * @const {string}
- */
-a.VERSION = "1.1";
+var a = a || {};
 
 //=====Initializer=====
 /**
@@ -194,7 +186,7 @@ a.c.supportPage = "https://github.com/jspenguin2017/AdBlockProtector/issues";
  * A string that will crash any JavaScript by syntax error when added to anywhere of its code.
  * @const {string}
  */
-a.c.syntaxBreaker = "])}\"'`])} \n\r \r\n */ ])}";
+a.c.syntaxBreaker = "])} \"'` ])} \n\r \r\n */ ])}";
 /**
  * Whether this script is running on the top frame.
  * @const {boolean}
@@ -884,25 +876,6 @@ a.always = function (func) {
     a.on("load", func);
 };
 /**
- * Returns a unique ID that is also a valid variable name.
- * @function
- * @returns {string} Unique ID.
- */
-a.uid = function () {
-    const chars = "abcdefghijklnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    let str = "";
-    for (let i = 0; i < 10; i++) {
-        str += chars.charAt(a.win.Math.floor(a.win.Math.random() * chars.length));
-    }
-    a.uid.counter++;
-    return str + a.uid.counter.toString();
-};
-/**
- * Unique ID counter, will be appended to randomly generated string to ensure uniqueness.
- * @var {integer}
- */
-a.uid.counter = 0;
-/**
  * Observe mutations of the document.
  * @function
  * @param {string} type - The type of mutation to observe. Currently only "insert" is accepted, this argument is for future expansion.
@@ -955,6 +928,43 @@ a.observe.init.done = false;
  * @var {Array.<Function>}
  */
 a.observe.insertCallbacks = [];
+/**
+ * Returns a unique ID that is also a valid variable name.
+ * @function
+ * @returns {string} Unique ID.
+ */
+a.uid = function () {
+    const chars = "abcdefghijklnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let str = "";
+    for (let i = 0; i < 10; i++) {
+        str += chars.charAt(a.win.Math.floor(a.win.Math.random() * chars.length));
+    }
+    a.uid.counter++;
+    return str + a.uid.counter.toString();
+};
+/**
+ * Unique ID counter, will be appended to randomly generated string to ensure uniqueness.
+ * @var {integer}
+ */
+a.uid.counter = 0;
+/**
+ * Quickly and insecurely hash a string
+ * http://stackoverflow.com/questions/7616461/generate-a-hash-from-string-in-javascript-jquery
+ * @function
+ * @returns {integer} The hash result.
+ */
+a.hash = function (str) {
+    let hash = 0, i, chr;
+    if (str.length === 0) {
+        return hash;
+    }
+    for (i = 0; i < str.length; i++) {
+        chr = str.charCodeAt(i);
+        hash = ((hash << 5) - hash) + chr;
+        hash |= 0; // Convert to 32bit integer
+    }
+    return hash;
+};
 
 //=====Generic Protectors=====
 /**
