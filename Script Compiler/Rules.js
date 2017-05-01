@@ -2393,5 +2393,8 @@ if (a.domCmp(["dovathd.com"])) {
 if (a.domCmp(["freepdf-books.com"])) {
     a.timewarp("setInterval", /^1000$/);
 }
+if (a.domCmp(["temp-mail.org"])) {
+    a.readOnly("checkadBlock", function () { });
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
