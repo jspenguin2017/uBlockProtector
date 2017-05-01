@@ -2339,23 +2339,31 @@ if (a.domCmp(["gaybeeg.info"])) {
                 return;
             }
             //Emoji script
-            if (a.hash(elem.innerHTML) === 861935216) {
+            if (a.sha256(elem.innerHTML) ===
+                "b36b90f86ec7192c0942df3d504279967eb80dded90587a87010fdbbcc167923") {
                 a.win.eval(elem.innerHTML);
                 return;
             }
             //Archive
             if (elem.innerHTML.includes("/*  Collapse Functions, version 2.0")) {
                 const temp = elem.innerHTML.split("/*  Collapse Functions, version 2.0");
-                if (temp.length === 2 && a.hash(temp[1]) === -1728731483) {
-                    a.win.eval(elem.innerHTML);
-                    return;
+                if (temp.length === 2) {
+                    const hash = a.sha256(temp[1]);
+                    if (hash === "382f3949955c262f392d50e681f373c50b779b7503a303b93a03070940532af7") {
+                        a.win.eval(elem.innerHTML);
+                        return;
+                    } else if (a.config.debugMode) {
+                        a.out.warn("Archive related inline script does not match expected hash: ");
+                        a.out.warn(temp[1]);
+                        a.out.warn("Hash: " + hash);
+                    }
                 }
             }
             //Log blocked code
             if (a.config.debugMode) {
                 a.out.warn("This inline script is not executed: ")
                 a.out.warn(elem.innerHTML);
-                a.out.warn("Hash: " + a.hash(elem.innerHTML).toString());
+                a.out.warn("Hash: " + a.sha256(elem.innerHTML).toString());
             }
         })
         //Patch download button
