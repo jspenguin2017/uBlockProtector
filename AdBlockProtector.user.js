@@ -2721,7 +2721,7 @@ if (a.domCmp(["gaybeeg.info"])) {
             if (a.config.debugMode) {
                 a.out.warn("This inline script is not executed: ")
                 a.out.warn(elem.innerHTML);
-                a.out.warn("Hash: " + a.sha256(elem.innerHTML).toString());
+                a.out.warn("Hash: " + a.sha256(elem.innerHTML));
             }
         })
         a.$(".download a.button").each(function (i, el) {
