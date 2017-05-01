@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 6.194
+// @version 6.195
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -1795,18 +1795,7 @@ if (a.domCmp(["bitvisits.com"])) {
     a.readOnly("blockAdblockUser", function () { });
 }
 if (a.domCmp(["exrapidleech.info"])) {
-    let tomorrow = new a.win.Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    a.cookie("popcashpuCap", "1");
-    a.cookie("popcashpu", "1");
-    a.cookie("nopopatall", tomorrow.getTime().toString());
-    a.cookie("noadvtday", "0");
-    a.css("div.alert.alert-danger.lead {opacity:0;}");
-    a.readOnly("bdvbnr_pid", []);
-    a.readOnly("PopAds", 1);
-    a.filter("open");
-    a.$("<iframe>").attr("src", "http://bdfrm.bidvertiser.com/BidVertiser.dbm?pid=383865&bid=1737418&RD=")
-.attr("id", "bdvi").css("display", "none").appendTo("html");
+    a.filter("eval");
 }
 if (a.domCmp(["vipleague.is", "vipleague.ws", "vipleague.tv", "vipleague.se", "vipleague.tv", "vipleague.me",
 "vipleague.mobi", "vipleague.co", "vipleague.sx", "vipleague.ch", "vipbox.tv", "vipbox.co", "vipbox.biz",

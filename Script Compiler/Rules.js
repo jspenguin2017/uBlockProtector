@@ -1224,6 +1224,9 @@ if (a.domCmp(["bitvisits.com"])) {
     a.readOnly("blockAdblockUser", function () { });
 }
 if (a.domCmp(["exrapidleech.info"])) {
+    a.filter("eval");
+    /*
+    //This doesn't work anymore
     //Set cookies, style, read only variables, disable open(), and create an element
     let tomorrow = new a.win.Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
@@ -1243,6 +1246,7 @@ if (a.domCmp(["exrapidleech.info"])) {
     //Create element
     a.$("<iframe>").attr("src", "http://bdfrm.bidvertiser.com/BidVertiser.dbm?pid=383865&bid=1737418&RD=")
 .attr("id", "bdvi").css("display", "none").appendTo("html");
+    */
 }
 if (a.domCmp(["vipleague.is", "vipleague.ws", "vipleague.tv", "vipleague.se", "vipleague.tv", "vipleague.me",
 "vipleague.mobi", "vipleague.co", "vipleague.sx", "vipleague.ch", "vipbox.tv", "vipbox.co", "vipbox.biz",
