@@ -129,3 +129,5 @@ futbolchile.net##script:inject(bab-defuser.js)
 ||adnetworkperformance.com^$script,redirect=noopjs,domain=netdna-storage.com
 ||allanalpass.com^$script,redirect=noopjs,domain=netdna-storage.com
 ||popcash.net^$script,redirect=noopjs,domain=netdna-storage.com
+! === filechoco.net
+filechoco.net##script:inject(noeval.js)

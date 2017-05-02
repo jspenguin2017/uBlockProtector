@@ -77,6 +77,7 @@ futbolchile.net##script:inject(bab-defuser.js)
 ||adnetworkperformance.com^$script,redirect=noopjs,domain=netdna-storage.com
 ||allanalpass.com^$script,redirect=noopjs,domain=netdna-storage.com
 ||popcash.net^$script,redirect=noopjs,domain=netdna-storage.com
+filechoco.net##script:inject(noeval.js)
 ! =====Patched Anti-Adblock Killer List=====
 ! License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
 ||trymask.com/api/$third-party
