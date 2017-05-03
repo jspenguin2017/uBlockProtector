@@ -21,7 +21,8 @@ filez.tv###adblockinfo
 @@||imasdk.googleapis.com/js/sdkloader/ima3.js$domain=fox.com.tr|turknettv.com
 ||tribdss.com/meter/assets$script,domain=www.latimes.com
 *$xmlhttprequest,domain=thewindowsclub.com
-@@||disquscdn.com^$script,domain=www.thewindowsclub.com
+@@||disquscdn.com^$script,domain=thewindowsclub.com
+@@|https://disqus.com/next/config.js$domain=thewindowsclub.com
 ||8muses.com^$inline-script
 @@||8muses.com/comix/picture^$inline-script
 ||allmusic.com^$inline-script
@@ -79,6 +80,11 @@ futbolchile.net##script:inject(bab-defuser.js)
 ||allanalpass.com^$script,redirect=noopjs,domain=netdna-storage.com
 ||popcash.net^$script,redirect=noopjs,domain=netdna-storage.com
 filechoco.net##script:inject(noeval.js)
+*$script,third-party,domain=graffica.info
+@@||grafficainfo.disqus.com^$domain=graffica.info
+@@||connect.facebook.net^$domain=graffica.info
+@@||disquscdn.com^$domain=graffica.info
+@@|https://disqus.com/next/config.js$domain=graffica.info
 ! =====Patched Anti-Adblock Killer List=====
 ! License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
 ||trymask.com/api/$third-party

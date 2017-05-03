@@ -26,7 +26,8 @@ filez.tv###adblockinfo
 ||tribdss.com/meter/assets$script,domain=www.latimes.com
 ! === thewindowsclub.com
 *$xmlhttprequest,domain=thewindowsclub.com
-@@||disquscdn.com^$script,domain=www.thewindowsclub.com
+@@||disquscdn.com^$script,domain=thewindowsclub.com
+@@|https://disqus.com/next/config.js$domain=thewindowsclub.com
 ! === NSFW! 8muses.com
 ||8muses.com^$inline-script
 @@||8muses.com/comix/picture^$inline-script
@@ -132,3 +133,9 @@ futbolchile.net##script:inject(bab-defuser.js)
 ||popcash.net^$script,redirect=noopjs,domain=netdna-storage.com
 ! === filechoco.net
 filechoco.net##script:inject(noeval.js)
+! === graffica.info
+*$script,third-party,domain=graffica.info
+@@||grafficainfo.disqus.com^$domain=graffica.info
+@@||connect.facebook.net^$domain=graffica.info
+@@||disquscdn.com^$domain=graffica.info
+@@|https://disqus.com/next/config.js$domain=graffica.info
