@@ -139,3 +139,6 @@ filechoco.net##script:inject(noeval.js)
 @@||connect.facebook.net^$domain=graffica.info
 @@||disquscdn.com^$domain=graffica.info
 @@|https://disqus.com/next/config.js$domain=graffica.info
+! === rule34hentai.net
+! === Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/177
+||rule34hentai.net^$script-inject(bab-defuser.js)
