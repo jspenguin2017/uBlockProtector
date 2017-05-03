@@ -26,6 +26,7 @@ filez.tv###adblockinfo
 ||tribdss.com/meter/assets$script,domain=www.latimes.com
 ! === thewindowsclub.com
 *$xmlhttprequest,domain=thewindowsclub.com
+@@||disquscdn.com^$script,domain=www.thewindowsclub.com
 ! === NSFW! 8muses.com
 ||8muses.com^$inline-script
 @@||8muses.com/comix/picture^$inline-script
