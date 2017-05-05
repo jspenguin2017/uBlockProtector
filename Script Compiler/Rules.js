@@ -37,7 +37,8 @@
 "mail.ru", "microsoft.com", "msn.com", "paypal.com", "pinterest.com", "preloaders.net", "qq.com", "reddit.com",
 "stackoverflow.com", "tampermonkey.net", "twitter.com", "vimeo.com", "wikipedia.org", "w3schools.com",
 "yandex.ru", "youtu.be", "youtube.com", "xemvtv.net", "vod.pl", "agar.io", "pandoon.info", "fsf.org",
-"adblockplus.org", "plnkr.co", "exacttarget.com", "dolldivine.com", "popmech.ru", "calm.com", "chatango.com"];
+"adblockplus.org", "plnkr.co", "exacttarget.com", "dolldivine.com", "popmech.ru", "calm.com", "chatango.com",
+"filiser.tv"];
     const excludedDomInc = ["google", "amazon", "yahoo"];
     //Adfly domains
     const AdflyMatchDomCmp = ["adf.ly", "ay.gy", "j.gs", "q.gs", "gamecopyworld.click", "babblecase.com",
@@ -1484,10 +1485,7 @@ if (a.domCmp(["bakersfield.com"])) {
     a.readOnly("AD_SLOT_RENDERED", true);
 }
 if (a.domCmp(["ekstrabladet.dk", "eb.dk"])) {
-    //Set property ADTECH
-    a.always(function () {
-        a.win.ADTECH = {};
-    });
+    a.noAccess("eb");
 }
 if (a.domCmp(["pcgames-download.net"])) {
     //Set cookie and property mgCanLoad30547

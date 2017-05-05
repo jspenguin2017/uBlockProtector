@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 6.195
+// @version 6.196
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -878,7 +878,8 @@ a.generic.FuckAdBlock = function (constructorName, instanceName) {
 "mail.ru", "microsoft.com", "msn.com", "paypal.com", "pinterest.com", "preloaders.net", "qq.com", "reddit.com",
 "stackoverflow.com", "tampermonkey.net", "twitter.com", "vimeo.com", "wikipedia.org", "w3schools.com",
 "yandex.ru", "youtu.be", "youtube.com", "xemvtv.net", "vod.pl", "agar.io", "pandoon.info", "fsf.org",
-"adblockplus.org", "plnkr.co", "exacttarget.com", "dolldivine.com", "popmech.ru", "calm.com", "chatango.com"];
+"adblockplus.org", "plnkr.co", "exacttarget.com", "dolldivine.com", "popmech.ru", "calm.com", "chatango.com",
+"filiser.tv"];
     const excludedDomInc = ["google", "amazon", "yahoo"];
     const AdflyMatchDomCmp = ["adf.ly", "ay.gy", "j.gs", "q.gs", "gamecopyworld.click", "babblecase.com",
 "pintient.com", "atominik.com", "bluenik.com", "sostieni.ilwebmaster21.com", "auto-login-xxx.com",
@@ -1998,9 +1999,7 @@ if (a.domCmp(["bakersfield.com"])) {
     a.readOnly("AD_SLOT_RENDERED", true);
 }
 if (a.domCmp(["ekstrabladet.dk", "eb.dk"])) {
-    a.always(function () {
-        a.win.ADTECH = {};
-    });
+    a.noAccess("eb");
 }
 if (a.domCmp(["pcgames-download.net"])) {
     a.always(function () {
