@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 6.196
+// @version 6.197
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2740,5 +2740,47 @@ if (a.domCmp(["freepdf-books.com"])) {
 }
 if (a.domCmp(["temp-mail.org"])) {
     a.readOnly("checkadBlock", function () { });
+}
+if (a.domCmp(["gaana.com"])) {
+    const noop = function () { };
+    const pType = {
+        _auds: "", //all
+        isauds: false,
+        lotamecall: false,
+        itemInfo: [],
+        colombiaAdeURL: "",
+        deviceType: "", //desktop
+        colombiaCookies: "",
+        privateMode: true,
+        adIconInfo: [],
+        fns: { push: noop },
+        update: noop,
+        colombiaAdRequest: noop,
+        resetAdDivClass: noop,
+        clear: noop,
+        clearData: noop,
+        notifyColombiaAd: noop,
+        refresh: noop,
+        refreshFBAd: noop,
+        timeoutHandler: noop,
+        load: noop,
+        loadDataAd: noop,
+        drawIconHtml: noop,
+        loadDisplayAd: noop,
+        jsonCallback: noop,
+        getCB: noop,
+        repllaceMacro: noop,
+        getAdJSON: noop,
+        fireImpression: noop,
+        fireThirdPartyImp: noop,
+        storeThirdPartyImprURL: noop,
+        dataResponseFormat: noop,
+        storeAdIcons: noop,
+        checkDevice: noop,
+        dfpLog: noop
+    };
+    const obj = function () { };
+    obj.prototype = pType;
+    a.readyOnly("colombia", new obj);
 }
 a.generic();
