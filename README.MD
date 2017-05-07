@@ -6,7 +6,7 @@ Installation instructions, along with many other relevant information are availa
 
 We use custom compilers, the source code for the compilers along with prebuilt binaries for Windows 10 are located in `Script Compiler` and `List Compiler` folders. 
 
-The compilers are built with Visual Studio 2015. 
+The compilers are built with Visual Studio 2017. 
 
 ## License
 
@@ -25,9 +25,6 @@ This project was completely redesigned on version 4.0, but the name of the proje
     * Remove `a()` and `a.VERSION`, they are used precisely 0 times. Put `jQueryFactory` and `jQueryColorLoader` to `a` namespace. 
     * Other general Core optimization and clean up. 
 2. Add contribution guideline and other documentation for transparency and clarity. 
-3. Make compilers to automatically scroll log output to the bottom (or clear the log on compiling start?). 
-4. Add license awareness to List Compiler. 
-5. Redesign Core functions that patches properties, they needs to be able to handle properties that are arbitrarily deep. 
-6. Grant cross origin XHR on install time. 
-7. Redesign compilers so they can work on Linux. 
-8. Redesign compilers so they can automatically detect git root. 
+3. Add license awareness to List Compiler. 
+4. Redesign Core functions that patches properties, they needs to be able to handle properties that are arbitrarily deep. 
+5. Grant cross origin XHR on install time. 
