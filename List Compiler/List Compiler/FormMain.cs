@@ -20,7 +20,7 @@ namespace List_Compiler
         /// <summary>
         /// Default git root directory
         /// </summary>
-        private const string DefaultGitRoot = "D:\\Git\\AdBlockProtector";
+        private readonly string DefaultGitRoot = Path.Combine(Application.StartupPath, "..");
 
         /// <summary>
         /// Form load event handler
@@ -189,6 +189,17 @@ namespace List_Compiler
             {
                 TBLog.Text += msg + Environment.NewLine;
             }
+        }
+
+        /// <summary>
+        /// Scroll to bottom when data is written to it
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TBLog_TextChanged(object sender, EventArgs e)
+        {
+            TBLog.SelectionStart = TBLog.Text.Length;
+            TBLog.ScrollToCaret();
         }
     }
 }

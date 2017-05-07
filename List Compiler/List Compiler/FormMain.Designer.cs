@@ -72,6 +72,7 @@
             this.TBLog.TabIndex = 3;
             this.TBLog.Text = "";
             this.TBLog.WordWrap = false;
+            this.TBLog.TextChanged += new System.EventHandler(this.TBLog_TextChanged);
             // 
             // FormMain
             // 
