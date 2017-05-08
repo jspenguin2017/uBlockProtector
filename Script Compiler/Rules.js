@@ -2440,5 +2440,16 @@ if (a.domCmp(["gaana.com"])) {
     obj.prototype = pType;
     a.readyOnly("colombia", new obj());
 }
+if (a.domCmp(["gelbooru.com"]) && a.win.location.pathname === "/") {
+    a.on("load", function () {
+        a.$("div").each(function () {
+            if (a.$(this).text() === "Have you first tried disabling your AdBlock?") {
+                a.$(this).empty();
+            } else {
+                a.config.debugMode && a.out.log(a.$(this).text());
+            }
+        });
+    });
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
