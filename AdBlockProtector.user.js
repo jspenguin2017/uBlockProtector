@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 6.197
+// @version 6.198
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2779,8 +2779,8 @@ if (a.domCmp(["gaana.com"])) {
         checkDevice: noop,
         dfpLog: noop
     };
-    const obj = function () { };
+    let obj = function () { };
     obj.prototype = pType;
-    a.readyOnly("colombia", new obj);
+    a.readyOnly("colombia", new obj());
 }
 a.generic();

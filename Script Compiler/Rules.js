@@ -2436,9 +2436,9 @@ if (a.domCmp(["gaana.com"])) {
         checkDevice: noop,
         dfpLog: noop
     };
-    const obj = function () { };
+    let obj = function () { };
     obj.prototype = pType;
-    a.readyOnly("colombia", new obj);
+    a.readyOnly("colombia", new obj());
 }
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
