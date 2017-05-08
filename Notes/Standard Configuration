@@ -1,0 +1,19 @@
+### This is the configuration that all our tests will run on
+
+#### uBlock Origin: 
+
+Factory settings plus these filter lists enabled: 
+
+```
+Adblock Protector List
+Adblock Warning Removal List
+CHN: EasyList China (中文)
+```
+
+#### Tampermonkey: 
+
+Factory settings plus these scripts installed: 
+
+```
+AdBlock Protector Script
+```
