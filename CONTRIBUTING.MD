@@ -12,6 +12,10 @@
 
 Please note that you may submit an issue even if you are not using the Standard Setup, we will look into your issue as long as you are not using one of the setup that is known to not work (they are listed on our [Home Page](https://jspenguin2017.github.io/AdBlockProtector/)). But keep in mind that we may not fix issues that cannot be reproduced on the Standard Setup. 
 
+### Reporting a bug
+
+Give your issue a descriptive title and clearly explain what is wrong, include reproduction steps if necessary. 
+
 ### Asking a question
 
 Give your issue a descriptive title and clearly explain what you want to know. 
