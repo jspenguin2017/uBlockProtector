@@ -140,3 +140,5 @@ filechoco.net##script:inject(noeval.js)
 ! === Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/177
 rule34hentai.net##script:inject(noeval.js)
 rule34hentai.net###babasbmsgx
+! === urle.co
+||urle.co^$script,thrid-party

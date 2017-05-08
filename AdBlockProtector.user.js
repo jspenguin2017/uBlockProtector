@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 6.199
+// @version 6.200
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2793,5 +2793,10 @@ if (a.domCmp(["gelbooru.com"]) && a.win.location.pathname === "/") {
             }
         });
     });
+}
+if (a.domCmp(["urle.co"])) {
+    a.filter("setTimeout", /captchaCheckAdblockUser\(\)\;/);
+    a.filter("eval");
+    a.timewarp("setInterval", /^1000$/);
 }
 a.generic();

@@ -2451,5 +2451,10 @@ if (a.domCmp(["gelbooru.com"]) && a.win.location.pathname === "/") {
         });
     });
 }
+if (a.domCmp(["urle.co"])) {
+    a.filter("setTimeout", /captchaCheckAdblockUser\(\)\;/);
+    a.filter("eval");
+    a.timewarp("setInterval", /^1000$/);
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();

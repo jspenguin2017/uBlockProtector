@@ -86,6 +86,7 @@ filechoco.net##script:inject(noeval.js)
 @@|https://disqus.com/next/config.js$domain=graffica.info
 rule34hentai.net##script:inject(noeval.js)
 rule34hentai.net###babasbmsgx
+||urle.co^$script,thrid-party
 ! =====Patched Anti-Adblock Killer List=====
 ! License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
 ||trymask.com/api/$third-party
