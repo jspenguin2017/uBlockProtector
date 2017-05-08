@@ -18,4 +18,4 @@ Give your issue a descriptive title and clearly explain what you want to know.
 
 ## Opening pull request
 
-Thoroughly explain what your code does and nicely comment your code. 
+Thoroughly explain what your code does and nicely comment it. 
