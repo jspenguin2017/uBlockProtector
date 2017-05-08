@@ -1,8 +1,8 @@
-### The standard configuration
+### The standard setup
 
-This is the standard configuration that all our tests will run on. You may choose to configure your setup differently, but we may not fix issues that we cannot reproduct and we may not accept solutions that fails in our tests. 
+This is the standard setup that all our tests will run on. You may choose to configure your setup differently, but we may not fix issues that we cannot reproduct and we may not accept solutions that fails in our tests. 
 
-Everything listed below are updated to the latest version. 
+Everything needs to be updated to the latest stable version. 
 
 #### Chrome: 
 
