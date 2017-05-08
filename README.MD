@@ -1,6 +1,6 @@
 # AdBlock Protector
 
-Installation instructions, along with many other relevant information are available on [our website](http://jspenguin2017.github.io/AdBlockProtector/). 
+Installation instructions, along with many other relevant information are available on our [Home Page](http://jspenguin2017.github.io/AdBlockProtector/). 
 
 ## Building
 
