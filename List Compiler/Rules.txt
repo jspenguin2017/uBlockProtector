@@ -141,4 +141,4 @@ filechoco.net##script:inject(noeval.js)
 rule34hentai.net##script:inject(noeval.js)
 rule34hentai.net###babasbmsgx
 ! === urle.co
-||urle.co^$script,thrid-party
+*$script,third-party,domain=urle.co
