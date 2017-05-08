@@ -14,7 +14,7 @@ Please note that you may submit an issue even if you are not using the Standard 
 
 ### Asking a question
 
-Give your issue a descriptive title and clearly explain what you 
+Give your issue a descriptive title and clearly explain what you want to know. 
 
 ## Opening pull request
 
