@@ -2456,5 +2456,10 @@ if (a.domCmp(["urle.co"])) {
     a.filter("eval");
     a.timewarp("setInterval", /^1000$/);
 }
+if (a.domCmp(["playbb.me", "easyvideo.me", "videowing.me", "videozoo.me"])) {
+    a.ready(function () {
+        $(".safeuploada-content").css("background", "transparent");
+    });
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
