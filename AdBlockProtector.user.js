@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 6.201
+// @version 6.202
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2783,16 +2783,20 @@ if (a.domCmp(["gaana.com"])) {
     obj.prototype = pType;
     a.readyOnly("colombia", new obj());
 }
-if (a.domCmp(["gelbooru.com"]) && a.win.location.pathname === "/") {
-    a.on("load", function () {
-        a.$("div").each(function () {
-            if (a.$(this).text() === "Have you first tried disabling your AdBlock?") {
-                a.$(this).empty();
-            } else {
-                a.config.debugMode && a.out.log(a.$(this).text());
-            }
+if (a.domCmp(["gelbooru.com"])) {
+    if (a.win.location.pathname === "/") {
+        a.on("load", function () {
+            a.$("div").each(function () {
+                if (a.$(this).text() === "Have you first tried disabling your AdBlock?") {
+                    a.$(this).empty();
+                } else {
+                    a.config.debugMode && a.out.log(a.$(this).text());
+                }
+            });
         });
-    });
+    } else {
+        a.noAccess("abvertDar");
+    }
 }
 if (a.domCmp(["urle.co"])) {
     a.filter("setTimeout", /captchaCheckAdblockUser\(\)\;/);

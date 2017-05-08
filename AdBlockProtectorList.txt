@@ -91,6 +91,8 @@ playbb.me#@#div[style^="width:"]
 easyvideo.me#@#div[style^="width:"]
 videowing.me#@#div[style^="width:"]
 videozoo.me#@#div[style^="width:"]
+||gelbooru.com^$inline-script,badfilter
+@@||ajax.googleapis.com/ajax/libs/jquery/*$script,domain=gelbooru.com
 ! =====Patched Anti-Adblock Killer List=====
 ! License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
 ||trymask.com/api/$third-party

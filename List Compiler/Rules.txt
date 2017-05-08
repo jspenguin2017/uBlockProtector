@@ -147,3 +147,6 @@ playbb.me#@#div[style^="width:"]
 easyvideo.me#@#div[style^="width:"]
 videowing.me#@#div[style^="width:"]
 videozoo.me#@#div[style^="width:"]
+! === gelbooru.com
+||gelbooru.com^$inline-script,badfilter
+@@||ajax.googleapis.com/ajax/libs/jquery/*$script,domain=gelbooru.com
