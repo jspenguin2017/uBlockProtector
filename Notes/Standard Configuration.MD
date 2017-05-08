@@ -2,7 +2,7 @@
 
 This is the standard configuration that all our tests will run on. You may choose to configure your setup differently, but we may not fix issues that we cannot reproduct and we may not accept solutions that fails in our tests. 
 
-Everything updated to the latest version. 
+Everything listed below are updated to the latest version. 
 
 #### Chrome: 
 
