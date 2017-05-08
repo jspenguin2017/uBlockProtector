@@ -1564,7 +1564,6 @@ hulkusc.com#@#.adsbox
 hulkusc.com###bab_popup
 @@||pagead2.googlesyndication.com/pagead/js/*/show_ads_impl.js$domain=thehomestyle.co
 @@||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js$domain=thehomestyle.co
-gelbooru.com##.noticeError
 ||p.mprd.se/js/bscripts*.js$script,domain=emuparadise.me
 @@||yafud.pl^$generichide
 yafud.pl###adsense_banner_top

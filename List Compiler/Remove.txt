@@ -33,3 +33,5 @@ fox.com.tr#@#.text-ad-links
 ! === https://github.com/jspenguin2017/AdBlockProtector/issues/154
 @@|http://$script,domain=sport1.de
 @@|https://$script,domain=sport1.de
+! === https://github.com/jspenguin2017/AdBlockProtector/issues/182
+gelbooru.com##.noticeError
