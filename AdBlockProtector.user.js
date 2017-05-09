@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 6.203
+// @version 6.204
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -68,12 +68,18 @@ a.config = function () {
     a.config.allowExperimental = GM_getValue("config_allowExperimental", a.config.allowExperimental);
     a.config.aggressiveAdflySkiper = GM_getValue("config_aggressiveAdflySkiper", a.config.aggressiveAdflySkiper);
     a.mods.Facebook_JumpToTop = GM_getValue("mods_Facebook_JumpToTop", a.mods.Facebook_JumpToTop);
-    a.mods.Facebook_HidePeopleYouMayKnow = GM_getValue("mods_Facebook_HidePeopleYouMayKnow", a.mods.Facebook_HidePeopleYouMayKnow);
     a.mods.Blogspot_AutoNCR = GM_getValue("mods_Blogspot_AutoNCR", a.mods.Blogspot_AutoNCR);
     a.mods.NoAutoplay = GM_getValue("mods_NoAutoplay", a.mods.NoAutoplay);
 };
 a.config.update = function (id, val) {
-    const names = ["config_debugMode", "config_allowExperimental", "config_aggressiveAdflySkiper", "mods_Facebook_JumpToTop", "mods_Facebook_HidePeopleYouMayKnow", "mods_Blogspot_AutoNCR", "mods_NoAutoplay"];
+    const names = [
+        "config_debugMode",
+        "config_allowExperimental",
+        "config_aggressiveAdflySkiper",
+        "mods_Facebook_JumpToTop",
+        "mods_Blogspot_AutoNCR",
+        "mods_NoAutoplay"
+    ];
     if (names.includes(id)) {
         GM_setValue(id, Boolean(val));
     }
@@ -161,12 +167,21 @@ a.mods = function () {
             }, 1000);
             a.config.debugMode && a.out.info("No Autoplay Mod: Autoplay disabled. ");
         }
+        if (a.domCmp(["onet.tv"], true)) {
+            a.observe("insert", function (node) {
+                if (node && node.firstChild && node.firstChild.tagName === "VIDEO") {
+                    node.firstChild.onplay = function () {
+                        this.pause();
+                        this.onplay = null;
+                    };
+                }
+            });
+        }
     }
 };
 a.mods.Facebook_JumpToTop = true;
-a.mods.Facebook_HidePeopleYouMayKnow = true;
-a.mods.Blogspot_AutoNCR = true;
-a.mods.NoAutoplay = true;
+a.mods.Blogspot_AutoNCR = false;
+a.mods.NoAutoplay = false;
 a.err = function (name) {
     if (name) {
         name = name + " ";

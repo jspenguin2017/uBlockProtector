@@ -78,7 +78,7 @@ a.config = function () {
     a.config.aggressiveAdflySkiper = GM_getValue("config_aggressiveAdflySkiper", a.config.aggressiveAdflySkiper);
     //Mods
     a.mods.Facebook_JumpToTop = GM_getValue("mods_Facebook_JumpToTop", a.mods.Facebook_JumpToTop);
-    a.mods.Facebook_HidePeopleYouMayKnow = GM_getValue("mods_Facebook_HidePeopleYouMayKnow", a.mods.Facebook_HidePeopleYouMayKnow);
+    //a.mods.Facebook_HidePeopleYouMayKnow = GM_getValue("mods_Facebook_HidePeopleYouMayKnow", a.mods.Facebook_HidePeopleYouMayKnow);
     a.mods.Blogspot_AutoNCR = GM_getValue("mods_Blogspot_AutoNCR", a.mods.Blogspot_AutoNCR);
     a.mods.NoAutoplay = GM_getValue("mods_NoAutoplay", a.mods.NoAutoplay);
 };
@@ -89,7 +89,15 @@ a.config = function () {
  * @param {bool} val - The value of the configuration.
  */
 a.config.update = function (id, val) {
-    const names = ["config_debugMode", "config_allowExperimental", "config_aggressiveAdflySkiper", "mods_Facebook_JumpToTop", "mods_Facebook_HidePeopleYouMayKnow", "mods_Blogspot_AutoNCR", "mods_NoAutoplay"];
+    const names = [
+        "config_debugMode",
+        "config_allowExperimental",
+        "config_aggressiveAdflySkiper",
+        "mods_Facebook_JumpToTop",
+        //"mods_Facebook_HidePeopleYouMayKnow", 
+        "mods_Blogspot_AutoNCR",
+        "mods_NoAutoplay"
+    ];
     //Sanity check then save settings
     if (names.includes(id)) {
         GM_setValue(id, Boolean(val));
@@ -266,7 +274,7 @@ a.mods = function () {
     //===No autoplay mods===
     if (a.mods.NoAutoplay) {
         if (a.domCmp(["x-link.pl"], true)) {
-            //Watch video tag insertion
+            //iframe of gs24.pl
             a.observe("insert", function (node) {
                 if (node.tagName === "VIDEO") {
                     node.onplay = (function () {
@@ -301,6 +309,18 @@ a.mods = function () {
             }, 1000);
             a.config.debugMode && a.out.info("No Autoplay Mod: Autoplay disabled. ");
         }
+        if (a.domCmp(["onet.tv"], true)) {
+            //iframe of onet.pl
+            a.observe("insert", function (node) {
+                if (node && node.firstChild && node.firstChild.tagName === "VIDEO") {
+                    //The inserted node is a div with video inside
+                    node.firstChild.onplay = function () {
+                        this.pause();
+                        this.onplay = null;
+                    };
+                }
+            });
+        }
     }
 };
 /**
@@ -311,23 +331,24 @@ a.mods = function () {
 a.mods.Facebook_JumpToTop = true;
 /**
  * Whether People You May Know should be hidden from Facebook.
+ * Our implementation is broken, but it is taken care by uBlock Origin.
  * The default value is true.
  * @const {bool}
  */
-a.mods.Facebook_HidePeopleYouMayKnow = true;
+//a.mods.Facebook_HidePeopleYouMayKnow = true;
 /**
  * Whether blogspot blogs should be automatically redirected to NCR (No Country Redirect) version.
- * The default value is true.
  * Does not work if the blog is not top frame.
+ * The default value is false.
  * @const {bool}
  */
-a.mods.Blogspot_AutoNCR = true;
+a.mods.Blogspot_AutoNCR = false;
 /**
  * Whether autoplay should be disabled on supported websites.
- * The default value is true.
+ * The default value is false.
  * @const {bool}
  */
-a.mods.NoAutoplay = true;
+a.mods.NoAutoplay = false;
 
 //=====Common Functions=====
 /**
