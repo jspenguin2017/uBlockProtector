@@ -2468,8 +2468,5 @@ if (a.domCmp(["playbb.me", "easyvideo.me", "videowing.me", "videozoo.me"])) {
 if (a.domCmp(["nicematin.com"])) {
     a.noAccess("checkAds");
 }
-if (a.domCmp(["mydaddy.cc"])) {
-    a.readOnly("hasAdblock", false);
-}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
