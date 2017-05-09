@@ -2465,5 +2465,8 @@ if (a.domCmp(["playbb.me", "easyvideo.me", "videowing.me", "videozoo.me"])) {
         $(".safeuploada-content").css("background", "transparent");
     });
 }
+if (a.domCmp(["nicematin.com"])) {
+    a.noAccess("checkAds");
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();

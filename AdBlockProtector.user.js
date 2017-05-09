@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 6.202
+// @version 6.203
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2807,5 +2807,8 @@ if (a.domCmp(["playbb.me", "easyvideo.me", "videowing.me", "videozoo.me"])) {
     a.ready(function () {
         $(".safeuploada-content").css("background", "transparent");
     });
+}
+if (a.domCmp(["nicematin.com"])) {
+    a.noAccess("checkAds");
 }
 a.generic();
