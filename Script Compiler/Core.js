@@ -3,7 +3,7 @@
 
 //=====Declaration=====
 /**
- * The main Core namespace
+ * The Core namespace
  * @var {Object}
  */
 var a = a || {};
@@ -133,7 +133,7 @@ a.config.aggressiveAdflySkiper = true;
  * Whether current domain is "excluded".
  * How this will be treated depends on the rules.
  * Generic protectors will not run if this is true.
- * Will be assigned in a.init()
+ * Will be assigned by a.init().
  * @const {bool}
  */
 a.config.domExcluded = null;
