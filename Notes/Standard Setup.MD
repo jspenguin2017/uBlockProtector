@@ -12,7 +12,7 @@ Settings under `Privacy -> Content settings...` are left as default.
 
 Only extensions are uBlock Origin and Tampermonky. 
 
-Flags (`chrome://flags/`) are left as default, other settings does not matter. 
+Settings in `chrome://flags/` page are left as default, other settings does not matter. 
 
 #### uBlock Origin: 
 
