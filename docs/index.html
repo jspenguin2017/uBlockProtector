@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -34,7 +34,7 @@
         }
 
         /**
-         * When the document is ready, set up scrolling animation and load Disqus.
+         * When the document is ready, set up scrolling animation and load Disqus chat board.
          * @function
          * @listens $(document).ready
          */
@@ -48,7 +48,7 @@
                 e.preventDefault();
                 $("html, body").animate({ scrollTop: $("#chat").offset().top }, "fast");
             });
-            //Load Disqus
+            //Load Disqus chat board
             disqusLoader("adblock-protector", "https://jspenguin2017.github.io/AdBlockProtector/", "home_page", "AdBlock Protector Home Page");
         });
     </script>
@@ -78,23 +78,23 @@
         </div>
     </nav>
     <div style="height:80px;"></div>
-    <!-- Wecome -->
+    <!-- AdBlock Protector -->
     <div class="container">
         <div class="jumbotron">
             <h1>AdBlock Protector</h1>
             <p>Ultimate solution against AdBlock detectors</p>
             <p>Powered by <a href="https://github.com/reek/anti-adblock-killer" target="_blank">Anti-Adblock Killer 10.0</a> (by Reek)</p>
-            <p>It can take a few seconds to check installation, please look into any issues in your configuration if any of the warning messages below do not disappear 5 seconds after the page loads. </p>
+            <p>It can take a few seconds to check installation, please look into any issues in your configuration if any of the warning messages below do not disappear 5 seconds after the page loads.</p>
             <div id="banner-ads">
-                <p style="color:red;">Your AdBlocker is not enabled! </p>
+                <p style="color:red;">Your AdBlocker is not enabled!</p>
             </div>
             <div id="scriptTestDiv">
-                <p style="color:red;">AdBlock Protector Script is not installed or not enabled! </p>
+                <p style="color:red;">AdBlock Protector Script is not installed or not enabled!</p>
             </div>
             <div id="listTestDiv">
-                <p style="color:red;">AdBlock Protector List is not installed or not enabled! </p>
+                <p style="color:red;">AdBlock Protector List is not installed or not enabled!</p>
             </div>
-            <a href="#how" class="btn btn-primary btn-lg howLinks">Jump to &quot;How do I use it?&quot;</a>
+            <a href="#how" class="btn btn-primary btn-lg howLinks">Jump to installation instructions</a>
             <a href="#chat" class="btn btn-default btn-lg chatLinks">Jump to chat board</a>
             <a href="settings.html" class="btn btn-danger btn-lg">Open settings page</a>
             <script>
@@ -107,89 +107,55 @@
             </script>
         </div>
     </div>
-    <!-- Why use AdBlockers? -->
-    <div class="container">
-        <div class="jumbotron">
-            <h2>Why use AdBlockers? </h2>
-            <p>
-                Ads are important for websites to sustain themselves. However, some advertiser tracks your activities and sometimes use exploits to install malware onto your devices,
-                and an AdBlocker can stop these from happening.
-            </p>
-            <p>
-                Recently, many websites start to use methods to detect and sometimes track AdBlockers and ask or sometimes even force you to disable them.
-                The good news is, there are ways to protect AdBlockers from being detected.
-            </p>
-        </div>
-    </div>
-    <!-- How to protect my AdBlockers? -->
-    <div class="container">
-        <div class="jumbotron">
-            <h2>How to protect my AdBlockers? </h2>
-            <p>1. Enable Adblock Warning Removal List (Check your AdBlocker settings)</p>
-            <p>2. <a href="#how" class="howLinks">Install AdBlock Protector</a></p>
-        </div>
-    </div>
-    <!-- How do I use it? -->
+    <!-- Installation instructions -->
     <div class="container" id="how">
         <div class="jumbotron">
-            <h2>How do I use it? </h2>
+            <h2>Installation instructions</h2>
             <p>
                 1. Check if your setup is supported, it is highly recommended that you configure your setup so it is officially supported by us.
-                You may still try to install this project if your setup is not supported, but it might not work properly.
+                You may still try to continue even if your setup is not officially supported, but things might not work properly.
             </p>
-            <p>2. Install from install links below. </p>
+            <p>2. Enable Adblock Warning Removal List from your AdBlocker settings panel.</p>
+            <p>3. Install AdBlock Protector from install links below.</p>
             <br />
-            <p><strong>Setups we support: </strong></p>
+            <p><strong>Setups we support:</strong></p>
             <p><strong>Browser:</strong> Chrome (desktop)</p>
             <p><strong>Script host:</strong> Tampermonkey (desktop)</p>
-            <p><i>Note: Greasemonkey is known to not work. </i></p>
+            <p><i>Note: Greasemonkey is known to not work.</i></p>
             <p><strong>AdBocker:</strong> uBlock Origin (desktop)</p>
-            <p><i>Note: AdBlock Plus is known to not work. </i></p>
-            <p><i>Note: List is using uBlock Origin extended syntax, most other AdBlockers will not work. </i></p>
-            <p><i>Android support coming soon! </i></p>
+            <p><i>Note: AdBlock Plus is known to not work.</i></p>
+            <p><i>Note: List is using uBlock Origin extended syntax, most other AdBlockers will not work.</i></p>
+            <p><i>Android support coming soon!</i></p>
             <br />
-            <p><strong>Installation: </strong></p>
-            <p>1. Click <a href="https://github.com/jspenguin2017/AdBlockProtector/raw/master/AdBlockProtector.user.js">here</a> to install Script. </p>
+            <p><strong>Install links:</strong></p>
+            <p>1. Click <a href="https://github.com/jspenguin2017/AdBlockProtector/raw/master/AdBlockProtector.user.js">here</a> to install Script.</p>
             <p>
                 2. Activate Adblock Protector List from your AdBlocker settings page. Can't find it?
-                Click <a href="abp:subscribe?location=https://github.com/jspenguin2017/AdBlockProtector/raw/master/AdBlockProtectorList.txt&title=Adblock Protector List">here</a> to install it manually.
+                Click <a href="abp:subscribe?location=https://github.com/jspenguin2017/AdBlockProtector/raw/master/AdBlockProtectorList.txt&title=Adblock%20Protector%20List">here</a> to install it manually.
             </p>
-            <p><strong>Note: </strong>You need both Script and List. </p>
+            <p><strong>Note: </strong>You need both Script and List.</p>
         </div>
     </div>
-    <!-- Tampermonkey warns me something about cross origin requests, what are those? -->
+    <!-- Asking for help and contributing -->
     <div class="container">
         <div class="jumbotron">
-            <h2>Tampermonkey warns me something about cross origin requests, what are those? </h2>
+            <h2>Asking for help and contributing</h2>
             <p>
-                Cross origin requests are requests to another domain than the domain you are visiting. This means AdBlock Protector is loading some data from somewhere on the Internet.
-                We only do this if it is really needed. It is quite common on video sites since we need to find the URL of the media file.
+                Please read the <a href="https://github.com/jspenguin2017/AdBlockProtector/blob/master/CONTRIBUTING.MD" target="_blank">contribution guideline</a> then
+                <a href="https://github.com/jspenguin2017/AdBlockProtector/issues" target="_blank">open an issue</a>.
             </p>
+            <p>For recommendations and quick questions that are not specific to one website, you can just leave a comment below.</p>
         </div>
     </div>
-    <!-- How do I report a bug or a website? -->
-    <div class="container">
-        <div class="jumbotron">
-            <h2>How do I report a website or a bug? </h2>
-            <p>Please <a href="https://github.com/jspenguin2017/AdBlockProtector/issues" target="_blank">open an issue</a>, instructions are inside. </p>
-        </div>
-    </div>
-    <!-- Where do I ask my questions? -->
-    <div class="container">
-        <div class="jumbotron">
-            <h2>Where do I ask my questions? </h2>
-            <p>You can either post a comment below or open an issue. Please open an issue if it is related to one specific website. </p>
-        </div>
-    </div>
-    <!-- Disqus -->
+    <!-- Chat board -->
     <div class="container" id="chat">
         <div class="jumbotron">
             <h2>Chat board</h2>
-            <p>Note: Comments with link(s) will be held for my approval. Guest comments will also be held, but that is part of Disqus policy, it is out of my control. </p>
+            <p>Note: Comments with link(s) will be held for my approval.</p>
             <div id="disqus_thread"></div>
         </div>
     </div>
-    <!-- Source code -->
+    <!-- Source code and license -->
     <div class="container">
         <div class="jumbotron">
             <h2>Source code and license</h2>
