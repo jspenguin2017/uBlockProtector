@@ -17,10 +17,8 @@ var a = a || {};
  * @param {boolean} AdflyMatch - Whether this domain should be excluded from Adfly skipper.
  */
 a.init = function (excluded, AdflyMatch, AdflyUnmatch) {
-    //Load jQuery and Color plug-in
-    a.$ = jQueryFactory(a.win, true);
-    //The Color plug-in is never used, to enable it, update the compiler and uncomment the following line
-    //jQueryColorLoader(a.$);
+    //Load a new jQuery into a.$
+    a.$ = a.make$();
     //Load configurations
     a.config();
     //Log domain
@@ -351,6 +349,18 @@ a.mods.Blogspot_AutoNCR = false;
 a.mods.NoAutoplay = false;
 
 //=====Common Functions=====
+/**
+ * Returns a new jQuery.
+ * @function
+ */
+a.make$ = function () {
+    //Load jQuery
+    let $ = a.jQueryFactory(a.win, true);
+    //Load color plug-in
+    //The color plug-in is not enabled, to enable it, update the compiler and uncomment the following line
+    //a.jQueryColorLoader($);
+    return $;
+};
 /**
  * Write an error message to console.
  * @function
@@ -735,7 +745,7 @@ a.css = function (str) {
     GM_addStyle(temp.join(";"));
 };
 /**
- * Add a bait element.
+ * Add a bait element, this sometimes has a side effect which adds an empty bar on top of the page.
  * @function
  * @param {string} type - The type of the element, example: div.
  * @param {string} identifier - The class or id, example: .test (class) #test (id).
