@@ -208,7 +208,7 @@ namespace Script_Compiler
                         string line = dataRead[i].Trim();
                         //Skip comments
                         //This algorithm wouldn't work for any JS file, but for ours, it will work
-                        if (line.StartsWith("//") && !line.StartsWith("//Based on") && !line.StartsWith("//License") || line == string.Empty)
+                        if (line.StartsWith("//") && !line.StartsWith("//@pragma-keepline") || line == string.Empty)
                         {
                             counter++;
                             continue;

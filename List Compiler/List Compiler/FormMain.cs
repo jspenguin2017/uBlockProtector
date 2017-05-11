@@ -51,41 +51,40 @@ namespace List_Compiler
             {
                 //Load everything into RAM
                 string[] metadata;
-                string[] rules;
-                string[] remove;
-                string[] originalAAKList;
                 //Metadata
                 try
                 {
                     string path = Path.Combine(gitRoot, "List Compiler\\Metadata.txt");
-                    putLog("Reading data from " + path);
+                    PutLog("Reading data from " + path);
                     metadata = File.ReadAllLines(path);
-                    putLog(metadata.Length.ToString() + " entries read. ");
+                    PutLog(metadata.Length.ToString() + " entries read. ");
                 }
                 catch (Exception err)
                 {
-                    putLog("Cannot read file, error message: ");
-                    putLog(err.Message);
+                    PutLog("Cannot read file, error message: ");
+                    PutLog(err.Message);
                     return;
                 }
-                //Other 3
-                if (!loadSkipComments(Path.Combine(gitRoot, "List Compiler\\Rules.txt"), out rules))
+                //Others
+                if (!LoadSkipComments(Path.Combine(gitRoot, "List Compiler\\Rules.txt"), out string[] rules))
                 {
                     return;
                 }
-                if (!loadSkipComments(Path.Combine(gitRoot, "List Compiler\\Remove.txt"), out remove))
+                if (!LoadSkipComments(Path.Combine(gitRoot, "List Compiler\\Remove.txt"), out string[] remove))
                 {
                     return;
                 }
-                if (!loadSkipComments(Path.Combine(gitRoot, "List Compiler\\AAK 10.0 Cache.txt"), out originalAAKList))
+                if (!LoadSkipComments(Path.Combine(gitRoot, "List Compiler\\aak.list.cache-10.0.txt"), out string[] originalAAKList))
                 {
                     return;
                 }
                 //Patch AAK List
-                putLog("Patching AAK list... ");
-                List<string> patchedAAKList = new List<string>();
-                patchedAAKList.Add("! =====Patched Anti-Adblock Killer List=====");
-                patchedAAKList.Add("! License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE");
+                PutLog("Patching AAK list... ");
+                List<string> patchedAAKList = new List<string>
+                {
+                    "! =====Patched Anti-Adblock Killer List=====",
+                    "! License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE"
+                };
                 int counter = 0;
                 for (int i = 0; i < originalAAKList.Length; i++)
                 {
@@ -101,7 +100,7 @@ namespace List_Compiler
                         patchedAAKList.Add(t);
                     }
                 }
-                putLog(counter.ToString() + " entries removed. ");
+                PutLog(counter.ToString() + " entries removed. ");
                 //Combine entries
                 string[] toWrite = metadata.Concat(rules).ToArray();
                 toWrite = toWrite.Concat(patchedAAKList.ToArray()).ToArray();
@@ -109,14 +108,14 @@ namespace List_Compiler
                 try
                 {
                     string path = Path.Combine(gitRoot, "AdBlockProtectorList.txt");
-                    putLog("Writting data to " + path);
+                    PutLog("Writting data to " + path);
                     File.WriteAllLines(path, toWrite);
-                    putLog(toWrite.Length.ToString() + " entries wrote. ");
+                    PutLog(toWrite.Length.ToString() + " entries wrote. ");
                 }
                 catch (Exception err)
                 {
-                    putLog("Cannot write file, error message: ");
-                    putLog(err.Message);
+                    PutLog("Cannot write file, error message: ");
+                    PutLog(err.Message);
                     return;
                 }
             });
@@ -131,21 +130,21 @@ namespace List_Compiler
         /// <param name="filePath">The path to the file to read</param>
         /// <param name="data">The output variable</param>
         /// <returns>True if successful, false otherwise</returns>
-        private bool loadSkipComments(string filePath, out string[] data)
+        private bool LoadSkipComments(string filePath, out string[] data)
         {
             string[] original;
             List<string> filtered = new List<string>();
             //Read file
             try
             {
-                putLog("Reading data from " + filePath + "... ");
+                PutLog("Reading data from " + filePath + "... ");
                 original = File.ReadAllLines(filePath);
-                putLog(original.Length.ToString() + " entries read. ");
+                PutLog(original.Length.ToString() + " entries read. ");
             }
             catch (Exception err)
             {
-                putLog("Cannot read file, error message: ");
-                putLog(err.Message);
+                PutLog("Cannot read file, error message: ");
+                PutLog(err.Message);
                 data = new string[0];
                 return false;
             }
@@ -154,7 +153,7 @@ namespace List_Compiler
             for (int i = 0; i < original.Length; i++)
             {
                 string t = original[i];
-                if (t == string.Empty || t[0] == '!')
+                if (t.StartsWith("!") && !t.StartsWith("!@pragma-keepline") || t == string.Empty)
                 {
                     //Skip comments and update counter
                     counter++;
@@ -165,7 +164,7 @@ namespace List_Compiler
                     filtered.Add(t);
                 }
             }
-            putLog(counter.ToString() + " comments removed. ");
+            PutLog(counter.ToString() + " comments removed. ");
             //Return result
             data = filtered.ToArray();
             return true;
@@ -176,7 +175,7 @@ namespace List_Compiler
         /// This method can be called from another thread
         /// </summary>
         /// <param name="msg">The message to write</param>
-        private void putLog(string msg)
+        private void PutLog(string msg)
         {
             if (TBLog.InvokeRequired)
             {

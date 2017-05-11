@@ -527,7 +527,8 @@ a.uid = function () {
 };
 a.uid.counter = 0;
 a.sha256 = function (r) {
-    //Based on: Work of Angel Marin and Paul Johnston. More information: http://www.webtoolkit.info/javascript-sha256.html
+    //@pragma-keepline Based on work of Angel Marin and Paul Johnston
+    //@pragma-keepline More information: http://www.webtoolkit.info/javascript-sha256.html
     function n(r, n) {
         var t = (65535 & r) + (65535 & n),
             e = (r >> 16) + (n >> 16) + (t >> 16);
@@ -590,8 +591,8 @@ a.sha256 = function (r) {
     return r = g(r), d(h(C(r), r.length * v));
 };
 a.generic = function () {
-    //Based on: generic killers of Anti-Adblock Killer
-    //License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
+    //@pragma-keepline Based on generic killers of Anti-Adblock Killer
+    //@pragma-keepline License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
     if (a.config.allowGeneric && !a.config.domExcluded) {
         const data = {};
         a.generic.FuckAdBlock("FuckAdBlock", "fuckAdBlock");
@@ -790,8 +791,8 @@ a.generic = function () {
     }
 };
 a.generic.AdflySkipper = function () {
-    //Based on: AdsBypasser
-    //License: https://github.com/adsbypasser/adsbypasser/blob/master/LICENSE
+    //@pragma-keepline Based on AdsBypasser
+    //@pragma-keepline License: https://github.com/adsbypasser/adsbypasser/blob/master/LICENSE
     const handler = function (encodedURL) {
         if (a.doc.body) {
             return;
@@ -845,8 +846,8 @@ a.generic.AdflySkipper = function () {
 };
 a.generic.FuckAdBlock = function (constructorName, instanceName) {
     const patchedFuckAdBlock = function () {
-        //Based on: FuckAdBlock
-        //License: https://github.com/sitexw/FuckAdBlock/blob/master/LICENSE
+        //@pragma-keepline Based on FuckAdBlock
+        //@pragma-keepline License: https://github.com/sitexw/FuckAdBlock/blob/master/LICENSE
         this._callbacks = [];
         a.on("load", (function () {
             this.emitEvent();
@@ -1020,8 +1021,8 @@ if (a.domCmp(["tvn.pl", "tvn24.pl", "tvnstyle.pl", "tvnturbo.pl", "kuchniaplus.p
     }
 }
 if (a.domCmp(["player.pl"])) {
-    //Based on: solution from Anti-Adblock Killer
-    //License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
+    //@pragma-keepline Based on solution from Anti-Adblock Killer
+    //@pragma-keepline License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
     a.on("load", function () {
         let elem;
         if (a.$("header.detailImage").length > 0) {
@@ -1071,8 +1072,8 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
 "kafeteria.pl", "kafeteria.tv", "komediowo.pl", "komorkomania.pl", "money.pl", "pudelek.tv", "sfora.pl",
 "snobka.pl", "wawalove.pl", "wp.pl", "wp.tv", "wrzuta.pl", "pudelek.pl", "fotoblogia.pl", "parenting.pl",
 "echirurgia.pl", "pudelekx.pl", "o2.pl"])) {
-    //Based on: Adguard
-    //License: https://github.com/AdguardTeam/AdguardBrowserExtension/blob/master/LICENSE
+    //@pragma-keepline Based on Adguard filters
+    //@pragma-keepline License: https://github.com/AdguardTeam/AdguardBrowserExtension/blob/master/LICENSE
     a.cookie("ABCABC", "true");
     a.filter("addEventListener", /^advertisement$/);
     a.readOnly("hasSentinel", function () { return false; });

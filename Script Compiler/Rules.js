@@ -190,8 +190,8 @@ if (a.domCmp(["tvn.pl", "tvn24.pl", "tvnstyle.pl", "tvnturbo.pl", "kuchniaplus.p
     }
 }
 if (a.domCmp(["player.pl"])) {
-    //Based on: solution from Anti-Adblock Killer
-    //License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
+    //@pragma-keepline Based on solution from Anti-Adblock Killer
+    //@pragma-keepline License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
     a.on("load", function () {
         //Check element
         let elem;
@@ -249,8 +249,8 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
 "echirurgia.pl", "pudelekx.pl", "o2.pl"])) {
     //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/70
     //Thanks to ghajini
-    //Based on: Adguard
-    //License: https://github.com/AdguardTeam/AdguardBrowserExtension/blob/master/LICENSE
+    //@pragma-keepline Based on Adguard filters
+    //@pragma-keepline License: https://github.com/AdguardTeam/AdguardBrowserExtension/blob/master/LICENSE
     a.cookie("ABCABC", "true");
     a.filter("addEventListener", /^advertisement$/);
     a.readOnly("hasSentinel", function () { return false; });

@@ -985,7 +985,8 @@ a.uid.counter = 0;
  * @returns {string} The SHA 256 hash string.
  */
 a.sha256 = function (r) {
-    //Based on: Work of Angel Marin and Paul Johnston. More information: http://www.webtoolkit.info/javascript-sha256.html
+    //@pragma-keepline Based on work of Angel Marin and Paul Johnston
+    //@pragma-keepline More information: http://www.webtoolkit.info/javascript-sha256.html
     function n(r, n) {
         var t = (65535 & r) + (65535 & n),
             e = (r >> 16) + (n >> 16) + (t >> 16);
@@ -1054,8 +1055,8 @@ a.sha256 = function (r) {
  * @function
  */
 a.generic = function () {
-    //Based on: generic killers of Anti-Adblock Killer
-    //License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
+    //@pragma-keepline Based on generic killers of Anti-Adblock Killer
+    //@pragma-keepline License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
     if (a.config.allowGeneric && !a.config.domExcluded) {
         const data = {};
         //===document-start===
@@ -1314,8 +1315,8 @@ a.generic = function () {
  * @function
  */
 a.generic.AdflySkipper = function () {
-    //Based on: AdsBypasser
-    //License: https://github.com/adsbypasser/adsbypasser/blob/master/LICENSE
+    //@pragma-keepline Based on AdsBypasser
+    //@pragma-keepline License: https://github.com/adsbypasser/adsbypasser/blob/master/LICENSE
     const handler = function (encodedURL) {
         if (a.doc.body) {
             //This isn't an Adfly page
@@ -1389,8 +1390,8 @@ a.generic.AdflySkipper = function () {
  */
 a.generic.FuckAdBlock = function (constructorName, instanceName) {
     const patchedFuckAdBlock = function () {
-        //Based on: FuckAdBlock
-        //License: https://github.com/sitexw/FuckAdBlock/blob/master/LICENSE
+        //@pragma-keepline Based on FuckAdBlock
+        //@pragma-keepline License: https://github.com/sitexw/FuckAdBlock/blob/master/LICENSE
         //===Init===
         //On not detected callbacks
         this._callbacks = [];
