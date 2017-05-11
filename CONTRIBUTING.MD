@@ -16,9 +16,9 @@ Please note that you may submit an issue even if you are not using the Standard 
 
 Give your issue a descriptive title and clearly explain what is wrong, include reproduction steps if necessary. 
 
-### Asking a question
+### Asking a question and everything else
 
-Give your issue a descriptive title and clearly explain what you want to know. 
+Give your issue a descriptive title and clearly explain what you want know or what you want us to know. 
 
 ## Opening pull request
 
