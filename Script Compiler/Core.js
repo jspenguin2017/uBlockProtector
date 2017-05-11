@@ -3,7 +3,7 @@
 
 //=====Declaration=====
 /**
- * The Core namespace
+ * The Core namespace.
  * @var {Object}
  */
 var a = a || {};
