@@ -1255,8 +1255,8 @@ a.generic = function () {
                     insertedNode.nextSibling.remove();
                     insertedNode.remove();
                 } else if (insertedNode.nextSibling.id &&
-                           reId.test(insertedNode.nextSibling.id) &&
-                           insertedNode.innerHTML.includes("Il semblerait que vous utilisiez un bloqueur de publicité !")) {
+                    reId.test(insertedNode.nextSibling.id) &&
+                    insertedNode.innerHTML.includes("Il semblerait que vous utilisiez un bloqueur de publicité !")) {
                     //Log
                     a.config.debugMode && a.err("Adunblock Free");
                     //Top bar Message (Free)
@@ -1287,11 +1287,11 @@ a.generic = function () {
                     audio.pause();
                     audio.remove();
                 } else if ((data.abo2 && insertedNode.id === data.abo2) ||
-                           (insertedNode.firstChild.hasChildNodes() && reWords1.test(insertedNode.firstChild.innerHTML) && reWords2.test(insertedNode.firstChild.innerHTML))) {
+                    (insertedNode.firstChild.hasChildNodes() && reWords1.test(insertedNode.firstChild.innerHTML) && reWords2.test(insertedNode.firstChild.innerHTML))) {
                     //Antiblock.org v2
                     insertedNode.remove();
                 } else if ((data.abo3 && insertedNode.id === data.abo3) ||
-                           (insertedNode.firstChild.hasChildNodes() && insertedNode.firstChild.firstChild.nodeName === "IMG" && insertedNode.firstChild.firstChild.src.startsWith("data:image/png;base64"))) {
+                    (insertedNode.firstChild.hasChildNodes() && insertedNode.firstChild.firstChild.nodeName === "IMG" && insertedNode.firstChild.firstChild.src.startsWith("data:image/png;base64"))) {
                     //Antiblock.org v3
                     a.win[data.abo3] = null;
                     insertedNode.remove();
