@@ -1,8 +1,8 @@
 ### Basic troubleshooting
 
-#### Many websites are broken
+#### Just installed it, and many websites are broken
 
-This is usually caused by unsupported script host, please try Tampermonkey. 
+Please switch your script host to Tampermonkey and try again. 
 
 #### Just installed it, it does nothing at all, warnings on the home page does not disappear
 
