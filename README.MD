@@ -36,6 +36,6 @@ changed to GNU GPL v3. Files that are not from Anti-Adblock Killer falls under t
 2. Make these functions to be able to handle properties arbitrarily deep: 
     * `a.filter`
     * `a.readOnly`
-    * `a.noAccess`
+    * `a.noAccess`
 3. Make mutation observer to be able to handle removal. 
 4. Grant cross origin XHR on install time. 
