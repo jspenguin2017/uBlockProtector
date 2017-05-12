@@ -93,6 +93,11 @@ videowing.me#@#div[style^="width:"]
 videozoo.me#@#div[style^="width:"]
 ||gelbooru.com^$inline-script,badfilter
 @@||ajax.googleapis.com/ajax/libs/jquery/*$script,domain=gelbooru.com
+gelbooru.com#@#[style*="height:"][width]
+gelbooru.com#@#[style*="width:"][height]
+gelbooru.com#@##paginator
+gelbooru.com#@#center > a[href]
+||assets.gelbooru.com/r19/
 @@|http://62.212.86.9/js/ads.js|$domain=mydaddy.cc
 ff14angler.com#@#.adsbygoogle
 ! =====Patched Anti-Adblock Killer List=====
