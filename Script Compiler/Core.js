@@ -14,7 +14,7 @@ var a = a || {};
  * @function
  * @param {boolean} excluded - Whether this domain should be excluded from generic protectors.
  * @param {boolean} AdflyMatch - Whether this domain is an Adfly domain.
- * @param {boolean} AdflyMatch - Whether this domain should be excluded from Adfly skipper.
+ * @param {boolean} AdflyUnmatch - Whether this domain should be excluded from Adfly skipper.
  */
 a.init = function (excluded, AdflyMatch, AdflyUnmatch) {
     //Load a new jQuery into a.$

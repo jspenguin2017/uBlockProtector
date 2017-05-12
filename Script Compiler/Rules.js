@@ -1,5 +1,3 @@
-//Dump window vars: JSON.stringify(Object.keys(window));
-
 (function () {
     //===Racer function===
     if (a.domCmp(["29443kmq.video", "dato.porn"])) {
@@ -7,28 +5,6 @@
         a.readOnly("cRAds", true);
         //Popup handled in List
     }
-    /*
-    //Fixed by uBO-Extra
-    if (false && a.domCmp(["sandiegouniontribune.com", "baltimoresun.com", "boston.com", "capitalgazette.com",
-"carrollcountytimes.com", "celebuzz.com", "celebslam.com", "chicagotribune.com", "computershopper.com",
-"courant.com", "dailypress.com", "deathandtaxesmag.com", "extremetech.com", "gamerevolution.com",
-"geek.com", "gofugyourself.com", "hearthhead.com", "infinitiev.com", "lolking.net", "mcall.com",
-"mmo-champion.com", "nasdaq.com", "orlandosentinel.com", "pcmag.com", "ranker.com", "saveur.com",
-"sherdog.com", "spin.com", "sporcle.com", "stereogum.com", "sun-sentinel.com", "thefrisky.com",
-"thesuperficial.com", "timeanddate.com", "tmn.today", "twincities.com", "vancouversun.com", "vibe.com",
-"weather.com", "wowhead.com", "legacy.com"])) {
-        //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/95
-        //Thanks to uBlock-user
-        //Doesn't work any more
-        a.noAccess("i10c");
-        a.noAccess("I10C");
-        a.noAccess("INSTART");
-        //Breaks videos and images
-        a.patchHTML(function (html) {
-            return html.replace(/\b(:?I10C|INSTART)\b/, a.c.syntaxBreaker);
-        });
-    }
-    */
     //===Init===
     //Excluded domains
     const excludedDomCmp = ["360.cn", "apple.com", "ask.com", "baidu.com", "bing.com", "bufferapp.com",
