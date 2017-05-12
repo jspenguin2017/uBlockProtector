@@ -152,3 +152,5 @@ videozoo.me#@#div[style^="width:"]
 @@||ajax.googleapis.com/ajax/libs/jquery/*$script,domain=gelbooru.com
 ! === iframe of hqporner.com
 @@|http://62.212.86.9/js/ads.js|$domain=mydaddy.cc
+! === ff14angler.com
+ff14angler.com#@#.adsbygoogle

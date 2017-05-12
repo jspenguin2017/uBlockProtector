@@ -94,6 +94,7 @@ videozoo.me#@#div[style^="width:"]
 ||gelbooru.com^$inline-script,badfilter
 @@||ajax.googleapis.com/ajax/libs/jquery/*$script,domain=gelbooru.com
 @@|http://62.212.86.9/js/ads.js|$domain=mydaddy.cc
+ff14angler.com#@#.adsbygoogle
 ! =====Patched Anti-Adblock Killer List=====
 ! License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
 ||trymask.com/api/$third-party
