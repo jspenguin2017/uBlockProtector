@@ -1,8 +1,5 @@
 ## Opening an issue
 
-Please first have a look at our 
-[basic troubleshooting guide](https://github.com/jspenguin2017/AdBlockProtector/blob/master/Notes/Basic%20Troubleshooting.MD). 
-
 ### Reporting a website that does not work
 
 **Title**: The domain of the website. Prepend `NSFW! ` if the website may contain not safe for work content. 
