@@ -2456,5 +2456,8 @@ if (a.domCmp(["playbb.me", "easyvideo.me", "videowing.me", "videozoo.me"])) {
 if (a.domCmp(["nicematin.com"])) {
     a.noAccess("checkAds");
 }
+if (a.domCmp(["bc.vc"])) {
+    a.timewarp("setInterval", /^1000$/);
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
