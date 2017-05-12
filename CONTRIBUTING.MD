@@ -1,8 +1,7 @@
 ## Opening an issue
 
 Please first have a look at our 
-[basic troubleshooting](https://github.com/jspenguin2017/AdBlockProtector/blob/master/Notes/Basic%20Troubleshooting.MD) 
-guide. 
+[basic troubleshooting guide](https://github.com/jspenguin2017/AdBlockProtector/blob/master/Notes/Basic%20Troubleshooting.MD). 
 
 ### Reporting a website that does not work
 
