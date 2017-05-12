@@ -20,7 +20,7 @@ but is now significantly different.
 
 Anti-Adblock Killer Script was completely re-implemented. 
 
-Anti-Adblock Killer Filter was mostly copied and concatenated to List. Comments and 
+Anti-Adblock Killer Filter was mostly copied and concatenated to AdBlock Protector List. Comments and 
 [these](../master/List%20Compiler/Remove.txt) are removed. 
 
 Code from Anti-Adblock Killer inherits its original [license](https://github.com/reek/anti-adblock-killer/blob/master/LICENSE). 
