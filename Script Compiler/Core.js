@@ -10,7 +10,7 @@ var a = a || {};
 
 //=====Initializer=====
 /**
- * Initialize constants, protect functions, and activate mods.
+ * Initialization.
  * @function
  * @param {boolean} excluded - Whether this domain should be excluded from generic protectors.
  * @param {boolean} AdflyMatch - Whether this domain is an Adfly domain.
@@ -56,7 +56,6 @@ a.init = function (excluded, AdflyMatch, AdflyUnmatch) {
                 "config_allowExperimental": a.config.allowExperimental,
                 "config_aggressiveAdflySkiper": a.config.aggressiveAdflySkiper,
                 "mods_Facebook_JumpToTop": a.mods.Facebook_JumpToTop,
-                //"mods_Facebook_HidePeopleYouMayKnow": a.mods.Facebook_HidePeopleYouMayKnow,
                 "mods_Blogspot_AutoNCR": a.mods.Blogspot_AutoNCR,
                 "mods_NoAutoplay": a.mods.NoAutoplay
             }, a.config.update);
@@ -76,7 +75,6 @@ a.config = function () {
     a.config.aggressiveAdflySkiper = GM_getValue("config_aggressiveAdflySkiper", a.config.aggressiveAdflySkiper);
     //Mods
     a.mods.Facebook_JumpToTop = GM_getValue("mods_Facebook_JumpToTop", a.mods.Facebook_JumpToTop);
-    //a.mods.Facebook_HidePeopleYouMayKnow = GM_getValue("mods_Facebook_HidePeopleYouMayKnow", a.mods.Facebook_HidePeopleYouMayKnow);
     a.mods.Blogspot_AutoNCR = GM_getValue("mods_Blogspot_AutoNCR", a.mods.Blogspot_AutoNCR);
     a.mods.NoAutoplay = GM_getValue("mods_NoAutoplay", a.mods.NoAutoplay);
 };
@@ -92,7 +90,6 @@ a.config.update = function (id, val) {
         "config_allowExperimental",
         "config_aggressiveAdflySkiper",
         "mods_Facebook_JumpToTop",
-        //"mods_Facebook_HidePeopleYouMayKnow", 
         "mods_Blogspot_AutoNCR",
         "mods_NoAutoplay"
     ];
@@ -166,12 +163,16 @@ a.on = function (event, func) {
     a.win.addEventListener(event, func);
 };
 /**
- * jQuery with Color plug-in, will be available after a.init() is called.
+ * jQuery, will be available after a.init() is called.
  * @const {Object}
  */
 a.$ = null;
 
 //=====Constants=====
+/**
+ * The constants object.
+ * @const {Object}
+ */
 a.c = {};
 /**
  * The settings page of this project.
@@ -201,7 +202,7 @@ a.c.topFrame = (function () {
     try {
         return a.win.self === a.win.top;
     } catch (err) {
-        //a.win.top was not accessible due to security policies (means we are not top frame)
+        //a.win.top was not accessible due to security reasons (means we are not top frame)
         return false;
     }
 })();
@@ -214,8 +215,8 @@ a.c.topFrame = (function () {
 a.mods = function () {
     //===Facebook mods===
     if (a.c.topFrame && a.domCmp(["facebook.com"], true)) {
-        //Add Jump To Top button
-        const addJumpToTop = function () {
+        //Jump To Top button
+        if (a.mods.Facebook_JumpToTop) {
             //Stop if the button already exist, this shouldn't be needed, but just to be sure
             if (a.$("#AdBlock_Protector_FBMod_JumpToTop").length > 0) {
                 return;
@@ -233,37 +234,11 @@ a.mods = function () {
                 //Wait a little bit for the window to load, for some reason load event isn't working
                 a.win.setTimeout(addJumpToTop, 500);
             }
-        };
-        /*
-        //Hide People You May Know
-        //This is taken over by uBlock Origin
-        const hidePeopleYouMayKnow = function () {
-            a.config.debugMode && a.out.info("Facebook Mod: Hide people you may know enabled. ");
-            a.observe("insert", function (node) {
-                let elem, anchor;
-                if (node.querySelector && (elem = node.querySelector("a[href^='/friends/requests/']"), elem)) {
-                    if (!elem.querySelector("input[role=combobox]") &&
-                        !(anchor = elem.querySelector("a[class=seeMore]"), anchor && anchor.href.includes("/friends/requests"))) {
-                        a.config.debugMode && a.out.log(node);
-                        node.remove();
-                    }
-                }
-            });
-        };
-        */
-        //Check configurations
-        if (a.mods.Facebook_JumpToTop) {
-            addJumpToTop();
         }
-        /*
-        if (a.mods.Facebook_HidePeopleYouMayKnow && a.win.location.pathname !== "/friends/requests/") {
-            hidePeopleYouMayKnow();
-        }
-        */
     }
     //===Blogspot mods===
     if (a.c.topFrame && a.mods.Blogspot_AutoNCR && a.domInc(["blogspot"], true) && !a.domCmp(["blogspot.com"], true)) {
-        //Auto NCR (No Country Redirect)
+        //Auto NCR (No Country Redirect) redirect
         const name = a.dom.replace("www.", "").split(".")[0];
         const path = a.win.location.href.split("/").slice(3).join("/");
         a.config.debugMode && a.out.info("Blogspot Mod: Redirecting to NCR... ");
@@ -327,13 +302,6 @@ a.mods = function () {
  * @const {bool}
  */
 a.mods.Facebook_JumpToTop = true;
-/**
- * Whether People You May Know should be hidden from Facebook.
- * Our implementation is broken, but it is taken care by uBlock Origin.
- * The default value is true.
- * @const {bool}
- */
-//a.mods.Facebook_HidePeopleYouMayKnow = true;
 /**
  * Whether blogspot blogs should be automatically redirected to NCR (No Country Redirect) version.
  * Does not work if the blog is not top frame.
@@ -705,30 +673,6 @@ a.noAccess = function (name) {
     return true;
 };
 /**
- * Edit navigator.userAgent.
- * @function
- * @param {string} newUA - The user agent string to set.
- * @returns {boolean} True if the operation was successful, false otherwise.
- */
-/*
-//Commenting out, never used and not properly implemented
-//This does not take in account the operating system the user is using
-//A proper way to implement this is to take in the old user agent, and patch it to get the new one
-a.setUA = function (newUA) {
-    try {
-        a.win.Object.defineProperty(a.win.navigator, "userAgent", {
-            get: function () {
-                return newUA;
-            }
-        });
-    } catch (err) {
-        a.config.debugMode && a.out.error("AdBlock Protector failed to edit user agent string! ");
-        return false;
-    }
-    return true;
-};
-*/
-/**
  * Inject CSS into HTML.
  * @function
  * @param {string} str - The CSS to inject, !important will be added automatically.
@@ -745,14 +689,15 @@ a.css = function (str) {
     GM_addStyle(temp.join(";"));
 };
 /**
- * Add a bait element, this sometimes has a side effect which adds an empty bar on top of the page.
+ * Add a bait element, this sometimes has a side effect that adds an empty bar on top of the page.
+ * Sometimes the height of the bait element is checked, so we cannot make it 0 height.
  * @function
  * @param {string} type - The type of the element, example: div.
  * @param {string} identifier - The class or id, example: .test (class) #test (id).
  */
 a.bait = function (type, identifier) {
     //Create element
-    let elem = a.$("<" + type + ">");
+    let elem = a.$(`<${type}>`);
     //Add identifier
     if (identifier.startsWith("#")) {
         elem.attr("id", identifier.substr(1));
@@ -768,7 +713,7 @@ a.bait = function (type, identifier) {
  * @param {string} key - The key of the cookie.
  * @param {string} [val=undefined] - The value to set, omit this to get the cookie.
  * @param {integer} [time=31536000000] - In how many milliseconds will it expire, defaults to 1 year.
- * @param {string} [path=/] - The path to set.
+ * @param {string} [path="/"] - The path to set.
  * @returns {string} The value of the cookie, null will be returned if the cookie doesn't exist, and undefined will be returned in set mode.
  */
 a.cookie = function (key, val, time, path) {
@@ -810,7 +755,7 @@ a.serialize = function (obj) {
  * Generate a native HTML5 player with controls but not autoplay.
  * @function
  * @param {string} source - The source of the video.
- * @param {string} [typeIn=Auto Detect] - The type of the video, will be automatically detected if not supplied, and defaults to MP4 if detection failed.
+ * @param {string} [typeIn=(Auto Detect)] - The type of the video, will be automatically detected if not supplied, and defaults to MP4 if detection failed.
  * @param {string} [widthIn="100%"] - The width of the player.
  * @param {string} [heightIn="auto"] - The height of the player.
  * @returns {string} An HTML string of the video player.

@@ -112,7 +112,7 @@ a.c.topFrame = (function () {
 })();
 a.mods = function () {
     if (a.c.topFrame && a.domCmp(["facebook.com"], true)) {
-        const addJumpToTop = function () {
+        if (a.mods.Facebook_JumpToTop) {
             if (a.$("#AdBlock_Protector_FBMod_JumpToTop").length > 0) {
                 return;
             }
@@ -126,9 +126,6 @@ a.mods = function () {
             } else {
                 a.win.setTimeout(addJumpToTop, 500);
             }
-        };
-        if (a.mods.Facebook_JumpToTop) {
-            addJumpToTop();
         }
     }
     if (a.c.topFrame && a.mods.Blogspot_AutoNCR && a.domInc(["blogspot"], true) && !a.domCmp(["blogspot.com"], true)) {
@@ -402,7 +399,7 @@ a.css = function (str) {
     GM_addStyle(temp.join(";"));
 };
 a.bait = function (type, identifier) {
-    let elem = a.$("<" + type + ">");
+    let elem = a.$(`<${type}>`);
     if (identifier.startsWith("#")) {
         elem.attr("id", identifier.substr(1));
     } else if (identifier.startsWith(".")) {
