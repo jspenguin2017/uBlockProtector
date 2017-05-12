@@ -3,6 +3,12 @@
 Installation instructions, along with many other relevant information are available on our 
 [home page](http://jspenguin2017.github.io/AdBlockProtector/). 
 
+Something doesn't work? Have a look at our 
+[basic troubleshooting guide](https://github.com/jspenguin2017/AdBlockProtector/blob/master/Notes/Basic%20Troubleshooting.MD). 
+
+Still doesn't work? Read the [contribution guideline](https://github.com/jspenguin2017/AdBlockProtector/blob/master/CONTRIBUTING.MD) 
+then open an issue. 
+
 ## Building
 
 We use custom compilers, the source code for the compilers along with prebuilt binaries for Windows 10 are 
