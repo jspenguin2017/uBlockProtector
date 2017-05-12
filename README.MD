@@ -30,7 +30,7 @@ changed to GNU GPL v3. Files that are not from Anti-Adblock Killer falls under t
 
 ## v7 Goals
 
-1. Make these functions to have more matching mode: string, exact string, RegExp, callback
+1. Make these functions to have more matching mode: string, exact string, RegExp, onbefore callback, onafter callback
     * `a.filter`
     * `a.timewarp`
 2. Make these functions to be able to handle properties arbitrarily deep: 
