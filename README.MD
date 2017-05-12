@@ -28,11 +28,14 @@ Code from Anti-Adblock Killer inherits its original [license](https://github.com
 This project was completely redesigned on version 4.0, but the name of the project was kept. This was also when the license 
 changed to GNU GPL v3. Files that are not from Anti-Adblock Killer falls under this license unless otherwise specified. 
 
-## To-do
+## v7 Goals
 
-1. Next round optimizations: 
-    * `a.filter()` redesign, make matching has string mode, exact match mode, RegExp mode, and callback mode. 
-    * Remove `a()` and `a.VERSION`, they are used precisely 0 times. Put `jQueryFactory` and `jQueryColorLoader` to `a` namespace. 
-    * Other general Core optimization and clean up. 
-2. Redesign Core functions that patches properties, they needs to be able to handle properties that are arbitrarily deep. 
-3. Grant cross origin XHR on install time. 
+1. Make these functions to have more matching mode: string, exact string, RegExp, callback
+    * `a.filter`
+    * `a.timewarp`
+2. Make these functions to be able to handle properties arbitrarily deep: 
+    * `a.filter`
+    * `a.readOnly`
+    * `a.noAccess`
+3. Make mutation observer to be able to handle removal. 
+4. Grant cross origin XHR on install time. 
