@@ -7,6 +7,9 @@ Please have a look at our
 [basic troubleshooting guide](https://github.com/jspenguin2017/AdBlockProtector/blob/master/Notes/Basic%20Troubleshooting.MD) 
 if something does not work. 
 
+Please read the [contribution guideline](https://github.com/jspenguin2017/AdBlockProtector/blob/master/CONTRIBUTING.MD) 
+before opening an issue. 
+
 ## Building
 
 We use custom compilers, the source code for the compilers along with prebuilt binaries for Windows 10 are 
