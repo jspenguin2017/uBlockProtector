@@ -12,7 +12,7 @@ var a = a || {};
 /**
  * Initialization.
  * @function
- * @param {boolean} excluded - Whether this domain should be excluded from generic protectors.
+ * @param {boolean} excluded - Whether this domain should be excluded from generic solutions.
  * @param {boolean} AdflyMatch - Whether this domain is an Adfly domain.
  * @param {boolean} AdflyUnmatch - Whether this domain should be excluded from Adfly skipper.
  */
@@ -105,7 +105,7 @@ a.config.update = function (id, val) {
  */
 a.config.debugMode = false;
 /**
- * Whether generic protectors should run.
+ * Whether generic solutions should be applied.
  * This settings is currently not exposed to the user.
  * This settings can be overwritten by a rule.
  * @var {bool}
@@ -127,7 +127,7 @@ a.config.aggressiveAdflySkiper = true;
 /**
  * Whether current domain is "excluded".
  * How this will be treated depends on the rules.
- * Generic protectors will not run if this is true.
+ * Generic solutions will not apply if this is true.
  * Will be assigned by a.init().
  * @const {bool}
  */
@@ -170,7 +170,7 @@ a.$ = null;
 
 //=====Constants=====
 /**
- * The constants object.
+ * Object containing all constants.
  * @const {Object}
  */
 a.c = {};
@@ -827,10 +827,14 @@ a.videoJS.init = function () {
     //Load components
     a.$("head").append(`<link href="//vjs.zencdn.net/5.4.6/video-js.min.css" rel="stylesheet"><script src="//vjs.zencdn.net/5.4.6/video.min.js"></script>${plugins}`);
 };
+/**
+ * Object containing all available VideoJS plug-ins.
+ * @const {Object}
+ */
 a.videoJS.plugins = {};
 /**
  * VideoJS plug-in, HLS parser.
- * @const
+ * @const {string}
  */
 a.videoJS.plugins.hls = `<script src="//cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.4.0/videojs-contrib-hls.min.js"></script>`;
 /**
@@ -895,7 +899,7 @@ a.observe.init = function () {
     });
 };
 /**
- * Whether initialization is done.
+ * Whether initialization of MutationObserver is done.
  * @var {bool}
  */
 a.observe.init.done = false;
@@ -924,7 +928,7 @@ a.uid = function () {
  */
 a.uid.counter = 0;
 /**
- * SHA 256 hash function
+ * SHA 256 hash function.
  * @function
  * @param {string} r - The string to hash.
  * @returns {string} The SHA 256 hash string.
@@ -994,9 +998,9 @@ a.sha256 = function (r) {
     return r = g(r), d(h(C(r), r.length * v));
 };
 
-//=====Generic Protectors=====
+//=====Generic=====
 /**
- * Activate all generic protectors, this function should be called once from rules.
+ * Apply all generic solutions, this function should be called once from rules.
  * @function
  */
 a.generic = function () {
@@ -1251,8 +1255,8 @@ a.generic = function () {
         //===Set up observer===
         a.observe("insert", onInsertHandler);
     } else if (a.config.debugMode) {
-        //Generic protectors disabled log
-        a.out.warn("Generic protectors are disabled on this domain. ");
+        //Generic solutions disabled log
+        a.out.warn("Generic solutions are disabled on this domain. ");
     }
 };
 /**

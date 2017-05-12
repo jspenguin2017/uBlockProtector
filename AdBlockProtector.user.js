@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 6.208
+// @version 6.209
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -784,7 +784,7 @@ a.generic = function () {
         };
         a.observe("insert", onInsertHandler);
     } else if (a.config.debugMode) {
-        a.out.warn("Generic protectors are disabled on this domain. ");
+        a.out.warn("Generic solutions are disabled on this domain. ");
     }
 };
 a.generic.AdflySkipper = function () {

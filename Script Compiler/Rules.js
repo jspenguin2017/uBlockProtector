@@ -7,6 +7,7 @@
     }
     //===Init===
     //Excluded domains
+    //Generic solutions will not be applied to these domains
     const excludedDomCmp = ["360.cn", "apple.com", "ask.com", "baidu.com", "bing.com", "bufferapp.com",
         "chromeactions.com", "easyinplay.net", "ebay.com", "facebook.com", "flattr.com", "flickr.com",
         "ghacks.net", "imdb.com", "imgbox.com", "imgur.com", "instagram.com", "jsbin.com", "jsfiddle.net",
@@ -20,6 +21,7 @@
     const AdflyMatchDomCmp = ["adf.ly", "ay.gy", "j.gs", "q.gs", "gamecopyworld.click", "babblecase.com",
         "pintient.com", "atominik.com", "bluenik.com", "sostieni.ilwebmaster21.com", "auto-login-xxx.com",
         "microify.com", "riffhold.com"];
+    //Domains on which aggressive Adfly skipper causes problems
     //const AdflyUnmatchDomCmp = [];
     //Compare and init
     a.init(
