@@ -98,7 +98,7 @@ youtube.com###companion
 ||flashx.tv/checkembed.php
 ! === linkneverdie.com
 ! === Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/146
-linkneverdie.com#@#.adsbygoogle
+@@||linkneverdie.com^$elemhide
 ! === pogdesign.co.uk
 ! === Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/149
 pogdesign.co.uk##.replace
@@ -158,4 +158,4 @@ gelbooru.com#@#center > a[href]
 ! === iframe of hqporner.com
 @@|http://62.212.86.9/js/ads.js|$domain=mydaddy.cc
 ! === ff14angler.com
-ff14angler.com#@#.adsbygoogle
+@@||ff14angler.com^$elemhide
