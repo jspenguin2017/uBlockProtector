@@ -102,6 +102,7 @@ gelbooru.com#@#center > a[href]
 ||assets.gelbooru.com/r19/
 @@|http://62.212.86.9/js/ads.js|$domain=mydaddy.cc
 @@||ff14angler.com^$elemhide
+@@||games.softgames.de/assets/showads.js|
 ! =====Patched Anti-Adblock Killer List=====
 ! License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
 ||trymask.com/api/$third-party
