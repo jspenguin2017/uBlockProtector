@@ -1294,7 +1294,6 @@ videowood.tv#@#.text-ad-links
 off-soft.net#@#.adsbygoogle
 yad2.co.il###sLightbox_overlay
 yad2.co.il###sLightbox_container
-@@||bdfrm.bidvertiser.com/BidVertiser.dbm$subdocument,domain=exrapidleech.info
 @@||demo.hongkiat.com/jquery-detect-ads-block/images/ads.jpg$image
 @@||detectadblock.com/ads.js$script
 @@||adblockanalytics.com/ads.js$script

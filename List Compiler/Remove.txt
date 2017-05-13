@@ -35,3 +35,5 @@ fox.com.tr#@#.text-ad-links
 @@|https://$script,domain=sport1.de
 ! === https://github.com/jspenguin2017/AdBlockProtector/issues/182
 gelbooru.com##.noticeError
+! === https://github.com/jspenguin2017/AdBlockProtector/issues/167
+@@||bdfrm.bidvertiser.com/BidVertiser.dbm$subdocument,domain=exrapidleech.info
