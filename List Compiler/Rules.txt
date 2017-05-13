@@ -112,6 +112,7 @@ al.ly##script:inject(popads.net.js)
 ! === hackintosh.zone and related domains - Thanks to F4z
 ! === Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/35
 ||hackintosh.*/donate/donate.php
+@@||https://cdn.hackintosh.zone/ipscdn/adsense/*$first-party
 hackintosh.computer##.adsbygoogle
 ! === ovar.io
 ! === Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/155

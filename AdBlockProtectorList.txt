@@ -70,6 +70,7 @@ ally.sh##script:inject(popads.net.js)
 @@||al.ly^$generichide
 al.ly##script:inject(popads.net.js)
 ||hackintosh.*/donate/donate.php
+@@||https://cdn.hackintosh.zone/ipscdn/adsense/*$first-party
 hackintosh.computer##.adsbygoogle
 @@||imasdk.googleapis.com/js/sdkloader/outstream.js$script,domain=ovar.io
 futbolchile.net##script:inject(bab-defuser.js)
