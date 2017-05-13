@@ -15,7 +15,7 @@ The compilers are built with Visual Studio 2017.
 
 ## License
 
-This project was built based on [Anti-Adblock Killer](https://github.com/reek/anti-adblock-killer), 
+This project was built based on [Anti-Adblock Killer](https://github.com/reek/anti-adblock-killer) (by Reek), 
 but is now significantly different. 
 
 Anti-Adblock Killer Script was completely re-implemented. 
