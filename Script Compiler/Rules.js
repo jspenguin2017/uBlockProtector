@@ -2438,5 +2438,9 @@ if (a.domCmp(["exrapidleech.info"])) {
         a.$("p:contains('Please turn on popup')").remove();
     });
 }
+if (a.domCmp(["ouo.io"])) {
+    a.win.localStorage.setItem("snapLastPopAt", (new a.win.Date()).getTime());
+    a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
