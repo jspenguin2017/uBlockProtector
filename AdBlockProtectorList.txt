@@ -5,7 +5,7 @@
 ! Author: jspenguin2017
 ! Homepage: https://jspenguin2017.github.io/AdBlockProtector/
 ! Support: https://github.com/jspenguin2017/AdBlockProtector/issues
-||jspenguin2017.github.io/AdBlockProtector/listTest.js|
+jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 ###like-us-adblock-modal
 ##.popup-premium__apla
 @@||www.dogefaucet.com/static/js/ads.js|
