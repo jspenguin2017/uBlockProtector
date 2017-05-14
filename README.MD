@@ -28,14 +28,6 @@ Code from Anti-Adblock Killer inherits its original [license](https://github.com
 This project was completely redesigned on version 4.0, but the name of the project was kept. This was also when the license 
 changed to GNU GPL v3. Files that are not from Anti-Adblock Killer falls under this license unless otherwise specified. 
 
-## v7 Goals
+## TODO:
 
-1. Make these functions to have more matching mode: string, exact string, RegExp, onbefore callback, onafter callback
-    * `a.filter`
-    * `a.timewarp`
-2. Make these functions to be able to handle properties arbitrarily deep: 
-    * `a.filter`
-    * `a.readOnly`
-    * `a.noAccess`
-3. Make mutation observer to be able to handle removal. 
-4. Grant cross origin XHR on install time. 
+1. Make mutation observer to be able to handle removal. 
