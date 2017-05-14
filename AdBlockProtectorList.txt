@@ -100,6 +100,9 @@ gelbooru.com#@#[style*="width:"][height]
 gelbooru.com#@##paginator
 gelbooru.com#@#center > a[href]
 ||assets.gelbooru.com/r19/
+||assets.gelbooru.com/r18/
+||gelbooru.com/script/application.js.php$important
+||thedoujin.com/bload.php
 @@|http://62.212.86.9/js/ads.js|$domain=mydaddy.cc
 @@||ff14angler.com^$elemhide
 @@||games.softgames.de/assets/showads.js|

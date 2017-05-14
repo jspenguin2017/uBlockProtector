@@ -149,7 +149,8 @@ playbb.me#@#div[style^="width:"]
 easyvideo.me#@#div[style^="width:"]
 videowing.me#@#div[style^="width:"]
 videozoo.me#@#div[style^="width:"]
-! === gelbooru.com
+! === gelbooru.com - Thanks to lain566
+! === Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/182
 ||gelbooru.com^$inline-script,badfilter
 @@||ajax.googleapis.com/ajax/libs/jquery/*$script,domain=gelbooru.com
 gelbooru.com#@#[style*="height:"][width]
@@ -157,6 +158,9 @@ gelbooru.com#@#[style*="width:"][height]
 gelbooru.com#@##paginator
 gelbooru.com#@#center > a[href]
 ||assets.gelbooru.com/r19/
+||assets.gelbooru.com/r18/
+||gelbooru.com/script/application.js.php$important
+||thedoujin.com/bload.php
 ! === iframe of hqporner.com
 @@|http://62.212.86.9/js/ads.js|$domain=mydaddy.cc
 ! === ff14angler.com
