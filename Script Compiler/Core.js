@@ -133,7 +133,7 @@ a.config.aggressiveAdflySkiper = true;
  */
 a.config.domExcluded = null;
 
-//=====Shortcuts and jQuery=====
+//=====Miscellaneous=====
 /**
  * The unsafeWindow.
  * @const {Object}
@@ -162,6 +162,55 @@ a.dom = a.doc.domain;
 a.on = function (event, func) {
     a.win.addEventListener(event, func);
 };
+/**
+ * Matching method.
+ * @const {Enumeration}
+ */
+a.matchMethod = {
+    //Omit for match all
+    string: 1, //Partial string match
+    stringExact: 2, //Exact string match, will result in match if one or more arguments matches the filter
+    RegExp: 3, //Regular expression
+    callback: 4 //Callback, arguments list will be supplied as an array, return true for match and false for not match
+};
+/**
+ * Apply matching.
+ * @function
+ * @param {Array} args - Elements to match.
+ * @param {Enumeration} method - The method to use.
+ * @param {*} filter - The appropriate filter.
+ * @returns {boolean} True if there is a match, false otherwise.
+ */
+a.applyMatch = function (args, method, filter) {
+    switch (method) {
+        case a.matchMethod.string:
+            for (let i = 0; i < args.length; i++) {
+                if (filter.includes(String(args[i]))) {
+                    return true;
+                }
+            }
+            break;
+        case a.matchMethod.stringExact:
+            for (let i = 0; i < args.length; i++) {
+                if (filter === String(args[i])) {
+                    return true;
+                }
+            }
+            break;
+        case a.matchMethod.RegExp:
+            for (let i = 0; i < args.length; i++) {
+                if (filter.test(String(args[i]))) {
+                    return true;
+                }
+            }
+            break;
+        case a.matchMethod.callback:
+            return filter(args);
+    }
+    //Not matched
+    return false;
+};
+
 /**
  * jQuery, will be available after a.init() is called.
  * @const {Object}
@@ -442,20 +491,18 @@ a.protectFunc.pointers = [];
  */
 a.protectFunc.masks = [];
 /**
- * Adds a filter to another function so arguments with forbidden keywords are not allowed.
- * Use RegExp to combine filters, do not activate filter multiple times on the same function.
+ * Filter a function.
  * @function
- * @param {string} func - The name of the function to filter, use "." to separate multiple layers, max 2 layers.
- * @param {RegExp} [filter=/[\S\s]/] - Filter to apply, block everything if this argument is missing.
+ * @param {string} func - The name of the function to filter, use "." to separate multiple layers.
+ * @param {Enumeration} [method=Match All] - An option from a.matchMethods, omit (or pass null) to match all.
+ * @param {*} filter - Filter to apply, this is required if method is not omitted.
+ * @param {Function} onAfter - Callback when filter is applied, match state (true for blocked, false to allowed) and arguments list (as an array) will be supplied.
  * @returns {boolean} True if the operation was successful, false otherwise.
  */
-a.filter = function (func, filter) {
-    //Check parameters
-    filter = filter || /[\S\s]/;
-    //The original function, will be set later
-    let original;
-    //The function names array, will be set later if there is more than one layer
-    let fNames;
+a.filter = function (func, method, filter, onAfter) {
+    //The original function and its parent, will be set later
+    let original = a.win;
+    let parent;
     //The function with filters
     const newFunc = function () {
         //Call log
@@ -466,35 +513,30 @@ a.filter = function (func, filter) {
             }
         }
         //Apply filter
-        for (let i = 0; i < arguments.length; i++) {
-            if (filter.test(String(arguments[i]))) {
-                //Not allowed
-                a.config.debugMode && a.err();
-                return;
-            }
+        if (!method || a.applyMatch(arguments, method, filter)) {
+            //Not allowed
+            a.config.debugMode && a.err();
+            onAfter && onAfter(true, arguments);
+            return;
         }
         //Tests passed log
         a.config.debugMode && a.out.info("Tests passed. ");
         //Allowed
-        if (typeof fNames === "object") {
-            //Two layers
-            return original.apply(a.win[fNames[0]], arguments);
-        } else {
-            //One layer
-            return original.apply(a.win, arguments);
-        }
+        onAfter && onAfter(false, arguments);
+        return original.apply(parent, arguments);
     };
     //Try to replace the function
     try {
-        if (func.includes(".")) {
-            //Two layers
-            fNames = func.split(".");
-            original = a.win[fNames[0]][fNames[1]];
-            a.win[fNames[0]][fNames[1]] = newFunc;
-        } else {
-            //One layer
-            original = a.win[func];
-            a.win[func] = newFunc;
+        //Get original and its parent
+        let stack = func.split(".");
+        let current;
+        while (current = stack.shift()) {
+            parent = original;
+            original = parent[current];
+            //Patch if stack is empty
+            if (!stack.length) {
+                parent[current] = newFunc;
+            }
         }
         //Add this filter to protection list
         if (a.protectFunc.enabled) {
