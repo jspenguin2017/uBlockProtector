@@ -510,10 +510,10 @@ a.videoJS.init = function () {
     if (arguments.length > 0) {
         plugins = a.win.Array.prototype.slice.call(arguments).join();
     }
-    a.$("head").append(`<link href="//vjs.zencdn.net/5.4.6/video-js.min.css" rel="stylesheet"><script src="//vjs.zencdn.net/5.4.6/video.min.js"></script>${plugins}`);
+    a.$("head").append(`<link href="//vjs.zencdn.net/5.4.6/video-js.min.css" rel="stylesheet"><script src="//vjs.zencdn.net/5.4.6/video.min.js"><\/script>${plugins}`);
 };
 a.videoJS.plugins = {};
-a.videoJS.plugins.hls = `<script src="//cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.4.0/videojs-contrib-hls.min.js"></script>`;
+a.videoJS.plugins.hls = `<script src="//cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.4.0/videojs-contrib-hls.min.js"><\/script>`;
 a.ready = function (func, capture, key) {
     a.on("DOMContentLoaded", func, capture, key);
 };
@@ -1218,7 +1218,7 @@ if (a.domCmp(["foxvalleyfoodie.com"])) {
     a.patchHTML(function (html) {
         return html.replace(/<script.*\/wp-includes\/js\/(?!jquery|comment|wp-embed).*<\/script>/g,
             "<script>console.error('Uncaught AdBlock Error: Admiral AdBlock detectors are not allowed on this " +
-            "device! ');</script>");
+            "device! ');<\/script>");
     });
 }
 if (a.domCmp(["mid-day.com", "happytrips.com"])) {

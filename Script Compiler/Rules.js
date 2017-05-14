@@ -385,7 +385,7 @@ if (a.domCmp(["foxvalleyfoodie.com"])) {
     a.patchHTML(function (html) {
         return html.replace(/<script.*\/wp-includes\/js\/(?!jquery|comment|wp-embed).*<\/script>/g,
             "<script>console.error('Uncaught AdBlock Error: Admiral AdBlock detectors are not allowed on this " +
-            "device! ');</script>");
+            "device! ');<\/script>");
     });
 }
 if (a.domCmp(["mid-day.com", "happytrips.com"])) {

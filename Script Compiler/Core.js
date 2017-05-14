@@ -893,7 +893,7 @@ a.videoJS.init = function () {
         plugins = a.win.Array.prototype.slice.call(arguments).join();
     }
     //Load components
-    a.$("head").append(`<link href="//vjs.zencdn.net/5.4.6/video-js.min.css" rel="stylesheet"><script src="//vjs.zencdn.net/5.4.6/video.min.js"></script>${plugins}`);
+    a.$("head").append(`<link href="//vjs.zencdn.net/5.4.6/video-js.min.css" rel="stylesheet"><script src="//vjs.zencdn.net/5.4.6/video.min.js"><\/script>${plugins}`);
 };
 /**
  * Object containing all available VideoJS plug-ins.
@@ -904,7 +904,7 @@ a.videoJS.plugins = {};
  * VideoJS plug-in, HLS parser.
  * @const {string}
  */
-a.videoJS.plugins.hls = `<script src="//cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.4.0/videojs-contrib-hls.min.js"></script>`;
+a.videoJS.plugins.hls = `<script src="//cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.4.0/videojs-contrib-hls.min.js"><\/script>`;
 /**
  * Run a function on document-idle (DOMContentLoaded).
  * @function
