@@ -2431,8 +2431,11 @@ if (a.domCmp(["up-4ever.com"])) {
     });
 }
 if (a.domCmp(["exrapidleech.info"])) {
+    a.readOnly("PopAds", "this is a string");
     a.ready(() => {
         a.$(".alert-danger.lead:contains('block')").remove();
+        a.$("p:contains('Please disable ads block')").remove();
+        a.$("p:contains('Please turn on popup')").remove();
     });
 }
 //Activate generic protectors, excluded domains check is handled inside

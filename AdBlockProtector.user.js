@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 7.3
+// @version 7.4
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2860,8 +2860,11 @@ if (a.domCmp(["up-4ever.com"])) {
     });
 }
 if (a.domCmp(["exrapidleech.info"])) {
+    a.readOnly("PopAds", "this is a string");
     a.ready(() => {
         a.$(".alert-danger.lead:contains('block')").remove();
+        a.$("p:contains('Please disable ads block')").remove();
+        a.$("p:contains('Please turn on popup')").remove();
     });
 }
 a.generic();
