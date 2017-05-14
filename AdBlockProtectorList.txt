@@ -109,6 +109,7 @@ gelbooru.com#@#center > a[href]
 ||softgames.de/sg-mc.js*$script,redirect=noopjs
 ||bidvertiser.com$important,domain=exrapidleech.info
 @@||atresplayer.com^$generichide
+||broadcastbed.com^$domain=mmo-champion.com
 ! =====Patched Anti-Adblock Killer List=====
 ! License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
 ||trymask.com/api/$third-party
