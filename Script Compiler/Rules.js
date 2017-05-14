@@ -2489,7 +2489,35 @@ if (a.domCmp(["ouo.io"])) {
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
 if (a.domCmp(["canalplus.fr"])) {
-    //
+    let videoID;
+    const search = a.win.location.search;
+    if (search.startsWith("?vid=") && (videoID = search.split("=")[1])) {
+        a.ready(() => {
+            GM_xmlhttpRequest({
+                method: "GET",
+                url: "http://service.canal-plus.com/video/rest/getVideos/cplus/" +
+                videoID + "?format=json",
+                onload: function (res) {
+                    //Try to find media URL
+                    try {
+                        const response = JSON.parse(res.responseText);
+                        const url = response.MEDIA.VIDEOS.HD;
+                        if (url) {
+                            a.$("#onePlayerHolder").after(a.nativePlayer(url +
+                                "?secret=pqzerjlsmdkjfoiuerhsdlfknaes")).remove();
+                        } else {
+                            throw "Media URL Not Found";
+                        }
+                    } catch (err) {
+                        a.config.debugMode && a.out.error("AdBlock Protector failed to find media URL! ");
+                    }
+                },
+                onerror: function () {
+                    a.config.debugMode && a.out.error("AdBlock Protector failed to load media JSON! ");
+                }
+            });
+        });
+    }
 }
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();

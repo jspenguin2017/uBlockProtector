@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 7.9
+// @version 7.10
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -15,10 +15,12 @@
 // @grant window.close
 // @grant GM_registerMenuCommand
 // @connect foxvalleyfoodie.com
-// @connect sagkjeder.no
-// @connect wp.tv
 // @connect tvnplayer.pl
 // @connect xmc.pl
+// @connect wp.tv
+// @connect sagkjeder.no
+// @connect mtgx.tv
+// @connect canal-plus.com
 // @connect *
 // @run-at document-start
 // @homepage https://jspenguin2017.github.io/AdBlockProtector/
@@ -2921,5 +2923,33 @@ if (a.domCmp(["ouo.io"])) {
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
 if (a.domCmp(["canalplus.fr"])) {
+    let videoID;
+    const search = a.win.location.search;
+    if (search.startsWith("?vid=") && (videoID = search.split("=")[1])) {
+        a.ready(() => {
+            GM_xmlhttpRequest({
+                method: "GET",
+                url: "http://service.canal-plus.com/video/rest/getVideos/cplus/" +
+                videoID + "?format=json",
+                onload: function (res) {
+                    try {
+                        const response = JSON.parse(res.responseText);
+                        const url = response.MEDIA.VIDEOS.HD;
+                        if (url) {
+                            a.$("#onePlayerHolder").after(a.nativePlayer(url +
+                                "?secret=pqzerjlsmdkjfoiuerhsdlfknaes")).remove();
+                        } else {
+                            throw "Media URL Not Found";
+                        }
+                    } catch (err) {
+                        a.config.debugMode && a.out.error("AdBlock Protector failed to find media URL! ");
+                    }
+                },
+                onerror: function () {
+                    a.config.debugMode && a.out.error("AdBlock Protector failed to load media JSON! ");
+                }
+            });
+        });
+    }
 }
 a.generic();
