@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 7.10
+// @version 7.11
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -1119,7 +1119,7 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
     a.filter("addEventListener", a.matchMethod.stringExact, "advertisement");
     a.readOnly("hasSentinel", function () { return false; });
 }
-if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl"], true)) {
+if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl", "sportowefakty.wp.pl"], true)) {
     let mid; //Media ID of next video
     let midArray1 = []; //Media IDs method 1
     let midArray2 = []; //Media IDs method 2
