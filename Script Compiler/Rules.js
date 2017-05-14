@@ -100,7 +100,7 @@ if (a.domCmp(["tweaktown.com"])) {
 if (a.domCmp(["ratemyprofessors.com"])) {
     //Lock adBlocker to false and filter keywords from addEventListener()
     a.readOnly("adBlocker", false);
-    a.filter("addEventListener", /^resize$/i);
+    a.filter("addEventListener", a.matchMethod.RegExp, /^resize$/i);
 }
 if (a.domCmp(["gamepedia.com"])) {
     //(Workaround) Remove element on load
@@ -115,7 +115,7 @@ if (a.domCmp(["cbox.ws"])) {
 if (a.domCmp(["ahmedabadmirror.com"])) {
     //Filter keywords from document.addEventListener()
     a.protectFunc();
-    a.filter("document.addEventListener", /function \_0x/);
+    a.filter("document.addEventListener", a.matchMethod.string, "function _0x");
     //document.addEventListener should not be native code, but they are expecting native code
     a.protectFunc.masks[1] = "function addEventListener() { [native code] }";
 }
@@ -230,7 +230,7 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
     //@pragma-keepline Based on Adguard filters
     //@pragma-keepline License: https://github.com/AdguardTeam/AdguardBrowserExtension/blob/master/LICENSE
     a.cookie("ABCABC", "true");
-    a.filter("addEventListener", /^advertisement$/);
+    a.filter("addEventListener", a.matchMethod.stringExact, "advertisement");
     a.readOnly("hasSentinel", function () { return false; });
 }
 /*
@@ -403,7 +403,7 @@ if (a.domCmp(["megogo.net"])) {
 }
 if (a.domCmp(["elektroda.pl"])) {
     //Filter keywords from setTimeout()
-    a.filter("setTimeout", /adBlockTest\.offsetHeight/);
+    a.filter("setTimeout", a.matchMethod.string, "adBlockTest.offsetHeight");
 }
 if (a.domCmp(["anandabazar.com"])) {
     //Lock canRunAds to false and exclude this domain from generic protectors
@@ -416,7 +416,7 @@ if (a.domCmp(["wtkplay.pl"])) {
 }
 if (a.domCmp(["betterdocs.net"])) {
     //Filter keywords from eval()
-    a.filter("eval", /eval\(function\(p\,a\,c\,k\,e\,d\)/);
+    a.filter("eval", a.matchMethod.string, "eval(function(p,a,c,k,e,d)");
 }
 if (a.domCmp(["webqc.org"])) {
     //Disable setTimeout()
@@ -428,7 +428,7 @@ if (a.domCmp(["wired.com"])) {
 }
 if (a.domInc(["knowlet3389.blogspot"])) {
     //(Could be redundant) Filter keywords from setTimeout()
-    a.filter("setTimeout", /\$\(\"\#gAds\"\)\.height\(\)/);
+    a.filter("setTimeout", a.matchMethod.string, '$("#gAds").height()');
 }
 if (a.domCmp(["freegameserverhost.com"])) {
     //Inject CSS
@@ -759,7 +759,7 @@ if (a.domCmp(["rmprepusb.com"])) {
 }
 if (a.domCmp(["cubeupload.com"])) {
     //Filter keywords from document.write()
-    a.filter("document.write", /Please consider removing adblock to help us pay our bills/);
+    a.filter("document.write", a.matchMethod.string, "Please consider removing adblock to help us pay our bills");
 }
 /*
 //The website is down
@@ -1870,7 +1870,7 @@ if (a.domCmp(["lewebtvbouquetfrancophone.overblog.com", "webtv.bloguez.com", "la
 }
 if (a.domCmp(["mybank.pl", "rapidgrab.pl"])) {
     //Filter keywords from addEventListener()
-    a.filter("addEventListener", /\.nextFunction\(\)\}/);
+    a.filter("addEventListener", a.matchMethod.string, ".nextFunction()}");
 }
 if (a.domCmp(["linkdrop.net", "revclouds.com", "leporno.org", "uploadshub.com", "dasolo.org",
     "fullstuff.net", "zeusnews.it", "cheminots.net", "lolsy.tv", "animes-mangas-ddl.com",
@@ -1880,7 +1880,7 @@ if (a.domCmp(["linkdrop.net", "revclouds.com", "leporno.org", "uploadshub.com", 
     "europeup.com", "nrj.fr", "srnk.co", "animmex.co", "socketloop.com", "crackhex.com",
     "revealedtricks4u.com", "pizzamaking.com", "computerworm.net", "yourlifeupdated.net"])) {
     //Filter keywords from setTimeout()
-    a.filter("setTimeout", /bab\_elementid/);
+    a.filter("setTimeout", a.matchMethod.string, "bab_elementid");
 }
 /*
 if (a.domCmp(["commentcamarche.net", "journaldesfemmes.com", "linternaute.com"])) {
@@ -1929,13 +1929,6 @@ if (a.domCmp(["sapib.ca"])) {
     //Lock Abd_Detector to an empty function
     a.readOnly("Abd_Detector", function () { });
 }
-/*
-//Fixed by List
-if (a.domCmp(["allmusic.com"])) {
-    //Filter keywords from setTimeout()
-    a.filter("setTimeout", /\_0x6176x12/);
-}
-*/
 if (a.domCmp(["wowhead.com"])) {
     //Remove elements on idle
     a.ready(function () {
@@ -2008,7 +2001,7 @@ if (a.domCmp(["sidereel.com"])) {
     //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/83
     //This also works for allmusic.com
     a.protectFunc();
-    a.filter("setTimeout", /function\ \_0x[a-z0-9]{4,8}\(/);
+    a.filter("setTimeout", a.matchMethod.RegExp, /function\ \_0x[a-z0-9]{4,8}\(/);
 }
 if (a.domCmp(["burning-feed.com"])) {
     //Thanks to uBlock-user
@@ -2049,7 +2042,7 @@ if (a.domCmp(["sandiegouniontribune.com"])) {
             a.win.clearInterval(token);
         }
     }, 1000);
-    a.filter("addEventListener", /^scroll$/);
+    a.filter("addEventListener", a.matchMethod.stringExact, "scroll");
 }
 if (a.domCmp(["adz.bz", "mellow.link", "hop.bz", "mellowads.com", "url.vin",
     "clik.bz"])) {
@@ -2092,12 +2085,12 @@ if (a.domCmp(["adz.bz", "mellow.link", "hop.bz", "mellowads.com", "url.vin",
     });
 }
 if (a.domCmp(["adbull.me"])) {
-    a.timewarp("setInterval", /^1000$/);
+    a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
 if (a.domCmp(["shink.in"])) {
     //Remove block screen and skip countdown
     a.readOnly("RunAds", true);
-    a.timewarp("setInterval", /^1000$/);
+    a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
     //Block popup
     a.win.open = function () { };
     a.readOnly("jsPopunder", function () { });
@@ -2128,7 +2121,7 @@ if (a.domCmp(["shink.in"])) {
 }
 if (a.domCmp(["gamezhero.com"])) {
     a.readOnly("ads", true);
-    a.timewarp("setInterval", /^function\ \(\)\{var \_0x/);
+    a.timewarp("setInterval", a.matchMethod.string, "function (){var _0x");
 }
 if (a.domCmp(["freetvall.com"])) {
     //Forcefully enable right click
@@ -2158,7 +2151,7 @@ if (a.domCmp(["dasolo.co"])) {
     a.readOnly("nocontext", null);
     a.readOnly("mischandler", null);
     a.readOnly("disableselect", null);
-    a.filter("document.addEventListener", /^contextmenu$/);
+    a.filter("document.addEventListener", a.matchMethod.stringExact, "contextmenu");
 }
 if (a.domCmp(["titulky.com"])) {
     //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/128
@@ -2232,7 +2225,7 @@ if (a.domCmp(["filmy.to", "histock.info"])) {
 }
 if (a.domCmp(["flashx.tv"])) {
     //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/130
-    a.filter("document.addEventListener", /^(mousedown|keydown|contextmenu)$/);
+    a.filter("document.addEventListener", a.matchMethod.RegExp, /^(mousedown|keydown|contextmenu)$/);
 }
 if (a.domCmp(["multiup.org", "multiup.eu"])) {
     a.cookie("visit", "1");
@@ -2268,7 +2261,7 @@ if (a.domCmp(["linkneverdie.com"])) {
     });
 }
 if (a.domCmp(["ally.sh", "al.ly"])) {
-    a.timewarp("setInterval", /^1000$/);
+    a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
     a.win.open = null;
 }
 if (a.domCmp(["nbc.com"])) {
@@ -2282,11 +2275,11 @@ if (a.domCmp(["filmyiseriale.net"])) {
 }
 if (a.domCmp(["tf2center.com"])) {
     //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/141
-    a.filter("setInterval", /\"\/adblock\"/);
-    a.filter("setTimeout", /^function \(\)\{B\(F\+1\)\}$/);
+    a.filter("setInterval", a.matchMethod.string, '"/adblock"');
+    a.filter("setTimeout", a.matchMethod.stringExact, "function (){B(F+1)}");
 }
 if (a.domCmp(["up-4ever.com"])) {
-    a.filter("setTimeout", /console\.log\(document\.getElementsByTagName/);
+    a.filter("setTimeout", a.matchMethod.string, "console.log(document.getElementsByTagName");
     a.ready(function () {
         a.$("#hiddensection").show();
         a.$("#hiddensection2").remove();
@@ -2359,7 +2352,7 @@ if (a.domCmp(["dovathd.com"])) {
     });
 }
 if (a.domCmp(["freepdf-books.com"])) {
-    a.timewarp("setInterval", /^1000$/);
+    a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
 if (a.domCmp(["temp-mail.org"])) {
     a.readOnly("checkadBlock", function () { });
@@ -2422,9 +2415,9 @@ if (a.domCmp(["gelbooru.com"])) {
     }
 }
 if (a.domCmp(["urle.co"])) {
-    a.filter("setTimeout", /captchaCheckAdblockUser\(\)\;/);
+    a.filter("setTimeout", a.matchMethod.string, "captchaCheckAdblockUser();");
     a.filter("eval");
-    a.timewarp("setInterval", /^1000$/);
+    a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
 if (a.domCmp(["playbb.me", "easyvideo.me", "videowing.me", "videozoo.me"])) {
     a.ready(function () {
@@ -2435,7 +2428,7 @@ if (a.domCmp(["nicematin.com"])) {
     a.noAccess("checkAds");
 }
 if (a.domCmp(["bc.vc"])) {
-    a.timewarp("setInterval", /^1000$/);
+    a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
