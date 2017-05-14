@@ -534,8 +534,13 @@ a.observe = function (type, callback) {
         a.observe.init.done = true;
         a.observe.init();
     }
-    if (type === "insert") {
-        a.observe.insertCallbacks.push(callback);
+    switch (type) {
+        case "insert":
+            a.observe.insertCallbacks.push(callback);
+            break;
+        case "remove":
+            a.observe.removeCallbacks.push(callback);
+            break;
     }
 };
 a.observe.init = function () {
@@ -548,6 +553,13 @@ a.observe.init = function () {
                     }
                 }
             }
+            if (mutations[i].removedNodes.length) {
+                for (let ii = 0; ii < a.observe.removeCallbacks.length; ii++) {
+                    for (let iii = 0; iii < mutations[i].removedNodes.length; iii++) {
+                        a.observe.removeCallbacks[ii](mutations[i].removedNodes[iii]);
+                    }
+                }
+            }
         }
     });
     observer.observe(a.doc, {
@@ -557,6 +569,7 @@ a.observe.init = function () {
 };
 a.observe.init.done = false;
 a.observe.insertCallbacks = [];
+a.observe.removeCallbacks = [];
 a.uid = function () {
     const chars = "abcdefghijklnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     let str = "";

@@ -928,8 +928,13 @@ a.observe = function (type, callback) {
         a.observe.init();
     }
     //Add to callback array
-    if (type === "insert") {
-        a.observe.insertCallbacks.push(callback);
+    switch (type) {
+        case "insert":
+            a.observe.insertCallbacks.push(callback);
+            break;
+        case "remove":
+            a.observe.removeCallbacks.push(callback);
+            break;
     }
     //More types will be added when needed
 };
@@ -950,6 +955,14 @@ a.observe.init = function () {
                     }
                 }
             }
+            //Remove
+            if (mutations[i].removedNodes.length) {
+                for (let ii = 0; ii < a.observe.removeCallbacks.length; ii++) {
+                    for (let iii = 0; iii < mutations[i].removedNodes.length; iii++) {
+                        a.observe.removeCallbacks[ii](mutations[i].removedNodes[iii]);
+                    }
+                }
+            }
             //More types will be added when needed
         }
     });
@@ -964,10 +977,15 @@ a.observe.init = function () {
  */
 a.observe.init.done = false;
 /**
- * The callback function of insert mutations.
+ * The callback functions for insert mutations.
  * @var {Array.<Function>}
  */
 a.observe.insertCallbacks = [];
+/**
+ * The callback functions for remove mutations.
+ * @var {Array.<Function>}
+ */
+a.observe.removeCallbacks = [];
 /**
  * Returns a unique ID that is also a valid variable name.
  * @function

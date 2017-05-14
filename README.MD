@@ -27,7 +27,3 @@ Code from Anti-Adblock Killer inherits its original [license](https://github.com
 
 This project was completely redesigned on version 4.0, but the name of the project was kept. This was also when the license 
 changed to GNU GPL v3. Files that are not from Anti-Adblock Killer falls under this license unless otherwise specified. 
-
-## TODO:
-
-1. Make mutation observer to be able to handle removal. 
