@@ -167,6 +167,7 @@ gelbooru.com#@#center > a[href]
 @@||ff14angler.com^$elemhide
 ! === games.softgames.de
 @@||games.softgames.de/assets/showads.js|
+||softgames.de/sg-mc.js*$script,redirect=noopjs
 ! === exrapidleech.info
 ||bidvertiser.com$important,domain=exrapidleech.info
 ! === atresplayer.com

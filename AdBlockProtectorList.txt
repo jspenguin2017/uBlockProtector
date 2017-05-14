@@ -106,6 +106,7 @@ gelbooru.com#@#center > a[href]
 @@|http://62.212.86.9/js/ads.js|$domain=mydaddy.cc
 @@||ff14angler.com^$elemhide
 @@||games.softgames.de/assets/showads.js|
+||softgames.de/sg-mc.js*$script,redirect=noopjs
 ||bidvertiser.com$important,domain=exrapidleech.info
 @@||atresplayer.com^$generichide
 ! =====Patched Anti-Adblock Killer List=====
