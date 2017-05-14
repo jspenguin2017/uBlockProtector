@@ -276,7 +276,7 @@ a.mods = function () {
     if (a.c.topFrame && a.domCmp(["facebook.com"], true)) {
         //Jump To Top button
         if (a.mods.Facebook_JumpToTop) {
-            //Stop if the button already exist, this shouldn't be needed, but just to be sure
+            //Stop if the button already exist, this should not be needed, but just to be sure
             if (a.$("#AdBlock_Protector_FBMod_JumpToTop").length > 0) {
                 return;
             }
@@ -290,7 +290,7 @@ a.mods = function () {
                 });
                 a.config.debugMode && a.out.info("Facebook Mod: Jump to Top button added. ");
             } else {
-                //Wait a little bit for the window to load, for some reason load event isn't working
+                //Wait a little bit for the window to load, for some reason load event is not working
                 a.win.setTimeout(addJumpToTop, 500);
             }
         }
@@ -502,7 +502,7 @@ a.protectFunc.pointers = [];
 a.protectFunc.masks = [];
 /**
  * Filter a function.
- * Pass a.filter.key as last argument to a filtered function can bypass the filter. The key is only accessible by our own functions.
+ * Pass a.filter.key as last argument to a filtered function to bypass the filter. The key is only accessible by our own functions.
  * @function
  * @param {string} func - The name of the function to filter, use "." to separate multiple layers.
  * @param {Enumeration} [method=Match All] - An option from a.matchMethods, omit or pass null defaults to match all.
@@ -515,7 +515,7 @@ a.filter = function (func, method, filter, onMatch, onAfter) {
     //The original function and its parent, will be set later
     let original = a.win;
     let parent;
-    //The function with filters
+    //The replacement function with filters
     const newFunc = function () {
         //Check for key
         if (arguments[arguments.length - 1] !== a.filter.key) {
@@ -539,6 +539,7 @@ a.filter = function (func, method, filter, onMatch, onAfter) {
             //Allowed
             onAfter && onAfter(false, arguments);
         } else if (a.config.debugMode) {
+            //Key valid
             a.out.info("Key valid, filter disabled for this call. ");
         }
         return original.apply(parent, arguments);
@@ -572,7 +573,7 @@ a.filter = function (func, method, filter, onMatch, onAfter) {
 };
 /**
  * A key that can be used bypass our own filters.
- * Pass this as the last argument when needed.
+ * Pass this as the last argument to a filtered function when needed.
  * @const {float}
  */
 a.filter.key = a.win.Math.random();
@@ -592,7 +593,7 @@ a.timewarp = function (func, method, filter, onMatch, onAfter, ratio) {
     ratio = ratio || 0.02;
     //The original function
     const original = a.win[func];
-    //The function with timewarp
+    //The replacement function with timewarp
     const newFunc = function (arg, time) {
         //Call log
         if (a.config.debugMode) {
@@ -781,7 +782,7 @@ a.bait = function (type, identifier) {
  * @param {string} [val=undefined] - The value to set, omit this to get the cookie.
  * @param {integer} [time=31536000000] - In how many milliseconds will it expire, defaults to 1 year.
  * @param {string} [path="/"] - The path to set.
- * @returns {string} The value of the cookie, null will be returned if the cookie doesn't exist, and undefined will be returned in set mode.
+ * @returns {string} The value of the cookie, null will be returned if the cookie does not exist, and undefined will be returned in set mode.
  */
 a.cookie = function (key, val, time, path) {
     if (typeof val === "undefined") {
@@ -858,7 +859,7 @@ a.nativePlayer = function (source, typeIn, widthIn, heightIn) {
 };
 /**
  * Generate a videoJS 5.4.6 player with controls but not autoplay.
- * Don't forget to call a.videoJS.init()
+ * Do not forget to call a.videoJS.init()
  * Parameters sources and types must be parallel arrays. Unlike native player, all parameters must be supplied.
  * @function
  * @param {Array.<string>} sources - The sources of the video.
@@ -1335,7 +1336,7 @@ a.generic.AdflySkipper = function () {
     //@pragma-keepline License: https://github.com/adsbypasser/adsbypasser/blob/master/LICENSE
     const handler = function (encodedURL) {
         if (a.doc.body) {
-            //This isn't an Adfly page
+            //This is not an Adfly page
             return;
         }
         //Some checking
@@ -1362,7 +1363,7 @@ a.generic.AdflySkipper = function () {
             //Stop the window
             a.win.stop();
             //Nuke body since we got the link
-            //We would be so fast that the body isn't loaded
+            //We would be so fast that the body is not loaded
             //a.doc.body.innerHTML = `<div><h2>Adfly skipped by AdBlock Protector. Redirecting to real link: <a href="${decodedURL}">${decodedURL}</a></h2></div>`;
             //Redirect
             a.win.onbeforeunload = null;
@@ -1386,7 +1387,7 @@ a.generic.AdflySkipper = function () {
                         }
                     } catch (err) { }
                 }
-                //In case this isn't an Adfly page, we want this variable to be functional
+                //In case this is not an Adfly page, we want this variable to be functional
                 val = value;
             },
             get: function () {

@@ -293,7 +293,7 @@ if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl"], true)) {
             //Check if we got the element
             if (thisMid) {
                 thisMid = thisMid.match(/mid[=,]([0-9]+)/)[1].toString();
-                //We will destroy the player anyway, we can just remove this so we don't grab it twice
+                //We will destroy the player anyway, we can just remove this so we do not grab it twice
                 elem.remove();
             }
             //Extra safety check
@@ -316,7 +316,7 @@ if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl"], true)) {
             } else {
                 return;
             }
-            //Get media JSON, we don't need to check if mid is found since the function will return if it is not
+            //Get media JSON, we do not need to check if mid is found since the function will return if it is not
             networkBusy = true;
             GM_xmlhttpRequest({
                 method: "GET",
@@ -938,7 +938,6 @@ if (a.domCmp(["videowood.tv"])) {
     a.readOnly("adb_remind", false);
 }
 if (a.domCmp(["infojobs.com.br"])) {
-    //Set properly webUI, this has 3 layers and a.readOnly() can't handle it
     a.win.webUI = {};
     a.win.webUI.Utils = {};
     a.win.Object.defineProperty(a.win.webUI.Utils, "StopAdBlock", {
@@ -1205,7 +1204,7 @@ if (a.domCmp(["bitvisits.com"])) {
 if (a.domCmp(["exrapidleech.info"])) {
     a.filter("eval");
     /*
-    //This doesn't work anymore
+    //This does not work anymore
     //Set cookies, style, read only variables, disable open(), and create an element
     let tomorrow = new a.win.Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
@@ -1962,7 +1961,7 @@ if (a.domCmp(["hanime.tv"])) {
         //This will close the tab instantly with Tampermonkey
         window.close();
     };
-    //Old solution, we'll run it just in case
+    //Old solution, we will run it just in case
     a.readOnly("BetterJsPop", function () { });
 }
 if (a.domCmp(["firstonetv.eu"])) {
