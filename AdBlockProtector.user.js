@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 6.209
+// @version 7.1
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -29,6 +29,7 @@ null==d?void 0:d))},attrHooks:{type:{set:function(a,b){if(!o.radioValue&&"radio"
 var a = a || {};
 a.init = function (excluded, AdflyMatch, AdflyUnmatch) {
     a.$ = a.make$();
+    a.filter.key = a.uid();
     a.config();
     a.config.debugMode && a.out.warn("Domain: " + a.dom);
     a.config.domExcluded = excluded;
@@ -94,8 +95,45 @@ a.win = unsafeWindow;
 a.doc = a.win.document;
 a.out = a.win.console;
 a.dom = a.doc.domain;
-a.on = function (event, func) {
-    a.win.addEventListener(event, func);
+a.on = function (event, func, capture, key) {
+    a.win.addEventListener(event, func, capture || false, key);
+};
+a.setTimeout = a.win.setTimeout;
+a.setInterval = a.win.setInterval;
+a.matchMethod = {
+    matchAll: 0, //Match all, omit defaults to this
+    string: 1, //Partial string match
+    stringExact: 2, //Exact string match, will result in match if one or more arguments matches the filter
+    RegExp: 3, //Regular expression
+    callback: 4 //Callback, arguments list will be supplied as an array, return true for match and false for not match
+};
+a.applyMatch = function (args, method, filter) {
+    switch (method) {
+        case a.matchMethod.string:
+            for (let i = 0; i < args.length; i++) {
+                if (String(args[i]).includes(filter)) {
+                    return true;
+                }
+            }
+            break;
+        case a.matchMethod.stringExact:
+            for (let i = 0; i < args.length; i++) {
+                if (filter === String(args[i])) {
+                    return true;
+                }
+            }
+            break;
+        case a.matchMethod.RegExp:
+            for (let i = 0; i < args.length; i++) {
+                if (filter.test(String(args[i]))) {
+                    return true;
+                }
+            }
+            break;
+        case a.matchMethod.callback:
+            return filter(args);
+    }
+    return false;
 };
 a.$ = null;
 a.c = {};
@@ -239,38 +277,39 @@ a.protectFunc = function () {
 a.protectFunc.enabled = false;
 a.protectFunc.pointers = [];
 a.protectFunc.masks = [];
-a.filter = function (func, filter) {
-    filter = filter || /[\S\s]/;
-    let original;
-    let fNames;
+a.filter = function (func, method, filter, onMatch, onAfter) {
+    let original = a.win;
+    let parent;
     const newFunc = function () {
-        if (a.config.debugMode) {
-            a.out.warn(func + " is called with these arguments: ");
-            for (let i = 0; i < arguments.length; i++) {
-                a.out.warn(String(arguments[i]));
+        if (arguments[arguments.length - 1] !== a.filter.key) {
+            if (a.config.debugMode) {
+                a.out.warn(func + " is called with these arguments: ");
+                for (let i = 0; i < arguments.length; i++) {
+                    a.out.warn(String(arguments[i]));
+                }
             }
-        }
-        for (let i = 0; i < arguments.length; i++) {
-            if (filter.test(String(arguments[i]))) {
+            if (!method || a.applyMatch(arguments, method, filter)) {
                 a.config.debugMode && a.err();
+                onMatch && onMatch();
+                onAfter && onAfter(true, arguments);
                 return;
             }
+            a.config.debugMode && a.out.info("Tests passed. ");
+            onAfter && onAfter(false, arguments);
+        } else if (a.config.debugMode) {
+            a.out.info("Key valid, filter disabled for this call. ");
         }
-        a.config.debugMode && a.out.info("Tests passed. ");
-        if (typeof fNames === "object") {
-            return original.apply(a.win[fNames[0]], arguments);
-        } else {
-            return original.apply(a.win, arguments);
-        }
+        return original.apply(parent, arguments);
     };
     try {
-        if (func.includes(".")) {
-            fNames = func.split(".");
-            original = a.win[fNames[0]][fNames[1]];
-            a.win[fNames[0]][fNames[1]] = newFunc;
-        } else {
-            original = a.win[func];
-            a.win[func] = newFunc;
+        let stack = func.split(".");
+        let current;
+        while (current = stack.shift()) {
+            parent = original;
+            original = parent[current];
+            if (!stack.length) {
+                parent[current] = newFunc;
+            }
         }
         if (a.protectFunc.enabled) {
             a.protectFunc.pointers.push(newFunc);
@@ -283,8 +322,8 @@ a.filter = function (func, filter) {
     }
     return true;
 };
-a.timewarp = function (func, filter, ratio) {
-    filter = filter || /[\S\s]/;
+a.filter.key = null;
+a.timewarp = function (func, method, filter, onMatch, onAfter, ratio) {
     ratio = ratio || 0.02;
     const original = a.win[func];
     const newFunc = function (arg, time) {
@@ -293,12 +332,15 @@ a.timewarp = function (func, filter, ratio) {
             a.out.warn(String(arg));
             a.out.warn(String(time));
         }
-        if (filter.test(String(arg)) || filter.test(String(time))) {
+        if (!method || a.applyMatch(arguments, method, filter)) {
             a.config.debugMode && a.out.warn("Timewarpped. ");
-            return original(arg, time * ratio);
+            onMatch && onMatch();
+            onAfter && onAfter(true, arguments);
+            return original.apply(a.win, arguments);
         } else {
             a.config.debugMode && a.out.info("Not timewarpped. ");
-            return original(arg, time);
+            onAfter && onAfter(false, arguments);
+            return original.apply(a.win, arguments);
         }
     };
     try {
@@ -334,23 +376,22 @@ a.crashScript = function (sample) {
 };
 a.readOnly = function (name, val) {
     try {
-        if (name.includes(".")) {
-            let nameArray = name.split(".");
-            a.win.Object.defineProperty(a.win[nameArray[0]], nameArray[1], {
-                configurable: false,
-                set: function () { },
-                get: function () {
-                    return val;
-                }
-            });
-        } else {
-            a.win.Object.defineProperty(a.win, name, {
-                configurable: false,
-                set: function () { },
-                get: function () {
-                    return val;
-                }
-            });
+        let property = a.win;
+        let parent;
+        let stack = name.split(".");
+        let current;
+        while (current = stack.shift()) {
+            parent = property;
+            property = parent[current];
+            if (!stack.length) {
+                a.win.Object.defineProperty(parent, current, {
+                    configurable: false,
+                    set: function () { },
+                    get: function () {
+                        return val;
+                    }
+                });
+            }
         }
     } catch (err) {
         a.config.debugMode && a.out.error("AdBlock Protector failed to define read-only property " + name + "! ");
@@ -361,27 +402,24 @@ a.readOnly = function (name, val) {
 a.noAccess = function (name) {
     const errMsg = "AdBlock Error: This property may not be accessed! ";
     try {
-        if (name.includes(".")) {
-            let nameArray = name.split(".");
-            a.win.Object.defineProperty(a.win[nameArray[0]], nameArray[1], {
-                configurable: false,
-                set: function () {
-                    throw errMsg;
-                },
-                get: function () {
-                    throw errMsg;
-                }
-            });
-        } else {
-            a.win.Object.defineProperty(a.win, name, {
-                configurable: false,
-                set: function () {
-                    throw errMsg;
-                },
-                get: function () {
-                    throw errMsg;
-                }
-            });
+        let property = a.win;
+        let parent;
+        let stack = name.split(".");
+        let current;
+        while (current = stack.shift()) {
+            parent = property;
+            property = parent[current];
+            if (!stack.length) {
+                a.win.Object.defineProperty(parent, current, {
+                    configurable: false,
+                    set: function () {
+                        throw errMsg;
+                    },
+                    get: function () {
+                        throw errMsg;
+                    }
+                });
+            }
         }
     } catch (err) {
         a.config.debugMode && a.out.error("AdBlock Protector failed to define non-accessible property " + name + "! ");
@@ -477,13 +515,13 @@ a.videoJS.init = function () {
 };
 a.videoJS.plugins = {};
 a.videoJS.plugins.hls = `<script src="//cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.4.0/videojs-contrib-hls.min.js"></script>`;
-a.ready = function (func) {
-    a.on("DOMContentLoaded", func);
+a.ready = function (func, capture, key) {
+    a.on("DOMContentLoaded", func, capture, key);
 };
-a.always = function (func) {
+a.always = function (func, capture, key) {
     func();
-    a.on("DOMContentLoaded", func);
-    a.on("load", func);
+    a.on("DOMContentLoaded", func, capture, key);
+    a.on("load", func, capture, key);
 };
 a.observe = function (type, callback) {
     if (!a.observe.init.done) {
@@ -682,7 +720,7 @@ a.generic = function () {
                     }
                 } catch (err) { }
             }
-        });
+        }, false, a.filter.key);
         const onInsertHandler = function (insertedNode) {
             if (insertedNode.nodeName === "DIV" &&
                 insertedNode.id &&
@@ -963,7 +1001,7 @@ if (a.domCmp(["tweaktown.com"])) {
 }
 if (a.domCmp(["ratemyprofessors.com"])) {
     a.readOnly("adBlocker", false);
-    a.filter("addEventListener", /^resize$/i);
+    a.filter("addEventListener", a.matchMethod.RegExp, /^resize$/i);
 }
 if (a.domCmp(["gamepedia.com"])) {
     a.on("load", function () {
@@ -975,7 +1013,7 @@ if (a.domCmp(["cbox.ws"])) {
 }
 if (a.domCmp(["ahmedabadmirror.com"])) {
     a.protectFunc();
-    a.filter("document.addEventListener", /function \_0x/);
+    a.filter("document.addEventListener", a.matchMethod.string, "function _0x");
     a.protectFunc.masks[1] = "function addEventListener() { [native code] }";
 }
 if (a.domCmp(["pinkrod.com", "wetplace.com"])) {
@@ -1072,7 +1110,7 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
     //@pragma-keepline Based on Adguard filters
     //@pragma-keepline License: https://github.com/AdguardTeam/AdguardBrowserExtension/blob/master/LICENSE
     a.cookie("ABCABC", "true");
-    a.filter("addEventListener", /^advertisement$/);
+    a.filter("addEventListener", a.matchMethod.stringExact, "advertisement");
     a.readOnly("hasSentinel", function () { return false; });
 }
 if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl"], true)) {
@@ -1195,7 +1233,7 @@ if (a.domCmp(["megogo.net"])) {
     a.readOnly("showAdBlockMessage", function () { });
 }
 if (a.domCmp(["elektroda.pl"])) {
-    a.filter("setTimeout", /adBlockTest\.offsetHeight/);
+    a.filter("setTimeout", a.matchMethod.string, "adBlockTest.offsetHeight");
 }
 if (a.domCmp(["anandabazar.com"])) {
     a.readOnly("canRunAds", false);
@@ -1205,7 +1243,7 @@ if (a.domCmp(["wtkplay.pl"])) {
     a.readOnly("can_run_ads", true);
 }
 if (a.domCmp(["betterdocs.net"])) {
-    a.filter("eval", /eval\(function\(p\,a\,c\,k\,e\,d\)/);
+    a.filter("eval", a.matchMethod.string, "eval(function(p,a,c,k,e,d)");
 }
 if (a.domCmp(["webqc.org"])) {
     a.filter("setTimeout");
@@ -1214,7 +1252,7 @@ if (a.domCmp(["wired.com"])) {
     a.readOnly("google_onload_fired", true);
 }
 if (a.domInc(["knowlet3389.blogspot"])) {
-    a.filter("setTimeout", /\$\(\"\#gAds\"\)\.height\(\)/);
+    a.filter("setTimeout", a.matchMethod.string, '$("#gAds").height()');
 }
 if (a.domCmp(["freegameserverhost.com"])) {
     a.css("#fab13 { height: 11px; }");
@@ -1469,7 +1507,7 @@ if (a.domCmp(["rmprepusb.com"])) {
     a.cookie("jot_viewer", "3");
 }
 if (a.domCmp(["cubeupload.com"])) {
-    a.filter("document.write", /Please consider removing adblock to help us pay our bills/);
+    a.filter("document.write", a.matchMethod.string, "Please consider removing adblock to help us pay our bills");
 }
 if (a.domCmp(["hentaihaven.org"])) {
     a.noAccess("desktop_variants");
@@ -2360,7 +2398,7 @@ if (a.domCmp(["lewebtvbouquetfrancophone.overblog.com", "webtv.bloguez.com", "la
     a.readOnly("jabbahud", function () { });
 }
 if (a.domCmp(["mybank.pl", "rapidgrab.pl"])) {
-    a.filter("addEventListener", /\.nextFunction\(\)\}/);
+    a.filter("addEventListener", a.matchMethod.string, ".nextFunction()}");
 }
 if (a.domCmp(["linkdrop.net", "revclouds.com", "leporno.org", "uploadshub.com", "dasolo.org",
     "fullstuff.net", "zeusnews.it", "cheminots.net", "lolsy.tv", "animes-mangas-ddl.com",
@@ -2369,7 +2407,7 @@ if (a.domCmp(["linkdrop.net", "revclouds.com", "leporno.org", "uploadshub.com", 
     "sadeempc.com", "avmoo.com", "thailande-fr.com", "btaia.com", "tusoft.org", "hisse.net",
     "europeup.com", "nrj.fr", "srnk.co", "animmex.co", "socketloop.com", "crackhex.com",
     "revealedtricks4u.com", "pizzamaking.com", "computerworm.net", "yourlifeupdated.net"])) {
-    a.filter("setTimeout", /bab\_elementid/);
+    a.filter("setTimeout", a.matchMethod.string, "bab_elementid");
 }
 if (a.domCmp(["fourchette-et-bikini.fr", "meteocity.com"])) {
     a.readOnly("adProtect", 1);
@@ -2442,7 +2480,7 @@ if (a.domCmp(["xnxx.com"])) {
 }
 if (a.domCmp(["sidereel.com"])) {
     a.protectFunc();
-    a.filter("setTimeout", /function\ \_0x[a-z0-9]{4,8}\(/);
+    a.filter("setTimeout", a.matchMethod.RegExp, /function\ \_0x[a-z0-9]{4,8}\(/);
 }
 if (a.domCmp(["burning-feed.com"])) {
     a.readOnly("ads_enable", function () { });
@@ -2474,7 +2512,7 @@ if (a.domCmp(["sandiegouniontribune.com"])) {
             a.win.clearInterval(token);
         }
     }, 1000);
-    a.filter("addEventListener", /^scroll$/);
+    a.filter("addEventListener", a.matchMethod.stringExact, "scroll");
 }
 if (a.domCmp(["adz.bz", "mellow.link", "hop.bz", "mellowads.com", "url.vin",
     "clik.bz"])) {
@@ -2516,11 +2554,11 @@ if (a.domCmp(["adz.bz", "mellow.link", "hop.bz", "mellowads.com", "url.vin",
     });
 }
 if (a.domCmp(["adbull.me"])) {
-    a.timewarp("setInterval", /^1000$/);
+    a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
 if (a.domCmp(["shink.in"])) {
     a.readOnly("RunAds", true);
-    a.timewarp("setInterval", /^1000$/);
+    a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
     a.win.open = function () { };
     a.readOnly("jsPopunder", function () { });
     const _createElement = a.doc.createElement;
@@ -2538,7 +2576,7 @@ if (a.domCmp(["shink.in"])) {
 }
 if (a.domCmp(["gamezhero.com"])) {
     a.readOnly("ads", true);
-    a.timewarp("setInterval", /^function\ \(\)\{var \_0x/);
+    a.timewarp("setInterval", a.matchMethod.string, "function (){var _0x");
 }
 if (a.domCmp(["freetvall.com"])) {
     a.readOnly("clickNS", function () { });
@@ -2560,7 +2598,7 @@ if (a.domCmp(["dasolo.co"])) {
     a.readOnly("nocontext", null);
     a.readOnly("mischandler", null);
     a.readOnly("disableselect", null);
-    a.filter("document.addEventListener", /^contextmenu$/);
+    a.filter("document.addEventListener", a.matchMethod.stringExact, "contextmenu");
 }
 if (a.domCmp(["titulky.com"])) {
     a.generic.FuckAdBlock("FADB", "fADB");
@@ -2628,7 +2666,7 @@ if (a.domCmp(["filmy.to", "histock.info"])) {
     };
 }
 if (a.domCmp(["flashx.tv"])) {
-    a.filter("document.addEventListener", /^(mousedown|keydown|contextmenu)$/);
+    a.filter("document.addEventListener", a.matchMethod.RegExp, /^(mousedown|keydown|contextmenu)$/);
 }
 if (a.domCmp(["multiup.org", "multiup.eu"])) {
     a.cookie("visit", "1");
@@ -2661,7 +2699,7 @@ if (a.domCmp(["linkneverdie.com"])) {
     });
 }
 if (a.domCmp(["ally.sh", "al.ly"])) {
-    a.timewarp("setInterval", /^1000$/);
+    a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
     a.win.open = null;
 }
 if (a.domCmp(["nbc.com"])) {
@@ -2673,16 +2711,8 @@ if (a.domCmp(["filmyiseriale.net"])) {
     });
 }
 if (a.domCmp(["tf2center.com"])) {
-    a.filter("setInterval", /\"\/adblock\"/);
-    a.filter("setTimeout", /^function \(\)\{B\(F\+1\)\}$/);
-}
-if (a.domCmp(["up-4ever.com"])) {
-    a.filter("setTimeout", /console\.log\(document\.getElementsByTagName/);
-    a.ready(function () {
-        a.$("#hiddensection").show();
-        a.$("#hiddensection2").remove();
-    });
-    a.readOnly("remaining", "0");
+    a.filter("setInterval", a.matchMethod.string, '"/adblock"');
+    a.filter("setTimeout", a.matchMethod.stringExact, "function (){B(F+1)}");
 }
 if (a.domCmp(["gaybeeg.info"])) {
     a.observe("insert", function (node) {
@@ -2744,7 +2774,7 @@ if (a.domCmp(["dovathd.com"])) {
     });
 }
 if (a.domCmp(["freepdf-books.com"])) {
-    a.timewarp("setInterval", /^1000$/);
+    a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
 if (a.domCmp(["temp-mail.org"])) {
     a.readOnly("checkadBlock", function () { });
@@ -2807,9 +2837,9 @@ if (a.domCmp(["gelbooru.com"])) {
     }
 }
 if (a.domCmp(["urle.co"])) {
-    a.filter("setTimeout", /captchaCheckAdblockUser\(\)\;/);
+    a.filter("setTimeout", a.matchMethod.string, "captchaCheckAdblockUser();");
     a.filter("eval");
-    a.timewarp("setInterval", /^1000$/);
+    a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
 if (a.domCmp(["playbb.me", "easyvideo.me", "videowing.me", "videozoo.me"])) {
     a.ready(function () {
@@ -2820,6 +2850,14 @@ if (a.domCmp(["nicematin.com"])) {
     a.noAccess("checkAds");
 }
 if (a.domCmp(["bc.vc"])) {
-    a.timewarp("setInterval", /^1000$/);
+    a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
+}
+if (a.domCmp(["up-4ever.com"])) {
+    a.filter("setTimeout", a.matchMethod.string, "$('#adblock_detected').val(1);");
+    a.css("#hiddensection { display: block; }");
+    a.ready(function () {
+        a.$("#hiddensection").show();
+        a.$("#hiddensection2").remove();
+    });
 }
 a.generic();

@@ -2278,14 +2278,6 @@ if (a.domCmp(["tf2center.com"])) {
     a.filter("setInterval", a.matchMethod.string, '"/adblock"');
     a.filter("setTimeout", a.matchMethod.stringExact, "function (){B(F+1)}");
 }
-if (a.domCmp(["up-4ever.com"])) {
-    a.filter("setTimeout", a.matchMethod.string, "console.log(document.getElementsByTagName");
-    a.ready(function () {
-        a.$("#hiddensection").show();
-        a.$("#hiddensection2").remove();
-    });
-    a.readOnly("remaining", "0");
-}
 if (a.domCmp(["gaybeeg.info"])) {
     //NSFW!
     a.observe("insert", function (node) {
@@ -2429,6 +2421,15 @@ if (a.domCmp(["nicematin.com"])) {
 }
 if (a.domCmp(["bc.vc"])) {
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
+}
+if (a.domCmp(["up-4ever.com"])) {
+    a.filter("setTimeout", a.matchMethod.string, "$('#adblock_detected').val(1);");
+    //Force show download links
+    a.css("#hiddensection { display: block; }");
+    a.ready(function () {
+        a.$("#hiddensection").show();
+        a.$("#hiddensection2").remove();
+    });
 }
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
