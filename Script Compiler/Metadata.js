@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 7.7
+// @version 7.8
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -14,6 +14,11 @@
 // @grant GM_openInTab
 // @grant window.close
 // @grant GM_registerMenuCommand
+// @connect foxvalleyfoodie.com
+// @connect sagkjeder.no
+// @connect wp.tv
+// @connect tvnplayer.pl
+// @connect xmc.pl
 // @connect *
 // @run-at document-start
 // @homepage https://jspenguin2017.github.io/AdBlockProtector/
