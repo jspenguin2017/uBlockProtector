@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 7.5
+// @version 7.6
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2866,5 +2866,9 @@ if (a.domCmp(["exrapidleech.info"])) {
         a.$("p:contains('Please disable ads block')").remove();
         a.$("p:contains('Please turn on popup')").remove();
     });
+}
+if (a.domCmp(["ouo.io"])) {
+    a.win.localStorage.setItem("snapLastPopAt", (new a.win.Date()).getTime());
+    a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
 a.generic();
