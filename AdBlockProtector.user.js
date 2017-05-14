@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 7.6
+// @version 7.7
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2557,7 +2557,6 @@ if (a.domCmp(["adbull.me"])) {
 }
 if (a.domCmp(["shink.in"])) {
     a.readOnly("RunAds", true);
-    a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
     a.win.open = function () { };
     a.readOnly("jsPopunder", function () { });
     const _createElement = a.doc.createElement;
@@ -2572,6 +2571,14 @@ if (a.domCmp(["shink.in"])) {
                 return _createElement.apply(a.doc, arguments);
         }
     };
+    if (a.win.location.pathname.startsWith("/go/")) {
+        a.ready(() => {
+            const link = a.doc.getElementById("btn-main");
+            const i = link.href.lastIndexOf("http");
+            const url = link.href.substr(i);
+            a.win.location.href = url;
+        });
+    }
 }
 if (a.domCmp(["gamezhero.com"])) {
     a.readOnly("ads", true);

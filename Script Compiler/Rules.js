@@ -2087,9 +2087,8 @@ if (a.domCmp(["adbull.me"])) {
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
 if (a.domCmp(["shink.in"])) {
-    //Remove block screen and skip countdown
+    //Remove block screen
     a.readOnly("RunAds", true);
-    a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
     //Block popup
     a.win.open = function () { };
     a.readOnly("jsPopunder", function () { });
@@ -2117,6 +2116,15 @@ if (a.domCmp(["shink.in"])) {
                 return _createElement.apply(a.doc, arguments);
         }
     };
+    //Skip countdown
+    if (a.win.location.pathname.startsWith("/go/")) {
+        a.ready(() => {
+            const link = a.doc.getElementById("btn-main");
+            const i = link.href.lastIndexOf("http");
+            const url = link.href.substr(i);
+            a.win.location.href = url;
+        });
+    }
 }
 if (a.domCmp(["gamezhero.com"])) {
     a.readOnly("ads", true);
