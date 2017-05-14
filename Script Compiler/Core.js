@@ -167,7 +167,7 @@ a.on = function (event, func) {
  * @const {Enumeration}
  */
 a.matchMethod = {
-    //Omit for match all
+    matchAll: 0, //Match all, omit defaults to this
     string: 1, //Partial string match
     stringExact: 2, //Exact string match, will result in match if one or more arguments matches the filter
     RegExp: 3, //Regular expression
@@ -494,12 +494,13 @@ a.protectFunc.masks = [];
  * Filter a function.
  * @function
  * @param {string} func - The name of the function to filter, use "." to separate multiple layers.
- * @param {Enumeration} [method=Match All] - An option from a.matchMethods, omit (or pass null) to match all.
- * @param {*} filter - Filter to apply, this is required if method is not omitted.
- * @param {Function} onAfter - Callback when filter is applied, match state (true for blocked, false to allowed) and arguments list (as an array) will be supplied.
+ * @param {Enumeration} [method=Match All] - An option from a.matchMethods, omit or pass null defaults to match all.
+ * @param {*} filter - Filter to apply, this must be appropriate for the method.
+ * @param {Function} [onMatch=undefined] - Callback when filter is matched, nothing will be supplied.
+ * @param {Function} [onAfter=undefined] - Callback when filter is applied, match state (true for blocked, false to allowed) and arguments list (as an array) will be supplied.
  * @returns {boolean} True if the operation was successful, false otherwise.
  */
-a.filter = function (func, method, filter, onAfter) {
+a.filter = function (func, method, filter, onMatch, onAfter) {
     //The original function and its parent, will be set later
     let original = a.win;
     let parent;
@@ -516,6 +517,7 @@ a.filter = function (func, method, filter, onAfter) {
         if (!method || a.applyMatch(arguments, method, filter)) {
             //Not allowed
             a.config.debugMode && a.err();
+            onMatch && onMatch();
             onAfter && onAfter(true, arguments);
             return;
         }
@@ -556,13 +558,15 @@ a.filter = function (func, method, filter, onAfter) {
  * Change the execution delay for setTimeout or setInterval.
  * @function
  * @param {string} func - The name of the function to patch, can be "setTimeout" or "setInterval".
- * @param {RegExp} [filter=/[\S\s]/] - Change execution delay if this filter is matched, match everything by default.
+ * @param {Enumeration} [method=Match All] - An option from a.matchMethods, omit or pass null defaults to match all.
+ * @param {*} filter - Filter to apply, this must be appropriate for the method.
+ * @param {Function} [onMatch=undefined] - Callback when filter is matched, nothing will be supplied.
+ * @param {Function} [onAfter=undefined] - Callback when filter is applied, match state (true for blocked, false to allowed) and arguments list (as an array) will be supplied.
  * @param {float} [ratio=0.02] - The boost ratio, between 0 and 1 for speed up, larger than 1 for slow down, defaults to speed up 50 times.
  * @returns {boolean} True if the operation was successful, false otherwise.
  */
-a.timewarp = function (func, filter, ratio) {
+a.timewarp = function (func, method, filter, onMatch, onAfter, ratio) {
     //Check parameters
-    filter = filter || /[\S\s]/;
     ratio = ratio || 0.02;
     //The original function
     const original = a.win[func];
@@ -575,13 +579,16 @@ a.timewarp = function (func, filter, ratio) {
             a.out.warn(String(time));
         }
         //Check if we need to timewarp this function
-        if (filter.test(String(arg)) || filter.test(String(time))) {
+        if (!method || a.applyMatch(arguments, method, filter)) {
             //Timewarp
             a.config.debugMode && a.out.warn("Timewarpped. ");
+            onMatch && onMatch();
+            onAfter && onAfter(true, arguments);
             return original(arg, time * ratio);
         } else {
             //Do not timewarp
             a.config.debugMode && a.out.info("Not timewarpped. ");
+            onAfter && onAfter(false, arguments);
             return original(arg, time);
         }
     };
