@@ -163,3 +163,5 @@ gelbooru.com#@#center > a[href]
 @@||ff14angler.com^$elemhide
 ! === games.softgames.de
 @@||games.softgames.de/assets/showads.js|
+! === exrapidleech.info
+||bidvertiser.com$important,domain=exrapidleech.info

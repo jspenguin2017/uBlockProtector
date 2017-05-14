@@ -2430,5 +2430,10 @@ if (a.domCmp(["up-4ever.com"])) {
         a.$("#hiddensection2").remove();
     });
 }
+if (a.domCmp(["exrapidleech.info"])) {
+    a.ready(() => {
+        a.$(".alert-danger.lead:contains('block')").remove();
+    });
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();

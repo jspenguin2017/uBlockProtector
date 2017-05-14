@@ -103,6 +103,7 @@ gelbooru.com#@#center > a[href]
 @@|http://62.212.86.9/js/ads.js|$domain=mydaddy.cc
 @@||ff14angler.com^$elemhide
 @@||games.softgames.de/assets/showads.js|
+||bidvertiser.com$important,domain=exrapidleech.info
 ! =====Patched Anti-Adblock Killer List=====
 ! License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
 ||trymask.com/api/$third-party
