@@ -107,6 +107,7 @@ gelbooru.com#@#center > a[href]
 @@||ff14angler.com^$elemhide
 @@||games.softgames.de/assets/showads.js|
 ||bidvertiser.com$important,domain=exrapidleech.info
+@@||atresplayer.com^$generichide
 ! =====Patched Anti-Adblock Killer List=====
 ! License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
 ||trymask.com/api/$third-party

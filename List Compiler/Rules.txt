@@ -169,3 +169,6 @@ gelbooru.com#@#center > a[href]
 @@||games.softgames.de/assets/showads.js|
 ! === exrapidleech.info
 ||bidvertiser.com$important,domain=exrapidleech.info
+! === atresplayer.com
+! === Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/180
+@@||atresplayer.com^$generichide
