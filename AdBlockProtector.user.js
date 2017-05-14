@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 7.4
+// @version 7.5
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -94,8 +94,8 @@ a.win = unsafeWindow;
 a.doc = a.win.document;
 a.out = a.win.console;
 a.dom = a.doc.domain;
-a.on = function (event, func, capture, key) {
-    a.win.addEventListener(event, func, capture || false, key);
+a.on = function (event, func, capture) {
+    a.win.addEventListener(event, func, capture);
 };
 a.setTimeout = a.win.setTimeout;
 a.setInterval = a.win.setInterval;
@@ -280,24 +280,23 @@ a.filter = function (func, method, filter, onMatch, onAfter) {
     let original = a.win;
     let parent;
     const newFunc = function () {
-        if (arguments[arguments.length - 1] !== a.filter.key) {
-            if (a.config.debugMode) {
-                a.out.warn(func + " is called with these arguments: ");
-                for (let i = 0; i < arguments.length; i++) {
-                    a.out.warn(String(arguments[i]));
-                }
+        if (a.config.debugMode) {
+            a.out.warn(func + " is called with these arguments: ");
+            for (let i = 0; i < arguments.length; i++) {
+                a.out.warn(String(arguments[i]));
             }
-            if (!method || a.applyMatch(arguments, method, filter)) {
-                a.config.debugMode && a.err();
-                onMatch && onMatch();
-                onAfter && onAfter(true, arguments);
-                return;
-            }
-            a.config.debugMode && a.out.info("Tests passed. ");
-            onAfter && onAfter(false, arguments);
-        } else if (a.config.debugMode) {
-            a.out.info("Key valid, filter disabled for this call. ");
         }
+        if (!method || a.applyMatch(arguments, method, filter)) {
+            a.config.debugMode && a.err();
+            let ret = undefined;
+            if (onMatch) {
+                ret = onMatch(arguments);
+            }
+            onAfter && onAfter(true, arguments);
+            return ret;
+        }
+        a.config.debugMode && a.out.info("Tests passed. ");
+        onAfter && onAfter(false, arguments);
         return original.apply(parent, arguments);
     };
     try {
@@ -321,20 +320,21 @@ a.filter = function (func, method, filter, onMatch, onAfter) {
     }
     return true;
 };
-a.filter.key = a.win.Math.random();
 a.timewarp = function (func, method, filter, onMatch, onAfter, ratio) {
     ratio = ratio || 0.02;
     const original = a.win[func];
-    const newFunc = function (arg, time) {
+    const newFunc = function () {
         if (a.config.debugMode) {
             a.out.warn("Timewarpped " + func + " is called with these arguments: ");
-            a.out.warn(String(arg));
-            a.out.warn(String(time));
+            for (let i = 0; i < arguments.length; i++) {
+                a.out.warn(String(arguments[i]));
+            }
         }
         if (!method || a.applyMatch(arguments, method, filter)) {
             a.config.debugMode && a.out.warn("Timewarpped. ");
-            onMatch && onMatch();
+            onMatch && onMatch(arguments);
             onAfter && onAfter(true, arguments);
+            arguments[1] = arguments[1] * ratio;
             return original.apply(a.win, arguments);
         } else {
             a.config.debugMode && a.out.info("Not timewarpped. ");
@@ -514,13 +514,13 @@ a.videoJS.init = function () {
 };
 a.videoJS.plugins = {};
 a.videoJS.plugins.hls = `<script src="//cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.4.0/videojs-contrib-hls.min.js"><\/script>`;
-a.ready = function (func, capture, key) {
-    a.on("DOMContentLoaded", func, capture, key);
+a.ready = function (func, capture) {
+    a.on("DOMContentLoaded", func, capture);
 };
-a.always = function (func, capture, key) {
+a.always = function (func, capture) {
     func();
-    a.on("DOMContentLoaded", func, capture, key);
-    a.on("load", func, capture, key);
+    a.on("DOMContentLoaded", func, capture);
+    a.on("load", func, capture);
 };
 a.observe = function (type, callback) {
     if (!a.observe.init.done) {
@@ -719,7 +719,7 @@ a.generic = function () {
                     }
                 } catch (err) { }
             }
-        }, false, a.filter.key);
+        });
         const onInsertHandler = function (insertedNode) {
             if (insertedNode.nodeName === "DIV" &&
                 insertedNode.id &&

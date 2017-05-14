@@ -159,8 +159,8 @@ a.dom = a.doc.domain;
  * We must wrap it like this or it will throw errors.
  * @const {Function}
  */
-a.on = function (event, func, capture, key) {
-    a.win.addEventListener(event, func, capture || false, key);
+a.on = function (event, func, capture) {
+    a.win.addEventListener(event, func, capture);
 };
 /**
  * The real setTimeout.
@@ -502,13 +502,12 @@ a.protectFunc.pointers = [];
 a.protectFunc.masks = [];
 /**
  * Filter a function.
- * Pass a.filter.key as last argument to a filtered function to bypass the filter. The key is only accessible by our own functions.
  * @function
  * @param {string} func - The name of the function to filter, use "." to separate multiple layers.
  * @param {Enumeration} [method=Match All] - An option from a.matchMethods, omit or pass null defaults to match all.
  * @param {*} filter - Filter to apply, this must be appropriate for the method.
- * @param {Function} [onMatch=undefined] - Callback when filter is matched, nothing will be supplied.
- * @param {Function} [onAfter=undefined] - Callback when filter is applied, match state (true for blocked, false to allowed) and arguments list (as an array) will be supplied.
+ * @param {Function} [onMatch=undefined] - Callback when filter is matched, arguments list (as an array) will be supplied, return value of this callback will be send back to caller.
+ * @param {Function} [onAfter=undefined] - Callback when filter is applied, match state (true for blocked, false for allowed) and arguments list (as an array) will be supplied.
  * @returns {boolean} True if the operation was successful, false otherwise.
  */
 a.filter = function (func, method, filter, onMatch, onAfter) {
@@ -517,31 +516,28 @@ a.filter = function (func, method, filter, onMatch, onAfter) {
     let parent;
     //The replacement function with filters
     const newFunc = function () {
-        //Check for key
-        if (arguments[arguments.length - 1] !== a.filter.key) {
-            //Call log
-            if (a.config.debugMode) {
-                a.out.warn(func + " is called with these arguments: ");
-                for (let i = 0; i < arguments.length; i++) {
-                    a.out.warn(String(arguments[i]));
-                }
+        //Call log
+        if (a.config.debugMode) {
+            a.out.warn(func + " is called with these arguments: ");
+            for (let i = 0; i < arguments.length; i++) {
+                a.out.warn(String(arguments[i]));
             }
-            //Apply filter
-            if (!method || a.applyMatch(arguments, method, filter)) {
-                //Not allowed
-                a.config.debugMode && a.err();
-                onMatch && onMatch();
-                onAfter && onAfter(true, arguments);
-                return;
-            }
-            //Tests passed log
-            a.config.debugMode && a.out.info("Tests passed. ");
-            //Allowed
-            onAfter && onAfter(false, arguments);
-        } else if (a.config.debugMode) {
-            //Key valid
-            a.out.info("Key valid, filter disabled for this call. ");
         }
+        //Apply filter
+        if (!method || a.applyMatch(arguments, method, filter)) {
+            //Not allowed
+            a.config.debugMode && a.err();
+            let ret = undefined;
+            if (onMatch) {
+                ret = onMatch(arguments);
+            }
+            onAfter && onAfter(true, arguments);
+            return ret;
+        }
+        //Tests passed log
+        a.config.debugMode && a.out.info("Tests passed. ");
+        //Allowed
+        onAfter && onAfter(false, arguments);
         return original.apply(parent, arguments);
     };
     //Try to replace the function
@@ -572,19 +568,13 @@ a.filter = function (func, method, filter, onMatch, onAfter) {
     return true;
 };
 /**
- * A key that can be used bypass our own filters.
- * Pass this as the last argument to a filtered function when needed.
- * @const {float}
- */
-a.filter.key = a.win.Math.random();
-/**
  * Change the execution delay for setTimeout or setInterval.
  * @function
  * @param {string} func - The name of the function to patch, can be "setTimeout" or "setInterval".
  * @param {Enumeration} [method=Match All] - An option from a.matchMethods, omit or pass null defaults to match all.
  * @param {*} filter - Filter to apply, this must be appropriate for the method.
- * @param {Function} [onMatch=undefined] - Callback when filter is matched, nothing will be supplied.
- * @param {Function} [onAfter=undefined] - Callback when filter is applied, match state (true for blocked, false to allowed) and arguments list (as an array) will be supplied.
+ * @param {Function} [onMatch=undefined] - Callback when filter is matched, arguments list (as an array) will be supplied.
+ * @param {Function} [onAfter=undefined] - Callback when filter is applied, match state (true for blocked, false for allowed) and arguments list (as an array) will be supplied.
  * @param {float} [ratio=0.02] - The boost ratio, between 0 and 1 for speed up, larger than 1 for slow down, defaults to speed up 50 times.
  * @returns {boolean} True if the operation was successful, false otherwise.
  */
@@ -594,19 +584,21 @@ a.timewarp = function (func, method, filter, onMatch, onAfter, ratio) {
     //The original function
     const original = a.win[func];
     //The replacement function with timewarp
-    const newFunc = function (arg, time) {
+    const newFunc = function () {
         //Call log
         if (a.config.debugMode) {
             a.out.warn("Timewarpped " + func + " is called with these arguments: ");
-            a.out.warn(String(arg));
-            a.out.warn(String(time));
+            for (let i = 0; i < arguments.length; i++) {
+                a.out.warn(String(arguments[i]));
+            }
         }
         //Check if we need to timewarp this function
         if (!method || a.applyMatch(arguments, method, filter)) {
             //Timewarp
             a.config.debugMode && a.out.warn("Timewarpped. ");
-            onMatch && onMatch();
+            onMatch && onMatch(arguments);
             onAfter && onAfter(true, arguments);
+            arguments[1] = arguments[1] * ratio;
             return original.apply(a.win, arguments);
         } else {
             //Do not timewarp
@@ -910,18 +902,18 @@ a.videoJS.plugins.hls = `<script src="//cdnjs.cloudflare.com/ajax/libs/videojs-c
  * @function
  * @param {Function} func - The function to run.
  */
-a.ready = function (func, capture, key) {
-    a.on("DOMContentLoaded", func, capture, key);
+a.ready = function (func, capture) {
+    a.on("DOMContentLoaded", func, capture);
 };
 /**
  * Run function that is passed in on document-start (now), document-idle (DOMContentLoaded), and document-end (load).
  * @function
  * @param {Function} func - The function to run.
  */
-a.always = function (func, capture, key) {
+a.always = function (func, capture) {
     func();
-    a.on("DOMContentLoaded", func, capture, key);
-    a.on("load", func, capture, key);
+    a.on("DOMContentLoaded", func, capture);
+    a.on("load", func, capture);
 };
 /**
  * Observe mutations of the document.
@@ -1199,7 +1191,7 @@ a.generic = function () {
                     }
                 } catch (err) { }
             }
-        }, false, a.filter.key);
+        });
         //===on-insert===
         const onInsertHandler = function (insertedNode) {
             //No-Adblock
