@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 7.8
+// @version 7.9
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2557,6 +2557,43 @@ if (a.domCmp(["adz.bz", "mellow.link", "hop.bz", "mellowads.com", "url.vin",
         }
     });
 }
+if (a.domCmp(["zap.in"])) {
+    let val;
+    a.win.Object.defineProperty(a.win, "zapVM", {
+        configurable: false,
+        set: function (arg) {
+            val = arg;
+        },
+        get: function () {
+            if (val.verify) {
+                val.verify = (function () {
+                    callAPI(
+                        "VerifyZapClick",
+                        {
+                            linkRef: val.linkRef(),
+                            linkClickRef: $("#LinkClickRef")[0].value,
+                            recaptchaResponse: val.recaptchaResponse()
+                        },
+                        "Verify",
+                        "Verifying",
+                        function (response) {
+                            if (response.result) {
+                                window.location.href = response.zapURL;
+                            } else {
+                                showMessageModal("Verify failed", response.resultHtml, response.result);
+                            }
+                        },
+                        null,
+                        function () {
+                            grecaptcha.reset();
+                        }
+                    );
+                }).bind(val);
+            }
+            return val;
+        }
+    });
+}
 if (a.domCmp(["adbull.me"])) {
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
@@ -2882,5 +2919,7 @@ if (a.domCmp(["exrapidleech.info"])) {
 if (a.domCmp(["ouo.io"])) {
     a.win.localStorage.setItem("snapLastPopAt", (new a.win.Date()).getTime());
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
+}
+if (a.domCmp(["canalplus.fr"])) {
 }
 a.generic();

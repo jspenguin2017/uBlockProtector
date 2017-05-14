@@ -2083,6 +2083,44 @@ if (a.domCmp(["adz.bz", "mellow.link", "hop.bz", "mellowads.com", "url.vin",
         }
     });
 }
+if (a.domCmp(["zap.in"])) {
+    //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/201
+    let val;
+    a.win.Object.defineProperty(a.win, "zapVM", {
+        configurable: false,
+        set: function (arg) {
+            val = arg;
+        },
+        get: function () {
+            if (val.verify) {
+                val.verify = (function () {
+                    callAPI(
+                        "VerifyZapClick",
+                        {
+                            linkRef: val.linkRef(),
+                            linkClickRef: $("#LinkClickRef")[0].value,
+                            recaptchaResponse: val.recaptchaResponse()
+                        },
+                        "Verify",
+                        "Verifying",
+                        function (response) {
+                            if (response.result) {
+                                window.location.href = response.zapURL;
+                            } else {
+                                showMessageModal("Verify failed", response.resultHtml, response.result);
+                            }
+                        },
+                        null,
+                        function () {
+                            grecaptcha.reset();
+                        }
+                    );
+                }).bind(val);
+            }
+            return val;
+        }
+    });
+}
 if (a.domCmp(["adbull.me"])) {
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
