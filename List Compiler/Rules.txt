@@ -1,5 +1,5 @@
 ! === Installation test of homepage
-||jspenguin2017.github.io/AdBlockProtector/listTest.js|
+jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 ! === GENERIC
 ###like-us-adblock-modal
 ##.popup-premium__apla

@@ -26,12 +26,10 @@
             if (typeof AdBlock_Protector_Script !== "undefined") {
                 $("#scriptTestDiv").hide();
             }
-            if (typeof AdBlock_Protector_List === "undefined") {
+            if (typeof google_ad_status === "number") { //This will be set by List
                 $("#listTestDiv").hide();
-            } else {
-                $("#listTestDiv").show();
             }
-        }
+        };
 
         /**
          * When the document is ready, set up scrolling animation and load Disqus chat board.
