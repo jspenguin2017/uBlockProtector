@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 7.1
+// @version 7.2
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -29,7 +29,6 @@ null==d?void 0:d))},attrHooks:{type:{set:function(a,b){if(!o.radioValue&&"radio"
 var a = a || {};
 a.init = function (excluded, AdflyMatch, AdflyUnmatch) {
     a.$ = a.make$();
-    a.filter.key = a.uid();
     a.config();
     a.config.debugMode && a.out.warn("Domain: " + a.dom);
     a.config.domExcluded = excluded;
@@ -322,7 +321,7 @@ a.filter = function (func, method, filter, onMatch, onAfter) {
     }
     return true;
 };
-a.filter.key = null;
+a.filter.key = a.win.Math.random();
 a.timewarp = function (func, method, filter, onMatch, onAfter, ratio) {
     ratio = ratio || 0.02;
     const original = a.win[func];
