@@ -648,31 +648,30 @@ a.crashScript = function (sample) {
  * Defines a read-only property to unsafeWindow.
  * May not be able to lock the property's own properties.
  * @function
- * @param {string} name - The name of the property to define, use "." to separate multiple layers, max 2 layers.
+ * @param {string} name - The name of the property to define, use "." to separate multiple layers.
  * @param {*} val - The value to set.
  * @returns {boolean} True if the operation was successful, false otherwise.
  */
 a.readOnly = function (name, val) {
     try {
-        if (name.includes(".")) {
-            //Two layers
-            let nameArray = name.split(".");
-            a.win.Object.defineProperty(a.win[nameArray[0]], nameArray[1], {
-                configurable: false,
-                set: function () { },
-                get: function () {
-                    return val;
-                }
-            });
-        } else {
-            //One layer
-            a.win.Object.defineProperty(a.win, name, {
-                configurable: false,
-                set: function () { },
-                get: function () {
-                    return val;
-                }
-            });
+        //Find the property and its parent
+        let property = a.win;
+        let parent;
+        let stack = name.split(".");
+        let current;
+        while (current = stack.shift()) {
+            parent = property;
+            property = parent[current];
+            //Define the property if stack is empty
+            if (!stack.length) {
+                a.win.Object.defineProperty(parent, current, {
+                    configurable: false,
+                    set: function () { },
+                    get: function () {
+                        return val;
+                    }
+                });
+            }
         }
     } catch (err) {
         //Failed to define property
@@ -684,35 +683,32 @@ a.readOnly = function (name, val) {
 /**
  * Defines a property to unsafeWindow that (tries to) crash scripts who access it.
  * @function
- * @param {string} name - The name of the property to define, use "." to separate multiple layers, max 2 layers.
+ * @param {string} name - The name of the property to define, use "." to separate multiple layers.
  * @returns {boolean} True if the operation was successful, false otherwise.
  */
 a.noAccess = function (name) {
     const errMsg = "AdBlock Error: This property may not be accessed! ";
     try {
-        if (name.includes(".")) {
-            //Two layers
-            let nameArray = name.split(".");
-            a.win.Object.defineProperty(a.win[nameArray[0]], nameArray[1], {
-                configurable: false,
-                set: function () {
-                    throw errMsg;
-                },
-                get: function () {
-                    throw errMsg;
-                }
-            });
-        } else {
-            //One layer
-            a.win.Object.defineProperty(a.win, name, {
-                configurable: false,
-                set: function () {
-                    throw errMsg;
-                },
-                get: function () {
-                    throw errMsg;
-                }
-            });
+        //Find the property and its parent
+        let property = a.win;
+        let parent;
+        let stack = name.split(".");
+        let current;
+        while (current = stack.shift()) {
+            parent = property;
+            property = parent[current];
+            //Define the property if stack is empty
+            if (!stack.length) {
+                a.win.Object.defineProperty(parent, current, {
+                    configurable: false,
+                    set: function () {
+                        throw errMsg;
+                    },
+                    get: function () {
+                        throw errMsg;
+                    }
+                });
+            }
         }
     } catch (err) {
         //Failed to define property
