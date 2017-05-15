@@ -2,8 +2,7 @@
 
 ### Reporting a website that does not work
 
-Please check if someone else already opened an issue for your problem, join the discussion there and do not open another issue 
-if that is the case. 
+Please check if someone else already opened an issue for your problem, join the discussion there and do not open another one. 
 
 **Title**: The domain of the website. Prepend `NSFW! ` if the website may contain contents that are not safe for work. 
 
