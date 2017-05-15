@@ -179,3 +179,7 @@ bracknellnews.co.uk##script:inject(abort-on-property-write.js, _sp_)
 @@||u2s.io^$elemhide
 ! === telegraph.co.uk
 telegraph.co.uk##.adblocker-message
+! === pwn.pl
+pwn.pl##script:inject(abort-on-property-read.js, adblock)
+! === afreesms.com
+afreesms.com##script:inject(noeval.js)

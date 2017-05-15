@@ -112,6 +112,8 @@ gelbooru.com#@#center > a[href]
 bracknellnews.co.uk##script:inject(abort-on-property-write.js, _sp_)
 @@||u2s.io^$elemhide
 telegraph.co.uk##.adblocker-message
+pwn.pl##script:inject(abort-on-property-read.js, adblock)
+afreesms.com##script:inject(noeval.js)
 ! =====Patched Anti-Adblock Killer List=====
 ! License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
 ||trymask.com/api/$third-party
