@@ -2308,10 +2308,6 @@ if (a.domCmp(["linkneverdie.com"])) {
 if (a.domCmp(["ally.sh", "al.ly"])) {
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
     a.win.open = null;
-    //For al.ly, we need to enable reCaptcha button ourselves
-    if (a.domCmp(["al.ly"], true)) {
-        a.$("#messa").find("a").removeClass("disabled").text("Click Here");
-    }
 }
 if (a.domCmp(["nbc.com"])) {
     a.noAccess("mps");
