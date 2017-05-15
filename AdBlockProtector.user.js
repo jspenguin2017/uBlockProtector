@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 7.15
+// @version 7.16
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -156,21 +156,23 @@ a.c.topFrame = (function () {
 })();
 a.mods = function () {
     if (a.c.topFrame && a.domCmp(["facebook.com"], true)) {
-        if (a.mods.Facebook_JumpToTop) {
-            if (a.$("#AdBlock_Protector_FBMod_JumpToTop").length > 0) {
-                return;
+        (function addJumpToTop() {
+            if (a.mods.Facebook_JumpToTop) {
+                if (a.$("#AdBlock_Protector_FBMod_JumpToTop").length > 0) {
+                    return;
+                }
+                const navBar = a.$("div[role='navigation']");
+                if (navBar.length > 0) {
+                    navBar.first().append(`<div class="_4kny _2s24" id="AdBlock_Protector_FBMod_JumpToTop"><div class="_4q39"><a class="_2s25" href="javascript: void(0);">Top</a></div></div>`);
+                    a.$("#AdBlock_Protector_FBMod_JumpToTop").click(function () {
+                        a.win.scrollTo(a.win.scrollX, 0);
+                    });
+                    a.config.debugMode && a.out.info("Facebook Mod: Jump to Top button added. ");
+                } else {
+                    a.win.setTimeout(addJumpToTop, 500);
+                }
             }
-            const navBar = a.$("div[role='navigation']");
-            if (navBar.length > 0) {
-                navBar.first().append(`<div class="_4kny _2s24" id="AdBlock_Protector_FBMod_JumpToTop"><div class="_4q39"><a class="_2s25" href="javascript: void(0);">Top</a></div></div>`);
-                a.$("#AdBlock_Protector_FBMod_JumpToTop").click(function () {
-                    a.win.scrollTo(a.win.scrollX, 0);
-                });
-                a.config.debugMode && a.out.info("Facebook Mod: Jump to Top button added. ");
-            } else {
-                a.win.setTimeout(addJumpToTop, 500);
-            }
-        }
+        })();
     }
     if (a.c.topFrame && a.mods.Blogspot_AutoNCR && a.domInc(["blogspot"], true) && !a.domCmp(["blogspot.com"], true)) {
         const name = a.dom.replace("www.", "").split(".")[0];

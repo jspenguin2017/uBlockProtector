@@ -274,26 +274,28 @@ a.c.topFrame = (function () {
 a.mods = function () {
     //===Facebook mods===
     if (a.c.topFrame && a.domCmp(["facebook.com"], true)) {
-        //Jump To Top button
-        if (a.mods.Facebook_JumpToTop) {
-            //Stop if the button already exist, this should not be needed, but just to be sure
-            if (a.$("#AdBlock_Protector_FBMod_JumpToTop").length > 0) {
-                return;
+        (function addJumpToTop() {
+            //Jump To Top button
+            if (a.mods.Facebook_JumpToTop) {
+                //Stop if the button already exist, this should not be needed, but just to be sure
+                if (a.$("#AdBlock_Protector_FBMod_JumpToTop").length > 0) {
+                    return;
+                }
+                //Check if the nav bar is there
+                const navBar = a.$("div[role='navigation']");
+                if (navBar.length > 0) {
+                    //Present, insert button
+                    navBar.first().append(`<div class="_4kny _2s24" id="AdBlock_Protector_FBMod_JumpToTop"><div class="_4q39"><a class="_2s25" href="javascript: void(0);">Top</a></div></div>`);
+                    a.$("#AdBlock_Protector_FBMod_JumpToTop").click(function () {
+                        a.win.scrollTo(a.win.scrollX, 0);
+                    });
+                    a.config.debugMode && a.out.info("Facebook Mod: Jump to Top button added. ");
+                } else {
+                    //Wait a little bit for the window to load, for some reason load event is not working
+                    a.win.setTimeout(addJumpToTop, 500);
+                }
             }
-            //Check if the nav bar is there
-            const navBar = a.$("div[role='navigation']");
-            if (navBar.length > 0) {
-                //Present, insert button
-                navBar.first().append(`<div class="_4kny _2s24" id="AdBlock_Protector_FBMod_JumpToTop"><div class="_4q39"><a class="_2s25" href="javascript: void(0);">Top</a></div></div>`);
-                a.$("#AdBlock_Protector_FBMod_JumpToTop").click(function () {
-                    a.win.scrollTo(a.win.scrollX, 0);
-                });
-                a.config.debugMode && a.out.info("Facebook Mod: Jump to Top button added. ");
-            } else {
-                //Wait a little bit for the window to load, for some reason load event is not working
-                a.win.setTimeout(addJumpToTop, 500);
-            }
-        }
+        })();
     }
     //===Blogspot mods===
     if (a.c.topFrame && a.mods.Blogspot_AutoNCR && a.domInc(["blogspot"], true) && !a.domCmp(["blogspot.com"], true)) {
