@@ -2489,35 +2489,60 @@ if (a.domCmp(["ouo.io"])) {
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
 if (a.domCmp(["canalplus.fr"])) {
-    let videoID;
-    const search = a.win.location.search;
-    if (search.startsWith("?vid=") && (videoID = search.split("=")[1])) {
-        a.ready(() => {
-            GM_xmlhttpRequest({
-                method: "GET",
-                url: "http://service.canal-plus.com/video/rest/getVideos/cplus/" +
-                videoID + "?format=json",
-                onload: function (res) {
-                    //Try to find media URL
-                    try {
-                        const response = JSON.parse(res.responseText);
-                        const url = response.MEDIA.VIDEOS.HD;
-                        if (url) {
-                            a.$("#onePlayerHolder").after(a.nativePlayer(url +
-                                "?secret=pqzerjlsmdkjfoiuerhsdlfknaes")).remove();
-                        } else {
-                            throw "Media URL Not Found";
-                        }
-                    } catch (err) {
-                        a.config.debugMode && a.out.error("AdBlock Protector failed to find media URL! ");
+    let original; //Will be set later
+    let currentVideoId = null; //So we don't switch unles it's different
+    let videoElem; //Current video player element, used to replace it when changing episode
+    //New handler
+    const newFunc = function (onglet, liste, page, pid, ztid, videoId, progid) {
+        //Switch video
+        if (videoId !== currentVideoId) {
+            currentVideoId = videoId;
+            videoSwitch(videoId);
+        }
+        //Run original function
+        original.apply(a.win, arguments);
+    };
+    //Video switcher
+    const videoSwitch = function (videoID) {
+        debugger;
+        videoElem.text("Loading...");
+        GM_xmlhttpRequest({
+            method: "GET",
+            url: "http://service.canal-plus.com/video/rest/getVideos/cplus/" +
+            videoID + "?format=json",
+            onload: function (res) {
+                //Try to find media URL
+                try {
+                    const response = JSON.parse(res.responseText);
+                    const url = response.MEDIA.VIDEOS.HD;
+                    if (url) {
+                        const tempElem = a.$(a.nativePlayer(url + "?secret=pqzerjlsmdkjfoiuerhsdlfknaes"));
+                        videoElem.after(tempElem).remove();
+                        videoElem = tempElem;
+                    } else {
+                        throw "Media URL Not Found";
                     }
-                },
-                onerror: function () {
-                    a.config.debugMode && a.out.error("AdBlock Protector failed to load media JSON! ");
+                } catch (err) {
+                    a.config.debugMode && a.out.error("AdBlock Protector failed to find media URL! ");
                 }
-            });
+            },
+            onerror: function () {
+                a.config.debugMode && a.out.error("AdBlock Protector failed to load media JSON! ");
+            }
         });
-    }
+    };
+    //Initialization
+    a.ready(() => {
+        //Insert our handler in between theirs
+        original = a.win.changeOngletColonneCentrale;
+        a.win.changeOngletColonneCentrale = newFunc;
+        //Get the original player
+        videoElem = a.$("#onePlayerHolder");
+        //Set current video ID then patch the player for the first time
+        if (currentVideoId = videoElem.data("video")) {
+            videoSwitch(currentVideoId);
+        }
+    });
 }
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
