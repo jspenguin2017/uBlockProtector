@@ -88,7 +88,6 @@ filechoco.net##script:inject(noeval.js)
 @@|https://disqus.com/next/config.js$domain=graffica.info
 rule34hentai.net##script:inject(noeval.js)
 rule34hentai.net###babasbmsgx
-*$script,third-party,domain=urle.co
 playbb.me#@#div[style^="width:"]
 easyvideo.me#@#div[style^="width:"]
 videowing.me#@#div[style^="width:"]

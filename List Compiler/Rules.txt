@@ -142,8 +142,6 @@ filechoco.net##script:inject(noeval.js)
 ! === Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/177
 rule34hentai.net##script:inject(noeval.js)
 rule34hentai.net###babasbmsgx
-! === urle.co
-*$script,third-party,domain=urle.co
 ! === iframes of goodanime.co - Thanks to uBlock-user
 playbb.me#@#div[style^="width:"]
 easyvideo.me#@#div[style^="width:"]
