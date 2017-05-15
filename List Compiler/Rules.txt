@@ -185,3 +185,5 @@ pwn.pl##script:inject(abort-on-property-read.js, adblock)
 afreesms.com##script:inject(noeval.js)
 ! === techdracula.com
 techdracula.com##script:inject(setTimeout-defuser.js, an_message_display)
+! === clubic.com
+||tiptonvillepylesville.com^$domain=clubic.com

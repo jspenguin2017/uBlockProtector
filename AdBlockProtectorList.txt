@@ -115,6 +115,7 @@ telegraph.co.uk##.adblocker-message
 pwn.pl##script:inject(abort-on-property-read.js, adblock)
 afreesms.com##script:inject(noeval.js)
 techdracula.com##script:inject(setTimeout-defuser.js, an_message_display)
+||tiptonvillepylesville.com^$domain=clubic.com
 ! =====Patched Anti-Adblock Killer List=====
 ! License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
 ||trymask.com/api/$third-party
