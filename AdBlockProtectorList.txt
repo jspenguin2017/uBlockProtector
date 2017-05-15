@@ -111,6 +111,7 @@ gelbooru.com#@#center > a[href]
 ||broadcastbed.com^$domain=mmo-champion.com
 bracknellnews.co.uk##script:inject(abort-on-property-write.js, _sp_)
 @@||u2s.io^$elemhide
+telegraph.co.uk##.adblocker-message
 ! =====Patched Anti-Adblock Killer List=====
 ! License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
 ||trymask.com/api/$third-party
