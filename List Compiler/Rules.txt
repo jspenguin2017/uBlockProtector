@@ -175,3 +175,5 @@ gelbooru.com#@#center > a[href]
 ||broadcastbed.com^$domain=mmo-champion.com
 ! === bracknellnews.co.uk
 bracknellnews.co.uk##script:inject(abort-on-property-write.js, _sp_)
+! === u2s.io
+@@||u2s.io^$elemhide
