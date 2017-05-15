@@ -173,3 +173,5 @@ gelbooru.com#@#center > a[href]
 @@||atresplayer.com^$generichide
 ! === mmo-champion.com
 ||broadcastbed.com^$domain=mmo-champion.com
+! === bracknellnews.co.uk
+bracknellnews.co.uk##script:inject(abort-on-property-write.js, _sp_)
