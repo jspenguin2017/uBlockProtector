@@ -37,3 +37,5 @@ fox.com.tr#@#.text-ad-links
 gelbooru.com##.noticeError
 ! === https://github.com/jspenguin2017/AdBlockProtector/issues/167
 @@||bdfrm.bidvertiser.com/BidVertiser.dbm$subdocument,domain=exrapidleech.info
+! === https://github.com/jspenguin2017/AdBlockProtector/issues/200
+@@||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js$script,domain=al.ly

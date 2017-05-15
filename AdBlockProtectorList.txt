@@ -884,7 +884,6 @@ androiding.how##.jsXY6yjBmGN4-bg
 @@||maskinteknik.dk/assets/templates/maskinteknik/gfx/ads.png
 ||avxwcuaagfcdn.net^$domain=dagens.dk
 @@||al.ly/Advertiser.js$script
-@@||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js$script,domain=al.ly
 gokano.com#@#.adsbygoogle
 @@||hdwallpapers4you.com/js/adsbygoogle.js$script
 ||ctenetwork.com^$third-party
