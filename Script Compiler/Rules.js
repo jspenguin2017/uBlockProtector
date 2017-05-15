@@ -2543,5 +2543,8 @@ if (a.domCmp(["canalplus.fr"])) {
         }
     });
 }
+if (a.domCmp(["translatica.pl"])) {
+    a.readOnly("adblock", false);
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();

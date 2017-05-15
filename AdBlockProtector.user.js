@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 7.14
+// @version 7.15
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2980,5 +2980,8 @@ if (a.domCmp(["canalplus.fr"])) {
             videoSwitch(currentVideoId);
         }
     });
+}
+if (a.domCmp(["translatica.pl"])) {
+    a.readOnly("adblock", false);
 }
 a.generic();
