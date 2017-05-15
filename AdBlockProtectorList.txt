@@ -114,6 +114,7 @@ bracknellnews.co.uk##script:inject(abort-on-property-write.js, _sp_)
 telegraph.co.uk##.adblocker-message
 pwn.pl##script:inject(abort-on-property-read.js, adblock)
 afreesms.com##script:inject(noeval.js)
+/wp-content/uploads/*.js$domain=techdracula.com
 ! =====Patched Anti-Adblock Killer List=====
 ! License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
 ||trymask.com/api/$third-party

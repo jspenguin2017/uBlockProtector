@@ -183,3 +183,5 @@ telegraph.co.uk##.adblocker-message
 pwn.pl##script:inject(abort-on-property-read.js, adblock)
 ! === afreesms.com
 afreesms.com##script:inject(noeval.js)
+! === techdracula.com
+/wp-content/uploads/*.js$domain=techdracula.com
