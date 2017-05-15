@@ -2947,7 +2947,6 @@ if (a.domCmp(["canalplus.fr"])) {
         original.apply(a.win, arguments);
     };
     const videoSwitch = function (videoID) {
-        debugger;
         videoElem.text("Loading...");
         GM_xmlhttpRequest({
             method: "GET",
