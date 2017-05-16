@@ -2546,5 +2546,8 @@ if (a.domCmp(["canalplus.fr"])) {
 if (a.domCmp(["translatica.pl"])) {
     a.readOnly("adblock", false);
 }
+if (a.domCmp(["vidlox.tv"])) {
+    a.readOnly("adb", 0);
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();

@@ -2986,4 +2986,7 @@ if (a.domCmp(["canalplus.fr"])) {
 if (a.domCmp(["translatica.pl"])) {
     a.readOnly("adblock", false);
 }
+if (a.domCmp(["vidlox.tv"])) {
+    a.readOnly("adb", 0);
+}
 a.generic();

@@ -187,3 +187,5 @@ afreesms.com##script:inject(noeval.js)
 techdracula.com##script:inject(setTimeout-defuser.js, an_message_display)
 ! === clubic.com
 ||tiptonvillepylesville.com^$domain=clubic.com
+! === freeomovie.com
+freeomovie.com##script:inject(bab-defuser.js)
