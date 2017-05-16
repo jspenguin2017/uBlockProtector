@@ -189,3 +189,5 @@ techdracula.com##script:inject(setTimeout-defuser.js, an_message_display)
 ||tiptonvillepylesville.com^$domain=clubic.com
 ! === freeomovie.com
 freeomovie.com##script:inject(bab-defuser.js)
+! === keshavcommoditycalls.com
+keshavcommoditycalls.com##script:inject(setTimeout-defuser.js, an_message_display)

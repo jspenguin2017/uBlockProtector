@@ -117,6 +117,7 @@ afreesms.com##script:inject(noeval.js)
 techdracula.com##script:inject(setTimeout-defuser.js, an_message_display)
 ||tiptonvillepylesville.com^$domain=clubic.com
 freeomovie.com##script:inject(bab-defuser.js)
+keshavcommoditycalls.com##script:inject(setTimeout-defuser.js, an_message_display)
 ! =====Patched Anti-Adblock Killer List=====
 ! License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
 ||trymask.com/api/$third-party
