@@ -191,3 +191,7 @@ techdracula.com##script:inject(setTimeout-defuser.js, an_message_display)
 freeomovie.com##script:inject(bab-defuser.js)
 ! === keshavcommoditycalls.com
 keshavcommoditycalls.com##script:inject(setTimeout-defuser.js, an_message_display)
+! === jkanime.co
+jkanime.co##script:inject(setTimeout-defuser.js, #player)
+! === animeid.io
+animeid.io##script:inject(setTimeout-defuser.js, #player)
