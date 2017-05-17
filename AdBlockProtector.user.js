@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 7.16
+// @version 7.17
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2988,5 +2988,9 @@ if (a.domCmp(["translatica.pl"])) {
 }
 if (a.domCmp(["vidlox.tv"])) {
     a.readOnly("adb", 0);
+}
+if (a.domCmp(["receive-sms-online.info"])) {
+    a.filter("addEventListener", a.matchMethod.stringExact, `function (b){return"undefined"!=typeof n&&` +
+        `n.event.triggered!==b.type?n.event.dispatch.apply(a,arguments):void 0}`);
 }
 a.generic();

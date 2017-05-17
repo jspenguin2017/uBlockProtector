@@ -2549,5 +2549,9 @@ if (a.domCmp(["translatica.pl"])) {
 if (a.domCmp(["vidlox.tv"])) {
     a.readOnly("adb", 0);
 }
+if (a.domCmp(["receive-sms-online.info"])) {
+    a.filter("addEventListener", a.matchMethod.stringExact, `function (b){return"undefined"!=typeof n&&` +
+        `n.event.triggered!==b.type?n.event.dispatch.apply(a,arguments):void 0}`);
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
