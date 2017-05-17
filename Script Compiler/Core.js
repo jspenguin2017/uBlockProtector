@@ -517,30 +517,30 @@ a.filter = function (func, method, filter, onMatch, onAfter) {
     let original = a.win;
     let parent;
     //The replacement function with filters
-    const newFunc = function () {
+    const newFunc = (...args) => {
         //Call log
         if (a.config.debugMode) {
             a.out.warn(func + " is called with these arguments: ");
-            for (let i = 0; i < arguments.length; i++) {
-                a.out.warn(String(arguments[i]));
+            for (let i = 0; i < args.length; i++) {
+                a.out.warn(String(args[i]));
             }
         }
         //Apply filter
-        if (!method || a.applyMatch(arguments, method, filter)) {
+        if (!method || a.applyMatch(args, method, filter)) {
             //Not allowed
             a.config.debugMode && a.err();
             let ret = undefined;
             if (onMatch) {
-                ret = onMatch(arguments);
+                ret = onMatch(args);
             }
-            onAfter && onAfter(true, arguments);
+            onAfter && onAfter(true, args);
             return ret;
         }
         //Tests passed log
         a.config.debugMode && a.out.info("Tests passed. ");
         //Allowed
-        onAfter && onAfter(false, arguments);
-        return original.apply(parent, arguments);
+        onAfter && onAfter(false, args);
+        return original.apply(parent, args);
     };
     //Try to replace the function
     try {
@@ -586,27 +586,27 @@ a.timewarp = function (func, method, filter, onMatch, onAfter, ratio) {
     //The original function
     const original = a.win[func];
     //The replacement function with timewarp
-    const newFunc = function () {
+    const newFunc = (...args) => {
         //Call log
         if (a.config.debugMode) {
             a.out.warn("Timewarpped " + func + " is called with these arguments: ");
-            for (let i = 0; i < arguments.length; i++) {
-                a.out.warn(String(arguments[i]));
+            for (let i = 0; i < args.length; i++) {
+                a.out.warn(String(args[i]));
             }
         }
         //Check if we need to timewarp this function
-        if (!method || a.applyMatch(arguments, method, filter)) {
+        if (!method || a.applyMatch(args, method, filter)) {
             //Timewarp
             a.config.debugMode && a.out.warn("Timewarpped. ");
-            onMatch && onMatch(arguments);
-            onAfter && onAfter(true, arguments);
-            arguments[1] = arguments[1] * ratio;
-            return original.apply(a.win, arguments);
+            onMatch && onMatch(args);
+            onAfter && onAfter(true, args);
+            args[1] = args[1] * ratio;
+            return original.apply(a.win, args);
         } else {
             //Do not timewarp
             a.config.debugMode && a.out.info("Not timewarpped. ");
-            onAfter && onAfter(false, arguments);
-            return original.apply(a.win, arguments);
+            onAfter && onAfter(false, args);
+            return original.apply(a.win, args);
         }
     };
     //Try to replace the function
@@ -877,15 +877,12 @@ a.videoJS = function (sources, types, width, height) {
  * @param {string} [plugins=""] - Plug-ins to load, pass multiple arguments to load more than 1 plug-in. Omit if no plug-in is needed.
  * @function
  */
-a.videoJS.init = function () {
+a.videoJS.init = function (...args) {
     //Disable telemetry
     try {
         a.win.HELP_IMPROVE_VIDEOJS = false;
     } catch (err) { }
-    let plugins = "";
-    if (arguments.length > 0) {
-        plugins = a.win.Array.prototype.slice.call(arguments).join();
-    }
+    let plugins = args.join();
     //Load components
     a.$("head").append(`<link href="//vjs.zencdn.net/5.4.6/video-js.min.css" rel="stylesheet"><script src="//vjs.zencdn.net/5.4.6/video.min.js"><\/script>${plugins}`);
 };
