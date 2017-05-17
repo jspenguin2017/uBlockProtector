@@ -195,3 +195,5 @@ keshavcommoditycalls.com##script:inject(setTimeout-defuser.js, an_message_displa
 jkanime.co##script:inject(setTimeout-defuser.js, #player)
 ! === animeid.io
 animeid.io##script:inject(setTimeout-defuser.js, #player)
+! === gogoanime.ch
+gogoanime.ch##script:inject(setTimeout-defuser.js, #player)

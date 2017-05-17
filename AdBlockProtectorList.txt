@@ -120,6 +120,7 @@ freeomovie.com##script:inject(bab-defuser.js)
 keshavcommoditycalls.com##script:inject(setTimeout-defuser.js, an_message_display)
 jkanime.co##script:inject(setTimeout-defuser.js, #player)
 animeid.io##script:inject(setTimeout-defuser.js, #player)
+gogoanime.ch##script:inject(setTimeout-defuser.js, #player)
 ! =====Patched Anti-Adblock Killer List=====
 ! License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
 ||trymask.com/api/$third-party
