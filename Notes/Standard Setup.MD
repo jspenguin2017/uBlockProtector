@@ -15,8 +15,7 @@ Settings under `Privacy -> Content settings...`, `Network`, and `HTTPS/SSL` are 
 
 Settings in `chrome://flags/` page are left as default. 
 
-Only extensions are `uBlock Origin` and `Tampermonky`. You may also have `Google Docs`, `Google Docs Offline`, `Google Sheets`, 
-and `Google Slides` if you want. 
+Only extensions are `uBlock Origin`, `Tampermonky`, `Google Docs`, `Google Docs Offline`, `Google Sheets`, and `Google Slides`. 
 
 Other settings does not matter. 
 
