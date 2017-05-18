@@ -2990,7 +2990,4 @@ if (a.domCmp(["receive-sms-online.info"])) {
     a.filter("addEventListener", a.matchMethod.stringExact, `function (b){return"undefined"!=typeof n&&` +
         `n.event.triggered!==b.type?n.event.dispatch.apply(a,arguments):void 0}`);
 }
-if (a.domCmp(["hentaitake.net"])) {
-    a.noAccess("anOptions");
-}
 a.generic();

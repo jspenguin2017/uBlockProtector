@@ -121,6 +121,7 @@ keshavcommoditycalls.com##script:inject(setTimeout-defuser.js, an_message_displa
 jkanime.co##script:inject(setTimeout-defuser.js, #player)
 animeid.io##script:inject(setTimeout-defuser.js, #player)
 gogoanime.ch##script:inject(setTimeout-defuser.js, #player)
+hentaitake.net##script:inject(abort-on-property-read.js, anOptions)
 ! =====Patched Anti-Adblock Killer List=====
 ! License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
 ||trymask.com/api/$third-party
