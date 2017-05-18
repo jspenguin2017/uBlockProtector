@@ -13,9 +13,9 @@ Settings under `Privacy -> Content settings...`, `Network`, and `HTTPS/SSL` are 
 
 `System -> Use hardware acceleration when available` left as default. 
 
-Only extensions are uBlock Origin and Tampermonky. 
-
 Settings in `chrome://flags/` page are left as default. 
+
+Only extensions are uBlock Origin and Tampermonky. 
 
 Other settings does not matter. 
 
