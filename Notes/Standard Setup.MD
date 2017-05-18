@@ -7,13 +7,17 @@ but we may not fix issues that we cannot reproduct and we may not accept solutio
 
 #### Chrome: 
 
-Settings under `Privacy -> Content settings...` are left as default. 
+Settings under `Privacy -> Content settings...`, `Network`, and `HTTPS/SSL` are left as default. 
 
 `Privacy -> Send a "Do Not Track" request with your browsing traffic` enabled. 
 
+`System -> Use hardware acceleration when available` left as default. 
+
 Only extensions are uBlock Origin and Tampermonky. 
 
-Settings in `chrome://flags/` page are left as default, other settings does not matter. 
+Settings in `chrome://flags/` page are left as default. 
+
+Other settings does not matter. 
 
 #### uBlock Origin: 
 
