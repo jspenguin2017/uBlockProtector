@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -44,8 +44,13 @@
                 e.preventDefault();
                 $("html, body").animate({ scrollTop: $("#chat").offset().top }, "fast");
             });
-            //Load Disqus chat board
-            disqusLoader("adblock-protector", "https://jspenguin2017.github.io/AdBlockProtector/", "home_page", "AdBlock Protector Home Page");
+            //Set up load chat board button
+            $("#btnLoadDisqus").click(function (e) {
+                //Remove the button
+                $("#btnLoadDisqus").remove();
+                //Load Disqus chat board
+                disqusLoader("adblock-protector", "https://jspenguin2017.github.io/AdBlockProtector/", "home_page", "AdBlock Protector Home Page");
+            });
         });
     </script>
 </head>
@@ -149,6 +154,7 @@
             <h2>Chat board</h2>
             <p>Note: Comments with link(s) will be held for my approval.</p>
             <div id="disqus_thread"></div>
+            <button id="btnLoadDisqus" type="button" class="btn btn-primary btn-block">Load chat board (powered by Disqus)</button>
         </div>
     </div>
     <!-- Source code and license -->
