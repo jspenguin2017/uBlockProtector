@@ -2566,5 +2566,8 @@ if (a.domCmp(["comicallyincorrect.com"])) {
         }
     });
 }
+if (a.domCmp(["cda.pl"])) {
+    a.readOnly("adblockV1", true);
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
