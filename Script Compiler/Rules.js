@@ -2556,5 +2556,8 @@ if (a.domCmp(["receive-sms-online.info"])) {
 if (a.domCmp(["3dgames.com.ar"])) {
     a.generic.FuckAdBlock(a.uid(), "gw");
 }
+if (a.domCmp(["mexashare.com"])) {
+    a.readOnly("BetterJsPop", function () { });
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();

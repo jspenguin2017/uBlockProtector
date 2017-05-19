@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 7.20
+// @version 7.21
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2992,5 +2992,8 @@ if (a.domCmp(["receive-sms-online.info"])) {
 }
 if (a.domCmp(["3dgames.com.ar"])) {
     a.generic.FuckAdBlock(a.uid(), "gw");
+}
+if (a.domCmp(["mexashare.com"])) {
+    a.readOnly("BetterJsPop", function () { });
 }
 a.generic();
