@@ -123,6 +123,7 @@ animeid.io##script:inject(setTimeout-defuser.js, #player)
 gogoanime.ch##script:inject(setTimeout-defuser.js, #player)
 hentaitake.net##script:inject(abort-on-property-read.js, anOptions)
 appdrop.net##script:inject(bab-defuser.js)
+skmedix.pl##script:inject(bab-defuser.js)
 ! =====Patched Anti-Adblock Killer List=====
 ! License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
 ||trymask.com/api/$third-party

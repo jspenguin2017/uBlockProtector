@@ -201,3 +201,5 @@ gogoanime.ch##script:inject(setTimeout-defuser.js, #player)
 hentaitake.net##script:inject(abort-on-property-read.js, anOptions)
 ! === appdrop.net
 appdrop.net##script:inject(bab-defuser.js)
+! === skmedix.pl
+skmedix.pl##script:inject(bab-defuser.js)
