@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 7.21
+// @version 7.22
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2995,5 +2995,12 @@ if (a.domCmp(["3dgames.com.ar"])) {
 }
 if (a.domCmp(["mexashare.com"])) {
     a.readOnly("BetterJsPop", function () { });
+}
+if (a.domCmp(["comicallyincorrect.com"])) {
+    a.observe("insert", (node) => {
+        if (node && node.tagName === "DIV" && node.innerHTML && node.innerHTML.includes("Paid Content:")) {
+            node.remove();
+        }
+    });
 }
 a.generic();

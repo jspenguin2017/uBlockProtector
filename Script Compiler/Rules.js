@@ -2559,5 +2559,12 @@ if (a.domCmp(["3dgames.com.ar"])) {
 if (a.domCmp(["mexashare.com"])) {
     a.readOnly("BetterJsPop", function () { });
 }
+if (a.domCmp(["comicallyincorrect.com"])) {
+    a.observe("insert", (node) => {
+        if (node && node.tagName === "DIV" && node.innerHTML && node.innerHTML.includes("Paid Content:")) {
+            node.remove();
+        }
+    });
+}
 //Activate generic protectors, excluded domains check is handled inside
 a.generic();
