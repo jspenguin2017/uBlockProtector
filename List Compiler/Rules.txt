@@ -199,3 +199,5 @@ animeid.io##script:inject(setTimeout-defuser.js, #player)
 gogoanime.ch##script:inject(setTimeout-defuser.js, #player)
 ! === NSFW! hentaitake.net
 hentaitake.net##script:inject(abort-on-property-read.js, anOptions)
+! === appdrop.net
+appdrop.net##script:inject(bab-defuser.js)
