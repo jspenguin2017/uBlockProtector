@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 7.24
+// @version 7.25
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -1869,9 +1869,6 @@ if (a.domCmp(["lesechos.fr", "lesechos.com"])) {
 if (a.domCmp(["bitvisits.com"])) {
     a.readOnly("blockAdblockUser", function () { });
 }
-if (a.domCmp(["exrapidleech.info"])) {
-    a.filter("eval");
-}
 if (a.domCmp(["vipleague.is", "vipleague.ws", "vipleague.tv", "vipleague.se", "vipleague.tv", "vipleague.me",
     "vipleague.mobi", "vipleague.co", "vipleague.sx", "vipleague.ch", "vipbox.tv", "vipbox.co", "vipbox.biz",
     "vipbox.sx", "vipbox.eu", "vipbox.so", "vipbox.nu", "vipboxsa.co", "strikeout.co", "strikeout.me",
@@ -2924,6 +2921,7 @@ if (a.domCmp(["up-4ever.com"])) {
     });
 }
 if (a.domCmp(["exrapidleech.info"])) {
+    a.filter("eval");
     a.readOnly("PopAds", "this is a string");
     a.ready(() => {
         a.$(".alert-danger.lead:contains('block')").remove();

@@ -1201,9 +1201,8 @@ if (a.domCmp(["bitvisits.com"])) {
     //Lock blockAdblockUser to an empty function
     a.readOnly("blockAdblockUser", function () { });
 }
+/*
 if (a.domCmp(["exrapidleech.info"])) {
-    a.filter("eval");
-    /*
     //This does not work anymore
     //Set cookies, style, read only variables, disable open(), and create an element
     let tomorrow = new a.win.Date();
@@ -1224,8 +1223,8 @@ if (a.domCmp(["exrapidleech.info"])) {
     //Create element
     a.$("<iframe>").attr("src", "http://bdfrm.bidvertiser.com/BidVertiser.dbm?pid=383865&bid=1737418&RD=")
 .attr("id", "bdvi").css("display", "none").appendTo("html");
-    */
 }
+*/
 if (a.domCmp(["vipleague.is", "vipleague.ws", "vipleague.tv", "vipleague.se", "vipleague.tv", "vipleague.me",
     "vipleague.mobi", "vipleague.co", "vipleague.sx", "vipleague.ch", "vipbox.tv", "vipbox.co", "vipbox.biz",
     "vipbox.sx", "vipbox.eu", "vipbox.so", "vipbox.nu", "vipboxsa.co", "strikeout.co", "strikeout.me",
@@ -2477,6 +2476,7 @@ if (a.domCmp(["up-4ever.com"])) {
     });
 }
 if (a.domCmp(["exrapidleech.info"])) {
+    a.filter("eval");
     a.readOnly("PopAds", "this is a string");
     a.ready(() => {
         a.$(".alert-danger.lead:contains('block')").remove();
