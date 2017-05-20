@@ -2476,6 +2476,7 @@ if (a.domCmp(["up-4ever.com"])) {
     });
 }
 if (a.domCmp(["exrapidleech.info"])) {
+    //Thanks to lain566
     a.filter("eval");
     //Prevent sending to verify page
     a.readOnly("PopAds", "this is a string");
