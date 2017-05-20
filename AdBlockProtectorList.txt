@@ -127,6 +127,7 @@ skmedix.pl##script:inject(bab-defuser.js)
 @@||comicallyincorrect.com^$elemhide
 @@||comicincorrect.wpengine.netdna-cdn.com/wp-content/uploads/*
 vidlox.tv##script:inject(noeval.js)
+savetodrive.net##script:inject(setTimeout-defuser.js, ad)
 ! =====Patched Anti-Adblock Killer List=====
 ! License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
 ||trymask.com/api/$third-party
