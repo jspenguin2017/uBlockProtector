@@ -2477,7 +2477,11 @@ if (a.domCmp(["up-4ever.com"])) {
 }
 if (a.domCmp(["exrapidleech.info"])) {
     a.filter("eval");
+    //Prevent sending to verify page
     a.readOnly("PopAds", "this is a string");
+    a.cookie("popcashpuCap", "1");
+    a.cookie("popcashpu", "1");
+    //Remove warnings
     a.ready(() => {
         a.$(".alert-danger.lead:contains('block')").remove();
         a.$("p:contains('Please disable ads block')").remove();
