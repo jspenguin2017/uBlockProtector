@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 7.23
+// @version 7.24
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -1924,6 +1924,7 @@ if (a.domCmp(["citationmachine.net"])) {
 }
 if (a.domCmp(["psarips.com"])) {
     a.bait("div", "#advert");
+    a.noAccess("open");
 }
 if (a.domCmp(["extratorrent.cc", "extratorrent.com"])) {
     a.cookie("ppu_delay", "1");

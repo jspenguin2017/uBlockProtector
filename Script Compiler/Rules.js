@@ -1287,8 +1287,8 @@ if (a.domCmp(["citationmachine.net"])) {
     a.cookie("sbm_cm_citations", "0");
 }
 if (a.domCmp(["psarips.com"])) {
-    //Add bait element
     a.bait("div", "#advert");
+    a.noAccess("open");
 }
 if (a.domCmp(["extratorrent.cc", "extratorrent.com"])) {
     //Set cookies
