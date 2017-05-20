@@ -30,4 +30,4 @@ changed to GNU GPL v3. Files that are not from Anti-Adblock Killer falls under t
 
 ## To-do
 
-1. Decide which script host to support, update home page, and add a link to the store. 
+1. Decide which script host to support, update home page and standard setup, then add a link to the store. 
