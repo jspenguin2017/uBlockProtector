@@ -27,3 +27,8 @@
 // @supportURL https://github.com/jspenguin2017/AdBlockProtector/issues
 // @downloadURL https://github.com/jspenguin2017/AdBlockProtector/raw/master/AdBlockProtector.user.js
 // ==/UserScript==
+//
+// ===== PLEASE READ =====
+// This Userscript is intended to be used with AdBlock Protector List.
+// Visite our home page for more information: https://jspenguin2017.github.io/AdBlockProtector/
+// =======================
