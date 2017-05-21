@@ -137,6 +137,7 @@ rarbgmirror.com##script:inject(abort-on-property-read.js, open)
 ||googlesyndication.com^$script,redirect=noopjs,domain=pipocas.tv
 steamcustomizer.com###sadcat
 steamcustomizer.com##.notice.support-notice
+@@||steamcustomizer.com/cache/skin/ad/*$image
 ! =====Patched Anti-Adblock Killer List=====
 ! License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
 ||trymask.com/api/$third-party

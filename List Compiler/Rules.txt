@@ -217,3 +217,4 @@ rarbgmirror.com##script:inject(abort-on-property-read.js, open)
 ! === steamcustomizer.com
 steamcustomizer.com###sadcat
 steamcustomizer.com##.notice.support-notice
+@@||steamcustomizer.com/cache/skin/ad/*$image
