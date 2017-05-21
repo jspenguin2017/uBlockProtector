@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 7.27
+// @version 7.28
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -3011,5 +3011,18 @@ if (a.domCmp(["comicallyincorrect.com"])) {
 }
 if (a.domCmp(["cda.pl"])) {
     a.readOnly("adblockV1", true);
+}
+if (a.domCmp(["linternaute.com"])) {
+    let val;
+    a.win.Object.defineProperty(a.win, "OO", {
+        configurable: false,
+        set: function (arg) {
+            val = arg;
+        },
+        get: function () {
+            val && (val.AAB = null);
+            return val;
+        }
+    });
 }
 a.generic();

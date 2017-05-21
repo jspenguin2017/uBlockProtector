@@ -2562,5 +2562,18 @@ if (a.domCmp(["comicallyincorrect.com"])) {
 if (a.domCmp(["cda.pl"])) {
     a.readOnly("adblockV1", true);
 }
+if (a.domCmp(["linternaute.com"])) {
+    let val;
+    a.win.Object.defineProperty(a.win, "OO", {
+        configurable: false,
+        set: function (arg) {
+            val = arg;
+        },
+        get: function () {
+            val && (val.AAB = null);
+            return val;
+        }
+    });
+}
 //Apply generic solutions, excluded domains check is handled inside
 a.generic();

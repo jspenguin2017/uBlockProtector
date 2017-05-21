@@ -81,7 +81,6 @@ hackintosh.computer##.adsbygoogle
 @@||imasdk.googleapis.com/js/sdkloader/outstream.js$script,domain=ovar.io
 futbolchile.net##script:inject(bab-defuser.js)
 ||damoh.*^$media
-@@||damoh.*^$media,domain=linternaute.com
 ||gaybeeg.info^$inline-script
 ||adnetworkperformance.com^$script,redirect=noopjs,domain=netdna-storage.com
 ||allanalpass.com^$script,redirect=noopjs,domain=netdna-storage.com
