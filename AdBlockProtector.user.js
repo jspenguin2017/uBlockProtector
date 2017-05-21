@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 7.26
+// @version 7.27
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2407,7 +2407,7 @@ if (a.domCmp(["sport-show.fr", "vipflash.net", "2site.me"])) {
         ";display:block;}");
 }
 if (a.domCmp(["gametransfers.com", "winandmac.com", "free-steam-giveaways.com", "canalwp.com",
-    "alphahistory.com", "nordpresse.be", "sospc.name", "baboo.com.br"])) {
+    "alphahistory.com", "nordpresse.be", "sospc.name", "baboo.com.br", "nflix.pl"])) {
     a.always(function () {
         a.cookie("anCookie", "true");
         a.win.anOptions = {};

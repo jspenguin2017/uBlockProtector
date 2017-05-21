@@ -1853,7 +1853,7 @@ if (a.domCmp(["sport-show.fr", "vipflash.net", "2site.me"])) {
         ";display:block;}");
 }
 if (a.domCmp(["gametransfers.com", "winandmac.com", "free-steam-giveaways.com", "canalwp.com",
-    "alphahistory.com", "nordpresse.be", "sospc.name", "baboo.com.br"])) {
+    "alphahistory.com", "nordpresse.be", "sospc.name", "baboo.com.br", "nflix.pl"])) {
     //Set cookie and property
     a.always(function () {
         a.cookie("anCookie", "true");
