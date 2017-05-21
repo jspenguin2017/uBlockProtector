@@ -216,3 +216,4 @@ rarbgmirror.com##script:inject(abort-on-property-read.js, open)
 ||googlesyndication.com^$script,redirect=noopjs,domain=pipocas.tv
 ! === steamcustomizer.com
 steamcustomizer.com###sadcat
+steamcustomizer.com##.notice.support-notice
