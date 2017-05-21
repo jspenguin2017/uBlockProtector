@@ -649,7 +649,7 @@ a.sha256 = function (r) {
     return r = g(r), d(h(C(r), r.length * v));
 };
 a.generic = function () {
-    //@pragma-keepline Based on generic killers of Anti-Adblock Killer
+    //@pragma-keepline Based on generic solutions of Anti-Adblock Killer
     //@pragma-keepline License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
     if (a.config.allowGeneric && !a.config.domExcluded) {
         const data = {};

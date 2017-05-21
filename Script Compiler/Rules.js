@@ -406,7 +406,7 @@ if (a.domCmp(["elektroda.pl"])) {
     a.filter("setTimeout", a.matchMethod.string, "adBlockTest.offsetHeight");
 }
 if (a.domCmp(["anandabazar.com"])) {
-    //Lock canRunAds to false and exclude this domain from generic protectors
+    //Lock canRunAds to false and exclude this domain from generic solutions
     a.readOnly("canRunAds", false);
     a.config.allowGeneric = false;
 }
@@ -423,7 +423,7 @@ if (a.domCmp(["webqc.org"])) {
     a.filter("setTimeout");
 }
 if (a.domCmp(["wired.com"])) {
-    //Lock google_onload_fired to true and the rest will be taken care by generic protectors
+    //Lock google_onload_fired to true and the rest will be taken care by generic solutions
     a.readOnly("google_onload_fired", true);
 }
 if (a.domInc(["knowlet3389.blogspot"])) {
@@ -1561,7 +1561,6 @@ if (a.domCmp(["koscian.net"])) {
     });
 }
 if (a.domCmp(["eclypsia.com"])) {
-    //Call generic protector against FuckAdBlock
     a.generic.FuckAdBlock("MggAbd", "mggAbd");
 }
 if (a.domCmp(["gamingroom.tv"])) {
@@ -1803,47 +1802,36 @@ if (a.domCmp(["next-episode.net", "kingmaker.news", "gamespowerita.com", "todayi
     });
 }
 if (a.domCmp(["dawn.com"])) {
-    //Call generic protector against FuckAdBlock
     a.generic.FuckAdBlock("DetectAdBlock", "detectAdBlock");
 }
 if (a.domCmp(["sports.fr"])) {
-    //Call generic protector against FuckAdBlock
     a.generic.FuckAdBlock("FabInstance", "fabInstance");
 }
 if (a.domCmp(["europe1.fr"])) {
-    //Call generic protector against FuckAdBlock
     a.generic.FuckAdBlock("FabInstance", "fabInstance");
 }
 if (a.domCmp(["newyorker.com"])) {
-    //Call generic protector against FuckAdBlock
     a.generic.FuckAdBlock("SniffAdBlock", "sniffAdBlock");
 }
 if (a.domCmp(["mangasproject.com.br", "mangasproject.net.br", "mangas.zlx.com.br"])) {
-    //Call generic protector against FuckAdBlock
     a.generic.FuckAdBlock(a.uid(), "mangasLeitorSlider");
 }
 if (a.domCmp(["qnimate.com"])) {
-    //Lock adBlockDetected to an empty function
     a.readOnly("adBlockDetected", function () { });
 }
 if (a.domCmp(["eurotransport.de"])) {
-    //Call generic protector against FuckAdBlock
     a.generic.FuckAdBlock(a.uid(), "antiAdBlock");
 }
 if (a.domCmp(["tzetze.it", "beppegrillo.it", "la-cosa.it"])) {
-    //Call generic protector against FuckAdBlock
     a.generic.FuckAdBlock("CADetect", "cadetect");
 }
 if (a.domCmp(["agario.sx", "agarabi.com"])) {
-    //Call generic protector against FuckAdBlock
     a.generic.FuckAdBlock(a.uid(), "agario_SX_ads");
 }
 if (a.domCmp(["filespace.com"])) {
-    //Call generic protector against FuckAdBlock
     a.generic.FuckAdBlock(a.uid(), "fAB");
 }
 if (a.domCmp(["topserialy.sk"])) {
-    //Call generic protector against FuckAdBlock
     a.generic.FuckAdBlock(a.uid(), "sratNaVas");
 }
 if (a.domCmp(["sport-show.fr", "vipflash.net", "2site.me"])) {
@@ -1948,7 +1936,7 @@ if (a.domCmp(["thebatavian.com"])) {
     a.readOnly("broadstreet", true);
 }
 if (a.domCmp(["zrabatowani.pl"])) {
-    //Set cookie and the rest will be taken care by generic protectors
+    //Set cookie and the rest will be taken care by generic solutions
     a.cookie("adblockAlert", "yes");
 }
 if (a.domCmp(["hanime.tv"])) {
@@ -2574,5 +2562,5 @@ if (a.domCmp(["comicallyincorrect.com"])) {
 if (a.domCmp(["cda.pl"])) {
     a.readOnly("adblockV1", true);
 }
-//Activate generic protectors, excluded domains check is handled inside
+//Apply generic solutions, excluded domains check is handled inside
 a.generic();
