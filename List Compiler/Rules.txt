@@ -194,12 +194,8 @@ techdracula.com##script:inject(setTimeout-defuser.js, an_message_display)
 freeomovie.com##script:inject(bab-defuser.js)
 ! === keshavcommoditycalls.com
 keshavcommoditycalls.com##script:inject(setTimeout-defuser.js, an_message_display)
-! === jkanime.co
-jkanime.co##script:inject(setTimeout-defuser.js, #player)
-! === animeid.io
-animeid.io##script:inject(setTimeout-defuser.js, #player)
-! === gogoanime.ch
-gogoanime.ch##script:inject(setTimeout-defuser.js, #player)
+! === animeid.io and similar domains
+animeid.io,jkanime.co,gogoanime.ch,chiaanime.co##script:inject(setTimeout-defuser.js, #player)
 ! === NSFW! hentaitake.net
 hentaitake.net##script:inject(abort-on-property-read.js, anOptions)
 ! === appdrop.net
