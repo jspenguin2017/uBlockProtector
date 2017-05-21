@@ -212,3 +212,5 @@ vidlox.tv##script:inject(noeval.js)
 savetodrive.net##script:inject(setTimeout-defuser.js, ad)
 ! === rarbgmirror.com
 rarbgmirror.com##script:inject(abort-on-property-read.js, open)
+! === pipocas.tv
+||googlesyndication.com^$script,redirect=noopjs,domain=pipocas.tv
