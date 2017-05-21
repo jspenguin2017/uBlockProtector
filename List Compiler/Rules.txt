@@ -210,3 +210,5 @@ skmedix.pl##script:inject(bab-defuser.js)
 vidlox.tv##script:inject(noeval.js)
 ! === savetodrive.net
 savetodrive.net##script:inject(setTimeout-defuser.js, ad)
+! === rarbgmirror.com
+rarbgmirror.com##script:inject(abort-on-property-read.js, open)
