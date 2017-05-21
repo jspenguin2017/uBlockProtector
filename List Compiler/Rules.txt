@@ -124,6 +124,9 @@ futbolchile.net##script:inject(bab-defuser.js)
 ! === tv.aftonbladet.se - Thanks to uBlock-user
 ! === Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/163
 ||damoh.*^$media
+! === linternaute.com
+! === Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/224
+@@||damoh.*^$media,domain=linternaute.com
 ! === NSFW! gaybeeg.info, netdna-storage.com
 ! === Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/164
 ||gaybeeg.info^$inline-script
