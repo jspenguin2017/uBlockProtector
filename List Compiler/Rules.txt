@@ -214,3 +214,6 @@ rarbgmirror.com##script:inject(abort-on-property-read.js, open)
 steamcustomizer.com###sadcat
 steamcustomizer.com##.notice.support-notice
 @@||steamcustomizer.com/cache/skin/ad/*$image
+! === iframes of shqiptvlive.net
+albtvhd.com,tvshqiphd.com,www.balkanweb.com,cdn.livestream.com,livestream.artmotion.al,shqip-tv.info##body > *[id^="blockblock"]:style(visibility: visible !important; display: block !important;)
+albtvhd.com,tvshqiphd.com,www.balkanweb.com,cdn.livestream.com,livestream.artmotion.al,shqip-tv.info##table[id^='blockblock']
