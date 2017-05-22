@@ -94,8 +94,15 @@ animmex.*##a[href^="https://forum.animmex.com/viewtopic.php"]
 pixiv.net##.popular-introduction-block
 ! === youtube.com
 youtube.com###companion
-! === flashx.tv
+! === flashx.tv - Thanks to lain566
 ||flashx.tv/checkembed.php
+@@||flashx1.tv/js/showad*.js$script
+@@||flashx1.tv/sidead.js$script
+@@||flashx.to/counter.cgi$script
+@@||flashx1.tv/jquery2.js$script
+||static.flashx.tv/js/flashx.js$script
+@@||somethodox.info/popunder.gif$xmlhttprequest,domain=flashx.tv
+||somethodox.info/?&subid=*&pid=*&tid=*$beacon,image,domain=flashx.tv
 ! === linkneverdie.com
 ! === Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/146
 @@||linkneverdie.com^$elemhide
