@@ -2578,5 +2578,8 @@ if (a.domCmp(["linternaute.com"])) {
 if (a.domCmp(["new-skys.net"])) {
     a.noAccess("alert");
 }
+if (a.domCmp(["themeslide.com"])) {
+    a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
+}
 //Apply generic solutions, excluded domains check is handled inside
 a.generic();

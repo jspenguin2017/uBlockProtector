@@ -217,3 +217,5 @@ steamcustomizer.com##.notice.support-notice
 ! === iframes of shqiptvlive.net
 albtvhd.com,tvshqiphd.com,www.balkanweb.com,cdn.livestream.com,livestream.artmotion.al,shqip-tv.info##body > *[id^="blockblock"]:style(visibility: visible !important; display: block !important;)
 albtvhd.com,tvshqiphd.com,www.balkanweb.com,cdn.livestream.com,livestream.artmotion.al,shqip-tv.info##table[id^='blockblock']
+! === themeslide.com
+themeslide.com##script:inject(noeval.js)

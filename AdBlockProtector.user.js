@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 7.29
+// @version 7.30
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -3027,5 +3027,8 @@ if (a.domCmp(["linternaute.com"])) {
 }
 if (a.domCmp(["new-skys.net"])) {
     a.noAccess("alert");
+}
+if (a.domCmp(["themeslide.com"])) {
+    a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
 a.generic();
