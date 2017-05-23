@@ -1,5 +1,4 @@
-Before opening an issue, you MUST read the contribution guideline. 
-Failure to do so may result in a ban. 
+Before opening an issue, you MUST read the contribution guideline. Failure to do so may result in a ban. 
 
 ### About this website
 
