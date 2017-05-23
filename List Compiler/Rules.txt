@@ -1,5 +1,6 @@
-! === Installation test of homepage
+! === Installation test
 jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
+#%#AG_onLoad(function() { window.location.href = "https://jspenguin2017.github.io/AdBlockProtector/"; } );
 ! === GENERIC
 ###like-us-adblock-modal
 ##.popup-premium__apla
