@@ -227,3 +227,5 @@ shqiperiatv.com,albtvhd.com,tvshqiphd.com,www.balkanweb.com,cdn.livestream.com,l
 shqiperiatv.com,albtvhd.com,tvshqiphd.com,www.balkanweb.com,cdn.livestream.com,livestream.artmotion.al,shqip-tv.info##table[id^='blockblock']
 ! === themeslide.com
 themeslide.com##script:inject(noeval.js)
+! === wordsense.eu
+wordsense.eu##script:inject(setTimeout-defuser.js, ad, 2000)
