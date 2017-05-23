@@ -1,3 +1,5 @@
+Before opening an issue, you MUST review the contribution guideline! 
+
 ### About this website
 
 Test link: 
