@@ -1,7 +1,7 @@
 ## Opening an issue
 
-Please do not open an issue if you are using one of the setup that is known to not work 
-(they are listed on our [home page](https://jspenguin2017.github.io/AdBlockProtector/)). 
+**Please do not open an issue if you are using one of the setup that is known to not work 
+(they are listed on our [home page](https://jspenguin2017.github.io/AdBlockProtector/)).**
 
 ### Reporting a website that does not work
 
