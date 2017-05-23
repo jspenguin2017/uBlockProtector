@@ -1,6 +1,5 @@
 // ==UserScript==
 // @name AdBlock Protector Script
-// @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
 // @version 7.31
 // @encoding utf-8
