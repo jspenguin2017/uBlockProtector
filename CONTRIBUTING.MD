@@ -19,6 +19,8 @@ Give your issue a descriptive title and clearly explain what is wrong, include r
 
 Give your issue a descriptive title and clearly explain what you are looking for. 
 
+Please refrain from asking for expanding supported setups, unless you are willing to take on the task yourself. 
+
 ## Opening pull request
 
 Thoroughly explain what your code does and nicely comment it. 
