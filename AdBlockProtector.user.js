@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description Ultimate solution against AdBlock detectors
 // @author jspenguin2017
-// @version 7.30
+// @version 7.31
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -3030,5 +3030,12 @@ if (a.domCmp(["new-skys.net"])) {
 }
 if (a.domCmp(["themeslide.com"])) {
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
+}
+if (a.domCmp(["gentside.com"])) {
+    a.readOnly("adblockPopup", {
+        "IS_BLOCKED": false,
+        "init": function () { },
+        "removeAdblockPopup": function () { },
+    });
 }
 a.generic();

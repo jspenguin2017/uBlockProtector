@@ -2581,5 +2581,12 @@ if (a.domCmp(["new-skys.net"])) {
 if (a.domCmp(["themeslide.com"])) {
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
+if (a.domCmp(["gentside.com"])) {
+    a.readOnly("adblockPopup", {
+        "IS_BLOCKED": false,
+        "init": function () { },
+        "removeAdblockPopup": function () { },
+    });
+}
 //Apply generic solutions, excluded domains check is handled inside
 a.generic();
