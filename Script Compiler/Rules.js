@@ -2590,6 +2590,11 @@ if (a.domCmp(["gentside.com"])) {
 }
 if (a.domCmp(["idlelivelink.blogspot.com"])) {
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
+    a.ready(() => {
+        a.doc.body.oncontextmenu = null;
+        a.doc.body.onkeydown = null;
+        a.doc.body.onmousedown = null;
+    });
 }
 //Apply generic solutions, excluded domains check is handled inside
 a.generic();
