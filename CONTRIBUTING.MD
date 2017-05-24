@@ -20,7 +20,7 @@ Give your issue a descriptive title and clearly explain what is wrong, include r
 If what you are reporting needs to be absolutely secret (e.g. security vulnerability), please open an issue in our 
 [restricted issues tracker](https://gitlab.com/xuhaiyang1234/AdBlockProtectorSecretIssues/issues). 
 
-Since that issues tracker is not actively monitored, please also open an issue here to inform us that you have opened an issue there. 
+Since that issues tracker is not actively monitored, please also open an issue here to keep us informed. 
 
 ### Everything else
 
