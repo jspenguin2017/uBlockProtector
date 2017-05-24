@@ -1,7 +1,10 @@
 ## Opening an issue
 
-**Please do not open an issue if you are using one of the setup that is known to not work 
-(they are listed on our [home page](https://jspenguin2017.github.io/AdBlockProtector/)).**
+**Are you using Chrome, uBlock Origin, and Violentmonkey? If not, you are prohibited from opening issues in this repository. 
+Failure to obey this rule may result in a ban.**
+
+Note: We tolerate Chromium as an open source alternative to Chrome, but we may not fix issues that cannot be 
+reproduced in Chrome. 
 
 ### Reporting a website that does not work
 
@@ -25,8 +28,6 @@ Since that issues tracker is not actively monitored, please also open an issue h
 ### Everything else
 
 Give your issue a descriptive title and clearly explain what you are looking for. 
-
-**Please refrain from asking for expanding supported setups, unless you are willing to take on the task yourself.**
 
 ## Opening pull request
 
