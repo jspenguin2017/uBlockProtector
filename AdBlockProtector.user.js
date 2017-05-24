@@ -2,7 +2,7 @@
 // @name AdBlock Protector Script
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
-// @version 7.31
+// @version 7.32
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -3037,5 +3037,8 @@ if (a.domCmp(["gentside.com"])) {
         "init": function () { },
         "removeAdblockPopup": function () { },
     });
+}
+if (a.domCmp(["idlelivelink.blogspot.com"])) {
+    a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
 a.generic();

@@ -2588,5 +2588,8 @@ if (a.domCmp(["gentside.com"])) {
         "removeAdblockPopup": function () { },
     });
 }
+if (a.domCmp(["idlelivelink.blogspot.com"])) {
+    a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
+}
 //Apply generic solutions, excluded domains check is handled inside
 a.generic();
