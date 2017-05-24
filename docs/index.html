@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -12,7 +12,6 @@
     <!-- JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" charset="utf-8" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" charset="utf-8" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script src="https://jspenguin2017.github.io/Libraries/disqusLoader.js" charset="utf-8"></script>
     <script>
         "use strict";
 
@@ -40,17 +39,6 @@
                 e.preventDefault();
                 $("html, body").animate({ scrollTop: $("#how").offset().top }, "fast");
             });
-            $(".chatLinks").click(function (e) {
-                e.preventDefault();
-                $("html, body").animate({ scrollTop: $("#chat").offset().top }, "fast");
-            });
-            //Set up load chat board button
-            $("#btnLoadDisqus").click(function (e) {
-                //Remove the button
-                $("#btnLoadDisqus").remove();
-                //Load Disqus chat board
-                disqusLoader("adblock-protector", "https://jspenguin2017.github.io/AdBlockProtector/", "home_page", "AdBlock Protector Home Page");
-            });
         });
     </script>
 </head>
@@ -70,7 +58,6 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="#how" class="howLinks">Help</a></li>
-                    <li><a href="#chat" class="chatLinks">Chat</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="settings.html">Settings</a></li>
@@ -95,7 +82,6 @@
                 <p style="color:red;">AdBlock Protector List is not installed or not enabled!</p>
             </div>
             <a href="#how" class="btn btn-primary btn-lg howLinks">Jump to installation instructions</a>
-            <a href="#chat" class="btn btn-default btn-lg chatLinks">Jump to chat board</a>
             <a href="settings.html" class="btn btn-danger btn-lg">Open settings page</a>
             <script>
                 "use strict";
@@ -111,30 +97,16 @@
     <div class="container" id="how">
         <div class="jumbotron">
             <h2>Installation instructions</h2>
+            <p>You must be using Chrome, uBlock Origin, and Violentmonkey to use this project.</p>
+            <p>Do not want to switch your setup? Check out <a href="https://xuhaiyang1234.gitlab.io/AAK-Cont/">AAK-Cont</a></p>
+            <br />
+            <p>Step 1. Enable Adblock Warning Removal List from uBlock Origin settings panel.</p>
             <p>
-                1. Check if your setup is supported, it is highly recommended that you configure your setup so it is officially supported by us.
-                You may still try to continue even if your setup is not officially supported, but things might not work properly.
-            </p>
-            <p>2. Enable Adblock Warning Removal List from your AdBlocker settings panel.</p>
-            <p>3. Install AdBlock Protector from install links below.</p>
-            <br />
-            <p><strong>Setups we support:</strong></p>
-            <p><strong>Browser:</strong> Chrome (desktop)</p>
-            <p><i>Note: FireFox is known to not work.</i></p>
-            <p><strong>Script host:</strong> Tampermonkey (desktop)</p>
-            <p><i>Note: Greasemonkey is known to not work.</i></p>
-            <p><strong>AdBocker:</strong> uBlock Origin (desktop)</p>
-            <p><i>Note: AdBlock, Adblock Plus, and Adguard are known to not work.</i></p>
-            <br />
-            <p><i>Android support coming soon!</i></p>
-            <br />
-            <p><strong>Adblock Protector install links:</strong></p>
-            <p>1. Click <a href="https://github.com/jspenguin2017/AdBlockProtector/raw/master/AdBlockProtector.user.js">here</a> to install Script.</p>
-            <p>
-                2. Activate Adblock Protector List from your AdBlocker settings page. Can't find it?
+                Step 2. Activate Adblock Protector List from uBlock Origin settings page. Can't find it?
                 Click <a href="abp:subscribe?location=https://github.com/jspenguin2017/AdBlockProtector/raw/master/AdBlockProtectorList.txt&title=Adblock%20Protector%20List">here</a> to install it manually.
             </p>
-            <p><strong>Note: </strong>You need both Script and List.</p>
+            <p>Step 3. Install <a href="https://chrome.google.com/webstore/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag" target="_blank">Violentmonkey</a>.</p>
+            <p>Step 4. Click <a href="https://github.com/jspenguin2017/AdBlockProtector/raw/master/AdBlockProtector.user.js">here</a> to install Script.</p>
         </div>
     </div>
     <!-- Why is it called "AdBlock Protector" -->
@@ -151,19 +123,8 @@
             <h2>Asking for help and contributing</h2>
             <p>
                 To report an issue, please firse read the <a href="https://github.com/jspenguin2017/AdBlockProtector/blob/master/CONTRIBUTING.MD" target="_blank">contribution guideline</a>
-                and then <a href="https://github.com/jspenguin2017/AdBlockProtector/issues" target="_blank">open an issue</a>.
+                then <a href="https://github.com/jspenguin2017/AdBlockProtector/issues" target="_blank">open an issue</a>.
             </p>
-            <p>Due to increased spam in our repository, we will be more aggressive in closing invalid issues, please take the time to read the contribution guideline or your issue may be ignored.</p>
-            <p>For recommendations and quick questions that are not specific to one website, you can just leave a comment below.</p>
-        </div>
-    </div>
-    <!-- Chat board -->
-    <div class="container" id="chat">
-        <div class="jumbotron">
-            <h2>Chat board</h2>
-            <p>Note: Comments with link(s) will be held for my approval.</p>
-            <div id="disqus_thread"></div>
-            <button id="btnLoadDisqus" type="button" class="btn btn-primary btn-block">Load chat board (powered by Disqus)</button>
         </div>
     </div>
     <!-- Source code and license -->
