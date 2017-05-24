@@ -1,7 +1,7 @@
 ### The standard setup
 
-This is the standard setup that all our tests will run on. You may choose to configure your setup differently, 
-but we may not fix issues that we cannot reproduct and we may not accept solutions that fails in our tests. 
+This is the standard configuration, all our tests are ran on this configuration. 
+We may not fix issues that we cannot reproduce and we may not accept solutions that fails in our tests. 
 
 #### Everything updated to the latest stable version
 
@@ -15,7 +15,7 @@ Settings under `Privacy -> Content settings...`, `Network`, and `HTTPS/SSL` are 
 
 Settings in `chrome://flags/` page are left as default. 
 
-Only extensions are `uBlock Origin`, `Tampermonky`, `Google Docs`, `Google Docs Offline`, `Google Sheets`, and `Google Slides`. 
+Only extensions are `uBlock Origin`, `Violentmonkey`, `Google Docs`, `Google Docs Offline`, `Google Sheets`, and `Google Slides`. 
 Those Google extensions are optional, but there must not be other extensions. 
 
 Other settings does not matter. 
@@ -30,7 +30,7 @@ Adblock Warning Removal List
 CHN: EasyList China (中文)
 ```
 
-#### Tampermonkey: 
+#### Violentmonkey: 
 
 Factory settings plus this script installed: 
 
