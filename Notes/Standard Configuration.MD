@@ -1,6 +1,6 @@
-### The standard setup
+### The standard configuration
 
-This is the standard configuration, all our tests are ran on this configuration. 
+This is the standard configuration, we will use this configuration for all our tests. 
 We may not fix issues that we cannot reproduce and we may not accept solutions that fails in our tests. 
 
 #### Everything updated to the latest stable version
