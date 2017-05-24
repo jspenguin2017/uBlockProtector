@@ -6,7 +6,7 @@ Failure to obey this rule may result in a ban.**
 Note: We tolerate Chromium as an open source alternative to Chrome, but we may not fix issues that cannot be 
 reproduced in Chrome. 
 
-Do not want to switch? Check our [AAK-Cont](https://xuhaiyang1234.gitlab.io/AAK-Cont/#about)! 
+Do not want to switch your setup? Check our [AAK-Cont](https://xuhaiyang1234.gitlab.io/AAK-Cont/#about)! 
 
 ### Reporting a website that does not work
 
