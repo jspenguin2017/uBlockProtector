@@ -149,6 +149,7 @@ shqiperiatv.com,albtvhd.com,tvshqiphd.com,www.balkanweb.com,cdn.livestream.com,l
 themeslide.com##script:inject(noeval.js)
 wordsense.eu##script:inject(setTimeout-defuser.js, ad, 2000)
 @@||hackinformer.com/wp-content/plugins/detect-adblock/js/ads.js|$script,first-party
+||uol.com.br/camaleao/assets/web/javascript/detectadblock^$script,important
 ! =====Patched Anti-Adblock Killer List=====
 ! License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
 ||trymask.com/api/$third-party
