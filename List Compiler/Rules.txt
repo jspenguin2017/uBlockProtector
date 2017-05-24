@@ -229,3 +229,5 @@ shqiperiatv.com,albtvhd.com,tvshqiphd.com,www.balkanweb.com,cdn.livestream.com,l
 themeslide.com##script:inject(noeval.js)
 ! === wordsense.eu
 wordsense.eu##script:inject(setTimeout-defuser.js, ad, 2000)
+! === hackinformer.com
+@@||hackinformer.com/wp-content/plugins/detect-adblock/js/ads.js|$script,first-party
