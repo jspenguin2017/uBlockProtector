@@ -26,7 +26,7 @@ Since that issues tracker is not actively monitored, please also open an issue h
 
 Give your issue a descriptive title and clearly explain what you are looking for. 
 
-Please refrain from asking for expanding supported setups, unless you are willing to take on the task yourself. 
+**Please refrain from asking for expanding supported setups, unless you are willing to take on the task yourself.**
 
 ## Opening pull request
 
