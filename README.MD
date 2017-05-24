@@ -15,18 +15,10 @@ The compilers are built with Visual Studio 2017.
 
 ## License
 
-This project was built based on [Anti-Adblock Killer](https://github.com/reek/anti-adblock-killer) (by Reek), 
-but is now significantly different. 
+Many solutions are extracted from [Anti-Adblock Killer](https://github.com/reek/anti-adblock-killer) (by Reek). 
 
-Anti-Adblock Killer Script was completely re-implemented. 
-
-Anti-Adblock Killer Filter was mostly copied and concatenated to AdBlock Protector List. Comments and 
-[these](../master/List%20Compiler/Remove.txt) are removed. 
-
-Code from Anti-Adblock Killer inherits its original [license](https://github.com/reek/anti-adblock-killer/blob/master/LICENSE). 
-
-This project was completely redesigned on version 4.0, but the name of the project was kept. This was also when the license 
-changed to GNU GPL v3. Files that are not from Anti-Adblock Killer falls under this license unless otherwise specified. 
+Compilers and Script Core are under GNU GPL v3 license. Everything else inherits Anti-Adblock Killer's 
+[license](https://github.com/reek/anti-adblock-killer/blob/master/LICENSE) unless otherwise specified. 
 
 ## To-do
 
