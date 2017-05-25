@@ -16,16 +16,22 @@
         "use strict";
 
         /**
-         * Check installation of uBlock Origin and uBlock Protector.
+         * Check installation of uBlock Protector.
          * @function
          */
         const checkInstallation = function () {
-            if (typeof AdBlock_Protector_Script !== "undefined") {
-                $("#scriptTestDiv").hide();
-            }
-            if (typeof google_ad_status === "number") { //This will be set by List
-                $("#listTestDiv").hide();
-            }
+            //Script
+            try {
+                if (uBlock_Protector_Script === true) {
+                    $("#scriptTestDiv").hide();
+                }
+            } catch (err) { }
+            //List
+            try {
+                if (google_ad_status === 1) {
+                    $("#listTestDiv").hide();
+                }
+            } catch (err) { }
         };
 
         /**
@@ -102,17 +108,17 @@
             <br />
             <p>Step 1. Enable Adblock Warning Removal List from uBlock Origin settings panel.</p>
             <p>
-                Step 2. Click <a href="abp:subscribe?location=https://github.com/jspenguin2017/AdBlockProtector/raw/master/AdBlockProtectorList.txt&title=Adblock%20Protector%20List">here</a>
+                Step 2. Click <a href="abp:subscribe?location=https://github.com/jspenguin2017/uBlockProtector/raw/master/uBlockProtectorList.txt&title=uBlock%20Protector%20List">here</a>
                 to subscribe to uBlock Protector List.
             </p>
             <!--
             <p>
                 Step 2. Enable uBlock Protector List from uBlock Origin settings page. Can't find it?
-                Click <a href="abp:subscribe?location=https://github.com/jspenguin2017/AdBlockProtector/raw/master/AdBlockProtectorList.txt&title=Adblock%20Protector%20List">here</a> to install it manually.
+                Click <a href="abp:subscribe?location=https://github.com/jspenguin2017/uBlockProtector/raw/master/uBlockProtectorList.txt&title=uBlock%20Protector%20List">here</a> to install it manually.
             </p>
             -->
             <p>Step 3. Install <a href="https://chrome.google.com/webstore/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag" target="_blank">Violentmonkey</a>.</p>
-            <p>Step 4. Click <a href="https://github.com/jspenguin2017/AdBlockProtector/raw/master/AdBlockProtector.user.js">here</a> to install uBlock Protector Script.</p>
+            <p>Step 4. Click <a href="https://github.com/jspenguin2017/uBlockProtector/raw/master/uBlockProtector.user.js">here</a> to install uBlock Protector Script.</p>
         </div>
     </div>
     <!-- Asking for help and contributing -->
@@ -121,8 +127,8 @@
             <h2>Asking for help and contributing</h2>
             <p>
                 To report an issue, you <strong>must</strong> first read the
-                <a href="https://github.com/jspenguin2017/AdBlockProtector/blob/master/CONTRIBUTING.MD" target="_blank">contribution guideline</a>
-                then <a href="https://github.com/jspenguin2017/AdBlockProtector/issues" target="_blank">open an issue</a>.
+                <a href="https://github.com/jspenguin2017/uBlockProtector/blob/master/CONTRIBUTING.MD" target="_blank">contribution guideline</a>
+                then <a href="https://github.com/jspenguin2017/uBlockProtector/issues" target="_blank">open an issue</a>.
             </p>
         </div>
     </div>
@@ -130,7 +136,7 @@
     <div class="container">
         <div class="jumbotron">
             <h2>Source code and license</h2>
-            <p><a href="https://github.com/jspenguin2017/AdBlockProtector" target="_blank">View on GitHub</a></p>
+            <p><a href="https://github.com/jspenguin2017/uBlockProtector" target="_blank">View on GitHub</a></p>
         </div>
     </div>
 </body>
