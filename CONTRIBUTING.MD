@@ -8,6 +8,9 @@ reproduced in Chrome.
 
 Do not want to switch your setup? Check out [AAK-Cont](https://xuhaiyang1234.gitlab.io/AAK-Cont/)! 
 
+We have this strict rule to make sure issues goes into the right place, we will still make reasonable effort to assist 
+you in AAK-Cont repository. 
+
 ### Reporting a website that does not work
 
 Please check if someone else already opened an issue for your problem, join the discussion there and do not open another one. 
