@@ -1,4 +1,4 @@
-# AdBlock Protector
+# uBlock Protector
 
 An anti-adblock defuser for uBlock Origin
 
