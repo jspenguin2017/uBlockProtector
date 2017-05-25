@@ -231,5 +231,7 @@ themeslide.com##script:inject(noeval.js)
 wordsense.eu##script:inject(setTimeout-defuser.js, ad, 2000)
 ! === hackinformer.com
 @@||hackinformer.com/wp-content/plugins/detect-adblock/js/ads.js|$script,first-party
+hackinformer.com##script:inject(abort-on-property-write, anOptions)
+hackinformer.com##script:inject(setTimeout-defuser.js, an_message_display)
 ! === uol.com.br
 ||uol.com.br/camaleao/assets/web/javascript/detectadblock^$script,important

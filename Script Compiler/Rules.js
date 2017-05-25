@@ -2596,5 +2596,10 @@ if (a.domCmp(["idlelivelink.blogspot.com"])) {
         a.doc.body.onmousedown = null;
     });
 }
+if (a.domCmp(["hackinformer.com"])) {
+    a.ready(() => {
+        a.$(".special-message-wrapper:contains(your ad blocker)").remove();
+    });
+}
 //Apply generic solutions, excluded domains check is handled inside
 a.generic();
