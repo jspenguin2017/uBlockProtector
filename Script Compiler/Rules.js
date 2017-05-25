@@ -2601,5 +2601,9 @@ if (a.domCmp(["hackinformer.com"])) {
         a.$(".special-message-wrapper:contains(your ad blocker)").remove();
     });
 }
+if (a.domCmp(["tg007.net"])) {
+    a.bait("div", "#gads");
+    a.$("#gads").hide();
+}
 //Apply generic solutions, excluded domains check is handled inside
 a.generic();
