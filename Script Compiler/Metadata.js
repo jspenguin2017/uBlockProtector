@@ -1,8 +1,8 @@
 ﻿// ==UserScript==
-// @name AdBlock Protector Script
+// @name uBlock Protector Script
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
-// @version 7.35
+// @version 7.36
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -23,12 +23,12 @@
 // @connect canal-plus.com
 // @connect *
 // @run-at document-start
-// @homepage https://jspenguin2017.github.io/AdBlockProtector/
-// @supportURL https://github.com/jspenguin2017/AdBlockProtector/issues
-// @downloadURL https://github.com/jspenguin2017/AdBlockProtector/raw/master/AdBlockProtector.user.js
+// @homepage https://jspenguin2017.github.io/uBlockProtector/
+// @supportURL https://github.com/jspenguin2017/uBlockProtector/issues
+// @downloadURL https://github.com/jspenguin2017/uBlockProtector/raw/master/uBlockProtector.user.js
 // ==/UserScript==
 //
 // ===== PLEASE READ =====
-// This Userscript is intended to be used with AdBlock Protector List.
-// Visite our home page for more information: https://jspenguin2017.github.io/AdBlockProtector/
+// This Userscript is intended to be used with uBlock Protector List.
+// Visite our home page for more information: https://jspenguin2017.github.io/uBlockProtector/
 // =======================

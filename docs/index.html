@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -16,7 +16,7 @@
         "use strict";
 
         /**
-         * Check installation of AdBlocker and AdBlock Protector Script and List.
+         * Check installation of uBlock Origin and uBlock Protector.
          * @function
          */
         const checkInstallation = function () {
@@ -73,13 +73,13 @@
             <p>An anti-adblock defuser for uBlock Origin</p>
             <p>It can take a few seconds to check installation, please look into any issues in your configuration if any of the warning messages below do not disappear 5 seconds after the page loads.</p>
             <div id="banner-ads">
-                <p style="color:red;">Your AdBlocker is not enabled!</p>
+                <p style="color:red;">uBlock Origin is not enabled!</p>
             </div>
             <div id="scriptTestDiv">
-                <p style="color:red;">AdBlock Protector Script is not installed or not enabled!</p>
+                <p style="color:red;">uBlock Protector Script is not installed or not enabled!</p>
             </div>
             <div id="listTestDiv">
-                <p style="color:red;">AdBlock Protector List is not installed or not enabled!</p>
+                <p style="color:red;">uBlock Protector List is not installed or not enabled!</p>
             </div>
             <a href="#how" class="btn btn-primary btn-lg howLinks">Jump to installation instructions</a>
             <a href="settings.html" class="btn btn-danger btn-lg">Open settings page</a>
@@ -102,19 +102,11 @@
             <br />
             <p>Step 1. Enable Adblock Warning Removal List from uBlock Origin settings panel.</p>
             <p>
-                Step 2. Enable Adblock Protector List from uBlock Origin settings page. Can't find it?
+                Step 2. Enable uBlock Protector List from uBlock Origin settings page. Can't find it?
                 Click <a href="abp:subscribe?location=https://github.com/jspenguin2017/AdBlockProtector/raw/master/AdBlockProtectorList.txt&title=Adblock%20Protector%20List">here</a> to install it manually.
             </p>
             <p>Step 3. Install <a href="https://chrome.google.com/webstore/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag" target="_blank">Violentmonkey</a>.</p>
-            <p>Step 4. Click <a href="https://github.com/jspenguin2017/AdBlockProtector/raw/master/AdBlockProtector.user.js">here</a> to install Script.</p>
-        </div>
-    </div>
-    <!-- Why is it called "AdBlock Protector" -->
-    <div class="container">
-        <div class="jumbotron">
-            <h2>Why is it called &quot;AdBlock&quot; Protector?</h2>
-            <p>When the project started, it was aimed at Adblock Plus, but we decided to switch to uBlock Origin after testing out its amazing features.</p>
-            <p>We considered renaming this project to &quot;uBlock&quot; Protector, but it is a bit too late for a rename now.</p>
+            <p>Step 4. Click <a href="https://github.com/jspenguin2017/AdBlockProtector/raw/master/AdBlockProtector.user.js">here</a> to install uBlock Protector Script.</p>
         </div>
     </div>
     <!-- Asking for help and contributing -->

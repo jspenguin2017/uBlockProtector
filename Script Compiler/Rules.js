@@ -210,11 +210,11 @@ if (a.domCmp(["player.pl"])) {
                         a.$("video").css("max-height", "540px");
                     } else if (vidSources[0].src) {
                         //DRM protected
-                        a.config.debugMode && a.out.error("AdBlock Protector will not replace this video player " +
+                        a.config.debugMode && a.out.error("uBlock Protector will not replace this video player " +
                             "because it is DRM prtected. ");
                     }
                 } catch (err) {
-                    a.config.debugMode && a.out.error("AdBlock Protector failed to find media URL! ");
+                    a.config.debugMode && a.out.error("uBlock Protector failed to find media URL! ");
                     return;
                 }
             }
@@ -225,7 +225,7 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
     "kafeteria.pl", "kafeteria.tv", "komediowo.pl", "komorkomania.pl", "money.pl", "pudelek.tv", "sfora.pl",
     "snobka.pl", "wawalove.pl", "wp.pl", "wp.tv", "wrzuta.pl", "pudelek.pl", "fotoblogia.pl", "parenting.pl",
     "echirurgia.pl", "pudelekx.pl", "o2.pl"])) {
-    //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/70
+    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/70
     //Thanks to ghajini
     //@pragma-keepline Based on Adguard filters
     //@pragma-keepline License: https://github.com/AdguardTeam/AdguardBrowserExtension/blob/master/LICENSE
@@ -284,7 +284,7 @@ if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl", "sportowefakty.wp.pl"], 
                 }
             }
         } catch (err) {
-            a.config.debugMode && a.out.error("AdBlock Protector failed to find media ID with method 1! ");
+            a.config.debugMode && a.out.error("uBlock Protector failed to find media ID with method 1! ");
         }
         //Mid grabbing method 2
         if (a.$(containerMatcher).length > 0) {
@@ -341,14 +341,14 @@ if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl", "sportowefakty.wp.pl"], 
                         //Reset error counter
                         networkErrorCounter = 0;
                     } catch (err) {
-                        a.config.debugMode && a.out.error("AdBlock Protector failed to find media URL! ");
+                        a.config.debugMode && a.out.error("uBlock Protector failed to find media URL! ");
                         networkErrorCounter += 1;
                     }
                     //Update flag
                     networkBusy = false;
                 },
                 onerror: function () {
-                    a.config.debugMode && a.out.error("AdBlock Protector failed to load media JSON! ");
+                    a.config.debugMode && a.out.error("uBlock Protector failed to load media JSON! ");
                     networkErrorCounter += 0.5;
                     //Update flag
                     networkBusy = false;
@@ -588,7 +588,7 @@ if (a.domCmp(["workupload.com"])) {
     });
 }
 if (a.domCmp(["intoday.in", "businesstoday.in", "lovesutras.com"])) {
-    //https://github.com/jspenguin2017/AdBlockProtector/issues/109
+    //https://github.com/jspenguin2017/uBlockProtector/issues/109
     //Inject style and lock openPopup to an empty function
     a.css("#adbocker_alt { display: none; }");
     a.readOnly("openPopup", function () { });
@@ -777,7 +777,7 @@ if (a.config.allowExperimental && a.domCmp(["neodrive.co"])) {
 if (a.domCmp(["hentaihaven.org"])) {
     //NSFW!
     //Thanks to uBlock-user
-    //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/76
+    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/76
     a.noAccess("desktop_variants");
 }
 if (a.domCmp(["primeshare.tv"])) {
@@ -1641,7 +1641,7 @@ if (a.config.debugMode &&
             const parsedData = JSON.parse(data);
             streams = parsedData.streams
         } catch (err) {
-            a.config.debugMode && a.out.error("AdBlock Protector failed to find video URL! ");
+            a.config.debugMode && a.out.error("uBlock Protector failed to find video URL! ");
             return;
         }
         //Check source and type
@@ -1656,7 +1656,7 @@ if (a.config.debugMode &&
             sources.push(streams.medium);
             types.push(streams.medium.startsWith("rtmp") ? "rtmp/mp4" : "application/f4m+xml");
         } else {
-            a.config.debugMode && a.out.error("AdBlock Protector failed to find video URL! ");
+            a.config.debugMode && a.out.error("uBlock Protector failed to find video URL! ");
             return;
         }
         //=====Debug only=====
@@ -1941,7 +1941,7 @@ if (a.domCmp(["zrabatowani.pl"])) {
 }
 if (a.domCmp(["hanime.tv"])) {
     //NSFW!
-    //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/76
+    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/76
     const _open = a.win.open;
     a.win.open = function () {
         _open.apply(a.win, arguments);
@@ -1984,7 +1984,7 @@ if (a.domCmp(["xnxx.com"])) {
     a.readOnly("openpop", function () { });
 }
 if (a.domCmp(["sidereel.com"])) {
-    //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/83
+    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/83
     //This also works for allmusic.com
     a.protectFunc();
     a.filter("setTimeout", a.matchMethod.RegExp, /function\ \_0x[a-z0-9]{4,8}\(/);
@@ -1996,26 +1996,26 @@ if (a.domCmp(["burning-feed.com"])) {
     a.readOnly("ads_enable", function () { });
 }
 if (a.domCmp(["comicbook.com", "chip.de", "businessinsider.com"])) {
-    //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/85
+    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/85
     a.noAccess("stop");
 }
 if (a.domCmp(["ghame.ru"])) {
     a.$("<p class='adsbygoogle' style='display:none;'>hi</p>").prependTo("html");
 }
 if (a.domCmp(["thevideo.me", "fmovies.to", "fmovies.se", "fmovies.is"])) {
-    //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/86
-    //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/99
+    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/86
+    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/99
     a.win.open = function () { };
 }
 if (a.domCmp(["is.fi", "viasatsport.fi"])) {
-    //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/88
+    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/88
     a.readOnly("Sabdetect_load", false);
     if (a.domCmp(["viasatsport.fi"], true)) {
         a.config.allowGeneric = false;
     }
 }
 if (a.domCmp(["mooseroots.com", "insidegov.com", "gearsuite.com"])) {
-    //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/96
+    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/96
     a.css("html,body { overflow-y: scroll; } .BOX-wrap { display: none; }");
 }
 if (a.domCmp(["sandiegouniontribune.com"])) {
@@ -2032,7 +2032,7 @@ if (a.domCmp(["sandiegouniontribune.com"])) {
 }
 if (a.domCmp(["adz.bz", "mellow.link", "hop.bz", "mellowads.com", "url.vin",
     "clik.bz"])) {
-    //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/106
+    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/106
     let val;
     a.win.Object.defineProperty(a.win, "linkVM", {
         configurable: false,
@@ -2071,7 +2071,7 @@ if (a.domCmp(["adz.bz", "mellow.link", "hop.bz", "mellowads.com", "url.vin",
     });
 }
 if (a.domCmp(["zap.in"])) {
-    //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/201
+    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/201
     let val;
     a.win.Object.defineProperty(a.win, "zapVM", {
         configurable: false,
@@ -2160,7 +2160,7 @@ if (a.domCmp(["freetvall.com"])) {
     a.readOnly("clickNS", function () { });
 }
 if (a.domCmp(["hotslogs.com"])) {
-    //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/121
+    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/121
     a.win.MonkeyBroker = {};
     a.noAccess("MonkeyBroker.regSlotsMap");
 }
@@ -2168,13 +2168,13 @@ if (a.domCmp(["undeniable.info"])) {
     a.bait("div", "#testadblock");
 }
 if (a.domInc(["gamereactor"])) {
-    //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/124
+    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/124
     //One filter from EasyList marked as $badfilter by List
     //a.readOnly("detectAdblockUser", function () { });
     a.cookie("countdownToAd", "-1");
 }
 if (a.domCmp(["dasolo.co"])) {
-    //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/126
+    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/126
     a.win.eval = function () { };
     a.noAccess("adblockblock");
     a.bait("div", "#loveyou");
@@ -2186,7 +2186,7 @@ if (a.domCmp(["dasolo.co"])) {
     a.filter("document.addEventListener", a.matchMethod.stringExact, "contextmenu");
 }
 if (a.domCmp(["titulky.com"])) {
-    //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/128
+    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/128
     a.generic.FuckAdBlock("FADB", "fADB");
 }
 if (a.domCmp(["discoveryrom.org"])) {
@@ -2236,27 +2236,27 @@ if (a.domCmp(["sthelensstar.co.uk", "runcornandwidnesworld.co.uk", "leighjournal
     "freepressseries.co.uk", "monmouthshirecountylife.co.uk", "barryanddistrictnews.co.uk",
     "penarthtimes.co.uk", "eveningtimes.co.uk", "s1cars.com", "s1community.com", "s1homes.com",
     "s1jobs.com", "s1rental.com", "thescottishfarmer.co.uk", "heraldscotland.com", "thenational.scot"])) {
-    //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/137
+    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/137
     a.readOnly("_sp_", null);
 }
 if (a.domCmp(["securenetsystems.net"])) {
     a.readOnly("iExist", true);
 }
 if (a.domCmp(["finalservers.net"])) {
-    //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/125
+    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/125
     a.ready(function () {
         a.win.videojs("video_1").videoJsResolutionSwitcher();
     });
 }
 if (a.domCmp(["filmy.to", "histock.info"])) {
-    //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/130
+    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/130
     //Block popup
     a.win.open = function () {
         return { closed: false };
     };
 }
 if (a.domCmp(["flashx.tv"])) {
-    //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/130
+    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/130
     a.filter("document.addEventListener", a.matchMethod.RegExp, /^(mousedown|keydown|contextmenu)$/);
 }
 if (a.domCmp(["multiup.org", "multiup.eu"])) {
@@ -2273,7 +2273,7 @@ if (a.domCmp(["multiup.org", "multiup.eu"])) {
     });
 }
 if (a.domCmp(["linkneverdie.com"])) {
-    //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/146
+    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/146
     //Need to white list .adsbygoogle element
     a.readOnly("eval", function () {
         //Remove block screen
@@ -2300,13 +2300,13 @@ if (a.domCmp(["nbc.com"])) {
     a.noAccess("mps");
 }
 if (a.domCmp(["filmyiseriale.net"])) {
-    //https://github.com/jspenguin2017/AdBlockProtector/issues/152
+    //https://github.com/jspenguin2017/uBlockProtector/issues/152
     a.ready(function () {
         a.win.konik = 1;
     });
 }
 if (a.domCmp(["tf2center.com"])) {
-    //Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/141
+    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/141
     a.filter("setInterval", a.matchMethod.string, '"/adblock"');
     a.filter("setTimeout", a.matchMethod.stringExact, "function (){B(F+1)}");
 }
@@ -2334,7 +2334,8 @@ if (a.domCmp(["gaybeeg.info"])) {
                 const temp = elem.innerHTML.split("/*  Collapse Functions, version 2.0");
                 if (temp.length === 2) {
                     const hash = a.sha256(temp[1]);
-                    if (hash === "382f3949955c262f392d50e681f373c50b779b7503a303b93a03070940532af7") {
+                    if (hash ===
+                        "382f3949955c262f392d50e681f373c50b779b7503a303b93a03070940532af7") {
                         a.win.eval(elem.innerHTML);
                         return;
                     } else if (a.config.debugMode) {
@@ -2515,11 +2516,11 @@ if (a.domCmp(["canalplus.fr"])) {
                         throw "Media URL Not Found";
                     }
                 } catch (err) {
-                    a.config.debugMode && a.out.error("AdBlock Protector failed to find media URL! ");
+                    a.config.debugMode && a.out.error("uBlock Protector failed to find media URL! ");
                 }
             },
             onerror: function () {
-                a.config.debugMode && a.out.error("AdBlock Protector failed to load media JSON! ");
+                a.config.debugMode && a.out.error("uBlock Protector failed to load media JSON! ");
             }
         });
     };

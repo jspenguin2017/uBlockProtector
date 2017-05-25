@@ -1,4 +1,4 @@
-//AdBlock Protector Core Library
+//uBlock Protector Core Library
 "use strict";
 
 //=====Declaration=====
@@ -35,21 +35,21 @@ a.init = function (excluded, AdflyMatch, AdflyUnmatch) {
     //Apply mods
     a.mods();
     //Set menu commands
-    GM_registerMenuCommand("AdBlock Protector Settings Page", function () {
+    GM_registerMenuCommand("uBlock Protector Settings Page", function () {
         GM_openInTab(a.c.settingsPage);
     });
-    GM_registerMenuCommand("AdBlock Protector Home Page", function () {
+    GM_registerMenuCommand("uBlock Protector Home Page", function () {
         GM_openInTab(a.c.homePage);
     });
-    GM_registerMenuCommand("AdBlock Protector Support Page", function () {
+    GM_registerMenuCommand("uBlock Protector Support Page", function () {
         GM_openInTab(a.c.supportPage);
     });
     //Home page installation test
-    if (a.domCmp(["jspenguin2017.github.io"], true) && a.doc.location.href.includes("jspenguin2017.github.io/AdBlockProtector")) {
-        a.win.AdBlock_Protector_Script = true;
+    if (a.domCmp(["jspenguin2017.github.io"], true) && a.doc.location.href.includes("jspenguin2017.github.io/uBlockProtector")) {
+        a.win.uBlock_Protector_Script = true;
     }
     //Settings page
-    if (a.domCmp(["jspenguin2017.github.io"], true) && a.doc.location.href.includes("jspenguin2017.github.io/AdBlockProtector/settings.html")) {
+    if (a.domCmp(["jspenguin2017.github.io"], true) && a.doc.location.href.includes("jspenguin2017.github.io/uBlockProtector/settings.html")) {
         a.on("load", function () {
             a.win.init({
                 "config_debugMode": a.config.debugMode,
@@ -237,17 +237,17 @@ a.c = {};
  * The settings page of this project.
  * @const {string}
  */
-a.c.settingsPage = "https://jspenguin2017.github.io/AdBlockProtector/settings.html";
+a.c.settingsPage = "https://jspenguin2017.github.io/uBlockProtector/settings.html";
 /**
  * The home page of this project.
  * @const {string}
  */
-a.c.homePage = "https://jspenguin2017.github.io/AdBlockProtector/";
+a.c.homePage = "https://jspenguin2017.github.io/uBlockProtector/";
 /**
  * The support (issues) page of this project.
  * @const {string}
  */
-a.c.supportPage = "https://github.com/jspenguin2017/AdBlockProtector/issues";
+a.c.supportPage = "https://github.com/jspenguin2017/uBlockProtector/issues";
 /**
  * A string that will crash any JavaScript by syntax error when added to anywhere of its code.
  * @const {string}
@@ -278,15 +278,15 @@ a.mods = function () {
             //Jump To Top button
             if (a.mods.Facebook_JumpToTop) {
                 //Stop if the button already exist, this should not be needed, but just to be sure
-                if (a.$("#AdBlock_Protector_FBMod_JumpToTop").length > 0) {
+                if (a.$("#uBlock_Protector_FBMod_JumpToTop").length > 0) {
                     return;
                 }
                 //Check if the nav bar is there
                 const navBar = a.$("div[role='navigation']");
                 if (navBar.length > 0) {
                     //Present, insert button
-                    navBar.first().append(`<div class="_4kny _2s24" id="AdBlock_Protector_FBMod_JumpToTop"><div class="_4q39"><a class="_2s25" href="javascript: void(0);">Top</a></div></div>`);
-                    a.$("#AdBlock_Protector_FBMod_JumpToTop").click(function () {
+                    navBar.first().append(`<div class="_4kny _2s24" id="uBlock_Protector_FBMod_JumpToTop"><div class="_4q39"><a class="_2s25" href="javascript: void(0);">Top</a></div></div>`);
+                    a.$("#uBlock_Protector_FBMod_JumpToTop").click(function () {
                         a.win.scrollTo(a.win.scrollX, 0);
                     });
                     a.config.debugMode && a.out.info("Facebook Mod: Jump to Top button added. ");
@@ -482,7 +482,7 @@ a.protectFunc = function () {
         a.config.debugMode && a.out.warn("Functions protected. ");
     } catch (err) {
         //Failed to protect
-        a.config.debugMode && a.out.error("AdBlock Protector failed to protect functions! ");
+        a.config.debugMode && a.out.error("uBlock Protector failed to protect functions! ");
         return false;
     }
     return true;
@@ -564,7 +564,7 @@ a.filter = function (func, method, filter, onMatch, onAfter) {
         a.config.debugMode && a.out.warn("Filter activated on " + func);
     } catch (err) {
         //Failed to activate
-        a.config.debugMode && a.out.error("AdBlock Protector failed to activate filter on " + func + "! ");
+        a.config.debugMode && a.out.error("uBlock Protector failed to activate filter on " + func + "! ");
         return false;
     }
     return true;
@@ -621,7 +621,7 @@ a.timewarp = function (func, method, filter, onMatch, onAfter, ratio) {
         a.config.debugMode && a.out.warn("Timewarp activated on " + func);
     } catch (err) {
         //Failed to activate
-        a.config.debugMode && a.out.error("AdBlock Protector failed to apply timewarp on " + func + "! ");
+        a.config.debugMode && a.out.error("uBlock Protector failed to apply timewarp on " + func + "! ");
         return false;
     }
     return true;
@@ -692,7 +692,7 @@ a.readOnly = function (name, val) {
         }
     } catch (err) {
         //Failed to define property
-        a.config.debugMode && a.out.error("AdBlock Protector failed to define read-only property " + name + "! ");
+        a.config.debugMode && a.out.error("uBlock Protector failed to define read-only property " + name + "! ");
         return false;
     }
     return true;
@@ -729,7 +729,7 @@ a.noAccess = function (name) {
         }
     } catch (err) {
         //Failed to define property
-        a.config.debugMode && a.out.error("AdBlock Protector failed to define non-accessible property " + name + "! ");
+        a.config.debugMode && a.out.error("uBlock Protector failed to define non-accessible property " + name + "! ");
         return false;
     }
     return true;
@@ -864,7 +864,7 @@ a.nativePlayer = function (source, typeIn, widthIn, heightIn) {
  */
 a.videoJS = function (sources, types, width, height) {
     //Build HTML string
-    let html = `<video id="AdBlock_Protector_Video_Player" class="video-js vjs-default-skin" controls preload="auto" width="${width}" height="${height}" data-setup="{}">`;
+    let html = `<video id="uBlock_Protector_Video_Player" class="video-js vjs-default-skin" controls preload="auto" width="${width}" height="${height}" data-setup="{}">`;
     for (let i = 0; i < sources.length; i++) {
         html += `<source src="${sources[i]}" type="${types[i]}">`;
     }
@@ -1373,7 +1373,7 @@ a.generic.AdflySkipper = function () {
             a.win.stop();
             //Nuke body since we got the link
             //We would be so fast that the body is not loaded
-            //a.doc.body.innerHTML = `<div><h2>Adfly skipped by AdBlock Protector. Redirecting to real link: <a href="${decodedURL}">${decodedURL}</a></h2></div>`;
+            //a.doc.body.innerHTML = `<div><h2>Adfly skipped by uBlock Protector. Redirecting to real link: <a href="${decodedURL}">${decodedURL}</a></h2></div>`;
             //Redirect
             a.win.onbeforeunload = null;
             //a.win.onunload = null;
@@ -1404,7 +1404,7 @@ a.generic.AdflySkipper = function () {
             }
         });
     } catch (err) {
-        a.config.debugMode && a.out.error("AdBlock Protector could not set up Adfly skipper. ");
+        a.config.debugMode && a.out.error("uBlock Protector could not set up Adfly skipper. ");
     }
 };
 /**

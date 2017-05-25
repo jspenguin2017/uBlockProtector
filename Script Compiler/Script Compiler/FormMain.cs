@@ -57,7 +57,7 @@ namespace Script_Compiler
                 //Write file
                 try
                 {
-                    string path = Path.Combine(gitRoot, "AdBlockProtector.user.js");
+                    string path = Path.Combine(gitRoot, "uBlockProtector.user.js");
                     PutLog("Writting data to " + path);
                     File.WriteAllLines(path, toWrite);
                     PutLog(toWrite.Length.ToString() + " lines wrote. ");
@@ -208,7 +208,7 @@ namespace Script_Compiler
                         string line = dataRead[i].Trim();
                         //Skip comments
                         //This algorithm wouldn't work for any JS file, but for ours, it will work
-                        if (line.StartsWith("//") && !line.StartsWith("//@pragma-keepline") || line == string.Empty)
+                        if ((line.StartsWith("//") && !line.StartsWith("//@pragma-keepline")) || line == string.Empty)
                         {
                             counter++;
                             continue;

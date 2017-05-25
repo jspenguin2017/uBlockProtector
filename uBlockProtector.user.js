@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name AdBlock Protector Script
+// @name uBlock Protector Script
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
-// @version 7.35
+// @version 7.36
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -23,14 +23,14 @@
 // @connect canal-plus.com
 // @connect *
 // @run-at document-start
-// @homepage https://jspenguin2017.github.io/AdBlockProtector/
-// @supportURL https://github.com/jspenguin2017/AdBlockProtector/issues
-// @downloadURL https://github.com/jspenguin2017/AdBlockProtector/raw/master/AdBlockProtector.user.js
+// @homepage https://jspenguin2017.github.io/uBlockProtector/
+// @supportURL https://github.com/jspenguin2017/uBlockProtector/issues
+// @downloadURL https://github.com/jspenguin2017/uBlockProtector/raw/master/uBlockProtector.user.js
 // ==/UserScript==
 //
 // ===== PLEASE READ =====
-// This Userscript is intended to be used with AdBlock Protector List.
-// Visite our home page for more information: https://jspenguin2017.github.io/AdBlockProtector/
+// This Userscript is intended to be used with uBlock Protector List.
+// Visite our home page for more information: https://jspenguin2017.github.io/uBlockProtector/
 // =======================
 /*! jQueryFactory based on: jQuery v3.2.1 | (c) JS Foundation and other contributors | jquery.org/license */
 var a = a || {};
@@ -51,19 +51,19 @@ a.init = function (excluded, AdflyMatch, AdflyUnmatch) {
         a.generic.AdflySkipper();
     }
     a.mods();
-    GM_registerMenuCommand("AdBlock Protector Settings Page", function () {
+    GM_registerMenuCommand("uBlock Protector Settings Page", function () {
         GM_openInTab(a.c.settingsPage);
     });
-    GM_registerMenuCommand("AdBlock Protector Home Page", function () {
+    GM_registerMenuCommand("uBlock Protector Home Page", function () {
         GM_openInTab(a.c.homePage);
     });
-    GM_registerMenuCommand("AdBlock Protector Support Page", function () {
+    GM_registerMenuCommand("uBlock Protector Support Page", function () {
         GM_openInTab(a.c.supportPage);
     });
-    if (a.domCmp(["jspenguin2017.github.io"], true) && a.doc.location.href.includes("jspenguin2017.github.io/AdBlockProtector")) {
-        a.win.AdBlock_Protector_Script = true;
+    if (a.domCmp(["jspenguin2017.github.io"], true) && a.doc.location.href.includes("jspenguin2017.github.io/uBlockProtector")) {
+        a.win.uBlock_Protector_Script = true;
     }
-    if (a.domCmp(["jspenguin2017.github.io"], true) && a.doc.location.href.includes("jspenguin2017.github.io/AdBlockProtector/settings.html")) {
+    if (a.domCmp(["jspenguin2017.github.io"], true) && a.doc.location.href.includes("jspenguin2017.github.io/uBlockProtector/settings.html")) {
         a.on("load", function () {
             a.win.init({
                 "config_debugMode": a.config.debugMode,
@@ -148,9 +148,9 @@ a.applyMatch = function (args, method, filter) {
 };
 a.$ = null;
 a.c = {};
-a.c.settingsPage = "https://jspenguin2017.github.io/AdBlockProtector/settings.html";
-a.c.homePage = "https://jspenguin2017.github.io/AdBlockProtector/";
-a.c.supportPage = "https://github.com/jspenguin2017/AdBlockProtector/issues";
+a.c.settingsPage = "https://jspenguin2017.github.io/uBlockProtector/settings.html";
+a.c.homePage = "https://jspenguin2017.github.io/uBlockProtector/";
+a.c.supportPage = "https://github.com/jspenguin2017/uBlockProtector/issues";
 a.c.syntaxBreaker = "])} \"'` ])} \n\r \r\n */ ])}";
 a.c.topFrame = (function () {
     try {
@@ -163,13 +163,13 @@ a.mods = function () {
     if (a.c.topFrame && a.domCmp(["facebook.com"], true)) {
         (function addJumpToTop() {
             if (a.mods.Facebook_JumpToTop) {
-                if (a.$("#AdBlock_Protector_FBMod_JumpToTop").length > 0) {
+                if (a.$("#uBlock_Protector_FBMod_JumpToTop").length > 0) {
                     return;
                 }
                 const navBar = a.$("div[role='navigation']");
                 if (navBar.length > 0) {
-                    navBar.first().append(`<div class="_4kny _2s24" id="AdBlock_Protector_FBMod_JumpToTop"><div class="_4q39"><a class="_2s25" href="javascript: void(0);">Top</a></div></div>`);
-                    a.$("#AdBlock_Protector_FBMod_JumpToTop").click(function () {
+                    navBar.first().append(`<div class="_4kny _2s24" id="uBlock_Protector_FBMod_JumpToTop"><div class="_4q39"><a class="_2s25" href="javascript: void(0);">Top</a></div></div>`);
+                    a.$("#uBlock_Protector_FBMod_JumpToTop").click(function () {
                         a.win.scrollTo(a.win.scrollX, 0);
                     });
                     a.config.debugMode && a.out.info("Facebook Mod: Jump to Top button added. ");
@@ -282,7 +282,7 @@ a.protectFunc = function () {
         a.protectFunc.masks.push(String(original));
         a.config.debugMode && a.out.warn("Functions protected. ");
     } catch (err) {
-        a.config.debugMode && a.out.error("AdBlock Protector failed to protect functions! ");
+        a.config.debugMode && a.out.error("uBlock Protector failed to protect functions! ");
         return false;
     }
     return true;
@@ -329,7 +329,7 @@ a.filter = function (func, method, filter, onMatch, onAfter) {
         }
         a.config.debugMode && a.out.warn("Filter activated on " + func);
     } catch (err) {
-        a.config.debugMode && a.out.error("AdBlock Protector failed to activate filter on " + func + "! ");
+        a.config.debugMode && a.out.error("uBlock Protector failed to activate filter on " + func + "! ");
         return false;
     }
     return true;
@@ -364,7 +364,7 @@ a.timewarp = function (func, method, filter, onMatch, onAfter, ratio) {
         }
         a.config.debugMode && a.out.warn("Timewarp activated on " + func);
     } catch (err) {
-        a.config.debugMode && a.out.error("AdBlock Protector failed to apply timewarp on " + func + "! ");
+        a.config.debugMode && a.out.error("uBlock Protector failed to apply timewarp on " + func + "! ");
         return false;
     }
     return true;
@@ -407,7 +407,7 @@ a.readOnly = function (name, val) {
             }
         }
     } catch (err) {
-        a.config.debugMode && a.out.error("AdBlock Protector failed to define read-only property " + name + "! ");
+        a.config.debugMode && a.out.error("uBlock Protector failed to define read-only property " + name + "! ");
         return false;
     }
     return true;
@@ -435,7 +435,7 @@ a.noAccess = function (name) {
             }
         }
     } catch (err) {
-        a.config.debugMode && a.out.error("AdBlock Protector failed to define non-accessible property " + name + "! ");
+        a.config.debugMode && a.out.error("uBlock Protector failed to define non-accessible property " + name + "! ");
         return false;
     }
     return true;
@@ -509,7 +509,7 @@ a.nativePlayer = function (source, typeIn, widthIn, heightIn) {
     return `<video width='${width}' height='${height}' controls><source src='${source}' type='${type}'></video>`;
 };
 a.videoJS = function (sources, types, width, height) {
-    let html = `<video id="AdBlock_Protector_Video_Player" class="video-js vjs-default-skin" controls preload="auto" width="${width}" height="${height}" data-setup="{}">`;
+    let html = `<video id="uBlock_Protector_Video_Player" class="video-js vjs-default-skin" controls preload="auto" width="${width}" height="${height}" data-setup="{}">`;
     for (let i = 0; i < sources.length; i++) {
         html += `<source src="${sources[i]}" type="${types[i]}">`;
     }
@@ -899,7 +899,7 @@ a.generic.AdflySkipper = function () {
             }
         });
     } catch (err) {
-        a.config.debugMode && a.out.error("AdBlock Protector could not set up Adfly skipper. ");
+        a.config.debugMode && a.out.error("uBlock Protector could not set up Adfly skipper. ");
     }
 };
 a.generic.FuckAdBlock = function (constructorName, instanceName) {
@@ -1115,11 +1115,11 @@ if (a.domCmp(["player.pl"])) {
                         elem.html("").append(a.nativePlayer(vidSources[1].url));
                         a.$("video").css("max-height", "540px");
                     } else if (vidSources[0].src) {
-                        a.config.debugMode && a.out.error("AdBlock Protector will not replace this video player " +
+                        a.config.debugMode && a.out.error("uBlock Protector will not replace this video player " +
                             "because it is DRM prtected. ");
                     }
                 } catch (err) {
-                    a.config.debugMode && a.out.error("AdBlock Protector failed to find media URL! ");
+                    a.config.debugMode && a.out.error("uBlock Protector failed to find media URL! ");
                     return;
                 }
             }
@@ -1163,7 +1163,7 @@ if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl", "sportowefakty.wp.pl"], 
                 }
             }
         } catch (err) {
-            a.config.debugMode && a.out.error("AdBlock Protector failed to find media ID with method 1! ");
+            a.config.debugMode && a.out.error("uBlock Protector failed to find media ID with method 1! ");
         }
         if (a.$(containerMatcher).length > 0) {
             const elem = a.$(containerMatcher).first().find(".titlecont a.title");
@@ -1207,13 +1207,13 @@ if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl", "sportowefakty.wp.pl"], 
                         loadCounter++;
                         networkErrorCounter = 0;
                     } catch (err) {
-                        a.config.debugMode && a.out.error("AdBlock Protector failed to find media URL! ");
+                        a.config.debugMode && a.out.error("uBlock Protector failed to find media URL! ");
                         networkErrorCounter += 1;
                     }
                     networkBusy = false;
                 },
                 onerror: function () {
-                    a.config.debugMode && a.out.error("AdBlock Protector failed to load media JSON! ");
+                    a.config.debugMode && a.out.error("uBlock Protector failed to load media JSON! ");
                     networkErrorCounter += 0.5;
                     networkBusy = false;
                 }
@@ -2227,7 +2227,7 @@ if (a.config.debugMode &&
             const parsedData = JSON.parse(data);
             streams = parsedData.streams
         } catch (err) {
-            a.config.debugMode && a.out.error("AdBlock Protector failed to find video URL! ");
+            a.config.debugMode && a.out.error("uBlock Protector failed to find video URL! ");
             return;
         }
         let sources = [], types = [];
@@ -2241,7 +2241,7 @@ if (a.config.debugMode &&
             sources.push(streams.medium);
             types.push(streams.medium.startsWith("rtmp") ? "rtmp/mp4" : "application/f4m+xml");
         } else {
-            a.config.debugMode && a.out.error("AdBlock Protector failed to find video URL! ");
+            a.config.debugMode && a.out.error("uBlock Protector failed to find video URL! ");
             return;
         }
         a.out.info("Potential media URLs: ");
@@ -2799,7 +2799,8 @@ if (a.domCmp(["gaybeeg.info"])) {
                 const temp = elem.innerHTML.split("/*  Collapse Functions, version 2.0");
                 if (temp.length === 2) {
                     const hash = a.sha256(temp[1]);
-                    if (hash === "382f3949955c262f392d50e681f373c50b779b7503a303b93a03070940532af7") {
+                    if (hash ===
+                        "382f3949955c262f392d50e681f373c50b779b7503a303b93a03070940532af7") {
                         a.win.eval(elem.innerHTML);
                         return;
                     } else if (a.config.debugMode) {
@@ -2969,11 +2970,11 @@ if (a.domCmp(["canalplus.fr"])) {
                         throw "Media URL Not Found";
                     }
                 } catch (err) {
-                    a.config.debugMode && a.out.error("AdBlock Protector failed to find media URL! ");
+                    a.config.debugMode && a.out.error("uBlock Protector failed to find media URL! ");
                 }
             },
             onerror: function () {
-                a.config.debugMode && a.out.error("AdBlock Protector failed to load media JSON! ");
+                a.config.debugMode && a.out.error("uBlock Protector failed to load media JSON! ");
             }
         });
     };
