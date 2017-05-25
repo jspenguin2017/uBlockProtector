@@ -1,6 +1,5 @@
 ! === Installation test
 jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
-#%#while(1){ ; }
 ! === GENERIC
 ###like-us-adblock-modal
 ##.popup-premium__apla
@@ -38,13 +37,13 @@ filez.tv###adblockinfo
 ||debridnet.com/stat*^$subdocument
 ||amazon-adsystem.com^$subdocument,redirect=noopframe,domain=debridnet.com
 ! === xmovies8.org
-! === Issue: https://github.com/X01X012013/AdBlockProtector/issues/90
+! === Issue: https://github.com/X01X012013/uBlockProtector/issues/90
 ||xmovies8.org/ads_*.js$xmlhttprequest,first-party,redirect=noopjs
 ! === tune.pk
-! === Issue: https://github.com/X01X012013/AdBlockProtector/issues/92
+! === Issue: https://github.com/X01X012013/uBlockProtector/issues/92
 tune.pk###annoy-wrapper
 ! === NSFW! 29443kmq.video - Thanks to uBlock-user
-! === Issue: https://github.com/X01X012013/AdBlockProtector/issues/93
+! === Issue: https://github.com/X01X012013/uBlockProtector/issues/93
 29443kmq.video,dato.porn###a
 ||$third-party,domain=czechhq.net
 @@||fonts.googleapis.com^$domain=czechhq.net
@@ -62,17 +61,17 @@ ps4news.com##script:inject(noeval.js)
 ps4news.com##body > *[id^="blockblock"]:style(visibility: visible !important; display: block !important;)
 ps4news.com##table[id^='blockblock']
 ! === 7636ca6cb9fc.com
-! === Issue: https://github.com/X01X012013/AdBlockProtector/issues/99
+! === Issue: https://github.com/X01X012013/uBlockProtector/issues/99
 ||7636ca6cb9fc.com^
 ! === adbull.me, shink.in, dbzsuper.tv
-! === Issue: https://github.com/X01X012013/AdBlockProtector/issues/108
-! === Issue: https://github.com/X01X012013/AdBlockProtector/issues/120
+! === Issue: https://github.com/X01X012013/uBlockProtector/issues/108
+! === Issue: https://github.com/X01X012013/uBlockProtector/issues/120
 ||cloudfront.net^$domain=adbull.me|shink.in|dbzsuper.tv
 ! === okazje.co
-! === Issue: https://github.com/X01X012013/AdBlockProtector/issues/114
+! === Issue: https://github.com/X01X012013/uBlockProtector/issues/114
 okazje.co###AdBlockDetected
 ! === NSFW! pornvibe.org - Thanks to uBlock-user
-! === Issue: https://github.com/X01X012013/AdBlockProtector/issues/119
+! === Issue: https://github.com/X01X012013/uBlockProtector/issues/119
 pornvibe.org##.special-message-content
 ||$third-party,script,domain=pornvibe.org
 @@||openload.co/embed^$third-party,domain=pornvibe.org
@@ -80,10 +79,10 @@ pornvibe.org##.special-message-content
 ! === answers.com
 answers.com##.end_of_slideshow
 ! === gamereactor.dk
-! === Issue: https://github.com/X01X012013/AdBlockProtector/issues/124
+! === Issue: https://github.com/X01X012013/uBlockProtector/issues/124
 ||openx.gamereactor.dk/multi.php$script,important
 ! === animmex.* - Thanks to uBlock-user
-! === Issue: https://github.com/X01X012013/AdBlockProtector/issues/125
+! === Issue: https://github.com/X01X012013/uBlockProtector/issues/125
 ||finalservers.net^$inline-script
 finalservers.net###babasbmsgx
 finalservers.net##script:inject(abort-on-property-read.js, _gunggo)
@@ -105,35 +104,35 @@ youtube.com###companion
 @@||somethodox.info/popunder.gif$xmlhttprequest,domain=flashx.tv
 ||somethodox.info/?&subid=*&pid=*&tid=*$beacon,image,domain=flashx.tv
 ! === linkneverdie.com
-! === Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/146
+! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/146
 @@||linkneverdie.com^$elemhide
 ! === pogdesign.co.uk
-! === Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/149
+! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/149
 pogdesign.co.uk##.replace
 ! === ally.sh, al.ly
-! === Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/148
+! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/148
 ||p207208.clksite.com^$subdocument,redirect=noopframe,domain=ally.sh|al.ly
 @@||ally.sh^$generichide
 ally.sh##script:inject(popads.net.js)
 @@||al.ly^$generichide
 al.ly##script:inject(popads.net.js)
 ! === hackintosh.zone, hackintosh.computer - Thanks to F4z
-! === Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/35
+! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/35
 ||hackintosh.*/donate/donate.php
 @@||cdn.hackintosh.zone/ipscdn/adsense/*$first-party
 hackintosh.computer##.adsbygoogle
 @@||hackintosh.computer/wp-content/themes/adsense/*$first-party
 ! === ovar.io
-! === Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/155
+! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/155
 @@||imasdk.googleapis.com/js/sdkloader/outstream.js$script,domain=ovar.io
 ! === futbolchile.net
-! === Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/160
+! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/160
 futbolchile.net##script:inject(bab-defuser.js)
 ! === tv.aftonbladet.se - Thanks to uBlock-user
-! === Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/163
+! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/163
 ||damoh.*^$media
 ! === NSFW! gaybeeg.info, netdna-storage.com
-! === Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/164
+! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/164
 ||gaybeeg.info^$inline-script
 ||adnetworkperformance.com^$script,redirect=noopjs,domain=netdna-storage.com
 ||allanalpass.com^$script,redirect=noopjs,domain=netdna-storage.com
@@ -147,7 +146,7 @@ filechoco.net##script:inject(noeval.js)
 @@||disquscdn.com^$domain=graffica.info
 @@|https://disqus.com/next/config.js$domain=graffica.info
 ! === rule34hentai.net
-! === Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/177
+! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/177
 rule34hentai.net##script:inject(noeval.js)
 rule34hentai.net###babasbmsgx
 ! === iframes of goodanime.co - Thanks to uBlock-user
@@ -156,7 +155,7 @@ easyvideo.me#@#div[style^="width:"]
 videowing.me#@#div[style^="width:"]
 videozoo.me#@#div[style^="width:"]
 ! === gelbooru.com - Thanks to lain566
-! === Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/182
+! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/182
 ||gelbooru.com^$inline-script,badfilter
 @@||ajax.googleapis.com/ajax/libs/jquery/*$script,domain=gelbooru.com
 gelbooru.com#@#[style*="height:"][width]
@@ -177,7 +176,7 @@ gelbooru.com#@#center > a[href]
 ! === exrapidleech.info
 ||bidvertiser.com$important,domain=exrapidleech.info
 ! === atresplayer.com
-! === Issue: https://github.com/jspenguin2017/AdBlockProtector/issues/180
+! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/180
 @@||atresplayer.com^$generichide
 ! === mmo-champion.com
 ||broadcastbed.com^$domain=mmo-champion.com

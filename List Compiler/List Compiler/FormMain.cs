@@ -107,7 +107,7 @@ namespace List_Compiler
                 //Write to file
                 try
                 {
-                    string path = Path.Combine(gitRoot, "AdBlockProtectorList.txt");
+                    string path = Path.Combine(gitRoot, "uBlockProtectorList.txt");
                     PutLog("Writting data to " + path);
                     File.WriteAllLines(path, toWrite);
                     PutLog(toWrite.Length.ToString() + " entries wrote. ");

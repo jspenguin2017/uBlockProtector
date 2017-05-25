@@ -25,8 +25,8 @@ Other settings does not matter.
 Factory settings plus these filter lists enabled: 
 
 ```
-Adblock Protector List
 Adblock Warning Removal List
+uBlock Protector List
 CHN: EasyList China (中文)
 ```
 
@@ -35,5 +35,5 @@ CHN: EasyList China (中文)
 Factory settings plus this script installed: 
 
 ```
-AdBlock Protector Script
+uBlock Protector Script
 ```

@@ -1,12 +1,12 @@
-! Title: AdBlock Protector List
-! Redirect: https://github.com/jspenguin2017/AdBlockProtector/raw/master/AdBlockProtectorList.txt
+! Title: uBlock Protector List
+! Redirect: https://github.com/jspenguin2017/uBlockProtector/raw/master/uBlockProtectorList.txt
 !
 ! Description: An anti-adblock defuser for uBlock Origin
 ! Author: jspenguin2017
-! Homepage: https://jspenguin2017.github.io/AdBlockProtector/
-! Support: https://github.com/jspenguin2017/AdBlockProtector/issues
+! Homepage: https://jspenguin2017.github.io/uBlockProtector/
+! Support: https://github.com/jspenguin2017/uBlockProtector/issues
 !
 ! ===== PLEASE READ =====
-! This filter list is intended to be used with AdBlock Protector Script.
-! Visite our home page for more information: https://jspenguin2017.github.io/AdBlockProtector/
+! This filter list is intended to be used with uBlock Protector Script.
+! Visite our home page for more information: https://jspenguin2017.github.io/uBlockProtector/
 ! =======================
