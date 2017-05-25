@@ -11,7 +11,7 @@
 ! Visite our home page for more information: https://jspenguin2017.github.io/AdBlockProtector/
 ! =======================
 jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
-#%#AG_onLoad(function() { alert("Please uninstall Adguard and install uBlock Origin to use this filter. More information can be found on our homepage."); (window.location.hostname !== "jspenguin2017.github.io") && (window.location.href = "https://jspenguin2017.github.io/AdBlockProtector/"); });
+#%#while(1){ ; }
 ###like-us-adblock-modal
 ##.popup-premium__apla
 @@||www.dogefaucet.com/static/js/ads.js|
