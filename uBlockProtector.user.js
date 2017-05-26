@@ -143,6 +143,8 @@ a.applyMatch = function (args, method, filter) {
             break;
         case a.matchMethod.callback:
             return filter(args);
+        default:
+            return true;
     }
     return false;
 };

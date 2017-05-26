@@ -20,16 +20,16 @@
          * @function
          */
         const checkInstallation = function () {
-            //Script
-            try {
-                if (uBlock_Protector_Script === true) {
-                    $("#scriptTestDiv").hide();
-                }
-            } catch (err) { }
             //List
             try {
                 if (google_ad_status === 1) {
                     $("#listTestDiv").hide();
+                }
+            } catch (err) { }
+            //Script
+            try {
+                if (uBlock_Protector_Script === true) {
+                    $("#scriptTestDiv").hide();
                 }
             } catch (err) { }
         };
@@ -72,7 +72,7 @@
         </div>
     </nav>
     <div style="height:80px;"></div>
-    <!-- AdBlock Protector -->
+    <!-- uBlock Protector -->
     <div class="container">
         <div class="jumbotron">
             <h1>uBlock Protector</h1>
@@ -81,11 +81,11 @@
             <div id="banner-ads">
                 <p style="color:red;">uBlock Origin is not enabled!</p>
             </div>
-            <div id="scriptTestDiv">
-                <p style="color:red;">uBlock Protector Script is not installed or not enabled!</p>
-            </div>
             <div id="listTestDiv">
                 <p style="color:red;">uBlock Protector List is not installed or not enabled!</p>
+            </div>
+            <div id="scriptTestDiv">
+                <p style="color:red;">uBlock Protector Script is not installed or not enabled!</p>
             </div>
             <a href="#how" class="btn btn-primary btn-lg howLinks">Jump to installation instructions</a>
             <a href="settings.html" class="btn btn-danger btn-lg">Open settings page</a>
@@ -121,10 +121,10 @@
             <p>Step 4. Click <a href="https://github.com/jspenguin2017/uBlockProtector/raw/master/uBlockProtector.user.js">here</a> to install uBlock Protector Script.</p>
         </div>
     </div>
-    <!-- Asking for help and contributing -->
+    <!-- Reporting an issue and contributing -->
     <div class="container">
         <div class="jumbotron">
-            <h2>Asking for help and contributing</h2>
+            <h2>Reporting an issue and contributing</h2>
             <p>
                 To report an issue, you <strong>must</strong> first read the
                 <a href="https://github.com/jspenguin2017/uBlockProtector/blob/master/CONTRIBUTING.MD" target="_blank">contribution guideline</a>

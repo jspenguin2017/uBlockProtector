@@ -3,8 +3,7 @@
 **Are you using Chrome, uBlock Origin, and Violentmonkey? If not, you are prohibited from opening issues in this repository. 
 Failure to obey this rule may result in a ban.**
 
-Note: We tolerate Chromium as an open source alternative to Chrome, but we may not fix issues that cannot be 
-reproduced in Chrome. 
+Note: We accept Chromium as an open source alternative to Chrome, but we may not fix issues that are specific to Chromium. 
 
 Do not want to switch your setup? Check out [AAK-Cont](https://xuhaiyang1234.gitlab.io/AAK-Cont/)! 
 
@@ -36,4 +35,5 @@ Give your issue a descriptive title and clearly explain what you are looking for
 
 ## Opening pull request
 
-Thoroughly explain what your code does and nicely comment it. 
+First please take the time to understand this project, submitting low quality pull request may result in a ban. 
+Please also take the time to nicely comment your code and thoroughly explain what it does and why the change is necessary. 

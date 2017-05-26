@@ -1,7 +1,7 @@
 ### These are the known Adfly domains and test links: 
 
 Note: Some of these links will send you to another Adfly-like (but not Adfly) page, 
-if you landed on those pages it means the solution worked. 
+if you landed on those pages, it means the solution worked. 
 
 #### Second level ("normal") domains
 
