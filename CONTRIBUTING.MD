@@ -12,11 +12,11 @@ you in AAK-Cont repository even if you are using a different setup.
 
 ### Reporting a website that does not work
 
-Please check if someone else already opened an issue for your problem, join the discussion there and do not open another one. 
+Check if someone else already opened an issue for your problem, join the discussion there and do not open another one. 
 
 **Title**: The domain of the website. Prepend `NSFW! ` if the website may contain contents that are not safe for work. 
 
-**Comment**: Please use the template. 
+**Comment**: Use the template. 
 
 ### Reporting a bug
 
@@ -24,10 +24,10 @@ Give your issue a descriptive title and clearly explain what is wrong, include r
 
 ### Reporting something secret
 
-If what you are reporting needs to be absolutely secret (e.g. security vulnerability), please open an issue in our 
+If what you are reporting needs to be absolutely secret (e.g. security vulnerability), open an issue in our 
 [restricted issues tracker](https://gitlab.com/xuhaiyang1234/uBlockProtectorSecretIssues/issues). 
 
-Since that issues tracker is not actively monitored, please also open an issue here to keep us informed. 
+Since that issues tracker is not actively monitored, you also need to open an issue here to keep us informed. 
 
 ### Everything else
 
@@ -35,5 +35,5 @@ Give your issue a descriptive title and clearly explain what you are looking for
 
 ## Opening pull request
 
-First please take the time to understand this project, submitting low quality pull request may result in a ban. 
-Please also take the time to nicely comment your code and thoroughly explain what it does and why the change is necessary. 
+First, take the time to understand this project, submitting low quality pull request may result in a ban. 
+Also, nicely comment your code and thoroughly explain what it does and why the change is necessary. 
