@@ -227,8 +227,6 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
     "echirurgia.pl", "pudelekx.pl", "o2.pl"])) {
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/70
     //Thanks to ghajini
-    //@pragma-keepline Based on Adguard filters
-    //@pragma-keepline License: https://github.com/AdguardTeam/AdguardBrowserExtension/blob/master/LICENSE
     a.cookie("ABCABC", "true");
     a.filter("addEventListener", a.matchMethod.stringExact, "advertisement");
     a.readOnly("hasSentinel", function () { return false; });
