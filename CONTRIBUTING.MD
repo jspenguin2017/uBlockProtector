@@ -36,5 +36,5 @@ You are not allowed to ask for expanding support nor for help with installation.
 
 ## Opening pull request
 
-First, take the time to understand this project, submitting low quality pull request may result in a ban. 
+Take the time to understand this project, submitting low quality pull request may result in a ban. 
 Also, nicely comment your code and thoroughly explain what it does and why the change is necessary. 
