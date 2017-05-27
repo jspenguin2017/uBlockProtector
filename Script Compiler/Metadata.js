@@ -2,7 +2,7 @@
 // @name uBlock Protector Script
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
-// @version 7.36
+// @version 7.37
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*

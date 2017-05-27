@@ -224,7 +224,7 @@ if (a.domCmp(["player.pl"])) {
 if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadzetomania.pl", "hotmoney.pl",
     "kafeteria.pl", "kafeteria.tv", "komediowo.pl", "komorkomania.pl", "money.pl", "pudelek.tv", "sfora.pl",
     "snobka.pl", "wawalove.pl", "wp.pl", "wp.tv", "wrzuta.pl", "pudelek.pl", "fotoblogia.pl", "parenting.pl",
-    "echirurgia.pl", "pudelekx.pl", "o2.pl"])) {
+    "echirurgia.pl", "pudelekx.pl", "o2.pl", "kardiolo.pl"])) {
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/70
     //Thanks to ghajini
     a.cookie("ABCABC", "true");
