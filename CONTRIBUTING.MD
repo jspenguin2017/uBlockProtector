@@ -1,5 +1,5 @@
 This repository has extremely strict rules because it starts to take a lot of my time. These rules only 
-apply to *this* repository. These rules does not apply to myself and I reserve the right to change these 
+apply to **this** repository. These rules do not apply to myself and I reserve the right to change these 
 rules at any time. 
 
 Consequence for breaking these rules varies from a warning to a 6 months ban on a case by case basis. 
