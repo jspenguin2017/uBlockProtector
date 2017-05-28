@@ -295,7 +295,7 @@ a.mods = function () {
                     a.config.debugMode && a.out.info("Facebook Mod: Jump to Top button added. ");
                 } else {
                     //Wait a little bit for the window to load, for some reason load event is not working
-                    a.win.setTimeout(addJumpToTop, 500);
+                    a.setTimeout(addJumpToTop, 500);
                 }
             }
         })();
@@ -1174,7 +1174,11 @@ a.generic = function () {
             //BetterStopAdblock, Antiblock.org v3, and BlockAdBlock
             for (let prop in a.win) {
                 try {
-                    if (!prop.startsWith("webkit") && /^[a-z0-9]{4,12}$/i.test(prop) && prop !== "document" && (a.win[prop] instanceof a.win.HTMLDocument) === false && a.win.hasOwnProperty(prop) && typeof a.win[prop] === "object") {
+                    if (!prop.startsWith("webkit") &&
+                        /^[a-z0-9]{4,12}$/i.test(prop) &&
+                        prop !== "document" &&
+                        (a.win[prop] instanceof a.win.HTMLDocument) === false && a.win.hasOwnProperty(prop) &&
+                        typeof a.win[prop] === "object") {
                         const method = a.win[prop];
                         //BetterStopAdblock and Antiblock.org v3
                         if (method.deferExecution &&

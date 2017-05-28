@@ -2,7 +2,7 @@
 // @name uBlock Protector Script
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
-// @version 7.37
+// @version 7.38
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -176,7 +176,7 @@ a.mods = function () {
                     });
                     a.config.debugMode && a.out.info("Facebook Mod: Jump to Top button added. ");
                 } else {
-                    a.win.setTimeout(addJumpToTop, 500);
+                    a.setTimeout(addJumpToTop, 500);
                 }
             }
         })();
@@ -718,7 +718,11 @@ a.generic = function () {
             }
             for (let prop in a.win) {
                 try {
-                    if (!prop.startsWith("webkit") && /^[a-z0-9]{4,12}$/i.test(prop) && prop !== "document" && (a.win[prop] instanceof a.win.HTMLDocument) === false && a.win.hasOwnProperty(prop) && typeof a.win[prop] === "object") {
+                    if (!prop.startsWith("webkit") &&
+                        /^[a-z0-9]{4,12}$/i.test(prop) &&
+                        prop !== "document" &&
+                        (a.win[prop] instanceof a.win.HTMLDocument) === false && a.win.hasOwnProperty(prop) &&
+                        typeof a.win[prop] === "object") {
                         const method = a.win[prop];
                         if (method.deferExecution &&
                             method.displayMessage &&
@@ -1136,7 +1140,7 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
     a.filter("addEventListener", a.matchMethod.stringExact, "advertisement");
     a.readOnly("hasSentinel", function () { return false; });
 }
-if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl", "sportowefakty.wp.pl"], true)) {
+if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl", "sportowefakty.wp.pl", "teleshow.wp.pl"], true)) {
     let mid; //Media ID of next video
     let midArray1 = []; //Media IDs method 1
     let midArray2 = []; //Media IDs method 2
