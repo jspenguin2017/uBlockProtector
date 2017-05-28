@@ -1,4 +1,4 @@
-Consequence for breaking these rules varies from a warning to 6 month ban on a case by case basis. 
+Consequence for breaking these rules varies from a warning to a 6 months ban on a case by case basis. 
 
 There is no arguing about these rules, with the only exception being recommendation on accepted setup, 
 but be aware that there can be only one accepted setup. The Fork button is always available if you do not 
