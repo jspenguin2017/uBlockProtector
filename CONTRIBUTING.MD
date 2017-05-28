@@ -1,22 +1,23 @@
 Note: No ban is permanent, length varies from 1 day to 6 months on a case by case basis. 
 
-There is no arguing about these rules, or you may be banned. The Fork button is always available if you don't like them. 
+There is no arguing about these rules, with the only exception being recommendation on accepted setup, 
+but be aware that there can be only one accepted setup. The Fork button is always available if you do not 
+like these rules. 
 
-If you are here to *represent* Adguard team, or *promote* Adguard product, you will be immediately banned, 
+If you are here to *represent* the Adguard team or *promote* Adguard product, you will be immediately banned, 
 no exception granted. The reason behind this is long, you can read it 
 [here](https://github.com/jspenguin2017/uBlockProtector/issues/237). 
 
+Note: Adguard team members are still welcomed as long as they do not talk about them being part of Adguard team, 
+and Adguard filters are still accepted in comments for transpiling purposes. 
+
 ## Opening an issue
 
-**Are you using Chrome, uBlock Origin, and Violentmonkey? If not, you are prohibited from opening issues in this repository. 
-Failure to obey this rule may result in a ban.**
+**You are prohibited from opening issues in this repository if you are not using Chrome, uBlock Origin, and Violentmonkey.**
 
-Note: We accept Chromium as an open source alternative to Chrome, but we may not fix issues that are specific to Chromium. 
+Note: Chromium is accepted as an open source alternative to Chrome, but issues that are specific to Chromium may not be fixed. 
 
 Do not want to switch your setup? Check out [AAK-Cont](https://xuhaiyang1234.gitlab.io/AAK-Cont/)! 
-
-We have this strict rule to make sure issues goes into the right place, we will still make reasonable effort to assist 
-you in AAK-Cont repository even if you are using a different setup. 
 
 ### Reporting a website that does not work
 
@@ -34,6 +35,7 @@ Give your issue a descriptive title and clearly explain what is wrong, include r
 
 If what you are reporting needs to be absolutely secret (e.g. security vulnerability), open an issue in our 
 [restricted issues tracker](https://gitlab.com/xuhaiyang1234/uBlockProtectorSecretIssues/issues). 
+Do not forget to flag the issue as confidential. 
 
 Since that issues tracker is not actively monitored, you also need to open an issue here to let us know. 
 
@@ -44,5 +46,6 @@ You are not allowed to ask for expanding support nor for help with installation.
 
 ## Opening pull request
 
-Take the time to understand this project, submitting low quality pull request may result in a ban. 
-Also, nicely comment your code and thoroughly explain what it does and why the change is necessary. 
+Take the time to understand this project, do not submit low quality pull requests. You should at least skim over everything 
+before submitting your first pull request. Also, nicely comment your code and thoroughly explain what it does and why the 
+change is necessary. 
