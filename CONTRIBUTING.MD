@@ -1,3 +1,7 @@
+If you are here to *represent* Adguard team, or *promote* Adguard product, you will be immediately banned, 
+no exception granted. The reason behind this is long, you can read it 
+[here](https://github.com/jspenguin2017/uBlockProtector/issues/237). 
+
 ## Opening an issue
 
 **Are you using Chrome, uBlock Origin, and Violentmonkey? If not, you are prohibited from opening issues in this repository. 
