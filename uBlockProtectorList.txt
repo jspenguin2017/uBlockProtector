@@ -151,8 +151,9 @@ wordsense.eu##script:inject(setTimeout-defuser.js, ad, 2000)
 hackinformer.com##script:inject(abort-on-property-write, anOptions)
 hackinformer.com##script:inject(setTimeout-defuser.js, an_message_display)
 ||uol.com.br/camaleao/assets/web/javascript/detectadblock^$script,important
-! =====Patched Anti-Adblock Killer List=====
-! License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
+! =====Patched Anti-Adblock Killer List (originally by Reek)=====
+! Patching logic can be found in List Compiler source code
+! Anti-Adblock Killer Repository (contains original source code and license): https://github.com/reek/anti-adblock-killer
 ||trymask.com/api/$third-party
 @@||adworkmedia.com/gLoader.php?GID=$script,third-party
 @@||adworkmedia.com/gTemplate.php?GID=$subdocument,third-party

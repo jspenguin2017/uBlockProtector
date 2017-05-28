@@ -651,7 +651,7 @@ a.sha256 = function (r) {
     return r = g(r), d(h(C(r), r.length * v));
 };
 a.generic = function () {
-    //@pragma-keepline Based on generic solutions of Anti-Adblock Killer
+    //@pragma-keepline Based on generic solutions of Anti-Adblock Killer, modified to fit our Core API
     //@pragma-keepline License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
     if (a.config.allowGeneric && !a.config.domExcluded) {
         const data = {};
@@ -953,6 +953,8 @@ a.generic.FuckAdBlock = function (constructorName, instanceName) {
     };
     return a.readOnly(constructorName, patchedFuckAdBlock) && a.readOnly(instanceName, new a.win[constructorName]());
 };
+//@pragma-keepline Solutions from Anti-Adblock Killer (originally by Reek) are modified to fit our Core API
+//@pragma-keepline Anti-Adblock Killer Repository (contains original source code and license): https://github.com/reek/anti-adblock-killer
 (function () {
     if (a.domCmp(["29443kmq.video", "dato.porn"])) {
         a.readOnly("cRAds", true);
