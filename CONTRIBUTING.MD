@@ -1,11 +1,11 @@
-Note: No ban is permanent, length varies from 1 day to 6 months on a case by case basis. 
+Consequence for breaking these rules varies from a warning to 6 month ban on a case by case basis. 
 
 There is no arguing about these rules, with the only exception being recommendation on accepted setup, 
 but be aware that there can be only one accepted setup. The Fork button is always available if you do not 
 like these rules. 
 
-If you are here to *represent* the Adguard team or *promote* Adguard product, you will be immediately banned, 
-no exception granted. The reason behind this is long, you can read it 
+You are not allowed to *represent* the Adguard team nor *promote* Adguard product. 
+The reason behind this is long, you can read it 
 [here](https://github.com/jspenguin2017/uBlockProtector/issues/237). 
 
 Note: Adguard team members are still welcomed as individual developers, 
