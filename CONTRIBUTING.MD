@@ -1,6 +1,6 @@
 Note: No ban is permanent, length varies from 1 day to 6 months on a case by case basis. 
 
-There is no arguing about these rules, the Fork button is always available if you don't like them. 
+There is no arguing about these rules, or you may be banned. The Fork button is always available if you don't like them. 
 
 If you are here to *represent* Adguard team, or *promote* Adguard product, you will be immediately banned, 
 no exception granted. The reason behind this is long, you can read it 
