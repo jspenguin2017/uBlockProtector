@@ -1,4 +1,4 @@
-Note: No ban is permanent, length varies on a case by case basis. 
+Note: No ban is permanent, length varies from 1 day to 6 months on a case by case basis. 
 
 If you are here to *represent* Adguard team, or *promote* Adguard product, you will be immediately banned, 
 no exception granted. The reason behind this is long, you can read it 
