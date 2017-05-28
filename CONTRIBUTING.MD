@@ -1,15 +1,15 @@
+This repository has extremely strict rules because it starts to take a lot of my time. These rules only 
+apply to *this* repository. These rules does not apply to myself and I reserve the right to change these 
+rules at any time. 
+
 Consequence for breaking these rules varies from a warning to a 6 months ban on a case by case basis. 
+Be aware that the ban will apply to all of my repositories. 
 
 There is no arguing about these rules, with the only exception being recommendation on accepted setup, 
 but be aware that there can be only one accepted setup. The Fork button is always available if you do not 
 like these rules. 
 
-You are not allowed to *represent* the Adguard team nor *promote* Adguard product. 
-The reason behind this is long, you can read it 
-[here](https://github.com/jspenguin2017/uBlockProtector/issues/237). 
-
-Note: Adguard team members are still welcomed as individual developers, 
-and Adguard filters are still accepted in comments for transpiling purposes. 
+You are not allowed to promote proprietary software. 
 
 ## Opening an issue
 
