@@ -15,12 +15,3 @@ We use custom compilers, the source code for the compilers along with prebuilt b
 located in `Script Compiler` and `List Compiler` folders. 
 
 The compilers are built with Visual Studio 2017. 
-
-## License
-
-Many solutions are reimplemented based on [Anti-Adblock Killer](https://github.com/reek/anti-adblock-killer) (by Reek). 
-
-Custom compilers and `Script Compiler/Core.js` are under GNU GPL v3 license unless otherwise specified. 
-
-Everything else inherits Anti-Adblock Killer's [license](https://github.com/reek/anti-adblock-killer/blob/master/LICENSE) 
-unless otherwise specified. 
