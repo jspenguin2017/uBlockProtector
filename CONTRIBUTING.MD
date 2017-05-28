@@ -8,7 +8,7 @@ If you are here to *represent* the Adguard team or *promote* Adguard product, yo
 no exception granted. The reason behind this is long, you can read it 
 [here](https://github.com/jspenguin2017/uBlockProtector/issues/237). 
 
-Note: Adguard team members are still welcomed as long as they do not talk about them being part of Adguard team, 
+Note: Adguard team members are still welcomed as individual developers, 
 and Adguard filters are still accepted in comments for transpiling purposes. 
 
 ## Opening an issue
