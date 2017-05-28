@@ -46,6 +46,6 @@ You are not allowed to ask for expanding support nor for help with installation.
 
 ## Opening pull request
 
-Take the time to understand this project, do not submit low quality pull requests. You should at least skim over everything 
-before submitting your first pull request. Also, nicely comment your code and thoroughly explain what it does and why the 
+Take the time to understand this project, do not submit low quality Pull Requests. You should at least skim over everything 
+before submitting your first Pull Request. Also, nicely comment your code and thoroughly explain what it does and why the 
 change is necessary. 
