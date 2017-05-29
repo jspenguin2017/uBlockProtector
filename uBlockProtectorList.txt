@@ -910,9 +910,6 @@ ppe.pl###abl
 shinden.pl#@#.AD-RC-300x250
 @@||www.smartadserver.com/config.js?$script,domain=manga-sanctuary.com
 @@||r.sascdn.com/diff/js/smart.js$script,domain=manga-sanctuary.com
-@@||bild.de^$elemhide
-@@||sascdn.com^$script,domain=bild.de
-@@||smartadserver.com^$script,domain=bild.de
 @@/advertising.js$script,domain=itespresso.fr
 xxx-image.com###footer > font > b
 geo.de##div.lp_mwi_dialog-overlay.lp_mwi_dialog-overlay--is-active
