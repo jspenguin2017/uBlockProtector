@@ -2,7 +2,7 @@
 // @name uBlock Protector Script
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
-// @version 7.38
+// @version 7.39
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -26,6 +26,7 @@
 // @homepage https://jspenguin2017.github.io/uBlockProtector/
 // @supportURL https://github.com/jspenguin2017/uBlockProtector/issues
 // @downloadURL https://github.com/jspenguin2017/uBlockProtector/raw/master/uBlockProtector.user.js
+// @license GNU GPL v3
 // ==/UserScript==
 //
 // ===== PLEASE READ =====
