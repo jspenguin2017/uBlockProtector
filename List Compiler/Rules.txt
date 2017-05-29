@@ -234,3 +234,5 @@ hackinformer.com##script:inject(abort-on-property-write, anOptions)
 hackinformer.com##script:inject(setTimeout-defuser.js, an_message_display)
 ! === uol.com.br
 ||uol.com.br/camaleao/assets/web/javascript/detectadblock^$script,important
+! === transparentcalifornia.com
+/magnific-popup.js/$domain=transparentcalifornia.com
