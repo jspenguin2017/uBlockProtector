@@ -569,7 +569,7 @@ a.filter = (func, method, filter, onMatch, onAfter) => {
  * @function
  * @param {string} func - The name of the function to patch, can be "setTimeout" or "setInterval".
  * @param {Enumeration} [method=Match All] - An option from a.matchMethods, omit or pass null defaults to match all.
- * @param {*} filter - Filter to apply, this must be appropriate for the method.
+ * @param {Any} filter - Filter to apply, this must be appropriate for the method.
  * @param {Function} [onMatch=undefined] - Callback when filter is matched, arguments list (as an array) will be supplied.
  * @param {Function} [onAfter=undefined] - Callback when filter is applied, match state (true for blocked, false for allowed) and arguments list (as an array) will be supplied.
  * @param {float} [ratio=0.02] - The boost ratio, between 0 and 1 for speed up, larger than 1 for slow down, defaults to speed up 50 times.
@@ -637,10 +637,10 @@ a.patchHTML = (patcher) => {
         headers: {
             "Referer": a.doc.referrer
         },
-        onload: (result) => {
+        onload(result) {
             //Apply patched content
             a.doc.write(patcher(result.responseText));
-        }
+        },
     });
 };
 /**
@@ -678,10 +678,10 @@ a.readOnly = (name, val) => {
             if (!stack.length) {
                 a.win.Object.defineProperty(parent, current, {
                     configurable: false,
-                    set: () => { },
-                    get: () => {
+                    set() { },
+                    get() {
                         return val;
-                    }
+                    },
                 });
             }
         }
@@ -713,12 +713,12 @@ a.noAccess = (name) => {
             if (!stack.length) {
                 a.win.Object.defineProperty(parent, current, {
                     configurable: false,
-                    set: () => {
+                    set() {
                         throw errMsg;
                     },
-                    get: () => {
+                    get() {
                         throw errMsg;
-                    }
+                    },
                 });
             }
         }
@@ -1092,20 +1092,20 @@ a.generic = () => {
         let playwireZeus;
         a.win.Object.defineProperty(a.win, "Zeus", {
             configurable: false,
-            set: (val) => {
+            set(val) {
                 playwireZeus = val;
             },
-            get: () => {
+            get() {
                 //Log
                 a.config.debugMode && a.err("Playwire");
                 //Patch and return
                 try {
                     playwireZeus.AdBlockTester = {
-                        check: (a) => { a(); }
+                        check(a) { a(); }
                     };
                 } catch (err) { }
                 return playwireZeus;
-            }
+            },
         });
         //===document-idle===
         a.ready(() => {
@@ -1116,7 +1116,7 @@ a.generic = () => {
                 //Patch detector
                 a.win.XenForo.rellect = {
                     AdBlockDetector: {
-                        start: () => { }
+                        start() { }
                     }
                 };
             }
@@ -1386,7 +1386,7 @@ a.generic.AdflySkipper = () => {
         let flag = true;
         a.win.Object.defineProperty(a.win, "ysmm", {
             configurable: false,
-            set: (value) => {
+            set(value) {
                 if (flag) {
                     flag = false;
                     try {
@@ -1398,9 +1398,9 @@ a.generic.AdflySkipper = () => {
                 //In case this is not an Adfly page, we want this variable to be functional
                 val = value;
             },
-            get: () => {
+            get() {
                 return val;
-            }
+            },
         });
     } catch (err) {
         a.config.debugMode && a.out.error("uBlock Protector could not set up Adfly skipper. ");

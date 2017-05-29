@@ -2,7 +2,7 @@
 // @name uBlock Protector Script
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
-// @version 7.39
+// @version 8.0
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -33,8 +33,4 @@
 // This Userscript is intended to be used with uBlock Protector List.
 // Visite our home page for more information: https://jspenguin2017.github.io/uBlockProtector/
 // =======================
-/**
- * The Core API namespace.
- * @var {Object}
- */
 let a = {};
