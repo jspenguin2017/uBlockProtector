@@ -1,13 +1,6 @@
 //uBlock Protector Core Library
 "use strict";
 
-//=====Declaration=====
-/**
- * The Core namespace.
- * @var {Object}
- */
-var a = a || {};
-
 //=====Initializer=====
 /**
  * Initialization.
@@ -16,7 +9,7 @@ var a = a || {};
  * @param {boolean} AdflyMatch - Whether this domain is an Adfly domain.
  * @param {boolean} AdflyUnmatch - Whether this domain should be excluded from Adfly skipper.
  */
-a.init = function (excluded, AdflyMatch, AdflyUnmatch) {
+a.init = (excluded, AdflyMatch, AdflyUnmatch) => {
     //Load a new jQuery into a.$
     a.$ = a.make$();
     //Load configurations
@@ -35,13 +28,13 @@ a.init = function (excluded, AdflyMatch, AdflyUnmatch) {
     //Apply mods
     a.mods();
     //Set menu commands
-    GM_registerMenuCommand("uBlock Protector Settings Page", function () {
+    GM_registerMenuCommand("uBlock Protector Settings Page", () => {
         GM_openInTab(a.c.settingsPage);
     });
-    GM_registerMenuCommand("uBlock Protector Home Page", function () {
+    GM_registerMenuCommand("uBlock Protector Home Page", () => {
         GM_openInTab(a.c.homePage);
     });
-    GM_registerMenuCommand("uBlock Protector Support Page", function () {
+    GM_registerMenuCommand("uBlock Protector Support Page", () => {
         GM_openInTab(a.c.supportPage);
     });
     //Home page installation test
@@ -50,14 +43,14 @@ a.init = function (excluded, AdflyMatch, AdflyUnmatch) {
     }
     //Settings page
     if (a.domCmp(["jspenguin2017.github.io"], true) && a.doc.location.href.includes("jspenguin2017.github.io/uBlockProtector/settings.html")) {
-        a.on("load", function () {
+        a.on("load", () => {
             a.win.init({
                 "config_debugMode": a.config.debugMode,
                 "config_allowExperimental": a.config.allowExperimental,
                 "config_aggressiveAdflySkiper": a.config.aggressiveAdflySkiper,
                 "mods_Facebook_JumpToTop": a.mods.Facebook_JumpToTop,
                 "mods_Blogspot_AutoNCR": a.mods.Blogspot_AutoNCR,
-                "mods_NoAutoplay": a.mods.NoAutoplay
+                "mods_NoAutoplay": a.mods.NoAutoplay,
             }, a.config.update);
         });
     }
@@ -68,7 +61,7 @@ a.init = function (excluded, AdflyMatch, AdflyUnmatch) {
  * Load configurations, includes mods configurations.
  * @function
  */
-a.config = function () {
+a.config = () => {
     //Configuration
     a.config.debugMode = GM_getValue("config_debugMode", a.config.debugMode);
     a.config.allowExperimental = GM_getValue("config_allowExperimental", a.config.allowExperimental);
@@ -84,14 +77,14 @@ a.config = function () {
  * @param {integer} id - The ID of the configuration.
  * @param {bool} val - The value of the configuration.
  */
-a.config.update = function (id, val) {
+a.config.update = (id, val) => {
     const names = [
         "config_debugMode",
         "config_allowExperimental",
         "config_aggressiveAdflySkiper",
         "mods_Facebook_JumpToTop",
         "mods_Blogspot_AutoNCR",
-        "mods_NoAutoplay"
+        "mods_NoAutoplay",
     ];
     //Sanity check then save settings
     if (names.includes(id)) {
@@ -159,9 +152,14 @@ a.dom = a.doc.domain;
  * We must wrap it like this or it will throw errors.
  * @const {Function}
  */
-a.on = function (event, func, capture) {
+a.on = (event, func, capture) => {
     a.win.addEventListener(event, func, capture);
 };
+/**
+ * jQuery, will be available after a.init() is called.
+ * @const {Object}
+ */
+a.$ = null;
 /**
  * The real setTimeout.
  * @const {Function}
@@ -173,7 +171,7 @@ a.setTimeout = a.win.setTimeout;
  */
 a.setInterval = a.win.setInterval;
 /**
- * Matching method.
+ * Matching methods.
  * @const {Enumeration}
  */
 a.matchMethod = {
@@ -181,17 +179,17 @@ a.matchMethod = {
     string: 1, //Partial string match
     stringExact: 2, //Exact string match, will result in match if one or more arguments matches the filter
     RegExp: 3, //Regular expression
-    callback: 4 //Callback, arguments list will be supplied as an array, return true for match and false for not match
+    callback: 4, //Callback, arguments list will be supplied as an array, return true for match and false for not match
 };
 /**
  * Apply matching.
  * @function
  * @param {Array} args - Elements to match.
  * @param {Enumeration} method - The method to use.
- * @param {*} filter - The appropriate filter.
- * @returns {boolean} True if there is a match, false otherwise.
+ * @param {Any} filter - The appropriate filter.
+ * @return {boolean} True if there is a match, false otherwise.
  */
-a.applyMatch = function (args, method, filter) {
+a.applyMatch = (args, method, filter) => {
     switch (method) {
         case a.matchMethod.string:
             for (let i = 0; i < args.length; i++) {
@@ -224,12 +222,6 @@ a.applyMatch = function (args, method, filter) {
     return false;
 };
 
-/**
- * jQuery, will be available after a.init() is called.
- * @const {Object}
- */
-a.$ = null;
-
 //=====Constants=====
 /**
  * Object containing all constants.
@@ -260,7 +252,7 @@ a.c.syntaxBreaker = "])} \"'` ])} \n\r \r\n */ ])}";
  * Whether this script is running on the top frame.
  * @const {boolean}
  */
-a.c.topFrame = (function () {
+a.c.topFrame = (() => {
     try {
         return a.win.self === a.win.top;
     } catch (err) {
@@ -274,7 +266,7 @@ a.c.topFrame = (function () {
  * Apply all mods.
  * @function
  */
-a.mods = function () {
+a.mods = () => {
     //===Facebook mods===
     if (a.c.topFrame && a.domCmp(["facebook.com"], true)) {
         (function addJumpToTop() {
@@ -289,7 +281,7 @@ a.mods = function () {
                 if (navBar.length > 0) {
                     //Present, insert button
                     navBar.first().append(`<div class="_4kny _2s24" id="uBlock_Protector_FBMod_JumpToTop"><div class="_4q39"><a class="_2s25" href="javascript: void(0);">Top</a></div></div>`);
-                    a.$("#uBlock_Protector_FBMod_JumpToTop").click(function () {
+                    a.$("#uBlock_Protector_FBMod_JumpToTop").click(() => {
                         a.win.scrollTo(a.win.scrollX, 0);
                     });
                     a.config.debugMode && a.out.info("Facebook Mod: Jump to Top button added. ");
@@ -312,9 +304,9 @@ a.mods = function () {
     if (a.mods.NoAutoplay) {
         if (a.domCmp(["x-link.pl"], true)) {
             //iframe of gs24.pl
-            a.observe("insert", function (node) {
+            a.observe("insert", (node) => {
                 if (node.tagName === "VIDEO") {
-                    node.onplay = (function () {
+                    node.onplay = (() => {
                         //We need to pause twice
                         let playCount = 2;
                         return function () {
@@ -331,7 +323,7 @@ a.mods = function () {
             a.config.debugMode && a.out.info("No Autoplay Mod: Autoplay disabled. ");
         }
         if (a.domCmp(["komputerswiat.pl"], true)) {
-            let token = a.win.setInterval(function () {
+            let token = a.win.setInterval(() => {
                 if (a.$("video").length > 0) {
                     //Get element
                     const player = a.$("video").first();
@@ -348,7 +340,7 @@ a.mods = function () {
         }
         if (a.domCmp(["onet.tv"], true)) {
             //iframe of onet.pl
-            a.observe("insert", function (node) {
+            a.observe("insert", (node) => {
                 if (node && node.firstChild && node.firstChild.tagName === "VIDEO") {
                     //The inserted node is a div with video inside
                     node.firstChild.onplay = function () {
@@ -385,7 +377,7 @@ a.mods.NoAutoplay = false;
  * Returns a new jQuery.
  * @function
  */
-a.make$ = function () {
+a.make$ = () => {
     //Load jQuery
     let $ = a.jQueryFactory(a.win, true);
     //Load color plug-in
@@ -398,7 +390,7 @@ a.make$ = function () {
  * @function
  * @param {string} [name=""] - The name of the AdBlocker detector.
  */
-a.err = function (name) {
+a.err = (name) => {
     //Check argument
     if (name) {
         name = name + " ";
@@ -414,9 +406,9 @@ a.err = function (name) {
  * @function
  * @param {Array.<string>} domList - The list of domains to compare.
  * @param {boolean} [noErr=false] - Set to true to prevent showing error message.
- * @returns {boolean} True if current domain is in the list, false otherwise.
+ * @return {boolean} True if current domain is in the list, false otherwise.
  */
-a.domCmp = function (domList, noErr) {
+a.domCmp = (domList, noErr) => {
     //Loop though each element
     for (let i = 0; i < domList.length; i++) {
         //Check if current domain is exactly listed or ends with it
@@ -436,9 +428,9 @@ a.domCmp = function (domList, noErr) {
  * @function
  * @param {Array.<string>} domList - The list of strings to compare.
  * @param {boolean} [noErr=false] - Set to true to prevent showing error message.
- * @returns {boolean} True if current domain is in the list, false otherwise.
+ * @return {boolean} True if current domain is in the list, false otherwise.
  */
-a.domInc = function (domList, noErr) {
+a.domInc = (domList, noErr) => {
     //Loop though each element
     for (let i = 0; i < domList.length; i++) {
         //Check if current domain is exactly listed or ends with it
@@ -456,9 +448,9 @@ a.domInc = function (domList, noErr) {
  * Replace Function.prototype.toString() in order to prevent protected functions from being detected.
  * This function should be called from rules once if needed.
  * @function
- * @returns {boolean} True if the operation was successful, false otherwise.
+ * @return {boolean} True if the operation was successful, false otherwise.
  */
-a.protectFunc = function () {
+a.protectFunc = () => {
     //Update flag
     a.protectFunc.enabled = true;
     //The original function
@@ -510,12 +502,12 @@ a.protectFunc.masks = [];
  * @function
  * @param {string} func - The name of the function to filter, use "." to separate multiple layers.
  * @param {Enumeration} [method=Match All] - An option from a.matchMethods, omit or pass null defaults to match all.
- * @param {*} filter - Filter to apply, this must be appropriate for the method.
+ * @param {Any} filter - Filter to apply, this must be appropriate for the method.
  * @param {Function} [onMatch=undefined] - Callback when filter is matched, arguments list (as an array) will be supplied, return value of this callback will be send back to caller.
  * @param {Function} [onAfter=undefined] - Callback when filter is applied, match state (true for blocked, false for allowed) and arguments list (as an array) will be supplied.
- * @returns {boolean} True if the operation was successful, false otherwise.
+ * @return {boolean} True if the operation was successful, false otherwise.
  */
-a.filter = function (func, method, filter, onMatch, onAfter) {
+a.filter = (func, method, filter, onMatch, onAfter) => {
     //The original function and its parent, will be set later
     let original = a.win;
     let parent;
@@ -581,9 +573,9 @@ a.filter = function (func, method, filter, onMatch, onAfter) {
  * @param {Function} [onMatch=undefined] - Callback when filter is matched, arguments list (as an array) will be supplied.
  * @param {Function} [onAfter=undefined] - Callback when filter is applied, match state (true for blocked, false for allowed) and arguments list (as an array) will be supplied.
  * @param {float} [ratio=0.02] - The boost ratio, between 0 and 1 for speed up, larger than 1 for slow down, defaults to speed up 50 times.
- * @returns {boolean} True if the operation was successful, false otherwise.
+ * @return {boolean} True if the operation was successful, false otherwise.
  */
-a.timewarp = function (func, method, filter, onMatch, onAfter, ratio) {
+a.timewarp = (func, method, filter, onMatch, onAfter, ratio) => {
     //Check parameters
     ratio = ratio || 0.02;
     //The original function
@@ -635,7 +627,7 @@ a.timewarp = function (func, method, filter, onMatch, onAfter, ratio) {
  * @function
  * @param {Function} patcher - A function that patches the HTML, it must return the patched HTML.
  */
-a.patchHTML = function (patcher) {
+a.patchHTML = (patcher) => {
     //Stop loading
     a.win.stop();
     //Get content
@@ -645,7 +637,7 @@ a.patchHTML = function (patcher) {
         headers: {
             "Referer": a.doc.referrer
         },
-        onload: function (result) {
+        onload: (result) => {
             //Apply patched content
             a.doc.write(patcher(result.responseText));
         }
@@ -659,8 +651,8 @@ a.patchHTML = function (patcher) {
  * @function
  * @param {string} sample - A sample of code.
  */
-a.crashScript = function (sample) {
-    a.patchHTML(function (html) {
+a.crashScript = (sample) => {
+    a.patchHTML((html) => {
         return html.replace(sample, a.c.syntaxBreaker);
     });
 };
@@ -669,10 +661,10 @@ a.crashScript = function (sample) {
  * May not be able to lock the property's own properties.
  * @function
  * @param {string} name - The name of the property to define, use "." to separate multiple layers.
- * @param {*} val - The value to set.
- * @returns {boolean} True if the operation was successful, false otherwise.
+ * @param {Any} val - The value to set.
+ * @return {boolean} True if the operation was successful, false otherwise.
  */
-a.readOnly = function (name, val) {
+a.readOnly = (name, val) => {
     try {
         //Find the property and its parent
         let property = a.win;
@@ -686,8 +678,8 @@ a.readOnly = function (name, val) {
             if (!stack.length) {
                 a.win.Object.defineProperty(parent, current, {
                     configurable: false,
-                    set: function () { },
-                    get: function () {
+                    set: () => { },
+                    get: () => {
                         return val;
                     }
                 });
@@ -704,9 +696,9 @@ a.readOnly = function (name, val) {
  * Defines a property to unsafeWindow that (tries to) crash scripts who access it.
  * @function
  * @param {string} name - The name of the property to define, use "." to separate multiple layers.
- * @returns {boolean} True if the operation was successful, false otherwise.
+ * @return {boolean} True if the operation was successful, false otherwise.
  */
-a.noAccess = function (name) {
+a.noAccess = (name) => {
     const errMsg = "AdBlock Error: This property may not be accessed! ";
     try {
         //Find the property and its parent
@@ -721,10 +713,10 @@ a.noAccess = function (name) {
             if (!stack.length) {
                 a.win.Object.defineProperty(parent, current, {
                     configurable: false,
-                    set: function () {
+                    set: () => {
                         throw errMsg;
                     },
-                    get: function () {
+                    get: () => {
                         throw errMsg;
                     }
                 });
@@ -742,7 +734,7 @@ a.noAccess = function (name) {
  * @function
  * @param {string} str - The CSS to inject, !important will be added automatically.
  */
-a.css = function (str) {
+a.css = (str) => {
     //Add !important
     let temp = str.split(";");
     for (let i = 0; i < temp.length - 1; i++) {
@@ -760,7 +752,7 @@ a.css = function (str) {
  * @param {string} type - The type of the element, example: div.
  * @param {string} identifier - The class or id, example: .test (class) #test (id).
  */
-a.bait = function (type, identifier) {
+a.bait = (type, identifier) => {
     //Create element
     let elem = a.$(`<${type}>`);
     //Add identifier
@@ -779,9 +771,9 @@ a.bait = function (type, identifier) {
  * @param {string} [val=undefined] - The value to set, omit this to get the cookie.
  * @param {integer} [time=31536000000] - In how many milliseconds will it expire, defaults to 1 year.
  * @param {string} [path="/"] - The path to set.
- * @returns {string} The value of the cookie, null will be returned if the cookie does not exist, and undefined will be returned in set mode.
+ * @return {string} The value of the cookie, null will be returned if the cookie does not exist, and undefined will be returned in set mode.
  */
-a.cookie = function (key, val, time, path) {
+a.cookie = (key, val, time, path) => {
     if (typeof val === "undefined") {
         //Get mode
         //http://stackoverflow.com/questions/10730362/get-cookie-by-name
@@ -804,9 +796,9 @@ a.cookie = function (key, val, time, path) {
  * http://stackoverflow.com/questions/6566456/how-to-serialize-an-object-into-a-list-of-parameters
  * @function
  * @param {Object} obj - The object to serialize.
- * @returns {string} The serialized string.
+ * @return {string} The serialized string.
  */
-a.serialize = function (obj) {
+a.serialize = (obj) => {
     var str = "";
     for (var key in obj) {
         if (str !== "") {
@@ -823,9 +815,9 @@ a.serialize = function (obj) {
  * @param {string} [typeIn=(Auto Detect)] - The type of the video, will be automatically detected if not supplied, and defaults to MP4 if detection failed.
  * @param {string} [widthIn="100%"] - The width of the player.
  * @param {string} [heightIn="auto"] - The height of the player.
- * @returns {string} An HTML string of the video player.
+ * @return {string} An HTML string of the video player.
  */
-a.nativePlayer = function (source, typeIn, widthIn, heightIn) {
+a.nativePlayer = (source, typeIn, widthIn, heightIn) => {
     //Detect type
     let type;
     if (typeIn) {
@@ -863,9 +855,9 @@ a.nativePlayer = function (source, typeIn, widthIn, heightIn) {
  * @param {Array.<string>} types - The types of the video.
  * @param {string} width - The width of the player.
  * @param {string} height - The height of the player.
- * @returns {string} An HTML string of the video player.
+ * @return {string} An HTML string of the video player.
  */
-a.videoJS = function (sources, types, width, height) {
+a.videoJS = (sources, types, width, height) => {
     //Build HTML string
     let html = `<video id="uBlock_Protector_Video_Player" class="video-js vjs-default-skin" controls preload="auto" width="${width}" height="${height}" data-setup="{}">`;
     for (let i = 0; i < sources.length; i++) {
@@ -880,7 +872,7 @@ a.videoJS = function (sources, types, width, height) {
  * @param {string} [plugins=""] - Plug-ins to load, pass multiple arguments to load more than 1 plug-in. Omit if no plug-in is needed.
  * @function
  */
-a.videoJS.init = function (...args) {
+a.videoJS.init = (...args) => {
     //Disable telemetry
     try {
         a.win.HELP_IMPROVE_VIDEOJS = false;
@@ -904,7 +896,7 @@ a.videoJS.plugins.hls = `<script src="//cdnjs.cloudflare.com/ajax/libs/videojs-c
  * @function
  * @param {Function} func - The function to run.
  */
-a.ready = function (func, capture) {
+a.ready = (func, capture) => {
     a.on("DOMContentLoaded", func, capture);
 };
 /**
@@ -912,7 +904,7 @@ a.ready = function (func, capture) {
  * @function
  * @param {Function} func - The function to run.
  */
-a.always = function (func, capture) {
+a.always = (func, capture) => {
     func();
     a.on("DOMContentLoaded", func, capture);
     a.on("load", func, capture);
@@ -923,7 +915,7 @@ a.always = function (func, capture) {
  * @param {string} type - The type of mutation to observe. Currently only "insert" is accepted, this argument is for future expansion.
  * @param {Function} callback - The callback function, relevant data will be passed in.
  */
-a.observe = function (type, callback) {
+a.observe = (type, callback) => {
     //Initialize observer
     if (!a.observe.init.done) {
         a.observe.init.done = true;
@@ -945,9 +937,9 @@ a.observe = function (type, callback) {
  * This should only be called once by a.observe()
  * @function
  */
-a.observe.init = function () {
+a.observe.init = () => {
     //Set up observer
-    const observer = new a.win.MutationObserver(function (mutations) {
+    const observer = new a.win.MutationObserver((mutations) => {
         for (let i = 0; i < mutations.length; i++) {
             //Insert
             if (mutations[i].addedNodes.length) {
@@ -991,9 +983,9 @@ a.observe.removeCallbacks = [];
 /**
  * Returns a unique ID that is also a valid variable name.
  * @function
- * @returns {string} Unique ID.
+ * @return {string} Unique ID.
  */
-a.uid = function () {
+a.uid = () => {
     const chars = "abcdefghijklnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     let str = "";
     for (let i = 0; i < 10; i++) {
@@ -1011,9 +1003,9 @@ a.uid.counter = 0;
  * SHA 256 hash function.
  * @function
  * @param {string} r - The string to hash.
- * @returns {string} The SHA 256 hash string.
+ * @return {string} The SHA 256 hash string.
  */
-a.sha256 = function (r) {
+a.sha256 = (r) => {
     //@pragma-keepline Based on work of Angel Marin and Paul Johnston
     //@pragma-keepline More information: http://www.webtoolkit.info/javascript-sha256.html
     function n(r, n) {
@@ -1083,7 +1075,7 @@ a.sha256 = function (r) {
  * Apply all generic solutions, this function should be called once from rules.
  * @function
  */
-a.generic = function () {
+a.generic = () => {
     //@pragma-keepline Based on generic solutions of Anti-Adblock Killer, modified to fit our Core API
     //@pragma-keepline License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
     if (a.config.allowGeneric && !a.config.domExcluded) {
@@ -1100,23 +1092,23 @@ a.generic = function () {
         let playwireZeus;
         a.win.Object.defineProperty(a.win, "Zeus", {
             configurable: false,
-            set: function (val) {
+            set: (val) => {
                 playwireZeus = val;
             },
-            get: function () {
+            get: () => {
                 //Log
                 a.config.debugMode && a.err("Playwire");
                 //Patch and return
                 try {
                     playwireZeus.AdBlockTester = {
-                        check: function (a) { a(); }
+                        check: (a) => { a(); }
                     };
                 } catch (err) { }
                 return playwireZeus;
             }
         });
         //===document-idle===
-        a.ready(function () {
+        a.ready(() => {
             //AdBlock Detector (XenForo Rellect)
             if (a.win.XenForo && typeof a.win.XenForo.rellect === "object") {
                 //Log
@@ -1124,7 +1116,7 @@ a.generic = function () {
                 //Patch detector
                 a.win.XenForo.rellect = {
                     AdBlockDetector: {
-                        start: function () { }
+                        start: () => { }
                     }
                 };
             }
@@ -1217,7 +1209,7 @@ a.generic = function () {
             }
         });
         //===on-insert===
-        const onInsertHandler = function (insertedNode) {
+        const onInsertHandler = (insertedNode) => {
             //No-Adblock
             if (insertedNode.nodeName === "DIV" &&
                 insertedNode.id &&
@@ -1347,10 +1339,10 @@ a.generic = function () {
  * Setup generic Adfly skipper, this function should be called once from a.init() if needed.
  * @function
  */
-a.generic.AdflySkipper = function () {
+a.generic.AdflySkipper = () => {
     //@pragma-keepline Based on AdsBypasser
     //@pragma-keepline License: https://github.com/adsbypasser/adsbypasser/blob/master/LICENSE
-    const handler = function (encodedURL) {
+    const handler = (encodedURL) => {
         if (a.doc.body) {
             //This is not an Adfly page
             return;
@@ -1394,7 +1386,7 @@ a.generic.AdflySkipper = function () {
         let flag = true;
         a.win.Object.defineProperty(a.win, "ysmm", {
             configurable: false,
-            set: function (value) {
+            set: (value) => {
                 if (flag) {
                     flag = false;
                     try {
@@ -1406,7 +1398,7 @@ a.generic.AdflySkipper = function () {
                 //In case this is not an Adfly page, we want this variable to be functional
                 val = value;
             },
-            get: function () {
+            get: () => {
                 return val;
             }
         });
@@ -1419,9 +1411,9 @@ a.generic.AdflySkipper = function () {
  * @function
  * @param {string} constructorName - The name of the constructor.
  * @param {string} instanceName - The name of the instance.
- * @returns {boolean} True if the operation was successful, false otherwise.
+ * @return {boolean} True if the operation was successful, false otherwise.
  */
-a.generic.FuckAdBlock = function (constructorName, instanceName) {
+a.generic.FuckAdBlock = (constructorName, instanceName) => {
     const patchedFuckAdBlock = function () {
         //@pragma-keepline Based on FuckAdBlock
         //@pragma-keepline License: https://github.com/sitexw/FuckAdBlock/blob/master/LICENSE
@@ -1429,21 +1421,21 @@ a.generic.FuckAdBlock = function (constructorName, instanceName) {
         //On not detected callbacks
         this._callbacks = [];
         //Add on load event
-        a.on("load", (function () {
+        a.on("load", () => {
             this.emitEvent();
-        }).bind(this));
+        });
         //===v3 Methods===
         //Set options, do nothing
-        this.setOption = function () {
+        this.setOption = () => {
             return this;
         };
         //Check, call on not detected callbacks
-        this.check = function () {
+        this.check = () => {
             this.emitEvent();
             return true;
         };
         //Call on not detected callbacks
-        this.emitEvent = function () {
+        this.emitEvent = () => {
             //Call callbacks
             for (let i = 0; i < this._callbacks.length; i++) {
                 this._callbacks[i]();
@@ -1451,11 +1443,11 @@ a.generic.FuckAdBlock = function (constructorName, instanceName) {
             return this;
         };
         //Clear events, empty callback array
-        this.clearEvent = function () {
+        this.clearEvent = () => {
             this._callbacks = [];
         };
         //Add event handler
-        this.on = function (detected, func) {
+        this.on = (detected, func) => {
             //Log
             a.config.debugMode && a.err("FuckAdBlock");
             if (!detected) {
@@ -1464,21 +1456,21 @@ a.generic.FuckAdBlock = function (constructorName, instanceName) {
             return this;
         };
         //Add on detected handler, do nothing
-        this.onDetected = function () {
+        this.onDetected = () => {
             //Log
             a.config.debugMode && a.err("FuckAdBlock");
             return this;
         };
         //Add on not detected handler
-        this.onNotDetected = function (func) {
+        this.onNotDetected = (func) => {
             return this.on(false, func);
         };
         //===v4 Methods===
         this.debug = {};
         //Set debug state, do nothing
-        this.debug.set = (function () {
+        this.debug.set = () => {
             return this;
-        }).bind(this);
+        };
     };
     //Define FuckAdBlock to unsafeWindow and create its instance, error checks are done in a.readOnly()
     return a.readOnly(constructorName, patchedFuckAdBlock) && a.readOnly(instanceName, new a.win[constructorName]());

@@ -33,3 +33,8 @@
 // This Userscript is intended to be used with uBlock Protector List.
 // Visite our home page for more information: https://jspenguin2017.github.io/uBlockProtector/
 // =======================
+/**
+ * The Core API namespace.
+ * @var {Object}
+ */
+let a = {};
