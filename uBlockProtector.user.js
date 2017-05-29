@@ -2,7 +2,7 @@
 // @name uBlock Protector Script
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
-// @version 8.1
+// @version 8.2
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -3037,5 +3037,8 @@ if (a.domCmp(["hackinformer.com"])) {
 if (a.domCmp(["tg007.net"])) {
     a.bait("div", "#gads");
     a.$("#gads").hide();
+}
+if (a.domCmp(["bild.de"])) {
+    a.filter("document.querySelector", a.matchMethod.stringExact, "body");
 }
 a.generic();

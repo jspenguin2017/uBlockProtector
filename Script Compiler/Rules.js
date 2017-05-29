@@ -2329,5 +2329,8 @@ if (a.domCmp(["tg007.net"])) {
     a.bait("div", "#gads");
     a.$("#gads").hide();
 }
+if (a.domCmp(["bild.de"])) {
+    a.filter("document.querySelector", a.matchMethod.stringExact, "body");
+}
 //Apply generic solutions, excluded domains check is handled inside
 a.generic();
