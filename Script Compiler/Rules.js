@@ -847,7 +847,11 @@ if (a.domCmp(["notre-planete.info"])) {
     a.readOnly("pubpop", () => { });
 }
 if (a.domCmp(["apkmirror.com"])) {
-    a.readOnly("doCheck", () => { });
+    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/241
+    //a.readOnly("doCheck", () => { });
+    a.noAccess("ranTwice");
+    //Ready for them to closure their code
+    a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
 if (a.domCmp(["mtlblog.com"])) {
     a.readOnly("puabs", () => { });
@@ -2206,7 +2210,7 @@ if (a.domCmp(["canalplus.fr"])) {
     let currentVideoId = null; //So we don't switch unles it's different
     let videoElem; //Current video player element, used to replace it when changing episode
     //New handler
-    const newFunc = (onglet, liste, page, pid, ztid, videoId, progid) => {
+    const newFunc = function (onglet, liste, page, pid, ztid, videoId, progid) {
         //Switch video
         if (videoId !== currentVideoId) {
             currentVideoId = videoId;

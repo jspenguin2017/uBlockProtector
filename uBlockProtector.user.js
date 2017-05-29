@@ -2,7 +2,7 @@
 // @name uBlock Protector Script
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
-// @version 8.0
+// @version 8.1
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -1699,7 +1699,8 @@ if (a.domCmp(["notre-planete.info"])) {
     a.readOnly("pubpop", () => { });
 }
 if (a.domCmp(["apkmirror.com"])) {
-    a.readOnly("doCheck", () => { });
+    a.noAccess("ranTwice");
+    a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
 if (a.domCmp(["mtlblog.com"])) {
     a.readOnly("puabs", () => { });
@@ -2926,7 +2927,7 @@ if (a.domCmp(["canalplus.fr"])) {
     let original; //Will be set later
     let currentVideoId = null; //So we don't switch unles it's different
     let videoElem; //Current video player element, used to replace it when changing episode
-    const newFunc = (onglet, liste, page, pid, ztid, videoId, progid) => {
+    const newFunc = function (onglet, liste, page, pid, ztid, videoId, progid) {
         if (videoId !== currentVideoId) {
             currentVideoId = videoId;
             videoSwitch(videoId);
