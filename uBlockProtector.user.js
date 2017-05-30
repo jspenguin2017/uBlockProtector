@@ -2,7 +2,7 @@
 // @name uBlock Protector Script
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
-// @version 8.4
+// @version 8.5
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2477,7 +2477,7 @@ if (a.domCmp(["sidereel.com"])) {
 if (a.domCmp(["burning-feed.com"])) {
     a.readOnly("ads_enable", () => { });
 }
-if (a.domCmp(["comicbook.com", "chip.de", "businessinsider.com"])) {
+if (a.domCmp(["comicbook.com", "eurogamer.net", "chip.de", "businessinsider.com"])) {
     a.noAccess("stop");
 }
 if (a.domCmp(["ghame.ru"])) {

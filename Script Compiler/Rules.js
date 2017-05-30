@@ -1716,8 +1716,9 @@ if (a.domCmp(["burning-feed.com"])) {
     //a.readOnly("ads_enable", "true");
     a.readOnly("ads_enable", () => { });
 }
-if (a.domCmp(["comicbook.com", "chip.de", "businessinsider.com"])) {
+if (a.domCmp(["comicbook.com", "eurogamer.net", "chip.de", "businessinsider.com"])) {
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/85
+    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/245
     a.noAccess("stop");
 }
 if (a.domCmp(["ghame.ru"])) {
