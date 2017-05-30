@@ -898,18 +898,18 @@ a.videoJS.plugins.hls = `<script src="//cdnjs.cloudflare.com/ajax/libs/videojs-c
  * @function
  * @param {Function} func - The function to run.
  */
-a.ready = (func, capture) => {
-    a.on("DOMContentLoaded", func, capture);
+a.ready = (...args) => {
+    a.on("DOMContentLoaded", ...args);
 };
 /**
  * Run function that is passed in on document-start (now), document-idle (DOMContentLoaded), and document-end (load).
  * @function
  * @param {Function} func - The function to run.
  */
-a.always = (func, capture) => {
+a.always = (...args) => {
     func();
-    a.on("DOMContentLoaded", func, capture);
-    a.on("load", func, capture);
+    a.on("DOMContentLoaded", ...args);
+    a.on("load", ...args);
 };
 /**
  * Observe mutations of the document.

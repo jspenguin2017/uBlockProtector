@@ -524,13 +524,13 @@ a.videoJS.init = (...args) => {
 };
 a.videoJS.plugins = {};
 a.videoJS.plugins.hls = `<script src="//cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.4.0/videojs-contrib-hls.min.js"><\/script>`;
-a.ready = (func, capture) => {
-    a.on("DOMContentLoaded", func, capture);
+a.ready = (...args) => {
+    a.on("DOMContentLoaded", ...args);
 };
-a.always = (func, capture) => {
+a.always = (...args) => {
     func();
-    a.on("DOMContentLoaded", func, capture);
-    a.on("load", func, capture);
+    a.on("DOMContentLoaded", ...args);
+    a.on("load", ...args);
 };
 a.observe = (type, callback) => {
     if (!a.observe.init.done) {
