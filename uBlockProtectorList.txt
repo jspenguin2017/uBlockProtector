@@ -153,7 +153,6 @@ hackinformer.com##script:inject(abort-on-property-write, anOptions)
 hackinformer.com##script:inject(setTimeout-defuser.js, an_message_display)
 ||uol.com.br/camaleao/assets/web/javascript/detectadblock^$script,important
 /magnific-popup.js/$domain=transparentcalifornia.com
-codepo8.github.io#@#.adsbox
 ! =====Patched Anti-Adblock Killer List (originally by Reek)=====
 ! Patching logic can be found in List Compiler source code
 ! Anti-Adblock Killer Repository (contains original source code and license): https://github.com/reek/anti-adblock-killer

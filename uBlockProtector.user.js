@@ -2,7 +2,7 @@
 // @name uBlock Protector Script
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
-// @version 8.3
+// @version 8.4
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -689,7 +689,7 @@ a.generic = () => {
             if (a.$("div.adb_overlay > div.adb_modal_img").length > 0) {
                 a.config.debugMode && a.err("AdBlock Alerter");
                 a.$("div.adb_overlay").remove();
-                a.css("html,body {height:auto; overflow: auto;}");
+                a.css("html, body { height:auto; overflow: auto; }");
             }
             if (a.$("#blockdiv").html() === "disable ad blocking or use another browser without any adblocker when you visit") {
                 a.config.debugMode && a.out.err("Uncaught AdBlock Error: Generic block screens are not allowed on this device! ");
@@ -1015,7 +1015,7 @@ if (a.domCmp(["theinquirer.net"])) {
 }
 if (a.domCmp(["tweaktown.com"])) {
     a.on("load", () => {
-        a.css("html, body { overflow: scroll; }");
+        a.css("html, body { overflow:scroll; }");
         const blockScreenRemover = () => {
             if (a.$("body").children("div").last().text().indexOf("Ads slowing you down?") > -1) {
                 a.$("body").children("div").last().remove();
@@ -1275,139 +1275,139 @@ if (a.domInc(["knowlet3389.blogspot"])) {
     a.filter("setTimeout", a.matchMethod.string, '$("#gAds").height()');
 }
 if (a.domCmp(["freegameserverhost.com"])) {
-    a.css("#fab13 { height: 11px; }");
+    a.css("#fab13 { height:11px; }");
 }
 if (a.domCmp(["elahmad.com"])) {
-    a.css("#adblock { height: 1px; }");
+    a.css("#adblock { height:1px; }");
 }
 if (a.domCmp(["mrtzcmp3.net"])) {
-    a.css(".rtm_ad { height: 1px; }");
+    a.css(".rtm_ad { height:1px; }");
 }
 if (a.domCmp(["bknime.com", "go4up.com", "debrido.com"])) {
-    a.css(".myTestAd { height: 1px; }");
+    a.css(".myTestAd { height:1px; }");
 }
 if (a.domCmp(["debridfast.com", "getdebrid.com", "debrid.us", "leecher.us"])) {
-    a.css(".myTestAd, .my24Ad, .nabil { height: 1px; }");
+    a.css(".myTestAd, .my24Ad, .nabil { height:1px; }");
     a.ready(() => {
         a.$("#simpleAd").html(`<p style="display:none;">debridfast.com</p>`);
     })
 }
 if (a.domCmp(["bg-gledai.tv"])) {
-    a.css(".myAd { height: 1px; }");
+    a.css(".myAd { height:1px; }");
 }
 if (a.domCmp(["thepcspy.com"])) {
-    a.css(".myTestAd { height: 1px; }");
-    a.css(".blocked { display: none; }");
+    a.css(".myTestAd { height:1px; }");
+    a.css(".blocked { display:none; }");
     a.ready(() => {
         a.$(".blocked").remove();
     })
 }
 if (a.domCmp(["vg.no", "e24.no"])) {
-    a.css(".ad { display: none; }");
+    a.css(".ad { display:none; }");
 }
 if (a.domCmp(["automobile-sportive.com"])) {
-    a.css(".myTestAd { height: 51px; display: none; }");
+    a.css(".myTestAd { height:51px; display:none; }");
 }
 if (a.domCmp(["snsw.us"])) {
-    a.css("#ad_1 { height: 1px; }");
+    a.css("#ad_1 { height:1px; }");
 }
 if (a.domCmp(["urlchecker.net"])) {
-    a.css("#adchecker { height: 20px; }");
+    a.css("#adchecker { height:20px; }");
 }
 if (a.domCmp(["skiplimite.tv"])) {
-    a.css("div.addthis_native_toolbox + div[id] { height: 12px; }");
+    a.css("div.addthis_native_toolbox + div[id] { height:12px; }");
 }
 if (a.domCmp(["filecore.co.nz"])) {
-    a.css(".adsense { height: 5px; }");
+    a.css(".adsense { height:5px; }");
 }
 if (a.domCmp(["thomas-n-ruth.com"])) {
-    a.css(".Google { height: 5px; }");
+    a.css(".Google { height:5px; }");
 }
 if (a.domCmp(["interfans.org"])) {
-    a.css(".ad_global_header { height: 1px; display: none; }");
+    a.css(".ad_global_header { height:1px; display:none; }");
 }
 if (a.domCmp(["maxdebrideur.com"])) {
-    a.css(".clear + div[id] { height: 12px; }");
+    a.css(".clear + div[id] { height:12px; }");
 }
 if (a.domCmp(["topzone.lt"])) {
-    a.css(".forumAd { height: 1px; display: none; }");
+    a.css(".forumAd { height: 1px; display:none; }");
 }
 if (a.domInc(["nana10"])) {
-    a.css("#advert-tracker { height: 1px; }");
+    a.css("#advert-tracker { height:1px; }");
 }
 if (a.domCmp(["plej.tv"])) {
-    a.css(".advert_box { height: 1px; }");
+    a.css(".advert_box { height:1px; }");
 }
 if (a.domCmp(["mangamint.com"])) {
-    a.css(".ad728 { height: 31px; }");
+    a.css(".ad728 { height:31px; }");
 }
 if (a.domCmp(["debrideurstream.fr"])) {
-    a.css("#content div[id][align=center] { height: 12px; }");
+    a.css("#content div[id][align=center] { height:12px; }");
 }
 if (a.domCmp(["preemlinks.com"])) {
-    a.css("#divads { height: 1px; }");
+    a.css("#divads { height:1px; }");
 }
 if (a.domCmp(["hentai.to"])) {
-    a.css("#hentaito123 { height: 11px; }");
+    a.css("#hentaito123 { height:11px; }");
 }
 if (a.domCmp(["prototurk.com"])) {
-    a.css("#reklam { height: 1px; }");
+    a.css("#reklam { height:1px; }");
 }
 if (a.domCmp(["mufa.de"])) {
-    a.css("#leaderboard { height: 5px; }");
-    a.css("#large-rectangle { height: 5px; }");
-    a.css("#ad-header-468x60 { height: 5px; }");
+    a.css("#leaderboard { height:5px; }");
+    a.css("#large-rectangle { height:5px; }");
+    a.css("#ad-header-468x60 { height:5px; }");
 }
 if (a.domCmp(["watcharab.com"])) {
-    a.css("#adblock { height: 5px; }");
+    a.css("#adblock { height:5px; }");
 }
 if (a.domCmp(["freedom-ip.com"])) {
-    a.css(".pub_vertical ins, .pub_vertical div { height: 11px; }");
+    a.css(".pub_vertical ins, .pub_vertical div { height:11px; }");
 }
 if (a.domCmp(["wakanim.tv"])) {
-    a.css("#detector { display: none; }");
-    a.css("#nopub { display: block; }");
+    a.css("#detector { display:none; }");
+    a.css("#nopub { display:block; }");
 }
 if (a.domCmp(["simply-debrid.com"])) {
     a.win.adsbygoogle = {};
     a.win.adsbygoogle.loaded = true;
 }
 if (a.domCmp(["manga9.com", "mangabee.co"])) {
-    a.css(".adblock { height: 31px; }");
+    a.css(".adblock { height:31px; }");
 }
 if (a.domCmp(["onemanga2.com"])) {
-    a.css(".afs_ads { height: 5px; }");
+    a.css(".afs_ads { height:5px; }");
 }
 if (a.domCmp(["mangabird.com"])) {
-    a.css(".afs_ads { height: 5px; }");
+    a.css(".afs_ads { height:5px; }");
 }
 if (a.domCmp(["kodilive.eu"])) {
-    a.css(".Ad { height: 5px; }");
+    a.css(".Ad { height:5px; }");
 }
 if (a.domCmp(["backin.net"])) {
-    a.css("#divad { height: 31px; }");
+    a.css("#divad { height:31px; }");
 }
 if (a.domCmp(["mobile-tracker-free.com"])) {
-    a.css("#myAds { height: 1px; }");
+    a.css("#myAds { height:1px; }");
 }
 if (a.domCmp(["workupload.com"])) {
     a.always(() => {
-        a.css(".adBlock, .adsbygoogle, #sad { height: 11px; }");
+        a.css(".adBlock, .adsbygoogle, #sad { height:11px; }");
     });
 }
 if (a.domCmp(["intoday.in", "businesstoday.in", "lovesutras.com"])) {
-    a.css("#adbocker_alt { display: none; }");
+    a.css("#adbocker_alt { display:none; }");
     a.readOnly("openPopup", () => { });
 }
 if (a.domCmp(["jc-mp.com"])) {
-    a.css(".adsense {width: 1px; height: 1px; visibility: hidden; display: block; position: absolute;}");
+    a.css(".adsense { width:1px; height:1px; visibility:hidden; display:block; position:absolute; }");
 }
 if (a.domCmp(["mariage-franco-marocain.net"])) {
-    a.css("#my_ad_div {height: 1px;}");
+    a.css("#my_ad_div { height:1px; }");
 }
 if (a.domCmp(["happy-hack.ru"])) {
-    a.css("#blockblockF4 {visibility:invisible;display:none;} #blockblockF4 td {visibility:invisible;display:" +
-        "none;} #blockblockF4 td p {visibility:invisible;display:none;} #blockblockD3 {visibility:visible;display:block;}");
+    a.css("#blockblockF4 { visibility:invisible; display:none; } #blockblockF4 td {visibility:invisible; display:none; } " +
+        "#blockblockF4 td p { visibility:invisible; display:none; } #blockblockD3 { visibility:visible; display:block; }");
 }
 if (a.domCmp(["forbes.com"])) {
     if (a.win.location.pathname.includes("/welcome")) {
@@ -1434,7 +1434,7 @@ if (a.domCmp(["freesportsbet.com", "sportsplays.com"])) {
     a.bait("div", "#ad-tester");
 }
 if (a.domCmp(["tgo-tv.com"])) {
-    a.css("#adb, #bannerad1, .load_stream { display: none; }");
+    a.css("#adb, #bannerad1, .load_stream { display:none; }");
     a.bait("div", "#tester");
     a.on("load", () => {
         a.win.threshold = 1000;
@@ -1474,7 +1474,7 @@ if (a.domCmp(["independent.co.uk"])) {
 }
 if (a.domCmp(["3dnews.ru"])) {
     a.cookie("adblockwarn", "1");
-    a.css("#earAds { width: 401px; }");
+    a.css("#earAds { width:401px; }");
     a.bait("div", "#earAds");
     a.readOnly("__AT_detected", true);
 }
@@ -1534,23 +1534,15 @@ if (a.domCmp(["primeshare.tv"])) {
     a.bait("div", "#adblock");
 }
 if (a.domCmp(["debridnet.com", "livedebrid.com"])) {
-    a.css(".myTestAd2 { height: 5px; }");
+    a.css(".myTestAd2 { height:5px; }");
     a.bait("div", ".myTestAd2");
 }
 if (a.domCmp(["bluesatoshi.com"])) {
-    a.css("#test { height: 280px; }");
+    a.css("#test { height:280px; }");
     a.bait("div", "#test");
 }
-if (a.domCmp(["razercrypt.com"])) {
-    a.css("#test { height: 250px; }");
-    a.bait("div", "#test");
-}
-if (a.domCmp(["satoshiempire.com"])) {
-    a.css("#test { height: 250px; }");
-    a.bait("div", "#test");
-}
-if (a.domCmp(["oneadfaucet.com"])) {
-    a.css("#test { height: 250px; }");
+if (a.domCmp(["razercrypt.com", "satoshiempire.com", "oneadfaucet.com"])) {
+    a.css("#test { height:250px; }");
     a.bait("div", "#test");
 }
 if (a.domCmp(["jkanime.net"])) {
@@ -1613,7 +1605,7 @@ if (a.domCmp(["tek.no", "gamer.no", "teknofil.no", "insidetelecom.no", "prisguid
     });
 }
 if (a.domInc(["planetatvonlinehd.blogspot"]) || a.domCmp(["planetatvonlinehd.com"])) {
-    a.css(".adsantilok { height: 1px; }");
+    a.css(".adsantilok { height:1px; }");
 }
 if (a.domCmp(["beta.speedtest.net"])) {
     a.readOnly("adsOoklaComReachable", true);
@@ -1863,9 +1855,9 @@ if (a.domCmp(["vipleague.is", "vipleague.ws", "vipleague.tv", "vipleague.se", "v
     "homerun.re", "vipboxtv.co", "vipapp.me"])) {
     a.readOnly("iExist", true);
     a.cookie("xclsvip", "1");
-    a.css(".vip_052x003 { height: 250px; }");
-    a.css(".vip_09x827 { height: 26px; }");
-    a.css("#overlay { display: none; }");
+    a.css(".vip_052x003 { height:250px; }");
+    a.css(".vip_09x827 { height:26px; }");
+    a.css("#overlay { display:none; }");
 }
 if (a.domCmp(["zoomtv.me"])) {
     a.readOnly("iaxpEnabled", true);
@@ -1919,7 +1911,7 @@ if (a.domCmp(["tny.cz", "pasted.co"])) {
 }
 if (a.domCmp(["clubedohardware.com.br"])) {
     if (a.win.location.host.includes("forum")) {
-        a.css("#banner, script { height: 51px; }");
+        a.css("#banner, script { height:51px; }");
         a.bait("div", "#banner");
     } else {
         a.bait("div", ".banner_topo");
@@ -1994,7 +1986,7 @@ if (a.domCmp(["freezedownload.com"])) {
 }
 if (a.domCmp(["monnsutogatya.com"])) {
     a.ready(() => {
-        a.css("#site-box {display:block;}");
+        a.css("#site-box { display:block; }");
         a.$("#for-ad-blocker").remove();
     });
 }
@@ -2244,19 +2236,19 @@ if (a.domCmp(["firstrow.co", "firstrows.ru", "firstrows.tv", "firstrows.org", "f
     a.filter("open");
     a.always(() => {
         a.cookie("adb", "1");
-        a.css("#bannerInCenter, #hiddenBannerCanvas { display: none; }");
+        a.css("#bannerInCenter, #hiddenBannerCanvas { display:none; }");
     });
 }
 if (a.domCmp(["buzina.xyz", "farmet.info", "rimladi.com", "kitorelo.com", "omnipola.com", "porosin.co.uk",
     "rimleno.com", "simple4alls.com", "arsopo.com"])) {
-    a.css("#adsframe { height: 151px; }");
+    a.css("#adsframe { height:151px; }");
     a.ready(() => {
         a.$("#adsframe").remove();
         a.$("#remove-over").click();
     });
 }
 if (a.domCmp(["buzina.xyz"])) {
-    a.css("#adsframe { height: 151px; }");
+    a.css("#adsframe { height:151px; }");
     a.ready(() => {
         const elem = a.$("iframe[src*='.php?hash=']");
         if (elem.length > 0) {
@@ -2381,9 +2373,9 @@ if (a.domCmp(["topserialy.sk"])) {
     a.generic.FuckAdBlock(a.uid(), "sratNaVas");
 }
 if (a.domCmp(["sport-show.fr", "vipflash.net", "2site.me"])) {
-    a.css("#blockblockA {visibility:invisible;display:none;} #blockblockA td {visibility:invisible;di" +
-        "splay:none;} #blockblockA td p {visibility:invisible;display:none;} #blockblockB {visibility:visible" +
-        ";display:block;}");
+    a.css("#blockblockA { visibility:invisible; display:none; } #blockblockA td { visibility:invisible; " +
+        "display:none; } #blockblockA td p { visibility:invisible; display:none; } #blockblockB { visibility:visible; " +
+        "display:block; }");
 }
 if (a.domCmp(["gametransfers.com", "winandmac.com", "free-steam-giveaways.com", "canalwp.com",
     "alphahistory.com", "nordpresse.be", "sospc.name", "baboo.com.br", "nflix.pl"])) {
@@ -2416,7 +2408,7 @@ if (a.domCmp(["demo-phoenix.com", "dpstream.net", "gum-gum-streaming.com", "jeu.
     "gaara-fr.com", "gaytube.com", "tuxboard.com", "xstory-fr.com", "hentaifr.net", "filmstreaming-hd.com",
     "filmvf.net", "hentaihaven.org", "narutoshippudenvf.com", "thebadbuzz.com", "manga-news.com", "jeu.video",
     "mangas-fr.com"])) {
-    a.css("body {visibility: visible;}");
+    a.css("body { visibility:visible; }");
 }
 if (a.domCmp(["emuparadise.me"])) {
     a.always(() => {
@@ -2501,7 +2493,7 @@ if (a.domCmp(["is.fi", "viasatsport.fi"])) {
     }
 }
 if (a.domCmp(["mooseroots.com", "insidegov.com", "gearsuite.com"])) {
-    a.css("html,body { overflow-y: scroll; } .BOX-wrap { display: none; }");
+    a.css("html,body { overflow-y:scroll; } .BOX-wrap { display:none; }");
 }
 if (a.domCmp(["sandiegouniontribune.com"])) {
     const token = a.win.setInterval(() => {
@@ -2899,7 +2891,7 @@ if (a.domCmp(["bc.vc"])) {
 }
 if (a.domCmp(["up-4ever.com"])) {
     a.filter("setTimeout", a.matchMethod.string, "$('#adblock_detected').val(1);");
-    a.css("#hiddensection { display: block; }");
+    a.css("#hiddensection { display:block; }");
     a.ready(() => {
         a.$("#hiddensection").show();
         a.$("#hiddensection2").remove();
@@ -3037,5 +3029,8 @@ if (a.domCmp(["tg007.net"])) {
 }
 if (a.domCmp(["bild.de"])) {
     a.filter("document.querySelector", a.matchMethod.stringExact, "body");
+}
+if (a.domCmp(["codepo8.github.io"]) && a.win.location.pathname.startsWith("/detecting-adblock/")) {
+    a.css(".notblocked { display:block; } .blocked { display:none; }");
 }
 a.generic();

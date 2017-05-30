@@ -728,9 +728,9 @@ a.noAccess = (name) => {
     return true;
 };
 /**
- * Inject CSS into HTML.
+ * Inject CSS into HTML, !important will be added automatically.
  * @function
- * @param {string} str - The CSS to inject, !important will be added automatically.
+ * @param {string} str - The CSS to inject.
  */
 a.css = (str) => {
     //Add !important
@@ -1128,7 +1128,7 @@ a.generic = () => {
                 a.config.debugMode && a.err("AdBlock Alerter");
                 //Remove alert and allow scrolling
                 a.$("div.adb_overlay").remove();
-                a.css("html,body {height:auto; overflow: auto;}");
+                a.css("html, body { height:auto; overflow: auto; }");
             }
             //Block screen
             if (a.$("#blockdiv").html() === "disable ad blocking or use another browser without any adblocker when you visit") {
