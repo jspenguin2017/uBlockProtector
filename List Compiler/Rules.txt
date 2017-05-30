@@ -236,3 +236,6 @@ hackinformer.com##script:inject(setTimeout-defuser.js, an_message_display)
 ||uol.com.br/camaleao/assets/web/javascript/detectadblock^$script,important
 ! === transparentcalifornia.com
 /magnific-popup.js/$domain=transparentcalifornia.com
+! === javsex.net
+! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/244
+@@||yamvideo.com/pop1/jwplayer.js$domain=javsex.net
