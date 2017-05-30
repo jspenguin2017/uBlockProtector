@@ -575,9 +575,7 @@ a.filter = (func, method, filter, onMatch, onAfter) => {
  * @param {float} [ratio=0.02] - The boost ratio, between 0 and 1 for speed up, larger than 1 for slow down, defaults to speed up 50 times.
  * @return {boolean} True if the operation was successful, false otherwise.
  */
-a.timewarp = (func, method, filter, onMatch, onAfter, ratio) => {
-    //Check parameters
-    ratio = ratio || 0.02;
+a.timewarp = (func, method, filter, onMatch, onAfter, ratio = 0.02) => {
     //The original function
     const original = a.win[func];
     //The replacement function with timewarp
@@ -595,7 +593,7 @@ a.timewarp = (func, method, filter, onMatch, onAfter, ratio) => {
             a.config.debugMode && a.out.warn("Timewarpped. ");
             onMatch && onMatch(args);
             onAfter && onAfter(true, args);
-            args[1] = args[1] * ratio;
+            args[1] *= ratio;
             return original.apply(a.win, args);
         } else {
             //Do not timewarp
@@ -773,7 +771,7 @@ a.bait = (type, identifier) => {
  * @param {string} [path="/"] - The path to set.
  * @return {string} The value of the cookie, null will be returned if the cookie does not exist, and undefined will be returned in set mode.
  */
-a.cookie = (key, val, time, path) => {
+a.cookie = (key, val, time = 31536000000, path = "/") => {
     if (typeof val === "undefined") {
         //Get mode
         //http://stackoverflow.com/questions/10730362/get-cookie-by-name
@@ -787,8 +785,8 @@ a.cookie = (key, val, time, path) => {
     } else {
         //Set mode
         let expire = new a.win.Date();
-        expire.setTime((new a.win.Date()).getTime() + (time || 31536000000));
-        a.doc.cookie = key + "=" + a.win.encodeURIComponent(val) + ";expires=" + expire.toGMTString() + ";path=" + (path || "/");
+        expire.setTime((new a.win.Date()).getTime() + time);
+        a.doc.cookie = key + "=" + a.win.encodeURIComponent(val) + ";expires=" + expire.toGMTString() + ";path=" + path;
     }
 };
 /**
@@ -813,11 +811,11 @@ a.serialize = (obj) => {
  * @function
  * @param {string} source - The source of the video.
  * @param {string} [typeIn=(Auto Detect)] - The type of the video, will be automatically detected if not supplied, and defaults to MP4 if detection failed.
- * @param {string} [widthIn="100%"] - The width of the player.
- * @param {string} [heightIn="auto"] - The height of the player.
+ * @param {string} [width="100%"] - The width of the player.
+ * @param {string} [height="auto"] - The height of the player.
  * @return {string} An HTML string of the video player.
  */
-a.nativePlayer = (source, typeIn, widthIn, heightIn) => {
+a.nativePlayer = (source, typeIn, width = "100%", height = "auto") => {
     //Detect type
     let type;
     if (typeIn) {
@@ -840,9 +838,6 @@ a.nativePlayer = (source, typeIn, widthIn, heightIn) => {
                 break;
         }
     }
-    //Assign width and height
-    const width = widthIn || "100%";
-    const height = heightIn || "auto";
     //Construct HTML string
     return `<video width='${width}' height='${height}' controls><source src='${source}' type='${type}'></video>`;
 };

@@ -2,7 +2,7 @@
 // @name uBlock Protector Script
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
-// @version 8.2
+// @version 8.3
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -336,8 +336,7 @@ a.filter = (func, method, filter, onMatch, onAfter) => {
     }
     return true;
 };
-a.timewarp = (func, method, filter, onMatch, onAfter, ratio) => {
-    ratio = ratio || 0.02;
+a.timewarp = (func, method, filter, onMatch, onAfter, ratio = 0.02) => {
     const original = a.win[func];
     const newFunc = (...args) => {
         if (a.config.debugMode) {
@@ -350,7 +349,7 @@ a.timewarp = (func, method, filter, onMatch, onAfter, ratio) => {
             a.config.debugMode && a.out.warn("Timewarpped. ");
             onMatch && onMatch(args);
             onAfter && onAfter(true, args);
-            args[1] = args[1] * ratio;
+            args[1] *= ratio;
             return original.apply(a.win, args);
         } else {
             a.config.debugMode && a.out.info("Not timewarpped. ");
@@ -460,7 +459,7 @@ a.bait = (type, identifier) => {
     }
     elem.html("<br>").prependTo("html");
 };
-a.cookie = (key, val, time, path) => {
+a.cookie = (key, val, time = 31536000000, path = "/") => {
     if (typeof val === "undefined") {
         const value = "; " + a.doc.cookie;
         let parts = value.split("; " + key + "=");
@@ -471,8 +470,8 @@ a.cookie = (key, val, time, path) => {
         }
     } else {
         let expire = new a.win.Date();
-        expire.setTime((new a.win.Date()).getTime() + (time || 31536000000));
-        a.doc.cookie = key + "=" + a.win.encodeURIComponent(val) + ";expires=" + expire.toGMTString() + ";path=" + (path || "/");
+        expire.setTime((new a.win.Date()).getTime() + time);
+        a.doc.cookie = key + "=" + a.win.encodeURIComponent(val) + ";expires=" + expire.toGMTString() + ";path=" + path;
     }
 };
 a.serialize = (obj) => {
@@ -485,7 +484,7 @@ a.serialize = (obj) => {
     }
     return str;
 };
-a.nativePlayer = (source, typeIn, widthIn, heightIn) => {
+a.nativePlayer = (source, typeIn, width = "100%", height = "auto") => {
     let type;
     if (typeIn) {
         type = typeIn;
@@ -506,8 +505,6 @@ a.nativePlayer = (source, typeIn, widthIn, heightIn) => {
                 break;
         }
     }
-    const width = widthIn || "100%";
-    const height = heightIn || "auto";
     return `<video width='${width}' height='${height}' controls><source src='${source}' type='${type}'></video>`;
 };
 a.videoJS = (sources, types, width, height) => {
