@@ -2,7 +2,7 @@
 // @name uBlock Protector Script
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
-// @version 8.6
+// @version 8.7
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -106,12 +106,12 @@ a.win = unsafeWindow;
 a.doc = a.win.document;
 a.out = a.win.console;
 a.dom = a.doc.domain;
-a.on = (event, func, capture) => {
-    a.win.addEventListener(event, func, capture);
-};
 a.$ = null;
-a.setTimeout = a.win.setTimeout;
-a.setInterval = a.win.setInterval;
+a.on = a.win.addEventListener.bind(a.win);
+a.setTimeout = a.win.setTimeout.bind(a.win);
+a.clearTimeout = a.win.clearTimeout.bind(a.win);
+a.setInterval = a.win.setInterval.bind(a.win);
+a.clearInterval = a.win.clearInterval.bind(a.win);
 a.matchMethod = {
     matchAll: 0, //Match all, omit defaults to this
     string: 1, //Partial string match
@@ -206,14 +206,14 @@ a.mods = () => {
             a.config.debugMode && a.out.info("No Autoplay Mod: Autoplay disabled. ");
         }
         if (a.domCmp(["komputerswiat.pl"], true)) {
-            let token = a.win.setInterval(() => {
+            let token = a.setInterval(() => {
                 if (a.$("video").length > 0) {
                     const player = a.$("video").first();
                     player[0].onplay = function () {
                         this.pause();
                     };
                     player.parents().eq(5).after(a.nativePlayer(player.attr("src"))).remove();
-                    a.win.clearInterval(token);
+                    a.clearInterval(token);
                 }
             }, 1000);
             a.config.debugMode && a.out.info("No Autoplay Mod: Autoplay disabled. ");
@@ -1021,10 +1021,10 @@ if (a.domCmp(["tweaktown.com"])) {
                 a.$("body").children("div").last().remove();
                 a.$("body").children("div").last().remove();
             } else {
-                a.win.setTimeout(blockScreenRemover, 500);
+                a.setTimeout(blockScreenRemover, 500);
             }
         };
-        a.win.setTimeout(blockScreenRemover, 500);
+        a.setTimeout(blockScreenRemover, 500);
     });
 }
 if (a.domCmp(["ratemyprofessors.com"])) {
@@ -1070,7 +1070,7 @@ if (a.domCmp(["tvregionalna24.pl"])) {
                 a.win.eval(text[i]);
             }
         } else {
-            a.win.setTimeout(replace, 1000);
+            a.setTimeout(replace, 1000);
         }
     });
 }
@@ -1231,7 +1231,7 @@ if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl", "sportowefakty.wp.pl", "
             }
         }
     };
-    a.win.setInterval(main, 1000);
+    a.setInterval(main, 1000);
     a.on("focus", () => { isInBackground = false; });
     a.on("blur", () => { isInBackground = true; });
 }
@@ -1739,7 +1739,7 @@ if (a.domCmp(["vivo.sx"])) {
     a.on("load", () => {
         a.$("#alert-throttle").remove();
         a.$("button#access").removeAttr("id").removeAttr("disabled").html("Continue To Video");
-        a.win.setTimeout(() => {
+        a.setTimeout(() => {
             a.$("input[name='throttle']").remove();
         }, 1000);
     });
@@ -2083,7 +2083,7 @@ if (a.domCmp(["kissanime.com", "kissanime.to", "kissanime.ru"])) {
             a.win.CheckAdImage = null;
         } else if (divContentVideo) {
             const divDownload = a.doc.querySelector("#divDownload").cloneNode(true);
-            a.win.setTimeout(() => {
+            a.setTimeout(() => {
                 divContentVideo.innerHTML = "";
                 a.win.DoHideFake();
                 divContentVideo.appendChild(divDownload);
@@ -2152,7 +2152,7 @@ if (a.domCmp(["rtl.de"])) {
 }
 if (a.domCmp(["play.radio1.se", "play.bandit.se", "play.lugnafavoriter.com", "play.rixfm.se"])) {
     a.on("load", () => {
-        a.win.setTimeout(() => {
+        a.setTimeout(() => {
             a.win.player_load_live(a.win.stream_id);
         }, 1000);
     });
@@ -2173,12 +2173,12 @@ if (a.config.debugMode &&
     const handler = () => {
         const elem = a.$("#video-player");
         if (elem.length === 0) {
-            a.win.setTimeout(handler, 1000);
+            a.setTimeout(handler, 1000);
             return;
         }
         let videoID = a.win.vfAvodpConfig.videoId;
         if (!videoID) {
-            a.win.setTimeout(handler, 1000);
+            a.setTimeout(handler, 1000);
             return;
         }
         const proxy = "http://www.sagkjeder.no/p/browse.php?u=";
@@ -2264,7 +2264,7 @@ if (a.domCmp(["allmyvideos.net", "amvtv.net"])) {
 if (a.domCmp(["ilive.to", "streamlive.to"])) {
     a.on("load", () => {
         if (a.win.location.pathname.toLowerCase().startsWith("/embedplayer.php")) {
-            a.win.setTimeout(() => {
+            a.setTimeout(() => {
                 a.win.removeOverlayHTML();
             }, 1000);
         }
@@ -2282,7 +2282,7 @@ if (a.domCmp(["micast.tv"])) {
 if (a.domCmp(["pxstream.tv"])) {
     a.on("load", () => {
         if (a.win.location.pathname.startsWith("/embedrouter.php")) {
-            a.win.setTimeout(() => {
+            a.setTimeout(() => {
                 a.win.closeAd();
             }, 1000);
         }
@@ -2314,13 +2314,13 @@ if (a.domCmp(["showsport-tv.com"])) {
 if (a.domCmp(["sharecast.to"])) {
     a.ready(() => {
         if (a.win.location.pathname.startsWith("/embed.php")) {
-            const token = a.win.setInterval(() => {
+            const token = a.setInterval(() => {
                 a.cookie("vid_main", "true");
                 a.cookie("vid_sub", "2");
                 a.cookie("vid_delay", "true");
             }, 100);
-            a.win.setTimeout(() => {
-                a.win.clearInterval(token);
+            a.setTimeout(() => {
+                a.clearInterval(token);
             }, 5000);
             a.$("#table1").remove();
         }
@@ -2496,12 +2496,12 @@ if (a.domCmp(["mooseroots.com", "insidegov.com", "gearsuite.com"])) {
     a.css("html,body { overflow-y:scroll; } .BOX-wrap { display:none; }");
 }
 if (a.domCmp(["sandiegouniontribune.com"])) {
-    const token = a.win.setInterval(() => {
+    const token = a.setInterval(() => {
         if (a.$("#reg-overlay").length) {
             a.$("#reg-overlay").remove()
             a.$("<style> html[data-dss-meterup], [data-dss-meterup] body { o" +
                 "verflow: scroll !important; } </style>").appendTo("head");
-            a.win.clearInterval(token);
+            a.clearInterval(token);
         }
     }, 1000);
     a.filter("addEventListener", a.matchMethod.stringExact, "scroll");
@@ -3035,5 +3035,24 @@ if (a.domCmp(["codepo8.github.io"]) && a.win.location.pathname.startsWith("/dete
 }
 if (a.domCmp(["rapidvideo.com"])) {
     a.win.atob = undefined;
+}
+if (a.domCmp(["altadefinizione.media"])) {
+    a.ready(() => {
+        a.$("a[href='http://altarisoluzione.online/HD/play5.php']").remove();
+    });
+}
+if (a.domCmp(["hdpass.net"])) {
+    let flag = false;
+    a.win.open = () => {
+        flag = true;
+    };
+    a.on("load", () => {
+        let token = a.setInterval(() => {
+            a.win.$(".wrapSpot span#closeSpot").click();
+            if (flag) {
+                a.clearInterval(token);
+            }
+        }, 500);
+    });
 }
 a.generic();

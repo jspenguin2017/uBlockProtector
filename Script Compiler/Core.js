@@ -148,28 +148,35 @@ a.out = a.win.console;
  */
 a.dom = a.doc.domain;
 /**
- * The addEventListener of unsafeWindow.
- * We must wrap it like this or it will throw errors.
- * @const {Function}
- */
-a.on = (event, func, capture) => {
-    a.win.addEventListener(event, func, capture);
-};
-/**
  * jQuery, will be available after a.init() is called.
  * @const {Object}
  */
 a.$ = null;
 /**
+ * The real addEventListener.
+ * @const {Function}
+ */
+a.on = a.win.addEventListener.bind(a.win);
+/**
  * The real setTimeout.
  * @const {Function}
  */
-a.setTimeout = a.win.setTimeout;
+a.setTimeout = a.win.setTimeout.bind(a.win);
+/**
+ * The real clearTimeout.
+ * @const {Function}
+ */
+a.clearTimeout = a.win.clearTimeout.bind(a.win);
 /**
  * The real setInterval.
  * @const {Function}
  */
-a.setInterval = a.win.setInterval;
+a.setInterval = a.win.setInterval.bind(a.win);
+/**
+ * The real clearInterval.
+ * @const {Function}
+ */
+a.clearInterval = a.win.clearInterval.bind(a.win);
 /**
  * Matching methods.
  * @const {Enumeration}
@@ -323,7 +330,7 @@ a.mods = () => {
             a.config.debugMode && a.out.info("No Autoplay Mod: Autoplay disabled. ");
         }
         if (a.domCmp(["komputerswiat.pl"], true)) {
-            let token = a.win.setInterval(() => {
+            let token = a.setInterval(() => {
                 if (a.$("video").length > 0) {
                     //Get element
                     const player = a.$("video").first();
@@ -333,7 +340,7 @@ a.mods = () => {
                     };
                     //Replace player
                     player.parents().eq(5).after(a.nativePlayer(player.attr("src"))).remove();
-                    a.win.clearInterval(token);
+                    a.clearInterval(token);
                 }
             }, 1000);
             a.config.debugMode && a.out.info("No Autoplay Mod: Autoplay disabled. ");
