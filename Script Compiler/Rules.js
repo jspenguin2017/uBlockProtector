@@ -2328,5 +2328,8 @@ if (a.domCmp(["bild.de"])) {
 if (a.domCmp(["codepo8.github.io"]) && a.win.location.pathname.startsWith("/detecting-adblock/")) {
     a.css(".notblocked { display:block; } .blocked { display:none; }");
 }
+if (a.domCmp(["rapidvideo.com"])) {
+    a.win.atob = undefined;
+}
 //Apply generic solutions, excluded domains check is handled inside
 a.generic();
