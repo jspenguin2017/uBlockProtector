@@ -2352,5 +2352,11 @@ if (a.domCmp(["hdpass.net"])) {
         }, 500);
     });
 }
+if (a.domCmp(["nowvideo.ec", "ewingoset.info"])) {
+    //Issue: https://gitlab.com/xuhaiyang1234/uBlockProtectorSecretIssues/issues/2
+    a.ready(() => {
+        a.$("#cty").append(`<input type="hidden" name="ab" value="1">`);
+    });
+}
 //Apply generic solutions, excluded domains check is handled inside
 a.generic();

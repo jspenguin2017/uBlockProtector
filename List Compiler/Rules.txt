@@ -239,3 +239,8 @@ hackinformer.com##script:inject(setTimeout-defuser.js, an_message_display)
 ! === javsex.net
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/244
 @@||yamvideo.com/pop1/jwplayer.js$domain=javsex.net
+! === nowvideo.ec, ewingoset.info
+! === Issue: https://gitlab.com/xuhaiyang1234/uBlockProtectorSecretIssues/issues/2
+||nowvideo.ec^$inline-script
+
+||ewingoset.info^$inline-script
