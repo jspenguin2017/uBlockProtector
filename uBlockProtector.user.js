@@ -952,7 +952,7 @@ a.generic.FuckAdBlock = (constructorName, instanceName) => {
 };
 //@pragma-keepline Solutions from Anti-Adblock Killer (originally by Reek) are modified to fit our Core API
 //@pragma-keepline Anti-Adblock Killer Repository (contains original source code and license): https://github.com/reek/anti-adblock-killer
-(() => {
+{ //Keep arrays in a local scope
     if (a.domCmp(["29443kmq.video", "dato.porn"])) {
         a.readOnly("cRAds", true);
     }
@@ -973,7 +973,7 @@ a.generic.FuckAdBlock = (constructorName, instanceName) => {
         a.domCmp(AdflyMatchDomCmp),
         false,
     );
-})();
+}
 if (a.domCmp(["blockadblock.com"])) {
     a.filter("eval");
     a.ready(() => {

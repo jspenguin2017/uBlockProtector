@@ -1,6 +1,6 @@
 //@pragma-keepline Solutions from Anti-Adblock Killer (originally by Reek) are modified to fit our Core API
 //@pragma-keepline Anti-Adblock Killer Repository (contains original source code and license): https://github.com/reek/anti-adblock-killer
-(() => {
+{ //Keep arrays in a local scope
     //===Racer function===
     if (a.domCmp(["29443kmq.video", "dato.porn"])) {
         //NSFW!
@@ -30,7 +30,7 @@
         a.domCmp(AdflyMatchDomCmp),
         false,
     );
-})();
+}
 //Rules start
 if (a.domCmp(["blockadblock.com"])) {
     a.filter("eval");
