@@ -2,7 +2,7 @@
 // @name uBlock Protector Script
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
-// @version 8.8
+// @version 8.9
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -3032,9 +3032,6 @@ if (a.domCmp(["bild.de"])) {
 }
 if (a.domCmp(["codepo8.github.io"]) && a.win.location.pathname.startsWith("/detecting-adblock/")) {
     a.css(".notblocked { display:block; } .blocked { display:none; }");
-}
-if (a.domCmp(["rapidvideo.com"])) {
-    a.win.atob = undefined;
 }
 if (a.domCmp(["altadefinizione.media"])) {
     a.ready(() => {
