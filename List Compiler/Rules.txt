@@ -242,5 +242,4 @@ hackinformer.com##script:inject(setTimeout-defuser.js, an_message_display)
 ! === nowvideo.ec, ewingoset.info
 ! === Issue: https://gitlab.com/xuhaiyang1234/uBlockProtectorSecretIssues/issues/2
 ||nowvideo.ec^$inline-script
-
 ||ewingoset.info^$inline-script
