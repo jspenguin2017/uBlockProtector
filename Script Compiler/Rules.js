@@ -2355,5 +2355,10 @@ if (a.domCmp(["nowvideo.ec", "ewingoset.info"])) {
         a.$("#cty").append(`<input type="hidden" name="ab" value="1">`);
     });
 }
+if (a.domCmp(["karibusana.org"])) {
+    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/253
+    a.noAccess("bizpanda");
+    a.css(".onp-locker-call { display:block; }");
+}
 //Apply generic solutions, excluded domains check is handled inside
 a.generic();
