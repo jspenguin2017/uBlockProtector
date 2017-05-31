@@ -157,6 +157,7 @@ hackinformer.com##script:inject(setTimeout-defuser.js, an_message_display)
 ||nowvideo.ec^$inline-script
 ||ewingoset.info^$inline-script
 rapidvideo.com##script:inject(noeval.js)
+yalujailbreak.net##script:inject(bab-defuser.js)
 ! =====Patched Anti-Adblock Killer List (originally by Reek)=====
 ! Patching logic can be found in List Compiler source code
 ! Anti-Adblock Killer Repository (contains original source code and license): https://github.com/reek/anti-adblock-killer
