@@ -1,6 +1,7 @@
 ! ===== Installation test =====
 jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 ! ===== Missed Ads =====
+! These are ads servers that we believe EasyList will not block any time soon
 ! === Google
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/245
 ||d.0emm.com^$third-party,script
@@ -301,3 +302,5 @@ hackinformer.com##script:inject(setTimeout-defuser.js, an_message_display)
 rapidvideo.com##script:inject(noeval.js)
 ! === yalujailbreak.net
 yalujailbreak.net##script:inject(bab-defuser.js)
+! === nana10.co.il
+||cloudvideoplatform.com/advert.jpg$image,redirect=1x1-transparent.gif,domain=nana10.co.il
