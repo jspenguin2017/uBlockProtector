@@ -58,7 +58,7 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 ||w.nfd81.com^$third-party,script
 ||w.nn0e.com^$third-party,script
 ||w.rpts.org^$third-party,script
-||optnmnstr.com/app^
+||a.optnmnstr.com^
 ###like-us-adblock-modal
 ##.popup-premium__apla
 @@||www.dogefaucet.com/static/js/ads.js|

@@ -51,11 +51,11 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 ||w.rpts.org^$third-party,script
 ! === OptinMonster
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/251
-||optnmnstr.com/app^
-! ===== Generic =====
+||a.optnmnstr.com^
+! ===== Generic solutions =====
 ###like-us-adblock-modal
 ##.popup-premium__apla
-! ===== Specific =====
+! ===== Specific solutions =====
 ! === dogefaucet.com
 @@||www.dogefaucet.com/static/js/ads.js|
 ! === portal.abczdrowie.pl
