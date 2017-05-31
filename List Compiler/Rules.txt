@@ -1,8 +1,61 @@
-! === Installation test
+! ===== Installation test =====
 jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
-! === GENERIC
+! ===== Missed Ads =====
+! === Google
+! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/245
+||d.0emm.com^$third-party,script
+||d.0emn.com^$third-party,script
+||d.0enm.com^$third-party,script
+||d.0fmm.com^$third-party,script
+||d.0mme.com^$third-party,script
+||d.1emn.com^$third-party,script
+||d.1enm.com^$third-party,script
+||d.2enm.com^$third-party,script
+||d.3enm.com^$third-party,script
+||d.4666.ch^$third-party,script
+||d.8d1f.com^$third-party,script
+||d.9emn.com^$third-party,script
+||d.e0mn.com^$third-party,script
+||d.em0n.com^$third-party,script
+||d.emn0.com^$third-party,script
+||d.m80fg.com^$third-party,script
+||d.mdf91.com^$third-party,script
+||d.mn0e.com^$third-party,script
+||d.mpk01.com^$third-party,script
+||d.ndf81.com^$third-party,script
+||d.nfd81.com^$third-party,script
+||d.nn0e.com^$third-party,script
+||d.rpts.org^$third-party,script
+||w.0emm.com^$third-party,script
+||w.0emn.com^$third-party,script
+||w.0enm.com^$third-party,script
+||w.0fmm.com^$third-party,script
+||w.0mme.com^$third-party,script
+||w.1emn.com^$third-party,script
+||w.1enm.com^$third-party,script
+||w.2enm.com^$third-party,script
+||w.3enm.com^$third-party,script
+||w.4666.ch^$third-party,script
+||w.8d1f.com^$third-party,script
+||w.9emn.com^$third-party,script
+||w.e0mn.com^$third-party,script
+||w.em0n.com^$third-party,script
+||w.emn0.com^$third-party,script
+||w.m80fg.com^$third-party,script
+||w.mdf91.com^$third-party,script
+||w.mn0e.com^$third-party,script
+||w.mpk01.com^$third-party,script
+||w.ndf81.com^$third-party,script
+||w.nfd81.com^$third-party,script
+||w.nn0e.com^$third-party,script
+||w.rpts.org^$third-party,script
+! === OptinMonster
+! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/251
+||optnmnstr.com/app^
+! ===== Generic =====
 ###like-us-adblock-modal
 ##.popup-premium__apla
+! ===== Specific =====
 ! === dogefaucet.com
 @@||www.dogefaucet.com/static/js/ads.js|
 ! === portal.abczdrowie.pl
