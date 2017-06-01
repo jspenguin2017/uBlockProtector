@@ -304,3 +304,5 @@ rapidvideo.com##script:inject(noeval.js)
 yalujailbreak.net##script:inject(bab-defuser.js)
 ! === nana10.co.il
 ||cloudvideoplatform.com/advert.jpg$image,redirect=1x1-transparent.gif,domain=nana10.co.il
+! === coderexample.com
+coderexample.com##script:inject(setTimeout-defuser.js, an_message_display)
