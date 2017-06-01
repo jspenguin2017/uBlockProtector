@@ -2,7 +2,7 @@
 // @name uBlock Protector Script
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
-// @version 8.14
+// @version 8.15
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -1135,7 +1135,7 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
     "echirurgia.pl", "pudelekx.pl", "o2.pl", "kardiolo.pl"])) {
     a.cookie("ABCABC", "true");
     a.filter("addEventListener", a.matchMethod.stringExact, "advertisement");
-    a.readOnly("hasSentinel", () => { return false; });
+    a.readOnly("hasSentinel", () => false);
 }
 if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl", "sportowefakty.wp.pl", "teleshow.wp.pl"], true)) {
     let mid; //Media ID of next video
@@ -1653,7 +1653,7 @@ if (a.domCmp(["cloudwebcopy.com"])) {
     a.filter("setTimeout");
 }
 if (a.domCmp(["narkive.com"])) {
-    a.readOnly("adblock_status", () => { return false; });
+    a.readOnly("adblock_status", () => false);
 }
 if (a.domCmp(["pregen.net"])) {
     a.cookie("pgn", "1");
@@ -1777,10 +1777,10 @@ if (a.domCmp(["scan-mx.com", "onepiece-mx.net", "naruto-mx.net"])) {
     });
 }
 if (a.domCmp(["freebitcoins.nx.tc", "getbitcoins.nx.tc"])) {
-    a.readOnly("ad_block_test", () => { return false; });
+    a.readOnly("ad_block_test", () => false);
 }
 if (a.domCmp(["bitcoinker.com"])) {
-    a.readOnly("claim", () => { return true; });
+    a.readOnly("claim", () => true);
     a.ready(() => {
         a.$("#E33FCCcX2fW").remove();
     });
@@ -1863,8 +1863,8 @@ if (a.domCmp(["lol.moa.tw"])) {
     a.ready(() => {
         a.win.MoaObj = a.win.MoaObj || {};
         a.win.MoaObj.ad = a.win.MoaObj.ad || {};
-        a.win.MoaObj.ad.hasAdblock = () => { return false; };
-        a.win.MoaObj.ad.checkABP = () => { return false; };
+        a.win.MoaObj.ad.hasAdblock = () => false;
+        a.win.MoaObj.ad.checkABP = () => false;
     });
 }
 if (a.domCmp(["dailybitcoins.org"])) {
