@@ -798,6 +798,7 @@ if (a.domCmp(["videowood.tv"])) {
     a.readOnly("adb_remind", false);
 }
 if (a.domCmp(["infojobs.com.br"])) {
+    /*
     a.win.webUI = {};
     a.win.webUI.Utils = {};
     const noop = () => { };
@@ -808,6 +809,10 @@ if (a.domCmp(["infojobs.com.br"])) {
             return noop;
         },
     });
+    */
+    //They changed detection method, the new detection method should be caught in the generic anti-bait filter
+    //Enforce again just in case
+    a.readOnly("adblock", 0);
 }
 if (a.domCmp(["cloudwebcopy.com"])) {
     a.filter("setTimeout");

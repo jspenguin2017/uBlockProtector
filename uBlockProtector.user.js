@@ -2,7 +2,7 @@
 // @name uBlock Protector Script
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
-// @version 8.10
+// @version 8.12
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -1647,16 +1647,7 @@ if (a.domCmp(["videowood.tv"])) {
     a.readOnly("adb_remind", false);
 }
 if (a.domCmp(["infojobs.com.br"])) {
-    a.win.webUI = {};
-    a.win.webUI.Utils = {};
-    const noop = () => { };
-    a.win.Object.defineProperty(a.win.webUI.Utils, "StopAdBlock", {
-        configurable: false,
-        set() { },
-        get() {
-            return noop;
-        },
-    });
+    a.readOnly("adblock", 0);
 }
 if (a.domCmp(["cloudwebcopy.com"])) {
     a.filter("setTimeout");
