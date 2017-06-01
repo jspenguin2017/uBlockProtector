@@ -1,6 +1,6 @@
 ### These are the issues where no solution is found
 
-#### viafree.no and related domains
+#### viafree.no
 
 `Geo Lock (Norway)`
 
