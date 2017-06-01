@@ -22,7 +22,7 @@ The domain is an `iframe` of `is.fi`.
 
 #### itv.com
 
-`Account Required`, `Geo Lock (United Kingdom)`
+`Account Required` `Geo Lock (United Kingdom)`
 
 Test link: https://www.itv.com/hub/take-me-out/1a8716a0086
 
