@@ -1109,8 +1109,6 @@ a.generic = () => {
                 return playwireZeus;
             },
         });
-        //BetterJsPop
-        a.generic.BetterJsPop();
         //===document-idle===
         a.ready(() => {
             //AdBlock Detector (XenForo Rellect)
@@ -1479,15 +1477,20 @@ a.generic.FuckAdBlock = (constructorName, instanceName) => {
     //Define FuckAdBlock to unsafeWindow and create its instance, error checks are done in a.readOnly()
     return a.readOnly(constructorName, patchedFuckAdBlock) && a.readOnly(instanceName, new a.win[constructorName]());
 };
+//Never used, tested and can be activated at any time
 /**
- * Enable generic BetterJsPop defuser, this function should be called once from a.generic() if needed.
+ * Enable BetterJsPop v1 defuser.
+ * Probably work on 1.x until 1.0.20.
+ * In this version, websites are allowed to modify the script, so it can be closured and this will not work.
  * @function
  */
-a.generic.BetterJsPop = () => {
+/*
+a.generic.BetterJsPopV1 = () => {
     //Create neutralized object
     const noop = () => { };
-    let obj = {
-        Browser: {
+    const retThis = () => { return obj; };
+    let obj = a.win.Object.freeze({
+        Browser: a.win.Object.freeze({
             isChrome: false,
             isEdge: false,
             isFirefox: false,
@@ -1500,7 +1503,7 @@ a.generic.BetterJsPop = () => {
             isWebkit: false,
             isWin: false,
             version: 50,
-        },
+        }),
         _bindTo: [],
         _checked: false,
         _chromeDelay: 300,
@@ -1510,18 +1513,16 @@ a.generic.BetterJsPop = () => {
         _flashElement: null,
         _flashUrl: "",
         _ignoreListener: false,
-        _lastEvent: {
+        _lastEvent: a.win.Object.freeze({
             event: null,
             prevent: true,
             time: 0,
-        },
+        }),
         _lastOpenTime: 0,
         _licenseUrl: null,
         _perpage: 1,
         _stack: [],
-        add() {
-            return this;
-        },
+        add: retThis,
         author: "",
         bindTo: noop,
         destroy: noop,
@@ -1551,17 +1552,99 @@ a.generic.BetterJsPop = () => {
         shouldIgnoreEvent: noop,
         shouldPreventEvent: noop,
         version: "1.0.20",
-    };
-    if (a.generic.BetterJsPop.patcher) {
-        obj = a.generic.BetterJsPop.patcher(obj);
-    }
-    //Lock the object
-    obj = a.win.Object.freeze(obj);
+    });
     a.readOnly("BetterJsPop", obj);
 };
+*/
 /**
- * Set this to a patcher function before calling a.generic() to patch the BetterJsPop object.
- * The function is expected to take in the BetterJsPop object and return a patched one.
- * @var {Function}
+ * Enable BetterJsPop v2 defuser.
+ * Should work on 2.x until at least 2.5.35.
+ * @function
  */
-a.generic.BetterJsPop.patcher = null;
+/*
+a.generic.BetterJsPopV2 = () => {
+    //Create neutralized object
+    const noop = () => { };
+    const retThis = () => { return obj; };
+    let obj = a.win.Object.freeze({
+        Browser: a.win.Object.freeze({
+            isAndroid: false,
+            isChrome: false,
+            isEdge: false,
+            isFirefox: false,
+            isIE: false,
+            isIOS: false,
+            isLinux: false,
+            isMac: false,
+            isMobile: false,
+            isMozilla: false,
+            isOpera: false,
+            isSafari: false,
+            isWebkit: false,
+            isWin: false,
+            longVersion: "55.0.0.0",
+            popunderAvailable: noop,
+            version: 55,
+            versionCompare: noop,
+        }),
+        Cookie: a.win.Object.freeze({
+            get: noop,
+            remove: noop,
+            set: noop,
+        }),
+        Event: a.win.Object.freeze({
+            bind: noop,
+            getTarget: noop,
+            unbind: noop,
+        }),
+        Logger: a.win.Object.freeze({
+            log: noop,
+            print: noop,
+        }),
+        Storage: a.win.Object.freeze({
+            get: noop,
+            isAvailable: noop,
+            remove: noop,
+            set: noop,
+        }),
+        Utils: a.win.Object.freeze({
+            addQueryString: noop,
+            createElement: noop,
+            getParent: noop,
+            isFlashEnabled: noop,
+            merge: noop,
+            rand: noop,
+            removeElement: noop,
+            time: noop,
+            uTimeout: noop,
+            versionCompare: noop,
+        }),
+        add: retThis,
+        author: "",
+        bindTo: noop,
+        config: retThis,
+        coverElement: noop,
+        destroy: noop,
+        emptyStack: noop,
+        fire: noop,
+        getBindTo: noop,
+        getClickedElement: noop,
+        getConfig: noop,
+        getFiredCount: noop,
+        getIgnoreTo: noop,
+        getLastEvent: noop,
+        getLastOpenAt: noop,
+        getQueuedCount: noop,
+        getStack: noop,
+        hasQueued: noop,
+        ignoreTo: noop,
+        isDebugMode: noop,
+        isReachedPerpage: noop,
+        object: [],
+        releaseDate: "2017/5/31",
+        reset: noop,
+        version: "2.5.35",
+    });
+    a.readOnly("BetterJsPop", obj);
+};
+*/

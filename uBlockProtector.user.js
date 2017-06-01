@@ -2,7 +2,7 @@
 // @name uBlock Protector Script
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
-// @version 8.13
+// @version 8.14
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -673,7 +673,6 @@ a.generic = () => {
                 return playwireZeus;
             },
         });
-        a.generic.BetterJsPop();
         a.ready(() => {
             if (a.win.XenForo && typeof a.win.XenForo.rellect === "object") {
                 a.config.debugMode && a.err("XenForo");
@@ -951,81 +950,6 @@ a.generic.FuckAdBlock = (constructorName, instanceName) => {
     };
     return a.readOnly(constructorName, patchedFuckAdBlock) && a.readOnly(instanceName, new a.win[constructorName]());
 };
-a.generic.BetterJsPop = () => {
-    const noop = () => { };
-    let obj = {
-        Browser: {
-            isChrome: false,
-            isEdge: false,
-            isFirefox: false,
-            isIE: false,
-            isMac: false,
-            isMobile: false,
-            isMozilla: false,
-            isOpera: false,
-            isSafari: false,
-            isWebkit: false,
-            isWin: false,
-            version: 50,
-        },
-        _bindTo: [],
-        _checked: false,
-        _chromeDelay: 300,
-        _count: 0,
-        _destroyed: false,
-        _fired: 0,
-        _flashElement: null,
-        _flashUrl: "",
-        _ignoreListener: false,
-        _lastEvent: {
-            event: null,
-            prevent: true,
-            time: 0,
-        },
-        _lastOpenTime: 0,
-        _licenseUrl: null,
-        _perpage: 1,
-        _stack: [],
-        add() {
-            return this;
-        },
-        author: "",
-        bindTo: noop,
-        destroy: noop,
-        exports: noop,
-        fire: noop,
-        flashActived: noop,
-        flashUrl: noop,
-        forceStackUseTabUnder: noop,
-        getFlashUrl: noop,
-        getFocusUrlForTabUnder: noop,
-        getLicenseUrl: noop,
-        getTabUnderUrl: noop,
-        getTargetElement: noop,
-        getTargetUrl: noop,
-        hasPopunder: noop,
-        ignoreListener: noop,
-        init: noop,
-        initFlash: noop,
-        initMobile: noop,
-        isRegistered: noop,
-        licenseUrl: noop,
-        perpage: noop,
-        preInit: noop,
-        preventEvent: noop,
-        removeFlash: noop,
-        saveLastEvent: noop,
-        shouldIgnoreEvent: noop,
-        shouldPreventEvent: noop,
-        version: "1.0.20",
-    };
-    if (a.generic.BetterJsPop.patcher) {
-        obj = a.generic.BetterJsPop.patcher(obj);
-    }
-    obj = a.win.Object.freeze(obj);
-    a.readOnly("BetterJsPop", obj);
-};
-a.generic.BetterJsPop.patcher = null;
 //@pragma-keepline Solutions from Anti-Adblock Killer (originally by Reek) are modified to fit our Core API
 //@pragma-keepline Anti-Adblock Killer Repository (contains original source code and license): https://github.com/reek/anti-adblock-killer
 { //Keep arrays in a local scope
@@ -2510,6 +2434,7 @@ if (a.domCmp(["hanime.tv"])) {
         _open.apply(a.win, args);
         window.close();
     };
+    a.readOnly("BetterJsPop", () => { });
 }
 if (a.domCmp(["firstonetv.eu"])) {
     a.readOnly("blocked", () => { });
@@ -3036,6 +2961,9 @@ if (a.domCmp(["receive-sms-online.info"])) {
 }
 if (a.domCmp(["3dgames.com.ar"])) {
     a.generic.FuckAdBlock(a.uid(), "gw");
+}
+if (a.domCmp(["mexashare.com", "kisshentai.net"])) {
+    a.readOnly("BetterJsPop", () => { });
 }
 if (a.domCmp(["comicallyincorrect.com"])) {
     a.observe("insert", (node) => {
