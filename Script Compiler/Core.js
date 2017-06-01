@@ -1557,7 +1557,6 @@ a.generic.BetterJsPop = () => {
     }
     //Lock the object
     obj = a.win.Object.freeze(obj);
-    //Add to window
     a.readOnly("BetterJsPop", obj);
 };
 /**
