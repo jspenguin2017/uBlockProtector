@@ -1488,7 +1488,7 @@ a.generic.FuckAdBlock = (constructorName, instanceName) => {
 a.generic.BetterJsPopV1 = () => {
     //Create neutralized object
     const noop = () => { };
-    const retThis = () => { return obj; };
+    const retThis = () => obj;
     let obj = a.win.Object.freeze({
         Browser: a.win.Object.freeze({
             isChrome: false,
@@ -1565,7 +1565,7 @@ a.generic.BetterJsPopV1 = () => {
 a.generic.BetterJsPopV2 = () => {
     //Create neutralized object
     const noop = () => { };
-    const retThis = () => { return obj; };
+    const retThis = () => obj;
     let obj = a.win.Object.freeze({
         Browser: a.win.Object.freeze({
             isAndroid: false,
