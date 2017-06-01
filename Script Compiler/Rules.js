@@ -1680,7 +1680,8 @@ if (a.domCmp(["hanime.tv"])) {
         window.close();
     };
     //Old solution, we will run it just in case
-    a.readOnly("BetterJsPop", () => { });
+    //Taken over by generic solution
+    //a.readOnly("BetterJsPop", () => { });
 }
 if (a.domCmp(["firstonetv.eu"])) {
     a.readOnly("blocked", () => { });
@@ -2271,9 +2272,12 @@ if (a.domCmp(["receive-sms-online.info"])) {
 if (a.domCmp(["3dgames.com.ar"])) {
     a.generic.FuckAdBlock(a.uid(), "gw");
 }
+/*
+//Taken over by generic solution
 if (a.domCmp(["mexashare.com"])) {
     a.readOnly("BetterJsPop", () => { });
 }
+*/
 if (a.domCmp(["comicallyincorrect.com"])) {
     a.observe("insert", (node) => {
         if (node && node.tagName === "DIV" && node.innerHTML && node.innerHTML.includes("Paid Content:")) {

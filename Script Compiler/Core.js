@@ -1109,6 +1109,8 @@ a.generic = () => {
                 return playwireZeus;
             },
         });
+        //BetterJsPop
+        a.generic.BetterJsPop();
         //===document-idle===
         a.ready(() => {
             //AdBlock Detector (XenForo Rellect)
@@ -1477,3 +1479,90 @@ a.generic.FuckAdBlock = (constructorName, instanceName) => {
     //Define FuckAdBlock to unsafeWindow and create its instance, error checks are done in a.readOnly()
     return a.readOnly(constructorName, patchedFuckAdBlock) && a.readOnly(instanceName, new a.win[constructorName]());
 };
+/**
+ * Enable generic BetterJsPop defuser, this function should be called once from a.generic() if needed.
+ * @function
+ */
+a.generic.BetterJsPop = () => {
+    //Create neutralized object
+    const noop = () => { };
+    let obj = {
+        Browser: {
+            isChrome: false,
+            isEdge: false,
+            isFirefox: false,
+            isIE: false,
+            isMac: false,
+            isMobile: false,
+            isMozilla: false,
+            isOpera: false,
+            isSafari: false,
+            isWebkit: false,
+            isWin: false,
+            version: 50,
+        },
+        _bindTo: [],
+        _checked: false,
+        _chromeDelay: 300,
+        _count: 0,
+        _destroyed: false,
+        _fired: 0,
+        _flashElement: null,
+        _flashUrl: "",
+        _ignoreListener: false,
+        _lastEvent: {
+            event: null,
+            prevent: true,
+            time: 0,
+        },
+        _lastOpenTime: 0,
+        _licenseUrl: null,
+        _perpage: 1,
+        _stack: [],
+        add() {
+            return this;
+        },
+        author: "",
+        bindTo: noop,
+        destroy: noop,
+        exports: noop,
+        fire: noop,
+        flashActived: noop,
+        flashUrl: noop,
+        forceStackUseTabUnder: noop,
+        getFlashUrl: noop,
+        getFocusUrlForTabUnder: noop,
+        getLicenseUrl: noop,
+        getTabUnderUrl: noop,
+        getTargetElement: noop,
+        getTargetUrl: noop,
+        hasPopunder: noop,
+        ignoreListener: noop,
+        init: noop,
+        initFlash: noop,
+        initMobile: noop,
+        isRegistered: noop,
+        licenseUrl: noop,
+        perpage: noop,
+        preInit: noop,
+        preventEvent: noop,
+        removeFlash: noop,
+        saveLastEvent: noop,
+        shouldIgnoreEvent: noop,
+        shouldPreventEvent: noop,
+        version: "1.0.20",
+    };
+    if (a.generic.BetterJsPop.patcher) {
+        obj = a.generic.BetterJsPop.patcher(obj);
+    }
+    //Lock the object
+    obj = a.win.Object.freeze(obj);
+    //Add to window
+    a.readOnly("BetterJsPop", obj);
+};
+/**
+ * Set this to a patcher function before calling a.generic() to patch the BetterJsPop object.
+ * The function is expected to take in the BetterJsPop object and return a patched one.
+ * @var {Function}
+ */
+a.generic.BetterJsPop.patcher = null;
