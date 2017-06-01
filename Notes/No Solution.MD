@@ -28,4 +28,5 @@ Test link: https://www.itv.com/hub/take-me-out/1a8716a0086
 
 Issue: https://github.com/jspenguin2017/uBlockProtector/issues/194
 
-Not confirmed on the standard configuration. 
+Not confirmed on the standard configuration, but since we do not have a solution for it, 
+chances are it does affect the standard configuration. 
