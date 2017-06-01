@@ -61,6 +61,7 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 ||a.optnmnstr.com^
 ###like-us-adblock-modal
 ##.popup-premium__apla
+||lukkr.com/website/pf.js
 @@||www.dogefaucet.com/static/js/ads.js|
 @@||dot.wp.pl^
 tvn.pl#div(id*=_videoDriverContent)
