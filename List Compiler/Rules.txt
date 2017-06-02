@@ -54,8 +54,11 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/251
 ||a.optnmnstr.com^
 ! ===== Generic solutions =====
+! === Block screens
 ###like-us-adblock-modal
 ##.popup-premium__apla
+! === Admiral
+||separatesilver.com^$third-party
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/254
 ||lukkr.com/website/pf.js
 ! ===== Specific solutions =====
