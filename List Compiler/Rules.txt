@@ -311,3 +311,6 @@ yalujailbreak.net##script:inject(bab-defuser.js)
 ||cloudvideoplatform.com/advert.jpg$image,redirect=1x1-transparent.gif,domain=nana10.co.il
 ! === coderexample.com
 coderexample.com##script:inject(setTimeout-defuser.js, an_message_display)
+! === receive-a-sms.com
+! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/257
+@@||receive-a-sms.com/showads.js$xmlhttprequest,first-party
