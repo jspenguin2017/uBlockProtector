@@ -48,7 +48,7 @@ a.init = (excluded, AdflyMatch, AdflyUnmatch) => {
         a.out.warn("This domain is in excluded list. ");
     }
     if (!excluded && (AdflyMatch || (a.config.aggressiveAdflySkiper && !AdflyUnmatch))) {
-        a.generic.AdflySkipper();
+        a.generic.AdflyBypasser();
     }
     a.mods();
     GM_registerMenuCommand("uBlock Protector Settings Page", () => {
@@ -851,7 +851,7 @@ a.generic = () => {
         a.out.warn("Generic solutions are disabled on this domain. ");
     }
 };
-a.generic.AdflySkipper = () => {
+a.generic.AdflyBypasser = () => {
     //@pragma-keepline Based on AdsBypasser
     //@pragma-keepline License: https://github.com/adsbypasser/adsbypasser/blob/master/LICENSE
     const handler = (encodedURL) => {

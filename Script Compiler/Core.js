@@ -23,7 +23,7 @@ a.init = (excluded, AdflyMatch, AdflyUnmatch) => {
     }
     //Check Adfly
     if (!excluded && (AdflyMatch || (a.config.aggressiveAdflySkiper && !AdflyUnmatch))) {
-        a.generic.AdflySkipper();
+        a.generic.AdflyBypasser();
     }
     //Apply mods
     a.mods();
@@ -1338,10 +1338,10 @@ a.generic = () => {
     }
 };
 /**
- * Setup generic Adfly skipper, this function should be called once from a.init() if needed.
+ * Setup generic Adfly bypasser, this function should be called once from a.init() if needed.
  * @function
  */
-a.generic.AdflySkipper = () => {
+a.generic.AdflyBypasser = () => {
     //@pragma-keepline Based on AdsBypasser
     //@pragma-keepline License: https://github.com/adsbypasser/adsbypasser/blob/master/LICENSE
     const handler = (encodedURL) => {
