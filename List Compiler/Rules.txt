@@ -59,6 +59,8 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 ##.popup-premium__apla
 ! === Admiral
 ||separatesilver.com^$third-party
+! === Ads Notifier
+techdracula.com,keshavcommoditycalls.com,hackinformer.com,coderexample.com,anibatch.id##script:inject(setTimeout-defuser.js, an_message_display)
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/254
 ||lukkr.com/website/pf.js
 ! ===== Specific solutions =====
@@ -249,14 +251,10 @@ telegraph.co.uk##.adblocker-message
 pwn.pl##script:inject(abort-on-property-read.js, adblock)
 ! === afreesms.com
 afreesms.com##script:inject(noeval.js)
-! === techdracula.com
-techdracula.com##script:inject(setTimeout-defuser.js, an_message_display)
 ! === clubic.com
 ||tiptonvillepylesville.com^$domain=clubic.com
 ! === freeomovie.com
 freeomovie.com##script:inject(bab-defuser.js)
-! === keshavcommoditycalls.com
-keshavcommoditycalls.com##script:inject(setTimeout-defuser.js, an_message_display)
 ! === animeid.io and similar domains
 animeid.io,jkanime.co,gogoanime.ch,chiaanime.co##script:inject(setTimeout-defuser.js, #player)
 ! === NSFW! hentaitake.net
@@ -290,7 +288,6 @@ wordsense.eu##script:inject(setTimeout-defuser.js, ad, 2000)
 ! === hackinformer.com
 @@||hackinformer.com/wp-content/plugins/detect-adblock/js/ads.js|$script,first-party
 hackinformer.com##script:inject(abort-on-property-write, anOptions)
-hackinformer.com##script:inject(setTimeout-defuser.js, an_message_display)
 ! === uol.com.br
 ||uol.com.br/camaleao/assets/web/javascript/detectadblock^$script,important
 ! === transparentcalifornia.com
@@ -309,8 +306,6 @@ rapidvideo.com##script:inject(noeval.js)
 yalujailbreak.net##script:inject(bab-defuser.js)
 ! === nana10.co.il
 ||cloudvideoplatform.com/advert.jpg$image,redirect=1x1-transparent.gif,domain=nana10.co.il
-! === coderexample.com
-coderexample.com##script:inject(setTimeout-defuser.js, an_message_display)
 ! === receive-a-sms.com
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/257
 @@||receive-a-sms.com/showads.js$xmlhttprequest,first-party

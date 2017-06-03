@@ -62,6 +62,7 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 ###like-us-adblock-modal
 ##.popup-premium__apla
 ||separatesilver.com^$third-party
+techdracula.com,keshavcommoditycalls.com,hackinformer.com,coderexample.com,anibatch.id##script:inject(setTimeout-defuser.js, an_message_display)
 ||lukkr.com/website/pf.js
 @@||www.dogefaucet.com/static/js/ads.js|
 @@||dot.wp.pl^
@@ -176,10 +177,8 @@ bracknellnews.co.uk##script:inject(abort-on-property-write.js, _sp_)
 telegraph.co.uk##.adblocker-message
 pwn.pl##script:inject(abort-on-property-read.js, adblock)
 afreesms.com##script:inject(noeval.js)
-techdracula.com##script:inject(setTimeout-defuser.js, an_message_display)
 ||tiptonvillepylesville.com^$domain=clubic.com
 freeomovie.com##script:inject(bab-defuser.js)
-keshavcommoditycalls.com##script:inject(setTimeout-defuser.js, an_message_display)
 animeid.io,jkanime.co,gogoanime.ch,chiaanime.co##script:inject(setTimeout-defuser.js, #player)
 hentaitake.net##script:inject(abort-on-property-read.js, anOptions)
 appdrop.net##script:inject(bab-defuser.js)
@@ -199,7 +198,6 @@ themeslide.com##script:inject(noeval.js)
 wordsense.eu##script:inject(setTimeout-defuser.js, ad, 2000)
 @@||hackinformer.com/wp-content/plugins/detect-adblock/js/ads.js|$script,first-party
 hackinformer.com##script:inject(abort-on-property-write, anOptions)
-hackinformer.com##script:inject(setTimeout-defuser.js, an_message_display)
 ||uol.com.br/camaleao/assets/web/javascript/detectadblock^$script,important
 /magnific-popup.js/$domain=transparentcalifornia.com
 @@||yamvideo.com/pop1/jwplayer.js$domain=javsex.net
@@ -208,7 +206,6 @@ hackinformer.com##script:inject(setTimeout-defuser.js, an_message_display)
 rapidvideo.com##script:inject(noeval.js)
 yalujailbreak.net##script:inject(bab-defuser.js)
 ||cloudvideoplatform.com/advert.jpg$image,redirect=1x1-transparent.gif,domain=nana10.co.il
-coderexample.com##script:inject(setTimeout-defuser.js, an_message_display)
 @@||receive-a-sms.com/showads.js$xmlhttprequest,first-party
 @@||gamersclub.com.br/js/ads.js$script,first-party
 newyorker.com##iframe[src*="/wp-content/assets/"]
