@@ -2,7 +2,7 @@
 // @name uBlock Protector Script
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
-// @version 8.17
+// @version 8.18
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2018,6 +2018,7 @@ if (a.domCmp(["referencemega.com", "fpabd.com", "crackacc.com"])) {
 if (a.domCmp(["link.tl"])) {
     a.css(".adblock { height:1px; }");
     a.readOnly("adblocker", false);
+    a.timewarp("setInterval", a.matchMethod.stringExact, "1800");
 }
 if (a.domCmp(["wstream.video"])) {
     a.css("#adiv { height:4px; }");

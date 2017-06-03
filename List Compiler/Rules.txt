@@ -322,3 +322,6 @@ newyorker.com##iframe[src*="/wp-content/assets/"]
 ||kissasian.com/*.aspx
 ! === wholecloud.net
 ||wholecloud.net^$inline-script
+! === link.tl
+link.tl##.adblockBox
+link.tl##.adblockOverlay

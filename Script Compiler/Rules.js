@@ -1217,6 +1217,7 @@ if (a.domCmp(["referencemega.com", "fpabd.com", "crackacc.com"])) {
 if (a.domCmp(["link.tl"])) {
     a.css(".adblock { height:1px; }");
     a.readOnly("adblocker", false);
+    a.timewarp("setInterval", a.matchMethod.stringExact, "1800");
 }
 if (a.domCmp(["wstream.video"])) {
     a.css("#adiv { height:4px; }");
