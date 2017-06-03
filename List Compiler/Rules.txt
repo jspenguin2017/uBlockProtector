@@ -319,3 +319,5 @@ newyorker.com##iframe[src*="/wp-content/assets/"]
 @@||politiken.dk/*ad*$script
 ! === NSFW! kissasian.com
 ||kissasian.com/*.aspx
+! === wholecloud.net
+||wholecloud.net^$inline-script

@@ -2,7 +2,7 @@
 // @name uBlock Protector Script
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
-// @version 8.16
+// @version 8.17
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -3043,7 +3043,7 @@ if (a.domCmp(["hdpass.net"])) {
         }, 500);
     });
 }
-if (a.domCmp(["nowvideo.ec", "ewingoset.info"])) {
+if (a.domCmp(["nowvideo.ec", "nowvideo.li", "ewingoset.info"])) {
     a.ready(() => {
         a.$("#cty").append(`<input type="hidden" name="ab" value="1">`);
     });
