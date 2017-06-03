@@ -2365,5 +2365,17 @@ if (a.domCmp(["karibusana.org"])) {
     a.noAccess("bizpanda");
     a.css(".onp-locker-call { display:block; }");
 }
+if (a.domCmp(["lewat.id"])) {
+    //Issue: https://gitlab.com/xuhaiyang1234/uBlockProtectorSecretIssues/issues/4
+    a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
+    const token = a.setInterval(() => {
+        const elem = a.$(".skip-ad a");
+        if (elem.length && elem[0].href && !(/^https?:\/\/lewat\.id\//i).test(elem[0].href)) {
+            a.$(".skip-ad").hide();
+            a.win.location.href = elem[0].href;
+            a.clearInterval(token);
+        }
+    }, 250);
+}
 //Apply generic solutions, excluded domains check is handled inside
 a.generic();

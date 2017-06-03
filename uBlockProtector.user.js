@@ -2,7 +2,7 @@
 // @name uBlock Protector Script
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
-// @version 8.15
+// @version 8.16
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -3051,5 +3051,16 @@ if (a.domCmp(["nowvideo.ec", "ewingoset.info"])) {
 if (a.domCmp(["karibusana.org"])) {
     a.noAccess("bizpanda");
     a.css(".onp-locker-call { display:block; }");
+}
+if (a.domCmp(["lewat.id"])) {
+    a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
+    const token = a.setInterval(() => {
+        const elem = a.$(".skip-ad a");
+        if (elem.length && elem[0].href && !(/^https?:\/\/lewat\.id\//i).test(elem[0].href)) {
+            a.$(".skip-ad").hide();
+            a.win.location.href = elem[0].href;
+            a.clearInterval(token);
+        }
+    }, 250);
 }
 a.generic();
