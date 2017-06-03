@@ -47,7 +47,7 @@ a.init = (excluded, AdflyMatch, AdflyUnmatch) => {
     if (a.config.debugMode && excluded) {
         a.out.warn("This domain is in excluded list. ");
     }
-    if (!excluded && (AdflyMatch || (a.config.aggressiveAdflySkiper && !AdflyUnmatch))) {
+    if (!excluded && (AdflyMatch || (a.config.aggressiveAdflyBypasser && !AdflyUnmatch))) {
         a.generic.AdflyBypasser();
     }
     a.mods();
@@ -68,7 +68,7 @@ a.init = (excluded, AdflyMatch, AdflyUnmatch) => {
             a.win.init({
                 "config_debugMode": a.config.debugMode,
                 "config_allowExperimental": a.config.allowExperimental,
-                "config_aggressiveAdflySkiper": a.config.aggressiveAdflySkiper,
+                "config_aggressiveAdflyBypasser": a.config.aggressiveAdflyBypasser,
                 "mods_Facebook_JumpToTop": a.mods.Facebook_JumpToTop,
                 "mods_Blogspot_AutoNCR": a.mods.Blogspot_AutoNCR,
                 "mods_NoAutoplay": a.mods.NoAutoplay,
@@ -79,7 +79,7 @@ a.init = (excluded, AdflyMatch, AdflyUnmatch) => {
 a.config = () => {
     a.config.debugMode = GM_getValue("config_debugMode", a.config.debugMode);
     a.config.allowExperimental = GM_getValue("config_allowExperimental", a.config.allowExperimental);
-    a.config.aggressiveAdflySkiper = GM_getValue("config_aggressiveAdflySkiper", a.config.aggressiveAdflySkiper);
+    a.config.aggressiveAdflyBypasser = GM_getValue("config_aggressiveAdflyBypasser", a.config.aggressiveAdflyBypasser);
     a.mods.Facebook_JumpToTop = GM_getValue("mods_Facebook_JumpToTop", a.mods.Facebook_JumpToTop);
     a.mods.Blogspot_AutoNCR = GM_getValue("mods_Blogspot_AutoNCR", a.mods.Blogspot_AutoNCR);
     a.mods.NoAutoplay = GM_getValue("mods_NoAutoplay", a.mods.NoAutoplay);
@@ -88,7 +88,7 @@ a.config.update = (id, val) => {
     const names = [
         "config_debugMode",
         "config_allowExperimental",
-        "config_aggressiveAdflySkiper",
+        "config_aggressiveAdflyBypasser",
         "mods_Facebook_JumpToTop",
         "mods_Blogspot_AutoNCR",
         "mods_NoAutoplay",
@@ -100,7 +100,7 @@ a.config.update = (id, val) => {
 a.config.debugMode = false;
 a.config.allowGeneric = true;
 a.config.allowExperimental = true;
-a.config.aggressiveAdflySkiper = true;
+a.config.aggressiveAdflyBypasser = true;
 a.config.domExcluded = null;
 a.win = unsafeWindow;
 a.doc = a.win.document;
@@ -902,7 +902,7 @@ a.generic.AdflyBypasser = () => {
             },
         });
     } catch (err) {
-        a.config.debugMode && a.out.error("uBlock Protector could not set up Adfly skipper. ");
+        a.config.debugMode && a.out.error("uBlock Protector could not set up Adfly bypasser. ");
     }
 };
 a.generic.FuckAdBlock = (constructorName, instanceName) => {
@@ -3055,9 +3055,10 @@ if (a.domCmp(["karibusana.org"])) {
 }
 if (a.domCmp(["lewat.id"])) {
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
+    const matcher = /^https?:\/\/lewat\.id\//i;
     const token = a.setInterval(() => {
         const elem = a.$(".skip-ad a");
-        if (elem.length && elem[0].href && !(/^https?:\/\/lewat\.id\//i).test(elem[0].href)) {
+        if (elem.length && elem[0].href && !matcher.test(elem[0].href)) {
             a.$(".skip-ad").hide();
             a.win.location.href = elem[0].href;
             a.clearInterval(token);
