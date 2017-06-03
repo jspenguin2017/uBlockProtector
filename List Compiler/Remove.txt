@@ -27,6 +27,7 @@ fox.com.tr#@#.text_ads
 fox.com.tr#@#.text-ads
 fox.com.tr#@#.text-ad-links
 @@||politiken.dk/static/content/js/ads.js$script
+@@||politiken.dk/*ad$script
 ||adage.com/assets/js/min/adBlockDetector.js$script
 ! === Issue: Included by Easy List
 /AdblockDetector.js$script

@@ -317,3 +317,8 @@ coderexample.com##script:inject(setTimeout-defuser.js, an_message_display)
 ! === gamersclub.com.br
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/258
 @@||gamersclub.com.br/js/ads.js$script,first-party
+! === newyorker.com
+newyorker.com##iframe[src*="/wp-content/assets/"]
+! === politiken.dk
+! === Issue: https://gitlab.com/xuhaiyang1234/AAK-Cont/issues/17
+@@||politiken.dk/*ad*$script
