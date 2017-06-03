@@ -202,6 +202,7 @@ hackinformer.com##script:inject(abort-on-property-write, anOptions)
 /magnific-popup.js/$domain=transparentcalifornia.com
 @@||yamvideo.com/pop1/jwplayer.js$domain=javsex.net
 ||nowvideo.ec^$inline-script
+||nowvideo.li^$inline-script
 ||ewingoset.info^$inline-script
 rapidvideo.com##script:inject(noeval.js)
 yalujailbreak.net##script:inject(bab-defuser.js)
