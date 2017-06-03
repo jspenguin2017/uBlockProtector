@@ -7,7 +7,7 @@
  * @function
  * @param {boolean} excluded - Whether this domain should be excluded from generic solutions.
  * @param {boolean} AdflyMatch - Whether this domain is an Adfly domain.
- * @param {boolean} AdflyUnmatch - Whether this domain should be excluded from Adfly skipper.
+ * @param {boolean} AdflyUnmatch - Whether this domain should be excluded from Adfly bypasser.
  */
 a.init = (excluded, AdflyMatch, AdflyUnmatch) => {
     //Load a new jQuery into a.$
@@ -22,7 +22,7 @@ a.init = (excluded, AdflyMatch, AdflyUnmatch) => {
         a.out.warn("This domain is in excluded list. ");
     }
     //Check Adfly
-    if (!excluded && (AdflyMatch || (a.config.aggressiveAdflySkiper && !AdflyUnmatch))) {
+    if (!excluded && (AdflyMatch || (a.config.aggressiveAdflyBypasser && !AdflyUnmatch))) {
         a.generic.AdflyBypasser();
     }
     //Apply mods
@@ -47,7 +47,7 @@ a.init = (excluded, AdflyMatch, AdflyUnmatch) => {
             a.win.init({
                 "config_debugMode": a.config.debugMode,
                 "config_allowExperimental": a.config.allowExperimental,
-                "config_aggressiveAdflySkiper": a.config.aggressiveAdflySkiper,
+                "config_aggressiveAdflyBypasser": a.config.aggressiveAdflyBypasser,
                 "mods_Facebook_JumpToTop": a.mods.Facebook_JumpToTop,
                 "mods_Blogspot_AutoNCR": a.mods.Blogspot_AutoNCR,
                 "mods_NoAutoplay": a.mods.NoAutoplay,
@@ -65,7 +65,7 @@ a.config = () => {
     //Configuration
     a.config.debugMode = GM_getValue("config_debugMode", a.config.debugMode);
     a.config.allowExperimental = GM_getValue("config_allowExperimental", a.config.allowExperimental);
-    a.config.aggressiveAdflySkiper = GM_getValue("config_aggressiveAdflySkiper", a.config.aggressiveAdflySkiper);
+    a.config.aggressiveAdflyBypasser = GM_getValue("config_aggressiveAdflyBypasser", a.config.aggressiveAdflyBypasser);
     //Mods
     a.mods.Facebook_JumpToTop = GM_getValue("mods_Facebook_JumpToTop", a.mods.Facebook_JumpToTop);
     a.mods.Blogspot_AutoNCR = GM_getValue("mods_Blogspot_AutoNCR", a.mods.Blogspot_AutoNCR);
@@ -81,7 +81,7 @@ a.config.update = (id, val) => {
     const names = [
         "config_debugMode",
         "config_allowExperimental",
-        "config_aggressiveAdflySkiper",
+        "config_aggressiveAdflyBypasser",
         "mods_Facebook_JumpToTop",
         "mods_Blogspot_AutoNCR",
         "mods_NoAutoplay",
@@ -111,12 +111,12 @@ a.config.allowGeneric = true;
  */
 a.config.allowExperimental = true;
 /**
- * Whether Adfly skipper should run on all pages.
+ * Whether Adfly bypasser should run on all pages.
  * The handler will check to make sure the page is an Adfly page.
  * The default value is true.
  * @const {bool}
  */
-a.config.aggressiveAdflySkiper = true;
+a.config.aggressiveAdflyBypasser = true;
 /**
  * Whether current domain is "excluded".
  * How this will be treated depends on the rules.
@@ -1405,7 +1405,7 @@ a.generic.AdflyBypasser = () => {
             },
         });
     } catch (err) {
-        a.config.debugMode && a.out.error("uBlock Protector could not set up Adfly skipper. ");
+        a.config.debugMode && a.out.error("uBlock Protector could not set up Adfly bypasser. ");
     }
 };
 /**
