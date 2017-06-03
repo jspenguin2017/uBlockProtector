@@ -30,3 +30,12 @@ Issue: https://github.com/jspenguin2017/uBlockProtector/issues/194
 
 Not confirmed on the standard configuration, but since we do not have a solution for it, 
 chances are it does affect the standard configuration. 
+
+#### vtm.be
+
+`Account Required`
+
+Test link: https://vtm.be/video/volledige-afleveringen/id/257181273927000
+
+Not confirmed on the standard configuration, but since we do not have a solution for it, 
+chances are it does affect the standard configuration. 
