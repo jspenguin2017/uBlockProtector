@@ -210,6 +210,7 @@ yalujailbreak.net##script:inject(bab-defuser.js)
 @@||gamersclub.com.br/js/ads.js$script,first-party
 newyorker.com##iframe[src*="/wp-content/assets/"]
 @@||politiken.dk/*ad*$script
+||kissasian.com/*.aspx
 ! =====Patched Anti-Adblock Killer List (originally by Reek)=====
 ! Patching logic can be found in List Compiler source code
 ! Anti-Adblock Killer Repository (contains original source code and license): https://github.com/reek/anti-adblock-killer

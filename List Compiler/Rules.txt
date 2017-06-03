@@ -317,3 +317,5 @@ newyorker.com##iframe[src*="/wp-content/assets/"]
 ! === politiken.dk
 ! === Issue: https://gitlab.com/xuhaiyang1234/AAK-Cont/issues/17
 @@||politiken.dk/*ad*$script
+! === NSFW! kissasian.com
+||kissasian.com/*.aspx
