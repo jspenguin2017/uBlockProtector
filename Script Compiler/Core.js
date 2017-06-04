@@ -38,11 +38,11 @@ a.init = (excluded, AdflyMatch, AdflyUnmatch) => {
         GM_openInTab(a.c.supportPage);
     });
     //Home page installation test
-    if (a.domCmp(["jspenguin2017.github.io"], true) && a.doc.location.href.includes("jspenguin2017.github.io/uBlockProtector")) {
+    if (a.domCmp(["jspenguin2017.github.io"], true) && a.win.location.pathname.startsWith("/uBlockProtector")) {
         a.win.uBlock_Protector_Script = true;
     }
     //Settings page
-    if (a.domCmp(["jspenguin2017.github.io"], true) && a.doc.location.href.includes("jspenguin2017.github.io/uBlockProtector/settings.html")) {
+    if (a.domCmp(["jspenguin2017.github.io"], true) && a.win.location.pathname.startsWith("/uBlockProtector/settings.html")) {
         a.on("load", () => {
             a.win.init({
                 "config_debugMode": a.config.debugMode,
