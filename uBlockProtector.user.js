@@ -261,7 +261,7 @@ a.domInc = (domList, noErr) => {
     for (let i = 0; i < domList.length; i++) {
         let index = a.dom.indexOf(domList[i] + ".");
         switch (index) {
-            case -1: continue;
+            case -1: break;
             case 0: return (a.config.debugMode && !noErr && a.err()), true;
             default:
                 if (a.dom[index - 1] === ".") {
