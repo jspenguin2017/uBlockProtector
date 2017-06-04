@@ -215,6 +215,8 @@ newyorker.com##iframe[src*="/wp-content/assets/"]
 ||wholecloud.net^$inline-script
 link.tl##.adblockBox
 link.tl##.adblockOverlay
+||$third-party,script,domain=themelot.net
+batchnime.net##script:inject(abort-on-property-read.js, killAdBlock)
 ! =====Patched Anti-Adblock Killer List (originally by Reek)=====
 ! Patching logic can be found in List Compiler source code
 ! Anti-Adblock Killer Repository (contains original source code and license): https://github.com/reek/anti-adblock-killer

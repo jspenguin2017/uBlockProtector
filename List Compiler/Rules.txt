@@ -325,3 +325,7 @@ newyorker.com##iframe[src*="/wp-content/assets/"]
 ! === link.tl
 link.tl##.adblockBox
 link.tl##.adblockOverlay
+! === themelot.net
+||$third-party,script,domain=themelot.net
+! === batchnime.net
+batchnime.net##script:inject(abort-on-property-read.js, killAdBlock)
