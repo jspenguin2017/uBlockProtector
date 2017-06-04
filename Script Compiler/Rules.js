@@ -2380,5 +2380,8 @@ if (a.domCmp(["lewat.id"])) {
         }
     }, 250);
 }
+if (a.domCmp(["shinden.pl"])) {
+    a.readOnly("shinden_ads", true);
+}
 //Apply generic solutions, excluded domains check is handled inside
 a.generic();
