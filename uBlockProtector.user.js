@@ -247,7 +247,8 @@ a.err = (name) => {
 };
 a.domCmp = (domList, noErr) => {
     for (let i = 0; i < domList.length; i++) {
-        if (a.dom === domList[i] || a.dom.endsWith("." + domList[i])) {
+        if (a.dom.endsWith(domList[i]) &&
+            (a.dom.length === domList[i].length || a.dom.charAt(a.dom.length - domList[i].length - 1) === ".")) {
             if (a.config.debugMode && !noErr) {
                 a.err();
             }

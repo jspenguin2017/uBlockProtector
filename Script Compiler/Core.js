@@ -419,7 +419,8 @@ a.domCmp = (domList, noErr) => {
     //Loop though each element
     for (let i = 0; i < domList.length; i++) {
         //Check if current domain is exactly listed or ends with it
-        if (a.dom === domList[i] || a.dom.endsWith("." + domList[i])) {
+        if (a.dom.endsWith(domList[i]) &&
+            (a.dom.length === domList[i].length || a.dom.charAt(a.dom.length - domList[i].length - 1) === ".")) {
             if (a.config.debugMode && !noErr) {
                 //Show error message when matched
                 a.err();
