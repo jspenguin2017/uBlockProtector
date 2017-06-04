@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <!--<meta name="description" content="" />-->
+    <meta name="author" content="jspenguin2017" />
+    <!--<link rel="icon" href="" />-->
+    <title>uBlock Protector Benchmarking Tool</title>
+</head>
+<body>
+    <script>
+        /**
+         * Run a test and time it
+         * @function
+         * @param {Function} func - The function to run.
+         * @param {string} name - The name of the test.
+         * @param {Any} result - The expected result.
+         */
+        var run = (func, name, result) => {
+            let finalTime = 0;
+            for (let i = 0; i < 200; i++) {
+                let res;
+                const t0 = performance.now();
+                res = func();
+                const t1 = performance.now();
+                if (res === result) {
+                    finalTime += (t1 - t0);
+                } else {
+                    console.log(`${name} failed`);
+                    return;
+                }
+            }
+            console.log(`${name} used ${finalTime} milliseconds`);
+        };
+
+        //Add tests here
+        var test1 = () => { };
+        var test2 = () => { };
+    </script>
+    <button onclick="run(test1, 'test1');">Test 1</button>
+    <button onclick="run(test2, 'test2');">Test 2</button>
+</body>
+</html>
