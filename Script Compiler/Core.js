@@ -432,7 +432,8 @@ a.domCmp = (domList, noErr) => {
 };
 /**
  * Check if current domain includes one of the strings that is in the list.
- * Example: "google" will match domains starting with "google." and domains that include ".google."
+ * Example: "example" will match domains starting with "example." and domains that include ".example."
+ *          "www.example" will match domains starting with "www.example." and domains that includes ".www.example."
  * @function
  * @param {Array.<string>} domList - The list of strings to compare.
  * @param {boolean} [noErr=false] - Set to true to prevent showing error message.
