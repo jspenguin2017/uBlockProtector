@@ -441,12 +441,15 @@ a.domCmp = (domList, noErr) => {
 a.domInc = (domList, noErr) => {
     //Loop though each element
     for (let i = 0; i < domList.length; i++) {
-        if (a.dom.startsWith(domList[i] + ".") || a.dom.includes("." + domList[i] + ".")) {
-            if (a.config.debugMode && !noErr) {
-                //Show error message when matched
-                a.err();
-            }
-            return true;
+        let index = a.dom.indexOf(domList[i] + ".");
+        switch (index) {
+            case -1: continue;
+            case 0: return (a.config.debugMode && !noErr && a.err()), true;
+            default:
+                if (a.dom[index - 1] === ".") {
+                    return (a.config.debugMode && !noErr && a.err()), true;
+                }
+                break;
         }
     }
     return false;

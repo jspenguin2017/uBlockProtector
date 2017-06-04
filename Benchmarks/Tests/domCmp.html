@@ -33,65 +33,15 @@
             console.log(`${name} used ${finalTime} milliseconds`);
         };
 
-        const dom1 = "www.thenational.scot"; //Test ending match
-        const dom2 = "thenational.scot"; //Test exact match
+        const dom1 = "www.5p9fegtob44.com"; //Test ending match
+        const dom2 = "5p9fegtob44.com"; //Test exact match
 
         let a = {};
         a.dom = dom1; //The one we are testing
         a.config = { debugMode: false };
 
-        const list = ["360.cn", "apple.com", "ask.com", "baidu.com", "bing.com", "bufferapp.com",
-            "chromeactions.com", "easyinplay.net", "ebay.com", "facebook.com", "flattr.com", "flickr.com",
-            "ghacks.net", "imdb.com", "imgbox.com", "imgur.com", "instagram.com", "jsbin.com", "jsfiddle.net",
-            "linkedin.com", "live.com", "mail.ru", "microsoft.com", "msn.com", "paypal.com", "pinterest.com",
-            "preloaders.net", "qq.com", "reddit.com", "stackoverflow.com", "tampermonkey.net", "twitter.com",
-            "vimeo.com", "wikipedia.org", "w3schools.com", "yandex.ru", "youtu.be", "youtube.com", "xemvtv.net",
-            "vod.pl", "agar.io", "pandoon.info", "fsf.org", "adblockplus.org", "plnkr.co", "exacttarget.com",
-            "dolldivine.com", "popmech.ru", "calm.com", "chatango.com", "filiser.tv", "sthelensstar.co.uk",
-            "runcornandwidnesworld.co.uk", "leighjournal.co.uk",
-            "warringtonguardian.co.uk", "northwichguardian.co.uk", "middlewichguardian.co.uk",
-            "knutsfordguardian.co.uk", "wilmslowguardian.co.uk", "creweguardian.co.uk",
-            "thewestmorlandgazette.co.uk", "newsquest.co.uk", "messengernewspapers.co.uk",
-            "lancashiretelegraph.co.uk", "asianimage.co.uk", "chorleycitizen.co.uk",
-            "theboltonnews.co.uk", "burytimes.co.uk", "prestwichandwhitefieldguide.co.uk",
-            "wirralglobe.co.uk", "autoexchange.co.uk", "chesterlestreetadvertiser.co.uk",
-            "consettstanleyadvertiser.co.uk", "darlingtonaycliffesedgefieldadvertiser.co.uk",
-            "darlingtonandstocktontimes.co.uk", "durhamadvertiser.co.uk",
-            "edition.pagesuite-professional.co.uk", "durhamtimes.co.uk", "northyorkshireadvertiser.co.uk",
-            "thenorthernecho.co.uk", "northernfarmer.co.uk", "wearvalleyadvertiser.co.uk",
-            "gazetteherald.co.uk", "yorkpress.co.uk", "cravenherald.co.uk", "ilkleygazette.co.uk",
-            "keighleynews.co.uk", "thetelegraphandargus.co.uk", "wharfedaleobserver.co.uk",
-            "herefordtimes.com", "ludlowadvertiser.co.uk", "redditchadvertiser.co.uk",
-            "bromsgroveadvertiser.co.uk", "droitwichadvertiser.co.uk", "cotswoldjournal.co.uk",
-            "eveshamjournal.co.uk", "tewkesburyadmag.co.uk", "dudleynews.co.uk", "halesowennews.co.uk",
-            "stourbridgenews.co.uk", "kidderminstershuttle.co.uk", "ledburyreporter.co.uk",
-            "malverngazette.co.uk", "worcesternews.co.uk", "southendstandard.co.uk",
-            "essexcountystandard.co.uk", "gazette-news.co.uk", "clactonandfrintongazette.co.uk",
-            "harwichandmanningtreestandard.co.uk", "braintreeandwithamtimes.co.uk", "halsteadgazette.co.uk",
-            "guardian-series.co.uk", "brentwoodweeklynews.co.uk", "chelmsfordweeklynews.co.uk",
-            "maldonandburnhamstandard.co.uk", "thurrockgazette.co.uk", "basildonrecorder.co.uk",
-            "echo-news.co.uk", "bucksfreepress.co.uk", "theargus.co.uk", "redhillandreigatelife.co.uk",
-            "romseyadvertiser.co.uk", "dailyecho.co.uk", "hampshirechronicle.co.uk",
-            "basingstokegazette.co.uk", "andoveradvertiser.co.uk", "stalbansreview.co.uk",
-            "watfordobserver.co.uk", "heraldseries.co.uk", "banburycake.co.uk", "bicesteradvertiser.net",
-            "oxfordmail.co.uk", "oxfordtimes.co.uk", "witneygazette.co.uk", "falmouthpacket.co.uk",
-            "smallholder.co.uk", "southwestfarmer.co.uk", "dorsetecho.co.uk", "bournmouthecho.co.uk",
-            "bridportnews.co.uk", "wiltsglosstandard.co.uk", "gazetteseries.co.uk", "bridgwatermercury.co.uk",
-            "burnhamandhighbridgeweeklynews.co.uk", "chardandilminsternews.co.uk", "middevonstar.co.uk",
-            "somersetcountygazette.co.uk", "thisisthewestcountry.co.uk", "yeovilexpress.co.uk",
-            "wiltshiretimes.co.uk", "swindonadvertiser.co.uk", "salisburyjournal.co.uk",
-            "boxingnewsonline.net", "engagedinvestor.co.uk", "globalreinsurance.com", "insurancetimes.co.uk",
-            "pensions-insight.co.uk", "strategic-risk-global.com", "reward-guide.co.uk", "thestrad.com",
-            "times-series.co.uk", "borehamwoodtimes.co.uk", "ealingtimes.co.uk", "enfieldindependent.co.uk",
-            "haringeyindependent.co.uk", "harrowtimes.co.uk", "hillingdontimes.co.uk", "newsshopper.co.uk",
-            "croydonguardian.co.uk", "epsomguardian.co.uk", "streathamguardian.co.uk", "suttonguardian.co.uk",
-            "wandsworthguardian.co.uk", "wimbledonguardian.co.uk", "surreycomet.co.uk", "kingstonguardian.co.uk",
-            "richmondandtwickenhamtimes.co.uk", "campaignseries.co.uk", "southwalesguardian.co.uk",
-            "milfordmercury.co.uk", "pembrokeshirecountyliving.co.uk", "westerntelegraph.co.uk",
-            "tivysideadvertiser.co.uk", "southwalesargus.co.uk", "cotswoldessence.co.uk",
-            "freepressseries.co.uk", "monmouthshirecountylife.co.uk", "barryanddistrictnews.co.uk",
-            "penarthtimes.co.uk", "eveningtimes.co.uk", "s1cars.com", "s1community.com", "s1homes.com",
-            "s1jobs.com", "s1rental.com", "thescottishfarmer.co.uk", "heraldscotland.com", "thenational.scot"];
+        //Hard coded to ensure consistency
+        const list = ["xggjt3cjh2i.com", "rzvl6eie8ej.com", "yqmx2gi6o5.com", "4py9mtaci96.com", "32dz4ann42m.com", "a9ptquk61l5.com", "6wogwhbep6j.com", "u0mp04by6os.com", "yqxpp6owimk.com", "i4qc1g49b6g.com", "379ekd1l0k9.com", "mpo5knsau2.com", "qj0whwau6gj.com", "zvx95oqnmgd.com", "studxo5kcoe.com", "pbyzg9qdfir.com", "oqd6mo0keja.com", "bim5xoelg3l.com", "x6dabbkvfg.com", "x42pr4j4xu.com", "3smzqrzyh29.com", "102gl88ws1rm.com", "siq029bqiae.com", "u1p45m1wnec.com", "cgit2s30p7f.com", "q9hzwnmw3ee.com", "ggfeq8l056e.com", "zfj8888cfq.com", "hf2l0r9ajed.com", "5tll8izncqr.com", "fy4okny7be.com", "zgaku04ef3p.com", "24kayuseoh8.com", "415irhmq6hy.com", "oh57pt37ed9.com", "rnda7mso7ln.com", "zl2y0vc13.com", "nnv5idr95m.com", "ksu6r6ld52n.com", "azu6j5x3g4e.com", "w2qb6kn84x.com", "qlr8elnv8kh.com", "xvvpem0nn8h.com", "qj0ta2byvd.com", "o58gii60ijs.com", "3tvphdxtw4r.com", "yo473j1p57p.com", "225i4rdcuct.com", "mhtu8t6a2h.com", "e5zx9r6i3nd.com", "ej3n27zix5i.com", "d8szw67u7ek.com", "ng4nmjylh4d.com", "04dxtyqwevqu.com", "5t8l36czvin.com", "tbj9ml0iwe.com", "eogv84agmce.com", "pmmjurmoei.com", "2sv2s7vrj3b.com", "1umfq5mipdk.com", "d5h1yv5t8pr.com", "ilex9gsy5.com", "qzo1ivi32vc.com", "593cxv8iy7s.com", "90hxpc76we4.com", "15t44owu34h.com", "c28o7votdzr.com", "2wjgr0im0md.com", "eap1ethjzqs.com", "k2xb29nrltm.com", "y6lcxswtoyh.com", "7b2lcqgiyyq.com", "01j1du8l5zsq.com", "b6azrecsvh8.com", "e3zueyw1af8.com", "xo22rzml6l.com", "2ltfgc5n9wd.com", "lj9pjuqv2zm.com", "sgqla7j70l.com", "m2kz5dtl1pc.com", "xs2bzbumwec.com", "h34ke6pdrd5.com", "wrg5csodhfj.com", "9lcuh7nfbue.com", "bpk7evegyqp.com", "91dafpkckp7.com", "cpic2l3or7n.com", "edhz7ecsi1.com", "fba2wafq86d.com", "ndcn1uo25k.com", "i4a4405ii8r.com", "zsqprfo52b.com", "bum30e8a82l.com", "fpny9951cjg.com", "71kv0xr4jul.com", "8rxy4iwauoj.com", "3g05ueddco1.com", "5px5a2s22i7.com", "pq6w49a9j7i.com", "a4zhgqa57oq.com", "o1998p4yh68.com", "n3ikhwcxg9l.com", "gf5uexncmd.com", "iwzc95iofl9.com", "1sxbpdgaxgq.com", "ys5wlxe8ko.com", "byfdn9q0dqh.com", "wv12zdhazxt.com", "ewgbd5p6s8n.com", "zqvijzoqzl.com", "wu3j0vrw4c.com", "68ea24vyn8r.com", "9ltkp65wjf.com", "hz7d8r0usow.com", "2sst67u4yfy.com", "d874im5jg2l.com", "ba37suf8kc9.com", "qmd6f47rmt.com", "za0aaxzrt9r.com", "wc56cg6fgq.com", "1n1pc3yzdlk.com", "yb857twpfcr.com", "9txp8ha1kc.com", "qy58i1kgyjc.com", "rxz3nvnz8me.com", "lgwe4jaitvj.com", "9d97uzod9gh.com", "jrrdpyk3ux.com", "u99d3ks3rl.com", "cnsvvec9e3p.com", "ndsqv09w59.com", "e59w0lye5lj.com", "kq7ppg0qdd.com", "yko783oybgl.com", "8r9fatmd70s.com", "93nnqzvajrn.com", "vq9jp9gpv29.com", "z32bu5fj68.com", "reqdf2whfy.com", "62i5is9yh1.com", "zlydk1whyub.com", "wpb47zht25c.com", "rdmf5ixo0pc.com", "jdm836352nr.com", "qho5sfjjlq.com", "icdlqdrxtt.com", "lwssn3oovjh.com", "hbaxrv6m3b.com", "w53br77kiab.com", "levt324o6l.com", "jcepfb0lq5m.com", "wyqcp8p0qf.com", "keaqibbb0on.com", "t97mxggg4i.com", "v2o0t96wp5.com", "n0pjs1amglf.com", "9ngn72olpah.com", "lv92qvzrndm.com", "y2tqifzctmq.com", "nl0dl46vnpe.com", "r0wq5qxmdqi.com", "ocqeizh50jo.com", "46vftnoofak.com", "qhfixu0bfz.com", "7aorcqoh2xu.com", "hfsmo88xvqo.com", "ze41nz2xk9f.com", "tvqudkhej1.com", "383v2e5evc.com", "fzdj3266lv4.com", "we9vfs085ua.com", "16zfagphhhw.com", "2rbrz2k43ts.com", "xmy9vke5z37.com", "wazp5g0391g.com", "bj8cvjsbzi.com", "8m0lmguxkbp.com", "pddhii3mr7f.com", "m74jdghmvz.com", "m6e16wqfici.com", "vkobheu5bi9.com", "vyvn3dutoeh.com", "hlypzjfd7kb.com", "ih4cnk30ft8.com", "sc9jsrjimt8.com", "f8irjoopmmu.com", "iggzdkfntm.com", "3wlcr3aisbn.com", "w36cm3uqh1b.com", "n9y611k23kf.com", "rhe1tbqpbs.com", "k2hj0lydvqo.com", "ialncrobi5.com", "m309yd2yle.com", "w52ozkad4w.com", "1aps8oqoh6ki.com", "xaf8sz2jym.com", "5rm6mqlp7sj.com", "e2gtycjmf8m.com", "5p9fegtob44.com"];
 
         //Algorithm 1
         var test1 = (domList, noErr) => {
