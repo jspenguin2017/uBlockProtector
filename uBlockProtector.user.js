@@ -702,74 +702,95 @@ a.generic = () => {
                 a.config.debugMode && a.out.err("Uncaught AdBlock Error: Generic block screens are not allowed on this device! ");
                 a.$("#blockdiv").remove();
             }
-            const styles = document.querySelectorAll("style");
-            for (let i = 0; i < styles.length; i++) {
-                const style = styles[i];
-                const cssRules = style.sheet.cssRules;
-                for (var j = 0; j < cssRules.length; j++) {
-                    const cssRule = cssRules[j];
-                    const cssText = cssRule.cssText;
-                    const pattern = /^#([a-z0-9]{4,10}) ~ \* \{ display: none; \}/;
-                    if (pattern.test(cssText)) {
-                        const id = pattern.exec(cssText)[1];
-                        if (a.$("script:contains(w.addEventListener('load'," + id + ",false))")) {
-                            a.config.debugMode && a.err("Antiblock.org v2");
-                            data.abo2 = id;
-                            break;
+            {
+                const re = /^#([a-z0-9]{4,10}) ~ \* \{ display: none; \}/;
+                const styles = document.querySelectorAll("style");
+                for (let i = 0; i < styles.length; i++) {
+                    const style = styles[i];
+                    const cssRules = style.sheet.cssRules;
+                    for (var j = 0; j < cssRules.length; j++) {
+                        const cssRule = cssRules[j];
+                        const cssText = cssRule.cssText;
+                        if (re.test(cssText)) {
+                            const id = re.exec(cssText)[1];
+                            if (a.$("script:contains(w.addEventListener('load'," + id + ",false))")) {
+                                a.config.debugMode && a.err("Antiblock.org v2");
+                                data.abo2 = id;
+                                break;
+                            }
                         }
                     }
                 }
             }
-            for (let prop in a.win) {
-                try {
-                    if (!prop.startsWith("webkit") &&
-                        /^[a-z0-9]{4,12}$/i.test(prop) &&
-                        prop !== "document" &&
-                        (a.win[prop] instanceof a.win.HTMLDocument) === false && a.win.hasOwnProperty(prop) &&
-                        typeof a.win[prop] === "object") {
-                        const method = a.win[prop];
-                        if (method.deferExecution &&
-                            method.displayMessage &&
-                            method.getElementBy &&
-                            method.getStyle &&
-                            method.insert &&
-                            method.nextFunction) {
-                            if (method.toggle) {
-                                a.config.debugMode && a.err("BetterStopAdblock");
-                                data.bsa = prop;
-                            } else {
-                                a.config.debugMode && a.err("Antiblock.org v3");
-                                data.abo3 = prop;
+            {
+                const re = /^[a-z0-9]{4,12}$/i;
+                for (let prop in a.win) {
+                    try {
+                        if (!prop.startsWith("webkit") &&
+                            re.test(prop) &&
+                            prop !== "document" &&
+                            (a.win[prop] instanceof a.win.HTMLDocument) === false && a.win.hasOwnProperty(prop) &&
+                            typeof a.win[prop] === "object") {
+                            const method = a.win[prop];
+                            if (method.deferExecution &&
+                                method.displayMessage &&
+                                method.getElementBy &&
+                                method.getStyle &&
+                                method.insert &&
+                                method.nextFunction) {
+                                if (method.toggle) {
+                                    a.config.debugMode && a.err("BetterStopAdblock");
+                                    data.bsa = prop;
+                                } else {
+                                    a.config.debugMode && a.err("Antiblock.org v3");
+                                    data.abo3 = prop;
+                                }
+                                a.win[prop] = null;
                             }
-                            a.win[prop] = null;
+                            if (method.bab) {
+                                a.config.debugMode && a.err("BlockAdBlock");
+                                a.win[prop] = null;
+                            } else if (a.win.Object.keys(method).length === 3 && a.win.Object.keys(method).join().length === 32) {
+                                a.config.debugMode && a.err("BlockAdBlock");
+                                a.win[prop] = null;
+                            }
                         }
-                        if (method.bab) {
-                            a.config.debugMode && a.err("BlockAdBlock");
-                            a.win[prop] = null;
-                        } else if (a.win.Object.keys(method).length === 3 && a.win.Object.keys(method).join().length === 32) {
-                            a.config.debugMode && a.err("BlockAdBlock");
-                            a.win[prop] = null;
-                        }
-                    }
-                } catch (err) { }
+                    } catch (err) { }
+                }
             }
         });
+        const re1 = /^[a-z0-9]{4}$/;
+        const re2 = /^a[a-z0-9]{6}$/;
+        const reIframeId = /^(zd|wd)$/;
+        const reImgId = /^(xd|gd)$/;
+        const reImgSrc = /\/ads\/banner.jpg/;
+        const reIframeSrc = /(\/adhandler\/|\/adimages\/|ad.html)/;
+        const reId = /^[a-z]{8}$/;
+        const reClass = /^[a-z]{8} [a-z]{8}/;
+        const reBg = /^[a-z]{8}-bg$/;
+        const reMsgId = /^[a-z0-9]{4,10}$/i;
+        const reTag1 = /^(div|span|b|i|font|strong|center)$/i;
+        const reTag2 = /^(a|b|i|s|u|q|p|strong|center)$/i;
+        const reWords1 = /ad blocker|ad block|ad-block|adblocker|ad-blocker|adblock|bloqueur|bloqueador|Werbeblocker|adblockert|&#1570;&#1583;&#1576;&#1604;&#1608;&#1603; &#1576;&#1604;&#1587;|блокировщиком/i;
+        const reWords2 = /kapat|disable|désactivez|désactiver|desactivez|desactiver|desative|desactivar|desactive|desactiva|deaktiviere|disabilitare|&#945;&#960;&#949;&#957;&#949;&#961;&#947;&#959;&#960;&#959;&#943;&#951;&#963;&#951;|&#1079;&#1072;&#1087;&#1088;&#1077;&#1097;&#1072;&#1090;&#1100;|állítsd le|publicités|рекламе|verhindert|advert|kapatınız/i;
         const onInsertHandler = (insertedNode) => {
-            if (insertedNode.nodeName === "DIV" &&
-                insertedNode.id &&
-                insertedNode.id.length === 4 &&
-                /^[a-z0-9]{4}$/.test(insertedNode.id) &&
-                insertedNode.firstChild &&
-                insertedNode.firstChild.id &&
-                insertedNode.firstChild.id === insertedNode.id &&
-                insertedNode.innerHTML.includes("no-adblock.com")) {
-                a.config.debugMode && a.err("No-Adblock");
-                insertedNode.remove();
+            {
+                if (insertedNode.nodeName === "DIV" &&
+                    insertedNode.id &&
+                    insertedNode.id.length === 4 &&
+                    re1.test(insertedNode.id) &&
+                    insertedNode.firstChild &&
+                    insertedNode.firstChild.id &&
+                    insertedNode.firstChild.id === insertedNode.id &&
+                    insertedNode.innerHTML.includes("no-adblock.com")) {
+                    a.config.debugMode && a.err("No-Adblock");
+                    insertedNode.remove();
+                }
             }
             if (insertedNode.nodeName === "DIV" &&
                 insertedNode.id &&
                 insertedNode.id.length === 7 &&
-                /^a[a-z0-9]{6}$/.test(insertedNode.id) &&
+                re2.test(insertedNode.id) &&
                 insertedNode.parentNode &&
                 insertedNode.parentNode.id &&
                 insertedNode.parentNode.id === insertedNode.id + "2" &&
@@ -777,10 +798,6 @@ a.generic = () => {
                 a.config.debugMode && a.err("StopAdblock");
                 insertedNode.remove();
             }
-            const reIframeId = /^(zd|wd)$/;
-            const reImgId = /^(xd|gd)$/;
-            const reImgSrc = /\/ads\/banner.jpg/;
-            const reIframeSrc = /(\/adhandler\/|\/adimages\/|ad.html)/;
             if (insertedNode.id &&
                 reImgId.test(insertedNode.id) &&
                 insertedNode.nodeName === "IMG" &&
@@ -792,9 +809,6 @@ a.generic = () => {
                 a.config.debugMode && a.err("AntiAdblock");
                 insertedNode.remove();
             }
-            const reId = /^[a-z]{8}$/;
-            const reClass = /^[a-z]{8} [a-z]{8}/;
-            const reBg = /^[a-z]{8}-bg$/;
             if (typeof a.win.vtfab !== "undefined" &&
                 typeof a.win.adblock_antib !== "undefined" &&
                 insertedNode.parentNode &&
@@ -820,11 +834,6 @@ a.generic = () => {
                     insertedNode.remove();
                 }
             }
-            const reMsgId = /^[a-z0-9]{4,10}$/i;
-            const reTag1 = /^(div|span|b|i|font|strong|center)$/i;
-            const reTag2 = /^(a|b|i|s|u|q|p|strong|center)$/i;
-            const reWords1 = /ad blocker|ad block|ad-block|adblocker|ad-blocker|adblock|bloqueur|bloqueador|Werbeblocker|adblockert|&#1570;&#1583;&#1576;&#1604;&#1608;&#1603; &#1576;&#1604;&#1587;|блокировщиком/i;
-            const reWords2 = /kapat|disable|désactivez|désactiver|desactivez|desactiver|desative|desactivar|desactive|desactiva|deaktiviere|disabilitare|&#945;&#960;&#949;&#957;&#949;&#961;&#947;&#959;&#960;&#959;&#943;&#951;&#963;&#951;|&#1079;&#1072;&#1087;&#1088;&#1077;&#1097;&#1072;&#1090;&#1100;|állítsd le|publicités|рекламе|verhindert|advert|kapatınız/i;
             if (insertedNode.parentNode &&
                 insertedNode.id &&
                 insertedNode.style &&
