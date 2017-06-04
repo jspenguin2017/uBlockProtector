@@ -38,7 +38,7 @@ a.init = (excluded, AdflyMatch, AdflyUnmatch) => {
         GM_openInTab(a.c.supportPage);
     });
     //Home page installation test
-    if (a.domCmp(["jspenguin2017.github.io"], true) && a.win.location.pathname.startsWith("/uBlockProtector")) {
+    if (a.domCmp(["jspenguin2017.github.io"], true) && a.win.location.pathname.startsWith("/uBlockProtector/")) {
         a.win.uBlock_Protector_Script = true;
     }
     //Settings page
@@ -639,9 +639,9 @@ a.patchHTML = (patcher) => {
     //Get content
     GM_xmlhttpRequest({
         method: "GET",
-        url: a.doc.location.href,
+        url: a.win.location.href,
         headers: {
-            "Referer": a.doc.referrer
+            "Referer": a.doc.referrer,
         },
         onload(result) {
             //Apply patched content
@@ -891,6 +891,7 @@ a.videoJS.init = (...args) => {
 a.videoJS.plugins = {};
 /**
  * VideoJS plug-in, HLS parser.
+ * Does not seem to work.
  * @const {string}
  */
 a.videoJS.plugins.hls = `<script src="//cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.4.0/videojs-contrib-hls.min.js"><\/script>`;
@@ -965,7 +966,7 @@ a.observe.init = () => {
     });
     observer.observe(a.doc, {
         childList: true,
-        subtree: true
+        subtree: true,
     });
 };
 /**
@@ -1104,7 +1105,7 @@ a.generic = () => {
                 //Patch and return
                 try {
                     playwireZeus.AdBlockTester = {
-                        check(a) { a(); }
+                        check(a) { a(); },
                     };
                 } catch (err) { }
                 return playwireZeus;
@@ -1119,8 +1120,8 @@ a.generic = () => {
                 //Patch detector
                 a.win.XenForo.rellect = {
                     AdBlockDetector: {
-                        start() { }
-                    }
+                        start() { },
+                    },
                 };
             }
             //Adbuddy

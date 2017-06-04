@@ -646,7 +646,7 @@ if (a.domCmp(["richonrails.com"])) {
             dataType: "script",
             method: "post",
             data: {
-                html: adsByGoogleHtml
+                html: adsByGoogleHtml,
             },
             success(result) {
                 const exec = result.replace("$('.article-content')", "$('.article-content-2')");

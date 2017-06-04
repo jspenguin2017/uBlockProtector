@@ -2,7 +2,7 @@
 // @name uBlock Protector Script
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
-// @version 8.19
+// @version 8.20
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -60,10 +60,10 @@ a.init = (excluded, AdflyMatch, AdflyUnmatch) => {
     GM_registerMenuCommand("uBlock Protector Support Page", () => {
         GM_openInTab(a.c.supportPage);
     });
-    if (a.domCmp(["jspenguin2017.github.io"], true) && a.doc.location.href.includes("jspenguin2017.github.io/uBlockProtector")) {
+    if (a.domCmp(["jspenguin2017.github.io"], true) && a.win.location.pathname.startsWith("/uBlockProtector/")) {
         a.win.uBlock_Protector_Script = true;
     }
-    if (a.domCmp(["jspenguin2017.github.io"], true) && a.doc.location.href.includes("jspenguin2017.github.io/uBlockProtector/settings.html")) {
+    if (a.domCmp(["jspenguin2017.github.io"], true) && a.win.location.pathname.startsWith("/uBlockProtector/settings.html")) {
         a.on("load", () => {
             a.win.init({
                 "config_debugMode": a.config.debugMode,
@@ -375,9 +375,9 @@ a.patchHTML = (patcher) => {
     a.win.stop();
     GM_xmlhttpRequest({
         method: "GET",
-        url: a.doc.location.href,
+        url: a.win.location.href,
         headers: {
-            "Referer": a.doc.referrer
+            "Referer": a.doc.referrer,
         },
         onload(result) {
             a.doc.write(patcher(result.responseText));
@@ -568,7 +568,7 @@ a.observe.init = () => {
     });
     observer.observe(a.doc, {
         childList: true,
-        subtree: true
+        subtree: true,
     });
 };
 a.observe.init.done = false;
@@ -668,7 +668,7 @@ a.generic = () => {
                 a.config.debugMode && a.err("Playwire");
                 try {
                     playwireZeus.AdBlockTester = {
-                        check(a) { a(); }
+                        check(a) { a(); },
                     };
                 } catch (err) { }
                 return playwireZeus;
@@ -679,8 +679,8 @@ a.generic = () => {
                 a.config.debugMode && a.err("XenForo");
                 a.win.XenForo.rellect = {
                     AdBlockDetector: {
-                        start() { }
-                    }
+                        start() { },
+                    },
                 };
             }
             if (typeof a.win.closeAdbuddy === "function") {
@@ -1512,7 +1512,7 @@ if (a.domCmp(["richonrails.com"])) {
             dataType: "script",
             method: "post",
             data: {
-                html: adsByGoogleHtml
+                html: adsByGoogleHtml,
             },
             success(result) {
                 const exec = result.replace("$('.article-content')", "$('.article-content-2')");
