@@ -418,7 +418,6 @@ a.err = (name) => {
 a.domCmp = (domList, noErr) => {
     //Loop though each element
     for (let i = 0; i < domList.length; i++) {
-        //Check if current domain is exactly listed or ends with it
         if (a.dom.endsWith(domList[i]) &&
             (a.dom.length === domList[i].length || a.dom.charAt(a.dom.length - domList[i].length - 1) === ".")) {
             if (a.config.debugMode && !noErr) {
@@ -442,7 +441,6 @@ a.domCmp = (domList, noErr) => {
 a.domInc = (domList, noErr) => {
     //Loop though each element
     for (let i = 0; i < domList.length; i++) {
-        //Check if current domain is exactly listed or ends with it
         if (a.dom.startsWith(domList[i] + ".") || a.dom.includes("." + domList[i] + ".")) {
             if (a.config.debugMode && !noErr) {
                 //Show error message when matched
@@ -917,7 +915,7 @@ a.always = (...args) => {
 /**
  * Observe mutations of the document.
  * @function
- * @param {string} type - The type of mutation to observe. Currently only "insert" is accepted, this argument is for future expansion.
+ * @param {string} type - The type of mutation to observe.
  * @param {Function} callback - The callback function, relevant data will be passed in.
  */
 a.observe = (type, callback) => {
@@ -934,6 +932,8 @@ a.observe = (type, callback) => {
         case "remove":
             a.observe.removeCallbacks.push(callback);
             break;
+        default:
+            throw new ReferenceError("Type is not valid");
     }
     //More types will be added when needed
 };

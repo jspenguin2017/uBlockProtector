@@ -545,6 +545,8 @@ a.observe = (type, callback) => {
         case "remove":
             a.observe.removeCallbacks.push(callback);
             break;
+        default:
+            throw new ReferenceError("Type is not valid");
     }
 };
 a.observe.init = () => {
