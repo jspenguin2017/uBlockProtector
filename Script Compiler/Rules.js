@@ -195,10 +195,10 @@ if (a.domCmp(["player.pl"])) {
                     } else if (vidSources[0].src) {
                         //DRM protected
                         a.config.debugMode && a.out.error("uBlock Protector will not replace this video player " +
-                            "because it is DRM prtected. ");
+                            "because it is DRM prtected.");
                     }
                 } catch (err) {
-                    a.config.debugMode && a.out.error("uBlock Protector failed to find media URL! ");
+                    a.config.debugMode && a.out.error("uBlock Protector failed to find media URL!");
                     return;
                 }
             },
@@ -266,7 +266,7 @@ if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl", "sportowefakty.wp.pl", "
                 }
             }
         } catch (err) {
-            a.config.debugMode && a.out.error("uBlock Protector failed to find media ID with method 1! ");
+            a.config.debugMode && a.out.error("uBlock Protector failed to find media ID with method 1!");
         }
         //Mid grabbing method 2
         if (a.$(containerMatcher).length > 0) {
@@ -323,14 +323,14 @@ if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl", "sportowefakty.wp.pl", "
                         //Reset error counter
                         networkErrorCounter = 0;
                     } catch (err) {
-                        a.config.debugMode && a.out.error("uBlock Protector failed to find media URL! ");
+                        a.config.debugMode && a.out.error("uBlock Protector failed to find media URL!");
                         networkErrorCounter += 1;
                     }
                     //Update flag
                     networkBusy = false;
                 },
                 onerror() {
-                    a.config.debugMode && a.out.error("uBlock Protector failed to load media JSON! ");
+                    a.config.debugMode && a.out.error("uBlock Protector failed to load media JSON!");
                     networkErrorCounter += 0.5;
                     //Update flag
                     networkBusy = false;
@@ -340,7 +340,7 @@ if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl", "sportowefakty.wp.pl", "
             if (a.$(containerMatcher).length > 0) {
                 //Log element to be replace
                 if (a.config.debugMode) {
-                    a.out.log("Replacing player... ");
+                    a.out.log("Replacing player...");
                     a.out.log(a.$(containerMatcher)[0]);
                 }
                 //Replace player
@@ -363,7 +363,7 @@ if (a.domCmp(["foxvalleyfoodie.com"])) {
     a.patchHTML((html) => {
         return html.replace(/<script.*\/wp-includes\/js\/(?!jquery|comment|wp-embed).*<\/script>/g,
             "<script>console.error('Uncaught AdBlock Error: Admiral AdBlock detectors are not allowed on this " +
-            "device! ');<\/script>");
+            "device!');<\/script>");
     });
 }
 if (a.domCmp(["mid-day.com", "happytrips.com"])) {
@@ -1385,7 +1385,7 @@ if (a.config.debugMode &&
             url: proxy + "http://playapi.mtgx.tv/v3/videos/stream/" + videoID,
             onload(result) {
                 //=====Debug only=====
-                a.out.info("Response received: ");
+                a.out.info("Response received:");
                 a.out.info(result.responseText);
                 //===End debug only===
                 parser(result.responseText);
@@ -1399,7 +1399,7 @@ if (a.config.debugMode &&
             const parsedData = JSON.parse(data);
             streams = parsedData.streams
         } catch (err) {
-            a.config.debugMode && a.out.error("uBlock Protector failed to find video URL! ");
+            a.config.debugMode && a.out.error("uBlock Protector failed to find video URL!");
             return;
         }
         //Check source and type
@@ -1414,13 +1414,13 @@ if (a.config.debugMode &&
             sources.push(streams.medium);
             types.push(streams.medium.startsWith("rtmp") ? "rtmp/mp4" : "application/f4m+xml");
         } else {
-            a.config.debugMode && a.out.error("uBlock Protector failed to find video URL! ");
+            a.config.debugMode && a.out.error("uBlock Protector failed to find video URL!");
             return;
         }
         //=====Debug only=====
-        a.out.info("Potential media URLs: ");
+        a.out.info("Potential media URLs:");
         a.out.info([streams.high, streams.hls, streams.medium]);
-        a.out.info("Used media URL: ");
+        a.out.info("Used media URL:");
         a.out.info(sources);
         //===End debug only===
         //Replace player
@@ -2061,7 +2061,7 @@ if (a.domCmp(["gaybeeg.info"])) {
                         a.win.eval(elem.innerHTML);
                         return;
                     } else if (a.config.debugMode) {
-                        a.out.warn("Archive related inline script does not match expected hash: ");
+                        a.out.warn("Archive related inline script does not match expected hash:");
                         a.out.warn(temp[1]);
                         a.out.warn("Hash: " + hash);
                     }
@@ -2069,7 +2069,7 @@ if (a.domCmp(["gaybeeg.info"])) {
             }
             //Log blocked code
             if (a.config.debugMode) {
-                a.out.warn("This inline script is not executed: ")
+                a.out.warn("This inline script is not executed:")
                 a.out.warn(elem.innerHTML);
                 a.out.warn("Hash: " + a.sha256(elem.innerHTML));
             }
@@ -2238,11 +2238,11 @@ if (a.domCmp(["canalplus.fr"])) {
                         throw "Media URL Not Found";
                     }
                 } catch (err) {
-                    a.config.debugMode && a.out.error("uBlock Protector failed to find media URL! ");
+                    a.config.debugMode && a.out.error("uBlock Protector failed to find media URL!");
                 }
             },
             onerror() {
-                a.config.debugMode && a.out.error("uBlock Protector failed to load media JSON! ");
+                a.config.debugMode && a.out.error("uBlock Protector failed to load media JSON!");
             },
         });
     };

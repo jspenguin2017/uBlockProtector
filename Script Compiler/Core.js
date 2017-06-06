@@ -15,11 +15,11 @@ a.init = (excluded, AdflyMatch, AdflyUnmatch) => {
     //Load configurations
     a.config();
     //Log domain
-    a.config.debugMode && a.out.warn("Domain: " + a.dom);
+    a.config.debugMode && a.out.warn(`Domain: ${a.dom}`);
     //Check excluded domains
     a.config.domExcluded = excluded;
     if (a.config.debugMode && excluded) {
-        a.out.warn("This domain is in excluded list. ");
+        a.out.warn("This domain is in the excluded list.");
     }
     //Check Adfly
     if (!excluded && (AdflyMatch || (a.config.aggressiveAdflyBypasser && !AdflyUnmatch))) {
@@ -291,9 +291,9 @@ a.mods = () => {
                     a.$("#uBlock_Protector_FBMod_JumpToTop").click(() => {
                         a.win.scrollTo(a.win.scrollX, 0);
                     });
-                    a.config.debugMode && a.out.info("Facebook Mod: Jump to Top button added. ");
+                    a.config.debugMode && a.out.info("Facebook Mod: Jump to Top button added.");
                 } else {
-                    //Wait a little bit for the window to load, for some reason load event is not working
+                    //Wait a little bit for the window to load, for some reason load event does not work
                     a.setTimeout(addJumpToTop, 500);
                 }
             }
@@ -304,11 +304,12 @@ a.mods = () => {
         //Auto NCR (No Country Redirect) redirect
         const name = a.dom.replace("www.", "").split(".")[0];
         const path = a.win.location.href.split("/").slice(3).join("/");
-        a.config.debugMode && a.out.info("Blogspot Mod: Redirecting to NCR... ");
-        a.win.location.href = "http://" + name + ".blogspot.com/ncr/" + path;
+        a.config.debugMode && a.out.info("Blogspot Mod: Redirecting to NCR...");
+        a.win.location.href = `http://${name}.blogspot.com/ncr/${path}`;
     }
     //===No autoplay mods===
     if (a.mods.NoAutoplay) {
+        const disableMsg = "No Autoplay Mod: Autoplay disabled.";
         if (a.domCmp(["x-link.pl"], true)) {
             //iframe of gs24.pl
             a.observe("insert", (node) => {
@@ -327,7 +328,7 @@ a.mods = () => {
                     })();
                 }
             });
-            a.config.debugMode && a.out.info("No Autoplay Mod: Autoplay disabled. ");
+            a.config.debugMode && a.out.info(disableMsg);
         }
         if (a.domCmp(["komputerswiat.pl"], true)) {
             let token = a.setInterval(() => {
@@ -343,7 +344,7 @@ a.mods = () => {
                     a.clearInterval(token);
                 }
             }, 1000);
-            a.config.debugMode && a.out.info("No Autoplay Mod: Autoplay disabled. ");
+            a.config.debugMode && a.out.info(disableMsg);
         }
         if (a.domCmp(["onet.tv"], true)) {
             //iframe of onet.pl
@@ -356,6 +357,7 @@ a.mods = () => {
                     };
                 }
             });
+            a.config.debugMode && a.out.info(disableMsg);
         }
     }
 };
@@ -400,12 +402,12 @@ a.make$ = () => {
 a.err = (name) => {
     //Check argument
     if (name) {
-        name = name + " ";
+        name += " ";
     } else {
         name = "";
     }
     //Write error message
-    a.out.error(`Uncaught AdBlock Error: ${name}AdBlocker detectors are not allowed on this device! `);
+    a.out.error(`Uncaught AdBlock Error: ${name}AdBlocker detectors are not allowed on this device!`);
 };
 /**
  * Check if current domain ends with one of the domains in the list.
@@ -420,11 +422,7 @@ a.domCmp = (domList, noErr) => {
     for (let i = 0; i < domList.length; i++) {
         if (a.dom.endsWith(domList[i]) &&
             (a.dom.length === domList[i].length || a.dom.charAt(a.dom.length - domList[i].length - 1) === ".")) {
-            if (a.config.debugMode && !noErr) {
-                //Show error message when matched
-                a.err();
-            }
-            return true;
+            return (a.config.debugMode && !noErr && a.err()), true;
         }
     }
     return false;
@@ -484,10 +482,10 @@ a.protectFunc = () => {
         a.protectFunc.pointers.push(newFunc);
         a.protectFunc.masks.push(String(original));
         //Activate log
-        a.config.debugMode && a.out.warn("Functions protected. ");
+        a.config.debugMode && a.out.warn("Functions protected.");
     } catch (err) {
         //Failed to protect
-        a.config.debugMode && a.out.error("uBlock Protector failed to protect functions! ");
+        a.config.debugMode && a.out.error("uBlock Protector failed to protect functions!");
         return false;
     }
     return true;
@@ -525,7 +523,7 @@ a.filter = (func, method, filter, onMatch, onAfter) => {
     const newFunc = (...args) => {
         //Call log
         if (a.config.debugMode) {
-            a.out.warn(func + " is called with these arguments: ");
+            a.out.warn(`${func} is called with these arguments:`);
             for (let i = 0; i < args.length; i++) {
                 a.out.warn(String(args[i]));
             }
@@ -542,7 +540,7 @@ a.filter = (func, method, filter, onMatch, onAfter) => {
             return ret;
         }
         //Tests passed log
-        a.config.debugMode && a.out.info("Tests passed. ");
+        a.config.debugMode && a.out.info("Tests passed.");
         //Allowed
         onAfter && onAfter(false, args);
         return original.apply(parent, args);
@@ -566,10 +564,10 @@ a.filter = (func, method, filter, onMatch, onAfter) => {
             a.protectFunc.masks.push(String(original));
         }
         //Activate log
-        a.config.debugMode && a.out.warn("Filter activated on " + func);
+        a.config.debugMode && a.out.warn(`Filter activated on ${func}`);
     } catch (err) {
         //Failed to activate
-        a.config.debugMode && a.out.error("uBlock Protector failed to activate filter on " + func + "! ");
+        a.config.debugMode && a.out.error(`uBlock Protector failed to activate filter on ${func}!`);
         return false;
     }
     return true;
@@ -592,7 +590,7 @@ a.timewarp = (func, method, filter, onMatch, onAfter, ratio = 0.02) => {
     const newFunc = (...args) => {
         //Call log
         if (a.config.debugMode) {
-            a.out.warn("Timewarpped " + func + " is called with these arguments: ");
+            a.out.warn(`Timewarpped ${func} is called with these arguments:`);
             for (let i = 0; i < args.length; i++) {
                 a.out.warn(String(args[i]));
             }
@@ -600,14 +598,14 @@ a.timewarp = (func, method, filter, onMatch, onAfter, ratio = 0.02) => {
         //Check if we need to timewarp this function
         if (!method || a.applyMatch(args, method, filter)) {
             //Timewarp
-            a.config.debugMode && a.out.warn("Timewarpped. ");
+            a.config.debugMode && a.out.warn("Timewarpped.");
             onMatch && onMatch(args);
             onAfter && onAfter(true, args);
             args[1] *= ratio;
             return original.apply(a.win, args);
         } else {
             //Do not timewarp
-            a.config.debugMode && a.out.info("Not timewarpped. ");
+            a.config.debugMode && a.out.info("Not timewarpped.");
             onAfter && onAfter(false, args);
             return original.apply(a.win, args);
         }
@@ -621,10 +619,10 @@ a.timewarp = (func, method, filter, onMatch, onAfter, ratio = 0.02) => {
             a.protectFunc.masks.push(String(original));
         }
         //Activate log
-        a.config.debugMode && a.out.warn("Timewarp activated on " + func);
+        a.config.debugMode && a.out.warn(`Timewarp activated on ${func}`);
     } catch (err) {
         //Failed to activate
-        a.config.debugMode && a.out.error("uBlock Protector failed to apply timewarp on " + func + "! ");
+        a.config.debugMode && a.out.error(`uBlock Protector failed to apply timewarp on ${func}!`);
         return false;
     }
     return true;
@@ -643,7 +641,7 @@ a.patchHTML = (patcher) => {
         method: "GET",
         url: a.win.location.href,
         headers: {
-            "Referer": a.doc.referrer,
+            Referer: a.doc.referrer,
         },
         onload(result) {
             //Apply patched content
@@ -695,7 +693,7 @@ a.readOnly = (name, val) => {
         }
     } catch (err) {
         //Failed to define property
-        a.config.debugMode && a.out.error("uBlock Protector failed to define read-only property " + name + "! ");
+        a.config.debugMode && a.out.error(`uBlock Protector failed to define read-only property ${name}!`);
         return false;
     }
     return true;
@@ -707,7 +705,7 @@ a.readOnly = (name, val) => {
  * @return {boolean} True if the operation was successful, false otherwise.
  */
 a.noAccess = (name) => {
-    const errMsg = "AdBlock Error: This property may not be accessed! ";
+    const errMsg = "AdBlock Error: This property may not be accessed!";
     try {
         //Find the property and its parent
         let property = a.win;
@@ -732,7 +730,7 @@ a.noAccess = (name) => {
         }
     } catch (err) {
         //Failed to define property
-        a.config.debugMode && a.out.error("uBlock Protector failed to define non-accessible property " + name + "! ");
+        a.config.debugMode && a.out.error(`uBlock Protector failed to define non-accessible property ${name}!`);
         return false;
     }
     return true;
@@ -785,8 +783,8 @@ a.cookie = (key, val, time = 31536000000, path = "/") => {
     if (typeof val === "undefined") {
         //Get mode
         //http://stackoverflow.com/questions/10730362/get-cookie-by-name
-        const value = "; " + a.doc.cookie;
-        let parts = value.split("; " + key + "=");
+        const value = `; ${a.doc.cookie}`;
+        let parts = value.split(`; ${key}=`);
         if (parts.length == 2) {
             return parts.pop().split(";").shift();
         } else {
@@ -796,7 +794,7 @@ a.cookie = (key, val, time = 31536000000, path = "/") => {
         //Set mode
         let expire = new a.win.Date();
         expire.setTime((new a.win.Date()).getTime() + time);
-        a.doc.cookie = key + "=" + a.win.encodeURIComponent(val) + ";expires=" + expire.toGMTString() + ";path=" + path;
+        a.doc.cookie = `${key}=${a.win.encodeURIComponent(val)};expires=${expire.toGMTString()};path=${path}`;
     }
 };
 /**
@@ -812,7 +810,7 @@ a.serialize = (obj) => {
         if (str !== "") {
             str += "&";
         }
-        str += key + "=" + a.win.encodeURIComponent(obj[key]);
+        str += `${key}=${a.win.encodeURIComponent(obj[key])}`;
     }
     return str;
 };
@@ -849,7 +847,7 @@ a.nativePlayer = (source, typeIn, width = "100%", height = "auto") => {
         }
     }
     //Construct HTML string
-    return `<video width='${width}' height='${height}' controls><source src='${source}' type='${type}'></video>`;
+    return `<video width="${width}" height="${height}" controls><source src="${source}" type="${type}" /></video>`;
 };
 /**
  * Generate a videoJS 5.4.6 player with controls but not autoplay.
@@ -866,7 +864,7 @@ a.videoJS = (sources, types, width, height) => {
     //Build HTML string
     let html = `<video id="uBlock_Protector_Video_Player" class="video-js vjs-default-skin" controls preload="auto" width="${width}" height="${height}" data-setup="{}">`;
     for (let i = 0; i < sources.length; i++) {
-        html += `<source src="${sources[i]}" type="${types[i]}">`;
+        html += `<source src="${sources[i]}" type="${types[i]}" />`;
     }
     html += `</video>`;
     return html;
@@ -884,7 +882,7 @@ a.videoJS.init = (...args) => {
     } catch (err) { }
     let plugins = args.join();
     //Load components
-    a.$("head").append(`<link href="//vjs.zencdn.net/5.4.6/video-js.min.css" rel="stylesheet"><script src="//vjs.zencdn.net/5.4.6/video.min.js"><\/script>${plugins}`);
+    a.$("head").append(`<link href="//vjs.zencdn.net/5.4.6/video-js.min.css" rel="stylesheet" /><script src="//vjs.zencdn.net/5.4.6/video.min.js"><\/script>${plugins}`);
 };
 /**
  * Object containing all available VideoJS plug-ins.
@@ -1146,7 +1144,7 @@ a.generic = () => {
             //Block screen
             if (a.$("#blockdiv").html() === "disable ad blocking or use another browser without any adblocker when you visit") {
                 //Log
-                a.config.debugMode && a.out.err("Uncaught AdBlock Error: Generic block screens are not allowed on this device! ");
+                a.config.debugMode && a.out.err("Uncaught AdBlock Error: Generic block screens are not allowed on this device!");
                 //Remove block screen
                 a.$("#blockdiv").remove();
             }
@@ -1162,7 +1160,7 @@ a.generic = () => {
                         const cssText = cssRule.cssText;
                         if (re.test(cssText)) {
                             const id = re.exec(cssText)[1];
-                            if (a.$("script:contains(w.addEventListener('load'," + id + ",false))")) {
+                            if (a.$(`script:contains(w.addEventListener('load',${id},false))`)) {
                                 //Log
                                 a.config.debugMode && a.err("Antiblock.org v2");
                                 //Set data for future uses
@@ -1353,7 +1351,7 @@ a.generic = () => {
         a.observe("insert", onInsertHandler);
     } else if (a.config.debugMode) {
         //Generic solutions disabled log
-        a.out.warn("Generic solutions are disabled on this domain. ");
+        a.out.warn("Generic solutions are disabled on this domain.");
     }
 };
 /**
@@ -1392,7 +1390,7 @@ a.generic.AdflyBypasser = () => {
             //Stop the window
             a.win.stop();
             //Nuke body since we got the link
-            //We would be so fast that the body is not loaded
+            //The new solution is so fast that the body is not loaded
             //a.doc.body.innerHTML = `<div><h2>Adfly skipped by uBlock Protector. Redirecting to real link: <a href="${decodedURL}">${decodedURL}</a></h2></div>`;
             //Redirect
             a.win.onbeforeunload = null;
@@ -1424,7 +1422,7 @@ a.generic.AdflyBypasser = () => {
             },
         });
     } catch (err) {
-        a.config.debugMode && a.out.error("uBlock Protector could not set up Adfly bypasser. ");
+        a.config.debugMode && a.out.error("uBlock Protector could not set up Adfly bypasser.");
     }
 };
 /**
