@@ -1206,7 +1206,7 @@ if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl", "sportowefakty.wp.pl", "
             networkBusy = true;
             GM_xmlhttpRequest({
                 method: "GET",
-                url: "http://wp.tv/player/mid," + mid + ",embed.json",
+                url: `http://wp.tv/player/mid,${mid},embed.json`,
                 onload(res) {
                     try {
                         const response = JSON.parse(res.responseText);
@@ -1959,8 +1959,7 @@ if (a.domInc(["slideplayer"])) {
         const time = 86400 + a.win.Math.floor(a.win.Date.now() / 1000);
         const secret = a.win.encodeURIComponent(a.win.strtr(a.win.MD5.base64("secret_preved slideplayer never solved " +
             time + slide_id + ".ppt"), "+/", "- "));
-        const url = "http://player.slideplayer.org/download/" + slide_srv + "/" + slide_id + "/" + secret + "/" +
-            time + "/" + slide_id + ".ppt";
+        const url = `http://player.slideplayer.org/download/${slide_srv}/${slide_id}/${secret}/${time}/${slide_id}.ppt`;
         let links = a.doc.querySelectorAll("a.download_link");
         for (let i = 0; i < links.length; i++) {
             let events = a.win.$._data(links[i]).events.click;
@@ -2191,7 +2190,7 @@ if (a.config.debugMode &&
         const proxy = "http://www.sagkjeder.no/p/browse.php?u=";
         GM_xmlhttpRequest({
             method: "GET",
-            url: proxy + "http://playapi.mtgx.tv/v3/videos/stream/" + videoID,
+            url: `${proxy}http://playapi.mtgx.tv/v3/videos/stream/${videoID}`,
             onload(result) {
                 a.out.info("Response received:");
                 a.out.info(result.responseText);
@@ -2506,8 +2505,8 @@ if (a.domCmp(["sandiegouniontribune.com"])) {
     const token = a.setInterval(() => {
         if (a.$("#reg-overlay").length) {
             a.$("#reg-overlay").remove()
-            a.$("<style> html[data-dss-meterup], [data-dss-meterup] body { o" +
-                "verflow: scroll !important; } </style>").appendTo("head");
+            a.$("<style> html[data-dss-meterup], [data-dss-meterup] body { " +
+                "overflow: scroll !important; } </style>").appendTo("head");
             a.clearInterval(token);
         }
     }, 1000);
@@ -2784,16 +2783,16 @@ if (a.domCmp(["gaybeeg.info"])) {
                     } else if (a.config.debugMode) {
                         a.out.warn("Archive related inline script does not match expected hash:");
                         a.out.warn(temp[1]);
-                        a.out.warn("Hash: " + hash);
+                        a.out.warn(`Hash: ${hash}`);
                     }
                 }
             }
             if (a.config.debugMode) {
                 a.out.warn("This inline script is not executed:")
                 a.out.warn(elem.innerHTML);
-                a.out.warn("Hash: " + a.sha256(elem.innerHTML));
+                a.out.warn(`Hash: ${a.sha256(elem.innerHTML)}`);
             }
-        })
+        });
         a.$(".download a.button").each((i, el) => {
             a.$(el).removeClass("locked").attr("href", a.$(el).data("href"))
                 .removeAttr("data-href");
@@ -2934,8 +2933,7 @@ if (a.domCmp(["canalplus.fr"])) {
         videoElem.text("Loading...");
         GM_xmlhttpRequest({
             method: "GET",
-            url: "http://service.canal-plus.com/video/rest/getVideos/cplus/" +
-            videoID + "?format=json",
+            url: `http://service.canal-plus.com/video/rest/getVideos/cplus/${videoID}?format=json`,
             onload(res) {
                 try {
                     const response = JSON.parse(res.responseText);
