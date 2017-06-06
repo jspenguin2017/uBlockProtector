@@ -331,3 +331,5 @@ link.tl##.adblockOverlay
 batchnime.net##script:inject(abort-on-property-read.js, killAdBlock)
 ! === vtm.be
 ||fwmrm.net^$xmlhttprequest,redirect=1x1-transparent.gif,domain=vtm.be
+! === uplod.ws
+uplod.ws##script:inject(abort-on-property-read.js, $.ready)
