@@ -2,7 +2,7 @@
 // @name uBlock Protector Script
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
-// @version 8.20
+// @version 8.21
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -3083,5 +3083,13 @@ if (a.domCmp(["lewat.id"])) {
 }
 if (a.domCmp(["shinden.pl"])) {
     a.readOnly("shinden_ads", true);
+}
+if (a.domCmp(["onhax.me"])) {
+    const _open = a.win.open;
+    a.win.open = (...args) => {
+        if (args[1].startsWith("wpcom")) {
+            return _open.apply(a.win, args);
+        }
+    }
 }
 a.generic();

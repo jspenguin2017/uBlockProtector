@@ -2383,5 +2383,13 @@ if (a.domCmp(["lewat.id"])) {
 if (a.domCmp(["shinden.pl"])) {
     a.readOnly("shinden_ads", true);
 }
+if (a.domCmp(["onhax.me"])) {
+    const _open = a.win.open;
+    a.win.open = (...args) => {
+        if (args[1].startsWith("wpcom")) {
+            return _open.apply(a.win, args);
+        }
+    }
+}
 //Apply generic solutions, excluded domains check is handled inside
 a.generic();
