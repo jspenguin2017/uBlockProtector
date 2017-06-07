@@ -334,4 +334,4 @@ batchnime.net##script:inject(abort-on-property-read.js, killAdBlock)
 ! === uplod.ws
 uplod.ws##script:inject(abort-on-property-read.js, $.ready)
 ! === ilgazzettino.it
-||utils.cedsdigital.it^$image,redirect=1x1-transparent.gif,domain=ilgazzettino.it
+||utils.cedsdigital.it/checkSubscription/checkSubscription.js

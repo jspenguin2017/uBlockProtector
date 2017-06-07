@@ -219,7 +219,7 @@ link.tl##.adblockOverlay
 batchnime.net##script:inject(abort-on-property-read.js, killAdBlock)
 ||fwmrm.net^$xmlhttprequest,redirect=1x1-transparent.gif,domain=vtm.be
 uplod.ws##script:inject(abort-on-property-read.js, $.ready)
-||utils.cedsdigital.it^$image,redirect=1x1-transparent.gif,domain=ilgazzettino.it
+||utils.cedsdigital.it/checkSubscription/checkSubscription.js
 ! =====Patched Anti-Adblock Killer List (originally by Reek)=====
 ! Patching logic can be found in List Compiler source code
 ! Anti-Adblock Killer Repository (contains original source code and license): https://github.com/reek/anti-adblock-killer
