@@ -75,7 +75,7 @@ a.config = () => {
  * Update a configuration.
  * @function
  * @param {integer} id - The ID of the configuration.
- * @param {bool} val - The value of the configuration.
+ * @param {bool} val - The new value of the configuration.
  */
 a.config.update = (id, val) => {
     const names = [

@@ -62,7 +62,7 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 ###like-us-adblock-modal
 ##.popup-premium__apla
 ||separatesilver.com^$third-party
-techdracula.com,keshavcommoditycalls.com,hackinformer.com,coderexample.com,anibatch.id##script:inject(setTimeout-defuser.js, an_message_display)
+techdracula.com,keshavcommoditycalls.com,hackinformer.com,coderexample.com,anibatch.id,altervista.org##script:inject(setTimeout-defuser.js, an_message_display)
 ||lukkr.com/website/pf.js
 @@||www.dogefaucet.com/static/js/ads.js|
 @@||dot.wp.pl^
