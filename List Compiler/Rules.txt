@@ -333,3 +333,5 @@ batchnime.net##script:inject(abort-on-property-read.js, killAdBlock)
 ||fwmrm.net^$xmlhttprequest,redirect=1x1-transparent.gif,domain=vtm.be
 ! === uplod.ws
 uplod.ws##script:inject(abort-on-property-read.js, $.ready)
+! === altervista.org
+||altervista.org/wp-content/uploads/$script
