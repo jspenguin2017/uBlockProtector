@@ -8,7 +8,7 @@ Test link: https://www.viafree.no/programmer/underholdning/kanakas/sesong-1/epis
 
 Issue: https://github.com/jspenguin2017/uBlockProtector/issues/110
 
-Related domains: `["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "play.tv3.lt", "tv3play.tv3.ee"]`
+Related domains: `viafree.no, viafree.dk, viafree.se, tvplay.skaties.lv, play.tv3.lt, tv3play.tv3.ee`
 
 #### viasatsport.fi
 
