@@ -59,8 +59,8 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 ##.popup-premium__apla
 ! === Admiral
 ||separatesilver.com^$third-party
-! === Ads Notifier
-techdracula.com,keshavcommoditycalls.com,hackinformer.com,coderexample.com,anibatch.id##script:inject(setTimeout-defuser.js, an_message_display)
+! === AdBlock Notify
+techdracula.com,keshavcommoditycalls.com,hackinformer.com,coderexample.com,anibatch.id,altervista.org##script:inject(setTimeout-defuser.js, an_message_display)
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/254
 ||lukkr.com/website/pf.js
 ! ===== Specific solutions =====
@@ -333,5 +333,3 @@ batchnime.net##script:inject(abort-on-property-read.js, killAdBlock)
 ||fwmrm.net^$xmlhttprequest,redirect=1x1-transparent.gif,domain=vtm.be
 ! === uplod.ws
 uplod.ws##script:inject(abort-on-property-read.js, $.ready)
-! === altervista.org
-||altervista.org/wp-content/uploads/$script
