@@ -524,10 +524,10 @@ a.videoJS.init = (...args) => {
         a.win.HELP_IMPROVE_VIDEOJS = false;
     } catch (err) { }
     let plugins = args.join();
-    a.$("head").append(`<link href="//vjs.zencdn.net/5.4.6/video-js.min.css" rel="stylesheet" /><script src="//vjs.zencdn.net/5.4.6/video.min.js"><\/script>${plugins}`);
+    a.$("head").append(`<link href="//vjs.zencdn.net/5.19.2/video-js.min.css" rel="stylesheet" /><script src="//vjs.zencdn.net/5.19.2/video.min.js"><\/script>${plugins}`);
 };
 a.videoJS.plugins = {};
-a.videoJS.plugins.hls = `<script src="//cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.4.0/videojs-contrib-hls.min.js"><\/script>`;
+a.videoJS.plugins.hls = `<script src="//unpkg.com/videojs-contrib-hls@5.5.3/dist/videojs-contrib-hls.js"><\/script>`;
 a.ready = (...args) => {
     a.on("DOMContentLoaded", ...args);
 };
@@ -2176,6 +2176,7 @@ if (a.domCmp(["dplay.com", "dplay.dk", "dplay.se"])) {
 }
 if (a.config.debugMode &&
     a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "play.tv3.lt", "tv3play.tv3.ee"])) {
+    let inited = false;
     const handler = () => {
         const elem = a.$("#video-player");
         if (elem.length === 0) {
@@ -2225,10 +2226,13 @@ if (a.config.debugMode &&
         a.out.info([streams.high, streams.hls, streams.medium]);
         a.out.info("Used media URL:");
         a.out.info(sources);
-        a.videoJS.init(a.videoJS.plugins.hls);
         const height = a.$("#video-player").height();
         const width = a.$("#video-player").width();
         a.$("#video-player").after(a.videoJS(sources, types, width, height)).remove();
+        if (!inited) {
+            inited = true;
+            a.videoJS.init(a.videoJS.plugins.hls);
+        }
         handler();
     };
     handler();

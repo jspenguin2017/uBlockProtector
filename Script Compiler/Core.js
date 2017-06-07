@@ -870,7 +870,7 @@ a.videoJS = (sources, types, width, height) => {
     return html;
 };
 /**
- * Initialize videoJS 5.4.6.
+ * Initialize videoJS 5.19.2.
  * Do not call this function multiple times.
  * @param {string} [plugins=""] - Plug-ins to load, pass multiple arguments to load more than 1 plug-in. Omit if no plug-in is needed.
  * @function
@@ -882,8 +882,7 @@ a.videoJS.init = (...args) => {
     } catch (err) { }
     let plugins = args.join();
     //Load components
-    //a.$("head").append(`<link href="//vjs.zencdn.net/5.4.6/video-js.min.css" rel="stylesheet" /><script src="//vjs.zencdn.net/5.4.6/video.min.js"><\/script>${plugins}`);
-    a.$("head").append(`<link href="unpkg.com/video.js@5.19.2/dist/video-js.css" rel="stylesheet" /><script src="unpkg.com/video.js@5.19.2/dist/video.js"><\/script>${plugins}`);
+    a.$("head").append(`<link href="//vjs.zencdn.net/5.19.2/video-js.min.css" rel="stylesheet" /><script src="//vjs.zencdn.net/5.19.2/video.min.js"><\/script>${plugins}`);
 };
 /**
  * Object containing all available VideoJS plug-ins.

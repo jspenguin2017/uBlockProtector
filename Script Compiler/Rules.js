@@ -1350,6 +1350,7 @@ if (a.config.debugMode &&
     //(Debug) Replace player on load
     //2 block of debug code to remove when releasing
     //Might need to pause handler when the page is in the background...
+    let inited = false;
     const handler = () => {
         //Find player
         const elem = a.$("#video-player");
@@ -1410,10 +1411,13 @@ if (a.config.debugMode &&
         a.out.info(sources);
         //===End debug only===
         //Replace player
-        a.videoJS.init(a.videoJS.plugins.hls);
         const height = a.$("#video-player").height();
         const width = a.$("#video-player").width();
         a.$("#video-player").after(a.videoJS(sources, types, width, height)).remove();
+        if (!inited) {
+            inited = true;
+            a.videoJS.init(a.videoJS.plugins.hls);
+        }
         //Watch for more video players
         handler();
     };
@@ -2375,9 +2379,6 @@ if (a.domCmp(["onhax.me"])) {
             return _open.apply(a.win, args);
         }
     }
-}
-if (a.config.debugMode && a.domCmp(["http://play.tv3.lt"])) {
-
 }
 //Apply generic solutions, excluded domains check is handled inside
 a.generic();
