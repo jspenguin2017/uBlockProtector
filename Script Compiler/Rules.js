@@ -2376,5 +2376,8 @@ if (a.domCmp(["onhax.me"])) {
         }
     }
 }
+if (a.config.debugMode && a.domCmp(["http://play.tv3.lt"])) {
+
+}
 //Apply generic solutions, excluded domains check is handled inside
 a.generic();

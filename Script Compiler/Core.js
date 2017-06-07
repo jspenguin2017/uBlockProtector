@@ -882,7 +882,8 @@ a.videoJS.init = (...args) => {
     } catch (err) { }
     let plugins = args.join();
     //Load components
-    a.$("head").append(`<link href="//vjs.zencdn.net/5.4.6/video-js.min.css" rel="stylesheet" /><script src="//vjs.zencdn.net/5.4.6/video.min.js"><\/script>${plugins}`);
+    //a.$("head").append(`<link href="//vjs.zencdn.net/5.4.6/video-js.min.css" rel="stylesheet" /><script src="//vjs.zencdn.net/5.4.6/video.min.js"><\/script>${plugins}`);
+    a.$("head").append(`<link href="unpkg.com/video.js@5.19.2/dist/video-js.css" rel="stylesheet" /><script src="unpkg.com/video.js@5.19.2/dist/video.js"><\/script>${plugins}`);
 };
 /**
  * Object containing all available VideoJS plug-ins.
@@ -894,7 +895,8 @@ a.videoJS.plugins = {};
  * Does not seem to work.
  * @const {string}
  */
-a.videoJS.plugins.hls = `<script src="//cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.4.0/videojs-contrib-hls.min.js"><\/script>`;
+//a.videoJS.plugins.hls = `<script src="//cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.4.0/videojs-contrib-hls.min.js"><\/script>`;
+a.videoJS.plugins.hls = `<script src="//unpkg.com/videojs-contrib-hls@5.5.3/dist/videojs-contrib-hls.js"><\/script>`;
 /**
  * Run a function on document-idle (DOMContentLoaded).
  * @function
