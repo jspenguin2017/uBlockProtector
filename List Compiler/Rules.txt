@@ -335,3 +335,5 @@ batchnime.net##script:inject(abort-on-property-read.js, killAdBlock)
 uplod.ws##script:inject(abort-on-property-read.js, $.ready)
 ! === ilgazzettino.it
 ||utils.cedsdigital.it/checkSubscription/checkSubscription.js
+! === windowsreport.com
+windowsreport.com##script:inject(silent-noeval.js)
