@@ -1351,6 +1351,7 @@ if (a.config.debugMode &&
     //2 block of debug code to remove when releasing
     //Might need to pause handler when the page is in the background...
     let inited = false;
+    const idMatcher = /\/(\d+)/;
     const handler = () => {
         //Find player
         const elem = a.$("#video-player");
@@ -1359,14 +1360,24 @@ if (a.config.debugMode &&
             return;
         }
         //Find ID
-        let videoID = a.win.vfAvodpConfig.videoId;
+        let videoID;
+        if (a.domCmp(["play.tv3.lt"], true)) {
+            let tmp = idMatcher.exec(a.win.location.href);
+            if (tmp) {
+                videoID = tmp[1];
+            }
+        } else if (a.win.vfAvodpConfig) {
+            videoID = a.win.vfAvodpConfig.videoId;
+        }
         if (!videoID) {
             a.setTimeout(handler, 1000);
             return;
         }
         //Request data JSON
         //We might want to check if we actually need proxy in some way...
-        const proxy = "http://www.sagkjeder.no/p/browse.php?u=";
+        //Does not work anymore
+        //const proxy = "http://www.sagkjeder.no/p/browse.php?u=";
+        const proxy = "";
         GM_xmlhttpRequest({
             method: "GET",
             url: `${proxy}http://playapi.mtgx.tv/v3/videos/stream/${videoID}`,

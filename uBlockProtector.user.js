@@ -2,7 +2,7 @@
 // @name uBlock Protector Script
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
-// @version 8.22
+// @version 8.23
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2177,18 +2177,27 @@ if (a.domCmp(["dplay.com", "dplay.dk", "dplay.se"])) {
 if (a.config.debugMode &&
     a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "play.tv3.lt", "tv3play.tv3.ee"])) {
     let inited = false;
+    const idMatcher = /\/(\d+)/;
     const handler = () => {
         const elem = a.$("#video-player");
         if (elem.length === 0) {
             a.setTimeout(handler, 1000);
             return;
         }
-        let videoID = a.win.vfAvodpConfig.videoId;
+        let videoID;
+        if (a.domCmp(["play.tv3.lt"], true)) {
+            let tmp = idMatcher.exec(a.win.location.href);
+            if (tmp) {
+                videoID = tmp[1];
+            }
+        } else if (a.win.vfAvodpConfig) {
+            videoID = a.win.vfAvodpConfig.videoId;
+        }
         if (!videoID) {
             a.setTimeout(handler, 1000);
             return;
         }
-        const proxy = "http://www.sagkjeder.no/p/browse.php?u=";
+        const proxy = "";
         GM_xmlhttpRequest({
             method: "GET",
             url: `${proxy}http://playapi.mtgx.tv/v3/videos/stream/${videoID}`,
