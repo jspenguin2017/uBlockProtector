@@ -18,7 +18,7 @@ Test link: http://www.is.fi/mestarienliiga/art-2000005119802.html
 
 Issue: https://github.com/jspenguin2017/uBlockProtector/issues/88
 
-The domain is an `iframe` of `is.fi`. 
+This domain is an `iframe` of `is.fi`. 
 
 #### itv.com
 
