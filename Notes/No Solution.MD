@@ -1,14 +1,14 @@
 ### These are the issues where no solution is found
 
-#### viafree.no
+#### viafree.no, viafree.dk, viafree.se, tvplay.skaties.lv, play.tv3.lt, tv3play.tv3.ee
 
-`Geo Lock (Norway)`
+`Geo Lock (Various Countries)`
 
 Test link: https://www.viafree.no/programmer/underholdning/kanakas/sesong-1/episode-4
 
-Issue: https://github.com/jspenguin2017/uBlockProtector/issues/110
-
-Related domains: `viafree.no, viafree.dk, viafree.se, tvplay.skaties.lv, play.tv3.lt, tv3play.tv3.ee`
+Issues: 
+* https://github.com/jspenguin2017/uBlockProtector/issues/110
+* https://github.com/jspenguin2017/uBlockProtector/issues/267
 
 #### viasatsport.fi
 
