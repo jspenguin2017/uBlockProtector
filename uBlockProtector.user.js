@@ -2496,7 +2496,7 @@ if (a.domCmp(["sidereel.com"])) {
 if (a.domCmp(["burning-feed.com"])) {
     a.readOnly("ads_enable", () => { });
 }
-if (a.domCmp(["comicbook.com", "eurogamer.net", "chip.de", "businessinsider.com", "androidpolice.com"])) {
+if (a.domCmp(["chip.de"])) {
     a.noAccess("stop");
 }
 if (a.domCmp(["ghame.ru"])) {
