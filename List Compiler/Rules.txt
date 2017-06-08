@@ -339,3 +339,5 @@ uplod.ws##script:inject(abort-on-property-read.js, $.ready)
 windowsreport.com##script:inject(silent-noeval.js)
 ! === livenewson.com
 ||pelcro.com^$third-party
+! === haxmaps.com, haxrec.com, haxcolors.com
+haxmaps.com,haxrec.com,haxcolors.com##script:inject(setTimeout-defuser.js, /.*/, 10000)
