@@ -1835,7 +1835,7 @@ if (a.domCmp(["zap.in"])) {
         },
     });
 }
-if (a.domCmp(["adbull.me"])) {
+if (a.domCmp(["adbull.me", "freepdf-books.com", "bc.vc", "themeslide.com"])) {
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
 if (a.domCmp(["shink.in"])) {
@@ -2098,9 +2098,6 @@ if (a.domCmp(["dovathd.com"])) {
         a.$(".onp-sl-content").show();
     });
 }
-if (a.domCmp(["freepdf-books.com"])) {
-    a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
-}
 if (a.domCmp(["temp-mail.org"])) {
     a.readOnly("checkadBlock", () => { });
 }
@@ -2173,9 +2170,6 @@ if (a.domCmp(["playbb.me", "easyvideo.me", "videowing.me", "videozoo.me"])) {
 }
 if (a.domCmp(["nicematin.com"])) {
     a.noAccess("checkAds");
-}
-if (a.domCmp(["bc.vc"])) {
-    a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
 if (a.domCmp(["up-4ever.com"])) {
     a.filter("setTimeout", a.matchMethod.string, "$('#adblock_detected').val(1);");
@@ -2299,9 +2293,6 @@ if (a.domCmp(["linternaute.com"])) {
 }
 if (a.domCmp(["new-skys.net"])) {
     a.noAccess("alert");
-}
-if (a.domCmp(["themeslide.com"])) {
-    a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
 if (a.domCmp(["gentside.com"])) {
     a.readOnly("adblockPopup", {

@@ -187,7 +187,7 @@ skmedix.pl##script:inject(bab-defuser.js)
 @@||comicincorrect.wpengine.netdna-cdn.com/wp-content/uploads/*
 vidlox.tv##script:inject(noeval.js)
 savetodrive.net##script:inject(setTimeout-defuser.js, ad)
-rarbgmirror.com,swfchan.net##script:inject(abort-on-property-read.js, open)
+rarbgmirror.com,swfchan.net,croco.site##script:inject(abort-on-property-read.js, open)
 ||googlesyndication.com^$script,redirect=noopjs,domain=pipocas.tv
 steamcustomizer.com###sadcat
 steamcustomizer.com##.notice.support-notice
