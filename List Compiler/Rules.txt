@@ -338,4 +338,4 @@ uplod.ws##script:inject(abort-on-property-read.js, $.ready)
 ! === windowsreport.com
 windowsreport.com##script:inject(silent-noeval.js)
 ! === livenewson.com
-livenewson.com###afw_register
+||pelcro.com^$third-party

@@ -98,6 +98,7 @@
             this.Controls.Add(this.LabelGitRoot);
             this.Font = new System.Drawing.Font("SimSun", 10F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Script Compiler";
