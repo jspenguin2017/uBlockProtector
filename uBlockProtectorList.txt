@@ -221,6 +221,7 @@ batchnime.net##script:inject(abort-on-property-read.js, killAdBlock)
 uplod.ws##script:inject(abort-on-property-read.js, $.ready)
 ||utils.cedsdigital.it/checkSubscription/checkSubscription.js
 windowsreport.com##script:inject(silent-noeval.js)
+livenewson.com###afw_register
 ! =====Patched Anti-Adblock Killer List (originally by Reek)=====
 ! Patching logic can be found in List Compiler source code
 ! Anti-Adblock Killer Repository (contains original source code and license): https://github.com/reek/anti-adblock-killer

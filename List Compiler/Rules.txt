@@ -337,3 +337,5 @@ uplod.ws##script:inject(abort-on-property-read.js, $.ready)
 ||utils.cedsdigital.it/checkSubscription/checkSubscription.js
 ! === windowsreport.com
 windowsreport.com##script:inject(silent-noeval.js)
+! === livenewson.com
+livenewson.com###afw_register
