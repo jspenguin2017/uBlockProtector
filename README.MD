@@ -1,6 +1,6 @@
 # uBlock Protector
 
-An anti-adblock defuser for uBlock Origin
+An anti-adblock defuser for ad blocker (Adblock Plus, AdBlock, uBlock Origin...)
 
 Installation instructions, along with many other relevant information are available on our 
 [home page](http://jspenguin2017.github.io/uBlockProtector/). 
