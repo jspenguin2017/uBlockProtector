@@ -2753,7 +2753,7 @@ if (a.domCmp(["linkneverdie.com"])) {
         a.$("#wrapper").show();
     });
 }
-if (a.domCmp(["ally.sh", "al.ly"])) {
+if (a.domCmp(["ally.sh", "al.ly", "croco.site"])) {
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
     a.win.open = null;
 }
