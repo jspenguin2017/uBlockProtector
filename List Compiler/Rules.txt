@@ -335,3 +335,5 @@ windowsreport.com##script:inject(silent-noeval.js)
 haxmaps.com,haxrec.com,haxcolors.com##script:inject(setTimeout-defuser.js, /.*/, 10000)
 ! === sopsport.org
 sopsport.org##script:inject(abort-on-property-read.js, anOptions)
+! === animesync.tv
+animesync.tv##.modal-adblock
