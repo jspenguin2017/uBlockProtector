@@ -1,11 +1,11 @@
-### The standard configuration
+# The standard configuration
 
 This is the standard configuration, we will use this configuration for all our tests. 
 We may not fix issues that we cannot reproduce and we may not accept solutions that fails in our tests. 
 
-#### Everything updated to the latest stable version
+### Everything updated to the latest stable version
 
-#### Chrome: 
+## Chrome: 
 
 Settings under `Privacy -> Content settings...`, `Network`, and `HTTPS/SSL` are left as default. 
 
@@ -20,7 +20,7 @@ Those Google extensions are optional, but there must not be other extensions.
 
 Other settings does not matter. 
 
-#### uBlock Origin: 
+## uBlock Origin: 
 
 Factory settings plus these filter lists enabled: 
 
@@ -30,7 +30,7 @@ uBlock Protector List
 CHN: EasyList China (中文)
 ```
 
-#### Violentmonkey: 
+## Violentmonkey: 
 
 Factory settings plus this script installed: 
 
