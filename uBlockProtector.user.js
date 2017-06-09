@@ -2,7 +2,7 @@
 // @name uBlock Protector Script
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
-// @version 8.24
+// @version 8.25
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -978,7 +978,7 @@ a.generic.FuckAdBlock = (constructorName, instanceName) => {
         "preloaders.net", "qq.com", "reddit.com", "stackoverflow.com", "tampermonkey.net", "twitter.com",
         "vimeo.com", "wikipedia.org", "w3schools.com", "yandex.ru", "youtu.be", "youtube.com", "xemvtv.net",
         "vod.pl", "agar.io", "pandoon.info", "fsf.org", "adblockplus.org", "plnkr.co", "exacttarget.com",
-        "dolldivine.com", "popmech.ru", "calm.com", "chatango.com", "filiser.tv"];
+        "dolldivine.com", "popmech.ru", "calm.com", "chatango.com", "filiser.tv", "spaste.com"];
     const excludedDomInc = ["google", "amazon", "yahoo"];
     const AdflyMatchDomCmp = ["adf.ly", "ay.gy", "j.gs", "q.gs", "gamecopyworld.click", "babblecase.com",
         "pintient.com", "atominik.com", "bluenik.com", "sostieni.ilwebmaster21.com", "auto-login-xxx.com",
