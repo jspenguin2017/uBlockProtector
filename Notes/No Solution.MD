@@ -4,7 +4,10 @@
 
 `Geo Lock (Various Countries)`
 
-Test link: https://www.viafree.no/programmer/underholdning/kanakas/sesong-1/episode-4
+Test links: 
+* https://www.viafree.no/programmer/underholdning/kanakas/sesong-1/episode-4
+* http://play.tv3.lt/programos/detektyve-klara/847664?autostart=true
+* Or just enter the home page and click on a random video
 
 Issues: 
 * https://github.com/jspenguin2017/uBlockProtector/issues/110
@@ -14,19 +17,23 @@ Issues:
 
 `Geo Lock (Finland)`
 
-Test link: http://www.is.fi/mestarienliiga/art-2000005119802.html
+Test links: 
+* http://www.viasport.fi/urheilu/jalkapallo/uutiset/suomi-liechtenstein-1-0
+* http://www.viasport.fi/urheilu/jalkapallo/uutiset/suomi-liechtenstein
 
-Issue: https://github.com/jspenguin2017/uBlockProtector/issues/88
-
-This domain is an `iframe` of `is.fi`. 
+Issues: 
+* https://github.com/jspenguin2017/uBlockProtector/issues/88
 
 #### itv.com
 
 `Account Required` `Geo Lock (United Kingdom)`
 
-Test link: https://www.itv.com/hub/take-me-out/1a8716a0086
+Test links: 
+* https://www.itv.com/hub/take-me-out/1a8716a0086
+* https://www.itv.com/hub/a-touch-of-frost/Ya1774a0037
 
-Issue: https://github.com/jspenguin2017/uBlockProtector/issues/194
+Issues: 
+* https://github.com/jspenguin2017/uBlockProtector/issues/194
 
 Not confirmed on the standard configuration, but since we do not have a solution for it, 
 chances are it does affect the standard configuration. 
