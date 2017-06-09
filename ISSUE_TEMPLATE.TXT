@@ -6,7 +6,7 @@ Test link (required):
 
 Screenshot of the web page (required): 
 <!--
-Your screenshot must include address bar, it should look something like this: http://i.imgur.com/QB3WujS.png
+Your screenshot must include the address bar, it should look something like this: http://i.imgur.com/QB3WujS.png
 -->
 
 Screenshot of the console (press `F12` to bring up the console) (required): 
