@@ -333,3 +333,5 @@ windowsreport.com##script:inject(silent-noeval.js)
 ||pelcro.com^$third-party
 ! === haxmaps.com, haxrec.com, haxcolors.com
 haxmaps.com,haxrec.com,haxcolors.com##script:inject(setTimeout-defuser.js, /.*/, 10000)
+! === sopsport.org
+sopsport.org##script:inject(abort-on-property-read.js, anOptions)
