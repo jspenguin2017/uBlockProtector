@@ -2,7 +2,7 @@
 // @name uBlock Protector Script
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
-// @version 8.26
+// @version 8.27
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2654,6 +2654,16 @@ if (a.domCmp(["dasolo.co"])) {
     a.readOnly("mischandler", null);
     a.readOnly("disableselect", null);
     a.filter("document.addEventListener", a.matchMethod.stringExact, "contextmenu");
+    a.filter("alert");
+    a.on("load", () => {
+        a.doc.oncontextmenu = null;
+        a.doc.onmousedown = null;
+        a.doc.onmouseup = null;
+        a.setTimeout(() => {
+            a.win.$("body").unbind("contextmenu");
+            a.win.$("#id").unbind("contextmenu");
+        }, 250);
+    });
 }
 if (a.domCmp(["titulky.com"])) {
     a.generic.FuckAdBlock("FADB", "fADB");

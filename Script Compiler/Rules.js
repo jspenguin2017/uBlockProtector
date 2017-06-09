@@ -1908,6 +1908,17 @@ if (a.domCmp(["dasolo.co"])) {
     a.readOnly("mischandler", null);
     a.readOnly("disableselect", null);
     a.filter("document.addEventListener", a.matchMethod.stringExact, "contextmenu");
+    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/280
+    a.filter("alert");
+    a.on("load", () => {
+        a.doc.oncontextmenu = null;
+        a.doc.onmousedown = null;
+        a.doc.onmouseup = null;
+        a.setTimeout(() => {
+            a.win.$("body").unbind("contextmenu");
+            a.win.$("#id").unbind("contextmenu");
+        }, 250);
+    });
 }
 if (a.domCmp(["titulky.com"])) {
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/128
