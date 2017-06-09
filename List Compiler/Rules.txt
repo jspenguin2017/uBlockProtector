@@ -1,7 +1,7 @@
 ! ===== Installation test =====
 jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 ! ===== Missed Ads =====
-! These are ads servers that we believe EasyList will not block any time soon
+! These are ads or tracking servers that I believe EasyList will not block any time soon
 ! === Google
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/245
 ||d.0emm.com^$third-party,script

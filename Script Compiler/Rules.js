@@ -272,10 +272,10 @@ if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl", "sportowefakty.wp.pl", "
         if (a.$(containerMatcher).length > 0) {
             const elem = a.$(containerMatcher).first().find(".titlecont a.title");
             let thisMid = elem.attr("href");
-            //Check if we got the element
+            //Check if I got the element
             if (thisMid) {
                 thisMid = thisMid.match(/mid[=,]([0-9]+)/)[1].toString();
-                //We will destroy the player anyway, we can just remove this so we do not grab it twice
+                //I will destroy the player soon anyway, I will remove this now so I do not grab it twice
                 elem.remove();
             }
             //Extra safety check
@@ -283,7 +283,7 @@ if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl", "sportowefakty.wp.pl", "
                 midArray2.push(thisMid);
             }
         }
-        //See if we need to load next URL
+        //See if I need to load next URL
         if (loadCounter === replaceCounter) {
             //Check flag and error counter
             if (networkBusy || networkErrorCounter > 5) {
@@ -298,7 +298,7 @@ if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl", "sportowefakty.wp.pl", "
             } else {
                 return;
             }
-            //Get media JSON, we do not need to check if mid is found since the function will return if it is not
+            //Get media JSON, I do not need to check if mid is found since the function will return if it is not
             networkBusy = true;
             GM_xmlhttpRequest({
                 method: "GET",
@@ -314,7 +314,7 @@ if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl", "sportowefakty.wp.pl", "
                                 break;
                             }
                         }
-                        //Check if we found the URL
+                        //Check if I found the URL
                         if (!url) {
                             throw "Media URL Not Found";
                         }
@@ -351,9 +351,8 @@ if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl", "sportowefakty.wp.pl", "
             }
         }
     };
-    //This function is quite light weight, we should be fine
+    //The function will not run if the page is in the background, once per second will be fine
     a.setInterval(main, 1000);
-    //Update is in background flag
     a.on("focus", () => { isInBackground = false; });
     a.on("blur", () => { isInBackground = true; });
 }
@@ -1374,8 +1373,7 @@ if (a.config.debugMode &&
             return;
         }
         //Request data JSON
-        //We might want to check if we actually need proxy in some way...
-        //Does not work anymore
+        //The proxy does not seem work anymore
         //const proxy = "http://www.sagkjeder.no/p/browse.php?u=";
         const proxy = "";
         GM_xmlhttpRequest({
@@ -1682,7 +1680,7 @@ if (a.domCmp(["hanime.tv"])) {
         //This will close the tab instantly with Violentmonkey
         window.close();
     };
-    //Old solution, we will run it just in case
+    //Old solution, I will run it just in case
     a.readOnly("BetterJsPop", () => { });
 }
 if (a.domCmp(["firstonetv.eu"])) {
@@ -2216,7 +2214,7 @@ if (a.domCmp(["ouo.io"])) {
 }
 if (a.domCmp(["canalplus.fr"])) {
     let original; //Will be set later
-    let currentVideoId = null; //So we don't switch unles it's different
+    let currentVideoId = null; //So I do not switch unless it is different
     let videoElem; //Current video player element, used to replace it when changing episode
     //New handler
     const newFunc = function (onglet, liste, page, pid, ztid, videoId, progid) {

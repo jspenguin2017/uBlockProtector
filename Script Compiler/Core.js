@@ -261,7 +261,7 @@ a.c.topFrame = (() => {
     try {
         return a.win.self === a.win.top;
     } catch (err) {
-        //a.win.top was not accessible due to security reasons (means we are not top frame)
+        //a.win.top was not accessible due to security reasons (means the script is not on the top frame)
         return false;
     }
 })();
@@ -313,7 +313,7 @@ a.mods = () => {
             a.observe("insert", (node) => {
                 if (node.tagName === "VIDEO") {
                     node.onplay = (() => {
-                        //We need to pause twice
+                        //I need to pause twice
                         let playCount = 2;
                         return function () {
                             playCount--;
@@ -593,7 +593,7 @@ a.timewarp = (func, method, filter, onMatch, onAfter, ratio = 0.02) => {
                 a.out.warn(String(args[i]));
             }
         }
-        //Check if we need to timewarp this function
+        //Check if I need to timewarp this function
         if (!method || a.applyMatch(args, method, filter)) {
             //Timewarp
             a.out.warn("Timewarpped.");
@@ -751,7 +751,7 @@ a.css = (str) => {
 };
 /**
  * Add a bait element, this sometimes has a side effect that adds an empty bar on top of the page.
- * Sometimes the height of the bait element is checked, so we cannot make it 0 height.
+ * Sometimes the height of the bait element is checked, so I cannot make it 0 height.
  * @function
  * @param {string} type - The type of the element, example: div.
  * @param {string} identifier - The class or id, example: .test (class) #test (id).
@@ -1388,7 +1388,7 @@ a.generic.AdflyBypasser = () => {
         if (decodedURL.length > 3 && decodedURL.includes(".")) {
             //Stop the window
             a.win.stop();
-            //Nuke body since we got the link
+            //Nuke body since I got the link
             //The new solution is so fast that the body is not loaded
             //a.doc.body.innerHTML = `<div><h2>Adfly skipped by uBlock Protector. Redirecting to real link: <a href="${decodedURL}">${decodedURL}</a></h2></div>`;
             //Redirect
@@ -1413,7 +1413,7 @@ a.generic.AdflyBypasser = () => {
                         }
                     } catch (err) { }
                 }
-                //In case this is not an Adfly page, we want this variable to be functional
+                //In case this is not an Adfly page, I want this variable to be functional
                 val = value;
             },
             get() {

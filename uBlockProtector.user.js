@@ -2,7 +2,7 @@
 // @name uBlock Protector Script
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
-// @version 8.28
+// @version 8.29
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2939,7 +2939,7 @@ if (a.domCmp(["ouo.io"])) {
 }
 if (a.domCmp(["canalplus.fr"])) {
     let original; //Will be set later
-    let currentVideoId = null; //So we don't switch unles it's different
+    let currentVideoId = null; //So I do not switch unless it is different
     let videoElem; //Current video player element, used to replace it when changing episode
     const newFunc = function (onglet, liste, page, pid, ztid, videoId, progid) {
         if (videoId !== currentVideoId) {

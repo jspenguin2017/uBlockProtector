@@ -96,7 +96,7 @@ namespace Script_Compiler
                 //Copy to clipboard
                 try
                 {
-                    //We need a new STA thread to access clipboard
+                    //I need a new STA thread to access clipboard
                     Thread thread = new Thread(() =>
                     {
                         Clipboard.SetText(string.Join(Environment.NewLine, data));
