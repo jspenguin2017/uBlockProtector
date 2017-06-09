@@ -2,7 +2,7 @@
 // @name uBlock Protector Script
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
-// @version 8.27
+// @version 8.28
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -42,11 +42,9 @@ null==d?void 0:d))},attrHooks:{type:{set:function(a,b){if(!o.radioValue&&"radio"
 a.init = (excluded, AdflyMatch, AdflyUnmatch) => {
     a.$ = a.make$();
     a.config();
-    a.config.debugMode && a.out.warn(`Domain: ${a.dom}`);
+    a.out.warn(`Domain: ${a.dom}`);
     a.config.domExcluded = excluded;
-    if (a.config.debugMode && excluded) {
-        a.out.warn("This domain is in the excluded list.");
-    }
+    excluded && a.out.warn("This domain is in the excluded list.");
     if (!excluded && (AdflyMatch || (a.config.aggressiveAdflyBypasser && !AdflyUnmatch))) {
         a.generic.AdflyBypasser();
     }
@@ -174,7 +172,7 @@ a.mods = () => {
                     a.$("#uBlock_Protector_FBMod_JumpToTop").click(() => {
                         a.win.scrollTo(a.win.scrollX, 0);
                     });
-                    a.config.debugMode && a.out.info("Facebook Mod: Jump to Top button added.");
+                    a.out.info("Facebook Mod: Jump to Top button added.");
                 } else {
                     a.setTimeout(addJumpToTop, 500);
                 }
@@ -184,7 +182,7 @@ a.mods = () => {
     if (a.c.topFrame && a.mods.Blogspot_AutoNCR && a.domInc(["blogspot"], true) && !a.domCmp(["blogspot.com"], true)) {
         const name = a.dom.replace("www.", "").split(".")[0];
         const path = a.win.location.href.split("/").slice(3).join("/");
-        a.config.debugMode && a.out.info("Blogspot Mod: Redirecting to NCR...");
+        a.out.info("Blogspot Mod: Redirecting to NCR...");
         a.win.location.href = `http://${name}.blogspot.com/ncr/${path}`;
     }
     if (a.mods.NoAutoplay) {
@@ -204,7 +202,7 @@ a.mods = () => {
                     })();
                 }
             });
-            a.config.debugMode && a.out.info(disableMsg);
+            a.out.info(disableMsg);
         }
         if (a.domCmp(["komputerswiat.pl"], true)) {
             let token = a.setInterval(() => {
@@ -217,7 +215,7 @@ a.mods = () => {
                     a.clearInterval(token);
                 }
             }, 1000);
-            a.config.debugMode && a.out.info(disableMsg);
+            a.out.info(disableMsg);
         }
         if (a.domCmp(["onet.tv"], true)) {
             a.observe("insert", (node) => {
@@ -228,7 +226,7 @@ a.mods = () => {
                     };
                 }
             });
-            a.config.debugMode && a.out.info(disableMsg);
+            a.out.info(disableMsg);
         }
     }
 };
@@ -251,7 +249,7 @@ a.domCmp = (domList, noErr) => {
     for (let i = 0; i < domList.length; i++) {
         if (a.dom.endsWith(domList[i]) &&
             (a.dom.length === domList[i].length || a.dom.charAt(a.dom.length - domList[i].length - 1) === ".")) {
-            return (a.config.debugMode && !noErr && a.err()), true;
+            return (!noErr && a.err()), true;
         }
     }
     return false;
@@ -261,10 +259,10 @@ a.domInc = (domList, noErr) => {
         let index = a.dom.indexOf(domList[i] + ".");
         switch (index) {
             case -1: break;
-            case 0: return (a.config.debugMode && !noErr && a.err()), true;
+            case 0: return (!noErr && a.err()), true;
             default:
                 if (a.dom[index - 1] === ".") {
-                    return (a.config.debugMode && !noErr && a.err()), true;
+                    return (!noErr && a.err()), true;
                 }
                 break;
         }
@@ -286,9 +284,9 @@ a.protectFunc = () => {
         a.win.Function.prototype.toString = newFunc;
         a.protectFunc.pointers.push(newFunc);
         a.protectFunc.masks.push(String(original));
-        a.config.debugMode && a.out.warn("Functions protected.");
+        a.out.warn("Functions protected.");
     } catch (err) {
-        a.config.debugMode && a.out.error("uBlock Protector failed to protect functions!");
+        a.out.error("uBlock Protector failed to protect functions!");
         return false;
     }
     return true;
@@ -307,7 +305,7 @@ a.filter = (func, method, filter, onMatch, onAfter) => {
             }
         }
         if (!method || a.applyMatch(args, method, filter)) {
-            a.config.debugMode && a.err();
+            a.err();
             let ret = undefined;
             if (onMatch) {
                 ret = onMatch(args);
@@ -315,7 +313,7 @@ a.filter = (func, method, filter, onMatch, onAfter) => {
             onAfter && onAfter(true, args);
             return ret;
         }
-        a.config.debugMode && a.out.info("Tests passed.");
+        a.out.info("Tests passed.");
         onAfter && onAfter(false, args);
         return original.apply(parent, args);
     };
@@ -333,9 +331,9 @@ a.filter = (func, method, filter, onMatch, onAfter) => {
             a.protectFunc.pointers.push(newFunc);
             a.protectFunc.masks.push(String(original));
         }
-        a.config.debugMode && a.out.warn(`Filter activated on ${func}`);
+        a.out.warn(`Filter activated on ${func}`);
     } catch (err) {
-        a.config.debugMode && a.out.error(`uBlock Protector failed to activate filter on ${func}!`);
+        a.out.error(`uBlock Protector failed to activate filter on ${func}!`);
         return false;
     }
     return true;
@@ -350,13 +348,13 @@ a.timewarp = (func, method, filter, onMatch, onAfter, ratio = 0.02) => {
             }
         }
         if (!method || a.applyMatch(args, method, filter)) {
-            a.config.debugMode && a.out.warn("Timewarpped.");
+            a.out.warn("Timewarpped.");
             onMatch && onMatch(args);
             onAfter && onAfter(true, args);
             args[1] *= ratio;
             return original.apply(a.win, args);
         } else {
-            a.config.debugMode && a.out.info("Not timewarpped.");
+            a.out.info("Not timewarpped.");
             onAfter && onAfter(false, args);
             return original.apply(a.win, args);
         }
@@ -367,9 +365,9 @@ a.timewarp = (func, method, filter, onMatch, onAfter, ratio = 0.02) => {
             a.protectFunc.pointers.push(newFunc);
             a.protectFunc.masks.push(String(original));
         }
-        a.config.debugMode && a.out.warn(`Timewarp activated on ${func}`);
+        a.out.warn(`Timewarp activated on ${func}`);
     } catch (err) {
-        a.config.debugMode && a.out.error(`uBlock Protector failed to apply timewarp on ${func}!`);
+        a.out.error(`uBlock Protector failed to apply timewarp on ${func}!`);
         return false;
     }
     return true;
@@ -412,7 +410,7 @@ a.readOnly = (name, val) => {
             }
         }
     } catch (err) {
-        a.config.debugMode && a.out.error(`uBlock Protector failed to define read-only property ${name}!`);
+        a.out.error(`uBlock Protector failed to define read-only property ${name}!`);
         return false;
     }
     return true;
@@ -440,7 +438,7 @@ a.noAccess = (name) => {
             }
         }
     } catch (err) {
-        a.config.debugMode && a.out.error(`uBlock Protector failed to define non-accessible property ${name}!`);
+        a.out.error(`uBlock Protector failed to define non-accessible property ${name}!`);
         return false;
     }
     return true;
@@ -670,7 +668,7 @@ a.generic = () => {
                 playwireZeus = val;
             },
             get() {
-                a.config.debugMode && a.err("Playwire");
+                a.err("Playwire");
                 try {
                     playwireZeus.AdBlockTester = {
                         check(a) { a(); },
@@ -681,7 +679,7 @@ a.generic = () => {
         });
         a.ready(() => {
             if (a.win.XenForo && typeof a.win.XenForo.rellect === "object") {
-                a.config.debugMode && a.err("XenForo");
+                a.err("XenForo");
                 a.win.XenForo.rellect = {
                     AdBlockDetector: {
                         start() { },
@@ -689,16 +687,16 @@ a.generic = () => {
                 };
             }
             if (typeof a.win.closeAdbuddy === "function") {
-                a.config.debugMode && a.err("Adbuddy");
+                a.err("Adbuddy");
                 a.win.closeAdbuddy();
             }
             if (a.$("div.adb_overlay > div.adb_modal_img").length > 0) {
-                a.config.debugMode && a.err("AdBlock Alerter");
+                a.err("AdBlock Alerter");
                 a.$("div.adb_overlay").remove();
                 a.css("html, body { height:auto; overflow: auto; }");
             }
             if (a.$("#blockdiv").html() === "disable ad blocking or use another browser without any adblocker when you visit") {
-                a.config.debugMode && a.out.err("Uncaught AdBlock Error: Generic block screens are not allowed on this device!");
+                a.out.err("Uncaught AdBlock Error: Generic block screens are not allowed on this device!");
                 a.$("#blockdiv").remove();
             }
             {
@@ -713,7 +711,7 @@ a.generic = () => {
                         if (re.test(cssText)) {
                             const id = re.exec(cssText)[1];
                             if (a.$(`script:contains(w.addEventListener('load',${id},false))`)) {
-                                a.config.debugMode && a.err("Antiblock.org v2");
+                                a.err("Antiblock.org v2");
                                 data.abo2 = id;
                                 break;
                             }
@@ -738,19 +736,19 @@ a.generic = () => {
                                 method.insert &&
                                 method.nextFunction) {
                                 if (method.toggle) {
-                                    a.config.debugMode && a.err("BetterStopAdblock");
+                                    a.err("BetterStopAdblock");
                                     data.bsa = prop;
                                 } else {
-                                    a.config.debugMode && a.err("Antiblock.org v3");
+                                    a.err("Antiblock.org v3");
                                     data.abo3 = prop;
                                 }
                                 a.win[prop] = null;
                             }
                             if (method.bab) {
-                                a.config.debugMode && a.err("BlockAdBlock");
+                                a.err("BlockAdBlock");
                                 a.win[prop] = null;
                             } else if (a.win.Object.keys(method).length === 3 && a.win.Object.keys(method).join().length === 32) {
-                                a.config.debugMode && a.err("BlockAdBlock");
+                                a.err("BlockAdBlock");
                                 a.win[prop] = null;
                             }
                         }
@@ -782,7 +780,7 @@ a.generic = () => {
                     insertedNode.firstChild.id &&
                     insertedNode.firstChild.id === insertedNode.id &&
                     insertedNode.innerHTML.includes("no-adblock.com")) {
-                    a.config.debugMode && a.err("No-Adblock");
+                    a.err("No-Adblock");
                     insertedNode.remove();
                 }
             }
@@ -794,7 +792,7 @@ a.generic = () => {
                 insertedNode.parentNode.id &&
                 insertedNode.parentNode.id === insertedNode.id + "2" &&
                 insertedNode.innerHTML.includes("stopadblock.org")) {
-                a.config.debugMode && a.err("StopAdblock");
+                a.err("StopAdblock");
                 insertedNode.remove();
             }
             if (insertedNode.id &&
@@ -805,7 +803,7 @@ a.generic = () => {
                 reIframeId.test(insertedNode.id) &&
                 insertedNode.nodeName === "IFRAME" &&
                 reIframeSrc.test(insertedNode.src)) {
-                a.config.debugMode && a.err("AntiAdblock");
+                a.err("AntiAdblock");
                 insertedNode.remove();
             }
             if (typeof a.win.vtfab !== "undefined" &&
@@ -823,13 +821,13 @@ a.generic = () => {
                     reBg.test(insertedNode.nextSibling.className) &&
                     insertedNode.nextSibling.style &&
                     insertedNode.nextSibling.style.display !== "none") {
-                    a.config.debugMode && a.err("Adunblock Premium");
+                    a.err("Adunblock Premium");
                     insertedNode.nextSibling.remove();
                     insertedNode.remove();
                 } else if (insertedNode.nextSibling.id &&
                     reId.test(insertedNode.nextSibling.id) &&
                     insertedNode.innerHTML.includes("Il semblerait que vous utilisiez un bloqueur de publicité !")) {
-                    a.config.debugMode && a.err("Adunblock Free");
+                    a.err("Adunblock Free");
                     insertedNode.remove();
                 }
             }
@@ -843,7 +841,7 @@ a.generic = () => {
                 reMsgId.test(insertedNode.id) &&
                 reTag1.test(insertedNode.nodeName) &&
                 reTag2.test(insertedNode.firstChild.nodeName)) {
-                a.config.debugMode && a.err("Antiblock.org");
+                a.err("Antiblock.org");
                 const audio = insertedNode.querySelector("audio[loop]");
                 if (audio) {
                     audio.pause();
@@ -862,7 +860,7 @@ a.generic = () => {
             }
         };
         a.observe("insert", onInsertHandler);
-    } else if (a.config.debugMode) {
+    } else {
         a.out.warn("Generic solutions are disabled on this domain.");
     }
 };
@@ -917,7 +915,7 @@ a.generic.AdflyBypasser = () => {
             },
         });
     } catch (err) {
-        a.config.debugMode && a.out.error("uBlock Protector could not set up Adfly bypasser.");
+        a.out.error("uBlock Protector could not set up Adfly bypasser.");
     }
 };
 a.generic.FuckAdBlock = (constructorName, instanceName) => {
@@ -945,14 +943,14 @@ a.generic.FuckAdBlock = (constructorName, instanceName) => {
             this._callbacks = [];
         };
         this.on = (detected, func) => {
-            a.config.debugMode && a.err("FuckAdBlock");
+            a.err("FuckAdBlock");
             if (!detected) {
                 this._callbacks.push(func);
             }
             return this;
         };
         this.onDetected = () => {
-            a.config.debugMode && a.err("FuckAdBlock");
+            a.err("FuckAdBlock");
             return this;
         };
         this.onNotDetected = (func) => {
@@ -1133,11 +1131,11 @@ if (a.domCmp(["player.pl"])) {
                         elem.html("").append(a.nativePlayer(vidSources[1].url));
                         a.$("video").css("max-height", "540px");
                     } else if (vidSources[0].src) {
-                        a.config.debugMode && a.out.error("uBlock Protector will not replace this video player " +
+                        a.out.error("uBlock Protector will not replace this video player " +
                             "because it is DRM prtected.");
                     }
                 } catch (err) {
-                    a.config.debugMode && a.out.error("uBlock Protector failed to find media URL!");
+                    a.out.error("uBlock Protector failed to find media URL!");
                     return;
                 }
             },
@@ -1179,7 +1177,7 @@ if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl", "sportowefakty.wp.pl", "
                 }
             }
         } catch (err) {
-            a.config.debugMode && a.out.error("uBlock Protector failed to find media ID with method 1!");
+            a.out.error("uBlock Protector failed to find media ID with method 1!");
         }
         if (a.$(containerMatcher).length > 0) {
             const elem = a.$(containerMatcher).first().find(".titlecont a.title");
@@ -1223,13 +1221,13 @@ if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl", "sportowefakty.wp.pl", "
                         loadCounter++;
                         networkErrorCounter = 0;
                     } catch (err) {
-                        a.config.debugMode && a.out.error("uBlock Protector failed to find media URL!");
+                        a.out.error("uBlock Protector failed to find media URL!");
                         networkErrorCounter += 1;
                     }
                     networkBusy = false;
                 },
                 onerror() {
-                    a.config.debugMode && a.out.error("uBlock Protector failed to load media JSON!");
+                    a.out.error("uBlock Protector failed to load media JSON!");
                     networkErrorCounter += 0.5;
                     networkBusy = false;
                 },
@@ -2214,7 +2212,7 @@ if (a.config.debugMode &&
             const parsedData = JSON.parse(data);
             streams = parsedData.streams
         } catch (err) {
-            a.config.debugMode && a.out.error("uBlock Protector failed to find video URL!");
+            a.out.error("uBlock Protector failed to find video URL!");
             return;
         }
         let sources = [], types = [];
@@ -2228,7 +2226,7 @@ if (a.config.debugMode &&
             sources.push(streams.medium);
             types.push(streams.medium.startsWith("rtmp") ? "rtmp/mp4" : "application/f4m+xml");
         } else {
-            a.config.debugMode && a.out.error("uBlock Protector failed to find video URL!");
+            a.out.error("uBlock Protector failed to find video URL!");
             return;
         }
         a.out.info("Potential media URLs:");
@@ -2807,6 +2805,8 @@ if (a.domCmp(["gaybeeg.info"])) {
                         a.out.warn("Archive related inline script does not match expected hash:");
                         a.out.warn(temp[1]);
                         a.out.warn(`Hash: ${hash}`);
+                    } else {
+                        a.out.warn("Archive related inline script does not match expected hash.");
                     }
                 }
             }
@@ -2814,6 +2814,8 @@ if (a.domCmp(["gaybeeg.info"])) {
                 a.out.warn("This inline script is not executed:")
                 a.out.warn(elem.innerHTML);
                 a.out.warn(`Hash: ${a.sha256(elem.innerHTML)}`);
+            } else {
+                a.out.warn("An inline script is not executed.");
             }
         });
         a.$(".download a.button").each((i, el) => {
@@ -2890,8 +2892,8 @@ if (a.domCmp(["gelbooru.com"])) {
             a.$("div").each(function () {
                 if (a.$(this).text() === "Have you first tried disabling your AdBlock?") {
                     a.$(this).empty();
-                } else {
-                    a.config.debugMode && a.out.log(a.$(this).text());
+                } else if (a.config.debugMode) {
+                    a.out.log(a.$(this).text());
                 }
             });
         });
@@ -2963,11 +2965,11 @@ if (a.domCmp(["canalplus.fr"])) {
                         throw "Media URL Not Found";
                     }
                 } catch (err) {
-                    a.config.debugMode && a.out.error("uBlock Protector failed to find media URL!");
+                    a.out.error("uBlock Protector failed to find media URL!");
                 }
             },
             onerror() {
-                a.config.debugMode && a.out.error("uBlock Protector failed to load media JSON!");
+                a.out.error("uBlock Protector failed to load media JSON!");
             },
         });
     };
