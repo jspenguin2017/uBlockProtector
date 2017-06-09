@@ -12,7 +12,7 @@ There is no arguing about these rules, with the only exception being recommendat
 but be aware that there can be only one accepted setup. The Fork button is always available if you do not 
 like these rules. 
 
-You are not allowed to promote proprietary software. 
+You are not allowed to promote proprietary software anywhere in this repository. 
 
 ## Opening an issue
 
