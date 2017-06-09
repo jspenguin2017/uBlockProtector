@@ -16,9 +16,8 @@ You are not allowed to promote proprietary software anywhere in this repository.
 
 ## Opening an issue
 
-**You are prohibited from opening issues in this repository if you are not using Chrome, uBlock Origin, and Violentmonkey.**
-
-**You also must install both uBlock Protector List and uBlock Protector Script**
+**You are prohibited from opening issues in this repository if you are not using Chrome, uBlock Origin, and Violentmonkey. 
+You also must install both uBlock Protector List and uBlock Protector Script**
 
 Note: Chromium is accepted as an open source alternative to Chrome, but issues that are specific to Chromium may not be fixed. 
 
