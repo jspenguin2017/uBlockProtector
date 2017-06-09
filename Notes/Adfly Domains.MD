@@ -1,9 +1,9 @@
-### These are the known Adfly domains and test links: 
+# These are the known Adfly domains and test links: 
 
 Note: Some of these links will send you to another Adfly-like (but not Adfly) page, 
 if you landed on those pages, it means the solution worked. 
 
-#### Second level ("normal") domains
+## Second level ("normal") domains
 
 `adf.ly`
 http://adf.ly/1mHisY
@@ -45,7 +45,7 @@ http://rd1.gamecopyworld.click/OrPg
 `auto-login-xxx.com`
 http://redir2.auto-login-xxx.com/14557011/sexart
 
-#### Third level domains
+## Third level domains
 
 `sostieni.ilwebmaster21.com`
 http://sostieni.ilwebmaster21.com/15p
