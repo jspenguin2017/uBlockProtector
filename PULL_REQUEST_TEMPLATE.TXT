@@ -1,1 +1,3 @@
+<!--
 Before submitting a Pull Request, you MUST read the contribution guideline. Failure to do so may result in a ban. 
+-->
