@@ -63,6 +63,7 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 ##.popup-premium__apla
 ||separatesilver.com^$third-party
 techdracula.com,keshavcommoditycalls.com,hackinformer.com,coderexample.com,anibatch.id,altervista.org##script:inject(setTimeout-defuser.js, an_message_display)
+futbolchile.net,freeomovie.com,appdrop.net,skmedix.pl,yalujailbreak.net,cloudwebcopy.com##script:inject(bab-defuser.js)
 ||lukkr.com/website/pf.js
 @@||www.dogefaucet.com/static/js/ads.js|
 @@||dot.wp.pl^
@@ -137,7 +138,6 @@ al.ly##script:inject(popads.net.js)
 hackintosh.computer##.adsbygoogle
 @@||hackintosh.computer/wp-content/themes/adsense/*$first-party
 @@||imasdk.googleapis.com/js/sdkloader/outstream.js$script,domain=ovar.io
-futbolchile.net##script:inject(bab-defuser.js)
 ||damoh.*^$media
 ||gaybeeg.info^$inline-script
 ||adnetworkperformance.com^$script,redirect=noopjs,domain=netdna-storage.com
@@ -179,11 +179,8 @@ telegraph.co.uk##.adblocker-message
 pwn.pl##script:inject(abort-on-property-read.js, adblock)
 afreesms.com##script:inject(noeval.js)
 ||tiptonvillepylesville.com^$domain=clubic.com
-freeomovie.com##script:inject(bab-defuser.js)
 animeid.io,jkanime.co,gogoanime.ch,chiaanime.co##script:inject(setTimeout-defuser.js, #player)
 hentaitake.net##script:inject(abort-on-property-read.js, anOptions)
-appdrop.net##script:inject(bab-defuser.js)
-skmedix.pl##script:inject(bab-defuser.js)
 @@||comicallyincorrect.com^$elemhide
 @@||comicincorrect.wpengine.netdna-cdn.com/wp-content/uploads/*
 vidlox.tv##script:inject(noeval.js)
@@ -206,7 +203,6 @@ hackinformer.com##script:inject(abort-on-property-write, anOptions)
 ||nowvideo.li^$inline-script
 ||ewingoset.info^$inline-script
 rapidvideo.com##script:inject(noeval.js)
-yalujailbreak.net##script:inject(bab-defuser.js)
 ||cloudvideoplatform.com/advert.jpg$image,redirect=1x1-transparent.gif,domain=nana10.co.il
 @@||receive-a-sms.com/showads.js$xmlhttprequest,first-party
 @@||gamersclub.com.br/js/ads.js$script,first-party

@@ -53,7 +53,7 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 ! === OptinMonster
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/251
 ||a.optnmnstr.com^
-! ===== Generic solutions =====
+! ===== Common Solutions =====
 ! === Block screens
 ###like-us-adblock-modal
 ##.popup-premium__apla
@@ -61,6 +61,8 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 ||separatesilver.com^$third-party
 ! === AdBlock Notify
 techdracula.com,keshavcommoditycalls.com,hackinformer.com,coderexample.com,anibatch.id,altervista.org##script:inject(setTimeout-defuser.js, an_message_display)
+! === BlockAdBlock
+futbolchile.net,freeomovie.com,appdrop.net,skmedix.pl,yalujailbreak.net,cloudwebcopy.com##script:inject(bab-defuser.js)
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/254
 ||lukkr.com/website/pf.js
 ! ===== Specific solutions =====
@@ -186,9 +188,6 @@ hackintosh.computer##.adsbygoogle
 ! === ovar.io
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/155
 @@||imasdk.googleapis.com/js/sdkloader/outstream.js$script,domain=ovar.io
-! === futbolchile.net
-! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/160
-futbolchile.net##script:inject(bab-defuser.js)
 ! === tv.aftonbladet.se - Thanks to uBlock-user
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/163
 ||damoh.*^$media
@@ -254,16 +253,10 @@ pwn.pl##script:inject(abort-on-property-read.js, adblock)
 afreesms.com##script:inject(noeval.js)
 ! === clubic.com
 ||tiptonvillepylesville.com^$domain=clubic.com
-! === freeomovie.com
-freeomovie.com##script:inject(bab-defuser.js)
 ! === animeid.io and similar domains
 animeid.io,jkanime.co,gogoanime.ch,chiaanime.co##script:inject(setTimeout-defuser.js, #player)
 ! === NSFW! hentaitake.net
 hentaitake.net##script:inject(abort-on-property-read.js, anOptions)
-! === appdrop.net
-appdrop.net##script:inject(bab-defuser.js)
-! === skmedix.pl
-skmedix.pl##script:inject(bab-defuser.js)
 ! === comicallyincorrect.com
 @@||comicallyincorrect.com^$elemhide
 @@||comicincorrect.wpengine.netdna-cdn.com/wp-content/uploads/*
@@ -304,8 +297,6 @@ hackinformer.com##script:inject(abort-on-property-write, anOptions)
 ! === rapidvideo.com
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/246
 rapidvideo.com##script:inject(noeval.js)
-! === yalujailbreak.net
-yalujailbreak.net##script:inject(bab-defuser.js)
 ! === nana10.co.il
 ||cloudvideoplatform.com/advert.jpg$image,redirect=1x1-transparent.gif,domain=nana10.co.il
 ! === receive-a-sms.com
