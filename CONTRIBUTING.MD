@@ -1,5 +1,11 @@
 ## You must read and understand every part of this contribution guideline, failure to do so may result in a ban
 
+### You are prohibited from opening issues in this repository if you are not using Chrome, uBlock Origin, and Violentmonkey
+
+### You also must install BOTH uBlock Protector List and uBlock Protector Script
+
+### Installation instructions: https://jspenguin2017.github.io/uBlockProtector/
+
 This repository has these special rules because it starts to take a lot of my time. These rules only 
 apply to **this** repository. These rules do not apply to myself and I reserve the right to change these 
 rules at any time. 
@@ -15,9 +21,6 @@ like these rules.
 You are not allowed to promote proprietary software anywhere in this repository. 
 
 ## Opening an issue
-
-**You are prohibited from opening issues in this repository if you are not using Chrome, uBlock Origin, and Violentmonkey. 
-You also must install both uBlock Protector List and uBlock Protector Script**
 
 Note: Chromium is accepted as an open source alternative to Chrome, but issues that are specific to Chromium may not be fixed. 
 
