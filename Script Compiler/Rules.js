@@ -2357,10 +2357,15 @@ if (a.domCmp(["karibusana.org"])) {
     a.noAccess("bizpanda");
     a.css(".onp-locker-call { display:block; }");
 }
-if (a.domCmp(["lewat.id"])) {
+if (a.domCmp(["lewat.id", "u2s.io"])) {
     //Issue: https://gitlab.com/xuhaiyang1234/uBlockProtectorSecretIssues/issues/4
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
-    const matcher = /^https?:\/\/lewat\.id\//i;
+    let matcher;
+    if (a.domCmp(["lewat.id"], true)) {
+        matcher = /^https?:\/\/lewat\.id\//i;
+    } else if (a.domCmp(["u2s.io"], true)) {
+        matcher = /^https?:\/\/u2s\.io\//i;
+    }
     const token = a.setInterval(() => {
         const elem = a.$(".skip-ad a");
         if (elem.length && elem[0].href && !matcher.test(elem[0].href)) {

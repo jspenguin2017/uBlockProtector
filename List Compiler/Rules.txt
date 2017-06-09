@@ -245,6 +245,7 @@ gelbooru.com#@#center > a[href]
 bracknellnews.co.uk##script:inject(abort-on-property-write.js, _sp_)
 ! === u2s.io
 @@||u2s.io^$elemhide
+||5g9quwq.com^$third-party
 ! === telegraph.co.uk
 telegraph.co.uk##.adblocker-message
 ! === pwn.pl
