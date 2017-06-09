@@ -285,7 +285,7 @@ a.mods = () => {
                 const navBar = a.$("div[role='navigation']");
                 if (navBar.length > 0) {
                     //Present, insert button
-                    navBar.first().append(`<div class="_4kny _2s24" id="uBlock_Protector_FBMod_JumpToTop"><div class="_4q39"><a class="_2s25" href="javascript: void(0);">Top</a></div></div>`);
+                    navBar.first().append(`<div class="_4kny _2s24" id="uBlock_Protector_FBMod_JumpToTop"><div class="_3qcu _cy7"><a class="_2s25" href="javascript: void(0);">Top</a></div></div>`);
                     a.$("#uBlock_Protector_FBMod_JumpToTop").click(() => {
                         a.win.scrollTo(a.win.scrollX, 0);
                     });
