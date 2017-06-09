@@ -24,7 +24,7 @@
 // @connect *
 // @run-at document-start
 // @homepage https://jspenguin2017.github.io/uBlockProtector/
-// @supportURL https://github.com/jspenguin2017/uBlockProtector/issues
+// @supportURL https://github.com/jspenguin2017/uBlockProtector/blob/master/CONTRIBUTING.MD
 // @downloadURL https://github.com/jspenguin2017/uBlockProtector/raw/master/uBlockProtector.user.js
 // @license GNU GPL v3
 // ==/UserScript==

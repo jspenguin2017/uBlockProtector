@@ -4,7 +4,7 @@
 ! Description: An anti-adblock defuser for uBlock Origin
 ! Author: jspenguin2017
 ! Homepage: https://jspenguin2017.github.io/uBlockProtector/
-! Support: https://github.com/jspenguin2017/uBlockProtector/issues
+! Support: https://github.com/jspenguin2017/uBlockProtector/blob/master/CONTRIBUTING.MD
 ! License: GNU GPL v3
 !
 ! ===== PLEASE READ =====
