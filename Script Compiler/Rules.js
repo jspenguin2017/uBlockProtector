@@ -1425,6 +1425,7 @@ if (a.config.debugMode &&
         const height = a.$("#video-player").height();
         const width = a.$("#video-player").width();
         a.$("#video-player").after(a.videoJS(sources, types, width, height)).remove();
+        //Initialize VideoJS
         if (!inited) {
             inited = true;
             a.videoJS.init(a.videoJS.plugins.hls);
