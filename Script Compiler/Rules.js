@@ -275,7 +275,7 @@ if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl", "sportowefakty.wp.pl", "
             //Check if I got the element
             if (thisMid) {
                 thisMid = thisMid.match(/mid[=,]([0-9]+)/)[1].toString();
-                //I will destroy the player soon anyway, I will remove this now so I do not grab it twice
+                //I will destroy the player soon anyway, I will remove this now so I will not grab it twice
                 elem.remove();
             }
             //Extra safety check
