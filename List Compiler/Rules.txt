@@ -53,6 +53,12 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 ! === OptinMonster
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/251
 ||a.optnmnstr.com^
+! === Breakage caused by French EasyList
+! === Issue: https://github.com/uBlockOrigin/uAssets/issues/442
+@@||louccrossc.com^$domain=tf1.fr,badfilter
+@@||foilpolyth.com^$domain=tf1.fr,badfilter
+||foilpolyth.com^$xmlhttprequest,redirect=nooptext,domain=tf1.fr,important
+||louccrossc.com^$xmlhttprequest,redirect=nooptext,domain=tf1.fr,important
 ! ===== Common Solutions =====
 ! === Block screens
 ###like-us-adblock-modal

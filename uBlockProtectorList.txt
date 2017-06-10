@@ -59,6 +59,10 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 ||w.nn0e.com^$third-party,script
 ||w.rpts.org^$third-party,script
 ||a.optnmnstr.com^
+@@||louccrossc.com^$domain=tf1.fr,badfilter
+@@||foilpolyth.com^$domain=tf1.fr,badfilter
+||foilpolyth.com^$xmlhttprequest,redirect=nooptext,domain=tf1.fr,important
+||louccrossc.com^$xmlhttprequest,redirect=nooptext,domain=tf1.fr,important
 ###like-us-adblock-modal
 ##.popup-premium__apla
 ||separatesilver.com^$third-party
