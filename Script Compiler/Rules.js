@@ -2405,6 +2405,9 @@ if (a.domCmp(["null-24.com"])) {
         a.$("#custom-links .custom-url-wrap a").each(function () {
             this.href = this.innerHTML;
         });
+        a.setTimeout(() => {
+            a.win.jQuery("span:contains(Download Direct Link)").parent().unbind("click");
+        }, 250);
     });
 }
 //Apply generic solutions, excluded domains check is handled inside
