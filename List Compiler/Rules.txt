@@ -343,3 +343,5 @@ haxmaps.com,haxrec.com,haxcolors.com##script:inject(setTimeout-defuser.js, /.*/,
 sopsport.org##script:inject(abort-on-property-read.js, anOptions)
 ! === animesync.tv
 animesync.tv##.modal-adblock
+! === expansion.com
+||active.cache.el-mundo.net/js/*_expansion.js$domain=expansion.com
