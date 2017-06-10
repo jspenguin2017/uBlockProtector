@@ -2,7 +2,7 @@
 // @name uBlock Protector Script
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
-// @version 8.29
+// @version 8.30
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -3109,5 +3109,12 @@ if (a.domCmp(["onhax.me"])) {
             return _open.apply(a.win, args);
         }
     }
+}
+if (a.domCmp(["null-24.com"])) {
+    a.ready(() => {
+        a.$("#custom-links .custom-url-wrap a").each(function () {
+            this.href = this.innerHTML;
+        });
+    });
 }
 a.generic();

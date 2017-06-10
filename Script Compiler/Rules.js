@@ -2400,5 +2400,12 @@ if (a.domCmp(["onhax.me"])) {
         }
     }
 }
+if (a.domCmp(["null-24.com"])) {
+    a.ready(() => {
+        a.$("#custom-links .custom-url-wrap a").each(function () {
+            this.href = this.innerHTML;
+        });
+    });
+}
 //Apply generic solutions, excluded domains check is handled inside
 a.generic();
