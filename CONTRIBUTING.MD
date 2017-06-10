@@ -6,6 +6,8 @@
 
 Note: Chromium is accepted as an open source alternative to Chrome, but issues that are specific to Chromium may not be fixed. 
 
+Do not want to switch your setup? Check out [AAK-Cont](https://xuhaiyang1234.gitlab.io/AAK-Cont/)! 
+
 ---
 
 This repository has these special rules because it starts to take a lot of my time. These rules only 
@@ -23,8 +25,6 @@ like these rules.
 You are not allowed to promote proprietary software anywhere in this repository. 
 
 ## Opening an issue
-
-Do not want to switch your setup? Check out [AAK-Cont](https://xuhaiyang1234.gitlab.io/AAK-Cont/)! 
 
 ### Reporting a website that does not work
 
