@@ -5,7 +5,7 @@
 ! Author: jspenguin2017
 ! Homepage: https://jspenguin2017.github.io/uBlockProtector/
 ! Support: https://github.com/jspenguin2017/uBlockProtector/blob/master/CONTRIBUTING.MD
-! License: GNU GPL v3
+! License: GPL-3.0
 !
 ! ===== PLEASE READ =====
 ! This filter list is intended to be used with uBlock Protector Script.
