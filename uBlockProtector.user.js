@@ -2161,14 +2161,14 @@ if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "pl
         return `<iframe srcdoc='<html><head><link href="https://cdnjs.cloudflare.com/ajax/libs/video.js/5.10.5/al` +
             `t/video-js-cdn.min.css" rel="stylesheet"><script src="https://cdnjs.cloudflare.com/ajax/libs/video.j` +
             `s/5.10.5/video.min.js"><\/script><script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib` +
-            `-hls/3.1.0/videojs-contrib-hls.min.js"><\/script><style type="text/css">html, body { padding:0; marg` +
-            `in:0; } .vjs-default-skin { color:#eee; } .vjs-default-skin .vjs-play-progress, .vjs-default-skin .v` +
-            `js-volume-level { background-color:#eee; } .vjs-default-skin .vjs-big-play-button, .vjs-default-skin` +
-            ` .vjs-control-bar { background:rgba(0,0,0,.2); } .vjs-default-skin .vjs-slider { background:rgba(0,0` +
-            `,0,.3); }</style></head><body><video id="uBlock_Protector_Video_Player" class="video-js vjs-default-` +
-            `skin" controls preload="auto" width="${width}" height="${height}"><source src="${source}" type="${type}"` +
-            ` /></video><script>videojs("uBlock_Protector_Video_Player");<\/script></body></html>' width="${width}"` +
-            ` height="${height}" frameborder="0" scrolling="no" allowfullscreen="true"></iframe>`;
+            `-hls/3.1.0/videojs-contrib-hls.min.js"><\/script><style type="text/css">html, body{padding:0; margin` +
+            `:0;}.vjs-default-skin{color:#eee}.vjs-default-skin .vjs-play-progress,.vjs-default-skin .vjs-volume-` +
+            `level{background-color:#eee}.vjs-default-skin .vjs-big-play-button,.vjs-default-skin .vjs-control-ba` +
+            `r{background:rgba(0,0,0,.2)}.vjs-default-skin .vjs-slider{background:rgba(0,0,0,.3)}</style></head><` +
+            `body><video id="uBlock_Protector_Video_Player" class="video-js vjs-default-skin" controls preload="a` +
+            `uto" width="${width}" height="${height}"><source src="${source}" type="${type}"></video><script>vide` +
+            `ojs("uBlock_Protector_Video_Player")<\/script></body></html>' width="${width}" height="${height}" fr` +
+            `ameborder="0" scrolling="no" allowfullscreen="true"></iframe>`;
     };
     const handler = () => {
         if (isInBackground) {
