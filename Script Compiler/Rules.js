@@ -1344,14 +1344,16 @@ if (a.domCmp(["dplay.com", "dplay.dk", "dplay.se"])) {
     });
     a.cookie("dsc-adblock", value);
 }
-if (a.config.debugMode &&
-    a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "play.tv3.lt", "tv3play.tv3.ee"])) {
-    //(Debug) Replace player on load
+if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "play.tv3.lt", "tv3play.tv3.ee"])) {
     //2 block of debug code to remove when releasing
     //Might need to pause handler when the page is in the background...
-    let inited = false;
+    let isInBackground = false;
     const idMatcher = /\/(\d+)/;
     const handler = () => {
+        if (isInBackground) {
+            a.setTimeout(handler, 1000);
+            return;
+        }
         //Find player
         const elem = a.$("#video-player");
         if (elem.length === 0) {
@@ -1380,10 +1382,10 @@ if (a.config.debugMode &&
             method: "GET",
             url: `${proxy}http://playapi.mtgx.tv/v3/videos/stream/${videoID}`,
             onload(result) {
-                //=====Debug only=====
-                a.out.info("Response received:");
-                a.out.info(result.responseText);
-                //===End debug only===
+                if (a.config.debugMode) {
+                    a.out.info("Response received:");
+                    a.out.info(result.responseText);
+                }
                 parser(result.responseText);
             },
         });
@@ -1413,26 +1415,23 @@ if (a.config.debugMode &&
             a.out.error("uBlock Protector failed to find video URL!");
             return;
         }
-        //=====Debug only=====
-        a.out.info("Potential media URLs:");
-        a.out.info([streams.high, streams.hls, streams.medium]);
-        a.out.info("Used media URL:");
-        a.out.info(sources);
-        //===End debug only===
+        if (a.config.debugMode) {
+            a.out.info("Potential media URLs:");
+            a.out.info([streams.high, streams.hls, streams.medium]);
+            a.out.info("Used media URL:");
+            a.out.info(sources);
+        }
         //Replace player
         const height = a.$("#video-player").height();
         const width = a.$("#video-player").width();
         a.$("#video-player").after(a.videoJS(sources, types, width, height)).remove();
-        //Initialize VideoJS
-        if (!inited) {
-            inited = true;
-            a.videoJS.init(a.videoJS.plugins.hls);
-        }
         //Watch for more video players
         handler();
     };
     //Start
     handler();
+    a.on("focus", () => { isInBackground = false; });
+    a.on("blur", () => { isInBackground = true; });
 }
 if (a.domCmp(["firstrow.co", "firstrows.ru", "firstrows.tv", "firstrows.org", "firstrows.co",
     "firstrows.biz", "firstrowus.eu", "firstrow1us.eu", "firstsrowsports.eu", "firstrowsportes.tv",

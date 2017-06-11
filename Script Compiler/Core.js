@@ -859,41 +859,19 @@ a.nativePlayer = (source, typeIn, width = "100%", height = "auto") => {
  * @return {string} An HTML string of the video player.
  */
 a.videoJS = (sources, types, width, height) => {
-    //Build HTML string
-    let html = `<video id="uBlock_Protector_Video_Player" class="video-js vjs-default-skin" controls preload="auto" width="${width}" height="${height}" data-setup="{}">`;
+    debugger;
+    let html = `<iframe srcdoc='<html><head><link href="https://cdnjs.cloudflare.com/ajax/libs/video.js/5.10.5/alt/video-js-cdn.min.css" rel="stylesheet">` +
+        `<script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/5.10.5/video.min.js"></script>` +
+        `<script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/3.1.0/videojs-contrib-hls.min.js"></script>` +
+        `<style type="text/css">html, body { padding:0; margin:0; } .vjs-default-skin { color:#eee; } .vjs-default-skin .vjs-play-progress, .vjs-default-skin .vjs-volume-level { background-color:#eee; } ` +
+        `.vjs-default-skin .vjs-big-play-button, .vjs-default-skin .vjs-control-bar { background:rgba(0,0,0,.2); } .vjs-default-skin .vjs-slider { background:rgba(0,0,0,.3); }</style></head>` +
+        `<body><video id="uBlock_Protector_Video_Player" class="video-js vjs-default-skin" controls preload="auto" width="${width}" height="${height}">`;
     for (let i = 0; i < sources.length; i++) {
         html += `<source src="${sources[i]}" type="${types[i]}" />`;
     }
-    html += `</video>`;
+    html += `</video><script>videojs("uBlock_Protector_Video_Player");</script></body></html>' width="${width}" height="${height}" frameborder="0" scrolling="no" allowfullscreen="true"></iframe>`;
     return html;
 };
-/**
- * Initialize videoJS 5.19.2.
- * Do not call this function multiple times.
- * @param {string} [plugins=""] - Plug-ins to load, pass multiple arguments to load more than 1 plug-in. Omit if no plug-in is needed.
- * @function
- */
-a.videoJS.init = (...args) => {
-    //Disable telemetry
-    try {
-        a.win.HELP_IMPROVE_VIDEOJS = false;
-    } catch (err) { }
-    let plugins = args.join();
-    //Load components
-    a.$("head").append(`<link href="//vjs.zencdn.net/5.19.2/video-js.min.css" rel="stylesheet" /><script src="//vjs.zencdn.net/5.19.2/video.min.js"><\/script>${plugins}`);
-};
-/**
- * Object containing all available VideoJS plug-ins.
- * @const {Object}
- */
-a.videoJS.plugins = {};
-/**
- * VideoJS plug-in, HLS parser.
- * Does not seem to work.
- * @const {string}
- */
-//a.videoJS.plugins.hls = `<script src="//cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.4.0/videojs-contrib-hls.min.js"><\/script>`;
-a.videoJS.plugins.hls = `<script src="//unpkg.com/videojs-contrib-hls@5.5.3/dist/videojs-contrib-hls.js"><\/script>`;
 /**
  * Run a function on document-idle (DOMContentLoaded).
  * @function

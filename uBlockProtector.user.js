@@ -2,7 +2,7 @@
 // @name uBlock Protector Script
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
-// @version 8.31
+// @version 8.32
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -510,22 +510,19 @@ a.nativePlayer = (source, typeIn, width = "100%", height = "auto") => {
     return `<video width="${width}" height="${height}" controls><source src="${source}" type="${type}" /></video>`;
 };
 a.videoJS = (sources, types, width, height) => {
-    let html = `<video id="uBlock_Protector_Video_Player" class="video-js vjs-default-skin" controls preload="auto" width="${width}" height="${height}" data-setup="{}">`;
+    debugger;
+    let html = `<iframe srcdoc='<html><head><link href="https://cdnjs.cloudflare.com/ajax/libs/video.js/5.10.5/alt/video-js-cdn.min.css" rel="stylesheet">` +
+        `<script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/5.10.5/video.min.js"></script>` +
+        `<script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/3.1.0/videojs-contrib-hls.min.js"></script>` +
+        `<style type="text/css">html, body { padding:0; margin:0; } .vjs-default-skin { color:#eee; } .vjs-default-skin .vjs-play-progress, .vjs-default-skin .vjs-volume-level { background-color:#eee; } ` +
+        `.vjs-default-skin .vjs-big-play-button, .vjs-default-skin .vjs-control-bar { background:rgba(0,0,0,.2); } .vjs-default-skin .vjs-slider { background:rgba(0,0,0,.3); }</style></head>` +
+        `<body><video id="uBlock_Protector_Video_Player" class="video-js vjs-default-skin" controls preload="auto" width="${width}" height="${height}">`;
     for (let i = 0; i < sources.length; i++) {
         html += `<source src="${sources[i]}" type="${types[i]}" />`;
     }
-    html += `</video>`;
+    html += `</video><script>videojs("uBlock_Protector_Video_Player");</script></body></html>' width="${width}" height="${height}" frameborder="0" scrolling="no" allowfullscreen="true"></iframe>`;
     return html;
 };
-a.videoJS.init = (...args) => {
-    try {
-        a.win.HELP_IMPROVE_VIDEOJS = false;
-    } catch (err) { }
-    let plugins = args.join();
-    a.$("head").append(`<link href="//vjs.zencdn.net/5.19.2/video-js.min.css" rel="stylesheet" /><script src="//vjs.zencdn.net/5.19.2/video.min.js"><\/script>${plugins}`);
-};
-a.videoJS.plugins = {};
-a.videoJS.plugins.hls = `<script src="//unpkg.com/videojs-contrib-hls@5.5.3/dist/videojs-contrib-hls.js"><\/script>`;
 a.ready = (...args) => {
     a.on("DOMContentLoaded", ...args);
 };
@@ -2172,11 +2169,14 @@ if (a.domCmp(["dplay.com", "dplay.dk", "dplay.se"])) {
     });
     a.cookie("dsc-adblock", value);
 }
-if (a.config.debugMode &&
-    a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "play.tv3.lt", "tv3play.tv3.ee"])) {
-    let inited = false;
+if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "play.tv3.lt", "tv3play.tv3.ee"])) {
+    let isInBackground = false;
     const idMatcher = /\/(\d+)/;
     const handler = () => {
+        if (isInBackground) {
+            a.setTimeout(handler, 1000);
+            return;
+        }
         const elem = a.$("#video-player");
         if (elem.length === 0) {
             a.setTimeout(handler, 1000);
@@ -2200,8 +2200,10 @@ if (a.config.debugMode &&
             method: "GET",
             url: `${proxy}http://playapi.mtgx.tv/v3/videos/stream/${videoID}`,
             onload(result) {
-                a.out.info("Response received:");
-                a.out.info(result.responseText);
+                if (a.config.debugMode) {
+                    a.out.info("Response received:");
+                    a.out.info(result.responseText);
+                }
                 parser(result.responseText);
             },
         });
@@ -2229,20 +2231,20 @@ if (a.config.debugMode &&
             a.out.error("uBlock Protector failed to find video URL!");
             return;
         }
-        a.out.info("Potential media URLs:");
-        a.out.info([streams.high, streams.hls, streams.medium]);
-        a.out.info("Used media URL:");
-        a.out.info(sources);
+        if (a.config.debugMode) {
+            a.out.info("Potential media URLs:");
+            a.out.info([streams.high, streams.hls, streams.medium]);
+            a.out.info("Used media URL:");
+            a.out.info(sources);
+        }
         const height = a.$("#video-player").height();
         const width = a.$("#video-player").width();
         a.$("#video-player").after(a.videoJS(sources, types, width, height)).remove();
-        if (!inited) {
-            inited = true;
-            a.videoJS.init(a.videoJS.plugins.hls);
-        }
         handler();
     };
     handler();
+    a.on("focus", () => { isInBackground = false; });
+    a.on("blur", () => { isInBackground = true; });
 }
 if (a.domCmp(["firstrow.co", "firstrows.ru", "firstrows.tv", "firstrows.org", "firstrows.co",
     "firstrows.biz", "firstrowus.eu", "firstrow1us.eu", "firstsrowsports.eu", "firstrowsportes.tv",
