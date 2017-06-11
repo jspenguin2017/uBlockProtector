@@ -2,16 +2,16 @@
 Before opening an issue, you MUST read the contribution guideline. Failure to do so may result in a ban. 
 -->
 
-## Test link (required): 
+### Test link (required): 
 
-## Screenshot of the web page (required): 
+### Screenshot of the web page (required): 
 <!--
 Your screenshot must include the address bar, it should look something like this: http://i.imgur.com/QB3WujS.png
 -->
 
-## Screenshot of the console (press `F12` to bring up the console) (required): 
+### Screenshot of the console (press `F12` to bring up the console) (required): 
 <!--
 Your screenshot should look something like this: http://i.imgur.com/92jw1Wj.png
 -->
 
-## Add everything else that you believe to be useful below (optional): 
+### Add everything else that you believe to be useful below (optional): 
