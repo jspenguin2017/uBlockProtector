@@ -20,7 +20,7 @@ Test links:
 * https://www.itv.com/hub/a-touch-of-frost/Ya1774a0037
 
 Issues: 
-* https://github.com/jspenguin2017/uBlockProtector/issues/194
+* https://github.com/jspenguin2017/uBlockProtector/issues/286
 
 Notes: 
 * Not confirmed on the standard configuration, but since we do not have a solution for it, 
