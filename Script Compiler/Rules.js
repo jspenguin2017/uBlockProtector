@@ -2430,6 +2430,11 @@ if (a.domCmp(["null-24.com"])) {
 if (a.domCmp(["searchftps.net"])) {
     a.$(`<iframe width="336" height="280" style="display:none;"></iframe>`).appendTo("html");
 }
+if (a.domCmp(["cyberterminators.co"])) {
+    a.ready(() => {
+        a.doc.oncontextmenu = null;
+    });
+}
 if (a.config.debugMode && a.domCmp(["itv.com"])) {
     //Test link: https://www.itv.com/hub/take-me-out/1a8716a0089
     //===DEBUG CODE===

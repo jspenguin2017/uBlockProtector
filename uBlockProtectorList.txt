@@ -67,6 +67,7 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 ##.popup-premium__apla
 ||separatesilver.com^$third-party
 techdracula.com,keshavcommoditycalls.com,hackinformer.com,coderexample.com,anibatch.id,altervista.org##script:inject(setTimeout-defuser.js, an_message_display)
+hentaitake.net,hackinformer.com,sopsport.org,cyberterminators.co##script:inject(abort-on-property-read.js, anOptions)
 futbolchile.net,freeomovie.com,appdrop.net,skmedix.pl,yalujailbreak.net,cloudwebcopy.com##script:inject(bab-defuser.js)
 ||lukkr.com/website/pf.js
 @@||www.dogefaucet.com/static/js/ads.js|
@@ -184,7 +185,6 @@ pwn.pl##script:inject(abort-on-property-read.js, adblock)
 afreesms.com##script:inject(noeval.js)
 ||tiptonvillepylesville.com^$domain=clubic.com
 animeid.io,jkanime.co,gogoanime.ch,chiaanime.co##script:inject(setTimeout-defuser.js, #player)
-hentaitake.net##script:inject(abort-on-property-read.js, anOptions)
 @@||comicallyincorrect.com^$elemhide
 @@||comicincorrect.wpengine.netdna-cdn.com/wp-content/uploads/*
 vidlox.tv##script:inject(noeval.js)
@@ -199,7 +199,6 @@ shqiperiatv.com,albtvhd.com,tvshqiphd.com,www.balkanweb.com,cdn.livestream.com,l
 themeslide.com##script:inject(noeval.js)
 wordsense.eu##script:inject(setTimeout-defuser.js, ad, 2000)
 @@||hackinformer.com/wp-content/plugins/detect-adblock/js/ads.js|$script,first-party
-hackinformer.com##script:inject(abort-on-property-write, anOptions)
 ||uol.com.br/camaleao/assets/web/javascript/detectadblock^$script,important
 /magnific-popup.js/$domain=transparentcalifornia.com
 @@||yamvideo.com/pop1/jwplayer.js$domain=javsex.net
@@ -224,7 +223,6 @@ uplod.ws##script:inject(abort-on-property-read.js, $.ready)
 windowsreport.com##script:inject(silent-noeval.js)
 ||pelcro.com^$third-party
 haxmaps.com,haxrec.com,haxcolors.com##script:inject(setTimeout-defuser.js, /.*/, 10000)
-sopsport.org##script:inject(abort-on-property-read.js, anOptions)
 animesync.tv##.modal-adblock
 ||active.cache.el-mundo.net/js/*_expansion.js$domain=expansion.com
 @@||gtsstatic.com/p/mscripts/prebid_32.js$script,domain=gentside.com

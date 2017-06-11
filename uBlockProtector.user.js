@@ -2,7 +2,7 @@
 // @name uBlock Protector Script
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
-// @version 8.35
+// @version 8.36
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -3126,6 +3126,11 @@ if (a.domCmp(["null-24.com"])) {
 }
 if (a.domCmp(["searchftps.net"])) {
     a.$(`<iframe width="336" height="280" style="display:none;"></iframe>`).appendTo("html");
+}
+if (a.domCmp(["cyberterminators.co"])) {
+    a.ready(() => {
+        a.doc.oncontextmenu = null;
+    });
 }
 if (a.config.debugMode && a.domCmp(["itv.com"])) {
     a.ready(() => {
