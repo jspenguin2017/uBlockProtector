@@ -816,17 +816,14 @@ a.serialize = (obj) => {
  * Generate a native HTML5 player with controls but not autoplay.
  * @function
  * @param {string} source - The source of the video.
- * @param {string} [typeIn=(Auto Detect)] - The type of the video, will be automatically detected if not supplied, and defaults to MP4 if detection failed.
+ * @param {string} [type=(Auto Detect)] - The type of the video, will be automatically detected if not supplied, and defaults to MP4 if detection failed.
  * @param {string} [width="100%"] - The width of the player.
  * @param {string} [height="auto"] - The height of the player.
  * @return {string} An HTML string of the video player.
  */
-a.nativePlayer = (source, typeIn, width = "100%", height = "auto") => {
+a.nativePlayer = (source, type, width = "100%", height = "auto") => {
     //Detect type
-    let type;
-    if (typeIn) {
-        type = typeIn;
-    } else {
+    if (!type) {
         const temp = source.split(".");
         switch (temp[temp.length - 1]) {
             case "webm":

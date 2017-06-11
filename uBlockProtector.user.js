@@ -486,11 +486,8 @@ a.serialize = (obj) => {
     }
     return str;
 };
-a.nativePlayer = (source, typeIn, width = "100%", height = "auto") => {
-    let type;
-    if (typeIn) {
-        type = typeIn;
-    } else {
+a.nativePlayer = (source, type, width = "100%", height = "auto") => {
+    if (!type) {
         const temp = source.split(".");
         switch (temp[temp.length - 1]) {
             case "webm":
