@@ -2,7 +2,7 @@
 // @name uBlock Protector Script
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
-// @version 8.38
+// @version 8.39
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -1067,8 +1067,7 @@ if (a.domCmp(["tvregionalna24.pl"])) {
         }
     });
 }
-if (a.domCmp(["tvn.pl", "tvn24.pl", "tvnstyle.pl", "tvnturbo.pl", "kuchniaplus.pl",
-    "miniminiplus.pl"])) {
+if (a.domCmp(["tvn.pl", "tvnstyle.pl", "tvnturbo.pl", "kuchniaplus.pl", "miniminiplus.pl"])) {
     const homePages = ["http://www.tvn.pl/", "http://www.tvnstyle.pl/", "http://www.tvnturbo.pl/"];
     if (!homePages.includes(a.doc.location.href)) {
         a.on("load", () => {
