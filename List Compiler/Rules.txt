@@ -345,3 +345,5 @@ animesync.tv##.modal-adblock
 @@||gtsstatic.com/p/mscripts/prebid_32.js$script,domain=gentside.com
 ! === watchfree.to
 watchfree.to##script:inject(abort-on-property-read.js, UAParser)
+! === firstonetv.eu
+firstonetv.eu##script:inject(noeval-if.js, Please disable your Adblocker)
