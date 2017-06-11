@@ -2212,6 +2212,9 @@ if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "pl
         try {
             const parsedData = JSON.parse(data);
             streams = parsedData.streams
+            if (!streams) {
+                throw "Media URL Not Found";
+            }
         } catch (err) {
             a.out.error("uBlock Protector failed to find video URL!");
             return;
@@ -3121,5 +3124,9 @@ if (a.domCmp(["null-24.com"])) {
 }
 if (a.domCmp(["searchftps.net"])) {
     a.$(`<iframe width="336" height="280" style="display:none;"></iframe>`).appendTo("html");
+}
+if (a.config.debugMode && a.domCmp(["itv.com"])) {
+}
+if (a.config.debugMode && a.domCmp(["viasatsport.fi"])) {
 }
 a.generic();

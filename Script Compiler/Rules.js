@@ -1345,8 +1345,7 @@ if (a.domCmp(["dplay.com", "dplay.dk", "dplay.se"])) {
     a.cookie("dsc-adblock", value);
 }
 if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "play.tv3.lt", "tv3play.tv3.ee"])) {
-    //2 block of debug code to remove when releasing
-    //Might need to pause handler when the page is in the background...
+    //Thanks to szymon1118
     let isInBackground = false;
     const idMatcher = /\/(\d+)/;
     const handler = () => {
@@ -1396,6 +1395,9 @@ if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "pl
         try {
             const parsedData = JSON.parse(data);
             streams = parsedData.streams
+            if (!streams) {
+                throw "Media URL Not Found";
+            }
         } catch (err) {
             a.out.error("uBlock Protector failed to find video URL!");
             return;
@@ -2409,6 +2411,12 @@ if (a.domCmp(["null-24.com"])) {
 }
 if (a.domCmp(["searchftps.net"])) {
     a.$(`<iframe width="336" height="280" style="display:none;"></iframe>`).appendTo("html");
+}
+if (a.config.debugMode && a.domCmp(["itv.com"])) {
+    //No solution for now...
+}
+if (a.config.debugMode && a.domCmp(["viasatsport.fi"])) {
+    //No solution for now...
 }
 //Apply generic solutions, excluded domains check is handled inside
 a.generic();
