@@ -2,7 +2,7 @@
 // @name uBlock Protector Script
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
-// @version 8.36
+// @version 8.37
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -3133,6 +3133,9 @@ if (a.domCmp(["cyberterminators.co"])) {
     });
 }
 if (a.config.debugMode && a.domCmp(["itv.com"])) {
+    const videoJS = (x, y, z, width, height) => {
+        return ""; //Insert videoJS payload here...
+    };
     a.ready(() => {
         const playerElem = a.doc.getElementById("video");
         if (!playerElem) {
@@ -3141,7 +3144,7 @@ if (a.config.debugMode && a.domCmp(["itv.com"])) {
         }
         GM_xmlhttpRequest({
             method: "POST",
-            url: a.doc.getElementById("video").getAttribute("data-video-playlist"),
+            url: playerElem.getAttribute("data-video-playlist"),
             headers: {
                 "hmac": playerElem.getAttribute("data-video-hmac").toUpperCase(),
                 "Accept": "application/vnd.itv.vod.playlist.v2+json",
@@ -3156,7 +3159,7 @@ if (a.config.debugMode && a.domCmp(["itv.com"])) {
                 try {
                     data = JSON.parse(response.responseText);
                     data = data.Playlist.Video;
-                    if (!data) {
+                    if (!data.MediaFiles) {
                         throw "Media URL Not Found";
                     }
                 } catch (err) {
@@ -3177,6 +3180,9 @@ if (a.config.debugMode && a.domCmp(["itv.com"])) {
                 a.out.log(sources);
                 a.out.log(types);
                 a.out.log(subtitles);
+                const width = a.$(".stage__player-wrapper").width();
+                const height = a.$(".stage__player-wrapper").height();
+                a.$(".stage__player-wrapper").html(videoJS(sources, types, subtitles, width, height));
             },
             onerror() {
                 a.out.error("uBlock Protector failed to find video URL!");

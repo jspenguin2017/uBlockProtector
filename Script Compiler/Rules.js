@@ -2440,6 +2440,9 @@ if (a.config.debugMode && a.domCmp(["itv.com"])) {
     //===DEBUG CODE===
     //Need to add the API domain to XMLHttpRequest white list
     //Can find the URL of the media file and subtitle file
+    const videoJS = (x, y, z, width, height) => {
+        return ""; //Insert videoJS payload here...
+    };
     a.ready(() => {
         //Find the player element
         const playerElem = a.doc.getElementById("video");
@@ -2450,7 +2453,7 @@ if (a.config.debugMode && a.domCmp(["itv.com"])) {
         //Find the media URL
         GM_xmlhttpRequest({
             method: "POST",
-            url: a.doc.getElementById("video").getAttribute("data-video-playlist"),
+            url: playerElem.getAttribute("data-video-playlist"),
             headers: {
                 "hmac": playerElem.getAttribute("data-video-hmac").toUpperCase(),
                 "Accept": "application/vnd.itv.vod.playlist.v2+json",
@@ -2466,7 +2469,7 @@ if (a.config.debugMode && a.domCmp(["itv.com"])) {
                 try {
                     data = JSON.parse(response.responseText);
                     data = data.Playlist.Video;
-                    if (!data) {
+                    if (!data.MediaFiles) {
                         throw "Media URL Not Found";
                     }
                 } catch (err) {
@@ -2493,6 +2496,10 @@ if (a.config.debugMode && a.domCmp(["itv.com"])) {
                 a.out.log(types);
                 a.out.log(subtitles);
                 //===End Log===
+                //Replace player
+                const width = a.$(".stage__player-wrapper").width();
+                const height = a.$(".stage__player-wrapper").height();
+                a.$(".stage__player-wrapper").html(videoJS(sources, types, subtitles, width, height));
             },
             onerror() {
                 a.out.error("uBlock Protector failed to find video URL!");
@@ -2502,7 +2509,7 @@ if (a.config.debugMode && a.domCmp(["itv.com"])) {
 }
 if (a.config.debugMode && a.domCmp(["viasatsport.fi"])) {
     //===DEBUG CODE===
-    //Nothing for now
+    //Nothing for now...
 }
 //Apply generic solutions, excluded domains check is handled inside
 a.generic();
