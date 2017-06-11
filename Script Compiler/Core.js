@@ -1088,7 +1088,7 @@ a.generic = () => {
                 a.err("AdBlock Alerter");
                 //Remove alert and allow scrolling
                 a.$("div.adb_overlay").remove();
-                a.css("html, body { height:auto; overflow: auto; }");
+                a.css("html, body { height:auto; overflow:auto; }");
             }
             //Block screen
             if (a.$("#blockdiv").html() === "disable ad blocking or use another browser without any adblocker when you visit") {

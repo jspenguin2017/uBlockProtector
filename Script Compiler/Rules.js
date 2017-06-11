@@ -2435,6 +2435,10 @@ if (a.domCmp(["cyberterminators.co"])) {
         a.doc.oncontextmenu = null;
     });
 }
+if (a.domCmp(["youtube-videos.tv"])) {
+    a.css(".cactus-video-content div { display:block; } .mts-cl-horizontal.mts-cl-social-locker { display:none; }");
+    a.noAccess("KillAdBlock");
+}
 if (a.config.debugMode && a.domCmp(["itv.com"])) {
     //Test link: https://www.itv.com/hub/take-me-out/1a8716a0089
     //===DEBUG CODE===

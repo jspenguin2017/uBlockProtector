@@ -2,7 +2,7 @@
 // @name uBlock Protector Script
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
-// @version 8.37
+// @version 8.38
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -673,7 +673,7 @@ a.generic = () => {
             if (a.$("div.adb_overlay > div.adb_modal_img").length > 0) {
                 a.err("AdBlock Alerter");
                 a.$("div.adb_overlay").remove();
-                a.css("html, body { height:auto; overflow: auto; }");
+                a.css("html, body { height:auto; overflow:auto; }");
             }
             if (a.$("#blockdiv").html() === "disable ad blocking or use another browser without any adblocker when you visit") {
                 a.out.err("Uncaught AdBlock Error: Generic block screens are not allowed on this device!");
@@ -3131,6 +3131,10 @@ if (a.domCmp(["cyberterminators.co"])) {
     a.ready(() => {
         a.doc.oncontextmenu = null;
     });
+}
+if (a.domCmp(["youtube-videos.tv"])) {
+    a.css(".cactus-video-content div { display:block; } .mts-cl-horizontal.mts-cl-social-locker { display:none; }");
+    a.noAccess("KillAdBlock");
 }
 if (a.config.debugMode && a.domCmp(["itv.com"])) {
     const videoJS = (x, y, z, width, height) => {
