@@ -2431,7 +2431,8 @@ if (a.domCmp(["searchftps.net"])) {
     a.$(`<iframe width="336" height="280" style="display:none;"></iframe>`).appendTo("html");
 }
 if (a.config.debugMode && a.domCmp(["itv.com"])) {
-    //DEBUG CODE
+    //Test link: https://www.itv.com/hub/take-me-out/1a8716a0089
+    //===DEBUG CODE===
     //Can find the URL of the media file and subtitle file
     a.ready(() => {
         //Find the player element
@@ -2469,10 +2470,21 @@ if (a.config.debugMode && a.domCmp(["itv.com"])) {
                 //Build media source
                 let sources = [], types = [], subtitles = [];
                 for (let i = 0; i < data.MediaFiles.length; i++) {
-                    sources.push(data.Base + data.MediaFiles.Href[i]);
+                    sources.push(data.Base + data.MediaFiles[i].Href);
                     //This is the MIME type for .mpd file
                     types.push("application/dash+xml");
                 }
+                if (data.Subtitles) {
+                    for (let i = 0; i < data.Subtitles.length; i++) {
+                        subtitles.push(data.Base + data.Subtitles[i].Href);
+                    }
+                }
+                //===Debug Log===
+                a.out.log(data);
+                a.out.log(sources);
+                a.out.log(types);
+                a.out.log(subtitles);
+                //===End Log===
             },
             onerror() {
                 a.out.error("uBlock Protector failed to find video URL!");
@@ -2481,7 +2493,8 @@ if (a.config.debugMode && a.domCmp(["itv.com"])) {
     });
 }
 if (a.config.debugMode && a.domCmp(["viasatsport.fi"])) {
-    //No solution for now...
+    //===DEBUG CODE===
+    //Nothing for now
 }
 //Apply generic solutions, excluded domains check is handled inside
 a.generic();

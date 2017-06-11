@@ -3163,9 +3163,18 @@ if (a.config.debugMode && a.domCmp(["itv.com"])) {
                 }
                 let sources = [], types = [], subtitles = [];
                 for (let i = 0; i < data.MediaFiles.length; i++) {
-                    sources.push(data.Base + data.MediaFiles.Href[i]);
+                    sources.push(data.Base + data.MediaFiles[i].Href);
                     types.push("application/dash+xml");
                 }
+                if (data.Subtitles) {
+                    for (let i = 0; i < data.Subtitles.length; i++) {
+                        subtitles.push(data.Base + data.Subtitles[i].Href);
+                    }
+                }
+                a.out.log(data);
+                a.out.log(sources);
+                a.out.log(types);
+                a.out.log(subtitles);
             },
             onerror() {
                 a.out.error("uBlock Protector failed to find video URL!");
