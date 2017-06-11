@@ -42,8 +42,8 @@ namespace Script_Compiler
         /// <param name="e"></param>
         private async void BtnBuildRelease_Click(object sender, EventArgs e)
         {
-            //Update UI
-            string gitRoot = UpdateUI(true);
+            //Lock UI
+            string gitRoot = UpdateUI(false);
             //Start main process
             await Task.Run(() =>
             {
@@ -70,7 +70,7 @@ namespace Script_Compiler
                 }
             });
             //Unlock UI
-            UpdateUI(false);
+            UpdateUI(true);
         }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace Script_Compiler
         private async void BtnBuildDev_Click(object sender, EventArgs e)
         {
             //Lock UI
-            string gitRoot = UpdateUI(true);
+            string gitRoot = UpdateUI(false);
             //Start main process
             await Task.Run(() =>
             {
@@ -115,7 +115,7 @@ namespace Script_Compiler
                 }
             });
             //Unlock UI
-            UpdateUI(false);
+            UpdateUI(true);
         }
 
         /// <summary>
@@ -159,24 +159,11 @@ namespace Script_Compiler
         /// <summary>
         /// Lock or unlock UI, will return data in git root textbox
         /// </summary>
-        /// <param name="locking">True to lock UI, false to unlock UI</param>
+        /// <param name="enable">True to unlock UI, false to lock</param>
         /// <returns>Data in git root textbox</returns>
-        private string UpdateUI(bool locking)
+        private string UpdateUI(bool enable)
         {
-            if (locking)
-            {
-                //Lock elements
-                BtnBuildRelease.Enabled = false;
-                BtnBuildDev.Enabled = false;
-                TBGitRoot.Enabled = false;
-            }
-            else
-            {
-                //Unlock elements
-                BtnBuildRelease.Enabled = true;
-                BtnBuildDev.Enabled = true;
-                TBGitRoot.Enabled = true;
-            }
+            this.Enabled = enable;
             //Return git root
             return TBGitRoot.Text;
         }

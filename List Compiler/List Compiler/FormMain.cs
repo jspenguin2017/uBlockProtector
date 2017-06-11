@@ -41,9 +41,8 @@ namespace List_Compiler
         /// <param name="e"></param>
         private async void BtnBuild_Click(object sender, EventArgs e)
         {
-            //Lock elements
-            BtnBuild.Enabled = false;
-            TBGitRoot.Enabled = false;
+            //Lock UI
+            this.Enabled = false;
             //Cache git root
             string gitRoot = TBGitRoot.Text;
             //Start main process
@@ -120,9 +119,8 @@ namespace List_Compiler
                     return;
                 }
             });
-            //Unlock elements
-            BtnBuild.Enabled = true;
-            TBGitRoot.Enabled = true;
+            //Unlock UI
+            this.Enabled = true;
         }
 
         /// <summary>
