@@ -203,7 +203,7 @@ if (a.domCmp(["player.pl"])) {
             },
             onerror() {
                 a.out.error("uBlock Protector failed to find media URL!");
-            }
+            },
         });
     });
 }
@@ -1404,7 +1404,7 @@ if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "pl
             },
             onerror() {
                 a.out.error("uBlock Protector failed to find video URL!");
-            }
+            },
         });
     };
     const parser = (data) => {
@@ -2491,7 +2491,7 @@ if (a.config.debugMode && a.domCmp(["itv.com"])) {
             },
             onerror() {
                 a.out.error("uBlock Protector failed to find video URL!");
-            }
+            },
         });
     });
 }
