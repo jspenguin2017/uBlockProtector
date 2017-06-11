@@ -2,7 +2,7 @@
 // @name uBlock Protector Script
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
-// @version 8.33
+// @version 8.34
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -3118,5 +3118,8 @@ if (a.domCmp(["null-24.com"])) {
             a.win.jQuery("span:contains(Download Direct Link)").parent().unbind("click");
         }, 250);
     });
+}
+if (a.domCmp(["searchftps.net"])) {
+    a.$(`<iframe width="336" height="280" style="display:none;"></iframe>`).appendTo("html");
 }
 a.generic();

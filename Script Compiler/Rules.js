@@ -2407,5 +2407,8 @@ if (a.domCmp(["null-24.com"])) {
         }, 250);
     });
 }
+if (a.domCmp(["searchftps.net"])) {
+    a.$(`<iframe width="336" height="280" style="display:none;"></iframe>`).appendTo("html");
+}
 //Apply generic solutions, excluded domains check is handled inside
 a.generic();
