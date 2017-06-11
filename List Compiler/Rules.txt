@@ -343,3 +343,5 @@ animesync.tv##.modal-adblock
 ||active.cache.el-mundo.net/js/*_expansion.js$domain=expansion.com
 ! === gentside.com
 @@||gtsstatic.com/p/mscripts/prebid_32.js$script,domain=gentside.com
+! === watchfree.to
+watchfree.to##script:inject(abort-on-property-read.js, UAParser)

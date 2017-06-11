@@ -226,6 +226,7 @@ haxmaps.com,haxrec.com,haxcolors.com##script:inject(setTimeout-defuser.js, /.*/,
 animesync.tv##.modal-adblock
 ||active.cache.el-mundo.net/js/*_expansion.js$domain=expansion.com
 @@||gtsstatic.com/p/mscripts/prebid_32.js$script,domain=gentside.com
+watchfree.to##script:inject(abort-on-property-read.js, UAParser)
 ! =====Patched Anti-Adblock Killer List (originally by Reek)=====
 ! Patching logic can be found in List Compiler source code
 ! Anti-Adblock Killer Repository (contains original source code and license): https://github.com/reek/anti-adblock-killer
