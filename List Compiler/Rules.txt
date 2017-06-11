@@ -53,7 +53,7 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 ! === OptinMonster
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/251
 ||a.optnmnstr.com^
-! === Breakage caused by French EasyList
+! === Breakage caused by French EasyList and Firefox
 ! === Issue: https://github.com/uBlockOrigin/uAssets/issues/442
 @@||louccrossc.com^$domain=tf1.fr,badfilter
 @@||foilpolyth.com^$domain=tf1.fr,badfilter
@@ -345,3 +345,5 @@ sopsport.org##script:inject(abort-on-property-read.js, anOptions)
 animesync.tv##.modal-adblock
 ! === expansion.com
 ||active.cache.el-mundo.net/js/*_expansion.js$domain=expansion.com
+! === gentside.com
+@@||gtsstatic.com/p/mscripts/prebid_32.js$script,domain=gentside.com
