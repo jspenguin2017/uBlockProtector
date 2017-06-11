@@ -2972,11 +2972,11 @@ if (a.domCmp(["canalplus.fr"])) {
                         throw "Media URL Not Found";
                     }
                 } catch (err) {
-                    a.out.error("uBlock Protector failed to find media URL!");
+                    a.out.error("uBlock Protector failed to find video URL!");
                 }
             },
             onerror() {
-                a.out.error("uBlock Protector failed to load media JSON!");
+                a.out.error("uBlock Protector failed to load video JSON!");
             },
         });
     };

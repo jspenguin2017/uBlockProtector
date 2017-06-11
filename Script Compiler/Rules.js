@@ -2262,11 +2262,11 @@ if (a.domCmp(["canalplus.fr"])) {
                         throw "Media URL Not Found";
                     }
                 } catch (err) {
-                    a.out.error("uBlock Protector failed to find media URL!");
+                    a.out.error("uBlock Protector failed to find video URL!");
                 }
             },
             onerror() {
-                a.out.error("uBlock Protector failed to load media JSON!");
+                a.out.error("uBlock Protector failed to load video JSON!");
             },
         });
     };
@@ -2471,11 +2471,13 @@ if (a.config.debugMode && a.domCmp(["itv.com"])) {
                 let sources = [], types = [], subtitles = [];
                 for (let i = 0; i < data.MediaFiles.length; i++) {
                     sources.push(data.Base + data.MediaFiles[i].Href);
-                    //This is the MIME type for .mpd file
+                    //The payload requests that only "mpeg-dash" format to be sent
+                    //Below is the MIME type of this format
                     types.push("application/dash+xml");
                 }
                 if (data.Subtitles) {
                     for (let i = 0; i < data.Subtitles.length; i++) {
+                        //The subtitle format is "outband-webvtt"
                         subtitles.push(data.Base + data.Subtitles[i].Href);
                     }
                 }
