@@ -228,6 +228,8 @@ animesync.tv##.modal-adblock
 @@||gtsstatic.com/p/mscripts/prebid_32.js$script,domain=gentside.com
 watchfree.to##script:inject(abort-on-property-read.js, UAParser)
 firstonetv.eu##script:inject(noeval-if.js, Please disable your Adblocker)
+|https://$third-party,script,domain=streamwoop.tv,badfilter
+|https://$third-party,xmlhttprequest,domain=streamwoop.tv,badfilter
 ! =====Patched Anti-Adblock Killer List (originally by Reek)=====
 ! Patching logic can be found in List Compiler source code
 ! Anti-Adblock Killer Repository (contains original source code and license): https://github.com/reek/anti-adblock-killer
