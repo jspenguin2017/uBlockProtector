@@ -848,30 +848,6 @@ a.nativePlayer = (source, typeIn, width = "100%", height = "auto") => {
     return `<video width="${width}" height="${height}" controls><source src="${source}" type="${type}" /></video>`;
 };
 /**
- * Generate a videoJS 5.4.6 player with controls but not autoplay.
- * Do not forget to call a.videoJS.init()
- * Parameters sources and types must be parallel arrays. Unlike native player, all parameters must be supplied.
- * @function
- * @param {Array.<string>} sources - The sources of the video.
- * @param {Array.<string>} types - The types of the video.
- * @param {string} width - The width of the player.
- * @param {string} height - The height of the player.
- * @return {string} An HTML string of the video player.
- */
-a.videoJS = (sources, types, width, height) => {
-    let html = `<iframe srcdoc='<html><head><link href="https://cdnjs.cloudflare.com/ajax/libs/video.js/5.10.5/alt/video-js-cdn.min.css" rel="stylesheet">` +
-        `<script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/5.10.5/video.min.js"></script>` +
-        `<script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/3.1.0/videojs-contrib-hls.min.js"></script>` +
-        `<style type="text/css">html, body { padding:0; margin:0; } .vjs-default-skin { color:#eee; } .vjs-default-skin .vjs-play-progress, .vjs-default-skin .vjs-volume-level { background-color:#eee; } ` +
-        `.vjs-default-skin .vjs-big-play-button, .vjs-default-skin .vjs-control-bar { background:rgba(0,0,0,.2); } .vjs-default-skin .vjs-slider { background:rgba(0,0,0,.3); }</style></head>` +
-        `<body><video id="uBlock_Protector_Video_Player" class="video-js vjs-default-skin" controls preload="auto" width="${width}" height="${height}">`;
-    for (let i = 0; i < sources.length; i++) {
-        html += `<source src="${sources[i]}" type="${types[i]}" />`;
-    }
-    html += `</video><script>videojs("uBlock_Protector_Video_Player");</script></body></html>' width="${width}" height="${height}" frameborder="0" scrolling="no" allowfullscreen="true"></iframe>`;
-    return html;
-};
-/**
  * Run a function on document-idle (DOMContentLoaded).
  * @function
  * @param {Function} func - The function to run.

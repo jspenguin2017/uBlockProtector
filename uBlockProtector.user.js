@@ -2,7 +2,7 @@
 // @name uBlock Protector Script
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
-// @version 8.34
+// @version 8.35
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -508,19 +508,6 @@ a.nativePlayer = (source, typeIn, width = "100%", height = "auto") => {
         }
     }
     return `<video width="${width}" height="${height}" controls><source src="${source}" type="${type}" /></video>`;
-};
-a.videoJS = (sources, types, width, height) => {
-    let html = `<iframe srcdoc='<html><head><link href="https://cdnjs.cloudflare.com/ajax/libs/video.js/5.10.5/alt/video-js-cdn.min.css" rel="stylesheet">` +
-        `<script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/5.10.5/video.min.js"></script>` +
-        `<script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/3.1.0/videojs-contrib-hls.min.js"></script>` +
-        `<style type="text/css">html, body { padding:0; margin:0; } .vjs-default-skin { color:#eee; } .vjs-default-skin .vjs-play-progress, .vjs-default-skin .vjs-volume-level { background-color:#eee; } ` +
-        `.vjs-default-skin .vjs-big-play-button, .vjs-default-skin .vjs-control-bar { background:rgba(0,0,0,.2); } .vjs-default-skin .vjs-slider { background:rgba(0,0,0,.3); }</style></head>` +
-        `<body><video id="uBlock_Protector_Video_Player" class="video-js vjs-default-skin" controls preload="auto" width="${width}" height="${height}">`;
-    for (let i = 0; i < sources.length; i++) {
-        html += `<source src="${sources[i]}" type="${types[i]}" />`;
-    }
-    html += `</video><script>videojs("uBlock_Protector_Video_Player");</script></body></html>' width="${width}" height="${height}" frameborder="0" scrolling="no" allowfullscreen="true"></iframe>`;
-    return html;
 };
 a.ready = (...args) => {
     a.on("DOMContentLoaded", ...args);
@@ -1132,9 +1119,11 @@ if (a.domCmp(["player.pl"])) {
                     }
                 } catch (err) {
                     a.out.error("uBlock Protector failed to find media URL!");
-                    return;
                 }
             },
+            onerror() {
+                a.out.error("uBlock Protector failed to find media URL!");
+            }
         });
     });
 }
@@ -2171,6 +2160,19 @@ if (a.domCmp(["dplay.com", "dplay.dk", "dplay.se"])) {
 if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "play.tv3.lt", "tv3play.tv3.ee"])) {
     let isInBackground = false;
     const idMatcher = /\/(\d+)/;
+    const videoJS = (source, type, width, height) => {
+        return `<iframe srcdoc='<html><head><link href="https://cdnjs.cloudflare.com/ajax/libs/video.js/5.10.5/al` +
+            `t/video-js-cdn.min.css" rel="stylesheet"><script src="https://cdnjs.cloudflare.com/ajax/libs/video.j` +
+            `s/5.10.5/video.min.js"><\/script><script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib` +
+            `-hls/3.1.0/videojs-contrib-hls.min.js"><\/script><style type="text/css">html, body { padding:0; marg` +
+            `in:0; } .vjs-default-skin { color:#eee; } .vjs-default-skin .vjs-play-progress, .vjs-default-skin .v` +
+            `js-volume-level { background-color:#eee; } .vjs-default-skin .vjs-big-play-button, .vjs-default-skin` +
+            ` .vjs-control-bar { background:rgba(0,0,0,.2); } .vjs-default-skin .vjs-slider { background:rgba(0,0` +
+            `,0,.3); }</style></head><body><video id="uBlock_Protector_Video_Player" class="video-js vjs-default-` +
+            `skin" controls preload="auto" width="${width}" height="${height}"><source src="${source}" type="${type}"` +
+            ` /></video><script>videojs("uBlock_Protector_Video_Player");<\/script></body></html>' width="${width}"` +
+            ` height="${height}" frameborder="0" scrolling="no" allowfullscreen="true"></iframe>`;
+    };
     const handler = () => {
         if (isInBackground) {
             a.setTimeout(handler, 1000);
@@ -2205,6 +2207,9 @@ if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "pl
                 }
                 parser(result.responseText);
             },
+            onerror() {
+                a.out.error("uBlock Protector failed to find video URL!");
+            }
         });
     };
     const parser = (data) => {
@@ -2219,16 +2224,16 @@ if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "pl
             a.out.error("uBlock Protector failed to find video URL!");
             return;
         }
-        let sources = [], types = [];
+        let source, type;
         if (streams.high && streams.high !== "") {
-            sources.push(streams.high);
-            types.push("video/mp4");
+            source = streams.high;
+            type = "video/mp4";
         } else if (streams.hls && streams.hls !== "") {
-            sources.push(streams.hls);
-            types.push("application/x-mpegURL");
+            source = streams.hls;
+            type = "application/x-mpegURL";
         } else if (streams.medium && streams.medium !== "") {
-            sources.push(streams.medium);
-            types.push(streams.medium.startsWith("rtmp") ? "rtmp/mp4" : "application/f4m+xml");
+            source = streams.medium;
+            type = streams.medium.startsWith("rtmp") ? "rtmp/mp4" : "application/f4m+xml";
         } else {
             a.out.error("uBlock Protector failed to find video URL!");
             return;
@@ -2237,11 +2242,11 @@ if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "pl
             a.out.info("Potential media URLs:");
             a.out.info([streams.high, streams.hls, streams.medium]);
             a.out.info("Used media URL:");
-            a.out.info(sources);
+            a.out.info(source);
         }
         const height = a.$("#video-player").height();
         const width = a.$("#video-player").width();
-        a.$("#video-player").after(a.videoJS(sources, types, width, height)).remove();
+        a.$("#video-player").after(videoJS(source, type, width, height)).remove();
         handler();
     };
     handler();
@@ -2395,8 +2400,8 @@ if (a.domCmp(["topserialy.sk"])) {
 }
 if (a.domCmp(["sport-show.fr", "vipflash.net", "2site.me"])) {
     a.css("#blockblockA { visibility:invisible; display:none; } #blockblockA td { visibility:invisible; " +
-        "display:none; } #blockblockA td p { visibility:invisible; display:none; } #blockblockB { visibility:visible; " +
-        "display:block; }");
+        "display:none; } #blockblockA td p { visibility:invisible; display:none; } #blockblockB " +
+        "{ visibility:visible; display:block; }");
 }
 if (a.domCmp(["gametransfers.com", "winandmac.com", "free-steam-giveaways.com", "canalwp.com",
     "alphahistory.com", "nordpresse.be", "sospc.name", "baboo.com.br", "nflix.pl"])) {
@@ -3126,6 +3131,47 @@ if (a.domCmp(["searchftps.net"])) {
     a.$(`<iframe width="336" height="280" style="display:none;"></iframe>`).appendTo("html");
 }
 if (a.config.debugMode && a.domCmp(["itv.com"])) {
+    a.ready(() => {
+        const playerElem = a.doc.getElementById("video");
+        if (!playerElem) {
+            a.out.error("uBlock Protector failed to find video player element!");
+            return;
+        }
+        GM_xmlhttpRequest({
+            method: "POST",
+            url: a.doc.getElementById("video").getAttribute("data-video-playlist"),
+            headers: {
+                "hmac": playerElem.getAttribute("data-video-hmac").toUpperCase(),
+                "Accept": "application/vnd.itv.vod.playlist.v2+json",
+                "Content-Type": "application/json",
+            },
+            data: `{"user":{"itvUserId":"","entitlements":[],"token":""},"device":{"manufacturer":"Chrome","m` +
+            `odel":"59","os":{"name":"Windows NT","version":"10.0","type":"desktop"}},"client":{"version":"4.` +
+            `1","id":"browser"},"variantAvailability":{"featureset":{"min":["mpeg-dash","clearkey","outband-w` +
+            `ebvtt"],"max":["mpeg-dash","clearkey","outband-webvtt"]},"platformTag":"dotcom"}}`,
+            onload(response) {
+                let data;
+                try {
+                    data = JSON.parse(response.responseText);
+                    data = data.Playlist.Video;
+                    if (!data) {
+                        throw "Media URL Not Found";
+                    }
+                } catch (err) {
+                    a.out.error("uBlock Protector failed to find video URL!");
+                    return;
+                }
+                let sources = [], types = [], subtitles = [];
+                for (let i = 0; i < data.MediaFiles.length; i++) {
+                    sources.push(data.Base + data.MediaFiles.Href[i]);
+                    types.push("application/dash+xml");
+                }
+            },
+            onerror() {
+                a.out.error("uBlock Protector failed to find video URL!");
+            }
+        });
+    });
 }
 if (a.config.debugMode && a.domCmp(["viasatsport.fi"])) {
 }
