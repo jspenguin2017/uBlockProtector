@@ -2433,6 +2433,7 @@ if (a.domCmp(["searchftps.net"])) {
 if (a.config.debugMode && a.domCmp(["itv.com"])) {
     //Test link: https://www.itv.com/hub/take-me-out/1a8716a0089
     //===DEBUG CODE===
+    //Need to add the API domain to XMLHttpRequest white list
     //Can find the URL of the media file and subtitle file
     a.ready(() => {
         //Find the player element
