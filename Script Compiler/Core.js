@@ -859,7 +859,6 @@ a.nativePlayer = (source, typeIn, width = "100%", height = "auto") => {
  * @return {string} An HTML string of the video player.
  */
 a.videoJS = (sources, types, width, height) => {
-    debugger;
     let html = `<iframe srcdoc='<html><head><link href="https://cdnjs.cloudflare.com/ajax/libs/video.js/5.10.5/alt/video-js-cdn.min.css" rel="stylesheet">` +
         `<script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/5.10.5/video.min.js"></script>` +
         `<script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/3.1.0/videojs-contrib-hls.min.js"></script>` +

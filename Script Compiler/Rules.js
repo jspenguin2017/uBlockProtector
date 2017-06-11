@@ -1362,7 +1362,7 @@ if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "pl
         }
         //Find ID
         let videoID;
-        if (a.domCmp(["play.tv3.lt"], true)) {
+        if (a.domCmp(["tvplay.skaties.lv", "play.tv3.lt", "tv3play.tv3.ee"], true)) {
             let tmp = idMatcher.exec(a.win.location.href);
             if (tmp) {
                 videoID = tmp[1];

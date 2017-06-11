@@ -2,7 +2,7 @@
 // @name uBlock Protector Script
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
-// @version 8.32
+// @version 8.33
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -510,7 +510,6 @@ a.nativePlayer = (source, typeIn, width = "100%", height = "auto") => {
     return `<video width="${width}" height="${height}" controls><source src="${source}" type="${type}" /></video>`;
 };
 a.videoJS = (sources, types, width, height) => {
-    debugger;
     let html = `<iframe srcdoc='<html><head><link href="https://cdnjs.cloudflare.com/ajax/libs/video.js/5.10.5/alt/video-js-cdn.min.css" rel="stylesheet">` +
         `<script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/5.10.5/video.min.js"></script>` +
         `<script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/3.1.0/videojs-contrib-hls.min.js"></script>` +
@@ -2183,7 +2182,7 @@ if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "pl
             return;
         }
         let videoID;
-        if (a.domCmp(["play.tv3.lt"], true)) {
+        if (a.domCmp(["tvplay.skaties.lv", "play.tv3.lt", "tv3play.tv3.ee"], true)) {
             let tmp = idMatcher.exec(a.win.location.href);
             if (tmp) {
                 videoID = tmp[1];
