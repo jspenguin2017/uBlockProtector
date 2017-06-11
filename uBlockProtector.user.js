@@ -2892,8 +2892,6 @@ if (a.domCmp(["gelbooru.com"])) {
             a.$("div").each(function () {
                 if (a.$(this).text() === "Have you first tried disabling your AdBlock?") {
                     a.$(this).empty();
-                } else if (a.config.debugMode) {
-                    a.out.log(a.$(this).text());
                 }
             });
         });
