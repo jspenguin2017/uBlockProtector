@@ -3,6 +3,8 @@ node_js: node
 cache:
   directories:
     - "node_modules"
-before_script: npm install esprima
+before_script:
+  - npm install esprima
+  - npm ls
 script:
   - node ./Tests/syntax.node.js
