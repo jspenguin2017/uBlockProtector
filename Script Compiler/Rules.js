@@ -2516,6 +2516,7 @@ if (a.config.debugMode && a.domCmp(["viasport.fi"])) {
     let isInBackground = false;
     const idMatcher = /\/(\d+)/;
     const videoJS = (source, type, width, height) => {
+        height = 500;
         return `<iframe srcdoc='<html><head><link href="https://cdnjs.cloudflare.com/ajax/libs/video.js/5.10.5/al` +
             `t/video-js-cdn.min.css" rel="stylesheet"><script src="https://cdnjs.cloudflare.com/ajax/libs/video.j` +
             `s/5.10.5/video.min.js"><\/script><script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib` +
@@ -2536,12 +2537,13 @@ if (a.config.debugMode && a.domCmp(["viasport.fi"])) {
         //Find video ID
         let id;
         try {
-            id = window.__STATE__.dataSources.article[0].videos[0].data.mediaGuid;
+            id = a.win.__STATE__.dataSources.article[0].videos[0].data.mediaGuid;
             if (!id) {
                 throw "Media ID Not Found";
             }
         } catch (err) {
             a.setTimeout(handler, 1000);
+            return;
         }
         //Request data JSON
         GM_xmlhttpRequest({
@@ -2564,7 +2566,7 @@ if (a.config.debugMode && a.domCmp(["viasport.fi"])) {
         let url;
         try {
             const parsedData = JSON.parse(data);
-            url = parsedData.embedded.prioritizedStreams[0].links.strea.href;
+            url = parsedData.embedded.prioritizedStreams[0].links.stream.href;
             if (!url) {
                 throw "Media URL Not Found";
             }
@@ -2573,11 +2575,14 @@ if (a.config.debugMode && a.domCmp(["viasport.fi"])) {
             return;
         }
         //Replace player
-        const height = a.$(".video-wrapper").height();
-        const width = a.$(".video-wrapper").width();
-        a.$(".video-wrapper").after(videoJS(url, "application/x-mpegURL", width, height)).remove();
-        //Watch for more video players
-        handler();
+        const player = a.$(".thumbnail-video");
+        const height = player.height();
+        const width = player.width();
+        //===Debug Only===
+        //Nuke the document because something keeps replacing my player
+        a.win.stop();
+        a.doc.body.innerHTML = videoJS(url, "application/x-mpegURL", width, height);
+        //===Debug Only===
     };
     //Start
     handler();
