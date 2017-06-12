@@ -25,3 +25,9 @@ Issues:
 Notes: 
 * Not confirmed on the standard configuration, but since we do not have a solution for it, 
  chances are it does affect the standard configuration. 
+
+Workaround (you will see some ads): 
+```
+||spike.itv.com/itv/tserver/size=*/viewid=$badfilter
+||tom.itv.com/itv/tserver/size=*/viewid=$badfilter
+```
