@@ -11,6 +11,8 @@ Test links:
 Issues: 
 * https://github.com/jspenguin2017/uBlockProtector/issues/88
 
+Workaround: In debug mode, the whole webpage will be replaced by a player which plays the first video on the page. 
+
 ## itv.com
 
 `Account Required` `Geo Lock (United Kingdom)`
