@@ -2443,7 +2443,7 @@ if (a.config.debugMode && a.domCmp(["itv.com"])) {
     //===DEBUG CODE===
     //Need to add the API domain to XMLHttpRequest white list
     //Can find the URL of the media file and subtitle file
-    const videoJS = (x, y, z, width, height) => {
+    const videoJS = (sources, types, subtitles, width, height) => {
         return ""; //Insert videoJS payload here...
     };
     a.ready(() => {

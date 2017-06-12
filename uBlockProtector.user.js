@@ -3136,7 +3136,7 @@ if (a.domCmp(["youtube-videos.tv"])) {
     a.noAccess("KillAdBlock");
 }
 if (a.config.debugMode && a.domCmp(["itv.com"])) {
-    const videoJS = (x, y, z, width, height) => {
+    const videoJS = (sources, types, subtitles, width, height) => {
         return ""; //Insert videoJS payload here...
     };
     a.ready(() => {
