@@ -1,8 +1,6 @@
-# uBlock Protector
+# uBlock Protector [![Build Status](https://travis-ci.org/jspenguin2017/uBlockProtector.svg?branch=master)](https://travis-ci.org/jspenguin2017/uBlockProtector)
 
 An anti-adblock defuser for uBlock Origin
-
-[![Build Status](https://travis-ci.org/jspenguin2017/uBlockProtector.svg?branch=master)](https://travis-ci.org/jspenguin2017/uBlockProtector)
 
 Installation instructions, along with many other relevant information are available on our 
 [home page](http://jspenguin2017.github.io/uBlockProtector/). 
