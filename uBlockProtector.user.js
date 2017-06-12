@@ -2204,7 +2204,7 @@ if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "pl
                 parser(result.responseText);
             },
             onerror() {
-                a.out.error("uBlock Protector failed to find video URL!");
+                a.out.error("uBlock Protector failed to find media URL!");
             },
         });
     };
@@ -2217,7 +2217,7 @@ if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "pl
                 throw "Media URL Not Found";
             }
         } catch (err) {
-            a.out.error("uBlock Protector failed to find video URL!");
+            a.out.error("uBlock Protector failed to find media URL!");
             return;
         }
         let source, type;
@@ -2231,7 +2231,7 @@ if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "pl
             source = streams.medium;
             type = streams.medium.startsWith("rtmp") ? "rtmp/mp4" : "application/f4m+xml";
         } else {
-            a.out.error("uBlock Protector failed to find video URL!");
+            a.out.error("uBlock Protector failed to find media URL!");
             return;
         }
         if (a.config.debugMode) {
@@ -2968,11 +2968,11 @@ if (a.domCmp(["canalplus.fr"])) {
                         throw "Media URL Not Found";
                     }
                 } catch (err) {
-                    a.out.error("uBlock Protector failed to find video URL!");
+                    a.out.error("uBlock Protector failed to find media URL!");
                 }
             },
             onerror() {
-                a.out.error("uBlock Protector failed to load video JSON!");
+                a.out.error("uBlock Protector failed to load media JSON!");
             },
         });
     };
@@ -3166,7 +3166,7 @@ if (a.config.debugMode && a.domCmp(["itv.com"])) {
                         throw "Media URL Not Found";
                     }
                 } catch (err) {
-                    a.out.error("uBlock Protector failed to find video URL!");
+                    a.out.error("uBlock Protector failed to find media URL!");
                     return;
                 }
                 let sources = [], types = [], subtitles = [];
@@ -3188,11 +3188,44 @@ if (a.config.debugMode && a.domCmp(["itv.com"])) {
                 a.$(".stage__player-wrapper").html(videoJS(sources, types, subtitles, width, height));
             },
             onerror() {
-                a.out.error("uBlock Protector failed to find video URL!");
+                a.out.error("uBlock Protector failed to find media URL!");
             },
         });
     });
 }
 if (a.config.debugMode && a.domCmp(["viasatsport.fi"])) {
+    let isInBackground = false;
+    const idMatcher = /\/(\d+)/;
+    const videoJS = (source, type, width, height) => {
+        return `<iframe srcdoc='<html><head><link href="https://cdnjs.cloudflare.com/ajax/libs/video.js/5.10.5/al` +
+            `t/video-js-cdn.min.css" rel="stylesheet"><script src="https://cdnjs.cloudflare.com/ajax/libs/video.j` +
+            `s/5.10.5/video.min.js"><\/script><script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib` +
+            `-hls/3.1.0/videojs-contrib-hls.min.js"><\/script><style type="text/css">html, body{padding:0; margin` +
+            `:0;}.vjs-default-skin{color:#eee}.vjs-default-skin .vjs-play-progress,.vjs-default-skin .vjs-volume-` +
+            `level{background-color:#eee}.vjs-default-skin .vjs-big-play-button,.vjs-default-skin .vjs-control-ba` +
+            `r{background:rgba(0,0,0,.2)}.vjs-default-skin .vjs-slider{background:rgba(0,0,0,.3)}</style></head><` +
+            `body><video id="uBlock_Protector_Video_Player" class="video-js vjs-default-skin" controls preload="a` +
+            `uto" width="${width}" height="${height}"><source src="${source}" type="${type}"></video><script>vide` +
+            `ojs("uBlock_Protector_Video_Player")<\/script></body></html>' width="${width}" height="${height}" fr` +
+            `ameborder="0" scrolling="no" allowfullscreen="true"></iframe>`;
+    };
+    const handler = () => {
+        if (isInBackground) {
+            a.setTimeout(handler, 1000);
+            return;
+        }
+        const elem = a.$(".video-wrapper");
+        if (elem.length === 0) {
+            a.setTimeout(handler, 1000);
+            return;
+        }
+        const url = "https://viasatsport-jic-vod-hls.secure.footprint.net/hls/Viasat_Sport_-_Production/995/808/Layer5_x0311e645a5ca430081fde20265f13f53/Game6_Layer5_x0311e645a5ca430081fde20265f13f53_2242.m3u8";
+        const height = elem.height();
+        const width = elem.width();
+        a.$("#video-player").after(videoJS(url, "application/x-mpegURL", width, height)).remove();
+    };
+    handler();
+    a.on("focus", () => { isInBackground = false; });
+    a.on("blur", () => { isInBackground = true; });
 }
 a.generic();
