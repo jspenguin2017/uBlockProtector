@@ -114,7 +114,7 @@ pornvibe.org##.special-message-content
 @@||openload.co/embed^$third-party,domain=pornvibe.org
 @@||oloadcdn.net^$domain=pornvibe.org
 answers.com##.end_of_slideshow
-||openx.gamereactor.dk/multi.php$script,important
+||openx.gamereactor.*/multi.php$script,important
 ||finalservers.net^$inline-script
 finalservers.net###babasbmsgx
 finalservers.net##script:inject(abort-on-property-read.js, _gunggo)

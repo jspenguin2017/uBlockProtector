@@ -148,9 +148,9 @@ pornvibe.org##.special-message-content
 @@||oloadcdn.net^$domain=pornvibe.org
 ! === answers.com
 answers.com##.end_of_slideshow
-! === gamereactor.dk
+! === gamereactor.dk and related domains
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/124
-||openx.gamereactor.dk/multi.php$script,important
+||openx.gamereactor.*/multi.php$script,important
 ! === animmex.* - Thanks to uBlock-user
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/125
 ||finalservers.net^$inline-script
