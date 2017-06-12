@@ -2212,7 +2212,7 @@ if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "pl
         let streams;
         try {
             const parsedData = JSON.parse(data);
-            streams = parsedData.streams
+            streams = parsedData.streams;
             if (!streams) {
                 throw "Media URL Not Found";
             }
@@ -2240,9 +2240,10 @@ if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "pl
             a.out.info("Used media URL:");
             a.out.info(source);
         }
-        const height = a.$("#video-player").height();
-        const width = a.$("#video-player").width();
-        a.$("#video-player").after(videoJS(source, type, width, height)).remove();
+        const player = a.$("#video-player");
+        const height = player.height();
+        const width = player.width();
+        player.after(videoJS(source, type, width, height)).remove();
         handler();
     };
     handler();
@@ -3194,5 +3195,69 @@ if (a.config.debugMode && a.domCmp(["itv.com"])) {
     });
 }
 if (a.config.debugMode && a.domCmp(["viasport.fi"])) {
+    let isInBackground = false;
+    const idMatcher = /\/(\d+)/;
+    const videoJS = (source, type, width, height) => {
+        return `<iframe srcdoc='<html><head><link href="https://cdnjs.cloudflare.com/ajax/libs/video.js/5.10.5/al` +
+            `t/video-js-cdn.min.css" rel="stylesheet"><script src="https://cdnjs.cloudflare.com/ajax/libs/video.j` +
+            `s/5.10.5/video.min.js"><\/script><script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib` +
+            `-hls/3.1.0/videojs-contrib-hls.min.js"><\/script><style type="text/css">html, body{padding:0; margin` +
+            `:0;}.vjs-default-skin{color:#eee}.vjs-default-skin .vjs-play-progress,.vjs-default-skin .vjs-volume-` +
+            `level{background-color:#eee}.vjs-default-skin .vjs-big-play-button,.vjs-default-skin .vjs-control-ba` +
+            `r{background:rgba(0,0,0,.2)}.vjs-default-skin .vjs-slider{background:rgba(0,0,0,.3)}</style></head><` +
+            `body><video id="uBlock_Protector_Video_Player" class="video-js vjs-default-skin" controls preload="a` +
+            `uto" width="${width}" height="${height}"><source src="${source}" type="${type}"></video><script>vide` +
+            `ojs("uBlock_Protector_Video_Player")<\/script></body></html>' width="${width}" height="${height}" fr` +
+            `ameborder="0" scrolling="no" allowfullscreen="true"></iframe>`;
+    };
+    const handler = () => {
+        if (isInBackground) {
+            a.setTimeout(handler, 1000);
+            return;
+        }
+        let id;
+        try {
+            id = window.__STATE__.dataSources.article[0].videos[0].data.mediaGuid;
+            if (!id) {
+                throw "Media ID Not Found";
+            }
+        } catch (err) {
+            a.setTimeout(handler, 1000);
+        }
+        GM_xmlhttpRequest({
+            method: "GET",
+            url: `https://viasport.mtg-api.com/stream-links/viasport/web/se/clear-media-guids/${id}/streams`,
+            onload(result) {
+                if (a.config.debugMode) {
+                    a.out.info("Response received:");
+                    a.out.info(result.responseText);
+                }
+                parser(result.responseText);
+            },
+            onerror() {
+                a.out.error("uBlock Protector failed to find media URL!");
+            },
+        });
+    };
+    const parser = (data) => {
+        let url;
+        try {
+            const parsedData = JSON.parse(data);
+            url = parsedData.embedded.prioritizedStreams[0].links.strea.href;
+            if (!url) {
+                throw "Media URL Not Found";
+            }
+        } catch (err) {
+            a.out.error("uBlock Protector failed to find media URL!");
+            return;
+        }
+        const height = a.$(".video-wrapper").height();
+        const width = a.$(".video-wrapper").width();
+        a.$(".video-wrapper").after(videoJS(url, "application/x-mpegURL", width, height)).remove();
+        handler();
+    };
+    handler();
+    a.on("focus", () => { isInBackground = false; });
+    a.on("blur", () => { isInBackground = true; });
 }
 a.generic();
