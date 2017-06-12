@@ -5,6 +5,6 @@ cache:
     - "node_modules"
 before_script:
   - npm install esprima
-  - npm ls
 script:
+  - node ./Tests/pretest.node.js
   - node ./Tests/syntax.node.js
