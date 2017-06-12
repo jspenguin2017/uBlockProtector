@@ -2510,7 +2510,7 @@ if (a.config.debugMode && a.domCmp(["itv.com"])) {
         });
     });
 }
-if (a.config.debugMode && a.domCmp(["viasatsport.fi"])) {
+if (a.config.debugMode && a.domCmp(["viasport.fi"])) {
     //===DEBUG CODE===
     let isInBackground = false;
     const idMatcher = /\/(\d+)/;
