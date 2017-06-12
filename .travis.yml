@@ -1,0 +1,8 @@
+language: node_js
+node_js: node
+cache:
+  directories:
+    - "node_modules"
+before_script: npm install esprima
+script:
+  - node ./Tests/syntax.node.js
