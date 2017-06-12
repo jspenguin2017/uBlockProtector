@@ -350,3 +350,5 @@ firstonetv.eu##script:inject(noeval-if.js, Please disable your Adblocker)
 ! === streamwoop.tv
 |https://$third-party,script,domain=streamwoop.tv,badfilter
 |https://$third-party,xmlhttprequest,domain=streamwoop.tv,badfilter
+! === vooxe.com
+vooxe.com###blockedAddons
