@@ -24,10 +24,6 @@ Test links:
 Issues: 
 * https://github.com/jspenguin2017/uBlockProtector/issues/286
 
-Notes: 
-* Not confirmed on the standard configuration, but since we do not have a solution for it, 
- chances are it does affect the standard configuration. 
-
 Workaround: Add the filters below, you will see some ads. 
 ```
 ||spike.itv.com/itv/tserver/size=*/viewid=$badfilter
