@@ -270,7 +270,7 @@ vidlox.tv##script:inject(noeval.js)
 ! === savetodrive.net
 savetodrive.net##script:inject(setTimeout-defuser.js, ad)
 ! === rarbgmirror.com, swfchan.net
-rarbgmirror.com,swfchan.net##script:inject(abort-on-property-read.js, open)
+rarbgmirror.com,swfchan.net,swfchan.com##script:inject(abort-on-property-read.js, open)
 ! === pipocas.tv
 ||googlesyndication.com^$script,redirect=noopjs,domain=pipocas.tv
 ! === steamcustomizer.com
