@@ -1402,7 +1402,7 @@ if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "pl
                 parser(result.responseText);
             },
             onerror() {
-                a.out.error("uBlock Protector failed to find video URL!");
+                a.out.error("uBlock Protector failed to find media URL!");
             },
         });
     };
@@ -1416,7 +1416,7 @@ if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "pl
                 throw "Media URL Not Found";
             }
         } catch (err) {
-            a.out.error("uBlock Protector failed to find video URL!");
+            a.out.error("uBlock Protector failed to find media URL!");
             return;
         }
         //Check source and type
@@ -1431,7 +1431,7 @@ if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "pl
             source = streams.medium;
             type = streams.medium.startsWith("rtmp") ? "rtmp/mp4" : "application/f4m+xml";
         } else {
-            a.out.error("uBlock Protector failed to find video URL!");
+            a.out.error("uBlock Protector failed to find media URL!");
             return;
         }
         if (a.config.debugMode) {
@@ -2261,11 +2261,11 @@ if (a.domCmp(["canalplus.fr"])) {
                         throw "Media URL Not Found";
                     }
                 } catch (err) {
-                    a.out.error("uBlock Protector failed to find video URL!");
+                    a.out.error("uBlock Protector failed to find media URL!");
                 }
             },
             onerror() {
-                a.out.error("uBlock Protector failed to load video JSON!");
+                a.out.error("uBlock Protector failed to load media JSON!");
             },
         });
     };
@@ -2476,7 +2476,7 @@ if (a.config.debugMode && a.domCmp(["itv.com"])) {
                         throw "Media URL Not Found";
                     }
                 } catch (err) {
-                    a.out.error("uBlock Protector failed to find video URL!");
+                    a.out.error("uBlock Protector failed to find media URL!");
                     return;
                 }
                 //Build media source
@@ -2505,7 +2505,7 @@ if (a.config.debugMode && a.domCmp(["itv.com"])) {
                 a.$(".stage__player-wrapper").html(videoJS(sources, types, subtitles, width, height));
             },
             onerror() {
-                a.out.error("uBlock Protector failed to find video URL!");
+                a.out.error("uBlock Protector failed to find media URL!");
             },
         });
     });
