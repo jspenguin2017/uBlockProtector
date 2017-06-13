@@ -1,6 +1,6 @@
 # These are the issues where no solution is found
 
-## viasatsport.fi
+## viasport.fi
 
 `Geo Lock (Finland)`
 
