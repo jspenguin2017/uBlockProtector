@@ -15,8 +15,7 @@ Settings under `Privacy -> Content settings...`, `Network`, and `HTTPS/SSL` are 
 
 Settings in `chrome://flags/` page are left as default. 
 
-Only extensions are `uBlock Origin`, `Violentmonkey`, `Google Docs`, `Google Docs Offline`, `Google Sheets`, and `Google Slides`. 
-Those Google extensions are optional, but there must not be other extensions. 
+Only active extensions are `uBlock Origin` and `Violentmonkey`. 
 
 Other settings does not matter. 
 
