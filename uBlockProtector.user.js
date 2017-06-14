@@ -243,7 +243,7 @@ a.err = (name) => {
     } else {
         name = "";
     }
-    a.out.error(`Uncaught AdBlock Error: ${name}AdBlocker detectors are not allowed on this device!`);
+    a.out.error(`Uncaught AdBlock Error: ${name}AdBlocker detector are not allowed on this device!`);
 };
 a.domCmp = (domList, noErr) => {
     for (let i = 0; i < domList.length; i++) {
@@ -641,22 +641,26 @@ a.generic = () => {
         a.readOnly("canRunAds", true);
         a.readOnly("canShowAds", true);
         a.readOnly("isAdBlockActive", false);
-        let playwireZeus;
-        a.win.Object.defineProperty(a.win, "Zeus", {
-            configurable: false,
-            set(val) {
-                playwireZeus = val;
-            },
-            get() {
-                a.err("Playwire");
-                try {
-                    playwireZeus.AdBlockTester = {
-                        check(a) { a(); },
-                    };
-                } catch (err) { }
-                return playwireZeus;
-            },
-        });
+        try {
+            let playwireZeus;
+            a.win.Object.defineProperty(a.win, "Zeus", {
+                configurable: false,
+                set(val) {
+                    playwireZeus = val;
+                },
+                get() {
+                    a.err("Playwire");
+                    try {
+                        playwireZeus.AdBlockTester = {
+                            check(a) { a(); },
+                        };
+                    } catch (err) { }
+                    return playwireZeus;
+                },
+            });
+        } catch (err) {
+            a.out.error("uBlock Protector failed to set up Playwire AdBlocker detector defuser!");
+        }
         a.ready(() => {
             if (a.win.XenForo && typeof a.win.XenForo.rellect === "object") {
                 a.err("XenForo");
@@ -895,7 +899,7 @@ a.generic.AdflyBypasser = () => {
             },
         });
     } catch (err) {
-        a.out.error("uBlock Protector could not set up Adfly bypasser.");
+        a.out.error("uBlock Protector failed to set up Adfly bypasser!");
     }
 };
 a.generic.FuckAdBlock = (constructorName, instanceName) => {
