@@ -9,7 +9,7 @@ const { readFileSync } = require("fs");
 
 //Verify the compiled script
 console.log("Compiled Script is being verified...");
-const dist = readFileSync("uBlockProtector.user.js").toString();
+const dist = readFileSync("uBlockProtector.user.js", "utf8");
 esprima.parse(dist);
 console.log("Compiled Script is syntactically valid.");
 
