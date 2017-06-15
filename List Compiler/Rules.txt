@@ -127,6 +127,8 @@ tune.pk###annoy-wrapper
 @@||dato.porn^$domain=czechhq.net
 @@||userapi.com^$image,domain=czechhq.net
 @@||theporndude.com^$image,domain=czechhq.net
+! === NSFW! dato.porn
+@@||dato.porn/js/pop.js$domain=dato.porn
 ! === engineeringtoolbox.com
 engineeringtoolbox.com##.adblo
 engineeringtoolbox.com##.contentDocumentAd

@@ -2,7 +2,7 @@
 // @name uBlock Protector Script
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
-// @version 8.41
+// @version 8.42
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -950,9 +950,6 @@ a.generic.FuckAdBlock = (constructorName, instanceName) => {
 //@pragma-keepline Solutions from Anti-Adblock Killer (originally by Reek) are modified to fit our Core API
 //@pragma-keepline Anti-Adblock Killer Repository (contains original source code and license): https://github.com/reek/anti-adblock-killer
 { //Keep arrays in a local scope
-    if (a.domCmp(["29443kmq.video", "dato.porn"])) {
-        a.readOnly("cRAds", true);
-    }
     const excludedDomCmp = ["360.cn", "apple.com", "ask.com", "baidu.com", "bing.com", "bufferapp.com",
         "chromeactions.com", "easyinplay.net", "ebay.com", "facebook.com", "flattr.com", "flickr.com",
         "ghacks.net", "imdb.com", "imgbox.com", "imgur.com", "instagram.com", "jsbin.com", "jsfiddle.net",

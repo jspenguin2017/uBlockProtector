@@ -1,12 +1,7 @@
 //@pragma-keepline Solutions from Anti-Adblock Killer (originally by Reek) are modified to fit our Core API
 //@pragma-keepline Anti-Adblock Killer Repository (contains original source code and license): https://github.com/reek/anti-adblock-killer
 { //Keep arrays in a local scope
-    //===Racer function===
-    if (a.domCmp(["29443kmq.video", "dato.porn"])) {
-        //NSFW!
-        a.readOnly("cRAds", true);
-    }
-    //===Init===
+    //Initialization
     //Excluded domains
     //Generic solutions will not be applied to these domains
     const excludedDomCmp = ["360.cn", "apple.com", "ask.com", "baidu.com", "bing.com", "bufferapp.com",
