@@ -360,3 +360,5 @@ firstonetv.eu##script:inject(noeval-if.js, Please disable your Adblocker)
 |https://$third-party,xmlhttprequest,domain=streamwoop.tv,badfilter
 ! === vooxe.com
 vooxe.com###blockedAddons
+! === gentecheesisterealmente.com
+gentecheesisterealmente.com##script:inject(abort-on-property-read.js, admaniastchk)
