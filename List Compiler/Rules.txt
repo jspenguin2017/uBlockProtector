@@ -128,7 +128,7 @@ tune.pk###annoy-wrapper
 @@||userapi.com^$image,domain=czechhq.net
 @@||theporndude.com^$image,domain=czechhq.net
 ! === NSFW! dato.porn
-@@||dato.porn/js/pop.js$first-party
+@@||dato.porn/js/pop.js$script,first-party
 dato.porn##script:inject(abort-on-property-read.js, open)
 dato.porn##script:inject(noeval-if.js, var r3H4=window;for(var v4 in r3H4))
 ! === engineeringtoolbox.com
@@ -366,3 +366,5 @@ gentecheesisterealmente.com##script:inject(abort-on-property-read.js, admaniastc
 ||litv.tv/promo/
 litv.tv##.fp-pausebn
 ||$third-party,script,domain=litv.tv
+! === uploadboy.com
+@@||uploadboy.com/ads.js$script,first-party
