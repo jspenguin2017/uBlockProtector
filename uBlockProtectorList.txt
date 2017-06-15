@@ -104,6 +104,8 @@ tune.pk###annoy-wrapper
 @@||userapi.com^$image,domain=czechhq.net
 @@||theporndude.com^$image,domain=czechhq.net
 @@||dato.porn/js/pop.js$first-party
+dato.porn##script:inject(abort-on-property-read.js, open)
+dato.porn##script:inject(noeval-if.js, var r3H4=window;for(var v4 in r3H4))
 engineeringtoolbox.com##.adblo
 engineeringtoolbox.com##.contentDocumentAd
 ps4news.com##script:inject(noeval.js)
