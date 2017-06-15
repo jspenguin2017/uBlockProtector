@@ -241,6 +241,7 @@ gentecheesisterealmente.com##script:inject(abort-on-property-read.js, admaniastc
 litv.tv##.fp-pausebn
 ||$third-party,script,domain=litv.tv
 @@||uploadboy.com/ads.js$script,first-party
+dailyuploads.net##script:inject(abort-on-property-read.js, popns)
 ! =====Patched Anti-Adblock Killer List (originally by Reek)=====
 ! Patching logic can be found in List Compiler source code
 ! Anti-Adblock Killer Repository (contains original source code and license): https://github.com/reek/anti-adblock-killer
