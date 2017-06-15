@@ -362,3 +362,7 @@ firstonetv.eu##script:inject(noeval-if.js, Please disable your Adblocker)
 vooxe.com###blockedAddons
 ! === gentecheesisterealmente.com
 gentecheesisterealmente.com##script:inject(abort-on-property-read.js, admaniastchk)
+! === litv.tv
+||litv.tv/promo/
+litv.tv##.fp-pausebn
+||$third-party,script,domain=litv.tv
