@@ -103,7 +103,7 @@ tune.pk###annoy-wrapper
 @@||dato.porn^$domain=czechhq.net
 @@||userapi.com^$image,domain=czechhq.net
 @@||theporndude.com^$image,domain=czechhq.net
-@@||dato.porn/js/pop.js$domain=dato.porn
+@@||dato.porn/js/pop.js$first-party
 engineeringtoolbox.com##.adblo
 engineeringtoolbox.com##.contentDocumentAd
 ps4news.com##script:inject(noeval.js)
