@@ -60,11 +60,11 @@ namespace Script_Compiler
                     string path = Path.Combine(gitRoot, "uBlockProtector.user.js");
                     PutLog("Writting data to " + path);
                     File.WriteAllLines(path, toWrite);
-                    PutLog(toWrite.Length.ToString() + " lines wrote. ");
+                    PutLog(toWrite.Length.ToString() + " lines wrote.");
                 }
                 catch (Exception err)
                 {
-                    PutLog("Cannot write file, error message: ");
+                    PutLog("Cannot write file, error message:");
                     PutLog(err.Message);
                     return;
                 }
@@ -105,11 +105,11 @@ namespace Script_Compiler
                     thread.Start();
                     //Wait for the tread to end
                     thread.Join();
-                    PutLog(data.Length.ToString() + " lines copied to clipboard. ");
+                    PutLog(data.Length.ToString() + " lines copied to clipboard.");
                 }
                 catch (Exception err)
                 {
-                    PutLog("Cannot copy to clipboard, error message: ");
+                    PutLog("Cannot copy to clipboard, error message:");
                     PutLog(err.Message);
                     return;
                 }
@@ -126,23 +126,23 @@ namespace Script_Compiler
         private string[] Build(string gitRoot)
         {
             //Load everything into RAM
-            if (!LoadFile(Path.Combine(gitRoot, "Script Compiler\\Metadata.js"), false, out string[] metadata))
+            if (LoadFile(Path.Combine(gitRoot, "Script Compiler\\Metadata.js"), false, out string[] metadata))
             {
                 return new string[0];
             }
-            if (!LoadFile(Path.Combine(gitRoot, "Script Compiler\\jQuery\\jquery.factory-3.2.1.min.js"), false, out string[] jQuery))
+            if (LoadFile(Path.Combine(gitRoot, "Script Compiler\\jQuery\\jquery.factory-3.2.1.min.js"), false, out string[] jQuery))
             {
                 return new string[0];
             }
-            if (!LoadFile(Path.Combine(gitRoot, "Script Compiler\\jQuery\\jquery.color.loader-2.1.2.min.js"), false, out string[] jQueryColor))
+            if (LoadFile(Path.Combine(gitRoot, "Script Compiler\\jQuery\\jquery.color.loader-2.1.2.min.js"), false, out string[] jQueryColor))
             {
                 return new string[0];
             }
-            if (!LoadFile(Path.Combine(gitRoot, "Script Compiler\\Core.js"), true, out string[] core)) //AdBlock Protector Core
+            if (LoadFile(Path.Combine(gitRoot, "Script Compiler\\Core.js"), true, out string[] core)) //AdBlock Protector Core
             {
                 return new string[0];
             }
-            if (!LoadFile(Path.Combine(gitRoot, "Script Compiler\\Rules.js"), true, out string[] rules))
+            if (LoadFile(Path.Combine(gitRoot, "Script Compiler\\Rules.js"), true, out string[] rules))
             {
                 return new string[0];
             }
@@ -150,7 +150,7 @@ namespace Script_Compiler
             string[] data = metadata.ToArray().Concat(jQuery).ToArray();
             //Uncomment the following line to enable the Color plug-in
             //data = data.Concat(jQueryColor).ToArray();
-            PutLog("jQuery Color plug-in is not enabled. ");
+            PutLog("jQuery Color plug-in is not enabled.");
             data = data.Concat(core).ToArray(); //AdBlock Protector Core
             data = data.Concat(rules).ToArray();
             return data;
@@ -174,16 +174,16 @@ namespace Script_Compiler
         /// <param name="filePath">The path to the file to read</param>
         /// <param name="rmComments">Whether comments should be removed</param>
         /// <param name="data">The output variable</param>
-        /// <returns>True if successful, false otherwise</returns>
+        /// <returns>True if failed, false otherwise</returns>
         private bool LoadFile(string filePath, bool rmComments, out string[] data)
         {
             string[] dataRead;
             //Read file
             try
             {
-                PutLog("Reading data from " + filePath + "... ");
+                PutLog("Reading data from " + filePath + "...");
                 dataRead = File.ReadAllLines(filePath);
-                PutLog(dataRead.Length.ToString() + " lines read. ");
+                PutLog(dataRead.Length.ToString() + " lines read.");
                 if (rmComments)
                 {
                     //Remove comments
@@ -194,7 +194,7 @@ namespace Script_Compiler
                     {
                         string line = dataRead[i].Trim();
                         //Skip comments
-                        //This algorithm wouldn't work for any JS file, but for ours, it will work
+                        //This algorithm wouldn't work for every JS file, but it will work for ours
                         if ((line.StartsWith("//") && !line.StartsWith("//@pragma-keepline")) || line == string.Empty)
                         {
                             counter++;
@@ -220,24 +220,24 @@ namespace Script_Compiler
                             counter++;
                         }
                     }
-                    PutLog(counter.ToString() + " comments removed. ");
+                    PutLog(counter.ToString() + " comments removed.");
                     //Return result
                     data = dataOut.ToArray();
-                    return true;
+                    return false;
                 }
                 else
                 {
                     //Directly return result
                     data = dataRead;
-                    return true;
+                    return false;
                 }
             }
             catch (Exception err)
             {
-                PutLog("Cannot read file, error message: ");
+                PutLog("Cannot read file, error message:");
                 PutLog(err.Message);
                 data = new string[0];
-                return false;
+                return true;
             }
         }
 
@@ -259,17 +259,6 @@ namespace Script_Compiler
             {
                 TBLog.Text += msg + Environment.NewLine;
             }
-        }
-
-        /// <summary>
-        /// Scroll to bottom when data is written to it
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void TBLog_TextChanged(object sender, EventArgs e)
-        {
-            TBLog.SelectionStart = TBLog.Text.Length;
-            TBLog.ScrollToCaret();
         }
     }
 }

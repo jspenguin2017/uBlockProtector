@@ -43,7 +43,6 @@
             this.TBLog.TabIndex = 7;
             this.TBLog.Text = "";
             this.TBLog.WordWrap = false;
-            this.TBLog.TextChanged += new System.EventHandler(this.TBLog_TextChanged);
             // 
             // BtnBuildRelease
             // 
