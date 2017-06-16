@@ -42,8 +42,12 @@ namespace Script_Compiler
         /// <param name="e"></param>
         private async void BtnBuildRelease_Click(object sender, EventArgs e)
         {
+            //Clear log
+            TBLog.Text = "";
             //Lock UI
-            string gitRoot = UpdateUI(false);
+            this.Enabled = false;
+            //Cache git root
+            string gitRoot = TBGitRoot.Text;
             //Start main process
             await Task.Run(() =>
             {
@@ -70,7 +74,7 @@ namespace Script_Compiler
                 }
             });
             //Unlock UI
-            UpdateUI(true);
+            this.Enabled = true;
         }
 
         /// <summary>
@@ -81,13 +85,15 @@ namespace Script_Compiler
         /// <param name="e"></param>
         private async void BtnBuildDev_Click(object sender, EventArgs e)
         {
+            //Clear log
+            TBLog.Text = "";
             //Lock UI
-            string gitRoot = UpdateUI(false);
+            this.Enabled = false;
             //Start main process
             await Task.Run(() =>
             {
                 //Build file
-                string[] data = Build(gitRoot);
+                string[] data = Build(TBGitRoot.Text);
                 //Check if build failed
                 if (data.Length == 0)
                 {
@@ -115,7 +121,7 @@ namespace Script_Compiler
                 }
             });
             //Unlock UI
-            UpdateUI(true);
+            this.Enabled = true;
         }
 
         /// <summary>
@@ -130,11 +136,7 @@ namespace Script_Compiler
             {
                 return new string[0];
             }
-            if (LoadFile(Path.Combine(gitRoot, "Script Compiler\\jQuery\\jquery.factory-3.2.1.min.js"), false, out string[] jQuery))
-            {
-                return new string[0];
-            }
-            if (LoadFile(Path.Combine(gitRoot, "Script Compiler\\jQuery\\jquery.color.loader-2.1.2.min.js"), false, out string[] jQueryColor))
+            if (LoadFile(Path.Combine(gitRoot, "Script Compiler\\Libraries\\jquery.factory-3.2.1.min.js"), false, out string[] lib_jQuery))
             {
                 return new string[0];
             }
@@ -147,25 +149,7 @@ namespace Script_Compiler
                 return new string[0];
             }
             //Put everything together
-            string[] data = metadata.ToArray().Concat(jQuery).ToArray();
-            //Uncomment the following line to enable the Color plug-in
-            //data = data.Concat(jQueryColor).ToArray();
-            PutLog("jQuery Color plug-in is not enabled.");
-            data = data.Concat(core).ToArray(); //AdBlock Protector Core
-            data = data.Concat(rules).ToArray();
-            return data;
-        }
-
-        /// <summary>
-        /// Lock or unlock UI, will return data in git root textbox
-        /// </summary>
-        /// <param name="enable">True to unlock UI, false to lock</param>
-        /// <returns>Data in git root textbox</returns>
-        private string UpdateUI(bool enable)
-        {
-            this.Enabled = enable;
-            //Return git root
-            return TBGitRoot.Text;
+            return metadata.Concat(lib_jQuery).Concat(core).Concat(rules).ToArray();
         }
 
         /// <summary>
@@ -194,7 +178,7 @@ namespace Script_Compiler
                     {
                         string line = dataRead[i].Trim();
                         //Skip comments
-                        //This algorithm wouldn't work for every JS file, but it will work for ours
+                        //This algorithm would not work for every JS file, but it will work for mine
                         if ((line.StartsWith("//") && !line.StartsWith("//@pragma-keepline")) || line == string.Empty)
                         {
                             counter++;

@@ -31,7 +31,7 @@
 //
 // ===== PLEASE READ =====
 // This Userscript is intended to be used with uBlock Protector List.
-// Visite our home page for more information: https://jspenguin2017.github.io/uBlockProtector/
+// Visite my home page for more information: https://jspenguin2017.github.io/uBlockProtector/
 // =======================
 let a = {};
 /*! jQueryFactory based on: jQuery v3.2.1 | (c) JS Foundation and other contributors | jquery.org/license */
