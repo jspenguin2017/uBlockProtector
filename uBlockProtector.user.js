@@ -2611,8 +2611,16 @@ if (a.domCmp(["adbull.me", "freepdf-books.com", "bc.vc", "themeslide.com"])) {
 }
 if (a.domCmp(["shink.in"])) {
     a.readOnly("RunAds", true);
-    a.win.open = () => { };
+    if (a.win.location.pathname.startsWith("/go/")) {
+        a.ready(() => {
+            const link = a.doc.getElementById("btn-main");
+            const i = link.href.lastIndexOf("http");
+            const url = link.href.substr(i);
+            a.win.location.href = url;
+        });
+    }
     a.readOnly("jsPopunder", () => { });
+    a.win.open = () => { };
     const _createElement = a.doc.createElement;
     a.doc.createElement = (...args) => {
         switch (args[0].toLowerCase()) {
@@ -2625,14 +2633,6 @@ if (a.domCmp(["shink.in"])) {
                 return _createElement.apply(a.doc, args);
         }
     };
-    if (a.win.location.pathname.startsWith("/go/")) {
-        a.ready(() => {
-            const link = a.doc.getElementById("btn-main");
-            const i = link.href.lastIndexOf("http");
-            const url = link.href.substr(i);
-            a.win.location.href = url;
-        });
-    }
 }
 if (a.domCmp(["gamezhero.com"])) {
     a.readOnly("ads", true);

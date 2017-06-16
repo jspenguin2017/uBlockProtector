@@ -1854,9 +1854,18 @@ if (a.domCmp(["adbull.me", "freepdf-books.com", "bc.vc", "themeslide.com"])) {
 if (a.domCmp(["shink.in"])) {
     //Prevent block screen
     a.readOnly("RunAds", true);
+    //Skip countdown
+    if (a.win.location.pathname.startsWith("/go/")) {
+        a.ready(() => {
+            const link = a.doc.getElementById("btn-main");
+            const i = link.href.lastIndexOf("http");
+            const url = link.href.substr(i);
+            a.win.location.href = url;
+        });
+    }
     //Block popup
-    a.win.open = () => { };
     a.readOnly("jsPopunder", () => { });
+    a.win.open = () => { };
     const _createElement = a.doc.createElement;
     a.doc.createElement = (...args) => {
         switch (args[0].toLowerCase()) {
@@ -1866,11 +1875,11 @@ if (a.domCmp(["shink.in"])) {
                 let elem = _createElement.apply(a.doc, args);
                 /*
                 //Causes some problems
-                elem.onload = function () {
+                elem.onload = () => {
                     try {
                         //Remove open and createElement
-                        elem.contentWindow.open = function () { };
-                        elem.contentWindow.document.createElement = function () { };
+                        elem.contentWindow.open = () => { };
+                        elem.contentWindow.document.createElement = () => { };
                     } catch (err) {
                         //reCaptcha frame, ignore
                     }
@@ -1881,15 +1890,6 @@ if (a.domCmp(["shink.in"])) {
                 return _createElement.apply(a.doc, args);
         }
     };
-    //Skip countdown
-    if (a.win.location.pathname.startsWith("/go/")) {
-        a.ready(() => {
-            const link = a.doc.getElementById("btn-main");
-            const i = link.href.lastIndexOf("http");
-            const url = link.href.substr(i);
-            a.win.location.href = url;
-        });
-    }
 }
 if (a.domCmp(["gamezhero.com"])) {
     a.readOnly("ads", true);
