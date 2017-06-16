@@ -1,7 +1,7 @@
 # The standard configuration
 
-This is the standard configuration, we will use this configuration for all our tests. 
-We may not fix issues that we cannot reproduce and we may not accept solutions that fails in our tests. 
+This is the standard configuration, I will use this configuration for all my tests. 
+I may not fix issues that I cannot reproduce and I may not accept solutions that fail in my tests. 
 
 ### Everything updated to the latest stable version
 
