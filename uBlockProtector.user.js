@@ -2193,10 +2193,9 @@ if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "pl
             a.setTimeout(handler, 1000);
             return;
         }
-        const proxy = "";
         GM_xmlhttpRequest({
             method: "GET",
-            url: `${proxy}http://playapi.mtgx.tv/v3/videos/stream/${videoID}`,
+            url: "http://playapi.mtgx.tv/v3/videos/stream/${videoID}",
             onload(result) {
                 if (a.config.debugMode) {
                     a.out.info("Response received:");
