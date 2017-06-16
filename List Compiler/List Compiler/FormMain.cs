@@ -41,6 +41,8 @@ namespace List_Compiler
         /// <param name="e"></param>
         private async void BtnBuild_Click(object sender, EventArgs e)
         {
+            //Clear log
+            TBLog.Text = "";
             //Lock UI
             this.Enabled = false;
             //Cache git root
@@ -56,29 +58,29 @@ namespace List_Compiler
                     string path = Path.Combine(gitRoot, "List Compiler\\Metadata.txt");
                     PutLog("Reading data from " + path);
                     metadata = File.ReadAllLines(path);
-                    PutLog(metadata.Length.ToString() + " entries read. ");
+                    PutLog(metadata.Length.ToString() + " entries read.");
                 }
                 catch (Exception err)
                 {
-                    PutLog("Cannot read file, error message: ");
+                    PutLog("Cannot read file, error message:");
                     PutLog(err.Message);
                     return;
                 }
                 //Others
-                if (!LoadSkipComments(Path.Combine(gitRoot, "List Compiler\\Rules.txt"), out string[] rules))
+                if (LoadSkipComments(Path.Combine(gitRoot, "List Compiler\\Rules.txt"), out string[] rules))
                 {
                     return;
                 }
-                if (!LoadSkipComments(Path.Combine(gitRoot, "List Compiler\\Remove.txt"), out string[] remove))
+                if (LoadSkipComments(Path.Combine(gitRoot, "List Compiler\\Remove.txt"), out string[] remove))
                 {
                     return;
                 }
-                if (!LoadSkipComments(Path.Combine(gitRoot, "List Compiler\\aak.list.cache-10.0.txt"), out string[] originalAAKList))
+                if (LoadSkipComments(Path.Combine(gitRoot, "List Compiler\\aak.list.cache-10.0.txt"), out string[] originalAAKList))
                 {
                     return;
                 }
                 //Patch AAK List
-                PutLog("Patching AAK list... ");
+                PutLog("Patching AAK list...");
                 List<string> patchedAAKList = new List<string>
                 {
                     "! =====Patched Anti-Adblock Killer List (originally by Reek)=====",
@@ -100,21 +102,20 @@ namespace List_Compiler
                         patchedAAKList.Add(t);
                     }
                 }
-                PutLog(counter.ToString() + " entries removed. ");
+                PutLog(counter.ToString() + " entries removed.");
                 //Combine entries
-                string[] toWrite = metadata.Concat(rules).ToArray();
-                toWrite = toWrite.Concat(patchedAAKList.ToArray()).ToArray();
+                string[] toWrite = metadata.Concat(rules).Concat(patchedAAKList.ToArray()).ToArray();
                 //Write to file
                 try
                 {
                     string path = Path.Combine(gitRoot, "uBlockProtectorList.txt");
                     PutLog("Writting data to " + path);
                     File.WriteAllLines(path, toWrite);
-                    PutLog(toWrite.Length.ToString() + " entries wrote. ");
+                    PutLog(toWrite.Length.ToString() + " entries wrote.");
                 }
                 catch (Exception err)
                 {
-                    PutLog("Cannot write file, error message: ");
+                    PutLog("Cannot write file, error message:");
                     PutLog(err.Message);
                     return;
                 }
@@ -128,7 +129,7 @@ namespace List_Compiler
         /// </summary>
         /// <param name="filePath">The path to the file to read</param>
         /// <param name="data">The output variable</param>
-        /// <returns>True if successful, false otherwise</returns>
+        /// <returns>True if failed, false otherwise</returns>
         private bool LoadSkipComments(string filePath, out string[] data)
         {
             string[] original;
@@ -136,23 +137,23 @@ namespace List_Compiler
             //Read file
             try
             {
-                PutLog("Reading data from " + filePath + "... ");
+                PutLog("Reading data from " + filePath + "...");
                 original = File.ReadAllLines(filePath);
-                PutLog(original.Length.ToString() + " entries read. ");
+                PutLog(original.Length.ToString() + " entries read.");
             }
             catch (Exception err)
             {
-                PutLog("Cannot read file, error message: ");
+                PutLog("Cannot read file, error message:");
                 PutLog(err.Message);
                 data = new string[0];
-                return false;
+                return true;
             }
             //Filter list
             int counter = 0;
             for (int i = 0; i < original.Length; i++)
             {
                 string t = original[i];
-                if (t.StartsWith("!") && !t.StartsWith("!@pragma-keepline") || t == string.Empty)
+                if (t[0] == '!' && !t.StartsWith("!@pragma-keepline") || t == string.Empty)
                 {
                     //Skip comments and update counter
                     counter++;
@@ -163,10 +164,10 @@ namespace List_Compiler
                     filtered.Add(t);
                 }
             }
-            PutLog(counter.ToString() + " comments removed. ");
+            PutLog(counter.ToString() + " comments removed.");
             //Return result
             data = filtered.ToArray();
-            return true;
+            return false;
         }
 
         /// <summary>
@@ -187,17 +188,6 @@ namespace List_Compiler
             {
                 TBLog.Text += msg + Environment.NewLine;
             }
-        }
-
-        /// <summary>
-        /// Scroll to bottom when data is written to it
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void TBLog_TextChanged(object sender, EventArgs e)
-        {
-            TBLog.SelectionStart = TBLog.Text.Length;
-            TBLog.ScrollToCaret();
         }
     }
 }
