@@ -7,6 +7,9 @@ console.log("=====syntax.node.js starts=====");
 const esprima = require("esprima");
 const { readFileSync } = require("fs");
 
+//Check modules version
+console.log(`${esprima.version} is the version of Esprima.`);
+
 //Verify the compiled script
 console.log("Compiled Script is being verified...");
 const dist = readFileSync("uBlockProtector.user.js", "utf8");
