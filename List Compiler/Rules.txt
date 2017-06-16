@@ -69,6 +69,8 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 ##.popup-premium__apla
 ! === Admiral
 ||separatesilver.com^$third-party
+||pelcro.com^$third-party
+||perceivequarter.com^$third-party
 ! === AdBlock Notify
 techdracula.com,keshavcommoditycalls.com,hackinformer.com,coderexample.com,anibatch.id,altervista.org,ispazio.net,kitguru.net##script:inject(setTimeout-defuser.js, an_message_display)
 hentaitake.net,hackinformer.com,sopsport.org,cyberterminators.co##script:inject(abort-on-property-read.js, anOptions)
@@ -341,8 +343,6 @@ uplod.ws##script:inject(abort-on-property-read.js, $.ready)
 ||utils.cedsdigital.it/checkSubscription/checkSubscription.js
 ! === windowsreport.com
 windowsreport.com##script:inject(silent-noeval.js)
-! === livenewson.com
-||pelcro.com^$third-party
 ! === haxmaps.com, haxrec.com, haxcolors.com
 haxmaps.com,haxrec.com,haxcolors.com##script:inject(setTimeout-defuser.js, /.*/, 10000)
 ! === animesync.tv

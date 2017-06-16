@@ -68,6 +68,8 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 ###like-us-adblock-modal
 ##.popup-premium__apla
 ||separatesilver.com^$third-party
+||pelcro.com^$third-party
+||perceivequarter.com^$third-party
 techdracula.com,keshavcommoditycalls.com,hackinformer.com,coderexample.com,anibatch.id,altervista.org,ispazio.net,kitguru.net##script:inject(setTimeout-defuser.js, an_message_display)
 hentaitake.net,hackinformer.com,sopsport.org,cyberterminators.co##script:inject(abort-on-property-read.js, anOptions)
 futbolchile.net,freeomovie.com,appdrop.net,skmedix.pl,yalujailbreak.net,cloudwebcopy.com,milaulas.com##script:inject(bab-defuser.js)
@@ -226,7 +228,6 @@ batchnime.net##script:inject(abort-on-property-read.js, killAdBlock)
 uplod.ws##script:inject(abort-on-property-read.js, $.ready)
 ||utils.cedsdigital.it/checkSubscription/checkSubscription.js
 windowsreport.com##script:inject(silent-noeval.js)
-||pelcro.com^$third-party
 haxmaps.com,haxrec.com,haxcolors.com##script:inject(setTimeout-defuser.js, /.*/, 10000)
 animesync.tv##.modal-adblock
 ||active.cache.el-mundo.net/js/*_expansion.js$domain=expansion.com
