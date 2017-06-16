@@ -2,7 +2,7 @@
 // @name uBlock Protector Script
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
-// @version 8.42
+// @version 8.43
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -3135,6 +3135,9 @@ if (a.domCmp(["cyberterminators.co"])) {
 if (a.domCmp(["youtube-videos.tv"])) {
     a.css(".cactus-video-content div { display:block; } .mts-cl-horizontal.mts-cl-social-locker { display:none; }");
     a.noAccess("KillAdBlock");
+}
+if (a.domCmp(["dailyuploads.net"])) {
+    a.css("#downloadBtnClickOrignal { display:block; } #downloadBtnClick { display:none; } #chkIsAdd { display:none; }");
 }
 if (a.config.debugMode && a.domCmp(["itv.com"])) {
     const videoJS = (sources, types, subtitles, width, height) => {

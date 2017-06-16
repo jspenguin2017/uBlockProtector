@@ -370,3 +370,4 @@ litv.tv##.fp-pausebn
 @@||uploadboy.com/ads.js$script,first-party
 ! === dailyuploads.net
 dailyuploads.net##script:inject(abort-on-property-read.js, popns)
+dailyuploads.net##script:inject(abort-on-property-read.js, adbClick)
