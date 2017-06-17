@@ -248,7 +248,7 @@ a.err = (name) => {
 a.domCmp = (domList, noErr) => {
     for (let i = 0; i < domList.length; i++) {
         if (a.dom.endsWith(domList[i]) &&
-            (a.dom.length === domList[i].length || a.dom.charAt(a.dom.length - domList[i].length - 1) === ".")) {
+            (a.dom.length === domList[i].length || a.dom.charAt(a.dom.length - domList[i].length - 1) === '.')) {
             return (!noErr && a.err()), true;
         }
     }
@@ -261,7 +261,7 @@ a.domInc = (domList, noErr) => {
             case -1: break;
             case 0: return (!noErr && a.err()), true;
             default:
-                if (a.dom[index - 1] === ".") {
+                if (a.dom.charAt(index - 1) === '.') {
                     return (!noErr && a.err()), true;
                 }
                 break;
@@ -455,10 +455,10 @@ a.css = (str) => {
 a.bait = (type, identifier, hidden) => {
     let elem = a.$(`<${type}>`);
     switch (identifier.charAt(0)) {
-        case "#":
+        case '#':
             elem.attr("id", identifier.substring(1));
             break;
-        case ".":
+        case '.':
             elem.addClass(identifier.substring(1));
             break;
     }
