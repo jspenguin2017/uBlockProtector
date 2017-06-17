@@ -119,8 +119,9 @@ if (a.domInc(["hackintosh"])) {
 }
 if (a.domCmp(["tvregionalna24.pl"])) {
     let text = [];
+    const matcher = /var _ended=(.*);var _skipButton/;
     a.readOnly("videojs", (a, b, func) => {
-        let temp = "(" + func.toString().match(/var _ended=(.*);var _skipButton/)[1] + ")();";
+        let temp = "(" + func.toString().match(matcher)[1] + ")();";
         temp = temp.replace("player.dispose();", "");
         text.push(temp);
     });
@@ -241,6 +242,7 @@ if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl", "sportowefakty.wp.pl", "
     //if (a.domCmp(["autokult.pl"], true)) {
     //    containerMatcher = ".embed-container";
     //}
+    const matcher = /mid[=,]([0-9]+)/;
     //Main function
     const main = () => {
         //Do not tick when in background
@@ -270,7 +272,7 @@ if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl", "sportowefakty.wp.pl", "
             let thisMid = elem.attr("href");
             //Check if I got the element
             if (thisMid) {
-                thisMid = thisMid.match(/mid[=,]([0-9]+)/)[1].toString();
+                thisMid = thisMid.match(matcher)[1].toString();
                 //I will destroy the player soon anyway, I will remove this now so I will not grab it twice
                 elem.remove();
             }

@@ -1059,8 +1059,9 @@ if (a.domInc(["hackintosh"])) {
 }
 if (a.domCmp(["tvregionalna24.pl"])) {
     let text = [];
+    const matcher = /var _ended=(.*);var _skipButton/;
     a.readOnly("videojs", (a, b, func) => {
-        let temp = "(" + func.toString().match(/var _ended=(.*);var _skipButton/)[1] + ")();";
+        let temp = "(" + func.toString().match(matcher)[1] + ")();";
         temp = temp.replace("player.dispose();", "");
         text.push(temp);
     });
@@ -1149,6 +1150,7 @@ if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl", "sportowefakty.wp.pl", "
     let networkErrorCounter = 0; //Will stop sending request if this is over 5
     let isInBackground = false; //A flag to prevent excessive CPU usage when the tab is in background
     let containerMatcher = ".wp-player-outer, .player__container, .wp-player, .embed-container";
+    const matcher = /mid[=,]([0-9]+)/;
     const main = () => {
         if (isInBackground) {
             return;
@@ -1171,7 +1173,7 @@ if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl", "sportowefakty.wp.pl", "
             const elem = a.$(containerMatcher).first().find(".titlecont a.title");
             let thisMid = elem.attr("href");
             if (thisMid) {
-                thisMid = thisMid.match(/mid[=,]([0-9]+)/)[1].toString();
+                thisMid = thisMid.match(matcher)[1].toString();
                 elem.remove();
             }
             if (thisMid) {
