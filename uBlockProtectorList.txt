@@ -72,7 +72,7 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 ||perceivequarter.com^$third-party
 techdracula.com,keshavcommoditycalls.com,hackinformer.com,coderexample.com,anibatch.id,altervista.org,ispazio.net,kitguru.net##script:inject(setTimeout-defuser.js, an_message_display)
 hentaitake.net,hackinformer.com,sopsport.org,cyberterminators.co##script:inject(abort-on-property-read.js, anOptions)
-futbolchile.net,freeomovie.com,appdrop.net,skmedix.pl,yalujailbreak.net,cloudwebcopy.com,milaulas.com,tout-bon.com,sznpaste.net##script:inject(bab-defuser.js)
+futbolchile.net,freeomovie.com,appdrop.net,skmedix.pl,yalujailbreak.net,cloudwebcopy.com,milaulas.com,tout-bon.com,sznpaste.net,linkdrop.net##script:inject(bab-defuser.js)
 ||lukkr.com/website/pf.js
 @@||www.dogefaucet.com/static/js/ads.js|
 @@||dot.wp.pl^
@@ -247,6 +247,7 @@ dailyuploads.net##script:inject(abort-on-property-read.js, adbClick)
 ||madisonross.com/adblock.html$subdocument
 sznpaste.net##script:inject(abort-on-property-write.js, _pop)
 raptu.com##script:inject(noeval.js)
+@@ajax.googleapis.com/ajax/libs/jquery^$script,domain=linkdrop.net
 ! =====Patched Anti-Adblock Killer List (originally by Reek)=====
 ! Patching logic can be found in List Compiler source code
 ! Anti-Adblock Killer Repository (contains original source code and license): https://github.com/reek/anti-adblock-killer
