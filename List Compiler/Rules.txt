@@ -375,3 +375,5 @@ dailyuploads.net##script:inject(abort-on-property-read.js, adbClick)
 ||madisonross.com/adblock.html$subdocument
 ! === sznpaste.net
 sznpaste.net##script:inject(abort-on-property-write.js, _pop)
+! === raptu.com
+raptu.com##script:inject(noeval.js)
