@@ -2,7 +2,7 @@
 // @name uBlock Protector Script
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
-// @version 8.44
+// @version 8.45
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -2201,7 +2201,7 @@ if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "pl
         }
         GM_xmlhttpRequest({
             method: "GET",
-            url: "http://playapi.mtgx.tv/v3/videos/stream/${videoID}",
+            url: `http://playapi.mtgx.tv/v3/videos/stream/${videoID}`,
             onload(result) {
                 if (a.config.debugMode) {
                     a.out.info("Response received:");
