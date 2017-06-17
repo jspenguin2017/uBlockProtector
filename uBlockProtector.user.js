@@ -2,7 +2,7 @@
 // @name uBlock Protector Script
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
-// @version 8.43
+// @version 8.44
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -452,12 +452,18 @@ a.css = (str) => {
     }
     GM_addStyle(temp.join(";"));
 };
-a.bait = (type, identifier) => {
+a.bait = (type, identifier, hidden) => {
     let elem = a.$(`<${type}>`);
-    if (identifier.startsWith("#")) {
-        elem.attr("id", identifier.substr(1));
-    } else if (identifier.startsWith(".")) {
-        elem.addClass(identifier.substr(1));
+    switch (identifier.charAt(0)) {
+        case "#":
+            elem.attr("id", identifier.substring(1));
+            break;
+        case ".":
+            elem.addClass(identifier.substring(1));
+            break;
+    }
+    if (hidden) {
+        elem.hide();
     }
     elem.html("<br>").prependTo("html");
 };
@@ -3049,8 +3055,7 @@ if (a.domCmp(["hackinformer.com"])) {
     });
 }
 if (a.domCmp(["tg007.net"])) {
-    a.bait("div", "#gads");
-    a.$("#gads").hide();
+    a.bait("div", "#gads", true);
 }
 if (a.domCmp(["bild.de"])) {
     a.filter("document.querySelector", a.matchMethod.stringExact, "body");
@@ -3138,6 +3143,9 @@ if (a.domCmp(["youtube-videos.tv"])) {
 }
 if (a.domCmp(["dailyuploads.net"])) {
     a.css("#downloadBtnClickOrignal { display:block; } #downloadBtnClick { display:none; } #chkIsAdd { display:none; }");
+}
+if (a.domCmp(["buickforums.com"])) {
+    a.bait("div", "#TestAdBlock", true);
 }
 if (a.config.debugMode && a.domCmp(["itv.com"])) {
     const videoJS = (sources, types, subtitles, width, height) => {

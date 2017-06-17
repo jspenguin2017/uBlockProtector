@@ -2340,8 +2340,7 @@ if (a.domCmp(["hackinformer.com"])) {
     });
 }
 if (a.domCmp(["tg007.net"])) {
-    a.bait("div", "#gads");
-    a.$("#gads").hide();
+    a.bait("div", "#gads", true);
 }
 if (a.domCmp(["bild.de"])) {
     a.filter("document.querySelector", a.matchMethod.stringExact, "body");
@@ -2435,6 +2434,9 @@ if (a.domCmp(["youtube-videos.tv"])) {
 }
 if (a.domCmp(["dailyuploads.net"])) {
     a.css("#downloadBtnClickOrignal { display:block; } #downloadBtnClick { display:none; } #chkIsAdd { display:none; }");
+}
+if (a.domCmp(["buickforums.com"])) {
+    a.bait("div", "#TestAdBlock", true);
 }
 if (a.config.debugMode && a.domCmp(["itv.com"])) {
     //Test link: https://www.itv.com/hub/take-me-out/1a8716a0089

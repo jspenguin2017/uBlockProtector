@@ -371,3 +371,5 @@ litv.tv##.fp-pausebn
 ! === dailyuploads.net
 dailyuploads.net##script:inject(abort-on-property-read.js, popns)
 dailyuploads.net##script:inject(abort-on-property-read.js, adbClick)
+! === buickforums.com
+||madisonross.com/adblock.html$subdocument

@@ -755,15 +755,23 @@ a.css = (str) => {
  * @function
  * @param {string} type - The type of the element, example: div.
  * @param {string} identifier - The class or id, example: .test (class) #test (id).
+ * @param {boolean} [hidden=false] - Whether the element should be hidden.
  */
-a.bait = (type, identifier) => {
+a.bait = (type, identifier, hidden) => {
     //Create element
     let elem = a.$(`<${type}>`);
     //Add identifier
-    if (identifier.startsWith("#")) {
-        elem.attr("id", identifier.substr(1));
-    } else if (identifier.startsWith(".")) {
-        elem.addClass(identifier.substr(1));
+    switch (identifier.charAt(0)) {
+        case "#":
+            elem.attr("id", identifier.substring(1));
+            break;
+        case ".":
+            elem.addClass(identifier.substring(1));
+            break;
+    }
+    //Hide element if needed
+    if (hidden) {
+        elem.hide();
     }
     //Add content and prepend to HTML
     elem.html("<br>").prependTo("html");
