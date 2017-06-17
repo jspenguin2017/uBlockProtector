@@ -1847,7 +1847,7 @@ if (a.domCmp(["zap.in"])) {
         },
     });
 }
-if (a.domCmp(["adbull.me", "freepdf-books.com", "bc.vc", "themeslide.com"])) {
+if (a.domCmp(["adbull.me", "freepdf-books.com", "bc.vc", "themeslide.com", "linkdrop.net"])) {
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
 if (a.domCmp(["shink.in"])) {
