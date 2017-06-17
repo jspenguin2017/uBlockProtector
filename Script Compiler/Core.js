@@ -10,8 +10,6 @@
  * @param {boolean} AdflyUnmatch - Whether this domain should be excluded from Adfly bypasser.
  */
 a.init = (excluded, AdflyMatch, AdflyUnmatch) => {
-    //Load a new jQuery into a.$
-    a.$ = a.make$();
     //Load configurations
     a.config();
     //Log domain
@@ -146,10 +144,23 @@ a.out = a.win.console;
  */
 a.dom = a.doc.domain;
 /**
- * jQuery, will be available after a.init() is called.
+ * jQuery, lazy load as the factory takes a while.
  * @const {Object}
  */
-a.$ = null;
+a.win.Object.defineProperty(a, "$", {
+    configurable: true,
+    enumerable: true,
+    get() {
+        const val = a.make$();
+        a.win.Object.defineProperty(a, "$", {
+            configurable: true,
+            enumerable: true,
+            writable: true,
+            value: val,
+        });
+        return val;
+    },
+});
 /**
  * The real addEventListener.
  * @const {Function}
@@ -384,14 +395,7 @@ a.mods.NoAutoplay = false;
  * Returns a new jQuery.
  * @function
  */
-a.make$ = () => {
-    //Load jQuery
-    let $ = a.jQueryFactory(a.win, true);
-    //Load color plug-in
-    //The color plug-in is not enabled, to enable it, update the compiler and uncomment the following line
-    //a.jQueryColorLoader($);
-    return $;
-};
+a.make$ = () => a.jQueryFactory(a.win, true);
 /**
  * Write an error message to console.
  * @function
@@ -759,22 +763,23 @@ a.css = (str) => {
  */
 a.bait = (type, identifier, hidden) => {
     //Create element
-    let elem = a.$(`<${type}>`);
+    let elem = a.doc.createElement(type);
     //Add identifier
     switch (identifier.charAt(0)) {
         case '#':
-            elem.attr("id", identifier.substring(1));
+            elem.id = identifier.substring(1);
             break;
         case '.':
-            elem.addClass(identifier.substring(1));
+            elem.className = identifier.substring(1);
             break;
     }
     //Hide element if needed
     if (hidden) {
-        elem.hide();
+        elem.style.display = "none";
     }
     //Add content and prepend to HTML
-    elem.html("<br>").prependTo("html");
+    elem.innerHTML = "<br>";
+    a.doc.documentElement.prepend(elem);
 };
 /**
  * Set or get a cookie.
@@ -1095,22 +1100,25 @@ a.generic = () => {
                 a.win.closeAdbuddy();
             }
             //AdBlock Alerter (WP)
-            if (a.$("div.adb_overlay > div.adb_modal_img").length > 0) {
+            if (a.doc.querySelector("div.adb_overlay > div.adb_modal_img")) {
                 //Log
                 a.err("AdBlock Alerter");
                 //Remove alert and allow scrolling
-                a.$("div.adb_overlay").remove();
+                a.doc.querySelector("div.adb_overlay").remove();
                 a.css("html, body { height:auto; overflow:auto; }");
             }
             //Block screen
-            if (a.$("#blockdiv").html() === "disable ad blocking or use another browser without any adblocker when you visit") {
-                //Log
-                a.out.err("Uncaught AdBlock Error: Generic block screens are not allowed on this device!");
-                //Remove block screen
-                a.$("#blockdiv").remove();
+            {
+                const elem = a.doc.getElementById("#blockdiv");
+                if (elem && elem.innerHTML === "disable ad blocking or use another browser without any adblocker when you visit") {
+                    //Log
+                    a.out.err("Uncaught AdBlock Error: Generic block screens are not allowed on this device!");
+                    //Remove block screen
+                    elem.remove();
+                }
             }
             //Antiblock.org v2
-            {
+            (() => {
                 const re = /^#([a-z0-9]{4,10}) ~ \* \{ display: none; \}/;
                 const styles = document.querySelectorAll("style");
                 for (let i = 0; i < styles.length; i++) {
@@ -1121,17 +1129,20 @@ a.generic = () => {
                         const cssText = cssRule.cssText;
                         if (re.test(cssText)) {
                             const id = re.exec(cssText)[1];
-                            if (a.$(`script:contains(w.addEventListener('load',${id},false))`)) {
-                                //Log
-                                a.err("Antiblock.org v2");
-                                //Set data for future uses
-                                data.abo2 = id;
-                                break;
+                            const scripts = a.doc.querySelectorAll("script");
+                            for (let k = 0; k < scripts.length; k++) {
+                                if (scripts[k].innerHTML.includes(`w.addEventListener('load',${id},false)`)) {
+                                    //Log
+                                    a.err("Antiblock.org v2");
+                                    //Set data for future uses
+                                    data.abo2 = id;
+                                    return;
+                                }
                             }
                         }
                     }
                 }
-            }
+            })();
             //BetterStopAdblock, Antiblock.org v3, and BlockAdBlock
             {
                 const re = /^[a-z0-9]{4,12}$/i;
