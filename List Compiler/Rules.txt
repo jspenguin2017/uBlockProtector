@@ -379,3 +379,5 @@ sznpaste.net##script:inject(abort-on-property-write.js, _pop)
 raptu.com##script:inject(noeval.js)
 ! === linkdrop.net
 @@ajax.googleapis.com/ajax/libs/jquery^$script,domain=linkdrop.net
+! === leechgear.net
+leechgear.net###block_on

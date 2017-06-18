@@ -248,6 +248,7 @@ dailyuploads.net##script:inject(abort-on-property-read.js, adbClick)
 sznpaste.net##script:inject(abort-on-property-write.js, _pop)
 raptu.com##script:inject(noeval.js)
 @@ajax.googleapis.com/ajax/libs/jquery^$script,domain=linkdrop.net
+leechgear.net###block_on
 ! =====Patched Anti-Adblock Killer List (originally by Reek)=====
 ! Patching logic can be found in List Compiler source code
 ! Anti-Adblock Killer Repository (contains original source code and license): https://github.com/reek/anti-adblock-killer
