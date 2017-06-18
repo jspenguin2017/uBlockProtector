@@ -565,17 +565,17 @@ a.filter = (func, method, filter, onMatch, onAfter) => {
     };
     //Try to replace the function
     try {
-        //Get original and its parent
-        let stack = func.split(".");
-        let current;
-        while (current = stack.shift()) {
-            parent = original;
-            original = parent[current];
-            //Patch if stack is empty
-            if (!stack.length) {
-                parent[current] = newFunc;
-            }
+        let parent = a.win;
+        let name = func; //Need to copy as I need to change it
+        let i = name.indexOf(".");
+        while (i > -1) {
+            parent = parent[name.substring(0, i)];
+            name = name.substring(i + 1);
+            i = name.indexOf(".");
         }
+        //Replace
+        original = parent[name];
+        parent[name] = newFunc;
         //Add this filter to protection list
         if (a.protectFunc.enabled) {
             a.protectFunc.pointers.push(newFunc);

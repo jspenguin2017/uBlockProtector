@@ -22,9 +22,9 @@ let currentTest;
  */
 const compare = (result, expected) => {
     if (result === expected) {
-        console.log(`Test for ${currentTest} passed.`);
+        console.log(`- Test for ${currentTest} passed.`);
     } else {
-        console.log(`Test for ${currentTest} failed, test result and expected result will be printed to the screen.`);
+        console.log(`- Test for ${currentTest} failed, test result and expected result will be printed to the screen.`);
         console.log(result, expected);
         //Fail the build
         process.exit(1);
@@ -68,8 +68,10 @@ test("a.applyMatch() match RegExp", () => {
     compare(a.applyMatch(["this is a string", "this is another string"], a.matchMethod.RegExp, /\d/), false);
 });
 //a.md5
-test("a.md5()", () => {
+test("a.md5() ASCII", () => {
     compare(a.md5("Hello world"), "3e25960a79dbc69b674cd4ec67a72c62");
+});
+test("a.md5() UTF-8", () => {
     compare(a.md5("今天天气真好"), "5f4152cdb8693ed153cd36bd1686489e");
 });
 //a.cookie
@@ -130,6 +132,27 @@ test("a.noAccess() multiple layers", () => {
     } catch (err) {
         compare(true, true);
     }
+});
+//a.filter
+//USE global.singleLayerFilter
+//USE global.multipleLayersFilter
+test("a.filter() single layer", () => {
+    global.singleLayerFilter = (arg) => arg;
+    a.filter("singleLayerFilter", a.matchMethod.stringExact, "hi");
+    compare(global.singleLayerFilter("hi"), undefined);
+    compare(global.singleLayerFilter("hello"), "hello");
+});
+test("a.filter() multiple layers", () => {
+    global.multipleLayersFilter = {
+        test1: {
+            test2(arg) {
+                return arg;
+            }
+        }
+    };
+    a.filter("multipleLayersFilter.test1.test2", a.matchMethod.stringExact, "hi");
+    compare(global.multipleLayersFilter.test1.test2("hi"), undefined);
+    compare(global.multipleLayersFilter.test1.test2("hello"), "hello");
 });
 
 console.log("=====core.node.js ends=====");

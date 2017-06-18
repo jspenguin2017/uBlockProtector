@@ -2,7 +2,7 @@
 // @name uBlock Protector Script
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
-// @version 8.50
+// @version 8.51
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -340,15 +340,16 @@ a.filter = (func, method, filter, onMatch, onAfter) => {
         return original.apply(parent, args);
     };
     try {
-        let stack = func.split(".");
-        let current;
-        while (current = stack.shift()) {
-            parent = original;
-            original = parent[current];
-            if (!stack.length) {
-                parent[current] = newFunc;
-            }
+        let parent = a.win;
+        let name = func; //Need to copy as I need to change it
+        let i = name.indexOf(".");
+        while (i > -1) {
+            parent = parent[name.substring(0, i)];
+            name = name.substring(i + 1);
+            i = name.indexOf(".");
         }
+        original = parent[name];
+        parent[name] = newFunc;
         if (a.protectFunc.enabled) {
             a.protectFunc.pointers.push(newFunc);
             a.protectFunc.masks.push(String(original));
