@@ -1,4 +1,4 @@
-//uBlock Protector Core Library
+//@pragma-keepline uBlock Protector Core Library Start
 "use strict";
 
 //=====Initializer=====

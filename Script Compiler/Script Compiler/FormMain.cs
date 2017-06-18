@@ -140,6 +140,10 @@ namespace Script_Compiler
             {
                 return new string[0];
             }
+            if (LoadFile(Path.Combine(gitRoot, "Script Compiler\\Libraries\\yamd5.min.js"), false, out string[] lib_yamd5))
+            {
+                return new string[0];
+            }
             if (LoadFile(Path.Combine(gitRoot, "Script Compiler\\Core.js"), true, out string[] core)) //AdBlock Protector Core
             {
                 return new string[0];
@@ -149,7 +153,7 @@ namespace Script_Compiler
                 return new string[0];
             }
             //Put everything together
-            return metadata.Concat(lib_jQuery).Concat(core).Concat(rules).ToArray();
+            return metadata.Concat(lib_jQuery).Concat(lib_yamd5).Concat(core).Concat(rules).ToArray();
         }
 
         /// <summary>
