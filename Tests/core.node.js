@@ -41,10 +41,10 @@ const test = (name, test) => {
 };
 
 //Prepare environment
+global.addEventListener = () => { };
 global.document = {
     domain: "localhost",
 };
-global.addEventListener = () => { };
 const unsafeWindow = global;
 //Load the core
 let a = {};
@@ -72,6 +72,5 @@ test("a.md5()", () => {
     compare(a.md5("Hello world"), "3e25960a79dbc69b674cd4ec67a72c62");
     compare(a.md5("今天天气真好"), "5f4152cdb8693ed153cd36bd1686489e");
 });
-
 
 console.log("=====core.node.js ends=====");
