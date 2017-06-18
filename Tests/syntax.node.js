@@ -14,9 +14,9 @@ const { readFileSync } = require("fs");
 console.log(`${esprima.version} is the version of Esprima.`);
 
 //Verify the compiled script
-console.log("Compiled Script is being verified...");
+console.log("Compiled script is being verified...");
 const dist = readFileSync("uBlockProtector.user.js", "utf8");
 esprima.parse(dist);
-console.log("Compiled Script is syntactically valid.");
+console.log("Compiled script is syntactically valid.");
 
 console.log("=====syntax.node.js ends=====");

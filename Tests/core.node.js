@@ -68,10 +68,10 @@ test("a.applyMatch() match RegExp", () => {
     compare(a.applyMatch(["this is a string", "this is another string"], a.matchMethod.RegExp, /\d/), false);
 });
 //a.md5
-test("a.md5() ASCII", () => {
+test("a.md5() ASCII string", () => {
     compare(a.md5("Hello world"), "3e25960a79dbc69b674cd4ec67a72c62");
 });
-test("a.md5() UTF-8", () => {
+test("a.md5() UTF-8 string", () => {
     compare(a.md5("今天天气真好"), "5f4152cdb8693ed153cd36bd1686489e");
 });
 //a.cookie
