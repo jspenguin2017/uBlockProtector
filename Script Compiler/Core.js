@@ -421,13 +421,9 @@ a.make$ = () => a.jQueryFactory(a.win, true);
  * @function
  * @param {string} [name=""] - The name of the AdBlocker detector.
  */
-a.err = (name) => {
+a.err = (name = "") => {
     //Check argument
-    if (name) {
-        name += " ";
-    } else {
-        name = "";
-    }
+    name && (name += " ");
     //Write error message
     a.out.error(`Uncaught AdBlock Error: ${name}AdBlocker detector are not allowed on this device!`);
 };
@@ -680,9 +676,7 @@ a.patchHTML = (patcher) => {
  * @param {string} sample - A sample of code.
  */
 a.crashScript = (sample) => {
-    a.patchHTML((html) => {
-        return html.replace(sample, a.c.syntaxBreaker);
-    });
+    a.patchHTML((html) => html.replace(sample, a.c.syntaxBreaker));
 };
 /**
  * Defines a read-only property to unsafeWindow.
@@ -762,17 +756,12 @@ a.noAccess = (name) => {
  * @function
  * @param {string} str - The CSS to inject.
  */
-a.css = (str) => {
-    //Add !important
-    let temp = str.split(";");
-    for (let i = 0; i < temp.length - 1; i++) {
-        if (!temp[i].endsWith("!important")) {
-            temp[i] += " !important";
-        }
-    }
-    //Inject CSS
-    GM_addStyle(temp.join(";"));
-};
+a.css = (() => {
+    const matcher = /;/g;
+    return (str) => {
+        GM_addStyle(str.replace(matcher, " !important;"));
+    };
+})();
 /**
  * Add a bait element, this sometimes has a side effect that adds an empty bar on top of the page.
  * Sometimes the height of the bait element is checked, so I cannot make it 0 height.
@@ -857,8 +846,12 @@ a.serialize = (obj) => {
 a.nativePlayer = (source, type, width = "100%", height = "auto") => {
     //Detect type
     if (!type) {
-        const temp = source.split(".");
-        switch (temp[temp.length - 1]) {
+        const i = source.lastIndexOf(".");
+        let temp;
+        if (i > -1) {
+            temp = source.substring(i + 1);
+        }
+        switch (temp) {
             case "webm":
                 type = "video/webm";
                 break;
@@ -915,8 +908,6 @@ a.observe = (type, callback) => {
         case "remove":
             a.observe.removeCallbacks.push(callback);
             break;
-        default:
-            throw new ReferenceError("Type is not valid");
     }
     //More types will be added when needed
 };
@@ -931,17 +922,17 @@ a.observe.init = () => {
         for (let i = 0; i < mutations.length; i++) {
             //Insert
             if (mutations[i].addedNodes.length) {
-                for (let ii = 0; ii < a.observe.insertCallbacks.length; ii++) {
-                    for (let iii = 0; iii < mutations[i].addedNodes.length; iii++) {
-                        a.observe.insertCallbacks[ii](mutations[i].addedNodes[iii]);
+                for (let j = 0; j < a.observe.insertCallbacks.length; j++) {
+                    for (let k = 0; k < mutations[i].addedNodes.length; k++) {
+                        a.observe.insertCallbacks[j](mutations[i].addedNodes[k]);
                     }
                 }
             }
             //Remove
             if (mutations[i].removedNodes.length) {
-                for (let ii = 0; ii < a.observe.removeCallbacks.length; ii++) {
-                    for (let iii = 0; iii < mutations[i].removedNodes.length; iii++) {
-                        a.observe.removeCallbacks[ii](mutations[i].removedNodes[iii]);
+                for (let j = 0; j < a.observe.removeCallbacks.length; j++) {
+                    for (let k = 0; k < mutations[i].removedNodes.length; k++) {
+                        a.observe.removeCallbacks[j](mutations[i].removedNodes[k]);
                     }
                 }
             }
@@ -1416,7 +1407,7 @@ a.generic.FuckAdBlock = (constructorName, instanceName) => {
     //Define FuckAdBlock to unsafeWindow and create its instance, error checks are done in a.readOnly()
     return a.readOnly(constructorName, patchedFuckAdBlock) && a.readOnly(instanceName, new a.win[constructorName]());
 };
-//Never used, tested and can be activated at any time
+//Never used but tested and can be activated at any time
 /**
  * Enable BetterJsPop v1 defuser.
  * Probably work on 1.x until 1.0.20.

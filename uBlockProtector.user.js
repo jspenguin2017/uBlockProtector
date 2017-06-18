@@ -263,12 +263,8 @@ a.mods.Facebook_JumpToTop = true;
 a.mods.Blogspot_AutoNCR = false;
 a.mods.NoAutoplay = false;
 a.make$ = () => a.jQueryFactory(a.win, true);
-a.err = (name) => {
-    if (name) {
-        name += " ";
-    } else {
-        name = "";
-    }
+a.err = (name = "") => {
+    name && (name += " ");
     a.out.error(`Uncaught AdBlock Error: ${name}AdBlocker detector are not allowed on this device!`);
 };
 a.domCmp = (domList, noErr) => {
@@ -412,9 +408,7 @@ a.patchHTML = (patcher) => {
     });
 };
 a.crashScript = (sample) => {
-    a.patchHTML((html) => {
-        return html.replace(sample, a.c.syntaxBreaker);
-    });
+    a.patchHTML((html) => html.replace(sample, a.c.syntaxBreaker));
 };
 a.readOnly = (name, val) => {
     try {
@@ -469,15 +463,12 @@ a.noAccess = (name) => {
     }
     return true;
 };
-a.css = (str) => {
-    let temp = str.split(";");
-    for (let i = 0; i < temp.length - 1; i++) {
-        if (!temp[i].endsWith("!important")) {
-            temp[i] += " !important";
-        }
-    }
-    GM_addStyle(temp.join(";"));
-};
+a.css = (() => {
+    const matcher = /;/g;
+    return (str) => {
+        GM_addStyle(str.replace(matcher, " !important;"));
+    };
+})();
 a.bait = (type, identifier, hidden) => {
     let elem = a.doc.createElement(type);
     switch (identifier.charAt(0)) {
@@ -521,8 +512,12 @@ a.serialize = (obj) => {
 };
 a.nativePlayer = (source, type, width = "100%", height = "auto") => {
     if (!type) {
-        const temp = source.split(".");
-        switch (temp[temp.length - 1]) {
+        const i = source.lastIndexOf(".");
+        let temp;
+        if (i > -1) {
+            temp = source.substring(i + 1);
+        }
+        switch (temp) {
             case "webm":
                 type = "video/webm";
                 break;
@@ -559,24 +554,22 @@ a.observe = (type, callback) => {
         case "remove":
             a.observe.removeCallbacks.push(callback);
             break;
-        default:
-            throw new ReferenceError("Type is not valid");
     }
 };
 a.observe.init = () => {
     const observer = new a.win.MutationObserver((mutations) => {
         for (let i = 0; i < mutations.length; i++) {
             if (mutations[i].addedNodes.length) {
-                for (let ii = 0; ii < a.observe.insertCallbacks.length; ii++) {
-                    for (let iii = 0; iii < mutations[i].addedNodes.length; iii++) {
-                        a.observe.insertCallbacks[ii](mutations[i].addedNodes[iii]);
+                for (let j = 0; j < a.observe.insertCallbacks.length; j++) {
+                    for (let k = 0; k < mutations[i].addedNodes.length; k++) {
+                        a.observe.insertCallbacks[j](mutations[i].addedNodes[k]);
                     }
                 }
             }
             if (mutations[i].removedNodes.length) {
-                for (let ii = 0; ii < a.observe.removeCallbacks.length; ii++) {
-                    for (let iii = 0; iii < mutations[i].removedNodes.length; iii++) {
-                        a.observe.removeCallbacks[ii](mutations[i].removedNodes[iii]);
+                for (let j = 0; j < a.observe.removeCallbacks.length; j++) {
+                    for (let k = 0; k < mutations[i].removedNodes.length; k++) {
+                        a.observe.removeCallbacks[j](mutations[i].removedNodes[k]);
                     }
                 }
             }
