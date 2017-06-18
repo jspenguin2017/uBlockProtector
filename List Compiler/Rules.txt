@@ -381,3 +381,6 @@ raptu.com##script:inject(noeval.js)
 @@ajax.googleapis.com/ajax/libs/jquery^$script,domain=linkdrop.net
 ! === leechgear.net
 leechgear.net###block_on
+! === leech.ae
+@@||leech.ae^$elemhide
+leech.ae##script:inject(abort-on-property-read.js, open)
