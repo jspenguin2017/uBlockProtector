@@ -82,22 +82,54 @@ test("a.cookie() get mode", () => {
     compare(a.cookie("not found"), null);
 });
 //a.readOnly
-//USE global.singleLayer
-//USE global.multipleLayer
-test("a.readOnly()", () => {
-    //Single layer
-    a.readOnly("singleLayer", "hi");
-    global.singleLayer = 5;
-    compare(global.singleLayer, "hi");
-    //Multiple layer
-    global.multipleLayer = {
+//USE global.singleLayerReadOnly
+//USE global.multipleLayersReadOnly
+test("a.readOnly() single layer", () => {
+    a.readOnly("singleLayerReadOnly", "hi");
+    global.singleLayerReadOnly = 5;
+    compare(global.singleLayerReadOnly, "hi");
+});
+test("a.readOnly() multiple layers", () => {
+    global.multipleLayersReadOnly = {
         test1: {
             test2: {}
         }
     };
-    a.readOnly("multipleLayer.test1.test2.test3", "hi");
-    global.multipleLayer.test1.test2.test3 = 5;
-    compare(global.multipleLayer.test1.test2.test3, "hi");
+    a.readOnly("multipleLayersReadOnly.test1.test2.test3", "hi");
+    global.multipleLayersReadOnly.test1.test2.test3 = 5;
+    compare(global.multipleLayersReadOnly.test1.test2.test3, "hi");
+});
+//a.noAccess
+//USE global.singleLayerNoAccess
+//USE global.multipleLayersNoAccess
+test("a.noAccess() single layer", () => {
+    a.noAccess("singleLayerNoAccess");
+    try {
+        global.singleLayerNoAccess = 5;
+        compare(true, false);
+    } catch (err) {
+        compare(true, true);
+    }
+});
+test("a.noAccess() multiple layers", () => {
+    global.multipleLayersNoAccess = {
+        test1: {
+            test2: {}
+        }
+    };
+    a.noAccess("multipleLayersNoAccess.test1.test2.test3");
+    try {
+        global.multipleLayersNoAccess.test1.test2.anotherTest = 5;
+        compare(true, true);
+    } catch (err) {
+        compare(true, false);
+    }
+    try {
+        global.multipleLayersNoAccess.test1.test2.test3
+        compare(true, false);
+    } catch (err) {
+        compare(true, true);
+    }
 });
 
 console.log("=====core.node.js ends=====");

@@ -688,8 +688,8 @@ a.crashScript = (sample) => {
  */
 a.readOnly = (name, val) => {
     try {
-        let i = name.indexOf(".");
         let parent = a.win;
+        let i = name.indexOf(".");
         while (i > -1) {
             parent = parent[name.substring(0, i)];
             name = name.substring(i + 1);
@@ -719,27 +719,22 @@ a.readOnly = (name, val) => {
 a.noAccess = (name) => {
     const errMsg = "AdBlock Error: This property may not be accessed!";
     try {
-        //Find the property and its parent
-        let property = a.win;
-        let parent;
-        let stack = name.split(".");
-        let current;
-        while (current = stack.shift()) {
-            parent = property;
-            property = parent[current];
-            //Define the property if stack is empty
-            if (!stack.length) {
-                a.win.Object.defineProperty(parent, current, {
-                    configurable: false,
-                    set() {
-                        throw errMsg;
-                    },
-                    get() {
-                        throw errMsg;
-                    },
-                });
-            }
+        let parent = a.win;
+        let i = name.indexOf(".");
+        while (i > -1) {
+            parent = parent[name.substring(0, i)];
+            name = name.substring(i + 1);
+            i = name.indexOf(".");
         }
+        a.win.Object.defineProperty(parent, name, {
+            configurable: false,
+            set() {
+                throw errMsg;
+            },
+            get() {
+                throw errMsg;
+            },
+        });
     } catch (err) {
         //Failed to define property
         a.out.error(`uBlock Protector failed to define non-accessible property ${name}!`);
