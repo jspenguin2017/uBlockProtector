@@ -2,7 +2,7 @@
 // @name uBlock Protector Script
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
-// @version 8.47
+// @version 8.48
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -696,7 +696,7 @@ a.generic = () => {
                 a.css("html, body { height:auto; overflow:auto; }");
             }
             {
-                const elem = a.doc.getElementById("#blockdiv");
+                const elem = a.doc.getElementById("blockdiv");
                 if (elem && elem.innerHTML === "disable ad blocking or use another browser without any adblocker when you visit") {
                     a.out.err("Uncaught AdBlock Error: Generic block screens are not allowed on this device!");
                     elem.remove();

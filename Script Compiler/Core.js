@@ -1109,7 +1109,7 @@ a.generic = () => {
             }
             //Block screen
             {
-                const elem = a.doc.getElementById("#blockdiv");
+                const elem = a.doc.getElementById("blockdiv");
                 if (elem && elem.innerHTML === "disable ad blocking or use another browser without any adblocker when you visit") {
                     //Log
                     a.out.err("Uncaught AdBlock Error: Generic block screens are not allowed on this device!");
