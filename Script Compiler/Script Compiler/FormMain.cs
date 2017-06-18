@@ -181,13 +181,14 @@ namespace Script_Compiler
                     for (int i = 0; i < dataRead.Length; i++)
                     {
                         string line = dataRead[i].Trim();
-                        //Skip comments
                         //This algorithm would not work for every JS file, but it will work for mine
+                        //Skip empty lines
                         if (line == string.Empty)
                         {
                             counter++;
                             continue;
                         }
+                        //Skip single line comments
                         if (line.StartsWith("//"))
                         {
                             if (line.StartsWith("//@pragma-keepline "))

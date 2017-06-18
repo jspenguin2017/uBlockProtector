@@ -153,16 +153,28 @@ namespace List_Compiler
             for (int i = 0; i < original.Length; i++)
             {
                 string t = original[i];
-                if (t[0] == '!' && !t.StartsWith("!@pragma-keepline") || t == string.Empty)
+                //Assuming all comments starts with "!"
+                //Skip empty lines
+                if (t == string.Empty)
                 {
-                    //Skip comments and update counter
                     counter++;
+                    continue;
                 }
-                else
+                //Skip single line comments
+                if (t[0] == '!')
                 {
-                    //Put into filtered list
-                    filtered.Add(t);
+                    if (t.StartsWith("!@pragma-keepline "))
+                    {
+                        t = "!" + t.Substring(18);
+                    }
+                    else
+                    {
+                        counter++;
+                        continue;
+                    }
                 }
+                //Put into filtered list
+                filtered.Add(t);
             }
             PutLog(counter.ToString() + " comments removed.");
             //Return result
