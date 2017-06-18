@@ -2783,7 +2783,6 @@ if (a.domCmp(["gaybeeg.info"])) {
                     const hash = a.md5(temp[1]);
                     if (hash === "2e4a544c72f4f71e64c86ab9c5f1dd49") {
                         a.win.eval(elem.text);
-                        return;
                     } else if (a.config.debugMode) {
                         a.out.warn("Archive related inline script does not match expected hash:");
                         a.out.warn(temp[1]);
@@ -2791,6 +2790,7 @@ if (a.domCmp(["gaybeeg.info"])) {
                     } else {
                         a.out.warn("Archive related inline script does not match expected hash.");
                     }
+                    return;
                 }
             }
             if (a.config.debugMode) {
