@@ -3,7 +3,10 @@
 
 console.log("=====syntax.node.js starts=====");
 
-//Load Esprima
+/**
+ * Load modules.
+ * @const {Module}
+ */
 const esprima = require("esprima");
 const { readFileSync } = require("fs");
 
