@@ -688,25 +688,21 @@ a.crashScript = (sample) => {
  */
 a.readOnly = (name, val) => {
     try {
-        //Find the property and its parent
-        let property = a.win;
-        let parent;
-        let stack = name.split(".");
-        let current;
-        while (current = stack.shift()) {
-            parent = property;
-            property = parent[current];
-            //Define the property if stack is empty
-            if (!stack.length) {
-                a.win.Object.defineProperty(parent, current, {
-                    configurable: false,
-                    set() { },
-                    get() {
-                        return val;
-                    },
-                });
-            }
+        let i = name.indexOf(".");
+        let parent = a.win;
+        while (i > -1) {
+            parent = parent[name.substring(0, i)];
+            name = name.substring(i + 1);
+            i = name.indexOf(".");
         }
+        //Define the property
+        a.win.Object.defineProperty(parent, name, {
+            configurable: false,
+            set() { },
+            get() {
+                return val;
+            },
+        });
     } catch (err) {
         //Failed to define property
         a.out.error(`uBlock Protector failed to define read-only property ${name}!`);

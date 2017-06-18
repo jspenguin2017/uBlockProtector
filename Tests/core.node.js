@@ -33,7 +33,7 @@ const compare = (result, expected) => {
 /**
  * Run a test.
  * @param {string} name - The name of the test.
- * @param {Function} test - The test function, should be synchronous and must call compare() inside.
+ * @param {Function} test - The test function, must be synchronous and must call compare() inside.
  */
 const test = (name, test) => {
     currentTest = name;
@@ -57,7 +57,7 @@ test("a.applyMatch() match all", () => {
 });
 test("a.applyMatch() match string", () => {
     compare(a.applyMatch(["this is a string", "this is another string"], a.matchMethod.string, "another"), true);
-    compare(a.applyMatch(["this is a string", "this is another string"], a.matchMethod.string, "example"), false);
+    compare(a.applyMatch(["this is a string", "this is another string"], a.matchMethod.string, "not found"), false);
 });
 test("a.applyMatch() match exact string", () => {
     compare(a.applyMatch(["this is a string", "this is another string"], a.matchMethod.stringExact, "this is another string"), true);
@@ -73,12 +73,31 @@ test("a.md5()", () => {
     compare(a.md5("今天天气真好"), "5f4152cdb8693ed153cd36bd1686489e");
 });
 //a.cookie
+//USE global.document.cookie
 test("a.cookie() get mode", () => {
-    global.document.cookie = "test=test; another test=test2; 3rd test=hi";
+    global.document.cookie = "test=test; another test=test2; last test=hi";
     compare(a.cookie("test"), "test");
     compare(a.cookie("another test"), "test2");
-    compare(a.cookie("3rd test"), "hi");
+    compare(a.cookie("last test"), "hi");
     compare(a.cookie("not found"), null);
+});
+//a.readOnly
+//USE global.singleLayer
+//USE global.multipleLayer
+test("a.readOnly()", () => {
+    //Single layer
+    a.readOnly("singleLayer", "hi");
+    global.singleLayer = 5;
+    compare(global.singleLayer, "hi");
+    //Multiple layer
+    global.multipleLayer = {
+        test1: {
+            test2: {}
+        }
+    };
+    a.readOnly("multipleLayer.test1.test2.test3", "hi");
+    global.multipleLayer.test1.test2.test3 = 5;
+    compare(global.multipleLayer.test1.test2.test3, "hi");
 });
 
 console.log("=====core.node.js ends=====");
