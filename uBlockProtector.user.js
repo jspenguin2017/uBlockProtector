@@ -1024,7 +1024,7 @@ if (a.domCmp(["tvregionalna24.pl"])) {
     let text = [];
     const matcher = /var _ended=(.*);var _skipButton/;
     a.readOnly("videojs", (a, b, func) => {
-        let temp = "(" + func.toString().match(matcher)[1] + ")();";
+        let temp = "(" + matcher.exec(String(func))[1] + ")();";
         temp = temp.replace("player.dispose();", "");
         text.push(temp);
     });
@@ -1137,7 +1137,7 @@ if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl", "sportowefakty.wp.pl", "
             const elem = a.$(containerMatcher).first().find(".titlecont a.title");
             let thisMid = elem.attr("href");
             if (thisMid) {
-                thisMid = thisMid.match(matcher)[1].toString();
+                thisMid = matcher.exec(thisMid)[1].toString();
                 elem.remove();
             }
             if (thisMid) {
