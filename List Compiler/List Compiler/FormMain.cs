@@ -165,7 +165,7 @@ namespace List_Compiler
                 {
                     if (t.StartsWith("!@pragma-keepline "))
                     {
-                        t = "!" + t.Substring(18);
+                        t = "!" + t.Substring(17);
                     }
                     else
                     {
