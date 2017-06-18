@@ -412,23 +412,20 @@ a.crashScript = (sample) => {
 };
 a.readOnly = (name, val) => {
     try {
-        let property = a.win;
-        let parent;
-        let stack = name.split(".");
-        let current;
-        while (current = stack.shift()) {
-            parent = property;
-            property = parent[current];
-            if (!stack.length) {
-                a.win.Object.defineProperty(parent, current, {
-                    configurable: false,
-                    set() { },
-                    get() {
-                        return val;
-                    },
-                });
-            }
+        let parent = a.win;
+        let i = name.indexOf(".");
+        while (i > -1) {
+            parent = parent[name.substring(0, i)];
+            name = name.substring(i + 1);
+            i = name.indexOf(".");
         }
+        a.win.Object.defineProperty(parent, name, {
+            configurable: false,
+            set() { },
+            get() {
+                return val;
+            },
+        });
     } catch (err) {
         a.out.error(`uBlock Protector failed to define read-only property ${name}!`);
         return false;
@@ -438,25 +435,22 @@ a.readOnly = (name, val) => {
 a.noAccess = (name) => {
     const errMsg = "AdBlock Error: This property may not be accessed!";
     try {
-        let property = a.win;
-        let parent;
-        let stack = name.split(".");
-        let current;
-        while (current = stack.shift()) {
-            parent = property;
-            property = parent[current];
-            if (!stack.length) {
-                a.win.Object.defineProperty(parent, current, {
-                    configurable: false,
-                    set() {
-                        throw errMsg;
-                    },
-                    get() {
-                        throw errMsg;
-                    },
-                });
-            }
+        let parent = a.win;
+        let i = name.indexOf(".");
+        while (i > -1) {
+            parent = parent[name.substring(0, i)];
+            name = name.substring(i + 1);
+            i = name.indexOf(".");
         }
+        a.win.Object.defineProperty(parent, name, {
+            configurable: false,
+            set() {
+                throw errMsg;
+            },
+            get() {
+                throw errMsg;
+            },
+        });
     } catch (err) {
         a.out.error(`uBlock Protector failed to define non-accessible property ${name}!`);
         return false;
