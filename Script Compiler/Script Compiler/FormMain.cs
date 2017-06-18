@@ -183,11 +183,25 @@ namespace Script_Compiler
                         string line = dataRead[i].Trim();
                         //Skip comments
                         //This algorithm would not work for every JS file, but it will work for mine
-                        if ((line.StartsWith("//") && !line.StartsWith("//@pragma-keepline")) || line == string.Empty)
+                        if (line == string.Empty)
                         {
                             counter++;
                             continue;
                         }
+                        if (line.StartsWith("//"))
+                        {
+                            int pos = dataRead[i].IndexOf("//@pragma-keepline ");
+                            if (pos > -1)
+                            {
+                                dataRead[i] = dataRead[i].Substring(0, pos + 2) + dataRead[i].Substring(pos + 19);
+                            }
+                            else
+                            {
+                                counter++;
+                                continue;
+                            }
+                        }
+                        //Update flag for comment block
                         if (line.StartsWith("/*"))
                         {
                             commentBlockFlag = true;
