@@ -190,9 +190,10 @@ namespace Script_Compiler
                         }
                         if (line.StartsWith("//"))
                         {
-                            int pos = dataRead[i].IndexOf("//@pragma-keepline ");
-                            if (pos > -1)
+                            if (line.StartsWith("//@pragma-keepline "))
                             {
+                                //I need to check twice like this because this directive is only valid at the beginning of a line
+                                int pos = dataRead[i].IndexOf("//@pragma-keepline ");
                                 dataRead[i] = dataRead[i].Substring(0, pos + 2) + dataRead[i].Substring(pos + 19);
                             }
                             else
