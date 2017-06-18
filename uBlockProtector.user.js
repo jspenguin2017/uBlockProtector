@@ -824,7 +824,7 @@ a.generic.AdflyBypasser = () => {
             return;
         }
         const index = encodedURL.indexOf("!HiTommy");
-        if (index >= 0) {
+        if (index > -1) {
             encodedURL = encodedURL.substring(0, index);
         }
         let var1 = "", var2 = "";
@@ -1124,7 +1124,7 @@ if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl", "sportowefakty.wp.pl", "
             if (a.win.WP.player.list.length > midArray1.length) {
                 let thisMid = a.win.WP.player.list[midArray1.length].p.url;
                 if (thisMid) {
-                    thisMid = thisMid.split("=")[1];
+                    thisMid = thisMid.substring(thisMid.lastIndexOf("=") + 1);
                 }
                 if (thisMid) {
                     midArray1.push(thisMid);

@@ -1281,7 +1281,7 @@ a.generic.AdflyBypasser = () => {
         }
         //Some checking
         const index = encodedURL.indexOf("!HiTommy");
-        if (index >= 0) {
+        if (index > -1) {
             encodedURL = encodedURL.substring(0, index);
         }
         //Decode URL
