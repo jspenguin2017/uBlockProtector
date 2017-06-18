@@ -2,7 +2,7 @@
 // @name uBlock Protector Script
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
-// @version 8.49
+// @version 8.50
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -1047,6 +1047,7 @@ if (a.domCmp(["tvn.pl", "tvnstyle.pl", "tvnturbo.pl", "kuchniaplus.pl", "minimin
     }
 }
 if (a.domCmp(["player.pl"])) {
+    const matcher = /[.,]/;
     a.on("load", () => {
         let elem;
         if (a.$("header.detailImage").length > 0) {
@@ -1054,7 +1055,7 @@ if (a.domCmp(["player.pl"])) {
         } else {
             return;
         }
-        const parts = a.doc.location.href.split(/[.,]/);
+        const parts = a.doc.location.href.split(matcher);
         const id = parts[parts.length - 2];
         const params = {
             platform: "ConnectedTV",

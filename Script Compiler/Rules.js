@@ -150,6 +150,7 @@ if (a.domCmp(["tvn.pl", "tvnstyle.pl", "tvnturbo.pl", "kuchniaplus.pl", "minimin
     }
 }
 if (a.domCmp(["player.pl"])) {
+    const matcher = /[.,]/;
     a.on("load", () => {
         //Check element
         let elem;
@@ -159,7 +160,7 @@ if (a.domCmp(["player.pl"])) {
             return;
         }
         //Get ID
-        const parts = a.doc.location.href.split(/[.,]/);
+        const parts = a.doc.location.href.split(matcher);
         const id = parts[parts.length - 2];
         const params = {
             platform: "ConnectedTV",
