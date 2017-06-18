@@ -802,13 +802,20 @@ a.bait = (type, identifier, hidden) => {
 a.cookie = (key, val, time = 31536000000, path = "/") => {
     if (typeof val === "undefined") {
         //Get mode
-        //http://stackoverflow.com/questions/10730362/get-cookie-by-name
-        const value = `; ${a.doc.cookie}`;
-        let parts = value.split(`; ${key}=`);
-        if (parts.length == 2) {
-            return parts.pop().split(";").shift();
-        } else {
+        const cookies = a.doc.cookie
+        const i = cookies.indexOf(`${key}=`);
+        const j = cookies.indexOf(";", i);
+        if (i === -1) {
+            //Not found
             return null;
+        } else {
+            if (j === -1) {
+                //Goes to the end
+                return cookies.substring(i + key.length + 1);
+            } else {
+                //Extract the value
+                return cookies.substring(i + key.length + 1, j);
+            }
         }
     } else {
         //Set mode

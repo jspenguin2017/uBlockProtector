@@ -43,7 +43,7 @@ const test = (name, test) => {
 //Prepare environment
 global.addEventListener = () => { };
 global.document = {
-    domain: "localhost",
+    domain: "localhost", //Placeholder
 };
 const unsafeWindow = global;
 //Load the core
@@ -71,6 +71,14 @@ test("a.applyMatch() match RegExp", () => {
 test("a.md5()", () => {
     compare(a.md5("Hello world"), "3e25960a79dbc69b674cd4ec67a72c62");
     compare(a.md5("今天天气真好"), "5f4152cdb8693ed153cd36bd1686489e");
+});
+//a.cookie
+test("a.cookie() get mode", () => {
+    global.document.cookie = "test=test; another test=test2; 3rd test=hi";
+    compare(a.cookie("test"), "test");
+    compare(a.cookie("another test"), "test2");
+    compare(a.cookie("3rd test"), "hi");
+    compare(a.cookie("not found"), null);
 });
 
 console.log("=====core.node.js ends=====");

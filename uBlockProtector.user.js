@@ -487,12 +487,17 @@ a.bait = (type, identifier, hidden) => {
 };
 a.cookie = (key, val, time = 31536000000, path = "/") => {
     if (typeof val === "undefined") {
-        const value = `; ${a.doc.cookie}`;
-        let parts = value.split(`; ${key}=`);
-        if (parts.length == 2) {
-            return parts.pop().split(";").shift();
-        } else {
+        const cookies = a.doc.cookie
+        const i = cookies.indexOf(`${key}=`);
+        const j = cookies.indexOf(";", i);
+        if (i === -1) {
             return null;
+        } else {
+            if (j === -1) {
+                return cookies.substring(i + key.length + 1);
+            } else {
+                return cookies.substring(i + key.length + 1, j);
+            }
         }
     } else {
         let expire = new a.win.Date();
