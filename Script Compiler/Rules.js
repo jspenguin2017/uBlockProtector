@@ -2061,30 +2061,29 @@ if (a.domCmp(["tf2center.com"])) {
 if (a.domCmp(["gaybeeg.info"])) {
     //NSFW!
     a.observe("insert", (node) => {
-        if (node.innerHTML && node.innerHTML.includes("AdBloker Detected")) {
+        if (node && node.innerHTML && node.innerHTML.includes("AdBloker Detected")) {
             node.remove();
         }
     });
     a.ready(() => {
         //Execute some in-line scripts manually
         a.$("script").each((i, elem) => {
-            if (!elem || !elem.innerHTML) {
+            if (!elem || !elem.text) {
                 return;
             }
+            const hash = a.md5(elem.text);
             //Emoji script
-            if (a.sha256(elem.innerHTML) ===
-                "b36b90f86ec7192c0942df3d504279967eb80dded90587a87010fdbbcc167923") {
-                a.win.eval(elem.innerHTML);
+            if (hash === "780f6a53e6a6ce733d964a5b93c4a703") {
+                a.win.eval(elem.text);
                 return;
             }
             //Archive
-            if (elem.innerHTML.includes("/*  Collapse Functions, version 2.0")) {
-                const temp = elem.innerHTML.split("/*  Collapse Functions, version 2.0");
+            if (elem.text.includes("/*  Collapse Functions, version 2.0")) {
+                const temp = elem.text.split("/*  Collapse Functions, version 2.0");
                 if (temp.length === 2) {
-                    const hash = a.sha256(temp[1]);
-                    if (hash ===
-                        "382f3949955c262f392d50e681f373c50b779b7503a303b93a03070940532af7") {
-                        a.win.eval(elem.innerHTML);
+                    const hash = a.md5(temp[1]);
+                    if (hash === "2e4a544c72f4f71e64c86ab9c5f1dd49") {
+                        a.win.eval(elem.text);
                         return;
                     } else if (a.config.debugMode) {
                         a.out.warn("Archive related inline script does not match expected hash:");
@@ -2098,8 +2097,8 @@ if (a.domCmp(["gaybeeg.info"])) {
             //Log blocked code
             if (a.config.debugMode) {
                 a.out.warn("This inline script is not executed:")
-                a.out.warn(elem.innerHTML);
-                a.out.warn(`Hash: ${a.sha256(elem.innerHTML)}`);
+                a.out.warn(elem.text);
+                a.out.warn(`Hash: ${hash}`);
             } else {
                 a.out.warn("An inline script is not executed.");
             }

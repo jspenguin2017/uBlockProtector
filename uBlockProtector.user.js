@@ -2,7 +2,7 @@
 // @name uBlock Protector Script
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
-// @version 8.48
+// @version 8.49
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -106,20 +106,6 @@ a.win = unsafeWindow;
 a.doc = a.win.document;
 a.out = a.win.console;
 a.dom = a.doc.domain;
-a.win.Object.defineProperty(a, "$", {
-    configurable: true,
-    enumerable: true,
-    get() {
-        const val = a.make$();
-        a.win.Object.defineProperty(a, "$", {
-            configurable: true,
-            enumerable: true,
-            writable: true,
-            value: val,
-        });
-        return val;
-    },
-});
 a.on = a.win.addEventListener.bind(a.win);
 a.setTimeout = a.win.setTimeout.bind(a.win);
 a.clearTimeout = a.win.clearTimeout.bind(a.win);
@@ -162,6 +148,34 @@ a.applyMatch = (args, method, filter) => {
     }
     return false;
 };
+a.win.Object.defineProperty(a, "$", {
+    configurable: true,
+    enumerable: true,
+    get() {
+        const val = a.make$();
+        a.win.Object.defineProperty(a, "$", {
+            configurable: true,
+            enumerable: true,
+            writable: true,
+            value: val,
+        });
+        return val;
+    },
+});
+a.win.Object.defineProperty(a, "md5", {
+    configurable: true,
+    enumerable: true,
+    get() {
+        const val = a.MD5Factory();
+        a.win.Object.defineProperty(a, "md5", {
+            configurable: true,
+            enumerable: true,
+            writable: true,
+            value: val,
+        });
+        return val;
+    },
+});
 a.c = {};
 a.c.settingsPage = "https://jspenguin2017.github.io/uBlockProtector/settings.html";
 a.c.homePage = "https://jspenguin2017.github.io/uBlockProtector/";
@@ -586,70 +600,6 @@ a.uid = () => {
     return str + a.uid.counter.toString();
 };
 a.uid.counter = 0;
-a.sha256 = (r) => {
-    //Based on work of Angel Marin and Paul Johnston
-    //More information: http://www.webtoolkit.info/javascript-sha256.html
-    function n(r, n) {
-        var t = (65535 & r) + (65535 & n),
-            e = (r >> 16) + (n >> 16) + (t >> 16);
-        return e << 16 | 65535 & t;
-    }
-    function t(r, n) {
-        return r >>> n | r << 32 - n;
-    }
-    function e(r, n) {
-        return r >>> n;
-    }
-    function o(r, n, t) {
-        return r & n ^ ~r & t;
-    }
-    function u(r, n, t) {
-        return r & n ^ r & t ^ n & t;
-    }
-    function a(r) {
-        return t(r, 2) ^ t(r, 13) ^ t(r, 22);
-    }
-    function f(r) {
-        return t(r, 6) ^ t(r, 11) ^ t(r, 25);
-    }
-    function c(r) {
-        return t(r, 7) ^ t(r, 18) ^ e(r, 3);
-    }
-    function i(r) {
-        return t(r, 17) ^ t(r, 19) ^ e(r, 10);
-    }
-    function h(r, t) {
-        var e, h, C, g, d, v, A, l, m, S, y, w, b = new Array(1116352408, 1899447441, 3049323471, 3921009573, 961987163, 1508970993, 2453635748, 2870763221, 3624381080, 310598401, 607225278, 1426881987, 1925078388, 2162078206, 2614888103, 3248222580, 3835390401, 4022224774, 264347078, 604807628, 770255983, 1249150122, 1555081692, 1996064986, 2554220882, 2821834349, 2952996808, 3210313671, 3336571891, 3584528711, 113926993, 338241895, 666307205, 773529912, 1294757372, 1396182291, 1695183700, 1986661051, 2177026350, 2456956037, 2730485921, 2820302411, 3259730800, 3345764771, 3516065817, 3600352804, 4094571909, 275423344, 430227734, 506948616, 659060556, 883997877, 958139571, 1322822218, 1537002063, 1747873779, 1955562222, 2024104815, 2227730452, 2361852424, 2428436474, 2756734187, 3204031479, 3329325298),
-            p = new Array(1779033703, 3144134277, 1013904242, 2773480762, 1359893119, 2600822924, 528734635, 1541459225),
-            s = new Array(64);
-        r[t >> 5] |= 128 << 24 - t % 32, r[(t + 64 >> 9 << 4) + 15] = t;
-        for (m = 0; m < r.length; m += 16) {
-            e = p[0], h = p[1], C = p[2], g = p[3], d = p[4], v = p[5], A = p[6], l = p[7];
-            for (S = 0; 64 > S; S++) 16 > S ? s[S] = r[S + m] : s[S] = n(n(n(i(s[S - 2]), s[S - 7]), c(s[S - 15])), s[S - 16]), y = n(n(n(n(l, f(d)), o(d, v, A)), b[S]), s[S]), w = n(a(e), u(e, h, C)), l = A, A = v, v = d, d = n(g, y), g = C, C = h, h = e, e = n(y, w);
-            p[0] = n(e, p[0]), p[1] = n(h, p[1]), p[2] = n(C, p[2]), p[3] = n(g, p[3]), p[4] = n(d, p[4]), p[5] = n(v, p[5]), p[6] = n(A, p[6]), p[7] = n(l, p[7]);
-        }
-        return p;
-    }
-    function C(r) {
-        for (var n = Array(), t = (1 << v) - 1, e = 0; e < r.length * v; e += v) n[e >> 5] |= (r.charCodeAt(e / v) & t) << 24 - e % 32;
-        return n;
-    }
-    function g(r) {
-        r = r.replace(/\r\n/g, "\n");
-        for (var n = "", t = 0; t < r.length; t++) {
-            var e = r.charCodeAt(t);
-            128 > e ? n += String.fromCharCode(e) : e > 127 && 2048 > e ? (n += String.fromCharCode(e >> 6 | 192), n += String.fromCharCode(63 & e | 128)) : (n += String.fromCharCode(e >> 12 | 224), n += String.fromCharCode(e >> 6 & 63 | 128), n += String.fromCharCode(63 & e | 128));
-        }
-        return n;
-    }
-    function d(r) {
-        for (var n = A ? "0123456789ABCDEF" : "0123456789abcdef", t = "", e = 0; e < 4 * r.length; e++) t += n.charAt(r[e >> 2] >> 8 * (3 - e % 4) + 4 & 15) + n.charAt(r[e >> 2] >> 8 * (3 - e % 4) & 15);
-        return t;
-    }
-    var v = 8,
-        A = 0;
-    return r = g(r), d(h(C(r), r.length * v));
-};
 a.generic = () => {
     //Based on generic solutions of Anti-Adblock Killer, modified to fit our Core API
     //License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
@@ -718,7 +668,7 @@ a.generic = () => {
                             const id = re.exec(cssText)[1];
                             const scripts = a.doc.querySelectorAll("script");
                             for (let k = 0; k < scripts.length; k++) {
-                                if (scripts[k].innerHTML.includes(`w.addEventListener('load',${id},false)`)) {
+                                if (scripts[k].text.includes(`w.addEventListener('load',${id},false)`)) {
                                     a.err("Antiblock.org v2");
                                     data.abo2 = id;
                                     return;
@@ -2813,27 +2763,26 @@ if (a.domCmp(["tf2center.com"])) {
 }
 if (a.domCmp(["gaybeeg.info"])) {
     a.observe("insert", (node) => {
-        if (node.innerHTML && node.innerHTML.includes("AdBloker Detected")) {
+        if (node && node.innerHTML && node.innerHTML.includes("AdBloker Detected")) {
             node.remove();
         }
     });
     a.ready(() => {
         a.$("script").each((i, elem) => {
-            if (!elem || !elem.innerHTML) {
+            if (!elem || !elem.text) {
                 return;
             }
-            if (a.sha256(elem.innerHTML) ===
-                "b36b90f86ec7192c0942df3d504279967eb80dded90587a87010fdbbcc167923") {
-                a.win.eval(elem.innerHTML);
+            const hash = a.md5(elem.text);
+            if (hash === "780f6a53e6a6ce733d964a5b93c4a703") {
+                a.win.eval(elem.text);
                 return;
             }
-            if (elem.innerHTML.includes("/*  Collapse Functions, version 2.0")) {
-                const temp = elem.innerHTML.split("/*  Collapse Functions, version 2.0");
+            if (elem.text.includes("/*  Collapse Functions, version 2.0")) {
+                const temp = elem.text.split("/*  Collapse Functions, version 2.0");
                 if (temp.length === 2) {
-                    const hash = a.sha256(temp[1]);
-                    if (hash ===
-                        "382f3949955c262f392d50e681f373c50b779b7503a303b93a03070940532af7") {
-                        a.win.eval(elem.innerHTML);
+                    const hash = a.md5(temp[1]);
+                    if (hash === "2e4a544c72f4f71e64c86ab9c5f1dd49") {
+                        a.win.eval(elem.text);
                         return;
                     } else if (a.config.debugMode) {
                         a.out.warn("Archive related inline script does not match expected hash:");
@@ -2846,8 +2795,8 @@ if (a.domCmp(["gaybeeg.info"])) {
             }
             if (a.config.debugMode) {
                 a.out.warn("This inline script is not executed:")
-                a.out.warn(elem.innerHTML);
-                a.out.warn(`Hash: ${a.sha256(elem.innerHTML)}`);
+                a.out.warn(elem.text);
+                a.out.warn(`Hash: ${hash}`);
             } else {
                 a.out.warn("An inline script is not executed.");
             }
