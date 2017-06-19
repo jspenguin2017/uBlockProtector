@@ -384,3 +384,5 @@ leechgear.net###block_on
 ! === leech.ae
 @@||leech.ae^$elemhide
 leech.ae##script:inject(abort-on-property-read.js, open)
+! === wiwo.de
+wiwo.de##script:inject(abort-on-property-read.js, AdController)

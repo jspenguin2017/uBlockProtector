@@ -251,6 +251,7 @@ raptu.com##script:inject(noeval.js)
 leechgear.net###block_on
 @@||leech.ae^$elemhide
 leech.ae##script:inject(abort-on-property-read.js, open)
+wiwo.de##script:inject(abort-on-property-read.js, AdController)
 ! =====Patched Anti-Adblock Killer List (originally by Reek)=====
 ! Patching logic can be found in List Compiler source code
 ! Anti-Adblock Killer Repository (contains original source code and license): https://github.com/reek/anti-adblock-killer
