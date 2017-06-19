@@ -2,7 +2,7 @@
 
 ### You also must install BOTH uBlock Protector List and uBlock Protector Script
 
-### Installation instructions are here: https://jspenguin2017.github.io/uBlockProtector/
+### Installation instructions are on my [home page](https://jspenguin2017.github.io/uBlockProtector/)
 
 Note: Chromium is accepted as an open source alternative to Chrome, but issues that are specific to Chromium may not be fixed. 
 
