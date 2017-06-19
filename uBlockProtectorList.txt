@@ -94,7 +94,7 @@ filez.tv###adblockinfo
 ||allmusic.com^$inline-script
 ||debridnet.com/stat*^$subdocument
 ||amazon-adsystem.com^$subdocument,redirect=noopframe,domain=debridnet.com
-||xmovies8.org/ads_*.js$xmlhttprequest,first-party,redirect=noopjs
+xmovies8.org##script:inject(abort-on-property-read.js, $.getScript)
 tune.pk###annoy-wrapper
 29443kmq.video,dato.porn###a
 ||$third-party,domain=czechhq.net

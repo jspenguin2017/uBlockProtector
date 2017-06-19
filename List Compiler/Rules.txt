@@ -114,7 +114,7 @@ filez.tv###adblockinfo
 ||amazon-adsystem.com^$subdocument,redirect=noopframe,domain=debridnet.com
 ! === xmovies8.org
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/90
-||xmovies8.org/ads_*.js$xmlhttprequest,first-party,redirect=noopjs
+xmovies8.org##script:inject(abort-on-property-read.js, $.getScript)
 ! === tune.pk
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/92
 tune.pk###annoy-wrapper
