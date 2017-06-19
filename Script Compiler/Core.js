@@ -425,7 +425,7 @@ a.err = (name = "") => {
     //Check argument
     name && (name += " ");
     //Write error message
-    a.out.error(`Uncaught AdBlock Error: ${name}AdBlocker detector are not allowed on this device!`);
+    a.out.error(`Uncaught AdBlock Error: ${name}AdBlocker detector is not allowed on this device!`);
 };
 /**
  * Check if current domain ends with one of the domains in the list.

@@ -265,7 +265,7 @@ a.mods.NoAutoplay = false;
 a.make$ = () => a.jQueryFactory(a.win, true);
 a.err = (name = "") => {
     name && (name += " ");
-    a.out.error(`Uncaught AdBlock Error: ${name}AdBlocker detector are not allowed on this device!`);
+    a.out.error(`Uncaught AdBlock Error: ${name}AdBlocker detector is not allowed on this device!`);
 };
 a.domCmp = (domList, noErr) => {
     for (let i = 0; i < domList.length; i++) {
