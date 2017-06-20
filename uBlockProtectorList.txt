@@ -254,6 +254,7 @@ leechgear.net###block_on
 leech.ae##script:inject(abort-on-property-read.js, open)
 wiwo.de##script:inject(abort-on-property-read.js, AdController)
 @@||vidoza.net/js/ads.js$script,first-party
+tvregionalna24.pl##diablo-placeholder
 ! =====Patched Anti-Adblock Killer List (originally by Reek)=====
 ! Patching logic can be found in List Compiler source code
 ! Anti-Adblock Killer Repository (contains original source code and license): https://github.com/reek/anti-adblock-killer
