@@ -71,6 +71,7 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 ||pelcro.com^$script,third-party
 ||perceivequarter.com^$script,third-party
 ||shelterstraw.com^$script,third-party
+||curtaincows.com^$script,third-party
 techdracula.com,keshavcommoditycalls.com,hackinformer.com,coderexample.com,anibatch.id,altervista.org,ispazio.net,kitguru.net##script:inject(setTimeout-defuser.js, an_message_display)
 hentaitake.net,hackinformer.com,sopsport.org,cyberterminators.co##script:inject(abort-on-property-read.js, anOptions)
 futbolchile.net,freeomovie.com,appdrop.net,skmedix.pl,yalujailbreak.net,cloudwebcopy.com,milaulas.com,tout-bon.com,sznpaste.net,linkdrop.net##script:inject(bab-defuser.js)
