@@ -12,7 +12,7 @@
         "preloaders.net", "qq.com", "reddit.com", "stackoverflow.com", "tampermonkey.net", "twitter.com",
         "vimeo.com", "wikipedia.org", "w3schools.com", "yandex.ru", "youtu.be", "youtube.com", "xemvtv.net",
         "vod.pl", "agar.io", "pandoon.info", "fsf.org", "adblockplus.org", "plnkr.co", "exacttarget.com",
-        "dolldivine.com", "popmech.ru", "calm.com", "chatango.com", "filiser.tv", "spaste.com"];
+        "dolldivine.com", "popmech.ru", "calm.com", "chatango.com", "spaste.com"];
     const excludedDomInc = ["google", "amazon", "yahoo"];
     //Adfly domains
     const AdflyMatchDomCmp = ["adf.ly", "ay.gy", "j.gs", "q.gs", "gamecopyworld.click", "babblecase.com",
