@@ -97,11 +97,6 @@ if (a.domCmp(["gamepedia.com"])) {
 if (a.domCmp(["cbox.ws"])) {
     a.readOnly("koddostu_com_adblock_yok", true);
 }
-if (a.domCmp(["ahmedabadmirror.com"])) {
-    a.protectFunc();
-    a.filter("document.addEventListener", a.matchMethod.string, "function _0x");
-    a.protectFunc.masks[1] = "function addEventListener() { [native code] }";
-}
 if (a.domCmp(["pinkrod.com", "wetplace.com"])) {
     //NSFW!
     a.readOnly("getAd", () => { });
@@ -1726,12 +1721,6 @@ if (a.domCmp(["debridnet.com"])) {
 if (a.domCmp(["xnxx.com"])) {
     a.cookie("wpn-popupunder", "1");
     a.readOnly("openpop", () => { });
-}
-if (a.domCmp(["sidereel.com"])) {
-    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/83
-    //This also works for allmusic.com
-    a.protectFunc();
-    a.filter("setTimeout", a.matchMethod.RegExp, /function\ \_0x[a-z0-9]{4,8}\(/);
 }
 if (a.domCmp(["burning-feed.com"])) {
     //Thanks to uBlock-user
