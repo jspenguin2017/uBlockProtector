@@ -1116,7 +1116,7 @@ a.generic = () => {
                             }
                             //BlockAdBlock
                             if (a.win.Object.keys(method).length === 3) {
-                                //Each key should be 10 character long
+                                //Each key should be 10 character long, one of the 3 keys can be "bab"
                                 let isBAB = true;
                                 //Verify length
                                 const keyLen = a.win.Object.keys(method).join("");
