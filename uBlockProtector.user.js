@@ -1210,13 +1210,6 @@ if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl", "sportowefakty.wp.pl", "
     a.on("focus", () => { isInBackground = false; });
     a.on("blur", () => { isInBackground = true; });
 }
-if (a.domCmp(["foxvalleyfoodie.com"])) {
-    a.patchHTML((html) => {
-        return html.replace(/<script.*\/wp-includes\/js\/(?!jquery|comment|wp-embed).*<\/script>/g,
-            "<script>console.error('Uncaught AdBlock Error: Admiral AdBlock detectors are not allowed on this " +
-            "device!');<\/script>");
-    });
-}
 if (a.domCmp(["mid-day.com", "happytrips.com"])) {
     a.readOnly("canRun", true);
 }
