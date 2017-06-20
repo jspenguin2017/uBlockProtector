@@ -57,7 +57,7 @@ if (a.domCmp(["userscloud.com"])) {
         a.$("#adblock_msg").remove();
     });
 }
-if (a.domCmp(["vidlox.tv"])) {
+if (a.domCmp(["vidlox.tv", "vidoza.net"])) {
     //NSFW!
     a.readOnly("xRds", false);
     a.readOnly("cRAds", true);

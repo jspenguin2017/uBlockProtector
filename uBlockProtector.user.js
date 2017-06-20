@@ -2,7 +2,7 @@
 // @name uBlock Protector Script
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
-// @version 8.52
+// @version 8.53
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -966,7 +966,7 @@ if (a.domCmp(["userscloud.com"])) {
         a.$("#adblock_msg").remove();
     });
 }
-if (a.domCmp(["vidlox.tv"])) {
+if (a.domCmp(["vidlox.tv", "vidoza.net"])) {
     a.readOnly("xRds", false);
     a.readOnly("cRAds", true);
 }
