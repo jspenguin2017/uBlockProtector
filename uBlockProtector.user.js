@@ -1,8 +1,9 @@
 // ==UserScript==
 // @name uBlock Protector Script
+// @namespace null
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
-// @version 8.53
+// @version 8.54
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -699,9 +700,18 @@ a.generic = () => {
                             if (method.bab) {
                                 a.err("BlockAdBlock");
                                 a.win[prop] = null;
-                            } else if (a.win.Object.keys(method).length === 3 && a.win.Object.keys(method).join().length === 32) {
-                                a.err("BlockAdBlock");
-                                a.win[prop] = null;
+                            } else if (a.win.Object.keys(method).length === 3) {
+                                let isBAB = true;
+                                for (let prop in method) {
+                                    if (prop.length !== 10) {
+                                        isBAB = false;
+                                        break;
+                                    }
+                                }
+                                if (isBAB) {
+                                    a.err("BlockAdBlock");
+                                    a.win[prop] = null;
+                                }
                             }
                         }
                     } catch (err) { }

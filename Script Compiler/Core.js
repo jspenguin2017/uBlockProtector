@@ -1119,11 +1119,21 @@ a.generic = () => {
                                 a.err("BlockAdBlock");
                                 //Remove property
                                 a.win[prop] = null;
-                            } else if (a.win.Object.keys(method).length === 3 && a.win.Object.keys(method).join().length === 32) {
-                                //Log
-                                a.err("BlockAdBlock");
-                                //Remove property
-                                a.win[prop] = null;
+                            } else if (a.win.Object.keys(method).length === 3) {
+                                //Each key should be 10 character long
+                                let isBAB = true;
+                                for (let prop in method) {
+                                    if (prop.length !== 10) {
+                                        isBAB = false;
+                                        break;
+                                    }
+                                }
+                                if (isBAB) {
+                                    //Log
+                                    a.err("BlockAdBlock");
+                                    //Remove property
+                                    a.win[prop] = null;
+                                }
                             }
                         }
                     } catch (err) { }
