@@ -700,15 +700,16 @@ a.generic = () => {
                             }
                             if (a.win.Object.keys(method).length === 3) {
                                 let isBAB = true;
-                                for (let prop in method) {
-                                    if (prop.length !== 10 && prop !== "bab") {
-                                        isBAB = false;
-                                        break;
-                                    }
-                                }
                                 const keyLen = a.win.Object.keys(method).join("");
                                 if (keyLen !== 30 && keyLen !== 23) {
                                     isBAB = false;
+                                } else {
+                                    for (let prop in method) {
+                                        if (prop.length !== 10 && prop !== "bab") {
+                                            isBAB = false;
+                                            break;
+                                        }
+                                    }
                                 }
                                 if (isBAB) {
                                     a.err("BlockAdBlock");
