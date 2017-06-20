@@ -3,7 +3,7 @@
 // @namespace null
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
-// @version 8.54
+// @version 8.55
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -595,7 +595,7 @@ a.uid = () => {
 };
 a.uid.counter = 0;
 a.generic = () => {
-    //Based on generic solutions of Anti-Adblock Killer, modified to fit our Core API
+    //Based on generic solutions of Anti-Adblock Killer, modified to fit my Core API
     //License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
     if (a.config.allowGeneric && !a.config.domExcluded) {
         const data = {};
@@ -677,9 +677,10 @@ a.generic = () => {
                 for (let prop in a.win) {
                     try {
                         if (!prop.startsWith("webkit") &&
-                            re.test(prop) &&
                             prop !== "document" &&
-                            (a.win[prop] instanceof a.win.HTMLDocument) === false && a.win.hasOwnProperty(prop) &&
+                            re.test(prop) &&
+                            (a.win[prop] instanceof a.win.HTMLDocument) === false &&
+                            a.win.hasOwnProperty(prop) &&
                             typeof a.win[prop] === "object") {
                             const method = a.win[prop];
                             if (method.deferExecution &&
@@ -697,16 +698,17 @@ a.generic = () => {
                                 }
                                 a.win[prop] = null;
                             }
-                            if (method.bab) {
-                                a.err("BlockAdBlock");
-                                a.win[prop] = null;
-                            } else if (a.win.Object.keys(method).length === 3) {
+                            if (a.win.Object.keys(method).length === 3) {
                                 let isBAB = true;
                                 for (let prop in method) {
-                                    if (prop.length !== 10) {
+                                    if (prop.length !== 10 && prop !== "bab") {
                                         isBAB = false;
                                         break;
                                     }
+                                }
+                                const keyLen = a.win.Object.keys(method).join("");
+                                if (keyLen !== 30 && keyLen !== 23) {
+                                    isBAB = false;
                                 }
                                 if (isBAB) {
                                     a.err("BlockAdBlock");
@@ -926,7 +928,7 @@ a.generic.FuckAdBlock = (constructorName, instanceName) => {
     return a.readOnly(constructorName, patchedFuckAdBlock) && a.readOnly(instanceName, new a.win[constructorName]());
 };
 //uBlock Protector Rules Start
-//Solutions from Anti-Adblock Killer (originally by Reek) are modified to fit our Core API
+//Solutions from Anti-Adblock Killer (originally by Reek) are modified to fit my Core API
 //Anti-Adblock Killer Repository (contains original source code and license): https://github.com/reek/anti-adblock-killer
 { //Keep arrays in a local scope
     const excludedDomCmp = ["360.cn", "apple.com", "ask.com", "baidu.com", "bing.com", "bufferapp.com",

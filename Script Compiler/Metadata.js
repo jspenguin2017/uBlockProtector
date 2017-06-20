@@ -3,7 +3,7 @@
 // @namespace null
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
-// @version 8.54
+// @version 8.55
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*

@@ -983,7 +983,7 @@ a.uid.counter = 0;
  * @function
  */
 a.generic = () => {
-    //@pragma-keepline Based on generic solutions of Anti-Adblock Killer, modified to fit our Core API
+    //@pragma-keepline Based on generic solutions of Anti-Adblock Killer, modified to fit my Core API
     //@pragma-keepline License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
     if (a.config.allowGeneric && !a.config.domExcluded) {
         const data = {};
@@ -1088,9 +1088,10 @@ a.generic = () => {
                 for (let prop in a.win) {
                     try {
                         if (!prop.startsWith("webkit") &&
-                            re.test(prop) &&
                             prop !== "document" &&
-                            (a.win[prop] instanceof a.win.HTMLDocument) === false && a.win.hasOwnProperty(prop) &&
+                            re.test(prop) &&
+                            (a.win[prop] instanceof a.win.HTMLDocument) === false &&
+                            a.win.hasOwnProperty(prop) &&
                             typeof a.win[prop] === "object") {
                             const method = a.win[prop];
                             //BetterStopAdblock and Antiblock.org v3
@@ -1114,19 +1115,19 @@ a.generic = () => {
                                 a.win[prop] = null;
                             }
                             //BlockAdBlock
-                            if (method.bab) {
-                                //Log
-                                a.err("BlockAdBlock");
-                                //Remove property
-                                a.win[prop] = null;
-                            } else if (a.win.Object.keys(method).length === 3) {
+                            if (a.win.Object.keys(method).length === 3) {
                                 //Each key should be 10 character long
                                 let isBAB = true;
                                 for (let prop in method) {
-                                    if (prop.length !== 10) {
+                                    if (prop.length !== 10 && prop !== "bab") {
                                         isBAB = false;
                                         break;
                                     }
+                                }
+                                //Make sure "bab" only occure once
+                                const keyLen = a.win.Object.keys(method).join("");
+                                if (keyLen !== 30 && keyLen !== 23) {
+                                    isBAB = false;
                                 }
                                 if (isBAB) {
                                     //Log
