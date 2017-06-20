@@ -390,4 +390,4 @@ wiwo.de##script:inject(abort-on-property-read.js, AdController)
 ! === vidoza.net
 @@||vidoza.net/js/ads.js$script,first-party
 ! === tvregionalna24.pl
-tvregionalna24.pl##diablo-placeholder
+tvregionalna24.pl##.diablo-placeholder
