@@ -1,0 +1,62 @@
+{
+  "author": "jspenguin2017",
+  "background": {
+    "scripts": [
+      "common.js",
+      "background/background-core.js",
+      "background/background-rules.js"
+    ]
+  },
+  "browser_action": {
+    "default_icon": {
+      "16": "icons/16x16.png",
+      "24": "icons/24x24.png",
+      "32": "icons/32x32.png"
+    },
+    "default_title": "uBlock Protector Extension"
+  },
+  "content_scripts": [
+    {
+      "all_frames": true,
+      "js": [
+        "common.js",
+        "content/lib/jquery-3.2.1.min.js",
+        "content/lib/yamd5.min.js",
+        "content/content-core.js",
+        "content/content-rules.js",
+        "content/content-debug.js"
+      ],
+      "match_about_blank": true,
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "description": "An anti-adblock defuser for uBlock Origin",
+  "homepage_url": "https://jspenguin2017.github.io/uBlockProtector/",
+  "icons": {
+    "128": "icons/128x128.png",
+    "16": "icons/16x16.png",
+    "32": "icons/32x32.png",
+    "48": "icons/48x48.png"
+  },
+  "incognito": "spanning",
+  "manifest_version": 2,
+  "minimum_chrome_version": "59.0",
+  "name": "uBlock Protector Extension",
+  "options_ui": {
+    "chrome_style": true,
+    "page": "options.html"
+  },
+  "permissions": [
+    "http://*/*",
+    "https://*/*",
+    "storage",
+    "tabs",
+    "webRequest",
+    "webRequestBlocking"
+  ],
+  "version": "8.0"
+}

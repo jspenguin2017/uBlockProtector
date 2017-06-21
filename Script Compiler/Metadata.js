@@ -1,9 +1,9 @@
 ﻿// ==UserScript==
-// @name uBlock Protector Script
+// @name (Discontinued, see notes below) uBlock Protector Script
 // @namespace null
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
-// @version 8.55
+// @version 8.57
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -31,7 +31,7 @@
 // ==/UserScript==
 //
 // ===== PLEASE READ =====
-// This Userscript is intended to be used with uBlock Protector List.
+// This Userscript is discontinued, use the extension instead.
 // Visite my home page for more information: https://jspenguin2017.github.io/uBlockProtector/
 // =======================
 let a = {};
