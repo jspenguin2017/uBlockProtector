@@ -5,10 +5,9 @@ if (a.debugMode) {
     if (a.domCmp(["itv.com"])) {
         //Test link: https://www.itv.com/hub/take-me-out/1a8716a0089
         //===DEBUG CODE===
-        //Need to add the API domain to XMLHttpRequest white list
         //Can find the URL of the media file and subtitle file
         const videoJS = (sources, types, subtitles, width, height) => {
-            return ""; //Insert videoJS payload here...
+            return ""; //Insert videoJS payload here... No working ones found yet...
         };
         a.ready(() => {
             //Find the player element
@@ -40,7 +39,7 @@ if (a.debugMode) {
                         throw "Media URL Not Found";
                     }
                 } catch (err) {
-                    a.out.error("uBlock Protector failed to find media URL!");
+                    console.error("uBlock Protector failed to find media URL!");
                     return;
                 }
                 //Build media source
@@ -94,11 +93,11 @@ if (a.debugMode) {
                     console.error("uBlock Protector failed to find media URL!");
                 });
             } else {
+                //Could not find video ID
                 setTimeout(handler, 1000);
             }
         });
         const videoJS = (source, type, width, height) => {
-            height = 500;
             return `<iframe srcdoc='<html><head><link href="https://cdnjs.cloudflare.com/ajax/libs/video.js/5.10.5/al` +
                 `t/video-js-cdn.min.css" rel="stylesheet"><script src="https://cdnjs.cloudflare.com/ajax/libs/video.j` +
                 `s/5.10.5/video.min.js"><\/script><script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib` +

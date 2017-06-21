@@ -628,7 +628,8 @@ if (a.domCmp(["thechive.com"])) {
 }
 if (a.domCmp(["richonrails.com"])) {
     a.ready(() => {
-        const adsByGoogleHtml = `"<ins+id="aswift_0_expand"+style="display:inline-table;border:none;height:90px;` +
+        $(".article-content").after(`<div class="article-content-2"></div>`).remove();
+        const payload = `"<ins+id="aswift_0_expand"+style="display:inline-table;border:none;height:90px;` +
             `margin:0;padding:0;position:relative;visibility:visible;width:750px;background-color:transparent"><ins+id="aswi` +
             `ft_0_anchor"+style="display:block;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visib` +
             `le;width:750px;background-color:transparent"><iframe+marginwidth="0"+marginheight="0"+vspace="0"+hspace="0"+all` +
@@ -642,11 +643,11 @@ if (a.domCmp(["richonrails.com"])) {
             dataType: "script",
             method: "post",
             data: {
-                html: adsByGoogleHtml,
+                html: payload,
             },
             success(result) {
                 const exec = result.replace("$('.article-content')", "$('.article-content-2')");
-                const payload = () => {
+                let payload = () => {
                     "use strict";
                     window.eval("@solution-payload");
                 };
@@ -656,14 +657,13 @@ if (a.domCmp(["richonrails.com"])) {
                 );
             },
         });
-        $(".article-content").after(`<div class="article-content-2"></div>`).remove();
     });
 }
 if (a.domCmp(["rmprepusb.com"])) {
     a.cookie("jot_viewer", "3");
 }
 if (a.domCmp(["cubeupload.com"])) {
-    a.filter("write", a.matchMethod.string, "Please consider removing adblock to help us pay our bills", "document");
+    a.filter("write", a.matchMethod.string, "Please consider removing adblock to help us pay our bills", "window.document");
 }
 if (a.domCmp(["hentaihaven.org"])) {
     //NSFW!
@@ -1474,7 +1474,8 @@ if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "pl
         player.after(videoJS(source, type, width, height)).remove();
         //Watch for more video players
         videoID = null;
-        handler();
+        //I think it will only have one player, and I need a way to prevent replacing the same player over and over
+        //handler();
     };
     //Start
     handler();
@@ -1581,9 +1582,9 @@ if (a.domCmp(["sharecast.to"])) {
     a.ready(() => {
         if (location.pathname.startsWith("/embed.php")) {
             const token = setInterval(() => {
-                cookie("vid_main", "true");
-                cookie("vid_sub", "2");
-                cookie("vid_delay", "true");
+                a.cookie("vid_main", "true");
+                a.cookie("vid_sub", "2");
+                a.cookie("vid_delay", "true");
             }, 100);
             setTimeout(() => {
                 clearInterval(token);
@@ -1683,8 +1684,6 @@ if (a.domCmp(["demo-phoenix.com", "dpstream.net", "gum-gum-streaming.com", "jeu.
     "gaara-fr.com", "gaytube.com", "tuxboard.com", "xstory-fr.com", "hentaifr.net", "filmstreaming-hd.com",
     "filmvf.net", "hentaihaven.org", "narutoshippudenvf.com", "thebadbuzz.com", "manga-news.com", "jeu.video",
     "mangas-fr.com"])) {
-    //crashScript breaks uBO element picker
-    //a.crashScript("PHENV");
     a.css("body { visibility:visible; }");
 }
 if (a.domCmp(["emuparadise.me"])) {
@@ -1969,7 +1968,7 @@ if (a.domCmp(["dasolo.co"])) {
     a.readOnly("nocontext", null);
     a.readOnly("mischandler", null);
     a.readOnly("disableselect", null);
-    a.filter("addEventListener", a.matchMethod.stringExact, "contextmenu", "document");
+    a.filter("addEventListener", a.matchMethod.stringExact, "contextmenu", "window.document");
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/280
     a.filter("alert");
     a.on("load", () => {
@@ -2065,7 +2064,7 @@ if (a.domCmp(["filmy.to", "histock.info"])) {
 }
 if (a.domCmp(["flashx.tv"])) {
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/130
-    a.filter("addEventListener", a.matchMethod.RegExp, /^(mousedown|keydown|contextmenu)$/, "document");
+    a.filter("addEventListener", a.matchMethod.RegExp, /^(mousedown|keydown|contextmenu)$/, "window.document");
 }
 if (a.domCmp(["multiup.org", "multiup.eu"])) {
     a.cookie("visit", "1");
@@ -2142,8 +2141,8 @@ if (a.domCmp(["gaybeeg.info"])) {
 if (a.domCmp(["mma-core.com"])) {
     a.noAccess("displayAdBlockedVideo");
 }
-if (a.domCmp(["menshealth.pl", "womenshealth.pl", "runners-world.pl",
-    "auto-motor-i-sport.pl", "motocykl-online.pl", "mojeauto.pl"])) {
+if (a.domCmp(["menshealth.pl", "womenshealth.pl", "runners-world.pl", "auto-motor-i-sport.pl", "motocykl-online.pl",
+    "mojeauto.pl"])) {
     a.ready(() => {
         if (location.pathname.startsWith("/welcome-page")) {
             location.href = $("#timeLink").attr("href");
@@ -2211,7 +2210,7 @@ if (a.domCmp(["gaana.com"])) {
                 },
             });
         } catch (err) {
-            window.console.error("uBlock Protector failed to set up Colombia AdBlocker detector defuser!");
+            window.console.error("uBlock Protector failed to set up Colombia uBlock Origin detector defuser!");
         }
     });
 }
@@ -2415,7 +2414,7 @@ if (a.domCmp(["tg007.net"])) {
     a.bait("div", "#gads", true);
 }
 if (a.domCmp(["bild.de"])) {
-    a.filter("querySelector", a.matchMethod.stringExact, "body", "document");
+    a.filter("querySelector", a.matchMethod.stringExact, "body", "window.document");
 }
 if (a.domCmp(["codepo8.github.io"]) && location.pathname.startsWith("/detecting-adblock/")) {
     a.css(".notblocked { display:block; } .blocked { display:none; }");
