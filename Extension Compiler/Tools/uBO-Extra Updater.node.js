@@ -22,7 +22,7 @@ const output = "./Extension/content/ubo-extra.js";
 request(parse(source), (res) => {
     res.pipe(createWriteStream(output));
     res.on("end", () => {
-        console.log("done");
+        console.log("Done.");
     });
 }).on("error", (err) => {
     console.log("Error:");
