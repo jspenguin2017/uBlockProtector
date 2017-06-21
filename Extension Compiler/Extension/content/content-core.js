@@ -196,6 +196,7 @@ a.getMatcher = (method, filter) => {
                         return true;
                     }
                 }
+                return false;
             }).replace("@matcher-filter", filter);
         case a.matchMethod.stringExact:
             return String((args) => {
@@ -204,6 +205,7 @@ a.getMatcher = (method, filter) => {
                         return true;
                     }
                 }
+                return false;
             }).replace("@matcher-filter", filter);
         case a.matchMethod.RegExp:
             return String((args) => {
@@ -213,6 +215,7 @@ a.getMatcher = (method, filter) => {
                         return true;
                     }
                 }
+                return false;
             }).replace(`"@matcher-filter"`, String(filter));
             break;
         default:
