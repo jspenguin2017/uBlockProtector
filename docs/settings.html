@@ -40,10 +40,11 @@
     <div class="container">
         <div class="jumbotron">
             <h1>uBlock Protector Script Settings</h1>
-            <p style="color:red;">This is the settings page for the now discontinued Userscript and it can be removed at any time.</p>
+            <p style="color:red;"><strong>This is the settings page for the now discontinued uBlock Protector Script, return to home page for more information.</strong></p>
+            <p>uBlock Protector Extension is not configurable due to technical limitations.</p>
             <div id="loadingMsg">
                 <h2>Loading...</h2>
-                <p>If this takes more than 5 seconds, please check if JavaScript is enabled and if uBlock Protector is properly installed and enabled.</p>
+                <p>If this takes more than 5 seconds, please check if JavaScript is enabled and if uBlock Protector Script is properly installed and enabled.</p>
             </div>
             <table class="table table-hover" id="settingsTable" style="display:none;">
                 <thead>
@@ -56,20 +57,17 @@
                 <tbody>
                     <tr id="row_config_debugMode" style="display:none;">
                         <th>Debug Mode</th>
-                        <td>Whether development code should run (instead of stable code) and debug data should be logged into console. Please keep this off unless you know what you are doing.</td>
+                        <td>Whether development code should run (instead of stable code) and debug data should be logged into console. Keep this off unless you know what you are doing.</td>
                         <td><input type="checkbox" id="cb_config_debugMode" data-toggle="toggle"></td>
                     </tr>
                     <tr id="row_config_allowExperimental" style="display:none;">
                         <th>Experimental Features</th>
-                        <td>Whether experimental features should be enabled. We recommend you to keep this on, and report any problems you encounter. Currently, there are 0 experimental features.</td>
+                        <td>Whether experimental features should be enabled. You should to keep this on, and report any problems you encounter. Currently, there are 0 experimental features.</td>
                         <td><input type="checkbox" id="cb_config_allowExperimental" data-toggle="toggle"></td>
                     </tr>
                     <tr id="row_config_aggressiveAdflyBypasser" style="display:none;">
                         <th>Aggressive Adfly Bypasser</th>
-                        <td>
-                            Whether Adfly bypasser should run on every page. This should not intefere with pages that are not part of Adfly network, please open an issue if it does.
-                            If you wish to not use this, you are free to report any Adfly domains that are not in our hard coded match list.
-                        </td>
+                        <td>Whether Adfly bypasser should run on every page. This should not intefere with pages that are not part of Adfly network.</td>
                         <td><input type="checkbox" id="cb_config_aggressiveAdflyBypasser" data-toggle="toggle"></td>
                     </tr>
                     <tr id="row_mods_Facebook_JumpToTop" style="display:none;">
@@ -94,7 +92,7 @@
             </table>
             <div class="alert alert-success" role="alert" id="savedAlert" style="display:none;">
                 <h3><strong>Saved!</strong></h3>
-                <p>Settings will be saved automatically, please refresh web pages that you have already open to apply new settings.</p>
+                <p>Settings will be saved automatically, refresh web pages that you have already open to apply new settings.</p>
                 <p>Changes while in incognito mode may be reversed when you exit such mode.</p>
                 <br />
             </div>
@@ -132,7 +130,7 @@
     <div class="container">
         <div class="jumbotron">
             <h2>Source code and license</h2>
-            <p><a href="https://github.com/jspenguin2017/uBlockProtector">View on GitHub</a></p>
+            <p><a href="https://github.com/jspenguin2017/uBlockProtector" target="_blank">View on GitHub</a></p>
         </div>
     </div>
 </body>

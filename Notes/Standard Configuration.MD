@@ -15,7 +15,7 @@ Settings under `Privacy -> Content settings...`, `Network`, and `HTTPS/SSL` are 
 
 Settings in `chrome://flags/` page are left as default. 
 
-Only active extensions are `uBlock Origin` and `Violentmonkey`. 
+Only active extensions are `uBlock Origin` and `uBlock Protector Extension`. 
 
 Other settings does not matter. 
 
@@ -27,12 +27,4 @@ Factory settings plus these filter lists enabled:
 Adblock Warning Removal List
 uBlock Protector List
 CHN: EasyList China (中文)
-```
-
-## Violentmonkey: 
-
-Factory settings plus this script installed: 
-
-```
-uBlock Protector Script
 ```

@@ -8,10 +8,3 @@ Installation instructions, along with many other relevant information are availa
 Before opening an issue, you **must** read the 
 [contribution guideline](https://github.com/jspenguin2017/uBlockProtector/blob/master/CONTRIBUTING.MD). 
 Failure to do so may result in a ban. 
-
-## Building
-
-I use custom compilers, the source code for the compilers along with prebuilt binaries for Windows 10 are 
-located in `Script Compiler` and `List Compiler` folders. 
-
-The compilers are built with Visual Studio 2017. 

@@ -22,69 +22,35 @@
         const checkInstallation = function () {
             //List
             try {
-                if (google_ad_status === 1) {
+                if (window.google_ad_status === 1) {
                     $("#listTestDiv").hide();
                 }
             } catch (err) { }
             //Script
             try {
-                if (uBlock_Protector_Extension === true) {
-                    $("#scriptTestDiv").hide();
+                if (window.uBlock_Protector_Extension === true) {
+                    $("#extensionTestDiv").hide();
                 }
             } catch (err) { }
         };
-
-        /**
-         * When the document is ready, set up scrolling animation and load Disqus chat board.
-         * @function
-         * @listens $(document).ready
-         */
-        $(document).ready(function () {
-            //Set up scrolling animation
-            $(".howLinks").click(function (e) {
-                e.preventDefault();
-                $("html, body").animate({ scrollTop: $("#how").offset().top }, "fast");
-            });
-        });
     </script>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Show Menu</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <div class="navbar-header">
-                <a class="navbar-brand">uBlock Protector</a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="#how" class="howLinks">Help</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <div style="height:80px;"></div>
+    <div style="height:30px;"></div>
     <!-- uBlock Protector -->
     <div class="container">
         <div class="jumbotron">
             <h1>uBlock Protector</h1>
             <p>An anti-adblock defuser for uBlock Origin</p>
-            <p>It can take a few seconds to check installation, please look into any issues in your configuration if any of the warning messages below do not disappear 5 seconds after the page loads.</p>
             <div id="banner-ads">
                 <p style="color:red;">uBlock Origin is not enabled!</p>
             </div>
             <div id="listTestDiv">
-                <p style="color:red;">uBlock Protector List is not installed or not enabled!</p>
+                <p style="color:red;">uBlock Protector List is not enabled!</p>
             </div>
-            <div id="scriptTestDiv">
-                <p style="color:red;">uBlock Protector Extension is not installed or not enabled!</p>
+            <div id="extensionTestDiv">
+                <p style="color:red;">uBlock Protector Extension is not enabled!</p>
             </div>
-            <a href="#how" class="btn btn-primary btn-lg howLinks">Jump to installation instructions</a>
             <script>
                 "use strict";
 
@@ -96,10 +62,10 @@
         </div>
     </div>
     <!-- Installation instructions -->
-    <div class="container" id="how">
+    <div class="container">
         <div class="jumbotron">
             <h2>Installation instructions</h2>
-            <p>You must be using Chrome, uBlock Origin, and Violentmonkey to use this project.</p>
+            <p>You must be using Chrome and uBlock Origin to use this project. Chromium and uBlock Origin should work as well.</p>
             <p>Do not want to switch your setup? Check out <a href="https://xuhaiyang1234.gitlab.io/AAK-Cont/">AAK-Cont</a>!</p>
             <br />
             <p>Step 1. Enable Adblock Warning Removal List from uBlock Origin settings panel.</p>
@@ -114,6 +80,7 @@
                 Click <a href="abp:subscribe?location=https://github.com/jspenguin2017/uBlockProtector/raw/master/uBlockProtectorList.txt&title=uBlock%20Protector%20List">here</a> to install it manually.
             </p>
             <p>Step 3. Install <a href="https://chrome.google.com/webstore/detail/ublock-protector-extensio/ggolfgbegefeeoocgjbmkembbncoadlb" target="_blank">uBlock Protector Extension</a></p>
+            <p><i>Note: This extension covers uBO-Extra's functionalities.</i></p>
         </div>
     </div>
     <!-- Reporting an issue and contributing -->
