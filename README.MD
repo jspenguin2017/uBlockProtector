@@ -8,3 +8,9 @@ Installation instructions, along with many other relevant information are availa
 Before opening an issue, you **must** read the 
 [contribution guideline](https://github.com/jspenguin2017/uBlockProtector/blob/master/CONTRIBUTING.MD). 
 Failure to do so may result in a ban. 
+
+## These files will be removed at a future date without further warning: 
+
+* `uBlockProtector.user.js`
+* `Script Compiler/*`
+* `docs/settings.html`
