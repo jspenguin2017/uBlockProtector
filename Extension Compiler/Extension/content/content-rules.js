@@ -15,9 +15,7 @@
     const AdflyWhitelist1 = [];
     const AdflyWhitelist2 = [];
     //Compare and init
-    a.init(
-        a.domCmp(AdflyWhitelist1, true) || a.domInc(AdflyWhitelist2, true),
-    );
+    a.init(a.domCmp(AdflyWhitelist1, true) || a.domInc(AdflyWhitelist2, true));
     //Apply generic solutions
     if (a.domCmp(whitelist1, true) || a.domInc(whitelist2, true)) {
         console.warn("This domain is excluded from generic solutions.");

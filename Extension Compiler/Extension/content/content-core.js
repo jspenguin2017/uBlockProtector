@@ -19,7 +19,10 @@ a.init = (noAdflyBypasser) => {
     }
     //Home page installation test
     if (a.domCmp(["jspenguin2017.github.io"], true) && location.pathname.startsWith("/uBlockProtector/")) {
-        a.inject(() => { window.uBlock_Protector_Extension = true; });
+        a.inject(() => {
+            "use strict";
+            window.uBlock_Protector_Extension = true;
+        });
     }
     //Load option, from background page to prevent hitting rate limit
     chrome.runtime.sendMessage({ cmd: "get option" }, (data) => {
@@ -27,7 +30,6 @@ a.init = (noAdflyBypasser) => {
             console.error(chrome.runtime.lastError.message);
             //Assume false
         } else if (data === true && a.domCmp(["facebook.com"], true)) {
-            //I can do this directly from content script as I only need to touch DOM
             const handler = () => {
                 if (document.getElementById("uBlock_Protector_FBMod_JumpToTop") === null) {
                     //Check if the nav bar is there
@@ -102,7 +104,7 @@ a.err = (name) => {
     }
 };
 /**
- * The error message.
+ * The generic error message.
  * @const {string}
  */
 a.err.msg = "Uncaught Security Violation: uBlocker Origin detectors are not allowed on this device!";
@@ -110,9 +112,10 @@ a.err.msg = "Uncaught Security Violation: uBlocker Origin detectors are not allo
  * Do a cross origin request.
  * @function
  * @param {Object} details - Details about this request.
- ** @param {string} method - The method, usually "GET" or "POST".
+ ** @param {string} method - The method of the request, usually "GET" or "POST".
  ** @param {string} url - The URL of the request.
- ** @param {Any} payload - The request payload.
+ ** @param {Object|undefined} [headers=undefined] - The headers of the request.
+ ** @param {string|null} [payload=null] - The payload of the request.
  * @param {Function} onload - The load event handler, the response data will be supplied.
  * @param {Function} onerror - The error event handler.
  */
@@ -160,7 +163,11 @@ a.domCmp = (domList, noErr) => {
 a.domInc = (domList, noErr) => {
     //Loop though each element
     for (let i = 0; i < domList.length; i++) {
-        let index = document.domain.lastIndexOf(domList[i]);
+        let index = document.domain.lastIndexOf(domList[i] + ".");
+        //Make sure the character before, if exists, is "."
+        if (index > 0 && document.domain.charAt(index - 1) !== '.') {
+            continue;
+        }
         if (index > -1) {
             if (!document.domain.substring(index + domList[i].length + 1).includes(".")) {
                 !noErr && a.err();
@@ -256,42 +263,7 @@ a.serialize = (obj) => {
     return str;
 };
 /**
- * Set or get a cookie.
- * @function
- * @param {string} key - The key of the cookie.
- * @param {string} [val=undefined] - The value to set, omit this to get the cookie.
- * @param {integer} [time=31536000000] - In how many milliseconds will it expire, defaults to 1 year.
- * @param {string} [path="/"] - The path to set.
- * @return {string|null|undefined} The value of the cookie, null will be returned if the cookie does not exist, and undefined
- ** will be returned in set mode.
- */
-a.cookie = (key, val, time = 31536000000, path = "/") => {
-    if (val === undefined) {
-        //Get mode
-        const cookies = document.cookie;
-        const i = cookies.indexOf(`${key}=`);
-        const j = cookies.indexOf(";", i);
-        if (i === -1) {
-            //Not found
-            return null;
-        } else {
-            if (j === -1) {
-                //Goes to the end
-                return cookies.substring(i + key.length + 1);
-            } else {
-                //Extract the value
-                return cookies.substring(i + key.length + 1, j);
-            }
-        }
-    } else {
-        //Set mode
-        let expire = new Date();
-        expire.setTime(expire.getTime() + time);
-        document.cookie = `${key}=${encodeURIComponent(val)};expires=${expire.toGMTString()};path=${path}`;
-    }
-};
-/**
- * Returns a unique ID that is also a valid variable name.
+ * Returns a unique ID which is also a valid variable name.
  * @function
  * @return {string} The unique ID.
  */
@@ -310,7 +282,7 @@ a.uid = (() => {
  * Set up insert observer.
  * @function
  * @param {Function} handler - The mutation handler.
- ** @param {Node} insertedNode - The inserted node.
+ ** @param {HTMLElement} insertedNode - The inserted node.
  */
 a.onInsert = (handler) => {
     const observer = new MutationObserver((mutations) => {
@@ -330,11 +302,11 @@ a.onInsert = (handler) => {
 
 //=====Solutions=====
 /**
- * Inject CSS into HTML, "!important" will be added automatically.
+ * Inject CSS, "!important" will be added automatically.
  * @function
  * @param {string} code - The CSS to inject.
- * @param {boolean} stealthy - Whether the style should only be injected from backgrond page only, this prevents the
- ** web page from knowing about the injected style, but the style will have a lower priority.
+ * @param {boolean} stealthy - Whether the style should only be injected from backgrond page only, this will not carete
+ ** a style element, but the injected style have a lower priority.
  */
 a.css = (() => {
     const reMatcher = /;/g;
@@ -382,17 +354,19 @@ a.bait = (type, identifier, hidden) => {
     document.documentElement.prepend(elem);
 };
 /**
- * Filter a function.
+ * Filter a function, must be called on document-start.
  * @function
  * @param {string} name - The name of the function.
- * @param {Enumeration} [method=Match All] - An option from a.matchMethods, omit or pass null defaults to match all.
- * @param {Any} filter - The filter to apply, this must be appropriate for the method.
+ * @param {Enumeration} [method=a.matchMethod.matchAll] - An option from a.matchMethods, omit or pass null defaults
+ ** to match all.
+ * @param {undefined|string|RegExp} filter - The filter to apply, this must be appropriate for the method.
  * @param {string} [parent="window"] - The parent object, use "." to separate layers.
  */
 a.filter = (() => {
     const reMatcher = /@filter-full-name|"@filter-original"|FILTER_REPLACE/g;
     return (name, method, filter, parent = "window") => {
         let payload = () => {
+            "use strict";
             let matcher = "@filter-matcher";
             //Prevent the page from patching these functions
             const info = window.console.info.bind(console);
@@ -443,11 +417,12 @@ a.filter = (() => {
     };
 })();
 /**
- * Change the execution delay for setTimeout or setInterval.
+ * Change the execution delay for setTimeout or setInterval, must be called on document-start.
  * @function
  * @param {string} timer - The name of the timer to patch, can be "setTimeout" or "setInterval".
- * @param {Enumeration} [method=Match All] - An option from a.matchMethods, omit or pass null defaults to match all.
- * @param {Any} filter - The filter to apply, this must be appropriate for the method.
+ * @param {Enumeration} [method=method=a.matchMethod.matchAll] - An option from a.matchMethods, omit or pass null defaults
+ ** to match all.
+ * @param {undefined|string|RegExp} filter - The filter to apply, this must be appropriate for the method.
  * @param {float} [ratio=0.02] - The boost ratio, between 0 and 1 for speed up, larger than 1 for slow down, defaults to
  ** speed up 50 times.
  */
@@ -455,6 +430,7 @@ a.timewarp = (() => {
     const reMatcher = /@timewarp-timer|"@timewarp-original"|TIMEWARP_REPLACE/g;
     return (timer, method, filter, ratio = 0.02) => {
         let payload = () => {
+            "use strict";
             let matcher = "@timewarp-matcher";
             //Prevent the page from patching these functions
             const info = window.console.info.bind(console);
@@ -501,7 +477,7 @@ a.timewarp = (() => {
     };
 })();
 /**
- * Defines a read-only property, must be ran on document-start.
+ * Defines a read-only property, must be called on document-start.
  * May not be able to lock the property's own properties.
  * @function
  * @param {string} name - The name of the property to define.
@@ -515,6 +491,7 @@ a.readOnly = (() => {
     const reMatcher2 = /@readonly-full-name/g;
     return (name, val, parent = "window", silent) => {
         let payload = () => {
+            "use strict";
             const val = "@readonly-val";
             //This is synchronous so I do not need to cache the reference of the console functions
             try {
@@ -543,7 +520,7 @@ a.readOnly = (() => {
     };
 })();
 /**
- * Defines a non-accessible property, must be ran on document-start.
+ * Defines a non-accessible property, must be called on document-start.
  * @function
  * @param {string} name - The name of the property to define.
  * @param {string} [parent="window"] - The parent object, use "." to separate layers.
@@ -553,7 +530,8 @@ a.noAccess = (() => {
     const reMatcher2 = /@noaccess-full-name/g;
     return (name, parent = "window") => {
         let payload = () => {
-            const err = new Error("This property may not be accessed!");
+            "use strict";
+            const err = new window.Error("This property may not be accessed!");
             try {
                 window.Object.defineProperty("@noaccess-parent", "@noaccess-name", {
                     configurable: false,
@@ -580,6 +558,41 @@ a.noAccess = (() => {
         );
     };
 })();
+/**
+ * Set or get a cookie.
+ * @function
+ * @param {string} key - The key of the cookie.
+ * @param {string} [val=undefined] - The value to set, omit this to get the cookie.
+ * @param {integer} [time=31536000000] - In how many milliseconds will it expire, defaults to 1 year.
+ * @param {string} [path="/"] - The path to set.
+ * @return {string|null|undefined} The value of the cookie, null will be returned if the cookie does not exist, and undefined
+ ** will be returned in set mode.
+ */
+a.cookie = (key, val, time = 31536000000, path = "/") => {
+    if (val === undefined) {
+        //Get mode
+        const cookies = document.cookie;
+        const i = cookies.indexOf(`${key}=`);
+        const j = cookies.indexOf(";", i);
+        if (i === -1) {
+            //Not found
+            return null;
+        } else {
+            if (j === -1) {
+                //Goes to the end
+                return cookies.substring(i + key.length + 1);
+            } else {
+                //Extract the value
+                return cookies.substring(i + key.length + 1, j);
+            }
+        }
+    } else {
+        //Set mode
+        let expire = new Date();
+        expire.setTime(expire.getTime() + time);
+        document.cookie = `${key}=${encodeURIComponent(val)};expires=${expire.toGMTString()};path=${path}`;
+    }
+};
 /**
  * Generate a native HTML5 player with controls but not autoplay.
  * @function
