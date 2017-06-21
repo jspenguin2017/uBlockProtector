@@ -28,7 +28,7 @@
             } catch (err) { }
             //Script
             try {
-                if (uBlock_Protector_Script === true) {
+                if (uBlock_Protector_Extension === true) {
                     $("#scriptTestDiv").hide();
                 }
             } catch (err) { }
@@ -65,9 +65,6 @@
                 <ul class="nav navbar-nav">
                     <li><a href="#how" class="howLinks">Help</a></li>
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="settings.html">Settings</a></li>
-                </ul>
             </div>
         </div>
     </nav>
@@ -85,10 +82,9 @@
                 <p style="color:red;">uBlock Protector List is not installed or not enabled!</p>
             </div>
             <div id="scriptTestDiv">
-                <p style="color:red;">uBlock Protector Script is not installed or not enabled!</p>
+                <p style="color:red;">uBlock Protector Extension is not installed or not enabled!</p>
             </div>
             <a href="#how" class="btn btn-primary btn-lg howLinks">Jump to installation instructions</a>
-            <a href="settings.html" class="btn btn-danger btn-lg">Open settings page</a>
             <script>
                 "use strict";
 
@@ -117,9 +113,7 @@
                 Step 2. Enable uBlock Protector List from uBlock Origin settings page. Can't find it?
                 Click <a href="abp:subscribe?location=https://github.com/jspenguin2017/uBlockProtector/raw/master/uBlockProtectorList.txt&title=uBlock%20Protector%20List">here</a> to install it manually.
             </p>
-            <p><strong>The extension is going to be published soon...</strong></p>
-            <p>Step 3. Install <a href="https://chrome.google.com/webstore/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag" target="_blank">Violentmonkey</a>.</p>
-            <p>Step 4. Click <a href="https://github.com/jspenguin2017/uBlockProtector/raw/master/uBlockProtector.user.js">here</a> to install uBlock Protector Script.</p>
+            <p>Step 3. Install <a href="https://chrome.google.com/webstore/detail/ublock-protector-extensio/ggolfgbegefeeoocgjbmkembbncoadlb" target="_blank">uBlock Protector Extension</a></p>
         </div>
     </div>
     <!-- Reporting an issue and contributing -->

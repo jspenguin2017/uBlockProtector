@@ -8,7 +8,7 @@
 ! License: GPL-3.0
 !
 ! ===== PLEASE READ =====
-! This filter list is intended to be used with uBlock Protector Script.
+! This filter list is intended to be used with uBlock Protector Extension
 ! Visite my home page for more information: https://jspenguin2017.github.io/uBlockProtector/
 ! =======================
 jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
