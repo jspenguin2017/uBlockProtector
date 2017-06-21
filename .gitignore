@@ -1,3 +1,5 @@
+# ===== Custom Rules =====
+
 # Extension release package
 /Extension Compiler/*.zip
 
