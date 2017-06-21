@@ -6,17 +6,10 @@
 /**
  * Initialization.
  * @function
- * @param {boolean} noAdflyBypasser - Whether this domain is excluded from Adfly bypasser.
  */
-a.init = (noAdflyBypasser) => {
+a.init = () => {
     //Log domain
     console.warn(`Domain: ${document.domain}`);
-    //Check Adfly whitelist
-    if (noAdflyBypasser) {
-        console.warn("This domain is excluded from Adfly bypasser.");
-    } else {
-        a.generic.AdflyBypasser();
-    }
     //Home page installation test
     if (a.domCmp(["jspenguin2017.github.io"], true) && location.pathname.startsWith("/uBlockProtector/")) {
         a.inject(() => {
@@ -368,7 +361,7 @@ a.filter = (() => {
         let payload = () => {
             "use strict";
             let matcher = "@filter-matcher";
-            //Prevent the page from patching these functions
+            //Cache console functions as some web pages do change them
             const info = window.console.info.bind(console);
             const warn = window.console.warn.bind(console);
             const error = window.console.error.bind(console);
@@ -432,7 +425,7 @@ a.timewarp = (() => {
         let payload = () => {
             "use strict";
             let matcher = "@timewarp-matcher";
-            //Prevent the page from patching these functions
+            //Cache console functions as some web pages do change them
             const info = window.console.info.bind(console);
             const warn = window.console.warn.bind(console);
             const error = window.console.error.bind(console);
@@ -694,20 +687,18 @@ a.generic = () => {
     //Handler
     const onInsertHandler = (insertedNode) => {
         //No-Adblock
-        {
-            if (insertedNode.nodeName === "DIV" &&
-                insertedNode.id &&
-                insertedNode.id.length === 4 &&
-                re1.test(insertedNode.id) &&
-                insertedNode.firstChild &&
-                insertedNode.firstChild.id &&
-                insertedNode.firstChild.id === insertedNode.id &&
-                insertedNode.innerHTML.includes("no-adblock.com")) {
-                //Log
-                a.err("No-Adblock");
-                //Remove element
-                insertedNode.remove();
-            }
+        if (insertedNode.nodeName === "DIV" &&
+            insertedNode.id &&
+            insertedNode.id.length === 4 &&
+            re1.test(insertedNode.id) &&
+            insertedNode.firstChild &&
+            insertedNode.firstChild.id &&
+            insertedNode.firstChild.id === insertedNode.id &&
+            insertedNode.innerHTML.includes("no-adblock.com")) {
+            //Log
+            a.err("No-Adblock");
+            //Remove element
+            insertedNode.remove();
         }
         //StopAdblock
         if (insertedNode.nodeName === "DIV" &&
@@ -773,6 +764,7 @@ a.generic = () => {
     //=====Injected=====
     //==================
     a.inject(() => {
+        "use strict";
         let data = {};
         //---Initialization---
         const error = window.console.error.bind(console);
@@ -803,7 +795,7 @@ a.generic = () => {
                 },
             });
         } catch (err) {
-            error("uBlock Protector failed to set up Playwire AdBlocker detector defuser!");
+            error("uBlock Protector failed to set up Playwire uBlocker Origin detector defuser!");
         }
         //---document-idle---
         window.addEventListener("DOMContentLoaded", () => {
@@ -828,7 +820,7 @@ a.generic = () => {
             //Antiblock.org v2
             (() => {
                 const re = /^#([a-z0-9]{4,10}) ~ \* \{ display: none; \}/;
-                const styles = document.querySelectorAll("style");
+                const styles = window.document.querySelectorAll("style");
                 for (let i = 0; i < styles.length; i++) {
                     const style = styles[i];
                     const cssRules = style.sheet.cssRules;
@@ -837,7 +829,7 @@ a.generic = () => {
                         const cssText = cssRule.cssText;
                         if (re.test(cssText)) {
                             const id = re.exec(cssText)[1];
-                            const scripts = document.querySelectorAll("script");
+                            const scripts = window.document.querySelectorAll("script");
                             for (let k = 0; k < scripts.length; k++) {
                                 if (scripts[k].textContent.includes(`w.addEventListener('load',${id},false)`)) {
                                     //Log
