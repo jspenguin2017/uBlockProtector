@@ -28,6 +28,3 @@ request(parse(source), (res) => {
     console.log("Error:");
     console.log(err);
 }).end();
-
-//Prevent event loop from closing
-setInterval(() => { }, 10000);

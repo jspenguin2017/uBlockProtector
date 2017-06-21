@@ -1,6 +1,7 @@
 {
   "author": "jspenguin2017",
   "background": {
+    "persistent": false,
     "scripts": [
       "common.js",
       "background/background-core.js",
@@ -25,7 +26,8 @@
         "content/lib/yamd5.min.js",
         "content/content-core.js",
         "content/content-rules.js",
-        "content/content-debug.js"
+        "content/content-debug.js",
+        "content/ubo-extra.js"
       ],
       "match_about_blank": true,
       "matches": [
@@ -55,9 +57,7 @@
     "http://*/*",
     "https://*/*",
     "storage",
-    "tabs",
-    "webRequest",
-    "webRequestBlocking"
+    "tabs"
   ],
   "version": "8.0"
 }
