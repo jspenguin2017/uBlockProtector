@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name (Discontinued, see notes below) uBlock Protector Script
+// @name (Discontinued, read message inside) uBlock Protector Script
 // @namespace null
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
