@@ -9,8 +9,8 @@ Before opening an issue, you **must** read the
 [contribution guideline](https://github.com/jspenguin2017/uBlockProtector/blob/master/CONTRIBUTING.MD). 
 Failure to do so may result in a ban. 
 
-## These files will be removed at a future date without further warning: 
+#### These files will be removed at a future date without further notice: 
 
-* `uBlockProtector.user.js`
 * `Script Compiler/*`
 * `docs/settings.html`
+* `uBlockProtector.user.js`
