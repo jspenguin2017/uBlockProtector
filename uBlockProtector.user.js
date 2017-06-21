@@ -1381,7 +1381,7 @@ if (a.domCmp(["forbes.com"])) {
     if (a.win.location.pathname.includes("/welcome")) {
         a.cookie("welcomeAd", "true", 86400000, "/");
         a.cookie("dailyWelcomeCookie", "true", 86400000, "/");
-        a.win.location = cookie("toUrl") || "http://www.forbes.com/";
+        a.win.location = a.cookie("toUrl") || "https://www.forbes.com/";
     }
 }
 if (a.domCmp(["bitcoinaliens.com"])) {
