@@ -41,11 +41,9 @@ const test = (name, test) => {
 };
 
 //Prepare environment
-global.addEventListener = () => { };
 global.document = {
     domain: "localhost", //Placeholder
 };
-const window = global;
 //Load the core
 let a = {
     debugMode: false,
