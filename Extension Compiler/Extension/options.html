@@ -7,21 +7,32 @@
     <style>
         div {
             border: 1px solid black;
-            padding-left: 5px;
+            padding: 5px;
+        }
+
+        code {
+            padding: 3px;
+            background-color: #E2E2E2;
         }
     </style>
 </head>
 <body style="font-size:medium;">
     <p>Some extra information for power users are hidden, use DevTools to bring it up if you know what you are doing.</p>
     <div style="display:none;">
-        <p>This extra feature is for myself and is disabled by default.</p>
-        <label>
-            <input type="checkbox" id="checkbox" disabled />
-            <!-- For some reason I need to manually align this -->
-            <span style="position:relative; top:2px;">Enable Facebook Jump To Top Button</span>
-        </label>
-        <p style="color:red; font-weight:bold; display:none;" id="error"></p>
+        <div>
+            <p>This extra feature is for myself and is disabled by default.</p>
+            <label>
+                <input type="checkbox" id="checkbox" disabled />
+                <!-- For some reason I need to manually align this -->
+                <span style="position:relative; top:2px;">Enable Facebook Jump To Top Button</span>
+            </label>
+            <p style="color:red; font-weight:bold; display:none;" id="error"></p>
+        </div>
         <p>You must edit and load the unpacked extension if you want to change rules or enable debug mode.</p>
+        <p>
+            The debug switch is hard coded into <code>common.js</code> and rules are hard coded into <code>content/content-rules.js</code>
+            and <code>background/background-rules.js</code>.
+        </p>
     </div>
     <p>
         If you are a normal user, visit my

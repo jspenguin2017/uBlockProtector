@@ -12,7 +12,7 @@ Issues:
 * https://github.com/jspenguin2017/uBlockProtector/issues/88
 
 Workaround: In debug mode of the Extension, the whole webpage will be replaced by a player which plays the first video on the page. 
-The debug switch is hard coded into the Extension, you will have to load the unpacked Extension to enable it. 
+More information about debug mode can be found in options of the Extension. 
 
 ## itv.com
 
