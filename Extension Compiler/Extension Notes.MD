@@ -46,5 +46,5 @@ Chromium documentation is generated, which means it sometimes includes weird thi
 
 # Credits
 
-The icons are created based on icons of uBO-Extra (by gorhill). License and original source code are available 
+The icons of this extension are created based on icons of uBO-Extra (by gorhill). License and original source code are available 
 [here](https://github.com/gorhill/uBO-Extra). 
