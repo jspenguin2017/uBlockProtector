@@ -12,6 +12,6 @@ var a = {};
  * The compiler is responsible in hard coding this switch.
  * @const {boolean}
  */
-a.debugMode = false; //@pragma-debug-switch
+a.debugMode = true; //@pragma-debug-switch
 //Debug mode warning
 a.debugMode && console.warn("uBlock Protector Extension is loaded in debug mode");

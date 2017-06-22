@@ -123,16 +123,7 @@ tune.pk###annoy-wrapper
 ! === NSFW! 29443kmq.video - Thanks to uBlock-user
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/93
 29443kmq.video,dato.porn###a
-||$third-party,domain=czechhq.net
-@@||fonts.googleapis.com^$domain=czechhq.net
-@@||pixhost.org^$image,domain=czechhq.net
-@@||wordpress.org^$domain=czechhq.net
-@@||29443kmq.video^$domain=czechhq.net
-@@||dato.porn^$domain=czechhq.net
-@@||userapi.com^$image,domain=czechhq.net
-@@||theporndude.com^$image,domain=czechhq.net
 ! === NSFW! dato.porn
-@@||dato.porn/js/pop.js$script,first-party
 dato.porn##script:inject(abort-on-property-read.js, open)
 dato.porn##script:inject(noeval-if.js, var r3H4=window;for(var v4 in r3H4))
 ! === engineeringtoolbox.com
@@ -195,9 +186,8 @@ pogdesign.co.uk##.replace
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/148
 ||p207208.clksite.com^$subdocument,redirect=noopframe,domain=ally.sh|al.ly
 @@||ally.sh^$generichide
-ally.sh##script:inject(popads.net.js)
 @@||al.ly^$generichide
-al.ly##script:inject(popads.net.js)
+ally.sh,al.ly##script:inject(popads.net.js)
 ! === hackintosh.zone, hackintosh.computer - Thanks to F4z
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/35
 ||hackintosh.*/donate/donate.php
@@ -239,12 +229,10 @@ gelbooru.com#@#center > a[href]
 ||assets.gelbooru.com/r18/
 ||gelbooru.com/script/application.js.php$important
 ||thedoujin.com/bload.php
-! === iframe of hqporner.com
-@@|http://62.212.86.9/js/ads.js|$domain=mydaddy.cc
 ! === ff14angler.com
 @@||ff14angler.com^$elemhide
 ! === games.softgames.de
-@@||games.softgames.de/assets/showads.js|
+||games.softgames.de/assets/showads.js$script,redirect=noopjs
 ||softgames.de/sg-mc.js*$script,redirect=noopjs
 ! === exrapidleech.info
 ||bidvertiser.com$important,domain=exrapidleech.info

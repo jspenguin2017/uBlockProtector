@@ -60,7 +60,7 @@ if (a.domCmp(["userscloud.com"])) {
         $("#adblock_msg").remove();
     });
 }
-if (a.domCmp(["vidlox.tv", "vidoza.net"])) {
+if (a.domCmp(["vidlox.tv", "vidoza.net", "dato.porn"])) {
     //NSFW!
     a.readOnly("xRds", false);
     a.readOnly("cRAds", true);
@@ -2520,4 +2520,7 @@ if (a.domCmp(["dailyuploads.net"])) {
 }
 if (a.domCmp(["buickforums.com"])) {
     a.bait("div", "#TestAdBlock", true);
+}
+if (a.domCmp(["softgames.de"])) {
+    //a.readOnly("adBlockerEnabled", false);
 }
