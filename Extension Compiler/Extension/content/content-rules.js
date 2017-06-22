@@ -2406,6 +2406,7 @@ if (a.domCmp(["idlelivelink.blogspot.com"])) {
     });
 }
 if (a.domCmp(["hackinformer.com"])) {
+    a.readOnly("AlobaidiDetectAdBlock", true);
     a.ready(() => {
         $(".special-message-wrapper:contains(your ad blocker)").remove();
     });
@@ -2520,7 +2521,4 @@ if (a.domCmp(["dailyuploads.net"])) {
 }
 if (a.domCmp(["buickforums.com"])) {
     a.bait("div", "#TestAdBlock", true);
-}
-if (a.domCmp(["softgames.de"])) {
-    //a.readOnly("adBlockerEnabled", false);
 }

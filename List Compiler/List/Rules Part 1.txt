@@ -278,8 +278,6 @@ shqiperiatv.com,albtvhd.com,tvshqiphd.com,www.balkanweb.com,cdn.livestream.com,l
 themeslide.com##script:inject(noeval.js)
 ! === wordsense.eu
 wordsense.eu##script:inject(setTimeout-defuser.js, ad, 2000)
-! === hackinformer.com
-@@||hackinformer.com/wp-content/plugins/detect-adblock/js/ads.js|$script,first-party
 ! === uol.com.br
 ||uol.com.br/camaleao/assets/web/javascript/detectadblock^$script,important
 ! === transparentcalifornia.com
@@ -300,6 +298,8 @@ rapidvideo.com##script:inject(noeval.js)
 ! === receive-a-sms.com
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/257
 @@||receive-a-sms.com/showads.js$xmlhttprequest,first-party
+||pagead2.googlesyndication.com^$domain=receive-a-sms.com,important
+||googleads.g.doubleclick.net^$domain=receive-a-sms.com,important
 ! === gamersclub.com.br
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/258
 @@||gamersclub.com.br/js/ads.js$script,first-party
@@ -374,3 +374,5 @@ wiwo.de##script:inject(abort-on-property-read.js, AdController)
 @@||vidoza.net/js/ads.js$script,first-party
 ! === tvregionalna24.pl
 tvregionalna24.pl##.diablo-placeholder
+! === hackinformer.com
+@@||hackinformer.com^$first-party,script,badfilter

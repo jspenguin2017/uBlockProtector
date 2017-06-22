@@ -99,15 +99,6 @@ filez.tv###adblockinfo
 xmovies8.org##script:inject(abort-on-property-read.js, $.getScript)
 tune.pk###annoy-wrapper
 29443kmq.video,dato.porn###a
-||$third-party,domain=czechhq.net
-@@||fonts.googleapis.com^$domain=czechhq.net
-@@||pixhost.org^$image,domain=czechhq.net
-@@||wordpress.org^$domain=czechhq.net
-@@||29443kmq.video^$domain=czechhq.net
-@@||dato.porn^$domain=czechhq.net
-@@||userapi.com^$image,domain=czechhq.net
-@@||theporndude.com^$image,domain=czechhq.net
-@@||dato.porn/js/pop.js$script,first-party
 dato.porn##script:inject(abort-on-property-read.js, open)
 dato.porn##script:inject(noeval-if.js, var r3H4=window;for(var v4 in r3H4))
 engineeringtoolbox.com##.adblo
@@ -144,9 +135,8 @@ youtube.com###companion
 pogdesign.co.uk##.replace
 ||p207208.clksite.com^$subdocument,redirect=noopframe,domain=ally.sh|al.ly
 @@||ally.sh^$generichide
-ally.sh##script:inject(popads.net.js)
 @@||al.ly^$generichide
-al.ly##script:inject(popads.net.js)
+ally.sh,al.ly##script:inject(popads.net.js)
 ||hackintosh.*/donate/donate.php
 @@||cdn.hackintosh.zone/ipscdn/adsense/*$first-party
 hackintosh.computer##.adsbygoogle
@@ -175,9 +165,8 @@ gelbooru.com#@#center > a[href]
 ||assets.gelbooru.com/r18/
 ||gelbooru.com/script/application.js.php$important
 ||thedoujin.com/bload.php
-@@|http://62.212.86.9/js/ads.js|$domain=mydaddy.cc
 @@||ff14angler.com^$elemhide
-@@||games.softgames.de/assets/showads.js|
+||games.softgames.de/assets/showads.js$script,redirect=noopjs
 ||softgames.de/sg-mc.js*$script,redirect=noopjs
 ||bidvertiser.com$important,domain=exrapidleech.info
 @@||atresplayer.com^$generichide
@@ -203,7 +192,6 @@ shqiperiatv.com,albtvhd.com,tvshqiphd.com,www.balkanweb.com,cdn.livestream.com,l
 shqiperiatv.com,albtvhd.com,tvshqiphd.com,www.balkanweb.com,cdn.livestream.com,livestream.artmotion.al,shqip-tv.info##table[id^='blockblock']
 themeslide.com##script:inject(noeval.js)
 wordsense.eu##script:inject(setTimeout-defuser.js, ad, 2000)
-@@||hackinformer.com/wp-content/plugins/detect-adblock/js/ads.js|$script,first-party
 ||uol.com.br/camaleao/assets/web/javascript/detectadblock^$script,important
 /magnific-popup.js/$domain=transparentcalifornia.com
 @@||yamvideo.com/pop1/jwplayer.js$domain=javsex.net
@@ -213,6 +201,8 @@ wordsense.eu##script:inject(setTimeout-defuser.js, ad, 2000)
 rapidvideo.com##script:inject(noeval.js)
 ||cloudvideoplatform.com/advert.jpg$image,redirect=1x1-transparent.gif,domain=nana10.co.il
 @@||receive-a-sms.com/showads.js$xmlhttprequest,first-party
+||pagead2.googlesyndication.com^$domain=receive-a-sms.com,important
+||googleads.g.doubleclick.net^$domain=receive-a-sms.com,important
 @@||gamersclub.com.br/js/ads.js$script,first-party
 newyorker.com##iframe[src*="/wp-content/assets/"]
 @@||politiken.dk/*ad*$script
@@ -252,6 +242,7 @@ leech.ae##script:inject(abort-on-property-read.js, open)
 wiwo.de##script:inject(abort-on-property-read.js, AdController)
 @@||vidoza.net/js/ads.js$script,first-party
 tvregionalna24.pl##.diablo-placeholder
+@@||hackinformer.com^$first-party,script,badfilter
 ! =====Patched Anti-Adblock Killer List (originally by Reek)=====
 ! Anti-Adblock Killer Repository (contains original source code and license): https://github.com/reek/anti-adblock-killer
 ||trymask.com/api/$third-party
