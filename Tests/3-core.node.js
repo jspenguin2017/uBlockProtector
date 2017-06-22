@@ -1,6 +1,10 @@
 //Check the functionality of Core
 "use strict";
 
+//Test not ready
+process.exit(0);
+////////////////
+
 console.log("=====core.node.js starts=====");
 
 /**
