@@ -32,7 +32,7 @@ const crawler = (dir) => {
         if (statSync(newPath).isDirectory()) {
             crawler(newPath);
         } else if (newPath.endsWith(".js")) {
-            scripts.push(newPath);
+            scripts.push(`./${newPath}`);
         }
     }
 }
