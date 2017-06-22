@@ -18,9 +18,7 @@ Consequence for breaking these rules varies from a warning to a 6 months ban on 
 Be aware that the ban will apply to all of my repositories. I will not ban people easily, but when I do, 
 expect it to be at least one month. 
 
-There is no arguing about these rules, with the only exception being recommendation on accepted setup, 
-but be aware that there can be only one accepted setup. The Fork button is always available if you do not 
-like these rules. 
+There is no arguing about these rules, the Fork button is always available if you do not like these rules. 
 
 You are not allowed to promote proprietary software anywhere in this repository, and you are expected to 
 stay on topic. 
