@@ -248,8 +248,9 @@ kitguru.net#@#div > a[class] > img[src]
 kitguru.net##.gofollow
 ||doubleclick.net^$domain=aetv.com,important
 vidnow.to###adplayer
-! =====Patched Anti-Adblock Killer List (originally by Reek)=====
-! Anti-Adblock Killer Repository (contains original source code and license): https://github.com/reek/anti-adblock-killer
+! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
+! License and original source code are available here: https://github.com/reek/anti-adblock-killer
+! ================================================================================================
 ||trymask.com/api/$third-party
 @@||adworkmedia.com/gLoader.php?GID=$script,third-party
 @@||adworkmedia.com/gTemplate.php?GID=$subdocument,third-party
