@@ -381,3 +381,5 @@ handelsblatt.com##script:inject(abort-on-property-read.js, AdController)
 ! === kitguru.net
 kitguru.net#@#div > a[class] > img[src]
 kitguru.net##.gofollow
+! === aetv.com
+||doubleclick.net^$domain=aetv.com,important

@@ -246,6 +246,7 @@ tvregionalna24.pl##.diablo-placeholder
 handelsblatt.com##script:inject(abort-on-property-read.js, AdController)
 kitguru.net#@#div > a[class] > img[src]
 kitguru.net##.gofollow
+||doubleclick.net^$domain=aetv.com,important
 ! =====Patched Anti-Adblock Killer List (originally by Reek)=====
 ! Anti-Adblock Killer Repository (contains original source code and license): https://github.com/reek/anti-adblock-killer
 ||trymask.com/api/$third-party

@@ -2035,8 +2035,30 @@ if (a.domCmp(["sthelensstar.co.uk", "runcornandwidnesworld.co.uk", "leighjournal
     "freepressseries.co.uk", "monmouthshirecountylife.co.uk", "barryanddistrictnews.co.uk",
     "penarthtimes.co.uk", "eveningtimes.co.uk", "s1cars.com", "s1community.com", "s1homes.com",
     "s1jobs.com", "s1rental.com", "thescottishfarmer.co.uk", "heraldscotland.com", "thenational.scot"])) {
+    //These are NewsQuest related domains, add other domains that share this rule elsewhere
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/137
     a.readOnly("_sp_", null);
+}
+if (a.domCmp(["aetv.com"])) {
+    a.inject(() => {
+        "use strict";
+        let val;
+        window.Object.defineProperty(window, "_sp_", {
+            configurable: false,
+            set(value) {
+                val = value;
+            },
+            get() {
+                //Patch detection
+                try {
+                    val.checkState = (e) => { e(false); };
+                    val.isAdBlocking = (e) => { e(false); };
+                    delete val._detectionInstance;
+                } catch (err) { }
+                return val;
+            },
+        });
+    });
 }
 if (a.domCmp(["securenetsystems.net"])) {
     a.readOnly("iExist", true);
