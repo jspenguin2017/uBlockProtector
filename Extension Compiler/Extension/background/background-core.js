@@ -38,6 +38,8 @@ a.init = () => {
                     break;
                 /**
                  * Get cached option.
+                 * This does not make much sense for an event script, but this script may become presistent
+                 * in the future.
                  * @return {boolean|null} The option, or null if the extension is not ready.
                  */
                 case "get option":

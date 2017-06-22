@@ -10,4 +10,4 @@ before_script:
 script:
   - node ./Tests/1-pretest.node.js
   - node ./Tests/2-syntax.node.js
-  - node ./Tests/3-core.node.js
+  - node ./Tests/3-content-core.node.js

@@ -40,6 +40,9 @@ const test = (name, test) => {
     test();
 };
 
+
+
+
 //Prepare environment
 global.addEventListener = () => { };
 global.document = {
@@ -48,7 +51,8 @@ global.document = {
 const window = global;
 //Load the core
 let a = {};
-eval(readFileSync("./Extension Compiler/Extension/content", "utf8"));
+eval(readFileSync("./Script Compiler/Libraries/yamd5.min.js", "utf8"));
+eval(readFileSync("./Script Compiler/Core.js", "utf8"));
 
 //a.applyMatch
 test("a.applyMatch() match all", () => {
