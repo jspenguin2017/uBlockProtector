@@ -30,6 +30,8 @@ for (let i = 0; i < lines.length; i++) {
     let line = lines[i].trim();
     line && output.push(line);
 }
+//Add an empty line at the end of the output
+output.push("");
 
 //Write output
 writeFileSync("../uBlockProtectorList.txt", output.join(EOL));
