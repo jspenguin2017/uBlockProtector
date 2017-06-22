@@ -3,7 +3,7 @@
 # Extension release package
 /Extension Compiler/*.zip
 
-# ===== Node =====
+# ===== Node.js =====
 
 # Logs
 logs
