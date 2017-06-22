@@ -376,3 +376,5 @@ wiwo.de##script:inject(abort-on-property-read.js, AdController)
 tvregionalna24.pl##.diablo-placeholder
 ! === hackinformer.com
 @@||hackinformer.com^$first-party,script,badfilter
+! === handelsblatt.com
+handelsblatt.com##script:inject(abort-on-property-read.js, AdController)

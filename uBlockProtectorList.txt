@@ -243,6 +243,7 @@ wiwo.de##script:inject(abort-on-property-read.js, AdController)
 @@||vidoza.net/js/ads.js$script,first-party
 tvregionalna24.pl##.diablo-placeholder
 @@||hackinformer.com^$first-party,script,badfilter
+handelsblatt.com##script:inject(abort-on-property-read.js, AdController)
 ! =====Patched Anti-Adblock Killer List (originally by Reek)=====
 ! Anti-Adblock Killer Repository (contains original source code and license): https://github.com/reek/anti-adblock-killer
 ||trymask.com/api/$third-party
