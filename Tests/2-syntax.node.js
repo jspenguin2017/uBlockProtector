@@ -1,7 +1,7 @@
 //Check syntax
 "use strict";
 
-console.log("=====syntax.node.js starts=====");
+console.log("=====2-syntax.node.js starts=====");
 
 /**
  * Load modules.
@@ -42,4 +42,4 @@ for (let i = 0; i < scripts.length; i++) {
     testRunner(scripts[i]);
 }
 
-console.log("=====syntax.node.js ends=====");
+console.log("=====2-syntax.node.js ends=====");

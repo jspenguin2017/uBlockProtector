@@ -5,7 +5,7 @@
 process.exit(0);
 ////////////////
 
-console.log("=====core.node.js starts=====");
+console.log("=====3-core.node.js starts=====");
 
 /**
  * Load module.
@@ -159,4 +159,4 @@ test("a.filter() multiple layers", () => {
     compare(global.multipleLayersFilter.test1.test2("hello"), "hello");
 });
 
-console.log("=====core.node.js ends=====");
+console.log("=====3-core.node.js ends=====");
