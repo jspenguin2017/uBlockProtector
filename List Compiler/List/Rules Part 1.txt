@@ -378,3 +378,6 @@ tvregionalna24.pl##.diablo-placeholder
 @@||hackinformer.com^$first-party,script,badfilter
 ! === handelsblatt.com
 handelsblatt.com##script:inject(abort-on-property-read.js, AdController)
+! === kitguru.net
+kitguru.net#@#div > a[class] > img[src]
+kitguru.net##.gofollow

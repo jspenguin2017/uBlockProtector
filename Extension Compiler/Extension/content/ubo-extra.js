@@ -656,6 +656,7 @@ if ( !abort ) {
         scriptlet: scriptlet,
         targets: [
             '101greatgoals.com',
+            '4chan.org',
             'allthetests.com',
             'biology-online.org',
             'destructoid.com',

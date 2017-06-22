@@ -91,7 +91,7 @@ a.always = (...args) => {
  */
 a.err = (name) => {
     if (name) {
-        console.error(`Uncaught Security Violation: ${name} uBlocker Origin detector is not allowed on this device!`);
+        console.error(`Uncaught Error: ${name} uBlocker Origin detector is not allowed on this device!`);
     } else {
         console.error(a.err.msg);
     }
@@ -100,7 +100,7 @@ a.err = (name) => {
  * The generic error message.
  * @const {string}
  */
-a.err.msg = "Uncaught Security Violation: uBlocker Origin detectors are not allowed on this device!";
+a.err.msg = "Uncaught Error: uBlocker Origin detectors are not allowed on this device!";
 /**
  * Do a cross origin request.
  * @function
@@ -669,7 +669,7 @@ a.generic = () => {
             const elem = document.getElementById("blockdiv");
             if (elem && elem.innerHTML === "disable ad blocking or use another browser without any adblocker when you visit") {
                 //Log
-                console.error("Uncaught AdBlock Error: Generic block screens are not allowed on this device!");
+                console.error("Uncaught Error: Generic block screens are not allowed on this device!");
                 //Remove block screen
                 elem.remove();
             }
@@ -772,12 +772,12 @@ a.generic = () => {
         //---Initialization---
         const error = window.console.error.bind(console);
         const err = (name) => {
-            error(`Uncaught Security Violation: ${name} uBlocker Origin detector is not allowed on this device!`);
+            error(`Uncaught Error: ${name} uBlocker Origin detector is not allowed on this device!`);
         };
         //---document-start---
         //Playwire
         try {
-            const errMsg = "Uncaught Security Violation: Playwire uBlocker Origin detector is not allowed on this device!";
+            const errMsg = "Uncaught Error: Playwire uBlocker Origin detector is not allowed on this device!";
             let playwireZeus;
             window.Object.defineProperty(window, "Zeus", {
                 configurable: false,
@@ -1046,7 +1046,7 @@ a.generic.Adfly = () => {
  */
 a.generic.FuckAdBlock = (constructorName, instanceName) => {
     let payload = () => {
-        const errMsg = "Uncaught Security Violation: FuckAdBlock uBlocker Origin detector is not allowed on this device!";
+        const errMsg = "Uncaught Error: FuckAdBlock uBlocker Origin detector is not allowed on this device!";
         const error = window.console.error.bind(console);
         const patchedFuckAdBlock = function () {
             //Based on FuckAdBlock
