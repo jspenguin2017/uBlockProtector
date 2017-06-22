@@ -974,7 +974,7 @@ a.generic = () => {
  * Setup generic Adfly bypasser, this function should be called once from a.init() if needed.
  * @function
  */
-a.generic.AdflyBypasser = () => {
+a.generic.Adfly = () => {
     //Based on AdsBypasser
     //License: https://github.com/adsbypasser/adsbypasser/blob/master/LICENSE
     a.inject(() => {

@@ -62,7 +62,7 @@
                     </tr>
                     <tr id="row_config_allowExperimental" style="display:none;">
                         <th>Experimental Features</th>
-                        <td>Whether experimental features should be enabled. You should to keep this on, and report any problems you encounter. Currently, there are 0 experimental features.</td>
+                        <td>Whether experimental features should be enabled. You should to keep this on, and report problems that you encounter. Currently, there are 0 experimental features.</td>
                         <td><input type="checkbox" id="cb_config_allowExperimental" data-toggle="toggle"></td>
                     </tr>
                     <tr id="row_config_aggressiveAdflyBypasser" style="display:none;">
@@ -104,7 +104,7 @@
 
         /**
          * Hide loading message, put in current settings to settings table, bind event handlers, and show the table.
-         * This function should be called once from AdBlock Protector Script.
+         * This function should be called once from uBlock Protector Script.
          * @function
          * @param {Object} data - A data object where keys are settings entry ID and values are the state of the settings.
          * @param {Function} callback - The function to call when a settings is changed, the ID and state will be supplied.
@@ -116,7 +116,7 @@
                 //Bind event handler
                 $("#cb_" + i.toString()).change(function () {
                     $("#savedAlert").show();
-                    callback(this.id.substr(3), this.checked);
+                    callback(this.id.substring(3), this.checked);
                 })
                 //Show row
                 $("#row_" + i.toString()).show();

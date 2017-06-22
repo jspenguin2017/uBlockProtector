@@ -21,7 +21,7 @@
     if (a.domCmp(AdflyWhitelist1, true) || a.domInc(AdflyWhitelist2, true)) {
         console.warn("This domain is excluded from Adfly bypasser.");
     } else {
-        a.generic.AdflyBypasser();
+        a.generic.Adfly();
     }
     //Apply generic solutions
     if (a.domCmp(whitelist1, true) || a.domInc(whitelist2, true)) {
