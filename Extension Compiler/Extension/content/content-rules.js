@@ -509,10 +509,7 @@ if (a.domCmp(["simply-debrid.com"])) {
 if (a.domCmp(["manga9.com", "mangabee.co"])) {
     a.css(".adblock { height:31px; }");
 }
-if (a.domCmp(["onemanga2.com"])) {
-    a.css(".afs_ads { height:5px; }");
-}
-if (a.domCmp(["mangabird.com"])) {
+if (a.domCmp(["mangabird.com", "onemanga2.com"])) {
     a.css(".afs_ads { height:5px; }");
 }
 if (a.domCmp(["kodilive.eu"])) {
@@ -544,7 +541,7 @@ if (a.domCmp(["happy-hack.ru"])) {
     a.css("#blockblockF4 { visibility:invisible; display:none; } #blockblockF4 td {visibility:invisible; display:none; } " +
         "#blockblockF4 td p { visibility:invisible; display:none; } #blockblockD3 { visibility:visible; display:block; }");
 }
-if (a.domCmp(["bitcoinaliens.com"])) {
+if (a.domCmp(["bitcoinaliens.com", "door2windows.com"])) {
     a.bait("ins", ".adsbygoogle");
 }
 if (a.domCmp(["osoarcade.com", "d3brid4y0u.info", "fileice.net", "nosteam.ro", "openrunner.com", "easybillets.com",
@@ -2266,9 +2263,6 @@ if (a.domCmp(["exrapidleech.info"])) {
 if (a.domCmp(["ouo.io"])) {
     localStorage.setItem("snapLastPopAt", (new Date()).getTime());
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
-}
-if (a.domCmp(["door2windows.com"])) {
-    a.bait("ins", ".adsbygoogle", true);
 }
 if (a.domCmp(["canalplus.fr"])) {
     let videoElem; //Current video player element, used to replace it when changing episode
