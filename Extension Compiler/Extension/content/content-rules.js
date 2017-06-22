@@ -2268,7 +2268,7 @@ if (a.domCmp(["ouo.io"])) {
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
 if (a.domCmp(["door2windows.com"])) {
-    a.filter("addEventListener", a.matchMethod.stringExact, "load");
+    a.bait("ins", ".adsbygoogle", true);
 }
 if (a.domCmp(["canalplus.fr"])) {
     let videoElem; //Current video player element, used to replace it when changing episode
