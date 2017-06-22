@@ -21,7 +21,7 @@ Other settings does not matter.
 
 ## uBlock Origin: 
 
-Factory settings plus these filter lists enabled: 
+Default settings plus these filter lists enabled: 
 
 ```
 Adblock Warning Removal List

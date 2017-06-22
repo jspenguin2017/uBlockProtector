@@ -20,14 +20,13 @@ expect it to be at least one month.
 
 There is no arguing about these rules, the Fork button is always available if you do not like these rules. 
 
-You are not allowed to promote proprietary software anywhere in this repository, and you are expected to 
-stay on topic. 
+You are not allowed to promote proprietary software in this repository, and you are expected to stay on topic. 
 
 ## Opening an issue
 
 ### Reporting a website that does not work
 
-Check if someone else already opened an issue for your problem, join the discussion there and do not open another one. 
+**Check if someone else already opened an issue for your problem, join the discussion there and do not open another one.**
 
 **Title**: The domain of the website. Prepend `NSFW! ` if the website may contain contents that are not safe for work. 
 
@@ -43,13 +42,13 @@ If what you are reporting needs to be absolutely secret (e.g. security vulnerabi
 [restricted issues tracker](https://gitlab.com/xuhaiyang1234/uBlockProtectorSecretIssues/issues). 
 Do not forget to flag the issue as confidential. 
 
-Since that issues tracker is not actively monitored, you also need to open an issue here to let us know. 
+Since that issues tracker is not actively monitored, you also need to open an issue here to let me know. 
 
 ### Everything else
 
 Give your issue a descriptive title and clearly explain what you are looking for. 
 You are not allowed to ask for expanding support nor for help with installation. 
-One exception is if are sure that the installation guide is broken. 
+One exception is when you are sure that the installation guide is broken. 
 
 ## Opening pull request
 

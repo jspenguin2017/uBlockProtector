@@ -3,7 +3,7 @@
 // @namespace null
 // @description An anti-adblock defuser for uBlock Origin
 // @author jspenguin2017
-// @version 8.60
+// @version 8.61
 // @encoding utf-8
 // @include http://*/*
 // @include https://*/*
@@ -30,8 +30,8 @@
 // @license GPL-3.0
 // ==/UserScript==
 //
-// ===== PLEASE READ =====
+// ===== MUST READ ==========================================================================
 // This Userscript is discontinued, use the extension instead
 // Visite my home page for more information: https://jspenguin2017.github.io/uBlockProtector/
-// =======================
+// ==========================================================================================
 let a = {};
