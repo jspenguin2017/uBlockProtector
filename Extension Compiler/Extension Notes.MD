@@ -43,7 +43,3 @@ Chromium documentation is generated, which means it sometimes includes weird thi
 * `cookies`: Could be useful when monitoring changes to a cookie is needed
 * `webRequest`: Could be useful when uBlock Origin's `resource.txt` does not have the resource I want
 * `webRequestBlocking`: Could be useful when a complex decision is needed
-
-# Credits
-
-The icons are created based on icons of [uBO-Extra](https://github.com/gorhill/uBO-Extra). 
