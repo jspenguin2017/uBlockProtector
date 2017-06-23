@@ -248,6 +248,7 @@ kitguru.net#@#div > a[class] > img[src]
 kitguru.net##.gofollow
 ||doubleclick.net^$domain=aetv.com,important
 vidnow.to###adplayer
+||gigaleecher.com/templates/plugmod/giga.js$script
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================
