@@ -4,14 +4,14 @@ language: node_js
 node_js: node
 cache:
   directories:
-    node_modules
+  - node_modules
 before_script:
-  npm install esprima
+- npm install esprima
 script:
-  node "./Continuous Integration/1-pretest.node.js"
-  node "./Continuous Integration/2-test-1-syntax.node.js"
-  node "./Continuous Integration/2-test-2-content-core.node.js"
-  node "./Continuous Integration/3-build.node.js"
+- node "./Continuous Integration/1-pretest.node.js"
+- node "./Continuous Integration/2-test-1-syntax.node.js"
+- node "./Continuous Integration/2-test-2-content-core.node.js"
+- node "./Continuous Integration/3-build.node.js"
 env:
   global:
     secure: lHt0AyttSw6vs/ZPQb1ld5bSaKoOwtwePuWft/nvE+XptRBcHHlju6DGd3LKX5q7Qpi8TwHyW1V60xDA1hUh+PkdXLlUzYKBnLM9gQeUjORtq2+/7mAUXSd+1lfbLuEZlp5JOJg03g0bA/KCr4i3XyeyXq6PrnUmqcKgndiKhI0vX+ViCjBCk3/MtXNmYLp+LTSqMI1Phhz4awtb/FZga0hDuid+M9wGQRpFnX10n6N/LjLK8GBPDpZPEoDhWKNL+2yTVr4qroFrZTrqu+DKLplv83XfuCMqkY9v+QtKd79v57IcH6BAC7JD380NZUSbxAFLWZatQG4KitVzQipHASUMQegZqpycDMM/gPTSu/8f1vp/8d0ChtjsHLoD1PO2p9JYlHwJavB/KZdb/caMdpGeivuPm8q2jZj3VRolHrKsbXnxnZNW5lKQDyWz1M2Ey/UVBzrkx3c7SD6X7Jq8mWDi6sli6Pp12DskfpRtfoq8icSxNQOldpWcMU7zNNop0BJpKLMTDKci79L89aZcQ6NEjL/s5bE8XPxrCq0Kw+PcEsHRYuz9j9fdL4tgIxUGfSenxzmBS1tqT9oGjVSvhg+ns1aqTvFpgU/fly/F8GnMSGW1+mN1F30n97QosyXK9JKbFfHilaFDUNpF7yFoI2PE4xDHaIrUYBtAzKun4S0=
