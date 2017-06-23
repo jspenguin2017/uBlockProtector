@@ -2552,3 +2552,6 @@ if (a.domCmp(["dailyuploads.net"])) {
 if (a.domCmp(["buickforums.com"])) {
     a.bait("div", "#TestAdBlock", true);
 }
+if (a.domCmp(["realkana.com"])) {
+    a.generic.FuckAdBlock("HooAdBlock", "hooAdBlock");
+}
