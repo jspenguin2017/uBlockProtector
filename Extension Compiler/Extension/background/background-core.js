@@ -104,4 +104,13 @@ a.init = () => {
     chrome.browserAction.onClicked.addListener(() => {
         chrome.runtime.openOptionsPage();
     });
+    //Set DEV badge when in debug mode
+    if (a.debugMode) {
+        chrome.browserAction.setBadgeText({
+            text: "DEV",
+        });
+        chrome.browserAction.setBadgeBackgroundColor({
+            color: "#6996FF",
+        });
+    }
 };

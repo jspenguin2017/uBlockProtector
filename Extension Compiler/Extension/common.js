@@ -13,5 +13,3 @@ var a = {};
  * @const {boolean}
  */
 a.debugMode = false; //@pragma-debug-switch
-//Debug mode warning
-a.debugMode && console.warn("uBlock Protector Extension is loaded in debug mode");
