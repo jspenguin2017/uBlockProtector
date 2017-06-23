@@ -2159,6 +2159,15 @@ if (a.domCmp(["gaybeeg.info"])) {
         });
     });
 }
+if (a.domCmp(["netdna-storage.com"])) {
+    //NSFW!
+    a.noAccess("uid");
+    a.ready(() => {
+        $(".plan-footer-item").each((i, el) => {
+            $(el).attr("href", $(el).data("link")).removeAttr("data-link");
+        });
+    });
+}
 if (a.domCmp(["mma-core.com"])) {
     a.noAccess("displayAdBlockedVideo");
 }
