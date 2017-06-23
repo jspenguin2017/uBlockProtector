@@ -2563,3 +2563,6 @@ if (a.domCmp(["generatorlinkpremium.com"])) {
         $("#quick").css("cursor", "pointer");
     });
 }
+if (a.domCmp(["genbird.com"])) {
+    a.filter("addEventListener", a.matchMethod.string, "Please disable your ad blocker.");
+}
