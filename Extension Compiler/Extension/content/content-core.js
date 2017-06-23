@@ -886,7 +886,7 @@ a.generic = () => {
                                 //Each key should be 10 character long, one of the 3 keys can be "bab"
                                 let isBAB = true;
                                 //Verify length
-                                const keyLen = window.Object.keys(method).join("");
+                                const keyLen = window.Object.keys(method).join("").length;
                                 if (keyLen !== 30 && keyLen !== 23) {
                                     isBAB = false;
                                 } else {
