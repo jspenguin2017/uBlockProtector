@@ -1,10 +1,12 @@
 //Solutions from Anti-Adblock Killer (originally by Reek) are modified to fit my Core API
+//Anti-Adblock Killer Repository (contains original source code and license): https://github.com/reek/anti-adblock-killer
 "use strict";
 
-//Anti-Adblock Killer Repository (contains original source code and license): https://github.com/reek/anti-adblock-killer
+//Initialization and generic rules
 {
+    //Initialize
     a.init();
-    //Check whitelist, 1 is for a.domCmp(), 2 is for a.domInc()
+    //Check whitelist, ends with 1 means the list is for a.domCmp(), 2 for a.domInc()
     const whitelist1 = ["360.cn", "apple.com", "ask.com", "baidu.com", "bing.com", "bufferapp.com",
         "chromeactions.com", "easyinplay.net", "ebay.com", "facebook.com", "flattr.com", "flickr.com",
         "ghacks.net", "imdb.com", "imgbox.com", "imgur.com", "instagram.com", "jsbin.com", "jsfiddle.net",
@@ -30,7 +32,7 @@
         a.generic();
     }
 }
-//Rules start
+//Specific rules
 if (a.domCmp(["blockadblock.com"])) {
     a.filter("eval");
     a.ready(() => {

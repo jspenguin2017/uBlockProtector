@@ -1,6 +1,6 @@
 "use strict";
 
-//Initialization
+//Initialize
 a.init();
 
 //No background rule for now
