@@ -17,36 +17,6 @@ a.init = () => {
             window.uBlock_Protector_Extension = true;
         });
     }
-    //Jump to top button
-    if (a.isTopFrame && a.domCmp(["facebook.com"], true)) {
-        //Load option, from background page to prevent hitting rate limit
-        chrome.runtime.sendMessage({ cmd: "get option" }, (data) => {
-            if (chrome.runtime.lastError) {
-                console.error(chrome.runtime.lastError.message);
-                //Assume false
-            } else if (data === true) {
-                const handler = () => {
-                    if (document.getElementById("uBlock_Protector_FBMod_JumpToTop") === null) {
-                        //Check if the nav bar is there
-                        const navBar = $("div[role='navigation']");
-                        if (navBar.length > 0) {
-                            //Present, insert button
-                            navBar.first().append(`<div class="_4kny _2s24" id="uBlock_Protector_FBMod_JumpToTop">` +
-                                `<div class="_3qcu _cy7"><a class="_2s25" href="javascript:void(0);">Top</a></div></div>`);
-                            document.getElementById("uBlock_Protector_FBMod_JumpToTop").addEventListener("click", () => {
-                                scrollTo(scrollX, 0);
-                            });
-                            console.info("Facebook Jump to Top button added.");
-                        } else {
-                            //Wait a little bit for the window to load, for some reason load event does not work
-                            setTimeout(handler, 500);
-                        }
-                    }
-                };
-                setTimeout(handler, 500);
-            }
-        });
-    }
 };
 
 //=====Utilities=====

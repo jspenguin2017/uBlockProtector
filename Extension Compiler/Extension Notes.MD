@@ -35,7 +35,6 @@ Chromium documentation is generated, which means it sometimes includes weird thi
 
 ### Requested permissions:
 
-* `storage`: Save settings for power users
 * `tabs`: To inject CSS and to forcefully close a tab
 
 ### These permissions might be useful:

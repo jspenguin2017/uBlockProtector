@@ -56,7 +56,6 @@
   "permissions": [
     "http://*/*",
     "https://*/*",
-    "storage",
     "tabs"
   ],
   "version": "9.6"
