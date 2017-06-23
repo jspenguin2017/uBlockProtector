@@ -1,3 +1,5 @@
+//Download and update uBO-Extra file from upstream
+//The current working directory should be "Git Root/Extension Compiler"
 "use strict";
 
 /**

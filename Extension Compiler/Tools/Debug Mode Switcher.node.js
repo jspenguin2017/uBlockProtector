@@ -1,3 +1,5 @@
+//Turn debug mode on or off
+//The current working directory should be "Git Root/Extension Compiler"
 "use strict";
 
 /**

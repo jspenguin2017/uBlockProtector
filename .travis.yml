@@ -8,6 +8,7 @@ cache:
 before_script:
   - npm install esprima
 script:
-  - node ./Tests/1-pretest.node.js
-  - node ./Tests/2-syntax.node.js
-  - node ./Tests/3-content-core.node.js
+  - node "./Continuous Integration/1-pretest.node.js"
+  - node "./Continuous Integration/2-syntax.node.js"
+  - node "./Continuous Integration/3-content-core.node.js"
+  - node "./Continuous Integration/4-build.node.js"
