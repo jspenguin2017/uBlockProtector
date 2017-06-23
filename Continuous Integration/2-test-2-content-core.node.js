@@ -1,7 +1,7 @@
 //Check the functionality of Core
 "use strict";
 
-console.log("=====3-content-core.node.js starts=====");
+console.log("=====2-test-2-content-core.node.js starts=====");
 
 /**
  * Load module.
@@ -60,4 +60,4 @@ test("a.cookie() get mode", () => {
     compare(a.cookie("not found"), null);
 });
 
-console.log("=====3-content-core.node.js ends=====");
+console.log("=====2-test-2-content-core.node.js ends=====");
