@@ -106,6 +106,7 @@ a.init = () => {
     });
     //Set badge
     if (a.debugMode) {
+        //Debug mode
         chrome.browserAction.setBadgeText({
             text: "DBG",
         });
