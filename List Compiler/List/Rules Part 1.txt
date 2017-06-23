@@ -388,3 +388,6 @@ kitguru.net##.gofollow
 vidnow.to###adplayer
 ! === gigaleecher.com
 ||gigaleecher.com/templates/plugmod/giga.js$script
+! === photobucket.com
+|https://$third-party,script,domain=photobucket.com,badfilter
+photobucket.com##script:inject(bab-defuser.js)
