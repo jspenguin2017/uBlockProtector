@@ -47,6 +47,7 @@ a.init = () => {
                     break;
                 /**
                  * Inject CSS to the caller tab.
+                 * @param {string} data - The CSS code to inject.
                  */
                 case "inject css":
                     if (args[1].tab) {
@@ -55,12 +56,13 @@ a.init = () => {
                             frameId: args[1].frameId || 0,
                         });
                     }
-                    //Ignore if tab is not set
+                    //Ignore if not called from a tab
                     break;
                 /**
                  * Do a cross origin XMLHttpRequest.
                  * @param {Object} details - The details object, see a.request() of content-core
                  ** for more information.
+                 * @return {string|null} The response text, or null if the request failed.
                  */
                 case "xhr":
                     console.warn(`Sending cross origin request to ${args[0].details.url}`);
@@ -81,7 +83,7 @@ a.init = () => {
                     }
                     //Send request
                     req.send(args[0].payload || null);
-                    return true; //I will do a callback later
+                    return true; //The callback is done after this handler returns
                 /**
                  * Forcefully close the sender tab.
                  */
@@ -89,14 +91,14 @@ a.init = () => {
                     if (args[1].tab) {
                         chrome.tabs.remove(args[1].tab.id);
                     }
-                    //Ignore if tab is not set
+                    //Ignore if not called from a tab
                     break;
                 default:
-                    //Ignore
+                    //Invalid command, ignore
                     break;
             }
         }
-        //Ignore otherwise
+        //No command, ignore
     });
     //Extension icon click handler, open options page
     chrome.browserAction.onClicked.addListener(() => {
