@@ -1274,6 +1274,9 @@ if (a.domCmp(["kissanime.com", "kissanime.to", "kissanime.ru"])) {
         );
     });
 }
+if (a.domCmp(["kissanime.io"])) {
+    a.readOnly("check_adblock", true);
+}
 if (a.domCmp(["kisscartoon.me", "kisscartoon.se"])) {
     a.readOnly("xaZlE", () => { });
     a.ready(() => {
