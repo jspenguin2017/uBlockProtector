@@ -2555,3 +2555,11 @@ if (a.domCmp(["buickforums.com"])) {
 if (a.domCmp(["realkana.com"])) {
     a.generic.FuckAdBlock("HooAdBlock", "hooAdBlock");
 }
+if (a.domCmp(["generatorlinkpremium.com"])) {
+    $(document).ready(() => {
+        const normal = $("#normal").attr("href") + "&h=1";
+        $("#quick").attr("href", normal);
+        $("#quick").attr("title", "Download this file with a faster download speed");
+        $("#quick").css("cursor", "pointer");
+    });
+}
