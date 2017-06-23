@@ -250,7 +250,6 @@ kitguru.net##.gofollow
 vidnow.to###adplayer
 ||gigaleecher.com/templates/plugmod/giga.js$script
 |https://$third-party,script,domain=photobucket.com,badfilter
-photobucket.com##script:inject(bab-defuser.js)
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================
