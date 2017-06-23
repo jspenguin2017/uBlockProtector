@@ -2284,6 +2284,9 @@ if (a.domCmp(["exrapidleech.info"])) {
         $("p:contains('Please turn on popup')").remove();
     });
 }
+if (a.domCmp(["fastserver.me"])) {
+    a.filter("alert", a.matchMethod.string, "Adblocker Detected!!");
+}
 if (a.domCmp(["ouo.io"])) {
     localStorage.setItem("snapLastPopAt", (new Date()).getTime());
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
