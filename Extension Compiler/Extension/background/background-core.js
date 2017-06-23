@@ -104,13 +104,22 @@ a.init = () => {
     chrome.browserAction.onClicked.addListener(() => {
         chrome.runtime.openOptionsPage();
     });
-    //Set DEV badge when in debug mode
+    //Set badge
     if (a.debugMode) {
         chrome.browserAction.setBadgeText({
-            text: "DEV",
+            text: "DBG",
         });
         chrome.browserAction.setBadgeBackgroundColor({
             color: "#6996FF",
         });
+    } else if (chrome.runtime.id !== "ggolfgbegefeeoocgjbmkembbncoadlb") {
+        //Unpacked extension but not in debug mode
+        chrome.browserAction.setBadgeText({
+            text: "DEV",
+        });
+        chrome.browserAction.setBadgeBackgroundColor({
+            color: "#25BA42",
+        });
     }
+    //No badge otherwise
 };
