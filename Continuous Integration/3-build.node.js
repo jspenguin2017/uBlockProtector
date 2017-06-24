@@ -1,11 +1,13 @@
-/**
- * Build and publish the new version, this script will swallow all errors and only display hard coded
- * error message for security.
- * Expects the current working directory to be the Git Root.
- * Exit code: 0 success, 1 caught error, 2 uncaught error.
- * If commit message starts with "@build-script-do-not-run", then build is skipped.
- * If commit message starts with "@build-script-force-run", then version check is skipped.
- */
+//Build and publish the new version, this script will swallow all errors and only display hard coded error
+//message for security
+//Requires these secure environment variables:
+//  CLIENT_ID, CLIENT_SECRET: Client ID and secret
+//  REFRESH_TOKEN: Refresh token
+//  VERSION_KEY: Key to set last build version
+//Requires the current working directory to be the Git Root
+//Exit code: 0 for success, 1 for caught error, 2 for uncaught error
+//If commit message starts with "@build-script-do-not-run", then build is skipped
+//If commit message starts with "@build-script-force-run", then version check is skipped
 "use strict";
 
 //Register unexpected error handler, swallow all uncaught errors as they may contain credentials
@@ -28,9 +30,15 @@ let archiver;
 try {
     archiver = require("archiver");
 } catch (err) {
-    console.error("Could not load archiver module: Module not installed.");
+    console.error("Could not load archiver module: Module is not installed.");
     process.exit(1);
 }
+
+/**
+ * The provider of extended API.
+ * @const {string}
+ */
+const extendedAPIProvider = "https://jspenguin.com/API/uBlockProtector";
 
 /**
  * Print end message and exit with exit code 0.
@@ -42,14 +50,14 @@ const exit = () => {
 };
 
 /**
- * Version object.
+ * Version object, represents a version.
  * @class
  */
 const Version = class {
     /**
      * Constructor.
      * @constructor
-     * @param {string} v - The version string, must be like "1.4".
+     * @param {string} v - The version string, format must be like "1.4".
      */
     constructor(v) {
         const i = v.indexOf(".");
@@ -60,7 +68,7 @@ const Version = class {
     /**
      * Get the original string representation of the version.
      * @method
-     * @return {string} The string representation of the version.
+     * @return {string} The version string.
      */
     toString() {
         return this.stringVal;
@@ -90,7 +98,8 @@ const verNeedUpdate = (v1, v2) => {
 
 /**
  * Serialize an object to parameters, throws error if the object is invalid.
- * @param {Object} obj - The object to serialize
+ * @param {Object} obj - The object to serialize.
+ * @return {string} The serialized string.
  */
 const serialize = (obj) => {
     let str = "";
@@ -109,12 +118,12 @@ const serialize = (obj) => {
 
 /**
  * Disable debug mode.
- * Will fail the build if the task could not be completed.
+ * Will fail the build if this task could not be completed.
  * @function
  * @return {Promise} The promise of the task.
  */
 const disableDebugMode = () => {
-    console.log("Disabling debug mode...");
+    console.log("Setting debug flag...");
     return new Promise((resolve) => {
         const file = "./Extension Compiler/Extension/common.js";
         fs.readFile(file, { encoding: "utf8" }, (err, data) => {
@@ -123,8 +132,8 @@ const disableDebugMode = () => {
                 process.exit(1);
             } else {
                 fs.writeFile(file, data.replace(
-                    "a.debugMode = true; \/\/@pragma-debug-switch",
-                    "a.debugMode = false; \/\/@pragma-debug-switch"
+                    "a.debugMode = true; //@pragma-debug-switch",
+                    "a.debugMode = false; //@pragma-debug-switch"
                 ), (err) => {
                     if (err) {
                         console.error("Could not set debug switch: Could not write to file.");
@@ -139,7 +148,7 @@ const disableDebugMode = () => {
 };
 /**
  * Create zip archive ready for upload.
- * Will fail the build if the task could not be completed.
+ * Will fail the build if this task could not be completed.
  * @function
  * @return {Promise} The promise of the task.
  ** @param {Buffer} data - The zip data.
@@ -168,7 +177,7 @@ const zip = () => {
 
 /**
  * Obtain OAuth2 access token, credentials are read from secure environment variables.
- * Will fail the build if the task could not be completed.
+ * Will fail the build if this task could not be completed.
  * Obtain client ID and secret: https://developers.google.com/identity/protocols/OAuth2
  * Obtain OAuth2 code and redeem refresh token: https://developer.chrome.com/webstore/using_webstore_api
  * @function
@@ -200,6 +209,7 @@ const OAuth2 = () => {
             },
         }), (res) => {
             let data = "";
+            res.setEncoding("utf8");
             res.on("data", (s) => { data += s; });
             res.on("error", () => {
                 console.error("Could not obtain access token: Could not connect to remote server.");
@@ -230,7 +240,7 @@ const OAuth2 = () => {
 };
 /**
  * Upload a new build to the store.
- * Will fail the build if the task could not be completed.
+ * Will fail the build if this task could not be completed.
  * @function
  * @param {string} token - The access token.
  * @param {Buffer} data - The new build package.
@@ -247,6 +257,7 @@ const upload = (token, data) => {
             },
         }), (res) => {
             let data = "";
+            res.setEncoding("utf8");
             res.on("data", (c) => { data += c; });
             res.on("error", () => {
                 console.error("Could not upload new build: Could not connect to remote server.");
@@ -280,7 +291,7 @@ const upload = (token, data) => {
 };
 /**
  * Publish the new build.
- * Will fail the build if the task could not be completed.
+ * Will fail the build if this task could not be completed.
  * @function
  * @param {string} token - The access token.
  * @return {Promise} The promise of the task.
@@ -297,9 +308,10 @@ const publish = (token) => {
             },
         }), (res) => {
             let data = "";
+            res.setEncoding("utf8");
             res.on("data", (c) => { data += c; });
             res.on("error", () => {
-                console.error("Could not upload new build: Could not connect to remote server.");
+                console.error("Could not publish new build: Could not connect to remote server.");
                 process.exit(1);
             });
             res.on("end", () => {
@@ -308,8 +320,11 @@ const publish = (token) => {
                     if (response.error) {
                         console.error("Could not publish new build: Remote server returned an error.");
                         process.exit(1);
-                    } else if (response.status.includes("ITEM_PENDING_REVIEW") || response.status.includes("OK")) {
-                        console.log("New build published, it will show up in the store after it is reviewed.");
+                    } else if (response.status.includes("OK")) {
+                        console.log("New build is published.");
+                        resolve();
+                    } else if (response.status.includes("ITEM_PENDING_REVIEW")) {
+                        console.log("New build is published, but it is currently under review.");
                         resolve();
                     } else {
                         console.error("Could not publish new build: Remote server returned an error.");
@@ -330,7 +345,7 @@ const publish = (token) => {
 };
 /**
  * Set version of last build for next time.
- * Will fail the build if the task could not be completed. Will try 5 times.
+ * Will fail the build if this task could not be completed. Will try 5 times.
  * @function
  * @param {Version} v - The version to set.
  * @return {Promise} The promise of the task.
@@ -341,7 +356,7 @@ const setLastBuildVersion = (v) => {
         const onError = (() => {
             let errorCount = 0;
             return () => {
-                console.error("Could not obtain version number of last build: Could not connect to remote server.");
+                console.error("Could not save version number of last build: Could not connect to remote server.");
                 if ((++errorCount) > 5) {
                     console.error("Too many trails, aborting...");
                     process.exit(1);
@@ -352,23 +367,27 @@ const setLastBuildVersion = (v) => {
             };
         })();
         const doRequest = () => {
-            let request = https.request(Object.assign(url.parse("https://jspenguin.com/API/uBlockProtector/API.php"), {
+            let request = https.request(Object.assign(url.parse(`${extendedAPIProvider}/API.php`), {
                 method: "POST",
             }), (res) => {
                 let data = "";
+                res.setEncoding("utf8");
                 res.on("data", (c) => { data += c; });
                 res.on("error", onError);
                 res.on("end", () => {
                     if (data === "ok") {
                         resolve();
                     } else {
-                        console.error("Could not set version number of last build: Remote server returned an error.");
+                        console.error("Could not save version number of last build: Remote server returned an error.");
                         process.exit(1);
                     }
                 });
             });
             request.on("error", onError);
-            request.write(`key=${process.env.VERSION_KEY}&data=${v.toString()}`);
+            request.write(serialize({
+                key: process.env.VERSION_KEY,
+                data: v.toString(),
+            }));
             request.end();
         };
         doRequest();
@@ -377,7 +396,7 @@ const setLastBuildVersion = (v) => {
 
 /**
  * Find published version number.
- * Will fail the build if the task could not be completed.
+ * Will fail the build if this task could not be completed.
  * This function is not used.
  * @function
  * @return {Promise} The promise of the task.
@@ -388,6 +407,7 @@ const getPublishedVersion = () => {
     return new Promise((resolve) => {
         let request = https.request(url.parse("https://chrome.google.com/webstore/detail/ublock-protector-extensio/ggolfgbegefeeoocgjbmkembbncoadlb"), (res) => {
             let data = "";
+            res.setEncoding("utf8");
             res.on("data", (c) => { data += c; });
             res.on("error", () => {
                 console.error("Could not obtain published version number: Could not connect to remote server.");
@@ -415,7 +435,7 @@ const getPublishedVersion = () => {
 };
 /**
  * Find version number of last build.
- * Will fail the build if the task could not be completed. Will try 5 times.
+ * Will fail the build if this task could not be completed. Will try 5 times.
  * @function
  * @return {Promise} The promise of the task.
  ** @param {Version} v1 - The version.
@@ -437,8 +457,9 @@ const getLastBuildVersion = () => {
             };
         })();
         const doRequest = () => {
-            let request = https.request(url.parse("https://jspenguin.com/API/uBlockProtector/Data.txt"), (res) => {
+            let request = https.request(url.parse(`${extendedAPIProvider}/Data.txt`), (res) => {
                 let data = "";
+                res.setEncoding("utf8");
                 res.on("data", (c) => { data += c; });
                 res.on("error", onError);
                 res.on("end", () => {
@@ -457,7 +478,7 @@ const getLastBuildVersion = () => {
 };
 /**
  * Find local version number.
- * Will fail the build if the task could not be completed.
+ * Will fail the build if this task could not be completed.
  * @function
  * @return {Promise} The promise of the task.
  ** @param {Version} v2 - The version.
@@ -467,7 +488,7 @@ const getLocalVersion = () => {
     return new Promise((resolve) => {
         fs.readFile("./Extension Compiler/Extension/manifest.json", { encoding: "utf8" }, (err, data) => {
             if (err) {
-                console.error("Could not obtain local version number: Could not open file.");
+                console.error("Could not obtain local version number: Could not open manifest.");
                 process.exit(1);
             } else {
                 try {
@@ -475,7 +496,7 @@ const getLocalVersion = () => {
                     if ((/^\d+\.\d+$/).test(ver)) {
                         resolve(new Version(ver));
                     } else {
-                        console.error("Could not obtain local version number: Version string is invalid.");
+                        console.error("Could not obtain local version number: Manifest is invalid.");
                         process.exit(1);
                     }
                 } catch (err) {
