@@ -577,8 +577,9 @@ const getLocalVersion = () => {
 /**
  * Build and publish.
  * @function
+ * @param {Version} newVer - The new version.
  */
-const build = () => {
+const build = (newVer) => {
     //Upload and publish
     let data, token;
     disableDebugMode().then(() => {
@@ -592,7 +593,7 @@ const build = () => {
     }).then(() => {
         return publish(token);
     }).then(() => {
-        return setLastBuildVersion();
+        return setLastBuildVersion(newVer);
     }).then(exit);
 };
 
@@ -613,14 +614,14 @@ Promise.all([
 ]).then((versions) => {
     if (process.env.TRAVIS_COMMIT_MESSAGE.startsWith("@build-script-force-run")) {
         console.warn("Force build instruction received.");
-        build();
+        build(versions[1]);
     } else {
         if (verSame(...versions)) {
             //Nothing to do
             console.log("Store version up to date, nothing to build.");
             exit();
         } else if (verNeedUpdate(...versions)) {
-            build();
+            build(versions[1]);
         } else {
             //Version is broken
             console.error("Version error: Unexpected versions, maybe last version is not yet approved.");
