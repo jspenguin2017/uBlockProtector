@@ -59,6 +59,33 @@ const verNeedUpdate = (v1, v2) => {
 };
 
 /**
+ * Obtain OAuth2 token, credentials are read from secure environment variables.
+ * Will fail the build if the token could not be obtained.
+ * @function
+ * @return {Promise} The promise of the task.
+ ** @param {string} token - The access token.
+ */
+const OAuth2 = () => {
+    return new Promise((resolve) => {
+        //Check environment variables
+        if (!process.env.CLIENT_ID || !process.env.CLIENT_SECRET || !process.env.OAUTH_KEY) {
+            throw new Error("Secure environment variables are missing.");
+        }
+        //Prepare payload
+        const CLIENT_ID = encodeURIComponent(process.env.CLIENTID);
+        const CLIENT_SECRET = encodeURIComponent(process.env.CLIENT_SECRET);
+        const OAUTH_KEY = encodeURIComponent(process.env.OAUTH_KEY);
+        const payload = `client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&code=${OAUTH_KEY}&grant_type=authorization_code&redirect_uri=urn:ietf:wg:oauth:2.0:oob`;
+        //Send request
+        https.request(Object.assign(url.parse("https://accounts.google.com/o/oauth2/token"), {
+            method: "POST"
+        }), (res) => {
+            //
+        }).write(payload).end();
+    })
+};
+
+/**
  * Find current version that is published in the store, will fail the build if the version could not be found.
  * The "proper" API for this seems to only work for unpublished draft: https://developer.chrome.com/webstore/webstore_api/items/get
  * @function
@@ -117,7 +144,9 @@ Promise.all([
         console.log("Store version up to date, nothing to build.");
         exit();
     } else if (verNeedUpdate(...versions)) {
-        //TODO...
+        OAuth2.then((token) => {
+            //
+        });
     } else {
         //Version is broken
         throw new Error("Unexpected versions, maybe last version is not yet approved.");
