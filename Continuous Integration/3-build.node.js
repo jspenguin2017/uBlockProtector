@@ -1,8 +1,11 @@
-//Build and publish the new version, this script will swallow all errors and only display hard coded
-//error message for security
-//Expects the current working directory to be the Git Root
-//Exit code:
-//0: success, 1: caught error, 2: uncaught error
+/**
+ * Build and publish the new version, this script will swallow all errors and only display hard coded
+ * error message for security.
+ * Expects the current working directory to be the Git Root.
+ * Exit code: 0 success, 1 caught error, 2 uncaught error.
+ * Commit message must start with "@build-script-run" for this script to run.
+ * If commit message starts with "@build-script-run @build-script-force-run", then version check is skipped.
+ */
 "use strict";
 
 //Register unexpected error handler, swallow all uncaught errors as they may contain credentials
@@ -77,6 +80,25 @@ const verNeedUpdate = (v1, v2) => {
 };
 
 /**
+ * Serialize an object to parameters, throws error if the object is invalid.
+ * @param {Object} obj - The object to serialize
+ */
+const serialize = (obj) => {
+    let str = "";
+    for (let key in obj) {
+        if (str !== "") {
+            str += "&";
+        }
+        if (typeof obj[key] === "string") {
+            str += `${key}=${encodeURIComponent(obj[key])}`;
+        } else {
+            throw "Invalid parameter";
+        }
+    }
+    return str;
+};
+
+/**
  * Disable debug mode.
  * Will fail the build if the task could not be completed.
  * @function
@@ -136,7 +158,7 @@ const zip = () => {
 };
 
 /**
- * Obtain OAuth2 token, credentials are read from secure environment variables.
+ * Obtain OAuth2 access token, credentials are read from secure environment variables.
  * Will fail the build if the task could not be completed.
  * Obtain client ID and secret: https://developers.google.com/identity/protocols/OAuth2
  * Obtain OAuth2 code and redeem refresh token: https://developer.chrome.com/webstore/using_webstore_api
@@ -146,20 +168,6 @@ const zip = () => {
  */
 const OAuth2 = () => {
     console.log("Obtaining access token...");
-    const serialize = (obj) => {
-        let str = "";
-        for (let key in obj) {
-            if (str !== "") {
-                str += "&";
-            }
-            if (typeof obj[key] === "string") {
-                str += `${key}=${encodeURIComponent(obj[key])}`;
-            } else {
-                throw "Invalid parameter";
-            }
-        }
-        return str;
-    };
     return new Promise((resolve) => {
         //Prepare payload
         let payload;
@@ -265,6 +273,7 @@ const upload = (token, data) => {
  * Publish the new build.
  * Will fail the build if the task could not be completed.
  * @function
+ * @param {string} token - The access token.
  * @return {Promise} The promise of the task.
  */
 const publish = (token) => {
@@ -312,7 +321,7 @@ const publish = (token) => {
 };
 
 /**
- * Find current version that is published in the store.
+ * Find published version number.
  * Will fail the build if the task could not be completed.
  * The "proper" API for this seems to only work for unpublished draft: https://developer.chrome.com/webstore/webstore_api/items/get
  * @function
@@ -320,7 +329,7 @@ const publish = (token) => {
  ** @param {Version} v1 - The version.
  */
 const getPublishedVersion = () => {
-    console.log("Getting published version number...");
+    console.log("Obtaining published version number...");
     return new Promise((resolve) => {
         let request = https.request(url.parse("https://chrome.google.com/webstore/detail/ublock-protector-extensio/ggolfgbegefeeoocgjbmkembbncoadlb"), (res) => {
             let data = "";
@@ -350,14 +359,14 @@ const getPublishedVersion = () => {
     });
 };
 /**
- * Find local version that is ready to be published to the store.
+ * Find local version number.
  * Will fail the build if the task could not be completed.
  * @function
  * @return {Promise} The promise of the task.
  ** @param {Version} v2 - The version.
  */
 const getLocalVersion = () => {
-    console.log("Getting local version number...");
+    console.log("Obtaining local version number...");
     return new Promise((resolve) => {
         fs.readFile("./Extension Compiler/Extension/manifest.json", { encoding: "utf8" }, (err, data) => {
             if (err) {
@@ -381,10 +390,34 @@ const getLocalVersion = () => {
     });
 };
 
+/**
+ * Build and publish.
+ * @function
+ */
+const build = () => {
+    //Upload and publish
+    let data, token;
+    disableDebugMode().then(() => {
+        return zip();
+    }).then((d) => {
+        data = d;
+        return OAuth2();
+    }).then((t) => {
+        token = t;
+        return upload(token, data);
+    }).then(() => {
+        return publish(token);
+    }).then(exit);
+};
+
 //Check if I have credentials, pull requests do not have access to credentials, I do not want to push to store for pull
 //requests anyway, do not fail the build as that can cause confusions
 if (!process.env.CLIENT_ID || !process.env.CLIENT_SECRET || !process.env.REFRESH_TOKEN) {
     console.log("Secure environment variables are missing, skipping build.");
+    exit();
+}
+if (process.env.TRAVIS_COMMIT_MESSAGE.startsWith("@build-script-run")) {
+    console.log("Build instruction not found, skipping build.");
     exit();
 }
 //Check version
@@ -392,27 +425,20 @@ Promise.all([
     getPublishedVersion(),
     getLocalVersion(),
 ]).then((versions) => {
-    if (verSame(...versions)) {
-        //Nothing to do
-        console.log("Store version up to date, nothing to build.");
-        exit();
-    } else if (verNeedUpdate(...versions)) {
-        //Upload and publish
-        let data, token;
-        disableDebugMode().then(() => {
-            return zip();
-        }).then((d) => {
-            data = d;
-            return OAuth2();
-        }).then((t) => {
-            token = t;
-            return upload(token, data);
-        }).then(() => {
-            return publish(token);
-        }).then(exit);
+    if (process.env.TRAVIS_COMMIT_MESSAGE.startsWith("@build-script-run @build-script-force-run")) {
+        console.warn("Force build instruction received.");
+        build();
     } else {
-        //Version is broken
-        console.error("Version error: Unexpected versions, maybe last version is not yet approved.");
-        process.exit(1);
+        if (verSame(...versions)) {
+            //Nothing to do
+            console.log("Store version up to date, nothing to build.");
+            exit();
+        } else if (verNeedUpdate(...versions)) {
+            build();
+        } else {
+            //Version is broken
+            console.error("Version error: Unexpected versions, maybe last version is not yet approved.");
+            process.exit(1);
+        }
     }
 });
