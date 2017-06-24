@@ -1,5 +1,5 @@
 //Build and publish the new version, this script will swallow all errors and only display hard coded error
-//message for security
+//message for security, some errors will be reported to a secure channel
 //Requires these secure environment variables:
 //  CLIENT_ID, CLIENT_SECRET: Client ID and secret
 //  REFRESH_TOKEN: Refresh token
@@ -39,6 +39,16 @@ try {
  * @const {string}
  */
 const extendedAPIProvider = "https://jspenguin.com/API/uBlockProtector";
+/**
+ * The provider of secure error report.
+ * @const {string}
+ */
+const secureErrorReportProvider = "https://jspenguin.com/PrivateMessage/API.php";
+/**
+ * The prefix of error report reference.
+ * @const {string}
+ */
+const secureErrorReportPrefix = "uBlock Protector Automated Deploy ";
 
 /**
  * Print end message and exit with exit code 0.
@@ -114,6 +124,51 @@ const serialize = (obj) => {
         }
     }
     return str;
+};
+
+/**
+ * Report error to a secure channel, then fail the build.
+ * @function
+ * @param {string} err - The error.
+ */
+const secureErrorReport = (ref, err) => {
+    console.log("Reporting this error to secure error report provider...");
+    let payload;
+    try {
+        payload = serialize({
+            cmd: "send",
+            reference: ref,
+            message: err,
+        });
+    } catch (err) {
+        console.error("Could report error: Error message is not valid.");
+        process.exit(1);
+    }
+    let request = https.request(Object.assign(secureErrorReportProvider, {
+        method: "POST",
+    }), (res) => {
+        let data = "";
+        res.setEncoding("utf8");
+        res.on("data", (c) => { data += c; });
+        res.on("error", () => {
+            console.error("Could report error: Could not connect to remote server.");
+            process.exit(1);
+        });
+        res.on("end", () => {
+            if (data === "ok") {
+                console.log("Error reported.");
+            } else {
+                console.error("Could report error: Remote server returned an error.");
+            }
+            process.exit(1);
+        });
+    });
+    request.on("error", () => {
+        console.error("Could report error: Could not connect to remote server.");
+        process.exit(1);
+    });
+    request.write(payload);
+    request.end();
 };
 
 /**
@@ -220,7 +275,7 @@ const OAuth2 = () => {
                     const response = JSON.parse(data);
                     if (response.error || typeof response.access_token !== "string") {
                         console.error("Could not obtain access token: Remote server returned an error.");
-                        process.exit(1);
+                        secureErrorReport(`${secureErrorReportPrefix}OAuth2`, data);
                     } else {
                         resolve(response.access_token);
                     }
@@ -273,7 +328,7 @@ const upload = (token, data) => {
                         setTimeout(resolve, 60 * 1000); //Wait a minute
                     } else {
                         console.error("Could not upload new build: Remote server returned an error.");
-                        process.exit(1);
+                        secureErrorReport(`${secureErrorReportPrefix}upload`, data);
                     }
                 } catch (err) {
                     console.error("Could not upload new build: Could not parse response.");
@@ -319,7 +374,7 @@ const publish = (token) => {
                     const response = JSON.parse(data);
                     if (response.error) {
                         console.error("Could not publish new build: Remote server returned an error.");
-                        process.exit(1);
+                        secureErrorReport(`${secureErrorReportPrefix}publish`, data);
                     } else if (response.status.includes("OK")) {
                         console.log("New build is published.");
                         resolve();
@@ -328,7 +383,7 @@ const publish = (token) => {
                         resolve();
                     } else {
                         console.error("Could not publish new build: Remote server returned an error.");
-                        process.exit(1);
+                        secureErrorReport(`${secureErrorReportPrefix}publish`, data);
                     }
                 } catch (err) {
                     console.error("Could not publish new build: Could not parse response.");
@@ -367,6 +422,16 @@ const setLastBuildVersion = (v) => {
             };
         })();
         const doRequest = () => {
+            let payload;
+            try {
+                payload = serialize({
+                    key: process.env.VERSION_KEY,
+                    data: v.toString(),
+                });
+            } catch (err) {
+                console.error("Could not save version number of last build: Secure environment variables are invalid.");
+                process.exit(1);
+            }
             let request = https.request(Object.assign(url.parse(`${extendedAPIProvider}/API.php`), {
                 method: "POST",
             }), (res) => {
@@ -384,10 +449,7 @@ const setLastBuildVersion = (v) => {
                 });
             });
             request.on("error", onError);
-            request.write(serialize({
-                key: process.env.VERSION_KEY,
-                data: v.toString(),
-            }));
+            request.write(payload);
             request.end();
         };
         doRequest();
