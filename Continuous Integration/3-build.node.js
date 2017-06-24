@@ -12,6 +12,16 @@ const url = require("url");
 const fs = require("fs");
 
 /**
+ * Print end message and exit.
+ * @function
+ * @param {integer} [code=0] - The exit coe.
+ */
+const exit = (code) => {
+    console.log("=====3-build.node.js ends=====");
+    process.exit(code || 0);
+};
+
+/**
  * Version object.
  * @class
  */
@@ -28,18 +38,26 @@ const Version = class {
     }
 };
 /**
+ * See if two versions are identital.
+ * @function
+ * @param {Version} v1 - The first version.
+ * @param {Version} v2 - The second version.
+ */
+const verSame = (v1, v2) => v1.major === v2.major && v1.minor === v2.minor;
+/**
  * See if two versions are consecutive.
  * @function
  * @param {Version} v1 - The first version.
  * @param {Version} v2 - The second version.
  */
-const verCmp = (v1, v2) => {
+const verNeedUpdate = (v1, v2) => {
     if (v1.major === v2.major) {
         return v1.minor + 1 === v2.minor;
     } else {
         return v1.major + 1 === v2.major && v2.minor === 0;
     }
 };
+
 /**
  * Find current version that is published in the store, will fail the build if the version could not be found.
  * The "proper" API for this seems to only work for unpublished draft: https://developer.chrome.com/webstore/webstore_api/items/get
@@ -57,7 +75,7 @@ const getPublishedVersion = () => {
                 if (match) {
                     resolve(new Version(match[1]));
                 } else {
-                    throw new Error("Could not extract published version.");
+                    throw new Error("Could not extract published version from store page.");
                 }
             });
         }).on("error", (err) => {
@@ -73,7 +91,7 @@ const getPublishedVersion = () => {
  ** @param {Version} v2 - The version.
  */
 const getLocalVersion = () => {
-    return new Promise(() => {
+    return new Promise((resolve) => {
         fs.readFile("./Extension Compiler/Extension/manifest.json", { encoding: "utf8" }, (err, data) => {
             if (err) {
                 throw err;
@@ -84,12 +102,24 @@ const getLocalVersion = () => {
     });
 };
 
+//Check if I have credentials
+if (!process.env.CLIENT_SECRET) {
+    console.log("No credentials, skipping build.");
+    exit();
+}
+//Check version
 Promise.all([
     getPublishedVersion(),
     getLocalVersion(),
 ]).then((versions) => {
-    console.log(versions);
-    console.log(verCmp(...versions));
+    if (verSame(...versions)) {
+        //Nothing to do
+        console.log("Store version up to date, nothing to build.");
+        exit();
+    } else if (verNeedUpdate(...versions)) {
+        //TODO...
+    } else {
+        //Version is broken
+        throw new Error("Unexpected versions, maybe last version is not yet approved.");
+    }
 });
-
-console.log("=====3-build.node.js ends=====");
