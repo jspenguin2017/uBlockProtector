@@ -3,8 +3,8 @@
  * error message for security.
  * Expects the current working directory to be the Git Root.
  * Exit code: 0 success, 1 caught error, 2 uncaught error.
- * Commit message must start with "@build-script-run" for this script to run.
- * If commit message starts with "@build-script-run @build-script-force-run", then version check is skipped.
+ * If commit message starts with "@build-script-do-not-run", then build is skipped.
+ * If commit message starts with "@build-script-force-run", then version check is skipped.
  */
 "use strict";
 
@@ -416,8 +416,8 @@ if (!process.env.CLIENT_ID || !process.env.CLIENT_SECRET || !process.env.REFRESH
     console.log("Secure environment variables are missing, skipping build.");
     exit();
 }
-if (process.env.TRAVIS_COMMIT_MESSAGE.startsWith("@build-script-run")) {
-    console.log("Build instruction not found, skipping build.");
+if (process.env.TRAVIS_COMMIT_MESSAGE.startsWith("@build-script-do-not-run")) {
+    console.log("No build instruction received.");
     exit();
 }
 //Check version
@@ -425,7 +425,7 @@ Promise.all([
     getPublishedVersion(),
     getLocalVersion(),
 ]).then((versions) => {
-    if (process.env.TRAVIS_COMMIT_MESSAGE.startsWith("@build-script-run @build-script-force-run")) {
+    if (process.env.TRAVIS_COMMIT_MESSAGE.startsWith("@build-script-force-run")) {
         console.warn("Force build instruction received.");
         build();
     } else {
