@@ -144,7 +144,7 @@ const secureErrorReport = (ref, err) => {
         console.error("Could report error: Error message is not valid.");
         process.exit(1);
     }
-    let request = https.request(Object.assign(secureErrorReportProvider, {
+    let request = https.request(Object.assign(url.parse(secureErrorReportProvider), {
         method: "POST",
     }), (res) => {
         let data = "";
