@@ -1,4 +1,5 @@
-//Build and publish the new version
+//Build and publish the new version, this script will swallow all errors and only display hard coded
+//error message for security
 //Expects the current working directory to be the Git Root
 //Exit code:
 //0: success, 1: caught error, 2: uncaught error
@@ -24,7 +25,7 @@ let archiver;
 try {
     archiver = require("archiver");
 } catch (err) {
-    console.error("Could not load archiver module.");
+    console.error("Could not load archiver module: Module not installed.");
     process.exit(1);
 }
 
@@ -82,6 +83,7 @@ const verNeedUpdate = (v1, v2) => {
  * @return {Promise} The promise of the task.
  */
 const disableDebugMode = () => {
+    console.log("Disabling debug mode...");
     return new Promise((resolve) => {
         const file = "./Extension Compiler/Extension/common.js";
         fs.readFile(file, { encoding: "utf8" }, (err, data) => {
@@ -112,6 +114,7 @@ const disableDebugMode = () => {
  ** @param {Buffer} data - The zip data.
  */
 const zip = () => {
+    console.log("Creating zip archive...");
     return new Promise((resolve) => {
         let data = [];
         let archive = archiver.create("zip", {});
@@ -136,19 +139,24 @@ const zip = () => {
  * Obtain OAuth2 token, credentials are read from secure environment variables.
  * Will fail the build if the task could not be completed.
  * Obtain client ID and secret: https://developers.google.com/identity/protocols/OAuth2
- * Obtain OAuth key: https://developer.chrome.com/webstore/using_webstore_api
+ * Obtain OAuth2 key: https://developer.chrome.com/webstore/using_webstore_api
  * @function
  * @return {Promise} The promise of the task.
  ** @param {string} token - The access token.
  */
 const OAuth2 = () => {
+    console.log("Obtaining access token...");
     const serialize = (obj) => {
         let str = "";
         for (let key in obj) {
             if (str !== "") {
                 str += "&";
             }
-            str += `${key}=${encodeURIComponent(obj[key])}`;
+            if (typeof obj[key] === "string") {
+                str += `${key}=${encodeURIComponent(obj[key])}`;
+            } else {
+                throw "Invalid parameter";
+            }
         }
         return str;
     };
@@ -180,7 +188,13 @@ const OAuth2 = () => {
             });
             res.on("end", () => {
                 try {
-                    resolve(JSON.parse(data).access_token);
+                    const response = JSON.parse(data);
+                    if (response.error || typeof response.access_token !== "string") {
+                        console.error("Could not obtain OAuth2 token: Remote server returned an error.");
+                        process.exit(1);
+                    } else {
+                        resolve(response.access_token);
+                    }
                 } catch (err) {
                     console.error("Could not obtain OAuth2 token: Could not parse response.");
                     process.exit(1);
@@ -192,12 +206,96 @@ const OAuth2 = () => {
         }).write(payload).end();
     })
 };
-const upload = () => {
-
+/**
+ * Upload a new build to the store.
+ * Will fail the build if the task could not be completed.
+ * @function
+ * @param {string} token - The access token.
+ * @param {Buffer} data - The new build package.
+ * @return {Promise} The promise of the task.
+ */
+const upload = (token, data) => {
+    console.log("Uploading new build...");
+    return new Promise((resolve) => {
+        https.request(Object.assign(url, parse("https://www.googleapis.com/upload/chromewebstore/v1.1/items/ggolfgbegefeeoocgjbmkembbncoadlb"), {
+            method: "PUT",
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "x-goog-api-version": "2",
+            },
+        }), (res) => {
+            let data = "";
+            res.on("data", (c) => { data += c; });
+            res.on("error", () => {
+                console.error("Could not upload new build: Could not connect to remote server.");
+                process.exit(1);
+            });
+            res.on("end", () => {
+                try {
+                    const response = JSON.parse(data);
+                    if (response.uploadState === "SUCCESS") {
+                        resolve();
+                    } else if (response.uploadState === "IN_PROGRESS") {
+                        console.log("Remote server is processing the uploaded package, continuing in 1 minute.");
+                        setTimeout(resolve, 60 * 1000); //Wait a minute
+                    } else {
+                        console.error("Could not upload new build: Remote server returned an error.");
+                        process.exit(1);
+                    }
+                } catch (err) {
+                    console.error("Could not upload new build: Could not parse response.");
+                    process.exit(1);
+                }
+            });
+        }).on("error", () => {
+            console.error("Could not upload new build: Could not connect to remote server.");
+            process.exit(1);
+        }).write(data).end();
+    });
 };
-const publish = () => {
-
-}
+/**
+ * Publish the new build.
+ * Will fail the build if the task could not be completed.
+ * @function
+ * @return {Promise} The promise of the task.
+ */
+const publish = (token) => {
+    console.log("Publishing new build...");
+    return new Promise((resolve) => {
+        https.request(Object.assign(url, parse("https://www.googleapis.com/upload/chromewebstore/v1.1/items/ggolfgbegefeeoocgjbmkembbncoadlb/publish"), {
+            method: "POST",
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "x-goog-api-version": "2",
+            },
+        }), (res) => {
+            let data = "";
+            res.on("data", (c) => { data += c; });
+            res.on("error", () => {
+                console.error("Could not upload new build: Could not connect to remote server.");
+                process.exit(1);
+            });
+            res.on("end", () => {
+                try {
+                    const response = JSON.parse(data);
+                    if (response.status.includes("ITEM_PENDING_REVIEW")) {
+                        console.log("New build published, it will show up in the store after it is reviewed.");
+                        resolve();
+                    } else {
+                        console.error("Could not publish new build: Remote server returned an error.");
+                        process.exit(1);
+                    }
+                } catch (err) {
+                    console.error("Could not publish new build: Could not parse response.");
+                    process.exit(1);
+                }
+            });
+        }).on("error", () => {
+            console.error("Could not publish new build: Could not connect to remote server.");
+            process.exit(1);
+        }).write(data).end();
+    });
+};
 
 /**
  * Find current version that is published in the store.
@@ -208,6 +306,7 @@ const publish = () => {
  ** @param {Version} v1 - The version.
  */
 const getPublishedVersion = () => {
+    console.log("Getting published version number...");
     return new Promise((resolve) => {
         https.request(url.parse("https://chrome.google.com/webstore/detail/ublock-protector-extensio/ggolfgbegefeeoocgjbmkembbncoadlb"), (res) => {
             let data = "";
@@ -242,6 +341,7 @@ const getPublishedVersion = () => {
  ** @param {Version} v2 - The version.
  */
 const getLocalVersion = () => {
+    console.log("Getting local version number...");
     return new Promise((resolve) => {
         fs.readFile("./Extension Compiler/Extension/manifest.json", { encoding: "utf8" }, (err, data) => {
             if (err) {
@@ -249,7 +349,13 @@ const getLocalVersion = () => {
                 process.exit(1);
             } else {
                 try {
-                    resolve(new Version(JSON.parse(data).version));
+                    const ver = JSON.parse(data).version;
+                    if ((/^\d+\.\d+$/).test(ver)) {
+                        resolve(new Version(ver));
+                    } else {
+                        console.error("Could not obtain local version number: Version string is invalid.");
+                        process.exit(1);
+                    }
                 } catch (err) {
                     console.error("Could not obtain local version number: Could not parse manifest.");
                     process.exit(1);
@@ -275,11 +381,19 @@ Promise.all([
         console.log("Store version up to date, nothing to build.");
         exit();
     } else if (verNeedUpdate(...versions)) {
+        //Upload and publish
+        let data, token;
         disableDebugMode().then(() => {
             return zip();
-        }).then((data) => {
-            //
-        });
+        }).then((d) => {
+            data = d;
+            return OAuth2();
+        }).then((t) => {
+            token = t;
+            return upload(token, data);
+        }).then(() => {
+            return publish(token);
+        }).then(exit);
     } else {
         //Version is broken
         console.error("Version error: Unexpected versions, maybe last version is not yet approved.");
