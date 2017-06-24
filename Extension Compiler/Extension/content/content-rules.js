@@ -2569,3 +2569,16 @@ if (a.domCmp(["generatorlinkpremium.com"])) {
 if (a.domCmp(["genbird.com"])) {
     a.filter("addEventListener", a.matchMethod.string, "Please disable your ad blocker.");
 }
+if (a.domCmp(["pg3dhacks.com"])) {
+    a.ready(() => {
+        const buttons = document.querySelectorAll("button");
+        const matcher = /Unlock.*Download/;
+        for (let i = 0; i < buttons.length; i++) {
+            if (buttons[i].innerText === "Download") {
+                buttons[i].disabled = false;
+            } else if (matcher.test(buttons[i].innerText)) {
+                buttons[i].remove();
+            }
+        }
+    });
+}
