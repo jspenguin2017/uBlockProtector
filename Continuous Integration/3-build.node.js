@@ -270,12 +270,11 @@ const upload = (token, data) => {
 const publish = (token) => {
     console.log("Publishing new build...");
     return new Promise((resolve) => {
-        let request = https.request(Object.assign(url.parse("https://www.googleapis.com/upload/chromewebstore/v1.1/items/ggolfgbegefeeoocgjbmkembbncoadlb/publish"), {
+        let request = https.request(Object.assign(url.parse("https://www.googleapis.com/chromewebstore/v1.1/items/ggolfgbegefeeoocgjbmkembbncoadlb/publish"), {
             method: "POST",
             headers: {
                 "Authorization": `Bearer ${token}`,
                 "x-goog-api-version": "2",
-                "Content-Type": "application/x-www-form-urlencoded",
                 "Content-Length": "0",
             },
         }), (res) => {
@@ -291,7 +290,7 @@ const publish = (token) => {
                     if (response.error) {
                         console.error("Could not publish new build: Remote server returned an error.");
                         process.exit(1);
-                    } else if (response.status.includes("ITEM_PENDING_REVIEW")) {
+                    } else if (response.status.includes("ITEM_PENDING_REVIEW") || response.status.includes("OK")) {
                         console.log("New build published, it will show up in the store after it is reviewed.");
                         resolve();
                     } else {
