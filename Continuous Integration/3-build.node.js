@@ -139,7 +139,7 @@ const zip = () => {
  * Obtain OAuth2 token, credentials are read from secure environment variables.
  * Will fail the build if the task could not be completed.
  * Obtain client ID and secret: https://developers.google.com/identity/protocols/OAuth2
- * Obtain OAuth2 key: https://developer.chrome.com/webstore/using_webstore_api
+ * Obtain OAuth2 code and redeem refresh token: https://developer.chrome.com/webstore/using_webstore_api
  * @function
  * @return {Promise} The promise of the task.
  ** @param {string} token - The access token.
@@ -167,13 +167,11 @@ const OAuth2 = () => {
             payload = serialize({
                 client_id: process.env.CLIENT_ID,
                 client_secret: process.env.CLIENT_SECRET,
-                code: process.env.OAUTH_KEY,
-                grant_type: "authorization_code",
-                scope: "https://www.googleapis.com/auth/chromewebstore",
-                redirect_uri: "urn:ietf:wg:oauth:2.0:oob",
+                refresh_token: process.env.REFRESH_TOKEN,
+                grant_type: "refresh_token",
             });
         } catch (err) {
-            console.error("Could not obtain OAuth2 token: Secure environment variables are invalid.");
+            console.error("Could not obtain access token: Secure environment variables are invalid.");
             process.exit(1);
         }
         //Send request
@@ -187,26 +185,26 @@ const OAuth2 = () => {
             let data = "";
             res.on("data", (s) => { data += s; });
             res.on("error", () => {
-                console.error("Could not obtain OAuth2 token: Could not connect to remote server.");
+                console.error("Could not obtain access token: Could not connect to remote server.");
                 process.exit(1);
             });
             res.on("end", () => {
                 try {
                     const response = JSON.parse(data);
                     if (response.error || typeof response.access_token !== "string") {
-                        console.error("Could not obtain OAuth2 token: Remote server returned an error.");
+                        console.error("Could not obtain access token: Remote server returned an error.");
                         process.exit(1);
                     } else {
                         resolve(response.access_token);
                     }
                 } catch (err) {
-                    console.error("Could not obtain OAuth2 token: Could not parse response.");
+                    console.error("Could not obtain access token: Could not parse response.");
                     process.exit(1);
                 }
             });
         });
         request.on("error", () => {
-            console.error("Could not obtain OAuth2 token: Could not connect to remote server.");
+            console.error("Could not obtain access token: Could not connect to remote server.");
             process.exit(1);
         });
         request.write(payload);
@@ -383,7 +381,7 @@ const getLocalVersion = () => {
 
 //Check if I have credentials, pull requests do not have access to credentials, I do not want to push to store for pull
 //requests anyway, do not fail the build as that can cause confusions
-if (!process.env.CLIENT_ID || !process.env.CLIENT_SECRET || !process.env.OAUTH_KEY) {
+if (!process.env.CLIENT_ID || !process.env.CLIENT_SECRET || !process.env.REFRESH_TOKEN) {
     console.log("Secure environment variables are missing, skipping build.");
     exit();
 }
