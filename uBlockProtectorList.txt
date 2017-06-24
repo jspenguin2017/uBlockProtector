@@ -251,6 +251,7 @@ vidnow.to###adplayer
 |https://$third-party,script,domain=photobucket.com,badfilter
 vendiscuss.net##script:inject(abort-on-property-read.js, adblock)
 @@||videohelp.com/ads.js$script,first-party
+diariodenavarra.es###abMsgWrap
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================

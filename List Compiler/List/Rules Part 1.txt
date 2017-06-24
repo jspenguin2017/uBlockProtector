@@ -392,3 +392,5 @@ vidnow.to###adplayer
 vendiscuss.net##script:inject(abort-on-property-read.js, adblock)
 ! === videohelp.com
 @@||videohelp.com/ads.js$script,first-party
+! === diariodenavarra.es
+diariodenavarra.es###abMsgWrap
