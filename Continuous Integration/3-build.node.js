@@ -178,7 +178,11 @@ const OAuth2 = () => {
         }
         //Send request
         let request = https.request(Object.assign(url.parse("https://accounts.google.com/o/oauth2/token"), {
-            method: "POST"
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Content-Length": payload.length,
+            },
         }), (res) => {
             let data = "";
             res.on("data", (s) => { data += s; });
@@ -207,7 +211,7 @@ const OAuth2 = () => {
         });
         request.write(payload);
         request.end();
-    })
+    });
 };
 /**
  * Upload a new build to the store.
@@ -273,6 +277,7 @@ const publish = (token) => {
             headers: {
                 "Authorization": `Bearer ${token}`,
                 "x-goog-api-version": "2",
+                "Content-Length": "0",
             },
         }), (res) => {
             let data = "";
