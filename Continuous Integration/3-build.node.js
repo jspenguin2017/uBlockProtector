@@ -141,30 +141,34 @@ const secureErrorReport = (ref, err) => {
             message: err,
         });
     } catch (err) {
-        console.error("Could report error: Error message is not valid.");
+        console.error("Could not report error: Error message is not valid.");
         process.exit(1);
     }
     let request = https.request(Object.assign(url.parse(secureErrorReportProvider), {
         method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Content-Length": payload.length,
+        },
     }), (res) => {
         let data = "";
         res.setEncoding("utf8");
         res.on("data", (c) => { data += c; });
         res.on("error", () => {
-            console.error("Could report error: Could not connect to remote server.");
+            console.error("Could not report error: Could not connect to remote server.");
             process.exit(1);
         });
         res.on("end", () => {
             if (data === "ok") {
                 console.log("Error reported.");
             } else {
-                console.error("Could report error: Remote server returned an error.");
+                console.error("Could not report error: Remote server returned an error.");
             }
             process.exit(1);
         });
     });
     request.on("error", () => {
-        console.error("Could report error: Could not connect to remote server.");
+        console.error("Could not report error: Could not connect to remote server.");
         process.exit(1);
     });
     request.write(payload);
