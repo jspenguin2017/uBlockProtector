@@ -222,7 +222,7 @@ const OAuth2 = () => {
 const upload = (token, data) => {
     console.log("Uploading new build...");
     return new Promise((resolve) => {
-        let request = https.request(Object.assign(url, parse("https://www.googleapis.com/upload/chromewebstore/v1.1/items/ggolfgbegefeeoocgjbmkembbncoadlb"), {
+        let request = https.request(Object.assign(url.parse("https://www.googleapis.com/upload/chromewebstore/v1.1/items/ggolfgbegefeeoocgjbmkembbncoadlb"), {
             method: "PUT",
             headers: {
                 "Authorization": `Bearer ${token}`,
@@ -270,11 +270,12 @@ const upload = (token, data) => {
 const publish = (token) => {
     console.log("Publishing new build...");
     return new Promise((resolve) => {
-        let request = https.request(Object.assign(url, parse("https://www.googleapis.com/upload/chromewebstore/v1.1/items/ggolfgbegefeeoocgjbmkembbncoadlb/publish"), {
+        let request = https.request(Object.assign(url.parse("https://www.googleapis.com/upload/chromewebstore/v1.1/items/ggolfgbegefeeoocgjbmkembbncoadlb/publish"), {
             method: "POST",
             headers: {
                 "Authorization": `Bearer ${token}`,
                 "x-goog-api-version": "2",
+                "Content-Type": "application/x-www-form-urlencoded",
                 "Content-Length": "0",
             },
         }), (res) => {
@@ -287,7 +288,10 @@ const publish = (token) => {
             res.on("end", () => {
                 try {
                     const response = JSON.parse(data);
-                    if (response.status.includes("ITEM_PENDING_REVIEW")) {
+                    if (response.error) {
+                        console.error("Could not publish new build: Remote server returned an error.");
+                        process.exit(1);
+                    } else if (response.status.includes("ITEM_PENDING_REVIEW")) {
                         console.log("New build published, it will show up in the store after it is reviewed.");
                         resolve();
                     } else {
@@ -304,7 +308,6 @@ const publish = (token) => {
             console.error("Could not publish new build: Could not connect to remote server.");
             process.exit(1);
         });
-        request.write(data);
         request.end();
     });
 };
