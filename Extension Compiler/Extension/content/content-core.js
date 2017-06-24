@@ -222,8 +222,8 @@ a.inject = (payload) => {
  * @return {string} The serialized string.
  */
 a.serialize = (obj) => {
-    var str = "";
-    for (var key in obj) {
+    let str = "";
+    for (let key in obj) {
         if (str !== "") {
             str += "&";
         }
