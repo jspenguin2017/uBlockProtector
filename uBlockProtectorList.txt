@@ -239,17 +239,17 @@ raptu.com##script:inject(noeval.js)
 leechgear.net###block_on
 @@||leech.ae^$elemhide
 leech.ae##script:inject(abort-on-property-read.js, open)
-wiwo.de##script:inject(abort-on-property-read.js, AdController)
+wiwo.de,handelsblatt.com##script:inject(abort-on-property-read.js, AdController)
 @@||vidoza.net/js/ads.js$script,first-party
 tvregionalna24.pl##.diablo-placeholder
 @@||hackinformer.com^$first-party,script,badfilter
-handelsblatt.com##script:inject(abort-on-property-read.js, AdController)
 kitguru.net#@#div > a[class] > img[src]
 kitguru.net##.gofollow
 ||doubleclick.net^$domain=aetv.com,important
 vidnow.to###adplayer
 ||gigaleecher.com/templates/plugmod/giga.js$script
 |https://$third-party,script,domain=photobucket.com,badfilter
+vendiscuss.net##script:inject(abort-on-property-read.js, adblock)
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================

@@ -369,15 +369,13 @@ leechgear.net###block_on
 @@||leech.ae^$elemhide
 leech.ae##script:inject(abort-on-property-read.js, open)
 ! === wiwo.de
-wiwo.de##script:inject(abort-on-property-read.js, AdController)
+wiwo.de,handelsblatt.com##script:inject(abort-on-property-read.js, AdController)
 ! === vidoza.net
 @@||vidoza.net/js/ads.js$script,first-party
 ! === tvregionalna24.pl
 tvregionalna24.pl##.diablo-placeholder
 ! === hackinformer.com
 @@||hackinformer.com^$first-party,script,badfilter
-! === handelsblatt.com
-handelsblatt.com##script:inject(abort-on-property-read.js, AdController)
 ! === kitguru.net
 kitguru.net#@#div > a[class] > img[src]
 kitguru.net##.gofollow
@@ -390,3 +388,5 @@ vidnow.to###adplayer
 ||gigaleecher.com/templates/plugmod/giga.js$script
 ! === photobucket.com
 |https://$third-party,script,domain=photobucket.com,badfilter
+! === vendiscuss.net
+vendiscuss.net##script:inject(abort-on-property-read.js, adblock)
