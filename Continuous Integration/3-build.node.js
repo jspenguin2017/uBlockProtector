@@ -177,7 +177,7 @@ const OAuth2 = () => {
             process.exit(1);
         }
         //Send request
-        https.request(Object.assign(url.parse("https://accounts.google.com/o/oauth2/token"), {
+        let request = https.request(Object.assign(url.parse("https://accounts.google.com/o/oauth2/token"), {
             method: "POST"
         }), (res) => {
             let data = "";
@@ -200,10 +200,13 @@ const OAuth2 = () => {
                     process.exit(1);
                 }
             });
-        }).on("error", () => {
+        });
+        request.on("error", () => {
             console.error("Could not obtain OAuth2 token: Could not connect to remote server.");
             process.exit(1);
-        }).write(payload).end();
+        });
+        request.write(payload);
+        request.end();
     })
 };
 /**
@@ -217,7 +220,7 @@ const OAuth2 = () => {
 const upload = (token, data) => {
     console.log("Uploading new build...");
     return new Promise((resolve) => {
-        https.request(Object.assign(url, parse("https://www.googleapis.com/upload/chromewebstore/v1.1/items/ggolfgbegefeeoocgjbmkembbncoadlb"), {
+        let request = https.request(Object.assign(url, parse("https://www.googleapis.com/upload/chromewebstore/v1.1/items/ggolfgbegefeeoocgjbmkembbncoadlb"), {
             method: "PUT",
             headers: {
                 "Authorization": `Bearer ${token}`,
@@ -247,10 +250,13 @@ const upload = (token, data) => {
                     process.exit(1);
                 }
             });
-        }).on("error", () => {
+        });
+        request.on("error", () => {
             console.error("Could not upload new build: Could not connect to remote server.");
             process.exit(1);
-        }).write(data).end();
+        });
+        request.write(data);
+        request.end();
     });
 };
 /**
@@ -262,7 +268,7 @@ const upload = (token, data) => {
 const publish = (token) => {
     console.log("Publishing new build...");
     return new Promise((resolve) => {
-        https.request(Object.assign(url, parse("https://www.googleapis.com/upload/chromewebstore/v1.1/items/ggolfgbegefeeoocgjbmkembbncoadlb/publish"), {
+        let request = https.request(Object.assign(url, parse("https://www.googleapis.com/upload/chromewebstore/v1.1/items/ggolfgbegefeeoocgjbmkembbncoadlb/publish"), {
             method: "POST",
             headers: {
                 "Authorization": `Bearer ${token}`,
@@ -290,10 +296,13 @@ const publish = (token) => {
                     process.exit(1);
                 }
             });
-        }).on("error", () => {
+        });
+        request.on("error", () => {
             console.error("Could not publish new build: Could not connect to remote server.");
             process.exit(1);
-        }).write(data).end();
+        });
+        request.write(data);
+        request.end();
     });
 };
 
@@ -308,7 +317,7 @@ const publish = (token) => {
 const getPublishedVersion = () => {
     console.log("Getting published version number...");
     return new Promise((resolve) => {
-        https.request(url.parse("https://chrome.google.com/webstore/detail/ublock-protector-extensio/ggolfgbegefeeoocgjbmkembbncoadlb"), (res) => {
+        let request = https.request(url.parse("https://chrome.google.com/webstore/detail/ublock-protector-extensio/ggolfgbegefeeoocgjbmkembbncoadlb"), (res) => {
             let data = "";
             res.on("data", (c) => { data += c; });
             res.on("error", () => {
@@ -327,10 +336,12 @@ const getPublishedVersion = () => {
                     process.exit(1);
                 }
             });
-        }).on("error", (err) => {
+        });
+        request.on("error", (err) => {
             console.error("Could not obtain published version number: Could not connect to remote server.");
             process.exit(1);
-        }).end();
+        });
+        request.end();
     });
 };
 /**
