@@ -390,3 +390,5 @@ vidnow.to###adplayer
 |https://$third-party,script,domain=photobucket.com,badfilter
 ! === vendiscuss.net
 vendiscuss.net##script:inject(abort-on-property-read.js, adblock)
+! === videohelp.com
+@@||videohelp.com/ads.js$script,first-party
