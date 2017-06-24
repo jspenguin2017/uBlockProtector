@@ -1,16 +1,18 @@
-//Build and publish the new version, this script will swallow all errors and only display hard coded error
-//message for security, some errors will be reported to a secure channel
+//Build and publish a new version, this script will swallow all errors and only display hard coded generic
+//messages for security, some errors will be reported to a secure channel
 //Requires these secure environment variables:
 //  CLIENT_ID, CLIENT_SECRET: Client ID and secret
 //  REFRESH_TOKEN: Refresh token
-//  VERSION_KEY: Key to set last build version
+//  VERSION_KEY: Key used to set last build version
 //Requires the current working directory to be the Git Root
 //Exit code: 0 for success, 1 for caught error, 2 for uncaught error
-//If commit message starts with "@build-script-do-not-run", then build is skipped
+//If commit message starts with "@build-script-do-not-run", then build script will do nothing and immediately
+//exit
 //If commit message starts with "@build-script-force-run", then version check is skipped
 "use strict";
 
 //Register unexpected error handler, swallow all uncaught errors as they may contain credentials
+//It is not safe to attempt to report this error as I do not know what went wrong
 process.on("uncaughtException", () => {
     console.error("Unknown error: This could be caused by a bug in the build script.");
     process.exit(2);
@@ -40,7 +42,7 @@ try {
  */
 const extendedAPIProvider = "https://jspenguin.com/API/uBlockProtector";
 /**
- * The provider of secure error report.
+ * The provider of secure error reporting channel.
  * @const {string}
  */
 const secureErrorReportProvider = "https://jspenguin.com/PrivateMessage/API.php";
@@ -129,10 +131,11 @@ const serialize = (obj) => {
 /**
  * Report error to a secure channel, then fail the build.
  * @function
- * @param {string} err - The error.
+ * @param {string} ref - The error reference.
+ * @param {string} err - The error message.
  */
 const secureErrorReport = (ref, err) => {
-    console.log("Reporting this error to secure error report provider...");
+    console.log("Reporting this error to secure error report channel...");
     let payload;
     try {
         payload = serialize({
@@ -141,7 +144,7 @@ const secureErrorReport = (ref, err) => {
             message: err,
         });
     } catch (err) {
-        console.error("Could not report error: Error message is not valid.");
+        console.error("Could not report error: Error reference or message is not valid.");
         process.exit(1);
     }
     let request = https.request(Object.assign(url.parse(secureErrorReportProvider), {
@@ -603,16 +606,19 @@ if (!process.env.CLIENT_ID || !process.env.CLIENT_SECRET || !process.env.REFRESH
     console.log("Secure environment variables are missing, skipping build.");
     exit();
 }
+//Check do not build instruction
 if (process.env.TRAVIS_COMMIT_MESSAGE.startsWith("@build-script-do-not-run")) {
     console.log("Do not build instruction received.");
     exit();
 }
-//Check version
+//Get versions
 Promise.all([
     getLastBuildVersion(),
     getLocalVersion(),
 ]).then((versions) => {
+    //Check force build instruction
     if (process.env.TRAVIS_COMMIT_MESSAGE.startsWith("@build-script-force-run")) {
+        //I still need to fetch current versions since I need to save it at the end
         console.warn("Force build instruction received.");
         build(versions[1]);
     } else {
