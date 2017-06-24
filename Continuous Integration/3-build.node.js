@@ -53,8 +53,17 @@ const Version = class {
      */
     constructor(v) {
         const i = v.indexOf(".");
+        this.stringVal = v;
         this.major = parseInt(v.substring(0, i));
         this.minor = parseInt(v.substring(i + 1));
+    }
+    /**
+     * Get the original string representation of the version.
+     * @method
+     * @return {string} The string representation of the version.
+     */
+    toString() {
+        return this.stringVal;
     }
 };
 /**
@@ -249,7 +258,7 @@ const upload = (token, data) => {
                     if (response.uploadState === "SUCCESS") {
                         resolve();
                     } else if (response.uploadState === "IN_PROGRESS") {
-                        console.log("Remote server is processing the uploaded package, continuing in 1 minute.");
+                        console.log("Remote server is processing the uploaded package, continuing in 1 minute...");
                         setTimeout(resolve, 60 * 1000); //Wait a minute
                     } else {
                         console.error("Could not upload new build: Remote server returned an error.");
@@ -319,11 +328,57 @@ const publish = (token) => {
         request.end();
     });
 };
+/**
+ * Set version of last build for next time.
+ * Will fail the build if the task could not be completed. Will try 5 times.
+ * @function
+ * @param {Version} v - The version to set.
+ * @return {Promise} The promise of the task.
+ */
+const setLastBuildVersion = (v) => {
+    console.log("Saving version number of last build...");
+    return new Promise((resolve) => {
+        const onError = (() => {
+            let errorCount = 0;
+            return () => {
+                console.error("Could not obtain version number of last build: Could not connect to remote server.");
+                if ((++errorCount) > 5) {
+                    console.error("Too many trails, aborting...");
+                    process.exit(1);
+                } else {
+                    console.log("Retrying in 1 minute...");
+                    setTimeout(doRequest, 60 * 1000);
+                }
+            };
+        })();
+        const doRequest = () => {
+            let request = https.request(Object.assign(url.parse("https://jspenguin.com/API/uBlockProtector/API.php"), {
+                method: "POST",
+            }), (res) => {
+                let data = "";
+                res.on("data", (c) => { data += c; });
+                res.on("error", onError);
+                res.on("end", () => {
+                    if (data === "ok") {
+                        resolve();
+                    } else {
+                        console.error("Could not set version number of last build: Remote server returned an error.");
+                        process.exit(1);
+                    }
+                });
+            });
+            request.on("error", onError);
+            request.write(`key=${process.env.VERSION_KEY}&data=${v.toString()}`);
+            request.end();
+        };
+        doRequest();
+    });
+};
 
 /**
  * Find published version number.
  * Will fail the build if the task could not be completed.
- * The "proper" API for this seems to only work for unpublished draft: https://developer.chrome.com/webstore/webstore_api/items/get
+ * This function is not used.
  * @function
  * @return {Promise} The promise of the task.
  ** @param {Version} v1 - The version.
@@ -356,6 +411,48 @@ const getPublishedVersion = () => {
             process.exit(1);
         });
         request.end();
+    });
+};
+/**
+ * Find version number of last build.
+ * Will fail the build if the task could not be completed. Will try 5 times.
+ * @function
+ * @return {Promise} The promise of the task.
+ ** @param {Version} v1 - The version.
+ */
+const getLastBuildVersion = () => {
+    console.log("Obtaining version number of last build...");
+    return new Promise((resolve) => {
+        const onError = (() => {
+            let errorCount = 0;
+            return () => {
+                console.error("Could not obtain version number of last build: Could not connect to remote server.");
+                if ((++errorCount) > 5) {
+                    console.error("Too many trails, aborting...");
+                    process.exit(1);
+                } else {
+                    console.log("Retrying in 1 minute...");
+                    setTimeout(doRequest, 60 * 1000);
+                }
+            };
+        })();
+        const doRequest = () => {
+            let request = https.request(url.parse("https://jspenguin.com/API/uBlockProtector/Data.txt"), (res) => {
+                let data = "";
+                res.on("data", (c) => { data += c; });
+                res.on("error", onError);
+                res.on("end", () => {
+                    if ((/^\d+\.\d+$/).test(data)) {
+                        resolve(new Version(data));
+                    } else {
+                        console.error("Could not obtain version number of last build: Unexpected response.");
+                    }
+                });
+            });
+            request.on("error", onError);
+            request.end();
+        };
+        doRequest();
     });
 };
 /**
@@ -407,22 +504,24 @@ const build = () => {
         return upload(token, data);
     }).then(() => {
         return publish(token);
+    }).then(() => {
+        return setLastBuildVersion();
     }).then(exit);
 };
 
 //Check if I have credentials, pull requests do not have access to credentials, I do not want to push to store for pull
 //requests anyway, do not fail the build as that can cause confusions
-if (!process.env.CLIENT_ID || !process.env.CLIENT_SECRET || !process.env.REFRESH_TOKEN) {
+if (!process.env.CLIENT_ID || !process.env.CLIENT_SECRET || !process.env.REFRESH_TOKEN || !process.env.VERSION_KEY) {
     console.log("Secure environment variables are missing, skipping build.");
     exit();
 }
 if (process.env.TRAVIS_COMMIT_MESSAGE.startsWith("@build-script-do-not-run")) {
-    console.log("No build instruction received.");
+    console.log("Do not build instruction received.");
     exit();
 }
 //Check version
 Promise.all([
-    getPublishedVersion(),
+    getLastBuildVersion(),
     getLocalVersion(),
 ]).then((versions) => {
     if (process.env.TRAVIS_COMMIT_MESSAGE.startsWith("@build-script-force-run")) {
