@@ -54,7 +54,7 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/251
 ||a.optnmnstr.com^
 ! === ZergNet
-||zergnet.com^$script
+||zergnet.com^$script,third-party
 ! === itv.com
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/286
 ||spike.itv.com/itv/tserver/size=*/viewid=
