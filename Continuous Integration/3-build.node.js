@@ -282,7 +282,7 @@ const OAuth2 = () => {
                     const response = JSON.parse(data);
                     if (response.error || typeof response.access_token !== "string") {
                         console.error("Could not obtain access token: Remote server returned an error.");
-                        secureErrorReport(`${secureErrorReportPrefix}OAuth2`, data);
+                        secureErrorReport(`${secureErrorReportPrefix}OAuth2 Error`, data);
                     } else {
                         resolve(response.access_token);
                     }
@@ -335,7 +335,7 @@ const upload = (token, data) => {
                         setTimeout(resolve, 60 * 1000); //Wait a minute
                     } else {
                         console.error("Could not upload new build: Remote server returned an error.");
-                        secureErrorReport(`${secureErrorReportPrefix}upload`, data);
+                        secureErrorReport(`${secureErrorReportPrefix}Upload Failed`, data);
                     }
                 } catch (err) {
                     console.error("Could not upload new build: Could not parse response.");
@@ -381,7 +381,7 @@ const publish = (token) => {
                     const response = JSON.parse(data);
                     if (response.error) {
                         console.error("Could not publish new build: Remote server returned an error.");
-                        secureErrorReport(`${secureErrorReportPrefix}publish`, data);
+                        secureErrorReport(`${secureErrorReportPrefix}Publish Failed`, data);
                     } else if (response.status.includes("OK")) {
                         console.log("New build is published.");
                         resolve();
@@ -390,7 +390,7 @@ const publish = (token) => {
                         resolve();
                     } else {
                         console.error("Could not publish new build: Remote server returned an error.");
-                        secureErrorReport(`${secureErrorReportPrefix}publish`, data);
+                        secureErrorReport(`${secureErrorReportPrefix}Publish Failed`, data);
                     }
                 } catch (err) {
                     console.error("Could not publish new build: Could not parse response.");
@@ -451,7 +451,7 @@ const setLastBuildVersion = (v) => {
                         resolve();
                     } else {
                         console.error("Could not save version number of last build: Remote server returned an error.");
-                        process.exit(1);
+                        secureErrorReport(`${secureErrorReportPrefix}Save Version Failed`, `Payload sent: ${payload}\nServer response: ${data}`);
                     }
                 });
             });
