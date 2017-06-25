@@ -504,7 +504,7 @@ const getPublishedVersion = () => {
 };
 /**
  * Find version number of last build.
- * Will fail the build if this task could not be completed. Will try 5 times.
+ * Will try 5 times, then default to 1.0.
  * @function
  * @return {Promise} The promise of the task.
  ** @param {Version} v1 - The version.
@@ -517,8 +517,8 @@ const getLastBuildVersion = () => {
             return () => {
                 console.error("Could not obtain version number of last build: Could not connect to remote server.");
                 if ((++errorCount) > 5) {
-                    console.error("Too many trails, aborting...");
-                    process.exit(1);
+                    console.error("Too many trails, default to 1.0.");
+                    resolve(new Version("1.0"));
                 } else {
                     console.log("Retrying in 1 minute...");
                     setTimeout(doRequest, 60 * 1000);
@@ -536,6 +536,7 @@ const getLastBuildVersion = () => {
                         resolve(new Version(data));
                     } else {
                         console.error("Could not obtain version number of last build: Unexpected response.");
+                        onError();
                     }
                 });
             });
