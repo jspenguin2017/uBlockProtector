@@ -59,6 +59,7 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 ||w.nn0e.com^$third-party,script
 ||w.rpts.org^$third-party,script
 ||a.optnmnstr.com^
+||zergnet.com^$script,third-party
 ||spike.itv.com/itv/tserver/size=*/viewid=
 ||tom.itv.com/itv/tserver/size=*/viewid=
 @@||louccrossc.com^$domain=tf1.fr,badfilter
@@ -253,6 +254,7 @@ vendiscuss.net##script:inject(abort-on-property-read.js, adblock)
 @@||videohelp.com/ads.js$script,first-party
 diariodenavarra.es###abMsgWrap
 darmowe-pornosy.pl###porno_accept
+|https://$third-party,script,domain=hothardware.com,badfilter
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================
