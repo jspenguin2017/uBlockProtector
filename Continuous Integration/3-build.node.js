@@ -135,7 +135,7 @@ const serialize = (obj) => {
  * @param {string} err - The error message.
  */
 const secureErrorReport = (ref, err) => {
-    console.log("Reporting this error to secure error report channel...");
+    console.log("Reporting this error to a secure channel...");
     let payload;
     try {
         payload = serialize({
@@ -455,7 +455,7 @@ const setLastBuildVersion = (v) => {
                         resolve();
                     } else {
                         console.error("Could not save version number of last build: Remote server returned an error.");
-                        secureErrorReport(`${secureErrorReportPrefix}Save Version Failed`, `Payload sent: ${payload}\nServer response: ${data}`);
+                        secureErrorReport(`${secureErrorReportPrefix}Save Version Failed`, `\nPayload sent: ${payload}\nServer response: ${data}`);
                     }
                 });
             });
