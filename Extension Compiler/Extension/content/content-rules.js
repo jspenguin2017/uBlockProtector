@@ -2582,3 +2582,10 @@ if (a.domCmp(["pg3dhacks.com"])) {
         }
     });
 }
+if (a.domCmp(["lne.es"])) {
+    a.ready(() => {
+        a.inject(() => {
+            window.onload = null;
+        });
+    });
+}
