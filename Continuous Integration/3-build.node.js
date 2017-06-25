@@ -441,6 +441,10 @@ const setLastBuildVersion = (v) => {
             }
             let request = https.request(Object.assign(url.parse(`${extendedAPIProvider}/API.php`), {
                 method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "Content-Length": payload.length,
+                },
             }), (res) => {
                 let data = "";
                 res.setEncoding("utf8");
