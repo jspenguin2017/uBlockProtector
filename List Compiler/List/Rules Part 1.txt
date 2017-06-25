@@ -394,3 +394,5 @@ vendiscuss.net##script:inject(abort-on-property-read.js, adblock)
 @@||videohelp.com/ads.js$script,first-party
 ! === diariodenavarra.es
 diariodenavarra.es###abMsgWrap
+! === NSFW! darmowe-pornosy.pl
+darmowe-pornosy.pl###porno_accept
