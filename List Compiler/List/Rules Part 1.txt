@@ -53,6 +53,8 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 ! === OptinMonster
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/251
 ||a.optnmnstr.com^
+! === ZergNet
+||zergnet.com^$script
 ! === itv.com
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/286
 ||spike.itv.com/itv/tserver/size=*/viewid=
@@ -396,3 +398,6 @@ vendiscuss.net##script:inject(abort-on-property-read.js, adblock)
 diariodenavarra.es###abMsgWrap
 ! === NSFW! darmowe-pornosy.pl
 darmowe-pornosy.pl###porno_accept
+! === hothardware.com
+! === Remove broken EasyList filter
+|https://$third-party,script,domain=hothardware.com,badfilter
