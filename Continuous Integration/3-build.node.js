@@ -3,7 +3,7 @@
 //Requires these secure environment variables:
 //  CLIENT_ID, CLIENT_SECRET: Client ID and secret
 //  REFRESH_TOKEN: Refresh token
-//  VERSION_KEY: Key used to set last build version
+//  VERSION_KEY: Key used to save last build version
 //Requires the current working directory to be the Git Root
 //Exit code: 0 for success, 1 for caught error, 2 for uncaught error
 //If commit message starts with "@build-script-do-not-run", then build script will do nothing and immediately
