@@ -1403,7 +1403,6 @@ trovesaurus.com###blocked
 reuters.com#@#.adsbox
 reuters.com##.RTVSyndicatedPlayer
 @@||flashx.tv/js/-fleshlight2.js$script
-@@||aminhaconta.xl.pt/Campaigns/Blockers/ads.html$subdocument,document=record.xl.pt
 @@||ojogo.pt/common/scripts/ads.js$script
 ojogo.pt###AdBloquer
 filterbypass.me##.adhome-728
