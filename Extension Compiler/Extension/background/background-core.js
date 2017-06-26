@@ -19,6 +19,10 @@ a.init = () => {
                         chrome.tabs.insertCSS(args[1].tab.id, {
                             code: args[0]["data"],
                             frameId: args[1].frameId || 0,
+                        }, () => {
+                            if (chrome.runtime.lastError) {
+                                //Ignore, assume the tab is closed
+                            }
                         });
                     }
                     //Ignore if not called from a proper tab
@@ -62,7 +66,11 @@ a.init = () => {
                  */
                 case "remove tab":
                     if (args[1].tab && args[1].tab.id !== chrome.tabs.TAB_ID_NONE) {
-                        chrome.tabs.remove(args[1].tab.id);
+                        chrome.tabs.remove(args[1].tab.id, () => {
+                            if (chrome.runtime.lastError) {
+                                //Ignore, assume the tab is already closed
+                            }
+                        });
                     }
                     //Ignore if not called from a proper tab
                     break;
