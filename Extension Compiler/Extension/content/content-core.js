@@ -419,7 +419,7 @@ a.timewarp = (() => {
                 //Apply filter
                 if (matcher(args)) {
                     error("Timewarped.");
-                    args[1] *= ratio;
+                    args[1] *= TIMEWARP_RATIO;
                 } else {
                     info("Not timewarped.");
                 }
@@ -441,7 +441,8 @@ a.timewarp = (() => {
             String(payload)
                 .replace(`"@timewarp-matcher"`, a.getMatcher(method, filter))
                 .replace(`"@timewarp-debug-mode"`, String(a.debugMode))
-                .replace(reMatcher, `window.${func}`)
+                .replace("TIMEWARP_RATIO", String(ratio))
+                .replace(reMatcher, `window.${timer}`)
         );
     };
 })();

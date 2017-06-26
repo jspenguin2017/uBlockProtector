@@ -263,7 +263,7 @@ if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl", "sportowefakty.wp.pl", "
     const reMatcher1 = /"@solution-mid-array1-lenth"/g;
     const reMatcher2 = /mid[=,](\d+)/;
     const reMagicValidator = /^\d+$/;
-    //Mid grabbing method 1 magic listener
+    //Mid extracting method 1 magic listener
     const magic = a.uid();
     addEventListener(magic, (e) => {
         //Must verify as data from injected script cannot be trusted
@@ -279,7 +279,7 @@ if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl", "sportowefakty.wp.pl", "
         }
         //Log media ID arrays
         a.debugMode && console.log(midArray1, midArray2);
-        //Mid grabbing method 1
+        //Mid extracting method 1
         let payload = () => {
             "use strict";
             try {
@@ -302,14 +302,14 @@ if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl", "sportowefakty.wp.pl", "
                 .replace(reMatcher1, midArray1.length)
                 .replace("@solution-event-magic", magic)
         );
-        //Mid grabbing method 2
+        //Mid extracting method 2
         if ($(containerMatcher).length > 0) {
             const elem = $(containerMatcher).first().find(".titlecont a.title");
             let thisMid = elem.attr("href");
             //Check if I got the element
             if (thisMid) {
                 thisMid = reMatcher2.exec(thisMid)[1].toString();
-                //I will destroy the player soon anyway, I will remove this now so I will not grab it twice
+                //I will destroy the player soon anyway, I will remove this now so I will not extract it twice
                 elem.remove();
             }
             //Extra safety check
@@ -329,7 +329,7 @@ if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl", "sportowefakty.wp.pl", "
             }
             //Get media ID
             let mid;
-            //Prefer media ID grabbing method 2
+            //Prefer media ID extracting method 2
             const midArray = (midArray1.length > midArray2.length) ? midArray1 : midArray2;
             if (midArray.length > loadCounter) {
                 mid = midArray[loadCounter];
@@ -2588,4 +2588,8 @@ if (a.domCmp(["lne.es"])) {
             window.onload = null;
         });
     });
+}
+if (a.domCmp(["cutwin.com"])) {
+    a.bait("div", "#test-block", true);
+    a.timewarp("setTimeout", a.matchMethod.stringExact, "1000");
 }
