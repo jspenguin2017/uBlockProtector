@@ -185,7 +185,7 @@ const secureErrorReport = (ref, err) => {
  * @return {Promise} The promise of the task.
  */
 const disableDebugMode = () => {
-    console.log("Setting debug flag...");
+    console.log("Setting debug switch to false...");
     return new Promise((resolve) => {
         const file = "./Extension Compiler/Extension/common.js";
         fs.readFile(file, { encoding: "utf8" }, (err, data) => {
