@@ -16,13 +16,15 @@ rules at any time.
 
 Consequence for breaking these rules varies from a warning to a 6 months ban on a case by case basis. 
 Be aware that the ban will apply to all of my repositories. I will not ban people easily, but when I do, 
-expect it to be at least one month. 
+expect it to be at least 1 month. 
 
 There is no arguing about these rules, the Fork button is always available if you do not like these rules. 
 
-You are not allowed to promote proprietary software in this repository, and you are expected to stay on topic. 
+You are not allowed to promote proprietary software in this repository, and you are expected to stay somewhat on topic. 
 
 ## Opening an issue
+
+If your screenshots are not safe for work, you must wrap them in `<details></details>`. 
 
 ### Reporting a website that does not work
 
@@ -30,11 +32,11 @@ You are not allowed to promote proprietary software in this repository, and you 
 
 **Missed ads are to be reported to [EasyList](https://forums.lanik.us/) first**, only open issue here about missed ads if: 
 - uBlock Protector caused the ads to be unblocked, or 
-- EasyList refuses to block it because it triggers anti-adblock 
+- EasyList refuses to block the ads because blocking them triggers anti-adblock 
 
-**Title**: The domain of the website. Prepend `NSFW! ` if the website may contain contents that are not safe for work. 
+**Title of your issue**: The domain of the website. Prepend `NSFW! ` if the website may contain contents that are not safe for work. 
 
-**Comment**: Use the template. 
+**Comment of your issue**: Use the template. Do not wrap links, keep them clickable. 
 
 ### Reporting a bug
 
@@ -42,17 +44,16 @@ Give your issue a descriptive title and clearly explain what is wrong, include r
 
 ### Reporting something secret
 
-If what you are reporting needs to be absolutely secret (e.g. security vulnerability), open an issue in our 
-[restricted issues tracker](https://gitlab.com/xuhaiyang1234/uBlockProtectorSecretIssues/issues). 
-Do not forget to flag the issue as confidential. 
+If what you are reporting needs to be absolutely secret (like an issue that requires an account to reproduce), open an issue in our 
+[restricted issues tracker](https://gitlab.com/xuhaiyang1234/uBlockProtectorSecretIssues/issues). Do not forget to flag the issue 
+as confidential. 
 
 Since that issues tracker is not actively monitored, you also need to open an issue here to let me know. 
 
 ### Everything else
 
-Give your issue a descriptive title and clearly explain what you are looking for. 
-You are not allowed to ask for expanding support nor for help with installation. 
-One exception is when you are sure that the installation guide is broken. 
+Give your issue a descriptive title and clearly explain what you are looking for. You are not allowed to ask for expanding 
+support nor for help with installation. One exception is when you are sure that the installation guide is broken. 
 
 ## Opening pull request
 
