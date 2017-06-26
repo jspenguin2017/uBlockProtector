@@ -616,17 +616,19 @@ if (process.env.TRAVIS_COMMIT_MESSAGE.startsWith("@build-script-do-not-run")) {
     console.log("Do not build instruction received.");
     exit();
 }
-//Get versions
-Promise.all([
-    getLastBuildVersion(),
-    getLocalVersion(),
-]).then((versions) => {
-    //Check force build instruction
-    if (process.env.TRAVIS_COMMIT_MESSAGE.startsWith("@build-script-force-run")) {
-        //I still need to fetch current versions since I need to save it at the end
-        console.warn("Force build instruction received.");
-        build(versions[1]);
-    } else {
+//Check force build instruction
+if (process.env.TRAVIS_COMMIT_MESSAGE.startsWith("@build-script-force-run")) {
+    console.warn("Force build instruction received.");
+    //I still need to fetch local version since I need to save it at the end
+    getLocalVersion().then((version) => {
+        build(version);
+    });
+} else {
+    //Fetch versions
+    Promise.all([
+        getLastBuildVersion(),
+        getLocalVersion(),
+    ]).then((versions) => {
         if (verSame(...versions)) {
             //Nothing to do
             console.log("Store version up to date, nothing to build.");
@@ -638,5 +640,5 @@ Promise.all([
             console.error("Version error: Unexpected versions, maybe last build was not properly completed.");
             process.exit(1);
         }
-    }
-});
+    });
+}
