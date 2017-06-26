@@ -635,7 +635,7 @@ Promise.all([
             build(versions[1]);
         } else {
             //Version is broken
-            console.error("Version error: Unexpected versions, maybe last version is not yet approved.");
+            console.error("Version error: Unexpected versions, maybe last build was not properly completed.");
             process.exit(1);
         }
     }
