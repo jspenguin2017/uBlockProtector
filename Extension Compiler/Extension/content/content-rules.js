@@ -2591,5 +2591,5 @@ if (a.domCmp(["lne.es"])) {
 }
 if (a.domCmp(["cutwin.com"])) {
     a.bait("div", "#test-block", true);
-    a.timewarp("setTimeout", a.matchMethod.stringExact, "1000");
+    a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
