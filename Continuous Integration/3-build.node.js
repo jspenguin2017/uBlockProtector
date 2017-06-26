@@ -406,19 +406,19 @@ const publish = (token) => {
     });
 };
 /**
- * Set version of last build for next time.
+ * Save version number for next build.
  * Will fail the build if this task could not be completed. Will try 5 times.
  * @function
  * @param {Version} v - The version to set.
  * @return {Promise} The promise of the task.
  */
 const setLastBuildVersion = (v) => {
-    console.log("Saving version number of last build...");
+    console.log("Saving version number for next build...");
     return new Promise((resolve) => {
         const onError = (() => {
             let errorCount = 0;
             return () => {
-                console.error("Could not save version number of last build: Could not connect to remote server.");
+                console.error("Could not save version number for next build: Could not connect to remote server.");
                 if ((++errorCount) > 5) {
                     console.error("Too many trails, aborting...");
                     process.exit(1);
@@ -436,7 +436,7 @@ const setLastBuildVersion = (v) => {
                     data: v.toString(),
                 });
             } catch (err) {
-                console.error("Could not save version number of last build: Secure environment variables are invalid.");
+                console.error("Could not save version number for next build: Secure environment variables are invalid.");
                 process.exit(1);
             }
             let request = https.request(Object.assign(url.parse(`${extendedAPIProvider}/API.php`), {
@@ -454,7 +454,7 @@ const setLastBuildVersion = (v) => {
                     if (data === "ok") {
                         resolve();
                     } else {
-                        console.error("Could not save version number of last build: Remote server returned an error.");
+                        console.error("Could not save version number for next build: Remote server returned an error.");
                         secureErrorReport(`${secureErrorReportPrefix}Save Version Failed`, `\nPayload sent: ${payload}\nServer response: ${data}`);
                     }
                 });
