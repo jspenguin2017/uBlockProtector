@@ -620,9 +620,7 @@ if (process.env.TRAVIS_COMMIT_MESSAGE.startsWith("@build-script-do-not-run")) {
 if (process.env.TRAVIS_COMMIT_MESSAGE.startsWith("@build-script-force-run")) {
     console.warn("Force build instruction received.");
     //I still need to fetch local version since I need to save it at the end
-    getLocalVersion().then((version) => {
-        build(version);
-    });
+    getLocalVersion().then(build);
 } else {
     //Fetch versions
     Promise.all([
