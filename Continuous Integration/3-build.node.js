@@ -272,7 +272,7 @@ const OAuth2 = () => {
         }), (res) => {
             let data = "";
             res.setEncoding("utf8");
-            res.on("data", (s) => { data += s; });
+            res.on("data", (c) => { data += c; });
             res.on("error", () => {
                 console.error("Could not obtain access token: Could not connect to remote server.");
                 process.exit(1);
