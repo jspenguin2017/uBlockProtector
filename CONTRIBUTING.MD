@@ -24,7 +24,7 @@ You are not allowed to promote proprietary software in this repository, and you 
 
 ## Opening an issue
 
-If your screenshots are not safe for work, you must wrap them in `<details></details>`. 
+**If your screenshots are not safe for work, you must wrap them in `<details></details>`.**
 
 ### Reporting a website that does not work
 
@@ -44,9 +44,9 @@ Give your issue a descriptive title and clearly explain what is wrong, include r
 
 ### Reporting something secret
 
-If what you are reporting needs to be absolutely secret (like an issue that requires an account to reproduce), open an issue in our 
-[restricted issues tracker](https://gitlab.com/xuhaiyang1234/uBlockProtectorSecretIssues/issues). Do not forget to flag the issue 
-as confidential. 
+If what you are reporting needs to be secret (like an issue that requires an account to reproduce), open an issue in my 
+[restricted issues tracker](https://gitlab.com/xuhaiyang1234/uBlockProtectorSecretIssues/issues). Do not forget to flag the 
+issue as confidential. 
 
 Since that issues tracker is not actively monitored, you also need to open an issue here to let me know. 
 
