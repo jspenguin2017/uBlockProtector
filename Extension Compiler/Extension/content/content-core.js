@@ -64,7 +64,7 @@ a.always = (...args) => {
  */
 a.err = (name) => {
     if (name) {
-        console.error(`Uncaught Error: ${name} uBlocker Origin detector is not allowed on this device!`);
+        console.error(`Uncaught Error: ${name} uBlock Origin detector is not allowed on this device!`);
     } else {
         console.error(a.err.msg);
     }
@@ -73,7 +73,7 @@ a.err = (name) => {
  * The generic error message.
  * @const {string}
  */
-a.err.msg = "Uncaught Error: uBlocker Origin detectors are not allowed on this device!";
+a.err.msg = "Uncaught Error: uBlock Origin detectors are not allowed on this device!";
 /**
  * Do a cross origin request.
  * @function
@@ -746,12 +746,12 @@ a.generic = () => {
         //---Initialization---
         const error = window.console.error.bind(console);
         const err = (name) => {
-            error(`Uncaught Error: ${name} uBlocker Origin detector is not allowed on this device!`);
+            error(`Uncaught Error: ${name} uBlock Origin detector is not allowed on this device!`);
         };
         //---document-start---
         //Playwire
         try {
-            const errMsg = "Uncaught Error: Playwire uBlocker Origin detector is not allowed on this device!";
+            const errMsg = "Uncaught Error: Playwire uBlock Origin detector is not allowed on this device!";
             let playwireZeus;
             window.Object.defineProperty(window, "Zeus", {
                 configurable: false,
@@ -772,7 +772,7 @@ a.generic = () => {
                 },
             });
         } catch (err) {
-            error("uBlock Protector failed to set up Playwire uBlocker Origin detector defuser!");
+            error("uBlock Protector failed to set up Playwire uBlock Origin detector defuser!");
         }
         //---document-idle---
         window.addEventListener("DOMContentLoaded", () => {
@@ -903,7 +903,7 @@ a.generic = () => {
                 reTag1.test(insertedNode.nodeName) &&
                 reTag2.test(insertedNode.firstChild.nodeName)) {
                 //Log
-                a.err("Antiblock.org");
+                err("Antiblock.org");
                 //Stop audio message
                 const audio = insertedNode.querySelector("audio[loop]");
                 if (audio) {
@@ -1020,7 +1020,7 @@ a.generic.Adfly = () => {
  */
 a.generic.FuckAdBlock = (constructorName, instanceName) => {
     let payload = () => {
-        const errMsg = "Uncaught Error: FuckAdBlock uBlocker Origin detector is not allowed on this device!";
+        const errMsg = "Uncaught Error: FuckAdBlock uBlock Origin detector is not allowed on this device!";
         const error = window.console.error.bind(console);
         const patchedFuckAdBlock = function () {
             //Based on FuckAdBlock
