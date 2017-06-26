@@ -50,6 +50,8 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 ||w.nfd81.com^$third-party,script
 ||w.nn0e.com^$third-party,script
 ||w.rpts.org^$third-party,script
+! === DoubleClick
+||doubleclick.net^$domain=aetv.com|history.com,important
 ! === OptinMonster
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/251
 ||a.optnmnstr.com^
@@ -381,8 +383,6 @@ tvregionalna24.pl##.diablo-placeholder
 ! === kitguru.net
 kitguru.net#@#div > a[class] > img[src]
 kitguru.net##.gofollow
-! === aetv.com
-||doubleclick.net^$domain=aetv.com,important
 ! === vidnow.to
 ! === Issue: https://gitlab.com/xuhaiyang1234/AAK-Cont/issues/72
 vidnow.to###adplayer

@@ -58,6 +58,7 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 ||w.nfd81.com^$third-party,script
 ||w.nn0e.com^$third-party,script
 ||w.rpts.org^$third-party,script
+||doubleclick.net^$domain=aetv.com|history.com,important
 ||a.optnmnstr.com^
 ||zergnet.com^$script,third-party
 ||spike.itv.com/itv/tserver/size=*/viewid=
@@ -246,7 +247,6 @@ tvregionalna24.pl##.diablo-placeholder
 @@||hackinformer.com^$first-party,script,badfilter
 kitguru.net#@#div > a[class] > img[src]
 kitguru.net##.gofollow
-||doubleclick.net^$domain=aetv.com,important
 vidnow.to###adplayer
 ||gigaleecher.com/templates/plugmod/giga.js$script
 |https://$third-party,script,domain=photobucket.com,badfilter
