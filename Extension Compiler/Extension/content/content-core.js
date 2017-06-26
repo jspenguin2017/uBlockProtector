@@ -483,7 +483,7 @@ a.readOnly = (() => {
             String(payload)
                 .replace(`"@readonly-val"`, String(val))
                 .replace(`"@readonly-parent"`, parent)
-                .replace(`"@readonly-debug-mode"`, a.debugMode)
+                .replace(`"@readonly-debug-mode"`, String(a.debugMode))
                 .replace(reMatcher1, name)
                 .replace(reMatcher2, `${parent}.${name}`)
         );
@@ -522,7 +522,7 @@ a.noAccess = (() => {
         a.inject(
             String(payload)
                 .replace(`"@noaccess-parent"`, parent)
-                .replace(`"@noaccess-debug-mode"`, a.debugMode)
+                .replace(`"@noaccess-debug-mode"`, String(a.debugMode))
                 .replace(reMatcher1, name)
                 .replace(reMatcher2, `${parent}.${name}`)
         );
