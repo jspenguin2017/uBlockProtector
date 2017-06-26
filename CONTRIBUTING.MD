@@ -26,7 +26,7 @@ You are not allowed to promote proprietary software in this repository, and you 
 
 ### Reporting a website that does not work
 
-**Check if someone else already opened an issue for your problem, join the discussion there and do not open another one.**
+**Check if someone else already opened an issue for your problem**, join the discussion there and do not open another one. 
 
 **Missed ads are to be reported to [EasyList](https://forums.lanik.us/) first**, only open issue here about missed ads if: 
 - uBlock Protector caused the ads to be unblocked, or 
