@@ -53,7 +53,7 @@ Since that issues tracker is not actively monitored, you also need to open an is
 ### Everything else
 
 Give your issue a descriptive title and clearly explain what you are looking for. You are not allowed to ask for expanding 
-support nor for help with installation. One exception is when you are sure that the installation guide is broken. 
+supported setups nor for help with installation. One exception is when you are sure that the installation guide is broken. 
 
 ## Opening pull request
 
