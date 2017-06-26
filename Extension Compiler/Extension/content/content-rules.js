@@ -7,16 +7,31 @@
     //Initialize
     a.init();
     //Check whitelist, ends with 1 means the list is for a.domCmp(), 2 for a.domInc()
-    const whitelist1 = ["360.cn", "apple.com", "ask.com", "baidu.com", "bing.com", "bufferapp.com",
-        "chromeactions.com", "easyinplay.net", "ebay.com", "facebook.com", "flattr.com", "flickr.com",
-        "ghacks.net", "imdb.com", "imgbox.com", "imgur.com", "instagram.com", "jsbin.com", "jsfiddle.net",
-        "linkedin.com", "live.com", "mail.ru", "microsoft.com", "msn.com", "paypal.com", "pinterest.com",
-        "preloaders.net", "qq.com", "reddit.com", "stackoverflow.com", "tampermonkey.net", "twitter.com",
-        "vimeo.com", "wikipedia.org", "w3schools.com", "yandex.ru", "youtu.be", "youtube.com", "xemvtv.net",
-        "vod.pl", "agar.io", "pandoon.info", "fsf.org", "adblockplus.org", "plnkr.co", "exacttarget.com",
-        "dolldivine.com", "popmech.ru", "calm.com", "chatango.com", "spaste.com", "anandabazar.com",
-        "google.it.ao", "google.ne.jp", "google.off.ai", "viasatsport.fi"];
-    const whitelist2 = ["google", "google.co", "google.com", "amazon", "yahoo"];
+    const genericWhitelist1 = [
+        //Local network
+        "localhost", "127.0.0.1",
+        //Google
+        "google.it.ao", "google.ne.jp", "google.off.ai", "youtu.be", "youtube.com",
+        //Microsoft
+        "microsoft.com", "msn.com", "live.com",
+        //Other
+        "apple.com", "ask.com", "reddit.com", "stackoverflow.com", "tampermonkey.net", "twitter.com",
+        "360.cn", "baidu.com", "bing.com", "bufferapp.com", "viasatsport.fi", "chromeactions.com",
+        "easyinplay.net", "ebay.com", "facebook.com", "flattr.com", "flickr.com", "ghacks.net", "imdb.com",
+        "imgbox.com", "imgur.com", "instagram.com", "jsbin.com", "jsfiddle.net", "linkedin.com", "mail.ru",
+        "paypal.com", "pinterest.com", "preloaders.net", "qq.com", "vimeo.com", "wikipedia.org",
+        "w3schools.com", "yandex.ru", "xemvtv.net", "spaste.com", "anandabazar.com", "vod.pl", "agar.io",
+        "pandoon.info", "fsf.org", "adblockplus.org", "plnkr.co", "exacttarget.com", "dolldivine.com",
+        "popmech.ru", "calm.com", "chatango.com",
+    ];
+    const genericWhitelist2 = [
+        //Local network
+        "192.168.0", "192.168.1",
+        //Google
+        "google", "google.co", "google.com",
+        //Other
+        "amazon", "yahoo",
+    ];
     const AdflyWhitelist1 = [];
     const AdflyWhitelist2 = [];
     //Apply Adfly bypasser
@@ -26,7 +41,7 @@
         a.generic.Adfly();
     }
     //Apply generic solutions
-    if (a.domCmp(whitelist1, true) || a.domInc(whitelist2, true)) {
+    if (a.domCmp(genericWhitelist1, true) || a.domInc(genericWhitelist2, true)) {
         console.warn("This domain is excluded from generic solutions.");
     } else {
         a.generic();
