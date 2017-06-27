@@ -1115,12 +1115,17 @@ a.generic.adsjsV2 = () => {
     a.inject(() => {
         "use strict";
         const matcher = /[a-zA-Z0-9]{11,14}/; //From samples I saw, the length is 12 or 13, checking for 11 to 14 to be sure
+        const err = new window.TypeError("Failed to execute 'getElementById' on 'Document': 1 argument required, but only 0 present.");
         let original; //document.getElementById
         const newFunc = (...args) => {
-            if (matcher.test(args[0])) {
-                return original.apply(window.document, args) || window.document.createElement("div");
+            if (args.length) {
+                if (matcher.test(String(args[0]))) {
+                    return original.apply(window.document, args) || window.document.createElement("div");
+                } else {
+                    return original.apply(window.document, args)
+                }
             } else {
-                return original.apply(window.document, args)
+                throw err;
             }
         };
         try {

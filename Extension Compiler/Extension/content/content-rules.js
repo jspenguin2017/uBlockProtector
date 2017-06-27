@@ -87,8 +87,11 @@ if (a.domCmp(["vidlox.tv", "vidoza.net", "dato.porn"])) {
     //NSFW!
     a.readOnly("xRds", false);
     a.readOnly("cRAds", true);
-    if (a.domCmp(["vidlox.tv"]), true) {
+    if (a.domCmp(["vidlox.tv"], true)) {
         a.readOnly("adb", 0);
+    }
+    if (a.domCmp(["vidoza.net"], true)) {
+        a.filter("open");
     }
 }
 if (a.domCmp(["cwtv.com"])) {
@@ -702,7 +705,7 @@ if (a.domCmp(["primeshare.tv"])) {
 if (a.domCmp(["debridnet.com", "livedebrid.com"])) {
     a.css(".myTestAd2 { height:5px; }");
     a.bait("div", ".myTestAd2");
-    if (a.domCmp(["debridnet.com"]), true) {
+    if (a.domCmp(["debridnet.com"], true)) {
         a.noAccess("_pop");
     }
 }
@@ -1518,7 +1521,7 @@ if (a.domCmp(["buzina.xyz", "farmet.info", "rimladi.com", "kitorelo.com", "omnip
         $("#adsframe").remove();
         $("#remove-over").click();
     });
-    if (a.domCmp(["buzina.xyz"]), true) {
+    if (a.domCmp(["buzina.xyz"], true)) {
         a.css("#adsframe { height:151px; }");
         a.ready(() => {
             const elem = $("iframe[src*='.php?hash=']");
