@@ -83,6 +83,7 @@ a.err.msg = "Uncaught Error: uBlock Origin detectors are not allowed on this dev
  ** @param {Object|undefined} [headers=undefined] - The headers of the request.
  ** @param {string|null} [payload=null] - The payload of the request.
  * @param {Function} onload - The load event handler, the response data will be supplied.
+ ** @param {string} response - The response text.
  * @param {Function} onerror - The error event handler.
  */
 a.request = (details, onload, onerror) => {
@@ -1109,6 +1110,7 @@ a.generic.FuckAdBlock = (constructorName, instanceName) => {
 };
 /**
  * Set up ads.js v2 defuser.
+ * Call when needed, do not apply this to all domains.
  * @function
  */
 a.generic.adsjsV2 = () => {
