@@ -401,3 +401,6 @@ darmowe-pornosy.pl###porno_accept
 ! === hothardware.com
 ! === Remove broken EasyList filter
 |https://$third-party,script,domain=hothardware.com,badfilter
+! === themarker.com
+themarker.com##script:inject(abort-on-property-read.js, adblockDetector)
+themarker.com###ad-block-wrapper

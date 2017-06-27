@@ -877,7 +877,7 @@ if (a.domCmp(["diarioinformacion.com"])) {
 if (a.domCmp(["cnbeta.com"])) {
     a.readOnly("JB", () => { });
 }
-if (a.domCmp(["themarker.com", "haaretz.co.il"])) {
+if (a.domCmp(["haaretz.co.il"])) {
     a.inject(() => {
         "use strict";
         window.AdBlockUtil = {};
