@@ -57,6 +57,12 @@ if (a.domCmp(["blockadblock.com"])) {
 if (a.domCmp(["sc2casts.com"])) {
     a.readOnly("scriptfailed", () => { });
     a.filter("setTimeout");
+    a.inject(() => {
+        "use strict";
+        window._gaq = { push() { } };
+    });
+    a.readOnly("showdialog", () => { });
+    a.readOnly("showPopup2", () => { });
 }
 if (a.domCmp(["jagranjunction.com"])) {
     a.readOnly("canRunAds", true);
@@ -81,10 +87,14 @@ if (a.domCmp(["vidlox.tv", "vidoza.net", "dato.porn"])) {
     //NSFW!
     a.readOnly("xRds", false);
     a.readOnly("cRAds", true);
+    if (a.domCmp(["vidlox.tv"]), true) {
+        a.readOnly("adb", 0);
+    }
 }
 if (a.domCmp(["cwtv.com"])) {
     //Thanks to szymon1118
     a.readOnly("wallConfig", false);
+    a.readOnly("CWTVIsAdBlocking", undefined);
 }
 if (a.domCmp(["theinquirer.net"])) {
     a.readOnly("_r3z", true);
@@ -452,6 +462,7 @@ if (a.domCmp(["thepcspy.com"])) {
 }
 if (a.domCmp(["vg.no", "e24.no"])) {
     a.css(".ad { display:none; }");
+    a.readOnly("__AB__", () => { });
 }
 if (a.domCmp(["automobile-sportive.com"])) {
     a.css(".myTestAd { height:51px; display:none; }");
@@ -691,6 +702,9 @@ if (a.domCmp(["primeshare.tv"])) {
 if (a.domCmp(["debridnet.com", "livedebrid.com"])) {
     a.css(".myTestAd2 { height:5px; }");
     a.bait("div", ".myTestAd2");
+    if (a.domCmp(["debridnet.com"]), true) {
+        a.noAccess("_pop");
+    }
 }
 if (a.domCmp(["bluesatoshi.com"])) {
     a.css("#test { height:280px; }");
@@ -872,14 +886,6 @@ if (a.domCmp(["themarker.com", "haaretz.co.il"])) {
 if (a.domCmp(["pipocas.tv"])) {
     a.cookie("popup_user_login", "yes");
 }
-if (a.domCmp(["sc2casts.com"])) {
-    a.inject(() => {
-        "use strict";
-        window._gaq = { push() { } };
-    });
-    a.readOnly("showdialog", () => { });
-    a.readOnly("showPopup2", () => { });
-}
 if (a.domCmp(["vgunetwork.com"])) {
     a.ready(() => {
         a.cookie("stopIt", "1");
@@ -967,9 +973,6 @@ if (a.domCmp(["bitcoiner.net", "litecoiner.net"])) {
 if (a.domCmp(["torrent-tv.ru"])) {
     a.readOnly("c_Oo_Advert_Shown", true);
 }
-if (a.domCmp(["cwtv.com"])) {
-    a.readOnly("CWTVIsAdBlocking", undefined);
-}
 if (a.domCmp(["inn.co.il"])) {
     a.inject(() => {
         "use strict";
@@ -1016,10 +1019,10 @@ if (a.domCmp(["lesechos.fr", "lesechos.com"])) {
 if (a.domCmp(["bitvisits.com"])) {
     a.readOnly("blockAdblockUser", () => { });
 }
-if (a.domCmp(["vipleague.is", "vipleague.ws", "vipleague.tv", "vipleague.se", "vipleague.tv", "vipleague.me",
+if (a.domCmp(["vipleague.is", "vipleague.ws", "vipleague.tv", "vipleague.se", "vipleague.me", "vipapp.me",
     "vipleague.mobi", "vipleague.co", "vipleague.sx", "vipleague.ch", "vipbox.tv", "vipbox.co", "vipbox.biz",
     "vipbox.sx", "vipbox.eu", "vipbox.so", "vipbox.nu", "vipboxsa.co", "strikeout.co", "strikeout.me",
-    "homerun.re", "vipboxtv.co", "vipapp.me"])) {
+    "homerun.re", "vipboxtv.co"])) {
     a.readOnly("iExist", true);
     a.cookie("xclsvip", "1");
     a.css(".vip_052x003 { height:250px; }");
@@ -1028,9 +1031,6 @@ if (a.domCmp(["vipleague.is", "vipleague.ws", "vipleague.tv", "vipleague.se", "v
 }
 if (a.domCmp(["zoomtv.me"])) {
     a.readOnly("iaxpEnabled", true);
-}
-if (a.domCmp(["vg.no", "e24.no"])) {
-    a.readOnly("__AB__", () => { });
 }
 if (a.domCmp(["pornve.com"])) {
     //NSFW!
@@ -1303,13 +1303,13 @@ if (a.domCmp(["openload.co", "openload.io", "openload.tv"])) {
     a.readOnly("adblock2", false);
     a.readOnly("popAdsLoaded", true);
 }
-if (a.domCmp(["youwatch.org", "chouhaa.info", "ahzahg6ohb.com", "ahzahg6ohb.com"])) {
+if (a.domCmp(["youwatch.org", "chouhaa.info", "ahzahg6ohb.com"])) {
     a.readOnly("adsShowPopup1", 1);
     a.ready(() => {
         $("#player_imj, #player_imj + div[id]").remove();
     });
 }
-if (a.domCmp(["exashare.com", "chefti.info", "bojem3a.info", "ajihezo.info", "yahmaib3ai.com", "yahmaib3ai.com"])) {
+if (a.domCmp(["exashare.com", "chefti.info", "bojem3a.info", "ajihezo.info", "yahmaib3ai.com"])) {
     a.readOnly("adsShowPopup1", 1);
     a.ready(() => {
         $("#player_gaz, #player_gaz + div[id]").remove();
@@ -1518,17 +1518,17 @@ if (a.domCmp(["buzina.xyz", "farmet.info", "rimladi.com", "kitorelo.com", "omnip
         $("#adsframe").remove();
         $("#remove-over").click();
     });
-}
-if (a.domCmp(["buzina.xyz"])) {
-    a.css("#adsframe { height:151px; }");
-    a.ready(() => {
-        const elem = $("iframe[src*='.php?hash=']");
-        if (elem.length > 0) {
-            let parts = elem.attr("src").split("/");
-            parts[2] = "arsopo.com";
-            elem.attr("src", parts.join("/"));
-        }
-    });
+    if (a.domCmp(["buzina.xyz"]), true) {
+        a.css("#adsframe { height:151px; }");
+        a.ready(() => {
+            const elem = $("iframe[src*='.php?hash=']");
+            if (elem.length > 0) {
+                let parts = elem.attr("src").split("/");
+                parts[2] = "arsopo.com";
+                elem.attr("src", parts.join("/"));
+            }
+        });
+    }
 }
 if (a.domCmp(["allmyvideos.net", "amvtv.net"])) {
     a.cookie("_favbt33", "1");
@@ -1774,9 +1774,6 @@ if (a.domCmp(["pornhub.com", "redtube.com", "youporn.com", "tube8.com", "pornmd.
 }
 if (a.domCmp(["pastebin.com"])) {
     a.readOnly("abdd", `""`);
-}
-if (a.domCmp(["debridnet.com"])) {
-    a.noAccess("_pop");
 }
 if (a.domCmp(["xnxx.com"])) {
     a.cookie("wpn-popupunder", "1");
@@ -2392,9 +2389,6 @@ if (a.domCmp(["canalplus.fr"])) {
 }
 if (a.domCmp(["translatica.pl"])) {
     a.readOnly("adblock", false);
-}
-if (a.domCmp(["vidlox.tv"])) {
-    a.readOnly("adb", 0);
 }
 if (a.domCmp(["receive-sms-online.info"])) {
     a.filter("addEventListener", a.matchMethod.stringExact, `function (b){return"undefined"!=typeof n&&` +
