@@ -58,15 +58,15 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 ||w.nfd81.com^$third-party,script
 ||w.nn0e.com^$third-party,script
 ||w.rpts.org^$third-party,script
-||doubleclick.net^$domain=aetv.com|history.com,important
+||doubleclick.net^$important,domain=aetv.com|history.com|mylifetime.com
 ||a.optnmnstr.com^
 ||zergnet.com^$script,third-party
 ||spike.itv.com/itv/tserver/size=*/viewid=
 ||tom.itv.com/itv/tserver/size=*/viewid=
 @@||louccrossc.com^$domain=tf1.fr,badfilter
 @@||foilpolyth.com^$domain=tf1.fr,badfilter
-||foilpolyth.com^$xmlhttprequest,redirect=nooptext,domain=tf1.fr,important
-||louccrossc.com^$xmlhttprequest,redirect=nooptext,domain=tf1.fr,important
+||foilpolyth.com^$xmlhttprequest,redirect=nooptext,important,domain=tf1.fr
+||louccrossc.com^$xmlhttprequest,redirect=nooptext,important,domain=tf1.fr
 ###like-us-adblock-modal
 ##.popup-premium__apla
 ||separatesilver.com^$script,third-party
@@ -203,8 +203,8 @@ wordsense.eu##script:inject(setTimeout-defuser.js, ad, 2000)
 rapidvideo.com##script:inject(noeval.js)
 ||cloudvideoplatform.com/advert.jpg$image,redirect=1x1-transparent.gif,domain=nana10.co.il
 @@||receive-a-sms.com/showads.js$xmlhttprequest,first-party
-||pagead2.googlesyndication.com^$domain=receive-a-sms.com,important
-||googleads.g.doubleclick.net^$domain=receive-a-sms.com,important
+||pagead2.googlesyndication.com^$important,domain=receive-a-sms.com
+||googleads.g.doubleclick.net^$important,domain=receive-a-sms.com
 @@||gamersclub.com.br/js/ads.js$script,first-party
 newyorker.com##iframe[src*="/wp-content/assets/"]
 @@||politiken.dk/*ad*$script
@@ -212,7 +212,7 @@ newyorker.com##iframe[src*="/wp-content/assets/"]
 ||wholecloud.net^$inline-script
 link.tl##.adblockBox
 link.tl##.adblockOverlay
-||$third-party,script,domain=themelot.net
+*$third-party,script,domain=themelot.net
 batchnime.net##script:inject(abort-on-property-read.js, killAdBlock)
 ||fwmrm.net^$xmlhttprequest,redirect=1x1-transparent.gif,domain=vtm.be
 uplod.ws##script:inject(abort-on-property-read.js, $.ready)

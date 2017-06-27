@@ -2056,7 +2056,7 @@ if (a.domCmp(["sthelensstar.co.uk", "runcornandwidnesworld.co.uk", "leighjournal
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/137
     a.readOnly("_sp_", null);
 }
-if (a.domCmp(["aetv.com", "history.com"])) {
+if (a.domCmp(["aetv.com", "history.com", "mylifetime.com"])) {
     a.inject(() => {
         "use strict";
         let val;
