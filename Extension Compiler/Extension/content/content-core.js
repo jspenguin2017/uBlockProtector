@@ -356,7 +356,7 @@ a.filter = (() => {
                 //Apply filter
                 if (matcher(args)) {
                     //Not allowed log
-                    error("@filter-err-msg");
+                    error("Uncaught Error: uBlock Origin detectors are not allowed on this device!");
                 } else {
                     //Allowed log
                     info("Tests passed.");
@@ -380,7 +380,6 @@ a.filter = (() => {
             String(payload)
                 .replace(`"@filter-matcher"`, a.getMatcher(method, filter))
                 .replace(`"@filter-debug-mode"`, String(a.debugMode))
-                .replace("@filter-err-msg", a.err.msg)
                 .replace(`"@filter-parent"`, parent)
                 .replace(reMatcher, `${parent}.${name}`)
         );
@@ -946,7 +945,7 @@ a.generic = () => {
     });
 };
 /**
- * Setup generic Adfly bypasser, this function should be called once from a.init() if needed.
+ * Setup generic Adfly bypasser, must be called on document-start.
  * @function
  */
 a.generic.Adfly = () => {
@@ -1109,20 +1108,27 @@ a.generic.FuckAdBlock = (constructorName, instanceName) => {
     );
 };
 /**
- * Set up ads.js v2 defuser.
+ * Set up ads.js v2 defuser, must be called on document-start.
  * Call when needed, do not apply this to all domains.
  * @function
  */
 a.generic.adsjsV2 = () => {
     a.inject(() => {
         "use strict";
+        const error = window.console.error.bind(console);
         const matcher = /[a-zA-Z0-9]{11,14}/; //From samples I saw, the length is 12 or 13, checking for 11 to 14 to be sure
         const err = new window.TypeError("Failed to execute 'getElementById' on 'Document': 1 argument required, but only 0 present.");
         let original; //document.getElementById
         const newFunc = (...args) => {
             if (args.length) {
                 if (matcher.test(String(args[0]))) {
-                    return original.apply(window.document, args) || window.document.createElement("div");
+                    let elem = original.apply(window.document, args);
+                    if (elem) {
+                        return elem;
+                    } else {
+                        error("Uncaught Error: ads.js v2 uBlock Origin detector is not allowed on this device!");
+                        return window.document.createElement("div");
+                    }
                 } else {
                     return original.apply(window.document, args)
                 }
@@ -1134,7 +1140,7 @@ a.generic.adsjsV2 = () => {
             original = window.document.getElementById;
             window.document.getElementById = newFunc;
         } catch (err) {
-            window.console.error("uBlock Protector failed to set up ads.js v2 defuser!");
+            error("uBlock Protector failed to set up ads.js v2 defuser!");
         }
     });
 };
