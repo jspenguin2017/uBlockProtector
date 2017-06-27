@@ -1107,3 +1107,27 @@ a.generic.FuckAdBlock = (constructorName, instanceName) => {
             .replace("@fuckadblock-instance", instanceName)
     );
 };
+/**
+ * Set up ads.js v2 defuser.
+ * @function
+ */
+a.generic.adsjsV2 = () => {
+    a.inject(() => {
+        "use strict";
+        const matcher = /[a-zA-Z0-9]{11,14}/; //From samples I saw, the length is 12 or 13, checking for 11 to 14 to be sure
+        let original; //document.getElementById
+        const newFunc = (...args) => {
+            if (matcher.test(args[0])) {
+                return original.apply(window.document, args) || window.document.createElement("div");
+            } else {
+                return original.apply(window.document, args)
+            }
+        };
+        try {
+            original = window.document.getElementById;
+            window.document.getElementById = newFunc;
+        } catch (err) {
+            window.console.error("uBlock Protector failed to set up ads.js v2 defuser!");
+        }
+    });
+};

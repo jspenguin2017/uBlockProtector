@@ -304,9 +304,6 @@ rapidvideo.com##script:inject(noeval.js)
 @@||receive-a-sms.com/showads.js$xmlhttprequest,first-party
 ||pagead2.googlesyndication.com^$important,domain=receive-a-sms.com
 ||googleads.g.doubleclick.net^$important,domain=receive-a-sms.com
-! === gamersclub.com.br
-! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/258
-@@||gamersclub.com.br/js/ads.js$script,first-party
 ! === newyorker.com
 newyorker.com##iframe[src*="/wp-content/assets/"]
 ! === politiken.dk
@@ -354,8 +351,6 @@ gentecheesisterealmente.com##script:inject(abort-on-property-read.js, admaniastc
 ||litv.tv/promo/
 litv.tv##.fp-pausebn
 ||$third-party,script,domain=litv.tv
-! === uploadboy.com
-@@||uploadboy.com/ads.js$script,first-party
 ! === dailyuploads.net
 dailyuploads.net##script:inject(abort-on-property-read.js, popns)
 dailyuploads.net##script:inject(abort-on-property-read.js, adbClick)
@@ -374,8 +369,6 @@ leechgear.net###block_on
 leech.ae##script:inject(abort-on-property-read.js, open)
 ! === wiwo.de
 wiwo.de,handelsblatt.com##script:inject(abort-on-property-read.js, AdController)
-! === vidoza.net
-@@||vidoza.net/js/ads.js$script,first-party
 ! === tvregionalna24.pl
 tvregionalna24.pl##.diablo-placeholder
 ! === hackinformer.com
@@ -392,8 +385,6 @@ vidnow.to###adplayer
 |https://$third-party,script,domain=photobucket.com,badfilter
 ! === vendiscuss.net
 vendiscuss.net##script:inject(abort-on-property-read.js, adblock)
-! === videohelp.com
-@@||videohelp.com/ads.js$script,first-party
 ! === diariodenavarra.es
 diariodenavarra.es###abMsgWrap
 ! === NSFW! darmowe-pornosy.pl

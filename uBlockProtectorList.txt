@@ -205,7 +205,6 @@ rapidvideo.com##script:inject(noeval.js)
 @@||receive-a-sms.com/showads.js$xmlhttprequest,first-party
 ||pagead2.googlesyndication.com^$important,domain=receive-a-sms.com
 ||googleads.g.doubleclick.net^$important,domain=receive-a-sms.com
-@@||gamersclub.com.br/js/ads.js$script,first-party
 newyorker.com##iframe[src*="/wp-content/assets/"]
 @@||politiken.dk/*ad*$script
 ||kissasian.com/*.aspx
@@ -231,7 +230,6 @@ gentecheesisterealmente.com##script:inject(abort-on-property-read.js, admaniastc
 ||litv.tv/promo/
 litv.tv##.fp-pausebn
 ||$third-party,script,domain=litv.tv
-@@||uploadboy.com/ads.js$script,first-party
 dailyuploads.net##script:inject(abort-on-property-read.js, popns)
 dailyuploads.net##script:inject(abort-on-property-read.js, adbClick)
 ||madisonross.com/adblock.html$subdocument
@@ -242,7 +240,6 @@ leechgear.net###block_on
 @@||leech.ae^$elemhide
 leech.ae##script:inject(abort-on-property-read.js, open)
 wiwo.de,handelsblatt.com##script:inject(abort-on-property-read.js, AdController)
-@@||vidoza.net/js/ads.js$script,first-party
 tvregionalna24.pl##.diablo-placeholder
 @@||hackinformer.com^$first-party,script,badfilter
 kitguru.net#@#div > a[class] > img[src]
@@ -251,7 +248,6 @@ vidnow.to###adplayer
 ||gigaleecher.com/templates/plugmod/giga.js$script
 |https://$third-party,script,domain=photobucket.com,badfilter
 vendiscuss.net##script:inject(abort-on-property-read.js, adblock)
-@@||videohelp.com/ads.js$script,first-party
 diariodenavarra.es###abMsgWrap
 darmowe-pornosy.pl###porno_accept
 |https://$third-party,script,domain=hothardware.com,badfilter
