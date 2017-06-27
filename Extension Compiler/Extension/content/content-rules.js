@@ -2605,6 +2605,13 @@ if (a.domCmp(["cutwin.com"])) {
     a.bait("div", "#test-block", true);
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
+if (a.domCmp(["adshort.co"])) {
+    a.bait("div", "#test-block", true);
+    a.noAccess("_pop");
+    a.noAccess("F3Z9");
+    a.filter("open");
+    a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
+}
 if (a.domCmp(["gamersclub.com.br", "uploadboy.com", "vidoza.net", "videohelp.com"])) {
     a.generic.adsjsV2();
 }
