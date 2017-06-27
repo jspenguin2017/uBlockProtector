@@ -34,17 +34,17 @@
     ];
     const AdflyWhitelist1 = [];
     const AdflyWhitelist2 = [];
-    //Apply Adfly bypasser
-    if (a.domCmp(AdflyWhitelist1, true) || a.domInc(AdflyWhitelist2, true)) {
-        console.warn("This domain is excluded from Adfly bypasser.");
-    } else {
-        a.generic.Adfly();
-    }
     //Apply generic solutions
     if (a.domCmp(genericWhitelist1, true) || a.domInc(genericWhitelist2, true)) {
         console.warn("This domain is excluded from generic solutions.");
     } else {
         a.generic();
+        //Apply Adfly bypasser
+        if (a.domCmp(AdflyWhitelist1, true) || a.domInc(AdflyWhitelist2, true)) {
+            console.warn("This domain is excluded from Adfly bypasser.");
+        } else {
+            a.generic.Adfly();
+        }
     }
 }
 //Specific rules

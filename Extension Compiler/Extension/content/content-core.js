@@ -611,7 +611,7 @@ a.forceClose = () => {
 
 //=====Generic=====
 /**
- * Apply all generic solutions, this function should be called once from rules.
+ * Apply generic solutions, must be called on document-start.
  * @function
  */
 a.generic = () => {
