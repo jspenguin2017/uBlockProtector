@@ -88,7 +88,7 @@ futbolchile.net,freeomovie.com,appdrop.net,skmedix.pl,yalujailbreak.net,cloudweb
 ! === dogefaucet.com
 @@||www.dogefaucet.com/static/js/ads.js|
 ! === portal.abczdrowie.pl
-@@||dot.wp.pl^
+abczdrowie.pl##.windowErrCont
 ! === tvn.pl and related domains
 tvn.pl#div(id*=_videoDriverContent)
 tvn7.pl##div.vjs-abDetected
