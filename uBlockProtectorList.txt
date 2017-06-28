@@ -347,11 +347,6 @@ gq.com#@#.text-ad-links
 /adblock/adblockpopup.js$script
 /adblockbait.js$script
 /adblockchecker.js$script
-@@||straight-world.de/js/ads.js$script
-@@||satoshiquiz.com/ad.js$script
-@@||satoshiquiz.com/ads.js$script
-@@||fptplay.net/js/ads.js$script
-@@||cpubenchmark.net/js/ads.js$script
 @@||hubturkey.net/js/ads.js$script
 @@||ynet.co.il/common/javascript/ads.js$script,~third-party
 @@||t2e.pl/www/js/ads.js$script
