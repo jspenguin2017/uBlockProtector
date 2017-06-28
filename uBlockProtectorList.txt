@@ -79,7 +79,7 @@ hentaitake.net,hackinformer.com,sopsport.org,cyberterminators.co##script:inject(
 futbolchile.net,freeomovie.com,appdrop.net,skmedix.pl,yalujailbreak.net,cloudwebcopy.com,milaulas.com,tout-bon.com,sznpaste.net,linkdrop.net##script:inject(bab-defuser.js)
 ||lukkr.com/website/pf.js
 @@||www.dogefaucet.com/static/js/ads.js|
-abczdrowie.pl##.windowErrCont
+abczdrowie.pl,autokrata.pl,autokult.pl,biztok.pl,gadzetomania.pl,hotmoney.pl,kafeteria.pl,kafeteria.tv,komediowo.pl,komorkomania.pl,money.pl,pudelek.tv,sfora.pl,snobka.pl,wawalove.pl,wp.pl,wp.tv,wrzuta.pl,pudelek.pl,fotoblogia.pl,parenting.pl,echirurgia.pl,pudelekx.pl,o2.pl,kardiolo.pl##.windowErrCont
 tvn.pl#div(id*=_videoDriverContent)
 tvn7.pl##div.vjs-abDetected
 tvnstyle.pl##div.vjs-abDetected
