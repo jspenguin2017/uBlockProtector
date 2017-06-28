@@ -1,6 +1,8 @@
-! ===== Installation test =====
+! === Installation test
 jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
+! ======================
 ! ===== Missed Ads =====
+! ======================
 ! These are ads or tracking servers that I believe EasyList will not block any time soon
 ! === Google
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/245
@@ -67,7 +69,9 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 @@||foilpolyth.com^$domain=tf1.fr,badfilter
 ||foilpolyth.com^$xmlhttprequest,redirect=nooptext,important,domain=tf1.fr
 ||louccrossc.com^$xmlhttprequest,redirect=nooptext,important,domain=tf1.fr
+! ============================
 ! ===== Common Solutions =====
+! ============================
 ! === Block screens
 ###like-us-adblock-modal
 ##.popup-premium__apla
@@ -84,7 +88,9 @@ hentaitake.net,hackinformer.com,sopsport.org,cyberterminators.co,themeslide.com#
 futbolchile.net,freeomovie.com,appdrop.net,skmedix.pl,yalujailbreak.net,cloudwebcopy.com,milaulas.com,tout-bon.com,sznpaste.net,linkdrop.net,themeslide.com##script:inject(bab-defuser.js)
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/254
 ||lukkr.com/website/pf.js
+! ==============================
 ! ===== Specific solutions =====
+! ==============================
 ! === dogefaucet.com
 @@||www.dogefaucet.com/static/js/ads.js|
 ! === wp.pl and related domains
