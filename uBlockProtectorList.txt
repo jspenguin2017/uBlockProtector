@@ -76,7 +76,7 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 ||curtaincows.com^$script,third-party
 techdracula.com,keshavcommoditycalls.com,hackinformer.com,coderexample.com,anibatch.id,altervista.org,ispazio.net,kitguru.net,wabetainfo.com##script:inject(setTimeout-defuser.js, an_message_display)
 hentaitake.net,hackinformer.com,sopsport.org,cyberterminators.co##script:inject(abort-on-property-read.js, anOptions)
-futbolchile.net,freeomovie.com,appdrop.net,skmedix.pl,yalujailbreak.net,cloudwebcopy.com,milaulas.com,tout-bon.com,sznpaste.net,linkdrop.net##script:inject(bab-defuser.js)
+futbolchile.net,freeomovie.com,appdrop.net,skmedix.pl,yalujailbreak.net,cloudwebcopy.com,milaulas.com,tout-bon.com,sznpaste.net,linkdrop.net,themeslide.com##script:inject(bab-defuser.js)
 ||lukkr.com/website/pf.js
 @@||www.dogefaucet.com/static/js/ads.js|
 abczdrowie.pl,autokrata.pl,autokult.pl,biztok.pl,gadzetomania.pl,hotmoney.pl,kafeteria.pl,kafeteria.tv,komediowo.pl,komorkomania.pl,money.pl,pudelek.tv,sfora.pl,snobka.pl,wawalove.pl,wp.pl,wp.tv,wrzuta.pl,pudelek.pl,fotoblogia.pl,parenting.pl,echirurgia.pl,pudelekx.pl,o2.pl,kardiolo.pl##.windowErrCont
@@ -192,7 +192,6 @@ steamcustomizer.com##.notice.support-notice
 @@||steamcustomizer.com/cache/skin/ad/*$image
 shqiperiatv.com,albtvhd.com,tvshqiphd.com,www.balkanweb.com,cdn.livestream.com,livestream.artmotion.al,shqip-tv.info##body > *[id^="blockblock"]:style(visibility: visible !important; display: block !important;)
 shqiperiatv.com,albtvhd.com,tvshqiphd.com,www.balkanweb.com,cdn.livestream.com,livestream.artmotion.al,shqip-tv.info##table[id^='blockblock']
-themeslide.com##script:inject(noeval.js)
 wordsense.eu##script:inject(setTimeout-defuser.js, ad, 2000)
 ||uol.com.br/camaleao/assets/web/javascript/detectadblock^$script,important
 /magnific-popup.js/$domain=transparentcalifornia.com

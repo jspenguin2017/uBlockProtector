@@ -81,7 +81,7 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 techdracula.com,keshavcommoditycalls.com,hackinformer.com,coderexample.com,anibatch.id,altervista.org,ispazio.net,kitguru.net,wabetainfo.com##script:inject(setTimeout-defuser.js, an_message_display)
 hentaitake.net,hackinformer.com,sopsport.org,cyberterminators.co##script:inject(abort-on-property-read.js, anOptions)
 ! === BlockAdBlock
-futbolchile.net,freeomovie.com,appdrop.net,skmedix.pl,yalujailbreak.net,cloudwebcopy.com,milaulas.com,tout-bon.com,sznpaste.net,linkdrop.net##script:inject(bab-defuser.js)
+futbolchile.net,freeomovie.com,appdrop.net,skmedix.pl,yalujailbreak.net,cloudwebcopy.com,milaulas.com,tout-bon.com,sznpaste.net,linkdrop.net,themeslide.com##script:inject(bab-defuser.js)
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/254
 ||lukkr.com/website/pf.js
 ! ===== Specific solutions =====
@@ -278,8 +278,6 @@ steamcustomizer.com##.notice.support-notice
 ! === iframes of shqiptvlive.net
 shqiperiatv.com,albtvhd.com,tvshqiphd.com,www.balkanweb.com,cdn.livestream.com,livestream.artmotion.al,shqip-tv.info##body > *[id^="blockblock"]:style(visibility: visible !important; display: block !important;)
 shqiperiatv.com,albtvhd.com,tvshqiphd.com,www.balkanweb.com,cdn.livestream.com,livestream.artmotion.al,shqip-tv.info##table[id^='blockblock']
-! === themeslide.com
-themeslide.com##script:inject(noeval.js)
 ! === wordsense.eu
 wordsense.eu##script:inject(setTimeout-defuser.js, ad, 2000)
 ! === uol.com.br
