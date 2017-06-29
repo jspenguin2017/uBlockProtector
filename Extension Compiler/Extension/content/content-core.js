@@ -339,9 +339,9 @@ a.filter = (() => {
             "use strict";
             let matcher = "@filter-matcher";
             //Cache console functions as some web pages do change them
-            const info = window.console.info.bind(console);
-            const warn = window.console.warn.bind(console);
-            const error = window.console.error.bind(console);
+            const info = window.console.info.bind(window.console);
+            const warn = window.console.warn.bind(window.console);
+            const error = window.console.error.bind(window.console);
             //The original funciton, will be set later
             let parent, original;
             //The replacement function with filters
@@ -402,9 +402,9 @@ a.timewarp = (() => {
             "use strict";
             let matcher = "@timewarp-matcher";
             //Cache console functions as some web pages do change them
-            const info = window.console.info.bind(console);
-            const warn = window.console.warn.bind(console);
-            const error = window.console.error.bind(console);
+            const info = window.console.info.bind(window.console);
+            const warn = window.console.warn.bind(window.console);
+            const error = window.console.error.bind(window.console);
             //The original funciton, will be set later
             let original;
             //The replacement function with filters
@@ -744,7 +744,7 @@ a.generic = () => {
         "use strict";
         let data = {};
         //---Initialization---
-        const error = window.console.error.bind(console);
+        const error = window.console.error.bind(window.console);
         const err = (name) => {
             error(`Uncaught Error: ${name} uBlock Origin detector is not allowed on this device!`);
         };
@@ -1021,7 +1021,7 @@ a.generic.Adfly = () => {
 a.generic.FuckAdBlock = (constructorName, instanceName) => {
     let payload = () => {
         const errMsg = "Uncaught Error: FuckAdBlock uBlock Origin detector is not allowed on this device!";
-        const error = window.console.error.bind(console);
+        const error = window.console.error.bind(window.console);
         const patchedFuckAdBlock = function () {
             //Based on FuckAdBlock
             //License: https://github.com/sitexw/FuckAdBlock/blob/master/LICENSE
@@ -1115,7 +1115,7 @@ a.generic.FuckAdBlock = (constructorName, instanceName) => {
 a.generic.adsjsV2 = () => {
     a.inject(() => {
         "use strict";
-        const error = window.console.error.bind(console);
+        const error = window.console.error.bind(window.console);
         const matcher = /[a-zA-Z0-9]{11,14}/; //From samples I saw, the length is 12 or 13, checking for 11 to 14 to be sure
         const err = new window.TypeError("Failed to execute 'getElementById' on 'Document': 1 argument required, but only 0 present.");
         let original; //document.getElementById
