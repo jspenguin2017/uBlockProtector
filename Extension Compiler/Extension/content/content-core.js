@@ -66,14 +66,9 @@ a.err = (name) => {
     if (name) {
         console.error(`Uncaught Error: ${name} uBlock Origin detector is not allowed on this device!`);
     } else {
-        console.error(a.err.msg);
+        console.error("Uncaught Error: uBlock Origin detectors are not allowed on this device!");
     }
 };
-/**
- * The generic error message.
- * @const {string}
- */
-a.err.msg = "Uncaught Error: uBlock Origin detectors are not allowed on this device!";
 /**
  * Do a cross origin request.
  * @function
@@ -82,7 +77,7 @@ a.err.msg = "Uncaught Error: uBlock Origin detectors are not allowed on this dev
  ** @param {string} url - The URL of the request.
  ** @param {Object|undefined} [headers=undefined] - The headers of the request.
  ** @param {string|null} [payload=null] - The payload of the request.
- * @param {Function} onload - The load event handler, the response data will be supplied.
+ * @param {Function} onload - The load event handler.
  ** @param {string} response - The response text.
  * @param {Function} onerror - The error event handler.
  */
@@ -149,16 +144,33 @@ a.domInc = (domList, noErr) => {
  * @const {Enumeration}
  */
 a.matchMethod = {
-    matchAll: 0, //Match all, omit defaults to this
-    string: 1, //Partial string match
-    stringExact: 2, //Exact string match, will result in match if one or more arguments matches the filter
-    RegExp: 3, //Regular expression
+    /**
+     * Match all.
+     * @param {undefined|null} [filter=undefined] - The filter.
+     */
+    matchAll: 0,
+    /**
+     * Partial string match. Result in match if one of the arguments contains the filter.
+     * @param {string} filter - The filter.
+     */
+    string: 1,
+    /**
+     * Exact string match. Result in match if one of the arguments is exactly the filter.
+     * @param {string} filter - The filter.
+     */
+    stringExact: 2,
+    /**
+     * Regular expression based matching, filter.test() will be used to apply matching.
+     * @param {RegExp} filter - The filter.
+     */
+    RegExp: 3,
 };
 /**
  * Get a matcher, the filter will be "hard coded" into it.
  * @function
  * @param {Enumeration} method - The method to use.
- * @param {undefined|string|RegExp} filter - An appropriate filter.
+ * @param {undefined|string|RegExp} filter - An appropriate filter. Escape it if needed, string filters are
+ ** wrapped in double quotes.
  * @return {string} A matcher function.
  */
 a.getMatcher = (method, filter) => {
@@ -211,15 +223,15 @@ a.inject = (payload) => {
     } catch (err) {
         console.error("uBlock Protector failed to inject a standalone script!");
         if (a.debugMode) {
-            console.error(`(${payload})();`);
+            console.error(s.textContent);
         }
     }
 };
 /**
  * Serialize an object into GET request parameters.
- * http://stackoverflow.com/questions/6566456/how-to-serialize-an-object-into-a-list-of-parameters
+ * Source: http://stackoverflow.com/questions/6566456/how-to-serialize-an-object-into-a-list-of-parameters
  * @function
- * @param {Object} obj - The object to serialize.
+ * @param {Object} obj - The object to serialize, can be at most 1 level deep.
  * @return {string} The serialized string.
  */
 a.serialize = (obj) => {
@@ -249,7 +261,7 @@ a.uid = (() => {
     };
 })();
 /**
- * Set up insert observer.
+ * Set up DOM insert observer.
  * @function
  * @param {Function} handler - The mutation handler.
  ** @param {HTMLElement} insertedNode - The inserted node.
@@ -275,8 +287,8 @@ a.onInsert = (handler) => {
  * Inject CSS, "!important" will be added automatically.
  * @function
  * @param {string} code - The CSS to inject.
- * @param {boolean} stealthy - Whether the style should only be injected from backgrond page only, this will not carete
- ** a style element, but the injected style have a lower priority.
+ * @param {boolean} [stealthy=false] - Whether the style should only be injected from background page only, this will
+ ** not carete a style element, but the injected style have a lower priority. The injection from background is asynchronous.
  */
 a.css = (() => {
     const reMatcher = /;/g;
@@ -300,7 +312,7 @@ a.css = (() => {
  * Sometimes the height of the bait element is checked, so I cannot make it 0 height.
  * @function
  * @param {string} type - The type of the element, example: div.
- * @param {string} identifier - The class or id, example: .test (class) #test (id).
+ * @param {string} identifier - The class or id, example: .test (class), #test (id).
  * @param {boolean} [hidden=false] - Whether the element should be hidden.
  */
 a.bait = (type, identifier, hidden) => {
@@ -326,7 +338,7 @@ a.bait = (type, identifier, hidden) => {
 /**
  * Filter a function, must be called on document-start.
  * @function
- * @param {string} name - The name of the function.
+ * @param {string} name - The name of the function. Escape double quotes if needed.
  * @param {Enumeration} [method=a.matchMethod.matchAll] - An option from a.matchMethods, omit or pass null defaults
  ** to match all.
  * @param {undefined|string|RegExp} filter - The filter to apply, this must be appropriate for the method.
@@ -450,7 +462,7 @@ a.timewarp = (() => {
  * Defines a read-only property, must be called on document-start.
  * May not be able to lock the property's own properties.
  * @function
- * @param {string} name - The name of the property to define.
+ * @param {string} name - The name of the property to define. Escape double quotes if needed.
  * @param {Any} val - The value to set, must be convertible to string with String(...) and must have extra quotes if it
  ** is a literal string. If it is a funciton, it will lose its scope, if it is an object, you are responsible in making
  ** it into a string.
@@ -492,7 +504,7 @@ a.readOnly = (() => {
 /**
  * Defines a non-accessible property, must be called on document-start.
  * @function
- * @param {string} name - The name of the property to define.
+ * @param {string} name - The name of the property to define. Escape double quotes if needed.
  * @param {string} [parent="window"] - The parent object, use "." to separate layers.
  */
 a.noAccess = (() => {
@@ -567,7 +579,8 @@ a.cookie = (key, val, time = 31536000000, path = "/") => {
  * Generate a native HTML5 player with controls but not autoplay.
  * @function
  * @param {string} source - The source of the video.
- * @param {string} [type=(Auto Detect)] - The type of the video, will be automatically detected if not supplied, defaults to MP4.
+ * @param {string} [type=(Auto Detect)] - The type of the video, will be automatically detected if not supplied, defaults to MP4
+ ** if detection failed.
  * @param {string} [width="100%"] - The width of the player.
  * @param {string} [height="auto"] - The height of the player.
  * @return {string} An HTML string of the video player.
