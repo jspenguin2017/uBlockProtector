@@ -36,12 +36,12 @@ Chromium documentation is generated, which means it sometimes includes weird thi
 ### Requested permissions:
 
 * `tabs`: To inject CSS and to forcefully close a tab
+* `webRequest`: To modify response headers
+* `webRequestBlocking`: Not currently used, but can be useful in the future
 
 ### These permissions might be useful:
 
 * `cookies`: Could be useful when monitoring changes to a cookie is needed
-* `webRequest`: Could be useful when uBlock Origin's `resource.txt` does not have the resource I want
-* `webRequestBlocking`: Could be useful when a complex decision is needed
 
 # Credits
 
