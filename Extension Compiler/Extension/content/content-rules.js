@@ -2276,7 +2276,7 @@ if (a.domCmp(["gelbooru.com"])) {
     }
 }
 if (a.domCmp(["urle.co"])) {
-    a.filter("setTimeout", a.matchMethod.string, "captchaCheckAdblockUser();");
+    a.bait("div", "#test-block", true);
     a.filter("eval");
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
