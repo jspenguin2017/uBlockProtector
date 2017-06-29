@@ -106,9 +106,13 @@ if (a.debugMode) {
     chrome.webRequest.onHeadersReceived.addListener(
         (details) => {
             console.log(details);
+            //details.responseHeaders.push({
+            //    name: "Content-Security-Policy",
+            //    value: "worker-src blob:",
+            //});
             details.responseHeaders.push({
-                name: "Content-Security-Policy",
-                value: "worker-src *",
+                name: "Access-Control-Allow-Origin",
+                value: "https://vidlox.tv",
             });
             return { responseHeaders: details.responseHeaders };
         },
@@ -117,7 +121,8 @@ if (a.debugMode) {
                 "https://*.vidlox.tv/*",
             ],
             types: [
-                "main_frame",
+                //"main_frame",
+                "xmlhttprequest",
             ],
         },
         [

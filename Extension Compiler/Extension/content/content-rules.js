@@ -89,6 +89,7 @@ if (a.domCmp(["vidlox.tv", "vidoza.net", "dato.porn"])) {
     a.readOnly("cRAds", true);
     if (a.domCmp(["vidlox.tv"], true)) {
         a.readOnly("adb", 0);
+        a.filter("eval");
     }
     if (a.domCmp(["vidoza.net"], true)) {
         a.filter("open");

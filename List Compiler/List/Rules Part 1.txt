@@ -269,8 +269,6 @@ animeid.io,jkanime.co,gogoanime.ch,chiaanime.co##script:inject(setTimeout-defuse
 ! === comicallyincorrect.com
 @@||comicallyincorrect.com^$elemhide
 @@||comicincorrect.wpengine.netdna-cdn.com/wp-content/uploads/*
-! === vidlox.tv
-vidlox.tv##script:inject(noeval.js)
 ! === savetodrive.net
 savetodrive.net##script:inject(setTimeout-defuser.js, ad)
 ! === rarbgmirror.com, swfchan.net
