@@ -252,6 +252,7 @@ darmowe-pornosy.pl###porno_accept
 |https://$third-party,script,domain=hothardware.com,badfilter
 themarker.com##script:inject(abort-on-property-read.js, adblockDetector)
 themarker.com###ad-block-wrapper
+@@||jsuol.com.br/c/detectadblock/$script,domain=uol.com.br,badfilter
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================
