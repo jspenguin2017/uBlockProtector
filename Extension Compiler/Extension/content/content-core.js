@@ -345,7 +345,8 @@ a.bait = (type, identifier, hidden) => {
  * @param {Enumeration} [method=a.matchMethod.matchAll] - An option from a.matchMethods, omit or pass null defaults
  ** to match all.
  * @param {undefined|string|RegExp} filter - The filter to apply, this must be appropriate for the method.
- * @param {string} [parent="window"] - The name of the parent object, use "." to separate layers.
+ * @param {string} [parent="window"] - The name of the parent object, use "." or bracket notation to separate layers.
+ ** Escape double quotes if needed.
  */
 a.filter = (name, method, filter, parent = "window") => {
     a.inject(`(() => {
@@ -446,83 +447,61 @@ a.timewarp = (timer, method, filter, ratio = 0.02) => {
  * May not be able to lock the property's own properties.
  * @function
  * @param {string} name - The name of the property to define. Escape double quotes if needed.
- * @param {Any} val - The value to set, must be convertible to string with String(...) and must have extra quotes if it
- ** is a literal string. If it is a funciton, it will lose its scope, if it is an object, you are responsible in making
- ** it into a string.
- * @param {string} [parent="window"] - The name of the parent object, use "." to separate layers.
+ * @param {Any} val - The value to set, must have extra quotes if it is a literal string. If it is a funciton,
+ ** it will lose its scope, if it is an object, you are responsible in making it into a string.
+ * @param {string} [parent="window"] - The name of the parent object, use "." or bracket notation to separate layers.
+ ** Escape double quotes if needed.
  */
-a.readOnly = (() => {
-    const reMatcher1 = /@readonly-name/g;
-    const reMatcher2 = /@readonly-full-name/g;
-    return (name, val, parent = "window", silent) => {
-        let payload = () => {
-            "use strict";
-            const val = "@readonly-val";
-            //This is synchronous so I do not need to cache the reference of the console functions
-            try {
-                window.Object.defineProperty("@readonly-parent", "@readonly-name", {
-                    configurable: false,
-                    set() { },
-                    get() {
-                        return val;
-                    },
-                });
-                if ("@readonly-debug-mode") {
-                    window.console.warn("Defined read-only property @readonly-full-name");
-                }
-            } catch (err) {
-                window.console.error("uBlock Protector failed to define read-only property @readonly-full-name!");
+a.readOnly = (name, val, parent = "window") => {
+    a.inject(`(() => {
+        "use strict";
+        const val = ${val};
+        //This is synchronous so I do not need to cache the reference of the console functions
+        try {
+            window.Object.defineProperty(${parent}, "${name}", {
+                configurable: false,
+                set() { },
+                get() {
+                    return val;
+                },
+            });
+            if (${a.debugMode}) {
+                window.console.warn("Defined read-only property ${parent}.${name}");
             }
-        };
-        a.inject(
-            String(payload)
-                .replace(`"@readonly-val"`, String(val))
-                .replace(`"@readonly-parent"`, parent)
-                .replace(`"@readonly-debug-mode"`, String(a.debugMode))
-                .replace(reMatcher1, name)
-                .replace(reMatcher2, `${parent}.${name}`)
-        );
-    };
-})();
+        } catch (err) {
+            window.console.error("uBlock Protector failed to define read-only property ${parent}.${name}!");
+        }
+    })();`);
+};
 /**
  * Defines a non-accessible property, must be called on document-start.
  * @function
  * @param {string} name - The name of the property to define. Escape double quotes if needed.
- * @param {string} [parent="window"] - The name of the parent object, use "." to separate layers.
+ * @param {string} [parent="window"] - The name of the parent object, use "." or bracket notation to separate layers.
+ ** Escape double quotes if needed.
  */
-a.noAccess = (() => {
-    const reMatcher1 = /@noaccess-name/g;
-    const reMatcher2 = /@noaccess-full-name/g;
-    return (name, parent = "window") => {
-        let payload = () => {
-            "use strict";
-            const err = new window.Error("This property may not be accessed!");
-            try {
-                window.Object.defineProperty("@noaccess-parent", "@noaccess-name", {
-                    configurable: false,
-                    set() {
-                        throw err;
-                    },
-                    get() {
-                        throw err;
-                    },
-                });
-                if ("@noaccess-debug-mode") {
-                    window.console.warn("Defined non-accessible property @noaccess-full-name");
-                }
-            } catch (err) {
-                window.console.error("uBlock Protector failed to define non-accessible property @noaccess-full-name!");
+a.noAccess = (name, parent = "window") => {
+    a.inject(`(() => {
+        "use strict";
+        const err = new window.Error("This property may not be accessed!");
+        try {
+            window.Object.defineProperty(${parent}, "${name}", {
+                configurable: false,
+                set() {
+                    throw err;
+                },
+                get() {
+                    throw err;
+                },
+            });
+            if (${a.debugMode}) {
+                window.console.warn("Defined non-accessible property ${parent}.${name}");
             }
-        };
-        a.inject(
-            String(payload)
-                .replace(`"@noaccess-parent"`, parent)
-                .replace(`"@noaccess-debug-mode"`, String(a.debugMode))
-                .replace(reMatcher1, name)
-                .replace(reMatcher2, `${parent}.${name}`)
-        );
-    };
-})();
+        } catch (err) {
+            window.console.error("uBlock Protector failed to define non-accessible property ${parent}.${name}!");
+        }
+    })();`);
+};
 /**
  * Set or get a cookie.
  * @function
@@ -1011,11 +990,11 @@ a.generic.Adfly = () => {
 /**
  * Create a FuckAdBlock constructor and instance which always returns not detected.
  * @function
- * @param {string} constructorName - The name of the constructor.
- * @param {string} instanceName - The name of the instance.
+ * @param {string} constructorName - The name of the constructor. Escape double quotes if needed.
+ * @param {string} instanceName - The name of the instance. Escape double quotes if needed.
  */
 a.generic.FuckAdBlock = (constructorName, instanceName) => {
-    let payload = () => {
+    a.inject(`(() => {
         const errMsg = "Uncaught Error: FuckAdBlock uBlock Origin detector is not allowed on this device!";
         const error = window.console.error.bind(window.console);
         const patchedFuckAdBlock = function () {
@@ -1078,7 +1057,7 @@ a.generic.FuckAdBlock = (constructorName, instanceName) => {
         };
         //Define properties
         try {
-            window.Object.defineProperty(window, "@fuckadblock-constructor", {
+            window.Object.defineProperty(window, "${constructorName}", {
                 configurable: false,
                 set() { },
                 get() {
@@ -1086,7 +1065,7 @@ a.generic.FuckAdBlock = (constructorName, instanceName) => {
                 },
             });
             const instance = new patchedFuckAdBlock();
-            window.Object.defineProperty(window, "@fuckadblock-instance", {
+            window.Object.defineProperty(window, "${instanceName}", {
                 configurable: false,
                 set() { },
                 get() {
@@ -1096,12 +1075,7 @@ a.generic.FuckAdBlock = (constructorName, instanceName) => {
         } catch (err) {
             window.console.error("uBlock Protector failed to set up FuckAdBlock defuser!");
         }
-    };
-    a.inject(
-        String(payload)
-            .replace("@fuckadblock-constructor", constructorName)
-            .replace("@fuckadblock-instance", instanceName)
-    );
+    })();`);
 };
 /**
  * Set up ads.js v2 defuser, must be called on document-start.
