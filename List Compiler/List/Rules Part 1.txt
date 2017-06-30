@@ -184,8 +184,8 @@ youtube.com###companion
 @@||flashx.to/counter.cgi$script
 @@||flashx1.tv/jquery2.js$script
 ||static.flashx.tv/js/flashx.js$script
-@@||somethodox.info/popunder.gif$xmlhttprequest,domain=flashx.tv
-||somethodox.info/?&subid=*&pid=*&tid=*$beacon,image,domain=flashx.tv
+@@||/popunder.gif$xmlhttprequest,domain=flashx.tv
+||static.flashx.tv/img/player.png$image
 ! === linkneverdie.com
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/146
 @@||linkneverdie.com^$elemhide

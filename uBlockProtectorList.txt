@@ -131,8 +131,8 @@ youtube.com###companion
 @@||flashx.to/counter.cgi$script
 @@||flashx1.tv/jquery2.js$script
 ||static.flashx.tv/js/flashx.js$script
-@@||somethodox.info/popunder.gif$xmlhttprequest,domain=flashx.tv
-||somethodox.info/?&subid=*&pid=*&tid=*$beacon,image,domain=flashx.tv
+@@||/popunder.gif$xmlhttprequest,domain=flashx.tv
+||static.flashx.tv/img/player.png$image
 @@||linkneverdie.com^$elemhide
 pogdesign.co.uk##.replace
 ||p207208.clksite.com^$subdocument,redirect=noopframe,domain=ally.sh|al.ly
