@@ -254,6 +254,7 @@ themarker.com###ad-block-wrapper
 @@||jsuol.com.br/c/detectadblock/$script,domain=uol.com.br,badfilter
 @@*$csp,domain=vidlox.tv
 ||noticiasautomotivas.com.br/cdn-cgi/apps/head/*.js$script
+||zeusnews.it/antiadb.js
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================
