@@ -178,47 +178,48 @@ a.matchMethod = {
 a.getMatcher = (method, filter) => {
     switch (method) {
         case a.matchMethod.string:
-            return String((args) => {
+            return `(args) => {
                 for (let i = 0; i < args.length; i++) {
-                    if (String(args[i]).includes("@matcher-filter")) {
+                    if (String(args[i]).includes("${filter}")) {
                         return true;
                     }
                 }
                 return false;
-            }).replace("@matcher-filter", filter);
+            }`;
         case a.matchMethod.stringExact:
-            return String((args) => {
+            return `(args) => {
                 for (let i = 0; i < args.length; i++) {
-                    if ("@matcher-filter" === String(args[i])) {
+                    if ("${filter}" === String(args[i])) {
                         return true;
                     }
                 }
                 return false;
-            }).replace("@matcher-filter", filter);
+            }`;
         case a.matchMethod.RegExp:
-            return String((args) => {
-                const matcher = "@matcher-filter";
+            return `(args) => {
+                const matcher = ${filter};
                 for (let i = 0; i < args.length; i++) {
                     if (matcher.test(String(args[i]))) {
                         return true;
                     }
                 }
                 return false;
-            }).replace(`"@matcher-filter"`, String(filter));
+            }`;
             break;
         default:
             //Match all
-            return String(() => true);
+            return `() => true`;
     }
 };
 /**
  * Inject standalone script to the page.
  * @function
- * @param {Function|string} payload - The script to inject, it must an anonymous function.
+ * @param {Function|string} payload - The script to inject.
+ * @param {boolean} [isReady=false] - Set this to true if the payload does not need a wrapper.
  */
-a.inject = (payload) => {
+a.inject = (payload, isReady) => {
     let s = document.createElement("script");
-    s.textContent = `(${payload})();`;
+    s.textContent = isReady ? payload : `(${payload})();`;
     try {
         document.documentElement.prepend(s);
         s.remove();
@@ -344,61 +345,51 @@ a.bait = (type, identifier, hidden) => {
  * @param {Enumeration} [method=a.matchMethod.matchAll] - An option from a.matchMethods, omit or pass null defaults
  ** to match all.
  * @param {undefined|string|RegExp} filter - The filter to apply, this must be appropriate for the method.
- * @param {string} [parent="window"] - The parent object, use "." to separate layers.
+ * @param {string} [parent="window"] - The name of the parent object, use "." to separate layers.
  */
-a.filter = (() => {
-    const reMatcher = /@filter-full-name|"@filter-original"|FILTER_REPLACE/g;
-    return (name, method, filter, parent = "window") => {
-        let payload = () => {
-            "use strict";
-            let matcher = "@filter-matcher";
-            //Cache console functions as some web pages do change them
-            const info = window.console.info.bind(window.console);
-            const warn = window.console.warn.bind(window.console);
-            const error = window.console.error.bind(window.console);
-            //The original funciton, will be set later
-            let parent, original;
-            //The replacement function with filters
-            const newFunc = (...args) => {
-                //Call log
-                if ("@filter-debug-mode") {
-                    warn("@filter-full-name is called with these arguments:");
-                    for (let i = 0; i < args.length; i++) {
-                        warn(String(args[i]));
-                    }
+a.filter = (name, method, filter, parent = "window") => {
+    a.inject(`(() => {
+        "use strict";
+        let matcher = ${a.getMatcher(method, filter)};
+        //Cache console functions as some web pages do change them
+        const info = window.console.info.bind(window.console);
+        const warn = window.console.warn.bind(window.console);
+        const error = window.console.error.bind(window.console);
+        //The original funciton, will be set later
+        let parent, original;
+        //The replacement function with filters
+        const newFunc = (...args) => {
+            //Call log
+            if (${a.debugMode}) {
+                warn("${parent}.${name} is called with these arguments:");
+                for (let i = 0; i < args.length; i++) {
+                    warn(String(args[i]));
                 }
-                //Apply filter
-                if (matcher(args)) {
-                    //Not allowed log
-                    error("Uncaught Error: uBlock Origin detectors are not allowed on this device!");
-                } else {
-                    //Allowed log
-                    info("Tests passed.");
-                    return original.apply(parent, args);
-                }
-            };
-            //Try to replace the function
-            try {
-                parent = "@filter-parent";
-                original = "@filter-original";
-                //Replace
-                FILTER_REPLACE = newFunc;
-                //Activate log
-                warn("Filter activated on @filter-full-name");
-            } catch (err) {
-                //Failed to activate
-                error("uBlock Protector failed to activate filter on @filter-full-name!");
+            }
+            //Apply filter
+            if (matcher(args)) {
+                //Not allowed log
+                error("Uncaught Error: uBlock Origin detectors are not allowed on this device!");
+            } else {
+                //Allowed log
+                info("Tests passed.");
+                return original.apply(parent, args);
             }
         };
-        a.inject(
-            String(payload)
-                .replace(`"@filter-matcher"`, a.getMatcher(method, filter))
-                .replace(`"@filter-debug-mode"`, String(a.debugMode))
-                .replace(`"@filter-parent"`, parent)
-                .replace(reMatcher, `${parent}.${name}`)
-        );
-    };
-})();
+        //Try to replace the function
+        try {
+            parent = ${parent};
+            original = ${parent}["${name}"];
+            //Replace
+            ${parent}["${name}"] = newFunc;
+            //Activate log
+            warn("Filter activated on ${parent}.${name}");
+        } catch (err) {
+            //Failed to activate
+            error("uBlock Protector failed to activate filter on ${parent}.${name}!");
+        }
+    })();`, true);
+};
 /**
  * Change the execution delay for setTimeout or setInterval, must be called on document-start.
  * @function
@@ -409,57 +400,47 @@ a.filter = (() => {
  * @param {float} [ratio=0.02] - The boost ratio, between 0 and 1 for speed up, larger than 1 for slow down, defaults to
  ** speed up 50 times.
  */
-a.timewarp = (() => {
-    const reMatcher = /@timewarp-timer|"@timewarp-original"|TIMEWARP_REPLACE/g;
-    return (timer, method, filter, ratio = 0.02) => {
-        let payload = () => {
-            "use strict";
-            let matcher = "@timewarp-matcher";
-            //Cache console functions as some web pages do change them
-            const info = window.console.info.bind(window.console);
-            const warn = window.console.warn.bind(window.console);
-            const error = window.console.error.bind(window.console);
-            //The original funciton, will be set later
-            let original;
-            //The replacement function with filters
-            const newFunc = (...args) => {
-                //Call log
-                if ("@timewarp-debug-mode") {
-                    warn("@timewarp-timer is called with these arguments:");
-                    for (let i = 0; i < args.length; i++) {
-                        warn(String(args[i]));
-                    }
+a.timewarp = (timer, method, filter, ratio = 0.02) => {
+    a.inject(`(() => {
+        "use strict";
+        let matcher = ${a.getMatcher(method, filter)};
+        //Cache console functions as some web pages do change them
+        const info = window.console.info.bind(window.console);
+        const warn = window.console.warn.bind(window.console);
+        const error = window.console.error.bind(window.console);
+        //The original funciton, will be set later
+        let original;
+        //The replacement function with filters
+        const newFunc = (...args) => {
+            //Call log
+            if (${a.debugMode}) {
+                warn("window.${timer} is called with these arguments:");
+                for (let i = 0; i < args.length; i++) {
+                    warn(String(args[i]));
                 }
-                //Apply filter
-                if (matcher(args)) {
-                    error("Timewarped.");
-                    args[1] *= TIMEWARP_RATIO;
-                } else {
-                    info("Not timewarped.");
-                }
-                return original.apply(window, args);
-            };
-            //Try to replace the function
-            try {
-                original = "@timewarp-original";
-                //Replace
-                TIMEWARP_REPLACE = newFunc;
-                //Activate log
-                warn("Timewarp activated on @timewarp-timer");
-            } catch (err) {
-                //Failed to activate
-                error("uBlock Protector failed to activate filter on @timewarp-timer!");
             }
+            //Apply filter
+            if (matcher(args)) {
+                error("Timewarped.");
+                args[1] *= ${ratio};
+            } else {
+                info("Not timewarped.");
+            }
+            return original.apply(window, args);
         };
-        a.inject(
-            String(payload)
-                .replace(`"@timewarp-matcher"`, a.getMatcher(method, filter))
-                .replace(`"@timewarp-debug-mode"`, String(a.debugMode))
-                .replace("TIMEWARP_RATIO", String(ratio))
-                .replace(reMatcher, `window.${timer}`)
-        );
-    };
-})();
+        //Try to replace the function
+        try {
+            original = window.${timer};
+            //Replace
+            window.${timer} = newFunc;
+            //Activate log
+            warn("Timewarp activated on window.${timer}");
+        } catch (err) {
+            //Failed to activate
+            error("uBlock Protector failed to activate filter on window.${timer}!");
+        }
+    })();`, true);
+};
 /**
  * Defines a read-only property, must be called on document-start.
  * May not be able to lock the property's own properties.
@@ -468,7 +449,7 @@ a.timewarp = (() => {
  * @param {Any} val - The value to set, must be convertible to string with String(...) and must have extra quotes if it
  ** is a literal string. If it is a funciton, it will lose its scope, if it is an object, you are responsible in making
  ** it into a string.
- * @param {string} [parent="window"] - The parent object, use "." to separate layers.
+ * @param {string} [parent="window"] - The name of the parent object, use "." to separate layers.
  */
 a.readOnly = (() => {
     const reMatcher1 = /@readonly-name/g;
@@ -507,7 +488,7 @@ a.readOnly = (() => {
  * Defines a non-accessible property, must be called on document-start.
  * @function
  * @param {string} name - The name of the property to define. Escape double quotes if needed.
- * @param {string} [parent="window"] - The parent object, use "." to separate layers.
+ * @param {string} [parent="window"] - The name of the parent object, use "." to separate layers.
  */
 a.noAccess = (() => {
     const reMatcher1 = /@noaccess-name/g;
