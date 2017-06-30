@@ -405,3 +405,5 @@ themarker.com###ad-block-wrapper
 ! === abc.go.com
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/338
 @@||edgedatg.com^$script,domain=abc.go.com
+! === zeusnews.it
+||zeusnews.it/antiadb.js
