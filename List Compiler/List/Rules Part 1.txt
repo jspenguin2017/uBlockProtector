@@ -400,8 +400,6 @@ themarker.com###ad-block-wrapper
 @@||jsuol.com.br/c/detectadblock/$script,domain=uol.com.br,badfilter
 ! === vidlox.tv
 @@*$csp,domain=vidlox.tv
-! === noticiasautomotivas.com.br
-||noticiasautomotivas.com.br/cdn-cgi/apps/head/*.js$script
 ! === abc.go.com
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/338
 @@||edgedatg.com^$script,domain=abc.go.com

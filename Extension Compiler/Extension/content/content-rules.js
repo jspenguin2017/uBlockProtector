@@ -1692,11 +1692,11 @@ if (a.domCmp(["mybank.pl", "rapidgrab.pl"])) {
 }
 if (a.domCmp(["linkdrop.net", "revclouds.com", "leporno.org", "uploadshub.com", "dasolo.org",
     "fullstuff.net", "zeusnews.it", "cheminots.net", "lolsy.tv", "animes-mangas-ddl.com",
-    "noticiasautomotivas.com.br", "darkstars.org", "corepacks.com", "naturalbd.com",
+    "darkstars.org", "corepacks.com", "naturalbd.com", "yourlifeupdated.net", "computerworm.net",
     "coolsoft.altervista.org", "openload.us", "cda-online.pl", "urbanplanet.org", "mamahd.com",
     "sadeempc.com", "avmoo.com", "thailande-fr.com", "btaia.com", "tusoft.org", "hisse.net",
     "europeup.com", "nrj.fr", "srnk.co", "animmex.co", "socketloop.com", "crackhex.com",
-    "revealedtricks4u.com", "pizzamaking.com", "computerworm.net", "yourlifeupdated.net"])) {
+    "revealedtricks4u.com", "pizzamaking.com"])) {
     a.filter("setTimeout", a.matchMethod.string, "bab_elementid");
 }
 if (a.domCmp(["fourchette-et-bikini.fr", "meteocity.com"])) {
@@ -2616,4 +2616,7 @@ if (a.domCmp(["adshort.co", "linksh.top", "adshorte.com"])) {
 }
 if (a.domCmp(["gamersclub.com.br", "uploadboy.com", "vidoza.net", "videohelp.com"])) {
     a.generic.adsjsV2();
+}
+if (a.domCmp(["noticiasautomotivas.com.br"])) {
+    a.css("html, body { overflow:scroll; } cloudflare-app[app-id='no-adblock'] { display:none; }", true);
 }
