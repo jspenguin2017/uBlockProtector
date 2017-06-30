@@ -20,7 +20,6 @@
       "js": [
         "common.js",
         "content/lib/jquery-3.2.1.min.js",
-        "content/lib/yamd5.min.js",
         "content/content-core.js",
         "content/content-rules.js",
         "content/content-debug.js",

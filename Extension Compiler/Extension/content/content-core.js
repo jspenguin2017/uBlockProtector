@@ -34,9 +34,11 @@ a.isTopFrame = (() => {
 })();
 /**
  * Shortcut for YaMD5.hashStr(str).
+ * Disabled since it is never used. To enable, uncomment the line below and add "content/lib/yamd5.min.js"
+ * to the manifest.
  * @const {Function}
  */
-a.md5 = (str) => YaMD5.hashStr(str);
+//a.md5 = (str) => YaMD5.hashStr(str);
 /**
  * Shortcut for addEventListener(...args).
  * @const {Function}
