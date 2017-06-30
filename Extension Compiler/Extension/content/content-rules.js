@@ -2607,7 +2607,7 @@ if (a.domCmp(["cutwin.com"])) {
     a.bait("div", "#test-block", true);
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
-if (a.domCmp(["adshort.co", "linksh.top"])) {
+if (a.domCmp(["adshort.co", "linksh.top", "adshorte.com"])) {
     a.bait("div", "#test-block", true);
     a.noAccess("_pop");
     a.noAccess("F3Z9");
