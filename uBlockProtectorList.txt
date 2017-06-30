@@ -253,7 +253,6 @@ themarker.com##script:inject(abort-on-property-read.js, adblockDetector)
 themarker.com###ad-block-wrapper
 @@||jsuol.com.br/c/detectadblock/$script,domain=uol.com.br,badfilter
 @@*$csp,domain=vidlox.tv
-||noticiasautomotivas.com.br/cdn-cgi/apps/head/*.js$script
 @@||edgedatg.com^$script,domain=abc.go.com
 ||zeusnews.it/antiadb.js
 @@||static.ipornia.com^$image,domain=ipornia.hdzog.com
