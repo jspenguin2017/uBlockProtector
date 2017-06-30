@@ -105,7 +105,6 @@ if (a.debugMode) {
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/209
     chrome.webRequest.onHeadersReceived.addListener(
         (details) => {
-            console.log(details);
             //details.responseHeaders.push({
             //    name: "Content-Security-Policy",
             //    value: "worker-src blob:",
@@ -114,6 +113,7 @@ if (a.debugMode) {
                 name: "Access-Control-Allow-Origin",
                 value: "https://vidlox.tv",
             });
+            console.log(details);
             return { responseHeaders: details.responseHeaders };
         },
         {
@@ -128,6 +128,31 @@ if (a.debugMode) {
         [
             "blocking",
             "responseHeaders",
+        ],
+    );
+    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/338
+    chrome.webRequest.onBeforeSendHeaders.addListener(
+        (details) => {
+            details.requestHeaders.push({
+                name: "X-Forwarded-For",
+                value: "107.77.200.10",
+            });
+            details.requestHeaders.push({
+                name: "Client-IP",
+                value: "107.77.200.10",
+            });
+            console.log(details);
+            return { requestHeaders: details.requestHeaders };
+        },
+        {
+            urls: [
+                "https://*.go.com/*",
+                "http://*.go.com/*",
+            ],
+        },
+        [
+            "blocking",
+            "requestHeaders",
         ],
     );
 }

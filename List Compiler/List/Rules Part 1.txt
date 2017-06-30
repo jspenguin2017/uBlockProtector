@@ -392,7 +392,6 @@ diariodenavarra.es###abMsgWrap
 ! === NSFW! darmowe-pornosy.pl
 darmowe-pornosy.pl###porno_accept
 ! === hothardware.com
-! === Remove broken EasyList filter
 |https://$third-party,script,domain=hothardware.com,badfilter
 ! === themarker.com
 themarker.com##script:inject(abort-on-property-read.js, adblockDetector)
@@ -403,3 +402,6 @@ themarker.com###ad-block-wrapper
 @@*$csp,domain=vidlox.tv
 ! === noticiasautomotivas.com.br
 ||noticiasautomotivas.com.br/cdn-cgi/apps/head/*.js$script
+! === abc.go.com
+! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/338
+@@||edgedatg.com^$script,domain=abc.go.com
