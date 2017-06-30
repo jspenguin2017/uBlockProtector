@@ -471,7 +471,7 @@ a.readOnly = (name, val, parent = "window") => {
         } catch (err) {
             window.console.error("uBlock Protector failed to define read-only property ${parent}.${name}!");
         }
-    })();`);
+    })();`, true);
 };
 /**
  * Defines a non-accessible property, must be called on document-start.
@@ -500,7 +500,7 @@ a.noAccess = (name, parent = "window") => {
         } catch (err) {
             window.console.error("uBlock Protector failed to define non-accessible property ${parent}.${name}!");
         }
-    })();`);
+    })();`, true);
 };
 /**
  * Set or get a cookie.
