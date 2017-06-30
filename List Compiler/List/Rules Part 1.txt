@@ -407,3 +407,6 @@ themarker.com###ad-block-wrapper
 @@||edgedatg.com^$script,domain=abc.go.com
 ! === zeusnews.it
 ||zeusnews.it/antiadb.js
+! === hdzog.com
+@@||static.ipornia.com^$image,domain=ipornia.hdzog.com
+hdzog.com##.msg-adblock.msg
