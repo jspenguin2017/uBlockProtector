@@ -401,3 +401,5 @@ themarker.com###ad-block-wrapper
 @@||jsuol.com.br/c/detectadblock/$script,domain=uol.com.br,badfilter
 ! === vidlox.tv
 @@*$csp,domain=vidlox.tv
+! === noticiasautomotivas.com.br
+||noticiasautomotivas.com.br/cdn-cgi/apps/head/*.js$script
