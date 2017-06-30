@@ -214,7 +214,7 @@ a.getMatcher = (method, filter) => {
 /**
  * Inject standalone script to the page.
  * @function
- * @param {Function|string} payload - The script to inject.
+ * @param {string|Function} payload - The script to inject.
  * @param {boolean} [isReady=false] - Set this to true if the payload does not need a wrapper.
  */
 a.inject = (payload, isReady) => {
@@ -1075,7 +1075,7 @@ a.generic.FuckAdBlock = (constructorName, instanceName) => {
         } catch (err) {
             window.console.error("uBlock Protector failed to set up FuckAdBlock defuser!");
         }
-    })();`);
+    })();`, true);
 };
 /**
  * Set up ads.js v2 defuser, must be called on document-start.
