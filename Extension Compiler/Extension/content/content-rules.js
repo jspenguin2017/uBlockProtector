@@ -1945,7 +1945,17 @@ if (a.domCmp(["undeniable.info"])) {
 }
 if (a.domInc(["gamereactor"])) {
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/124
+    a.cookie("overlayMessage", "1");
+    //Skip welcome page
     a.cookie("countdownToAd", "-1");
+    a.ready(() => {
+        const spans = document.querySelectorAll("span");
+        for (let i = 0; i < spans.length; i++) {
+            if (spans[i].innerHTML === "Continue to Gamereactor.eu") {
+                location.reload();
+            }
+        }
+    });
 }
 if (a.domCmp(["dasolo.co"])) {
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/126
