@@ -155,4 +155,29 @@ if (a.debugMode) {
             "requestHeaders",
         ],
     );
+    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/343
+    chrome.webRequest.onBeforeSendHeaders.addListener(
+        (details) => {
+            //for (let i = 0; i < details.requestHeaders.length; i++) {
+            //    if (details.requestHeaders[i].name === "Cookie") {
+            //        details.requestHeaders.splice(i, 1);
+            //    }
+            //}
+            console.log(details);
+            return { requestHeaders: details.requestHeaders };
+        },
+        {
+            urls: [
+                "https://*.gamereactor.eu/*",
+                "http://*.gamereactor.eu/*",
+            ],
+            types: [
+                "main_frame",
+            ],
+        },
+        [
+            "blocking",
+            "requestHeaders",
+        ],
+    );
 }
