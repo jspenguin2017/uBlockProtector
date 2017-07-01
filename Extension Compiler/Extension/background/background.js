@@ -156,28 +156,43 @@ if (a.debugMode) {
         ],
     );
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/343
-    chrome.webRequest.onBeforeSendHeaders.addListener(
-        (details) => {
-            //for (let i = 0; i < details.requestHeaders.length; i++) {
-            //    if (details.requestHeaders[i].name === "Cookie") {
-            //        details.requestHeaders.splice(i, 1);
-            //    }
-            //}
-            console.log(details);
-            return { requestHeaders: details.requestHeaders };
-        },
-        {
-            urls: [
-                "https://*.gamereactor.eu/*",
-                "http://*.gamereactor.eu/*",
+    {
+        //Generate cookie value
+        const mkVal = () => {
+            const timestamp = Math.floor((new Date()).getTime() / 1000) + 1000;
+            return `10_${timestamp}`;
+        };
+        //The cookie matcher
+        const reMatcher = /countdownToAd=[^;]+/;
+        //Listen and modify headers
+        chrome.webRequest.onBeforeSendHeaders.addListener(
+            (details) => {
+                for (let i = 0; i < details.requestHeaders.length; i++) {
+                    if (details.requestHeaders[i].name === "Cookie") {
+                        if (details.requestHeaders[i].value.includes("countdownToAd=")) {
+                            details.requestHeaders[i].value =
+                                details.requestHeaders[i].value.replace(reMatcher, `countdownToAd=${mkVal()}`);
+                        } else {
+                            details.requestHeaders[i].value += `; countdownToAd=${mkVal()}`;
+                        }
+                    }
+                }
+                console.log(details);
+                return { requestHeaders: details.requestHeaders };
+            },
+            {
+                urls: [
+                    "https://*.gamereactor.eu/*",
+                    "http://*.gamereactor.eu/*",
+                ],
+                types: [
+                    "main_frame",
+                ],
+            },
+            [
+                "blocking",
+                "requestHeaders",
             ],
-            types: [
-                "main_frame",
-            ],
-        },
-        [
-            "blocking",
-            "requestHeaders",
-        ],
-    );
+        );
+    }
 }
