@@ -118,10 +118,10 @@ a.domCmp = (domList, noErr) => {
 /**
  * Same as a.domCmp(), but only compare one domain.
  * @function
- * @param {string} dom - The domain to compare
+ * @param {string} dom - The domain to compare.
  */
 /*
-//Does not seem to change anything
+//Does not make a difference
 a.domCmpOnce = (dom, noErr) => {
     if (document.domain.endsWith(dom) &&
         (document.domain.length === dom.length ||
@@ -162,10 +162,10 @@ a.domInc = (domList, noErr) => {
 /**
  * Same as a.domInc(), but only compare one domain.
  * @function
- * @param {string} dom - The domain to compare
+ * @param {string} dom - The domain to compare.
  */
 /*
-//Does not seem to change anything
+//Does not make a difference
 a.domIncOnce = (dom, noErr) => {
     let index = document.domain.lastIndexOf(dom + ".");
     //Make sure the character before, if exists, is "."

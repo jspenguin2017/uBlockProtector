@@ -1,4 +1,4 @@
-//Check the functionality of Core
+//Check the functionality of content Core
 "use strict";
 
 console.log("=====2-test-2-content-core.node.js starts=====");
