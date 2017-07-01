@@ -115,10 +115,10 @@ if (a.debugMode) {
                 setTimeout(handler, 1000);
                 return;
             }
-            let payload = () => {
+            a.inject(`(() => {
                 //Find video ID
                 let id;
-                const magic = "@solution-event-magic";
+                const magic = "${magic}";
                 try {
                     id = window.__STATE__.dataSources.article[0].videos[0].data.mediaGuid;
                     if (!id) {
@@ -132,11 +132,7 @@ if (a.debugMode) {
                         detail: " ",
                     }));
                 }
-            };
-            a.inject(
-                String(payload)
-                    .replace("@solution-event-magic", magic)
-            );
+            })();`, true);
         };
         const parser = (data) => {
             //Parse response

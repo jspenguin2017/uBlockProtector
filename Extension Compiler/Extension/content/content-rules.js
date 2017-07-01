@@ -290,8 +290,7 @@ if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl", "sportowefakty.wp.pl", "
     let isInBackground = false; //A flag to prevent excessive CPU usage when the tab is in background
     //The player container matcher
     let containerMatcher = ".wp-player-outer, .player__container, .wp-player, .embed-container";
-    const reMatcher1 = /"@solution-mid-array1-lenth"/g;
-    const reMatcher2 = /mid[=,](\d+)/;
+    const reMatcher = /mid[=,](\d+)/;
     const reMagicValidator = /^\d+$/;
     //Mid extracting method 1 magic listener
     const magic = a.uid();
@@ -310,35 +309,30 @@ if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl", "sportowefakty.wp.pl", "
         //Log media ID arrays
         a.debugMode && console.log(midArray1, midArray2);
         //Mid extracting method 1
-        let payload = () => {
+        a.inject(`(() => {
             "use strict";
             try {
-                if (window.WP.player.list.length > "@solution-mid-array1-lenth") {
-                    let thisMid = window.WP.player.list["@solution-mid-array1-lenth"].p.url;
+                if (window.WP.player.list.length > ${midArray1.length}) {
+                    let thisMid = window.WP.player.list[${midArray1.length}].p.url;
                     if (thisMid) {
                         thisMid = thisMid.substring(thisMid.lastIndexOf("=") + 1);
                     }
                     //Extra safety check
                     if (thisMid) {
-                        window.dispatchEvent(new window.CustomEvent("@solution-event-magic", {
+                        window.dispatchEvent(new window.CustomEvent("${magic}", {
                             detail: thisMid,
                         }));
                     }
                 }
             } catch (err) { }
-        };
-        a.inject(
-            String(payload)
-                .replace(reMatcher1, midArray1.length)
-                .replace("@solution-event-magic", magic)
-        );
+        })();`, true);
         //Mid extracting method 2
         if ($(containerMatcher).length > 0) {
             const elem = $(containerMatcher).first().find(".titlecont a.title");
             let thisMid = elem.attr("href");
             //Check if I got the element
             if (thisMid) {
-                thisMid = reMatcher2.exec(thisMid)[1].toString();
+                thisMid = reMatcher.exec(thisMid)[1].toString();
                 //I will destroy the player soon anyway, I will remove this now so I will not extract it twice
                 elem.remove();
             }
@@ -677,14 +671,10 @@ if (a.domCmp(["richonrails.com"])) {
             },
             success(result) {
                 const exec = result.replace("$('.article-content')", "$('.article-content-2')");
-                let payload = () => {
+                a.inject(`(() => {
                     "use strict";
-                    window.eval("@solution-payload");
-                };
-                a.inject(
-                    String(payload)
-                        .replace("@solution-payload", exec)
-                );
+                    ${exec}
+                })();`, true);
             },
         });
     });
@@ -1272,7 +1262,7 @@ if (a.domCmp(["kissanime.com", "kissanime.to", "kissanime.ru"])) {
         $("iframe[id^='adsIfrme'], .divCloseBut").remove();
     });
     a.ready(() => {
-        let payload = () => {
+        a.inject(`(() => {
             "use strict";
             const divContentVideo = window.document.getElementById("divContentVideo");
             if (window.DoDetect2) {
@@ -1284,14 +1274,10 @@ if (a.domCmp(["kissanime.com", "kissanime.to", "kissanime.ru"])) {
                     divContentVideo.innerHTML = "";
                     window.DoHideFake();
                     divContentVideo.appendChild(divDownload);
-                    window.dispatchEvent(new window.CustomEvent("@solution-event-magic"));
+                    window.dispatchEvent(new window.CustomEvent("${magic}"));
                 }, 5500);
             }
-        };
-        a.inject(
-            String(payload)
-                .replace("@solution-event-magic", magic)
-        );
+        })();`, true);
     });
 }
 if (a.domCmp(["kissanime.io"])) {
@@ -1406,7 +1392,7 @@ if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "pl
             return;
         }
         //Check player existance
-        if (document.getElementById("video-player")) {
+        if (!document.getElementById("video-player")) {
             setTimeout(handler, 1000);
             return;
         }
@@ -1417,20 +1403,16 @@ if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "pl
                 videoID = tmp[1];
             }
         } else {
-            let payload = () => {
+            a.inject(`(() => {
                 "use strict";
                 try {
-                    if (vfAvodpConfig.videoId) {
-                        window.dispatchEvent(new window.CustomEvent("@solution-event-magic"), {
-                            detail: vfAvodpConfig.videoId,
+                    if (window.vfAvodpConfig.videoId) {
+                        window.dispatchEvent(new window.CustomEvent("${magic}"), {
+                            detail: window.vfAvodpConfig.videoId,
                         });
                     }
                 } catch (err) { }
-            };
-            a.inject(
-                String(payload)
-                    .replace("@solution-event-magic", magic)
-            );
+            })();`, true);
         }
         //Assume failed if no event dispatched in 1 second
         setTimeout(() => {
