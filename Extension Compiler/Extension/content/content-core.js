@@ -116,6 +116,21 @@ a.domCmp = (domList, noErr) => {
     return false;
 };
 /**
+ * Same as a.domCmp(), but only compare one domain.
+ * @function
+ * @param {string} dom - The domain to compare
+ */
+a.domCmpOnce = (dom, noErr) => {
+    if (document.domain.endsWith(dom) &&
+        (document.domain.length === dom.length ||
+            document.domain.charAt(document.domain.length - dom.length - 1) === '.')) {
+        !noErr && a.err();
+        return true;
+    } else {
+        return false;
+    }
+};
+/**
  * Check if current domain includes one of the strings that is in the list.
  * "example" will match domains that matches /(^|.*\.)example\.[^\.]*$/.
  * "git.example" will match domains that matches /(^|.*\.)git\.example\.[^\.]*$/.
@@ -137,6 +152,25 @@ a.domInc = (domList, noErr) => {
                 !noErr && a.err();
                 return true;
             }
+        }
+    }
+    return false;
+};
+/**
+ * Same as a.domInc(), but only compare one domain.
+ * @function
+ * @param {string} dom - The domain to compare
+ */
+a.domIncOnce = (dom, noErr) => {
+    let index = document.domain.lastIndexOf(dom + ".");
+    //Make sure the character before, if exists, is "."
+    if (index > 0 && document.domain.charAt(index - 1) !== '.') {
+        return false;
+    }
+    if (index > -1) {
+        if (!document.domain.substring(index + dom.length + 1).includes(".")) {
+            !noErr && a.err();
+            return true;
         }
     }
     return false;
