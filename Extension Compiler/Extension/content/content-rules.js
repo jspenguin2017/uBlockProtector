@@ -1724,18 +1724,14 @@ if (a.domCmp(["hanime.tv"])) {
     addEventListener(magic, () => {
         a.forceClose();
     });
-    let payload = () => {
+    a.inject(`(() => {
         "use strict";
         const _open = window.open;
         window.open = (...args) => {
             _open.apply(window, args);
-            window.dispatchEvent(new window.CustomEvent("@solution-event-magic"));
+            window.dispatchEvent(new window.CustomEvent("${magic}"));
         };
-    };
-    a.inject(
-        String(payload)
-            .replace("@solution-event-magic", magic)
-    );
+    })();`, true);
     //Old solution, I will run it just in case
     a.readOnly("BetterJsPop", () => { });
 }
@@ -2338,7 +2334,7 @@ if (a.domCmp(["canalplus.fr"])) {
         //Get the original player
         videoElem = $("#onePlayerHolder");
     });
-    let payload = () => {
+    a.inject(`(() => {
         "use strict";
         let original; //Will be set later
         let currentVideoId = null; //So I do not switch unless it is different
@@ -2354,7 +2350,7 @@ if (a.domCmp(["canalplus.fr"])) {
         };
         //Video switcher
         const videoSwitcher = function (videoID) {
-            window.dispatchEvent(new window.CustomEvent("@solution-event-magic", {
+            window.dispatchEvent(new window.CustomEvent("${magic}", {
                 detail: videoID,
             }));
         };
@@ -2370,11 +2366,7 @@ if (a.domCmp(["canalplus.fr"])) {
                 videoSwitcher(currentVideoId);
             }
         });
-    };
-    a.inject(
-        String(payload)
-            .replace("@solution-event-magic", magic)
-    );
+    })();`, true);
 }
 if (a.domCmp(["translatica.pl"])) {
     a.readOnly("adblock", false);
