@@ -1884,7 +1884,7 @@ if (a.domCmp(["zap.in"])) {
         });
     });
 }
-if (a.domCmp(["adbull.me", "freepdf-books.com", "bc.vc", "themeslide.com", "linkdrop.net"])) {
+if (a.domCmp(["freepdf-books.com", "bc.vc", "themeslide.com", "linkdrop.net"])) {
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
 if (a.domCmp(["shink.in"])) {
@@ -2579,7 +2579,7 @@ if (a.domCmp(["lne.es"])) {
         });
     });
 }
-if (a.domCmp(["cutwin.com"])) {
+if (a.domCmp(["cutwin.com", "adbull.me"])) {
     a.bait("div", "#test-block", true);
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
