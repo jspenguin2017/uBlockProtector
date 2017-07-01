@@ -1,5 +1,4 @@
-//Injected code must access properties of "window" by "window.propertyName" or "window[propertyName]"
-//Injected code must not use the "chrome" object
+//The core library for content rules, this library does not use domlib
 "use strict";
 
 //=====Initializer=====
@@ -32,13 +31,6 @@ a.isTopFrame = (() => {
         return false;
     }
 })();
-/**
- * Shortcut for YaMD5.hashStr(str).
- * Disabled since it is never used. To enable, uncomment the line below and add "content/lib/yamd5.min.js"
- * to the manifest.
- * @const {Function}
- */
-//a.md5 = (str) => YaMD5.hashStr(str);
 /**
  * Shortcut for addEventListener(...args).
  * @const {Function}

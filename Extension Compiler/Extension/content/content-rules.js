@@ -51,7 +51,8 @@
 if (a.domCmp(["blockadblock.com"])) {
     a.filter("eval");
     a.ready(() => {
-        $("#babasbmsgx").remove();
+        const elem = document.getElementById("babasbmsgx");
+        elem && elem.remove();
     });
 }
 if (a.domCmp(["sc2casts.com"])) {

@@ -19,7 +19,7 @@
       "all_frames": true,
       "js": [
         "common.js",
-        "content/lib/jquery-3.2.1.min.js",
+        "content/content-domlib.js",
         "content/content-core.js",
         "content/content-rules.js",
         "content/content-debug.js",
