@@ -1953,6 +1953,7 @@ if (a.domInc(["gamereactor"])) {
         for (let i = 0; i < spans.length; i++) {
             if (spans[i].innerHTML === "Continue to Gamereactor.eu") {
                 location.reload();
+                break;
             }
         }
     });
