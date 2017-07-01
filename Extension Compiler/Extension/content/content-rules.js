@@ -1948,7 +1948,8 @@ if (a.domInc(["gamereactor"])) {
     a.cookie("overlayMessage", "1");
     //Skip welcome page
     a.ready(() => {
-        if (document.querySelector("a.buttonBox.continue > span").innerHTML.startsWith("Continue to ")) {
+        const elem = document.querySelector("a.buttonBox.continue > span");
+        if (elem && elem.innerHTML && elem.innerHTML.startsWith("Continue to ")) {
             location.reload();
         }
     });
