@@ -120,6 +120,8 @@ a.domCmp = (domList, noErr) => {
  * @function
  * @param {string} dom - The domain to compare
  */
+/*
+//Does not seem to change anything
 a.domCmpOnce = (dom, noErr) => {
     if (document.domain.endsWith(dom) &&
         (document.domain.length === dom.length ||
@@ -130,6 +132,7 @@ a.domCmpOnce = (dom, noErr) => {
         return false;
     }
 };
+*/
 /**
  * Check if current domain includes one of the strings that is in the list.
  * "example" will match domains that matches /(^|.*\.)example\.[^\.]*$/.
@@ -161,6 +164,8 @@ a.domInc = (domList, noErr) => {
  * @function
  * @param {string} dom - The domain to compare
  */
+/*
+//Does not seem to change anything
 a.domIncOnce = (dom, noErr) => {
     let index = document.domain.lastIndexOf(dom + ".");
     //Make sure the character before, if exists, is "."
@@ -175,6 +180,7 @@ a.domIncOnce = (dom, noErr) => {
     }
     return false;
 };
+*/
 /**
  * Match methods.
  * @const {Enumeration}
