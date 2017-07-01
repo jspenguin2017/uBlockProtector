@@ -63,9 +63,10 @@ if (a.debugMode) {
                 console.log(subtitles);
                 //===End Log===
                 //Replace player
-                const width = $(".stage__player-wrapper").width();
-                const height = $(".stage__player-wrapper").height();
-                $(".stage__player-wrapper").html(videoJS(sources, types, subtitles, width, height));
+                const playerWrapper = $(".stage__player-wrapper");
+                const width = playerWrapper.width();
+                const height = playerWrapper.height();
+                playerWrapper.html(videoJS(sources, types, subtitles, width, height));
             }, () => {
                 console.error("uBlock Protector failed to find media URL!");
             });
