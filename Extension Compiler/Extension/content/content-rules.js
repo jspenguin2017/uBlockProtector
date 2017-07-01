@@ -272,13 +272,8 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
     a.filter("addEventListener", a.matchMethod.stringExact, "advertisement");
     a.readOnly("hasSentinel", () => false);
 }
-if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl", "sportowefakty.wp.pl", "teleshow.wp.pl", "moto.wp.pl",
-    "portal.abczdrowie.pl"], true)) {
+if (a.domCmp(["parenting.pl", "portal.abczdrowie.pl"], true)) {
     //Thanks to szymon1118
-    //Potential related domains:
-    //["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadzetomania.pl", "hotmoney.pl", "kafeteria.pl",
-    //"kafeteria.tv", "komediowo.pl", "komorkomania.pl", "money.pl", "pudelek.tv", "sfora.pl", "snobka.pl",
-    //"wawalove.pl", "wp.pl", "wp.tv", "wrzuta.pl", "pudelek.pl", "fotoblogia.pl"]
     let mid; //Media ID of next video
     let midArray1 = []; //Media IDs from method 1
     let midArray2 = []; //Media IDs from method 2
