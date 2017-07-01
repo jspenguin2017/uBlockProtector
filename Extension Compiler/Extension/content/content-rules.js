@@ -2434,7 +2434,7 @@ if (a.domCmp(["idlelivelink.blogspot.com"])) {
 if (a.domCmp(["hackinformer.com"])) {
     a.readOnly("AlobaidiDetectAdBlock", true);
     a.ready(() => {
-        $(".special-message-wrapper:contains(your ad blocker)").remove();
+        $(".special-message-wrapper").filter("your ad blocker").remove();
     });
 }
 if (a.domCmp(["tg007.net"])) {

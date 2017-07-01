@@ -32,8 +32,18 @@ $.Selection = class {
         this.length = this.selection.length;
     }
     /**
+     * Show an element.
+     * @method
+     * @param {string} [state="block"] - The style to apply, defaults to "block";
+     */
+    show(state = "block") {
+        for (let i = 0; i < this.selection.length; i++) {
+            this.selection[i].style.display = state;
+        }
+    }
+    /**
      * Remove all selected elements from DOM.
-     * @function
+     * @method
      */
     remove() {
         for (let i = 0; i < this.selection.length; i++) {
@@ -57,7 +67,7 @@ $.Element = class {
 
 //=====Other Utilities=====
 /**
- * Remove element by ID.
+ * Remove element by ID. This is much faster than $("#" + id).remove().
  * @function
  * @param {string} id - The ID of the element to remove.
  */
