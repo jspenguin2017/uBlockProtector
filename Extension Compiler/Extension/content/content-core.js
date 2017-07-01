@@ -117,8 +117,8 @@ a.domCmp = (domList, noErr) => {
 };
 /**
  * Check if current domain includes one of the strings that is in the list.
- * "example" will match domains that matches /(^|.*\.)example\.[^\.]$/.
- * "git.example" will match domains that matches /(^|.*\.)git\.example\.[^\.]$/.
+ * "example" will match domains that matches /(^|.*\.)example\.[^\.]*$/.
+ * "git.example" will match domains that matches /(^|.*\.)git\.example\.[^\.]*$/.
  * @function
  * @param {Array.<string>} domList - The list of strings to compare.
  * @param {boolean} [noErr=false] - Set to true to prevent showing error message.

@@ -12,4 +12,4 @@ var a = {};
  * The compiler is responsible in hard coding this switch.
  * @const {boolean}
  */
-a.debugMode = true; //@pragma-debug-switch
+a.debugMode = false; //@pragma-debug-switch
