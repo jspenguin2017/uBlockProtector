@@ -51,8 +51,7 @@
 if (a.domCmp(["blockadblock.com"])) {
     a.filter("eval");
     a.ready(() => {
-        const elem = document.getElementById("babasbmsgx");
-        elem && elem.remove();
+        $.rmID("babasbmsgx");
     });
 }
 if (a.domCmp(["sc2casts.com"])) {
@@ -81,7 +80,7 @@ if (a.domCmp(["livemint.com"])) {
 if (a.domCmp(["userscloud.com"])) {
     a.on("load", () => {
         $("#dl_link").show();
-        $("#adblock_msg").remove();
+        $.rmID("adblock_msg");
     });
 }
 if (a.domCmp(["vidlox.tv", "vidoza.net", "dato.porn"])) {
@@ -126,7 +125,7 @@ if (a.domCmp(["ratemyprofessors.com"])) {
 }
 if (a.domCmp(["gamepedia.com"])) {
     a.on("load", () => {
-        $("#atflb").remove();
+        $.rmID("atflb");
     });
 }
 if (a.domCmp(["cbox.ws"])) {
@@ -780,8 +779,8 @@ if (a.domCmp(["whiskyprijzen.com", "whiskyprices.co.uk", "whiskypreise.com", "wh
 }
 if (a.domCmp(["di.se"])) {
     a.ready(() => {
-        $("#header_overlay").remove();
-        $("#message_modal").remove();
+        $.rmID("header_overlay");
+        $.rmID("message_modal");
     });
 }
 if (a.domCmp(["libertaddigital.com"])) {
@@ -885,7 +884,7 @@ if (a.domCmp(["vgunetwork.com"])) {
 }
 if (a.domCmp(["eventosppv.me"])) {
     a.ready(() => {
-        $("#nf37").remove();
+        $.rmID("nf37");
     });
 }
 if (a.domCmp(["bolor-toli.com"])) {
@@ -895,7 +894,7 @@ if (a.domCmp(["bolor-toli.com"])) {
 }
 if (a.domCmp(["vivo.sx"])) {
     a.on("load", () => {
-        $("#alert-throttle").remove();
+        $.rmID("alert-throttle");
         $("button#access").removeAttr("id").removeAttr("disabled").html("Continue To Video");
         setTimeout(() => {
             $("input[name='throttle']").remove();
@@ -923,7 +922,7 @@ if (a.domCmp(["eami.in"])) {
 }
 if (a.domCmp(["bigdownloader.com"])) {
     a.ready(() => {
-        $("#anti_adblock").remove();
+        $.rmID("anti_adblock");
     });
 }
 if (a.domCmp(["freeskier.com"])) {
@@ -934,7 +933,7 @@ if (a.domCmp(["freeskier.com"])) {
 }
 if (a.domCmp(["gametrailers.com"])) {
     a.ready(() => {
-        $("#ad_blocking").remove();
+        $.rmID("ad_blocking");
     });
 }
 if (a.domCmp(["scan-mx.com", "onepiece-mx.net", "naruto-mx.net"])) {
@@ -949,7 +948,7 @@ if (a.domCmp(["freebitcoins.nx.tc", "getbitcoins.nx.tc"])) {
 if (a.domCmp(["bitcoinker.com"])) {
     a.readOnly("claim", () => true);
     a.ready(() => {
-        $("#E33FCCcX2fW").remove();
+        $.rmID("E33FCCcX2fW");
     });
 }
 if (a.domCmp(["moondoge.co.in", "moonliteco.in", "moonbit.co.in", "bitcoinzebra.com"])) {
@@ -1093,8 +1092,8 @@ if (a.domCmp(["clubedohardware.com.br"])) {
 }
 if (a.domCmp(["debrastagi.com"])) {
     a.ready(() => {
-        $("#stp-main").remove();
-        $("#stp-bg").remove();
+        $.rmID("stp-main");
+        $.rmID("stp-bg");
     });
 }
 if (a.domCmp(["ddlfrench.org"])) {
@@ -1133,7 +1132,7 @@ if (a.domInc(["slideplayer"])) {
 if (a.domCmp(["bokepspot.com"])) {
     a.cookie("hideDialog", "hide");
     a.ready(() => {
-        $("#tupiklan").remove();
+        $.rmID("tupiklan");
     });
 }
 if (a.domCmp(["picload.org"])) {
@@ -1157,7 +1156,7 @@ if (a.domCmp(["freezedownload.com"])) {
 if (a.domCmp(["monnsutogatya.com"])) {
     a.ready(() => {
         a.css("#site-box { display:block; }");
-        $("#for-ad-blocker").remove();
+        $.rmID("for-ad-blocker");
     });
 }
 if (a.domCmp(["rapid8.com"])) {
@@ -1168,7 +1167,7 @@ if (a.domCmp(["rapid8.com"])) {
 }
 if (a.domCmp(["turkdown.com"])) {
     a.ready(() => {
-        $("#duyuru").remove();
+        $.rmID("duyuru");
     });
 }
 if (a.domCmp(["privateinsta.com"])) {
@@ -1177,8 +1176,8 @@ if (a.domCmp(["privateinsta.com"])) {
             "use strict";
             window.dont_scroll = false;
         });
-        $("#overlay_div").remove();
-        $("#overlay_main_div").remove();
+        $.rmID("overlay_div");
+        $.rmID("overlay_main_div");
     });
 }
 if (a.domCmp(["oneplaylist.eu.pn"])) {
@@ -1498,7 +1497,7 @@ if (a.domCmp(["buzina.xyz", "farmet.info", "rimladi.com", "kitorelo.com", "omnip
     "rimleno.com", "simple4alls.com", "arsopo.com"])) {
     a.css("#adsframe { height:151px; }");
     a.ready(() => {
-        $("#adsframe").remove();
+        $.rmID("adsframe");
         $("#remove-over").click();
     });
     if (a.domCmp(["buzina.xyz"], true)) {
@@ -1589,13 +1588,13 @@ if (a.domCmp(["sharecast.to"])) {
             setTimeout(() => {
                 clearInterval(token);
             }, 5000);
-            $("#table1").remove();
+            $.rmID("table1");
         }
     });
 }
 if (a.domCmp(["cityam.com", "computerworlduk.com", "techworld.com", "v3.co.uk"])) {
     a.ready(() => {
-        $("#r3z-wait").remove();
+        $.rmID("r3z-wait");
         $(".r3z-hide").removeClass("r3z-hide");
         a.inject(() => {
             "use strict";
@@ -1789,8 +1788,9 @@ if (a.domCmp(["mooseroots.com", "insidegov.com", "gearsuite.com"])) {
 }
 if (a.domCmp(["sandiegouniontribune.com"])) {
     const token = setInterval(() => {
-        if ($("#reg-overlay").length) {
-            $("#reg-overlay").remove();
+        const elem = document.getElementById("reg-overlay");
+        if (elem) {
+            elem.remove();
             $("<style> html[data-dss-meterup], [data-dss-meterup] body { overflow: scroll !important; } </style>").appendTo("head");
             clearInterval(token);
         }
@@ -2279,7 +2279,7 @@ if (a.domCmp(["up-4ever.com"])) {
     a.css("#hiddensection { display:block; }");
     a.ready(() => {
         $("#hiddensection").show();
-        $("#hiddensection2").remove();
+        $.rmID("hiddensection2");
     });
 }
 if (a.domCmp(["exrapidleech.info"])) {
