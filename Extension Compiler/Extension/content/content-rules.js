@@ -2290,9 +2290,9 @@ if (a.domCmp(["exrapidleech.info"])) {
     a.cookie("popcashpu", "1");
     //Remove warnings
     a.ready(() => {
-        $(".alert-danger.lead:contains('block')").remove();
-        $("p:contains('Please disable ads block')").remove();
-        $("p:contains('Please turn on popup')").remove();
+        $(".alert-danger.lead").includes("block").remove();
+        $("p").includes("Please disable ads block").remove();
+        $("p").includes("Please turn on popup").remove();
     });
 }
 if (a.domCmp(["fastserver.me"])) {
