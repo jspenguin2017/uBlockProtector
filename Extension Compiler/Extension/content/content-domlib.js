@@ -5,7 +5,7 @@
 /**
  * Shortcut for new $.Selection(input).
  * @function
- * @param {string} input - The selector.
+ * @param {string} input - The query selector.
  * @return {$.Selection} The Selection object.
  */
 var $ = (input) => new $.Selection(input);
@@ -20,14 +20,16 @@ $.Selection = class {
     /**
      * Constructor.
      * @constructor
-     * @param {string} selector - The selector.
+     * @param {string} selector - The query selector.
+     * @param {Array.<DOMElement>} [override=undefined] - If this parameter is set, current selection will be set to it
+     ** and the query selector is ignored.
      */
-    constructor(selector) {
+    constructor(selector, override) {
         /**
          * The selected elements.
          * @member {Array.<DOMElement>}
          */
-        this.selection = document.querySelectorAll(selector);
+        this.selection = override ? override : document.querySelectorAll(selector);
         /**
          * The amount of selected elements.
          * @member {integer}
@@ -82,7 +84,7 @@ $.Selection = class {
     /**
      * Remove classes from all selected elements.
      * @method
-     * @param {string} ...args - Classes to remove, omit to remove all.
+     * @param {string} [...args=[]] - Classes to remove, omit to remove all.
      */
     rmClass(...args) {
         if (args.length) {
@@ -98,6 +100,14 @@ $.Selection = class {
     }
 
     //---Selection---
+    /**
+     * Copy current selection, this is useful when you do not want to update current selection.
+     * @method
+     * @return {$.Selection} The new Selection object.
+     */
+    copy() {
+        return new $.Selection(null, this.selection.slice());
+    }
     /**
      * Update current selection, only keep the first selected element.
      * @method
@@ -123,7 +133,7 @@ $.Selection = class {
     /**
      * Update current selection, set it to immediate children of the first selected element that match the new selector.
      * @method
-     * @param {string} selector - The new selector.
+     * @param {string} selector - The new query selector.
      */
     children(selector) {
         if (this.selection.length) {
@@ -135,7 +145,7 @@ $.Selection = class {
     /**
      * Update current selection, set it to children of the first selected element that match the new selector.
      * @method
-     * @param {string} selector - The new selector.
+     * @param {string} selector - The new query selector.
      */
     find(selector) {
         if (this.selection.length) {
@@ -193,7 +203,7 @@ $.Selection = class {
 
     //---Events---
     /**
-     * Trigger a click to all selected elements.
+     * Trigger a click event to all selected elements.
      * @method
      */
     click() {
@@ -205,7 +215,7 @@ $.Selection = class {
 
     //---Get and Set---
     /**
-     * Get or set textContent of first selected element.
+     * Get or set textContent of the first selected element.
      * @method
      * @param {string} [text=undefined] - The text to set, omit to get.
      * @return {string|this} String in get mode, the keyword this in set mode. An empty string will be returned
@@ -222,7 +232,7 @@ $.Selection = class {
         }
     }
     /**
-     * Get or set innerHTML of first selected element.
+     * Get or set innerHTML of the first selected element.
      * @method
      * @param {DOMString} [html=undefined] - The DOM string to set, omit to get.
      * @return {DOMString|this} DOM string in get mode, the keyword this in set mode. An empty string will be returned
@@ -239,7 +249,7 @@ $.Selection = class {
         }
     }
     /**
-     * Get or set data property, only affect the first selected element.
+     * Get or set data of the first selected element.
      * @method
      * @param {string} name - The name of the data entry.
      * @param {string} [val=undefined] - The value to set, omit to get.
@@ -256,8 +266,8 @@ $.Selection = class {
         }
     }
     /**
-     * Get, set, or delete an attribute, only affect the first selected element.
-     * Set del for delete mode, set val but not del for set mode, omit both val and del for get mode.
+     * Get, set, or delete an attribute of the first selected element.
+     * Set del to true for delete mode, set val but not del for set mode, omit both val and del for get mode.
      * @method
      * @param {string} name - The name of the attribute.
      * @param {string} [val=undefined] - The value to set.
