@@ -2318,8 +2318,7 @@ if (a.domCmp(["canalplus.fr"])) {
                     const response = JSON.parse(res);
                     const url = response.MEDIA.VIDEOS.HD;
                     if (url) {
-                        const tempElem = a.nativePlayer(url + "?secret=pqzerjlsmdkjfoiuerhsdlfknaes");
-                        videoElem.after(tempElem).remove();
+                        videoElem.after(a.nativePlayer(url + "?secret=pqzerjlsmdkjfoiuerhsdlfknaes")).remove();
                         videoElem = $("video");
                     } else {
                         throw "Media URL Not Found";

@@ -21,8 +21,8 @@ $.Selection = class {
      * Constructor.
      * @constructor
      * @param {string} selector - The query selector.
-     * @param {Array.<DOMElement>} [override=undefined] - If this parameter is set, current selection will be set to it
-     ** and the query selector is ignored.
+     * @param {Array.<DOMElement>} [override=undefined] - If this parameter is present, current selection will be set to it
+     ** and the query selector will be ignored.
      */
     constructor(selector, override) {
         /**
@@ -53,7 +53,7 @@ $.Selection = class {
     /**
      * Show all selected elements.
      * @method
-     * @param {string} [state="block"] - The state to apply, defaults to "block";
+     * @param {string} [state="block"] - The state to apply, defaults to "block".
      */
     show(state = "block") {
         for (let i = 0; i < this.selection.length; i++) {
@@ -101,7 +101,7 @@ $.Selection = class {
 
     //---Selection---
     /**
-     * Copy current selection, this is useful when you do not want to update current selection.
+     * Copy current selection, this is useful when you do not want selection methods to update current selection.
      * @method
      * @return {$.Selection} The new Selection object.
      */
@@ -131,27 +131,31 @@ $.Selection = class {
         return this;
     }
     /**
-     * Update current selection, set it to immediate children of the first selected element that match the new selector.
+     * Update current selection, set it to immediate children of each selected elements that match the new selector.
      * @method
      * @param {string} selector - The new query selector.
      */
     children(selector) {
-        if (this.selection.length) {
-            this.selection = this.selection[0].querySelectorAll(`:scope > ${selector}`);
-            this.length = this.selection.length;
-        } //Ignore if nothing is selected
+        let newSelection = [];
+        for (let i = 0; i < this.selection.length; i++) {
+            newSelection.push(...(this.selection[i].querySelectorAll(`:scope > ${selector}`)));
+        }
+        this.selection = newSelection;
+        this.length = newSelection.length;
         return this;
     }
     /**
-     * Update current selection, set it to children of the first selected element that match the new selector.
+     * Update current selection, set it to children of each selected elements that match the new selector.
      * @method
      * @param {string} selector - The new query selector.
      */
     find(selector) {
-        if (this.selection.length) {
-            this.selection = this.selection[0].querySelectorAll(selector);
-            this.length = this.selection.length;
-        } //Ignore if nothing is selected
+        let newSelection = [];
+        for (let i = 0; i < this.selection.length; i++) {
+            newSelection.push(...(this.selection[i].querySelectorAll(selector)));
+        }
+        this.selection = newSelection;
+        this.length = newSelection.length;
         return this;
     }
     /**
@@ -169,7 +173,7 @@ $.Selection = class {
         return this;
     }
     /**
-     * Update current selection, filter out elements that do not have the matcher string in their textContent.
+     * Update current selection, only keep elements that have the matcher string in their textContent.
      * @method
      * @param {string} matcher - The matcher string.
      */
@@ -185,7 +189,7 @@ $.Selection = class {
         return this;
     }
     /**
-     * Update current selection, filter out elements that do not have the matcher string as their textContent.
+     * Update current selection, only keep elements that have the matcher string as their textContent.
      * @method
      * @param {string} matcher - The matcher string.
      */
@@ -215,7 +219,7 @@ $.Selection = class {
 
     //---Get and Set---
     /**
-     * Get or set textContent of the first selected element.
+     * Get or set textContent. Affects only the first element on get mode, but affects all selected elements in set mode.
      * @method
      * @param {string} [text=undefined] - The text to set, omit to get.
      * @return {string|this} String in get mode, the keyword this in set mode. An empty string will be returned
@@ -225,14 +229,14 @@ $.Selection = class {
         if (text === undefined) {
             return this.selection.length ? this.selection[0].textContent : "";
         } else {
-            if (this.selection.length) {
-                this.selection[0].textContent = text;
-            } //Ignore if nothing is selected
+            for (let i = 0; i < this.selection.length; i++) {
+                this.selection[i].textContent = text;
+            }
             return this;
         }
     }
     /**
-     * Get or set innerHTML of the first selected element.
+     * Get or set innerHTML. Affects only the first element on get mode, but affects all selected elements in set mode.
      * @method
      * @param {DOMString} [html=undefined] - The DOM string to set, omit to get.
      * @return {DOMString|this} DOM string in get mode, the keyword this in set mode. An empty string will be returned
@@ -242,14 +246,14 @@ $.Selection = class {
         if (html === undefined) {
             return this.selection.length ? this.selection[0].innerHTML : "";
         } else {
-            if (this.selection.length) {
-                this.selection[0].innerHTML = html;
-            } //Ignore if nothing is selected
+            for (let i = 0; i < this.selection.length; i++) {
+                this.selection[i].innerHTML = html;
+            }
             return this;
         }
     }
     /**
-     * Get or set data of the first selected element.
+     * Get or set data. Affects only the first element on get mode, but affects all selected elements in set mode.
      * @method
      * @param {string} name - The name of the data entry.
      * @param {string} [val=undefined] - The value to set, omit to get.
@@ -259,14 +263,15 @@ $.Selection = class {
         if (val === undefined) {
             return this.selection.length ? this.selection[0].dataset[name] : undefined;
         } else {
-            if (this.selection.length) {
-                this.selection[0].dataset[name] = val;
-            } //Ignore if nothing is selected
+            for (let i = 0; i < this.selection.length; i++) {
+                this.selection[i].dataset[name] = val;
+            }
             return this;
         }
     }
     /**
-     * Get, set, or delete an attribute of the first selected element.
+     * Get, set, or delete an attribute. Affect only the first element on get mode, but affect all selected
+     * elements in set or delete mode.
      * Set del to true for delete mode, set val but not del for set mode, omit both val and del for get mode.
      * @method
      * @param {string} name - The name of the attribute.
@@ -278,60 +283,68 @@ $.Selection = class {
         if (val === undefined && !del) {
             return this.selection.length ? this.selection[0][name] : undefined;
         } else {
-            if (this.selection.length) {
-                if (del) {
-                    this.selection[0].removeAttribute(name);
-                } else {
-                    this.selection[0].setAttribute(name, val);
+            if (del) {
+                for (let i = 0; i < this.selection.length; i++) {
+                    this.selection[i].removeAttribute(name);
                 }
-            } //Ignore if nothing is selected
+            } else {
+                for (let i = 0; i < this.selection.length; i++) {
+                    this.selection[i].setAttribute(name, val);
+                }
+            }
             return this;
         }
     }
 
     //---Insert---
     /**
-     * Insert HTML before the beginning of the first selected element.
+     * Insert HTML before the beginning of each selected elements.
      * @method
      * @param {DOMString} input - The DOM string to insert.
      */
     before(input) {
-        if (this.selection.length && this.selection[0].parentNode) {
-            this.selection[0].insertAdjacentHTML("beforebegin", input);
-        } //Ignore if cannot insert
+        for (let i = 0; i < this.selection.length; i++) {
+            //Must have parent node in this insert mode
+            if (this.selection[i].parentNode) {
+                this.selection[i].insertAdjacentHTML("beforebegin", input);
+            }
+        }
         return this;
     }
     /**
-     * Insert HTML after the beginning of the first selected element.
+     * Insert HTML after the beginning of each selected elements.
      * @method
      * @param {DOMString} input - The DOM string to insert.
      */
     prepend(input) {
-        if (this.selection.length) {
-            this.selection[0].insertAdjacentHTML("afterbegin", input);
-        } //Ignore if cannot insert
+        for (let i = 0; i < this.selection.length; i++) {
+            this.selection[i].insertAdjacentHTML("afterbegin", input);
+        }
         return this;
     }
     /**
-     * Insert HTML before the end of the first selected element.
+     * Insert HTML before the end of each selected elements.
      * @method
      * @param {DOMString} input - The DOM string to insert.
      */
     append(input) {
-        if (this.selection.length) {
-            this.selection[0].insertAdjacentHTML("beforeend", input);
-        } //Ignore if cannot insert
+        for (let i = 0; i < this.selection.length; i++) {
+            this.selection[i].insertAdjacentHTML("beforeend", input);
+        }
         return this;
     }
     /**
-     * Insert HTML after the end of the first selected element.
+     * Insert HTML after the end of each selected elements.
      * @method
      * @param {DOMString} input - The DOM string to insert.
      */
     after(input) {
-        if (this.selection.length && this.selection[0].parentNode) {
-            this.selection[0].insertAdjacentHTML("afterend", input);
-        } //Ignore if cannot insert
+        for (let i = 0; i < this.selection.length; i++) {
+            //Must have parent node in this insert mode
+            if (this.selection[i].parentNode) {
+                this.selection[i].insertAdjacentHTML("afterend", input);
+            }
+        }
         return this;
     }
 
