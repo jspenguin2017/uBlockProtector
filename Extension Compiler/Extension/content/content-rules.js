@@ -169,12 +169,12 @@ if (a.domCmp(["tvregionalna24.pl"])) {
         });
         //Dispatch extracted functions on load
         window.addEventListener("load", function replace() {
-            if (text.length > 0 && document.getElementsByClassName("vjs-poster").length > 0) {
+            if (text.length > 0 && window.document.getElementsByClassName("vjs-poster").length > 0) {
                 for (let i = 0; i < text.length; i++) {
-                    eval(text[i]);
+                    window.eval(text[i]);
                 }
             } else {
-                setTimeout(replace, 1000);
+                window.setTimeout(replace, 1000);
             }
         });
     });
@@ -399,19 +399,17 @@ if (a.domCmp(["parenting.pl", "portal.abczdrowie.pl"], true)) {
                 //Update flag
                 networkBusy = false;
             });
-        } else {
-            if ($(containerMatcher).length > 0) {
-                //Log element to be replace
-                if (a.debugMode) {
-                    console.log("Replacing player...");
-                    console.log($(containerMatcher).selection[0]);
-                }
-                //Replace player
-                $(containerMatcher).after(a.nativePlayer(url)).remove();
-                //Update variables and counter
-                url = null;
-                replaceCounter++;
+        } else if ($(containerMatcher).length) {
+            //Log element to be replace
+            if (a.debugMode) {
+                console.log("Replacing player...");
+                console.log($(containerMatcher).selection[0]);
             }
+            //Replace player
+            $(containerMatcher).after(a.nativePlayer(url)).remove();
+            //Update variables and counter
+            url = null;
+            replaceCounter++;
         }
     };
     //The function will not run if the page is in the background, once per second will be fine
@@ -1107,7 +1105,7 @@ if (a.domCmp(["debrastagi.com"])) {
 }
 if (a.domCmp(["ddlfrench.org"])) {
     a.ready(() => {
-        $("#dle-content .d-content").selection[0].className = "";
+        $("#dle-content .d-content").rmClass();
         $("#content").attr("id", "");
     });
 }
@@ -2495,7 +2493,7 @@ if (a.domCmp(["lewat.id", "u2s.io"])) {
     const token = setInterval(() => {
         const elem = $(".skip-ad a");
         if (elem.length && elem.selection[0].href && !matcher.test(elem.selection[0].href)) {
-            $(".skip-ad").hide();
+            elem.hide();
             location.href = elem.selection[0].href;
             clearInterval(token);
         }

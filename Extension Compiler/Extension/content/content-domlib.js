@@ -19,18 +19,28 @@ var $ = (input) => new $.Selection(input);
 $.Selection = class {
     /**
      * Constructor.
+     * @constructor
      * @param {string} selector - The selector.
      */
     constructor(selector) {
+        /**
+         * The selected elements.
+         * @member {Array.<DOMElement>}
+         */
         this.selection = document.querySelectorAll(selector);
+        /**
+         * The amount of selected elements.
+         * @member {integer}
+         */
         this.length = this.selection.length;
     }
 
     //---CSS---
     /**
-     * Set or update CSS to all selected elements.
-     * @param {string} key - The key of the style, use "maxHeight" instead of "max-height" (same for all similar keys).
-     * @param {string} val - The value of the style.
+     * Set or update CSS of all selected elements.
+     * @method
+     * @param {string} key - The key of the style, use "maxHeight" instead of "max-height" (same for all other similar keys).
+     * @param {string} val - The value to set.
      */
     css(key, val) {
         for (let i = 0; i < this.selection.length; i++) {
@@ -41,7 +51,7 @@ $.Selection = class {
     /**
      * Show all selected elements.
      * @method
-     * @param {string} [state="block"] - The style to apply, defaults to "block";
+     * @param {string} [state="block"] - The state to apply, defaults to "block";
      */
     show(state = "block") {
         for (let i = 0; i < this.selection.length; i++) {
@@ -50,7 +60,7 @@ $.Selection = class {
         return this;
     }
     /**
-     * Hide all selected elements. Current state will not be saved. Things may break if you try to show it again.
+     * Hide all selected elements. Current state will not be saved. Things may break if you try to show them again.
      * @method
      */
     hide() {
@@ -72,11 +82,17 @@ $.Selection = class {
     /**
      * Remove classes from all selected elements.
      * @method
-     * @param {string} ...args - Classes to remove
+     * @param {string} ...args - Classes to remove, omit to remove all.
      */
     rmClass(...args) {
-        for (let i = 0; i < this.selection.length; i++) {
-            this.selection[i].classList.remove(...args);
+        if (args.length) {
+            for (let i = 0; i < this.selection.length; i++) {
+                this.selection[i].classList.remove(...args);
+            }
+        } else {
+            for (let i = 0; i < this.selection.length; i++) {
+                this.selection[i].className = "";
+            }
         }
         return this;
     }
@@ -105,9 +121,9 @@ $.Selection = class {
         return this;
     }
     /**
-     * Update current selection, find immediate children that match the selector from first selected element.
+     * Update current selection, set it to immediate children of the first selected element that match the new selector.
      * @method
-     * @param {string} selector - The selector.
+     * @param {string} selector - The new selector.
      */
     children(selector) {
         if (this.selection.length) {
@@ -117,9 +133,9 @@ $.Selection = class {
         return this;
     }
     /**
-     * Update current selection, find children that match the selector from first selected element.
+     * Update current selection, set it to children of the first selected element that match the new selector.
      * @method
-     * @param {string} selector - The selector.
+     * @param {string} selector - The new selector.
      */
     find(selector) {
         if (this.selection.length) {
@@ -129,64 +145,49 @@ $.Selection = class {
         return this;
     }
     /**
-     * Update current selection, set it to the parent of the first selected element.
+     * Update current selection, set it to the parent of each selected elements.
      * @method
      */
     parent() {
-        if (this.selection.length) {
-            const e = this.selection[0].parentNode;
-            if (e) {
-                this.selection = [e];
-            } else {
-                //The first node does not have a parent, set itself as the new selection
-                this.selection = [this.selection[0]];
+        for (let i = 0; i < this.selection.length; i++) {
+            //Only update if current element has a parent
+            const elem = this.selection[i].parentNode;
+            if (elem) {
+                this.selection[i] = elem;
             }
-            this.length = 1;
-        } //Ignore if nothing is selected
+        }
         return this;
     }
     /**
-     * Update current selection, set it to the first element that includes the matcher string.
+     * Update current selection, filter out elements that do not have the matcher string in their textContent.
      * @method
-     * @param {string} matcher - The matcher.
+     * @param {string} matcher - The matcher string.
      */
     includes(matcher) {
-        let index = -1
+        let newSelection = [];
         for (let i = 0; i < this.selection.length; i++) {
             if (this.selection[i].textContent.includes(matcher)) {
-                index = i;
-                break;
+                newSelection.push(this.selection[i]);
             }
         }
-        if (index === -1) {
-            this.selection = [];
-            this.length = 0;
-        } else {
-            this.selection = [this.selection[index]];
-            this.length = 1;
-        }
+        this.selection = newSelection;
+        this.length = newSelection.length;
         return this;
     }
     /**
-     * Update current selection, set it to the first element where its textContent is exactly the matcher string.
+     * Update current selection, filter out elements that do not have the matcher string as their textContent.
      * @method
-     * @param {string} matcher - The matcher.
+     * @param {string} matcher - The matcher string.
      */
     textIs(matcher) {
-        let index = -1
+        let newSelection = [];
         for (let i = 0; i < this.selection.length; i++) {
-            if (this.selection[i].textContent === matcher) {
-                index = i;
-                break;
+            if (matcher === this.selection[i].textContent.includes) {
+                newSelection.push(this.selection[i]);
             }
         }
-        if (index === -1) {
-            this.selection = [];
-            this.length = 0;
-        } else {
-            this.selection = [this.selection[index]];
-            this.length = 1;
-        }
+        this.selection = newSelection;
+        this.length = newSelection.length;
         return this;
     }
 
@@ -202,12 +203,12 @@ $.Selection = class {
         return this;
     }
 
-    //---Utilities---
+    //---Get and Set---
     /**
      * Get or set textContent of first selected element.
      * @method
      * @param {string} [text=undefined] - The text to set, omit to get.
-     * @return {this|string} The keyword this in set mode, string in get mode. An empty string will be returned
+     * @return {string|this} String in get mode, the keyword this in set mode. An empty string will be returned
      ** if the textContent cannot be retrieved.
      */
     text(text) {
@@ -224,7 +225,7 @@ $.Selection = class {
      * Get or set innerHTML of first selected element.
      * @method
      * @param {DOMString} [html=undefined] - The DOM string to set, omit to get.
-     * @return {this|DOMString} The keyword this in set mode, DOM string in get mode. An empty string will be returned
+     * @return {DOMString|this} DOM string in get mode, the keyword this in set mode. An empty string will be returned
      ** if the innerHTML cannot be retrieved.
      */
     html(html) {
@@ -242,8 +243,7 @@ $.Selection = class {
      * @method
      * @param {string} name - The name of the data entry.
      * @param {string} [val=undefined] - The value to set, omit to get.
-     * @return {this|string|undefined} The keyword this in set mode, string in get mode. Undefined will be returned
-     ** if the data cannot be retrieved.
+     * @return {Any|this} Something appropriate in get mode, the keyword this in set mode.
      */
     data(name, val) {
         if (val === undefined) {
@@ -257,12 +257,12 @@ $.Selection = class {
     }
     /**
      * Get, set, or delete an attribute, only affect the first selected element.
+     * Set del for delete mode, set val but not del for set mode, omit both val and del for get mode.
      * @method
      * @param {string} name - The name of the attribute.
-     * @param {string} [val=undefined] - The value to set, omit to get.
+     * @param {string} [val=undefined] - The value to set.
      * @param {boolean} [del=false] - Whether this attribute should be deleted.
-     * @return {this|Any} The keyword this in set and delete mode, anything appropriate in get mode. Undefined will be returned
-     ** if the attribute cannot be retrieved.
+     * @return {Any|this} Something appropriate in get mode, the keyword this in other modes.
      */
     attr(name, val, del) {
         if (val === undefined && !del) {
@@ -278,6 +278,8 @@ $.Selection = class {
             return this;
         }
     }
+
+    //---Insert---
     /**
      * Insert HTML before the beginning of the first selected element.
      * @method
@@ -322,8 +324,10 @@ $.Selection = class {
         } //Ignore if cannot insert
         return this;
     }
+
+    //---Other---
     /**
-     * Get offsetWidth of first selected element
+     * Get offsetWidth of the first selected element.
      * @method
      * @return {integer} The offsetWidth, or -1 if the offsetWidth cannot be retrieved.
      */
@@ -331,7 +335,7 @@ $.Selection = class {
         return this.selection.length ? this.selection[0].offsetWidth : -1;
     }
     /**
-     * Get offsetHeight of first selected element
+     * Get offsetHeight of the first selected element.
      * @method
      * @return {integer} The offsetHeight, or -1 if the offsetHeight cannot be retrieved.
      */

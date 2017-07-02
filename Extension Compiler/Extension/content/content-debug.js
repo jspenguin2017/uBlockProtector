@@ -11,17 +11,17 @@ if (a.debugMode) {
         };
         a.ready(() => {
             //Find the player element
-            const playerElem = document.getElementById("video");
-            if (!playerElem) {
+            const playerElem = $("#video");
+            if (!playerElem.length) {
                 console.error("uBlock Protector failed to find video player element!");
                 return;
             }
             //Find the media URL
             a.request({
                 method: "POST",
-                url: playerElem.getAttribute("data-video-playlist"),
+                url: playerElem.attr("data-video-playlist"),
                 headers: {
-                    "hmac": playerElem.getAttribute("data-video-hmac").toUpperCase(),
+                    "hmac": playerElem.attr("data-video-hmac").toUpperCase(),
                     "Accept": "application/vnd.itv.vod.playlist.v2+json",
                     "Content-Type": "application/json",
                 },
