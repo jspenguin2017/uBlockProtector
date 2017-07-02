@@ -3,19 +3,14 @@
 
 //=====Shortcuts=====
 /**
- * Create a Selection object, shortcut for new $.Selection(selector).
+ * Create an appropriate object.
  * @function
- * @param {string} selector - The selector.
- * @return {$.Selection} The Selection object.
+ * @param {string|DOMString} input - The selector or DOM string.
+ * @return {$.Selection|$.Element} The Selection or Element object.
  */
-var $ = (selector) => new $.Selection(selector);
-/**
- * Create an Element object, shortcut for new $.Element(input).
- * @function
- * @param {DOMString} input - The DOM string.
- * @return {$.Element} The Element object.
- */
-$.parse = (input) => new $.Element(input);
+var $ = (input) => {
+    return new (input.charAt(0) === '<' ? $.Element(input) : $.Selection(input));
+};
 
 //=====Main=====
 /**
@@ -63,15 +58,4 @@ $.Element = class {
     constructor(input) {
         this.input = input;
     }
-};
-
-//=====Other Utilities=====
-/**
- * Remove element by ID. This is much faster than $("#" + id).remove().
- * @function
- * @param {string} id - The ID of the element to remove.
- */
-$.rmID = (id) => {
-    const elem = document.getElementById(id);
-    elem && elem.remove();
 };
