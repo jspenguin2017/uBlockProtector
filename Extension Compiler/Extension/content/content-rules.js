@@ -327,18 +327,21 @@ if (a.domCmp(["parenting.pl", "portal.abczdrowie.pl"], true)) {
             } catch (err) { }
         })();`, true);
         //Mid extracting method 2
-        if ($(containerMatcher).length > 0) {
-            const elem = $(containerMatcher).first().find(".titlecont a.title");
-            let thisMid = elem.attr("href");
-            //Check if I got the element
-            if (thisMid) {
-                thisMid = reMatcher.exec(thisMid)[1].toString();
-                //I will destroy the player soon anyway, I will remove this now so I will not extract it twice
-                elem.remove();
-            }
-            //Extra safety check
-            if (thisMid) {
-                midArray2.push(thisMid);
+        {
+            let selection = $(containerMatcher)
+            if (selection.length) {
+                const elem = selection.find(".titlecont a.title");
+                let thisMid = elem.attr("href");
+                //Check if I got the element
+                if (thisMid) {
+                    thisMid = reMatcher.exec(thisMid)[1].toString();
+                    //I will destroy the player soon anyway, I will remove this now so I will not extract it twice
+                    elem.remove();
+                }
+                //Extra safety check
+                if (thisMid) {
+                    midArray2.push(thisMid);
+                }
             }
         }
         //See if I need to load next URL
@@ -401,10 +404,10 @@ if (a.domCmp(["parenting.pl", "portal.abczdrowie.pl"], true)) {
                 //Log element to be replace
                 if (a.debugMode) {
                     console.log("Replacing player...");
-                    console.log($(containerMatcher)[0]);
+                    console.log($(containerMatcher).selection[0]);
                 }
                 //Replace player
-                $(containerMatcher).first().after(a.nativePlayer(url)).remove();
+                $(containerMatcher).after(a.nativePlayer(url)).remove();
                 //Update variables and counter
                 url = null;
                 replaceCounter++;
@@ -662,21 +665,22 @@ if (a.domCmp(["richonrails.com"])) {
             `p;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else+if(h.match){try{h=s.upd(h,i)}catch(e){}w.` +
             `location.replace(h)}}"+id="aswift_0"+name="aswift_0"+style="left:0;position:absolute;top:0;"+width="750"+frameb` +
             `order="0"+height="90"></iframe></ins></ins>"`;
-        $.ajax({
+        $.request({
+            method: "POST",
             url: $(".article-content").data("url"),
-            dataType: "script",
-            method: "post",
-            data: {
+            headers: {
+                "Accept": "text/javascript",
+            },
+            payload: a.serialize({
                 html: payload,
-            },
-            success(result) {
-                const exec = result.replace("$('.article-content')", "$('.article-content-2')");
-                a.inject(`(() => {
-                    "use strict";
-                    ${exec}
-                })();`, true);
-            },
-        });
+            }),
+        }, (result) => {
+            const exec = result.replace("$('.article-content')", "$('.article-content-2')");
+            a.inject(`(() => {
+                "use strict";
+                ${exec}
+            })();`, true);
+        }, () => { });
     });
 }
 if (a.domCmp(["rmprepusb.com"])) {
@@ -765,7 +769,7 @@ if (a.domCmp(["yes.fm"])) {
 if (a.domCmp(["tek.no", "gamer.no", "teknofil.no", "insidetelecom.no", "prisguide.no", "diskusjon.no",
     "teknojobb.no", "akam.no", "hardware.no", "amobil.no"])) {
     a.ready(() => {
-        $("<div>").attr("id", "google_ads_iframe_").html("<p></p>").appendTo("body");
+        $("body").append("<div id='google_ads_iframe_'><p></p></div>");
     });
 }
 if (a.domInc(["planetatvonlinehd.blogspot"]) || a.domCmp(["planetatvonlinehd.com"])) {
@@ -900,7 +904,7 @@ if (a.domCmp(["bolor-toli.com"])) {
 if (a.domCmp(["vivo.sx"])) {
     a.on("load", () => {
         $("#alert-throttle").remove();
-        $("button#access").removeAttr("id").removeAttr("disabled").html("Continue To Video");
+        $("button#access").attr("id", null, true).attr("disabled", null, true).html("Continue To Video");
         setTimeout(() => {
             $("input[name='throttle']").remove();
         }, 1000);
@@ -1103,15 +1107,13 @@ if (a.domCmp(["debrastagi.com"])) {
 }
 if (a.domCmp(["ddlfrench.org"])) {
     a.ready(() => {
-        $("#dle-content .d-content").removeClass();
+        $("#dle-content .d-content").selection[0].className = "";
         $("#content").attr("id", "");
     });
 }
 if (a.domCmp(["mega-debrid.eu"])) {
     a.on("load", () => {
-        const elem = $(".realbutton")[0];
-        elem.setAttribute("onclick", "");
-        elem.setAttribute("type", "submit");
+        $(".realbutton").attr("onclick", "").attr("type", "submit");
     });
 }
 if (a.domInc(["slideplayer"])) {
@@ -1195,7 +1197,7 @@ if (a.domCmp(["onmeda.de"])) {
 }
 if (a.domCmp(["rockfile.eu"])) {
     a.ready(() => {
-        $("<iframe>").attr("src", "about:blank").css("visibility", "hidden").appendTo("body");
+        $("body").append(`<iframe src="about:blank" style="visibility:hidden;"></iframe>`);
     });
 }
 if (a.domCmp(["referencemega.com", "fpabd.com", "crackacc.com"])) {
@@ -1211,7 +1213,7 @@ if (a.domCmp(["wstream.video"])) {
 }
 if (a.domCmp(["4shared.com"])) {
     a.ready(() => {
-        $("body").removeClass("jsBlockDetect");
+        document.body.classList.remove("jsBlockDetect");
     });
 }
 if (a.domCmp(["pro-zik.ws", "pro-tect.ws", "pro-ddl.ws", "pro-sport.ws"])) {
@@ -1333,10 +1335,12 @@ if (a.domCmp(["gamingroom.tv"])) {
 }
 if (a.domCmp(["rtl.de"])) {
     a.ready(() => {
-        $("div[data-widget='video']").each(function () {
-            const url = $(this).data("playerLayerCfg").videoinfo.mp4url;
-            $(this).after(a.nativePlayer(url));
-            $(this).remove();
+        $("div[data-widget='video']").each((elem) => {
+            try {
+                const url = elem.dataset.playerLayerCfg.videoinfo.mp4url;
+                elem.insertAdjacentHTML("afterend", a.nativePlayer(url));
+                elem.remove();
+            } catch (err) { }
         });
     });
 }
@@ -1473,8 +1477,8 @@ if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "pl
         }
         //Replace player
         const player = $("#video-player");
-        const height = player.height();
         const width = player.width();
+        const height = player.height();
         player.after(videoJS(source, type, width, height)).remove();
         //Watch for more video players
         videoID = null;
@@ -1509,7 +1513,7 @@ if (a.domCmp(["buzina.xyz", "farmet.info", "rimladi.com", "kitorelo.com", "omnip
         a.css("#adsframe { height:151px; }");
         a.ready(() => {
             const elem = $("iframe[src*='.php?hash=']");
-            if (elem.length > 0) {
+            if (elem.length) {
                 let parts = elem.attr("src").split("/");
                 parts[2] = "arsopo.com";
                 elem.attr("src", parts.join("/"));
@@ -1600,7 +1604,7 @@ if (a.domCmp(["sharecast.to"])) {
 if (a.domCmp(["cityam.com", "computerworlduk.com", "techworld.com", "v3.co.uk"])) {
     a.ready(() => {
         $("#r3z-wait").remove();
-        $(".r3z-hide").removeClass("r3z-hide");
+        $(".r3z-hide").rmClass("r3z-hide");
         a.inject(() => {
             "use strict";
             window._r3z = null;
@@ -1692,7 +1696,7 @@ if (a.domCmp(["demo-phoenix.com", "dpstream.net", "gum-gum-streaming.com", "jeu.
 }
 if (a.domCmp(["emuparadise.me"])) {
     a.always(() => {
-        $("h2:contains('Bandwidth is expensive')").parent().remove();
+        $("h2").includes("Bandwidth is expensive").parent().remove();
     });
 }
 if (a.domCmp(["sapib.ca"])) {
@@ -1773,7 +1777,7 @@ if (a.domCmp(["chip.de"])) {
     a.noAccess("stop");
 }
 if (a.domCmp(["ghame.ru"])) {
-    $("<p class='adsbygoogle' style='display:none;'>hi</p>").prependTo("html");
+    $("html").prepend("<p class='adsbygoogle' style='display:none;'>hi</p>");
 }
 if (a.domCmp(["thevideo.me", "fmovies.to", "fmovies.se", "fmovies.is"])) {
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/86
@@ -1793,9 +1797,10 @@ if (a.domCmp(["mooseroots.com", "insidegov.com", "gearsuite.com"])) {
 }
 if (a.domCmp(["sandiegouniontribune.com"])) {
     const token = setInterval(() => {
-        if ($("#reg-overlay").length) {
-            $("#reg-overlay").remove();
-            $("<style> html[data-dss-meterup], [data-dss-meterup] body { overflow: scroll !important; } </style>").appendTo("head");
+        const elem = $("#reg-overlay");
+        if (elem.length) {
+            elem.remove();
+            $("head").append("<style> html[data-dss-meterup], [data-dss-meterup] body { overflow: scroll !important; } </style>");
             clearInterval(token);
         }
     }, 1000);
@@ -1819,7 +1824,7 @@ if (a.domCmp(["adz.bz", "mellow.link", "hop.bz", "mellowads.com", "url.vin", "cl
                             "VerifyLinkClick",
                             {
                                 linkRef: val.linkRef(),
-                                linkClickRef: $("#LinkClickRef")[0].value,
+                                linkClickRef: $("#LinkClickRef").selection[0].value,
                                 recaptchaResponse: val.recaptchaResponse(),
                             },
                             "Verify",
@@ -1860,7 +1865,7 @@ if (a.domCmp(["zap.in"])) {
                             "VerifyZapClick",
                             {
                                 linkRef: val.linkRef(),
-                                linkClickRef: $("#LinkClickRef")[0].value,
+                                linkClickRef: $("#LinkClickRef").selection[0].value,
                                 recaptchaResponse: val.recaptchaResponse(),
                             },
                             "Verify",
@@ -2098,13 +2103,8 @@ if (a.domCmp(["multiup.org", "multiup.eu"])) {
     a.cookie("visit", "1");
     a.readOnly("hi", () => { });
     a.ready(() => {
-        $(".alert").each(function () {
-            if ($(this).text().includes("Tired of ads ? Remove them")) {
-                $(this).remove();
-            }
-        });
-        const elem = $("#M130814ScriptRootC54591");
-        elem.text().includes("Loading...") && elem.remove();
+        $(".alert").includes("Tired of ads ? Remove them").remove();
+        $("#M130814ScriptRootC54591").includes("Loading...").remove();
     });
 }
 if (a.domCmp(["linkneverdie.com"])) {
@@ -2119,11 +2119,7 @@ if (a.domCmp(["linkneverdie.com"])) {
         });
     });
     a.ready(() => {
-        $(".SC_TBlock").each(function () {
-            if ($(this).text() === "loading...") {
-                this.remove();
-            }
-        });
+        $(".SC_TBlock").textIs("loading...").remove();
         $("#wrapper").show();
     });
 }
@@ -2161,8 +2157,9 @@ if (a.domCmp(["gaybeeg.info"])) {
     a.noAccess("uid");
     a.ready(() => {
         //Patch download button
-        $(".download a.button").each((i, el) => {
-            $(el).removeClass("locked").attr("href", $(el).data("href")).removeAttr("data-href");
+        $(".download a.button").each((elem) => {
+            elem.classList.remove("locked");
+            elem.href = elem.dataset.href;
         });
     });
 }
@@ -2170,8 +2167,8 @@ if (a.domCmp(["netdna-storage.com"])) {
     //NSFW!
     a.noAccess("uid");
     a.ready(() => {
-        $(".plan-footer-item").each((i, el) => {
-            $(el).attr("href", $(el).data("link")).removeAttr("data-link");
+        $(".plan-footer-item").each((elem) => {
+            elem.href = elem.dataset.link;
         });
     });
 }
@@ -2254,9 +2251,9 @@ if (a.domCmp(["gaana.com"])) {
 if (a.domCmp(["gelbooru.com"])) {
     if (location.pathname === "/") {
         a.on("load", () => {
-            $("div").each(function () {
-                if ($(this).text() === "Have you first tried disabling your AdBlock?") {
-                    $(this).empty();
+            $("div").each((elem) => {
+                if (elem.textContent === "Have you first tried disabling your AdBlock?") {
+                    elem.textContent = "";
                 }
             });
         });
@@ -2323,9 +2320,9 @@ if (a.domCmp(["canalplus.fr"])) {
                     const response = JSON.parse(res);
                     const url = response.MEDIA.VIDEOS.HD;
                     if (url) {
-                        const tempElem = $(a.nativePlayer(url + "?secret=pqzerjlsmdkjfoiuerhsdlfknaes"));
+                        const tempElem = a.nativePlayer(url + "?secret=pqzerjlsmdkjfoiuerhsdlfknaes");
                         videoElem.after(tempElem).remove();
-                        videoElem = tempElem;
+                        videoElem = $("video");
                     } else {
                         throw "Media URL Not Found";
                     }
@@ -2438,7 +2435,7 @@ if (a.domCmp(["idlelivelink.blogspot.com"])) {
 if (a.domCmp(["hackinformer.com"])) {
     a.readOnly("AlobaidiDetectAdBlock", true);
     a.ready(() => {
-        $(".special-message-wrapper:contains(your ad blocker)").remove();
+        $(".special-message-wrapper").includes("your ad blocker").remove();
     });
 }
 if (a.domCmp(["tg007.net"])) {
@@ -2497,9 +2494,9 @@ if (a.domCmp(["lewat.id", "u2s.io"])) {
     }
     const token = setInterval(() => {
         const elem = $(".skip-ad a");
-        if (elem.length && elem[0].href && !matcher.test(elem[0].href)) {
+        if (elem.length && elem.selection[0].href && !matcher.test(elem.selection[0].href)) {
             $(".skip-ad").hide();
-            location.href = elem[0].href;
+            location.href = elem.selection[0].href;
             clearInterval(token);
         }
     }, 250);
@@ -2520,8 +2517,8 @@ if (a.domCmp(["onhax.me"])) {
 }
 if (a.domCmp(["null-24.com"])) {
     a.ready(() => {
-        $("#custom-links .custom-url-wrap a").each(function () {
-            this.href = this.innerHTML;
+        $("#custom-links .custom-url-wrap a").each((elem) => {
+            elem.href = elem.innerHTML;
         });
         setTimeout(() => {
             a.inject(() => {
@@ -2532,7 +2529,7 @@ if (a.domCmp(["null-24.com"])) {
     });
 }
 if (a.domCmp(["searchftps.net"])) {
-    $(`<iframe width="336" height="280" style="display:none;"></iframe>`).appendTo("html");
+    $("html").append(`<iframe width="336" height="280" style="display:none;"></iframe>`);
 }
 if (a.domCmp(["cyberterminators.co"])) {
     a.ready(() => {
@@ -2556,11 +2553,10 @@ if (a.domCmp(["realkana.com"])) {
     a.generic.FuckAdBlock("HooAdBlock", "hooAdBlock");
 }
 if (a.domCmp(["generatorlinkpremium.com"])) {
-    $(document).ready(() => {
-        const normal = $("#normal").attr("href") + "&h=1";
-        $("#quick").attr("href", normal);
-        $("#quick").attr("title", "Download this file with a faster download speed");
-        $("#quick").css("cursor", "pointer");
+    a.ready(() => {
+        const elem = $("#normal");
+        const normal = elem.attr("href") + "&h=1";
+        elem.attr("href", normal).attr("title", "Download this file with a faster download speed").css("cursor", "pointer");
     });
 }
 if (a.domCmp(["genbird.com"])) {

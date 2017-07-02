@@ -51,8 +51,8 @@ chrome.runtime.onMessage.addListener((...args) => {
                     }
                     //Send request
                     let payload = null;
-                    if (args[0].payload) {
-                        payload = String(args[0].payload);
+                    if (args[0].details.payload) {
+                        payload = String(args[0].details.payload);
                     }
                     req.send(payload);
                     return true; //The callback is done after this handler returns

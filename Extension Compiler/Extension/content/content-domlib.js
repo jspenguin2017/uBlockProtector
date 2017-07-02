@@ -1,14 +1,14 @@
-//The DOM manipulation library for content rules
+//The DOM manipulation library for content rules, this library behaves differently than jQuery
 "use strict";
 
 //=====Shortcuts=====
 /**
- * Create an appropriate object.
+ * Shortcut for new $.Selection(input).
  * @function
- * @param {string|DOMString} input - The selector or DOM string.
- * @return {$.Selection|$.Element} The Selection or Element object.
+ * @param {string} input - The selector.
+ * @return {$.Selection} The Selection object.
  */
-var $ = (input) => input.charAt(0) === '<' ? new $.Element(input) : new $.Selection(input);
+var $ = (input) => new $.Selection(input);
 
 //=====Main=====
 /**
@@ -28,8 +28,8 @@ $.Selection = class {
 
     //---CSS---
     /**
-     * Set CSS to all selected elements.
-     * @param {string} key - The name of the style.
+     * Set or update CSS to all selected elements.
+     * @param {string} key - The key of the style, use "maxHeight" instead of "max-height" (same for all similar keys).
      * @param {string} val - The value of the style.
      */
     css(key, val) {
@@ -50,7 +50,7 @@ $.Selection = class {
         return this;
     }
     /**
-     * Hide all selected elements.
+     * Hide all selected elements. Current state will not be saved. Things may break if you try to show it again.
      * @method
      */
     hide() {
@@ -66,6 +66,17 @@ $.Selection = class {
     remove() {
         for (let i = 0; i < this.selection.length; i++) {
             this.selection[i].remove();
+        }
+        return this;
+    }
+    /**
+     * Remove classes from all selected elements.
+     * @method
+     * @param {string} ...args - Classes to remove
+     */
+    rmClass(...args) {
+        for (let i = 0; i < this.selection.length; i++) {
+            this.selection[i].classList.remove(...args);
         }
         return this;
     }
@@ -94,11 +105,23 @@ $.Selection = class {
         return this;
     }
     /**
-     * Update current selection, apply new selector to the first selected element.
+     * Update current selection, find immediate children that match the selector from first selected element.
      * @method
      * @param {string} selector - The selector.
      */
     children(selector) {
+        if (this.selection.length) {
+            this.selection = this.selection[0].querySelectorAll(`:scope > ${selector}`);
+            this.length = this.selection.length;
+        } //Ignore if nothing is selected
+        return this;
+    }
+    /**
+     * Update current selection, find children that match the selector from first selected element.
+     * @method
+     * @param {string} selector - The selector.
+     */
+    find(selector) {
         if (this.selection.length) {
             this.selection = this.selection[0].querySelectorAll(selector);
             this.length = this.selection.length;
@@ -120,6 +143,62 @@ $.Selection = class {
             }
             this.length = 1;
         } //Ignore if nothing is selected
+        return this;
+    }
+    /**
+     * Update current selection, set it to the first element that includes the matcher string.
+     * @method
+     * @param {string} matcher - The matcher.
+     */
+    includes(matcher) {
+        let index = -1
+        for (let i = 0; i < this.selection.length; i++) {
+            if (this.selection[i].textContent.includes(matcher)) {
+                index = i;
+                break;
+            }
+        }
+        if (index === -1) {
+            this.selection = [];
+            this.length = 0;
+        } else {
+            this.selection = [this.selection[index]];
+            this.length = 1;
+        }
+        return this;
+    }
+    /**
+     * Update current selection, set it to the first element where its textContent is exactly the matcher string.
+     * @method
+     * @param {string} matcher - The matcher.
+     */
+    textIs(matcher) {
+        let index = -1
+        for (let i = 0; i < this.selection.length; i++) {
+            if (this.selection[i].textContent === matcher) {
+                index = i;
+                break;
+            }
+        }
+        if (index === -1) {
+            this.selection = [];
+            this.length = 0;
+        } else {
+            this.selection = [this.selection[index]];
+            this.length = 1;
+        }
+        return this;
+    }
+
+    //---Events---
+    /**
+     * Trigger a click to all selected elements.
+     * @method
+     */
+    click() {
+        for (let i = 0; i < this.selection.length; i++) {
+            this.selection[i].click();
+        }
         return this;
     }
 
@@ -159,19 +238,16 @@ $.Selection = class {
         }
     }
     /**
-     * Get or set data property.
-     * @param {string} name - The name of the property.
+     * Get or set data property, only affect the first selected element.
+     * @method
+     * @param {string} name - The name of the data entry.
      * @param {string} [val=undefined] - The value to set, omit to get.
      * @return {this|string|undefined} The keyword this in set mode, string in get mode. Undefined will be returned
      ** if the data cannot be retrieved.
      */
     data(name, val) {
         if (val === undefined) {
-            if (this.selection.length) {
-                return this.selection[0].dataset[name];
-            } else {
-                return undefined;
-            }
+            return this.selection.length ? this.selection[0].dataset[name] : undefined;
         } else {
             if (this.selection.length) {
                 this.selection[0].dataset[name] = val;
@@ -180,7 +256,64 @@ $.Selection = class {
         }
     }
     /**
-     * Insert HTML after the first selected element.
+     * Get, set, or delete an attribute, only affect the first selected element.
+     * @method
+     * @param {string} name - The name of the attribute.
+     * @param {string} [val=undefined] - The value to set, omit to get.
+     * @param {boolean} [del=false] - Whether this attribute should be deleted.
+     * @return {this|Any} The keyword this in set and delete mode, anything appropriate in get mode. Undefined will be returned
+     ** if the attribute cannot be retrieved.
+     */
+    attr(name, val, del) {
+        if (val === undefined && !del) {
+            return this.selection.length ? this.selection[0][name] : undefined;
+        } else {
+            if (this.selection.length) {
+                if (del) {
+                    this.selection[0].removeAttribute(name);
+                } else {
+                    this.selection[0].setAttribute(name, val);
+                }
+            } //Ignore if nothing is selected
+            return this;
+        }
+    }
+    /**
+     * Insert HTML before the beginning of the first selected element.
+     * @method
+     * @param {DOMString} input - The DOM string to insert.
+     */
+    before(input) {
+        if (this.selection.length && this.selection[0].parentNode) {
+            this.selection[0].insertAdjacentHTML("beforebegin", input);
+        } //Ignore if cannot insert
+        return this;
+    }
+    /**
+     * Insert HTML after the beginning of the first selected element.
+     * @method
+     * @param {DOMString} input - The DOM string to insert.
+     */
+    prepend(input) {
+        if (this.selection.length) {
+            this.selection[0].insertAdjacentHTML("afterbegin", input);
+        } //Ignore if cannot insert
+        return this;
+    }
+    /**
+     * Insert HTML before the end of the first selected element.
+     * @method
+     * @param {DOMString} input - The DOM string to insert.
+     */
+    append(input) {
+        if (this.selection.length) {
+            this.selection[0].insertAdjacentHTML("beforeend", input);
+        } //Ignore if cannot insert
+        return this;
+    }
+    /**
+     * Insert HTML after the end of the first selected element.
+     * @method
      * @param {DOMString} input - The DOM string to insert.
      */
     after(input) {
@@ -189,17 +322,61 @@ $.Selection = class {
         } //Ignore if cannot insert
         return this;
     }
-};
-/**
- * Element class.
- * @class
- */
-$.Element = class {
     /**
-     * Constructor.
-     * @param {DOMString} input - The DOM string.
+     * Get offsetWidth of first selected element
+     * @method
+     * @return {integer} The offsetWidth, or -1 if the offsetWidth cannot be retrieved.
      */
-    constructor(input) {
-        this.input = input;
+    width() {
+        return this.selection.length ? this.selection[0].offsetWidth : -1;
     }
+    /**
+     * Get offsetHeight of first selected element
+     * @method
+     * @return {integer} The offsetHeight, or -1 if the offsetHeight cannot be retrieved.
+     */
+    height() {
+        return this.selection.length ? this.selection[0].offsetHeight : -1;
+    }
+    /**
+     * Loop though each selected element.
+     * @method
+     * @param {Function} func - The handler.
+     ** @param {DOMElement} elem - The current DOM element.
+     */
+    each(func) {
+        for (let i = 0; i < this.selection.length; i++) {
+            func(this.selection[i]);
+        }
+        return this;
+    }
+};
+
+//=====Utilities=====
+/**
+ * Same as a.request(), but request directly in the content script.
+ * @function
+ */
+$.request = (details, onload, onerror) => {
+    let req = new XMLHttpRequest();
+    //Event handler
+    req.onreadystatechange = () => {
+        if (req.readyState === 4) {
+            if (req.responseText === null) {
+                onerror();
+            } else {
+                onload(req.responseText);
+            }
+        }
+    };
+    //Create request
+    req.open(details.method, details.url);
+    //Set headers
+    if (details.headers) {
+        for (let key in details.headers) {
+            req.setRequestHeader(key, details.headers[key]);
+        }
+    }
+    //Send request
+    req.send(details.payload || null);
 };
