@@ -109,7 +109,7 @@ if (a.domCmp(["tweaktown.com"])) {
         a.css("html, body { overflow:scroll; }");
         //Watch and remove block screen
         const blockScreenRemover = () => {
-            if ($("body").children("div").last().text().indexOf("Ads slowing you down?") > -1) {
+            if ($("body").children("div").last().text().includes("Ads slowing you down?")) {
                 $("body").children("div").last().remove();
                 $("body").children("div").last().remove();
             } else {
@@ -186,9 +186,14 @@ if (a.domCmp(["tvnstyle.pl", "tvnturbo.pl", "kuchniaplus.pl", "miniminiplus.pl"]
     const homePages = ["http://www.tvn.pl/", "http://www.tvnstyle.pl/", "http://www.tvnturbo.pl/"];
     //Homepages are partially fixed and are handled by List
     if (!homePages.includes(location.href)) {
-        a.on("load", () => {
-            $(".videoPlayer").parent().after(a.nativePlayer($(".videoPlayer").data("src"))).remove();
-        });
+        const handler = () => {
+            const elem = $(".videoPlayer");
+            if (elem.length) {
+                const src = elem.data("src");
+                elem.parent().after(a.nativePlayer(src)).remove();
+            }
+        };
+        setInterval(handler, 1500);
     }
 }
 if (a.domCmp(["player.pl"])) {
@@ -226,8 +231,8 @@ if (a.domCmp(["player.pl"])) {
                 let vidSources = data.item.videos.main.video_content;
                 if (vidSources[1].url) {
                     //Native player
-                    elem.html("").append(a.nativePlayer(vidSources[1].url));
-                    $("video").css("max-height", "540px");
+                    elem.html(a.nativePlayer(vidSources[1].url));
+                    $("video").css("maxHeight", "540px");
                 } else if (vidSources[0].src) {
                     //DRM protected
                     console.error("uBlock Protector will not replace this video player because it is DRM prtected.");
