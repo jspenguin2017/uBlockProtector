@@ -159,7 +159,7 @@ if (a.debugMode) {
     {
         //Generate cookie value
         const mkVal = () => {
-            const timestamp = Math.floor((new Date()).getTime() / 1000) + 1000;
+            const timestamp = Math.floor(Date.now() / 1000) + 1000;
             return `10_${timestamp}`;
         };
         //The cookie matcher
