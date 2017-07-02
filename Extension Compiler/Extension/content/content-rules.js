@@ -1817,12 +1817,12 @@ if (a.domCmp(["adz.bz", "mellow.link", "hop.bz", "mellowads.com", "url.vin", "cl
             get() {
                 if (val.verify) {
                     val.verify = (() => {
-                        callAPI(
+                        window.callAPI(
                             "publishing",
                             "VerifyLinkClick",
                             {
                                 linkRef: val.linkRef(),
-                                linkClickRef: $("#LinkClickRef").selection[0].value,
+                                linkClickRef: window.$("#LinkClickRef")[0].value,
                                 recaptchaResponse: val.recaptchaResponse(),
                             },
                             "Verify",
@@ -1831,12 +1831,12 @@ if (a.domCmp(["adz.bz", "mellow.link", "hop.bz", "mellowads.com", "url.vin", "cl
                                 if (response.result) {
                                     window.location.href = response.linkURL;
                                 } else {
-                                    showMessageModal("Verify failed", response.resultHtml, response.result);
+                                    window.showMessageModal("Verify failed", response.resultHtml, response.result);
                                 }
                             },
                             null,
                             () => {
-                                grecaptcha.reset();
+                                window.grecaptcha.reset();
                             },
                         );
                     }).bind(val);
@@ -1859,11 +1859,11 @@ if (a.domCmp(["zap.in"])) {
             get() {
                 if (val.verify) {
                     val.verify = (() => {
-                        callAPI(
+                        window.callAPI(
                             "VerifyZapClick",
                             {
                                 linkRef: val.linkRef(),
-                                linkClickRef: $("#LinkClickRef").selection[0].value,
+                                linkClickRef: window.$("#LinkClickRef")[0].value,
                                 recaptchaResponse: val.recaptchaResponse(),
                             },
                             "Verify",
@@ -1872,12 +1872,12 @@ if (a.domCmp(["zap.in"])) {
                                 if (response.result) {
                                     window.location.href = response.zapURL;
                                 } else {
-                                    showMessageModal("Verify failed", response.resultHtml, response.result);
+                                    window.showMessageModal("Verify failed", response.resultHtml, response.result);
                                 }
                             },
                             null,
                             () => {
-                                grecaptcha.reset();
+                                window.grecaptcha.reset();
                             },
                         );
                     }).bind(val);
