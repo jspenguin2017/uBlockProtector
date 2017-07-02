@@ -15,7 +15,7 @@ const { readFileSync } = require("fs");
  */
 let currentTest;
 /**
- * Compare two arguments and fail or pass the test.
+ * Compare two arguments then fail or pass the test.
  * @function
  * @param {Any} result - The test result.
  * @param {Any} expected - The expected result.
@@ -41,13 +41,11 @@ const test = (name, test) => {
 };
 
 //Prepare environment
-global.document = {
-    domain: "localhost", //Placeholder
-};
+global.document = {};
+global.document.domain = "localhost";
+let a = {};
+a.debugMode = false;
 //Load the core
-let a = {
-    debugMode: false,
-};
 eval(readFileSync("./Extension Compiler/Extension/content/content-core.js", "utf8"));
 
 //a.cookie
