@@ -192,7 +192,7 @@ $.Selection = class {
     textIs(matcher) {
         let newSelection = [];
         for (let i = 0; i < this.selection.length; i++) {
-            if (matcher === this.selection[i].textContent.includes) {
+            if (matcher === this.selection[i].textContent) {
                 newSelection.push(this.selection[i]);
             }
         }
