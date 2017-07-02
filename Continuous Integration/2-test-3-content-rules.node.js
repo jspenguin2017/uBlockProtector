@@ -20,7 +20,7 @@ a.domCmp = (domList, noErr) => {
         console.error(domList);
         process.exit(1);
     }
-    if (typeof noErr !== "boolean") {
+    if (noErr !== true && noErr !== undefined) {
         console.error("a.domCmp() does not accept this as noErr:");
         console.error(noErr);
         process.exit(1);
@@ -33,7 +33,7 @@ a.domInc = (domList, noErr) => {
         console.error(domList);
         process.exit(1);
     }
-    if (typeof noErr !== "boolean") {
+    if (noErr !== true && noErr !== undefined) {
         console.error("a.domInc() does not accept this as noErr:");
         console.error(noErr);
         process.exit(1);
