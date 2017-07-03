@@ -99,14 +99,14 @@ a.generic();
                                     selectedAds: [],
                                     timePosition: "0",
                                     timePositionClass: "preroll",
-                                    adUnit: "preroll"
+                                    adUnit: "preroll",
                                 },
                             ],
                         },
                         adSlots: [],
                     },
                     adSlots: [],
-                }
+                },
             });
         })();`;
         return "data:text/javascript;base64," + btoa(payload);
