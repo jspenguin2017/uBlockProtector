@@ -112,7 +112,7 @@ a.generic();
         return "data:text/javascript;base64," + btoa(payload);
     };
     //Matchers
-    const reOrigin = /^(https?:\/\/\w+\.ncaa\.com\/|$)/; //Aggressively redirect if the URL of the tab is not known
+    const reOrigin = /^(https?:\/\/([^/]+\.)*ncaa\.com\/|$)/; //Aggressively redirect if the URL of the tab is not known
     const reCsid = /csid=([^&]+)/;
     const reCaid = /caid=([^&]+)/;
     const reCbfn = /cbfn=([^&]+)/;
