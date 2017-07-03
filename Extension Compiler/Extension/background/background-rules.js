@@ -125,7 +125,7 @@ a.generic();
             "script",
         ],
         (details) => {
-            if (reOrigin.test(a.getTabURL(details.tabId))) {
+            if (reOrigin.test(a.getTabURL(details.tabId, details.frameId))) {
                 const csid = reCsid.exec(details.url);
                 const caid = reCaid.exec(details.url);
                 const cbfn = reCbfn.exec(details.url);

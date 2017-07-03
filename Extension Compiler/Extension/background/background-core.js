@@ -106,33 +106,36 @@ a.init = () => {
 /**
  * Get the URL of a tab.
  * @function
- * @param {integer} id - The ID of the tab.
+ * @param {integer} tab - The ID of the tab.
+ * @param {integer} frame - The ID of the frame.
  * @return {string} The URL of the tab, or an empty string if it is not known.
  */
 a.getTabURL = (() => {
     //The tabs database
     let tabs = {};
+    if (a.debugMode) {
+        //Expose private object in debug mode
+        window.getTabURLInternal = tabs;
+    }
     //Bind event handlers
-    chrome.tabs.onCreated.addListener((tab) => {
-        if (tab.id !== chrome.tabs.TAB_ID_NONE && tab.url) {
-            tabs[tab.id] = tab.url;
+    chrome.webNavigation.onCommitted.addListener((details) => {
+        if (!tabs[details.tabId]) {
+            tabs[details.tabId] = {};
         }
-    });
-    chrome.tabs.onUpdated.addListener((id, data, ignored) => {
-        if (data.url) {
-            tabs[id] = data.url;
-        }
+        tabs[details.tabId][details.frameId] = details.url;
     });
     chrome.tabs.onRemoved.addListener((id, ignored) => {
+        //Free memory when tab is closed
         delete tabs[id];
     });
-    chrome.tabs.onReplaced.addListener((added, removed) => {
-        //I am not sure if this is needed
-        tabs[added] = tabs[removed];
-        delete tabs[removed];
-    });
     //Return closure function
-    return (id) => tabs[id] || "";
+    return (tab, frame) => {
+        if (tabs[tab]) {
+            return tabs[tab][frame] || "";
+        } else {
+            return "";
+        }
+    };
 })();
 
 /**

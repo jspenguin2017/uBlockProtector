@@ -55,8 +55,9 @@
     "http://*/*",
     "https://*/*",
     "tabs",
+    "webNavigation",
     "webRequest",
     "webRequestBlocking"
   ],
-  "version": "10.14"
+  "version": "10.15"
 }

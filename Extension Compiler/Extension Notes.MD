@@ -36,12 +36,13 @@ Chromium documentation is generated, which means it sometimes includes weird thi
 ### Requested permissions:
 
 * `tabs`: To inject CSS and to forcefully close a tab
-* `webRequest`: To modify response headers
-* `webRequestBlocking`: Not currently used, but can be useful in the future
+* `webNavigation`: To know the URL of tach tab
+* `webRequest`: To redirect requests and to modify headers
+* `webRequestBlocking`: To block requests, this is used as a fallback in some solutions
 
 ### These permissions might be useful:
 
-* `cookies`: Could be useful when monitoring changes to a cookie is needed
+* `cookies`: Could be useful when monitoring changes to a cookie is needed, but this is asynchronous, could be hard to use
 
 # Credits
 
