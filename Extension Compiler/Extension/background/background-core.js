@@ -146,7 +146,9 @@ if (a.debugMode) { //Currently only available in debug mode
  */
 a.staticServer = (urls, types, data) => {
     chrome.webRequest.onBeforeRequest.addListener(
-        () => { redirectUrl: data },
+        () => {
+            return { redirectUrl: data }
+        },
         {
             urls: urls,
             types: types,

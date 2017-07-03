@@ -18,7 +18,7 @@ console.log("data:text/javascript;base64," + btoa("(" + String(() => {
 */
 a.staticServer(
     [
-        "https://z.moatads.com/*/MoatFreeWheelJSPEM.js",
+        "https://*.moatads.com/*/MoatFreeWheelJSPEM.js",
     ],
     [
         "script",

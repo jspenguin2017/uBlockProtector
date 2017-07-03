@@ -12,6 +12,7 @@
 ! Visite my home page for more information: https://jspenguin2017.github.io/uBlockProtector/
 ! ==========================================================================================
 jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
+@@|https://*.moatads.com/*/MoatFreeWheelJSPEM.js|$script
 ||d.0emm.com^$third-party,script
 ||d.0emn.com^$third-party,script
 ||d.0enm.com^$third-party,script
@@ -260,7 +261,6 @@ themarker.com###ad-block-wrapper
 hdzog.com##.msg-adblock.msg
 @@||ncaa.com^$generichide
 @@||fwmrm.net^$script,domain=ncaa.com
-@@||moatads.com^$script,domain=ncaa.com
 onet.pl##script:inject(abort-on-property-read.js, onetAds)
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
