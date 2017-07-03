@@ -145,7 +145,7 @@ a.getTabURL = (() => {
 a.staticServer = (urls, types, data) => {
     chrome.webRequest.onBeforeRequest.addListener(
         () => {
-            return { redirectUrl: data }
+            return { redirectUrl: data };
         },
         {
             urls: urls,
