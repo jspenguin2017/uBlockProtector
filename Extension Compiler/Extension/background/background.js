@@ -99,7 +99,7 @@ if (a.debugMode) {
 
 //=====Utilities=====
 /**
- * Get URL of a tab.
+ * Get the URL of a tab.
  * @function
  * @param {integer} id - The ID of the tab.
  * @return {string} The URL of the tab, or an empty string if it is not known.
@@ -107,7 +107,10 @@ if (a.debugMode) {
 const tab2url = (() => {
     //Only used in debug mode
     if (!a.debugMode) {
-        return;
+        return () => {
+            console.error("tab2url() is only available in debug mode.");
+            return "";
+        };
     }
     //The tabs database
     let tabs = {};
@@ -118,7 +121,9 @@ const tab2url = (() => {
         }
     });
     chrome.tabs.onUpdated.addListener((id, data, ignored) => {
-        data.url && (tabs[id] = data.url);
+        if (data.url) {
+            tabs[id] = data.url;
+        }
     });
     chrome.tabs.onRemoved.addListener((id, ignored) => {
         delete tabs[id];
@@ -137,14 +142,11 @@ if (a.debugMode) {
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/209
     chrome.webRequest.onHeadersReceived.addListener(
         (details) => {
-            //details.responseHeaders.push({
-            //    name: "Content-Security-Policy",
-            //    value: "worker-src blob:",
-            //});
             details.responseHeaders.push({
                 name: "Access-Control-Allow-Origin",
                 value: "https://vidlox.tv",
             });
+            //Debug log
             console.log(details);
             return { responseHeaders: details.responseHeaders };
         },
@@ -173,6 +175,7 @@ if (a.debugMode) {
                 name: "Client-IP",
                 value: "107.77.200.10",
             });
+            //Debug log
             console.log(details);
             return { requestHeaders: details.requestHeaders };
         },
@@ -188,6 +191,7 @@ if (a.debugMode) {
         ],
     );
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/343
+    //Seems to be validated on the server side, this does not work
     {
         //Generate cookie value
         const mkVal = () => {
@@ -209,6 +213,7 @@ if (a.debugMode) {
                         }
                     }
                 }
+                //Debug log
                 console.log(details);
                 return { requestHeaders: details.requestHeaders };
             },
@@ -293,6 +298,7 @@ if (a.debugMode) {
         //Main ads request nooping
         chrome.webRequest.onBeforeRequest.addListener(
             (details) => {
+                //Debug log
                 console.log(details);
                 if (reOrigin.test(tab2url(details.tabId))) {
                     const csid = reCsid.exec(details.url);
@@ -302,8 +308,9 @@ if (a.debugMode) {
                         return { redirectUrl: genPayload(csid[1], caid[1], decodeURIComponent(cbfn[1])) };
                     }
                 } else {
+                    //Debug log
                     console.log(tab2url(details.tabId));
-                    return { cancel: true };
+                    //return { cancel: true };
                 }
             },
             {
@@ -319,17 +326,16 @@ if (a.debugMode) {
                 "blocking",
             ],
         );
-        //Extension nooping
+        //Player extension nooping
         chrome.webRequest.onBeforeRequest.addListener(
             (details) => {
                 //TODO: Optimize this
                 let temp = "data:text/javascript;base64,";
                 temp += btoa(String(function MoatFreeWheelJSPEM() {
-                    //I think the callback here is broken
                     "use strict";
                     this.init = (context) => {
+                        //I think the callback here is broken
                         console.log(context);
-
                     };
                     this.dispose = () => { };
                 }));
@@ -337,7 +343,7 @@ if (a.debugMode) {
             },
             {
                 urls: [
-                    "https://jspenguin.com/API/uBlockProtector/Solutions/ncaa.com.js",
+                    "https://jspenguin.com/API/uBlockProtector/Solutions/MoatFreeWheelJSPEM.js",
                 ],
                 types: [
                     "script",
