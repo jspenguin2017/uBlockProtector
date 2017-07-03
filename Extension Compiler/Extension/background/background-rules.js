@@ -4,6 +4,7 @@
 //Initialize
 a.init();
 
+//MoatFreeWheelJSPEM.js
 //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/344
 /*
 //Payload generator
@@ -18,6 +19,7 @@ console.log("data:text/javascript;base64," + btoa("(" + String(() => {
 */
 a.staticServer(
     [
+        "https://jspenguin.com/API/uBlockProtector/Solutions/MoatFreeWheelJSPEM.js",
         "https://*.moatads.com/*/MoatFreeWheelJSPEM.js",
     ],
     [
