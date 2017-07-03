@@ -12,7 +12,7 @@ a.generic();
         //Event callbacks are blocked by List
         let payload = `(() => {
             "use strict";
-            window.console.warn("uBlock Protector loopbacked a request to fwmrm.net");
+            window.console.warn("uBlock Protector locally loopbacked a request to mmod.v.fwmrm.net");
             ${cbfn}({
                 version: "1",
                 networkId: "100",
