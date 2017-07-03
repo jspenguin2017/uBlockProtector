@@ -11,7 +11,7 @@ Your screenshot must include the address bar, it should look something like this
 
 ### Screenshot of the console (press `F12` to bring up the console) (required): 
 <!--
-Your screenshot should look something like this: http://i.imgur.com/9fBPfKM.png
+Your screenshot should look something like this: https://i.imgur.com/9fBPfKM.png
 -->
 
 ### Add everything else that you believe to be useful below (optional): 
