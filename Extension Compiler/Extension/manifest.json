@@ -3,7 +3,9 @@
   "background": {
     "scripts": [
       "common.js",
-      "background/background.js"
+      "background/background-core.js",
+      "background/background-rules.js",
+      "background/background-debug.js"
     ]
   },
   "browser_action": {
