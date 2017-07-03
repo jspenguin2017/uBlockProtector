@@ -3,7 +3,7 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 ! === Special rules for integration with uBlock Protector Extension
 |https://jspenguin.com/API/uBlockProtector/Solutions/Blocked.php$important
 @@|https://*.moatads.com/*/MoatFreeWheelJSPEM.js$script
-@@|http://mmod.v.fwmrm.net/ad/g/*$script
+@@|http://mmod.v.fwmrm.net/ad/g/*$script,domain=ncaa.com
 ! ======================
 ! ===== Missed Ads =====
 ! ======================
