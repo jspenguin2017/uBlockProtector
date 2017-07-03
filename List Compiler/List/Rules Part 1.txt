@@ -409,3 +409,8 @@ themarker.com###ad-block-wrapper
 ! === hdzog.com
 @@||static.ipornia.com^$image,domain=ipornia.hdzog.com
 hdzog.com##.msg-adblock.msg
+! === ncaa.com
+! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/344
+@@||ncaa.com^$generichide
+@@||fwmrm.net^$script,domain=ncaa.com
+@@||moatads.com^$script,domain=ncaa.com
