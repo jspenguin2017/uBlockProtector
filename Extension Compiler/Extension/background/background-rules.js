@@ -116,7 +116,7 @@ a.generic();
     const reCsid = /csid=([^&]+)/;
     const reCaid = /caid=([^&]+)/;
     const reCbfn = /cbfn=([^&]+)/;
-    //Main ads request nooping
+    //Loopback ads request
     a.dynamicServer(
         [
             "http://mmod.v.fwmrm.net/ad/g/*",
@@ -125,7 +125,6 @@ a.generic();
             "script",
         ],
         (details) => {
-            //Debug log
             if (reOrigin.test(a.getTabURL(details.tabId))) {
                 const csid = reCsid.exec(details.url);
                 const caid = reCaid.exec(details.url);
@@ -133,7 +132,7 @@ a.generic();
                 if (csid && caid && cbfn) {
                     return { redirectUrl: genPayload(csid[1], caid[1], decodeURIComponent(cbfn[1])) };
                 }
-            }
+            } //Ignore otherwise, let uBlock Origin handle other cases
         },
     );
 }
