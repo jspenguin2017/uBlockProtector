@@ -414,3 +414,5 @@ hdzog.com##.msg-adblock.msg
 @@||ncaa.com^$generichide
 @@||fwmrm.net^$script,domain=ncaa.com
 @@||moatads.com^$script,domain=ncaa.com
+! === onet.pl
+onet.pl##script:inject(abort-on-property-read.js, onetAds)
