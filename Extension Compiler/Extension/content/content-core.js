@@ -607,6 +607,52 @@ a.nativePlayer = (source, type, width = "100%", height = "auto") => {
     return `<video width="${width}" height="${height}" controls><source src="${source}" type="${type}" /></video>`;
 };
 /**
+ * Install XMLHttpRequest loopback engine.
+ * @function
+ * @param {Function} server - The loopback server.
+ ** @param {Any} ...args - The arguments supplied to open.
+ ** @return {string|null} Return a string to override the result of this request, return null to not interfere.
+ *** The request will always be sent, so event handlers can be triggered properly.
+ */
+a.loopback = (server) => {
+    a.inject(`(() => {
+        "use strict";
+        const server = ${server};
+        let original; //XMLHttpRequest
+        const newXHR = function (...args) {
+            const wrapped = new (window.Function.prototype.bind.apply(original, args));
+            const _open = wrapped.open;
+            wrapped.open = function (...args) {
+                const data = server(...args);
+                if (data !== null) {
+                    window.Object.defineProperty(this, "responseText", {
+                        configurable: false,
+                        set() { },
+                        get() {
+                            return data;
+                        },
+                    });
+                    window.Object.defineProperty(this, "status", {
+                        configurable: false,
+                        set() { },
+                        get() {
+                            return 200;
+                        },
+                    });
+                }
+                return _open.apply(wrapped, args);
+            };
+            return wrapped;
+        };
+        try {
+            original = window.XMLHttpRequest;
+            window.XMLHttpRequest = newXHR;
+        } catch (err) {
+            window.console.error("uBlock Protector failed to set up XMLHttpRequest loopback engine!");
+        }
+    })();`, true);
+};
+/**
  * Forcefully close the current tab.
  * @function
  */
