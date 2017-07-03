@@ -20,8 +20,7 @@ chrome.runtime.onMessage.addListener((...args) => {
                             //Ignore, assume the tab is closed
                         }
                     });
-                }
-                //Ignore if not called from a proper tab
+                } //Ignore if not called from a proper tab
                 break;
             /**
              * Do a cross origin XMLHttpRequest.
@@ -56,7 +55,7 @@ chrome.runtime.onMessage.addListener((...args) => {
                     }
                     req.send(payload);
                     return true; //The callback is done after this handler returns
-                }
+                } //Ignore if details is not valid
             /**
              * Forcefully close the sender tab.
              */
@@ -67,15 +66,13 @@ chrome.runtime.onMessage.addListener((...args) => {
                             //Ignore, assume the tab is already closed
                         }
                     });
-                }
-                //Ignore if not called from a proper tab
+                } //Ignore if not called from a proper tab
                 break;
             default:
                 //Invalid command, ignore
                 break;
         }
-    }
-    //No command, ignore
+    } //No command, ignore
 });
 //Extension icon click handler, open options page
 chrome.browserAction.onClicked.addListener(() => {
@@ -99,6 +96,41 @@ if (a.debugMode) {
         color: "#25BA42",
     });
 } //No badge otherwise
+
+//=====Utilities=====
+/**
+ * Get URL of a tab.
+ * @function
+ * @param {integer} id - The ID of the tab.
+ * @return {string} The URL of the tab, or an empty string if it is not known.
+ */
+const tab2url = (() => {
+    //Only used in debug mode
+    if (!a.debugMode) {
+        return;
+    }
+    //The tabs database
+    let tabs = {};
+    //Bind event handlers
+    chrome.tabs.onCreated.addListener((tab) => {
+        if (tab.id !== chrome.tabs.TAB_ID_NONE && tab.url) {
+            tabs[tab.id] = tab.url;
+        }
+    });
+    chrome.tabs.onUpdated.addListener((id, data, ignored) => {
+        data.url && (tabs[id] = data.url);
+    });
+    chrome.tabs.onRemoved.addListener((id, ignored) => {
+        delete tabs[id];
+    });
+    chrome.tabs.onReplaced.addListener((added, removed) => {
+        //I am not sure if this is needed
+        tabs[added] = tabs[removed];
+        delete tabs[removed];
+    });
+    //Return closure function
+    return (id) => tabs[id] || "";
+})();
 
 //=====Debug=====
 if (a.debugMode) {
@@ -192,6 +224,127 @@ if (a.debugMode) {
             [
                 "blocking",
                 "requestHeaders",
+            ],
+        );
+    }
+    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/344
+    {
+        const genPayload = (csid, caid, cbfn) => {
+            //TODO: Optimize this
+            let payload = `{
+                version: "1",
+                networkId: "-1",
+                parameters: [
+                    {
+                        name: "autoloadExtensions",
+                        category: "profile",
+                        value: "https://jspenguin.com/API/uBlockProtector/Solutions/MoatFreeWheelJSPEM.js",
+                    },
+                ],
+                rendererManifest: {
+                    adRenderers: {
+                        version: "1",
+                        adRenderer: [],
+                    },
+                },
+                visitor: {
+                    "httpHeaders": [],
+                    "state": [],
+                },
+                errors: {
+                    errors: [],
+                },
+                eventCallbacks: {
+                    eventCallbacks: [],
+                },
+                ads: {
+                    ads: [],
+                },
+                siteSection: {
+                    customId: "@csid",
+                    videoPlayer: {
+                        videoAsset: {
+                            eventCallbacks: [
+                                {
+                                    url: "http://mmod.v.fwmrm.net/ad/l/1?s=c005&n=48804%3B48804%3B379619%3B381963&t=1499098972532165010&f=&cn=videoView&et=i&uxnw=48804&uxss=v92041862&uxct=2",
+                                    name: "videoView",
+                                    type: "IMPRESSION",
+                                    use: "OVERRIDE",
+                                    showBrowser: false,
+                                    trackingUrls: [],
+                                }
+                            ],
+                            customId: "@caid",
+                            networkId: "-1",
+                            adSlots: [],
+                        },
+                        adSlots: [],
+                    },
+                    adSlots: [],
+                },
+            }`;
+            return "data:text/javascript;base64," + btoa(cbfn + "(" + payload.replace("@csid", csid).replace("@caid", caid) + ");");
+        };
+        //Matchers
+        const reOrigin = /^(https?:\/\/\w+\.ncaa\.com\/|$)/; //Aggressively redirect if the URL of the tab is not known
+        const reCsid = /csid=([^&]+)/;
+        const reCaid = /caid=([^&]+)/;
+        const reCbfn = /cbfn=([^&]+)/;
+        //Main ads request nooping
+        chrome.webRequest.onBeforeRequest.addListener(
+            (details) => {
+                console.log(details);
+                if (reOrigin.test(tab2url(details.tabId))) {
+                    const csid = reCsid.exec(details.url);
+                    const caid = reCaid.exec(details.url);
+                    const cbfn = reCbfn.exec(details.url);
+                    if (csid && caid && cbfn) {
+                        return { redirectUrl: genPayload(csid[1], caid[1], decodeURIComponent(cbfn[1])) };
+                    }
+                } else {
+                    console.log(tab2url(details.tabId));
+                    return { cancel: true };
+                }
+            },
+            {
+                urls: [
+                    "https://*.fwmrm.net/*",
+                    "http://*.fwmrm.net/*",
+                ],
+                types: [
+                    "script",
+                ],
+            },
+            [
+                "blocking",
+            ],
+        );
+        //Extension nooping
+        chrome.webRequest.onBeforeRequest.addListener(
+            (details) => {
+                //TODO: Optimize this
+                let temp = "data:text/javascript;base64,";
+                temp += btoa(String(function MoatFreeWheelJSPEM() {
+                    //I think the callback here is broken
+                    "use strict";
+                    this.init = (context) => {
+                        console.log(context);
+
+                    };
+                    this.dispose = () => { };
+                }));
+                return { redirectUrl: temp };
+            },
+            {
+                urls: [
+                    "https://jspenguin.com/API/uBlockProtector/Solutions/ncaa.com.js",
+                ],
+                types: [
+                    "script",
+                ],
+            },
+            [
+                "blocking",
             ],
         );
     }

@@ -2596,3 +2596,15 @@ if (a.domCmp(["gamersclub.com.br", "uploadboy.com", "vidoza.net", "videohelp.com
 if (a.domCmp(["noticiasautomotivas.com.br"])) {
     a.css("html, body { overflow:scroll; } cloudflare-app[app-id='no-adblock'] { display:none; }", true);
 }
+if (a.domCmp(["sport365.live"])) {
+    a.inject(() => {
+        "use strict";
+        const _eval = window.eval;
+        window.eval = (...args) => {
+            try {
+                window.$.adblock = false;
+            } catch (err) { }
+            _eval.apply(window, args);
+        };
+    });
+}
