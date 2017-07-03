@@ -104,11 +104,11 @@ if (a.debugMode) {
  * @param {integer} id - The ID of the tab.
  * @return {string} The URL of the tab, or an empty string if it is not known.
  */
-const tab2url = (() => {
+const getTabURL = (() => {
     //Only used in debug mode
     if (!a.debugMode) {
         return () => {
-            console.error("tab2url() is only available in debug mode.");
+            console.error("getTabURL() is only available in debug mode.");
             return "";
         };
     }
@@ -300,7 +300,7 @@ if (a.debugMode) {
             (details) => {
                 //Debug log
                 console.log(details);
-                if (reOrigin.test(tab2url(details.tabId))) {
+                if (reOrigin.test(getTabURL(details.tabId))) {
                     const csid = reCsid.exec(details.url);
                     const caid = reCaid.exec(details.url);
                     const cbfn = reCbfn.exec(details.url);
@@ -309,7 +309,7 @@ if (a.debugMode) {
                     }
                 } else {
                     //Debug log
-                    console.log(tab2url(details.tabId));
+                    console.log(getTabURL(details.tabId));
                     //return { cancel: true };
                 }
             },
