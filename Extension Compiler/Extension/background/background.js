@@ -269,16 +269,7 @@ if (a.debugMode) {
                     customId: "@csid",
                     videoPlayer: {
                         videoAsset: {
-                            eventCallbacks: [
-                                {
-                                    url: "http://mmod.v.fwmrm.net/ad/l/1?s=c005&n=48804%3B48804%3B379619%3B381963&t=1499098972532165010&f=&cn=videoView&et=i&uxnw=48804&uxss=v92041862&uxct=2",
-                                    name: "videoView",
-                                    type: "IMPRESSION",
-                                    use: "OVERRIDE",
-                                    showBrowser: false,
-                                    trackingUrls: [],
-                                }
-                            ],
+                            eventCallbacks: [],
                             customId: "@caid",
                             networkId: "-1",
                             adSlots: [],
@@ -331,14 +322,22 @@ if (a.debugMode) {
             (details) => {
                 //TODO: Optimize this
                 let temp = "data:text/javascript;base64,";
-                temp += btoa(String(function MoatFreeWheelJSPEM() {
+                temp += btoa("(" + String(() => {
                     "use strict";
-                    this.init = (context) => {
-                        //I think the callback here is broken
-                        console.log(context);
-                    };
-                    this.dispose = () => { };
-                }));
+                    window.MoatFreeWheelJSPEM = class {
+                        init(context) {
+                            console.log(context);
+                            try {
+                                context.addEventListener(window.tv.freewheel.SDK.EVENT_AD, (e) => {
+                                    console.log(e);
+                                });
+                            } catch (err) {
+                                console.log(err);
+                            }
+                        }
+                        dispose() { }
+                    }
+                }) + ")();");
                 return { redirectUrl: temp };
             },
             {
