@@ -109,33 +109,31 @@ a.init = () => {
  * @param {integer} id - The ID of the tab.
  * @return {string} The URL of the tab, or an empty string if it is not known.
  */
-if (a.debugMode) { //Currently only available in debug mode
-    a.getTabURL = (() => {
-        //The tabs database
-        let tabs = {};
-        //Bind event handlers
-        chrome.tabs.onCreated.addListener((tab) => {
-            if (tab.id !== chrome.tabs.TAB_ID_NONE && tab.url) {
-                tabs[tab.id] = tab.url;
-            }
-        });
-        chrome.tabs.onUpdated.addListener((id, data, ignored) => {
-            if (data.url) {
-                tabs[id] = data.url;
-            }
-        });
-        chrome.tabs.onRemoved.addListener((id, ignored) => {
-            delete tabs[id];
-        });
-        chrome.tabs.onReplaced.addListener((added, removed) => {
-            //I am not sure if this is needed
-            tabs[added] = tabs[removed];
-            delete tabs[removed];
-        });
-        //Return closure function
-        return (id) => tabs[id] || "";
-    })();
-}
+a.getTabURL = (() => {
+    //The tabs database
+    let tabs = {};
+    //Bind event handlers
+    chrome.tabs.onCreated.addListener((tab) => {
+        if (tab.id !== chrome.tabs.TAB_ID_NONE && tab.url) {
+            tabs[tab.id] = tab.url;
+        }
+    });
+    chrome.tabs.onUpdated.addListener((id, data, ignored) => {
+        if (data.url) {
+            tabs[id] = data.url;
+        }
+    });
+    chrome.tabs.onRemoved.addListener((id, ignored) => {
+        delete tabs[id];
+    });
+    chrome.tabs.onReplaced.addListener((added, removed) => {
+        //I am not sure if this is needed
+        tabs[added] = tabs[removed];
+        delete tabs[removed];
+    });
+    //Return closure function
+    return (id) => tabs[id] || "";
+})();
 
 /**
  * Register a static loopback server.
@@ -156,5 +154,57 @@ a.staticServer = (urls, types, data) => {
         [
             "blocking",
         ],
+    );
+};
+/**
+ * Register a dynamic loopback server.
+ * @function
+ * @param {Array.<string>} urls - The urls to loopback.
+ * @param {Array.<string>} types - The types of request to loopback.
+ * @param {Function} server - The server.
+ ** @param {Object} details - The details of this request.
+ */
+a.dynamicServer = (urls, types, server) => {
+    chrome.webRequest.onBeforeRequest.addListener(
+        server,
+        {
+            urls: urls,
+            types: types,
+        },
+        [
+            "blocking",
+        ],
+    );
+};
+
+/**
+ * Apply generic rules.
+ * @function
+ */
+a.generic = () => {
+    //---MoatFreeWheelJSPEM.js---
+    //Payload generator
+    /*
+    console.log("data:text/javascript;base64," + btoa("(" + String(() => {
+        "use strict";
+        window.console.error("Uncaught Error: FreeWheel SDK is not allowed on this device!");
+        window.MoatFreeWheelJSPEM = class {
+            init() { }
+            dispose() { }
+        };
+    }) + ")();"));
+    */
+    a.staticServer(
+        [
+            "https://jspenguin.com/API/uBlockProtector/Solutions/MoatFreeWheelJSPEM.js",
+            "https://*.moatads.com/*/MoatFreeWheelJSPEM.js",
+        ],
+        [
+            "script",
+        ],
+        "data:text/javascript;base64,KCgpID0+IHsNCiAgICAgICAgInVzZSBzdHJpY3QiOw0KICAgICAgICB3aW5kb3cuY29uc29sZS5lcnJvcigiV" +
+        "W5jYXVnaHQgRXJyb3I6IEZyZWVXaGVlbCBTREsgaXMgbm90IGFsbG93ZWQgb24gdGhpcyBkZXZpY2UhIik7DQogICAgICAgIHdpbmRvdy5Nb2F0Rn" +
+        "JlZVdoZWVsSlNQRU0gPSBjbGFzcyB7DQogICAgICAgICAgICBpbml0KCkgeyB9DQogICAgICAgICAgICBkaXNwb3NlKCkgeyB9DQogICAgICAgIH0" +
+        "7DQogICAgfSkoKTs=",
     );
 };

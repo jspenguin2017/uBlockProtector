@@ -12,7 +12,9 @@
 ! Visite my home page for more information: https://jspenguin2017.github.io/uBlockProtector/
 ! ==========================================================================================
 jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
-@@|https://*.moatads.com/*/MoatFreeWheelJSPEM.js|$script
+|https://jspenguin.com/API/uBlockProtector/Solutions/Blocked.php$important
+@@|https://*.moatads.com/*/MoatFreeWheelJSPEM.js$script
+@@|http://mmod.v.fwmrm.net/ad/g/*$script
 ||d.0emm.com^$third-party,script
 ||d.0emn.com^$third-party,script
 ||d.0enm.com^$third-party,script
@@ -260,7 +262,6 @@ themarker.com###ad-block-wrapper
 @@||static.ipornia.com^$image,domain=ipornia.hdzog.com
 hdzog.com##.msg-adblock.msg
 @@||ncaa.com^$generichide
-@@||fwmrm.net^$script,domain=ncaa.com
 onet.pl##script:inject(abort-on-property-read.js, onetAds)
 ||vocento.com/adblock-detector/$script
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
