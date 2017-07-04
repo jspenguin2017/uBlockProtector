@@ -2235,17 +2235,13 @@ if (a.domCmp(["gaana.com"])) {
         let obj = function () { };
         obj.prototype = pType;
         const val = new obj();
-        try {
-            window.Object.defineProperty(window, "colombia", {
-                configurable: false,
-                set() { },
-                get() {
-                    return val;
-                },
-            });
-        } catch (err) {
-            window.console.error("uBlock Protector failed to set up Colombia uBlock Origin detector defuser!");
-        }
+        window.Object.defineProperty(window, "colombia", {
+            configurable: false,
+            set() { },
+            get() {
+                return val;
+            },
+        });
     });
 }
 if (a.domCmp(["gelbooru.com"])) {
