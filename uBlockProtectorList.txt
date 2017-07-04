@@ -62,6 +62,7 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 ||w.nfd81.com^$third-party,script
 ||w.nn0e.com^$third-party,script
 ||w.rpts.org^$third-party,script
+||adiode.com^$third-party
 ||doubleclick.net^$important,domain=aetv.com|history.com|mylifetime.com
 ||a.optnmnstr.com^
 ||zergnet.com^$script,third-party

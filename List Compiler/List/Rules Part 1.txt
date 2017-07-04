@@ -57,6 +57,9 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 ||w.nfd81.com^$third-party,script
 ||w.nn0e.com^$third-party,script
 ||w.rpts.org^$third-party,script
+! === adiode.com
+! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/346
+||adiode.com^$third-party
 ! === DoubleClick
 ||doubleclick.net^$important,domain=aetv.com|history.com|mylifetime.com
 ! === OptinMonster

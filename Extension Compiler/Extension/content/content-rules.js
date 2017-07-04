@@ -2606,3 +2606,6 @@ if (a.domCmp(["sport365.live"])) {
         };
     });
 }
+if (a.domCmp(["gsmarena.com"])) {
+    a.filter("eval");
+}
