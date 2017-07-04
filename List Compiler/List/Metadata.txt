@@ -1,10 +1,11 @@
 ! Title: uBlock Protector List
-! Redirect: https://github.com/jspenguin2017/uBlockProtector/raw/master/uBlockProtectorList.txt
+! Expires: 2 days
 !
 ! Description: An anti-adblock defuser for uBlock Origin
 ! Author: jspenguin2017
 ! Homepage: https://jspenguin2017.github.io/uBlockProtector/
 ! Support: https://github.com/jspenguin2017/uBlockProtector/blob/master/CONTRIBUTING.MD
+! Download: https://github.com/jspenguin2017/uBlockProtector/raw/master/uBlockProtectorList.txt
 ! License: GPL-3.0
 !
 ! ===== MUST READ ==========================================================================
