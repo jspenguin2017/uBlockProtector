@@ -1818,7 +1818,7 @@ if (a.domCmp(["adz.bz", "mellow.link", "hop.bz", "mellowads.com", "url.vin", "cl
             },
             get() {
                 if (val.verify) {
-                    val.verify = (() => {
+                    val.verify = () => {
                         window.callAPI(
                             "publishing",
                             "VerifyLinkClick",
@@ -1841,7 +1841,7 @@ if (a.domCmp(["adz.bz", "mellow.link", "hop.bz", "mellowads.com", "url.vin", "cl
                                 window.grecaptcha.reset();
                             },
                         );
-                    }).bind(val);
+                    };
                 }
                 return val;
             },
@@ -1860,7 +1860,7 @@ if (a.domCmp(["zap.in"])) {
             },
             get() {
                 if (val.verify) {
-                    val.verify = (() => {
+                    val.verify = () => {
                         window.callAPI(
                             "VerifyZapClick",
                             {
@@ -1882,7 +1882,7 @@ if (a.domCmp(["zap.in"])) {
                                 window.grecaptcha.reset();
                             },
                         );
-                    }).bind(val);
+                    };
                 }
                 return val;
             },
