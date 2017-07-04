@@ -164,8 +164,8 @@ a.staticServer = (urls, types, data) => {
  * @function
  * @param {Array.<string>} urls - The urls to loopback.
  * @param {Array.<string>} types - The types of request to loopback.
- * @param {Function} server - The server.
- ** @param {Object} details - The details of this request.
+ * @param {Function} server - The server, this function will be passed as the event listener, view Chrome API
+ ** documentations for more information: https://developer.chrome.com/extensions/webRequest
  */
 a.dynamicServer = (urls, types, server) => {
     chrome.webRequest.onBeforeRequest.addListener(
