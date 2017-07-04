@@ -184,7 +184,7 @@ a.dynamicServer = (urls, types, server) => {
  * Make data URL.
  * @function
  * @param {Function} payload - The payload.
- * @param {string} [type="text/javascript"] - The type of the payload.
+ * @param {string} [type="text/javascript"] - The MIME type of the payload.
  * @return {string} The URL encoded payload.
  */
 a.mkPayload = (payload, type = "text/javascript") => {
