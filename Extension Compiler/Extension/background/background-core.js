@@ -181,6 +181,17 @@ a.dynamicServer = (urls, types, server) => {
 };
 
 /**
+ * Make data URL.
+ * @function
+ * @param {Function} payload - The payload.
+ * @param {string} [type="text/javascript"] - The type of the payload.
+ * @return {string} The URL encoded payload.
+ */
+a.mkPayload = (payload, type = "text/javascript") => {
+    return `data:${type};base64,${btoa(`(${payload})();`)}`;
+};
+
+/**
  * Apply generic rules.
  * @function
  */
@@ -188,14 +199,14 @@ a.generic = () => {
     //---MoatFreeWheelJSPEM.js---
     //Payload generator
     /*
-    console.log("data:text/javascript;base64," + btoa("(" + String(() => {
+    console.log(a.mkPayload(() => {
         "use strict";
         window.console.error("Uncaught Error: FreeWheel SDK is not allowed on this device!");
         window.MoatFreeWheelJSPEM = class {
             init() { }
             dispose() { }
         };
-    }) + ")();"));
+    }));
     */
     a.staticServer(
         [
@@ -209,5 +220,32 @@ a.generic = () => {
         "W5jYXVnaHQgRXJyb3I6IEZyZWVXaGVlbCBTREsgaXMgbm90IGFsbG93ZWQgb24gdGhpcyBkZXZpY2UhIik7DQogICAgICAgIHdpbmRvdy5Nb2F0Rn" +
         "JlZVdoZWVsSlNQRU0gPSBjbGFzcyB7DQogICAgICAgICAgICBpbml0KCkgeyB9DQogICAgICAgICAgICBkaXNwb3NlKCkgeyB9DQogICAgICAgIH0" +
         "7DQogICAgfSkoKTs=",
+    );
+    //---jQuery plugin---
+    //Payload generator
+    /*
+    console.log(a.mkPayload(() => {
+        "use strict";
+        window.console.error("Uncaught Error: jQuery uBlock Origin detector plugin is not allowed on this device!");
+        try {
+            window.$.adblock = false;
+        } catch (err) { }
+        try {
+            window.jQuery.adblock = false;
+        } catch (err) { }
+    }));
+    */
+    a.staticServer(
+        [
+            "https://ads.korri.fr/index.js",
+        ],
+        [
+            "script",
+        ],
+        "data:text/javascript;base64,KCgpID0+IHsNCiAgICAgICAgInVzZSBzdHJpY3QiOw0KICAgICAgICB3aW5kb3cuY29uc29sZS5lcnJvcigiV" +
+        "W5jYXVnaHQgRXJyb3I6IGpRdWVyeSB1QmxvY2sgT3JpZ2luIGRldGVjdG9yIHBsdWdpbiBpcyBub3QgYWxsb3dlZCBvbiB0aGlzIGRldmljZSEiKT" +
+        "sNCiAgICAgICAgdHJ5IHsNCiAgICAgICAgICAgIHdpbmRvdy4kLmFkYmxvY2sgPSBmYWxzZTsNCiAgICAgICAgfSBjYXRjaCAoZXJyKSB7IH0NCiA" +
+        "gICAgICAgdHJ5IHsNCiAgICAgICAgICAgIHdpbmRvdy5qUXVlcnkuYWRibG9jayA9IGZhbHNlOw0KICAgICAgICB9IGNhdGNoIChlcnIpIHsgfQ0K" +
+        "ICAgIH0pKCk7",
     );
 };

@@ -15,6 +15,7 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 |https://jspenguin.com/API/uBlockProtector/Solutions/Blocked.php$important
 @@|https://*.moatads.com/*/MoatFreeWheelJSPEM.js|$script
 @@|http://mmod.v.fwmrm.net/ad/g/*$script,domain=ncaa.com
+@@|https://ads.korri.fr/index.js|$script
 ||d.0emm.com^$third-party,script
 ||d.0emn.com^$third-party,script
 ||d.0enm.com^$third-party,script
@@ -81,7 +82,6 @@ techdracula.com,keshavcommoditycalls.com,hackinformer.com,coderexample.com,aniba
 hentaitake.net,hackinformer.com,sopsport.org,cyberterminators.co,themeslide.com,rnbxclusive.pw##script:inject(abort-on-property-read.js, anOptions)
 futbolchile.net,freeomovie.com,appdrop.net,skmedix.pl,yalujailbreak.net,cloudwebcopy.com,milaulas.com,tout-bon.com,sznpaste.net,linkdrop.net,themeslide.com##script:inject(bab-defuser.js)
 ||lukkr.com/website/pf.js
-@@||www.dogefaucet.com/static/js/ads.js|
 abczdrowie.pl,autokrata.pl,autokult.pl,biztok.pl,gadzetomania.pl,hotmoney.pl,kafeteria.pl,kafeteria.tv,komediowo.pl,komorkomania.pl,money.pl,pudelek.tv,sfora.pl,snobka.pl,wawalove.pl,wp.pl,wp.tv,wrzuta.pl,pudelek.pl,fotoblogia.pl,parenting.pl,echirurgia.pl,pudelekx.pl,o2.pl,kardiolo.pl##.windowErrCont
 tvn.pl#div(id*=_videoDriverContent)
 tvn7.pl##div.vjs-abDetected
