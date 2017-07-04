@@ -262,7 +262,7 @@ themarker.com###ad-block-wrapper
 @@||static.ipornia.com^$image,domain=ipornia.hdzog.com
 hdzog.com##.msg-adblock.msg
 @@||ncaa.com^$generichide
-onet.pl##script:inject(abort-on-property-read.js, dlApi)
+onet.pl,komputerswiat.pl##script:inject(abort-on-property-read.js, dlApi)
 ||vocento.com/adblock-detector/$script
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
