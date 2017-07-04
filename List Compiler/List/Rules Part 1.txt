@@ -416,6 +416,6 @@ hdzog.com##.msg-adblock.msg
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/344
 @@||ncaa.com^$generichide
 ! === onet.pl
-onet.pl##script:inject(abort-on-property-read.js, onetAds)
+onet.pl##script:inject(abort-on-property-read.js, dlApi)
 ! === ideal.es
 ||vocento.com/adblock-detector/$script
