@@ -133,7 +133,7 @@ a.generic();
                     return { redirectUrl: genPayload(csid[1], caid[1], decodeURIComponent(cbfn[1])) };
                 } else {
                     //Block the request as a fallback
-                    console.error("Could not extract parameters from a request to mmod.v.fwmrm.net");
+                    console.warn("Could not extract parameters from a request to mmod.v.fwmrm.net");
                     return { cancel: true };
                 }
             } //Ignore otherwise, let uBlock Origin handle other cases
