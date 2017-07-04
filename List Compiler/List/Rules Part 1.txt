@@ -12,7 +12,7 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 ! === Generic
 @@|https://*.moatads.com/*/MoatFreeWheelJSPEM.js|$script
 @@|https://ads.korri.fr/index.js|$script
-@@|http://*.medianetworkinternational.com/js/advertisement.js|$script
+@@|http://*.medianetworkinternational.com/js/advertisement.js$script
 ! === ncaa.com
 @@|http://mmod.v.fwmrm.net/ad/g/*$script,domain=ncaa.com
 ! ======================
