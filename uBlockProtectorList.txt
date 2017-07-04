@@ -13,9 +13,11 @@
 ! ==========================================================================================
 jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 |https://jspenguin.com/API/uBlockProtector/Solutions/Blocked.php$important
+|https://jspenguin.com/API/uBlockProtector/Solutions/
+@@|https://jspenguin.com/API/uBlockProtector/Solutions/MoatFreeWheelJSPEM.js|$script
 @@|https://*.moatads.com/*/MoatFreeWheelJSPEM.js|$script
-@@|http://mmod.v.fwmrm.net/ad/g/*$script,domain=ncaa.com
 @@|https://ads.korri.fr/index.js|$script
+@@|http://mmod.v.fwmrm.net/ad/g/*$script,domain=ncaa.com
 ||d.0emm.com^$third-party,script
 ||d.0emn.com^$third-party,script
 ||d.0enm.com^$third-party,script
