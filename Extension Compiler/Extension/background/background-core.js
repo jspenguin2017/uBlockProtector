@@ -238,6 +238,7 @@ a.generic = () => {
     a.staticServer(
         [
             "https://ads.korri.fr/index.js",
+            "http://*.medianetworkinternational.com/js/advertisement.js",
         ],
         [
             "script",
