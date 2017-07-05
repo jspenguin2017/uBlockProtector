@@ -186,8 +186,9 @@ a.dynamicServer = (urls, types, server) => {
  * @function
  * @param {string} urls - The URLs to activate on.
  * @param {string} ip - The IP.
+ * @param {boolean} [log=false] - Whether details should be logged to console for every matched request.
  */
-a.proxy = (urls, ip) => {
+a.proxy = (urls, ip, log) => {
     if (!a.debugMode) {
         console.error("a.proxy() is only available in debug mode!");
         return;
@@ -202,6 +203,9 @@ a.proxy = (urls, ip) => {
                 name: "Client-IP",
                 value: ip,
             });
+            if (log) {
+                console.log(details);
+            }
             return { requestHeaders: details.requestHeaders };
         },
         {

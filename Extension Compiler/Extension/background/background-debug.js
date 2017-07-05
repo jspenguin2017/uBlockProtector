@@ -88,4 +88,16 @@ if (a.debugMode) {
         ],
         "88.82.2.10",
     );
+    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/88
+    /*
+    //The trick does not work for this domain
+    a.proxy(
+        [
+            "*://viasport.fi/*",
+            "*://*.viasport.fi/*",
+        ],
+        "213.243.191.42",
+        true,
+    );
+    */
 }

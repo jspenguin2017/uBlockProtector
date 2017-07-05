@@ -86,7 +86,7 @@ if (a.debugMode) {
                 //Request data JSON
                 a.request({
                     method: "GET",
-                    url: `https://viasport.mtg-api.com/stream-links/viasport/web/se/clear-media-guids/${id}/streams`,
+                    url: `https://viasport.mtg-api.com/stream-links/viasport/web/se/clear-media-guids/${e.detail}/streams`,
                 }, (result) => {
                     if (a.debugMode) {
                         console.info("Response received:");
