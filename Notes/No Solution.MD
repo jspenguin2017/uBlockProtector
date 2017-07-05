@@ -13,20 +13,3 @@ Issues:
 
 Workaround: In debug mode of the Extension, the whole webpage will be replaced by a player which plays the first video on the page. 
 More information about debug mode can be found in options of the Extension. 
-
-## itv.com
-
-`Account Required` `Geo Lock (United Kingdom)`
-
-Test links: 
-* https://www.itv.com/hub/take-me-out/1a8716a0086
-* https://www.itv.com/hub/a-touch-of-frost/Ya1774a0037
-
-Issues: 
-* https://github.com/jspenguin2017/uBlockProtector/issues/286
-
-Workaround: Add the filters below, you will see some ads. 
-```
-||spike.itv.com/itv/tserver/size=*/viewid=$badfilter
-||tom.itv.com/itv/tserver/size=*/viewid=$badfilter
-```
