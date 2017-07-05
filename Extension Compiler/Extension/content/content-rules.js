@@ -2609,3 +2609,23 @@ if (a.domCmp(["sport365.live"])) {
 if (a.domCmp(["gsmarena.com"])) {
     a.filter("eval");
 }
+if (a.domCmp(["myfxbook.com"])) {
+    a.inject(() => {
+        "use strict";
+        const err = new window.Error("This property may not be accessed!");
+        let isSet = false;
+        window.Object.defineProperty(window, "isAdBlockerExist", {
+            configurable: false,
+            get() {
+                throw err;
+            },
+            set() {
+                if (isSet) {
+                    throw err;
+                } else {
+                    isSet = true;
+                }
+            },
+        });
+    });
+}
