@@ -38,6 +38,7 @@ if (a.debugMode) {
     );
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/343
     //Seems to be validated on the server side, this does not work, actually, modifying the cookie makes it worse
+    /*
     {
         //Generate cookie value
         const mkVal = () => {
@@ -78,7 +79,8 @@ if (a.debugMode) {
             ],
         );
     }
-    //Issue: https://github.com/reek/anti-adblock-killer/issues/3340
+    */
+    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/286
     a.proxy(
         [
             "*://itv.com/*",
