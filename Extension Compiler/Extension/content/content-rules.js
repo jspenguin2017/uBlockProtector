@@ -1762,7 +1762,7 @@ if (a.domCmp(["pornhub.com", "redtube.com", "youporn.com", "tube8.com", "pornmd.
 if (a.domCmp(["pastebin.com"])) {
     a.readOnly("abdd", `""`);
 }
-if (a.domCmp(["xnxx.com"])) {
+if (a.domCmp(["xnxx.com", "xvideos.com", "xvideos.works"])) {
     a.cookie("wpn-popupunder", "1");
     a.readOnly("openpop", () => { });
 }
