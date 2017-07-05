@@ -2613,17 +2613,14 @@ if (a.domCmp(["myfxbook.com"])) {
     a.inject(() => {
         "use strict";
         const err = new window.Error("This property may not be accessed!");
-        let isSet = false;
         window.Object.defineProperty(window, "isAdBlockerExist", {
             configurable: false,
             get() {
                 throw err;
             },
-            set() {
-                if (isSet) {
+            set(val) {
+                if (val) {
                     throw err;
-                } else {
-                    isSet = true;
                 }
             },
         });
