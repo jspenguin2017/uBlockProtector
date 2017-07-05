@@ -181,6 +181,40 @@ a.dynamicServer = (urls, types, server) => {
 };
 
 /**
+ * Attempt to make the server think the request is from a different IP.
+ * Only available in debug mode.
+ * @function
+ * @param {string} urls - The URLs to activate on.
+ * @param {string} ip - The IP.
+ */
+a.proxy = (urls, ip) => {
+    if (!a.debugMode) {
+        console.error("a.proxy() is only available in debug mode!");
+        return;
+    }
+    chrome.webRequest.onBeforeSendHeaders.addListener(
+        (details) => {
+            details.requestHeaders.push({
+                name: "X-Forwarded-For",
+                value: ip,
+            });
+            details.requestHeaders.push({
+                name: "Client-IP",
+                value: ip,
+            });
+            return { requestHeaders: details.requestHeaders };
+        },
+        {
+            urls: urls,
+        },
+        [
+            "blocking",
+            "requestHeaders",
+        ],
+    );
+};
+
+/**
  * Make data URL.
  * @function
  * @param {Function} payload - The payload.

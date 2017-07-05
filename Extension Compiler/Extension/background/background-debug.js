@@ -15,7 +15,8 @@ if (a.debugMode) {
         },
         {
             urls: [
-                "https://*.vidlox.tv/*",
+                "*://vidlox.tv/*",
+                "*://*.vidlox.tv/*",
             ],
             types: [
                 //"main_frame",
@@ -28,30 +29,12 @@ if (a.debugMode) {
         ],
     );
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/338
-    chrome.webRequest.onBeforeSendHeaders.addListener(
-        (details) => {
-            details.requestHeaders.push({
-                name: "X-Forwarded-For",
-                value: "107.77.200.10",
-            });
-            details.requestHeaders.push({
-                name: "Client-IP",
-                value: "107.77.200.10",
-            });
-            //Debug log
-            console.log(details);
-            return { requestHeaders: details.requestHeaders };
-        },
-        {
-            urls: [
-                "https://*.go.com/*",
-                "http://*.go.com/*",
-            ],
-        },
+    a.proxy(
         [
-            "blocking",
-            "requestHeaders",
+            "*://go.com/*",
+            "*://*.go.com/*",
         ],
+        "107.77.200.10",
     );
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/343
     //Seems to be validated on the server side, this does not work, actually, modifying the cookie makes it worse
@@ -82,8 +65,8 @@ if (a.debugMode) {
             },
             {
                 urls: [
-                    "https://*.gamereactor.eu/*",
-                    "http://*.gamereactor.eu/*",
+                    "*://gamereactor.eu/*",
+                    "*://*.gamereactor.eu/*",
                 ],
                 types: [
                     "main_frame",
@@ -95,4 +78,12 @@ if (a.debugMode) {
             ],
         );
     }
+    //Issue: https://github.com/reek/anti-adblock-killer/issues/3340
+    a.proxy(
+        [
+            "*://itv.com/*",
+            "*://*.itv.com/*",
+        ],
+        "88.82.2.10",
+    );
 }
