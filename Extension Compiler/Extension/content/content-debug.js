@@ -21,9 +21,9 @@ if (a.debugMode) {
             //Find the media URL
             a.request({
                 method: "POST",
-                url: playerElem.attr("data-video-playlist"),
+                url: playerElem.data("videoPlaylist"),
                 headers: {
-                    "hmac": playerElem.attr("data-video-hmac").toUpperCase(),
+                    "hmac": playerElem.data("videoHmac").toUpperCase(),
                     "Accept": "application/vnd.itv.vod.playlist.v2+json",
                     "Content-Type": "application/json",
                 },
