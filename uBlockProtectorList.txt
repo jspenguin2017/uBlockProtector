@@ -142,6 +142,7 @@ youtube.com###companion
 @@||/popunder.gif$xmlhttprequest,domain=flashx.tv
 ||static.flashx.tv/img/player.png$image
 flashx.tv##script:inject(abort-on-property-read.js, open)
+@@||zencdn.net^$script,domain=flashx.tv
 @@||linkneverdie.com^$elemhide
 pogdesign.co.uk##.replace
 ||p207208.clksite.com^$subdocument,redirect=noopframe,domain=ally.sh|al.ly
