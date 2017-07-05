@@ -182,7 +182,7 @@ a.dynamicServer = (urls, types, server) => {
 
 /**
  * Attempt to make the server think the request is from a different IP.
- * Only available in debug mode.
+ * This function is for debugging purposes only, and is only available in debug mode.
  * @function
  * @param {string} urls - The URLs to activate on.
  * @param {string} ip - The IP.
@@ -230,31 +230,6 @@ a.mkPayload = (payload, type = "text/javascript") => {
  * @function
  */
 a.generic = () => {
-    //---MoatFreeWheelJSPEM.js---
-    //Payload generator
-    /*
-    console.log(a.mkPayload(() => {
-        "use strict";
-        window.console.error("Uncaught Error: FreeWheel SDK is not allowed on this device!");
-        window.MoatFreeWheelJSPEM = class {
-            init() { }
-            dispose() { }
-        };
-    }));
-    */
-    a.staticServer(
-        [
-            "https://jspenguin.com/API/uBlockProtector/Solutions/MoatFreeWheelJSPEM.js",
-            "https://*.moatads.com/*/MoatFreeWheelJSPEM.js",
-        ],
-        [
-            "script",
-        ],
-        "data:text/javascript;base64,KCgpID0+IHsNCiAgICAgICAgInVzZSBzdHJpY3QiOw0KICAgICAgICB3aW5kb3cuY29uc29sZS5lcnJvcigiV" +
-        "W5jYXVnaHQgRXJyb3I6IEZyZWVXaGVlbCBTREsgaXMgbm90IGFsbG93ZWQgb24gdGhpcyBkZXZpY2UhIik7DQogICAgICAgIHdpbmRvdy5Nb2F0Rn" +
-        "JlZVdoZWVsSlNQRU0gPSBjbGFzcyB7DQogICAgICAgICAgICBpbml0KCkgeyB9DQogICAgICAgICAgICBkaXNwb3NlKCkgeyB9DQogICAgICAgIH0" +
-        "7DQogICAgfSkoKTs=",
-    );
     //---jQuery plugin---
     //Payload generator
     /*
@@ -282,5 +257,30 @@ a.generic = () => {
         "sNCiAgICAgICAgdHJ5IHsNCiAgICAgICAgICAgIHdpbmRvdy4kLmFkYmxvY2sgPSBmYWxzZTsNCiAgICAgICAgfSBjYXRjaCAoZXJyKSB7IH0NCiA" +
         "gICAgICAgdHJ5IHsNCiAgICAgICAgICAgIHdpbmRvdy5qUXVlcnkuYWRibG9jayA9IGZhbHNlOw0KICAgICAgICB9IGNhdGNoIChlcnIpIHsgfQ0K" +
         "ICAgIH0pKCk7",
+    );
+    //---MoatFreeWheelJSPEM.js---
+    //Payload generator
+    /*
+    console.log(a.mkPayload(() => {
+        "use strict";
+        window.console.error("Uncaught Error: FreeWheel SDK is not allowed on this device!");
+        window.MoatFreeWheelJSPEM = class {
+            init() { }
+            dispose() { }
+        };
+    }));
+    */
+    a.staticServer(
+        [
+            "https://jspenguin.com/API/uBlockProtector/Solutions/MoatFreeWheelJSPEM.js",
+            "https://*.moatads.com/*/MoatFreeWheelJSPEM.js",
+        ],
+        [
+            "script",
+        ],
+        "data:text/javascript;base64,KCgpID0+IHsNCiAgICAgICAgInVzZSBzdHJpY3QiOw0KICAgICAgICB3aW5kb3cuY29uc29sZS5lcnJvcigiV" +
+        "W5jYXVnaHQgRXJyb3I6IEZyZWVXaGVlbCBTREsgaXMgbm90IGFsbG93ZWQgb24gdGhpcyBkZXZpY2UhIik7DQogICAgICAgIHdpbmRvdy5Nb2F0Rn" +
+        "JlZVdoZWVsSlNQRU0gPSBjbGFzcyB7DQogICAgICAgICAgICBpbml0KCkgeyB9DQogICAgICAgICAgICBkaXNwb3NlKCkgeyB9DQogICAgICAgIH0" +
+        "7DQogICAgfSkoKTs=",
     );
 };
