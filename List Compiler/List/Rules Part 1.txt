@@ -358,8 +358,8 @@ animesync.tv##.modal-adblock
 @@||gtsstatic.com/p/mscripts/prebid_$script,domain=gentside.com
 ! === watchfree.to
 watchfree.to##script:inject(abort-on-property-read.js, UAParser)
-! === firstonetv.eu
-firstonetv.eu##script:inject(noeval-if.js, Please disable your Adblocker)
+! === firstonetv.eu, firstone.tv
+firstonetv.eu,firstone.tv##script:inject(noeval-if.js, Please disable your Adblocker)
 ! === streamwoop.tv
 |https://$third-party,script,domain=streamwoop.tv,badfilter
 |https://$third-party,xmlhttprequest,domain=streamwoop.tv,badfilter
