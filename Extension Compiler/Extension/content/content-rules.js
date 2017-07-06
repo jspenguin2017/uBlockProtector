@@ -2626,3 +2626,6 @@ if (a.domCmp(["myfxbook.com"])) {
         });
     });
 }
+if (a.domCmp(["ptztv.com", "mahobeachcam.com"])) {
+    a.readOnly("PTZtv", true);
+}
