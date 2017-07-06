@@ -2629,3 +2629,10 @@ if (a.domCmp(["myfxbook.com"])) {
 if (a.domCmp(["ptztv.com", "mahobeachcam.com"])) {
     a.readOnly("PTZtv", true);
 }
+if (a.domCmp(["westeros.org"])) {
+    a.onInsert((node) => {
+        if (node && node.innerHTML && node.innerHTML.includes("Looks like you are using an Ad Blocker!")) {
+            node.remove();
+        }
+    });
+}
