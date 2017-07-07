@@ -124,7 +124,7 @@ a.getTabURL = (() => {
         }
         tabs[details.tabId][details.frameId] = details.url;
     });
-    chrome.tabs.onRemoved.addListener((id, ignored) => {
+    chrome.tabs.onRemoved.addListener((id) => {
         //Free memory when tab is closed
         delete tabs[id];
     });
