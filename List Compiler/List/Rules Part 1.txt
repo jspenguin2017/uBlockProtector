@@ -440,3 +440,5 @@ webcheats.com.br###bg_trasp
 totomi.co##script:inject(setInterval-defuser.js, /display/.test)
 ! === naisho.asia
 naisho.asia##script:inject(abort-on-property-write.js, adBlock)
+! === westeros.org
+||sovrnlabs.net^$domain=westeros.org
