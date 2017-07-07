@@ -452,7 +452,7 @@ a.generic = () => {
                 VERSION: "3.173.4",
             },
         };
-        //Nested API
+        //Nested properties
         window.google.ima.AdError.ErrorCode = {
             VIDEO_PLAY_ERROR: 400,
             FAILED_TO_REQUEST_ADS: 1005,
@@ -552,7 +552,7 @@ a.generic = () => {
             ENABLED: 1,
             INSECURE: 2,
         };
-        //Other
+        //Initialization
         window.google.ima.settings = new window.google.ima.ImaSdkSettings();
     }));
     */
