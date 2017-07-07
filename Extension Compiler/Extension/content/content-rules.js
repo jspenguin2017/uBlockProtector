@@ -2636,3 +2636,6 @@ if (a.domCmp(["westeros.org"])) {
         }
     });
 }
+if (a.domCmp(["darmowe-pornosy.pl"])) {
+    a.filter("eval");
+}
