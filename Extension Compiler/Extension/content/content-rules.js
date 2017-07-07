@@ -621,7 +621,7 @@ if (a.domCmp(["stream4free.eu"])) {
     a.bait("div", "#jpayday");
     a.readOnly("jpayday_alert", 1);
 }
-if (a.domCmp(["lg-firmware-rom.com"])) {
+if (a.domCmp(["lg-firmware-rom.com", "xmac.xyz"])) {
     a.readOnly("killads", true);
 }
 if (a.domCmp(["badtv.it", "badtaste.it", "badgames.it", "badcomics.it"])) {
