@@ -279,8 +279,9 @@ a.generic = () => {
         "0KICAgIH0pKCk7",
     );
     //---Interactive Media Ads Software Development Kit---
-    //https://developers.google.com/interactive-media-ads/docs/sdks/html5/v3/apis
+    //Payload generator
     /*
+    //https://developers.google.com/interactive-media-ads/docs/sdks/html5/v3/apis
     a.printPayload(a.mkPayload(() => {
         "use strict";
         window.console.error("Uncaught Error: IMA SDK is not allowed on this device!");
