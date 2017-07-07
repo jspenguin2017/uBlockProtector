@@ -272,6 +272,7 @@ onet.pl,komputerswiat.pl##script:inject(abort-on-property-read.js, dlApi)
 ||vocento.com/adblock-detector/$script
 webcheats.com.br##script:inject(abort-on-property-read.js, can_run_ads)
 webcheats.com.br###bg_trasp
+totomi.co##script:inject(setInterval-defuser.js, /display/.test)
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================

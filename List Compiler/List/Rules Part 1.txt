@@ -436,3 +436,5 @@ onet.pl,komputerswiat.pl##script:inject(abort-on-property-read.js, dlApi)
 ! === webcheats.com.br
 webcheats.com.br##script:inject(abort-on-property-read.js, can_run_ads)
 webcheats.com.br###bg_trasp
+! === totomi.co
+totomi.co##script:inject(setInterval-defuser.js, /display/.test)
