@@ -621,8 +621,11 @@ if (a.domCmp(["stream4free.eu"])) {
     a.bait("div", "#jpayday");
     a.readOnly("jpayday_alert", 1);
 }
-if (a.domCmp(["lg-firmware-rom.com", "xmac.xyz"])) {
+if (a.domCmp(["lg-firmware-rom.com"])) {
     a.readOnly("killads", true);
+}
+if (a.domCmp(["xmac.xyz"])) {
+    a.readOnly("killAds", true);
 }
 if (a.domCmp(["badtv.it", "badtaste.it", "badgames.it", "badcomics.it"])) {
     a.cookie("adBlockChecked", "disattivo");
