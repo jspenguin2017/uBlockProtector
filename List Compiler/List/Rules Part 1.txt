@@ -438,3 +438,5 @@ webcheats.com.br##script:inject(abort-on-property-read.js, can_run_ads)
 webcheats.com.br###bg_trasp
 ! === totomi.co
 totomi.co##script:inject(setInterval-defuser.js, /display/.test)
+! === naisho.asia
+naisho.asia##script:inject(abort-on-property-write.js, adBlock)
