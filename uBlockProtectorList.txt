@@ -16,9 +16,10 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 |https://jspenguin.com/API/uBlockProtector/Solutions/Blocked.php$important
 |https://jspenguin.com/API/uBlockProtector/Solutions/
 @@|https://jspenguin.com/API/uBlockProtector/Solutions/MoatFreeWheelJSPEM.js|$script
-@@|https://*.moatads.com/*/MoatFreeWheelJSPEM.js|$script
+@@|https://*.moatads.com/*/MoatFreeWheelJSPEM.js*$script
 @@|https://ads.korri.fr/index.js|$script
 @@|http://*.medianetworkinternational.com/js/advertisement.js*$script
+@@|https://imasdk.googleapis.com/js/sdkloader/ima3.js*$script
 @@|http://mmod.v.fwmrm.net/ad/g/*$script,domain=ncaa.com
 ||d.0emm.com^$third-party,script
 ||d.0emn.com^$third-party,script
@@ -96,7 +97,6 @@ tvnturbo.pl##div.vjs-abDetected
 filez.tv###adblockinfo
 @@||urlex.org^$generichide
 @@||video.gazeta.pl/cdn/ads/ad/banner/_adsense_/_adserver/_adview_.ad.json$xmlhttprequest,domain=video.gazeta.pl
-@@||imasdk.googleapis.com/js/sdkloader/ima3.js$domain=fox.com.tr|turknettv.com
 ||tribdss.com/meter/assets$script,domain=www.latimes.com
 *$xmlhttprequest,domain=thewindowsclub.com
 @@||disquscdn.com^$script,domain=thewindowsclub.com
@@ -899,7 +899,7 @@ tree.tv#@##adverts
 @@||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js$script,domain=djawir.com
 @@||pagead2.googlesyndication.com/pagead/js/r*/r*/show_ads_impl.js$script,domain=djawir.com
 @@||vvvvid.it/img/ad/advertisement.xml$xmlhttprequest
-@@||imasdk.googleapis.com$domain=vvvvid.it
+@@||imasdk.googleapis.com^$domain=vvvvid.it
 @@||static.vvvvid.it/img/ad$domain=vvvvid.it
 @@||des.smartclip.net/ads?$domain=vvvvid.it
 @@||adx.adform.net/adx$domain=vvvvid.it
@@ -1457,7 +1457,6 @@ yad2.co.il###sLightbox_container
 @@||demo.hongkiat.com/jquery-detect-ads-block/images/ads.jpg$image
 @@||detectadblock.com/ads.js$script
 @@||adblockanalytics.com/ads.js$script
-@@||imasdk.googleapis.com/js/sdkloader/ima3.js$script,domain=news.voicetv.co.th
 @@||news.voicetv.co.th/player/video-js/$stylesheet,script
 @@||news.voicetv.co.th/js/ads.js$script
 @@||shukitv.ucoz.com/script/ads.js$script,domain=passimtv.xyz

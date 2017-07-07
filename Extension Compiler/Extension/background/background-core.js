@@ -262,6 +262,20 @@ a.generic = () => {
         "gICAgICAgdHJ5IHsNCiAgICAgICAgICAgIHdpbmRvdy5qUXVlcnkuYWRibG9jayA9IGZhbHNlOw0KICAgICAgICB9IGNhdGNoIChlcnIpIHsgfQ0K" +
         "ICAgIH0pKCk7",
     );
+    //---Interactive Media Ads Software Development Kit---
+    console.log(a.mkPayload(() => {
+        "use strict";
+        //
+    }));
+    a.staticServer(
+        [
+            "https://imasdk.googleapis.com/js/sdkloader/ima3.js*",
+        ],
+        [
+            "script",
+        ],
+        "",
+    );
     //---MoatFreeWheelJSPEM.js---
     //Payload generator
     /*
@@ -277,7 +291,7 @@ a.generic = () => {
     a.staticServer(
         [
             "https://jspenguin.com/API/uBlockProtector/Solutions/MoatFreeWheelJSPEM.js",
-            "https://*.moatads.com/*/MoatFreeWheelJSPEM.js",
+            "https://*.moatads.com/*/MoatFreeWheelJSPEM.js*",
         ],
         [
             "script",

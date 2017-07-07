@@ -10,9 +10,10 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 |https://jspenguin.com/API/uBlockProtector/Solutions/
 @@|https://jspenguin.com/API/uBlockProtector/Solutions/MoatFreeWheelJSPEM.js|$script
 ! === Generic
-@@|https://*.moatads.com/*/MoatFreeWheelJSPEM.js|$script
+@@|https://*.moatads.com/*/MoatFreeWheelJSPEM.js*$script
 @@|https://ads.korri.fr/index.js|$script
 @@|http://*.medianetworkinternational.com/js/advertisement.js*$script
+@@|https://imasdk.googleapis.com/js/sdkloader/ima3.js*$script
 ! === ncaa.com
 @@|http://mmod.v.fwmrm.net/ad/g/*$script,domain=ncaa.com
 ! ======================
@@ -124,8 +125,6 @@ filez.tv###adblockinfo
 @@||urlex.org^$generichide
 ! === video.gazeta.pl
 @@||video.gazeta.pl/cdn/ads/ad/banner/_adsense_/_adserver/_adview_.ad.json$xmlhttprequest,domain=video.gazeta.pl
-! === fox.com.tr
-@@||imasdk.googleapis.com/js/sdkloader/ima3.js$domain=fox.com.tr|turknettv.com
 ! === latimes.com - Thanks to okiehsch
 ||tribdss.com/meter/assets$script,domain=www.latimes.com
 ! === thewindowsclub.com
