@@ -20,6 +20,7 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 @@|https://ads.korri.fr/index.js|$script
 @@|http://*.medianetworkinternational.com/js/advertisement.js*$script
 @@|https://imasdk.googleapis.com/js/sdkloader/ima3.js*$script
+@@|http://imasdk.googleapis.com/js/sdkloader/ima3.js*$script
 @@|http://mmod.v.fwmrm.net/ad/g/*$script,domain=ncaa.com
 ||d.0emm.com^$third-party,script
 ||d.0emn.com^$third-party,script
