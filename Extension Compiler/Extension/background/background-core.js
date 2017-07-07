@@ -239,10 +239,10 @@ a.printPayload = (payload) => {
         return;
     }
     let output = "";
-    do {
+    while (payload) {
         output += `"${payload.substring(0, 150)}" +\n`;
         payload = payload.substring(150);
-    } while (payload.length);
+    }
     console.log(output);
 };
 
