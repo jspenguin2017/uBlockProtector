@@ -76,8 +76,8 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 ||doubleclick.net^$important,domain=aetv.com|history.com|mylifetime.com
 ! === OptinMonster
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/251
-||a.optnmnstr.com^
-||a.optnmstr.com^
+||a.optnmnstr.com^$third-party
+||a.optnmstr.com^$third-party
 ! === ZergNet
 ||zergnet.com^$script,third-party
 ! === itv.com
