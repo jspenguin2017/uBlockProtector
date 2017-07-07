@@ -276,6 +276,8 @@ webcheats.com.br###bg_trasp
 totomi.co##script:inject(setInterval-defuser.js, /display/.test)
 naisho.asia##script:inject(abort-on-property-write.js, adBlock)
 ||sovrnlabs.net^$domain=westeros.org
+sankakucomplex.com##cloudflare-app[app-id="no-adblock"]
+sankakucomplex.com##script:inject(abort-on-property-read.js, BetterJsPop)
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================

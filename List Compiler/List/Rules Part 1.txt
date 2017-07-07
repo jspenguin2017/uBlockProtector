@@ -442,3 +442,6 @@ totomi.co##script:inject(setInterval-defuser.js, /display/.test)
 naisho.asia##script:inject(abort-on-property-write.js, adBlock)
 ! === westeros.org
 ||sovrnlabs.net^$domain=westeros.org
+! === NSFW! sankakucomplex.com
+sankakucomplex.com##cloudflare-app[app-id="no-adblock"]
+sankakucomplex.com##script:inject(abort-on-property-read.js, BetterJsPop)
