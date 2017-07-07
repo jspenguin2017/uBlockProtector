@@ -2632,3 +2632,6 @@ if (a.domCmp(["darmowe-pornosy.pl"])) {
     //NSFW! Block popup
     a.filter("eval");
 }
+if (a.domCmp(["yiv.com"])) {
+    a.cookie("AdBlockMessage", "yes");
+}
