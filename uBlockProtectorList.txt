@@ -257,7 +257,7 @@ vidnow.to###adplayer
 |https://$third-party,script,domain=photobucket.com,badfilter
 vendiscuss.net##script:inject(abort-on-property-read.js, adblock)
 diariodenavarra.es###abMsgWrap
-darmowe-pornosy.pl###porno_accept
+darmowe-pornosy.pl#@#.myTestAd
 |https://$third-party,script,domain=hothardware.com,badfilter
 themarker.com##script:inject(abort-on-property-read.js, adblockDetector)
 themarker.com###ad-block-wrapper

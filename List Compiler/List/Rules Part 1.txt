@@ -408,7 +408,7 @@ vendiscuss.net##script:inject(abort-on-property-read.js, adblock)
 ! === diariodenavarra.es
 diariodenavarra.es###abMsgWrap
 ! === NSFW! darmowe-pornosy.pl
-darmowe-pornosy.pl###porno_accept
+darmowe-pornosy.pl#@#.myTestAd
 ! === hothardware.com
 |https://$third-party,script,domain=hothardware.com,badfilter
 ! === themarker.com
