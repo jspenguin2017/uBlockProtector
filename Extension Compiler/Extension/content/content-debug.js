@@ -2,6 +2,12 @@
 "use strict";
 
 if (a.debugMode) {
+    if (a.domCmp(["twitch.tv"], true)) {
+        //Purely for debugging, force Twitch to show log
+        a.readOnly("log", "window.console.log.bind(window.console)", "window.console");
+        a.readOnly("warn", "window.console.warn.bind(window.console)", "window.console");
+        a.readOnly("error", "window.console.error.bind(window.console)", "window.console");
+    }
     /*
     //Seems to work now
     if (a.domCmp(["itv.com"])) {
