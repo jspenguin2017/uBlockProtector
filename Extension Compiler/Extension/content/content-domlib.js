@@ -189,6 +189,38 @@ $.Selection = class {
         return this;
     }
     /**
+     * Update current selection, only keep elements that have the matcher string as the beginning of their textContent.
+     * @method
+     * @param {string} matcher - The matcher string.
+     */
+    startsWith(matcher) {
+        let newSelection = [];
+        for (let i = 0; i < this.selection.length; i++) {
+            if (this.selection[i].textContent.startsWith(matcher)) {
+                newSelection.push(this.selection[i]);
+            }
+        }
+        this.selection = newSelection;
+        this.length = newSelection.length;
+        return this;
+    }
+    /**
+     * Update current selection, only keep elements that have the matcher string as the ending of their textContent.
+     * @method
+     * @param {string} matcher - The matcher string.
+     */
+    endsWith(matcher) {
+        let newSelection = [];
+        for (let i = 0; i < this.selection.length; i++) {
+            if (this.selection[i].textContent.endsWith(matcher)) {
+                newSelection.push(this.selection[i]);
+            }
+        }
+        this.selection = newSelection;
+        this.length = newSelection.length;
+        return this;
+    }
+    /**
      * Update current selection, only keep elements that have the matcher string as their textContent.
      * @method
      * @param {string} matcher - The matcher string.
