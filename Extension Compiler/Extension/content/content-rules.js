@@ -1792,7 +1792,7 @@ if (a.domCmp(["thevideo.me", "fmovies.to", "fmovies.se", "fmovies.is"])) {
         window.open = () => { };
     });
 }
-if (a.domCmp(["is.fi", "viasatsport.fi"])) {
+if (a.domCmp(["is.fi"])) {
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/88
     a.readOnly("Sabdetect_load", false);
 }
