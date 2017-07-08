@@ -9,7 +9,7 @@ if (a.debugMode) {
         a.readOnly("error", "window.console.error.bind(window.console)", "window.console");
     }
     /*
-    //Seems to work now
+    //Seems to work now without a script rule
     if (a.domCmp(["itv.com"])) {
         //Test link: https://www.itv.com/hub/take-me-out/1a8716a0089
         //Can find the URL of the media file and subtitle file
