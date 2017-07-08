@@ -456,3 +456,4 @@ l2s.io#@#.myTestAd
 wdbloog.com###unblocker
 ! === dingit.tv
 dingit.tv#@#.adsbox
+||dingit.tv/js/dingit-player/js/html5/videojs.ads.js$script,redirect=noopjs

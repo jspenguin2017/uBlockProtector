@@ -112,21 +112,4 @@ if (a.debugMode) {
         true,
     );
     */
-    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/352
-    a.staticServer(
-        [
-            "https://www.dingit.tv/js/dingit-player/js/html5/videojs.ads.js*",
-            "http://www.dingit.tv/js/dingit-player/js/html5/videojs.ads.js*",
-        ],
-        [
-            "script",
-        ],
-        "data:text/javascript;base64," + btoa("(" + String(() => {
-            "use strict";
-            //
-        }) + ")();"),
-        [
-            "dingit.tv",
-        ],
-    );
 }
