@@ -100,4 +100,16 @@ if (a.debugMode) {
         true,
     );
     */
+    //Issue: https://github.com/reek/anti-adblock-killer/issues/3291
+    /*
+    //The trick does not work for this domain
+    a.proxy(
+        [
+            "*://topserialy.to/*",
+            "*://*.topserialy.to/*",
+        ],
+        "43.255.151.144",
+        true,
+    );
+    */
 }
