@@ -119,6 +119,29 @@ a.getTabURL = (() => {
         //Expose private object in debug mode
         window.getTabURLInternal = tabs;
     }
+    //Query existing tabs
+    chrome.tabs.query({}, (existingTabs) => {
+        for (let i = 0; i < existingTabs.length; i++) {
+            const id = existingTabs[i].id;
+            if (id !== chrome.tabs.TAB_ID_NONE) {
+                if (!tabs[id]) {
+                    tabs[id] = {};
+                }
+                //Only assign if it does not exist
+                tabs[id][0] = tabs[id][0] || existingTabs[i].url;
+                //Query frames
+                chrome.webNavigation.getAllFrames({ tabId: id }, (frames) => {
+                    //This can fail if the tab is closed at the right timing
+                    if (!chrome.runtime.lastError && tabs[id]) {
+                        for (let ii = 0; ii < frames.length; ii++) {
+                            //Only assign if it does not exist
+                            tabs[id][frames[ii].frameId] = tabs[id][frames[ii].frameId] || frames[ii].url;
+                        }
+                    }
+                });
+            }
+        }
+    });
     //Bind event handlers
     chrome.webNavigation.onCommitted.addListener((details) => {
         if (!tabs[details.tabId]) {
