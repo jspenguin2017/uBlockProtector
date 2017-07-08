@@ -172,4 +172,8 @@ if (a.debugMode) {
         a.on("focus", () => { isInBackground = false; });
         a.on("blur", () => { isInBackground = true; });
     }
+    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/352
+    if (a.domCmp(["dingit.tv"])) {
+        //
+    }
 }

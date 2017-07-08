@@ -452,3 +452,5 @@ l2s.io#@#.myTestAd
 ! === short.am
 ||googlesyndication.com^$important,domain=short.am
 @@||short.am^$generichide,badfilter
+! === wdbloog.com
+wdbloog.com###unblocker
