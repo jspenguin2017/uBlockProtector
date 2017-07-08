@@ -17,13 +17,15 @@
         "microsoft.com", "msn.com", "live.com", "bing.com",
         //Other
         "apple.com", "ask.com", "reddit.com", "stackoverflow.com", "tampermonkey.net", "twitter.com",
-        "360.cn", "baidu.com", "bufferapp.com", "viasatsport.fi", "chromeactions.com", "chatango.com",
+        "360.cn", "baidu.com", "bufferapp.com", "chromeactions.com", "chatango.com", "calm.com",
         "easyinplay.net", "ebay.com", "facebook.com", "flattr.com", "flickr.com", "ghacks.net", "imdb.com",
         "imgbox.com", "imgur.com", "instagram.com", "jsbin.com", "jsfiddle.net", "linkedin.com", "mail.ru",
         "paypal.com", "pinterest.com", "preloaders.net", "qq.com", "vimeo.com", "wikipedia.org",
         "w3schools.com", "yandex.ru", "xemvtv.net", "spaste.com", "anandabazar.com", "vod.pl", "agar.io",
         "pandoon.info", "fsf.org", "adblockplus.org", "plnkr.co", "exacttarget.com", "dolldivine.com",
-        "popmech.ru", "calm.com",
+        "popmech.ru",
+        //Damage control
+        "viasport.fi", "tv3sport.dk",
     ];
     const genericWhitelist2 = [
         //Local network

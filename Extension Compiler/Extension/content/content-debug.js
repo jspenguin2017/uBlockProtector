@@ -81,7 +81,7 @@ if (a.debugMode) {
         });
     }
     */
-    if (a.domCmp(["viasport.fi"])) {
+    if (a.domCmp(["viasport.fi", "tv3sport.dk"])) {
         //===DEBUG CODE===
         let isInBackground = false;
         const idMatcher = /\/(\d+)/;
