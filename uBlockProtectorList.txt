@@ -284,6 +284,7 @@ l2s.io#@#.myTestAd
 ||googlesyndication.com^$important,domain=short.am
 @@||short.am^$generichide,badfilter
 wdbloog.com###unblocker
+dingit.tv#@#.adsbox
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================

@@ -454,3 +454,5 @@ l2s.io#@#.myTestAd
 @@||short.am^$generichide,badfilter
 ! === wdbloog.com
 wdbloog.com###unblocker
+! === dingit.tv
+dingit.tv#@#.adsbox
