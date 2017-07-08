@@ -2643,6 +2643,23 @@ if (a.domCmp(["yiv.com"])) {
     a.cookie("AdBlockMessage", "yes");
 }
 if (a.domCmp(["short.am"])) {
-    a.readOnly("RunAds", true);
-    a.timewarp("setTimeout", a.matchMethod.stringExact, "1000");
+    if (location.pathname !== "/") {
+        a.ready(() => {
+            $("#disable > div.alert-danger").text("Please wait...");
+        });
+        a.on("load", () => {
+            //Based on AdsBypasser
+            //License: https://github.com/adsbypasser/adsbypasser/blob/master/LICENSE
+            setTimeout(() => {
+                let f = document.createElement("form");
+                f.method = "post";
+                let i = document.createElement("input");
+                i.name = "image";
+                i.value = "Continue";
+                f.appendChild(i);
+                document.body.append(f);
+                f.submit();
+            }, 1000);
+        });
+    }
 }
