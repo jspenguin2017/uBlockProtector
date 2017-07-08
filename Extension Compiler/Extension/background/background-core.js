@@ -140,16 +140,47 @@ a.getTabURL = (() => {
     };
 })();
 /**
+ * Check if the domain of an URL ends with one of the domains in the list.
+ * A list entry "example.com" will match domains that matches /(^|.*\.)example\.com$/.
+ * @function
+ * @param {string} url - The URL to check.
+ * @param {Array.<string>} domList - The list of domains to compare.
+ * @return {boolean} True if the domain of the URL is in the list, false otherwise.
+ */
+a.domCmp = (() => {
+    const domainExtractor = /^https?:\/\/([^/]+)/;
+    return (url, domList) => {
+        let dom = domainExtractor.exec(url);
+        if (!dom) {
+            //Defaults to not match if the scheme is not supported or the URL is not valid
+            return false;
+        }
+        dom = dom[1];
+        //Loop though each element
+        for (let i = 0; i < domList.length; i++) {
+            if (dom.endsWith(domList[i]) &&
+                (dom.length === domList[i].length || dom.charAt(dom.length - domList[i].length - 1) === '.')) {
+                return true;
+            }
+        }
+        return false;
+    };
+})();
+/**
  * Register a static loopback server.
  * @function
  * @param {Array.<string>} urls - The urls to loopback.
  * @param {Array.<string>} types - The types of request to loopback.
  * @param {string} data - The data to loopback to, must be already encoded and ready to serve.
+ * @param {Array.<string>} [domList=undefined] - The domains list, omit to match all domains.
+ * @param {boolean} [isMatch=true] - Whether the domains list is a match list.
  */
-a.staticServer = (urls, types, data) => {
+a.staticServer = (urls, types, data, domList, isMatch = true) => {
     chrome.webRequest.onBeforeRequest.addListener(
-        () => {
-            return { redirectUrl: data };
+        (details) => {
+            if (!domList || a.domCmp(a.getTabURL(details.tabId, details.frameId), domList) === isMatch) {
+                return { redirectUrl: data };
+            }
         },
         {
             urls: urls,
@@ -167,10 +198,16 @@ a.staticServer = (urls, types, data) => {
  * @param {Array.<string>} types - The types of request to loopback.
  * @param {Function} server - The server, this function will be passed as the event listener, view Chrome API
  ** documentations for more information: https://developer.chrome.com/extensions/webRequest
+ * @param {Array.<string>} [domList=undefined] - The domains list, omit to match all domains.
+ * @param {boolean} [isMatch=true] - Whether the domains list is a match list.
  */
-a.dynamicServer = (urls, types, server) => {
+a.dynamicServer = (urls, types, server, domList, isMatch = true) => {
     chrome.webRequest.onBeforeRequest.addListener(
-        server,
+        (details) => {
+            if (!domList || a.domCmp(a.getTabURL(details.tabId, details.frameId), domList) === isMatch) {
+                return server(details);
+            }
+        },
         {
             urls: urls,
             types: types,

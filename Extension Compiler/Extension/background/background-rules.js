@@ -112,7 +112,6 @@ a.generic();
         return "data:text/javascript;base64," + btoa(payload);
     };
     //Matchers
-    const reOrigin = /^(https?:\/\/([^/]+\.)?ncaa\.com\/|$)/; //Aggressively redirect if the URL of the tab is not known
     const reCsid = /csid=([^&]+)/;
     const reCaid = /caid=([^&]+)/;
     const reCbfn = /cbfn=([^&]+)/;
@@ -125,18 +124,19 @@ a.generic();
             "script",
         ],
         (details) => {
-            if (reOrigin.test(a.getTabURL(details.tabId, details.frameId))) {
-                const csid = reCsid.exec(details.url);
-                const caid = reCaid.exec(details.url);
-                const cbfn = reCbfn.exec(details.url);
-                if (csid && caid && cbfn) {
-                    return { redirectUrl: genPayload(csid[1], caid[1], decodeURIComponent(cbfn[1])) };
-                } else {
-                    //Block the request as a fallback
-                    console.warn("Could not extract parameters from a request to mmod.v.fwmrm.net");
-                    return { cancel: true };
-                }
-            } //Ignore otherwise, let uBlock Origin handle other cases
+            const csid = reCsid.exec(details.url);
+            const caid = reCaid.exec(details.url);
+            const cbfn = reCbfn.exec(details.url);
+            if (csid && caid && cbfn) {
+                return { redirectUrl: genPayload(csid[1], caid[1], decodeURIComponent(cbfn[1])) };
+            } else {
+                //Block the request as a fallback
+                console.warn("Could not extract parameters from a request to mmod.v.fwmrm.net");
+                return { cancel: true };
+            }
         },
+        [
+            "ncaa.com",
+        ],
     );
 }
