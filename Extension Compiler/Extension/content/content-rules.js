@@ -2663,3 +2663,8 @@ if (a.domCmp(["short.am"])) {
         });
     }
 }
+if (a.domCmp(["ohmymag.com"])) {
+    a.readOnly("prebid", `{
+        init(p) { p.init(); }
+    }`);
+}
