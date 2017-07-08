@@ -2663,7 +2663,7 @@ if (a.domCmp(["short.am"])) {
         });
     }
 }
-if (a.domCmp(["ohmymag.com"])) {
+if (a.domCmp(["ohmymag.com", "gentside.com", "gentside.com.br"])) {
     a.readOnly("prebid", `{
         init(p) { p.init(); }
     }`);

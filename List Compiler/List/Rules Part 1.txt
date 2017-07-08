@@ -356,8 +356,6 @@ haxmaps.com,haxrec.com,haxcolors.com##script:inject(setTimeout-defuser.js, /.*/,
 animesync.tv##.modal-adblock
 ! === expansion.com
 ||active.cache.el-mundo.net/js/*_expansion.js$domain=expansion.com
-! === gentside.com
-@@||gtsstatic.com/p/mscripts/prebid_$script,domain=gentside.com
 ! === watchfree.to
 watchfree.to##script:inject(abort-on-property-read.js, UAParser)
 ! === firstonetv.eu, firstone.tv
@@ -457,5 +455,6 @@ wdbloog.com###unblocker
 ! === dingit.tv
 dingit.tv#@#.adsbox
 ||dingit.tv/js/dingit-player/js/html5/videojs.ads.js$script,redirect=noopjs
-! === ohmymag.com
+! === ohmymag.com, gentside.com.br
 ||ohmymag.com/jsad/advertisement.js$xmlhttprequest,redirect=nooptext
+||gentside.com.br/jsad/advertisement.js$xmlhttprequest,redirect=nooptext

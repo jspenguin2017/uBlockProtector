@@ -231,7 +231,6 @@ windowsreport.com##script:inject(silent-noeval.js)
 haxmaps.com,haxrec.com,haxcolors.com##script:inject(setTimeout-defuser.js, /.*/, 10000)
 animesync.tv##.modal-adblock
 ||active.cache.el-mundo.net/js/*_expansion.js$domain=expansion.com
-@@||gtsstatic.com/p/mscripts/prebid_$script,domain=gentside.com
 watchfree.to##script:inject(abort-on-property-read.js, UAParser)
 firstonetv.eu,firstone.tv##script:inject(noeval-if.js, Please disable your Adblocker)
 |https://$third-party,script,domain=streamwoop.tv,badfilter
@@ -286,6 +285,8 @@ l2s.io#@#.myTestAd
 wdbloog.com###unblocker
 dingit.tv#@#.adsbox
 ||dingit.tv/js/dingit-player/js/html5/videojs.ads.js$script,redirect=noopjs
+||ohmymag.com/jsad/advertisement.js$xmlhttprequest,redirect=nooptext
+||gentside.com.br/jsad/advertisement.js$xmlhttprequest,redirect=nooptext
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================
