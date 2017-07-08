@@ -145,11 +145,12 @@ a.getTabURL = (() => {
  * @function
  * @param {string} url - The URL to check.
  * @param {Array.<string>} domList - The list of domains to compare.
+ * @param {boolean} isMatch - Whether the domains list is a match list.
  * @return {boolean} True if the domain of the URL is in the list, false otherwise.
  */
 a.domCmp = (() => {
     const domainExtractor = /^https?:\/\/([^/]+)/;
-    return (url, domList) => {
+    return (url, domList, isMatch) => {
         let dom = domainExtractor.exec(url);
         if (!dom) {
             //Defaults to not match if the scheme is not supported or the URL is not valid
@@ -160,10 +161,10 @@ a.domCmp = (() => {
         for (let i = 0; i < domList.length; i++) {
             if (dom.endsWith(domList[i]) &&
                 (dom.length === domList[i].length || dom.charAt(dom.length - domList[i].length - 1) === '.')) {
-                return true;
+                return true === isMatch;
             }
         }
-        return false;
+        return false === isMatch;
     };
 })();
 /**
@@ -178,7 +179,7 @@ a.domCmp = (() => {
 a.staticServer = (urls, types, data, domList, isMatch = true) => {
     chrome.webRequest.onBeforeRequest.addListener(
         (details) => {
-            if (!domList || a.domCmp(a.getTabURL(details.tabId, details.frameId), domList) === isMatch) {
+            if (!domList || a.domCmp(a.getTabURL(details.tabId, details.frameId), domList, isMatch)) {
                 return { redirectUrl: data };
             }
         },
@@ -204,7 +205,7 @@ a.staticServer = (urls, types, data, domList, isMatch = true) => {
 a.dynamicServer = (urls, types, server, domList, isMatch = true) => {
     chrome.webRequest.onBeforeRequest.addListener(
         (details) => {
-            if (!domList || a.domCmp(a.getTabURL(details.tabId, details.frameId), domList) === isMatch) {
+            if (!domList || a.domCmp(a.getTabURL(details.tabId, details.frameId), domList, isMatch)) {
                 return server(details);
             }
         },
