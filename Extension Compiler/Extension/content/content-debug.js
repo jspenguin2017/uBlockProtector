@@ -12,7 +12,6 @@ if (a.debugMode) {
     //Seems to work now
     if (a.domCmp(["itv.com"])) {
         //Test link: https://www.itv.com/hub/take-me-out/1a8716a0089
-        //===DEBUG CODE===
         //Can find the URL of the media file and subtitle file
         const videoJS = (sources, types, subtitles, width, height) => {
             return ""; //Insert videoJS payload here... No working ones found yet...
@@ -82,7 +81,6 @@ if (a.debugMode) {
     }
     */
     if (a.domCmp(["viasport.fi", "tv3sport.dk"])) {
-        //===DEBUG CODE===
         let isInBackground = false;
         const idMatcher = /\/(\d+)/;
         const reMagicValidator = /^[a-zA-Z0-9]+$/;
