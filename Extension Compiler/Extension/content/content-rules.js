@@ -2414,13 +2414,6 @@ if (a.domCmp(["linternaute.com"])) {
 if (a.domCmp(["new-skys.net"])) {
     a.noAccess("alert");
 }
-if (a.domCmp(["gentside.com"])) {
-    a.readOnly("adblockPopup", `{
-        IS_BLOCKED: false,
-        init() { },
-        removeAdblockPopup() { },
-    }`);
-}
 if (a.domCmp(["idlelivelink.blogspot.com"])) {
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
     a.ready(() => {
@@ -2664,6 +2657,11 @@ if (a.domCmp(["short.am"])) {
     }
 }
 if (a.domCmp(["ohmymag.com", "gentside.com", "gentside.com.br"])) {
+    a.readOnly("adblockPopup", `{
+        IS_BLOCKED: false,
+        init() { },
+        removeAdblockPopup() { },
+    }`);
     a.readOnly("prebid", `{
         init(p) { p.init(); }
     }`);
