@@ -112,4 +112,14 @@ if (a.debugMode) {
         true,
     );
     */
+    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/352
+    a.staticServer(
+        [
+
+        ],
+        [
+            "script",
+        ],
+        "",
+    );
 }

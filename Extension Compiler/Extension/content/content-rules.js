@@ -140,7 +140,6 @@ if (a.domCmp(["pinkrod.com", "wetplace.com"])) {
 if (a.domInc(["hackintosh"])) {
     //Undo BlockAdblock styles
     a.readOnly("eval", () => {
-        "use strict";
         const elem = window.document.getElementById("babasbmsgx");
         elem && elem.remove();
         window.document.body.style.setProperty("visibility", "visible", "important");
@@ -2117,7 +2116,6 @@ if (a.domCmp(["multiup.org", "multiup.eu"])) {
 if (a.domCmp(["linkneverdie.com"])) {
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/146
     a.readOnly("eval", () => {
-        "use strict";
         //Remove block screen
         window.$("div").each(function () {
             if (this.id.length === 30) {
@@ -2580,6 +2578,7 @@ if (a.domCmp(["pg3dhacks.com"])) {
 if (a.domCmp(["lne.es"])) {
     a.ready(() => {
         a.inject(() => {
+            "use strict";
             window.onload = null;
         });
     });
