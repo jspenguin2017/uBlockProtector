@@ -187,7 +187,7 @@ a.generic = () => {
     //---jQuery plugin---
     //Payload generator
     /*
-    a.mkPayload(() => {
+    a.mkPayload("jQuery plugin", () => {
         "use strict";
         window.console.error("Uncaught Error: jQuery uBlock Origin detector plugin is not allowed on this device!");
         try {
@@ -206,16 +206,15 @@ a.generic = () => {
         [
             "script",
         ],
-        "data:text/javascript;base64,KCgpID0+IHsNCiAgICAgICAgInVzZSBzdHJpY3QiOw0KICAgICAgICB3aW5kb3cuY29uc29sZS5lcnJvcigiVW5jYXVnaHQgRXJyb3I6IGpRdWVyeSB1QmxvY2" +
-        "sgT3JpZ2luIGRldGVjdG9yIHBsdWdpbiBpcyBub3QgYWxsb3dlZCBvbiB0aGlzIGRldmljZSEiKTsNCiAgICAgICAgdHJ5IHsNCiAgICAgICAgICAgIHdpbmRvdy4kLmFkYmxvY2sgPSBmYWxzZTsN" +
-        "CiAgICAgICAgfSBjYXRjaCAoZXJyKSB7IH0NCiAgICAgICAgdHJ5IHsNCiAgICAgICAgICAgIHdpbmRvdy5qUXVlcnkuYWRibG9jayA9IGZhbHNlOw0KICAgICAgICB9IGNhdGNoIChlcnIpIHsgfQ" +
-        "0KICAgIH0pKCk7",
+        "data:text/javascript;base64,KCgpID0+IHsidXNlIHN0cmljdCI7d2luZG93LmNvbnNvbGUuZXJyb3IoIlVuY2F1Z2h0IEVycm9yOiBqUXVlcnkgdUJsb2NrIE9yaWdpbiBkZXRlY3RvciBwbH" +
+        "VnaW4gaXMgbm90IGFsbG93ZWQgb24gdGhpcyBkZXZpY2UhIik7dHJ5IHt3aW5kb3cuJC5hZGJsb2NrID0gZmFsc2U7fSBjYXRjaCAoZXJyKSB7IH10cnkge3dpbmRvdy5qUXVlcnkuYWRibG9jayA9" +
+        "IGZhbHNlO30gY2F0Y2ggKGVycikgeyB9fSkoKTs=",
     );
     //---Interactive Media Ads Software Development Kit---
     //Payload generator
-
+    /*
     //https://developers.google.com/interactive-media-ads/docs/sdks/html5/v3/apis
-    a.mkPayload(() => {
+    a.mkPayload("IMA SDK", () => {
         "use strict";
         window.console.error("Uncaught Error: IMA SDK is not allowed on this device!");
         //I think I can get away with not implementing interfaces
@@ -500,7 +499,7 @@ a.generic = () => {
         //Initialization
         window.google.ima.settings = new window.google.ima.ImaSdkSettings();
     });
-
+    */
     a.staticServer(
         [
             "https://imasdk.googleapis.com/js/sdkloader/ima3.js*",
@@ -570,7 +569,7 @@ a.generic = () => {
     //---MoatFreeWheelJSPEM.js---
     //Payload generator
     /*
-    a.mkPayload(() => {
+    a.mkPayload("MoatFreeWheelJSPEM.js", () => {
         "use strict";
         window.console.error("Uncaught Error: FreeWheel SDK is not allowed on this device!");
         window.MoatFreeWheelJSPEM = class {
@@ -587,9 +586,8 @@ a.generic = () => {
         [
             "script",
         ],
-        "data:text/javascript;base64,KCgpID0+IHsNCiAgICAgICAgInVzZSBzdHJpY3QiOw0KICAgICAgICB3aW5kb3cuY29uc29sZS5lcnJvcigiVW5jYXVnaHQgRXJyb3I6IEZyZWVXaGVlbCBTRE" +
-        "sgaXMgbm90IGFsbG93ZWQgb24gdGhpcyBkZXZpY2UhIik7DQogICAgICAgIHdpbmRvdy5Nb2F0RnJlZVdoZWVsSlNQRU0gPSBjbGFzcyB7DQogICAgICAgICAgICBpbml0KCkgeyB9DQogICAgICAg" +
-        "ICAgICBkaXNwb3NlKCkgeyB9DQogICAgICAgIH07DQogICAgfSkoKTs=",
+        "data:text/javascript;base64,KCgpID0+IHsidXNlIHN0cmljdCI7d2luZG93LmNvbnNvbGUuZXJyb3IoIlVuY2F1Z2h0IEVycm9yOiBGcmVlV2hlZWwgU0RLIGlzIG5vdCBhbGxvd2VkIG9uIH" +
+        "RoaXMgZGV2aWNlISIpO3dpbmRvdy5Nb2F0RnJlZVdoZWVsSlNQRU0gPSBjbGFzcyB7aW5pdCgpIHsgfWRpc3Bvc2UoKSB7IH19O30pKCk7",
     );
 };
 
@@ -635,11 +633,12 @@ a.proxy = (urls, ip, log) => {
  * Make data URL and pretty print it into the console.
  * Only available in debug mode.
  * @function
+ * @param {string} title - The name of the payload.
  * @param {Function} payload - The payload.
  * @param {string} [type="text/javascript"] - The MIME type of the payload.
  * @return {string} The URL encoded payload.
  */
-a.mkPayload = (payload, type = "text/javascript") => {
+a.mkPayload = (title, payload, type = "text/javascript") => {
     if (!a.debugMode) {
         console.error("a.mkPayload() is only available in debug mode!");
         return;
@@ -655,5 +654,6 @@ a.mkPayload = (payload, type = "text/javascript") => {
         output += `"${payload.substring(0, 150)}" +\n`;
         payload = payload.substring(150);
     }
+    console.log(title);
     console.log(output);
 };
