@@ -2645,7 +2645,4 @@ if (a.domCmp(["yiv.com"])) {
 if (a.domCmp(["short.am"])) {
     a.readOnly("RunAds", true);
     a.timewarp("setTimeout", a.matchMethod.stringExact, "1000");
-    a.readOnly("open", () => {
-        window.document.body.lastChild.remove();
-    });
 }

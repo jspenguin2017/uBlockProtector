@@ -282,6 +282,7 @@ sankakucomplex.com##cloudflare-app[app-id="no-adblock"]
 sankakucomplex.com##script:inject(abort-on-property-read.js, BetterJsPop)
 l2s.io#@#.myTestAd
 ||googlesyndication.com^$important,domain=short.am
+@@||short.am^$generichide,badfilter
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================
