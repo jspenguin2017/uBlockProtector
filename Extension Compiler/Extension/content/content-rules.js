@@ -1655,6 +1655,7 @@ if (a.domCmp(["filespace.com"])) {
 }
 if (a.domCmp(["topserialy.to"])) {
     a.bait("div", "#ad-etarget", true);
+    a.generic.FuckAdBlock("LoL", "loL");
 }
 if (a.domCmp(["sport-show.fr", "vipflash.net", "2site.me"])) {
     a.css("#blockblockA { visibility:invisible; display:none; } #blockblockA td { visibility:invisible; " +
