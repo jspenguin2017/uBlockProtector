@@ -1653,8 +1653,8 @@ if (a.domCmp(["agario.sx", "agarabi.com"])) {
 if (a.domCmp(["filespace.com"])) {
     a.generic.FuckAdBlock(a.uid(), "fAB");
 }
-if (a.domCmp(["topserialy.sk"])) {
-    a.generic.FuckAdBlock(a.uid(), "sratNaVas");
+if (a.domCmp(["topserialy.to"])) {
+    a.bait("div", "#ad-etarget", true);
 }
 if (a.domCmp(["sport-show.fr", "vipflash.net", "2site.me"])) {
     a.css("#blockblockA { visibility:invisible; display:none; } #blockblockA td { visibility:invisible; " +
