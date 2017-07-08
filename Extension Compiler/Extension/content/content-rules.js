@@ -1896,6 +1896,10 @@ if (a.domCmp(["zap.in"])) {
 if (a.domCmp(["freepdf-books.com", "bc.vc", "themeslide.com", "linkdrop.net"])) {
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
+if (a.domCmp(["l2s.io"])) {
+    a.filter("open");
+    a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
+}
 if (a.domCmp(["shink.in"])) {
     //Prevent block screen
     a.readOnly("RunAds", true);

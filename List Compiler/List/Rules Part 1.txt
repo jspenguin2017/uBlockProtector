@@ -446,3 +446,5 @@ naisho.asia##script:inject(abort-on-property-write.js, adBlock)
 ! === NSFW! sankakucomplex.com
 sankakucomplex.com##cloudflare-app[app-id="no-adblock"]
 sankakucomplex.com##script:inject(abort-on-property-read.js, BetterJsPop)
+! === l2s.io
+l2s.io#@#.myTestAd
