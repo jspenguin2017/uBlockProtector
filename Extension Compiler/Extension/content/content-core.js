@@ -944,7 +944,7 @@ a.generic = () => {
                 }
             }
         });
-        //Antiblock.org (all version)
+        //Antiblock.org (all version) and BetterStopAdblock
         const reMsgId = /^[a-z0-9]{4,10}$/i;
         const reTag1 = /^(div|span|b|i|font|strong|center)$/i;
         const reTag2 = /^(a|b|i|s|u|q|p|strong|center)$/i;
@@ -954,7 +954,6 @@ a.generic = () => {
             "desactive|desactiva|deaktiviere|disabilitare|&#945;&#960;&#949;&#957;&#949;&#961;&#947;&#959;&#960;&#959;&#943;" +
             "&#951;&#963;&#951;|&#1079;&#1072;&#1087;&#1088;&#1077;&#1097;&#1072;&#1090;&#1100;|állítsd le|publicités|" +
             "рекламе|verhindert|advert|kapatınız", "i");
-        //Antiblock.org (all version)
         const onInsertHandler = (insertedNode) => {
             if (insertedNode.parentNode &&
                 insertedNode.id &&
@@ -966,28 +965,34 @@ a.generic = () => {
                 reMsgId.test(insertedNode.id) &&
                 reTag1.test(insertedNode.nodeName) &&
                 reTag2.test(insertedNode.firstChild.nodeName)) {
-                //Log
-                err("Antiblock.org");
-                //Stop audio message
                 const audio = insertedNode.querySelector("audio[loop]");
                 if (audio) {
+                    //Log
+                    err("Antiblock.org");
+                    //Stop audio message
                     audio.pause();
                     audio.remove();
                 } else if ((data.abo2 && insertedNode.id === data.abo2) ||
                     (insertedNode.firstChild.hasChildNodes() &&
                         reWords1.test(insertedNode.firstChild.innerHTML) &&
                         reWords2.test(insertedNode.firstChild.innerHTML))) {
-                    //Antiblock.org v2
+                    //Log
+                    err("Antiblock.org v2");
+                    //Defuse
                     insertedNode.remove();
                 } else if ((data.abo3 && insertedNode.id === data.abo3) ||
                     (insertedNode.firstChild.hasChildNodes() &&
                         insertedNode.firstChild.firstChild.nodeName === "IMG" &&
                         insertedNode.firstChild.firstChild.src.startsWith("data:image/png;base64"))) {
-                    //Antiblock.org v3
+                    //Log
+                    err("Antiblock.org v3");
+                    //Defuse
                     window[data.abo3] = null;
                     insertedNode.remove();
                 } else if (data.bsa && insertedNode.id === data.bsa) {
-                    //BetterStopAdblock
+                    //Log
+                    err("BetterStopAdblock");
+                    //Defuse
                     window[data.bsa] = null;
                     insertedNode.remove();
                 }
