@@ -2648,3 +2648,7 @@ if (a.domCmp(["ohmymag.com", "gentside.com", "gentside.com.br"])) {
 if (a.domCmp(["mywrestling.com.pl"])) {
     a.generic.FuckAdBlock("KillAdBlock", "killAdBlock");
 }
+if (a.domCmp(["1movies.tv"])) {
+    a.readOnly("check_adblock", "true");
+    a.filter("open");
+}
