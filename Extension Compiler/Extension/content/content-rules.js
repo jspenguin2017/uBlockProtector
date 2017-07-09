@@ -2649,6 +2649,6 @@ if (a.domCmp(["mywrestling.com.pl"])) {
     a.generic.FuckAdBlock("KillAdBlock", "killAdBlock");
 }
 if (a.domCmp(["1movies.tv"])) {
-    a.readOnly("check_adblock", "true");
+    a.readOnly("check_adblock", true);
     a.filter("open");
 }
