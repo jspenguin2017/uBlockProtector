@@ -22,6 +22,8 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 @@|https://imasdk.googleapis.com/js/sdkloader/ima3.js*$script
 @@|http://imasdk.googleapis.com/js/sdkloader/ima3.js*$script
 @@|http://mmod.v.fwmrm.net/ad/g/*$script,domain=ncaa.com
+||cbsnews.com/news/*/[object%20object]$image,redirect=1x1-transparent.gif
+||cbsnews.com/news/*/undefined$image,redirect=1x1-transparent.gif
 ||d.0emm.com^$third-party
 ||d.0emn.com^$third-party
 ||d.0enm.com^$third-party
@@ -290,6 +292,7 @@ dingit.tv#@#.adsbox
 ||dingit.tv/js/dingit-player/js/html5/videojs.ads.js$script,redirect=noopjs
 /countsJS.php$domain=vz.lt
 ||xess.pro/js/popup.js
+moviezr.org##script:inject(abort-on-property-read.js, $.getScript)
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================
