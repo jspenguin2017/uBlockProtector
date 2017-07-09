@@ -102,6 +102,7 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 ||perceivequarter.com^$script,third-party
 ||shelterstraw.com^$script,third-party
 ||curtaincows.com^$script,third-party
+||dk4ywix.com^$script,third-party
 ! === AdBlock Notify
 techdracula.com,keshavcommoditycalls.com,hackinformer.com,coderexample.com,anibatch.id,altervista.org,ispazio.net,kitguru.net,wabetainfo.com##script:inject(setTimeout-defuser.js, an_message_display)
 hentaitake.net,hackinformer.com,sopsport.org,cyberterminators.co,themeslide.com,rnbxclusive.pw##script:inject(abort-on-property-read.js, anOptions)
