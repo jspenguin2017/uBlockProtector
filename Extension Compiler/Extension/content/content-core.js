@@ -737,7 +737,7 @@ a.generic = () => {
             a.err("NoAdBlock");
             //Remove element
             insertedNode.remove();
-            //Force enable scroll
+            //Enable scrolling
             $("body").rmClass("adbmodal-cloudflare-open");
             //a.css("html, body { overflow:scroll; }");
         }
