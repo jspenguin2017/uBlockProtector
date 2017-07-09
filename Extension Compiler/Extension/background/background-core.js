@@ -1,4 +1,4 @@
-//The Core library for background rules
+//The background core library for background rules
 "use strict";
 
 //=====Initializer=====

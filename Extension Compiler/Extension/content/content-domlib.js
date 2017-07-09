@@ -1,4 +1,4 @@
-//The DOM manipulation library for content rules, this library behaves differently than jQuery
+//The DOM manipulation library for content core and rules, this library behaves differently than jQuery
 "use strict";
 
 //=====Shortcuts=====

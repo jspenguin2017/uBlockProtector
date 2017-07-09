@@ -1,4 +1,4 @@
-//The Core library for content rules, this library does not use domlib
+//The content core library for content rules
 "use strict";
 
 //=====Initializer=====

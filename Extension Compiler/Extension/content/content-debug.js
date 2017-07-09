@@ -1,4 +1,4 @@
-//This file contains content rules that are not quite working, they are only activated in debug mode
+//This file contains content rules for debugging purposes, they are only activated in debug mode
 "use strict";
 
 if (a.debugMode) {
