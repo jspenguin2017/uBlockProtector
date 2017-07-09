@@ -1,15 +1,16 @@
 # These are the issues where no solution is found
 
-## viasport.fi
+## viasport.fi, tv3sport.dk
 
-`Geo Lock (Finland)`
+`Geo Lock (Finland)` `Geo Lock (Danmark)`
 
 Test links: 
 * http://www.viasport.fi/urheilu/jalkapallo/uutiset/suomi-liechtenstein-1-0
 * http://www.viasport.fi/urheilu/jalkapallo/uutiset/suomi-liechtenstein
+* https://www.tv3sport.dk/sport/tennis/nyheder/lettet-wozniacki-jeg-var-halvvejs-pa-vej-hjem
 
 Issues: 
 * https://github.com/jspenguin2017/uBlockProtector/issues/88
+* https://github.com/jspenguin2017/uBlockProtector/issues/359
 
-Workaround: In debug mode of the Extension, the whole webpage will be replaced by a player which plays the first video on the page. 
-More information about debug mode can be found in options of the Extension. 
+Workaround (you will see some ads): `@@||fwmrm.net^$domain=tv3sport.dk`
