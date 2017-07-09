@@ -1077,8 +1077,6 @@ robotcoingame.com,monstercoingame.com,wonderlandco.in#@#.adsbygoogle
 @@||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js$domain=robotcoingame.com|monstercoingame.com|wonderlandco.in
 @@||pagead2.googlesyndication.com/pagead/js/r*/r*/show_ads_impl.js$script,domain=robotcoingame.commonstercoingame.com|wonderlandco.in
 ||remotupload.com/js/bigtouch.js$script
-@@|http://$xmlhttprequest,image,domain=cbsnews.com
-@@||pubads.g.doubleclick.net^$object-subrequest,domain=cbsnews.com
 bmw-club.cz#@#.reklama
 foerderland.de#@#.pub_300x250
 foerderland.de#@#.pub_300x250m
