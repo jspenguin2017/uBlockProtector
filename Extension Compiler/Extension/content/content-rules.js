@@ -2616,6 +2616,7 @@ if (a.domCmp(["yiv.com"])) {
 }
 if (a.domCmp(["short.am"])) {
     if (location.pathname !== "/") {
+        a.readOnly("RunAds", undefined);
         a.ready(() => {
             let check = $("#disable > div.alert-danger");
             if (check.length) {
