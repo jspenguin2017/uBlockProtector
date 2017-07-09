@@ -625,6 +625,12 @@ a.generic = () => {
         "Z2xlLmltYS5JbWFTZGtTZXR0aW5ncy5Db21wYW5pb25CYWNrZmlsbE1vZGUgPSB7QUxXQVlTOiAiYWx3YXlzIixPTl9NQVNURVJfQUQ6ICJvbl9tYXN0ZXJfYWQiLH07d2luZG93Lmdvb2dsZS5pbW" +
         "EuSW1hU2RrU2V0dGluZ3MuVnBhaWRNb2RlID0ge0RJU0FCTEVEOiAwLEVOQUJMRUQ6IDEsSU5TRUNVUkU6IDIsfTt3aW5kb3cuZ29vZ2xlLmltYS5zZXR0aW5ncyA9IG5ldyB3aW5kb3cuZ29vZ2xl" +
         "LmltYS5JbWFTZGtTZXR0aW5ncygpO30pKCk7",
+        [
+            //Damage control
+            "cbsnews.com",
+            "vidyomani.com", //iframe of aktuelvizyon.com
+        ],
+        false,
     );
     //---MoatFreeWheelJSPEM.js---
     //Payload generator
