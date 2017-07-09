@@ -2572,9 +2572,6 @@ if (a.domCmp(["adshort.co", "linksh.top", "adshorte.com"])) {
 if (a.domCmp(["gamersclub.com.br", "uploadboy.com", "vidoza.net", "videohelp.com"])) {
     a.generic.adsjsV2();
 }
-if (a.domCmp(["noticiasautomotivas.com.br", "clubedohardware.com.br"])) {
-    a.css("html, body { overflow:scroll; } cloudflare-app[app-id='no-adblock'] { display:none; }");
-}
 if (a.domCmp(["sport365.live"])) {
     a.inject(() => {
         "use strict";

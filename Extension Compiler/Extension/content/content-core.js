@@ -730,6 +730,17 @@ a.generic = () => {
             //Remove element
             insertedNode.remove();
         }
+        //NoAdBlock
+        if (insertedNode.nodeName === "CLOUDFLARE-APP" &&
+            insertedNode.getAttribute("app-id") === "no-adblock") {
+            //Log
+            a.err("NoAdBlock");
+            //Remove element
+            insertedNode.remove();
+            //Force enable scroll
+            $("body").rmClass("adbmodal-cloudflare-open");
+            //a.css("html, body { overflow:scroll; }");
+        }
         //StopAdblock
         if (insertedNode.nodeName === "DIV" &&
             insertedNode.id &&
