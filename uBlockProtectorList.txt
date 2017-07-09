@@ -160,6 +160,8 @@ hackintosh.computer##.adsbygoogle
 @@||hackintosh.computer/wp-content/themes/adsense/*$first-party
 @@||imasdk.googleapis.com/js/sdkloader/outstream.js$script,domain=ovar.io
 ||damoh.*^$media
+||ooul.tv/contrib/se-aftonbladet/aab/aftonbladet_plugin.js$script,redirect=noopjs,domain=aftonbladet.se
+||ooul.tv/nocache/se-aftonbladet/aab/aftonbladet_config.js$script,redirect=noopjs,domain=aftonbladet.se
 filechoco.net##script:inject(noeval.js)
 *$script,third-party,domain=graffica.info
 @@||grafficainfo.disqus.com^$domain=graffica.info
