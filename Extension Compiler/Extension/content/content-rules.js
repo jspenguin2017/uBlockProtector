@@ -2617,21 +2617,23 @@ if (a.domCmp(["yiv.com"])) {
 if (a.domCmp(["short.am"])) {
     if (location.pathname !== "/") {
         a.ready(() => {
-            $("#disable > div.alert-danger").text("Please wait...");
-        });
-        a.on("load", () => {
-            //Based on AdsBypasser
-            //License: https://github.com/adsbypasser/adsbypasser/blob/master/LICENSE
-            setTimeout(() => {
-                let f = document.createElement("form");
-                f.method = "post";
-                let i = document.createElement("input");
-                i.name = "image";
-                i.value = "Continue";
-                f.appendChild(i);
-                document.body.append(f);
-                f.submit();
-            }, 1000);
+            let check = $("#disable > div.alert-danger");
+            if (check.length) {
+                check.text("Please wait...");
+                a.on("load", () => {
+                    //Based on AdsBypasser
+                    //License: https://github.com/adsbypasser/adsbypasser/blob/master/LICENSE
+                    let f = document.createElement("form");
+                    f.style.display = "none";
+                    f.method = "post";
+                    let i = document.createElement("input");
+                    i.name = "image";
+                    i.value = "Continue";
+                    f.appendChild(i);
+                    document.body.append(f);
+                    f.submit();
+                });
+            }
         });
     }
 }
