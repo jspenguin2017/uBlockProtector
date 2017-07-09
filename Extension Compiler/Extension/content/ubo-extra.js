@@ -284,6 +284,7 @@ if ( !abort ) {
             'dailypress.com',
             'deathandtaxesmag.com',
             'delmartimes.net',
+            'download.cnet.com',
             'edmontonsun.com',
             'everydayhealth.com',
             'extremetech.com',

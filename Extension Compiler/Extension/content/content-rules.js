@@ -1666,9 +1666,12 @@ if (a.domCmp(["linkdrop.net", "revclouds.com", "leporno.org", "uploadshub.com", 
     "darkstars.org", "corepacks.com", "naturalbd.com", "yourlifeupdated.net", "computerworm.net",
     "coolsoft.altervista.org", "openload.us", "cda-online.pl", "urbanplanet.org", "mamahd.com",
     "sadeempc.com", "avmoo.com", "thailande-fr.com", "btaia.com", "tusoft.org", "hisse.net",
-    "europeup.com", "nrj.fr", "srnk.co", "animmex.co", "socketloop.com", "crackhex.com",
-    "revealedtricks4u.com", "pizzamaking.com"])) {
+    "europeup.com", "nrj.fr", "srnk.co", "animmex.co", "crackhex.com", "revealedtricks4u.com",
+    "pizzamaking.com"])) {
     a.filter("setTimeout", a.matchMethod.string, "bab_elementid");
+}
+if (a.domCmp(["socketloop.com"])) {
+    a.readOnly("epmads_block", false);
 }
 if (a.domCmp(["fourchette-et-bikini.fr", "meteocity.com"])) {
     a.readOnly("adProtect", 1);
