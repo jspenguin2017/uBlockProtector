@@ -697,7 +697,7 @@ a.proxy = (urls, ip, log) => {
     );
 };
 /**
- * Make data URL and pretty print it into the console.
+ * Make data URL payload and pretty print it into the console.
  * Only available in debug mode.
  * @function
  * @param {string} title - The name of the payload.
@@ -722,6 +722,7 @@ a.mkPayload = (title, payload, type = "text/javascript") => {
     }
     //Encode and pretty print
     payload = `data:${type};base64,` + btoa(lines.join(""));
+    const originalPayload = payload;
     let output = "";
     while (payload) {
         output += `"${payload.substring(0, 150)}" +\n`;
@@ -729,4 +730,5 @@ a.mkPayload = (title, payload, type = "text/javascript") => {
     }
     console.log(title);
     console.log(output);
+    return originalPayload;
 };
