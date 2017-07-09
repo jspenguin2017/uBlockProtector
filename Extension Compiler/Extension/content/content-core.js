@@ -684,11 +684,11 @@ a.generic = () => {
     //---document-idle---
     a.ready(() => {
         //AdBlock Alerter (WP)
-        if (document.querySelector("div.adb_overlay > div.adb_modal_img")) {
+        if ($("div.adb_overlay > div.adb_modal_img").length) {
             //Log
             a.err("AdBlock Alerter");
             //Remove alert and allow scrolling
-            document.querySelector("div.adb_overlay").remove();
+            $("div.adb_overlay").remove();
             a.css("html, body { height:auto; overflow:auto; }");
         }
         //Generic block screens
