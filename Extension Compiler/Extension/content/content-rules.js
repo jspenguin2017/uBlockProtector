@@ -1757,8 +1757,9 @@ if (a.domCmp(["burning-feed.com"])) {
     //a.readOnly("ads_enable", `"true"`);
     a.readOnly("ads_enable", () => { });
 }
-if (a.domCmp(["chip.de", "moviepilot.com"])) {
+if (a.domCmp(["chip.de", "moviepilot.com", "nowloading.co", "champions.co"])) {
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/271
+    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/363
     a.noAccess("stop");
 }
 if (a.domCmp(["ghame.ru"])) {
