@@ -1083,26 +1083,6 @@ if (a.domCmp(["tny.cz", "pasted.co"])) {
     a.cookie("__.popunderCap", "1");
     a.cookie("__.popunder", "1");
 }
-if (a.domCmp(["clubedohardware.com.br"])) {
-    if (location.host.includes("forum")) {
-        a.css("#banner, script { height:51px; }");
-        a.bait("div", "#banner");
-    } else {
-        a.bait("div", ".banner_topo");
-    }
-    a.ready(() => {
-        if (location.host.includes("forum")) {
-            a.inject(() => {
-                "use strict";
-                window.addBlocking.hide();
-                window.addBlocking.kill();
-            });
-        } else {
-            document.body.id = "";
-            $(".adblock").remove();
-        }
-    });
-}
 if (a.domCmp(["debrastagi.com"])) {
     a.ready(() => {
         $("#stp-main").remove();
