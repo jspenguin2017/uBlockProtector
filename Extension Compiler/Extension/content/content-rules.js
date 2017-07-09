@@ -2648,3 +2648,6 @@ if (a.domCmp(["ohmymag.com", "gentside.com", "gentside.com.br"])) {
         init(p) { p.init(); }
     }`);
 }
+if (a.domCmp(["mywrestling.com.pl"])) {
+    a.generic.FuckAdBlock("KillAdBlock", "killAdBlock");
+}
