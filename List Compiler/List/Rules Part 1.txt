@@ -458,3 +458,5 @@ dingit.tv#@#.adsbox
 ||dingit.tv/js/dingit-player/js/html5/videojs.ads.js$script,redirect=noopjs
 ! === vz.lt
 /countsJS.php$domain=vz.lt
+! === xess.pro
+||xess.pro/js/popup.js

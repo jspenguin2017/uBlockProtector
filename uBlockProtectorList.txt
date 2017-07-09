@@ -287,6 +287,7 @@ wdbloog.com###unblocker
 dingit.tv#@#.adsbox
 ||dingit.tv/js/dingit-player/js/html5/videojs.ads.js$script,redirect=noopjs
 /countsJS.php$domain=vz.lt
+||xess.pro/js/popup.js
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================
