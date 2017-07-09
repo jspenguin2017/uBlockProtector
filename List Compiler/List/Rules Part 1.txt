@@ -72,7 +72,8 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 ! === adiode.com
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/346
 ||adiode.com^$third-party
-! === DoubleClick
+! === AdSense, DoubleClick
+||googlesyndication.com^$important,domain=short.am|clubedohardware.com.br
 ||doubleclick.net^$important,domain=aetv.com|history.com|mylifetime.com
 ! === OptinMonster
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/251
@@ -449,7 +450,6 @@ sankakucomplex.com##script:inject(abort-on-property-read.js, BetterJsPop)
 ! === l2s.io
 l2s.io#@#.myTestAd
 ! === short.am
-||googlesyndication.com^$important,domain=short.am
 @@||short.am^$generichide,badfilter
 ! === wdbloog.com
 wdbloog.com###unblocker

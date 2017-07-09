@@ -69,6 +69,7 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 ||w.nn0e.com^$third-party,script
 ||w.rpts.org^$third-party,script
 ||adiode.com^$third-party
+||googlesyndication.com^$important,domain=short.am|clubedohardware.com.br
 ||doubleclick.net^$important,domain=aetv.com|history.com|mylifetime.com
 ||a.optnmnstr.com^$third-party
 ||a.optnmstr.com^$third-party
@@ -281,7 +282,6 @@ naisho.asia##script:inject(abort-on-property-write.js, adBlock)
 sankakucomplex.com##cloudflare-app[app-id="no-adblock"]
 sankakucomplex.com##script:inject(abort-on-property-read.js, BetterJsPop)
 l2s.io#@#.myTestAd
-||googlesyndication.com^$important,domain=short.am
 @@||short.am^$generichide,badfilter
 wdbloog.com###unblocker
 dingit.tv#@#.adsbox
