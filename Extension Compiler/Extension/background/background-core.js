@@ -36,7 +36,7 @@ a.init = () => {
                  */
                 case "xhr":
                     if (typeof args[0].details === "object") {
-                        console.warn(`Sending cross origin request to ${args[0].details.url}`);
+                        console.log(`Sending cross origin request to ${args[0].details.url}`);
                         let req = new XMLHttpRequest();
                         //Event handler
                         req.onreadystatechange = () => {

@@ -12,7 +12,7 @@ a.generic();
         //Event callbacks are blocked by List
         let payload = `(() => {
             "use strict";
-            window.console.warn("A request to mmod.v.fwmrm.net is locally loopbacked by uBlock Protector.");
+            window.console.log("A request to mmod.v.fwmrm.net is locally loopbacked by uBlock Protector.");
             ${cbfn}({
                 version: "1",
                 networkId: "100",
@@ -131,7 +131,8 @@ a.generic();
                 return { redirectUrl: genPayload(csid[1], caid[1], decodeURIComponent(cbfn[1])) };
             } else {
                 //Block the request as a fallback
-                console.warn("Could not extract parameters from a request to mmod.v.fwmrm.net");
+                console.log("Could not extract parameters from a request to mmod.v.fwmrm.net");
+                a.debugMode && console.log(details);
                 return { cancel: true };
             }
         },

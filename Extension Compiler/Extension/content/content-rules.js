@@ -39,12 +39,12 @@
     const AdflyWhitelist2 = [];
     //Apply generic solutions
     if (a.domCmp(genericWhitelist1, true) || a.domInc(genericWhitelist2, true)) {
-        console.warn("This domain is excluded from generic solutions.");
+        console.log("This domain is excluded from generic solutions.");
     } else {
         a.generic();
         //Apply Adfly bypasser
         if (a.domCmp(AdflyWhitelist1, true) || a.domInc(AdflyWhitelist2, true)) {
-            console.warn("This domain is excluded from Adfly bypasser.");
+            console.log("This domain is excluded from Adfly bypasser.");
         } else {
             a.generic.Adfly();
         }
@@ -1416,8 +1416,8 @@ if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "pl
                 url: `http://playapi.mtgx.tv/v3/videos/stream/${videoID}`,
             }, (result) => {
                 if (a.debugMode) {
-                    console.info("Response received:");
-                    console.info(result);
+                    console.log("Response received:");
+                    console.log(result);
                 }
                 parser(result);
             }, () => {
@@ -1454,10 +1454,10 @@ if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "pl
             return;
         }
         if (a.debugMode) {
-            console.info("Potential media URLs:");
-            console.info([streams.high, streams.hls, streams.medium]);
-            console.info("Used media URL:");
-            console.info(source);
+            console.log("Potential media URLs:");
+            console.log([streams.high, streams.hls, streams.medium]);
+            console.log("Used media URL:");
+            console.log(source);
         }
         //Replace player
         const player = $("#video-player");

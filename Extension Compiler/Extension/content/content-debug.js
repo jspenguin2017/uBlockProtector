@@ -93,8 +93,8 @@ if (a.debugMode) {
                     url: `https://viasport.mtg-api.com/stream-links/viasport/web/se/clear-media-guids/${e.detail}/streams`,
                 }, (result) => {
                     if (a.debugMode) {
-                        console.info("Response received:");
-                        console.info(result);
+                        console.log("Response received:");
+                        console.log(result);
                     }
                     parser(result);
                 }, () => {

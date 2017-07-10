@@ -8,7 +8,7 @@
  */
 a.init = () => {
     //Log domain
-    console.warn(`Domain: ${document.domain}`);
+    console.log(`Domain: ${document.domain}`);
     //Home page installation test
     if (a.domCmp(["jspenguin2017.github.io"], true) && location.pathname.startsWith("/uBlockProtector/")) {
         a.inject(() => {
@@ -257,9 +257,7 @@ a.inject = (payload, isReady) => {
         s.remove();
     } catch (err) {
         console.error("uBlock Protector failed to inject a standalone script!");
-        if (a.debugMode) {
-            console.error(s.textContent);
-        }
+        a.debugMode && console.log(s.textContent);
     }
 };
 /**
@@ -385,7 +383,7 @@ a.filter = (name, method, filter, parent = "window") => {
         "use strict";
         let matcher = ${a.getMatcher(method, filter)};
         //Cache console functions as some web pages do change them
-        const info = window.console.info.bind(window.console);
+        const log = window.console.log.bind(window.console);
         const warn = window.console.warn.bind(window.console);
         const error = window.console.error.bind(window.console);
         //The original funciton, will be set later
@@ -396,7 +394,7 @@ a.filter = (name, method, filter, parent = "window") => {
             if (${a.debugMode}) {
                 warn("${parent}.${name} is called with these arguments:");
                 for (let i = 0; i < args.length; i++) {
-                    warn(String(args[i]));
+                    log(String(args[i]));
                 }
             }
             //Apply filter
@@ -405,7 +403,7 @@ a.filter = (name, method, filter, parent = "window") => {
                 error("Uncaught Error: uBlock Origin detectors are not allowed on this device!");
             } else {
                 //Allowed log
-                info("Tests passed.");
+                log("Tests passed.");
                 return original.apply(parent, args);
             }
         };
@@ -416,7 +414,7 @@ a.filter = (name, method, filter, parent = "window") => {
             //Replace
             ${parent}["${name}"] = newFunc;
             //Activate log
-            warn("Filter activated on ${parent}.${name}");
+            log("Filter activated on ${parent}.${name}");
         } catch (err) {
             //Failed to activate
             error("uBlock Protector failed to activate filter on ${parent}.${name}!");
@@ -438,7 +436,7 @@ a.timewarp = (timer, method, filter, ratio = 0.02) => {
         "use strict";
         let matcher = ${a.getMatcher(method, filter)};
         //Cache console functions as some web pages do change them
-        const info = window.console.info.bind(window.console);
+        const log = window.console.log.bind(window.console);
         const warn = window.console.warn.bind(window.console);
         const error = window.console.error.bind(window.console);
         //The original funciton, will be set later
@@ -449,7 +447,7 @@ a.timewarp = (timer, method, filter, ratio = 0.02) => {
             if (${a.debugMode}) {
                 warn("window.${timer} is called with these arguments:");
                 for (let i = 0; i < args.length; i++) {
-                    warn(String(args[i]));
+                    log(String(args[i]));
                 }
             }
             //Apply filter
@@ -457,7 +455,7 @@ a.timewarp = (timer, method, filter, ratio = 0.02) => {
                 error("Timewarped.");
                 args[1] *= ${ratio};
             } else {
-                info("Not timewarped.");
+                log("Not timewarped.");
             }
             return original.apply(window, args);
         };
@@ -467,7 +465,7 @@ a.timewarp = (timer, method, filter, ratio = 0.02) => {
             //Replace
             window.${timer} = newFunc;
             //Activate log
-            warn("Timewarp activated on window.${timer}");
+            log("Timewarp activated on window.${timer}");
         } catch (err) {
             //Failed to activate
             error("uBlock Protector failed to activate filter on window.${timer}!");
@@ -498,7 +496,7 @@ a.readOnly = (name, val, parent = "window") => {
                 },
             });
             if (${a.debugMode}) {
-                window.console.warn("Defined read-only property ${parent}.${name}");
+                window.console.log("Defined read-only property ${parent}.${name}");
             }
         } catch (err) {
             window.console.error("uBlock Protector failed to define read-only property ${parent}.${name}!");
@@ -527,7 +525,7 @@ a.noAccess = (name, parent = "window") => {
                 },
             });
             if (${a.debugMode}) {
-                window.console.warn("Defined non-accessible property ${parent}.${name}");
+                window.console.log("Defined non-accessible property ${parent}.${name}");
             }
         } catch (err) {
             window.console.error("uBlock Protector failed to define non-accessible property ${parent}.${name}!");
