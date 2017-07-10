@@ -20,6 +20,16 @@ a.init = () => {
 
 //=====Utilities=====
 /**
+ * Escape double quotes in a string.
+ * @function
+ * @param {string} str - The string to escape.
+ * @return {string} The escaped string.
+ */
+a.strEscape = (() => {
+    const re = /"/g;
+    return (str) => str.replace(re, `\\"`);
+})();
+/**
  * Whether this frame is top frame.
  * @const {boolean}
  */
@@ -371,14 +381,16 @@ a.bait = (type, identifier, hidden) => {
 /**
  * Filter a function, must be called on document-start.
  * @function
- * @param {string} name - The name of the function. Escape double quotes if needed.
+ * @param {string} name - The name of the function.
  * @param {Enumeration} [method=a.matchMethod.matchAll] - An option from a.matchMethods, omit or pass null defaults
  ** to match all.
  * @param {undefined|string|RegExp} filter - The filter to apply, this must be appropriate for the method.
  * @param {string} [parent="window"] - The name of the parent object, use "." or bracket notation to separate layers.
- ** Escape double quotes if needed.
+ ** The parent must exist.
  */
 a.filter = (name, method, filter, parent = "window") => {
+    name = strEscape(name);
+    const strParent = strEscape(parent);
     a.inject(`(() => {
         "use strict";
         let matcher = ${a.getMatcher(method, filter)};
@@ -392,7 +404,7 @@ a.filter = (name, method, filter, parent = "window") => {
         const newFunc = (...args) => {
             //Call log
             if (${a.debugMode}) {
-                warn("${parent}.${name} is called with these arguments:");
+                warn("${strParent}.${name} is called with these arguments:");
                 for (let i = 0; i < args.length; i++) {
                     log(String(args[i]));
                 }
@@ -414,10 +426,10 @@ a.filter = (name, method, filter, parent = "window") => {
             //Replace
             ${parent}["${name}"] = newFunc;
             //Activate log
-            log("Filter activated on ${parent}.${name}");
+            log("Filter activated on ${strParent}.${name}");
         } catch (err) {
             //Failed to activate
-            error("uBlock Protector failed to activate filter on ${parent}.${name}!");
+            error("uBlock Protector failed to activate filter on ${strParent}.${name}!");
         }
     })();`, true);
 };
@@ -476,13 +488,15 @@ a.timewarp = (timer, method, filter, ratio = 0.02) => {
  * Defines a read-only property, must be called on document-start.
  * May not be able to lock the property's own properties.
  * @function
- * @param {string} name - The name of the property to define. Escape double quotes if needed.
+ * @param {string} name - The name of the property to define.
  * @param {Any} val - The value to set, must have extra quotes if it is a literal string. If it is a funciton,
  ** it will lose its scope, if it is an object, you are responsible in making it into a string.
  * @param {string} [parent="window"] - The name of the parent object, use "." or bracket notation to separate layers.
- ** Escape double quotes if needed.
+ ** The parent must exist.
  */
 a.readOnly = (name, val, parent = "window") => {
+    name = strEscape(name);
+    const strParent = strEscape(parent);
     a.inject(`(() => {
         "use strict";
         const val = ${val};
@@ -496,10 +510,10 @@ a.readOnly = (name, val, parent = "window") => {
                 },
             });
             if (${a.debugMode}) {
-                window.console.log("Defined read-only property ${parent}.${name}");
+                window.console.log("Defined read-only property ${strParent}.${name}");
             }
         } catch (err) {
-            window.console.error("uBlock Protector failed to define read-only property ${parent}.${name}!");
+            window.console.error("uBlock Protector failed to define read-only property ${strParent}.${name}!");
         }
     })();`, true);
 };
@@ -508,9 +522,11 @@ a.readOnly = (name, val, parent = "window") => {
  * @function
  * @param {string} name - The name of the property to define. Escape double quotes if needed.
  * @param {string} [parent="window"] - The name of the parent object, use "." or bracket notation to separate layers.
- ** Escape double quotes if needed.
+ ** The parent must exist.
  */
 a.noAccess = (name, parent = "window") => {
+    name = strEscape(name);
+    const strParent = strEscape(parent);
     a.inject(`(() => {
         "use strict";
         const err = new window.Error("This property may not be accessed!");
@@ -525,12 +541,20 @@ a.noAccess = (name, parent = "window") => {
                 },
             });
             if (${a.debugMode}) {
-                window.console.log("Defined non-accessible property ${parent}.${name}");
+                window.console.log("Defined non-accessible property ${strParent}.${name}");
             }
         } catch (err) {
-            window.console.error("uBlock Protector failed to define non-accessible property ${parent}.${name}!");
+            window.console.error("uBlock Protector failed to define non-accessible property ${strParent}.${name}!");
         }
     })();`, true);
+};
+/**
+ * Defines a non-readable property, must be called on document-start.
+ * @function
+ * @param {string} chain - The property chain, use "." to separate layers.
+ */
+a.noRead = (chain) => {
+    //TODO
 };
 /**
  * Set or get a cookie.
