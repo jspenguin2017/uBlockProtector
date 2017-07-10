@@ -213,8 +213,7 @@ a.matchMethod = {
  * Get a matcher, the filter will be "hard coded" into it.
  * @function
  * @param {Enumeration} method - The method to use.
- * @param {undefined|string|RegExp} filter - An appropriate filter. Escape it if needed, string filters are
- ** wrapped in double quotes.
+ * @param {undefined|string|RegExp} filter - An appropriate filter.
  * @return {string} A matcher function.
  */
 a.getMatcher = (method, filter) => {
@@ -222,7 +221,7 @@ a.getMatcher = (method, filter) => {
         case a.matchMethod.string:
             return `(args) => {
                 for (let i = 0; i < args.length; i++) {
-                    if (String(args[i]).includes("${filter}")) {
+                    if (String(args[i]).includes("${a.strEscape(filter)}")) {
                         return true;
                     }
                 }
@@ -231,7 +230,7 @@ a.getMatcher = (method, filter) => {
         case a.matchMethod.stringExact:
             return `(args) => {
                 for (let i = 0; i < args.length; i++) {
-                    if ("${filter}" === String(args[i])) {
+                    if ("${a.strEscape(filter)}" === String(args[i])) {
                         return true;
                     }
                 }
@@ -389,8 +388,8 @@ a.bait = (type, identifier, hidden) => {
  ** The parent must exist.
  */
 a.filter = (name, method, filter, parent = "window") => {
-    name = strEscape(name);
-    const strParent = strEscape(parent);
+    name = a.strEscape(name);
+    const strParent = a.strEscape(parent);
     a.inject(`(() => {
         "use strict";
         let matcher = ${a.getMatcher(method, filter)};
@@ -495,8 +494,8 @@ a.timewarp = (timer, method, filter, ratio = 0.02) => {
  ** The parent must exist.
  */
 a.readOnly = (name, val, parent = "window") => {
-    name = strEscape(name);
-    const strParent = strEscape(parent);
+    name = a.strEscape(name);
+    const strParent = a.strEscape(parent);
     a.inject(`(() => {
         "use strict";
         const val = ${val};
@@ -520,13 +519,13 @@ a.readOnly = (name, val, parent = "window") => {
 /**
  * Defines a non-accessible property, must be called on document-start.
  * @function
- * @param {string} name - The name of the property to define. Escape double quotes if needed.
+ * @param {string} name - The name of the property to define.
  * @param {string} [parent="window"] - The name of the parent object, use "." or bracket notation to separate layers.
  ** The parent must exist.
  */
 a.noAccess = (name, parent = "window") => {
-    name = strEscape(name);
-    const strParent = strEscape(parent);
+    name = a.strEscape(name);
+    const strParent = a.strEscape(parent);
     a.inject(`(() => {
         "use strict";
         const err = new window.Error("This property may not be accessed!");
@@ -1106,8 +1105,8 @@ a.generic.Adfly = () => {
 /**
  * Create a FuckAdBlock constructor and instance which always returns not detected.
  * @function
- * @param {string} constructorName - The name of the constructor. Escape double quotes if needed.
- * @param {string} instanceName - The name of the instance. Escape double quotes if needed.
+ * @param {string} constructorName - The name of the constructor.
+ * @param {string} instanceName - The name of the instance.
  */
 a.generic.FuckAdBlock = (constructorName, instanceName) => {
     a.inject(`(() => {
@@ -1173,7 +1172,7 @@ a.generic.FuckAdBlock = (constructorName, instanceName) => {
         };
         //Define properties
         try {
-            window.Object.defineProperty(window, "${constructorName}", {
+            window.Object.defineProperty(window, "${a.strEscape(constructorName)}", {
                 configurable: false,
                 set() { },
                 get() {
@@ -1181,7 +1180,7 @@ a.generic.FuckAdBlock = (constructorName, instanceName) => {
                 },
             });
             const instance = new patchedFuckAdBlock();
-            window.Object.defineProperty(window, "${instanceName}", {
+            window.Object.defineProperty(window, "${a.strEscape(instanceName)}", {
                 configurable: false,
                 set() { },
                 get() {
