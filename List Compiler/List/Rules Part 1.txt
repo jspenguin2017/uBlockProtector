@@ -21,6 +21,9 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 ! Their poster logic is broken, but the error is somehow suppressed by the original IMA SDK
 ||cbsnews.com/news/*/[object%20object]$image,redirect=1x1-transparent.gif
 ||cbsnews.com/news/*/undefined$image,redirect=1x1-transparent.gif
+! === bild.de
+! Handled by Extension due to race condition
+bild.de#@#script:inject(abort-on-property-read.js, de.bild.cmsKonfig.a.a)
 ! ======================
 ! ===== Missed Ads =====
 ! ======================
@@ -468,6 +471,3 @@ dingit.tv#@#.adsbox
 ||xess.pro/js/popup.js
 ! === iprima.cz
 iprima.cz##.play-wrapper.player-wrapper > .you-shall-not-pass
-! === bild.de
-! Handled by Extension due to race condition
-bild.de#@#script:inject(abort-on-property-read.js, de.bild.cmsKonfig.a.a)
