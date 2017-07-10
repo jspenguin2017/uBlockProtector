@@ -148,9 +148,9 @@ filez.tv###adblockinfo
 ! === debridnet.com - Thanks to uBlock-user
 ||debridnet.com/stat*^$subdocument
 ||amazon-adsystem.com^$subdocument,redirect=noopframe,domain=debridnet.com
-! === xmovies8.org
+! === xmovies8.org, moviezr.org
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/90
-xmovies8.org##script:inject(abort-on-property-read.js, $.getScript)
+xmovies8.org,moviezr.org##script:inject(abort-on-property-read.js, $.getScript)
 ! === tune.pk
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/92
 tune.pk###annoy-wrapper
@@ -466,7 +466,5 @@ dingit.tv#@#.adsbox
 /countsJS.php$domain=vz.lt
 ! === xess.pro
 ||xess.pro/js/popup.js
-! === moviezr.org
-moviezr.org##script:inject(abort-on-property-read.js, $.getScript)
 ! === iprima.cz
 iprima.cz##.play-wrapper.player-wrapper > .you-shall-not-pass
