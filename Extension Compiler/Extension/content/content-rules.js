@@ -2642,7 +2642,7 @@ if (a.domCmp(["short.am"])) {
         });
     }
 }
-if (a.domCmp(["ohmymag.com", "gentside.com", "gentside.com.br", "maxisciences.com"])) {
+if (a.domCmp(["ohmymag.com", "ohmymag.com.br", "gentside.com", "gentside.com.br", "maxisciences.com"])) {
     a.readOnly("adblockPopup", `{
         IS_BLOCKED: false,
         init() { },
