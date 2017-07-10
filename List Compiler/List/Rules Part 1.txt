@@ -470,3 +470,5 @@ dingit.tv,t3n.de#@#.adsbox
 ||xess.pro/js/popup.js
 ! === iprima.cz
 iprima.cz##.play-wrapper.player-wrapper > .you-shall-not-pass
+! === hayan.tv
+||hayan.tv/gibberish-aes.js^

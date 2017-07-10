@@ -294,6 +294,7 @@ dingit.tv,t3n.de#@#.adsbox
 /countsJS.php$domain=vz.lt
 ||xess.pro/js/popup.js
 iprima.cz##.play-wrapper.player-wrapper > .you-shall-not-pass
+||hayan.tv/gibberish-aes.js^
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================
