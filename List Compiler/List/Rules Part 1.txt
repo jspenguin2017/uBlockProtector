@@ -468,3 +468,5 @@ dingit.tv#@#.adsbox
 ||xess.pro/js/popup.js
 ! === moviezr.org
 moviezr.org##script:inject(abort-on-property-read.js, $.getScript)
+! === iprima.cz
+iprima.cz##.play-wrapper.player-wrapper > .you-shall-not-pass

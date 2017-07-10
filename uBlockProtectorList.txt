@@ -293,6 +293,7 @@ dingit.tv#@#.adsbox
 /countsJS.php$domain=vz.lt
 ||xess.pro/js/popup.js
 moviezr.org##script:inject(abort-on-property-read.js, $.getScript)
+iprima.cz##.play-wrapper.player-wrapper > .you-shall-not-pass
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================
