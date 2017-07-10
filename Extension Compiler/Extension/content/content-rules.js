@@ -2422,6 +2422,7 @@ if (a.domCmp(["tg007.net"])) {
 }
 if (a.domCmp(["bild.de"])) {
     a.filter("querySelector", a.matchMethod.stringExact, "body", "window.document");
+    a.noRead("de.bild.cmsKonfig.a.a");
 }
 if (a.domCmp(["codepo8.github.io"]) && location.pathname.startsWith("/detecting-adblock/")) {
     a.css(".notblocked { display:block; } .blocked { display:none; }");

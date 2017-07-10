@@ -550,10 +550,70 @@ a.noAccess = (name, parent = "window") => {
 /**
  * Defines a non-readable property, must be called on document-start.
  * @function
- * @param {string} chain - The property chain, use "." to separate layers.
+ * @param {string} chain - The property chain, use "." to separate layers. Do not include "window".
  */
 a.noRead = (chain) => {
-    //TODO
+    chain = a.strEscape(chain);
+    a.inject(`(() => {
+        //Based on uAssets
+        //License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
+        "use strict";
+        //Prepare
+        const err = new window.Error("This property may not be read!");
+        const throwErr = () => {
+            throw err;
+        };
+        //This can cause potential memory leak but the magic key approach is not secure
+        let trustedSetters = [];
+        //Patch property chain
+        let current;
+        let i;
+        const proxy = (parent, chain) => {
+            i = chain.indexOf(".");
+            if (i === -1) {
+                //Last property in the chain, nuke whatever is present
+                current = window.Object.getOwnPropertyDescriptor(parent, chain);
+                if (!current || current.get !== throwErr) {
+                    window.Object.defineProperty(parent, chain, {
+                        configurable: false,
+                        set() { },
+                        get: throwErr,
+                    });
+                }
+            } else {
+                //Process current property name
+                const name = chain.slice(0, i);
+                let val = parent[name];
+                chain = chain.substring(i + 1);
+                //Patch current property
+                if (val === undefined) {
+                    current = window.Object.getOwnPropertyDescriptor(parent, name);
+                    if (!current || !trustedSetters.includes(current.set)) {
+                        const setter = (value) => {
+                            val = value;
+                            if (val instanceof window.Object) {
+                                proxy(val, chain);
+                            }
+                        };
+                        trustedSetters.push(setter);
+                        window.Object.defineProperty(parent, name, {
+                            configurable: false,
+                            set: setter,
+                            get() { return val; },
+                        });
+                    }
+                } else {
+                    proxy(val, chain);
+                }
+            }
+        };
+        try {
+            proxy(window, "${chain}");
+            window.console.log("Defined non-readable property ${chain}");
+        } catch (err) {
+            window.console.error("uBlock Protector failed to define non-readable property ${chain}!");
+        }
+    })();`, true);
 };
 /**
  * Set or get a cookie.
@@ -635,6 +695,8 @@ a.nativePlayer = (source, type, width = "100%", height = "auto") => {
  ** @return {string|null} Return a string to override the result of this request, return null to not interfere.
  *** The request will always be sent, so event handlers can be triggered properly.
  */
+/*
+//Never used
 a.loopback = (server) => {
     a.inject(`(() => {
         "use strict";
@@ -673,6 +735,7 @@ a.loopback = (server) => {
         }
     })();`, true);
 };
+*/
 /**
  * Forcefully close the current tab.
  * @function

@@ -468,3 +468,6 @@ dingit.tv#@#.adsbox
 ||xess.pro/js/popup.js
 ! === iprima.cz
 iprima.cz##.play-wrapper.player-wrapper > .you-shall-not-pass
+! === bild.de
+! Handled by Extension due to race condition
+bild.de#@#script:inject(abort-on-property-read.js, de.bild.cmsKonfig.a.a)
