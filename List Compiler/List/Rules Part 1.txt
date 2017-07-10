@@ -157,10 +157,9 @@ xmovies8.org,moviezr.org##script:inject(abort-on-property-read.js, $.getScript)
 ! === tune.pk
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/92
 tune.pk###annoy-wrapper
-! === NSFW! 29443kmq.video - Thanks to uBlock-user
+! === NSFW! 29443kmq.video, dato.porn - Thanks to uBlock-user
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/93
 29443kmq.video,dato.porn###a
-! === NSFW! dato.porn
 dato.porn##script:inject(abort-on-property-read.js, open)
 dato.porn##script:inject(noeval-if.js, var r3H4=window;for(var v4 in r3H4))
 ! === engineeringtoolbox.com
