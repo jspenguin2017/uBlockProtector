@@ -2659,3 +2659,6 @@ if (a.domCmp(["1movies.tv"])) {
     a.readOnly("check_adblock", true);
     a.filter("open");
 }
+if (a.domCmp(["startclass.com"])) {
+    a.filter("addEventListener", a.matchMethod.stringExact, "scroll");
+}

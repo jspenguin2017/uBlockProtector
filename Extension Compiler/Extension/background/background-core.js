@@ -627,6 +627,11 @@ a.generic = () => {
         "QVRDSDogIlNlbGVjdE5lYXJNYXRjaCIsfTt3aW5kb3cuZ29vZ2xlLmltYS5JbWFTZGtTZXR0aW5ncy5Db21wYW5pb25CYWNrZmlsbE1vZGUgPSB7QUxXQVlTOiAiYWx3YXlzIixPTl9NQVNURVJfQU" +
         "Q6ICJvbl9tYXN0ZXJfYWQiLH07d2luZG93Lmdvb2dsZS5pbWEuSW1hU2RrU2V0dGluZ3MuVnBhaWRNb2RlID0ge0RJU0FCTEVEOiAwLEVOQUJMRUQ6IDEsSU5TRUNVUkU6IDIsfTt3aW5kb3cuZ29v" +
         "Z2xlLmltYS5zZXR0aW5ncyA9IG5ldyB3aW5kb3cuZ29vZ2xlLmltYS5JbWFTZGtTZXR0aW5ncygpO30pKCk7",
+        [
+            //Damage control
+            "ludigames.com",
+        ],
+        false,
     );
     //---MoatFreeWheelJSPEM.js---
     //Payload generator
