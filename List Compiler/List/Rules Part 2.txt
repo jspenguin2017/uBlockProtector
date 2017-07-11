@@ -622,7 +622,6 @@ tree.tv#@##adverts
 @@||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js$script,domain=djawir.com
 @@||pagead2.googlesyndication.com/pagead/js/r*/r*/show_ads_impl.js$script,domain=djawir.com
 @@||vvvvid.it/img/ad/advertisement.xml$xmlhttprequest
-@@||imasdk.googleapis.com^$domain=vvvvid.it
 @@||static.vvvvid.it/img/ad$domain=vvvvid.it
 @@||des.smartclip.net/ads?$domain=vvvvid.it
 @@||adx.adform.net/adx$domain=vvvvid.it
