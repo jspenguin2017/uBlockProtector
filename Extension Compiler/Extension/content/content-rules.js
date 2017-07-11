@@ -2721,3 +2721,8 @@ if (a.domCmp(["vvvvid.it"])) {
 if (a.domCmp(["gry.wp.pl"])) {
     a.filter("atob");
 }
+if (a.domCmp(["katfile.com"])) {
+    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/385
+    a.filter("open");
+    a.timewarp("setTimeout", a.matchMethod.stringExact, "1000");
+}
