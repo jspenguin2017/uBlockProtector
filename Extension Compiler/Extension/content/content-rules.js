@@ -1670,9 +1670,6 @@ if (a.domCmp(["linkdrop.net", "revclouds.com", "leporno.org", "uploadshub.com", 
     "pizzamaking.com"])) {
     a.filter("setTimeout", a.matchMethod.string, "bab_elementid");
 }
-if (a.domCmp(["socketloop.com"])) {
-    a.readOnly("epmads_block", false);
-}
 if (a.domCmp(["fourchette-et-bikini.fr", "meteocity.com"])) {
     a.readOnly("adProtect", 1);
 }
@@ -2664,5 +2661,6 @@ if (a.domCmp(["startclass.com"])) {
     a.filter("addEventListener", a.matchMethod.stringExact, "scroll");
 }
 if (a.domCmp(["socketloop.com"])) {
+    a.readOnly("epmads_block", false);
     a.filter("setTimeout", a.matchMethod.string, "document.getElementById('content').innerHTML='';");
 }
