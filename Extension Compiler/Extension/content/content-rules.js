@@ -2675,6 +2675,7 @@ if (a.domCmp(["digitalpoint.com"])) {
 if (a.domCmp(["itv.com"])) {
     a.loopback((ignored, url) => {
         if (url.startsWith("https://tom.itv.com/itv/tserver/size=")) {
+            //Event callbacks are blocked by List
             return `
 <?xml version="1.0" encoding="utf-8"?>
 <VAST version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="vast.xsd">
