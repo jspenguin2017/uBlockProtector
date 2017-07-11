@@ -1296,12 +1296,6 @@ burze.dzis.net#@#.adsbygoogle
 380cc.cc#@##adsbottom
 380cc.cc#@##myadfor_mobiletop
 javfreestreaming.com##.notes
-socketloop.com#@##banner_ads
-socketloop.com##.adtester-container
-@@||amazonaws.com/socketloop/show_ads_epmads.js$script,domain=socketloop.com
-@@||pagead2.googlesyndication.com/pagead/osd.js$script,domain=socketloop.com
-@@|http://$image,domain=socketloop.com
-@@|https://$image,domain=socketloop.com
 @@||diymediahome.org/*/adframe.min.js$script,~third-party
 @@||pasazer.com/adsense.js$script,~third-party
 @@||slacker.com^$xmlhttprequest
