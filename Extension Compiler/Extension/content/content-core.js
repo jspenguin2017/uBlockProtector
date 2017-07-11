@@ -721,8 +721,6 @@ a.nativePlayer = (source, type, width = "100%", height = "auto") => {
  ** @return {string|null} Return a string to override the result of this request, return null to not interfere.
  *** The request will always be sent, so event handlers can be triggered properly.
  */
-/*
-//Never used
 a.loopback = (server) => {
     a.inject(`(() => {
         "use strict";
@@ -761,7 +759,6 @@ a.loopback = (server) => {
         }
     })();`, true);
 };
-*/
 /**
  * Forcefully close the current tab.
  * @function
