@@ -2718,3 +2718,6 @@ if (a.domCmp(["vvvvid.it"])) {
         });
     });
 }
+if (a.domCmp(["gry.wp.pl"])) {
+    a.filter("atob");
+}
