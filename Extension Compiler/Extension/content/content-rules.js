@@ -2686,3 +2686,35 @@ if (a.domCmp(["itv.com"])) {
         }
     });
 }
+if (a.domCmp(["vvvvid.it"])) {
+    a.on("load", () => {
+        a.inject(() => {
+            //Based on KAADIVVVV
+            //License: http://www.gnu.org/copyleft/gpl.html
+            window.vvvvid.cab3 = function (ignored, func) {
+                this.isAdBlockActive = false;
+                func && func(false);
+            };
+            window.vvvvid.models.PlayerObj.prototype.startAdv = function (e, b, d) {
+                var c = this;
+                if (!e) {
+                    if (!_.isUndefined(c.player)) {
+                        vvvvid.player.destroy();
+                        delete (c.player);
+                        delete (vvvvid.player);
+                    }
+                }
+                var a = function (j) {
+                    vvvvid.advPlayer = null;
+                    $(c.playerControlsClass).removeClass('ppad');
+                    d();
+                };
+                if (c.thereIsAdv) {
+                    vvvvid.cab3(true, a);
+                } else {
+                    d();
+                }
+            };
+        });
+    });
+}
