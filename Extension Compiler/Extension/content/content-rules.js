@@ -2664,3 +2664,11 @@ if (a.domCmp(["socketloop.com"])) {
     a.readOnly("epmads_block", false);
     a.filter("setTimeout", a.matchMethod.string, "document.getElementById('content').innerHTML='';");
 }
+if (a.domCmp(["digitalpoint.com"])) {
+    a.ready(() => {
+        a.inject(() => {
+            "use strict";
+            window.DigitalPoint._General.blockMessage = () => { };
+        });
+    });
+}
