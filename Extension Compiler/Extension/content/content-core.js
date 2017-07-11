@@ -568,17 +568,19 @@ a.noAccess = (name, parent = "window") => {
     })();`, true);
 };
 /**
- * Defines a non-readable property, must be called on document-start.
+ * Similar to a.noAccess(), but with a more complicated property looping algorithm.
+ * May have some memory leaks.
  * @function
  * @param {string} chain - The property chain, use "." to separate layers. Do not include "window".
  */
-a.noRead = (chain) => {
+a.noAccessExt = (chain) => {
     chain = a.strEscape(chain);
     a.inject(`(() => {
         //Based on uAssets
         //License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
         "use strict";
         //Prepare
+        const error = window.console.error.bind(window.console);
         const err = new window.Error("This property may not be read!");
         const throwErr = () => {
             throw err;
@@ -593,10 +595,10 @@ a.noRead = (chain) => {
             if (i === -1) {
                 //Last property in the chain, nuke whatever is present
                 current = window.Object.getOwnPropertyDescriptor(parent, chain);
-                if (!current || current.get !== throwErr) {
+                if (!current || current.set !== throwErr || current.get !== throwErr) {
                     window.Object.defineProperty(parent, chain, {
                         configurable: false,
-                        set() { },
+                        set: throwErr,
                         get: throwErr,
                     });
                 }
@@ -606,13 +608,19 @@ a.noRead = (chain) => {
                 let val = parent[name];
                 chain = chain.substring(i + 1);
                 //Patch current property
-                if (val === undefined) {
+                if (val instanceof window.Object) {
+                    proxy(val, chain);
+                } else {
                     current = window.Object.getOwnPropertyDescriptor(parent, name);
                     if (!current || !trustedSetters.includes(current.set)) {
                         const setter = (value) => {
-                            val = value;
-                            if (val instanceof window.Object) {
-                                proxy(val, chain);
+                            if (value instanceof window.Object) {
+                                try {
+                                    proxy(value, chain);
+                                    val = value;
+                                } catch (err) {
+                                    error("uBlock Protector failed to refresh non-accessible property ${chain}!");
+                                }
                             }
                         };
                         trustedSetters.push(setter);
@@ -622,16 +630,14 @@ a.noRead = (chain) => {
                             get() { return val; },
                         });
                     }
-                } else {
-                    proxy(val, chain);
                 }
             }
         };
         try {
             proxy(window, "${chain}");
-            window.console.log("Defined non-readable property ${chain}");
+            window.console.log("Defined non-accessible property ${chain}");
         } catch (err) {
-            window.console.error("uBlock Protector failed to define non-readable property ${chain}!");
+            error("uBlock Protector failed to define non-accessible property ${chain}!");
         }
     })();`, true);
 };
