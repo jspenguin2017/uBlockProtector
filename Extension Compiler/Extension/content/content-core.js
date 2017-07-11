@@ -311,10 +311,8 @@ a.uid = (() => {
 a.onInsert = (handler) => {
     const observer = new MutationObserver((mutations) => {
         for (let i = 0; i < mutations.length; i++) {
-            if (mutations[i].addedNodes.length) {
-                for (let j = 0; j < mutations[i].addedNodes.length; j++) {
-                    handler(mutations[i].addedNodes[j]);
-                }
+            for (let j = 0; j < mutations[i].addedNodes.length; j++) {
+                handler(mutations[i].addedNodes[j]);
             }
         }
     });
@@ -323,6 +321,28 @@ a.onInsert = (handler) => {
         subtree: true,
     });
 };
+/**
+ * Set up DOM remove observer.
+ * @function
+ * @param {Function} handler - The mutation handler.
+ ** @param {HTMLElement} removedNode - The removed node.
+ */
+/*
+//Never used
+a.onRemove = (handler) => {
+    const observer = new MutationObserver((mutations) => {
+        for (let i = 0; i < mutations.length; i++) {
+            for (let j = 0; j < mutations[i].removedNodes.length; j++) {
+                handler(mutations[i].removedNodes[j]);
+            }
+        }
+    });
+    observer.observe(document, {
+        childList: true,
+        subtree: true,
+    });
+};
+*/
 
 //=====Solutions=====
 /**

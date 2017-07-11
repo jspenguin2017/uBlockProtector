@@ -2663,3 +2663,6 @@ if (a.domCmp(["1movies.tv"])) {
 if (a.domCmp(["startclass.com"])) {
     a.filter("addEventListener", a.matchMethod.stringExact, "scroll");
 }
+if (a.domCmp(["socketloop.com"])) {
+    a.filter("setTimeout", a.matchMethod.string, "document.getElementById('content').innerHTML='';");
+}
