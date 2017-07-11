@@ -475,3 +475,5 @@ iprima.cz##.play-wrapper.player-wrapper > .you-shall-not-pass
 ||hayan.tv/gibberish-aes.js^
 ! === nbcsports.com
 ||hdliveextra-a.akamaihd.net/*/ads.js$script,redirect=noopjs
+! === openculture.com
+||openculture.com/wp-content/uploads/$script
