@@ -20,18 +20,3 @@ Workaround (may break some player functionalities):
 ||fwmrm.net^$image,important,domain=viasatsport.se|viasport.fi|tv3sport.dk|viasport.no
 ||fwmrm.net/ad/*$xmlhttprequest,important,redirect=nooptext,domain=viasatsport.se|viasport.fi|tv3sport.dk|viasport.no
 ```
-
-## itv.com
-
-`Geo Lock (United Kingdom)`
-
-Test links: 
-* https://www.itv.com/hub/take-me-out/1a8716a0049
-
-Issues: 
-* https://github.com/jspenguin2017/uBlockProtector/issues/286
-
-Workaround (may show some ads): 
-```
-||tom.itv.com/itv/tserver/size=*/viewid=$badfilter
-```
