@@ -220,6 +220,7 @@ wordsense.eu##script:inject(setTimeout-defuser.js, ad, 2000)
 ||nowvideo.li^$inline-script
 ||ewingoset.info^$inline-script
 rapidvideo.com##script:inject(noeval.js)
+rapidvideo.com##script:inject(abort-on-property-read.js, popns)
 ||cloudvideoplatform.com/advert.jpg$image,redirect=1x1-transparent.gif,domain=nana10.co.il
 @@||receive-a-sms.com/showads.js$xmlhttprequest,first-party
 ||pagead2.googlesyndication.com^$important,domain=receive-a-sms.com
