@@ -2565,7 +2565,7 @@ if (a.domCmp(["lne.es"])) {
         });
     });
 }
-if (a.domCmp(["cutwin.com", "cut-urls.com", "adbull.me", "xess.pro"])) {
+if (a.domCmp(["cutwin.com", "cut-urls.com", "adbull.me", "xess.pro", "clik.pw"])) {
     a.bait("div", "#test-block", true);
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
