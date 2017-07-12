@@ -300,6 +300,7 @@ iprima.cz##.play-wrapper.player-wrapper > .you-shall-not-pass
 ||openculture.com/wp-content/uploads/$script
 @@||config.playwire.com^$domain=goalsarena.org
 tecmundo.com.br##.gallery-ads
+der-postillon.com###steady-adblock-overlay-container
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================

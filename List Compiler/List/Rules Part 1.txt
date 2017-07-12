@@ -481,3 +481,5 @@ iprima.cz##.play-wrapper.player-wrapper > .you-shall-not-pass
 @@||config.playwire.com^$domain=goalsarena.org
 ! === tecmundo.com.br
 tecmundo.com.br##.gallery-ads
+! === der-postillon.com
+der-postillon.com###steady-adblock-overlay-container
