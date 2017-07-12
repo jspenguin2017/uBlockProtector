@@ -87,7 +87,7 @@ if (a.debugMode) {
     if (a.domCmp(["viasatsport.se", "viasport.fi", "tv3sport.dk", "viasport.no"])) {
         let isInBackground = false;
         const idMatcher = /\/(\d+)/;
-        const reMagicValidator = /^[a-zA-Z0-9]+$/;
+        const reMagicValidator = /^[a-zA-Z0-9_]+$/;
         const magic = a.uid();
         addEventListener(magic, (e) => {
             if (reMagicValidator.test(e.detail)) {
