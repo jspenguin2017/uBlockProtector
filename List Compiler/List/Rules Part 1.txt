@@ -477,3 +477,5 @@ iprima.cz##.play-wrapper.player-wrapper > .you-shall-not-pass
 ||hdliveextra-a.akamaihd.net/*/ads.js$script,redirect=noopjs
 ! === openculture.com
 ||openculture.com/wp-content/uploads/$script
+! === goalsarena.org
+@@||config.playwire.com^$domain=goalsarena.org
