@@ -174,36 +174,4 @@ if (a.debugMode) {
         a.on("focus", () => { isInBackground = false; });
         a.on("blur", () => { isInBackground = true; });
     }
-    if (a.domCmp(["vvvvid.it"])) {
-        a.ready(() => {
-            a.inject(() => {
-                "use strict";
-                if (window.vvvvid) {
-                    const re1 = /if\(vvvvid\[[a-zA-Z0-9]+\]\){window\.location=[a-zA-Z0-9]+}/;
-                    const data1 = "";
-                    const re2 = /var a=function.*};/;
-                    const data2 = `var a=function(){vvvvid.advPlayer=null,$(c.playerControlsClass).removeClass("ppad"),d()};`;
-                    //Patch properties
-                    window.vvvvid.cab4 = function (a, b) {
-                        this.isAdBlockActive = false;
-                        if (b) {
-                            b(false);
-                            //window.setTimeout(b.bind(this, false), 5);
-                        }
-                    };
-                    window.Object.defineProperty(window.vvvvid, "thereIsAdv", {
-                        configurable: false,
-                        set() { },
-                        get() {
-                            return false;
-                        },
-                    });
-                    window.eval("window.vvvvid.models.PlayerObj.prototype.initializePlayer = " +
-                        window.String(window.vvvvid.models.PlayerObj.prototype.initializePlayer).replace(re1, data1));
-                    window.eval("window.vvvvid.models.PlayerObj.prototype.startAdv = " +
-                        window.String(window.vvvvid.models.PlayerObj.prototype.startAdv).replace(re2, data2));
-                }
-            });
-        });
-    }
 }

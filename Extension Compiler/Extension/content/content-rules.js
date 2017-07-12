@@ -2705,3 +2705,28 @@ if (a.domCmp(["oddreaders.com"])) {
         }
     });
 }
+if (a.domCmp(["vvvvid.it"])) {
+    a.ready(() => {
+        a.inject(() => {
+            //Based on KAADIVVVV
+            //License: https://github.com/Robotex/KAADIVVVV/blob/master/LICENSE
+            "use strict";
+            if (window.vvvvid) {
+                const re = /var a=function.*};/;
+                const data = `var a=function(){vvvvid.advPlayer=null,$(c.playerControlsClass).removeClass("ppad"),d()};`;
+                //Patch properties
+                window.vvvvid.cab4 = function (a, b) {
+                    this.isAdBlockActive = false;
+                    b && b(false);
+                };
+                const func = window.String(window.vvvvid.models.PlayerObj.prototype.startAdv);
+                if (!re.test(func)) {
+                    window.console.error("uBlock Protector failed to set up VVVVID uBlock Origin detector defuser!");
+                }
+                //That variable name feels like a trap
+                //https://github.com/Robotex/KAADIVVVV/issues/16
+                window.eval("window[mnsJHnyT] = window.vvvvid.models.PlayerObj.prototype.startAdv = " + func.replace(re, data));
+            }
+        });
+    });
+}
