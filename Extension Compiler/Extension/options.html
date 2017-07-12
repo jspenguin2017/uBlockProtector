@@ -5,6 +5,11 @@
     <meta name="author" content="jspenguin2017" />
     <title>uBlock Protector Extension Options</title>
     <style>
+        h3, h4 {
+            font-weight: bold;
+            text-align: center;
+        }
+
         div {
             border: 1px solid black;
             padding: 5px;
@@ -17,15 +22,27 @@
     </style>
 </head>
 <body style="font-size:medium;">
-    <p>Some extra information for power users are hidden, use DevTools to bring it up if you know what you are doing.</p>
-    <div style="display:none;">
+    <h3>Workarounds</h3>
+    <div>
+        <h4>viasatsport.se, viasport.fi, tv3sport.dk, viasport.no</h4>
+        <p>No ads shown, video not blurred, but may break some player functionalities</p>
+        <pre>@@||fwmrm.net^$domain=viasatsport.se|viasport.fi|tv3sport.dk|viasport.no
+||freewheel-mtgx-tv.akamaized.net^$media,domain=viasatsport.se|viasport.fi|tv3sport.dk|viasport.no
+||fwmrm.net^$image,important,domain=viasatsport.se|viasport.fi|tv3sport.dk|viasport.no
+||fwmrm.net/ad/*$xmlhttprequest,important,redirect=nooptext,domain=viasatsport.se|viasport.fi|tv3sport.dk|viasport.no</pre>
+    </div>
+    <h3>Links</h3>
+    <div>
+        <p><a href="https://jspenguin2017.github.io/uBlockProtector/" target="_blank">Visit home page</a></p>
+        <p><a href="https://github.com/jspenguin2017/uBlockProtector/blob/master/CONTRIBUTING.MD" target="_blank">Report a website that does not work</a></p>
+        <p><a href="https://github.com/jspenguin2017/uBlockProtector/blob/master/LICENSE" target="_blank">View license</a></p>
+        <p><a href="https://github.com/jspenguin2017/uBlockProtector/blob/master/Extension%20Compiler/Extension%20Notes.MD#credits" target="_blank">View credits</a></p>
+    </div>
+    <h3>For Developers</h3>
+    <div>
         <p>You must edit and load the unpacked extension if you want to enable debug mode or change rules.</p>
-        <p>The debug switch is hard coded into <code>common.js</code> and rules are hard coded into <code>content/content-rules.js</code>.</p>
+        <p>The debug switch is hard coded into <code>common.js</code> and rules are hard coded into <code>content/content-rules.js</code> and <code>background/background-rules.js</code>.</p>
         <p><a href="https://github.com/jspenguin2017/uBlockProtector" target="_blank">View source code</a></p>
     </div>
-    <p><a href="https://jspenguin2017.github.io/uBlockProtector/" target="_blank">Visit home page</a></p>
-    <p><a href="https://github.com/jspenguin2017/uBlockProtector/blob/master/CONTRIBUTING.MD" target="_blank">Report a website that does not work</a></p>
-    <p><a href="https://github.com/jspenguin2017/uBlockProtector/blob/master/LICENSE" target="_blank">View license</a></p>
-    <p><a href="https://github.com/jspenguin2017/uBlockProtector/blob/master/Extension%20Compiler/Extension%20Notes.MD#credits" target="_blank">View credits</a></p>
 </body>
 </html>

@@ -12,11 +12,3 @@ Test links:
 Issues: 
 * https://github.com/jspenguin2017/uBlockProtector/issues/88
 * https://github.com/jspenguin2017/uBlockProtector/issues/359
-
-Workaround (may break some player functionalities): 
-```
-@@||fwmrm.net^$domain=viasatsport.se|viasport.fi|tv3sport.dk|viasport.no
-||freewheel-mtgx-tv.akamaized.net^$media,domain=viasatsport.se|viasport.fi|tv3sport.dk|viasport.no
-||fwmrm.net^$image,important,domain=viasatsport.se|viasport.fi|tv3sport.dk|viasport.no
-||fwmrm.net/ad/*$xmlhttprequest,important,redirect=nooptext,domain=viasatsport.se|viasport.fi|tv3sport.dk|viasport.no
-```
