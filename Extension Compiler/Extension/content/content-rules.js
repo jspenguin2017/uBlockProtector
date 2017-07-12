@@ -2691,6 +2691,7 @@ if (a.domCmp(["vvvvid.it"])) {
         a.inject(() => {
             //Based on KAADIVVVV
             //License: http://www.gnu.org/copyleft/gpl.html
+            "use strict";
             window.vvvvid.cab3 = function (ignored, func) {
                 this.isAdBlockActive = false;
                 func && func(false);

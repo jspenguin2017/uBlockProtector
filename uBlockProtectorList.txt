@@ -94,7 +94,7 @@ bild.de#@#script:inject(abort-on-property-read.js, de.bild.cmsKonfig.a.a)
 ||hammerhearing.com^$third-party
 techdracula.com,keshavcommoditycalls.com,hackinformer.com,coderexample.com,anibatch.id,altervista.org,ispazio.net,kitguru.net,wabetainfo.com,albanian.tv,techygeekshome.info##script:inject(setTimeout-defuser.js, an_message_display)
 hentaitake.net,hackinformer.com,sopsport.org,cyberterminators.co,themeslide.com,rnbxclusive.pw##script:inject(abort-on-property-read.js, anOptions)
-futbolchile.net,freeomovie.com,appdrop.net,skmedix.pl,yalujailbreak.net,cloudwebcopy.com,milaulas.com,tout-bon.com,sznpaste.net,linkdrop.net,themeslide.com,android-zone.ws,cmacapps.com##script:inject(bab-defuser.js)
+futbolchile.net,freeomovie.com,appdrop.net,skmedix.pl,yalujailbreak.net,cloudwebcopy.com,milaulas.com,tout-bon.com,sznpaste.net,linkdrop.net,themeslide.com,android-zone.ws,cmacapps.com,l2network.eu##script:inject(bab-defuser.js)
 ||lukkr.com/website/pf.js
 abczdrowie.pl,autokrata.pl,autokult.pl,biztok.pl,gadzetomania.pl,hotmoney.pl,kafeteria.pl,kafeteria.tv,komediowo.pl,komorkomania.pl,money.pl,pudelek.tv,sfora.pl,snobka.pl,wawalove.pl,wp.pl,wp.tv,wrzuta.pl,pudelek.pl,fotoblogia.pl,parenting.pl,echirurgia.pl,pudelekx.pl,o2.pl,kardiolo.pl##.windowErrCont
 tvn.pl#div(id*=_videoDriverContent)
