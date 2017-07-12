@@ -479,3 +479,5 @@ iprima.cz##.play-wrapper.player-wrapper > .you-shall-not-pass
 ||openculture.com/wp-content/uploads/$script
 ! === goalsarena.org
 @@||config.playwire.com^$domain=goalsarena.org
+! === tecmundo.com.br
+tecmundo.com.br##.gallery-ads
