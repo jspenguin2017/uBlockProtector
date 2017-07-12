@@ -2735,3 +2735,11 @@ if (a.domCmp(["katfile.com"])) {
 if (a.domCmp(["giallozafferano.it"])) {
     a.filter("setTimeout", a.matchMethod.string, "adblock alert");
 }
+if (a.domCmp(["oddreaders.com"])) {
+    a.onInsert((node) => {
+        if (node.querySelector("img[src='http://oddreaders.com/wp-content/uploads/2017/07/" +
+            "A-Publisher-Approach-to-Adblock-Users.png'")) {
+            node.remove();
+        }
+    });
+}
