@@ -1,6 +1,7 @@
 //This file contains content rules for debugging purposes, they are only activated in debug mode
 "use strict";
 
+//Tools
 if (a.debugMode) {
     if (a.domCmp(["twitch.tv"], true)) {
         //Purely for debugging, force Twitch to show log
@@ -8,6 +9,9 @@ if (a.debugMode) {
         a.readOnly("warn", "window.console.warn.bind(window.console)", "window.console");
         a.readOnly("error", "window.console.error.bind(window.console)", "window.console");
     }
+}
+//Rules
+if (a.debugMode) {
     /*
     //Seems to work now without a script rule
     if (a.domCmp(["itv.com"])) {
@@ -80,7 +84,7 @@ if (a.debugMode) {
         });
     }
     */
-    if (a.domCmp(["viasport.fi", "tv3sport.dk"])) {
+    if (a.domCmp(["viasatsport.se", "viasport.fi", "tv3sport.dk", "viasport.no"])) {
         let isInBackground = false;
         const idMatcher = /\/(\d+)/;
         const reMagicValidator = /^[a-zA-Z0-9]+$/;
@@ -169,5 +173,32 @@ if (a.debugMode) {
         handler();
         a.on("focus", () => { isInBackground = false; });
         a.on("blur", () => { isInBackground = true; });
+    }
+    if (a.domCmp(["vvvvid.it"])) {
+        a.ready(() => {
+            a.inject(() => {
+                //Based on KAADIVVVV
+                //License: http://www.gnu.org/copyleft/gpl.html
+                "use strict";
+                const prop = "cab4";
+                window.vvvvid[prop] = () => { };
+                window.vvvvid.models.PlayerObj.prototype.startAdv = function (e, b, d) {
+                    var c = this;
+                    if (!e) {
+                        if (!_.isUndefined(c.player)) {
+                            vvvvid.player.destroy();
+                            delete (c.player);
+                            delete (vvvvid.player);
+                        }
+                    }
+                    if (c.thereIsAdv) {
+                        this.isAdBlockActive = false;
+                        vvvvid.advPlayer = null;
+                        $(c.playerControlsClass).removeClass('ppad');
+                    }
+                    d();
+                };
+            });
+        });
     }
 }
