@@ -177,27 +177,32 @@ if (a.debugMode) {
     if (a.domCmp(["vvvvid.it"])) {
         a.ready(() => {
             a.inject(() => {
-                //Based on KAADIVVVV
-                //License: http://www.gnu.org/copyleft/gpl.html
                 "use strict";
-                const prop = "cab4";
-                window.vvvvid[prop] = () => { };
-                window.vvvvid.models.PlayerObj.prototype.startAdv = function (e, b, d) {
-                    var c = this;
-                    if (!e) {
-                        if (!_.isUndefined(c.player)) {
-                            vvvvid.player.destroy();
-                            delete (c.player);
-                            delete (vvvvid.player);
-                        }
-                    }
-                    if (c.thereIsAdv) {
+                if (window.vvvvid) {
+                    const re1 = /if\(vvvvid\[[a-zA-Z0-9]+\]\){window\.location=[a-zA-Z0-9]+}/;
+                    const data1 = "";
+                    const re2 = /var a=function.*};/;
+                    const data2 = `var a=function(){vvvvid.advPlayer=null,$(c.playerControlsClass).removeClass("ppad"),d()};`;
+                    //Patch properties
+                    window.vvvvid.cab4 = function (a, b) {
                         this.isAdBlockActive = false;
-                        vvvvid.advPlayer = null;
-                        $(c.playerControlsClass).removeClass('ppad');
-                    }
-                    d();
-                };
+                        if (b) {
+                            b(false);
+                            //window.setTimeout(b.bind(this, false), 5);
+                        }
+                    };
+                    window.Object.defineProperty(window.vvvvid, "thereIsAdv", {
+                        configurable: false,
+                        set() { },
+                        get() {
+                            return false;
+                        },
+                    });
+                    window.eval("window.vvvvid.models.PlayerObj.prototype.initializePlayer = " +
+                        window.String(window.vvvvid.models.PlayerObj.prototype.initializePlayer).replace(re1, data1));
+                    window.eval("window.vvvvid.models.PlayerObj.prototype.startAdv = " +
+                        window.String(window.vvvvid.models.PlayerObj.prototype.startAdv).replace(re2, data2));
+                }
             });
         });
     }
