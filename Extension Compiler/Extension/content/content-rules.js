@@ -2732,3 +2732,6 @@ if (a.domCmp(["katfile.com"])) {
     a.filter("open");
     a.timewarp("setTimeout", a.matchMethod.stringExact, "1000");
 }
+if (a.domCmp(["giallozafferano.it"])) {
+    a.filter("setTimeout", a.matchMethod.string, "adblock alert");
+}
