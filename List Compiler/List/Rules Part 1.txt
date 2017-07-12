@@ -490,3 +490,5 @@ der-postillon.com###steady-adblock-overlay-container
 ||jalopnik.com/sp/
 ||jezebel.com/sp/
 ||kotaku.com/sp/
+! === adshorte.com
+||dailymotion.com^$domain=adshorte.com

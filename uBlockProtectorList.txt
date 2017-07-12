@@ -307,6 +307,7 @@ der-postillon.com###steady-adblock-overlay-container
 ||jalopnik.com/sp/
 ||jezebel.com/sp/
 ||kotaku.com/sp/
+||dailymotion.com^$domain=adshorte.com
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================
