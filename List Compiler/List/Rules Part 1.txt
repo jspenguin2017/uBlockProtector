@@ -483,3 +483,10 @@ iprima.cz##.play-wrapper.player-wrapper > .you-shall-not-pass
 tecmundo.com.br##.gallery-ads
 ! === der-postillon.com
 der-postillon.com###steady-adblock-overlay-container
+! === kinja.com and related domains
+||kinja.com/sp/
+||deadspin.com/sp/
+||gizmodo.com/sp/
+||jalopnik.com/sp/
+||jezebel.com/sp/
+||kotaku.com/sp/

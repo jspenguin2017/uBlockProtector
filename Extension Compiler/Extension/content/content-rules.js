@@ -2040,11 +2040,6 @@ if (a.domCmp(["sthelensstar.co.uk", "runcornandwidnesworld.co.uk", "leighjournal
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/137
     a.readOnly("_sp_", null);
 }
-if (a.domCmp(["kinja.com", "deadspin.com", "gizmodo.com", "jalopnik.com", "jezebel.com", "kotaku.com",
-    "lifehacker.com", "theroot.com"])) {
-    //These are Kinja related domains, add other domains that share this rule elsewhere
-    //a.readOnly("_sp_", null);
-}
 if (a.domCmp(["aetv.com", "history.com", "mylifetime.com"])) {
     a.inject(() => {
         "use strict";
