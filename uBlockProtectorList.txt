@@ -279,7 +279,6 @@ themarker.com###ad-block-wrapper
 @@||static.ipornia.com^$image,domain=ipornia.hdzog.com
 hdzog.com##.msg-adblock.msg
 @@||ncaa.com^$generichide
-onet.pl,komputerswiat.pl##script:inject(abort-on-property-read.js, dlApi)
 ||vocento.com/adblock-detector/$script
 webcheats.com.br##script:inject(abort-on-property-read.js, can_run_ads)
 webcheats.com.br###bg_trasp
