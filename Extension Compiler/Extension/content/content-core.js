@@ -810,8 +810,8 @@ a.generic = () => {
         }
     });
     //---on-insert---
-    const re1 = /^[a-z0-9]+$/;
-    const re2 = /^a[a-z0-9]+$/;
+    const re1 = /^[a-z0-9]*$/;
+    const re2 = /^a[a-z0-9]*$/;
     //AntiAdblock (Packer)
     const reIframeId = /^(z|w)d$/;
     const reImgId = /^(x|g)d$/;
