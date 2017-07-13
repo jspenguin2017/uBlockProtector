@@ -7,7 +7,7 @@
 {
     //Initialize
     a.init();
-    //Check whitelist, ends with 1 means the list is for a.domCmp(), 2 for a.domInc()
+    //Check white list, ends with 1 means the list is for a.domCmp(), 2 for a.domInc()
     const genericWhitelist1 = [
         //Local network
         "localhost", "127.0.0.1",

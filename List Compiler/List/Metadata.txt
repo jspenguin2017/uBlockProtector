@@ -8,7 +8,7 @@
 ! Download: https://github.com/jspenguin2017/uBlockProtector/raw/master/uBlockProtectorList.txt
 ! License: GPL-3.0
 !
-! ===== MUST READ ==========================================================================
+! ===== MUST READ =========================================================================
 ! This filter list is intended to be used with uBlock Protector Extension
-! Visite my home page for more information: https://jspenguin2017.github.io/uBlockProtector/
-! ==========================================================================================
+! Visit my home page for more information: https://jspenguin2017.github.io/uBlockProtector/
+! =========================================================================================
