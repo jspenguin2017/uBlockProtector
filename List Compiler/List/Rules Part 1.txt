@@ -490,3 +490,5 @@ der-postillon.com###steady-adblock-overlay-container
 ||kotaku.com/sp/
 ! === adshorte.com
 ||dailymotion.com^$domain=adshorte.com
+! === paksociety.com
+paksociety.com##.blocked
