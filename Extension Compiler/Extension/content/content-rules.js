@@ -2564,7 +2564,7 @@ if (a.domCmp(["cutwin.com", "cut-urls.com", "adbull.me", "xess.pro", "clik.pw"])
     a.bait("div", "#test-block", true);
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
-if (a.domCmp(["adshort.co", "linksh.top", "adshorte.com"])) {
+if (a.domCmp(["adshort.co", "linksh.top", "adshorte.com", "coinb.ink"])) {
     a.bait("div", "#test-block", true);
     a.noAccess("_pop");
     a.noAccess("F3Z9");
