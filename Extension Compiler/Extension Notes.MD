@@ -50,3 +50,5 @@ Chromium documentation is generated, which means it sometimes includes weird thi
 
 The icons of uBlock Protector Extension are created based on icons of uBO-Extra (by gorhill). License and original source code 
 of uBO-Extra are available [here](https://github.com/gorhill/uBO-Extra). 
+
+Credits for solutions are in the source code. 

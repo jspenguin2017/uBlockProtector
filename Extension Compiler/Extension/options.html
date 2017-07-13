@@ -25,8 +25,8 @@
     <h3>Basic Troubleshooting</h3>
     <div>
         <p>Is uBlock Protector List installed and enabled in uBlock Origin? <a href="https://jspenguin2017.github.io/uBlockProtector/" target="_blank">How do I install it?</a></p>
-        <p>Do you have another filter list that may cause conflicts?</p>
-        <p>Do you have another extension that may cause conflicts?</p>
+        <p>Are you using another filter list that may cause conflicts?</p>
+        <p>Are you using another extension that may cause conflicts?</p>
         <p>Did you change uBlock Origin settings?</p>
         <p>Are you using Anti-Adblock Killer, AAK-Cont, and/or uBO-Extra? uBlock Protector fully covers their functionalities, and using them at the same time can only cause problems.</p>
     </div>
@@ -39,7 +39,7 @@
         <h4>Website X is not working.</h4>
         <p>This extension is not magic, a lot of websites need to be fixed on a case by case basis. Report it and I will have a look. Depending on the website, it can take some time.</p>
     </div>
-    <h3>Reporting an Issue and Contributing</h3>
+    <h3>Reporting an Issue</h3>
     <div>
         <p>
             To report an issue, you <strong>must</strong> first read the
@@ -50,7 +50,7 @@
     <h3>Workarounds</h3>
     <div>
         <h4>viasatsport.se, viasport.fi, tv3sport.dk, viasport.no</h4>
-        <p>Add the following filters to uBlock Origin. No ads shown, video not blurred, but may break some player functionalities</p>
+        <p>Add the following filters to uBlock Origin. No ads shown, video not blurred, but may break some player functionalities.</p>
         <pre>@@||fwmrm.net^$domain=viasatsport.se|viasport.fi|tv3sport.dk|viasport.no
 ||freewheel-mtgx-tv.akamaized.net^$media,domain=viasatsport.se|viasport.fi|tv3sport.dk|viasport.no
 ||fwmrm.net^$image,important,domain=viasatsport.se|viasport.fi|tv3sport.dk|viasport.no
@@ -64,8 +64,14 @@
     </div>
     <h3>For Developers</h3>
     <div>
-        <p>You must edit and load the unpacked extension if you want to enable debug mode or change rules.</p>
-        <p>The debug switch is hard coded into <code>common.js</code> and rules are hard coded into <code>content/content-rules.js</code> and <code>background/background-rules.js</code>.</p>
+        <p>You need to edit and load the unpacked extension if you want to enable debug mode or to change rules.</p>
+        <p>Debug switch is in <code>common.js</code>.</p>
+        <p>Documentation of the API is in <code>content/content-core.js</code>, <code>content/content-domlib.js</code>, and <code>background/background-core.js</code>.</p>
+        <p>Rules are in <code>content/content-rules.js</code> and <code>background/background-rules.js</code>.</p>
+        <p>
+            Some rules that will help with debugging, along with rules that are work in progress, are in <code>content/content-debug.js</code> and <code>background/background-debug.js</code>.
+            They will only run in debug mode.
+        </p>
         <p><a href="https://github.com/jspenguin2017/uBlockProtector" target="_blank">View source code</a></p>
     </div>
 </body>
