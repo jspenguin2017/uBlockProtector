@@ -307,7 +307,6 @@ der-postillon.com###steady-adblock-overlay-container
 ||jezebel.com/sp/
 ||kotaku.com/sp/
 ||dailymotion.com^$domain=adshorte.com
-onet.pl##script:inject(abort-on-property-read.js, dlApi)
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================

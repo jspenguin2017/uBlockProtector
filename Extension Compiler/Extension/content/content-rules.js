@@ -1,4 +1,4 @@
-//Content rules
+﻿//Content rules
 //Solutions from Anti-Adblock Killer (originally by Reek) are modified to fit my Core API
 //Anti-Adblock Killer Repository (contains original source code and license): https://github.com/reek/anti-adblock-killer
 "use strict";
@@ -2138,7 +2138,7 @@ if (a.domCmp(["tf2center.com"])) {
 if (a.domCmp(["gaybeeg.info"])) {
     //NSFW!
     a.onInsert((node) => {
-        if (node && node.innerHTML && node.innerHTML.includes("AdBloker Detected")) {
+        if (node.innerHTML && node.innerHTML.includes("AdBloker Detected")) {
             node.remove();
         }
     });
@@ -2370,7 +2370,7 @@ if (a.domCmp(["mexashare.com", "kisshentai.net"])) {
 }
 if (a.domCmp(["comicallyincorrect.com"])) {
     a.onInsert((node) => {
-        if (node && node.tagName === "DIV" && node.innerHTML && node.innerHTML.includes("Paid Content:")) {
+        if (node.tagName === "DIV" && node.innerHTML && node.innerHTML.includes("Paid Content:")) {
             node.remove();
         }
     });
@@ -2728,5 +2728,12 @@ if (a.domCmp(["vvvvid.it"])) {
                 window.eval("window[mnsJHnyT] = window.vvvvid.models.PlayerObj.prototype.startAdv = " + func.replace(re, data));
             }
         });
+    });
+}
+if (a.domCmp(["onet.pl", "komputerswiat.pl"])) {
+    a.onInsert((node) => {
+        if (node.innerText && node.innerText.includes("Prosimy, odblokuj wy\u015Bwietlanie reklam")) {
+            node.remove();
+        }
     });
 }

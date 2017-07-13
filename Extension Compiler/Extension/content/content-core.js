@@ -810,13 +810,13 @@ a.generic = () => {
         }
     });
     //---on-insert---
-    const re1 = /^[a-z0-9]{4}$/;
-    const re2 = /^a[a-z0-9]{6}$/;
+    const re1 = /^[a-z0-9]+$/;
+    const re2 = /^a[a-z0-9]+$/;
     //AntiAdblock (Packer)
-    const reIframeId = /^(zd|wd)$/;
-    const reImgId = /^(xd|gd)$/;
-    const reImgSrc = /\/ads\/banner.jpg/;
-    const reIframeSrc = /(\/adhandler\/|\/adimages\/|ad.html)/;
+    const reIframeId = /^(z|w)d$/;
+    const reImgId = /^(x|g)d$/;
+    const reImgSrc = /\/ads\/banner\.jpg/;
+    const reIframeSrc = /\/adhandler\/|\/adimages\/|ad\.html/;
     //Adunblock
     const reId = /^[a-z]{8}$/;
     const reClass = /^[a-z]{8} [a-z]{8}/;
