@@ -425,8 +425,8 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
     if (a.domCmp(["wiadomosci.wp.pl"], true)) {
         //Prevent the video player from collapsing
         a.onRemove((node, target) => {
-            console.log(node);
-            if ((node.querySelector && node.querySelector("video > source")) || (node.classList && node.classList.contains("wp-player"))) {
+            if ((node.querySelector && node.querySelector("video > source")) ||
+                (node.classList && node.classList.contains("wp-player"))) {
                 document.querySelector("article").appendChild(node);
             }
         });
