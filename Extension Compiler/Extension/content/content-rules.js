@@ -2571,7 +2571,7 @@ if (a.domCmp(["adshort.co", "linksh.top", "adshorte.com", "coinb.ink"])) {
     a.filter("open");
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
-if (a.domCmp(["gamersclub.com.br", "uploadboy.com", "vidoza.net", "videohelp.com"])) {
+if (a.domCmp(["gamersclub.com.br", "uploadboy.com", "vidoza.net", "videohelp.com", "passionea300allora.it"])) {
     a.generic.adsjsV2();
 }
 if (a.domCmp(["sport365.live"])) {
