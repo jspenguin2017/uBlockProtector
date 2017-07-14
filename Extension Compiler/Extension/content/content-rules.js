@@ -425,8 +425,9 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
     if (a.domCmp(["wiadomosci.wp.pl"], true)) {
         //Prevent the video player from collapsing
         a.onRemove((node, target) => {
-            if (node.classList && node.classList.contains("wp-player")) {
-                target.parentNode.parentNode.parentNode.appendChild(node);
+            console.log(node);
+            if ((node.querySelector && node.querySelector("video > source")) || (node.classList && node.classList.contains("wp-player"))) {
+                document.querySelector("article").appendChild(node);
             }
         });
     }
@@ -2710,7 +2711,7 @@ if (a.domCmp(["giallozafferano.it"])) {
 }
 if (a.domCmp(["oddreaders.com"])) {
     a.onInsert((node) => {
-        if (node.querySelector("img[src='http://oddreaders.com/wp-content/uploads/2017/07/" +
+        if (node.querySelector && node.querySelector("img[src='http://oddreaders.com/wp-content/uploads/2017/07/" +
             "A-Publisher-Approach-to-Adblock-Users.png'")) {
             node.remove();
         }
