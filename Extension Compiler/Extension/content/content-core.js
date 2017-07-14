@@ -307,12 +307,13 @@ a.uid = (() => {
  * @function
  * @param {Function} handler - The mutation handler.
  ** @param {HTMLElement} insertedNode - The inserted node.
+ ** @param {HTMLElement} target - The parent of the inserted node.
  */
 a.onInsert = (handler) => {
     const observer = new MutationObserver((mutations) => {
         for (let i = 0; i < mutations.length; i++) {
             for (let j = 0; j < mutations[i].addedNodes.length; j++) {
-                handler(mutations[i].addedNodes[j]);
+                handler(mutations[i].addedNodes[j], mutations[i].target);
             }
         }
     });
@@ -326,14 +327,13 @@ a.onInsert = (handler) => {
  * @function
  * @param {Function} handler - The mutation handler.
  ** @param {HTMLElement} removedNode - The removed node.
+ ** @param {HTMLElement} target - The parent of the removed node.
  */
-/*
-//Never used
 a.onRemove = (handler) => {
     const observer = new MutationObserver((mutations) => {
         for (let i = 0; i < mutations.length; i++) {
             for (let j = 0; j < mutations[i].removedNodes.length; j++) {
-                handler(mutations[i].removedNodes[j]);
+                handler(mutations[i].removedNodes[j], mutations[i].target);
             }
         }
     });
@@ -342,7 +342,6 @@ a.onRemove = (handler) => {
         subtree: true,
     });
 };
-*/
 
 //=====Solutions=====
 /**

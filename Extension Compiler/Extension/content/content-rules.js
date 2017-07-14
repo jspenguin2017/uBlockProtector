@@ -278,147 +278,158 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
     a.cookie("ABCABC", "true");
     a.filter("addEventListener", a.matchMethod.stringExact, "advertisement");
     a.readOnly("hasSentinel", () => false);
-}
-if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl", "sportowefakty.wp.pl", "teleshow.wp.pl", "moto.wp.pl",
-    "film.wp.pl", "gry.wp.pl", "wiadomosci.wp.pl", "portal.abczdrowie.pl", "o2.pl"], true)) {
+    //}
+    //Run the other solution unless it is known to cause problem, the solution above is not reliable
+    //if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl", "sportowefakty.wp.pl", "teleshow.wp.pl", "moto.wp.pl",
+    //    "film.wp.pl", "gry.wp.pl", "wiadomosci.wp.pl", "portal.abczdrowie.pl", "o2.pl"], true)) {
     //Thanks to szymon1118
-    let mid; //Media ID of next video
-    let midArray1 = []; //Media IDs from method 1
-    let midArray2 = []; //Media IDs from method 2
-    let url = null; //URL of the next video
-    let replaceCounter = 0; //The number of video players that are replaced
-    let loadCounter = 0; //The index of next item to load
-    let networkBusy = false; //A flag to prevent sending a new request before the first one is done
-    let networkErrorCounter = 0; //Will stop sending request if this is over 5
-    let isInBackground = false; //A flag to prevent excessive CPU usage when the tab is in background
-    //The player container matcher
-    let containerMatcher = ".wp-player-outer, .player__container, .wp-player, .embed-container";
-    const reMatcher = /mid[=,](\d+)/;
-    const reMagicValidator = /^\d+$/;
-    //Mid extracting method 1 magic listener
-    const magic = a.uid();
-    addEventListener(magic, (e) => {
-        //Must verify as data from injected script cannot be trusted
-        if (reMagicValidator.test(e.detail)) {
-            midArray1.push(e.detail);
-        }
-    });
-    //Main function
-    const main = () => {
-        //Do not tick when in background
-        if (isInBackground) {
-            return;
-        }
-        //Log media ID arrays
-        a.debugMode && console.log(midArray1, midArray2);
-        //Mid extracting method 1
-        a.inject(`(() => {
-            "use strict";
-            try {
-                if (window.WP.player.list.length > ${midArray1.length}) {
-                    let thisMid = window.WP.player.list[${midArray1.length}].p.url;
+    if (document.domain !== "wp.tv") {
+        let mid; //Media ID of next video
+        let midArray1 = []; //Media IDs from method 1
+        let midArray2 = []; //Media IDs from method 2
+        let url = null; //URL of the next video
+        let replaceCounter = 0; //The number of video players that are replaced
+        let loadCounter = 0; //The index of next item to load
+        let networkBusy = false; //A flag to prevent sending a new request before the first one is done
+        let networkErrorCounter = 0; //Will stop sending request if this is over 5
+        let isInBackground = false; //A flag to prevent excessive CPU usage when the tab is in background
+        //The player container matcher
+        let containerMatcher = ".wp-player-outer, .player__container, .wp-player, .embed-container";
+        const reMatcher = /mid[=,](\d+)/;
+        const reMagicValidator = /^\d+$/;
+        //Mid extracting method 1 magic listener
+        const magic = a.uid();
+        addEventListener(magic, (e) => {
+            //Must verify as data from injected script cannot be trusted
+            if (reMagicValidator.test(e.detail)) {
+                midArray1.push(e.detail);
+            }
+        });
+        //Main function
+        const main = () => {
+            //Do not tick when in background
+            if (isInBackground) {
+                return;
+            }
+            //Log media ID arrays
+            a.debugMode && console.log(midArray1, midArray2);
+            //Mid extracting method 1
+            a.inject(`(() => {
+                "use strict";
+                try {
+                    if (window.WP.player.list.length > ${midArray1.length}) {
+                        let thisMid = window.WP.player.list[${midArray1.length}].p.url;
+                        if (thisMid) {
+                            thisMid = thisMid.substring(thisMid.lastIndexOf("=") + 1);
+                        }
+                        //Extra safety check
+                        if (thisMid) {
+                            window.dispatchEvent(new window.CustomEvent("${magic}", {
+                                detail: thisMid,
+                            }));
+                        }
+                    }
+                } catch (err) { }
+            })();`, true);
+            //Mid extracting method 2
+            {
+                let selection = $(containerMatcher)
+                if (selection.length) {
+                    const elem = selection.find(".titlecont a.title");
+                    let thisMid = elem.attr("href");
+                    //Check if I got the element
                     if (thisMid) {
-                        thisMid = thisMid.substring(thisMid.lastIndexOf("=") + 1);
+                        thisMid = reMatcher.exec(thisMid)[1].toString();
+                        //I will destroy the player soon anyway, I will remove this now so I will not extract it twice
+                        elem.remove();
                     }
                     //Extra safety check
                     if (thisMid) {
-                        window.dispatchEvent(new window.CustomEvent("${magic}", {
-                            detail: thisMid,
-                        }));
+                        midArray2.push(thisMid);
                     }
                 }
-            } catch (err) { }
-        })();`, true);
-        //Mid extracting method 2
-        {
-            let selection = $(containerMatcher)
-            if (selection.length) {
-                const elem = selection.find(".titlecont a.title");
-                let thisMid = elem.attr("href");
-                //Check if I got the element
-                if (thisMid) {
-                    thisMid = reMatcher.exec(thisMid)[1].toString();
-                    //I will destroy the player soon anyway, I will remove this now so I will not extract it twice
-                    elem.remove();
+            }
+            //See if I need to load next URL
+            if (loadCounter === replaceCounter) {
+                //Check flag and error counter
+                if (networkBusy) {
+                    return
+                } else if (networkErrorCounter > 5) {
+                    //Abort
+                    clearInterval(timerToken);
+                    return;
                 }
-                //Extra safety check
-                if (thisMid) {
-                    midArray2.push(thisMid);
+                //Get media ID
+                let mid;
+                //Prefer media ID extracting method 2
+                const midArray = (midArray1.length > midArray2.length) ? midArray1 : midArray2;
+                if (midArray.length > loadCounter) {
+                    mid = midArray[loadCounter];
+                } else {
+                    return;
                 }
-            }
-        }
-        //See if I need to load next URL
-        if (loadCounter === replaceCounter) {
-            //Check flag and error counter
-            if (networkBusy) {
-                return
-            } else if (networkErrorCounter > 5) {
-                //Abort
-                clearInterval(timerToken);
-                return;
-            }
-            //Get media ID
-            let mid;
-            //Prefer media ID extracting method 2
-            const midArray = (midArray1.length > midArray2.length) ? midArray1 : midArray2;
-            if (midArray.length > loadCounter) {
-                mid = midArray[loadCounter];
-            } else {
-                return;
-            }
-            //Get media JSON, I do not need to check if mid is found since the function will return if it is not
-            networkBusy = true;
-            a.request({
-                method: "GET",
-                url: `http://wp.tv/player/mid,${mid},embed.json`,
-            }, (res) => {
-                //Try to find media URL
-                try {
-                    const response = JSON.parse(res);
-                    for (let i = 0; i < response.clip.url.length; i++) {
-                        let item = response.clip.url[i];
-                        if (item.quality === "HQ" && item.type.startsWith("mp4")) {
-                            url = item.url;
-                            break;
+                //Get media JSON, I do not need to check if mid is found since the function will return if it is not
+                networkBusy = true;
+                a.request({
+                    method: "GET",
+                    url: `http://wp.tv/player/mid,${mid},embed.json`,
+                }, (res) => {
+                    //Try to find media URL
+                    try {
+                        const response = JSON.parse(res);
+                        for (let i = 0; i < response.clip.url.length; i++) {
+                            let item = response.clip.url[i];
+                            if (item.quality === "HQ" && item.type.startsWith("mp4")) {
+                                url = item.url;
+                                break;
+                            }
                         }
+                        //Check if I found the URL
+                        if (!url) {
+                            throw "Media URL Not Found";
+                        }
+                        //Update counter
+                        loadCounter++;
+                        //Reset error counter
+                        networkErrorCounter = 0;
+                    } catch (err) {
+                        console.error("uBlock Protector failed to find media URL!");
+                        networkErrorCounter += 1;
                     }
-                    //Check if I found the URL
-                    if (!url) {
-                        throw "Media URL Not Found";
-                    }
-                    //Update counter
-                    loadCounter++;
-                    //Reset error counter
-                    networkErrorCounter = 0;
-                } catch (err) {
-                    console.error("uBlock Protector failed to find media URL!");
-                    networkErrorCounter += 1;
+                    //Update flag
+                    networkBusy = false;
+                }, () => {
+                    console.error("uBlock Protector failed to load media JSON!");
+                    networkErrorCounter += 0.5;
+                    //Update flag
+                    networkBusy = false;
+                });
+            } else if ($(containerMatcher).length) {
+                //Log element to be replace
+                if (a.debugMode) {
+                    console.log("Replacing player...");
+                    console.log($(containerMatcher).selection[0]);
                 }
-                //Update flag
-                networkBusy = false;
-            }, () => {
-                console.error("uBlock Protector failed to load media JSON!");
-                networkErrorCounter += 0.5;
-                //Update flag
-                networkBusy = false;
-            });
-        } else if ($(containerMatcher).length) {
-            //Log element to be replace
-            if (a.debugMode) {
-                console.log("Replacing player...");
-                console.log($(containerMatcher).selection[0]);
+                //Replace player, need to remove class or it will be caught in anti-collapsing observer
+                $(containerMatcher).after(a.nativePlayer(url)).rmClass().remove();
+                //Update variables and counter
+                url = null;
+                replaceCounter++;
             }
-            //Replace player
-            $(containerMatcher).after(a.nativePlayer(url)).remove();
-            //Update variables and counter
-            url = null;
-            replaceCounter++;
-        }
-    };
-    //The function will not run if the page is in the background, once per second will be fine
-    const timerToken = setInterval(main, 1000);
-    a.on("focus", () => { isInBackground = false; });
-    a.on("blur", () => { isInBackground = true; });
+        };
+        //The function will not run if the page is in the background, once per second will be fine
+        const timerToken = setInterval(main, 1000);
+        a.on("focus", () => { isInBackground = false; });
+        a.on("blur", () => { isInBackground = true; });
+    }
+    if (a.domCmp(["wiadomosci.wp.pl"], true)) {
+        //Prevent the video player from collapsing
+        a.onRemove((node, target) => {
+            if (node.classList && node.classList.contains("wp-player")) {
+                target.parentNode.parentNode.parentNode.appendChild(node);
+            }
+        });
+    }
 }
 if (a.domCmp(["wtkplay.pl"])) {
     a.readOnly("can_run_ads", true);
