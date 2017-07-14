@@ -280,7 +280,7 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
     a.readOnly("hasSentinel", () => false);
 }
 if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl", "sportowefakty.wp.pl", "teleshow.wp.pl", "moto.wp.pl",
-    "portal.abczdrowie.pl", "film.wp.pl", "gry.wp.pl", "o2.pl"], true)) {
+    "film.wp.pl", "gry.wp.pl", "portal.abczdrowie.pl", "o2.pl"], true)) {
     //Thanks to szymon1118
     let mid; //Media ID of next video
     let midArray1 = []; //Media IDs from method 1
