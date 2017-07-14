@@ -492,3 +492,6 @@ der-postillon.com###steady-adblock-overlay-container
 ||dailymotion.com^$domain=adshorte.com
 ! === paksociety.com
 paksociety.com##.blocked
+! === cleveland.com
+||fastly.net/mms-client.js$domain=cleveland.com
+||fastly.net/messaging.js$domain=cleveland.com

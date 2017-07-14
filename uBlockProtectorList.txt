@@ -308,6 +308,8 @@ der-postillon.com###steady-adblock-overlay-container
 ||kotaku.com/sp/
 ||dailymotion.com^$domain=adshorte.com
 paksociety.com##.blocked
+||fastly.net/mms-client.js$domain=cleveland.com
+||fastly.net/messaging.js$domain=cleveland.com
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================
