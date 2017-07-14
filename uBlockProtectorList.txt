@@ -92,7 +92,7 @@ bild.de#@#script:inject(abort-on-property-read.js, de.bild.cmsKonfig.a.a)
 ||curtaincows.com^$third-party
 ||dk4ywix.com^$third-party
 ||hammerhearing.com^$third-party
-techdracula.com,keshavcommoditycalls.com,hackinformer.com,coderexample.com,anibatch.id,altervista.org,ispazio.net,kitguru.net,wabetainfo.com,albanian.tv,techygeekshome.info##script:inject(setTimeout-defuser.js, an_message_display)
+techdracula.com,keshavcommoditycalls.com,hackinformer.com,coderexample.com,anibatch.id,altervista.org,ispazio.net,kitguru.net,wabetainfo.com,albanian.tv,techygeekshome.info,dl-wordpress.com,nulledcode.cc##script:inject(setTimeout-defuser.js, an_message_display)
 hentaitake.net,hackinformer.com,sopsport.org,cyberterminators.co,themeslide.com,rnbxclusive.pw##script:inject(abort-on-property-read.js, anOptions)
 futbolchile.net,freeomovie.com,appdrop.net,skmedix.pl,yalujailbreak.net,cloudwebcopy.com,milaulas.com,tout-bon.com,sznpaste.net,linkdrop.net,themeslide.com,android-zone.ws,cmacapps.com,l2network.eu##script:inject(bab-defuser.js)
 ||lukkr.com/website/pf.js
