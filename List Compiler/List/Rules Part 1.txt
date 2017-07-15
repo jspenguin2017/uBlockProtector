@@ -498,3 +498,5 @@ paksociety.com##.blocked
 ! === cleveland.com
 ||fastly.net/mms-client.js$domain=cleveland.com
 ||fastly.net/messaging.js$domain=cleveland.com
+! === viz.com
+@@||viz.com^$generichide
