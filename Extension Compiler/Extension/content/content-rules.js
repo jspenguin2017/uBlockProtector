@@ -2672,7 +2672,7 @@ if (a.domCmp(["ohmymag.com", "ohmymag.com.br", "gentside.com", "gentside.com.br"
         removeAdblockPopup() { },
     }`);
     a.readOnly("prebid", `{
-        init(p) { p.init(); }
+        init() { }
     }`);
 }
 if (a.domCmp(["mywrestling.com.pl"])) {
