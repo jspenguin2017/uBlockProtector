@@ -2762,3 +2762,6 @@ if (a.domCmp(["onet.pl", "komputerswiat.pl"])) {
         }
     });
 }
+if (a.domCmp(["viz.com"])) {
+    a.css("#player_error { display:none; } #player { display:block; }");
+}
