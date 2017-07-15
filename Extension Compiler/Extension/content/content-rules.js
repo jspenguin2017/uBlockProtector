@@ -2380,7 +2380,7 @@ if (a.domCmp(["canalplus.fr"])) {
         });
     })();`, true);
 }
-if (a.domCmp(["translatica.pl"])) {
+if (a.domCmp(["translatica.pl", "angrybirdsnest.com"])) {
     a.readOnly("adblock", false);
 }
 if (a.domCmp(["receive-sms-online.info"])) {
