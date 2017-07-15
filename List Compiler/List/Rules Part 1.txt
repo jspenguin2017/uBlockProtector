@@ -115,6 +115,7 @@ bild.de#@#script:inject(abort-on-property-read.js, de.bild.cmsKonfig.a.a)
 ||curtaincows.com^$third-party
 ||dk4ywix.com^$third-party
 ||hammerhearing.com^$third-party
+||dragzebra.com^$third-party
 ! === AdBlock Notify
 techdracula.com,keshavcommoditycalls.com,hackinformer.com,coderexample.com,anibatch.id,altervista.org,ispazio.net,kitguru.net,wabetainfo.com,albanian.tv,techygeekshome.info,dl-wordpress.com,nulledcode.cc##script:inject(setTimeout-defuser.js, an_message_display)
 hentaitake.net,hackinformer.com,sopsport.org,cyberterminators.co,themeslide.com,rnbxclusive.pw##script:inject(abort-on-property-read.js, anOptions)
