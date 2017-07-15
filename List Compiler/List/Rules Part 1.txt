@@ -500,3 +500,5 @@ paksociety.com##.blocked
 ||fastly.net/messaging.js$domain=cleveland.com
 ! === viz.com
 @@||viz.com^$generichide
+! === couponcabin.com
+couponcabin.com###adblocker-reminder
