@@ -504,4 +504,4 @@ paksociety.com##.blocked
 ! === couponcabin.com
 couponcabin.com###adblocker-reminder
 ! === tubeninja.net
-@@||tubeninja.net/ads.js
+@@||tubeninja.net/ads.js$first-party
