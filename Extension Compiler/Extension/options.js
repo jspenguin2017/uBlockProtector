@@ -1,17 +1,23 @@
 "use strict";
 
 /**
- * Create anchor element from a link template.
+ * Create an anchor element from a link.
  * @function
  * @param {string} link - The link.
- * @return {DOMString} The anchor element string.
+ * @return {HTMLElement} The anchor element.
  */
-const template = (link) => `<a href="${link}" target="_blank">${link}</a>`;
+const template = (link) => {
+    let anchor = document.createElement("a");
+    anchor.href = link;
+    anchor.target = "_blank";
+    anchor.textContent = link;
+    return anchor;
+};
 
 //Replace link templates
 const links = document.querySelectorAll("link-template");
 for (let i = 0; i < links.length; i++) {
     const p = document.createElement("p");
-    p.innerHTML = template(links[i].textContent);
+    p.appendChild(template(links[i].textContent));
     links[i].parentNode.replaceChild(p, links[i]);
 }
