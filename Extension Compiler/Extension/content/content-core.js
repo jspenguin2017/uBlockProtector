@@ -840,25 +840,23 @@ a.generic = () => {
             //Remove element
             insertedNode.remove();
         }
-        {
-            //NoAdBlock
-            if (insertedNode.nodeName === "CLOUDFLARE-APP" &&
-                insertedNode.getAttribute("app-id") === "no-adblock" &&
-                insertedNode.getAttribute(NoAdBlockMagic) !== "1") {
-                //Log
-                a.err("NoAdBlock");
-                //Remove element
-                insertedNode.remove();
-                //Create bait element
-                let bait = document.createElement("cloudflare-app");
-                bait.setAttribute("app-id", "no-adblock");
-                bait.setAttribute(NoAdBlockMagic, "1");
-                bait.style.display = "none";
-                document.documentElement.prepend(bait);
-                //Enable scrolling
-                $("body").rmClass("adbmodal-cloudflare-open");
-                //a.css("html, body { overflow:scroll; }");
-            }
+        //NoAdBlock
+        if (insertedNode.nodeName === "CLOUDFLARE-APP" &&
+            insertedNode.getAttribute("app-id") === "no-adblock" &&
+            insertedNode.getAttribute(NoAdBlockMagic) !== "1") {
+            //Log
+            a.err("NoAdBlock");
+            //Remove element
+            insertedNode.remove();
+            //Create bait element
+            let bait = document.createElement("cloudflare-app");
+            bait.setAttribute("app-id", "no-adblock");
+            bait.setAttribute(NoAdBlockMagic, "1");
+            bait.style.display = "none";
+            document.documentElement.prepend(bait);
+            //Enable scrolling
+            $("body").rmClass("adbmodal-cloudflare-open");
+            //a.css("html, body { overflow:scroll; }");
         }
         //StopAdblock
         if (insertedNode.nodeName === "DIV" &&
