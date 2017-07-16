@@ -978,7 +978,7 @@ a.generic = () => {
                                     reWarnTitle.test(String(installs[key].scope.defaultTexts.warningTitle)) &&
                                     window.Array.isArray(installs[key].scope.testMethods) &&
                                     installs[key].scope.warningRenderer instanceof window.Object &&
-                                    window.Object.keys(installs[key].scope.warningRenderer).length === 3) {
+                                    window.Object.keys(installs[key].scope.warningRenderer).length > 2) {
                                     //Patch property
                                     window.Object.defineProperty(installs[key].scope, "init", {
                                         configurable: false,
