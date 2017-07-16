@@ -952,6 +952,54 @@ a.generic = () => {
         } catch (err) {
             error("uBlock Protector failed to set up Playwire uBlock Origin detector defuser!");
         }
+        //NoAdBlock
+        try {
+            const reWarnTitle = /ad[ -]?block.*detected/i;
+            let needDefuse = true;
+            let installs = {};
+            const noop = () => {
+                //window.console.log("NoAdBlock is uninstalled by uBlock Protector.");
+            };
+            window.CloudflareApps = window.CloudflareApps || {};
+            window.Object.defineProperty(window.CloudflareApps, "installs", {
+                configurable: false,
+                set(val) {
+                    installs = val;
+                },
+                get() {
+                    if (needDefuse) {
+                        try {
+                            for (let key in installs) {
+                                if (//Basic signature checking
+                                    installs[key].scope.defaultTexts &&
+                                    installs[key].scope.testMethods &&
+                                    installs[key].scope.warningRenderer &&
+                                    //In depth signature checking
+                                    reWarnTitle.test(String(installs[key].scope.defaultTexts.warningTitle)) &&
+                                    window.Array.isArray(installs[key].scope.testMethods) &&
+                                    installs[key].scope.warningRenderer instanceof window.Object &&
+                                    window.Object.keys(installs[key].scope.warningRenderer).length === 3) {
+                                    //Patch property
+                                    window.Object.defineProperty(installs[key].scope, "init", {
+                                        configurable: false,
+                                        set() { },
+                                        get() {
+                                            return noop;
+                                        },
+                                    });
+                                    //Update flag and log
+                                    needDefuse = false;
+                                    err("NoAdBlock");
+                                }
+                            }
+                        } catch (err) { }
+                    }
+                    return installs;
+                },
+            });
+        } catch (err) {
+            error("uBlock Protector failed to set up NoAdBlock uBlock Origin detector defuser!");
+        }
         //---document-idle---
         window.addEventListener("DOMContentLoaded", () => {
             //AdBlock Detector (XenForo Rellect)
@@ -1128,7 +1176,7 @@ a.generic = () => {
     });
 };
 /**
- * Setup generic Adfly bypasser, must be called on document-start.
+ * Setup generic Adfly bypasser, call once on document-start if needed.
  * @function
  */
 a.generic.Adfly = () => {
