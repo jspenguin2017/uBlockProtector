@@ -954,7 +954,7 @@ a.generic = () => {
         }
         //NoAdBlock
         try {
-            const reWarnTitle = /ad[ -]?block.*detected/i;
+            const reWarnTitle = /ad[ -]?block.+detected/i;
             let needDefuse = true;
             let installs = {};
             const noop = () => {
