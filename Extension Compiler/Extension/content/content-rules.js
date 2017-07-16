@@ -2383,6 +2383,11 @@ if (a.domCmp(["canalplus.fr"])) {
 if (a.domCmp(["translatica.pl", "angrybirdsnest.com"])) {
     a.readOnly("adblock", false);
 }
+if (a.domCmp(["nekopoi.bid"])) {
+    //NSFW!
+    a.readOnly("adblock", false);
+    a.readOnly("isAdsDisplayed", true);
+}
 if (a.domCmp(["receive-sms-online.info"])) {
     a.filter("addEventListener", a.matchMethod.stringExact, `function (b){return"undefined"!=typeof n&&` +
         `n.event.triggered!==b.type?n.event.dispatch.apply(a,arguments):void 0}`);
