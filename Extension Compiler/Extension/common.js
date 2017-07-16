@@ -2,7 +2,7 @@
 "use strict";
 
 /**
- * The main namespace. Different methods will be added to this namespace depending
+ * The main namespace. Different methods will be added to this namespace depending on
  * the execution context.
  * @var {Namespace}
  */
