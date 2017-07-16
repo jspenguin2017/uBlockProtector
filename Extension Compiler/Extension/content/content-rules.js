@@ -1311,6 +1311,10 @@ if (a.domCmp(["youwatch.org", "chouhaa.info", "ahzahg6ohb.com"])) {
         $("#player_imj, #player_imj + div[id]").remove();
     });
 }
+if (a.domCmp(["youwatch.to", "he2eini7ka.com"])) {
+    a.readOnly("adsShowPopup1", 1);
+    a.readOnly("jsPopunder", () => { });
+}
 if (a.domCmp(["exashare.com", "chefti.info", "bojem3a.info", "ajihezo.info", "yahmaib3ai.com"])) {
     a.readOnly("adsShowPopup1", 1);
     a.ready(() => {
