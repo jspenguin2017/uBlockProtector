@@ -106,7 +106,7 @@ a.init = () => {
 
 //=====Utilities=====
 /**
- * Get the URL of a tab.
+ * Get the URL of a frame of a tab.
  * @function
  * @param {integer} tab - The ID of the tab.
  * @param {integer} frame - The ID of the frame.
@@ -220,7 +220,7 @@ a.staticServer = (urls, types, data, domList, isMatch = true) => {
  * @function
  * @param {Array.<string>} urls - The urls to loopback.
  * @param {Array.<string>} types - The types of request to loopback.
- * @param {Function} server - The server, this function will be passed as the event listener, view Chrome API
+ * @param {Function} server - The server, this function will be passed as the event listener, view Chromium API
  ** documentations for more information: https://developer.chrome.com/extensions/webRequest
  * @param {Array.<string>} [domList=undefined] - The domains list, omit to match all domains.
  * @param {boolean} [isMatch=true] - Whether the domains list is a match list.
@@ -664,11 +664,11 @@ a.generic = () => {
 
 //=====Debug Utilities=====
 /**
- * Attempt to make the server think the request is from a different IP.
- * This function is for debugging purposes only, and is only available in debug mode.
+ * Attempt to make the server think the request is from a different IP. Rarely works.
+ * Only available in debug mode.
  * @function
  * @param {string} urls - The URLs to activate on.
- * @param {string} ip - The IP.
+ * @param {string} ip - The camouflage IP. Keep in mind that the server still have access to your real IP.
  * @param {boolean} [log=false] - Whether details should be logged to console for every matched request.
  */
 a.proxy = (urls, ip, log) => {

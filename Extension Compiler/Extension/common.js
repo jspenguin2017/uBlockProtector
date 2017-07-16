@@ -2,8 +2,9 @@
 "use strict";
 
 /**
- * The main namespace.
- * @const {Namespace}
+ * The main namespace. Different methods will be added to this namespace depending
+ * the execution context.
+ * @var {Namespace}
  */
 var a = {};
 

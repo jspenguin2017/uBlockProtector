@@ -64,7 +64,7 @@ a.always = (...args) => {
 /**
  * Write an error message to console.
  * @function
- * @param {string} [name=undefined] - The name of the AdBlocker detector if available.
+ * @param {string} [name=undefined] - The name of the uBlock Origin detector.
  */
 a.err = (name) => {
     if (name) {
@@ -210,7 +210,7 @@ a.matchMethod = {
     RegExp: 3,
 };
 /**
- * Get a matcher, the filter will be "hard coded" into it.
+ * Get a matcher function, the filter will be "hard coded" into it.
  * @function
  * @param {Enumeration} method - The method to use.
  * @param {undefined|string|RegExp} filter - An appropriate filter.
@@ -253,7 +253,7 @@ a.getMatcher = (method, filter) => {
     }
 };
 /**
- * Inject standalone script to the page.
+ * Inject a standalone script to the page.
  * @function
  * @param {string|Function} payload - The script to inject.
  * @param {boolean} [isReady=false] - Set this to true if the payload does not need a wrapper.
@@ -287,7 +287,7 @@ a.serialize = (obj) => {
     return str;
 };
 /**
- * Returns a unique ID which is also a valid variable name.
+ * Returns an unique ID which is also a valid variable name.
  * @function
  * @return {string} The unique ID.
  */
@@ -397,7 +397,7 @@ a.bait = (type, identifier, hidden) => {
     document.documentElement.prepend(elem);
 };
 /**
- * Filter a function, must be called on document-start.
+ * Filter a function, should be called on document-start.
  * @function
  * @param {string} name - The name of the function.
  * @param {Enumeration} [method=a.matchMethod.matchAll] - An option from a.matchMethods, omit or pass null defaults
@@ -452,7 +452,7 @@ a.filter = (name, method, filter, parent = "window") => {
     })();`, true);
 };
 /**
- * Change the execution delay for setTimeout or setInterval, must be called on document-start.
+ * Change the execution delay for setTimeout or setInterval, should be called on document-start.
  * @function
  * @param {string} timer - The name of the timer to patch, can be "setTimeout" or "setInterval".
  * @param {Enumeration} [method=method=a.matchMethod.matchAll] - An option from a.matchMethods, omit or pass null defaults
@@ -503,7 +503,7 @@ a.timewarp = (timer, method, filter, ratio = 0.02) => {
     })();`, true);
 };
 /**
- * Defines a read-only property, must be called on document-start.
+ * Defines a read-only property, should be called on document-start.
  * May not be able to lock the property's own properties.
  * @function
  * @param {string} name - The name of the property to define.
@@ -536,7 +536,7 @@ a.readOnly = (name, val, parent = "window") => {
     })();`, true);
 };
 /**
- * Defines a non-accessible property, must be called on document-start.
+ * Defines a non-accessible property, should be called on document-start.
  * @function
  * @param {string} name - The name of the property to define.
  * @param {string} [parent="window"] - The name of the parent object, use "." or bracket notation to separate layers.
@@ -695,13 +695,9 @@ a.nativePlayer = (source, type, width = "100%", height = "auto") => {
         }
         switch (temp) {
             case "webm":
-                type = "video/webm";
-                break;
             case "mp4":
-                type = "video/mp4";
-                break;
             case "ogg":
-                type = "video/ogg";
+                type = "video/" + temp;
                 break;
             default:
                 //Defaults to MP4
@@ -713,7 +709,7 @@ a.nativePlayer = (source, type, width = "100%", height = "auto") => {
     return `<video width="${width}" height="${height}" controls><source src="${source}" type="${type}" /></video>`;
 };
 /**
- * Install XMLHttpRequest loopback engine.
+ * Install XMLHttpRequest loopback engine. Should be called once on document-start if needed.
  * @function
  * @param {Function} server - The loopback server.
  ** @param {Any} ...args - The arguments supplied to open.
@@ -759,7 +755,7 @@ a.loopback = (server) => {
     })();`, true);
 };
 /**
- * Forcefully close the current tab.
+ * Forcefully close the current tab. This is asynchronous.
  * @function
  */
 a.forceClose = () => {
@@ -770,11 +766,11 @@ a.forceClose = () => {
 
 //=====Generic=====
 /**
- * Apply generic solutions, must be called on document-start.
+ * Apply generic solutions, call once on document-start if needed.
  * @function
  */
 a.generic = () => {
-    //Based on generic solutions of Anti-Adblock Killer, modified to fit my Core API
+    //Based on generic solutions of Anti-Adblock Killer, modified to fit my API
     //License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
     //========================
     //=====Content Script=====
@@ -856,7 +852,8 @@ a.generic = () => {
             document.documentElement.prepend(bait);
             //Enable scrolling
             $("body").rmClass("adbmodal-cloudflare-open");
-            //a.css("html, body { overflow:scroll; }");
+            //I want to solve this peacefully with memes
+            //Let's start: https://i.imgur.com/lhbxcx0.jpg
         }
         //StopAdblock
         if (insertedNode.nodeName === "DIV" &&
@@ -1199,7 +1196,7 @@ a.generic.Adfly = () => {
     });
 };
 /**
- * Create a FuckAdBlock constructor and instance which always returns not detected.
+ * Create a non-overridable FuckAdBlock constructor and instance that always returns not detected.
  * @function
  * @param {string} constructorName - The name of the constructor.
  * @param {string} instanceName - The name of the instance.
@@ -1289,7 +1286,7 @@ a.generic.FuckAdBlock = (constructorName, instanceName) => {
     })();`, true);
 };
 /**
- * Set up ads.js v2 defuser, must be called on document-start.
+ * Set up ads.js v2 defuser, should be called on document-start.
  * Call when needed, do not apply this to all domains.
  * @function
  */

@@ -29,26 +29,58 @@
 <body style="font-size:medium; min-width:600px;">
     <h3>Announcement</h3>
     <div>
-        <p>NoAdBlock is now using an infinite idle loop to prevent pages from responding once it detects their block screen is removed. I have rolled out a patch to break their detection, but they will probably not give up anytime soon.</p>
-        <p>In case that happens again, you can use task manager to terminate the tab, go to <code>Menu -&gt; More tools -&gt; Task manager</code>, find the tab that is using a lot of CPU, and click <code>End process</code>.</p>
-        <p>Also report it to me.</p>
+        <p>
+            NoAdBlock is now using an infinite idle loop to prevent pages from responding once it detects that its block screen
+            is removed. I have rolled out a patch to break their detection, but they will probably not give up anytime soon.
+        </p>
+        <p>
+            Let me know if they responded to my patch. I will probably lose soon, I already feel it... It is really hard to
+            make a generic solution, I will probably still be able to fix it on a per site basis.
+        </p>
     </div>
     <h3>Basic Troubleshooting</h3>
     <div>
-        <p>Is uBlock Protector List installed and enabled in uBlock Origin? <a href="https://jspenguin2017.github.io/uBlockProtector/" target="_blank">How do I install it?</a></p>
+        <p>
+            Is uBlock Protector List installed and enabled in uBlock Origin?
+            <a href="https://jspenguin2017.github.io/uBlockProtector/" target="_blank">How do I install it?</a>
+        </p>
+        <p>Is uBlock Protector (both Extension and List) up to date?</p>
         <p>Are you using another filter list that may cause conflicts?</p>
         <p>Are you using another extension that may cause conflicts?</p>
         <p>Did you change uBlock Origin settings?</p>
-        <p>Are you using Anti-Adblock Killer, AAK-Cont, and/or uBO-Extra? uBlock Protector fully covers their functionalities, and using them at the same time can only cause problems.</p>
+        <p>
+            Are you using Anti-Adblock Killer, AAK-Cont, and/or uBO-Extra? uBlock Protector fully covers their functionalities,
+            and using them at the same time may cause problems.
+        </p>
     </div>
     <h3>Common Questions and Problems</h3>
     <div>
         <h4>Will there be a configurable white list?</h4>
-        <p>Not until I have a reliable way to synchronously send configuration data to content scripts. This means probably not anytime soon.</p>
+        <p>
+            Not until I have a reliable way to synchronously send configuration data to content scripts.
+            This means probably not anytime soon.
+        </p>
         <h4>uBlock Protector is causing further breakage.</h4>
-        <p>Report it and I will take care of it within 2 days.</p>
-        <h4>Website X is not working.</h4>
-        <p>uBlock Protector is not magic, a lot of websites need to be fixed on a case by case basis. Report it and I will have a look. Depending on the website, it can take some time.</p>
+        <p>
+            Report it and I will take care of it within 2 days. Keep in mind that this only apply to breakage <strong>caused</strong> by
+            uBlock Protector, other breakages may not be fixed this fast.
+        </p>
+        <h4>A website freezes with uBlock Protector enabled.</h4>
+        <p>
+            Some websites will intentionally freeze (with an infinite loop for example) once they detected uBlock Protector,
+            it could also be caused by a bug in uBlock Protector, either way, report it and I will take care of it within 2 days.
+            Keep in mind that this only apply to freezings <strong>caused</strong> by uBlock Protector, other freezings may not be
+            fixed this fast.
+        </p>
+        <p>
+            You can use task manager to terminate the tab that froze, go to <code>Menu -&gt; More tools -&gt; Task manager</code>,
+            select the tab that froze, then click <code>End process</code>.
+        </p>
+        <h4>A website is still detecting uBlock Origin.</h4>
+        <p>
+            uBlock Protector is not magical, a lot of websites need to be fixed on a case by case basis. Report it and I will have a look.
+            Depending on the website, it can take some time.
+        </p>
     </div>
     <h3>Reporting an Issue</h3>
     <div>
@@ -84,17 +116,23 @@
     <div>
         <p><a href="https://jspenguin2017.github.io/uBlockProtector/" target="_blank">Visit home page</a></p>
         <p><a href="https://github.com/jspenguin2017/uBlockProtector/blob/master/LICENSE" target="_blank">View license</a></p>
-        <p><a href="https://github.com/jspenguin2017/uBlockProtector/blob/master/Extension%20Compiler/Extension%20Notes.MD#credits" target="_blank">View credits</a></p>
+        <p>
+            <a href="https://github.com/jspenguin2017/uBlockProtector/blob/master/Extension%20Compiler/Extension%20Notes.MD#credits"
+               target="_blank">View credits</a>
+        </p>
     </div>
     <h3>For Developers</h3>
     <div>
         <p>You need to edit and load the unpacked extension if you want to enable debug mode and/or to change rules.</p>
         <p>Debug switch is in <code>common.js</code>. It may be already on when you pull the repository.</p>
-        <p>Documentation of the API is in <code>content/content-core.js</code>, <code>content/content-domlib.js</code>, and <code>background/background-core.js</code>.</p>
+        <p>
+            Documentation of my custom API is in <code>content/content-core.js</code>, <code>content/content-domlib.js</code>, and
+            <code>background/background-core.js</code>. <code>$</code> is not jQuery.
+        </p>
         <p>Rules are in <code>content/content-rules.js</code> and <code>background/background-rules.js</code>.</p>
         <p>
-            Some rules that will help with debugging, along with rules that are work in progress, are in <code>content/content-debug.js</code> and <code>background/background-debug.js</code>.
-            They will only run in debug mode.
+            Some rules that will help with debugging, along with rules that are work in progress, are in <code>content/content-debug.js</code>
+            and <code>background/background-debug.js</code>. They will only run in debug mode.
         </p>
         <p><a href="https://github.com/jspenguin2017/uBlockProtector" target="_blank">View source code</a></p>
     </div>
