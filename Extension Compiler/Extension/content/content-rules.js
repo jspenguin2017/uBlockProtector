@@ -2442,7 +2442,7 @@ if (a.domCmp(["idlelivelink.blogspot.com"])) {
         });
     });
 }
-if (a.domCmp(["hackinformer.com"])) {
+if (a.domCmp(["hackinformer.com", "chelsea24news.pl"])) {
     a.readOnly("AlobaidiDetectAdBlock", true);
     a.ready(() => {
         $(".special-message-wrapper").includes("your ad blocker").remove();
