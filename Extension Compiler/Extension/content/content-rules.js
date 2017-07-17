@@ -7,7 +7,7 @@
 {
     //Initialize
     a.init();
-    //Check white list, ends with 1 means the list is for a.domCmp(), 2 for a.domInc()
+    //White lists, ends with 1 means the list is for a.domCmp(), 2 for a.domInc()
     const genericWhitelist1 = [
         //Local network
         "localhost", "127.0.0.1",
@@ -36,22 +36,26 @@
         //Other
         "amazon", "yahoo",
     ];
-    const AdflyWhitelist1 = [];
-    const AdflyWhitelist2 = [];
     //Apply generic solutions
     if (a.domCmp(genericWhitelist1, true) || a.domInc(genericWhitelist2, true)) {
         console.log("This domain is excluded from generic solutions.");
     } else {
         a.generic();
         //Adfly
-        if (a.domCmp(AdflyWhitelist1, true) || a.domInc(AdflyWhitelist2, true)) {
+        if (a.domCmp([], true)) {
             console.log("This domain is excluded from Adfly bypasser.");
         } else {
             a.generic.Adfly();
         }
+        //NoAdBlock
+        if (a.domCmp(["hackintosh.zone"], true)) {
+            //Handled by uBlock Origin
+        } else {
+
+        }
     }
 }
-//Common rules, filtering
+//Common specific rules, filtering built in functions
 if (a.domCmp(["usapoliticstoday.com", "vidlox.tv", "exrapidleech.info", "urle.co", "gsmarena.com",
     "darmowe-pornosy.pl"])) {
     a.filter("eval");
@@ -63,14 +67,31 @@ if (a.domCmp(["vidoza.net", "videowood.tv", "l2s.io", "adshort.co", "linksh.top"
     "coinb.ink", "1movies.tv", "katfile.com"])) {
     a.filter("open");
 }
-//Common rules, read only variables
+//Common specific rules, timewarp
+if (a.domCmp(["apkmirror.com", "freepdf-books.com", "bc.vc", "themeslide.com", "linkdrop.net",
+    "l2s.io", "ally.sh", "al.ly", "croco.site", "urle.co", "ouo.io", "idlelivelink.blogspot.com",
+    "lewat.id", "cutwin.com", "cut-urls.com", "adbull.me", "xess.pro", "clik.pw", "admove.co",
+    "adshort.co", "linksh.top", "adshorte.com", "coinb.ink"])) {
+    a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
+}
+if (a.domCmp(["katfile.com"])) {
+    a.timewarp("setTimeout", a.matchMethod.stringExact, "1000");
+}
+//Common specific rules, read only variables
 if (a.domCmp(["jansatta.com", "financialexpress.com", "indianexpress.com", "shink.in"])) {
     a.readOnly("RunAds", true);
 }
 if (a.domCmp(["jagranjunction.com", "nekopoi.bid"])) {
     a.readOnly("isAdsDisplayed", true);
 }
-//Specific rules
+if (a.domCmp(["ratemyprofessors.com", "link.tl"])) {
+    a.readOnly("adBlocker", false);
+}
+if (a.domCmp(["megogo.net", "openload.co", "openload.io", "openload.tv", "translatica.pl",
+    "angrybirdsnest.com", "nekopoi.bid"])) {
+    a.readOnly("adBlock", false);
+}
+//Other specific rules
 if (a.domCmp(["sc2casts.com"])) {
     a.inject(() => {
         "use strict";
@@ -122,7 +143,6 @@ if (a.domCmp(["tweaktown.com"])) {
     });
 }
 if (a.domCmp(["ratemyprofessors.com"])) {
-    a.readOnly("adBlocker", false);
     a.filter("addEventListener", a.matchMethod.RegExp, /^resize$/i);
 }
 if (a.domCmp(["gamepedia.com"])) {
@@ -137,14 +157,6 @@ if (a.domCmp(["pinkrod.com", "wetplace.com"])) {
     //NSFW!
     a.readOnly("getAd", () => { });
     a.readOnly("getUtm", () => { });
-}
-if (a.domInc(["hackintosh"])) {
-    //Undo BlockAdblock styles
-    a.readOnly("eval", () => {
-        const elem = window.document.getElementById("babasbmsgx");
-        elem && elem.remove();
-        window.document.body.style.setProperty("visibility", "visible", "important");
-    });
 }
 if (a.domCmp(["hackintosh.computer"])) {
     //Prevent article hidding
@@ -253,7 +265,6 @@ if (a.domCmp(["ewallstreeter.com"])) {
     a.readOnly("OAS_rdl", 1);
 }
 if (a.domCmp(["megogo.net"])) {
-    a.readOnly("adBlock", false);
     a.readOnly("showAdBlockMessage", () => { });
 }
 if (a.domCmp(["elektroda.pl"])) {
@@ -874,8 +885,6 @@ if (a.domCmp(["apkmirror.com"])) {
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/241
     //a.readOnly("doCheck", () => { });
     a.noAccess("ranTwice");
-    //Ready for them to closure their code
-    a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
 if (a.domCmp(["mtlblog.com"])) {
     a.readOnly("puabs", () => { });
@@ -1206,7 +1215,6 @@ if (a.domCmp(["referencemega.com", "fpabd.com", "crackacc.com"])) {
 }
 if (a.domCmp(["link.tl"])) {
     a.css(".adblock { height:1px; }");
-    a.readOnly("adblocker", false);
     a.timewarp("setInterval", a.matchMethod.stringExact, "1800");
 }
 if (a.domCmp(["wstream.video"])) {
@@ -1293,7 +1301,6 @@ if (a.domCmp(["kisscartoon.me", "kisscartoon.se"])) {
     });
 }
 if (a.domCmp(["openload.co", "openload.io", "openload.tv"])) {
-    a.readOnly("adblock", false);
     a.readOnly("adblock2", false);
     a.readOnly("popAdsLoaded", true);
 }
@@ -1913,12 +1920,6 @@ if (a.domCmp(["zap.in"])) {
         });
     });
 }
-if (a.domCmp(["freepdf-books.com", "bc.vc", "themeslide.com", "linkdrop.net"])) {
-    a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
-}
-if (a.domCmp(["l2s.io"])) {
-    a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
-}
 if (a.domCmp(["shink.in"])) {
     //Skip countdown
     if (location.pathname.startsWith("/go/")) {
@@ -2147,7 +2148,6 @@ if (a.domCmp(["linkneverdie.com"])) {
     });
 }
 if (a.domCmp(["ally.sh", "al.ly", "croco.site"])) {
-    a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
     a.inject(() => {
         "use strict";
         window.open = null;
@@ -2282,7 +2282,6 @@ if (a.domCmp(["gelbooru.com"])) {
 }
 if (a.domCmp(["urle.co"])) {
     a.bait("div", "#test-block", true);
-    a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
 if (a.domCmp(["playbb.me", "easyvideo.me", "videowing.me", "videozoo.me"])) {
     a.ready(() => {
@@ -2319,7 +2318,6 @@ if (a.domCmp(["fastserver.me"])) {
 }
 if (a.domCmp(["ouo.io"])) {
     localStorage.setItem("snapLastPopAt", (new Date()).getTime());
-    a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
 if (a.domCmp(["canalplus.fr"])) {
     let videoElem; //Current video player element, used to replace it when changing episode
@@ -2388,13 +2386,6 @@ if (a.domCmp(["canalplus.fr"])) {
         });
     })();`, true);
 }
-if (a.domCmp(["translatica.pl", "angrybirdsnest.com"])) {
-    a.readOnly("adblock", false);
-}
-if (a.domCmp(["nekopoi.bid"])) {
-    //NSFW!
-    a.readOnly("adblock", false);
-}
 if (a.domCmp(["receive-sms-online.info"])) {
     a.filter("addEventListener", a.matchMethod.stringExact, `function (b){return"undefined"!=typeof n&&` +
         `n.event.triggered!==b.type?n.event.dispatch.apply(a,arguments):void 0}`);
@@ -2435,7 +2426,6 @@ if (a.domCmp(["new-skys.net"])) {
     a.noAccess("alert");
 }
 if (a.domCmp(["idlelivelink.blogspot.com"])) {
-    a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
     a.ready(() => {
         a.inject(() => {
             "use strict";
@@ -2499,7 +2489,6 @@ if (a.domCmp(["karibusana.org"])) {
 }
 if (a.domCmp(["lewat.id", "u2s.io"])) {
     //Issue: https://gitlab.com/xuhaiyang1234/uBlockProtectorSecretIssues/issues/4
-    a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
     let matcher;
     if (a.domCmp(["lewat.id"], true)) {
         matcher = /^https?:\/\/lewat\.id\//i;
@@ -2599,13 +2588,11 @@ if (a.domCmp(["lne.es"])) {
 }
 if (a.domCmp(["cutwin.com", "cut-urls.com", "adbull.me", "xess.pro", "clik.pw", "admove.co"])) {
     a.bait("div", "#test-block", true);
-    a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
 if (a.domCmp(["adshort.co", "linksh.top", "adshorte.com", "coinb.ink"])) {
     a.bait("div", "#test-block", true);
     a.noAccess("_pop");
     a.noAccess("F3Z9");
-    a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
 if (a.domCmp(["gamersclub.com.br", "uploadboy.com", "vidoza.net", "videohelp.com", "passionea300allora.it"])) {
     a.generic.adsjsV2();
@@ -2716,10 +2703,6 @@ if (a.domCmp(["itv.com"])) {
 }
 if (a.domCmp(["gry.wp.pl"])) {
     a.filter("atob");
-}
-if (a.domCmp(["katfile.com"])) {
-    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/385
-    a.timewarp("setTimeout", a.matchMethod.stringExact, "1000");
 }
 if (a.domCmp(["giallozafferano.it"])) {
     a.filter("setTimeout", a.matchMethod.string, "adblock alert");
