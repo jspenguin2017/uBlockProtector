@@ -1285,6 +1285,7 @@ a.generic.Adfly = () => {
 };
 /**
  * Set up ads.js v2 defuser, call once on document-start if needed.
+ * This defuser may cause some websites to malfunction.
  * @function
  */
 a.generic.adsjsV2 = () => {
@@ -1315,7 +1316,7 @@ a.generic.adsjsV2 = () => {
             original = window.document.getElementById;
             window.document.getElementById = newFunc;
         } catch (err) {
-            error("uBlock Protector failed to set up ads.js v2 defuser!");
+            error("uBlock Protector failed to set up ads.js v2 uBlock Origin detector defuser!");
         }
     });
 };
@@ -1333,6 +1334,7 @@ a.generic.NoAdBlock = () => {
             const noop = () => {
                 //window.console.log("NoAdBlock is uninstalled by uBlock Protector.");
             };
+            const error = window.console.error.bind(window.console);
             window.CloudflareApps = window.CloudflareApps || {};
             window.Object.defineProperty(window.CloudflareApps, "installs", {
                 configurable: false,
@@ -1362,7 +1364,7 @@ a.generic.NoAdBlock = () => {
                                     });
                                     //Update flag and log
                                     needDefuse = false;
-                                    err("NoAdBlock");
+                                    error("Uncaught Error: NoAdBlock uBlock Origin detector is not allowed on this device!");
                                 }
                             }
                         } catch (err) { }
