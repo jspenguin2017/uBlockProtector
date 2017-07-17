@@ -1285,7 +1285,6 @@ a.generic.Adfly = () => {
 };
 /**
  * Set up ads.js v2 defuser, call once on document-start if needed.
- * Call when needed, do not apply this to all domains.
  * @function
  */
 a.generic.adsjsV2 = () => {
@@ -1322,6 +1321,7 @@ a.generic.adsjsV2 = () => {
 };
 /**
  * Set up NoAdBlock defuser, call once on document-start if needed.
+ * @function
  */
 a.generic.NoAdBlock = () => {
     a.inject(() => {
