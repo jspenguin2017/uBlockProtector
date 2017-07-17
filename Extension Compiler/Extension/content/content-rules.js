@@ -403,7 +403,7 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
     //if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl", "sportowefakty.wp.pl", "teleshow.wp.pl", "moto.wp.pl",
     //    "film.wp.pl", "gry.wp.pl", "wiadomosci.wp.pl", "portal.abczdrowie.pl", "o2.pl"])) {
     //Thanks to szymon1118
-    if (document.domain !== "wp.tv") {
+    if (document.domain !== "wp.tv" && document.domain !== "gry.wp.pl") {
         let mid; //Media ID of next video
         let midArray1 = []; //Media IDs from method 1
         let midArray2 = []; //Media IDs from method 2
