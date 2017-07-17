@@ -1323,7 +1323,7 @@ if (a.domCmp(["youwatch.to", "he2eini7ka.com"])) {
                     window.closeOnPlayerBanner();
                 } else {
                     if (tries++ < 20) {
-                        window.setTimeout(check, 1000);
+                        window.setTimeout(check, 500);
                     }
                 }
             };
