@@ -1314,6 +1314,22 @@ if (a.domCmp(["youwatch.org", "chouhaa.info", "ahzahg6ohb.com"])) {
 if (a.domCmp(["youwatch.to", "he2eini7ka.com"])) {
     a.readOnly("adsShowPopup1", 1);
     a.readOnly("jsPopunder", () => { });
+    a.ready(() => {
+        a.inject(() => {
+            "use strict";
+            let tries = 0;
+            const check = () => {
+                if (window.closeOnPlayerBanner) {
+                    window.closeOnPlayerBanner();
+                } else {
+                    if (tries++ < 20) {
+                        window.setTimeout(check, 1000);
+                    }
+                }
+            };
+            check();
+        });
+    });
 }
 if (a.domCmp(["exashare.com", "chefti.info", "bojem3a.info", "ajihezo.info", "yahmaib3ai.com"])) {
     a.readOnly("adsShowPopup1", 1);
