@@ -21,9 +21,10 @@
         "easyinplay.net", "ebay.com", "facebook.com", "flattr.com", "flickr.com", "ghacks.net", "imdb.com",
         "imgbox.com", "imgur.com", "instagram.com", "jsbin.com", "jsfiddle.net", "linkedin.com", "mail.ru",
         "paypal.com", "pinterest.com", "preloaders.net", "qq.com", "vimeo.com", "wikipedia.org",
-        "w3schools.com", "yandex.ru", "xemvtv.net", "spaste.com", "anandabazar.com", "vod.pl", "agar.io",
+        "w3schools.com", "yandex.ru", "xemvtv.net", "spaste.com", "vod.pl", "agar.io", "popmech.ru",
         "pandoon.info", "fsf.org", "adblockplus.org", "plnkr.co", "exacttarget.com", "dolldivine.com",
-        "popmech.ru",
+        //Handled by specific rules
+        "anandabazar.com",
         //Damage control
         "viasport.fi", "tv3sport.dk",
     ];
@@ -42,7 +43,7 @@
         console.log("This domain is excluded from generic solutions.");
     } else {
         a.generic();
-        //Apply Adfly bypasser
+        //Adfly
         if (a.domCmp(AdflyWhitelist1, true) || a.domInc(AdflyWhitelist2, true)) {
             console.log("This domain is excluded from Adfly bypasser.");
         } else {
@@ -50,32 +51,34 @@
         }
     }
 }
-//Specific rules
-if (a.domCmp(["blockadblock.com"])) {
+//Common rules, filtering
+if (a.domCmp(["usapoliticstoday.com", "vidlox.tv", "exrapidleech.info", "urle.co", "gsmarena.com",
+    "darmowe-pornosy.pl"])) {
     a.filter("eval");
-    a.ready(() => {
-        $("#babasbmsgx").remove();
-    });
 }
-if (a.domCmp(["sc2casts.com"])) {
-    a.readOnly("scriptfailed", () => { });
+if (a.domCmp(["sc2casts.com", "webqc.org", "cloudwebcopy.com"])) {
     a.filter("setTimeout");
+}
+if (a.domCmp(["vidoza.net", "videowood.tv", "l2s.io", "adshort.co", "linksh.top", "adshorte.com",
+    "coinb.ink", "1movies.tv", "katfile.com"])) {
+    a.filter("open");
+}
+//Common rules, read only variables
+if (a.domCmp(["jansatta.com", "financialexpress.com", "indianexpress.com", "shink.in"])) {
+    a.readOnly("RunAds", true);
+}
+if (a.domCmp(["jagranjunction.com", "nekopoi.bid"])) {
+    a.readOnly("isAdsDisplayed", true);
+}
+//Specific rules
+if (a.domCmp(["sc2casts.com"])) {
     a.inject(() => {
         "use strict";
         window._gaq = { push() { } };
     });
+    a.readOnly("scriptfailed", () => { });
     a.readOnly("showdialog", () => { });
     a.readOnly("showPopup2", () => { });
-}
-if (a.domCmp(["jagranjunction.com"])) {
-    a.readOnly("canRunAds", true);
-    a.readOnly("isAdsDisplayed", true);
-}
-if (a.domCmp(["usapoliticstoday.com"])) {
-    a.filter("eval");
-}
-if (a.domCmp(["jansatta.com", "financialexpress.com", "indianexpress.com"])) {
-    a.readOnly("RunAds", true);
 }
 if (a.domCmp(["livemint.com"])) {
     a.readOnly("canRun1", true);
@@ -90,13 +93,9 @@ if (a.domCmp(["vidlox.tv", "vidoza.net", "dato.porn"])) {
     //NSFW!
     a.readOnly("xRds", false);
     a.readOnly("cRAds", true);
-    if (a.domCmp(["vidlox.tv"], true)) {
-        a.readOnly("adb", 0);
-        a.filter("eval");
-    }
-    if (a.domCmp(["vidoza.net"], true)) {
-        a.filter("open");
-    }
+}
+if (a.domCmp(["vidlox.tv"])) {
+    a.readOnly("adb", 0);
 }
 if (a.domCmp(["cwtv.com"])) {
     //Thanks to szymon1118
@@ -146,10 +145,10 @@ if (a.domInc(["hackintosh"])) {
         elem && elem.remove();
         window.document.body.style.setProperty("visibility", "visible", "important");
     });
+}
+if (a.domCmp(["hackintosh.computer"])) {
     //Prevent article hidding
-    if (a.domCmp(["hackintosh.computer"], true)) {
-        a.noAccess("google_jobrunner");
-    }
+    a.noAccess("google_jobrunner");
 }
 if (a.domCmp(["tvregionalna24.pl"])) {
     a.inject(() => {
@@ -281,7 +280,7 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
     //}
     //Run the other solution unless it is known to cause problem, the solution above is not reliable
     //if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl", "sportowefakty.wp.pl", "teleshow.wp.pl", "moto.wp.pl",
-    //    "film.wp.pl", "gry.wp.pl", "wiadomosci.wp.pl", "portal.abczdrowie.pl", "o2.pl"], true)) {
+    //    "film.wp.pl", "gry.wp.pl", "wiadomosci.wp.pl", "portal.abczdrowie.pl", "o2.pl"])) {
     //Thanks to szymon1118
     if (document.domain !== "wp.tv") {
         let mid; //Media ID of next video
@@ -422,7 +421,7 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
         a.on("focus", () => { isInBackground = false; });
         a.on("blur", () => { isInBackground = true; });
     }
-    if (a.domCmp(["wiadomosci.wp.pl"], true)) {
+    if (a.domCmp(["wiadomosci.wp.pl"])) {
         //Prevent the video player from collapsing
         a.onRemove((node, target) => {
             if ((node.querySelector && node.querySelector("video > source")) ||
@@ -431,7 +430,7 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
             }
         });
     }
-    if (a.domCmp(["portal.abczdrowie.pl"], true)) {
+    if (a.domCmp(["portal.abczdrowie.pl"])) {
         a.css("figcaption { display:none; }");
         /*
         a.on("load", () => {
@@ -450,9 +449,6 @@ if (a.domCmp(["wtkplay.pl"])) {
 }
 if (a.domCmp(["betterdocs.net"])) {
     a.filter("eval", a.matchMethod.string, "eval(function(p,a,c,k,e,d)");
-}
-if (a.domCmp(["webqc.org"])) {
-    a.filter("setTimeout");
 }
 if (a.domCmp(["wired.com"])) {
     a.readOnly("google_onload_fired", true);
@@ -730,9 +726,9 @@ if (a.domCmp(["primeshare.tv"])) {
 if (a.domCmp(["debridnet.com", "livedebrid.com"])) {
     a.css(".myTestAd2 { height:5px; }");
     a.bait("div", ".myTestAd2");
-    if (a.domCmp(["debridnet.com"], true)) {
-        a.noAccess("_pop");
-    }
+}
+if (a.domCmp(["debridnet.com"])) {
+    a.noAccess("_pop");
 }
 if (a.domCmp(["bluesatoshi.com"])) {
     a.css("#test { height:280px; }");
@@ -839,7 +835,6 @@ if (a.domCmp(["mangahost.com"])) {
     a.readOnly("testDisplay", false);
 }
 if (a.domCmp(["videowood.tv"])) {
-    a.filter("open");
     a.inject(() => {
         "use strict";
         window.config = {};
@@ -850,9 +845,6 @@ if (a.domCmp(["infojobs.com.br"])) {
     //They changed detection method, the new detection method should be caught in the generic anti-bait filter
     //Enforce again just in case
     a.readOnly("adblock", 0);
-}
-if (a.domCmp(["cloudwebcopy.com"])) {
-    a.filter("setTimeout");
 }
 if (a.domCmp(["narkive.com"])) {
     a.readOnly("adblock_status", () => false);
@@ -1400,6 +1392,7 @@ if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "pl
     const reMatcher = /\/(\d+)/;
     const reMagicValidator = /^\d+$/;
     let videoID;
+    const findIDFlag = a.domCmp(["tvplay.skaties.lv", "play.tv3.lt", "tv3play.tv3.ee"], true);
     const magic = a.uid();
     addEventListener(magic, (e) => {
         if (reMagicValidator.test(e.detail)) {
@@ -1430,7 +1423,7 @@ if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "pl
             return;
         }
         //Find ID
-        if (a.domCmp(["tvplay.skaties.lv", "play.tv3.lt", "tv3play.tv3.ee"], true)) {
+        if (findIDFlag) {
             let tmp = reMatcher.exec(location.href);
             if (tmp) {
                 videoID = tmp[1];
@@ -1538,17 +1531,17 @@ if (a.domCmp(["buzina.xyz", "farmet.info", "rimladi.com", "kitorelo.com", "omnip
         $("#adsframe").remove();
         $("#remove-over").click();
     });
-    if (a.domCmp(["buzina.xyz"], true)) {
-        a.css("#adsframe { height:151px; }");
-        a.ready(() => {
-            const elem = $("iframe[src*='.php?hash=']");
-            if (elem.length) {
-                let parts = elem.attr("src").split("/");
-                parts[2] = "arsopo.com";
-                elem.attr("src", parts.join("/"));
-            }
-        });
-    }
+}
+if (a.domCmp(["buzina.xyz"])) {
+    a.css("#adsframe { height:151px; }");
+    a.ready(() => {
+        const elem = $("iframe[src*='.php?hash=']");
+        if (elem.length) {
+            let parts = elem.attr("src").split("/");
+            parts[2] = "arsopo.com";
+            elem.attr("src", parts.join("/"));
+        }
+    });
 }
 if (a.domCmp(["allmyvideos.net", "amvtv.net"])) {
     a.cookie("_favbt33", "1");
@@ -1924,12 +1917,9 @@ if (a.domCmp(["freepdf-books.com", "bc.vc", "themeslide.com", "linkdrop.net"])) 
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
 if (a.domCmp(["l2s.io"])) {
-    a.filter("open");
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
 if (a.domCmp(["shink.in"])) {
-    //Prevent block screen
-    a.readOnly("RunAds", true);
     //Skip countdown
     if (location.pathname.startsWith("/go/")) {
         a.ready(() => {
@@ -2292,7 +2282,6 @@ if (a.domCmp(["gelbooru.com"])) {
 }
 if (a.domCmp(["urle.co"])) {
     a.bait("div", "#test-block", true);
-    a.filter("eval");
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
 if (a.domCmp(["playbb.me", "easyvideo.me", "videowing.me", "videozoo.me"])) {
@@ -2314,7 +2303,6 @@ if (a.domCmp(["up-4ever.com"])) {
 }
 if (a.domCmp(["exrapidleech.info"])) {
     //Thanks to lain566
-    a.filter("eval");
     //Prevent sending to verify page
     a.readOnly("PopAds", `"this is a string"`);
     a.cookie("popcashpuCap", "1");
@@ -2406,7 +2394,6 @@ if (a.domCmp(["translatica.pl", "angrybirdsnest.com"])) {
 if (a.domCmp(["nekopoi.bid"])) {
     //NSFW!
     a.readOnly("adblock", false);
-    a.readOnly("isAdsDisplayed", true);
 }
 if (a.domCmp(["receive-sms-online.info"])) {
     a.filter("addEventListener", a.matchMethod.stringExact, `function (b){return"undefined"!=typeof n&&` +
@@ -2618,7 +2605,6 @@ if (a.domCmp(["adshort.co", "linksh.top", "adshorte.com", "coinb.ink"])) {
     a.bait("div", "#test-block", true);
     a.noAccess("_pop");
     a.noAccess("F3Z9");
-    a.filter("open");
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
 if (a.domCmp(["gamersclub.com.br", "uploadboy.com", "vidoza.net", "videohelp.com", "passionea300allora.it"])) {
@@ -2635,9 +2621,6 @@ if (a.domCmp(["sport365.live"])) {
             _eval.apply(window, args);
         };
     });
-}
-if (a.domCmp(["gsmarena.com"])) {
-    a.filter("eval");
 }
 if (a.domCmp(["myfxbook.com"])) {
     a.inject(() => {
@@ -2658,10 +2641,6 @@ if (a.domCmp(["myfxbook.com"])) {
 }
 if (a.domCmp(["ptztv.com", "mahobeachcam.com"])) {
     a.readOnly("PTZtv", true);
-}
-if (a.domCmp(["darmowe-pornosy.pl"])) {
-    //NSFW! Block popup
-    a.filter("eval");
 }
 if (a.domCmp(["yiv.com"])) {
     a.cookie("AdBlockMessage", "yes");
@@ -2705,7 +2684,6 @@ if (a.domCmp(["mywrestling.com.pl"])) {
 }
 if (a.domCmp(["1movies.tv"])) {
     a.readOnly("check_adblock", true);
-    a.filter("open");
 }
 if (a.domCmp(["startclass.com"])) {
     a.filter("addEventListener", a.matchMethod.stringExact, "scroll");
@@ -2741,7 +2719,6 @@ if (a.domCmp(["gry.wp.pl"])) {
 }
 if (a.domCmp(["katfile.com"])) {
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/385
-    a.filter("open");
     a.timewarp("setTimeout", a.matchMethod.stringExact, "1000");
 }
 if (a.domCmp(["giallozafferano.it"])) {
