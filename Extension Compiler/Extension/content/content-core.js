@@ -580,7 +580,7 @@ a.noAccessExt = (chain) => {
         "use strict";
         //Prepare
         const error = window.console.error.bind(window.console);
-        const err = new window.Error("This property may not be read!");
+        const err = new window.Error("This property may not be accessed!");
         const throwErr = () => {
             throw err;
         };
