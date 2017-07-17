@@ -852,8 +852,6 @@ a.generic = () => {
             document.documentElement.prepend(bait);
             //Enable scrolling
             $("body").rmClass("adbmodal-cloudflare-open");
-            //I want to solve this peacefully with memes
-            //Let's start: https://i.imgur.com/lhbxcx0.jpg
         }
         //StopAdblock
         if (insertedNode.nodeName === "DIV" &&
@@ -951,54 +949,6 @@ a.generic = () => {
             });
         } catch (err) {
             error("uBlock Protector failed to set up Playwire uBlock Origin detector defuser!");
-        }
-        //NoAdBlock
-        try {
-            const reWarnTitle = /ad[ -]?block.+detected/i;
-            let needDefuse = true;
-            let installs = {};
-            const noop = () => {
-                //window.console.log("NoAdBlock is uninstalled by uBlock Protector.");
-            };
-            window.CloudflareApps = window.CloudflareApps || {};
-            window.Object.defineProperty(window.CloudflareApps, "installs", {
-                configurable: false,
-                set(val) {
-                    installs = val;
-                },
-                get() {
-                    if (needDefuse) {
-                        try {
-                            for (let key in installs) {
-                                if (//Basic signature checking
-                                    installs[key].scope.defaultTexts &&
-                                    installs[key].scope.testMethods &&
-                                    installs[key].scope.warningRenderer &&
-                                    //In depth signature checking
-                                    reWarnTitle.test(String(installs[key].scope.defaultTexts.warningTitle)) &&
-                                    window.Array.isArray(installs[key].scope.testMethods) &&
-                                    installs[key].scope.warningRenderer instanceof window.Object &&
-                                    window.Object.keys(installs[key].scope.warningRenderer).length > 2) {
-                                    //Patch property
-                                    window.Object.defineProperty(installs[key].scope, "init", {
-                                        configurable: false,
-                                        set() { },
-                                        get() {
-                                            return noop;
-                                        },
-                                    });
-                                    //Update flag and log
-                                    needDefuse = false;
-                                    err("NoAdBlock");
-                                }
-                            }
-                        } catch (err) { }
-                    }
-                    return installs;
-                },
-            });
-        } catch (err) {
-            error("uBlock Protector failed to set up NoAdBlock uBlock Origin detector defuser!");
         }
         //---document-idle---
         window.addEventListener("DOMContentLoaded", () => {
@@ -1334,7 +1284,7 @@ a.generic.FuckAdBlock = (constructorName, instanceName) => {
     })();`, true);
 };
 /**
- * Set up ads.js v2 defuser, should be called on document-start.
+ * Set up ads.js v2 defuser, call once on document-start if needed.
  * Call when needed, do not apply this to all domains.
  * @function
  */
@@ -1370,3 +1320,58 @@ a.generic.adsjsV2 = () => {
         }
     });
 };
+/**
+ * Set up NoAdBlock defuser, call once on document-start if needed.
+ */
+a.generic.NoAdBlock = () => {
+    a.inject(() => {
+        "use strict";
+        try {
+            const reWarnTitle = /ad[ -]?block.+detected/i;
+            let needDefuse = true;
+            let installs = {};
+            const noop = () => {
+                //window.console.log("NoAdBlock is uninstalled by uBlock Protector.");
+            };
+            window.CloudflareApps = window.CloudflareApps || {};
+            window.Object.defineProperty(window.CloudflareApps, "installs", {
+                configurable: false,
+                set(val) {
+                    installs = val;
+                },
+                get() {
+                    if (needDefuse) {
+                        try {
+                            for (let key in installs) {
+                                if (//Basic signature checking
+                                    installs[key].scope.defaultTexts &&
+                                    installs[key].scope.testMethods &&
+                                    installs[key].scope.warningRenderer &&
+                                    //In depth signature checking
+                                    reWarnTitle.test(String(installs[key].scope.defaultTexts.warningTitle)) &&
+                                    window.Array.isArray(installs[key].scope.testMethods) &&
+                                    installs[key].scope.warningRenderer instanceof window.Object &&
+                                    window.Object.keys(installs[key].scope.warningRenderer).length > 2) {
+                                    //Patch property
+                                    window.Object.defineProperty(installs[key].scope, "init", {
+                                        configurable: false,
+                                        set() { },
+                                        get() {
+                                            return noop;
+                                        },
+                                    });
+                                    //Update flag and log
+                                    needDefuse = false;
+                                    err("NoAdBlock");
+                                }
+                            }
+                        } catch (err) { }
+                    }
+                    return installs;
+                },
+            });
+        } catch (err) {
+            error("uBlock Protector failed to set up NoAdBlock uBlock Origin detector defuser!");
+        }
+    });
+}

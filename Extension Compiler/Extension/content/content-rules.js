@@ -3,7 +3,7 @@
 //Anti-Adblock Killer Repository (contains original source code and license): https://github.com/reek/anti-adblock-killer
 "use strict";
 
-//Initialization and generic rules
+//=====Initialization=====
 {
     //Initialize
     a.init();
@@ -51,11 +51,13 @@
         if (a.domCmp(["hackintosh.zone"], true)) {
             //Handled by uBlock Origin
         } else {
-
+            a.generic.NoAdBlock();
         }
     }
 }
-//Common specific rules, filtering built in functions
+
+//=====Common Specific Rules=====
+//---a.filter---
 if (a.domCmp(["usapoliticstoday.com", "vidlox.tv", "exrapidleech.info", "urle.co", "gsmarena.com",
     "darmowe-pornosy.pl"])) {
     a.filter("eval");
@@ -74,7 +76,7 @@ if (a.domCmp(["drivearabia.com", "putlocker.com", "doatoolsita.altervista.org", 
     "dasolo.co"])) {
     a.filter("alert");
 }
-//Common specific rules, timewarp
+//---a.timewarp---
 if (a.domCmp(["apkmirror.com", "freepdf-books.com", "bc.vc", "themeslide.com", "linkdrop.net",
     "l2s.io", "ally.sh", "al.ly", "croco.site", "urle.co", "ouo.io", "idlelivelink.blogspot.com",
     "lewat.id", "cutwin.com", "cut-urls.com", "adbull.me", "xess.pro", "clik.pw", "admove.co",
@@ -84,7 +86,7 @@ if (a.domCmp(["apkmirror.com", "freepdf-books.com", "bc.vc", "themeslide.com", "
 if (a.domCmp(["katfile.com"])) {
     a.timewarp("setTimeout", a.matchMethod.stringExact, "1000");
 }
-//Common specific rules, read only variable
+//---a.readOnly---
 if (a.domCmp(["jansatta.com", "financialexpress.com", "indianexpress.com", "shink.in"])) {
     a.readOnly("RunAds", true);
 }
@@ -111,15 +113,15 @@ if (a.domCmp(["youwatch.org", "chouhaa.info", "ahzahg6ohb.com", "youwatch.to", "
 if (a.domCmp(["game-debate.com", "scan-mx.com", "onepiece-mx.net", "naruto-mx.net"])) {
     a.readOnly("ad_block_test", () => { });
 }
-//Common specific rules, non-accessible variable
+//---a.noAccess---
 if (a.domCmp(["debridnet.com", "adshort.co", "linksh.top", "adshorte.com", "coinb.ink"])) {
     a.noAccess("_pop");
 }
-//Common specific rules, CSS injection
+//---a.css---
 if (a.domCmp(["bknime.com", "go4up.com", "debrido.com", "thepcspy.com"])) {
     a.css(".myTestAd { height:1px; }");
 }
-//Common specific rules, bait element
+//---a.bait---
 if (a.domCmp(["primeshare.tv", "leveldown.fr"])) {
     a.bait("div", "#adblock");
 }
@@ -138,7 +140,8 @@ if (a.domCmp(["cutwin.com", "cut-urls.com", "adbull.me", "xess.pro", "clik.pw", 
 if (a.domCmp(["filecom.net", "upshare.org", "skippyfile.com", "mwfiles.net", "up-flow.org", "globeslot.com"])) {
     a.bait("div", "#add");
 }
-//Other specific rules
+
+//=====Other Specific Rules=====
 if (a.domCmp(["sc2casts.com"])) {
     a.inject(() => {
         "use strict";
@@ -2735,4 +2738,7 @@ if (a.domCmp(["onet.pl", "komputerswiat.pl"])) {
 }
 if (a.domCmp(["viz.com"])) {
     a.css("#player_error { display:none; } #player { display:block; }");
+}
+if (a.domCmp(["swissadspaysfaucet.com"])) {
+    a.readOnly("adBlockEnabled", false);
 }
