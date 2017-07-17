@@ -2751,3 +2751,34 @@ if (a.domCmp(["viz.com"])) {
 if (a.domCmp(["swissadspaysfaucet.com"])) {
     a.readOnly("adBlockEnabled", false);
 }
+if (a.domCmp(["1tv.ru"])) {
+    a.inject(() => {
+        "use strict";
+        const fakeAntiblock = window.Object.freeze({
+            opts: {
+                url: "",
+                detectOnStart: false,
+                indicatorName: "",
+                resources: [],
+            },
+            readyState: true,
+            detected: false,
+            ready(f) {
+                window.setTimeout(f, 10, false);
+                return this;
+            },
+            detect(f) {
+                window.setTimeout(f.cb, 10, false);
+                return this
+            },
+        });
+        window.EUMP = {};
+        window.Object.defineProperty(window.EUMP, "antiblock", {
+            configurable: false,
+            set() { },
+            get() {
+                return fakeAntiblock;
+            },
+        });
+    });
+}
