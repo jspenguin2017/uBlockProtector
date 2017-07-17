@@ -1984,7 +1984,7 @@ if (a.domCmp(["hotslogs.com"])) {
         "use strict";
         window.MonkeyBroker = {};
     });
-    a.noAccess("MonkeyBroker.regSlotsMap");
+    a.noAccess("regSlotsMap", "window.MonkeyBroker");
 }
 if (a.domCmp(["undeniable.info"])) {
     a.bait("div", "#testadblock");
