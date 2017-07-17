@@ -129,10 +129,7 @@ blockadblock.com,futbolchile.net,freeomovie.com,appdrop.net,skmedix.pl,yalujailb
 ! === wp.pl and related domains
 abczdrowie.pl,autokrata.pl,autokult.pl,biztok.pl,gadzetomania.pl,hotmoney.pl,kafeteria.pl,kafeteria.tv,komediowo.pl,komorkomania.pl,money.pl,pudelek.tv,sfora.pl,snobka.pl,wawalove.pl,wp.pl,wp.tv,wrzuta.pl,pudelek.pl,fotoblogia.pl,parenting.pl,echirurgia.pl,pudelekx.pl,o2.pl,kardiolo.pl##.windowErrCont
 ! === tvn.pl and related domains
-tvn.pl#div(id*=_videoDriverContent)
-tvn7.pl##div.vjs-abDetected
-tvnstyle.pl##div.vjs-abDetected
-tvnturbo.pl##div.vjs-abDetected
+tvn.pl,tvn7.pl,tvnstyle.pl,tvnturbo.pl##div.vjs-abDetected
 ! === pudelek.tv
 @@||pagead2.googlesyndication.com^$domain=pudelek.tv
 ! === NSFW! zone-anime.net

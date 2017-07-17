@@ -1126,74 +1126,6 @@ a.generic = () => {
     });
 };
 /**
- * Setup generic Adfly bypasser, call once on document-start if needed.
- * @function
- */
-a.generic.Adfly = () => {
-    //Based on AdsBypasser
-    //License: https://github.com/adsbypasser/adsbypasser/blob/master/LICENSE
-    a.inject(() => {
-        const handler = (encodedURL) => {
-            if (window.document.body) {
-                //This is not an Adfly page
-                return;
-            }
-            //Some checking
-            const index = encodedURL.indexOf("!HiTommy");
-            if (index > -1) {
-                encodedURL = encodedURL.substring(0, index);
-            }
-            //Decode URL
-            let var1 = "", var2 = "";
-            for (let i = 0; i < encodedURL.length; ++i) {
-                if (i % 2 === 0) {
-                    var1 = var1 + encodedURL.charAt(i);
-                } else {
-                    var2 = encodedURL.charAt(i) + var2;
-                }
-            }
-            let decodedURL = window.atob(var1 + var2).substring(2);
-            if (window.location.hash) {
-                decodedURL += location.hash;
-            }
-            //Make sure the URL is not obviously bad
-            if (decodedURL.length > 3 && decodedURL.includes(".")) {
-                //Stop the window
-                window.stop();
-                //Redirect
-                window.onbeforeunload = null;
-                window.location.href = decodedURL;
-            }
-        };
-        //Setup variable hijacker
-        try {
-            let val;
-            //Prevent running multiple times
-            let flag = true;
-            window.Object.defineProperty(window, "ysmm", {
-                configurable: false,
-                set(value) {
-                    if (flag) {
-                        flag = false;
-                        try {
-                            if (typeof value === "string") {
-                                handler(value);
-                            }
-                        } catch (err) { }
-                    }
-                    //In case this is not an Adfly page, I want this variable to be functional
-                    val = value;
-                },
-                get() {
-                    return val;
-                },
-            });
-        } catch (err) {
-            window.console.error("uBlock Protector failed to set up Adfly bypasser!");
-        }
-    });
-};
-/**
  * Create a non-overridable FuckAdBlock constructor and instance that always returns not detected.
  * @function
  * @param {string} constructorName - The name of the constructor.
@@ -1284,6 +1216,74 @@ a.generic.FuckAdBlock = (constructorName, instanceName) => {
     })();`, true);
 };
 /**
+ * Setup generic Adfly bypasser, call once on document-start if needed.
+ * @function
+ */
+a.generic.Adfly = () => {
+    //Based on AdsBypasser
+    //License: https://github.com/adsbypasser/adsbypasser/blob/master/LICENSE
+    a.inject(() => {
+        const handler = (encodedURL) => {
+            if (window.document.body) {
+                //This is not an Adfly page
+                return;
+            }
+            //Some checking
+            const index = encodedURL.indexOf("!HiTommy");
+            if (index > -1) {
+                encodedURL = encodedURL.substring(0, index);
+            }
+            //Decode URL
+            let var1 = "", var2 = "";
+            for (let i = 0; i < encodedURL.length; ++i) {
+                if (i % 2 === 0) {
+                    var1 = var1 + encodedURL.charAt(i);
+                } else {
+                    var2 = encodedURL.charAt(i) + var2;
+                }
+            }
+            let decodedURL = window.atob(var1 + var2).substring(2);
+            if (window.location.hash) {
+                decodedURL += location.hash;
+            }
+            //Make sure the URL is not obviously bad
+            if (decodedURL.length > 3 && decodedURL.includes(".")) {
+                //Stop the window
+                window.stop();
+                //Redirect
+                window.onbeforeunload = null;
+                window.location.href = decodedURL;
+            }
+        };
+        //Setup variable hijacker
+        try {
+            let val;
+            //Prevent running multiple times
+            let flag = true;
+            window.Object.defineProperty(window, "ysmm", {
+                configurable: false,
+                set(value) {
+                    if (flag) {
+                        flag = false;
+                        try {
+                            if (typeof value === "string") {
+                                handler(value);
+                            }
+                        } catch (err) { }
+                    }
+                    //In case this is not an Adfly page, I want this variable to be functional
+                    val = value;
+                },
+                get() {
+                    return val;
+                },
+            });
+        } catch (err) {
+            window.console.error("uBlock Protector failed to set up Adfly bypasser!");
+        }
+    });
+};
+/**
  * Set up ads.js v2 defuser, call once on document-start if needed.
  * Call when needed, do not apply this to all domains.
  * @function
@@ -1342,7 +1342,7 @@ a.generic.NoAdBlock = () => {
                 get() {
                     if (needDefuse) {
                         try {
-                            for (let key in installs) {
+                            for (let key of installs) {
                                 if (//Basic signature checking
                                     installs[key].scope.defaultTexts &&
                                     installs[key].scope.testMethods &&

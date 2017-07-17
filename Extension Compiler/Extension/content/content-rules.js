@@ -47,6 +47,11 @@
         } else {
             a.generic.Adfly();
         }
+        //ads.js v2
+        if (a.domCmp(["gamersclub.com.br", "uploadboy.com", "vidoza.net", "videohelp.com",
+            "passionea300allora.it"])) {
+            a.generic.adsjsV2();
+        }
         //NoAdBlock
         if (a.domCmp(["hackintosh.zone"], true)) {
             //Handled by uBlock Origin
@@ -66,7 +71,12 @@ if (a.domCmp(["sc2casts.com", "webqc.org", "cloudwebcopy.com"])) {
     a.filter("setTimeout");
 }
 if (a.domCmp(["vidoza.net", "videowood.tv", "l2s.io", "adshort.co", "linksh.top", "adshorte.com",
-    "coinb.ink", "1movies.tv", "katfile.com"])) {
+    "coinb.ink", "1movies.tv", "katfile.com", "firstrow.co", "firstrows.ru", "firstrows.tv",
+    "firstrows.org", "firstrows.co", "atdhe.mx", "atdhe.li", "atdhe.al", "atdhe.me", "atdhe.to",
+    "firstrows.biz", "firstrowus.eu", "firstrow1us.eu", "firstsrowsports.eu", "firstrowsportes.tv",
+    "firstrowsportes.com", "justfirstrowsports.com", "hahasport.me", "wiziwig.ru", "wiziwig.sx",
+    "wiziwig.to", "wiziwig.tv", "myp2p.biz", "myp2p.tv", "myp2p.la", "myp2p.ec", "myp2p.eu", "myp2p.sx",
+    "myp2p.ws", "myp2p.com", "atdhe.ru", "atdhe.se", "atdhe.bz", "atdhe.top"])) {
     a.filter("open");
 }
 if (a.domCmp(["drivearabia.com", "putlocker.com", "doatoolsita.altervista.org", "sockshare.com",
@@ -113,13 +123,27 @@ if (a.domCmp(["youwatch.org", "chouhaa.info", "ahzahg6ohb.com", "youwatch.to", "
 if (a.domCmp(["game-debate.com", "scan-mx.com", "onepiece-mx.net", "naruto-mx.net"])) {
     a.readOnly("ad_block_test", () => { });
 }
+if (a.domCmp(["freebitcoins.nx.tc", "getbitcoins.nx.tc"])) {
+    a.readOnly("ad_block_test", () => false);
+}
+if (a.domCmp(["vipleague.is", "vipleague.ws", "vipleague.tv", "vipleague.se", "vipleague.me", "vipapp.me",
+    "vipleague.mobi", "vipleague.co", "vipleague.sx", "vipleague.ch", "vipbox.tv", "vipbox.co", "vipbox.biz",
+    "vipbox.sx", "vipbox.eu", "vipbox.so", "vipbox.nu", "vipboxsa.co", "strikeout.co", "strikeout.me",
+    "homerun.re", "vipboxtv.co", "securenetsystems.net"])) {
+    a.readOnly("iExist", true);
+}
+if (a.domCmp(["mid-day.com", "happytrips.com"])) {
+    a.readOnly("canRun", true);
+}
+if (a.domCmp(["kissanime.io", "1movies.tv"])) {
+    a.readOnly("check_adblock", true);
+}
+if (a.domCmp(["fourchette-et-bikini.fr", "meteocity.com"])) {
+    a.readOnly("adProtect", 1);
+}
 //---a.noAccess---
 if (a.domCmp(["debridnet.com", "adshort.co", "linksh.top", "adshorte.com", "coinb.ink"])) {
     a.noAccess("_pop");
-}
-//---a.css---
-if (a.domCmp(["bknime.com", "go4up.com", "debrido.com", "thepcspy.com"])) {
-    a.css(".myTestAd { height:1px; }");
 }
 //---a.bait---
 if (a.domCmp(["primeshare.tv", "leveldown.fr"])) {
@@ -140,8 +164,47 @@ if (a.domCmp(["cutwin.com", "cut-urls.com", "adbull.me", "xess.pro", "clik.pw", 
 if (a.domCmp(["filecom.net", "upshare.org", "skippyfile.com", "mwfiles.net", "up-flow.org", "globeslot.com"])) {
     a.bait("div", "#add");
 }
+if (a.domCmp(["razercrypt.com", "satoshiempire.com", "oneadfaucet.com", "bluesatoshi.com"])) {
+    a.bait("div", "#test");
+}
+if (a.domCmp(["bitcoinaliens.com", "door2windows.com"])) {
+    a.bait("ins", ".adsbygoogle");
+}
+if (a.domCmp(["leaguesecretary.com", "teknogods.com", "hellsmedia.com"])) {
+    a.bait("div", "#adpbtest");
+}
+if (a.domCmp(["freesportsbet.com", "sportsplays.com"])) {
+    a.bait("div", "#ad-tester");
+}
+if (a.domCmp(["voici.fr", "programme-tv.net"])) {
+    a.bait("div", "#sas_script2");
+}
+if (a.domCmp(["bitcoiner.net", "litecoiner.net"])) {
+    a.bait("div", "#ad-top");
+}
 
 //=====Other Specific Rules=====
+if (a.domCmp(["chip.de", "moviepilot.com", "nowloading.co", "champions.co"])) {
+    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/271
+    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/363
+    a.noAccess("stop");
+}
+if (a.domCmp(["badtv.it", "badtaste.it", "badgames.it", "badcomics.it"])) {
+    a.cookie("adBlockChecked", "disattivo");
+}
+if (a.domCmp(["bknime.com", "go4up.com", "debrido.com", "thepcspy.com"])) {
+    a.css(".myTestAd { height:1px; }");
+}
+if (a.domCmp(["buzina.xyz", "farmet.info", "rimladi.com", "kitorelo.com", "omnipola.com", "porosin.co.uk",
+    "rimleno.com", "simple4alls.com", "arsopo.com", "buzina.xyz"])) {
+    a.css("#adsframe { height:151px; }");
+}
+if (a.domCmp(["manga9.com", "mangabee.co"])) {
+    a.css(".adblock { height:31px; }");
+}
+if (a.domCmp(["mangabird.com", "onemanga2.com"])) {
+    a.css(".afs_ads { height:5px; }");
+}
 if (a.domCmp(["sc2casts.com"])) {
     a.inject(() => {
         "use strict";
@@ -242,7 +305,7 @@ if (a.domCmp(["tvregionalna24.pl"])) {
         });
     });
 }
-if (a.domCmp(["tvnstyle.pl", "tvnturbo.pl", "kuchniaplus.pl", "miniminiplus.pl"])) {
+if (a.domCmp(["tvn.pl", "tvnstyle.pl", "tvnturbo.pl", "kuchniaplus.pl", "miniminiplus.pl"])) {
     //Replace player - Thanks to szymon1118
     //Potential related domains:
     //["tvnfabula.pl", "itvnextra.pl", "tvn24bis.pl", "ttv.pl", "x-news.pl", "tvn7.pl", "itvn.pl", "tvn.pl", "tvn24.pl"]
@@ -307,9 +370,6 @@ if (a.domCmp(["player.pl"])) {
             console.error("uBlock Protector failed to find media URL!");
         });
     });
-}
-if (a.domCmp(["mid-day.com", "happytrips.com"])) {
-    a.readOnly("canRun", true);
 }
 if (a.domCmp(["ewallstreeter.com"])) {
     a.readOnly("OAS_rdl", 1);
@@ -615,12 +675,6 @@ if (a.domCmp(["simply-debrid.com"])) {
         window.adsbygoogle.loaded = true;
     });
 }
-if (a.domCmp(["manga9.com", "mangabee.co"])) {
-    a.css(".adblock { height:31px; }");
-}
-if (a.domCmp(["mangabird.com", "onemanga2.com"])) {
-    a.css(".afs_ads { height:5px; }");
-}
 if (a.domCmp(["kodilive.eu"])) {
     a.css(".Ad { height:5px; }");
 }
@@ -650,15 +704,6 @@ if (a.domCmp(["happy-hack.ru"])) {
     a.css("#blockblockF4 { visibility:invisible; display:none; } #blockblockF4 td {visibility:invisible; display:none; } " +
         "#blockblockF4 td p { visibility:invisible; display:none; } #blockblockD3 { visibility:visible; display:block; }");
 }
-if (a.domCmp(["bitcoinaliens.com", "door2windows.com"])) {
-    a.bait("ins", ".adsbygoogle");
-}
-if (a.domCmp(["leaguesecretary.com", "teknogods.com", "hellsmedia.com"])) {
-    a.bait("div", "#adpbtest");
-}
-if (a.domCmp(["freesportsbet.com", "sportsplays.com"])) {
-    a.bait("div", "#ad-tester");
-}
 if (a.domCmp(["tgo-tv.com"])) {
     a.css("#adb, #bannerad1, .load_stream { display:none; }");
     a.on("load", () => {
@@ -681,9 +726,6 @@ if (a.domCmp(["cleodesktop.com"])) {
 if (a.domCmp(["imageraider.com"])) {
     a.bait("div", "#myGContainer");
 }
-if (a.domCmp(["voici.fr", "programme-tv.net"])) {
-    a.bait("div", "#sas_script2");
-}
 if (a.domCmp(["mil.ink"])) {
     a.bait("div", "#ads_div");
 }
@@ -696,9 +738,6 @@ if (a.domCmp(["lg-firmware-rom.com"])) {
 }
 if (a.domCmp(["xmac.xyz"])) {
     a.readOnly("killAds", true);
-}
-if (a.domCmp(["badtv.it", "badtaste.it", "badgames.it", "badcomics.it"])) {
-    a.cookie("adBlockChecked", "disattivo");
 }
 if (a.domCmp(["independent.co.uk"])) {
     a.cookie("adblock_detected", "ignored");
@@ -774,11 +813,9 @@ if (a.domCmp(["debridnet.com", "livedebrid.com"])) {
 }
 if (a.domCmp(["bluesatoshi.com"])) {
     a.css("#test { height:280px; }");
-    a.bait("div", "#test");
 }
 if (a.domCmp(["razercrypt.com", "satoshiempire.com", "oneadfaucet.com"])) {
     a.css("#test { height:250px; }");
-    a.bait("div", "#test");
 }
 if (a.domCmp(["jkanime.net"])) {
     a.bait("div", "#reco");
@@ -1000,9 +1037,6 @@ if (a.domCmp(["scan-mx.com", "onepiece-mx.net", "naruto-mx.net"])) {
         $("#yop").attr("id", "");
     });
 }
-if (a.domCmp(["freebitcoins.nx.tc", "getbitcoins.nx.tc"])) {
-    a.readOnly("ad_block_test", () => false);
-}
 if (a.domCmp(["bitcoinker.com"])) {
     a.readOnly("claim", () => true);
     a.ready(() => {
@@ -1013,9 +1047,6 @@ if (a.domCmp(["moondoge.co.in", "moonliteco.in", "moonbit.co.in", "bitcoinzebra.
     a.ready(() => {
         $("#AB, #E442Dv, #eCC5h").remove();
     });
-}
-if (a.domCmp(["bitcoiner.net", "litecoiner.net"])) {
-    a.bait("div", "#ad-top");
 }
 if (a.domCmp(["torrent-tv.ru"])) {
     a.readOnly("c_Oo_Advert_Shown", true);
@@ -1070,14 +1101,10 @@ if (a.domCmp(["vipleague.is", "vipleague.ws", "vipleague.tv", "vipleague.se", "v
     "vipleague.mobi", "vipleague.co", "vipleague.sx", "vipleague.ch", "vipbox.tv", "vipbox.co", "vipbox.biz",
     "vipbox.sx", "vipbox.eu", "vipbox.so", "vipbox.nu", "vipboxsa.co", "strikeout.co", "strikeout.me",
     "homerun.re", "vipboxtv.co"])) {
-    a.readOnly("iExist", true);
     a.cookie("xclsvip", "1");
     a.css(".vip_052x003 { height:250px; }");
     a.css(".vip_09x827 { height:26px; }");
     a.css("#overlay { display:none; }");
-}
-if (a.domCmp(["securenetsystems.net"])) {
-    a.readOnly("iExist", true);
 }
 if (a.domCmp(["zoomtv.me"])) {
     a.readOnly("iaxpEnabled", true);
@@ -1308,9 +1335,6 @@ if (a.domCmp(["kissanime.com", "kissanime.to", "kissanime.ru"])) {
         })();`, true);
     });
 }
-if (a.domCmp(["kissanime.io", "1movies.tv"])) {
-    a.readOnly("check_adblock", true);
-}
 if (a.domCmp(["kisscartoon.me", "kisscartoon.se"])) {
     a.readOnly("xaZlE", () => { });
     a.ready(() => {
@@ -1538,7 +1562,6 @@ if (a.domCmp(["firstrow.co", "firstrows.ru", "firstrows.tv", "firstrows.org", "f
     "wiziwig.to", "wiziwig.tv", "myp2p.biz", "myp2p.tv", "myp2p.la", "myp2p.ec", "myp2p.eu", "myp2p.sx",
     "myp2p.ws", "myp2p.com", "atdhe.ru", "atdhe.se", "atdhe.bz", "atdhe.top", "atdhe.to", "atdhe.me",
     "atdhe.mx", "atdhe.li", "atdhe.al"])) {
-    a.filter("open");
     a.always(() => {
         a.cookie("adb", "1");
         a.css("#bannerInCenter, #hiddenBannerCanvas { display:none; }");
@@ -1546,14 +1569,12 @@ if (a.domCmp(["firstrow.co", "firstrows.ru", "firstrows.tv", "firstrows.org", "f
 }
 if (a.domCmp(["buzina.xyz", "farmet.info", "rimladi.com", "kitorelo.com", "omnipola.com", "porosin.co.uk",
     "rimleno.com", "simple4alls.com", "arsopo.com"])) {
-    a.css("#adsframe { height:151px; }");
     a.ready(() => {
         $("#adsframe").remove();
         $("#remove-over").click();
     });
 }
 if (a.domCmp(["buzina.xyz"])) {
-    a.css("#adsframe { height:151px; }");
     a.ready(() => {
         const elem = $("iframe[src*='.php?hash=']");
         if (elem.length) {
@@ -1725,9 +1746,6 @@ if (a.domCmp(["linkdrop.net", "revclouds.com", "leporno.org", "uploadshub.com", 
     "pizzamaking.com"])) {
     a.filter("setTimeout", a.matchMethod.string, "bab_elementid");
 }
-if (a.domCmp(["fourchette-et-bikini.fr", "meteocity.com"])) {
-    a.readOnly("adProtect", 1);
-}
 if (a.domCmp(["demo-phoenix.com", "dpstream.net", "gum-gum-streaming.com", "jeu.info", "sofoot.com",
     "gaara-fr.com", "gaytube.com", "tuxboard.com", "xstory-fr.com", "hentaifr.net", "filmstreaming-hd.com",
     "filmvf.net", "hentaihaven.org", "narutoshippudenvf.com", "thebadbuzz.com", "manga-news.com", "jeu.video",
@@ -1810,11 +1828,6 @@ if (a.domCmp(["burning-feed.com"])) {
     //a.readOnly("ads_enable", `"true"`);
     a.readOnly("ads_enable", () => { });
 }
-if (a.domCmp(["chip.de", "moviepilot.com", "nowloading.co", "champions.co"])) {
-    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/271
-    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/363
-    a.noAccess("stop");
-}
 if (a.domCmp(["ghame.ru"])) {
     $("html").prepend("<p class='adsbygoogle' style='display:none;'>hi</p>");
 }
@@ -1843,9 +1856,8 @@ if (a.domCmp(["sandiegouniontribune.com"])) {
             clearInterval(token);
         }
     }, 1000);
-    a.filter("addEventListener", a.matchMethod.stringExact, "scroll");
 }
-if (a.domCmp(["startclass.com"])) {
+if (a.domCmp(["startclass.com", "sandiegouniontribune.com"])) {
     a.filter("addEventListener", a.matchMethod.stringExact, "scroll");
 }
 if (a.domCmp(["adz.bz", "mellow.link", "hop.bz", "mellowads.com", "url.vin", "clik.bz"])) {
@@ -2588,9 +2600,6 @@ if (a.domCmp(["lne.es"])) {
 }
 if (a.domCmp(["adshort.co", "linksh.top", "adshorte.com", "coinb.ink"])) {
     a.noAccess("F3Z9");
-}
-if (a.domCmp(["gamersclub.com.br", "uploadboy.com", "vidoza.net", "videohelp.com", "passionea300allora.it"])) {
-    a.generic.adsjsV2();
 }
 if (a.domCmp(["sport365.live"])) {
     a.inject(() => {

@@ -99,10 +99,7 @@ hentaitake.net,hackinformer.com,sopsport.org,cyberterminators.co,themeslide.com,
 blockadblock.com,futbolchile.net,freeomovie.com,appdrop.net,skmedix.pl,yalujailbreak.net,cloudwebcopy.com,milaulas.com,tout-bon.com,sznpaste.net,linkdrop.net,themeslide.com,android-zone.ws,cmacapps.com,l2network.eu##script:inject(bab-defuser.js)
 ||lukkr.com/website/pf.js
 abczdrowie.pl,autokrata.pl,autokult.pl,biztok.pl,gadzetomania.pl,hotmoney.pl,kafeteria.pl,kafeteria.tv,komediowo.pl,komorkomania.pl,money.pl,pudelek.tv,sfora.pl,snobka.pl,wawalove.pl,wp.pl,wp.tv,wrzuta.pl,pudelek.pl,fotoblogia.pl,parenting.pl,echirurgia.pl,pudelekx.pl,o2.pl,kardiolo.pl##.windowErrCont
-tvn.pl#div(id*=_videoDriverContent)
-tvn7.pl##div.vjs-abDetected
-tvnstyle.pl##div.vjs-abDetected
-tvnturbo.pl##div.vjs-abDetected
+tvn.pl,tvn7.pl,tvnstyle.pl,tvnturbo.pl##div.vjs-abDetected
 @@||pagead2.googlesyndication.com^$domain=pudelek.tv
 filez.tv###adblockinfo
 @@||urlex.org^$generichide
