@@ -1374,4 +1374,4 @@ a.generic.NoAdBlock = () => {
             error("uBlock Protector failed to set up NoAdBlock uBlock Origin detector defuser!");
         }
     });
-}
+};
