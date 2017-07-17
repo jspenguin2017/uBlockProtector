@@ -1332,7 +1332,7 @@ a.generic.NoAdBlock = () => {
             let needDefuse = true;
             let installs = {};
             const noop = () => {
-                //window.console.log("NoAdBlock is uninstalled by uBlock Protector.");
+                //window.console.log("Fake init called");
             };
             const error = window.console.error.bind(window.console);
             window.CloudflareApps = window.CloudflareApps || {};
@@ -1344,7 +1344,7 @@ a.generic.NoAdBlock = () => {
                 get() {
                     if (needDefuse) {
                         try {
-                            for (let key of installs) {
+                            for (let key in installs) {
                                 if (//Basic signature checking
                                     installs[key].scope.defaultTexts &&
                                     installs[key].scope.testMethods &&
@@ -1367,7 +1367,9 @@ a.generic.NoAdBlock = () => {
                                     error("Uncaught Error: NoAdBlock uBlock Origin detector is not allowed on this device!");
                                 }
                             }
-                        } catch (err) { }
+                        } catch (err) {
+                            //window.console.log(err);
+                        }
                     }
                     return installs;
                 },
