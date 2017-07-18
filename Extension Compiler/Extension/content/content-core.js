@@ -926,25 +926,34 @@ a.generic = () => {
         };
         //---document-start---
         //Playwire
+        //Test link: http://support.playwire.com/article/adblock-detector-demo/
         try {
-            const errMsg = "Uncaught Error: Playwire uBlock Origin detector is not allowed on this device!";
-            let playwireZeus;
+            const fakeTester = {
+                check(f) {
+                    error("Uncaught Error: Playwire uBlock Origin detector is not allowed on this device!");
+                    f();
+                },
+            };
+            //Since this is generic I cannot assign it to an object yet
+            let val;
             window.Object.defineProperty(window, "Zeus", {
                 configurable: false,
-                set(val) {
-                    playwireZeus = val;
+                set(arg) {
+                    val = arg;
+                    try {
+                        if (val instanceof window.Object && val.AdBlockTester !== fakeTester) {
+                            window.Object.defineProperty(val, "AdBlockTester", {
+                                configurable: false,
+                                set() { },
+                                get() {
+                                    return fakeTester;
+                                },
+                            });
+                        }
+                    } catch (err) { }
                 },
                 get() {
-                    //Patch and return
-                    try {
-                        playwireZeus.AdBlockTester = {
-                            check(a) {
-                                error(errMsg);
-                                a();
-                            },
-                        };
-                    } catch (err) { }
-                    return playwireZeus;
+                    return val;
                 },
             });
         } catch (err) {
@@ -1271,7 +1280,7 @@ a.generic.Adfly = () => {
                             }
                         } catch (err) { }
                     }
-                    //In case this is not an Adfly page, I want this variable to be functional
+                    //In case this is not an Adfly page, this variable must be functional
                     val = value;
                 },
                 get() {
