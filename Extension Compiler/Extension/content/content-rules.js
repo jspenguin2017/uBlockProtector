@@ -2754,7 +2754,7 @@ if (a.domCmp(["swissadspaysfaucet.com"])) {
 if (a.domCmp(["1tv.ru"])) {
     a.inject(() => {
         "use strict";
-        const fakeAntiblock = window.Object.freeze({
+        const fakeAntiblock = {
             opts: {
                 url: "",
                 detectOnStart: false,
@@ -2771,7 +2771,7 @@ if (a.domCmp(["1tv.ru"])) {
                 window.setTimeout(f.cb, 10, false);
                 return this
             },
-        });
+        };
         window.EUMP = {};
         window.Object.defineProperty(window.EUMP, "antiblock", {
             configurable: false,
@@ -2781,4 +2781,7 @@ if (a.domCmp(["1tv.ru"])) {
             },
         });
     });
+}
+if (a.domCmp(["cellmapper.net"])) {
+    a.filter("alert", a.matchMethod.string, "Please disable ad-block");
 }
