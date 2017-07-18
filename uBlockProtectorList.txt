@@ -111,8 +111,6 @@ filez.tv###adblockinfo
 ||8muses.com^$inline-script
 @@||8muses.com/comix/picture^$inline-script
 ||allmusic.com^$inline-script
-||debridnet.com/stat*^$subdocument
-||amazon-adsystem.com^$subdocument,redirect=noopframe,domain=debridnet.com
 xmovies8.org,moviezr.org##script:inject(abort-on-property-read.js, $.getScript)
 tune.pk###annoy-wrapper
 29443kmq.video,dato.porn###a

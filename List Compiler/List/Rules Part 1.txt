@@ -149,9 +149,6 @@ filez.tv###adblockinfo
 @@||8muses.com/comix/picture^$inline-script
 ! === allmusic.com
 ||allmusic.com^$inline-script
-! === debridnet.com - Thanks to uBlock-user
-||debridnet.com/stat*^$subdocument
-||amazon-adsystem.com^$subdocument,redirect=noopframe,domain=debridnet.com
 ! === xmovies8.org, moviezr.org
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/90
 xmovies8.org,moviezr.org##script:inject(abort-on-property-read.js, $.getScript)

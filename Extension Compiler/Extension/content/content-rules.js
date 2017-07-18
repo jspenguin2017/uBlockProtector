@@ -808,8 +808,9 @@ if (a.domCmp(["hentaihaven.org"])) {
     a.noAccess("desktop_variants");
 }
 if (a.domCmp(["debridnet.com", "livedebrid.com"])) {
-    a.css(".myTestAd2 { height:5px; }");
-    a.bait("div", ".myTestAd2");
+    //a.css(".myTestAd2 { height:5px; }");
+    //a.bait("div", ".myTestAd2");
+    a.filter("addEventListener", a.matchMethod.string, "jQuery.event.dispatch.apply");
 }
 if (a.domCmp(["bluesatoshi.com"])) {
     a.css("#test { height:280px; }");
