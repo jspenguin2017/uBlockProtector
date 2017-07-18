@@ -918,8 +918,8 @@ a.generic = () => {
     //==================
     a.inject(() => {
         "use strict";
-        let data = {};
         //---Initialization---
+        let data = {};
         const error = window.console.error.bind(window.console);
         const err = (name) => {
             error(`Uncaught Error: ${name} uBlock Origin detector is not allowed on this device!`);
@@ -930,7 +930,7 @@ a.generic = () => {
         try {
             const fakeTester = {
                 check(f) {
-                    error("Uncaught Error: Playwire uBlock Origin detector is not allowed on this device!");
+                    err("Playwire");
                     f();
                 },
             };
