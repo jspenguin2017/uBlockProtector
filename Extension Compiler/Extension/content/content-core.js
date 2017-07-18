@@ -837,6 +837,7 @@ a.generic = () => {
             insertedNode.remove();
         }
         //NoAdBlock
+        //Fallback solution
         if (insertedNode.nodeName === "CLOUDFLARE-APP" &&
             insertedNode.getAttribute("app-id") === "no-adblock" &&
             insertedNode.getAttribute(NoAdBlockMagic) !== "1") {
