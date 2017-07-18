@@ -1365,6 +1365,7 @@ a.generic.NoAdBlock = () => {
                     if (needDefuse) {
                         try {
                             for (let key in installs) {
+                                /*
                                 if (//Basic signature checking
                                     installs[key].scope.defaultTexts &&
                                     installs[key].scope.testMethods &&
@@ -1374,6 +1375,9 @@ a.generic.NoAdBlock = () => {
                                     window.Array.isArray(installs[key].scope.testMethods) &&
                                     installs[key].scope.warningRenderer instanceof window.Object &&
                                     window.Object.keys(installs[key].scope.warningRenderer).length > 2) {
+                                */
+                                //I just realized Cloudflare assigns each app an unique ID, well, that makes my life a lot easier
+                                if (installs[key].appId === "ziT6U3epKObS") {
                                     //Patch property
                                     window.Object.defineProperty(installs[key].scope, "init", {
                                         configurable: false,
