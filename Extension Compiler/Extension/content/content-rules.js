@@ -1865,37 +1865,38 @@ if (a.domCmp(["adz.bz", "mellow.link", "hop.bz", "mellowads.com", "url.vin", "cl
     a.inject(() => {
         "use strict";
         let val;
+        const newFunc = () => {
+            window.callAPI(
+                "publishing",
+                "VerifyLinkClick",
+                {
+                    linkRef: val.linkRef(),
+                    linkClickRef: window.$("#LinkClickRef")[0].value,
+                    recaptchaResponse: val.recaptchaResponse(),
+                },
+                "Verify",
+                "Verifying",
+                (response) => {
+                    if (response.result) {
+                        window.location.href = response.linkURL;
+                    } else {
+                        window.showMessageModal("Verify failed", response.resultHtml, response.result);
+                    }
+                },
+                null,
+                () => {
+                    window.grecaptcha.reset();
+                },
+            );
+        };
         window.Object.defineProperty(window, "linkVM", {
             configurable: false,
             set(arg) {
                 val = arg;
             },
             get() {
-                if (val.verify) {
-                    val.verify = () => {
-                        window.callAPI(
-                            "publishing",
-                            "VerifyLinkClick",
-                            {
-                                linkRef: val.linkRef(),
-                                linkClickRef: window.$("#LinkClickRef")[0].value,
-                                recaptchaResponse: val.recaptchaResponse(),
-                            },
-                            "Verify",
-                            "Verifying",
-                            (response) => {
-                                if (response.result) {
-                                    window.location.href = response.linkURL;
-                                } else {
-                                    window.showMessageModal("Verify failed", response.resultHtml, response.result);
-                                }
-                            },
-                            null,
-                            () => {
-                                window.grecaptcha.reset();
-                            },
-                        );
-                    };
+                if (val && val.verify !== newFunc) {
+                    val.verify = newFunc;
                 }
                 return val;
             },
@@ -1907,36 +1908,37 @@ if (a.domCmp(["zap.in"])) {
     a.inject(() => {
         "use strict";
         let val;
+        const newFunc = () => {
+            window.callAPI(
+                "VerifyZapClick",
+                {
+                    linkRef: val.linkRef(),
+                    linkClickRef: window.$("#LinkClickRef")[0].value,
+                    recaptchaResponse: val.recaptchaResponse(),
+                },
+                "Verify",
+                "Verifying",
+                (response) => {
+                    if (response.result) {
+                        window.location.href = response.zapURL;
+                    } else {
+                        window.showMessageModal("Verify failed", response.resultHtml, response.result);
+                    }
+                },
+                null,
+                () => {
+                    window.grecaptcha.reset();
+                },
+            );
+        };
         window.Object.defineProperty(window, "zapVM", {
             configurable: false,
             set(arg) {
                 val = arg;
             },
             get() {
-                if (val.verify) {
-                    val.verify = () => {
-                        window.callAPI(
-                            "VerifyZapClick",
-                            {
-                                linkRef: val.linkRef(),
-                                linkClickRef: window.$("#LinkClickRef")[0].value,
-                                recaptchaResponse: val.recaptchaResponse(),
-                            },
-                            "Verify",
-                            "Verifying",
-                            (response) => {
-                                if (response.result) {
-                                    window.location.href = response.zapURL;
-                                } else {
-                                    window.showMessageModal("Verify failed", response.resultHtml, response.result);
-                                }
-                            },
-                            null,
-                            () => {
-                                window.grecaptcha.reset();
-                            },
-                        );
-                    };
+                if (val && val.verify !== newFunc) {
+                    val.verify = newFunc;
                 }
                 return val;
             },
