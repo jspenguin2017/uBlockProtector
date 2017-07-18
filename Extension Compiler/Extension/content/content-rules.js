@@ -2763,25 +2763,26 @@ if (a.domCmp(["swissadspaysfaucet.com"])) {
 if (a.domCmp(["1tv.ru"])) {
     a.inject(() => {
         "use strict";
+        //Stage 1
         const fakeAntiblock = {
             opts: {
                 url: "",
                 detectOnStart: false,
-                indicatorName: "",
+                indicatorName: "EUMPAdBlockEnabled",
                 resources: [],
             },
-            readyState: true,
+            readyState: "ready",
             detected: false,
             ready(f) {
                 window.setTimeout(f, 10, false);
                 return this;
             },
             detect(f) {
-                window.setTimeout(f.cb, 10, false);
+                window.setTimeout(f.cb, 10, false, this);
                 return this
             },
         };
-        window.EUMP = {};
+        window.EUMP = window.EUMP || {};
         window.Object.defineProperty(window.EUMP, "antiblock", {
             configurable: false,
             set() { },
@@ -2789,6 +2790,15 @@ if (a.domCmp(["1tv.ru"])) {
                 return fakeAntiblock;
             },
         });
+        //Stage 2
+        const _log = window.console.log.bind(window.console);
+        const errObj = new window.Error("This may not be logged!");
+        window.console.log = (...args) => {
+            if (String(args[0].startsWith("COM: VAST: load error "))) {
+                //throw errObj;
+            }
+            _log(...args);
+        };
     });
 }
 if (a.domCmp(["cellmapper.net"])) {
