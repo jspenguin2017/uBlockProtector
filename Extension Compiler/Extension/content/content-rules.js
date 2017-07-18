@@ -2790,14 +2790,17 @@ if (a.domCmp(["1tv.ru"])) {
             },
         });
         //Stage 2
-        const _log = window.console.log.bind(window.console);
-        const errObj = new window.Error("This may not be logged!");
-        window.console.log = (...args) => {
-            if (String(args[0].startsWith("COM: VAST: load error "))) {
-                //Breaks autoplay
-                //throw errObj;
-            }
-            _log(...args);
+        const original = window.XMLHttpRequest;
+        window.XMLHttpRequest = function (...args) {
+            const wrapped = new (window.Function.prototype.bind.apply(original, args));
+            const _open = wrapped.open;
+            wrapped.open = function (...args) {
+                if (args.length > 1 && args[1].startsWith("//v.adfox.ru/")) {
+                    this.withCredentials = false;
+                }
+                return _open.apply(wrapped, args);
+            };
+            return wrapped;
         };
     });
 }

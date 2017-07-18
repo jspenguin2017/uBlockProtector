@@ -504,3 +504,5 @@ couponcabin.com###adblocker-reminder
 @@||tubeninja.net/ads.js$first-party
 ! === tlz.de
 tlz.de##.ab-shader
+! === 1tv.ru
+||v.adfox.ru^$xmlhttprequest,redirect=nooptext,domain=1tv.ru
