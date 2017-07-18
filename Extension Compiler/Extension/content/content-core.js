@@ -710,11 +710,12 @@ a.nativePlayer = (source, type, width = "100%", height = "auto") => {
 };
 /**
  * Install XMLHttpRequest loopback engine. Should be called once on document-start if needed.
+ * The request will always be sent so event handlers can be triggered. Depending on the website, a background redirect
+ * may also be required.
  * @function
  * @param {Function} server - The loopback server.
  ** @param {Any} ...args - The arguments supplied to open.
  ** @return {string|null} Return a string to override the result of this request, return null to not interfere.
- *** The request will always be sent, so event handlers can be triggered properly.
  */
 a.loopback = (server) => {
     a.inject(`(() => {

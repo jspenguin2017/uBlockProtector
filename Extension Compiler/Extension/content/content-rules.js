@@ -2790,37 +2790,16 @@ if (a.domCmp(["1tv.ru"])) {
             },
         });
         //Stage 2
-        /*
         const _log = window.console.log.bind(window.console);
         const errObj = new window.Error("This may not be logged!");
         window.console.log = (...args) => {
             if (String(args[0].startsWith("COM: VAST: load error "))) {
+                //Breaks autoplay
                 //throw errObj;
             }
             _log(...args);
         };
-        */
     });
-    /*
-    a.loopback((method, url) => {
-        if (url.startsWith("//ads.adfox.ru/")) {
-            //console.warn("hit 1");
-            return `{ "lpd_id": "0:000000000" }`;
-        } else if (url.startsWith("https://wam.solution.weborama.fr/")) {
-            //console.warn("hit 2");
-            return "";
-        } else if (url.startsWith("//v.adfox.ru/")) {
-            //console.warn("hit 3");
-            return `
-<?xml version="1.0" encoding="UTF-8" ?>
-<VAST version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="data/vast.xsd">
-</VAST>
-`;
-        } else {
-            return null;
-        }
-    });
-    */
 }
 if (a.domCmp(["cellmapper.net"])) {
     a.filter("alert", a.matchMethod.string, "Please disable ad-block");
