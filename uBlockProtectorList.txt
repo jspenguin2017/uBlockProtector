@@ -312,6 +312,7 @@ paksociety.com##.blocked
 @@||viz.com^$generichide
 couponcabin.com###adblocker-reminder
 @@||tubeninja.net/ads.js$first-party
+tlz.de##.ab-shader
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================

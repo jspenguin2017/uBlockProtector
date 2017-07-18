@@ -2785,3 +2785,7 @@ if (a.domCmp(["1tv.ru"])) {
 if (a.domCmp(["cellmapper.net"])) {
     a.filter("alert", a.matchMethod.string, "Please disable ad-block");
 }
+if (a.domCmp(["tlz.de"])) {
+    a.filter("addEventListener", a.matchMethod.string, `document.getElementById("ad-container")`,
+        "window.document");
+}
