@@ -2430,17 +2430,15 @@ if (a.domCmp(["cda.pl"])) {
     a.readOnly("adblockV1", true);
 }
 if (a.domCmp(["linternaute.com"])) {
+    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/224
     a.inject(() => {
         "use strict";
-        let val;
-        window.Object.defineProperty(window, "OO", {
+        window.OO = window.OO || {};
+        window.Object.defineProperty(window.OO, "AAB", {
             configurable: false,
-            set(arg) {
-                val = arg;
-            },
+            set() { },
             get() {
-                val && (val.AAB = null);
-                return val;
+                return null;
             },
         });
     });
@@ -2630,13 +2628,13 @@ if (a.domCmp(["myfxbook.com"])) {
         const err = new window.Error("This property may not be accessed!");
         window.Object.defineProperty(window, "isAdBlockerExist", {
             configurable: false,
-            get() {
-                throw err;
-            },
             set(val) {
                 if (val) {
                     throw err;
                 }
+            },
+            get() {
+                throw err;
             },
         });
     });
