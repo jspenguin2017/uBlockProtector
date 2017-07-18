@@ -2102,20 +2102,29 @@ if (a.domCmp(["sthelensstar.co.uk", "runcornandwidnesworld.co.uk", "leighjournal
 if (a.domCmp(["aetv.com", "history.com", "mylifetime.com"])) {
     a.inject(() => {
         "use strict";
-        let val;
-        window.Object.defineProperty(window, "_sp_", {
-            configurable: false,
-            set(value) {
-                val = value;
+        const f = (e) => { e(false); };
+        window._sp_ = window._sp_ || {};
+        window.Object.defineProperties(window._sp_, {
+            "checkState": {
+                configurable: false,
+                set() { },
+                get() {
+                    return f;
+                },
             },
-            get() {
-                //Patch detection
-                try {
-                    val.checkState = (e) => { e(false); };
-                    val.isAdBlocking = (e) => { e(false); };
-                    delete val._detectionInstance;
-                } catch (err) { }
-                return val;
+            "isAdBlocking": {
+                configurable: false,
+                set() { },
+                get() {
+                    return f;
+                },
+            },
+            "_detectionInstance": {
+                configurable: false,
+                set() { },
+                get() {
+                    return undefined;
+                },
             },
         });
     });
