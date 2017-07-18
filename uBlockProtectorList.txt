@@ -170,7 +170,7 @@ filechoco.net##script:inject(noeval.js)
 @@||connect.facebook.net^$domain=graffica.info
 @@||disquscdn.com^$domain=graffica.info
 @@|https://disqus.com/next/config.js$domain=graffica.info
-rule34hentai.net##script:inject(noeval.js)
+||rule34hentai.net^$inline-script
 rule34hentai.net###babasbmsgx
 playbb.me#@#div[style^="width:"]
 easyvideo.me#@#div[style^="width:"]
