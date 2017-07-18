@@ -176,14 +176,14 @@ if (a.domCmp(["leaguesecretary.com", "teknogods.com", "hellsmedia.com"])) {
 if (a.domCmp(["freesportsbet.com", "sportsplays.com"])) {
     a.bait("div", "#ad-tester");
 }
-if (a.domCmp(["voici.fr", "programme-tv.net"])) {
-    a.bait("div", "#sas_script2");
-}
 if (a.domCmp(["bitcoiner.net", "litecoiner.net"])) {
     a.bait("div", "#ad-top");
 }
 
 //=====Other Specific Rules=====
+if (a.domCmp(["voici.fr", "programme-tv.net"])) {
+    a.bait("div", "#sas_script2");
+}
 if (a.domCmp(["chip.de", "moviepilot.com", "nowloading.co", "champions.co"])) {
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/271
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/363
