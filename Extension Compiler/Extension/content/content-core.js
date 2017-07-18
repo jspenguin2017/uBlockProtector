@@ -727,18 +727,27 @@ a.loopback = (server) => {
             wrapped.open = function (...args) {
                 const data = server(...args);
                 if (data !== null) {
-                    window.Object.defineProperty(this, "responseText", {
-                        configurable: false,
-                        set() { },
-                        get() {
-                            return data;
+                    window.Object.defineProperties(this, {
+                        "responseText": {
+                            configurable: false,
+                            set() { },
+                            get() {
+                                return data;
+                            },
                         },
-                    });
-                    window.Object.defineProperty(this, "status", {
-                        configurable: false,
-                        set() { },
-                        get() {
-                            return 200;
+                        "status": {
+                            configurable: false,
+                            set() { },
+                            get() {
+                                return 200;
+                            },
+                        },
+                        "statusText": {
+                            configurable: false,
+                            set() { },
+                            get() {
+                                return "OK";
+                            },
                         },
                     });
                 }
