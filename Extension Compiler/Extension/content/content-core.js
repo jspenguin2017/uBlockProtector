@@ -1348,13 +1348,12 @@ a.generic.NoAdBlock = () => {
     a.inject(() => {
         "use strict";
         try {
-            const reWarnTitle = /ad[ -]?block.+detected/i;
-            let needDefuse = true;
-            let installs = {};
+            const error = window.console.error.bind(window.console);
             const noop = () => {
                 //window.console.log("Fake init called");
             };
-            const error = window.console.error.bind(window.console);
+            let needDefuse = true;
+            let installs = {};
             window.CloudflareApps = window.CloudflareApps || {};
             window.Object.defineProperty(window.CloudflareApps, "installs", {
                 configurable: false,
@@ -1376,7 +1375,7 @@ a.generic.NoAdBlock = () => {
                                     installs[key].scope.warningRenderer instanceof window.Object &&
                                     window.Object.keys(installs[key].scope.warningRenderer).length > 2) {
                                 */
-                                //I just realized Cloudflare assigns each app an unique ID, well, that makes my life a lot easier
+                                //I just realized Cloudflare assigns each app an unique ID
                                 if (installs[key].appId === "ziT6U3epKObS") {
                                     //Patch property
                                     window.Object.defineProperty(installs[key].scope, "init", {
