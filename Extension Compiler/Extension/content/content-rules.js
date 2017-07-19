@@ -103,12 +103,18 @@ if (a.domCmp(["jansatta.com", "financialexpress.com", "indianexpress.com", "shin
 if (a.domCmp(["jagranjunction.com", "nekopoi.bid"])) {
     a.readOnly("isAdsDisplayed", true);
 }
-if (a.domCmp(["ratemyprofessors.com", "link.tl"])) {
+if (a.domCmp(["ratemyprofessors.com"])) {
     a.readOnly("adBlocker", false);
 }
-if (a.domCmp(["megogo.net", "openload.co", "openload.io", "openload.tv", "translatica.pl",
-    "angrybirdsnest.com", "nekopoi.bid"])) {
+if (a.domCmp(["link.tl"])) {
+    a.readOnly("adblocker", false);
+}
+if (a.domCmp(["megogo.net"])) {
     a.readOnly("adBlock", false);
+}
+if (a.domCmp(["openload.co", "openload.io", "openload.tv", "nekopoi.bid", "translatica.pl",
+    "angrybirdsnest.com"])) {
+    a.readOnly("adblock", false);
 }
 if (a.domCmp(["mexashare.com", "kisshentai.net", "hanime.tv"])) {
     a.readOnly("BetterJsPop", () => { });
@@ -131,9 +137,6 @@ if (a.domCmp(["vipleague.is", "vipleague.ws", "vipleague.tv", "vipleague.se", "v
     "vipbox.sx", "vipbox.eu", "vipbox.so", "vipbox.nu", "vipboxsa.co", "strikeout.co", "strikeout.me",
     "homerun.re", "vipboxtv.co", "securenetsystems.net"])) {
     a.readOnly("iExist", true);
-}
-if (a.domCmp(["mid-day.com", "happytrips.com"])) {
-    a.readOnly("canRun", true);
 }
 if (a.domCmp(["kissanime.io", "1movies.tv"])) {
     a.readOnly("check_adblock", true);
@@ -181,6 +184,9 @@ if (a.domCmp(["bitcoiner.net", "litecoiner.net"])) {
 }
 
 //=====Other Specific Rules=====
+if (a.domCmp(["mid-day.com", "happytrips.com"])) {
+    a.readOnly("canRun", true);
+}
 if (a.domCmp(["voici.fr", "programme-tv.net"])) {
     a.bait("div", "#sas_script2");
 }
@@ -911,9 +917,10 @@ if (a.domCmp(["videowood.tv"])) {
     a.readOnly("adb_remind", false);
 }
 if (a.domCmp(["infojobs.com.br"])) {
-    //They changed detection method, the new detection method should be caught in the generic anti-bait filter
-    //Enforce again just in case
     a.readOnly("adblock", 0);
+}
+if (a.domCmp(["comptoir-hardware.com"])) {
+    a.readOnly("adblock", `"non"`);
 }
 if (a.domCmp(["narkive.com"])) {
     a.readOnly("adblock_status", () => false);
@@ -1276,9 +1283,6 @@ if (a.domCmp(["4shared.com"])) {
 if (a.domCmp(["pro-zik.ws", "pro-tect.ws", "pro-ddl.ws", "pro-sport.ws"])) {
     a.cookie("visitedf", "true");
     a.cookie("visitedh", "true");
-}
-if (a.domCmp(["comptoir-hardware.com"])) {
-    a.readOnly("adblock", `"non"`);
 }
 if (a.domCmp(["bakersfield.com"])) {
     a.readOnly("AD_SLOT_RENDERED", true);
