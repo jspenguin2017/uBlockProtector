@@ -2677,7 +2677,7 @@ if (a.domCmp(["short.am"])) {
                     f.style.display = "none";
                     f.method = "post";
                     let i = document.createElement("input");
-                    i.name = "image";
+                    i.name = "_image";
                     i.value = "Continue";
                     f.appendChild(i);
                     document.body.append(f);
