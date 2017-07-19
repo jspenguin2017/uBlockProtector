@@ -1,3 +1,5 @@
+(() => { if (a.uBOExtraExcluded) { return; }
+
 /*******************************************************************************
 
     uBO-Extra - A companion extension to uBlock Origin: to gain ability to
@@ -726,4 +728,6 @@ if ( !abort ) {
         (document.head || document.documentElement).appendChild(elem);
     } catch(ex) {
     }
+})();
+
 })();

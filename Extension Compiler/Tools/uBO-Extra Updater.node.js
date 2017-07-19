@@ -19,13 +19,25 @@ const source = "https://raw.githubusercontent.com/gorhill/uBO-Extra/master/conte
  * @const {string}
  */
 const output = "./Extension/content/ubo-extra.js";
+/**
+ * The write stream of the output.
+ * @const {Stream}
+ */
+const writeStream = createWriteStream(output);
 
+//Write top wrapper
+writeStream.write(`(() => { if (a.uBOExtraExcluded) { return; }\n\n`);
 //Download and overwrite the file
 request(parse(source), (res) => {
-    res.pipe(createWriteStream(output));
+    res.pipe(writeStream, { end: false });
     res.on("end", () => {
+        writeStream.end(`\n})();`);
         console.log("Done.");
     });
+    res.on("error", (err) => {
+        console.log("Error:");
+        console.log(err);
+    })
 }).on("error", (err) => {
     console.log("Error:");
     console.log(err);

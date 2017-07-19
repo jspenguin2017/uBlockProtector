@@ -59,18 +59,10 @@
             a.generic.NoAdBlock();
         }
     }
-    //Disable uBO-Extra when it causes problems
-    const errObj = new Error("uBlock Protector is aborting uBO-Extra for this page");
+    //uBO-Extra whitelist
     if (a.domCmp(["slickdeals.net"], true)) {
-        Object.defineProperty(window, "scriptlets", {
-            configurable: false,
-            set() {
-                throw errObj;
-            },
-            get() {
-                throw errObj;
-            },
-        });
+        a.uBOExtraExcluded = true;
+        console.log("uBlock Protector excluded this domain from uBO-Extra.");
     }
 }
 

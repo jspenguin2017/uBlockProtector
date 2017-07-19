@@ -1,7 +1,7 @@
 //The content core library for content rules
 "use strict";
 
-//=====Initializer=====
+//=====Control=====
 /**
  * Initialization.
  * @function
@@ -17,6 +17,11 @@ a.init = () => {
         });
     }
 };
+/**
+ * Whether uBO-Extra should not run.
+ * @var {boolean}
+ */
+a.uBOExtraExcluded = false;
 
 //=====Utilities=====
 /**

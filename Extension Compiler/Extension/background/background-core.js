@@ -1,7 +1,7 @@
 //The background core library for background rules
 "use strict";
 
-//=====Initializer=====
+//=====Control=====
 /**
  * Initialization.
  * @function
