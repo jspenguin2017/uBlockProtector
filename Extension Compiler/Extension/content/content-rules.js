@@ -2849,3 +2849,10 @@ if (a.domCmp(["tlz.de"])) {
 if (a.domCmp(["paksociety.com"])) {
     a.css("html, body { overflow:scroll; }");
 }
+if (a.domCmp(["rule34hentai.net"])) {
+    //NSFW!
+    a.inject(() => {
+        "use strict";
+        window.base_href = "";
+    });
+}
