@@ -104,9 +104,12 @@ bild.de#@#script:inject(abort-on-property-read.js, de.bild.cmsKonfig.a.a)
 ! ============================
 ! ===== Common Solutions =====
 ! ============================
-! === Block screens
+! === Generic Cosmetic Rules
 ###like-us-adblock-modal
 ##.popup-premium__apla
+! === Generic Network Rules
+*/adblock-detector/*
+/adblock-popup.
 ! === Admiral
 ||separatesilver.com^$third-party
 ||pelcro.com^$third-party
@@ -439,8 +442,6 @@ hdzog.com##.msg-adblock.msg
 ! === ncaa.com
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/344
 @@||ncaa.com^$generichide
-! === ideal.es
-||vocento.com/adblock-detector/$script
 ! === webcheats.com.br
 webcheats.com.br##script:inject(abort-on-property-read.js, can_run_ads)
 webcheats.com.br###bg_trasp
