@@ -261,7 +261,7 @@ a.getMatcher = (method, filter) => {
  * Inject a standalone script to the page.
  * @function
  * @param {string|Function} payload - The script to inject.
- * @param {boolean} [isReady=false] - Set this to true if the payload does not need a wrapper.
+ * @param {boolean} [isReady=false] - Set this to true if the payload does not need a execution wrapper.
  */
 a.inject = (payload, isReady) => {
     let s = document.createElement("script");
@@ -271,6 +271,46 @@ a.inject = (payload, isReady) => {
         s.remove();
     } catch (err) {
         console.error("uBlock Protector failed to inject a standalone script!");
+        a.debugMode && console.log(s.textContent);
+    }
+};
+/**
+ * Similar to a.inject(), but the injected code is enclosed in a wrapper that has access to "execute" function.
+ * @function
+ * @param {string|Function} payload - The script to inject.
+ * @param {boolean} [isReady=false] - Set this to true if the payload does not need a execution wrapper.
+ * @runtime execute
+ ** Run code ignoring Content Security Policy.
+ ** @function
+ ** @param {string} code - The code to execute, must already have execution wrapper if needed.
+ */
+a.injectWithRuntime = (payload, isReady) => {
+    //Set up event listener
+    const magic = a.uid();
+    addEventListener(magic, (e) => {
+        //dispatchEvent and CustomEvent are cached by runtime, this is safe
+        a.inject(e.detail, true);
+    });
+    //Process payload
+    const runtime = `(() => {
+        "use strict";
+        const dispatchEvent = window.dispatchEvent.bind(window);
+        const CustomEvent = window.CustomEvent.bind(window);
+        const execute = (code) => {
+            dispatchEvent(new CustomEvent("${magic}", {
+                detail: code,
+            }));
+        };
+        ${isReady ? payload : `(${payload})();`}
+    })();`;
+    //Inject payload
+    let s = document.createElement("script");
+    s.textContent = runtime;
+    try {
+        document.documentElement.prepend(s);
+        s.remove();
+    } catch (err) {
+        console.error("uBlock Protector failed to inject a runtime wrapped standalone script!");
         a.debugMode && console.log(s.textContent);
     }
 };

@@ -1957,53 +1957,26 @@ if (a.domCmp(["zap.in"])) {
 }
 if (a.domCmp(["bonusbitcoin.co"])) {
     //Issue: https://github.com/reek/anti-adblock-killer/issues/3377
-    a.inject(() => {
+    a.injectWithRuntime(() => {
         "use strict";
+        const matcher1 = /adBlocked:[^,]+/;
+        const matcher2 = /self/g;
         let val;
-        const newFunc = () => {
-            window.callAPI(
-                "faucet",
-                "FaucetClaim",
-                {
-                    adBlocked: false,
-                    recaptchaResponse: window.grecaptcha.getResponse(),
-                    claimAverage: val.claimAverage(),
-                    instantClaim: window.instantClaim,
-                    fp: val.fp,
-                },
-                "Faucet claim",
-                "Processing claim",
-                (response) => {
-                    if (response.result) {
-                        val.claimCount++;
-                        val.balance(response.newBalance);
-                        val.bonusEligibleTotal(response.newBonusEligibleTotal);
-                        val.nextClaimTime = new window.Date().getTime() + (response.nextClaimSeconds * 1000);
-                        val.startTimer();
-                        val.resultHtml(response.resultHtml);
-                        $("#FaucetClaimModal").modal("show");
-                        const form = window.$("#FaucetForm");
-                        form[0].reset();
-                        form.data("formValidation").resetForm();
-                    } else {
-                        window.showMessageModal("Faucet claim", response.resultHtml, response.result);
-                    }
-                },
-                null,
-                () => {
-                    window.grecaptcha.reset();
-                },
-            );
-        };
         window.Object.defineProperty(window, "faucetVM", {
             configurable: false,
             set(arg) {
                 val = arg;
+                try {
+                    execute(`(() => {
+                        "use strict";
+                        window.faucetVM.claim = ${String(val.claim).replace(matcher1, "adblock: false")
+                            .replace(matcher2, "window.faucetVM")};
+                    })();`);
+                } catch (err) {
+                    console.log(err);
+                }
             },
             get() {
-                if (val && val.claim !== newFunc) {
-                    val.claim = newFunc;
-                }
                 return val;
             },
         });
