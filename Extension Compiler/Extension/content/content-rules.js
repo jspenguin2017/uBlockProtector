@@ -2829,3 +2829,6 @@ if (a.domCmp(["tlz.de"])) {
     a.filter("addEventListener", a.matchMethod.string, `document.getElementById("ad-container")`,
         "window.document");
 }
+if (a.domCmp(["paksociety.com"])) {
+    a.css("html, body { overflow:scroll; }");
+}
