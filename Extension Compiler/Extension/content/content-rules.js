@@ -1903,11 +1903,11 @@ if (a.domCmp(["adz.bz", "mellow.link", "hop.bz", "mellowads.com", "url.vin", "cl
             configurable: false,
             set(arg) {
                 val = arg;
+                try {
+                    val.verify = newFunc;
+                } catch (err) { }
             },
             get() {
-                if (val && val.verify !== newFunc) {
-                    val.verify = newFunc;
-                }
                 return val;
             },
         });
@@ -1945,11 +1945,11 @@ if (a.domCmp(["zap.in"])) {
             configurable: false,
             set(arg) {
                 val = arg;
+                try {
+                    val.verify = newFunc;
+                } catch (err) { }
             },
             get() {
-                if (val && val.verify !== newFunc) {
-                    val.verify = newFunc;
-                }
                 return val;
             },
         });
@@ -1972,9 +1972,7 @@ if (a.domCmp(["bonusbitcoin.co"])) {
                         window.faucetVM.claim = ${String(val.claim).replace(matcher1, "adBlocked: false")
                             .replace(matcher2, "window.faucetVM")};
                     })();`);
-                } catch (err) {
-                    console.log(err);
-                }
+                } catch (err) { }
             },
             get() {
                 return val;
