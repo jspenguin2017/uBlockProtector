@@ -275,10 +275,13 @@ a.inject = (payload, isReady) => {
     }
 };
 /**
- * Similar to a.inject(), but the injected code is enclosed in a wrapper that has access to "execute" function.
+ * Similar to a.inject(), but the injected code is enclosed in a wrapper that has access to some rumtime
+ * functions. Must be called on document-start to ensure security.
  * @function
  * @param {string|Function} payload - The script to inject.
  * @param {boolean} [isReady=false] - Set this to true if the payload does not need a execution wrapper.
+ * @runtime dispatchEvent CustomEvent
+ ** The real dispatchEvent and CustomEvent, useful when you need custom messaging.
  * @runtime execute
  ** Run code ignoring Content Security Policy.
  ** @function

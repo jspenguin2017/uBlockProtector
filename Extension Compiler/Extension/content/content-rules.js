@@ -1969,7 +1969,7 @@ if (a.domCmp(["bonusbitcoin.co"])) {
                 try {
                     execute(`(() => {
                         "use strict";
-                        window.faucetVM.claim = ${String(val.claim).replace(matcher1, "adblock: false")
+                        window.faucetVM.claim = ${String(val.claim).replace(matcher1, "adBlocked: false")
                             .replace(matcher2, "window.faucetVM")};
                     })();`);
                 } catch (err) {
