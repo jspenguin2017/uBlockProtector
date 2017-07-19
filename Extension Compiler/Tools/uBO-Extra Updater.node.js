@@ -31,6 +31,7 @@ writeStream.write(`(() => { if (a.uBOExtraExcluded) { return; }\n\n`);
 request(parse(source), (res) => {
     res.pipe(writeStream, { end: false });
     res.on("end", () => {
+        //Write bottom wrapper
         writeStream.end(`\n})();\n`);
         console.log("Done.");
     });
