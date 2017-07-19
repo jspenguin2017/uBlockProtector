@@ -13,7 +13,7 @@ var $ = (input) => new $.Selection(input);
 //=====Main=====
 /**
  * Selection class.
- * Unless otherwise specified, all methods returns the keyword this.
+ * Unless otherwise specified, all methods return the keyword this.
  * @class
  */
 $.Selection = class {
