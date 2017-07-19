@@ -31,7 +31,7 @@ writeStream.write(`(() => { if (a.uBOExtraExcluded) { return; }\n\n`);
 request(parse(source), (res) => {
     res.pipe(writeStream, { end: false });
     res.on("end", () => {
-        writeStream.end(`\n})();`);
+        writeStream.end(`\n})();\n`);
         console.log("Done.");
     });
     res.on("error", (err) => {
