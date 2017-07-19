@@ -166,7 +166,7 @@ if (a.domCmp(["osoarcade.com", "d3brid4y0u.info", "fileice.net", "nosteam.ro", "
     a.bait("div", "#tester");
 }
 if (a.domCmp(["cutwin.com", "cut-urls.com", "adbull.me", "xess.pro", "clik.pw", "admove.co", "urle.co",
-    "adshort.co", "linksh.top", "adshorte.com", "coinb.ink"])) {
+    "adshort.co", "linksh.top", "adshorte.com", "coinb.ink", "l2s.io"])) {
     a.bait("div", "#test-block", true);
 }
 if (a.domCmp(["filecom.net", "upshare.org", "skippyfile.com", "mwfiles.net", "up-flow.org", "globeslot.com"])) {
