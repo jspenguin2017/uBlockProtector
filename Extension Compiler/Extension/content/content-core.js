@@ -275,8 +275,8 @@ a.inject = (payload, isReady) => {
     }
 };
 /**
- * Similar to a.inject(), but the injected code is enclosed in a wrapper that has access to some rumtime
- * functions. Must be called on document-start to ensure security.
+ * Similar to a.inject(), but the injected code is enclosed in a wrapper that have some rumtime functions.
+ * Must be called on document-start to ensure security.
  * @function
  * @param {string|Function} payload - The script to inject.
  * @param {boolean} [isReady=false] - Set this to true if the payload does not need a execution wrapper.
@@ -285,7 +285,7 @@ a.inject = (payload, isReady) => {
  * @runtime execute
  ** Run code ignoring Content Security Policy.
  ** @function
- ** @param {string} code - The code to execute, must already have execution wrapper if needed.
+ ** @param {string} code - The code to execute, must already have execution wrapper if it needs one.
  */
 a.injectWithRuntime = (payload, isReady) => {
     //Set up event listener
