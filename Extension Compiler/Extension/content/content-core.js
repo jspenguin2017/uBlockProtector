@@ -1457,6 +1457,15 @@ a.generic.NoAdBlock = () => {
                                             return noop;
                                         },
                                     });
+                                    /*
+                                    window.Object.defineProperty(installs[key].scope, "testMethods", {
+                                        configurable: false,
+                                        set() { },
+                                        get() {
+                                            return [noop, noop];
+                                        },
+                                    });
+                                    */
                                     //Update flag and log
                                     needDefuse = false;
                                     error("Uncaught Error: NoAdBlock uBlock Origin detector is not allowed on this device!");
