@@ -314,6 +314,7 @@ couponcabin.com###adblocker-reminder
 tlz.de##.ab-shader
 ||v.adfox.ru^$xmlhttprequest,redirect=nooptext,domain=1tv.ru
 @@||hells-hack.com^$generichide
+|https://$third-party,script,domain=uptobox.com|uptostream.com,badfilter
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================

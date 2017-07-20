@@ -506,3 +506,5 @@ tlz.de##.ab-shader
 ||v.adfox.ru^$xmlhttprequest,redirect=nooptext,domain=1tv.ru
 ! === hells-hack.com
 @@||hells-hack.com^$generichide
+! === uptobox.com, uptostream.com
+|https://$third-party,script,domain=uptobox.com|uptostream.com,badfilter
