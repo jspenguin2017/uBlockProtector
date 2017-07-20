@@ -896,44 +896,45 @@ a.generic = () => {
         }
         //NoAdBlock
         //Fallback solution
-        if (NoAdBlockNeedDefuse &&
-            insertedNode.nodeName === "CLOUDFLARE-APP" &&
+        if (insertedNode.nodeName === "CLOUDFLARE-APP" &&
             insertedNode.getAttribute("app-id") === "no-adblock") {
             //Log
             a.err("NoAdBlock");
             //Remove element
             insertedNode.remove();
             //Oh baby a triple
-            a.inject(() => {
-                "use strict";
-                //Patch document.querySelector
-                const e = new window.DOMException("Failed to execute 'querySelector' on 'Document': " +
-                    "'cloudflare-app[app-id=no-adblock]' is not a valid selector.");
-                const qs = window.document.querySelector;
-                const querySelector = (selector, ...rest) => {
-                    if (selector === "cloudflare-app[app-id=no-adblock]") {
-                        throw e;
-                    }
-                    return qs.call(window.document, selector, ...rest);
-                };
-                window.document.querySelector = querySelector;
-                //Patch Function.prototype.toString, my old hat trick :)
-                const ts = window.Function.prototype.toString;
-                const toString = function (...args) {
-                    if (this === querySelector) {
-                        return "function querySelector() { [native code] }";
-                    } else if (this === toString) {
-                        return "function toString() { [native code] }";
-                    } else {
-                        return ts.apply(this, args);
-                    }
-                };
-                window.Function.prototype.toString = toString;
-            });
+            if (NoAdBlockNeedDefuse) {
+                a.inject(() => {
+                    "use strict";
+                    //Patch document.querySelector
+                    const e = new window.DOMException("Failed to execute 'querySelector' on 'Document': " +
+                        "'cloudflare-app[app-id=no-adblock]' is not a valid selector.");
+                    const qs = window.document.querySelector;
+                    const querySelector = (selector, ...rest) => {
+                        if (selector === "cloudflare-app[app-id=no-adblock]") {
+                            throw e;
+                        }
+                        return qs.call(window.document, selector, ...rest);
+                    };
+                    window.document.querySelector = querySelector;
+                    //Patch Function.prototype.toString, my old hat trick :)
+                    const ts = window.Function.prototype.toString;
+                    const toString = function (...args) {
+                        if (this === querySelector) {
+                            return "function querySelector() { [native code] }";
+                        } else if (this === toString) {
+                            return "function toString() { [native code] }";
+                        } else {
+                            return ts.apply(this, args);
+                        }
+                    };
+                    window.Function.prototype.toString = toString;
+                });
+                //Update flag
+                NoAdBlockNeedDefuse = false;
+            }
             //Enable scrolling
             $("body").rmClass("adbmodal-cloudflare-open");
-            //Update flag
-            NoAdBlockNeedDefuse = false;
         }
         //StopAdblock
         if (insertedNode.nodeName === "DIV" &&
