@@ -866,7 +866,7 @@ a.generic = () => {
     //No-Adblock
     const re1 = /^[a-z0-9]*$/;
     //NoAdBlock
-    const NoAdBlockMagic = a.uid();
+    let NoAdBlockNeedDefuse = true;
     //StopAdBlock
     const re2 = /^a[a-z0-9]*$/;
     //AntiAdblock (Packer)
@@ -896,21 +896,43 @@ a.generic = () => {
         }
         //NoAdBlock
         //Fallback solution
-        if (insertedNode.nodeName === "CLOUDFLARE-APP" &&
-            insertedNode.getAttribute("app-id") === "no-adblock" &&
-            insertedNode.getAttribute(NoAdBlockMagic) !== "1") {
+        if (NoAdBlockNeedDefuse &&
+            insertedNode.nodeName === "CLOUDFLARE-APP" &&
+            insertedNode.getAttribute("app-id") === "no-adblock") {
             //Log
             a.err("NoAdBlock");
             //Remove element
             insertedNode.remove();
-            //Create bait element
-            let bait = document.createElement("cloudflare-app");
-            bait.setAttribute("app-id", "no-adblock");
-            bait.setAttribute(NoAdBlockMagic, "1");
-            bait.style.display = "none";
-            document.documentElement.prepend(bait);
+            //Oh baby a triple
+            a.inject(() => {
+                "use strict";
+                //Patch querySelector
+                const qs = window.document.querySelector;
+                const querySelector = (selector, ...rest) => {
+                    if (selector === "cloudflare-app[app-id=no-adblock]") {
+                        throw new window.DOMException("Failed to execute 'querySelector' on 'Document': " +
+                            "'cloudflare-app[app-id=no-adblock]' is not a valid selector.");
+                    }
+                    return qs.call(window.document, selector, ...rest);
+                };
+                window.document.querySelector = querySelector;
+                //Patch Function.prototype.toString
+                const ts = window.Function.prototype.toString;
+                const toString = function (...args) {
+                    if (this === querySelector) {
+                        return "function querySelector() { [native code] }";
+                    } else if (this === toString) {
+                        return "function toString() { [native code] }";
+                    } else {
+                        return ts.apply(this, args);
+                    }
+                };
+                window.Function.prototype.toString = toString;
+            });
             //Enable scrolling
             $("body").rmClass("adbmodal-cloudflare-open");
+            //Update flag
+            NoAdBlockNeedDefuse = false;
         }
         //StopAdblock
         if (insertedNode.nodeName === "DIV" &&
