@@ -286,6 +286,7 @@ a.inject = (payload, isReady) => {
  ** Run code ignoring Content Security Policy.
  ** @function
  ** @param {string} code - The code to execute, must already have execution wrapper if it needs one.
+ *** The execution will be done on the next tick, which makes it not truly synchronous.
  */
 a.injectWithRuntime = (payload, isReady) => {
     //Set up event listener
