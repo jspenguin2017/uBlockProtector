@@ -924,6 +924,24 @@ if (a.domCmp(["videowood.tv"])) {
 if (a.domCmp(["infojobs.com.br"])) {
     a.readOnly("adblock", 0);
 }
+if (a.domCmp(["jbzdy.pl"])) {
+    a.inject(() => {
+        "use strict";
+        let val;
+        window.Object.defineProperty(window, "App", {
+            configurable: false,
+            set(arg) {
+                val = arg;
+                try {
+                    val.adb.init = () => { };
+                } catch (err) { }
+            },
+            get() {
+                return val;
+            },
+        });
+    });
+}
 if (a.domCmp(["comptoir-hardware.com"])) {
     a.readOnly("adblock", `"non"`);
 }
