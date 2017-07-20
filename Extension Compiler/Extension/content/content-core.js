@@ -1384,7 +1384,9 @@ a.generic.adsjsV2 = () => {
     a.inject(() => {
         "use strict";
         const error = window.console.error.bind(window.console);
-        const matcher = /[a-zA-Z0-9]{11,14}/; //From samples I saw, the length is 12 or 13, checking for 11 to 14 to be sure
+        //The ID is usually 12 or 13 characters long
+        //palemoon.org uses a 11 characters long ID
+        const matcher = /[a-zA-Z0-9]{11,14}/;
         const err = new window.TypeError("Failed to execute 'getElementById' on 'Document': 1 argument required, but only 0 present.");
         let original; //document.getElementById
         const newFunc = (...args) => {

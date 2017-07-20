@@ -293,6 +293,7 @@ if ( !abort ) {
             'fieldandstream.com',
             'financialpost.com',
             'gamerevolution.com',
+            'gamepedia.com',
             'geek.com',
             'gofugyourself.com',
             'growthspotter.com',
