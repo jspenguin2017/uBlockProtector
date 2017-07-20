@@ -906,7 +906,7 @@ a.generic = () => {
             //Oh baby a triple
             a.inject(() => {
                 "use strict";
-                //Patch querySelector
+                //Patch document.querySelector
                 const qs = window.document.querySelector;
                 const querySelector = (selector, ...rest) => {
                     if (selector === "cloudflare-app[app-id=no-adblock]") {
