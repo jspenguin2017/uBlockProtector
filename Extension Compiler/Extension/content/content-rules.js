@@ -53,8 +53,8 @@
             a.generic.adsjsV2();
         }
         //NoAdBlock
-        if (a.domCmp(["hackintosh.zone"], true)) {
-            //Handled by uBlock Origin
+        if (a.domCmp([], true)) {
+            console.log("This domain is excluded from NoAdBlock primary defuser.");
         } else {
             a.generic.NoAdBlock();
         }
