@@ -1420,11 +1420,11 @@ a.generic.NoAdBlock1 = () => {
                                                     messageTypeSmall: "1",
                                                 };
                                                 installs[key].options.translations = {
-                                                    howToDisableButtonLink: "https://github.com/jspenguin2017/uBlockProtector/issues/362",
-                                                    howToDisableButtonText: "Hi!",
+                                                    howToDisableButtonLink: "https://goo.gl/CgJEsa",
+                                                    howToDisableButtonText: "点我报告问题",
                                                     refreshButtonText: "",
                                                     showTranslations: true,
-                                                    warningText: "Hi five :)",
+                                                    warningText: "额，貌似我的黑科技失效了……",
                                                     warningTitle: "",
                                                 };
                                                 break;
@@ -1445,7 +1445,7 @@ a.generic.NoAdBlock1 = () => {
                                                 installs[key].options.dismissOptions = {
                                                     allowDismiss: "allow",
                                                     warningFrequency: "visit",
-                                                    warningInterval: 100,
+                                                    warningInterval: 1,
                                                 };
                                                 break;
                                             case 3:
