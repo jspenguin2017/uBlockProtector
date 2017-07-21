@@ -2729,9 +2729,13 @@ if (a.domCmp(["ohmymag.com", "ohmymag.com.br", "gentside.com", "gentside.com.br"
         init() { },
         removeAdblockPopup() { },
     }`);
-    a.readOnly("prebid", `{
-        init() { }
-    }`);
+    a.inject(() => {
+        "use strict";
+        window.prebid = (i, f) => {
+            f();
+        };
+        window.prebid.init = () => { };
+    });
 }
 if (a.domCmp(["mywrestling.com.pl"])) {
     a.generic.FuckAdBlock("KillAdBlock", "killAdBlock");
