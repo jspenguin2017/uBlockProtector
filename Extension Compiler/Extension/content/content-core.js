@@ -1496,7 +1496,7 @@ a.generic.NoAdBlock2 = () => {
             a.err("NoAdBlock");
             //Remove element
             insertedNode.remove();
-            //Oh baby a triple
+            //Patch some functions
             if (NoAdBlockNeedDefuse) {
                 a.inject(() => {
                     "use strict";
@@ -1511,7 +1511,7 @@ a.generic.NoAdBlock2 = () => {
                         return qs.call(window.document, selector, ...rest);
                     };
                     window.document.querySelector = querySelector;
-                    //Patch Function.prototype.toString, my old hat trick :)
+                    //Patch Function.prototype.toString
                     const ts = window.Function.prototype.toString;
                     const toString = function (...args) {
                         if (this === querySelector) {
