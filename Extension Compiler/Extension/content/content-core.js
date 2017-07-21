@@ -1396,7 +1396,7 @@ a.generic.NoAdBlock1 = () => {
                     installs = val;
                 },
                 get() {
-                    if (needDefuse) {
+                    if (needDefuse && installs instanceof window.Object) {
                         try {
                             for (let key in installs) {
                                 if (installs[key].appId === "ziT6U3epKObS" && installs[key].options) {
