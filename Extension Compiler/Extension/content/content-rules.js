@@ -2879,3 +2879,7 @@ if (a.domCmp(["rule34hentai.net"])) {
         window.base_href = "";
     });
 }
+if (a.domCmp(["haber1903.com"])) {
+    a.filter("setTimeout", a.matchMethod.string, "adblock");
+    a.noAccess("EnableRightClick");
+}
