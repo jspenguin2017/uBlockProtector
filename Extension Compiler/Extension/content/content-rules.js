@@ -26,7 +26,7 @@
         //Handled by specific rules
         "anandabazar.com",
         //Damage control
-        "viasport.fi", "tv3sport.dk",
+        "viasatsport.se", "viasport.fi", "tv3sport.dk", "viasport.no",
     ];
     const genericWhitelist2 = [
         //Local network
