@@ -1401,8 +1401,14 @@ a.generic.NoAdBlock1 = () => {
                             for (let key in installs) {
                                 if (installs[key].appId === "ziT6U3epKObS" && installs[key].options) {
                                     if (key === "preview") {
-                                        //Blow up preview, it is safe, some of the solutions below does not work on preview
-                                        delete installs.preview;
+                                        //Preview does not really matter, just hard code something that works for now
+                                        //Tested on v1.4.7
+                                        const _setTimeout = window.setTimeout;
+                                        window.setTimeout = (func, ...rest) => {
+                                            if (!window.String(func).includes("'cloudflare-app[app-id=no-adblock]'")) {
+                                                _setTimeout.call(window, func, ...rest);
+                                            }
+                                        };
                                     } else {
                                         switch (useSolution) {
                                             case 0:
@@ -1481,6 +1487,7 @@ a.generic.NoAdBlock1 = () => {
  * @function
  */
 a.generic.NoAdBlock2 = () => {
+    //Tested on v1.4.7
     let NoAdBlockNeedDefuse = true;
     a.onInsert((insertedNode) => {
         if (insertedNode.nodeName === "CLOUDFLARE-APP" &&
