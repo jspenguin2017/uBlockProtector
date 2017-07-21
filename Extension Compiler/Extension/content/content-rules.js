@@ -418,7 +418,7 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
     //if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl", "sportowefakty.wp.pl", "teleshow.wp.pl", "moto.wp.pl",
     //    "film.wp.pl", "gry.wp.pl", "wiadomosci.wp.pl", "portal.abczdrowie.pl", "o2.pl"])) {
     //Thanks to szymon1118
-    if (document.domain !== "wp.tv" && document.domain !== "gry.wp.pl") {
+    if (document.domain !== "gry.wp.pl") {
         let mid; //Media ID of next video
         let midArray1 = []; //Media IDs from method 1
         let midArray2 = []; //Media IDs from method 2
@@ -545,8 +545,14 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
                     console.log("Replacing player...");
                     console.log($(containerMatcher).selection[0]);
                 }
-                //Replace player, need to remove class or it will be caught in anti-collapsing observer
-                $(containerMatcher).after(a.nativePlayer(url)).rmClass().remove();
+                //Replace player
+                if (document.domain === "wp.tv") {
+                    //The wrapper is different for this domain
+                    $(".npp-container").after(a.nativePlayer(url)).remove();
+                } else {
+                    //Need to remove class or it will be caught in anti-collapsing observer
+                    $(containerMatcher).after(a.nativePlayer(url)).rmClass().remove();
+                }
                 //Update variables and counter
                 url = null;
                 replaceCounter++;
