@@ -1405,7 +1405,7 @@ a.generic.NoAdBlock1 = () => {
                                         //Tested on v1.4.7
                                         const _setTimeout = window.setTimeout;
                                         window.setTimeout = (func, ...rest) => {
-                                            if (!window.String(func).includes("'cloudflare-app[app-id=no-adblock]'")) {
+                                            if (!window.String(func).includes("renderWarning")) {
                                                 _setTimeout.call(window, func, ...rest);
                                             }
                                         };
