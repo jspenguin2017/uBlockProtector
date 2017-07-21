@@ -866,8 +866,6 @@ a.generic = () => {
     //---on-insert---
     //No-Adblock
     const re1 = /^[a-z0-9]*$/;
-    //NoAdBlock
-    let NoAdBlockNeedDefuse = true;
     //StopAdBlock
     const re2 = /^a[a-z0-9]*$/;
     //AntiAdblock (Packer)
@@ -894,48 +892,6 @@ a.generic = () => {
             a.err("No-Adblock");
             //Remove element
             insertedNode.remove();
-        }
-        //NoAdBlock
-        //Fallback solution
-        if (insertedNode.nodeName === "CLOUDFLARE-APP" &&
-            insertedNode.getAttribute("app-id") === "no-adblock") {
-            //Log
-            a.err("NoAdBlock");
-            //Remove element
-            insertedNode.remove();
-            //Oh baby a triple
-            if (NoAdBlockNeedDefuse) {
-                a.inject(() => {
-                    "use strict";
-                    //Patch document.querySelector
-                    const e = new window.DOMException("Failed to execute 'querySelector' on 'Document': " +
-                        "'cloudflare-app[app-id=no-adblock]' is not a valid selector.");
-                    const qs = window.document.querySelector;
-                    const querySelector = (selector, ...rest) => {
-                        if (selector === "cloudflare-app[app-id=no-adblock]") {
-                            throw e;
-                        }
-                        return qs.call(window.document, selector, ...rest);
-                    };
-                    window.document.querySelector = querySelector;
-                    //Patch Function.prototype.toString, my old hat trick :)
-                    const ts = window.Function.prototype.toString;
-                    const toString = function (...args) {
-                        if (this === querySelector) {
-                            return "function querySelector() { [native code] }";
-                        } else if (this === toString) {
-                            return "function toString() { [native code] }";
-                        } else {
-                            return ts.apply(this, args);
-                        }
-                    };
-                    window.Function.prototype.toString = toString;
-                });
-                //Update flag
-                NoAdBlockNeedDefuse = false;
-            }
-            //Enable scrolling
-            $("body").rmClass("adbmodal-cloudflare-open");
         }
         //StopAdblock
         if (insertedNode.nodeName === "DIV" &&
@@ -1416,15 +1372,19 @@ a.generic.adsjsV2 = () => {
     });
 };
 /**
- * Set up NoAdBlock defuser, call once on document-start if needed.
+ * Set up NoAdBlock defuser 1, call once on document-start if needed.
+ * Many solutions enclosed here, change useSolution constant to set the one to activate.
  * @function
  */
-a.generic.NoAdBlock = () => {
+a.generic.NoAdBlock1 = () => {
     a.inject(() => {
         "use strict";
         try {
+            //Hard code the solution to activate here
+            const useSolution = 3;
+            //Prevent the page from tampering this function
             const error = window.console.error.bind(window.console);
-            const noop = () => {
+            const init = () => {
                 //window.console.log("Fake init called");
             };
             let needDefuse = true;
@@ -1439,36 +1399,66 @@ a.generic.NoAdBlock = () => {
                     if (needDefuse) {
                         try {
                             for (let key in installs) {
-                                /*
-                                if (//Basic signature checking
-                                    installs[key].scope.defaultTexts &&
-                                    installs[key].scope.testMethods &&
-                                    installs[key].scope.warningRenderer &&
-                                    //In depth signature checking
-                                    reWarnTitle.test(String(installs[key].scope.defaultTexts.warningTitle)) &&
-                                    window.Array.isArray(installs[key].scope.testMethods) &&
-                                    installs[key].scope.warningRenderer instanceof window.Object &&
-                                    window.Object.keys(installs[key].scope.warningRenderer).length > 2) {
-                                */
-                                //I just realized Cloudflare assigns each app an unique ID
-                                if (installs[key].appId === "ziT6U3epKObS") {
-                                    //Patch property
-                                    window.Object.defineProperty(installs[key].scope, "init", {
-                                        configurable: false,
-                                        set() { },
-                                        get() {
-                                            return noop;
-                                        },
-                                    });
-                                    /*
-                                    window.Object.defineProperty(installs[key].scope, "testMethods", {
-                                        configurable: false,
-                                        set() { },
-                                        get() {
-                                            return [noop, noop];
-                                        },
-                                    });
-                                    */
+                                if (installs[key].appId === "ziT6U3epKObS" && installs[key].options) {
+                                    if (key === "preview") {
+                                        //Blow up preview, it is safe, some of the solutions below does not work on preview
+                                        delete installs.preview;
+                                    } else {
+                                        switch (useSolution) {
+                                            case 0:
+                                                //Solution 0: Emergency fallback, lock display to a closable small overlay
+                                                //Tested on v1.4.7
+                                                installs[key].options.warningSettings = {
+                                                    coverPage: false,
+                                                    messageTypeFull: "1",
+                                                    messageTypeSmall: "1",
+                                                };
+                                                installs[key].options.translations = {
+                                                    howToDisableButtonLink: "https://github.com/jspenguin2017/uBlockProtector/issues/362",
+                                                    howToDisableButtonText: "Hi!",
+                                                    refreshButtonText: "",
+                                                    showTranslations: true,
+                                                    warningText: "Hi five :)",
+                                                    warningTitle: "",
+                                                };
+                                                break;
+                                            case 1:
+                                                //Solution 1: Set it to show up 5 to 10 years later
+                                                //Tested on v1.4.7
+                                                const min = 157700000, max = 315400000;
+                                                installs[key].options.advancedSettings = {
+                                                    showAdvancedSettings: true,
+                                                    warningDelay: window.Math.floor(window.Math.random() * (max - min) + min),
+                                                };
+                                                break;
+                                            case 2:
+                                                //Solution 2: Spoof cookies to prevent showing dialog
+                                                //Tested on v1.4.7
+                                                window.document.cookie = `lastTimeWarningShown=${window.Date.now()}`;
+                                                window.document.cookie = "warningFrequency=visit";
+                                                installs[key].options.dismissOptions = {
+                                                    allowDismiss: "allow",
+                                                    warningFrequency: "visit",
+                                                    warningInterval: 100,
+                                                };
+                                                break;
+                                            case 3:
+                                                //Solution 3: Noop init
+                                                //Tested on v1.4.7
+                                                window.Object.defineProperty(installs[key].scope, "init", {
+                                                    configurable: false,
+                                                    set() { },
+                                                    get() {
+                                                        return init;
+                                                    },
+                                                });
+                                                break;
+                                            default:
+                                                //Ultimate solution: Stop installation, may break other Cloudflare apps
+                                                delete installs[key];
+                                                break;
+                                        }
+                                    }
                                     //Update flag and log
                                     needDefuse = false;
                                     error("Uncaught Error: NoAdBlock uBlock Origin detector is not allowed on this device!");
@@ -1485,4 +1475,53 @@ a.generic.NoAdBlock = () => {
             error("uBlock Protector failed to set up NoAdBlock uBlock Origin detector defuser!");
         }
     });
+};
+/**
+ * Set up NoAdBlock defuser 2, call once on document-start if needed.
+ * @function
+ */
+a.generic.NoAdBlock2 = () => {
+    let NoAdBlockNeedDefuse = true;
+    a.onInsert((insertedNode) => {
+        if (insertedNode.nodeName === "CLOUDFLARE-APP" &&
+            insertedNode.getAttribute("app-id") === "no-adblock") {
+            //Log
+            a.err("NoAdBlock");
+            //Remove element
+            insertedNode.remove();
+            //Oh baby a triple
+            if (NoAdBlockNeedDefuse) {
+                a.inject(() => {
+                    "use strict";
+                    //Patch document.querySelector
+                    const e = new window.DOMException("Failed to execute 'querySelector' on 'Document': " +
+                        "'cloudflare-app[app-id=no-adblock]' is not a valid selector.");
+                    const qs = window.document.querySelector;
+                    const querySelector = (selector, ...rest) => {
+                        if (selector === "cloudflare-app[app-id=no-adblock]") {
+                            throw e;
+                        }
+                        return qs.call(window.document, selector, ...rest);
+                    };
+                    window.document.querySelector = querySelector;
+                    //Patch Function.prototype.toString, my old hat trick :)
+                    const ts = window.Function.prototype.toString;
+                    const toString = function (...args) {
+                        if (this === querySelector) {
+                            return "function querySelector() { [native code] }";
+                        } else if (this === toString) {
+                            return "function toString() { [native code] }";
+                        } else {
+                            return ts.apply(this, args);
+                        }
+                    };
+                    window.Function.prototype.toString = toString;
+                });
+                //Update flag
+                NoAdBlockNeedDefuse = false;
+            }
+            //Enable scrolling
+            $("body").rmClass("adbmodal-cloudflare-open");
+        }
+    })
 };
