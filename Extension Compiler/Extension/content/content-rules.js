@@ -62,8 +62,8 @@
     }
     //uBO-Extra white list
     if (a.domCmp([
-        "slickdeals.net", //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/405
-        "appear.in", //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/414
+        //"slickdeals.net", //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/405
+        //"appear.in", //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/414
     ], true)) {
         a.uBOExtraExcluded = true;
         console.log("uBlock Protector excluded this domain from uBO-Extra.");

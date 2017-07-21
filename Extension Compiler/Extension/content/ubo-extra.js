@@ -322,7 +322,6 @@ if ( !abort ) {
             'sandiegouniontribune.com',
             'saveur.com',
             'sherdog.com',
-            'slickdeals.net',
             'southflorida.com',
             'spin.com',
             'sporcle.com',
@@ -624,6 +623,7 @@ if ( !abort ) {
     scriptlets.push({
         scriptlet: scriptlet,
         exceptions: [
+            'appear.in',
             'hangouts.google.com',
             'meet.google.com',
             'messenger.com',
