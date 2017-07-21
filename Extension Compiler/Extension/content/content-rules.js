@@ -60,10 +60,11 @@
             //a.generic.NoAdBlock2();
         }
     }
-    //uBO-Extra whitelist
-    if (a.domCmp(["slickdeals.net", "appear.in"], true)) {
-        //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/405
-        //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/414
+    //uBO-Extra white list
+    if (a.domCmp([
+        "slickdeals.net", //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/405
+        "appear.in", //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/414
+    ], true)) {
         a.uBOExtraExcluded = true;
         console.log("uBlock Protector excluded this domain from uBO-Extra.");
     }
