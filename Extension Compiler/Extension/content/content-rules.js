@@ -583,6 +583,7 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
                 if ((node.querySelector && node.querySelector("video > source")) ||
                     (node.classList && node.classList.contains("wp-player"))) {
                     node.className = "uBlockProtectorVideo";
+                    node.id = "";
                     document.querySelector("article").appendChild(node);
                 }
             }
