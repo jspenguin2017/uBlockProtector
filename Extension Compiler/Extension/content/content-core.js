@@ -1406,7 +1406,7 @@ a.generic.NoAdBlock1 = () => {
                                         const _setTimeout = window.setTimeout;
                                         window.setTimeout = (func, ...rest) => {
                                             if (!window.String(func).includes("renderWarning")) {
-                                                _setTimeout.call(window, func, ...rest);
+                                                return _setTimeout.call(window, func, ...rest);
                                             }
                                         };
                                     } else {
@@ -1530,5 +1530,5 @@ a.generic.NoAdBlock2 = () => {
             //Enable scrolling
             $("body").rmClass("adbmodal-cloudflare-open");
         }
-    })
+    });
 };
