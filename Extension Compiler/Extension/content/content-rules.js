@@ -2909,3 +2909,11 @@ if (a.domCmp(["haber1903.com"])) {
     a.filter("setTimeout", a.matchMethod.string, "adblock");
     a.noAccess("EnableRightClick");
 }
+if (a.domCmp(["gamejolt.net"])) {
+    a.onInsert((node) => {
+        if (node && node.innerHTML && node.innerHTML.includes("View ad.")) {
+            node.querySelector("h3").remove();
+            node.querySelector("p").remove();
+        }
+    });
+}

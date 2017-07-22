@@ -630,12 +630,11 @@ a.generic = () => {
         "RpbmdzLkNvbXBhbmlvbkJhY2tmaWxsTW9kZSA9IHtBTFdBWVM6ICJhbHdheXMiLE9OX01BU1RFUl9BRDogIm9uX21hc3Rlcl9hZCIsfTt3aW5kb3cuZ29vZ2xlLmltYS5JbWFTZGtTZXR0aW5ncy5W" +
         "cGFpZE1vZGUgPSB7RElTQUJMRUQ6IDAsRU5BQkxFRDogMSxJTlNFQ1VSRTogMix9O3dpbmRvdy5nb29nbGUuaW1hLnNldHRpbmdzID0gbmV3IHdpbmRvdy5nb29nbGUuaW1hLkltYVNka1NldHRpbm" +
         "dzKCk7fSkoKTs=",
-        /*
         [
             //Damage control
+            "gamejolt.net",
         ],
         false,
-        */
     );
     //---MoatFreeWheelJSPEM.js---
     //Payload generator
