@@ -421,6 +421,7 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
     if (true) {
         let mid; //Media ID of next video
         let midArray1 = []; //Media IDs from method 1
+        let midArray1Counter = 0;
         let midArray2 = []; //Media IDs from method 2
         let url = null; //URL of the next video
         let replaceCounter = 0; //The number of video players that are replaced
@@ -429,7 +430,7 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
         let networkErrorCounter = 0; //Will stop sending request if this is over 5
         let isInBackground = false; //A flag to prevent excessive CPU usage when the tab is in background
         //The player container matcher
-        let containerMatcher = ".wp-player-outer, .player__container, .wp-player, .embed-container";
+        let containerMatcher = ".wp-player-outer, .player__container, .wp-player, .embed-container, .uBlockProtectorVideo";
         const reMatcher = /mid[=,](\d+)/;
         const reMagicValidator = /^\d+$/;
         //Mid extracting method 1 magic listener
@@ -437,7 +438,8 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
         addEventListener(magic, (e) => {
             //Must verify as data from injected script cannot be trusted
             if (reMagicValidator.test(e.detail)) {
-                midArray1.push(e.detail);
+                midArray1Counter++;
+                !midArray1.includes(e.detail) && midArray1.push(e.detail);
             }
         });
         //Main function
@@ -452,8 +454,8 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
             a.inject(`(() => {
                 "use strict";
                 try {
-                    if (window.WP.player.list.length > ${midArray1.length}) {
-                        let thisMid = window.WP.player.list[${midArray1.length}].p.url;
+                    if (window.WP.player.list.length > ${midArray1Counter}) {
+                        let thisMid = window.WP.player.list[${midArray1Counter}].p.url;
                         if (thisMid) {
                             thisMid = thisMid.substring(thisMid.lastIndexOf("=") + 1);
                         }
@@ -468,7 +470,7 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
             })();`, true);
             //Mid extracting method 2
             {
-                let selection = $(containerMatcher)
+                let selection = $(containerMatcher);
                 if (selection.length) {
                     const elem = selection.first().find(".titlecont a.title");
                     let thisMid = elem.attr("href");
@@ -480,7 +482,11 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
                     }
                     //Extra safety check
                     if (thisMid) {
-                        midArray2.push(thisMid);
+                        if (midArray2.includes(thisMid)) {
+                            selection.first().rmClass().remove();
+                        } else {
+                            midArray2.push(thisMid);
+                        }
                     }
                 }
             }
@@ -564,11 +570,21 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
         a.on("blur", () => { isInBackground = true; });
     }
     if (a.domCmp(["wiadomosci.wp.pl"])) {
+        //Prevent website from trying to fix the video
+        a.onInsert((node) => {
+            if (node && node.id && node.id.startsWith("Player") && node.id !== "Player0") {
+                node.className = "";
+                node.remove();
+            }
+        });
         //Prevent the video player from collapsing
         a.onRemove((node, target) => {
-            if ((node.querySelector && node.querySelector("video > source")) ||
-                (node.classList && node.classList.contains("wp-player"))) {
-                document.querySelector("article").appendChild(node);
+            if (node) {
+                if ((node.querySelector && node.querySelector("video > source")) ||
+                    (node.classList && node.classList.contains("wp-player"))) {
+                    node.className = "uBlockProtectorVideo";
+                    document.querySelector("article").appendChild(node);
+                }
             }
         });
     }
