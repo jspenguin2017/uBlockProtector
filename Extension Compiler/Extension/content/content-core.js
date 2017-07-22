@@ -869,8 +869,8 @@ a.generic = () => {
     //StopAdBlock
     const re2 = /^a[a-z0-9]*$/;
     //AntiAdblock (Packer)
-    const reIframeId = /^(z|w)d$/;
-    const reImgId = /^(x|g)d$/;
+    const reIframeId = /^(?:z|w)d$/;
+    const reImgId = /^(?:x|g)d$/;
     const reImgSrc = /\/ads\/banner\.jpg/;
     const reIframeSrc = /\/adhandler\/|\/adimages\/|ad\.html/;
     //Adunblock
@@ -1107,8 +1107,8 @@ a.generic = () => {
         });
         //Antiblock.org (all version) and BetterStopAdblock
         const reMsgId = /^[a-z0-9]{4,10}$/i;
-        const reTag1 = /^(div|span|b|i|font|strong|center)$/i;
-        const reTag2 = /^(a|b|i|s|u|q|p|strong|center)$/i;
+        const reTag1 = /^(?:div|span|b|i|font|strong|center)$/i;
+        const reTag2 = /^(?:a|b|i|s|u|q|p|strong|center)$/i;
         const reWords1 = new window.RegExp("ad blocker|ad block|ad-block|adblocker|ad-blocker|adblock|bloqueur|bloqueador|" +
             "Werbeblocker|adblockert|&#1570;&#1583;&#1576;&#1604;&#1608;&#1603; &#1576;&#1604;&#1587;|блокировщиком", "i");
         const reWords2 = new window.RegExp("kapat|disable|désactivez|désactiver|desactivez|desactiver|desative|desactivar|" +

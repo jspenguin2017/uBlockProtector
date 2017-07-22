@@ -2212,7 +2212,7 @@ if (a.domCmp(["filmy.to", "histock.info"])) {
 }
 if (a.domCmp(["flashx.tv"])) {
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/130
-    a.filter("addEventListener", a.matchMethod.RegExp, /^(mousedown|keydown|contextmenu)$/, "window.document");
+    a.filter("addEventListener", a.matchMethod.RegExp, /^(?:mousedown|keydown|contextmenu)$/, "window.document");
     a.cookie("noprpaylqckrpuwntcnt", "1");
     a.cookie("noprpaylqckrpuwntexp", "1");
 }
