@@ -418,7 +418,7 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
     //if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl", "sportowefakty.wp.pl", "teleshow.wp.pl", "moto.wp.pl",
     //    "film.wp.pl", "gry.wp.pl", "wiadomosci.wp.pl", "portal.abczdrowie.pl", "o2.pl"])) {
     //Thanks to szymon1118
-    if (document.domain !== "gry.wp.pl") {
+    if (true) {
         let mid; //Media ID of next video
         let midArray1 = []; //Media IDs from method 1
         let midArray2 = []; //Media IDs from method 2
@@ -470,7 +470,7 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
             {
                 let selection = $(containerMatcher)
                 if (selection.length) {
-                    const elem = selection.find(".titlecont a.title");
+                    const elem = selection.first().find(".titlecont a.title");
                     let thisMid = elem.attr("href");
                     //Check if I got the element
                     if (thisMid) {
@@ -551,7 +551,7 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
                     $(".npp-container").after(a.nativePlayer(url)).remove();
                 } else {
                     //Need to remove class or it will be caught in anti-collapsing observer
-                    $(containerMatcher).after(a.nativePlayer(url)).rmClass().remove();
+                    $(containerMatcher).first().after(a.nativePlayer(url)).rmClass().remove();
                 }
                 //Update variables and counter
                 url = null;
