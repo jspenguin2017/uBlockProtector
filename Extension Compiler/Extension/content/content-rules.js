@@ -2921,3 +2921,6 @@ if (a.domCmp(["dilidili.wang"])) {
     a.filter("querySelectorAll", a.matchMethod.stringExact, "[href*=toGame] img",
         "window.document");
 }
+if (a.domCmp(["gamekit.com"])) {
+    a.filter("setInterval", a.matchMethod.string, "a-d-block-popup");
+}
