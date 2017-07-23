@@ -110,6 +110,8 @@ bild.de#@#script:inject(abort-on-property-read.js, de.bild.cmsKonfig.a.a)
 ! === Generic Network Rules
 */adblock-detector/*
 /adblock-popup.
+! === Adblock Identifier
+/jquery.adi.
 ! === Admiral
 ||separatesilver.com^$third-party
 ||pelcro.com^$third-party
