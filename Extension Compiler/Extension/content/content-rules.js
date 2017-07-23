@@ -847,8 +847,7 @@ if (a.domCmp(["hentaihaven.org"])) {
 }
 if (a.domCmp(["debridnet.com"])) {
     a.ready(() => {
-        $("script[src*='clksite.com']").selection[0].parentNode.textContent =
-            `Enter a link below and press "Start":`;
+        $("script[src*='clksite.com']").parent().text(`Enter a link below and press "Start":`);
     });
 }
 if (a.domCmp(["bluesatoshi.com"])) {
