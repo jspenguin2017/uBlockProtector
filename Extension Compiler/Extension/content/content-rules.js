@@ -2917,3 +2917,7 @@ if (a.domCmp(["gamejolt.net"])) {
         }
     });
 }
+if (a.domCmp(["dilidili.wang"])) {
+    a.filter("querySelectorAll", a.matchMethod.stringExact, "[href*=toGame] img",
+        "window.document");
+}
