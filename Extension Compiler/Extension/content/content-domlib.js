@@ -29,7 +29,7 @@ $.Selection = class {
          * The selected elements.
          * @member {Array.<DOMElement>}
          */
-        this.selection = override ? override : [...document.querySelectorAll(selector)];
+        this.selection = override ? override : [...(document.querySelectorAll(selector))];
         /**
          * The amount of selected elements.
          * @member {integer}
