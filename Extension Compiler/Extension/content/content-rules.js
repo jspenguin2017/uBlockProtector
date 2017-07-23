@@ -472,7 +472,7 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
             {
                 let selection = $(containerMatcher);
                 if (selection.length) {
-                    const elem = selection.first().find(".titlecont a.title");
+                    const elem = selection.first().copy().find(".titlecont a.title");
                     let thisMid = elem.attr("href");
                     //Check if I got the element
                     if (thisMid) {
@@ -483,7 +483,7 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
                     //Extra safety check
                     if (thisMid) {
                         if (midArray2.includes(thisMid)) {
-                            selection.first().rmClass().remove();
+                            selection.rmClass().remove();
                         } else {
                             midArray2.push(thisMid);
                         }
