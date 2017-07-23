@@ -111,7 +111,9 @@ bild.de#@#script:inject(abort-on-property-read.js, de.bild.cmsKonfig.a.a)
 */adblock-detector/*
 /adblock-popup.
 ! === Adblock Identifier
-/jquery.adi.
+! Can cause crash, need to test each case
+/jquery.adi.css
+/jquery.adi.js$domain=123link.top
 ! === Admiral
 ||separatesilver.com^$third-party
 ||pelcro.com^$third-party

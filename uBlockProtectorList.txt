@@ -88,7 +88,8 @@ bild.de#@#script:inject(abort-on-property-read.js, de.bild.cmsKonfig.a.a)
 ##.popup-premium__apla
 */adblock-detector/*
 /adblock-popup.
-/jquery.adi.
+/jquery.adi.css
+/jquery.adi.js$domain=123link.top
 ||separatesilver.com^$third-party
 ||pelcro.com^$third-party
 ||perceivequarter.com^$third-party
