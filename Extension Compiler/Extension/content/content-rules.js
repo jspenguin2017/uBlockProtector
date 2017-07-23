@@ -1887,7 +1887,7 @@ if (a.domCmp(["burning-feed.com"])) {
     a.readOnly("ads_enable", () => { });
 }
 if (a.domCmp(["ghame.ru"])) {
-    $("html").prepend("<p class='adsbygoogle' style='display:none;'>hi</p>");
+    a.cookie("adblock", "1");
 }
 if (a.domCmp(["thevideo.me", "fmovies.to", "fmovies.se", "fmovies.is"])) {
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/86
