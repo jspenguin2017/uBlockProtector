@@ -2186,7 +2186,7 @@ if (a.domCmp(["aetv.com", "history.com", "mylifetime.com"])) {
     a.inject(() => {
         "use strict";
         const f = (e) => { e(false); };
-        window._sp_ = window._sp_ || {};
+        window._sp_ = {};
         window.Object.defineProperties(window._sp_, {
             "checkState": {
                 configurable: false,
@@ -2516,16 +2516,31 @@ if (a.domCmp(["linternaute.com"])) {
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/224
     a.inject(() => {
         "use strict";
-        window.OO = window.OO || {};
-        window.Object.defineProperty(window.OO, "AAB", {
+        let val;
+        window.Object.defineProperty(window, "OO", {
             configurable: false,
-            set() { },
+            set(v) {
+                val = v;
+                try {
+                    val.AAB = null;
+                } catch (err) { }
+            },
             get() {
-                return null;
+                return val;
             },
         });
     });
 }
+/*
+if (a.domCmp(["rtl.be"])) {
+    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/421
+    a.inject(() => {
+        "use strict";
+        window.OO = {};
+        window.OO.AAB = {};
+    });
+}
+*/
 if (a.domCmp(["new-skys.net"])) {
     a.noAccess("alert");
 }
@@ -2868,7 +2883,7 @@ if (a.domCmp(["1tv.ru"])) {
                 return this
             },
         };
-        window.EUMP = window.EUMP || {};
+        window.EUMP = {};
         window.Object.defineProperty(window.EUMP, "antiblock", {
             configurable: false,
             set() { },
