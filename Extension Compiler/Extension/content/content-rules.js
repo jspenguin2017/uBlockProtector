@@ -2943,11 +2943,13 @@ if (a.domCmp(["gamekit.com"])) {
     a.filter("setInterval", a.matchMethod.string, "a-d-block-popup");
 }
 if (a.domCmp(["linkshrink.net"])) {
+    //Based on AdsBypasser
+    //License: https://github.com/adsbypasser/adsbypasser/blob/master/LICENSE
     const matcher = /revC\("([^"]+)"\)/;
     a.ready(() => {
         const scripts = document.querySelectorAll("script");
         let match;
-        for (let i = scripts.length - 1; i > 0; i--) {
+        for (let i = scripts.length - 1; i >= 0; i--) {
             //Start from end as the script tend to be at the end
             if (match = matcher.exec(scripts[i].textContent)) {
                 location.pathname = "/" + atob(match[1]);
