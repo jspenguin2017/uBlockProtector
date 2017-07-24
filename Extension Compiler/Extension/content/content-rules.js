@@ -612,6 +612,9 @@ if (a.domCmp(["betterdocs.net"])) {
 if (a.domCmp(["wired.com"])) {
     a.readOnly("google_onload_fired", true);
 }
+if (a.domCmp(["wired.it"])) {
+    a.readOnly("adBlockedTextEmb", `""`);
+}
 if (a.domInc(["knowlet3389.blogspot"])) {
     a.filter("setTimeout", a.matchMethod.string, '$("#gAds").height()');
 }
