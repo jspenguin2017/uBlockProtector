@@ -23,7 +23,7 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 ||cbsnews.com/news/*/undefined$image,redirect=1x1-transparent.gif
 ! === bild.de
 ! Handled by Extension due to race condition
-bild.de#@#script:inject(abort-on-property-read.js, de.bild.cmsKonfig.a.a)
+bild.de#@#script:inject(abort-on-property-read.js, de.bild.cmsKonfig.a.b.a)
 ! === streamable.com
 ! This website works better with the IMA SDK blocked
 ||imasdk.googleapis.com/js/sdkloader/ima3.js$script,important,domain=streamable.com

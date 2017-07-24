@@ -24,7 +24,7 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 @@|http://mmod.v.fwmrm.net/ad/g/*$script,domain=ncaa.com
 ||cbsnews.com/news/*/[object%20object]$image,redirect=1x1-transparent.gif
 ||cbsnews.com/news/*/undefined$image,redirect=1x1-transparent.gif
-bild.de#@#script:inject(abort-on-property-read.js, de.bild.cmsKonfig.a.a)
+bild.de#@#script:inject(abort-on-property-read.js, de.bild.cmsKonfig.a.b.a)
 ||imasdk.googleapis.com/js/sdkloader/ima3.js$script,important,domain=streamable.com
 ||d.0emm.com^$third-party
 ||d.0emn.com^$third-party

@@ -617,7 +617,6 @@ a.noAccess = (name, parent = "window") => {
 };
 /**
  * Similar to a.noAccess(), but with a more complicated property looping algorithm.
- * May have some memory leaks.
  * @function
  * @param {string} chain - The property chain, use "." to separate layers. Do not include "window".
  */
@@ -630,21 +629,22 @@ a.noAccessExt = (chain) => {
         //Prepare
         const error = window.console.error.bind(window.console);
         const err = new window.Error("This property may not be accessed!");
+        const Object = window.Object.bind(window);
+        const descriptor = window.Object.getOwnPropertyDescriptor.bind(window.Object);
+        const define = window.Object.defineProperty.bind(window.Object);
+        //Setters and getters
         const throwErr = () => {
             throw err;
         };
-        //This can cause potential memory leak but the magic key approach is not secure
-        let trustedSetters = [];
-        //Patch property chain
-        let current;
-        let i;
+        let trustedSetters = {};
+        //Property chain patcher
         const proxy = (parent, chain) => {
-            i = chain.indexOf(".");
+            const i = chain.indexOf(".");
             if (i === -1) {
                 //Last property in the chain, nuke whatever is present
-                current = window.Object.getOwnPropertyDescriptor(parent, chain);
+                const current = descriptor(parent, chain);
                 if (!current || current.set !== throwErr || current.get !== throwErr) {
-                    window.Object.defineProperty(parent, chain, {
+                    define(parent, chain, {
                         configurable: false,
                         set: throwErr,
                         get: throwErr,
@@ -656,13 +656,13 @@ a.noAccessExt = (chain) => {
                 let val = parent[name];
                 chain = chain.substring(i + 1);
                 //Patch current property
-                if (val instanceof window.Object) {
+                if (val instanceof Object) {
                     proxy(val, chain);
                 } else {
-                    current = window.Object.getOwnPropertyDescriptor(parent, name);
-                    if (!current || !trustedSetters.includes(current.set)) {
+                    const current = descriptor(parent, name);
+                    if (!current || !trustedSetters[chain] || trustedSetters[chain] !== current.set) {
                         const setter = (value) => {
-                            if (value instanceof window.Object) {
+                            if (value instanceof Object) {
                                 try {
                                     proxy(value, chain);
                                     val = value;
@@ -671,8 +671,8 @@ a.noAccessExt = (chain) => {
                                 }
                             }
                         };
-                        trustedSetters.push(setter);
-                        window.Object.defineProperty(parent, name, {
+                        trustedSetters[chain] = setter;
+                        define(parent, name, {
                             configurable: false,
                             set: setter,
                             get() { return val; },
