@@ -18,13 +18,13 @@
         //Other
         "apple.com", "ask.com", "reddit.com", "stackoverflow.com", "tampermonkey.net", "twitter.com",
         "360.cn", "baidu.com", "bufferapp.com", "chromeactions.com", "chatango.com", "calm.com",
-        "easyinplay.net", "ebay.com", "facebook.com", "flattr.com", "flickr.com", "ghacks.net", "imdb.com",
+        "easyinplay.net", "ebay.com", "facebook.com", "flattr.com", "flickr.com", "imdb.com",
         "imgbox.com", "imgur.com", "instagram.com", "jsbin.com", "jsfiddle.net", "linkedin.com", "mail.ru",
         "paypal.com", "pinterest.com", "preloaders.net", "qq.com", "vimeo.com", "wikipedia.org",
         "w3schools.com", "yandex.ru", "xemvtv.net", "spaste.com", "vod.pl", "agar.io", "popmech.ru",
         "pandoon.info", "fsf.org", "adblockplus.org", "plnkr.co", "exacttarget.com", "dolldivine.com",
         //Handled by specific rules
-        "anandabazar.com",
+        "anandabazar.com", "ghacks.net",
         //Damage control
         "viasatsport.se", "viasport.fi", "tv3sport.dk", "viasport.no",
     ];
@@ -2816,7 +2816,7 @@ if (a.domCmp(["itv.com"])) {
         }
     });
 }
-if (a.domCmp(["gry.wp.pl"])) {
+if (a.domCmp(["gry.wp.pl", "ghacks.net"])) {
     a.filter("atob");
 }
 if (a.domCmp(["giallozafferano.it"])) {
