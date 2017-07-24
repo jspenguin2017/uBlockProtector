@@ -82,6 +82,17 @@ $.Selection = class {
         return this;
     }
     /**
+     * Add classes to all selected elements.
+     * @method
+     * @param {string} ...args - Classes to add.
+     */
+    addClass(...args) {
+        for (let i = 0; i < this.selection.length; i++) {
+            this.selection[i].classList.add(...args);
+        }
+        return this;
+    }
+    /**
      * Remove classes from all selected elements.
      * @method
      * @param {string} [...args=[]] - Classes to remove, omit to remove all.

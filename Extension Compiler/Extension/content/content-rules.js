@@ -614,7 +614,8 @@ if (a.domCmp(["wired.com"])) {
 }
 if (a.domCmp(["wired.it"])) {
     a.readOnly("adBlockedTextEmb", `""`);
-    a.readOnly("adBlockedText", `""`);
+    a.readOnly("videoStatus", `"show"`);
+    $("html").rmClass("hideVideo").addClass("showVideo");
 }
 if (a.domInc(["knowlet3389.blogspot"])) {
     a.filter("setTimeout", a.matchMethod.string, '$("#gAds").height()');
