@@ -2942,3 +2942,17 @@ if (a.domCmp(["dilidili.wang"])) {
 if (a.domCmp(["gamekit.com"])) {
     a.filter("setInterval", a.matchMethod.string, "a-d-block-popup");
 }
+if (a.domCmp(["linkshrink.net"])) {
+    const matcher = /revC\("([^"]+)"\)/;
+    a.ready(() => {
+        const scripts = document.querySelectorAll("script");
+        let match;
+        for (let i = scripts.length - 1; i > 0; i--) {
+            //Start from end as the script tend to be at the end
+            if (match = matcher.exec(scripts[i].textContent)) {
+                location.pathname = "/" + atob(match[1]);
+                break;
+            }
+        }
+    });
+}
