@@ -29,21 +29,30 @@
 <body style="font-size:medium; min-width:600px; max-width:1000px;">
     <h3>Announcements</h3>
     <div>
-        <h4>July 16, 2017</h4>
+        <h4>July 24, 2017</h4>
         <p>
-            I am testing a new approach to prevent NoAdBlock from functioning, let me know if it causes performance degradation
-            or crashes to other Cloudflare apps.
+            I am aware that this page is a lot wider than it should on high DPI devices, it is caused by a bug in Chromium.
+            The bug is reported and will be fixed soon.
         </p>
         <hr />
-        <h4>July 15, 2017</h4>
-        <p>
-            NoAdBlock is now using an infinite idle loop to prevent pages from responding once it detects that its block screen
-            is removed. I have rolled out a patch to break their detection, but they will probably not give up anytime soon.
-        </p>
-        <p>
-            Let me know if they responded to my patch. I will probably lose soon, I already feel it... It is really hard to
-            make a generic solution, I will probably still be able to fix it on a per site basis.
-        </p>
+        <h4>Older Announcements</h4>
+        <div>
+            <details>
+                <summary>2017</summary>
+                <h4>July 16, 2017</h4>
+                <p>
+                    I am testing a new approach to prevent NoAdBlock from functioning, let me know if it causes performance
+                    degradation or crashes to other Cloudflare apps.
+                </p>
+                <hr />
+                <h4>July 15, 2017</h4>
+                <p>
+                    NoAdBlock is now using an infinite idle loop to prevent pages from responding once it detects that its
+                    block screen is removed. I have rolled out a patch to break their detection, but they will probably not
+                    give up anytime soon.
+                </p>
+            </details>
+        </div>
     </div>
     <h3>Basic Troubleshooting</h3>
     <div>
@@ -56,16 +65,20 @@
         <p>Are you using another extension that may cause conflicts?</p>
         <p>Did you change uBlock Origin settings that may cause it to misbehave?</p>
         <p>
-            Are you using Anti-Adblock Killer, AAK-Cont, and/or uBO-Extra? uBlock Protector fully covers their functionalities,
-            and using them at the same time may cause problems.
+            Are you using Anti-Adblock Killer, AAK-Cont, and/or uBO-Extra? uBlock Protector does similar things as they do
+            which can lead to conflicts.
         </p>
     </div>
     <h3>Common Questions and Problems</h3>
     <div>
         <h4>Will there be a configurable white list?</h4>
         <p>
-            Not until I have a reliable way to synchronously send configuration data to content scripts.
-            This means probably not anytime soon.
+            Not until I have a reliable way to synchronously send configuration data to content scripts. This is a limitation of
+            Chromium.
+        </p>
+        <p>
+            uBlock Origin uses the <code>onCommitted</code> event to inject scripts asynchronously, but that approach
+            sometimes loses in race conditions.
         </p>
         <h4>uBlock Protector is causing (further) breakage.</h4>
         <p>
@@ -74,7 +87,7 @@
         </p>
         <h4>A website freezes with uBlock Protector enabled.</h4>
         <p>
-            Some websites will intentionally freeze (with an infinite loop for example) once they detected uBlock Protector,
+            Some websites will intentionally freeze (with an infinite loop for example) once they detect uBlock Protector,
             it could also be caused by a bug in uBlock Protector, either way, report it and I will try to take care of it within
             2 days. Keep in mind that this only apply to freezings <strong>caused</strong> by uBlock Protector, other freezings
             may not be fixed this fast.
@@ -96,7 +109,7 @@
         <h4>viasatsport.se, viasport.fi, tv3sport.dk, viasport.no</h4>
         <p>
             Add the following filters to uBlock Origin. No ads shown, video not blurred, but may break some player functionalities.
-            Help wanted for finding a solution.
+            Help wanted for finding a real solution.
         </p>
         <pre>@@||fwmrm.net^$domain=viasatsport.se|viasport.fi|tv3sport.dk|viasport.no
 ||freewheel-mtgx-tv.akamaized.net^$media,domain=viasatsport.se|viasport.fi|tv3sport.dk|viasport.no
