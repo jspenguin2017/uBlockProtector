@@ -2965,3 +2965,10 @@ if (a.domCmp(["linkshrink.net"])) {
         }
     });
 }
+if (a.domCmp(["playrust.io"])) {
+    a.onInsert((node) => {
+        if (node.textContent && node.textContent.includes("Advertising enables us")) {
+            node.remove();
+        }
+    });
+}

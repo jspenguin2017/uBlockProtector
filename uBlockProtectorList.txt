@@ -319,7 +319,7 @@ tlz.de##.ab-shader
 @@||hells-hack.com^$generichide
 |https://$third-party,script,domain=uptobox.com|uptostream.com,badfilter
 1tiny.net##script:inject(abort-on-property-read.js, jQuery.ready)
-thevideo.me##notification-adblock
+thevideo.me##.notification-adblock
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================
