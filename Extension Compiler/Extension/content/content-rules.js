@@ -2745,6 +2745,7 @@ if (a.domCmp(["yiv.com"])) {
 }
 if (a.domCmp(["short.am"])) {
     if (location.pathname !== "/") {
+        //Skip to prevent popup
         a.readOnly("RunAds", undefined);
         a.ready(() => {
             let check = $("#disable > div.alert-danger");
@@ -2943,6 +2944,7 @@ if (a.domCmp(["gamekit.com"])) {
     a.filter("setInterval", a.matchMethod.string, "a-d-block-popup");
 }
 if (a.domCmp(["linkshrink.net"])) {
+    //Skip glitchy timer caused by blocking popup
     //Based on AdsBypasser
     //License: https://github.com/adsbypasser/adsbypasser/blob/master/LICENSE
     const matcher = /revC\("([^"]+)"\)/;
