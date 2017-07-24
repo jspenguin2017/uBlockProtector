@@ -1020,10 +1020,10 @@ a.generic = () => {
                 window.closeAdbuddy();
             }
             //Antiblock.org v2
-            (() => {
+            {
                 const re = /^#([a-z0-9]{4,10}) ~ \* \{ display: none; \}/;
                 const styles = window.document.querySelectorAll("style");
-                for (let i = 0; i < styles.length; i++) {
+                outmost: for (let i = 0; i < styles.length; i++) {
                     const style = styles[i];
                     const cssRules = style.sheet.cssRules;
                     for (var j = 0; j < cssRules.length; j++) {
@@ -1038,13 +1038,13 @@ a.generic = () => {
                                     err("Antiblock.org v2");
                                     //Set data for future uses
                                     data.abo2 = id;
-                                    return;
+                                    break outmost;
                                 }
                             }
                         }
                     }
                 }
-            })();
+            }
             //BetterStopAdblock, Antiblock.org v3, and BlockAdBlock
             {
                 const re = /^[a-z0-9]{4,12}$/i;
