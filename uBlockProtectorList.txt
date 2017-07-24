@@ -101,6 +101,7 @@ bild.de#@#script:inject(abort-on-property-read.js, de.bild.cmsKonfig.a.a)
 techdracula.com,keshavcommoditycalls.com,hackinformer.com,coderexample.com,anibatch.id,altervista.org,ispazio.net,kitguru.net,wabetainfo.com,albanian.tv,techygeekshome.info,dl-wordpress.com,nulledcode.cc##script:inject(setTimeout-defuser.js, an_message_display)
 hentaitake.net,hackinformer.com,sopsport.org,cyberterminators.co,themeslide.com,rnbxclusive.pw,gktoday.in##script:inject(abort-on-property-read.js, anOptions)
 blockadblock.com,futbolchile.net,freeomovie.com,appdrop.net,skmedix.pl,yalujailbreak.net,cloudwebcopy.com,milaulas.com,tout-bon.com,sznpaste.net,linkdrop.net,themeslide.com,android-zone.ws,cmacapps.com,l2network.eu,animes-mangas-ddl.net##script:inject(bab-defuser.js)
+themarker.com,nachrichten.at##script:inject(abort-on-property-read.js, adblockDetector)
 ||lukkr.com/website/pf.js
 abczdrowie.pl,autokrata.pl,autokult.pl,biztok.pl,gadzetomania.pl,hotmoney.pl,kafeteria.pl,kafeteria.tv,komediowo.pl,komorkomania.pl,money.pl,pudelek.tv,sfora.pl,snobka.pl,wawalove.pl,wp.pl,wp.tv,wrzuta.pl,pudelek.pl,fotoblogia.pl,parenting.pl,echirurgia.pl,pudelekx.pl,o2.pl,kardiolo.pl##.windowErrCont
 ||static-pilot.wp.pl/static/assets/js/ads.js$xmlhttprequest,redirect=noopjs
@@ -272,7 +273,6 @@ vendiscuss.net##script:inject(abort-on-property-read.js, adblock)
 diariodenavarra.es###abMsgWrap
 darmowe-pornosy.pl#@#.myTestAd
 |https://$third-party,script,domain=hothardware.com,badfilter
-themarker.com##script:inject(abort-on-property-read.js, adblockDetector)
 themarker.com###ad-block-wrapper
 @@||jsuol.com.br/c/detectadblock/$script,domain=uol.com.br,badfilter
 @@*$csp,domain=vidlox.tv
