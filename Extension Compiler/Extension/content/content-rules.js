@@ -2816,7 +2816,7 @@ if (a.domCmp(["itv.com"])) {
         }
     });
 }
-if (a.domCmp(["gry.wp.pl", "ghacks.net"])) {
+if (a.domCmp(["gry.wp.pl", "ghacks.net", "maketecheasier.com"])) {
     a.filter("atob");
 }
 if (a.domCmp(["giallozafferano.it"])) {
