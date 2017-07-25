@@ -321,6 +321,7 @@ tlz.de##.ab-shader
 1tiny.net##script:inject(abort-on-property-read.js, jQuery.ready)
 thevideo.me##.notification-adblock
 ||fas.li/js/p.js
+smashingmagazine.com###blocked
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================
