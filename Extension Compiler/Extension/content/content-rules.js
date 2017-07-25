@@ -1906,7 +1906,7 @@ if (a.domCmp(["is.fi"])) {
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/88
     a.readOnly("Sabdetect_load", false);
 }
-if (a.domCmp(["mooseroots.com", "insidegov.com", "gearsuite.com"])) {
+if (a.domCmp(["gearsuite.com"])) {
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/96
     a.css("html,body { overflow-y:scroll; } .BOX-wrap { display:none; }");
 }
