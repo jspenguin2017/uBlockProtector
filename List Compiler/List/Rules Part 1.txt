@@ -518,3 +518,5 @@ tlz.de##.ab-shader
 1tiny.net##script:inject(abort-on-property-read.js, jQuery.ready)
 ! === thevideo.me
 thevideo.me##.notification-adblock
+! === fas.li
+||fas.li/js/p.js
