@@ -122,7 +122,7 @@ if (a.domCmp(["megogo.net"])) {
     a.readOnly("adBlock", false);
 }
 if (a.domCmp(["openload.co", "openload.io", "openload.tv", "nekopoi.bid", "translatica.pl",
-    "angrybirdsnest.com"])) {
+    "angrybirdsnest.com", "4tests.com"])) {
     a.readOnly("adblock", false);
 }
 if (a.domCmp(["mexashare.com", "kisshentai.net", "hanime.tv"])) {
