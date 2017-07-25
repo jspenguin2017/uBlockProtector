@@ -2943,8 +2943,27 @@ if (a.domCmp(["gamejolt.net"])) {
     });
 }
 if (a.domCmp(["dilidili.wang"])) {
-    a.filter("querySelectorAll", a.matchMethod.stringExact, "[href*=toGame] img",
-        "window.document");
+    a.filter("addEventListener", a.matchMethod.stringExact, "DOMNodeInserted", "window.document");
+    a.ready(() => {
+        a.inject(() => {
+            "use strict"
+            const descriptor = window.Object.getOwnPropertyDescriptor(window.Element.prototype, "innerHTML");
+            const _set = descriptor.set;
+            const _get = descriptor.get;
+            window.Object.defineProperty(window.document.body, "innerHTML", {
+                configurable: false,
+                set(val) {
+                    if (typeof val !== "string" || !val.includes("adb-contant")) {
+                        _set.call(window.document.body, val);
+                    }
+                },
+                get() {
+                    return _get.call(window.document.body);
+                },
+            });
+        });
+    });
+    //a.filter("querySelectorAll", a.matchMethod.stringExact, "[href*=toGame] img", "window.document");
 }
 if (a.domCmp(["gamekit.com"])) {
     a.filter("setInterval", a.matchMethod.string, "a-d-block-popup");
