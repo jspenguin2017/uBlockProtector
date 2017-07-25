@@ -322,6 +322,7 @@ tlz.de##.ab-shader
 thevideo.me##.notification-adblock
 ||fas.li/js/p.js
 smashingmagazine.com###blocked
+||kustvaartforum.com/block.js
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================
