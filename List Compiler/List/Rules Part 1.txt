@@ -524,3 +524,5 @@ thevideo.me##.notification-adblock
 smashingmagazine.com###blocked
 ! === kustvaartforum.com
 ||kustvaartforum.com/block.js
+! === latin.it
+@@||latin.it/banner.php$first-party
