@@ -528,3 +528,5 @@ smashingmagazine.com###blocked
 @@||latin.it/banner.php$first-party
 ! === stocks.cafe
 ||stocks.cafe/amazon/google$subdocument
+! === geo.de
+||laterpay.net^$domain=geo.de

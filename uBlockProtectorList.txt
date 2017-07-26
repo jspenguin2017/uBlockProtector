@@ -325,6 +325,7 @@ smashingmagazine.com###blocked
 ||kustvaartforum.com/block.js
 @@||latin.it/banner.php$first-party
 ||stocks.cafe/amazon/google$subdocument
+||laterpay.net^$domain=geo.de
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================
