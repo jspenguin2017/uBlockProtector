@@ -48,7 +48,7 @@
             a.generic.Adfly();
         }
         //ads.js v2
-        if (a.domCmp(["gamersclub.com.br", "uploadboy.com", "vidoza.net", "videohelp.com",
+        if (a.domCmp(["gamersclub.com.br", "uploadboy.com", "vidoza.net", "videohelp.com", "zeiz.me",
             "passionea300allora.it", "memurlar.net", "palemoon.org", "stocks.cafe", "listamais.com.br"])) {
             a.generic.adsjsV2();
         }
@@ -99,7 +99,7 @@ if (a.domCmp(["drivearabia.com", "putlocker.com", "doatoolsita.altervista.org", 
 if (a.domCmp(["apkmirror.com", "freepdf-books.com", "bc.vc", "themeslide.com", "linkdrop.net",
     "l2s.io", "ally.sh", "al.ly", "croco.site", "urle.co", "ouo.io", "idlelivelink.blogspot.com",
     "lewat.id", "cutwin.com", "cut-urls.com", "adbull.me", "xess.pro", "clik.pw", "admove.co",
-    "adshort.co", "linksh.top", "adshorte.com", "coinb.ink", "123link.top", "fas.li"])) {
+    "adshort.co", "linksh.top", "adshorte.com", "coinb.ink", "123link.top", "fas.li", "zeiz.me"])) {
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
 if (a.domCmp(["katfile.com"])) {
