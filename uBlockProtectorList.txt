@@ -296,6 +296,7 @@ dingit.tv,t3n.de#@#.adsbox
 ||xess.pro/js/popup.js
 iprima.cz##.play-wrapper.player-wrapper > .you-shall-not-pass
 iprima.cz##.play-wrapper.player-wrapper + .you-shall-not-pass
+iprima.cz###AdTrackVideoPlayer
 ||hayan.tv/gibberish-aes.js^
 ||hdliveextra-a.akamaihd.net/*/ads.js$script,redirect=noopjs
 ||openculture.com/wp-content/uploads/$script

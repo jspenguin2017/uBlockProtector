@@ -475,6 +475,7 @@ dingit.tv,t3n.de#@#.adsbox
 ! === iprima.cz
 iprima.cz##.play-wrapper.player-wrapper > .you-shall-not-pass
 iprima.cz##.play-wrapper.player-wrapper + .you-shall-not-pass
+iprima.cz###AdTrackVideoPlayer
 ! === hayan.tv
 ||hayan.tv/gibberish-aes.js^
 ! === nbcsports.com
