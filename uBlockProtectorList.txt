@@ -294,6 +294,7 @@ dingit.tv,t3n.de#@#.adsbox
 ||dingit.tv/js/dingit-player/js/html5/videojs.ads.js$script,redirect=noopjs
 /countsJS.php$domain=vz.lt
 ||xess.pro/js/popup.js
+iprima.cz##.play-wrapper.player-wrapper > .you-shall-not-pass
 iprima.cz##.play-wrapper.player-wrapper + .you-shall-not-pass
 ||hayan.tv/gibberish-aes.js^
 ||hdliveextra-a.akamaihd.net/*/ads.js$script,redirect=noopjs
