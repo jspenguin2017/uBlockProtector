@@ -2992,3 +2992,6 @@ if (a.domCmp(["playrust.io"])) {
         }
     });
 }
+if (a.domCmp(["videacesky.cz"])) {
+    a.filter("setTimeout", a.matchMethod.string, "/dialog/adblock/");
+}
