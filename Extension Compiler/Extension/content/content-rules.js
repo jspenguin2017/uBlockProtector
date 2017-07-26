@@ -24,7 +24,7 @@
         "w3schools.com", "yandex.ru", "xemvtv.net", "spaste.com", "vod.pl", "agar.io", "popmech.ru",
         "pandoon.info", "fsf.org", "adblockplus.org", "plnkr.co", "exacttarget.com", "dolldivine.com",
         //Handled by specific rules
-        "anandabazar.com", "ghacks.net",
+        "anandabazar.com",
         //Damage control
         "viasatsport.se", "viasport.fi", "tv3sport.dk", "viasport.no",
     ];
@@ -2816,7 +2816,7 @@ if (a.domCmp(["itv.com"])) {
         }
     });
 }
-if (a.domCmp(["gry.wp.pl", "ghacks.net", "maketecheasier.com"])) {
+if (a.domCmp(["gry.wp.pl", "maketecheasier.com"])) {
     a.filter("atob");
 }
 if (a.domCmp(["giallozafferano.it"])) {
