@@ -532,3 +532,5 @@ smashingmagazine.com###blocked
 ||stocks.cafe/amazon/google$subdocument
 ! === geo.de
 ||laterpay.net^$domain=geo.de
+! === techforever.net
+techforever.net##script:inject(setTimeout-defuser.js, canABP)
