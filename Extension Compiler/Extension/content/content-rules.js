@@ -49,7 +49,7 @@
         }
         //ads.js v2
         if (a.domCmp(["gamersclub.com.br", "uploadboy.com", "vidoza.net", "videohelp.com",
-            "passionea300allora.it", "memurlar.net", "palemoon.org"])) {
+            "passionea300allora.it", "memurlar.net", "palemoon.org", "stocks.cafe"])) {
             a.generic.adsjsV2();
         }
         //NoAdBlock

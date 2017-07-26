@@ -526,3 +526,5 @@ smashingmagazine.com###blocked
 ||kustvaartforum.com/block.js
 ! === latin.it
 @@||latin.it/banner.php$first-party
+! === stocks.cafe
+||stocks.cafe/amazon/google$subdocument
