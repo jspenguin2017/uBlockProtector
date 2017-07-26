@@ -534,3 +534,6 @@ smashingmagazine.com###blocked
 ||laterpay.net^$domain=geo.de
 ! === techforever.net
 techforever.net##script:inject(setTimeout-defuser.js, canABP)
+! === seekingalpha.com
+@@||seekingalpha.com^$script,badfilter
+||seekingalpha.com/ads_data.js$script,redirect=noopjs
