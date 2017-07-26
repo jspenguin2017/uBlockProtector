@@ -91,8 +91,7 @@ if (a.domCmp(["vidoza.net", "videowood.tv", "l2s.io", "adshort.co", "linksh.top"
 if (a.domCmp(["drivearabia.com", "putlocker.com", "doatoolsita.altervista.org", "sockshare.com",
     "free-movie-home.com", "pc.online143.com", "kooora.com", "str3amtv.co.nr", "str3amtv.altervista.org",
     "str3am.altervista.org", "filecom.net", "pipocas.tv", "generatupremium.biz", "mega-debrid.eu",
-    "premiumst0re.blogspot.com", "dl-protect.com", "newsinlevels.com", "vipracing.biz", "businesstoday.in",
-    "dasolo.co"])) {
+    "premiumst0re.blogspot.com", "dl-protect.com", "newsinlevels.com", "vipracing.biz", "businesstoday.in"])) {
     a.filter("alert");
 }
 //---a.timewarp---
@@ -2101,7 +2100,7 @@ if (a.domInc(["gamereactor"])) {
         }
     });
 }
-if (a.domCmp(["dasolo.co"])) {
+if (a.domCmp(["dasolo.co", "dasolo.me"])) {
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/126
     a.inject(() => {
         "use strict";
@@ -2128,6 +2127,8 @@ if (a.domCmp(["dasolo.co"])) {
             }, 250);
         });
     });
+    //Prevent redirect
+    a.noAccess("alert");
 }
 if (a.domCmp(["titulky.com"])) {
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/128
