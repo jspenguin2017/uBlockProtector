@@ -54,7 +54,7 @@
         }
         //NoAdBlock
         if (a.domCmp([], true)) {
-            console.log("This domain is excluded from NoAdBlock primary defuser.");
+            console.log("This domain is excluded from NoAdBlock defuser.");
         } else {
             a.generic.NoAdBlock1();
             //a.generic.NoAdBlock2();
