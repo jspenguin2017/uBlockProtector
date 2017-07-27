@@ -3005,6 +3005,6 @@ if (a.domCmp(["wunderground.com"])) {
 if (a.domCmp(["explosm.net"])) {
     a.readOnly("showads", true);
 }
-if (a.domCmp(["playok.com"])) {
+if (a.domCmp(["playok.com", "kurnik.pl"])) {
     a.filter("getElementById", a.matchMethod.stringExact, "abp", "window.document");
 }
