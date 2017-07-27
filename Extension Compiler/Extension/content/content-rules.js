@@ -2999,3 +2999,6 @@ if (a.domCmp(["videacesky.cz"])) {
 if (a.domCmp(["wunderground.com"])) {
     a.readOnly("noAdBlocker", true);
 }
+if (a.domCmp(["explosm.net"])) {
+    a.readOnly("showads", true);
+}
