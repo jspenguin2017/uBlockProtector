@@ -271,7 +271,7 @@ vidnow.to###adplayer
 |https://$third-party,script,domain=photobucket.com,badfilter
 vendiscuss.net##script:inject(abort-on-property-read.js, adblock)
 diariodenavarra.es###abMsgWrap
-darmowe-pornosy.pl#@#.myTestAd
+darmowe-pornosy.pl,polskie-aktorki-porno.pl#@#.myTestAd
 |https://$third-party,script,domain=hothardware.com,badfilter
 themarker.com###ad-block-wrapper
 @@||jsuol.com.br/c/detectadblock/$script,domain=uol.com.br,badfilter
