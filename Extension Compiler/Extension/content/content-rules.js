@@ -285,6 +285,14 @@ if (a.domCmp(["pinkrod.com", "wetplace.com"])) {
     a.readOnly("getAd", () => { });
     a.readOnly("getUtm", () => { });
 }
+if (a.domCmp(["hackintosh.zone"])) {
+    a.ready(() => {
+        a.inject(() => {
+            "use strict";
+            window.onload = null;
+        });
+    });
+}
 if (a.domCmp(["hackintosh.computer"])) {
     //Prevent article hidding
     a.noAccess("google_jobrunner");
