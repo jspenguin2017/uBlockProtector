@@ -537,7 +537,7 @@ techforever.net##script:inject(setTimeout-defuser.js, canABP)
 ! === seekingalpha.com
 @@||seekingalpha.com^$script,badfilter
 ||seekingalpha.com/ads_data.js$script,redirect=noopjs
-! === hamsab.net
-||hamsab.net/golden/js/checkme.js
+! === btcinbtc.com and related domains
+/checkme.js$domain=btcinbtc.com|hamsab.net|20hk.com|my115.net|bitcoball.com|seek-inn.com|at-spot.com
 ! === explosm.net
 @@||proper.io/embed/$subdocument,domain=explosm.net
