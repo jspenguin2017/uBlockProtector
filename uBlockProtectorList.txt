@@ -305,10 +305,13 @@ tecmundo.com.br##.gallery-ads
 der-postillon.com###steady-adblock-overlay-container
 ||kinja.com/sp/
 ||deadspin.com/sp/
+||splinternews.com/sp/
 ||gizmodo.com/sp/
 ||jalopnik.com/sp/
 ||jezebel.com/sp/
 ||kotaku.com/sp/
+||lifehacker.com/sp/
+||theroot.com/sp/
 ||dailymotion.com^$domain=adshorte.com
 paksociety.com##.blocked
 ||fastly.net/mms-client.js$domain=cleveland.com
