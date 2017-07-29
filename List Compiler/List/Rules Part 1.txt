@@ -543,3 +543,5 @@ techforever.net##script:inject(setTimeout-defuser.js, canABP)
 @@||proper.io/embed/$subdocument,domain=explosm.net
 ! === leakedearly.gdn
 ||leakedearly.gdn/wp-content/uploads/*.js
+! === mspfa.com
+mspfa.com###nopepsi
