@@ -74,6 +74,15 @@ a.init = () => {
                         });
                     } //Ignore if not called from a proper tab
                     break;
+                /**
+                 * Log data to console. Only available in debug mode.
+                 * @param {string} data - The data to log.
+                 */
+                case "log":
+                    if (a.debugMode) {
+                        console.log(args[0].data);
+                    }
+                    break;
                 default:
                     //Invalid command, ignore
                     break;

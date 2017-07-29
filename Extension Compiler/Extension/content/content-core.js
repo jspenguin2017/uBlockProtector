@@ -397,6 +397,25 @@ a.onRemove = (handler) => {
         subtree: true,
     });
 };
+/**
+ * Set up script execution observer.
+ * @function
+ * @param {Function} handler - The event handler.
+ ** @param {HTMLScriptElement} script - The script that is about to be executed, patch or remove it as appropriate.
+ ** @param {HTMLElement} parent - The parent node of this script.
+ * @param {boolean} [inlineOnly=false] - Whether the callback should only be called for inline scripts.
+ */
+a.onBeforeScriptExecute = (handler, inlineOnly) => {
+    a.onInsert((node, target) => {
+        if (node.tagName === "SCRIPT") {
+            if (node.textContent) {
+                handler(node, target);
+            } else if (!inlineOnly) {
+                handler(node, target);
+            }
+        }
+    });
+};
 
 //=====Solutions=====
 /**
@@ -1534,5 +1553,23 @@ a.generic.NoAdBlock2 = () => {
             //Enable scrolling
             $("body").rmClass("adbmodal-cloudflare-open");
         }
+    });
+};
+
+//=====Debug Utilities=====
+/**
+ * Log data to the background console.
+ * Only available in debug mode.
+ * @function
+ * @param {string} log - The data to log.
+ */
+a.backgroundLog = (log) => {
+    if (!a.debugMode) {
+        console.error("a.backgroundLog() is only available in debug mode!");
+        return;
+    }
+    chrome.runtime.sendMessage({
+        cmd: "log",
+        data: log,
     });
 };
