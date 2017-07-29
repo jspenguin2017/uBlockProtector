@@ -499,6 +499,7 @@ if ( !abort ) {
     scriptlets.push({
         scriptlet: scriptlet,
         targets: [
+            'chowhound.com',
             'hockeysfuture.com',
             'metacritic.com'
         ]
