@@ -213,12 +213,17 @@ a.matchMethod = {
      * @param {RegExp} filter - The filter.
      */
     RegExp: 3,
+    /**
+     * Callback based matching, the callback function will lose its scope.
+     * @param {Function} filter - The callback function.
+     */
+    callback: 4,
 };
 /**
  * Get a matcher function, the filter will be "hard coded" into it.
  * @function
  * @param {Enumeration} method - The method to use.
- * @param {undefined|string|RegExp} filter - An appropriate filter.
+ * @param {undefined|null|string|RegExp|Function} filter - An appropriate filter.
  * @return {string} A matcher function.
  */
 a.getMatcher = (method, filter) => {
@@ -251,7 +256,8 @@ a.getMatcher = (method, filter) => {
                 }
                 return false;
             }`;
-            break;
+        case a.matchMethod.callback:
+            return String(filter);
         default:
             //Match all
             return `() => true`;
@@ -451,7 +457,7 @@ a.bait = (type, identifier, hidden) => {
  * @param {string} name - The name of the function.
  * @param {Enumeration} [method=a.matchMethod.matchAll] - An option from a.matchMethods, omit or pass null defaults
  ** to match all.
- * @param {undefined|string|RegExp} filter - The filter to apply, this must be appropriate for the method.
+ * @param {Many} filter - The filter to apply, this must be appropriate for the method.
  * @param {string} [parent="window"] - The name of the parent object, use "." or bracket notation to separate layers.
  ** The parent must exist.
  */
@@ -506,7 +512,7 @@ a.filter = (name, method, filter, parent = "window") => {
  * @param {string} timer - The name of the timer to patch, can be "setTimeout" or "setInterval".
  * @param {Enumeration} [method=method=a.matchMethod.matchAll] - An option from a.matchMethods, omit or pass null defaults
  ** to match all.
- * @param {undefined|string|RegExp} filter - The filter to apply, this must be appropriate for the method.
+ * @param {Many} filter - The filter to apply, this must be appropriate for the method.
  * @param {float} [ratio=0.02] - The boost ratio, between 0 and 1 for speed up, larger than 1 for slow down, defaults to
  ** speed up 50 times.
  */
