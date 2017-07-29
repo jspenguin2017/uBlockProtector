@@ -3016,3 +3016,23 @@ if (a.domCmp(["explosm.net"])) {
 if (a.domCmp(["playok.com", "kurnik.pl"])) {
     a.filter("getElementById", a.matchMethod.stringExact, "abp", "window.document");
 }
+if (a.domCmp(["gp.se"])) {
+    a.filter("addEventListener", a.matchMethod.stringExact, "scroll");
+    a.inject(() => {
+        "use strict";
+        window.burtApi = {
+            stopTracking() { },
+            connect() { },
+            annotate() { },
+            startTracking() { },
+            trackById() {
+                return {
+                    connect() { },
+                };
+            },
+        };
+        window._adform = {
+            readTags() { },
+        };
+    });
+}
