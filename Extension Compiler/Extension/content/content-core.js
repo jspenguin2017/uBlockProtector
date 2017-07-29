@@ -863,7 +863,7 @@ a.generic = () => {
     //FuckAdBlock
     a.generic.FuckAdBlock("FuckAdBlock", "fuckAdBlock");
     a.generic.FuckAdBlock("BlockAdBlock", "blockAdBlock");
-    //ads.js
+    //ads.js v1
     a.readOnly("canRunAds", true);
     a.readOnly("canShowAds", true);
     a.readOnly("isAdBlockActive", false);
@@ -898,10 +898,6 @@ a.generic = () => {
     const reImgId = /^(?:x|g)d$/;
     const reImgSrc = /\/ads\/banner\.jpg/;
     const reIframeSrc = /\/adhandler\/|\/adimages\/|ad\.html/;
-    //Adunblock
-    const reId = /^[a-z]{8}$/;
-    const reClass = /^[a-z]{8} [a-z]{8}/;
-    const reBg = /^[a-z]{8}-bg$/;
     //Handler
     const onInsertHandler = (insertedNode) => {
         //No-Adblock
@@ -946,35 +942,24 @@ a.generic = () => {
             //Remove element
             insertedNode.remove();
         }
-        //Adunblock
-        if (window.vtfab !== undefined &&
-            window.adblock_antib !== undefined &&
-            insertedNode.parentNode &&
-            insertedNode.parentNode.nodeName === "BODY" &&
-            insertedNode.id &&
-            reId.test(insertedNode.id) &&
-            insertedNode.nodeName === "DIV" &&
-            insertedNode.nextSibling &&
-            insertedNode.nextSibling.className &&
-            insertedNode.nextSibling.nodeName === "DIV") {
-            if (insertedNode.className &&
-                reClass.test(insertedNode.className) &&
-                reBg.test(insertedNode.nextSibling.className) &&
-                insertedNode.nextSibling.style &&
-                insertedNode.nextSibling.style.display !== "none") {
-                //Log
-                a.err("Adunblock Premium");
-                //Full Screen Message (Premium)
-                insertedNode.nextSibling.remove();
-                insertedNode.remove();
-            } else if (insertedNode.nextSibling.id &&
-                reId.test(insertedNode.nextSibling.id) &&
-                insertedNode.innerHTML.includes("Il semblerait que vous utilisiez un bloqueur de publicité !")) {
-                //Log
-                a.err("Adunblock Free");
-                //Top bar Message (Free)
-                insertedNode.remove();
+        //BlockAdBlock
+        if (insertedNode.nodeName === "SCRIPT" &&
+            insertedNode.textContent &&
+            insertedNode.textContent.includes("// Place this code snippet near the footer of your page before " +
+                "the close of the /body tag") &&
+            insertedNode.textContent.includes("// LEGAL NOTICE: The content of this website and all associated " +
+                "program code are protected under the Digital Millennium Copyright Act. Intentionally circumventing " +
+                "this code may constitute a violation of the DMCA.")) {
+            //Log
+            a.err("BlockAdBlock");
+            //Cancel script execution
+            insertedNode.remove();
+            //Undo style
+            if (document.body) {
+                document.body.style.removeProperty("visibility");
             }
+            const elem = document.getElementById("babasbmsgx");
+            elem && elem.remove();
         }
     };
     a.onInsert(onInsertHandler);
@@ -1130,6 +1115,7 @@ a.generic = () => {
                 }
             }
         });
+        //---on-insert---
         //Antiblock.org (all version) and BetterStopAdblock
         const reMsgId = /^[a-z0-9]{4,10}$/i;
         const reTag1 = /^(?:div|span|b|i|font|strong|center)$/i;
@@ -1140,7 +1126,12 @@ a.generic = () => {
             "desactive|desactiva|deaktiviere|disabilitare|&#945;&#960;&#949;&#957;&#949;&#961;&#947;&#959;&#960;&#959;&#943;" +
             "&#951;&#963;&#951;|&#1079;&#1072;&#1087;&#1088;&#1077;&#1097;&#1072;&#1090;&#1100;|állítsd le|publicités|" +
             "рекламе|verhindert|advert|kapatınız", "i");
+        //Adunblock
+        const reId = /^[a-z]{8}$/;
+        const reClass = /^[a-z]{8} [a-z]{8}/;
+        const reBg = /^[a-z]{8}-bg$/;
         const onInsertHandler = (insertedNode) => {
+            //Antiblock.org (all version) and BetterStopAdblock
             if (insertedNode.parentNode &&
                 insertedNode.id &&
                 insertedNode.style &&
@@ -1180,6 +1171,36 @@ a.generic = () => {
                     err("BetterStopAdblock");
                     //Defuse
                     window[data.bsa] = null;
+                    insertedNode.remove();
+                }
+            }
+            //Adunblock
+            if (window.vtfab !== undefined &&
+                window.adblock_antib !== undefined &&
+                insertedNode.parentNode &&
+                insertedNode.parentNode.nodeName === "BODY" &&
+                insertedNode.id &&
+                reId.test(insertedNode.id) &&
+                insertedNode.nodeName === "DIV" &&
+                insertedNode.nextSibling &&
+                insertedNode.nextSibling.className &&
+                insertedNode.nextSibling.nodeName === "DIV") {
+                if (insertedNode.className &&
+                    reClass.test(insertedNode.className) &&
+                    reBg.test(insertedNode.nextSibling.className) &&
+                    insertedNode.nextSibling.style &&
+                    insertedNode.nextSibling.style.display !== "none") {
+                    //Log
+                    a.err("Adunblock Premium");
+                    //Full Screen Message (Premium)
+                    insertedNode.nextSibling.remove();
+                    insertedNode.remove();
+                } else if (insertedNode.nextSibling.id &&
+                    reId.test(insertedNode.nextSibling.id) &&
+                    insertedNode.innerHTML.includes("Il semblerait que vous utilisiez un bloqueur de publicité !")) {
+                    //Log
+                    a.err("Adunblock Free");
+                    //Top bar Message (Free)
                     insertedNode.remove();
                 }
             }
