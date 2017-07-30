@@ -3035,10 +3035,11 @@ if (a.domCmp(["explosm.net"])) {
 if (a.domCmp(["playok.com", "kurnik.pl"])) {
     a.filter("getElementById", a.matchMethod.stringExact, "abp", "window.document");
 }
-if (a.domCmp(["gp.se"])) {
-    a.filter("addEventListener", a.matchMethod.stringExact, "scroll");
+if (a.domCmp(["gp.se", "bohuslaningen.se", "hallandsposten.se", "hn.se", "stromstadstidning.se", "ttela.se"])) {
+    //a.filter("addEventListener", a.matchMethod.stringExact, "scroll");
     a.inject(() => {
         "use strict";
+        window.scrollTo = () => { };
         window.burtApi = {
             stopTracking() { },
             connect() { },
