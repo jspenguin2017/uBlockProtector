@@ -2563,7 +2563,7 @@ if (a.domCmp(["linternaute.com"])) {
 if (a.domCmp(["rtl.be"])) {
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/421
     a.loopback((ignored, url) => {
-        if (url.endsWith("www.rtl.be/videos/player/aab_config.json")) {
+        if (url.endsWith("rtl.be/videos/player/aab_config.json")) {
             return `{ "enabled": false }`;
         } else {
             return null;
