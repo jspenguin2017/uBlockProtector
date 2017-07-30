@@ -2868,9 +2868,16 @@ if (a.domCmp(["vvvvid.it"])) {
     });
 }
 if (a.domCmp(["onet.pl", "komputerswiat.pl"])) {
+    /*
     a.onInsert((node) => {
         if (node.innerText && node.innerText.includes("Prosimy, odblokuj wy\u015Bwietlanie reklam")) {
             node.remove();
+        }
+    });
+    */
+    a.onBeforeScriptExecute((script) => {
+        if (script.id === "adsinit") {
+            script.remove();
         }
     });
 }
