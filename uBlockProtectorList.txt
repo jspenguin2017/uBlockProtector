@@ -217,6 +217,7 @@ shqiperiatv.com,albtvhd.com,tvshqiphd.com,www.balkanweb.com,cdn.livestream.com,l
 shqiperiatv.com,albtvhd.com,tvshqiphd.com,www.balkanweb.com,cdn.livestream.com,livestream.artmotion.al,shqip-tv.info##table[id^='blockblock']
 wordsense.eu##script:inject(setTimeout-defuser.js, ad, 2000)
 ||uol.com.br/camaleao/assets/web/javascript/detectadblock^$script,important
+||jsuol.com.br/*/detectadblock.js$script,domain=uol.com.br
 /magnific-popup.js/$domain=transparentcalifornia.com
 @@||yamvideo.com/pop1/jwplayer.js$domain=javsex.net
 ||nowvideo.ec^$inline-script
