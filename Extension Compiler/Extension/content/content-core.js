@@ -401,7 +401,8 @@ a.onRemove = (handler) => {
  * Set up script execution observer.
  * @function
  * @param {Function} handler - The event handler.
- ** @param {HTMLScriptElement} script - The script that is about to be executed, patch or remove it as appropriate.
+ ** @param {HTMLScriptElement} script - The script that is about to be executed, it may or may not have its
+ *** payload at this point.
  ** @param {HTMLElement} parent - The parent node of this script.
  * @param {boolean} [inlineOnly=false] - Whether the callback should only be called for inline scripts.
  */
@@ -943,6 +944,8 @@ a.generic = () => {
             insertedNode.remove();
         }
         //BlockAdBlock
+        /*
+        //Chromium does not always supply textContent for large scripts
         if (insertedNode.nodeName === "SCRIPT" &&
             insertedNode.textContent &&
             insertedNode.textContent.includes("// Place this code snippet near the footer of your page before " +
@@ -961,6 +964,7 @@ a.generic = () => {
             const elem = document.getElementById("babasbmsgx");
             elem && elem.remove();
         }
+        */
     };
     a.onInsert(onInsertHandler);
     //==================
