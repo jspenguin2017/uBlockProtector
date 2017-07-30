@@ -325,7 +325,7 @@ shqiperiatv.com,albtvhd.com,tvshqiphd.com,www.balkanweb.com,cdn.livestream.com,l
 ! === wordsense.eu
 wordsense.eu##script:inject(setTimeout-defuser.js, ad, 2000)
 ! === uol.com.br
-||uol.com.br/camaleao/assets/web/javascript/detectadblock^$script,important
+||uol.com.br/*/detectadblock/$script,important
 ||jsuol.com.br/*/detectadblock.js$script,important,domain=uol.com.br
 ! === transparentcalifornia.com
 /magnific-popup.js/$domain=transparentcalifornia.com

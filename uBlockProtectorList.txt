@@ -217,7 +217,7 @@ steamcustomizer.com##.notice.support-notice
 shqiperiatv.com,albtvhd.com,tvshqiphd.com,www.balkanweb.com,cdn.livestream.com,livestream.artmotion.al,shqip-tv.info##body > *[id^="blockblock"]:style(visibility: visible !important; display: block !important;)
 shqiperiatv.com,albtvhd.com,tvshqiphd.com,www.balkanweb.com,cdn.livestream.com,livestream.artmotion.al,shqip-tv.info##table[id^='blockblock']
 wordsense.eu##script:inject(setTimeout-defuser.js, ad, 2000)
-||uol.com.br/camaleao/assets/web/javascript/detectadblock^$script,important
+||uol.com.br/*/detectadblock/$script,important
 ||jsuol.com.br/*/detectadblock.js$script,important,domain=uol.com.br
 /magnific-popup.js/$domain=transparentcalifornia.com
 @@||yamvideo.com/pop1/jwplayer.js$domain=javsex.net
