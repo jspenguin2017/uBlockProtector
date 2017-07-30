@@ -2277,7 +2277,7 @@ if (a.domCmp(["linkneverdie.com"])) {
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/146
     a.readOnly("eval", () => {
         //Remove block screen
-        window.$("div").each(function () {
+        window.$("div").each(function() {
             if (this.id.length === 30) {
                 this.remove();
             }
@@ -2396,7 +2396,7 @@ if (a.domCmp(["gaana.com"])) {
             checkDevice: noop,
             dfpLog: noop,
         };
-        let obj = function () { };
+        let obj = function() { };
         obj.prototype = pType;
         const val = new obj();
         window.Object.defineProperty(window, "colombia", {
@@ -2864,7 +2864,7 @@ if (a.domCmp(["vvvvid.it"])) {
                 const re = /var a=function.*};/;
                 const data = `var a=function(){vvvvid.advPlayer=null,$(c.playerControlsClass).removeClass("ppad"),d()};`;
                 //Patch properties
-                window.vvvvid.cab4 = function (a, b) {
+                window.vvvvid.cab4 = function(a, b) {
                     this.isAdBlockActive = false;
                     b && b(false);
                 };
@@ -2931,10 +2931,10 @@ if (a.domCmp(["1tv.ru"])) {
         });
         //Stage 2
         const original = window.XMLHttpRequest;
-        window.XMLHttpRequest = function (...args) {
+        window.XMLHttpRequest = function(...args) {
             const wrapped = new (window.Function.prototype.bind.apply(original, args));
             const _open = wrapped.open;
-            wrapped.open = function (...args) {
+            wrapped.open = function(...args) {
                 if (args.length > 1 && args[1].startsWith("//v.adfox.ru/")) {
                     this.withCredentials = false;
                 }
@@ -3054,5 +3054,22 @@ if (a.domCmp(["gp.se", "bohuslaningen.se", "hallandsposten.se", "hn.se", "stroms
         window._adform = {
             readTags() { },
         };
+    });
+}
+if (a.domCmp(["kbb.com"])) {
+    a.inject(() => {
+        "use strict";
+        const v = window.Object.freeze({
+            init() { },
+            start() { },
+        });
+        window.KBB = {};
+        window.Object.defineProperty(window.KBB, "Abb", {
+            configurable: false,
+            set() { },
+            get() {
+                return v;
+            },
+        });
     });
 }
