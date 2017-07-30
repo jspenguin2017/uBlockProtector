@@ -399,21 +399,16 @@ a.onRemove = (handler) => {
 };
 /**
  * Set up script execution observer.
+ * Can only interfere execution of scripts hard coded into the main document.
  * @function
  * @param {Function} handler - The event handler.
- ** @param {HTMLScriptElement} script - The script that is about to be executed, it may or may not have its
- *** payload at this point.
+ ** @param {HTMLScriptElement} script - The script that is about to be executed, it may not have its final textContent.
  ** @param {HTMLElement} parent - The parent node of this script.
- * @param {boolean} [inlineOnly=false] - Whether the callback should only be called for inline scripts.
  */
-a.onBeforeScriptExecute = (handler, inlineOnly) => {
+a.onBeforeScriptExecute = (handler) => {
     a.onInsert((node, target) => {
         if (node.tagName === "SCRIPT") {
-            if (node.textContent) {
-                handler(node, target);
-            } else if (!inlineOnly) {
-                handler(node, target);
-            }
+            handler(node, target);
         }
     });
 };
