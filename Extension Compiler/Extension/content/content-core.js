@@ -1415,16 +1415,16 @@ a.generic.adsjsV2 = () => {
     });
 };
 /**
- * Set up NoAdBlock defuser 1, call once on document-start if needed.
+ * Set up NoAdBlock defuser, call once on document-start if needed.
  * Many solutions enclosed here, change useSolution constant to set the one to activate.
  * @function
  */
-a.generic.NoAdBlock1 = () => {
+a.generic.NoAdBlock = () => {
     a.inject(() => {
         "use strict";
         try {
             //Hard code the solution to activate here
-            const useSolution = 3;
+            const useSolution = 9999;
             //Prevent the page from tampering this function
             const error = window.console.error.bind(window.console);
             const init = () => {
@@ -1444,19 +1444,13 @@ a.generic.NoAdBlock1 = () => {
                             for (let key in installs) {
                                 if (installs[key].appId === "ziT6U3epKObS" && installs[key].options) {
                                     if (key === "preview") {
-                                        //Preview does not really matter, just hard code something that works for now
-                                        //Tested on v1.4.7
-                                        const _setTimeout = window.setTimeout;
-                                        window.setTimeout = (func, ...rest) => {
-                                            if (!window.String(func).includes("renderWarning")) {
-                                                return _setTimeout.call(window, func, ...rest);
-                                            }
-                                        };
+                                        window.document.body.insertAdjacentHTML("beforeend",
+                                            "<style>html, body { overflow:scroll !important; } cf-div { display:none !important; }</style>");
                                     } else {
                                         switch (useSolution) {
                                             case 0:
                                                 //Solution 0: Emergency fallback, lock display to a closable small overlay
-                                                //Tested on v1.4.7
+                                                //Tested on v1.5.0
                                                 installs[key].options.warningSettings = {
                                                     coverPage: false,
                                                     messageTypeFull: "1",
@@ -1473,16 +1467,17 @@ a.generic.NoAdBlock1 = () => {
                                                 break;
                                             case 1:
                                                 //Solution 1: Set it to show up 5 to 10 years later
-                                                //Tested on v1.4.7
+                                                //Tested on v1.5.0
                                                 const min = 157700000, max = 315400000;
                                                 installs[key].options.advancedSettings = {
+                                                    analytics: false,
                                                     showAdvancedSettings: true,
                                                     warningDelay: window.Math.floor(window.Math.random() * (max - min) + min),
                                                 };
                                                 break;
                                             case 2:
                                                 //Solution 2: Spoof cookies to prevent showing dialog
-                                                //Tested on v1.4.7
+                                                //Tested on v1.5.0
                                                 window.document.cookie = `lastTimeWarningShown=${window.Date.now()}`;
                                                 window.document.cookie = "warningFrequency=visit";
                                                 installs[key].options.dismissOptions = {
@@ -1490,17 +1485,6 @@ a.generic.NoAdBlock1 = () => {
                                                     warningFrequency: "visit",
                                                     warningInterval: 1,
                                                 };
-                                                break;
-                                            case 3:
-                                                //Solution 3: Noop init
-                                                //Tested on v1.4.7
-                                                window.Object.defineProperty(installs[key].scope, "init", {
-                                                    configurable: false,
-                                                    set() { },
-                                                    get() {
-                                                        return init;
-                                                    },
-                                                });
                                                 break;
                                             default:
                                                 //Ultimate solution: Stop installation, may break other Cloudflare apps
@@ -1522,56 +1506,6 @@ a.generic.NoAdBlock1 = () => {
             });
         } catch (err) {
             error("uBlock Protector failed to set up NoAdBlock uBlock Origin detector defuser!");
-        }
-    });
-};
-/**
- * Set up NoAdBlock defuser 2, call once on document-start if needed.
- * @function
- */
-a.generic.NoAdBlock2 = () => {
-    //Tested on v1.4.7
-    let NoAdBlockNeedDefuse = true;
-    a.onInsert((insertedNode) => {
-        if (insertedNode.nodeName === "CLOUDFLARE-APP" &&
-            insertedNode.getAttribute("app-id") === "no-adblock") {
-            //Log
-            a.err("NoAdBlock");
-            //Remove element
-            insertedNode.remove();
-            //Patch some functions
-            if (NoAdBlockNeedDefuse) {
-                a.inject(() => {
-                    "use strict";
-                    //Patch document.querySelector
-                    const e = new window.DOMException("Failed to execute 'querySelector' on 'Document': " +
-                        "'cloudflare-app[app-id=no-adblock]' is not a valid selector.");
-                    const qs = window.document.querySelector;
-                    const querySelector = (selector, ...rest) => {
-                        if (selector === "cloudflare-app[app-id=no-adblock]") {
-                            throw e;
-                        }
-                        return qs.call(window.document, selector, ...rest);
-                    };
-                    window.document.querySelector = querySelector;
-                    //Patch Function.prototype.toString
-                    const ts = window.Function.prototype.toString;
-                    const toString = function (...args) {
-                        if (this === querySelector) {
-                            return "function querySelector() { [native code] }";
-                        } else if (this === toString) {
-                            return "function toString() { [native code] }";
-                        } else {
-                            return ts.apply(this, args);
-                        }
-                    };
-                    window.Function.prototype.toString = toString;
-                });
-                //Update flag
-                NoAdBlockNeedDefuse = false;
-            }
-            //Enable scrolling
-            $("body").rmClass("adbmodal-cloudflare-open");
         }
     });
 };

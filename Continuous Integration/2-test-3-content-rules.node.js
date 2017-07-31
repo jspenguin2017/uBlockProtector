@@ -14,8 +14,7 @@ let a = {};
 a.init = () => { };
 a.generic = () => { };
 a.generic.Adfly = () => { };
-a.generic.NoAdBlock1 = () => { };
-a.generic.NoAdBlock2 = () => { };
+a.generic.NoAdBlock = () => { };
 a.domCmp = (domList, noErr) => {
     if (typeof domList !== "object") {
         console.error("a.domCmp() does not accept this as domList:");

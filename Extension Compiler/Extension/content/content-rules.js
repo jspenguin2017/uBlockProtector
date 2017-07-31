@@ -53,13 +53,8 @@
             a.generic.adsjsV2();
         }
         //NoAdBlock
-        if (a.domCmp(["hackintosh.zone", "clubedohardware.com.br", "itavisen.no"], true)) {
-            //Handled by uBlock Origin
-        } else if (a.domCmp([], true)) {
-            console.log("This domain is excluded from NoAdBlock defuser.");
-        } else {
-            //a.generic.NoAdBlock1();
-            a.generic.NoAdBlock2();
+        if (a.domCmp(["cloudflare.works", "cmacapps.com"])) {
+            a.generic.NoAdBlock();
         }
     }
     //uBO-Extra white list
