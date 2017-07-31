@@ -111,6 +111,9 @@ if (a.domCmp(["jansatta.com", "financialexpress.com", "indianexpress.com", "shin
 if (a.domCmp(["jagranjunction.com", "nekopoi.bid"])) {
     a.readOnly("isAdsDisplayed", true);
 }
+if (a.domCmp(["swissadspaysfaucet.com", "swissadspaysethfaucet.com"])) {
+    a.readOnly("adBlockEnabled", false);
+}
 if (a.domCmp(["ratemyprofessors.com"])) {
     a.readOnly("adBlocker", false);
 }
@@ -2277,7 +2280,7 @@ if (a.domCmp(["linkneverdie.com"])) {
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/146
     a.readOnly("eval", () => {
         //Remove block screen
-        window.$("div").each(function() {
+        window.$("div").each(function () {
             if (this.id.length === 30) {
                 this.remove();
             }
@@ -2396,7 +2399,7 @@ if (a.domCmp(["gaana.com"])) {
             checkDevice: noop,
             dfpLog: noop,
         };
-        let obj = function() { };
+        let obj = function () { };
         obj.prototype = pType;
         const val = new obj();
         window.Object.defineProperty(window, "colombia", {
@@ -2864,7 +2867,7 @@ if (a.domCmp(["vvvvid.it"])) {
                 const re = /var a=function.*};/;
                 const data = `var a=function(){vvvvid.advPlayer=null,$(c.playerControlsClass).removeClass("ppad"),d()};`;
                 //Patch properties
-                window.vvvvid.cab4 = function(a, b) {
+                window.vvvvid.cab4 = function (a, b) {
                     this.isAdBlockActive = false;
                     b && b(false);
                 };
@@ -2895,9 +2898,6 @@ if (a.domCmp(["onet.pl", "komputerswiat.pl"])) {
 }
 if (a.domCmp(["viz.com"])) {
     a.css("#player_error { display:none; } #player { display:block; }");
-}
-if (a.domCmp(["swissadspaysfaucet.com"])) {
-    a.readOnly("adBlockEnabled", false);
 }
 if (a.domCmp(["1tv.ru"])) {
     a.inject(() => {
@@ -2931,10 +2931,10 @@ if (a.domCmp(["1tv.ru"])) {
         });
         //Stage 2
         const original = window.XMLHttpRequest;
-        window.XMLHttpRequest = function(...args) {
+        window.XMLHttpRequest = function (...args) {
             const wrapped = new (window.Function.prototype.bind.apply(original, args));
             const _open = wrapped.open;
-            wrapped.open = function(...args) {
+            wrapped.open = function (...args) {
                 if (args.length > 1 && args[1].startsWith("//v.adfox.ru/")) {
                     this.withCredentials = false;
                 }
