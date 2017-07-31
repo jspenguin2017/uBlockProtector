@@ -522,6 +522,52 @@ a.filter = (name, method, filter, parent = "window") => {
     })();`, true);
 };
 /**
+ * Filter assignment of innerHTML, innerText, or textContent.
+ * @function
+ * @param {string} name - The name of the property to filter, can be "innerHTML", "innerText", or "textContent".
+ * @param {Function} filter - The filter function.
+ ** @param {HTMLElement} elem - The target element.
+ ** @param {string} val - The value that is set.
+ ** @return {boolean} True to block the assignment, false to allow.
+ */
+a.antiCollapse = (name, filter) => {
+    a.inject(`(() => {
+        "use strict";
+        const handler = ${filter};
+        const log = window.console.log.bind(window.console);
+        const warn = window.console.warn.bind(window.console);
+        const error = window.console.error.bind(window.console);
+        const String = window.String.bind(window);
+        try {
+            //Get setter and getter
+            const descriptor = window.Object.getOwnPropertyDescriptor(window.Element.prototype, "${name}");
+            const _set = descriptor.set;
+            const _get = descriptor.get;
+            window.Object.defineProperty(window.Element.prototype, "${name}", {
+                configurable: false,
+                set(val) {
+                    if (handler(this, String(val))) {
+                        if (${a.debugMode}) {
+                            warn("${name} is assigned to:");
+                            log(val);
+                        }
+                        error("Uncaught Error: uBlock Origin detectors are not allowed on this device!");
+                    } else {
+                        _set.call(this, val);
+                    }
+                },
+                get() {
+                    return _get.call(this);
+                },
+            });
+            window.console.log("Element collapse defuser activated on ${name}");
+        } catch (err) {
+            //Failed to activate
+            error("uBlock Protector failed to activate element collapse defuser on ${name}!");
+        }
+    })();`, true);
+};
+/**
  * Change the execution delay for setTimeout or setInterval, should be called on document-start.
  * @function
  * @param {string} timer - The name of the timer to patch, can be "setTimeout" or "setInterval".
