@@ -1444,6 +1444,8 @@ a.generic.NoAdBlock = () => {
                             for (let key in installs) {
                                 if (installs[key].appId === "ziT6U3epKObS" && installs[key].options) {
                                     if (key === "preview") {
+                                        //Preview does not really matter, just hard code something that works for now
+                                        //Tested on 1.6.20
                                         window.document.body.insertAdjacentHTML("beforeend",
                                             "<style>html, body { overflow:scroll !important; } cf-div { display:none !important; }</style>");
                                     } else {
