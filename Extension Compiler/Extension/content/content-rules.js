@@ -53,7 +53,9 @@
             a.generic.adsjsV2();
         }
         //NoAdBlock
-        if (a.domCmp(["cloudflare.works", "cmacapps.com"])) {
+        if (a.domCmp([], true)) {
+            console.log("This domain is excluded from NoAdBlock defuser.");
+        } else {
             a.generic.NoAdBlock();
         }
     }

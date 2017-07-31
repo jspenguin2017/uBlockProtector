@@ -1471,7 +1471,7 @@ a.generic.NoAdBlock = () => {
         "use strict";
         try {
             //Hard code the solution to activate here
-            const useSolution = 9999;
+            const useSolution = 3;
             //Prevent the page from tampering this function
             const error = window.console.error.bind(window.console);
             const init = () => {
@@ -1517,6 +1517,7 @@ a.generic.NoAdBlock = () => {
                                             case 1:
                                                 //Solution 1: Set it to show up 5 to 10 years later
                                                 //Tested on v1.5.0
+                                                //Probably won't work on v1.6.20
                                                 const min = 157700000, max = 315400000;
                                                 installs[key].options.advancedSettings = {
                                                     analytics: false,
@@ -1527,6 +1528,7 @@ a.generic.NoAdBlock = () => {
                                             case 2:
                                                 //Solution 2: Spoof cookies to prevent showing dialog
                                                 //Tested on v1.5.0
+                                                //Probably won't work on v1.6.20
                                                 window.document.cookie = `lastTimeWarningShown=${window.Date.now()}`;
                                                 window.document.cookie = "warningFrequency=visit";
                                                 installs[key].options.dismissOptions = {
@@ -1534,6 +1536,17 @@ a.generic.NoAdBlock = () => {
                                                     warningFrequency: "visit",
                                                     warningInterval: 1,
                                                 };
+                                                break;
+                                            case 3:
+                                                //Solution 3: Change URL patterns so it never matches
+                                                //Tested on v1.6.20
+                                                window.Object.defineProperty(installs[key], "URLPatterns", {
+                                                    configurable: false,
+                                                    set() { },
+                                                    get() {
+                                                        return ["$^"];
+                                                    },
+                                                });
                                                 break;
                                             default:
                                                 //Ultimate solution: Stop installation, may break other Cloudflare apps
