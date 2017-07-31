@@ -522,10 +522,10 @@ a.filter = (name, method, filter, parent = "window") => {
     })();`, true);
 };
 /**
- * Filter assignment of innerHTML, innerText, or textContent.
+ * Filter assignment of innerHTML, innerText, or textContent. Should be called on document-start.
  * @function
  * @param {string} name - The name of the property to filter, can be "innerHTML", "innerText", or "textContent".
- * @param {Function} filter - The filter function.
+ * @param {Function} filter - The filter function. Use closure and self execution if you need to initialize.
  ** @param {HTMLElement} elem - The target element.
  ** @param {string} val - The value that is set.
  ** @return {boolean} True to block the assignment, false to allow.
@@ -546,14 +546,15 @@ a.antiCollapse = (name, filter) => {
             window.Object.defineProperty(window.Element.prototype, "${name}", {
                 configurable: false,
                 set(val) {
+                    if (${a.debugMode}) {
+                        warn("${name} of an element is being assigned to:");
+                        log(val);
+                    }
                     if (handler(this, String(val))) {
-                        if (${a.debugMode}) {
-                            warn("${name} is assigned to:");
-                            log(val);
-                        }
                         error("Uncaught Error: uBlock Origin detectors are not allowed on this device!");
                     } else {
                         _set.call(this, val);
+                        log("Tests passed.");
                     }
                 },
                 get() {
