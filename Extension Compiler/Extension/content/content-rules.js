@@ -245,6 +245,10 @@ if (a.domCmp(["vidlox.tv", "vidoza.net", "dato.porn"])) {
 if (a.domCmp(["vidlox.tv"])) {
     a.readOnly("adb", 0);
 }
+if (a.domCmp(["superfilm.pl"])) {
+    a.readOnly("adblock", true);
+    a.readOnly("adbp", true);
+}
 if (a.domCmp(["cwtv.com"])) {
     //Thanks to szymon1118
     a.readOnly("wallConfig", false);
