@@ -53,7 +53,9 @@
             a.generic.adsjsV2();
         }
         //NoAdBlock
-        if (a.domCmp([], true)) {
+        if (a.domCmp(["hackintosh.zone", "clubedohardware.com.br", "itavisen.no"], true)) {
+            //Handled by uBlock Origin
+        } else if (a.domCmp([], true)) {
             console.log("This domain is excluded from NoAdBlock defuser.");
         } else {
             a.generic.NoAdBlock1();
