@@ -340,6 +340,8 @@ techforever.net##script:inject(setTimeout-defuser.js, canABP)
 @@||proper.io/embed/$subdocument,domain=explosm.net
 ||leakedearly.gdn/wp-content/uploads/*.js
 mspfa.com###nopepsi
+||klisza.org/wp-content/plugins/popups/
+klisza.org##.spu-box
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================
