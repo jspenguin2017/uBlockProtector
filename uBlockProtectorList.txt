@@ -342,6 +342,7 @@ techforever.net##script:inject(setTimeout-defuser.js, canABP)
 mspfa.com###nopepsi
 ||klisza.org/wp-content/plugins/popups/
 klisza.org##.spu-box
+@@||womenshealthmag.com^$script,first-party
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================

@@ -553,3 +553,5 @@ mspfa.com###nopepsi
 ! === klisza.org
 ||klisza.org/wp-content/plugins/popups/
 klisza.org##.spu-box
+! === womenshealthmag.com
+@@||womenshealthmag.com^$script,first-party
