@@ -21,11 +21,13 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 @@|http://*.medianetworkinternational.com/js/advertisement.js*$script
 @@|https://imasdk.googleapis.com/js/sdkloader/ima3.js*$script
 @@|http://imasdk.googleapis.com/js/sdkloader/ima3.js*$script
+hackintosh.zone,clubedohardware.com.br,itavisen.no#@#script:inject(abort-on-property-read.js, CloudflareApps.installs)
 @@|http://mmod.v.fwmrm.net/ad/g/*$script,domain=ncaa.com
 ||cbsnews.com/news/*/[object%20object]$image,redirect=1x1-transparent.gif
 ||cbsnews.com/news/*/undefined$image,redirect=1x1-transparent.gif
-bild.de#@#script:inject(abort-on-property-read.js, de.bild.cmsKonfig.a.b.a)
 ||imasdk.googleapis.com/js/sdkloader/ima3.js$script,important,domain=streamable.com
+bild.de#@#script:inject(abort-on-property-read.js, de.bild.cmsKonfig.a.b.a)
+@@||hackinformer.com^$first-party,script,badfilter
 ||d.0emm.com^$third-party
 ||d.0emn.com^$third-party
 ||d.0enm.com^$third-party
@@ -265,7 +267,6 @@ leechgear.net###block_on
 leech.ae##script:inject(abort-on-property-read.js, open)
 wiwo.de,handelsblatt.com##script:inject(abort-on-property-read.js, AdController)
 tvregionalna24.pl##.diablo-placeholder
-@@||hackinformer.com^$first-party,script,badfilter
 kitguru.net#@#div > a[class] > img[src]
 kitguru.net##.gofollow
 vidnow.to###adplayer

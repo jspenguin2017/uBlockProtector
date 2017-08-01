@@ -1,9 +1,9 @@
-! === Installation test
-jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 ! =======================
 ! ===== Integration =====
 ! =======================
-! These are filters for integration with uBlock Protector Extension, all whitelists in this section are loopbacked locally
+! These are filters for integration with uBlock Protector Extension, all whitelists in this section are handled by uBlock Protector Extension
+! === Installation test
+jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 ! === Callback API placeholder, must be blocked, this file does not actually exist
 |https://jspenguin.com/API/uBlockProtector/Solutions/Blocked.php$important
 ! === Files under this folder are blocked unless whitelisted, this folder does not actually exist
@@ -15,18 +15,21 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 @@|http://*.medianetworkinternational.com/js/advertisement.js*$script
 @@|https://imasdk.googleapis.com/js/sdkloader/ima3.js*$script
 @@|http://imasdk.googleapis.com/js/sdkloader/ima3.js*$script
+! === NoAdBlock
+hackintosh.zone,clubedohardware.com.br,itavisen.no#@#script:inject(abort-on-property-read.js, CloudflareApps.installs)
 ! === ncaa.com
 @@|http://mmod.v.fwmrm.net/ad/g/*$script,domain=ncaa.com
 ! === cbsnews.com
 ! Their poster logic is broken, but the error is somehow suppressed by the original IMA SDK
 ||cbsnews.com/news/*/[object%20object]$image,redirect=1x1-transparent.gif
 ||cbsnews.com/news/*/undefined$image,redirect=1x1-transparent.gif
-! === bild.de
-! Handled by Extension due to race condition
-bild.de#@#script:inject(abort-on-property-read.js, de.bild.cmsKonfig.a.b.a)
 ! === streamable.com
 ! This website works better with the IMA SDK blocked
 ||imasdk.googleapis.com/js/sdkloader/ima3.js$script,important,domain=streamable.com
+! === bild.de
+bild.de#@#script:inject(abort-on-property-read.js, de.bild.cmsKonfig.a.b.a)
+! === hackinformer.com
+@@||hackinformer.com^$first-party,script,badfilter
 ! ======================
 ! ===== Missed Ads =====
 ! ======================
@@ -413,8 +416,6 @@ leech.ae##script:inject(abort-on-property-read.js, open)
 wiwo.de,handelsblatt.com##script:inject(abort-on-property-read.js, AdController)
 ! === tvregionalna24.pl
 tvregionalna24.pl##.diablo-placeholder
-! === hackinformer.com
-@@||hackinformer.com^$first-party,script,badfilter
 ! === kitguru.net
 kitguru.net#@#div > a[class] > img[src]
 kitguru.net##.gofollow
