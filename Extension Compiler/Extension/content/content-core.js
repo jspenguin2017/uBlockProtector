@@ -553,8 +553,8 @@ a.antiCollapse = (name, filter) => {
                     if (handler(this, String(val))) {
                         error("Uncaught Error: uBlock Origin detectors are not allowed on this device!");
                     } else {
-                        _set.call(this, val);
                         log("Tests passed.");
+                        _set.call(this, val);
                     }
                 },
                 get() {
