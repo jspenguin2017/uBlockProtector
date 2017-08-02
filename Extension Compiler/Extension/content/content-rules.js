@@ -2711,9 +2711,8 @@ if (a.domCmp(["realkana.com"])) {
 }
 if (a.domCmp(["generatorlinkpremium.com"])) {
     a.ready(() => {
-        const elem = $("#normal");
-        const normal = elem.attr("href") + "&h=1";
-        elem.attr("href", normal).attr("title", "Download this file with a faster download speed").css("cursor", "pointer");
+        $("#quick").attr("href", $("#normal").attr("href") + "&h=1")
+            .attr("title", "Download this file with a faster download speed").css("cursor", "pointer");
     });
 }
 if (a.domCmp(["genbird.com"])) {
