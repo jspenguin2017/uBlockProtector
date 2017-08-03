@@ -445,14 +445,15 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
         //The player container matcher
         let containerMatcher = ".wp-player-outer, .player__container, .wp-player, .embed-container, .uBlockProtectorVideo";
         const reMatcher = /mid[=,](\d+)/;
-        const reMagicValidator = /^\d+$/;
+        const reMidValidator = /^\d+$/;
         //Mid extracting method 1 magic listener
         const magic = a.uid();
         addEventListener(magic, (e) => {
             //Must verify as data from injected script cannot be trusted
-            if (reMagicValidator.test(e.detail)) {
+            const match = reMatcher.exec(String(e.detail));
+            if (reMidValidator.test(match[1])) {
                 midArray1Counter++;
-                !midArray1.includes(e.detail) && midArray1.push(e.detail);
+                !midArray1.includes(match[1]) && midArray1.push(match[1]);
             }
         });
         //Main function
@@ -469,10 +470,6 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
                 try {
                     if (window.WP.player.list.length > ${midArray1Counter}) {
                         let thisMid = window.WP.player.list[${midArray1Counter}].p.url;
-                        if (thisMid) {
-                            thisMid = thisMid.substring(thisMid.lastIndexOf("=") + 1);
-                        }
-                        //Extra safety check
                         if (thisMid) {
                             window.dispatchEvent(new window.CustomEvent("${magic}", {
                                 detail: thisMid,
