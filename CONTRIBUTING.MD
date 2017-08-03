@@ -1,6 +1,6 @@
 ### You are prohibited from opening issues in this repository if you are not using Chromium / Chrome and uBlock Origin. 
 
-### You must install and enable the latest version of BOTH uBlock Protector List and uBlock Protector Extension. 
+### You must install and enable BOTH uBlock Protector List and uBlock Protector Extension. Everything must be updated to the latest stable version. 
 
 ### Installation instructions are on my [home page](https://jspenguin2017.github.io/uBlockProtector/). 
 
