@@ -3060,3 +3060,6 @@ if (a.domCmp(["kbb.com"])) {
 if (a.domCmp(["catchcoin.pw"])) {
     a.noAccess("adBlockDetected");
 }
+if (a.domCmp(["booogle.net"])) {
+    a.readOnly("gadb", false);
+}
