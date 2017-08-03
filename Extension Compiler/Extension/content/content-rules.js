@@ -291,7 +291,7 @@ if (a.domCmp(["pinkrod.com", "wetplace.com"])) {
     a.readOnly("getAd", () => { });
     a.readOnly("getUtm", () => { });
 }
-if (a.domCmp(["hackintosh.zone", "elfqrin.com"])) {
+if (a.domCmp(["hackintosh.zone", "elfqrin.com", "lne.es"])) {
     a.ready(() => {
         a.inject(() => {
             "use strict";
@@ -2729,14 +2729,6 @@ if (a.domCmp(["pg3dhacks.com"])) {
                 buttons[i].remove();
             }
         }
-    });
-}
-if (a.domCmp(["lne.es"])) {
-    a.ready(() => {
-        a.inject(() => {
-            "use strict";
-            window.onload = null;
-        });
     });
 }
 if (a.domCmp(["adshort.co", "linksh.top", "adshorte.com", "coinb.ink"])) {
