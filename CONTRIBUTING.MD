@@ -1,10 +1,10 @@
-### You are prohibited from opening issues in this repository if you are not using Chrome, uBlock Origin, and uBlock Protector Extension. 
+### You are prohibited from opening issues in this repository if you are not using Chromium or Chrome and uBlock Origin. 
 
 ### You must install and enable the latest version of BOTH uBlock Protector List and uBlock Protector Extension. 
 
 ### Installation instructions are on my [home page](https://jspenguin2017.github.io/uBlockProtector/). 
 
-Note: Chromium is accepted as an open source alternative to Chrome, but issues that are specific to Chromium may not be fixed. 
+Note: Issues that are specific to Chromium may not be fixed as I cannot test on it. 
 
 Do not want to switch your setup? Check out [AAK-Cont](https://xuhaiyang1234.gitlab.io/AAK-Cont/)! 
 
