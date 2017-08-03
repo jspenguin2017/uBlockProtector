@@ -1,4 +1,4 @@
-### You are prohibited from opening issues in this repository if you are not using Chromium or Chrome and uBlock Origin. 
+### You are prohibited from opening issues in this repository if you are not using Chromium / Chrome and uBlock Origin. 
 
 ### You must install and enable the latest version of BOTH uBlock Protector List and uBlock Protector Extension. 
 
