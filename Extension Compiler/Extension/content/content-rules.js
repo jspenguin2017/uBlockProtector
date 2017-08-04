@@ -158,6 +158,9 @@ if (a.domCmp(["fourchette-et-bikini.fr", "meteocity.com"])) {
 if (a.domCmp(["debridnet.com", "adshort.co", "linksh.top", "adshorte.com", "coinb.ink"])) {
     a.noAccess("_pop");
 }
+if (a.domCmp(["linx.cloud"])) {
+    a.noAccess("popns");
+}
 //---a.bait---
 if (a.domCmp(["primeshare.tv", "leveldown.fr"])) {
     a.bait("div", "#adblock");
