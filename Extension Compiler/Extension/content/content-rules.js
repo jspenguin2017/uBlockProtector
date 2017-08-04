@@ -3052,3 +3052,6 @@ if (a.domCmp(["catchcoin.pw"])) {
 if (a.domCmp(["booogle.net"])) {
     a.readOnly("gadb", false);
 }
+if (a.domCmp(["samehadaku.net"])) {
+    a.readOnly("tieE3", true);
+}
