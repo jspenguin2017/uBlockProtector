@@ -115,26 +115,40 @@
     </div>
     <h3>Workarounds</h3>
     <div>
-        <h4>viasatsport.se, viasport.fi, tv3sport.dk, viasport.no</h4>
+        <h4>tv3sport.dk, viasatsport.se, viasport.fi, viasport.no</h4>
         <p>
             Add the following filters to uBlock Origin. No ads shown, video not blurred, but may break some player functionalities.
             Help wanted for finding a real solution.
         </p>
-        <pre>@@||fwmrm.net^$domain=viasatsport.se|viasport.fi|tv3sport.dk|viasport.no
-||freewheel-mtgx-tv.akamaized.net^$media,domain=viasatsport.se|viasport.fi|tv3sport.dk|viasport.no
-||fwmrm.net^$image,important,domain=viasatsport.se|viasport.fi|tv3sport.dk|viasport.no
-||fwmrm.net/ad/*$xmlhttprequest,important,redirect=nooptext,domain=viasatsport.se|viasport.fi|tv3sport.dk|viasport.no</pre>
+        <pre>@@||fwmrm.net^$domain=tv3sport.dk|viasatsport.se|viasport.fi|viasport.no
+||freewheel-mtgx-tv.akamaized.net^$media,domain=tv3sport.dk|viasatsport.se|viasport.fi|viasport.no
+||fwmrm.net^$image,important,domain=tv3sport.dk|viasatsport.se|viasport.fi|viasport.no
+||fwmrm.net/ad/*$xmlhttprequest,important,redirect=nooptext,domain=tv3sport.dk|viasatsport.se|viasport.fi|viasport.no</pre>
         <div>
             <details>
                 <summary>Extra information</summary>
-                <code>Geo Lock (Sweden)</code> <code>Geo Lock (Finland)</code> <code>Geo Lock (Danmark)</code> <code>Geo Lock (Norway)</code>
+                <code>Geo Lock (Danmark)</code> <code>Geo Lock (Sweden)</code> <code>Geo Lock (Finland)</code> <code>Geo Lock (Norway)</code>
                 <h4>Test Links</h4>
+                <link-template>https://www.tv3sport.dk/sport/tennis/nyheder/lettet-wozniacki-jeg-var-halvvejs-pa-vej-hjem</link-template>
                 <link-template>http://www.viasport.fi/urheilu/jalkapallo/uutiset/suomi-liechtenstein-1-0</link-template>
                 <link-template>http://www.viasport.fi/urheilu/jalkapallo/uutiset/suomi-liechtenstein</link-template>
-                <link-template>https://www.tv3sport.dk/sport/tennis/nyheder/lettet-wozniacki-jeg-var-halvvejs-pa-vej-hjem</link-template>
                 <h4>Issues</h4>
-                <link-template>https://github.com/jspenguin2017/uBlockProtector/issues/88</link-template>
                 <link-template>https://github.com/jspenguin2017/uBlockProtector/issues/359</link-template>
+                <link-template>https://github.com/jspenguin2017/uBlockProtector/issues/88</link-template>
+            </details>
+        </div>
+        <h4>
+            abczdrowie.pl, autokrata.pl, autokult.pl, biztok.pl, echirurgia.pl, fotoblogia.pl, gadzetomania.pl, hotmoney.pl, kafeteria.pl, kafeteria.tv,
+            kardiolo.pl, komediowo.pl, komorkomania.pl, money.pl, o2.pl, parenting.pl, pudelek.pl, pudelek.tv, pudelekx.pl, sfora.pl, snobka.pl, wawalove.pl,
+            wp.pl, wp.tv, wrzuta.pl
+        </h4>
+        <p>Video players need to be replaced, and some player functionalities are lost. Help wanted for finding a better solution.</p>
+        <div>
+            <details>
+                <summary>Extra information</summary>
+                <h4>Test Links</h4>
+                <link-template>https://parenting.pl/jest-upal-wiec-pozwalasz-dziecku-pluskac-sie-w-miejskiej-fontannie-to-niebezpieczne</link-template>
+                <link-template>https://film.wp.pl/zmarl-evan-helmuth-6146521665177217a</link-template>
             </details>
         </div>
         <h4>tvn.pl, tvnstyle.pl, tvnturbo.pl</h4>

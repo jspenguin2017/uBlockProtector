@@ -418,10 +418,10 @@ if (a.domCmp(["forbes.com"])) {
         location.href = a.cookie("toUrl") || "https://www.forbes.com/";
     }
 }
-if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadzetomania.pl", "hotmoney.pl",
-    "kafeteria.pl", "kafeteria.tv", "komediowo.pl", "komorkomania.pl", "money.pl", "pudelek.tv", "sfora.pl",
-    "snobka.pl", "wawalove.pl", "wp.pl", "wp.tv", "wrzuta.pl", "pudelek.pl", "fotoblogia.pl", "parenting.pl",
-    "echirurgia.pl", "pudelekx.pl", "o2.pl", "kardiolo.pl"])) {
+if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "echirurgia.pl", "fotoblogia.pl", "gadzetomania.pl",
+    "hotmoney.pl", "kafeteria.pl", "kafeteria.tv", "kardiolo.pl", "komediowo.pl", "komorkomania.pl", "money.pl", "o2.pl",
+    "parenting.pl", "pudelek.pl", "pudelek.tv", "pudelekx.pl", "sfora.pl", "snobka.pl", "wawalove.pl", "wp.pl", "wp.tv",
+    "wrzuta.pl"])) {
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/70
     a.cookie("ABCABC", "true");
     a.filter("addEventListener", a.matchMethod.stringExact, "advertisement");
@@ -599,7 +599,7 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "gadz
             }
         });
     }
-    if (a.domCmp(["portal.abczdrowie.pl"])) {
+    if (a.domCmp(["portal.abczdrowie.pl", "parenting.pl"])) {
         a.css("figcaption { display:none; }");
         /*
         a.on("load", () => {
