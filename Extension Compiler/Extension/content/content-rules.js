@@ -3058,3 +3058,9 @@ if (a.domCmp(["booogle.net"])) {
 if (a.domCmp(["samehadaku.net"])) {
     a.readOnly("tieE3", true);
 }
+if (a.domCmp(["docer.pl"])) {
+    a.readOnly("ads_unblocked", true);
+    a.ready(() => {
+        $("#square-1").css("width", "1px");
+    });
+}
