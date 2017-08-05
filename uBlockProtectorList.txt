@@ -344,6 +344,9 @@ mspfa.com###nopepsi
 ||klisza.org/wp-content/plugins/popups/
 klisza.org##.spu-box
 @@||womenshealthmag.com^$script,first-party
+||mitele.es/vendor/adjs.js$xmlhttprequest,redirect=noopjs
+||mitele.es/vendor/fuckadblock.js$xmlhttprequest,redirect=noopjs
+@@||mitele.es^$generichide
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================

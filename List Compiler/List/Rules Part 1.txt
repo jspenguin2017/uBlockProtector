@@ -556,3 +556,7 @@ mspfa.com###nopepsi
 klisza.org##.spu-box
 ! === womenshealthmag.com
 @@||womenshealthmag.com^$script,first-party
+! === mitele.es
+||mitele.es/vendor/adjs.js$xmlhttprequest,redirect=noopjs
+||mitele.es/vendor/fuckadblock.js$xmlhttprequest,redirect=noopjs
+@@||mitele.es^$generichide
