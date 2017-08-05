@@ -3064,3 +3064,9 @@ if (a.domCmp(["docer.pl"])) {
         $("#square-1").css("width", "1px");
     });
 }
+if (a.domCmp(["mitele.es"])) {
+    a.inject(() => {
+        "use strict";
+        window.google = {};
+    });
+}
