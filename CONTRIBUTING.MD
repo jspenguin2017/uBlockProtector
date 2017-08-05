@@ -6,7 +6,7 @@
 
 Note: Issues that are specific to Chromium may not be fixed as I cannot test on it. 
 
-Do not want to switch your setup? Check out [AAK-Cont](https://xuhaiyang1234.gitlab.io/AAK-Cont/)! 
+Check out [AAK-Cont](https://xuhaiyang1234.gitlab.io/AAK-Cont/) if you do not want to switch your setup. 
 
 ---
 
