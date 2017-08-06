@@ -3080,3 +3080,6 @@ if (a.domCmp(["mitele.es"])) {
 if (a.domCmp(["webcafe.bg"])) {
     a.readOnly("bDetect", false);
 }
+if (a.domCmp(["aternos.org"])) {
+    a.filter("setTimeout", a.matchMethod.string, ".ad-detect");
+}
