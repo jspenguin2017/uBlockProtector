@@ -2160,6 +2160,10 @@ if (a.domCmp(["titulky.com"])) {
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/128
     a.generic.FuckAdBlock("FADB", "fADB");
 }
+if (a.domCmp(["vaughnlive.tv"])) {
+    a.readOnly("init", () => { });
+    //a.generic.FuckAdBlock("FAdB", "fAdB");
+}
 if (a.domCmp(["discoveryrom.org"])) {
     a.inject(() => {
         "use strict";
