@@ -350,6 +350,7 @@ klisza.org##.spu-box
 ||player.ooyala.com/*/ad-plugin/$important,script,badfilter
 ||player.ooyala.com/*/ad-plugin/$important,script,domain=~mitele.es
 ||player.ooyala.com/*/ad-plugin/$important,script,domain=mitele.es,redirect=noopjs
+virgilio.it##script:inject(abort-on-property-read.js, VVIDEO.adBlock)
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================
