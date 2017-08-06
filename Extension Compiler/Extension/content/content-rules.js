@@ -152,7 +152,7 @@ if (a.domCmp(["fourchette-et-bikini.fr", "meteocity.com"])) {
     a.readOnly("adProtect", 1);
 }
 //---a.noAccess---
-if (a.domCmp(["debridnet.com", "adshort.co", "linksh.top", "adshorte.com", "coinb.ink"])) {
+if (a.domCmp(["debridnet.com", "adshort.co", "linksh.top", "adshorte.com", "coinb.ink", "animeforce.org"])) {
     a.noAccess("_pop");
 }
 if (a.domCmp(["linx.cloud"])) {
@@ -2583,7 +2583,7 @@ if (a.domCmp(["rtl.be"])) {
 if (a.domCmp(["new-skys.net"])) {
     a.noAccess("alert");
 }
-if (a.domCmp(["idlelivelink.blogspot.com"])) {
+if (a.domCmp(["idlelivelink.blogspot.com", "animeforce.org"])) {
     a.ready(() => {
         a.inject(() => {
             "use strict";
