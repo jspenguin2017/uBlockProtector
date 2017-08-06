@@ -502,6 +502,7 @@ if ( !abort ) {
             'hockeysfuture.com',
             'metacritic.com',
             'pcmag.com',
+            'wikia.com',
         ]
     });
 })();
