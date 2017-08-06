@@ -8,6 +8,7 @@
  * @return {Promise} The promise of the task.
  */
 module.exports = () => {
+    console.log("Applying workarounds for Chromium bugs...");
     return Promise.all([
 
         new Promise((resolve) => {
