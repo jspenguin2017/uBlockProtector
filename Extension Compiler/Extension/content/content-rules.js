@@ -3070,3 +3070,6 @@ if (a.domCmp(["mitele.es"])) {
         window.google = {};
     });
 }
+if (a.domCmp(["webcafe.bg"])) {
+    a.readOnly("bDetect", false);
+}
