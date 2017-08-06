@@ -734,3 +734,5 @@ if ( !abort ) {
 })();
 
 })();
+
+//https://github.com/jspenguin2017/uBlockProtector/issues/454
