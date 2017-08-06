@@ -173,6 +173,9 @@ if (a.domCmp(["osoarcade.com", "d3brid4y0u.info", "fileice.net", "nosteam.ro", "
     "yooclick.com", "online.ua", "tgo-tv.com", "bitcoiner.net", "litecoiner.net"])) {
     a.bait("div", "#tester");
 }
+if (a.domCmp(["alein.org"])) {
+    a.bait("div", "#tester", true);
+}
 if (a.domCmp(["cutwin.com", "cut-urls.com", "adbull.me", "xess.pro", "clik.pw", "admove.co", "urle.co",
     "adshort.co", "linksh.top", "adshorte.com", "coinb.ink", "l2s.io"])) {
     a.bait("div", "#test-block", true);
