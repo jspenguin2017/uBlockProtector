@@ -1,17 +1,17 @@
+[uBlock Origin 1.13.8]
 ! Title: uBlock Protector List
-! Expires: 2 days
-!
 ! Description: An anti-adblock defuser for uBlock Origin
+! Expires: 2 days
 ! Author: jspenguin2017
 ! Homepage: https://jspenguin2017.github.io/uBlockProtector/
 ! Support: https://github.com/jspenguin2017/uBlockProtector/blob/master/CONTRIBUTING.MD
 ! Download: https://github.com/jspenguin2017/uBlockProtector/raw/master/uBlockProtectorList.txt
 ! License: GPL-3.0
 !
-! ===== MUST READ =========================================================================
+! ===== MUST READ ===== MUST READ ===== MUST READ ===== MUST READ ===== MUST READ ===== MUST READ =====
 ! This filter list is intended to be used with uBlock Protector Extension
 ! Visit my home page for more information: https://jspenguin2017.github.io/uBlockProtector/
-! =========================================================================================
+! ===== MUST READ ===== MUST READ ===== MUST READ ===== MUST READ ===== MUST READ ===== MUST READ =====
 jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 |https://jspenguin.com/API/uBlockProtector/Solutions/Blocked.php$important
 |https://jspenguin.com/API/uBlockProtector/Solutions/
