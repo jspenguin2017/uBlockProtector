@@ -60,10 +60,10 @@
         }
     }
     //uBO-Extra white list
-    if (a.domCmp([
-        //"slickdeals.net", //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/405
-        //"appear.in", //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/414
-    ], true)) {
+    if (
+        //Issue: https://github.com/gorhill/uBO-Extra/issues/53
+        a.domCmp(["pcmag.com"], true) && (location.pathname === "/" || location.pathname === "/g00/")
+    ) {
         a.uBOExtraExcluded = true;
         console.log("uBlock Protector excluded this domain from uBO-Extra.");
     }
