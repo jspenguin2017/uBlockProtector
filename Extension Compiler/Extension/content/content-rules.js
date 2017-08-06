@@ -3069,10 +3069,27 @@ if (a.domCmp(["docer.pl"])) {
     });
 }
 if (a.domCmp(["mitele.es"])) {
+    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/448
     a.inject(() => {
         "use strict";
         window.google = {};
     });
+}
+if (a.domCmp(["telecinco.es", "cuatro.com", "divinity.es", "factoriadeficcion.com", "energytv.es", "bemad.es",
+    "eltiempohoy.es", "mtmad.es"])) {
+    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/448
+    a.inject(() => {
+        "use strict";
+        const err = new TypeError("Failed to execute 'getElementById' on 'Document': 'adsFooter' is not a valid ID.");
+        const original = window.document.getElementById;
+        window.document.getElementById = (id, ...rest) => {
+            if (id === "adsFooter") {
+                throw err;
+            } else {
+                return original.call(window.document, id, ...rest);
+            }
+        }
+    })
 }
 if (a.domCmp(["webcafe.bg"])) {
     a.readOnly("bDetect", false);
