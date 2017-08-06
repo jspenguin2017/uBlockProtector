@@ -14,7 +14,7 @@ module.exports = () => {
         new Promise((resolve) => {
             //2017.08.06
             //Chromium bug workaround: https://github.com/jspenguin2017/uBlockProtector/issues/454
-            //Make sure the generated file does not have a size that is multiple of 1024
+            //Make sure the generated file does not have a size that is multiple of 4096
 
             //Load modules
             const fs = require("fs");
@@ -40,11 +40,11 @@ module.exports = () => {
             for (let i = 0; i < toCheck.length; i++) {
                 const remainder = fs.statSync(toCheck[i]).size % 4096;
                 if (isNaN(remainder)) {
-                    console.error(`Could not read size of ${toCheck[i]}, aborting build.`);
+                    console.error(`Could not read size of ${toCheck[i]}: Could not access file.`);
                     process.exit(1);
                 } else if (remainder === 0) {
                     if (toCheck[i].endsWith(".png")) {
-                        console.error(`Image file ${toCheck[i]} has a size that is a multiple of 4096, aborting build.`);
+                        console.error(`Image file ${toCheck[i]} has a size that is a multiple of 4096, aborting build...`);
                         process.exit(1);
                     } else {
                         problematicFiles.push(toCheck[i]);
