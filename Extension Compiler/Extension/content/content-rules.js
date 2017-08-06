@@ -60,10 +60,7 @@
         }
     }
     //uBO-Extra white list
-    if (
-        //Issue: https://github.com/gorhill/uBO-Extra/issues/53
-        a.domCmp(["pcmag.com"], true) && (location.pathname === "/" || location.pathname === "/g00/")
-    ) {
+    if (a.domCmp([], true)) {
         a.uBOExtraExcluded = true;
         console.log("uBlock Protector excluded this domain from uBO-Extra.");
     }
