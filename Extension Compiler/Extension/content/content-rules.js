@@ -2570,6 +2570,39 @@ if (a.domCmp(["linternaute.com"])) {
         });
     });
 }
+if (a.domCmp(["vgtv.no"])) {
+    a.inject(() => {
+        "use strict";
+        //Prepare value
+        let callback;
+        let val = {
+            load(...args) {
+                if (callback instanceof window.Function) {
+                    callback(...args);
+                }
+            },
+        };
+        window.Object.defineProperty(val, "onSuccess", {
+            configurable: false,
+            set(v) {
+                callback = v;
+            },
+            get() {
+                return v;
+            },
+        });
+        val = window.Object.freeze(val);
+        //Define property
+        window.OO = {};
+        window.Object.defineProperty(window.OO, "AAB", {
+            configurable: false,
+            set() { },
+            get() {
+                return val;
+            },
+        });
+    });
+}
 if (a.domCmp(["rtl.be"])) {
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/421
     a.loopback((ignored, url) => {
