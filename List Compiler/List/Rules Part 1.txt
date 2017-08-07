@@ -569,3 +569,5 @@ virgilio.it##script:inject(abort-on-property-read.js, VVIDEO.adBlock)
 ||auroravid.to^$inline-script
 ! === amarujala.com
 amarujala.com##script:inject(abort-on-property-read.js, call_adblocker)
+! === imagebam.com
+imagebam.com###hideifpossible
