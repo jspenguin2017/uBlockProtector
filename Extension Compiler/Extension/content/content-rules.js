@@ -3097,3 +3097,33 @@ if (a.domCmp(["webcafe.bg"])) {
 if (a.domCmp(["aternos.org"])) {
     a.filter("setTimeout", a.matchMethod.string, ".ad-detect");
 }
+if (a.domCmp(["indiatimes.com"])) {
+    //https://gitlab.com/xuhaiyang1234/uBlockProtectorSecretIssues/issues/8
+    a.inject(() => {
+        "use strict";
+        const re1 = /typeof\sotab\s==\s'function'/;
+        const re2 = /\d{5,}\s\d{1,2}/;
+        const getter = () => {
+            let script = window.document.currentScript;
+            if (!script) {
+                const temp = window.document.querySelectorAll("script");
+                script = temp[temp.length - 1];
+            }
+            if (re1.test(script.textContent)) {
+                const previous = script.previousSibling;
+                let temp = previous;
+                while (temp = temp.previousSibling) {
+                    if (temp.nodeType === window.Node.COMMENT_NODE && re2.test(temp.data)) {
+                        previous.style.setProperty("display", "none", "important");
+                        return;
+                    }
+                }
+            }
+        }
+        window.Object.defineProperty(window, "trev", {
+            configurable: false,
+            set() { },
+            get: getter,
+        });
+    });
+}
