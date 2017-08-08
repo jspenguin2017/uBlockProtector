@@ -990,7 +990,7 @@ if (a.domCmp(["jbzdy.pl"])) {
             set(arg) {
                 val = arg;
                 try {
-                    val.adb.init = () => { };
+                    val.adb.show = () => { };
                 } catch (err) { }
             },
             get() {
