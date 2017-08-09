@@ -3142,11 +3142,11 @@ if (a.domCmp(["adageindia.in", "bombaytimes.com", "businessinsider.in", "gizmodo
             let script;
             {
                 let temp = [...window.document.querySelectorAll(`script:not([src]):not([${magic}])`)];
-                if (window.document.currentScript) {
+                if (window.document.currentScript && !window.document.currentScript.hasAttribute(magic)) {
                     temp.unshift(window.document.currentScript);
                 }
                 if (!temp.length) {
-                    return;
+                    return true;
                 }
                 for (let i = 0; i < temp.length; i++) {
                     temp[i].setAttribute(magic, 1);
@@ -3157,7 +3157,7 @@ if (a.domCmp(["adageindia.in", "bombaytimes.com", "businessinsider.in", "gizmodo
                 }
             }
             if (!script) {
-                return;
+                return true;
             }
             {
                 const previous = script.previousSibling;
@@ -3165,7 +3165,7 @@ if (a.domCmp(["adageindia.in", "bombaytimes.com", "businessinsider.in", "gizmodo
                 while (temp = temp.previousSibling) {
                     if (temp.nodeType === window.Node.COMMENT_NODE && re2.test(temp.data)) {
                         previous.style.setProperty("display", "none", "important");
-                        return;
+                        return false;
                     }
                 }
             }
@@ -3174,9 +3174,20 @@ if (a.domCmp(["adageindia.in", "bombaytimes.com", "businessinsider.in", "gizmodo
             configurable: false,
             set() { },
             get() {
-                getter();
+                let r;
+                let i = 0;
+                do {
+                    try {
+                        r = getter();
+                    } catch (err) {
+                        //window.console.error(err);
+                    }
+                } while (!r && (++i) < 100);
                 return null;
             },
+        });
+        window.addEventListener("load", () => {
+            void window.trev;
         });
     });
 }
