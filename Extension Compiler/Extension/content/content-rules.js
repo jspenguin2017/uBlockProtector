@@ -3131,7 +3131,8 @@ if (a.domCmp(["aternos.org"])) {
     a.filter("setTimeout", a.matchMethod.string, ".ad-detect");
 }
 if (a.domCmp(["adageindia.in", "bombaytimes.com", "businessinsider.in", "gizmodo.in", "iamgujarat.com", "idiva.com",
-    "in.techradar.com", "indiatimes.com", "lifehacker.co.in", "mensxp.com", "samayam.com"])) {
+    "in.techradar.com", "indiatimes.com", "lifehacker.co.in", "mensxp.com", "samayam.com"]) &&
+    !a.debugMode) { //There is a replacement rule in debug mode
     //https://gitlab.com/xuhaiyang1234/uBlockProtectorSecretIssues/issues/8
     a.inject(() => {
         "use strict";
@@ -3189,12 +3190,5 @@ if (a.domCmp(["adageindia.in", "bombaytimes.com", "businessinsider.in", "gizmodo
         window.addEventListener("load", () => {
             void window.trev;
         });
-    });
-}
-if (a.domCmp(["webnovel.com"])) {
-    a.onBeforeScriptExecute((script) => {
-        if (script.id === "chapter-content.html") {
-            script.textContent = script.textContent.replace("isLock = '_lock';", "isLock = '';");
-        }
     });
 }

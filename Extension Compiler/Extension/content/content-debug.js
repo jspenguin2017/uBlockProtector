@@ -173,4 +173,103 @@ if (a.debugMode) {
         a.on("focus", () => { isInBackground = false; });
         a.on("blur", () => { isInBackground = true; });
     }
+    if (a.domCmp(["adageindia.in", "bombaytimes.com", "businessinsider.in", "gizmodo.in", "iamgujarat.com", "idiva.com",
+        "in.techradar.com", "indiatimes.com", "lifehacker.co.in", "mensxp.com", "samayam.com"])) {
+        //https://gitlab.com/xuhaiyang1234/uBlockProtectorSecretIssues/issues/8
+        const commentScanner = function* (node) {
+            let stack = [node];
+            do {
+                //Get one node from stack
+                let current = stack.pop();
+                //Check if current node is comment, yield if it is
+                if (current.nodeType === Node.COMMENT_NODE) {
+                    yield current;
+                    continue;
+                }
+                //Ignore node that do not have children
+                if (!current.children) {
+                    continue;
+                }
+                //Scan though children of current element and push elements that have their own children to the stack
+                for (let i = 0; i < current.children.length; i++) {
+                    if (current.children[i].children && current.children[i].children.length) {
+                        stack.push(current.children[i]);
+                    } else {
+                        if (current.children[i].nodeType === Node.COMMENT_NODE) {
+                            yield current.children[i];
+                        }
+                    }
+                }
+            } while (stack.length);
+            return null;
+        };
+        const commentWalker = function* (node) {
+            let walker = document.createTreeWalker(node, NodeFilter.SHOW_COMMENT);
+            let current;
+            while (current = walker.nextNode()) {
+                yield current;
+            }
+            return null;
+        };
+        const adsRemover = (() => {
+            //Sometimes it is longer
+            //const reStart = /^\/caller_native_content\.cms\?slot=\d{5,}~\d{1,2}potime:\d{1,2}$/;
+            const reStart = /^\/[a-z_]+\.cms/;
+            const reEnd = /^ \d{5,} \d{1,2} $/;
+            return (node) => {
+                //===Debug Only===
+                console.log("-----");
+                //===Debug Only===
+                let iterator;
+                //document.body is not set on document-start, so I cannot bind it earlier
+                if (node) {
+                    iterator = commentScanner(node);
+                } else if (document.body) {
+                    iterator = commentWalker(document.body);
+                } else {
+                    return;
+                }
+                //Scan through comments
+                let comment;
+                while (comment = iterator.next().value) {
+                    //===Debug Only===
+                    console.log(comment);
+                    //===Debug Only===
+                    if (reStart.test(comment.data)) {
+                        //Remove until the other comment
+                        let toHide = [];
+                        let previous = comment;
+                        while (previous = previous.previousSibling) {
+                            if (previous.nodeType === Node.COMMENT_NODE && reEnd.test(previous.data)) {
+                                //Only hide if end comment can be found
+                                for (let i = 0; i < toHide.length; i++) {
+                                    //Must set style, removing cause it to be re-inserted
+                                    try {
+                                        toHide[i].style.setProperty("display", "none", "important");
+                                    } catch (err) { }
+                                }
+                                break;
+                            }
+                            toHide.push(previous);
+                        }
+                    }
+                }
+            }
+        })();
+        a.onInsert((node) => {
+            if (node) {
+                adsRemover(node);
+            }
+        });
+        //This is really inefficient...
+        setInterval(adsRemover, 1500);
+    }
+    if (a.domCmp(["webnovel.com"])) {
+        //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/457
+        a.onBeforeScriptExecute((script) => {
+            if (script.id === "chapter-content.html") {
+                script.textContent = script.textContent.replace("isLock = '_lock';", "isLock = '';");
+            }
+        });
+    }
 }
