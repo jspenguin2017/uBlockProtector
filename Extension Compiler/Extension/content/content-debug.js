@@ -261,7 +261,7 @@ if (a.debugMode) {
                 adsRemover(node);
             }
         });
-        //This is really inefficient...
+        //This is really inefficient, need to pause when the document is not focused
         setInterval(adsRemover, 1500);
     }
     if (a.domCmp(["webnovel.com"])) {
