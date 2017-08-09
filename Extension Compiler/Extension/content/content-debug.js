@@ -263,7 +263,11 @@ if (a.debugMode) {
         //===Debug Only===
         //This is really inefficient, need to at least pause when the document is not focused when releasing
         //Maybe log all ads anchors and only scan them?
-        setInterval(adsHidder, 1000);
+        setInterval(() => {
+            console.time("adsHidder");
+            adsHidder();
+            console.timeEnd("adsHidder");
+        }, 1000);
         //===Debug Only===
     }
     if (a.domCmp(["webnovel.com"])) {
