@@ -104,6 +104,8 @@ bild.de#@#script:inject(abort-on-property-read.js, de.bild.cmsKonfig.a.b.a)
 @@||foilpolyth.com^$domain=tf1.fr,badfilter
 ||foilpolyth.com^$xmlhttprequest,redirect=nooptext,important,domain=tf1.fr
 ||louccrossc.com^$xmlhttprequest,redirect=nooptext,important,domain=tf1.fr
+! === indiatimes.com
+indiatimes.com###append_overlay_photo_ads
 ! ============================
 ! ===== Common Solutions =====
 ! ============================
