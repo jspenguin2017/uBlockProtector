@@ -3191,3 +3191,10 @@ if (a.domCmp(["adageindia.in", "bombaytimes.com", "businessinsider.in", "gizmodo
         });
     });
 }
+if (a.domCmp(["webnovel.com"])) {
+    a.onBeforeScriptExecute((script) => {
+        if (script.id === "chapter-content.html") {
+            script.textContent = script.textContent.replace("isLock = '_lock';", "isLock = '';");
+        }
+    });
+}
