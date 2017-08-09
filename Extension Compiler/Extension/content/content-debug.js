@@ -190,11 +190,12 @@ if (a.debugMode) {
                 if (!current.children) {
                     continue;
                 }
-                //Scan though children of current element and push elements that have their own children to the stack
+                //Scan though children of current node and push nodes that have their own children to the stack
                 for (let i = 0; i < current.children.length; i++) {
                     if (current.children[i].children && current.children[i].children.length) {
                         stack.push(current.children[i]);
                     } else {
+                        //Yield if the node is comment, ignore otherwise
                         if (current.children[i].nodeType === Node.COMMENT_NODE) {
                             yield current.children[i];
                         }
@@ -211,37 +212,35 @@ if (a.debugMode) {
             }
             return null;
         };
-        const adsRemover = (() => {
-            //Sometimes it is longer
-            //const reStart = /^\/caller_native_content\.cms\?slot=\d{5,}~\d{1,2}potime:\d{1,2}$/;
+        const adsHidder = (() => {
+            //Start comment is the same for each domain, but is different across domains
             const reStart = /^\/[a-z_]+\.cms/;
             const reEnd = /^ \d{5,} \d{1,2} $/;
+            //Signature structure (going to scan upwards):
+            //    reEnd Comment
+            //    Random anti-selector nodes
+            //    Ads
+            //    Random anti-selector nodes
+            //    reStart Comment
             return (node) => {
-                //===Debug Only===
-                console.log("-----");
-                //===Debug Only===
                 let iterator;
-                //document.body is not set on document-start, so I cannot bind it earlier
+                //document.body is not set on document-start, so I cannot bind it when registering interval
                 if (node) {
-                    iterator = commentScanner(node);
-                } else if (document.body) {
+                    iterator = commentScanner(node); //commentWalker() should be faster
+                } else if (document.body) { //Because it is on a timer, document.body may not be exist yet
                     iterator = commentWalker(document.body);
                 } else {
                     return;
                 }
-                //Scan through comments
+                //Scan through node
                 let comment;
                 while (comment = iterator.next().value) {
-                    //===Debug Only===
-                    console.log(comment);
-                    //===Debug Only===
                     if (reStart.test(comment.data)) {
-                        //Remove until the other comment
+                        //Hide until the end comment, do nothing if the end comment cannot be found
                         let toHide = [];
                         let previous = comment;
                         while (previous = previous.previousSibling) {
                             if (previous.nodeType === Node.COMMENT_NODE && reEnd.test(previous.data)) {
-                                //Only hide if end comment can be found
                                 for (let i = 0; i < toHide.length; i++) {
                                     //Must set style, removing cause it to be re-inserted
                                     try {
@@ -258,11 +257,14 @@ if (a.debugMode) {
         })();
         a.onInsert((node) => {
             if (node) {
-                adsRemover(node);
+                adsHidder(node);
             }
         });
-        //This is really inefficient, need to pause when the document is not focused
-        setInterval(adsRemover, 1500);
+        //===Debug Only===
+        //This is really inefficient, need to at least pause when the document is not focused when releasing
+        //Maybe log all ads anchors and only scan them?
+        setInterval(adsHidder, 1000);
+        //===Debug Only===
     }
     if (a.domCmp(["webnovel.com"])) {
         //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/457
