@@ -3135,28 +3135,31 @@ if (a.domCmp(["adageindia.in", "bombaytimes.com", "businessinsider.in", "gizmodo
     //https://gitlab.com/xuhaiyang1234/uBlockProtectorSecretIssues/issues/8
     a.inject(() => {
         "use strict";
-        const magic = window.Math.random().toString(36).substring(2);
+        const magic = "a" + window.Math.random().toString(36).substring(2);
         const re1 = /typeof\sotab\s==\s'function'/;
         const re2 = /\d{5,}\s\d{1,2}/;
         const getter = () => {
             let script;
-            const temp = window.document.querySelectorAll(`script:not([src]):not([${magic}])`);
-            if (!temp) {
-                return;
-            }
-            for (let i = 0; i < temp.length; i++) {
-                if (temp[i].textContent && temp[i].textContent.startsWith("var coldetect;")) {
-                    script = temp[i];
-                    break;
-                } else {
+            {
+                let temp = [...window.document.querySelectorAll(`script:not([src]):not([${magic}])`)];
+                if (window.document.currentScript) {
+                    temp.unshift(window.document.currentScript);
+                }
+                if (!temp.length) {
+                    return;
+                }
+                for (let i = 0; i < temp.length; i++) {
                     temp[i].setAttribute(magic, 1);
+                    if (re1.test(temp[i].textContent)) {
+                        script = temp[i];
+                        break;
+                    }
                 }
             }
             if (!script) {
                 return;
             }
-            script.setAttribute(magic, 1);
-            if (re1.test(script.textContent)) {
+            {
                 const previous = script.previousSibling;
                 let temp = previous;
                 while (temp = temp.previousSibling) {
@@ -3166,11 +3169,14 @@ if (a.domCmp(["adageindia.in", "bombaytimes.com", "businessinsider.in", "gizmodo
                     }
                 }
             }
-        }
+        };
         window.Object.defineProperty(window, "trev", {
             configurable: false,
             set() { },
-            get: getter,
+            get() {
+                getter();
+                return null;
+            },
         });
     });
 }
