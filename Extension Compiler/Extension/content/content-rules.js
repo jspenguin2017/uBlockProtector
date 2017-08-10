@@ -25,6 +25,8 @@
         "pandoon.info", "fsf.org", "adblockplus.org", "plnkr.co", "exacttarget.com", "dolldivine.com",
         //Handled by specific rules
         "anandabazar.com",
+        //False positives
+        "techradar.com",
         //Damage control
         "viasatsport.se", "viasport.fi", "tv3sport.dk", "viasport.no",
     ];
@@ -3131,7 +3133,7 @@ if (a.domCmp(["aternos.org"])) {
     a.filter("setTimeout", a.matchMethod.string, ".ad-detect");
 }
 if (a.domCmp(["adageindia.in", "bombaytimes.com", "businessinsider.in", "gizmodo.in", "iamgujarat.com", "idiva.com",
-    "in.techradar.com", "indiatimes.com", "lifehacker.co.in", "mensxp.com", "samayam.com"])) {
+    "in.techradar.com", "indiatimes.com", "lifehacker.co.in", "mensxp.com", "samayam.com", "gadgetsnow.com"])) {
     //https://gitlab.com/xuhaiyang1234/uBlockProtectorSecretIssues/issues/8
     //Part 1
     a.inject(() => {
