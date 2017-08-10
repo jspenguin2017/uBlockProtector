@@ -1076,7 +1076,7 @@ a.generic = () => {
                 window.closeAdbuddy();
             }
             //Antiblock.org v2
-            {
+            try {
                 const re = /^#([a-z0-9]{4,10}) ~ \* \{ display: none; \}/;
                 const styles = window.document.querySelectorAll("style");
                 outmost: for (let i = 0; i < styles.length; i++) {
@@ -1100,7 +1100,7 @@ a.generic = () => {
                         }
                     }
                 }
-            }
+            } catch (err) { }
             //BetterStopAdblock, Antiblock.org v3, and BlockAdBlock
             {
                 const re = /^[a-z0-9]{4,12}$/i;
