@@ -642,12 +642,11 @@ a.generic = () => {
         "5FQVJfTUFUQ0g6ICJTZWxlY3ROZWFyTWF0Y2giLH07d2luZG93Lmdvb2dsZS5pbWEuSW1hU2RrU2V0dGluZ3MuQ29tcGFuaW9uQmFja2ZpbGxNb2RlID0ge0FMV0FZUzogImFsd2F5cyIsT05fTUFT" +
         "VEVSX0FEOiAib25fbWFzdGVyX2FkIix9O3dpbmRvdy5nb29nbGUuaW1hLkltYVNka1NldHRpbmdzLlZwYWlkTW9kZSA9IHtESVNBQkxFRDogMCxFTkFCTEVEOiAxLElOU0VDVVJFOiAyLH07d2luZG" +
         "93Lmdvb2dsZS5pbWEuc2V0dGluZ3MgPSBuZXcgd2luZG93Lmdvb2dsZS5pbWEuSW1hU2RrU2V0dGluZ3MoKTt9KSgpOw==",
-        /*
         [
             //Damage control
+            "webnovel.com", //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/457
         ],
         false,
-        */
     );
     //---MoatFreeWheelJSPEM.js---
     //Payload generator

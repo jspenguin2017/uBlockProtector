@@ -275,6 +275,8 @@ if (a.debugMode) {
         //===Debug Only===
     }
     */
+    /*
+    //This does not work, there is a timer on server side, have to tamper XMLHttpRequest
     if (a.domCmp(["webnovel.com"])) {
         //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/457
         a.onBeforeScriptExecute((script) => {
@@ -283,4 +285,5 @@ if (a.debugMode) {
             }
         });
     }
+    */
 }
