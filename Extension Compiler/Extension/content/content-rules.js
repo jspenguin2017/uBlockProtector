@@ -3222,6 +3222,7 @@ if (a.domCmp(["adageindia.in", "bombaytimes.com", "businessinsider.in", "gizmodo
         }
     };
     setInterval(adsHidder, 1000);
+    //a.setBenchmarkedInterval(adsHidder, 1000);
     a.on("focus", () => { isInBackground = false; });
     a.on("blur", () => { isInBackground = true; });
 }

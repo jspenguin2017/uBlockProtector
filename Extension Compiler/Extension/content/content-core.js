@@ -1589,3 +1589,23 @@ a.backgroundLog = (log) => {
         data: log,
     });
 };
+/**
+ * setInterval() with benchmark.
+ * Should only be used in debug mode, will be mapped to setInterval() in non-debug mode.
+ * @function
+ * @param {Special} func, delay, ...args - Arguments for setInterval(), the first parameter must
+ ** be a function, cannot be raw code.
+ * @return {Integer} Cancellation token, can be passed to clearInterval() to clear the interval.
+ */
+a.setBenchmarkedInterval = (func, delay, ...args) => {
+    if (!a.debugMode) {
+        console.error("a.setBenchmarkedInterval() should only be used in debug mode!");
+        return setInterval(func, delay, ...args);
+    }
+    return setInterval(() => {
+        const t0 = performance.now();
+        func(...args);
+        const t1 = performance.now();
+        console.log("Benchmarked Interval: Function " + func.name + " used " + (t1 - t0) + "ms");
+    }, delay);
+};
