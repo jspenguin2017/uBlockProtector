@@ -173,6 +173,7 @@ if (a.debugMode) {
         a.on("focus", () => { isInBackground = false; });
         a.on("blur", () => { isInBackground = true; });
     }
+    /*
     if (a.domCmp(["adageindia.in", "bombaytimes.com", "businessinsider.in", "gizmodo.in", "iamgujarat.com", "idiva.com",
         "in.techradar.com", "indiatimes.com", "lifehacker.co.in", "mensxp.com", "samayam.com"])) {
         //https://gitlab.com/xuhaiyang1234/uBlockProtectorSecretIssues/issues/8
@@ -241,11 +242,14 @@ if (a.debugMode) {
                         let previous = comment;
                         while (previous = previous.previousSibling) {
                             if (previous.nodeType === Node.COMMENT_NODE && reEnd.test(previous.data)) {
-                                for (let i = 0; i < toHide.length; i++) {
-                                    //Must set style, removing cause it to be re-inserted
-                                    try {
-                                        toHide[i].style.setProperty("display", "none", "important");
-                                    } catch (err) { }
+                                //Make sure the array is not unreasonably long
+                                if (toHide.length < 15) {
+                                    for (let i = 0; i < toHide.length; i++) {
+                                        //Must set style, removing cause it to be re-inserted
+                                        try {
+                                            toHide[i].style.setProperty("display", "none", "important");
+                                        } catch (err) { }
+                                    }
                                 }
                                 break;
                             }
@@ -253,7 +257,7 @@ if (a.debugMode) {
                         }
                     }
                 }
-            }
+            };
         })();
         a.onInsert((node) => {
             if (node) {
@@ -270,6 +274,7 @@ if (a.debugMode) {
         }, 1000);
         //===Debug Only===
     }
+    */
     if (a.domCmp(["webnovel.com"])) {
         //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/457
         a.onBeforeScriptExecute((script) => {

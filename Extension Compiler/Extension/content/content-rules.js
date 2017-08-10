@@ -3131,14 +3131,14 @@ if (a.domCmp(["aternos.org"])) {
     a.filter("setTimeout", a.matchMethod.string, ".ad-detect");
 }
 if (a.domCmp(["adageindia.in", "bombaytimes.com", "businessinsider.in", "gizmodo.in", "iamgujarat.com", "idiva.com",
-    "in.techradar.com", "indiatimes.com", "lifehacker.co.in", "mensxp.com", "samayam.com"]) &&
-    !a.debugMode) { //There is a replacement rule in debug mode
+    "in.techradar.com", "indiatimes.com", "lifehacker.co.in", "mensxp.com", "samayam.com"])) {
     //https://gitlab.com/xuhaiyang1234/uBlockProtectorSecretIssues/issues/8
+    //Part 1
     a.inject(() => {
         "use strict";
         const magic = "a" + window.Math.random().toString(36).substring(2);
-        const re1 = /typeof\sotab\s==\s'function'/;
-        const re2 = /\d{5,}\s\d{1,2}/;
+        const reScript = /typeof otab == 'function'/;
+        const reComment = /\d{5,} \d{1,2}/;
         const getter = () => {
             let script;
             {
@@ -3151,7 +3151,7 @@ if (a.domCmp(["adageindia.in", "bombaytimes.com", "businessinsider.in", "gizmodo
                 }
                 for (let i = 0; i < temp.length; i++) {
                     temp[i].setAttribute(magic, 1);
-                    if (re1.test(temp[i].textContent)) {
+                    if (reScript.test(temp[i].textContent)) {
                         script = temp[i];
                         break;
                     }
@@ -3164,7 +3164,7 @@ if (a.domCmp(["adageindia.in", "bombaytimes.com", "businessinsider.in", "gizmodo
                 const previous = script.previousSibling;
                 let temp = previous;
                 while (temp = temp.previousSibling) {
-                    if (temp.nodeType === window.Node.COMMENT_NODE && re2.test(temp.data)) {
+                    if (temp.nodeType === window.Node.COMMENT_NODE && reComment.test(temp.data)) {
                         previous.style.setProperty("display", "none", "important");
                         return false;
                     }
@@ -3191,4 +3191,37 @@ if (a.domCmp(["adageindia.in", "bombaytimes.com", "businessinsider.in", "gizmodo
             void window.trev;
         });
     });
+    //Part 2
+    let isInBackground = false;
+    const reStart = /^\/[a-z_]+\.cms/;
+    const reEnd = /^ \d{5,} \d{1,2} $/;
+    const adsHidder = (node) => {
+        if (!document.body || isInBackground) {
+            return;
+        }
+        let iterator = document.createTreeWalker(document.body, NodeFilter.SHOW_COMMENT);
+        let comment;
+        while (comment = iterator.nextNode()) {
+            if (reStart.test(comment.data)) {
+                let toHide = [];
+                let previous = comment;
+                while (previous = previous.previousSibling) {
+                    if (previous.nodeType === Node.COMMENT_NODE && reEnd.test(previous.data)) {
+                        if (toHide.length < 15) {
+                            for (let i = 0; i < toHide.length; i++) {
+                                try {
+                                    toHide[i].style.setProperty("display", "none", "important");
+                                } catch (err) { }
+                            }
+                        }
+                        break;
+                    }
+                    toHide.push(previous);
+                }
+            }
+        }
+    };
+    setInterval(adsHidder, 1000);
+    a.on("focus", () => { isInBackground = false; });
+    a.on("blur", () => { isInBackground = true; });
 }
