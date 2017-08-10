@@ -573,3 +573,5 @@ virgilio.it##script:inject(abort-on-property-read.js, VVIDEO.adBlock)
 amarujala.com##script:inject(abort-on-property-read.js, call_adblocker)
 ! === imagebam.com
 imagebam.com###hideifpossible
+! === flooxer.com
+@@||flooxer.com^$generichide

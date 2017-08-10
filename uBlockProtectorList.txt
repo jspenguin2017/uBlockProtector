@@ -355,6 +355,7 @@ virgilio.it##script:inject(abort-on-property-read.js, VVIDEO.adBlock)
 ||auroravid.to^$inline-script
 amarujala.com##script:inject(abort-on-property-read.js, call_adblocker)
 imagebam.com###hideifpossible
+@@||flooxer.com^$generichide
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================
