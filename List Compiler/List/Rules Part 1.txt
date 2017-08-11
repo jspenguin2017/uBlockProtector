@@ -121,6 +121,7 @@ indiatimes.com###append_overlay_photo_ads
 /jquery.adi.css
 /jquery.adi.js$domain=123link.top
 ! === Admiral
+! https://pgl.yoyo.org/adservers/admiral-domains.txt
 ||separatesilver.com^$third-party
 ||pelcro.com^$third-party
 ||perceivequarter.com^$third-party
