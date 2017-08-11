@@ -142,6 +142,7 @@ a.generic();
     );
 }
 {
+    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/169
     chrome.webRequest.onBeforeSendHeaders.addListener(
         (details) => {
             for (let i = 0; i < details.requestHeaders.length; i++) {
@@ -154,12 +155,20 @@ a.generic();
         },
         {
             urls: [
-                "*://shorte.st/*",
+                "*://5k4i.com/*",
+                "*://ceesty.com/*",
                 "*://clkme.me/*",
                 "*://clkmein.com/*",
                 "*://cllkme.com/*",
+                "*://corneey.com/*",
+                "*://destyy.com/*",
+                "*://festyy.com/*",
+                "*://gestyy.com/*",
+                "*://pj45.com/*",
                 "*://sh.st/*",
+                "*://shorte.st/*",
                 "*://viid.me/*",
+                "*://wiid.me/*",
                 "*://xiw34.com/*",
             ],
             types: [
