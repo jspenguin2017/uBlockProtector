@@ -154,7 +154,8 @@ if (a.domCmp(["fourchette-et-bikini.fr", "meteocity.com"])) {
     a.readOnly("adProtect", 1);
 }
 //---a.noAccess---
-if (a.domCmp(["debridnet.com", "adshort.co", "linksh.top", "adshorte.com", "coinb.ink", "animeforce.org"])) {
+if (a.domCmp(["debridnet.com", "adshort.co", "linksh.top", "adshorte.com", "coinb.ink", "animeforce.org",
+    "imgrock.info"])) {
     a.noAccess("_pop");
 }
 if (a.domCmp(["linx.cloud"])) {
