@@ -361,6 +361,7 @@ imagebam.com###hideifpossible
 @@||flooxer.com^$generichide
 ||oddreaders.com/wp-content/plugins/sociallocker-next-premium/
 sportspyder.com##script:inject(setTimeout-defuser.js, BlockerChecker)
+||sportspyder.com/assets/application-$script,badfilter
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================
