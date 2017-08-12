@@ -581,3 +581,5 @@ imagebam.com###hideifpossible
 @@||flooxer.com^$generichide
 ! === oddreaders.com
 ||oddreaders.com/wp-content/plugins/sociallocker-next-premium/
+! === sportspyder.com
+sportspyder.com##script:inject(setTimeout-defuser.js, BlockerChecker)
