@@ -579,3 +579,5 @@ amarujala.com##script:inject(abort-on-property-read.js, call_adblocker)
 imagebam.com###hideifpossible
 ! === flooxer.com
 @@||flooxer.com^$generichide
+! === oddreaders.com
+||oddreaders.com/wp-content/plugins/sociallocker-next-premium/

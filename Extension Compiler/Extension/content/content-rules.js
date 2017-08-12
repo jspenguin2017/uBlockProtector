@@ -3237,3 +3237,6 @@ if (a.domCmp(["uptostream.com"])) {
         window.$("#cred").css("display", "block");
     });
 }
+if (a.domCmp(["oddreaders.com"])) {
+    a.css(".onp-sl-blur-area { filter:none; }");
+}
