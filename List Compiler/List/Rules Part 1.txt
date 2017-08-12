@@ -584,3 +584,5 @@ imagebam.com###hideifpossible
 ! === sportspyder.com
 sportspyder.com##script:inject(setTimeout-defuser.js, BlockerChecker)
 ||sportspyder.com/assets/application-$script,badfilter
+! === salon.com
+@@||salon.com/combo/js$script,first-party
