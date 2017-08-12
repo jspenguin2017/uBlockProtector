@@ -2884,6 +2884,7 @@ if (a.domCmp(["giallozafferano.it"])) {
     a.filter("setTimeout", a.matchMethod.string, "adblock alert");
 }
 if (a.domCmp(["oddreaders.com"])) {
+    a.css(".onp-sl-blur-area { filter:none; }");
     a.onInsert((node) => {
         if (node.querySelector && node.querySelector("img[src='http://oddreaders.com/wp-content/uploads/2017/07/" +
             "A-Publisher-Approach-to-Adblock-Users.png'")) {
@@ -3236,7 +3237,4 @@ if (a.domCmp(["uptostream.com"])) {
         window.$("#vid").css("display", "block");
         window.$("#cred").css("display", "block");
     });
-}
-if (a.domCmp(["oddreaders.com"])) {
-    a.css(".onp-sl-blur-area { filter:none; }");
 }
