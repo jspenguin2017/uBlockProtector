@@ -3229,3 +3229,11 @@ if (a.domCmp(["adageindia.in", "bombaytimes.com", "businessinsider.in", "gizmodo
     a.on("focus", () => { isInBackground = false; });
     a.on("blur", () => { isInBackground = true; });
 }
+if (a.domCmp(["uptostream.com"])) {
+    a.readOnly("check", () => {
+        "use strict";
+        window.$("#apbplus").css("display", "none");
+        window.$("#vid").css("display", "block");
+        window.$("#cred").css("display", "block");
+    });
+}
