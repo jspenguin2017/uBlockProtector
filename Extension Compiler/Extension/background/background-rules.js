@@ -7,6 +7,7 @@ a.generic();
 
 //Rules
 {
+    //ncaa.com
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/344
     const genPayload = (csid, caid, cbfn) => {
         //Event callbacks are blocked by List
@@ -142,6 +143,7 @@ a.generic();
     );
 }
 {
+    //shorte.st and related domains
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/169
     chrome.webRequest.onBeforeSendHeaders.addListener(
         (details) => {
@@ -155,6 +157,7 @@ a.generic();
         },
         {
             urls: [
+                "*://shorte.st/*",
                 "*://5k4i.com/*",
                 "*://ceesty.com/*",
                 "*://clkme.me/*",
@@ -166,10 +169,13 @@ a.generic();
                 "*://gestyy.com/*",
                 "*://pj45.com/*",
                 "*://sh.st/*",
-                "*://shorte.st/*",
                 "*://viid.me/*",
                 "*://wiid.me/*",
                 "*://xiw34.com/*",
+                "*://iklan.master-cyber.com/*",
+                "*://links.orgasmatrix.com/*",
+                "*://wik34.com/*",
+                "*://zryydi.com/*",
             ],
             types: [
                 "main_frame",
