@@ -3238,3 +3238,7 @@ if (a.domCmp(["uptostream.com"])) {
         window.$("#cred").css("display", "block");
     });
 }
+if (a.domInc(["10co"])) {
+    a.bait("div", "#myTestAd", true);
+    a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
+}
