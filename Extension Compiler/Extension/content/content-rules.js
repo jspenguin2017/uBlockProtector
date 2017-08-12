@@ -3242,3 +3242,6 @@ if (a.domInc(["10co"])) {
     a.bait("div", "#myTestAd", true);
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
+if (a.domCmp(["moviemakeronline.com"])) {
+    a.readOnly("abNoticeShowed", true);
+}
