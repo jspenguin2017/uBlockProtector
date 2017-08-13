@@ -110,6 +110,7 @@ indiatimes.com###append_overlay_photo_ads
 ! ===== Common Solutions =====
 ! ============================
 ! === Generic Cosmetic Rules
+###adblockBanner
 ###like-us-adblock-modal
 ##.popup-premium__apla
 ! === Generic Network Rules
