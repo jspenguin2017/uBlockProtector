@@ -22,7 +22,8 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 @@|https://imasdk.googleapis.com/js/sdkloader/ima3.js*$script
 @@|http://imasdk.googleapis.com/js/sdkloader/ima3.js*$script
 hackintosh.zone,clubedohardware.com.br,itavisen.no#@#script:inject(abort-on-property-read.js, CloudflareApps.installs)
-@@|http://mmod.v.fwmrm.net/ad/g/*$script,domain=ncaa.com
+@@||mmod.v.fwmrm.net/ad/g/*$script,domain=ncaa.com
+@@||bea4.v.fwmrm.net/ad/g/*$script,domain=pga.com
 ||cbsnews.com/news/*/[object%20object]$image,redirect=1x1-transparent.gif
 ||cbsnews.com/news/*/undefined$image,redirect=1x1-transparent.gif
 ||imasdk.googleapis.com/js/sdkloader/ima3.js$script,important,domain=streamable.com
@@ -365,6 +366,8 @@ sportspyder.com##script:inject(setTimeout-defuser.js, BlockerChecker)
 ||sportspyder.com/assets/application-$script,badfilter
 @@||salon.com/combo/js$script,first-party
 tvnow.de##.no-flash-box:has-text(Adblocker)
+@@||pga.com^$generichide
+@@||manifest.auditude.com^$xmlhttprequest,domain=pga.com
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================

@@ -17,8 +17,11 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 @@|http://imasdk.googleapis.com/js/sdkloader/ima3.js*$script
 ! === NoAdBlock
 hackintosh.zone,clubedohardware.com.br,itavisen.no#@#script:inject(abort-on-property-read.js, CloudflareApps.installs)
-! === ncaa.com
+! === ncaa.com, pga.com
 @@|http://mmod.v.fwmrm.net/ad/g/*$script,domain=ncaa.com
+@@|https://mmod.v.fwmrm.net/ad/g/*$script,domain=ncaa.com
+@@|http://bea4.v.fwmrm.net/ad/g/*$script,domain=pga.com
+@@|https://bea4.v.fwmrm.net/ad/g/*$script,domain=pga.com
 ! === cbsnews.com
 ! Their poster logic is broken, but the error is somehow suppressed by the original IMA SDK
 ||cbsnews.com/news/*/[object%20object]$image,redirect=1x1-transparent.gif
@@ -589,3 +592,6 @@ sportspyder.com##script:inject(setTimeout-defuser.js, BlockerChecker)
 @@||salon.com/combo/js$script,first-party
 ! === tvnow.de
 tvnow.de##.no-flash-box:has-text(Adblocker)
+! === pga.com
+@@||pga.com^$generichide
+@@||manifest.auditude.com^$xmlhttprequest,domain=pga.com

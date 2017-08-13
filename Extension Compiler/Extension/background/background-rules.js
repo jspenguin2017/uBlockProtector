@@ -7,7 +7,7 @@ a.generic();
 
 //Rules
 {
-    //ncaa.com
+    //ncaa.com, pga.com
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/344
     const genPayload = (csid, caid, cbfn) => {
         //Event callbacks are blocked by List
@@ -120,6 +120,7 @@ a.generic();
     a.dynamicServer(
         [
             "http://mmod.v.fwmrm.net/ad/g/*",
+            "https://mmod.v.fwmrm.net/ad/g/*",
         ],
         [
             "script",
@@ -139,6 +140,30 @@ a.generic();
         },
         [
             "ncaa.com",
+        ],
+    );
+    a.dynamicServer(
+        [
+            "http://bea4.v.fwmrm.net/ad/g/*",
+            "https://bea4.v.fwmrm.net/ad/g/*",
+        ],
+        [
+            "script",
+        ],
+        (details) => {
+            const csid = reCsid.exec(details.url);
+            const caid = reCaid.exec(details.url);
+            const cbfn = reCbfn.exec(details.url);
+            if (csid && caid && cbfn) {
+                return { redirectUrl: genPayload(csid[1], caid[1], decodeURIComponent(cbfn[1])) };
+            } else {
+                console.log("Could not extract parameters from a request to bea4.v.fwmrm.net");
+                a.debugMode && console.log(details);
+                return { cancel: true };
+            }
+        },
+        [
+            "pga.com",
         ],
     );
 }
