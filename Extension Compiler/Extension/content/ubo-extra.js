@@ -510,6 +510,52 @@ if ( !abort ) {
 
 /*******************************************************************************
 
+    Instart Logic buster 4
+
+**/
+
+(function() {
+    if ( abort ) { return; }
+
+    var scriptlet = function() {
+        var value = window.performance,
+            re = /\bInstart-/,
+            magic = String.fromCharCode(Date.now() % 26 + 97) +
+                    Math.floor(Math.random() * 982451653 + 982451653).toString(36);
+        Object.defineProperty(window, 'performance', {
+            get: function() {
+                var script = document.currentScript;
+                if (
+                    script instanceof HTMLScriptElement === false ||
+                    script.src !== '' ||
+                    re.test(script.textContent) === false
+                ) {
+                    return value;
+                }
+                throw new ReferenceError(magic);
+            }
+        });
+        var oe = window.onerror;
+        window.onerror = function(msg) {
+            if ( typeof msg === 'string' && msg.indexOf(magic) !== -1 ) {
+                return true;
+            }
+            if ( oe instanceof Function ) {
+                return oe.apply(this, arguments);
+            }
+        }.bind();
+    };
+
+    scriptlets.push({
+        scriptlet: scriptlet,
+        targets: [
+            'msn.com',
+        ]
+    });
+})();
+
+/*******************************************************************************
+
     Instart Logic console detection defuser.
 
     To allow using the dev tools to investigate IL's code:
