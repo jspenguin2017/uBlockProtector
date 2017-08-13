@@ -12,3 +12,4 @@
 ! This filter list is intended to be used with uBlock Protector Extension
 ! Visit my home page for more information: https://jspenguin2017.github.io/uBlockProtector/
 ! ===== MUST READ ===== MUST READ ===== MUST READ ===== MUST READ ===== MUST READ ===== MUST READ =====
+!

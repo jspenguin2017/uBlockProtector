@@ -12,6 +12,7 @@
 ! This filter list is intended to be used with uBlock Protector Extension
 ! Visit my home page for more information: https://jspenguin2017.github.io/uBlockProtector/
 ! ===== MUST READ ===== MUST READ ===== MUST READ ===== MUST READ ===== MUST READ ===== MUST READ =====
+!
 jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 |https://jspenguin.com/API/uBlockProtector/Solutions/Blocked.php$important
 |https://jspenguin.com/API/uBlockProtector/Solutions/
@@ -22,8 +23,10 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 @@|https://imasdk.googleapis.com/js/sdkloader/ima3.js*$script
 @@|http://imasdk.googleapis.com/js/sdkloader/ima3.js*$script
 hackintosh.zone,clubedohardware.com.br,itavisen.no#@#script:inject(abort-on-property-read.js, CloudflareApps.installs)
-@@||mmod.v.fwmrm.net/ad/g/*$script,domain=ncaa.com
-@@||bea4.v.fwmrm.net/ad/g/*$script,domain=pga.com
+@@|http://mmod.v.fwmrm.net/ad/g/*$script,domain=ncaa.com
+@@|https://mmod.v.fwmrm.net/ad/g/*$script,domain=ncaa.com
+@@|http://bea4.v.fwmrm.net/ad/g/*$script,domain=pga.com
+@@|https://bea4.v.fwmrm.net/ad/g/*$script,domain=pga.com
 ||cbsnews.com/news/*/[object%20object]$image,redirect=1x1-transparent.gif
 ||cbsnews.com/news/*/undefined$image,redirect=1x1-transparent.gif
 ||imasdk.googleapis.com/js/sdkloader/ima3.js$script,important,domain=streamable.com
