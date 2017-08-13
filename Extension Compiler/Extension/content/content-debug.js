@@ -276,8 +276,6 @@ if (a.debugMode) {
         //===Debug Only===
     }
     */
-    /*
-    //Work in progress
     if (a.domCmp(["webnovel.com"])) {
         //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/457
         a.onBeforeScriptExecute((script) => {
@@ -288,5 +286,4 @@ if (a.debugMode) {
             }
         });
     }
-    */
 }
