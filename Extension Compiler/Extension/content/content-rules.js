@@ -3245,3 +3245,6 @@ if (a.domInc(["10co"])) {
 if (a.domCmp(["moviemakeronline.com"])) {
     a.readOnly("abNoticeShowed", true);
 }
+if (a.domCmp(["nbcsports.com"])) {
+    a.readOnly("adblockDetect", () => { });
+}
