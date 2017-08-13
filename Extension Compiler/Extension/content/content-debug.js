@@ -13,7 +13,7 @@ if (a.debugMode) {
 //Rules
 if (a.debugMode) {
     /*
-    //Seems to work now without a script rule
+    //Handled with a loopback rule in release mode
     if (a.domCmp(["itv.com"])) {
         //Test link: https://www.itv.com/hub/take-me-out/1a8716a0089
         //Can find the URL of the media file and subtitle file
@@ -174,6 +174,7 @@ if (a.debugMode) {
         a.on("blur", () => { isInBackground = true; });
     }
     /*
+    //Handled by a slightly different version in release mode
     if (a.domCmp(["adageindia.in", "bombaytimes.com", "businessinsider.in", "gizmodo.in", "iamgujarat.com", "idiva.com",
         "in.techradar.com", "indiatimes.com", "lifehacker.co.in", "mensxp.com", "samayam.com"])) {
         //https://gitlab.com/xuhaiyang1234/uBlockProtectorSecretIssues/issues/8
