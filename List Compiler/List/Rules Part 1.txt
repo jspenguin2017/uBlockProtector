@@ -125,17 +125,9 @@ indiatimes.com###append_overlay_photo_ads
 /jquery.adi.css
 /jquery.adi.js$domain=123link.top
 ! === Admiral
-! https://pgl.yoyo.org/adservers/admiral-domains.txt
-||separatesilver.com^$third-party
 ||pelcro.com^$third-party
 ||perceivequarter.com^$third-party
-||shelterstraw.com^$third-party
-||curtaincows.com^$third-party
-||dk4ywix.com^$third-party
 ||hammerhearing.com^$third-party
-||dragzebra.com^$third-party
-||limpingline.com^$third-party
-||functionalclam.com^$third-party
 meta-chart.com##script:inject(setTimeout-defuser.js, [native code])
 ! === AdBlock Notify
 techdracula.com,keshavcommoditycalls.com,hackinformer.com,coderexample.com,anibatch.id,altervista.org,ispazio.net,kitguru.net,wabetainfo.com,albanian.tv,techygeekshome.info,dl-wordpress.com,nulledcode.cc##script:inject(setTimeout-defuser.js, an_message_display)
