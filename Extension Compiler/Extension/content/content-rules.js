@@ -3248,3 +3248,6 @@ if (a.domCmp(["moviemakeronline.com"])) {
 if (a.domCmp(["nbcsports.com"])) {
     a.readOnly("adblockDetect", () => { });
 }
+if (a.domCmp(["kiss.com.tw"])) {
+    a.bait("div", "#ads");
+}

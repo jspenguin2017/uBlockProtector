@@ -587,3 +587,5 @@ tvnow.de##.no-flash-box:has-text(Adblocker)
 ! === pga.com
 @@||pga.com^$generichide
 @@||manifest.auditude.com^$xmlhttprequest,domain=pga.com
+! === kiss.com.tw
+kiss.com.tw#@##ads

@@ -364,6 +364,7 @@ sportspyder.com##script:inject(setTimeout-defuser.js, BlockerChecker)
 tvnow.de##.no-flash-box:has-text(Adblocker)
 @@||pga.com^$generichide
 @@||manifest.auditude.com^$xmlhttprequest,domain=pga.com
+kiss.com.tw#@##ads
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================
