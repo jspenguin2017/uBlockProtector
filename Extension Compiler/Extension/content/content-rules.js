@@ -3251,3 +3251,6 @@ if (a.domCmp(["nbcsports.com"])) {
 if (a.domCmp(["kiss.com.tw"])) {
     a.bait("div", "#ads");
 }
+if (a.domCmp(["identi.li"])) {
+    a.css(".linkhidder { display:none; } div[id^='hidden_'] { display:block; }");
+}
