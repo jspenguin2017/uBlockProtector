@@ -3254,3 +3254,21 @@ if (a.domCmp(["kiss.com.tw"])) {
 if (a.domCmp(["identi.li"])) {
     a.css(".linkhidder { display:none; } div[id^='hidden_'] { display:block; }");
 }
+if (a.domCmp(["acortar.net"])) {
+    a.on("load", () => {
+        a.inject(() => {
+            "use strict";
+            let btn = window.document.querySelector(".linkhidder");
+            if (btn) {
+                const fallback = btn.onclick || (() => { });
+                btn.onclick = () => {
+                    try {
+                        window.location.href = window.href[window.href.length - 1];
+                    } catch (err) {
+                        fallback();
+                    }
+                };
+            }
+        });
+    });
+}
