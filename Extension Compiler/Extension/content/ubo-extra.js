@@ -269,8 +269,6 @@ if ( !abort ) {
     scriptlets.push({
         scriptlet: scriptlet,
         targets: [
-            'baltimoresun.com',
-            'boston.com',
             'calgarysun.com',
             'capitalgazette.com',
             'carrollcountytimes.com',
@@ -283,7 +281,6 @@ if ( !abort ) {
             'csgoutpost.com',
             'ctnow.com',
             'cycleworld.com',
-            'dailypress.com',
             'deathandtaxesmag.com',
             'delmartimes.net',
             'download.cnet.com',
@@ -294,8 +291,6 @@ if ( !abort ) {
             'financialpost.com',
             'gamerevolution.com',
             'gamepedia.com',
-            'geek.com',
-            'gofugyourself.com',
             'growthspotter.com',
             'hearthhead.com',
             'hoylosangeles.com',
@@ -518,23 +513,31 @@ if ( !abort ) {
     if ( abort ) { return; }
 
     var scriptlet = function() {
-        var value = window.performance,
-            re = /\bInstart-/,
-            magic = String.fromCharCode(Date.now() % 26 + 97) +
-                    Math.floor(Math.random() * 982451653 + 982451653).toString(36);
-        Object.defineProperty(window, 'performance', {
-            get: function() {
+        var magic = String.fromCharCode(Date.now() % 26 + 97) +
+                    Math.floor(Math.random() * 982451653 + 982451653).toString(36),
+            targets = [ 'atob', 'performance' ],
+            re = /\b(?:Instart-|IXC_)/;
+        var makeGetter = function(v) {
+            return function() {
                 var script = document.currentScript;
                 if (
                     script instanceof HTMLScriptElement === false ||
                     script.src !== '' ||
                     re.test(script.textContent) === false
                 ) {
-                    return value;
+                    return v;
                 }
                 throw new ReferenceError(magic);
-            }
-        });
+            };
+        };
+        var i = targets.length;
+        while ( i-- ) {
+            Object.defineProperty(
+                window,
+                targets[i],
+                { get: makeGetter(window[targets[i]]) }
+            );
+        }
         var oe = window.onerror;
         window.onerror = function(msg) {
             if ( typeof msg === 'string' && msg.indexOf(magic) !== -1 ) {
@@ -549,6 +552,9 @@ if ( !abort ) {
     scriptlets.push({
         scriptlet: scriptlet,
         targets: [
+            'baltimoresun.com',
+            'boston.com',
+            'dailypress.com',
             'msn.com',
         ]
     });

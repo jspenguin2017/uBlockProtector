@@ -589,3 +589,5 @@ tvnow.de##.no-flash-box:has-text(Adblocker)
 @@||manifest.auditude.com^$xmlhttprequest,domain=pga.com
 ! === kiss.com.tw
 kiss.com.tw#@##ads
+! === igeeksblog.com
+igeeksblog.com###quads-ad1_widget
