@@ -515,7 +515,7 @@ if ( !abort ) {
     var scriptlet = function() {
         var magic = String.fromCharCode(Date.now() % 26 + 97) +
                     Math.floor(Math.random() * 982451653 + 982451653).toString(36),
-            targets = [ 'atob', 'performance' ],
+            targets = [ 'atob', 'performance', 'console.error' ],
             re = /\b(?:Instart-|IXC_)/;
         var makeGetter = function(v) {
             return function() {
@@ -530,13 +530,18 @@ if ( !abort ) {
                 throw new ReferenceError(magic);
             };
         };
-        var i = targets.length;
+        var i = targets.length,
+            owner, target, chain, prop;
         while ( i-- ) {
-            Object.defineProperty(
-                window,
-                targets[i],
-                { get: makeGetter(window[targets[i]]) }
-            );
+            owner = window;
+            target = targets[i];
+            chain = target.split('.');
+            for (;;) {
+                prop = chain.shift();
+                if ( chain.length === 0 ) { break; }
+                owner = owner[prop];
+            }
+            Object.defineProperty(owner, prop, { get: makeGetter(owner[prop]) });
         }
         var oe = window.onerror;
         window.onerror = function(msg) {
