@@ -470,7 +470,6 @@ const setLastBuildVersion = (v) => {
 /**
  * Find published version number.
  * Will fail the build if this task could not be completed.
- * This function is not used.
  * @function
  * @return {Promise} The promise of the task.
  ** @param {Version} v1 - The version.
