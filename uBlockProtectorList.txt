@@ -106,7 +106,7 @@ newser.com###divStoryColumn > div:nth-child(3)
 ||hammerhearing.com^$third-party
 meta-chart.com##script:inject(setTimeout-defuser.js, [native code])
 techdracula.com,keshavcommoditycalls.com,hackinformer.com,coderexample.com,anibatch.id,altervista.org,ispazio.net,kitguru.net,wabetainfo.com,albanian.tv,techygeekshome.info,dl-wordpress.com,nulledcode.cc##script:inject(setTimeout-defuser.js, an_message_display)
-hentaitake.net,hackinformer.com,sopsport.org,cyberterminators.co,themeslide.com,rnbxclusive.pw,gktoday.in,secretflying.com,halamadrid.pl##script:inject(abort-on-property-read.js, anOptions)
+hentaitake.net,hackinformer.com,sopsport.org,cyberterminators.co,themeslide.com,rnbxclusive.pw,gktoday.in,secretflying.com,halamadrid.pl,scambieuropei.info##script:inject(abort-on-property-read.js, anOptions)
 blockadblock.com,futbolchile.net,freeomovie.com,appdrop.net,skmedix.pl,yalujailbreak.net,cloudwebcopy.com,milaulas.com,tout-bon.com,sznpaste.net,linkdrop.net,themeslide.com,android-zone.ws,cmacapps.com,l2network.eu,animes-mangas-ddl.net,fuckingsession.com,klartext-ne.de,forumcoin.win##script:inject(bab-defuser.js)
 themarker.com,nachrichten.at##script:inject(abort-on-property-read.js, adblockDetector)
 ||lukkr.com/website/pf.js
