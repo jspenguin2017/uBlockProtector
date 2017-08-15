@@ -3272,3 +3272,6 @@ if (a.domCmp(["acortar.net"])) {
         });
     });
 }
+if (a.domCmp(["egobits.com"])) {
+    a.noAccess("detector_launch");
+}

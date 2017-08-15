@@ -559,6 +559,7 @@ if ( !abort ) {
         targets: [
             'baltimoresun.com',
             'boston.com',
+            'chroniclelive.co.uk',
             'dailypress.com',
             'gofugyourself.com',
             'msn.com',
