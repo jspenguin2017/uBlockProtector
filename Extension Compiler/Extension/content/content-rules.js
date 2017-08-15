@@ -63,7 +63,7 @@
         }
     }
     //uBO-Extra white list
-    if (a.domCmp(["allo.google.com"], true)) {
+    if (a.domCmp([], true)) {
         a.uBOExtraExcluded = true;
         console.log("uBlock Protector excluded this domain from uBO-Extra.");
     }

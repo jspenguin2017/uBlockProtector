@@ -686,8 +686,7 @@ if ( !abort ) {
         scriptlet: scriptlet,
         exceptions: [
             'appear.in',
-            'hangouts.google.com',
-            'meet.google.com',
+            'google.com',
             'messenger.com',
         ],
     });
