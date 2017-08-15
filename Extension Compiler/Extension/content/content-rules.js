@@ -3247,7 +3247,7 @@ if (a.domInc(["10co"])) {
 if (a.domCmp(["moviemakeronline.com"])) {
     a.readOnly("abNoticeShowed", true);
 }
-if (a.domCmp(["nbcsports.com"])) {
+if (a.domCmp(["nbcsports.com", "knowyourmeme.com"])) {
     a.readOnly("adblockDetect", () => { });
 }
 if (a.domCmp(["kiss.com.tw"])) {
