@@ -489,7 +489,7 @@ const getPublishedVersion = () => {
             res.on("end", () => {
                 let match;
                 try {
-                    match = (/<meta itemprop="version" content="(\d+\.\d+)" \/>/).exec(data);
+                    match = (/<meta itemprop="version" content="(\d+\.\d+)"\/>/).exec(data);
                 } catch (err) { } //Error handled below
                 if (match) {
                     resolve(new Version(match[1]));
@@ -602,8 +602,9 @@ const build = (newVer) => {
         return upload(token, data);
     }).then(() => {
         return publish(token);
-    }).then(() => {
-        return setLastBuildVersion(newVer);
+        //Temporary: API server is down
+        //}).then(() => {
+        //    return setLastBuildVersion(newVer);
     }).then(exit);
 };
 
@@ -626,7 +627,9 @@ if (process.env.TRAVIS_COMMIT_MESSAGE.startsWith("@build-script-force-run")) {
 } else {
     //Fetch versions
     Promise.all([
-        getLastBuildVersion(),
+        //Temporary: API server is down
+        //getLastBuildVersion(),
+        getPublishedVersion(),
         getLocalVersion(),
     ]).then((versions) => {
         if (verSame(...versions)) {
