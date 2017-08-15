@@ -470,6 +470,7 @@ const setLastBuildVersion = (v) => {
 /**
  * Find published version number.
  * Will fail the build if this task could not be completed.
+ * This function is not used.
  * @function
  * @return {Promise} The promise of the task.
  ** @param {Version} v1 - The version.
@@ -507,8 +508,7 @@ const getPublishedVersion = () => {
 };
 /**
  * Find version number of last build.
- * Will try 5 times, then fallback to published version number.
- * Will fail the build if this task could not be completed.
+ * Will try 5 times, then default to 1.0.
  * @function
  * @return {Promise} The promise of the task.
  ** @param {Version} v1 - The version.
@@ -520,11 +520,9 @@ const getLastBuildVersion = () => {
             let errorCount = 0;
             return () => {
                 console.error("Could not obtain version number of last build: Could not connect to remote server.");
-                if ((++errorCount) > 3) {
-                    console.error("Too many trails, fallback to published version.");
-                    getPublishedVersion().then((ver) => {
-                        resolve(ver);
-                    });
+                if ((++errorCount) > 5) {
+                    console.error("Too many trails, default to 1.0.");
+                    resolve(new Version("1.0"));
                 } else {
                     console.log("Retrying in 1 minute...");
                     setTimeout(doRequest, 60 * 1000);
