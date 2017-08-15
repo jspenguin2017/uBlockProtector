@@ -594,3 +594,5 @@ igeeksblog.com###quads-ad1_widget
 ! === megawarez.org
 megawarez.org##div.onp-sl-content:style(display: block !important)
 megawarez.org##div.onp-sl-social-locker
+! === linclik.com
+*$script,third-party,domain=linclik.com
