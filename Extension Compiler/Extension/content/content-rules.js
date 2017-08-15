@@ -2439,7 +2439,7 @@ if (a.domCmp(["playbb.me", "easyvideo.me", "videowing.me", "videozoo.me"])) {
         $(".safeuploada-content").css("background", "transparent");
     });
 }
-if (a.domCmp(["nicematin.com", "alcpu.com"])) {
+if (a.domCmp(["nicematin.com", "alcpu.com", "newser.com"])) {
     a.noAccess("checkAds");
 }
 if (a.domCmp(["up-4ever.com"])) {
