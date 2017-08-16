@@ -109,10 +109,6 @@ bild.de#@#script:inject(abort-on-property-read.js, de.bild.cmsKonfig.a.b.a)
 ||louccrossc.com^$xmlhttprequest,redirect=nooptext,important,domain=tf1.fr
 ! === indiatimes.com
 indiatimes.com###append_overlay_photo_ads
-! === newser.com
-! === Issue: https://github.com/reek/anti-adblock-killer/issues/3492
-newser.com###divRightRail > div:nth-child(2)
-newser.com###divStoryColumn > div:nth-child(3)
 ! ============================
 ! ===== Common Solutions =====
 ! ============================
