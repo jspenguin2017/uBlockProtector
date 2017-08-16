@@ -1479,7 +1479,7 @@ a.generic.NoAdBlock = () => {
             };
             let needDefuse = true;
             let installs = {};
-            window.CloudflareApps = window.CloudflareApps || {};
+            window.CloudflareApps = {};
             window.Object.defineProperty(window.CloudflareApps, "installs", {
                 configurable: false,
                 set(val) {
