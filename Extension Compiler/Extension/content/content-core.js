@@ -882,6 +882,48 @@ a.loopback = (server) => {
     })();`, true);
 };
 /**
+ * Install XMLHttpRequest replace engine. Should be called once on document-start if needed.
+ * @function
+ * @param {Function} handler - The replace handler.
+ * @runtime this, method, url, isAsync, user, passwd, ...rest
+ ** Keyword this and arguments passed to XMLHttpRequest.prototype.open().
+ * @runtime replace
+ ** Replace payload.
+ ** @function
+ ** @param {This} that - The keyword this.
+ ** @param {string} text - The new payload.
+ */
+a.replace = (handler) => {
+    a.inject(`(() => {
+        "use strict";
+        const replace = (that, text) => {
+            window.Object.defineProperty(that, "responseText", {
+                configurable: false,
+                set() { },
+                get() {
+                    return text;
+                },
+            });
+            window.Object.defineProperty(that, "response", {
+                configurable: false,
+                set() { },
+                get() {
+                    return text;
+                },
+            });
+        };
+        try {
+            const _open = window.XMLHttpRequest.prototype.open
+            window.XMLHttpRequest.prototype.open = function (method, url, isAsync, user, passwd, ...rest) {
+                (${handler})();
+                return _open.call(this, method, url, isAsync, user, passwd, ...rest);
+            };
+        } catch (err) {
+            window.console.error("uBlock Protector failed to set up XMLHttpRequest replace engine!");
+        }
+    })();`, true);
+};
+/**
  * Forcefully close the current tab. This is asynchronous.
  * @function
  */

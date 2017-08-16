@@ -3277,3 +3277,25 @@ if (a.domCmp(["acortar.net"])) {
 if (a.domCmp(["egobits.com"])) {
     a.noAccess("detector_launch");
 }
+if (a.domCmp(["tvnow.de"])) {
+    a.replace(() => {
+        if (url.includes("/v3/movies/")) {
+            this.addEventListener("readystatechange", () => {
+                if (this.readyState === 4) {
+                    try {
+                        let payload = window.JSON.parse(this.responseText);
+                        payload.ignoreAd = true;
+                        payload.noad = true;
+                        payload.geoblocked = false;
+                        payload.free = true;
+                        payload.blockadeText = "0";
+                        payload.format.enableAd = false;
+                        payload.format.hasFreeEpisodes = true;
+                        payload.format.isGeoBlocked = false;
+                        replace(this, window.JSON.stringify(payload));
+                    } catch (err) { }
+                }
+            });
+        }
+    });
+}

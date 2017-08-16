@@ -69,6 +69,14 @@ if (a.debugMode) {
         true,
     );
     */
+    //Issue: https://gitlab.com/xuhaiyang1234/uBlockProtectorSecretIssues/issues/10
+    a.proxy(
+        [
+            "*://tvnow.de/*",
+            "*://*.tvnow.de/*",
+        ],
+        "46.101.180.199",
+    );
 }
 //Rules
 if (a.debugMode) {
