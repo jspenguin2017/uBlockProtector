@@ -52,7 +52,7 @@
         //ads.js v2
         if (a.domCmp(["gamersclub.com.br", "uploadboy.com", "vidoza.net", "videohelp.com", "zeiz.me",
             "passionea300allora.it", "memurlar.net", "palemoon.org", "stocks.cafe", "listamais.com.br",
-            "acquavivalive.it", "lolalytics.com"])) {
+            "acquavivalive.it", "lolalytics.com", "palolive.it", "molfettalive.it"])) {
             a.generic.adsjsV2();
         }
         //NoAdBlock
