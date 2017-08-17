@@ -109,6 +109,9 @@ bild.de#@#script:inject(abort-on-property-read.js, de.bild.cmsKonfig.a.b.a)
 ||louccrossc.com^$xmlhttprequest,redirect=nooptext,important,domain=tf1.fr
 ! === indiatimes.com
 indiatimes.com###append_overlay_photo_ads
+! === nontonanime.org
+nontonanime.org##nav.navbar + div.banner > a[href^="https://goo.gl/"]
+||eurifsiooyof.bid^$script,third-party
 ! ============================
 ! ===== Common Solutions =====
 ! ============================
