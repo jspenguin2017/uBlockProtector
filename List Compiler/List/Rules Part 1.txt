@@ -596,3 +596,5 @@ megawarez.org##div.onp-sl-content:style(display: block !important)
 megawarez.org##div.onp-sl-social-locker
 ! === linclik.com
 *$script,third-party,domain=linclik.com
+! === espresso.repubblica.it
+||espresso.repubblica.it/pw/pw2-espressosfoglio.js
