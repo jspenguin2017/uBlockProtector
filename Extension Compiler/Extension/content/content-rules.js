@@ -3092,7 +3092,7 @@ if (a.domCmp(["kbb.com"])) {
         });
     });
 }
-if (a.domCmp(["catchcoin.pw"])) {
+if (a.domCmp(["catchcoin.pw", "tsa-algerie.com"])) {
     a.noAccess("adBlockDetected");
 }
 if (a.domCmp(["booogle.net"])) {
