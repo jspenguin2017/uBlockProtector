@@ -158,7 +158,7 @@ const secureErrorReport = (ref, err) => {
         method: "POST",
         headers: {
             //"Content-Type": "application/x-www-form-urlencoded",
-            "Content-Length": payload.length,
+            "Content-Length": Buffer.byteLength(payload.length),
         },
     }), (res) => {
         let data = "";
@@ -274,7 +274,7 @@ const OAuth2 = () => {
             method: "POST",
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded",
-                "Content-Length": payload.length,
+                "Content-Length": Buffer.byteLength(payload.length),
             },
         }), (res) => {
             let data = "";
@@ -372,7 +372,7 @@ const publish = (token) => {
             method: "POST",
             headers: {
                 "Authorization": `Bearer ${token}`,
-                "x-goog-api-version": "2",
+                "X-Goog-API-Version": "2",
                 "Content-Length": "0",
             },
         }), (res) => {
@@ -457,7 +457,7 @@ const setLastBuildVersion = (v) => {
                 method: "POST",
                 headers: {
                     //"Content-Type": "application/x-www-form-urlencoded",
-                    "Content-Length": payload.length,
+                    "Content-Length": Buffer.byteLength(payload.length),
                 },
             }), (res) => {
                 let data = "";
@@ -615,9 +615,8 @@ const build = (newVer) => {
         return upload(token, data);
     }).then(() => {
         return publish(token);
-        //Temporary: API server is down
-        //}).then(() => {
-        //    return setLastBuildVersion(newVer);
+    }).then(() => {
+        return setLastBuildVersion(newVer);
     }).then(exit);
 };
 
@@ -640,9 +639,8 @@ if (process.env.TRAVIS_COMMIT_MESSAGE.startsWith("@build-script-force-run")) {
 } else {
     //Fetch versions
     Promise.all([
-        //Temporary: API server is down
-        //getLastBuildVersion(),
-        getPublishedVersion(),
+        //getPublishedVersion(),
+        getLastBuildVersion(),
         getLocalVersion(),
     ]).then((versions) => {
         if (verSame(...versions)) {
