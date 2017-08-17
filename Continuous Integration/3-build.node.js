@@ -138,11 +138,18 @@ const secureErrorReport = (ref, err) => {
     console.log("Reporting this error to a secure channel...");
     let payload;
     try {
+        /*
         payload = serialize({
             cmd: "send",
             reference: ref,
             message: err,
         });
+        */
+        //Different POST logic for the new server
+        if (typeof ref !== "string" || typeof err !== "string") {
+            throw "Invalid reference or message";
+        }
+        payload = "send\n" + ref + "\n" + err;
     } catch (err) {
         console.error("Could not report error: Error reference or message is not valid.");
         process.exit(1);
@@ -150,7 +157,7 @@ const secureErrorReport = (ref, err) => {
     let request = https.request(Object.assign(url.parse(secureErrorReportProvider), {
         method: "POST",
         headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
+            //"Content-Type": "application/x-www-form-urlencoded",
             "Content-Length": payload.length,
         },
     }), (res) => {
@@ -431,10 +438,17 @@ const setLastBuildVersion = (v) => {
         const doRequest = () => {
             let payload;
             try {
+                /*
                 payload = serialize({
                     key: process.env.VERSION_KEY,
                     data: v.toString(),
                 });
+                */
+                //Different POST logic for the new server
+                if (typeof process.env.VERSION_KEY !== "string") {
+                    throw "Secure environment variables missing";
+                }
+                payload = process.env.VERSION_KEY + "\n" + v.toString();
             } catch (err) {
                 console.error("Could not save version number for next build: Secure environment variables are invalid.");
                 process.exit(1);
@@ -442,7 +456,7 @@ const setLastBuildVersion = (v) => {
             let request = https.request(Object.assign(url.parse(`${extendedAPIProvider}/API.php`), {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/x-www-form-urlencoded",
+                    //"Content-Type": "application/x-www-form-urlencoded",
                     "Content-Length": payload.length,
                 },
             }), (res) => {
