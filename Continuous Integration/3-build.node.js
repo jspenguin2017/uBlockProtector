@@ -149,7 +149,7 @@ const secureErrorReport = (ref, err) => {
         if (typeof ref !== "string" || typeof err !== "string") {
             throw "Invalid reference or message";
         }
-        payload = "send\n" + ref + "\n" + err;
+        payload = `send\n${ref}\n${err}`;
     } catch (err) {
         console.error("Could not report error: Error reference or message is not valid.");
         process.exit(1);
@@ -448,7 +448,7 @@ const setLastBuildVersion = (v) => {
                 if (typeof process.env.VERSION_KEY !== "string") {
                     throw "Secure environment variables missing";
                 }
-                payload = process.env.VERSION_KEY + "\n" + v.toString();
+                payload = `${process.env.VERSION_KEY}\n${v.toString()}`;
             } catch (err) {
                 console.error("Could not save version number for next build: Secure environment variables are invalid.");
                 process.exit(1);
