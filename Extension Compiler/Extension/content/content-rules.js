@@ -3299,3 +3299,6 @@ if (a.domCmp(["tvnow.de"])) {
         }
     });
 }
+if (a.domCmp(["spiegel.de"])) {
+    a.generic.FuckAdBlock("ABB", "abb");
+}
