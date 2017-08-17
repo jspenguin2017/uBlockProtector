@@ -116,6 +116,8 @@ module.exports = () => {
                     });
                 }
             }
+        }).catch(() => {
+            process.emit("uncaughtException");
         });
     });
 };
