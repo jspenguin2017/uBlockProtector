@@ -3302,3 +3302,7 @@ if (a.domCmp(["tvnow.de"])) {
 if (a.domCmp(["spiegel.de"])) {
     a.generic.FuckAdBlock("ABB", "abb");
 }
+if (a.domCmp(["qoshe.com"])) {
+    a.readOnly("adBlockAlertShown", true);
+    a.filter("setTimeout", a.matchMethod.string, "adBlockFunction()");
+}
