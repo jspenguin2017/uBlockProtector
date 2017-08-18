@@ -446,19 +446,29 @@ if ( !abort ) {
     var scriptlet = function() {
         var magic = String.fromCharCode(Date.now() % 26 + 97) +
                     Math.floor(Math.random() * 982451653 + 982451653).toString(36),
-            targets = [ 'atob', 'console.error', 'INSTART', 'performance' ],
+            targets = [ 'atob', 'console.error', 'INSTART', 'performance', 'require' ],
             re = /\b(?:Instart-|I10C|IXC_|INSTART)/;
-        var makeGetter = function(v) {
-            return function() {
-                var script = document.currentScript;
-                if (
-                    script instanceof HTMLScriptElement === false ||
-                    script.src !== '' ||
-                    re.test(script.textContent) === false
-                ) {
-                    return v;
-                }
+        var validate = function() {
+            var script = document.currentScript;
+            if (
+                script instanceof HTMLScriptElement &&
+                script.src === '' &&
+                re.test(script.textContent)
+            ) {
                 throw new ReferenceError(magic);
+            }
+        };
+        var makeGetterSetter = function(owner, prop) {
+            var value = owner[prop];
+            return {
+                get: function() {
+                    validate();
+                    return value;
+                },
+                set: function(a) {
+                    validate();
+                    value = a;
+                }
             };
         };
         var i = targets.length,
@@ -472,7 +482,7 @@ if ( !abort ) {
                 if ( chain.length === 0 ) { break; }
                 owner = owner[prop];
             }
-            Object.defineProperty(owner, prop, { get: makeGetter(owner[prop]) });
+            Object.defineProperty(owner, prop, makeGetterSetter(owner, prop));
         }
         var oe = window.onerror;
         window.onerror = function(msg) {

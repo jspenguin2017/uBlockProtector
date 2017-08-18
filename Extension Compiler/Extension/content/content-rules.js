@@ -3306,3 +3306,6 @@ if (a.domCmp(["qoshe.com"])) {
     a.readOnly("adBlockAlertShown", true);
     a.filter("setTimeout", a.matchMethod.string, "adBlockFunction()");
 }
+if (a.domCmp(["aargauerzeitung.ch"])) {
+    a.filter("setTimeout", a.matchMethod.string, "[native code]");
+}
