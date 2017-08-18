@@ -639,7 +639,7 @@ if (process.env.TRAVIS_COMMIT_MESSAGE.startsWith("@build-script-force-run")) {
     //I still need to fetch local version since I need to save it at the end
     getLocalVersion().then(build).catch(() => {
         process.emit("uncaughtException");
-    });;
+    });
 } else {
     //Fetch versions
     Promise.all([
