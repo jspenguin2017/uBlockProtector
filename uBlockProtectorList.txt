@@ -372,6 +372,7 @@ megawarez.org##div.onp-sl-content:style(display: block !important)
 megawarez.org##div.onp-sl-social-locker
 *$script,third-party,domain=linclik.com
 ||espresso.repubblica.it/pw/pw2-espressosfoglio.js
+@@||24opole.pl^$generichide
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================
