@@ -3342,3 +3342,6 @@ if (a.domCmp(["mwpaste.com"])) {
         });
     });
 }
+if (a.domCmp(["clasicotas.org"])) {
+    a.filter("addEventListener", a.matchMethod.stringExact, "mouseup", "window.document");
+}
