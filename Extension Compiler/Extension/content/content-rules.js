@@ -3310,11 +3310,11 @@ if (a.domCmp(["aargauerzeitung.ch"])) {
     a.filter("setTimeout", a.matchMethod.string, "[native code]");
 }
 if (a.domCmp(["lolalytics.com"])) {
-    //a.filter("setTimeout", a.matchMethod.string, "{ opacity:'+op+' !important; }");
-    a.onBeforeScriptExecute((script) => {
-        if (script.textContent && script.textContent.includes("{ opacity:'+op+' !important; }")) {
-            script.remove();
-        }
+    a.ready(() => {
+        a.inject(() => {
+            "use strict";
+            window.document.onreadystatechange = null;
+        });
     });
 }
 if (a.domCmp(["streamcloud.eu"])) {
