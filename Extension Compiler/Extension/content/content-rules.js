@@ -143,17 +143,21 @@ if (a.domCmp(["game-debate.com", "scan-mx.com", "onepiece-mx.net", "naruto-mx.ne
 if (a.domCmp(["freebitcoins.nx.tc", "getbitcoins.nx.tc"])) {
     a.readOnly("ad_block_test", () => false);
 }
+if (a.domCmp(["kissanime.io", "1movies.tv"])) {
+    a.readOnly("check_adblock", true);
+}
+if (a.domCmp(["fourchette-et-bikini.fr", "meteocity.com"])) {
+    a.readOnly("adProtect", 1);
+}
 if (a.domCmp(["vipleague.is", "vipleague.ws", "vipleague.tv", "vipleague.se", "vipleague.me", "vipapp.me",
     "vipleague.mobi", "vipleague.co", "vipleague.sx", "vipleague.ch", "vipbox.tv", "vipbox.co", "vipbox.biz",
     "vipbox.sx", "vipbox.eu", "vipbox.so", "vipbox.nu", "vipboxsa.co", "strikeout.co", "strikeout.me",
     "homerun.re", "vipboxtv.co", "securenetsystems.net"])) {
     a.readOnly("iExist", true);
 }
-if (a.domCmp(["kissanime.io", "1movies.tv"])) {
-    a.readOnly("check_adblock", true);
-}
-if (a.domCmp(["fourchette-et-bikini.fr", "meteocity.com"])) {
-    a.readOnly("adProtect", 1);
+if (a.domCmp(["games.nydailynews.com", "games.express.co.uk", "puzzles.independent.co.uk", "games.orlandosentinel.com",
+    "puzzles.standard.co.uk", "games.parade.com", "games.baltimoresun.com", "games.mcall.com", "games.somersetlive.co.uk"])) {
+    a.readOnly("Adv_ab", false);
 }
 //---a.noAccess---
 if (a.domCmp(["debridnet.com", "adshort.co", "linksh.top", "adshorte.com", "coinb.ink", "animeforce.org",
