@@ -373,6 +373,7 @@ megawarez.org##div.onp-sl-social-locker
 *$script,third-party,domain=linclik.com
 ||espresso.repubblica.it/pw/pw2-espressosfoglio.js
 @@||24opole.pl^$generichide
+net.hr#@#.reklama1
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================
@@ -1358,7 +1359,6 @@ wurst-client.tk#@#.adsbygoogle
 @@||sweclockers.com/js/ad.js$script
 @@||ads.ad-center.com/smart_ad/display?$subdocument,domain=wstream.video
 ria.ru##.antiblock
-net.hr#@#.reklama
 185.63.252.176#@#div[id^="MarketGid"]
 hdmovie14.net#@#.pub_300x250
 hdmovie14.net#@#.pub_300x250m

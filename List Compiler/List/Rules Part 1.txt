@@ -603,3 +603,5 @@ megawarez.org##div.onp-sl-social-locker
 ||espresso.repubblica.it/pw/pw2-espressosfoglio.js
 ! === 24opole.pl
 @@||24opole.pl^$generichide
+! === net.hr
+net.hr#@#.reklama1

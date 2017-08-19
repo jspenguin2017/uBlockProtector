@@ -983,7 +983,6 @@ wurst-client.tk#@#.adsbygoogle
 @@||sweclockers.com/js/ad.js$script
 @@||ads.ad-center.com/smart_ad/display?$subdocument,domain=wstream.video
 ria.ru##.antiblock
-net.hr#@#.reklama
 185.63.252.176#@#div[id^="MarketGid"]
 hdmovie14.net#@#.pub_300x250
 hdmovie14.net#@#.pub_300x250m
