@@ -3326,3 +3326,15 @@ if (a.domCmp(["mangacanblog.com"])) {
 if (a.domCmp(["portel.pl"])) {
     a.readOnly("blokowanko", false);
 }
+if (a.domCmp(["mwpaste.com"])) {
+    a.css("#downbloq { display:none; } .hidebloq { display:block; }");
+    a.ready(() => {
+        a.inject(() => {
+            "use strict";
+            const blocks = window.document.querySelectorAll(".hidebloq");
+            for (let i = 0; i < blocks.length; i++) {
+                blocks[i].innerHTML = window.atob(blocks[i].textContent);
+            }
+        });
+    });
+}
