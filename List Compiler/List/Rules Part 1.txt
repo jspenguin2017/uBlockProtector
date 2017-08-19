@@ -604,4 +604,5 @@ megawarez.org##div.onp-sl-social-locker
 ! === 24opole.pl
 @@||24opole.pl^$generichide
 ! === net.hr
+net.hr#@#.reklama
 net.hr#@#.reklama1
