@@ -163,6 +163,9 @@ if (a.domCmp(["debridnet.com", "adshort.co", "linksh.top", "adshorte.com", "coin
 if (a.domCmp(["linx.cloud"])) {
     a.noAccess("popns");
 }
+if (a.domCmp(["psarips.com", "sawlive.tv"])) {
+    a.noAccess("open");
+}
 //---a.bait---
 if (a.domCmp(["primeshare.tv", "leveldown.fr"])) {
     a.bait("div", "#adblock");
@@ -1236,9 +1239,6 @@ if (a.domCmp(["youporn.com", "youporngay.com"])) {
 if (a.domCmp(["citationmachine.net"])) {
     a.cookie("sbm_cm_citations", "0");
 }
-if (a.domCmp(["psarips.com"])) {
-    a.noAccess("open");
-}
 if (a.domCmp(["extratorrent.cc", "extratorrent.com"])) {
     a.cookie("ppu_delay", "1");
     a.cookie("ppu_main", "1");
@@ -1734,7 +1734,7 @@ if (a.domCmp(["sawlive.tv"])) {
             a.inject(() => {
                 "use strict";
                 window.display = false;
-                window.closeAd();
+                window.closeMyAd();
             });
         }
     });
