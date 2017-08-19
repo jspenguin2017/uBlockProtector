@@ -3312,3 +3312,6 @@ if (a.domCmp(["aargauerzeitung.ch"])) {
 if (a.domCmp(["lolalytics.com"])) {
     a.filter("setTimeout", a.matchMethod.string, "{ opacity:'+op+' !important; }");
 }
+if (a.domCmp(["streamcloud.eu"])) {
+    a.css(".info_text { display:none; } #login > div[style^='width'] { display:block; }");
+}
