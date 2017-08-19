@@ -3260,7 +3260,7 @@ if (a.domCmp(["kiss.com.tw"])) {
 if (a.domCmp(["identi.li"])) {
     a.css(".linkhidder { display:none; } div[id^='hidden_'] { display:block; }");
 }
-if (a.domCmp(["acortar.net"])) {
+if (a.domCmp(["acortar.net", "acortalo.net"])) {
     a.on("load", () => {
         a.inject(() => {
             "use strict";
