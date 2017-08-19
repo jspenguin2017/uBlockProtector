@@ -52,7 +52,7 @@
         //ads.js v2
         if (a.domCmp(["gamersclub.com.br", "uploadboy.com", "vidoza.net", "videohelp.com", "zeiz.me",
             "passionea300allora.it", "memurlar.net", "palemoon.org", "stocks.cafe", "listamais.com.br",
-            "acquavivalive.it", "lolalytics.com", "palolive.it", "molfettalive.it"])) {
+            "acquavivalive.it", "palolive.it", "molfettalive.it"])) {
             a.generic.adsjsV2();
         }
         //NoAdBlock
@@ -3308,4 +3308,7 @@ if (a.domCmp(["qoshe.com"])) {
 }
 if (a.domCmp(["aargauerzeitung.ch"])) {
     a.filter("setTimeout", a.matchMethod.string, "[native code]");
+}
+if (a.domCmp(["lolalytics.com"])) {
+    a.filter("setTimeout", a.matchMethod.string, "{ opacity:'+op+' !important; }");
 }
