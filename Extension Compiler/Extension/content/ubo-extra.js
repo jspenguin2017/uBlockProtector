@@ -229,53 +229,6 @@ if ( !abort ) {
 
 /*******************************************************************************
 
-    Instart Logic buster v1
-
-    https://github.com/uBlockOrigin/uAssets/issues/227
-
-**/
-
-/*
-(function() {
-    if ( abort ) { return; }
-
-    var scriptlet = function() {
-        var url = document.URL;
-        if ( /^https?:\/\//.test(url) === false ) { return; }
-        window.stop();
-        var req = new XMLHttpRequest();
-        req.open('GET', window.location.href);
-        req.onload = function() {
-            this.onload = null;
-            var parser = new DOMParser();
-            var doc = parser.parseFromString(this.responseText, 'text/html');
-            if ( doc === null ) { return; }
-            var nodes = doc.querySelectorAll('script');
-            var i = nodes.length,
-                script;
-            while ( i-- ) {
-                script = nodes[i];
-                if ( /\b(?:g00|I10C|I11C|INSTART)\b/.test(script.textContent) ) {
-                    script.parentNode.removeChild(script);
-                }
-            }
-            document.open();
-            document.write(doc.documentElement.outerHTML); // jshint ignore:line
-            document.close();
-        };
-        req.send(null);
-    };
-
-    scriptlets.push({
-        scriptlet: scriptlet,
-        targets: [
-        ]
-    });
-})();
-*/
-
-/*******************************************************************************
-
     Instart Logic buster: v2
 
     https://github.com/uBlockOrigin/uAssets/issues/227#issuecomment-268409666
@@ -399,44 +352,7 @@ if ( !abort ) {
 
 /*******************************************************************************
 
-    Instart Logic buster 3
-
-    https://github.com/gorhill/uBlock/issues/2702
-
-**/
-
-(function() {
-    if ( abort ) { return; }
-
-    var scriptlet = function() {
-        var realConsole = console,
-            realLog = console.log,
-            dummy;
-        console.log = function () {
-            for ( var i = 0; i < arguments.length; i++ ) {
-                var arg = arguments[i];
-                if ( arg instanceof HTMLElement ) {
-                    dummy = arg.toString() + arg.id;
-                }
-            }
-            return realLog.apply(realConsole, arguments);
-        }.bind(console);
-        Object.defineProperty(console.log, 'name', { value: 'log' });
-    };
-
-    scriptlets.push({
-        scriptlet: scriptlet,
-        targets: [
-            'chowhound.com',
-            'hockeysfuture.com',
-            'pcmag.com',
-        ]
-    });
-})();
-
-/*******************************************************************************
-
-    Instart Logic buster 4
+    Instart Logic buster v4
 
 **/
 
@@ -504,6 +420,7 @@ if ( !abort ) {
             'capitalgazette.com',
             'carrollcountytimes.com',
             'chicagotribune.com',
+            'chowhound.com',
             'chroniclelive.co.uk',
             'comingsoon.net',
             'computershopper.com',
@@ -524,6 +441,7 @@ if ( !abort ) {
             'gofugyourself.com',
             'growthspotter.com',
             'hearthhead.com',
+            'hockeysfuture.com',
             'hoylosangeles.com',
             'ibtimes.com',
             'infinitiev.com',
@@ -539,6 +457,7 @@ if ( !abort ) {
             'nasdaq.com',
             'orlandosentinel.com',
             'ottawasun.com',
+            'pcmag.com',
             'popphoto.com',
             'popsci.com',
             'ranchosantafereview.com',
@@ -606,97 +525,6 @@ if ( !abort ) {
     });
 })();
 */
-
-/*******************************************************************************
-
-    WebRTC abuse: generic.
-
-    https://github.com/uBlockOrigin/uAssets/issues/251
-
-**/
-
-(function() {
-    if ( abort ) { return; }
-
-    // Nothing to fix for browsers not supporting RTCPeerConnection.
-    if (
-        window.RTCPeerConnection instanceof Function === false &&
-        window.webkitRTCPeerConnection instanceof Function === false
-    ) {
-        return;
-    }
-
-    var scriptlet = function() {
-        var RealRTCPeerConnection = window.RTCPeerConnection ||
-                                    window.webkitRTCPeerConnection;
-        var WrappedRTCPeerConnection = function(config) {
-            if ( this instanceof WrappedRTCPeerConnection === false ) {
-                return RealRTCPeerConnection();
-            }
-            var win = window, location = win.location, max = 10;
-            try {
-                for (;;) {
-                    location = win.location;
-                    if ( win.parent === win ) { break; }
-                    win = win.parent;
-                    if ( !win ) { break; }
-                    if ( (max -= 1) === 0 ) { break; }
-                }
-            } catch(ex) {
-            }
-            var scheme = location.protocol === 'https:' ? 'wss' : 'ws',
-                wsURL = scheme + '://' + location.hostname + '/';
-            var rtcURL = config &&
-                         config.iceServers &&
-                         config.iceServers[0] &&
-                         config.iceServers[0].urls &&
-                         config.iceServers[0].urls;
-            if ( Array.isArray(rtcURL) && rtcURL.length !== 0 ) {
-                rtcURL = rtcURL[0];
-            }
-            if ( !rtcURL ) { rtcURL = ''; }
-            try {
-                (new window.WebSocket(wsURL)).close();
-            } catch(ex) {
-                var msg = ex.message.replace(wsURL, rtcURL)
-                                    .replace('WebSocket', 'RTCPeerConnection');
-                throw new Error(msg, '', 0);
-            }
-            if ( arguments.length === 0 ) {
-                return new RealRTCPeerConnection();
-            }
-            return new RealRTCPeerConnection(config);
-        };
-        WrappedRTCPeerConnection.prototype = RealRTCPeerConnection.prototype;
-        var bound = WrappedRTCPeerConnection.bind(window);
-            bound.prototype = {
-            createAnswer: RealRTCPeerConnection.prototype.createAnswer,
-            createOffer: RealRTCPeerConnection.prototype.createOffer,
-            generateCertificate: RealRTCPeerConnection.prototype.generateCertificate
-         };
-        if ( window.RTCPeerConnection instanceof Function ) {
-            window.RTCPeerConnection = bound;
-            Object.defineProperty(window.RTCPeerConnection, 'name', {
-                value: 'RTCPeerConnection'
-            });
-        }
-        if ( window.webkitRTCPeerConnection instanceof Function ) {
-            window.webkitRTCPeerConnection = bound;
-            Object.defineProperty(window.webkitRTCPeerConnection, 'name', {
-                value: 'webkitRTCPeerConnection'
-            });
-        }
-    };
-
-    scriptlets.push({
-        scriptlet: scriptlet,
-        exceptions: [
-            'appear.in',
-            'google.com',
-            'messenger.com',
-        ],
-    });
-})();
 
 /*******************************************************************************
 
