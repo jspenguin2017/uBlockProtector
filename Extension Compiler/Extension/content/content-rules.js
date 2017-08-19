@@ -3318,3 +3318,6 @@ if (a.domCmp(["streamcloud.eu"])) {
 if (a.domCmp(["mangacanblog.com"])) {
     a.readOnly("adblock", 1);
 }
+if (a.domCmp(["portel.pl"])) {
+    a.readOnly("blokowanko", false);
+}
