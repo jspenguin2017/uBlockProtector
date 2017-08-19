@@ -560,6 +560,7 @@ if ( !abort ) {
             'thoughtco.com',
             'timeanddate.com',
             'torontosun.com',
+            'tv.com',
             'twincities.com',
             'vancouversun.com',
             'vibe.com',
