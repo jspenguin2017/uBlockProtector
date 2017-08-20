@@ -3319,7 +3319,8 @@ if (a.domCmp(["qoshe.com"])) {
     a.readOnly("adBlockAlertShown", true);
     a.filter("setTimeout", a.matchMethod.string, "adBlockFunction()");
 }
-if (a.domCmp(["aargauerzeitung.ch"])) {
+if (a.domCmp(["aargauerzeitung.ch", "badenertagblatt.ch", "basellandschaftlichezeitung.ch", "bzbasel.ch",
+    "limmattalerzeitung.ch", "solothurnerzeitung.ch", "grenchnertagblatt.ch", "oltnertagblatt.ch"])) {
     a.filter("setTimeout", a.matchMethod.string, "[native code]");
 }
 if (a.domCmp(["lolalytics.com"])) {
