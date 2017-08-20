@@ -606,3 +606,5 @@ megawarez.org##div.onp-sl-social-locker
 ! === net.hr
 net.hr#@#.reklama
 net.hr#@#.reklama1
+! === televisa.com
+*/adblock/*$domain=televisa.com
