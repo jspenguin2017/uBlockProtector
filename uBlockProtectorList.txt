@@ -375,7 +375,7 @@ megawarez.org##div.onp-sl-social-locker
 @@||24opole.pl^$generichide
 net.hr#@#.reklama
 net.hr#@#.reklama1
-*/adblock/*$domain=televisa.com
+*/adblock/*$domain=televisa.com|lasestrellas.tv
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================
