@@ -2641,7 +2641,7 @@ if (a.domCmp(["idlelivelink.blogspot.com", "animeforce.org"])) {
         });
     });
 }
-if (a.domCmp(["hackinformer.com", "chelsea24news.pl"])) {
+if (a.domCmp(["hackinformer.com", "chelsea24news.pl", "windowstechinfo.com"])) {
     a.readOnly("AlobaidiDetectAdBlock", true);
     a.ready(() => {
         $(".special-message-wrapper").includes("your ad blocker").remove();
