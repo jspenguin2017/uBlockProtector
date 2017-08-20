@@ -131,6 +131,27 @@ $.Selection = class {
         return this;
     }
     /**
+     * Update current selection, only keep the selected element with given index.
+     * Clear current selection if no selected element has that index.
+     * @param
+     * @param {integer} i - The index, give a negative number to count from end.
+     */
+    eq(i) {
+        if (this.selection.length) {
+            if (i < 0) {
+                i += this.selection.length;
+            }
+            if (i >= 0 && i < this.selection.length) {
+                this.selection = [this.selection[i]];
+                this.length = 1;
+            } else {
+                this.selection = [];
+                this.length = 0;
+            }
+        } //Ignore if nothing is selected
+        return this;
+    }
+    /**
      * Update current selection, only keep the last selected element.
      * @method
      */

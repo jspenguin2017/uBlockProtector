@@ -571,18 +571,24 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "echi
                     networkBusy = false;
                 });
             } else if ($(containerMatcher).length) {
-                //Log element to be replace
-                if (a.debugMode) {
-                    console.log("Replacing player...");
-                    console.log($(containerMatcher).selection[0]);
-                }
                 //Replace player
                 if (document.domain === "wp.tv") {
                     //The wrapper is different for this domain
                     $(".npp-container").after(a.nativePlayer(url)).remove();
                 } else {
+                    //Find the right container
+                    let containers = $(containerMatcher);
+                    let i = 0;
+                    for (; i < containers.length; i++) {
+                        if (containers.selection[i].firstChild.tagName !== "IFRAME") {
+                            break;
+                        }
+                    }
+                    if (i === containers.length) {
+                        return;
+                    }
                     //Need to remove class or it will be caught in anti-collapsing observer
-                    $(containerMatcher).first().after(a.nativePlayer(url)).rmClass().remove();
+                    containers.eq(i).after(a.nativePlayer(url)).rmClass().remove();
                 }
                 //Update variables and counter
                 url = null;
