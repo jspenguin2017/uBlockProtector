@@ -2932,7 +2932,7 @@ if (a.domCmp(["vvvvid.it"])) {
         });
     });
 }
-if (a.domCmp(["onet.pl", "komputerswiat.pl"])) {
+if (a.domCmp(["onet.pl", "komputerswiat.pl", "vod.pl"])) {
     /*
     a.onInsert((node) => {
         if (node.innerText && node.innerText.includes("Prosimy, odblokuj wy\u015Bwietlanie reklam")) {
