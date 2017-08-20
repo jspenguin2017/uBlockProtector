@@ -3346,3 +3346,6 @@ if (a.domCmp(["mwpaste.com"])) {
 if (a.domCmp(["clasicotas.org"])) {
     a.filter("addEventListener", a.matchMethod.stringExact, "mouseup", "window.document");
 }
+if (a.domCmp(["pseudo-flaw.net"])) {
+    a.readOnly("stopBlock", () => { });
+}
