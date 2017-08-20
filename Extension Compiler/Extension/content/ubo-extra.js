@@ -229,130 +229,7 @@ if ( !abort ) {
 
 /*******************************************************************************
 
-    Instart Logic buster: v2
-
-    https://github.com/uBlockOrigin/uAssets/issues/227#issuecomment-268409666
-
-**/
-
-(function() {
-    if ( abort ) { return; }
-
-    var scriptlet = function() {
-        var magic = String.fromCharCode(Date.now() % 26 + 97) +
-                    Math.floor(Math.random() * 982451653 + 982451653).toString(36);
-        var makeNanovisorProxy = function() {
-            return new Proxy({}, {
-                get: function(target, name) {
-                    switch ( name ) {
-                    case 'HtmlStreaming':
-                        return {
-                            InsertTags: function(a, b) {
-                                document.write(b); // jshint ignore:line
-                            },
-                            InterceptNode: function() {
-                            },
-                            PatchBegin: function() {
-                            },
-                            PatchEnd: function() {
-                            },
-                            PatchInit: function() {
-                            },
-                            ReloadWithNoHtmlStreaming: function() {
-                            },
-                            RemoveTags: function() {
-                            },
-                            UpdateAttributes: function() {
-                            }
-                        };
-                    default:
-                        return target[name];
-                    }
-                },
-                set: function(target, name, value) {
-                    switch ( name ) {
-                    case 'CanRun':
-                        target.CanRun = function() {
-                            return false;
-                        };
-                        break;
-                    default:
-                        target[name] = value;
-                    }
-                }
-            });
-        };
-        var instartInit;
-        window.I10C = makeNanovisorProxy();
-        window.INSTART = new Proxy({}, {
-            get: function(target, name) {
-                switch ( name ) {
-                case 'Init':
-                    return function(a) {
-                        if (
-                            a instanceof Object &&
-                            typeof a.nanovisorGlobalNameSpace === 'string' &&
-                            a.nanovisorGlobalNameSpace !== ''
-                        ) {
-                            window[a.nanovisorGlobalNameSpace] = makeNanovisorProxy();
-                        }
-                        a.enableHtmlStreaming = false;
-                        a.enableQSCallDiffComputationConfig = false;
-                        a.enableQuerySelectorMonitoring = false;
-                        a.serveNanovisorSameDomain = false;
-                        a.virtualDomains = 0;
-                        a.virtualizeDomains = [];
-                        instartInit(a);
-                    };
-                default:
-                    if ( target[name] === undefined ) {
-                        throw new Error(magic);
-                    }
-                    return target[name];
-                }
-            },
-            set: function(target, name, value) {
-                switch ( name ) {
-                case 'Init':
-                    instartInit = value;
-                    break;
-                default:
-                    target[name] = value;
-                }
-            }
-        });
-        var oe = window.error;
-        window.onerror = function(msg, src, line, col, error) {
-            if ( msg.indexOf(magic) !== -1 ) {
-                return true;
-            }
-            if ( oe instanceof Function ) {
-                return oe(msg, src, line, col, error);
-            }
-        }.bind();
-    };
-
-    scriptlets.push({
-        scriptlet: scriptlet,
-        targets: [
-            'calgaryherald.com',
-            'edmontonjournal.com',
-            'edmunds.com',
-            'financialpost.com',
-            'leaderpost.com',
-            'montrealgazette.com',
-            'nationalpost.com',
-            'ottawacitizen.com',
-            'theprovince.com',
-            'thestarphoenix.com',
-            'windsorstar.com',
-        ]
-    });
-})();
-
-/*******************************************************************************
-
-    Instart Logic buster v4
+    Instart Logic defuser
 
 **/
 
@@ -416,12 +293,14 @@ if ( !abort ) {
         targets: [
             'baltimoresun.com',
             'boston.com',
+            'calgaryherald.com',
             'calgarysun.com',
             'capitalgazette.com',
             'carrollcountytimes.com',
             'chicagotribune.com',
             'chowhound.com',
             'chroniclelive.co.uk',
+            'citypaper.com',
             'comingsoon.net',
             'computershopper.com',
             'courant.com',
@@ -432,7 +311,9 @@ if ( !abort ) {
             'deathandtaxesmag.com',
             'delmartimes.net',
             'download.cnet.com',
+            'edmontonjournal.com',
             'edmontonsun.com',
+            'edmunds.com',
             'everydayhealth.com',
             'extremetech.com',
             'fieldandstream.com',
@@ -446,6 +327,7 @@ if ( !abort ) {
             'ibtimes.com',
             'infinitiev.com',
             'lajollalight.com',
+            'leaderpost.com',
             'lifewire.com',
             'lolking.net',
             'mcall.com',
@@ -453,9 +335,12 @@ if ( !abort ) {
             'metacritic.com',
             'metrolyrics.com',
             'mmo-champion.com',
+            'montrealgazette.com',
             'msn.com',
             'nasdaq.com',
+            'nationalpost.com',
             'orlandosentinel.com',
+            'ottawacitizen.com',
             'ottawasun.com',
             'pcmag.com',
             'popphoto.com',
@@ -475,7 +360,9 @@ if ( !abort ) {
             'sun-sentinel.com',
             'tf2outpost.com',
             'thebalance.com',
+            'theprovince.com',
             'thespruce.com',
+            'thestarphoenix.com',
             'thoughtco.com',
             'timeanddate.com',
             'torontosun.com',
@@ -484,10 +371,135 @@ if ( !abort ) {
             'vancouversun.com',
             'vibe.com',
             'wikia.com',
+            'windsorstar.com',
             'winnipegsun.com',
             'wowhead.com',
             'wrestlezone.com',
             'zam.com',
+        ]
+    });
+})();
+
+/*******************************************************************************
+
+    Instart Logic buster: v2
+
+    https://github.com/uBlockOrigin/uAssets/issues/227#issuecomment-268409666
+
+**/
+
+(function() {
+    if ( abort ) { return; }
+
+    var scriptlet = function() {
+        var magic = String.fromCharCode(Date.now() % 26 + 97) +
+                    Math.floor(Math.random() * 982451653 + 982451653).toString(36);
+        var makeNanovisorProxy = function() {
+            return new Proxy({}, {
+                get: function(target, name) {
+                    switch ( name ) {
+                    case 'HtmlStreaming':
+                        return {
+                            InsertTags: function(a, b) {
+                                document.write(b); // jshint ignore:line
+                            },
+                            InterceptNode: function() {
+                            },
+                            PatchBegin: function() {
+                            },
+                            PatchEnd: function() {
+                            },
+                            PatchInit: function() {
+                            },
+                            ReloadWithNoHtmlStreaming: function() {
+                                window.location.reload(true);
+                            },
+                            RemoveTags: function() {
+                            },
+                            UpdateAttributes: function() {
+                            }
+                        };
+                    default:
+                        return target[name];
+                    }
+                },
+                set: function(target, name, value) {
+                    switch ( name ) {
+                    case 'CanRun':
+                        target.CanRun = function() {
+                            return false;
+                        };
+                        break;
+                    default:
+                        target[name] = value;
+                    }
+                }
+            });
+        };
+        var instartInit;
+        window.I10C = window.I11C = makeNanovisorProxy();
+        window.INSTART = new Proxy({}, {
+            get: function(target, name) {
+                switch ( name ) {
+                case 'Init':
+                    return function(a) {
+                        if (
+                            a instanceof Object &&
+                            typeof a.nanovisorGlobalNameSpace === 'string' &&
+                            a.nanovisorGlobalNameSpace !== ''
+                        ) {
+                            window[a.nanovisorGlobalNameSpace] = makeNanovisorProxy();
+                        }
+                        a.enableHtmlStreaming = false;
+                        a.enableQSCallDiffComputationConfig = false;
+                        a.enableQuerySelectorMonitoring = false;
+                        a.serveNanovisorSameDomain = false;
+                        a.virtualDomains = 0;
+                        a.virtualizeDomains = [];
+                        instartInit(a);
+                    };
+                default:
+                    if ( target[name] === undefined ) {
+                        throw new Error(magic);
+                    }
+                    return target[name];
+                }
+            },
+            set: function(target, name, value) {
+                switch ( name ) {
+                case 'Init':
+                    instartInit = value;
+                    break;
+                default:
+                    target[name] = value;
+                }
+            }
+        });
+        var oe = window.error;
+        window.onerror = function(msg, src, line, col, error) {
+            if ( msg.indexOf(magic) !== -1 ) {
+                return true;
+            }
+            if ( oe instanceof Function ) {
+                return oe(msg, src, line, col, error);
+            }
+        }.bind();
+    };
+
+    scriptlets.push({
+        scriptlet: scriptlet,
+        targets: [
+            'calgaryherald.com',
+            'edmontonjournal.com',
+            'edmunds.com',
+            'financialpost.com',
+            'leaderpost.com',
+            'montrealgazette.com',
+            'nationalpost.com',
+            'ottawacitizen.com',
+            'theprovince.com',
+            'thestarphoenix.com',
+            'windsorstar.com',
         ]
     });
 })();
