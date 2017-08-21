@@ -300,8 +300,8 @@ gelbooru.com#@#center > a[href]
 ||broadcastbed.com^$domain=mmo-champion.com
 ! === bracknellnews.co.uk
 bracknellnews.co.uk##script:inject(abort-on-property-write.js, _sp_)
-! === u2s.io
-u2s.io#@#.myTestAd
+! === u2s.io, l2s.io, linkhits.us
+u2s.io,l2s.io,linkhits.us#@#.myTestAd
 @@||solvemedia.com^$domain=u2s.io
 ||5g9quwq.com^$third-party
 ! === telegraph.co.uk
@@ -467,8 +467,6 @@ naisho.asia##script:inject(abort-on-property-write.js, adBlock)
 ||sovrnlabs.net^$domain=westeros.org
 ! === NSFW! sankakucomplex.com
 sankakucomplex.com##script:inject(abort-on-property-read.js, BetterJsPop)
-! === l2s.io
-l2s.io#@#.myTestAd
 ! === short.am
 @@||short.am^$generichide,badfilter
 ! === wdbloog.com
