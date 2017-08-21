@@ -191,7 +191,7 @@ $.Selection = class {
         return this;
     }
     /**
-     * Update current selection, unselect elements that do not match a given selector.
+     * Update current selection, unselect elements that match the given selector.
      * @method
      * @param {string} selector - The selector.
      */
