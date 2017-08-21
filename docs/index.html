@@ -56,8 +56,11 @@
 
                 //All divs are loaded, I can check installation here
                 checkInstallation();
-                //Since the function is very lightweight, I will check again every second to prevent false positives
-                setInterval(checkInstallation, 1000);
+                //Since the function is very lightweight, I will check again every second for half a minute to prevent false positives
+                const token = setInterval(checkInstallation, 1000);
+                setTimeout(() => {
+                    clearInterval(token);
+                }, 30000);
             </script>
         </div>
     </div>
@@ -81,17 +84,6 @@
                 Click <a href="abp://subscribe/?location=https://github.com/jspenguin2017/uBlockProtector/raw/master/uBlockProtectorList.txt&title=uBlock Protector List">here</a> to install it manually.
             </p>
             <p>Step 3. Install <a href="https://chrome.google.com/webstore/detail/ublock-protector-extensio/ggolfgbegefeeoocgjbmkembbncoadlb" target="_blank">uBlock Protector Extension</a>.</p>
-        </div>
-    </div>
-    <!-- Reporting an issue and contributing -->
-    <div class="container">
-        <div class="jumbotron">
-            <h2>Reporting an issue</h2>
-            <p>
-                To report an issue, you <strong>must</strong> first read the
-                <a href="https://github.com/jspenguin2017/uBlockProtector/blob/master/CONTRIBUTING.MD" target="_blank">contribution guideline</a>
-                then <a href="https://github.com/jspenguin2017/uBlockProtector/issues" target="_blank">open an issue</a>.
-            </p>
         </div>
     </div>
     <!-- Source code and license -->
