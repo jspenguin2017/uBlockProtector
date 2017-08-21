@@ -240,14 +240,16 @@ if ( !abort ) {
         var magic = String.fromCharCode(Date.now() % 26 + 97) +
                     Math.floor(Math.random() * 982451653 + 982451653).toString(36),
             targets = [ 'atob', 'console.error', 'INSTART', 'performance', 'require' ],
-            re = /\b(?:Instart-|I10C|IXC_|INSTART)/;
+            reScriptText = /\b(?:Instart-|I10C|IXC_|INSTART)/,
+            reScriptSrc = /\babd.*?\/instart.js/;
         var validate = function() {
             var script = document.currentScript;
-            if (
-                script instanceof HTMLScriptElement &&
-                script.src === '' &&
-                re.test(script.textContent)
-            ) {
+            if ( script instanceof HTMLScriptElement === false ) { return; }
+            if ( script.src === '' ) {
+                if ( reScriptText.test(script.textContent) ) {
+                    throw new ReferenceError(magic);
+                }
+            } else if ( reScriptSrc.test(script.src) ) {
                 throw new ReferenceError(magic);
             }
         };
