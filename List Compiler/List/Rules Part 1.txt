@@ -614,3 +614,7 @@ stol.it###block-message
 sledujufilmy.cz##.bottom-advert
 sledujufilmy.cz##.ads-position
 sledujufilmy.cz##.riding-banner
+! === 9anime.to
+@@||9anime.to^$generichide
+9anime.to,mycloud.to###jwa
+9anime.to###playerad:style(positon: absolute !important; top: -9999px !important; left: -9999px !important)
