@@ -376,6 +376,7 @@ megawarez.org##div.onp-sl-social-locker
 net.hr#@#.reklama
 net.hr#@#.reklama1
 */adblock/*$domain=televisa.com|lasestrellas.tv
+watson.ch##.adget.frog_block_alert
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================

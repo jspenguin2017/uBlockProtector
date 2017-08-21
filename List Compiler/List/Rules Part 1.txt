@@ -608,3 +608,5 @@ net.hr#@#.reklama
 net.hr#@#.reklama1
 ! === televisa.com, lasestrellas.tv
 */adblock/*$domain=televisa.com|lasestrellas.tv
+! === watson.ch
+watson.ch##.adget.frog_block_alert
