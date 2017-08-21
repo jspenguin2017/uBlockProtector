@@ -3361,3 +3361,6 @@ if (a.domCmp(["pseudo-flaw.net"])) {
 if (a.domCmp(["themarker.com"])) {
     a.readOnly("AdBlockUtil", () => { });
 }
+if (a.domCmp(["bildungsspender.de"])) {
+    a.readOnly("werbeblocker", true);
+}
