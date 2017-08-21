@@ -3324,11 +3324,11 @@ if (a.domCmp(["aargauerzeitung.ch", "badenertagblatt.ch", "basellandschaftlichez
     a.filter("setTimeout", a.matchMethod.string, "[native code]");
 }
 if (a.domCmp(["lolalytics.com"])) {
-    a.ready(() => {
-        a.inject(() => {
-            "use strict";
-            window.document.onreadystatechange = null;
-        });
+    const re = /{\s*opacity:'\s*\+\s*\w+\s*\+\s*' !important;\s*}/;
+    a.onBeforeScriptExecute((script) => {
+        if (re.test(script.textContent)) {
+            script.textContent = script.textContent.replace("xhr.send(null);", "return;");
+        }
     });
 }
 if (a.domCmp(["streamcloud.eu"])) {
