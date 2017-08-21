@@ -56,7 +56,7 @@
 
                 //All divs are loaded, I can check installation here
                 checkInstallation();
-                //Since the function is very lightweight, I will check again every second for half a minute to prevent false positives
+                //Since the function is very lightweight, I will check again every second for half a minute to prevent false positives from race conditions
                 const token = setInterval(checkInstallation, 1000);
                 setTimeout(() => {
                     clearInterval(token);
@@ -71,12 +71,12 @@
             <p>You must be using Chromium / Chrome and uBlock Origin to use this project.</p>
             <p>Check out <a href="https://xuhaiyang1234.gitlab.io/AAK-Cont/">AAK-Cont</a> if you do not want to switch your setup.</p>
             <br />
-            <p>Step 1. Enable Adblock Warning Removal List from uBlock Origin settings panel.</p>
+            <p>Step 1. Enable Adblock Warning Removal List from uBlock Origin settings page.</p>
             <!-- Spaces in href should be escaped, but uBlock Origin does not unescape them, since Chromium and Chrome allows space in href like below, I will just leave this as is -->
             <!--
             <p>
                 Step 2. Click <a href="abp://subscribe/?location=https://github.com/jspenguin2017/uBlockProtector/raw/master/uBlockProtectorList.txt&title=uBlock Protector List">here</a>
-                to subscribe to uBlock Protector List.
+                to install uBlock Protector List.
             </p>
             -->
             <p>
