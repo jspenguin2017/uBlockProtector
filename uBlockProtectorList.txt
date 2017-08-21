@@ -377,6 +377,7 @@ net.hr#@#.reklama
 net.hr#@#.reklama1
 */adblock/*$domain=televisa.com|lasestrellas.tv
 watson.ch##.adget.frog_block_alert
+stol.it###block-message
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================
