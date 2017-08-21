@@ -3364,3 +3364,6 @@ if (a.domCmp(["themarker.com"])) {
 if (a.domCmp(["bildungsspender.de"])) {
     a.readOnly("werbeblocker", true);
 }
+if (a.domCmp(["sledujufilmy.cz"])) {
+    a.readOnly("ads_ok", true);
+}

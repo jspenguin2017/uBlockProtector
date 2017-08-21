@@ -610,3 +610,7 @@ net.hr#@#.reklama1
 watson.ch##.adget.frog_block_alert
 ! === stol.it
 stol.it###block-message
+! === sledujufilmy.cz
+sledujufilmy.cz##.bottom-advert
+sledujufilmy.cz##.ads-position
+sledujufilmy.cz##.riding-banner
