@@ -3358,3 +3358,6 @@ if (a.domCmp(["clasicotas.org"])) {
 if (a.domCmp(["pseudo-flaw.net"])) {
     a.readOnly("stopBlock", () => { });
 }
+if (a.domCmp(["themarker.com"])) {
+    a.readOnly("AdBlockUtil", () => { });
+}
