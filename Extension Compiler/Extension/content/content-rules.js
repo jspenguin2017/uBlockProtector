@@ -24,7 +24,7 @@
         "w3schools.com", "yandex.ru", "xemvtv.net", "spaste.com", "vod.pl", "agar.io", "popmech.ru",
         "pandoon.info", "fsf.org", "adblockplus.org", "plnkr.co", "exacttarget.com", "dolldivine.com",
         //Handled by specific rules
-        "anandabazar.com",
+        "anandabazar.com", "o2.pl",
         //False positives
         "techradar.com",
         //Damage control
@@ -495,7 +495,7 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "echi
             })();`, true);
             //Mid extracting method 2
             {
-                let selection = $(containerMatcher);
+                let selection = $(containerMatcher).filter("iframe");
                 if (selection.length) {
                     const elem = selection.first().copy().find(".titlecont a.title");
                     let thisMid = elem.attr("href");
@@ -570,25 +570,14 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "echi
                     //Update flag
                     networkBusy = false;
                 });
-            } else if ($(containerMatcher).length) {
+            } else if ($(containerMatcher).filter("iframe").length) {
                 //Replace player
                 if (document.domain === "wp.tv") {
                     //The wrapper is different for this domain
                     $(".npp-container").after(a.nativePlayer(url)).remove();
                 } else {
-                    //Find the right container
-                    let containers = $(containerMatcher);
-                    let i = 0;
-                    for (; i < containers.length; i++) {
-                        if (containers.selection[i].firstChild.tagName !== "IFRAME") {
-                            break;
-                        }
-                    }
-                    if (i === containers.length) {
-                        return;
-                    }
                     //Need to remove class or it will be caught in anti-collapsing observer
-                    containers.eq(i).after(a.nativePlayer(url)).rmClass().remove();
+                    $(containerMatcher).filter("iframe").first().after(a.nativePlayer(url)).rmClass().remove();
                 }
                 //Update variables and counter
                 url = null;

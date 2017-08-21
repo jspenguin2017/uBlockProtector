@@ -133,7 +133,7 @@ $.Selection = class {
     /**
      * Update current selection, only keep the selected element with given index.
      * Clear current selection if no selected element has that index.
-     * @param
+     * @method
      * @param {integer} i - The index, give a negative number to count from end.
      */
     eq(i) {
@@ -188,6 +188,20 @@ $.Selection = class {
         }
         this.selection = newSelection;
         this.length = newSelection.length;
+        return this;
+    }
+    /**
+     * Update current selection, unselect elements that do not match a given selector.
+     * @method
+     * @param {string} selector - The selector.
+     */
+    filter(selector) {
+        for (let i = this.selection.length - 1; i >= 0; i--) {
+            if (this.selection[i].querySelector(selector)) {
+                this.selection.splice(i, 1);
+            }
+        }
+        this.length = this.selection.length;
         return this;
     }
     /**
