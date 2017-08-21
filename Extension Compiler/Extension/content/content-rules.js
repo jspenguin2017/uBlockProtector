@@ -2932,17 +2932,17 @@ if (a.domCmp(["vvvvid.it"])) {
         });
     });
 }
-if (a.domCmp(["onet.pl", "komputerswiat.pl", "vod.pl"])) {
-    /*
-    a.onInsert((node) => {
-        if (node.innerText && node.innerText.includes("Prosimy, odblokuj wy\u015Bwietlanie reklam")) {
-            node.remove();
-        }
-    });
-    */
+if (a.domCmp(["onet.pl", "komputerswiat.pl"])) {
     a.onBeforeScriptExecute((script) => {
         if (script.id === "adsinit") {
             script.remove();
+        }
+    });
+}
+if (a.domCmp(["vod.pl"])) {
+    a.onInsert((node) => {
+        if (node.tagName !== "SCRIPT" && node.innerText && node.innerText.includes("Prosimy, odblokuj wy\u015Bwietlanie reklam")) {
+            node.remove();
         }
     });
 }
