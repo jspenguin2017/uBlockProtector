@@ -624,3 +624,5 @@ mmorpgitalia.it##.noticeContainer:has-text(ADBLOCK)
 insurancenewsnet.com,advisornews.com##script:inject(abort-on-property-read.js, adblock_detect)
 ! === gamestar.de
 @@||gamestar.de^$generichide
+! === mmovie.it
+mmovie.it###advleft
