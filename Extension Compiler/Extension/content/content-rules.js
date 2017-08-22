@@ -495,7 +495,7 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "echi
             })();`, true);
             //Mid extracting method 2
             {
-                let selection = $(containerMatcher).filter("iframe");
+                let selection = $(containerMatcher).filter("iframe", true);
                 if (selection.length) {
                     const elem = selection.first().copy().find(".titlecont a.title");
                     let thisMid = elem.attr("href");
@@ -570,14 +570,14 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "echi
                     //Update flag
                     networkBusy = false;
                 });
-            } else if ($(containerMatcher).filter("iframe").length) {
+            } else if ($(containerMatcher).filter("iframe", true).length) {
                 //Replace player
                 if (document.domain === "wp.tv") {
                     //The wrapper is different for this domain
                     $(".npp-container").after(a.nativePlayer(url)).remove();
                 } else {
                     //Need to remove class or it will be caught in anti-collapsing observer
-                    $(containerMatcher).filter("iframe").first().after(a.nativePlayer(url)).rmClass().remove();
+                    $(containerMatcher).filter("iframe", true).first().after(a.nativePlayer(url)).rmClass().remove();
                 }
                 //Update variables and counter
                 url = null;

@@ -191,13 +191,15 @@ $.Selection = class {
         return this;
     }
     /**
-     * Update current selection, unselect elements that match the given selector.
+     * Update current selection, unselect elements that do not have children matching the given selector.
      * @method
      * @param {string} selector - The selector.
+     * @param {boolean} [match=false] - Set to true to unselect elements that do have childrem matching the
+     ** given selector instead.
      */
-    filter(selector) {
+    filter(selector, match = false) {
         for (let i = this.selection.length - 1; i >= 0; i--) {
-            if (this.selection[i].querySelector(selector)) {
+            if (Boolean(this.selection[i].querySelector(selector)) === match) {
                 this.selection.splice(i, 1);
             }
         }
