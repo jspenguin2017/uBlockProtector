@@ -156,7 +156,9 @@ if (a.domCmp(["vipleague.is", "vipleague.ws", "vipleague.tv", "vipleague.se", "v
     a.readOnly("iExist", true);
 }
 if (a.domCmp(["games.nydailynews.com", "games.express.co.uk", "puzzles.independent.co.uk", "games.orlandosentinel.com",
-    "puzzles.standard.co.uk", "games.parade.com", "games.baltimoresun.com", "games.mcall.com", "games.somersetlive.co.uk"])) {
+    "puzzles.standard.co.uk", "games.parade.com", "games.baltimoresun.com", "games.mcall.com", "games.somersetlive.co.uk",
+    "games.sun-sentinel.com", "games.reviewjournal.com", "games.dailypress.com", "puzzles.bestforpuzzles.com",
+    "games.sandiegouniontribune.com", "games.charlotteobserver.com", "games.chicagotribune.com"])) {
     a.readOnly("Adv_ab", false);
 }
 //---a.noAccess---
