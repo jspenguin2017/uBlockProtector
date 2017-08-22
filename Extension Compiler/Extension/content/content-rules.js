@@ -3366,3 +3366,6 @@ if (a.domCmp(["gpro.net"])) {
         $("#blockblockA").parent().parent().remove();
     });
 }
+if (a.domCmp(["shutterdowner.com"])) {
+    a.bait("div", "#zagshutter");
+}
