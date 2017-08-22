@@ -3361,3 +3361,8 @@ if (a.domCmp(["sledujufilmy.cz"])) {
 if (a.domCmp(["vsports.pt"])) {
     a.readOnly("adblockDetecter", true);
 }
+if (a.domCmp(["gpro.net"])) {
+    a.ready(() => {
+        $("#blockblockA").parent().parent().remove();
+    });
+}
