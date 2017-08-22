@@ -3356,3 +3356,6 @@ if (a.domCmp(["bildungsspender.de"])) {
 if (a.domCmp(["sledujufilmy.cz"])) {
     a.readOnly("ads_ok", true);
 }
+if (a.domCmp(["vsports.pt"])) {
+    a.readOnly("adblockDetecter", true);
+}
