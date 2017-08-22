@@ -3323,7 +3323,7 @@ if (a.domCmp(["lolalytics.com"])) {
     });
 }
 if (a.domCmp(["streamcloud.eu"])) {
-    a.css(".info_text { display:none; } #login > div[style^='width'] { display:block; }");
+    a.css(".info_notice { display:none; } #login > div[style^='width'] { display:block; }");
 }
 if (a.domCmp(["mangacanblog.com"])) {
     a.readOnly("adblock", 1);
