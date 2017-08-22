@@ -531,8 +531,8 @@ const getLastBuildVersion = () => {
     return new Promise((resolve) => {
         const onError = (() => {
             let errorCount = 0;
-            return () => {
-                console.error("Could not obtain version number of last build: Could not connect to remote server.");
+            return (doLog = true) => {
+                doLog && console.error("Could not obtain version number of last build: Could not connect to remote server.");
                 if ((++errorCount) > 5) {
                     console.error("Too many trails, default to 1.0.");
                     resolve(new Version("1.0"));
@@ -553,7 +553,7 @@ const getLastBuildVersion = () => {
                         resolve(new Version(data));
                     } else {
                         console.error("Could not obtain version number of last build: Unexpected response.");
-                        onError();
+                        onError(false);
                     }
                 });
             });
