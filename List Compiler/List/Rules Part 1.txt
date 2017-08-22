@@ -618,3 +618,5 @@ sledujufilmy.cz##.riding-banner
 @@||9anime.to^$generichide
 9anime.to,mycloud.to###jwa
 9anime.to###playerad:style(positon: absolute !important; top: -9999px !important; left: -9999px !important)
+! === mmorpgitalia.it
+mmorpgitalia.it##.noticeContainer:has-text(ADBLOCK)
