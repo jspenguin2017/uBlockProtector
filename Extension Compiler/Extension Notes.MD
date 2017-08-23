@@ -40,7 +40,7 @@ Chromium documentation is generated, which means it sometimes includes weird thi
 * `tabs`: To inject CSS and to forcefully close tabs
 * `webNavigation`: To know the URL of each tab and frame
 * `webRequest`: To redirect requests and to modify headers
-* `webRequestBlocking`: To block requests, this is used as a fallback in some solutions
+* `webRequestBlocking`: Some `webRequest` handling need to be synchronous
 
 ### Permissions that might be useful
 
