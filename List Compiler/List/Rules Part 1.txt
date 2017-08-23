@@ -630,3 +630,5 @@ mmovie.it###advleft
 zeperfs.com##script:inject(noeval-if.js, AdBlock)
 ! === iptvultra.com
 iptvultra.com##script:inject(setTimeout-defuser.js, div.table_download)
+! === pcgames-download.com
+pcgames-download.com###niceMessage
