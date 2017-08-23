@@ -389,7 +389,8 @@ insurancenewsnet.com,advisornews.com##script:inject(abort-on-property-read.js, a
 mmovie.it###advleft
 zeperfs.com##script:inject(noeval-if.js, AdBlock)
 iptvultra.com##script:inject(setTimeout-defuser.js, div.table_download)
-pcgames-download.com###niceMessage
+||pcgames-download.com/wp-content/plugins/noadb-leftthenicemessage/
+grazia-magazin.de##.subNaviNotification:has-text(Adblocker)
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================
