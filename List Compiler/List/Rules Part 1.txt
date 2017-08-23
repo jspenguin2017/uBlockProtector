@@ -626,3 +626,5 @@ insurancenewsnet.com,advisornews.com##script:inject(abort-on-property-read.js, a
 @@||gamestar.de^$generichide
 ! === mmovie.it
 mmovie.it###advleft
+! === zeperfs.com
+zeperfs.com##script:inject(noeval-if.js, AdBlock)

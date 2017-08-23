@@ -387,6 +387,7 @@ mmorpgitalia.it##.noticeContainer:has-text(ADBLOCK)
 insurancenewsnet.com,advisornews.com##script:inject(abort-on-property-read.js, adblock_detect)
 @@||gamestar.de^$generichide
 mmovie.it###advleft
+zeperfs.com##script:inject(noeval-if.js, AdBlock)
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================
