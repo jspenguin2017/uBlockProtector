@@ -628,3 +628,5 @@ insurancenewsnet.com,advisornews.com##script:inject(abort-on-property-read.js, a
 mmovie.it###advleft
 ! === zeperfs.com
 zeperfs.com##script:inject(noeval-if.js, AdBlock)
+! === iptvultra.com
+iptvultra.com##script:inject(setTimeout-defuser.js, div.table_download)
