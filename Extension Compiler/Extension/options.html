@@ -40,6 +40,8 @@
             Chromium / Chrome.
         </p>
     </div>
+
+
     <h3>Basic Troubleshooting</h3>
     <div>
         <p>
@@ -55,6 +57,8 @@
             which can lead to conflicts.
         </p>
     </div>
+
+
     <h3>Common Questions and Problems</h3>
     <div>
         <h4>Will there be a configurable white list?</h4>
@@ -62,11 +66,13 @@
             Not until I have a reliable way to synchronously send configuration data to content scripts. This is a limitation of
             Chromium / Chrome.
         </p>
+
         <h4>uBlock Protector is causing (further) breakage.</h4>
         <p>
             Report it and I will try to take care of it within 2 days. Keep in mind that this only apply to breakage
             <strong>caused</strong> by uBlock Protector, other breakages may not be fixed this fast.
         </p>
+
         <h4>A website freezes with uBlock Protector enabled.</h4>
         <p>
             Some websites will intentionally freeze (with an infinite loop for example) once they detect uBlock Protector,
@@ -78,11 +84,13 @@
             You can use task manager to terminate the tab that froze, go to <code>Menu -&gt; More tools -&gt; Task manager</code>,
             select the tab that froze, then click <code>End process</code>.
         </p>
+
         <h4>A website is still detecting uBlock Origin.</h4>
         <p>
             uBlock Protector is not magical, a lot of websites need to be fixed on a case by case basis. Report it and I will have a look.
             Depending on the website, it can take some time.
         </p>
+
         <h4>I loaded this extension in a browser that is not Chromium / Chrome and it works.</h4>
         <p>
             I am aware that this extension runs in more than just Chromium / Chrome, but I am not willing to spend time testing and
@@ -90,9 +98,12 @@
             Chromium / Chrome before reporting them.
         </p>
         <p>I will only publish this extension to Web Store.</p>
+
         <h4>A website is perceptibly slower with uBlock Protector enabled.</h4>
         <p>Report it and I will have a look.</p>
     </div>
+
+
     <h3>Workarounds</h3>
     <div>
         <h4>tv3sport.dk, viasatsport.se, viasport.fi, viasport.no</h4>
@@ -117,20 +128,23 @@
                 <link-template>https://github.com/jspenguin2017/uBlockProtector/issues/88</link-template>
             </details>
         </div>
-        <h4>tvn.pl, tvnstyle.pl, tvnturbo.pl</h4>
-        <p>
-            Homepage videos do not start, but they are just teasers, enter the article to see the full video. Minor to no impact on user experience,
-            but help is still welcomed.
-        </p>
+
+        <h4>channel4.com</h4>
+        <p>Add the following filters to uBlock Origin. No ads shown. Help wanted for finding a better solution.</p>
+        <pre>@@/crossdomain.xml$domain=channel4.com
+@@||ak.http.anno.channel4.com^$domain=channel4.com
+@@||cf.http.anno.channel4.com^$domain=channel4.com</pre>
         <div>
             <details>
                 <summary>Extra information</summary>
+                <code>Low Priority (Flash)</code> <code>Geo Lock (United Kingdom)</code>
                 <h4>Test Links</h4>
-                <link-template>http://www.tvn.pl/</link-template>
-                <link-template>http://www.tvnstyle.pl/</link-template>
-                <link-template>http://www.tvnturbo.pl/</link-template>
+                <link-template>http://www.channel4.com/programmes/britain-at-low-tide/on-demand/64335-001</link-template>
+                <h4>Issues</h4>
+                <link-template>https://github.com/jspenguin2017/uBlockProtector/issues/450</link-template>
             </details>
         </div>
+
         <h4>
             abczdrowie.pl, autokrata.pl, autokult.pl, biztok.pl, echirurgia.pl, fotoblogia.pl, gadzetomania.pl, hotmoney.pl, kafeteria.pl, kafeteria.tv,
             kardiolo.pl, komediowo.pl, komorkomania.pl, money.pl, o2.pl, parenting.pl, pudelek.pl, pudelek.tv, pudelekx.pl, sfora.pl, snobka.pl,
@@ -145,6 +159,7 @@
                 <link-template>https://film.wp.pl/zmarl-evan-helmuth-6146521665177217a</link-template>
             </details>
         </div>
+
         <h4>
             adageindia.in, bombaytimes.com, businessinsider.in, gizmodo.in, iamgujarat.com, idiva.com, in.techradar.com, indiatimes.com, lifehacker.co.in,
             mensxp.com, samayam.com, gadgetsnow.com
@@ -158,7 +173,24 @@
                 <link-template>http://www.lifehacker.co.in/</link-template>
             </details>
         </div>
+
+        <h4>tvn.pl, tvnstyle.pl, tvnturbo.pl</h4>
+        <p>
+            Homepage videos do not start, but they are just teasers, enter the article to see the full video. Minor to no impact on user experience,
+            but help is still welcomed.
+        </p>
+        <div>
+            <details>
+                <summary>Extra information</summary>
+                <h4>Test Links</h4>
+                <link-template>http://www.tvn.pl/</link-template>
+                <link-template>http://www.tvnstyle.pl/</link-template>
+                <link-template>http://www.tvnturbo.pl/</link-template>
+            </details>
+        </div>
     </div>
+
+
     <h3>Known Issues</h3>
     <div>
         <h4>webnovel.com</h4>
@@ -170,6 +202,7 @@
                 <link-template>https://github.com/jspenguin2017/uBlockProtector/issues/457</link-template>
             </details>
         </div>
+
         <h4>hulu.com, viz.com</h4>
         <p>Only accessible in the United States of America and detect proxy. I do not have a way to debug and fix these websites. Help wanted.</p>
         <div>
@@ -183,22 +216,14 @@
                 <link-template>https://github.com/jspenguin2017/uBlockProtector/issues/398</link-template>
             </details>
         </div>
-        <h4>channel4.com</h4>
-        <p>Help wanted.</p>
-        <div>
-            <details>
-                <summary>Extra information</summary>
-                <code>Low Priority (Flash)</code> <code>Geo Lock (United Kingdom)</code>
-                <h4>Test Links</h4>
-                <link-template>http://www.channel4.com/programmes/britain-at-low-tide/on-demand/64335-001</link-template>
-                <h4>Issues</h4>
-                <link-template>https://github.com/jspenguin2017/uBlockProtector/issues/450</link-template>
-            </details>
-        </div>
+
         <h4>player.pl</h4>
         <p>Widevine protected videos are not patched and will not be patched.</p>
+
         <h4>Check open issues in the issues tracker for other known issues</h4>
     </div>
+
+
     <h3>Reporting an Issue</h3>
     <div>
         <p>
@@ -207,6 +232,8 @@
             then open an issue in the issues tracker if appropriate.
         </p>
     </div>
+
+
     <h3>Links</h3>
     <div>
         <p><a href="https://jspenguin2017.github.io/uBlockProtector/" target="_blank">Visit home page</a></p>
@@ -217,6 +244,8 @@
                target="_blank">View credits</a>
         </p>
     </div>
+
+
     <h3>For Developers</h3>
     <div>
         <p>You need to edit and load the unpacked extension if you want to enable debug mode and/or to change rules.</p>
@@ -232,6 +261,8 @@
         </p>
         <p><a href="https://github.com/jspenguin2017/uBlockProtector" target="_blank">View source code</a></p>
     </div>
+
+
     <script src="options.js" charset="utf-8"></script>
 </body>
 </html>
