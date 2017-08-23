@@ -882,12 +882,9 @@ if (a.domCmp(["debridnet.com"])) {
         if (!script.textContent) {
             return;
         }
+        script.textContent = script.textContent.replace("location.href = 'http://debridnet.com/ad-blocker';", "");
         if (script.textContent.trim().startsWith("$(window).load(function(){")) {
-            script.textContent = script.textContent
-                .replace("location.href = 'http://debridnet.com/ad-blocker';", "")
-                .replace(/\.height\(\) < \d+/, " && false");
-        } else {
-            script.textContent = script.textContent.replace("location.href = 'http://debridnet.com/ad-blocker';", "");
+            script.textContent = script.textContent.replace(/\.height\(\) < \d+/, " && false");
         }
     });
     a.timewarp("setTimeout", a.matchMethod.RegExp, /^\d+000$/, 0.2);
