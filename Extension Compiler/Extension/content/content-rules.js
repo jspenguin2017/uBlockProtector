@@ -2644,7 +2644,12 @@ if (a.domCmp(["idlelivelink.blogspot.com", "animeforce.org"])) {
         });
     });
 }
-if (a.domCmp(["hackinformer.com", "chelsea24news.pl", "windowstechinfo.com"])) {
+if (a.domCmp(["hackinformer.com", "chelsea24news.pl", "windowstechinfo.com",
+    "sectorsatoshi-amarillo.website", "sectorsatoshi-azul.website",
+    "sectorsatoshi-blanco.website", "sectorsatoshi-celeste.website",
+    "sectorsatoshi-gris.website", "sectorsatoshi-naranja.website",
+    "sectorsatoshi-negro.website", "sectorsatoshi-rosa.website",
+    "sectorsatoshi-verde.website", "sectorsatoshi-violeta.website"])) {
     a.readOnly("AlobaidiDetectAdBlock", true);
 }
 if (a.domCmp(["hackinformer.com"])) {
