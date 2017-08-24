@@ -173,7 +173,7 @@ if (a.domCmp(["psarips.com", "sawlive.tv", "streamcloud.eu"])) {
     a.noAccess("open");
 }
 //---a.bait---
-if (a.domCmp(["primeshare.tv", "leveldown.fr"])) {
+if (a.domCmp(["primeshare.tv", "leveldown.fr", "afdah.to"])) {
     a.bait("div", "#adblock");
 }
 if (a.domCmp(["720pmkv.com", "psarips.com"])) {
