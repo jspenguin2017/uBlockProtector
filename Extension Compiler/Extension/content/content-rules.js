@@ -3271,6 +3271,23 @@ if (a.domCmp(["kiss.com.tw"])) {
 }
 if (a.domCmp(["identi.li"])) {
     a.css(".linkhidder { display:none; } div[id^='hidden_'] { display:block; }");
+    a.on("load", () => {
+        a.inject(() => {
+            "use strict";
+            const block = document.querySelector("#hide");
+            if (block) {
+                const links = window.GibberishAES.dec(block.textContent, window.hash).split(" ");
+                block.innerHTML = "";
+                for (let i = 0; i < links.length; i++) {
+                    const a = window.document.createElement("a");
+                    a.href = a.textContent = links[i];
+                    block.append(a);
+                }
+                block.style.display = "block";
+                block.parentNode.previousSibling.remove();
+            }
+        });
+    });
 }
 if (a.domCmp(["acortar.net", "acortalo.net"])) {
     a.on("load", () => {
