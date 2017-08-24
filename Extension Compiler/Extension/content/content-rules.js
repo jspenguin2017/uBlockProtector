@@ -3271,6 +3271,7 @@ if (a.domCmp(["kiss.com.tw"])) {
 }
 if (a.domCmp(["identi.li"])) {
     a.css(".linkhidder { display:none; } div[id^='hidden_'] { display:block; }");
+    a.cookie("BetterJsPop0", "1");
     a.on("load", () => {
         a.inject(() => {
             "use strict";
