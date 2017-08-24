@@ -648,3 +648,5 @@ grazia-magazin.de##.subNaviNotification:has-text(Adblocker)
 @@||afdah.to/show-ad$first-party
 ! === vertamedia.com
 @@||vertamedia.com/assets/img/adimage.png$first-party
+! === receivesmsonline.net
+@@||receivesmsonline.net/ads.js$first-party

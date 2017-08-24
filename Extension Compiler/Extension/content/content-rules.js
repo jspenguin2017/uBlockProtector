@@ -108,7 +108,7 @@ if (a.domCmp(["katfile.com"])) {
 if (a.domCmp(["jansatta.com", "financialexpress.com", "indianexpress.com", "shink.in"])) {
     a.readOnly("RunAds", true);
 }
-if (a.domCmp(["jagranjunction.com", "nekopoi.bid"])) {
+if (a.domCmp(["jagranjunction.com", "nekopoi.bid", "catcatyfaucet.xyz"])) {
     a.readOnly("isAdsDisplayed", true);
 }
 if (a.domCmp(["swissadspaysfaucet.com", "swissadspaysethfaucet.com"])) {
