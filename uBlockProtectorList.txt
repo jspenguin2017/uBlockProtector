@@ -392,6 +392,7 @@ iptvultra.com##script:inject(setTimeout-defuser.js, div.table_download)
 ||pcgames-download.com/wp-content/plugins/noadb-leftthenicemessage/
 grazia-magazin.de##.subNaviNotification:has-text(Adblocker)
 @@||gala.de^$generichide
+||metin2bot.net/kontrol/adb.js
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================

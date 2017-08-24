@@ -636,3 +636,5 @@ iptvultra.com##script:inject(setTimeout-defuser.js, div.table_download)
 grazia-magazin.de##.subNaviNotification:has-text(Adblocker)
 ! === gala.de
 @@||gala.de^$generichide
+! === dreamfancy.org, trhileci.com
+||metin2bot.net/kontrol/adb.js
