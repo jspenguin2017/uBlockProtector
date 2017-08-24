@@ -640,3 +640,5 @@ grazia-magazin.de##.subNaviNotification:has-text(Adblocker)
 ||metin2bot.net/kontrol/adb.js
 ! === afdah.to
 @@||afdah.to/show-ad$first-party
+! === vertamedia.com
+@@||vertamedia.com/assets/img/adimage.png$first-party
