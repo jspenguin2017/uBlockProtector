@@ -639,4 +639,4 @@ grazia-magazin.de##.subNaviNotification:has-text(Adblocker)
 ! === dreamfancy.org, trhileci.com
 ||metin2bot.net/kontrol/adb.js
 ! === afdah.to
-@@||afdah.to/show-ad.js$first-party
+@@||afdah.to/show-ad$first-party
