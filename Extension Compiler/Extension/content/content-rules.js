@@ -3275,17 +3275,28 @@ if (a.domCmp(["identi.li"])) {
     a.on("load", () => {
         a.inject(() => {
             "use strict";
-            const block = document.querySelector("#hide");
-            if (block) {
-                const links = window.GibberishAES.dec(block.textContent, window.hash).split(" ");
-                block.innerHTML = "";
-                for (let i = 0; i < links.length; i++) {
-                    const a = window.document.createElement("a");
-                    a.href = a.textContent = links[i];
-                    block.append(a);
+            const re1 = /&nbsp;/g;
+            const re2 = new window.RegExp("(((http|ftp|https):\\/\\/)|www\\.)[\\w\\-_]+(\\.[\\w\\" +
+                "-_]+)+([\\w\\-\\.,@?^=%&amp;:\\/~\\+#!]*[\\w\\-\\@?^=%&amp;\\/~\\+#])?", "gi");
+            const re3 = /^https?:\/\//;
+            const blocks = window.document.querySelectorAll(".info_bbc");
+            for (let i = 0; i < blocks.length; i++) {
+                if (!blocks[i].firstChild.tagName) {
+                    let links = window.GibberishAES.dec(blocks[i].textContent, window.hash);
+                    links = links.replace(re1, " ");
+                    links = links.replace(re2, (url) => {
+                        let full = url;
+                        if (!re3.test(full)) {
+                            full = `http://${full}`;
+                        }
+                        full = full.trim();
+                        url = url.trim();
+                        return `<a target="_blank" rel="nofollow" href="${full}">${url}</a><br />`;
+                    });
+                    blocks[i].innerHTML = links;
+                    blocks[i].style.display = "block";
+                    blocks[i].parentNode.previousSibling.remove();
                 }
-                block.style.display = "block";
-                block.parentNode.previousSibling.remove();
             }
         });
     });
