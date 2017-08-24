@@ -638,3 +638,5 @@ grazia-magazin.de##.subNaviNotification:has-text(Adblocker)
 @@||gala.de^$generichide
 ! === dreamfancy.org, trhileci.com
 ||metin2bot.net/kontrol/adb.js
+! === afdah.to
+@@||afdah.to/show-ad.js$first-party

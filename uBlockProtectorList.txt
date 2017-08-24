@@ -393,6 +393,7 @@ iptvultra.com##script:inject(setTimeout-defuser.js, div.table_download)
 grazia-magazin.de##.subNaviNotification:has-text(Adblocker)
 @@||gala.de^$generichide
 ||metin2bot.net/kontrol/adb.js
+@@||afdah.to/show-ad.js$first-party
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================
