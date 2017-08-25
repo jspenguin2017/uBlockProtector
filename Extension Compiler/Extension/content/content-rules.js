@@ -878,13 +878,14 @@ if (a.domCmp(["debridnet.com"])) {
         $("script[src*='clksite.com']").parent().text(`Enter a link below and press "Start":`);
     });
     */
+    const re = /\.height\(\) < \d+/;
     a.onBeforeScriptExecute((script) => {
         if (!script.textContent) {
             return;
         }
         script.textContent = script.textContent.replace("location.href = 'http://debridnet.com/ad-blocker';", "");
         if (script.textContent.trim().startsWith("$(window).load(function(){")) {
-            script.textContent = script.textContent.replace(/\.height\(\) < \d+/, " && false");
+            script.textContent = script.textContent.replace(re, " && false");
         }
     });
     a.timewarp("setTimeout", a.matchMethod.RegExp, /^\d+000$/, 0.2);
@@ -3417,10 +3418,11 @@ if (a.domCmp(["shutterdowner.com"])) {
     a.bait("div", "#zagshutter");
 }
 if (a.domCmp(["ur.ly"])) {
+    const re = /\?ref=.*/;
     a.onInsert((node) => {
         if (node.id === "skip_button1") {
             stop();
-            location.href = node.href.replace(/\?ref=.*/, "?href=https://google.com/");
+            location.href = node.href.replace(re, "?href=https://google.com/");
         }
     });
 }
