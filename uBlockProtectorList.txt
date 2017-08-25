@@ -239,7 +239,7 @@ wordsense.eu##script:inject(setTimeout-defuser.js, ad, 2000)
 rapidvideo.com##script:inject(noeval.js)
 rapidvideo.com##script:inject(abort-on-property-read.js, popns)
 ||cloudvideoplatform.com/advert.jpg$image,redirect=1x1-transparent.gif,domain=nana10.co.il
-@@||receive-a-sms.com/showads.js$xmlhttprequest,first-party
+receive-a-sms.com##script:inject(abort-current-inline-script.js, $, showads.js)
 ||pagead2.googlesyndication.com^$important,domain=receive-a-sms.com
 ||googleads.g.doubleclick.net^$important,domain=receive-a-sms.com
 newyorker.com##iframe[src*="/wp-content/assets/"]
