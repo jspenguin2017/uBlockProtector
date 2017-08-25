@@ -319,7 +319,7 @@ afreesms.com##script:inject(noeval.js)
 ! === clubic.com
 ||tiptonvillepylesville.com^$domain=clubic.com
 ! === animeid.io and similar domains
-animeid.io,jkanime.co,gogoanime.ch,chiaanime.co##script:inject(setTimeout-defuser.js, #player)
+animeid.io,jkanime.co,gogoanime.ch,chiaanime.co,animeflv.co##script:inject(setTimeout-defuser.js, #player)
 ! === comicallyincorrect.com
 @@||comicallyincorrect.com^$elemhide
 @@||comicincorrect.wpengine.netdna-cdn.com/wp-content/uploads/*

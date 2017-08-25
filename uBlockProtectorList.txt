@@ -217,7 +217,7 @@ telegraph.co.uk##.adblocker-message
 pwn.pl##script:inject(abort-on-property-read.js, adblock)
 afreesms.com##script:inject(noeval.js)
 ||tiptonvillepylesville.com^$domain=clubic.com
-animeid.io,jkanime.co,gogoanime.ch,chiaanime.co##script:inject(setTimeout-defuser.js, #player)
+animeid.io,jkanime.co,gogoanime.ch,chiaanime.co,animeflv.co##script:inject(setTimeout-defuser.js, #player)
 @@||comicallyincorrect.com^$elemhide
 @@||comicincorrect.wpengine.netdna-cdn.com/wp-content/uploads/*
 savetodrive.net##script:inject(setTimeout-defuser.js, ad)
