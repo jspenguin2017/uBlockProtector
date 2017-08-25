@@ -124,7 +124,8 @@ if (a.domCmp(["megogo.net"])) {
     a.readOnly("adBlock", false);
 }
 if (a.domCmp(["openload.co", "openload.io", "openload.tv", "nekopoi.bid", "translatica.pl",
-    "angrybirdsnest.com", "4tests.com", "urlaubspartner.net"])) {
+    "angrybirdsnest.com", "4tests.com", "urlaubspartner.net", "freizeitpartnerweb.de",
+    "outdoorpartner.net"])) {
     a.readOnly("adblock", false);
 }
 if (a.domCmp(["mexashare.com", "kisshentai.net", "hanime.tv"])) {
@@ -3425,4 +3426,7 @@ if (a.domCmp(["ur.ly"])) {
             location.href = node.href.replace(re, "?href=https://google.com/");
         }
     });
+}
+if (a.domCmp(["falter.at"])) {
+    a.noAccess("showFalterGif");
 }
