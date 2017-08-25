@@ -652,3 +652,7 @@ receivesmsonline.net##script:inject(abort-current-inline-script.js, elms)
 rallye-magazin.de###billboardattention
 ! === main-echo.de
 @@||main-echo.de^$generichide
+! === schwarzwaelder-bote.de
+schwarzwaelder-bote.de###blocker-note
+! === wer-weiss-was.de
+wer-weiss-was.de###hint
