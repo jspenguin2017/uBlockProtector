@@ -656,3 +656,5 @@ rallye-magazin.de###billboardattention
 schwarzwaelder-bote.de###blocker-note
 ! === wer-weiss-was.de
 wer-weiss-was.de###hint
+! === peugeot-metropolis.de
+peugeot-metropolis.de###displaywise
