@@ -3416,3 +3416,11 @@ if (a.domCmp(["gpro.net"])) {
 if (a.domCmp(["shutterdowner.com"])) {
     a.bait("div", "#zagshutter");
 }
+if (a.domCmp(["ur.ly"])) {
+    a.onInsert((node) => {
+        if (node.id === "skip_button1") {
+            stop();
+            location.href = node.href.replace(/\?ref=.*/, "?href=https://google.com/");
+        }
+    });
+}
