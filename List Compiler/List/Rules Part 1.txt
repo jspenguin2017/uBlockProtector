@@ -649,4 +649,4 @@ grazia-magazin.de##.subNaviNotification:has-text(Adblocker)
 ! === vertamedia.com
 @@||vertamedia.com/assets/img/adimage.png$first-party
 ! === receivesmsonline.net
-@@||receivesmsonline.net/ads.js$first-party
+receivesmsonline.net##script:inject(abort-current-inline-script.js, elms)
