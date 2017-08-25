@@ -401,6 +401,7 @@ grazia-magazin.de##.subNaviNotification:has-text(Adblocker)
 @@||afdah.to/show-ad$first-party
 @@||vertamedia.com/assets/img/adimage.png$first-party
 receivesmsonline.net##script:inject(abort-current-inline-script.js, elms)
+rallye-magazin.de###billboardattention
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================
