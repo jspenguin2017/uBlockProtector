@@ -31,8 +31,6 @@ hackintosh.zone,clubedohardware.com.br,itavisen.no#@#script:inject(abort-on-prop
 ||imasdk.googleapis.com/js/sdkloader/ima3.js$script,important,domain=streamable.com
 ! === bild.de
 bild.de#@#script:inject(abort-on-property-read.js, de.bild.cmsKonfig.a.b.a)
-! === hackinformer.com
-@@||hackinformer.com^$first-party,script,badfilter
 ! ======================
 ! ===== Missed Ads =====
 ! ======================
