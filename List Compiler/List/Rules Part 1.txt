@@ -661,3 +661,5 @@ wer-weiss-was.de###hint
 peugeot-metropolis.de###displaywise
 ! === topagrar.com
 ||topagrar.com/_themes/topagrar-responsive/_js/ads.js$script,redirect=noopjs
+! === tagesspiegel.de
+/tgs.teaser-ad.js$domain=tagesspiegel.de
