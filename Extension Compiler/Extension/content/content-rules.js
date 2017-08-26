@@ -2627,7 +2627,7 @@ if (a.domCmp(["hackinformer.com", "chelsea24news.pl", "windowstechinfo.com",
     "sectorsatoshi-gris.website", "sectorsatoshi-naranja.website",
     "sectorsatoshi-negro.website", "sectorsatoshi-rosa.website",
     "sectorsatoshi-verde.website", "sectorsatoshi-violeta.website",
-    "cryptovertise.tk"])) {
+    "cryptovertise.tk", "katholisches.info"])) {
     a.readOnly("AlobaidiDetectAdBlock", true);
 }
 if (a.domCmp(["hackinformer.com"])) {
