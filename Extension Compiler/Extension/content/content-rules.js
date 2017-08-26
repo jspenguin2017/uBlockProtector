@@ -2723,14 +2723,13 @@ if (a.domCmp(["onhax.me"])) {
     });
 }
 if (a.domCmp(["null-24.com"])) {
+    a.noAccess("no_menu_msg");
+    a.noAccess("nocontext");
     a.ready(() => {
-        $("#custom-links .custom-url-wrap a").each((elem) => {
-            elem.href = elem.innerHTML;
-        });
         setTimeout(() => {
             a.inject(() => {
                 "use strict";
-                window.jQuery("span:contains(Download Direct Link)").parent().unbind("click");
+                window.jQuery("a.download-link").unbind("click");
             });
         }, 250);
     });
