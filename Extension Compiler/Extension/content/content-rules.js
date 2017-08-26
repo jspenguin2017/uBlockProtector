@@ -3493,3 +3493,6 @@ if (a.domCmp(["webnovel.com"])) {
     a.on("focus", () => { isInBackground = false; });
     a.on("blur", () => { isInBackground = true; });
 }
+if (a.domCmp(["wetter3.de"])) {
+    a.readOnly("karte1", 18);
+}
