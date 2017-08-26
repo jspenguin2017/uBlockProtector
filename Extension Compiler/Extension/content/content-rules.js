@@ -170,7 +170,7 @@ if (a.domCmp(["debridnet.com", "adshort.co", "linksh.top", "adshorte.com", "coin
 if (a.domCmp(["linx.cloud"])) {
     a.noAccess("popns");
 }
-if (a.domCmp(["psarips.com", "sawlive.tv", "streamcloud.eu"])) {
+if (a.domCmp(["psarips.com", "sawlive.tv", "streamcloud.eu", "nulledvar.com"])) {
     a.noAccess("open");
 }
 //---a.bait---
@@ -3413,4 +3413,7 @@ if (a.domCmp(["ur.ly"])) {
 }
 if (a.domCmp(["falter.at"])) {
     a.noAccess("showFalterGif");
+}
+if (a.domCmp(["null-24.com", "apkmod1.com"])) {
+    a.timewarp("setInterval", a.matchMethod.stringExact, "1500");
 }
