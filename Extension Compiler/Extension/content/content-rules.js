@@ -3417,3 +3417,80 @@ if (a.domCmp(["falter.at"])) {
 if (a.domCmp(["null-24.com", "apkmod1.com"])) {
     a.timewarp("setInterval", a.matchMethod.stringExact, "1500");
 }
+if (a.domCmp(["webnovel.com"])) {
+    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/457
+    const bookExtractor = /\/book\/([^/]+)/;
+    let isInBackground = false;
+    const scanner = () => {
+        const lock = document.querySelectorAll(".cha-content._lock");
+        for (let i = 0; i < lock.length; i++) {
+            //Remove flag
+            lock[i].classList.remove("_lock");
+            //Remove video
+            const video = lock[i].closest(".chapter_content").querySelector(".lock-video");
+            if (video) {
+                video.remove();
+            }
+            //Let user know what is happening
+            const contentElem = lock[i].querySelector(".cha-words");
+            contentElem.insertAdjacentHTML("beforeend", "<p style='opacity:0.5;'>" +
+                "uBlock Protector is fetching the rest of this chapter, this can take up to 30 seconds.</p>");
+            //Get IDs
+            const bookID = bookExtractor.exec(location.href)[1];
+            const chapterID = lock[i].querySelector("[data-cid]").dataset;
+            //Check if I got IDs
+            if (!bookID || !chapterID) {
+                return;
+            }
+            //Get token
+            $.request({
+                method: "GET",
+                url: `https://www.webnovel.com/apiajax/chapter/GetChapterContentToken?bookId=${bid}&chapterId=${cid}`,
+            }, (data) => {
+                let token = JSON.parse(data).data.token;
+                token = encodeURIComponent(token);
+                fetchChapter(token, contentElem);
+            }, () => {
+                console.error("uBlock Protector failed to fetch chapter token!");
+            });
+        }
+    };
+    const fetchChapter = (token, contentElem) => {
+        const tick = () => {
+            $.request({
+                method: "GET",
+                url: `https://www.webnovel.com/apiajax/chapter/GetChapterContentByToken?token=${token}`,
+            }, (data) => {
+                try {
+                    const content = JSON.parse(data).data.content.trim();
+                    if (content) {
+                        drawChapter(content, contentElem);
+                    } else {
+                        setTimeout(tick, 2000);
+                    }
+                } catch (err) {
+                    setTimeout(tick, 2000);
+                }
+            }, () => {
+                setTimeout(tick, 2000);
+            });
+            tick();
+        };
+    };
+    const drawChapter = (content, contentElem) => {
+        const lines = content.split("\n");
+        contentElem.innerHTML = "";
+        for (let i = 0; i < lines.length; i++) {
+            const line = lines[i].trim();
+            if (!line) {
+                continue;
+            }
+            const p = document.createElement("p");
+            p.textContent = line;
+            contentElem.append(p);
+        }
+    };
+    setInterval(scanner, 1000);
+    a.on("focus", () => { isInBackground = false; });
+    a.on("blur", () => { isInBackground = true; });
+}

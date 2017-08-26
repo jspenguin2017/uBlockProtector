@@ -276,14 +276,4 @@ if (a.debugMode) {
         //===Debug Only===
     }
     */
-    if (a.domCmp(["webnovel.com"])) {
-        //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/457
-        a.onBeforeScriptExecute((script) => {
-            if (script.id === "chapter-content.html") {
-                script.textContent = script.textContent.replace("isLock = '_lock';", "isLock = '';");
-                $("._lock").rmClass("_lock");
-                $(".lock-video").remove();
-            }
-        });
-    }
 }
