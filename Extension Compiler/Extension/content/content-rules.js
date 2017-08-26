@@ -3411,6 +3411,9 @@ if (a.domCmp(["webnovel.com"])) {
     const bookExtractor = /\/book\/([^/]+)/;
     let isInBackground = false;
     const scanner = () => {
+        if (isInBackground) {
+            return;
+        }
         $(".cha-content._lock").each((lock) => {
             //Remove flag
             lock.classList.remove("_lock");
