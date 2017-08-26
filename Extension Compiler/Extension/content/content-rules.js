@@ -170,7 +170,7 @@ if (a.domCmp(["debridnet.com", "adshort.co", "linksh.top", "adshorte.com", "coin
 if (a.domCmp(["linx.cloud"])) {
     a.noAccess("popns");
 }
-if (a.domCmp(["psarips.com", "sawlive.tv", "streamcloud.eu", "nulledvar.com"])) {
+if (a.domCmp(["psarips.com", "sawlive.tv", "streamcloud.eu"])) {
     a.noAccess("open");
 }
 //---a.bait---
@@ -2712,6 +2712,9 @@ if (a.domCmp(["onhax.me"])) {
         }
     });
 }
+if (a.domCmp(["null-24.com", "apkmod1.com"])) {
+    a.timewarp("setInterval", a.matchMethod.stringExact, "1500");
+}
 if (a.domCmp(["null-24.com"])) {
     a.noAccess("no_menu_msg");
     a.noAccess("nocontext");
@@ -2719,7 +2722,17 @@ if (a.domCmp(["null-24.com"])) {
         setTimeout(() => {
             a.inject(() => {
                 "use strict";
-                window.jQuery("a.download-link").unbind("click");
+                window.jQuery("a.FLMBTN-Btn.FLMBTN-Size-MD.FLMBTN-Color-Red, a.download-link").unbind("click");
+            });
+        }, 250);
+    });
+}
+if (a.domCmp(["nulledvar.com"])) {
+    a.ready(() => {
+        setTimeout(() => {
+            a.inject(() => {
+                "use strict";
+                window.jQuery("a.download-btn, a.alternative-btn, div.alternative ul li a").unbind("click");
             });
         }, 250);
     });
@@ -3402,9 +3415,6 @@ if (a.domCmp(["ur.ly"])) {
 }
 if (a.domCmp(["falter.at"])) {
     a.noAccess("showFalterGif");
-}
-if (a.domCmp(["null-24.com", "apkmod1.com"])) {
-    a.timewarp("setInterval", a.matchMethod.stringExact, "1500");
 }
 if (a.domCmp(["webnovel.com"])) {
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/457

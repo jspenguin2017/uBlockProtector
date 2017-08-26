@@ -659,3 +659,5 @@ schwarzwaelder-bote.de###blocker-note
 wer-weiss-was.de###hint
 ! === peugeot-metropolis.de
 peugeot-metropolis.de###displaywise
+! === topagrar.com
+||topagrar.com/_themes/topagrar-responsive/_js/ads.js$script,redirect=noopjs
