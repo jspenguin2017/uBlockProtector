@@ -3021,10 +3021,10 @@ if (a.domCmp(["linkshrink.net"])) {
     //License: https://github.com/adsbypasser/adsbypasser/blob/master/LICENSE
     const matcher = /revC\("([^"]+)"\)/;
     a.ready(() => {
-        const scripts = document.querySelectorAll("script");
         let match;
+        const scripts = document.querySelectorAll("script");
+        //Start from end as the script tend to be at the end
         for (let i = scripts.length - 1; i >= 0; i--) {
-            //Start from end as the script tend to be at the end
             if (match = matcher.exec(scripts[i].textContent)) {
                 location.pathname = "/" + atob(match[1]);
                 break;
@@ -3411,22 +3411,21 @@ if (a.domCmp(["webnovel.com"])) {
     const bookExtractor = /\/book\/([^/]+)/;
     let isInBackground = false;
     const scanner = () => {
-        const lock = document.querySelectorAll(".cha-content._lock");
-        for (let i = 0; i < lock.length; i++) {
+        $(".cha-content._lock").each((lock) => {
             //Remove flag
-            lock[i].classList.remove("_lock");
+            lock.classList.remove("_lock");
             //Remove video
-            const video = lock[i].closest(".chapter_content").querySelector(".lock-video");
+            const video = lock.closest(".chapter_content").querySelector(".lock-video");
             if (video) {
                 video.remove();
             }
             //Let user know what is happening
-            const contentElem = lock[i].querySelector(".cha-words");
+            const contentElem = lock.querySelector(".cha-words");
             contentElem.insertAdjacentHTML("beforeend", "<p style='opacity:0.5;'>" +
                 "uBlock Protector is fetching the rest of this chapter, this can take up to 30 seconds.</p>");
             //Get IDs
             const bookID = bookExtractor.exec(location.href)[1];
-            const chapterID = lock[i].querySelector("[data-cid]").dataset.cid;
+            const chapterID = lock.querySelector("[data-cid]").dataset.cid;
             //Check if I got IDs
             if (!bookID || !chapterID) {
                 return;
@@ -3449,7 +3448,7 @@ if (a.domCmp(["webnovel.com"])) {
             }, () => {
                 console.error("uBlock Protector failed to find chapter token!");
             });
-        }
+        });
     };
     const fetchChapter = (cookie, token, contentElem) => {
         const tick = () => {
