@@ -238,6 +238,7 @@ flashx.tv##script:inject(abort-on-property-read.js, open)
 ! === linkneverdie.com
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/146
 @@||linkneverdie.com^$elemhide
+linkneverdie.com##script:inject(setTimeout-defuser.js, #wrapper)
 ! === pogdesign.co.uk
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/149
 pogdesign.co.uk##.replace

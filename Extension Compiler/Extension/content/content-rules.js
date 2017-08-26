@@ -2303,21 +2303,6 @@ if (a.domCmp(["multiup.org", "multiup.eu"])) {
         $("#M130814ScriptRootC54591").includes("Loading...").remove();
     });
 }
-if (a.domCmp(["linkneverdie.com"])) {
-    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/146
-    a.readOnly("eval", () => {
-        //Remove block screen
-        window.$("div").each(function () {
-            if (this.id.length === 30) {
-                this.remove();
-            }
-        });
-    });
-    a.ready(() => {
-        $(".SC_TBlock").textIs("loading...").remove();
-        $("#wrapper").show();
-    });
-}
 if (a.domCmp(["ally.sh", "al.ly", "croco.site"])) {
     a.inject(() => {
         "use strict";
