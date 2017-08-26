@@ -3437,29 +3437,37 @@ if (a.domCmp(["webnovel.com"])) {
                 "uBlock Protector is fetching the rest of this chapter, this can take up to 30 seconds.</p>");
             //Get IDs
             const bookID = bookExtractor.exec(location.href)[1];
-            const chapterID = lock[i].querySelector("[data-cid]").dataset;
+            const chapterID = lock[i].querySelector("[data-cid]").dataset.cid;
             //Check if I got IDs
             if (!bookID || !chapterID) {
                 return;
             }
+            //Get cookie
+            const cookie = encodeURIComponent(a.cookie("_csrfToken"));
             //Get token
             $.request({
                 method: "GET",
-                url: `https://www.webnovel.com/apiajax/chapter/GetChapterContentToken?bookId=${bid}&chapterId=${cid}`,
+                url: `https://www.webnovel.com/apiajax/chapter/GetChapterContentToken?_csrfToken=` +
+                `${cookie}&bookId=${bookID}&chapterId=${chapterID}`,
             }, (data) => {
-                let token = JSON.parse(data).data.token;
-                token = encodeURIComponent(token);
-                fetchChapter(token, contentElem);
+                try {
+                    let token = JSON.parse(data).data.token;
+                    token = encodeURIComponent(token);
+                    fetchChapter(cookie, token, contentElem);
+                } catch (err) {
+                    console.error("uBlock Protector failed to find chapter token!");
+                }
             }, () => {
-                console.error("uBlock Protector failed to fetch chapter token!");
+                console.error("uBlock Protector failed to find chapter token!");
             });
         }
     };
-    const fetchChapter = (token, contentElem) => {
+    const fetchChapter = (cookie, token, contentElem) => {
         const tick = () => {
             $.request({
                 method: "GET",
-                url: `https://www.webnovel.com/apiajax/chapter/GetChapterContentByToken?token=${token}`,
+                url: `https://www.webnovel.com/apiajax/chapter/GetChapterContentByToken?_csrfToken=` +
+                `${cookie}&token=${token}`,
             }, (data) => {
                 try {
                     const content = JSON.parse(data).data.content.trim();
@@ -3474,8 +3482,8 @@ if (a.domCmp(["webnovel.com"])) {
             }, () => {
                 setTimeout(tick, 2000);
             });
-            tick();
         };
+        tick();
     };
     const drawChapter = (content, contentElem) => {
         const lines = content.split("\n");
