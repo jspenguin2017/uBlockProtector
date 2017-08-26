@@ -614,16 +614,6 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "echi
     }
     if (a.domCmp(["portal.abczdrowie.pl", "parenting.pl"])) {
         a.css("figcaption { display:none; }");
-        /*
-        a.on("load", () => {
-            const elems = document.querySelectorAll("figcaption");
-            for (let i = 0; i < elems.length; i++) {
-                if (elems[i].parentNode.querySelector("video")) {
-                    elems[i].remove();
-                }
-            }
-        });
-        */
     }
 }
 if (a.domCmp(["wtkplay.pl"])) {
