@@ -302,7 +302,7 @@ naisho.asia##script:inject(abort-on-property-write.js, adBlock)
 sankakucomplex.com##script:inject(abort-on-property-read.js, BetterJsPop)
 @@||short.am^$generichide,badfilter
 wdbloog.com###unblocker
-dingit.tv,t3n.de,jan-magazine.nl,glamour.nl,quest.nl#@#.adsbox
+dingit.tv,jan-magazine.nl,glamour.nl,quest.nl#@#.adsbox
 ||dingit.tv/js/dingit-player/js/html5/videojs.ads.js$script,redirect=noopjs
 /countsJS.php$domain=vz.lt
 ||xess.pro/js/popup.js
@@ -409,6 +409,7 @@ wer-weiss-was.de###hint
 peugeot-metropolis.de###displaywise
 ||topagrar.com/_themes/topagrar-responsive/_js/ads.js$script,redirect=noopjs
 /tgs.teaser-ad.js$domain=tagesspiegel.de
+t3n.de#@##adsbox
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================
