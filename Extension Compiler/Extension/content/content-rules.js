@@ -3276,6 +3276,7 @@ if (a.domCmp(["identi.li"])) {
     a.ready(() => {
         a.inject(() => {
             "use strict";
+            //Type 1
             const blocks = window.document.querySelectorAll(".info_bbc");
             for (let i = 0; i < blocks.length; i++) {
                 if (!blocks[i].firstChild.tagName) {
@@ -3284,6 +3285,15 @@ if (a.domCmp(["identi.li"])) {
                     blocks[i].style.display = "block";
                     blocks[i].parentNode.previousSibling.remove();
                 }
+            }
+            //Type 2
+            if (window.$) {
+                window.$("div #decrypt.myjdownloader").unbind("click").click(function () {
+                    window._decrypt.fnID = "jdownloader";
+                    window._decrypt.fnURL = this.getAttribute("href");
+                    window._decrypt.objeto = null;
+                    window._decrypt.open();
+                });
             }
         });
     });
