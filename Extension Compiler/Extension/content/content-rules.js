@@ -3280,7 +3280,7 @@ if (a.domCmp(["identi.li"])) {
             const blocks = window.document.querySelectorAll(".info_bbc");
             for (let i = 0; i < blocks.length; i++) {
                 if (!blocks[i].firstChild.tagName) {
-                    let links = window.GibberishAES.dec(blocks[i].textContent, window.hash);
+                    const links = window.GibberishAES.dec(blocks[i].textContent, window.hash);
                     blocks[i].innerHTML = window.linkify(links);
                     blocks[i].style.display = "block";
                     blocks[i].parentNode.previousSibling.remove();
