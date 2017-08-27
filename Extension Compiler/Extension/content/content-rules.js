@@ -3273,28 +3273,14 @@ if (a.domCmp(["kiss.com.tw"])) {
 if (a.domCmp(["identi.li"])) {
     a.css(".linkhidder { display:none; } div[id^='hidden_'] { display:block; }");
     a.cookie("BetterJsPop0", "1");
-    a.on("load", () => {
+    a.ready(() => {
         a.inject(() => {
             "use strict";
-            const re1 = /&nbsp;/g;
-            const re2 = new window.RegExp("(((http|ftp|https):\\/\\/)|www\\.)[\\w\\-_]+(\\.[\\w\\" +
-                "-_]+)+([\\w\\-\\.,@?^=%&amp;:\\/~\\+#!]*[\\w\\-\\@?^=%&amp;\\/~\\+#])?", "gi");
-            const re3 = /^https?:\/\//;
             const blocks = window.document.querySelectorAll(".info_bbc");
             for (let i = 0; i < blocks.length; i++) {
                 if (!blocks[i].firstChild.tagName) {
                     let links = window.GibberishAES.dec(blocks[i].textContent, window.hash);
-                    links = links.replace(re1, " ");
-                    links = links.replace(re2, (url) => {
-                        let full = url;
-                        if (!re3.test(full)) {
-                            full = `http://${full}`;
-                        }
-                        full = full.trim();
-                        url = url.trim();
-                        return `<a target="_blank" rel="nofollow" href="${full}">${url}</a><br />`;
-                    });
-                    blocks[i].innerHTML = links;
+                    blocks[i].innerHTML = window.linkify(links);
                     blocks[i].style.display = "block";
                     blocks[i].parentNode.previousSibling.remove();
                 }
