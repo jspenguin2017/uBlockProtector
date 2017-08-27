@@ -665,3 +665,6 @@ peugeot-metropolis.de###displaywise
 /tgs.teaser-ad.js$domain=tagesspiegel.de
 ! === t3n.de
 t3n.de#@##adsbox
+! === thepiratebay.org
+||cloudfront.net^$script,domain=wateranik.com
+||thepiratebay.org^$inline-script
