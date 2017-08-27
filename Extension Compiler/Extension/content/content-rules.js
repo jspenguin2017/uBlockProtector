@@ -2725,6 +2725,13 @@ if (a.domCmp(["null-24.com"])) {
                 window.jQuery("a.FLMBTN-Btn.FLMBTN-Size-MD.FLMBTN-Color-Red, a.download-link").unbind("click");
             });
         }, 250);
+        const re = /https?:\/\/null-24\.com\/download\/\?link=([^&]+)/;
+        let match;
+        $(".custom-link").each((elem) => {
+            if (match = re.exec(elem.href)) {
+                elem.href = decodeURIComponent(match[1]);
+            }
+        });
     });
 }
 if (a.domCmp(["nulledvar.com"])) {
