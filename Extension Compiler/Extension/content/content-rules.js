@@ -212,7 +212,7 @@ if (a.domCmp(["bitcoiner.net", "litecoiner.net"])) {
 }
 
 //=====Other Specific Rules=====
-if (a.domCmp(["mid-day.com", "happytrips.com"])) {
+if (a.domCmp(["mid-day.com", "happytrips.com", "jagranjunction.com"])) {
     a.readOnly("canRun", true);
 }
 if (a.domCmp(["voici.fr", "programme-tv.net"])) {
