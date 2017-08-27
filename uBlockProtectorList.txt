@@ -181,7 +181,7 @@ hackintosh.computer##.adsbygoogle
 ||damoh.*^$media
 ||ooul.tv/contrib/se-aftonbladet/aab/aftonbladet_plugin.js$script,redirect=noopjs,domain=aftonbladet.se
 ||ooul.tv/nocache/se-aftonbladet/aab/aftonbladet_config.js$script,redirect=noopjs,domain=aftonbladet.se
-filechoco.net##script:inject(noeval.js)
+filechoco.net,keezmovies.com##script:inject(noeval.js)
 *$script,third-party,domain=graffica.info
 @@||grafficainfo.disqus.com^$domain=graffica.info
 @@||connect.facebook.net^$domain=graffica.info
