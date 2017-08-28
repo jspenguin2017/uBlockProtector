@@ -276,25 +276,4 @@ if (a.debugMode) {
         //===Debug Only===
     }
     */
-    if (a.domCmp(["di.fm"])) {
-        a.loopback((ignored, url) => {
-            //=====Debug Only=====
-            window.console.warn("DEBUG LOG", ignored, url);
-            //=====Debug Only=====
-            if (url.startsWith("https://pubads.g.doubleclick.net/")) {
-                return `
-<?xml version="1.0" encoding="UTF-8"?>
-<VAST xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="vast.xsd" version="3.0">
-</VAST>
-`;
-            } else if (url.startsWith("https://di.deliveryengine.adswizz.com/")) {
-                return `
-<?xml version="1.0" encoding="UTF-8"?>
-<VAST version="2.0"/>
-`;
-            } else {
-                return null;
-            }
-        });
-    }
 }

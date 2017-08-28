@@ -2896,6 +2896,19 @@ if (a.domCmp(["itv.com"])) {
         }
     });
 }
+if (a.domCmp(["di.fm"])) {
+    a.loopback((ignored, url) => {
+        if (url.startsWith("https://pubads.g.doubleclick.net/")) {
+            return `
+<?xml version="1.0" encoding="UTF-8"?>
+<VAST xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="vast.xsd" version="3.0">
+</VAST>
+`;
+        } else {
+            return null;
+        }
+    });
+}
 if (a.domCmp(["gry.wp.pl", "maketecheasier.com"])) {
     a.filter("atob");
 }
