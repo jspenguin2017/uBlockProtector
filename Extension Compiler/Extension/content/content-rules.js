@@ -1812,7 +1812,7 @@ if (a.domCmp(["topserialy.to"])) {
 if (a.domCmp(["filmz.dk"])) {
     a.generic.FuckAdBlock("FAB", "fab");
 }
-if (a.domCmp(["sport-show.fr", "vipflash.net", "2site.me"])) {
+if (a.domCmp(["sport-show.fr", "vipflash.net", "2site.me", "crackhex.ch"])) {
     a.css("#blockblockA { visibility:invisible; display:none; } #blockblockA td { visibility:invisible; " +
         "display:none; } #blockblockA td p { visibility:invisible; display:none; } #blockblockB " +
         "{ visibility:visible; display:block; }");
