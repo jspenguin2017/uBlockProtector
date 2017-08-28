@@ -279,7 +279,7 @@ if (a.debugMode) {
     if (a.domCmp(["di.fm"])) {
         a.loopback((ignored, url) => {
             //=====Debug Only=====
-            window.console.log(url);
+            window.console.warn("DEBUG LOG", ignored, url);
             //=====Debug Only=====
             if (url.startsWith("https://pubads.g.doubleclick.net/")) {
                 return `
