@@ -3509,3 +3509,6 @@ if (a.domCmp(["webnovel.com"])) {
 if (a.domCmp(["wetter3.de"])) {
     a.readOnly("karte1", 18);
 }
+if (a.domCmp(["tuba.pl"])) {
+    a.readOnly("adsOk", true);
+}
