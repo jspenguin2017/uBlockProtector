@@ -604,7 +604,7 @@ const build = (newVer) => {
     //Upload and publish
     let data, token;
     disableDebugMode().then(() => {
-        return require("./ChromiumBugsWorkaroundEngine")();
+        return require("./ChromiumBugsWorkaroundEngine.node.js")();
     }).then(() => {
         return zip();
     }).then((d) => {
