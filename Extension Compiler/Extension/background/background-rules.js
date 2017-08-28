@@ -14,7 +14,7 @@ a.generic();
         let payload = `(() => {
             "use strict";
             try {
-                window.console.log("A request to mmod.v.fwmrm.net is locally loopbacked by uBlock Protector.");
+                window.console.log("A request to v.fwmrm.net is locally loopbacked by uBlock Protector.");
             } catch (err) { }
             ${cbfn}({
                 version: "1",
