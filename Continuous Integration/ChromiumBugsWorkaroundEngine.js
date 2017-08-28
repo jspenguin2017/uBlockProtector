@@ -116,8 +116,8 @@ module.exports = () => {
                     });
                 }
             }
-        }).catch(() => {
-            process.emit("uncaughtException");
+        }).catch((err) => {
+            process.emit("uncaughtException", err);
         });
     });
 };

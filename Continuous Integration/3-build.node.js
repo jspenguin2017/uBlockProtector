@@ -617,8 +617,8 @@ const build = (newVer) => {
         return publish(token);
     }).then(() => {
         return setLastBuildVersion(newVer);
-    }).then(exit).catch(() => {
-        process.emit("uncaughtException");
+    }).then(exit).catch((err) => {
+        process.emit("uncaughtException", err);
     });
 };
 
@@ -637,8 +637,8 @@ if (process.env.TRAVIS_COMMIT_MESSAGE.startsWith("@build-script-do-not-run")) {
 if (process.env.TRAVIS_COMMIT_MESSAGE.startsWith("@build-script-force-run")) {
     console.warn("Force build instruction received.");
     //I still need to fetch local version since I need to save it at the end
-    getLocalVersion().then(build).catch(() => {
-        process.emit("uncaughtException");
+    getLocalVersion().then(build).catch((err) => {
+        process.emit("uncaughtException", err);
     });
 } else {
     //Fetch versions
@@ -658,7 +658,7 @@ if (process.env.TRAVIS_COMMIT_MESSAGE.startsWith("@build-script-force-run")) {
             console.error("Version error: Unexpected versions, maybe last build was not properly completed.");
             process.exit(1);
         }
-    }).catch(() => {
-        process.emit("uncaughtException");
+    }).catch((err) => {
+        process.emit("uncaughtException", err);
     });
 }
