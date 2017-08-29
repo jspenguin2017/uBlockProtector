@@ -1059,7 +1059,7 @@ if (a.domCmp(["anizm.com"])) {
         });
     });
 }
-if (a.domCmp(["diarioinformacion.com"])) {
+if (a.domCmp(["diarioinformacion.com", "mallorcazeitung.es"])) {
     a.readOnly("pr_okvalida", true);
 }
 if (a.domCmp(["cnbeta.com"])) {
