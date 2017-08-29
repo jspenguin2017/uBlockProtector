@@ -175,6 +175,7 @@ pogdesign.co.uk##.replace
 ally.sh,al.ly##script:inject(popads.net.js)
 ||hackintosh.*/donate/donate.php
 @@||cdn.hackintosh.zone/ipscdn/adsense/*$first-party
+||hackintosh.zone/cdn-cgi/apps/head/$important,script,badfilter
 hackintosh.computer##.adsbygoogle
 @@||hackintosh.computer/wp-content/themes/adsense/*$first-party
 @@||imasdk.googleapis.com/js/sdkloader/outstream.js$script,domain=ovar.io

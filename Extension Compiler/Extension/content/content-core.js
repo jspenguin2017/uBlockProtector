@@ -1512,13 +1512,8 @@ a.generic.NoAdBlock = () => {
     a.inject(() => {
         "use strict";
         try {
-            //Hard code the solution to activate here
-            const useSolution = 3;
             //Prevent the page from tampering this function
             const error = window.console.error.bind(window.console);
-            const init = () => {
-                //window.console.log("Fake init called");
-            };
             let needDefuse = true;
             let installs = {};
             window.CloudflareApps = {};
@@ -1534,67 +1529,16 @@ a.generic.NoAdBlock = () => {
                                 if (installs[key].appId === "ziT6U3epKObS" && installs[key].options) {
                                     if (key === "preview") {
                                         //Preview does not really matter, just hard code something that works for now
-                                        //Tested on 1.6.20
                                         window.document.body.insertAdjacentHTML("beforeend",
                                             "<style>html, body { overflow:scroll !important; } cf-div { display:none !important; }</style>");
                                     } else {
-                                        switch (useSolution) {
-                                            case 0:
-                                                //Solution 0: Emergency fallback, lock display to a closable small overlay
-                                                //Tested on v1.5.0
-                                                installs[key].options.warningSettings = {
-                                                    coverPage: false,
-                                                    messageTypeFull: "1",
-                                                    messageTypeSmall: "1",
-                                                };
-                                                installs[key].options.translations = {
-                                                    howToDisableButtonLink: "https://goo.gl/CgJEsa",
-                                                    howToDisableButtonText: "点我报告问题",
-                                                    refreshButtonText: "",
-                                                    showTranslations: true,
-                                                    warningText: "额，貌似我的黑科技失效了……",
-                                                    warningTitle: "",
-                                                };
-                                                break;
-                                            case 1:
-                                                //Solution 1: Set it to show up 5 to 10 years later
-                                                //Tested on v1.5.0
-                                                //Probably won't work on v1.6.20
-                                                const min = 157700000, max = 315400000;
-                                                installs[key].options.advancedSettings = {
-                                                    analytics: false,
-                                                    showAdvancedSettings: true,
-                                                    warningDelay: window.Math.floor(window.Math.random() * (max - min) + min),
-                                                };
-                                                break;
-                                            case 2:
-                                                //Solution 2: Spoof cookies to prevent showing dialog
-                                                //Tested on v1.5.0
-                                                //Probably won't work on v1.6.20
-                                                window.document.cookie = `lastTimeWarningShown=${window.Date.now()}`;
-                                                window.document.cookie = "warningFrequency=visit";
-                                                installs[key].options.dismissOptions = {
-                                                    allowDismiss: "allow",
-                                                    warningFrequency: "visit",
-                                                    warningInterval: 1,
-                                                };
-                                                break;
-                                            case 3:
-                                                //Solution 3: Change URL patterns so it never matches
-                                                //Tested on v1.6.20
-                                                window.Object.defineProperty(installs[key], "URLPatterns", {
-                                                    configurable: false,
-                                                    set() { },
-                                                    get() {
-                                                        return ["$^"];
-                                                    },
-                                                });
-                                                break;
-                                            default:
-                                                //Ultimate solution: Stop installation, may break other Cloudflare apps
-                                                delete installs[key];
-                                                break;
-                                        }
+                                        window.Object.defineProperty(installs[key], "URLPatterns", {
+                                            configurable: false,
+                                            set() { },
+                                            get() {
+                                                return ["$^"];
+                                            },
+                                        });
                                     }
                                     //Update flag and log
                                     needDefuse = false;
@@ -1609,7 +1553,7 @@ a.generic.NoAdBlock = () => {
                 },
             });
         } catch (err) {
-            error("uBlock Protector failed to set up NoAdBlock uBlock Origin detector defuser!");
+            window.console.error("uBlock Protector failed to set up NoAdBlock uBlock Origin detector defuser!");
         }
     });
 };
