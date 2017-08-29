@@ -251,10 +251,7 @@ ally.sh,al.ly##script:inject(popads.net.js)
 ! === hackintosh.zone, hackintosh.computer - Thanks to F4z
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/35
 ||hackintosh.*/donate/donate.php
-@@||cdn.hackintosh.zone/ipscdn/adsense/*$first-party
-||hackintosh.zone/cdn-cgi/apps/head/$important,script,badfilter
 hackintosh.computer##.adsbygoogle
-@@||hackintosh.computer/wp-content/themes/adsense/*$first-party
 ! === ovar.io
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/155
 @@||imasdk.googleapis.com/js/sdkloader/outstream.js$script,domain=ovar.io

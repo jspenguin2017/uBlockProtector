@@ -3403,9 +3403,6 @@ if (a.domCmp(["clasicotas.org"])) {
 if (a.domCmp(["pseudo-flaw.net"])) {
     a.readOnly("stopBlock", () => { });
 }
-if (a.domCmp(["themarker.com"])) {
-    a.readOnly("AdBlockUtil", () => { });
-}
 if (a.domCmp(["bildungsspender.de"])) {
     a.readOnly("werbeblocker", true);
 }
@@ -3528,6 +3525,6 @@ if (a.domCmp(["wetter3.de"])) {
 if (a.domCmp(["tuba.pl"])) {
     a.readOnly("adsOk", true);
 }
-if (a.domCmp(["haaretz.com"])) {
+if (a.domCmp(["haaretz.com", "themarker.com"])) {
     a.noAccess("AdBlockUtil");
 }
