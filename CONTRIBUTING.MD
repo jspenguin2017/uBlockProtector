@@ -30,10 +30,12 @@ You are not allowed to promote proprietary software in this repository, and you 
 
 **Check if someone else already opened an issue for your problem**, join the discussion there and do not open another one. 
 
-**Missed ads are to be reported to [EasyList](https://forums.lanik.us/) first**, only open issue here about missed ads if: 
-* uBlock Protector caused the ads to be unblocked, or 
-* EasyList refuses to block the ads because blocking them triggers anti-adblock, or 
-* The ads cannot be blocked with just filters 
+**Missed ads and popups are to be reported to [EasyList](https://forums.lanik.us/) or 
+[uAssets](https://github.com/uBlockOrigin/uAssets/issues) first**, 
+only open issue about them here if: 
+* uBlock Protector caused them to be unblocked, or 
+* Blocking them triggers anti-adblock, or 
+* They cannot be blocked with just filters 
 
 **Title of your issue**: The domain of the website. Prepend `NSFW! ` if the website may contain contents that are not safe for work. 
 
