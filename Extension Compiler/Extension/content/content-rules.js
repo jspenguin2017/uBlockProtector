@@ -3311,7 +3311,7 @@ if (a.domCmp(["identi.li"])) {
         });
     });
 }
-if (a.domCmp(["acortar.net", "acortalo.net"])) {
+if (a.domCmp(["acortar.net", "acortalo.net", "vellenger.com"])) {
     a.on("load", () => {
         a.inject(() => {
             "use strict";
