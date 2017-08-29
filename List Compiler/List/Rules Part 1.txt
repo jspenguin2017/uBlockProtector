@@ -669,3 +669,7 @@ t3n.de#@##adsbox
 ! === thepiratebay.org
 ||cloudfront.net^$script,domain=wateranik.com
 ||thepiratebay.org^$inline-script
+! === descargatelocorp.com
+descargatelocorp.com##.onp-sl-social-locker
+descargatelocorp.com##.onp-sl-content:style(display: block !important;)
+@@||acortar.net/rollups/aes.js$domain=dclinks.info

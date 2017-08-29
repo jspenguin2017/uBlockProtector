@@ -413,6 +413,9 @@ peugeot-metropolis.de###displaywise
 t3n.de#@##adsbox
 ||cloudfront.net^$script,domain=wateranik.com
 ||thepiratebay.org^$inline-script
+descargatelocorp.com##.onp-sl-social-locker
+descargatelocorp.com##.onp-sl-content:style(display: block !important;)
+@@||acortar.net/rollups/aes.js$domain=dclinks.info
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================
