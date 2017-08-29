@@ -1059,7 +1059,9 @@ if (a.domCmp(["anizm.com"])) {
         });
     });
 }
-if (a.domCmp(["diarioinformacion.com", "mallorcazeitung.es"])) {
+if (a.domCmp(["diarioinformacion.com", "mallorcazeitung.es", "diaridegirona.cat", "diariodeibiza.es",
+    "emporda.info", "farodevigo.es", "laopinioncoruna.es", "laopiniondemalaga.es", "laopiniondemurcia.es",
+    "laopiniondezamora.es", "laprovincia.es", "levante-emv.com", "regio7.cat", "superdeporte.es"])) {
     a.readOnly("pr_okvalida", true);
 }
 if (a.domCmp(["cnbeta.com"])) {
