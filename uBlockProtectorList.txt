@@ -374,8 +374,9 @@ tvnow.de##.no-flash-box:has-text(Adblocker)
 @@||manifest.auditude.com^$xmlhttprequest,domain=pga.com
 kiss.com.tw#@##ads
 igeeksblog.com###quads-ad1_widget
-megawarez.org##div.onp-sl-content:style(display: block !important;)
-megawarez.org##div.onp-sl-social-locker
+megawarez.org,descargatelocorp.com##div.onp-sl-content:style(display: block !important;)
+megawarez.org,descargatelocorp.com##div.onp-sl-social-locker
+@@||acortar.net/rollups/aes.js$domain=dclinks.info
 *$script,third-party,domain=linclik.com
 ||espresso.repubblica.it/pw/pw2-espressosfoglio.js
 @@||24opole.pl^$generichide
@@ -413,9 +414,6 @@ peugeot-metropolis.de###displaywise
 t3n.de#@##adsbox
 ||cloudfront.net^$script,domain=wateranik.com
 ||thepiratebay.org^$inline-script
-descargatelocorp.com##.onp-sl-social-locker
-descargatelocorp.com##.onp-sl-content:style(display: block !important;)
-@@||acortar.net/rollups/aes.js$domain=dclinks.info
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================
