@@ -3528,3 +3528,6 @@ if (a.domCmp(["wetter3.de"])) {
 if (a.domCmp(["tuba.pl"])) {
     a.readOnly("adsOk", true);
 }
+if (a.domCmp(["haaretz.com"])) {
+    a.noAccess("AdBlockUtil");
+}
