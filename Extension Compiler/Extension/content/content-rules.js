@@ -40,11 +40,11 @@
     ];
     //Apply generic solutions
     if (a.domCmp(genericWhitelist1, true) || a.domInc(genericWhitelist2, true)) {
-        console.log("This domain is excluded from all generic solutions.");
+        console.log("This domain is excluded from all generically applied solutions.");
     } else {
         //Basic
         if (a.domCmp([], true)) {
-            console.log("This domain is excluded from basic generic solutions.");
+            console.log("This domain is excluded from common generic solutions.");
         } else {
             a.generic();
         }
