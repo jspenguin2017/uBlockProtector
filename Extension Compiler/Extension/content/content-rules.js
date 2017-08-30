@@ -2900,7 +2900,7 @@ if (a.domCmp(["itv.com"])) {
         }
     });
 }
-if (a.domCmp(["di.fm"])) {
+if (a.domCmp(["di.fm", "jazzradio.com"])) {
     a.loopback((ignored, url) => {
         if (url.startsWith("https://pubads.g.doubleclick.net/")) {
             return `
