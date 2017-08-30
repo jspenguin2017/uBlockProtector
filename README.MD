@@ -3,7 +3,6 @@
 An anti-adblock defuser for uBlock Origin
 
 Installation instructions are available on my [home page](http://jspenguin2017.github.io/uBlockProtector/). 
-Click on the extension icon if you need more information. 
 
 Before opening an issue, you **must** read the 
 [contribution guideline](https://github.com/jspenguin2017/uBlockProtector/blob/master/CONTRIBUTING.MD). 
