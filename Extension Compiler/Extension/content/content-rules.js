@@ -445,10 +445,6 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "echi
     a.cookie("ABCABC", "true");
     a.filter("addEventListener", a.matchMethod.stringExact, "advertisement");
     a.readOnly("hasSentinel", () => false);
-    //}
-    //Run the other solution unless it is known to cause problem, the solution above is not reliable
-    //if (a.domCmp(["money.pl", "parenting.pl", "tech.wp.pl", "sportowefakty.wp.pl", "teleshow.wp.pl", "moto.wp.pl",
-    //    "film.wp.pl", "gry.wp.pl", "wiadomosci.wp.pl", "portal.abczdrowie.pl", "o2.pl"])) {
     //Thanks to szymon1118
     if (true) {
         let mid; //Media ID of next video
