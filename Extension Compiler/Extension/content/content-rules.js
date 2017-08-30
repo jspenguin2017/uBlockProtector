@@ -7,7 +7,7 @@
 {
     //Initialize
     a.init();
-    //White lists, ends with 1 means the list is for a.domCmp(), 2 for a.domInc()
+    //White list
     const genericWhitelist1 = [
         //Local network
         "localhost", "127.0.0.1",
@@ -40,20 +40,19 @@
     ];
     //Apply generic solutions
     if (a.domCmp(genericWhitelist1, true) || a.domInc(genericWhitelist2, true)) {
-        console.log("This domain is excluded from generic solutions.");
+        console.log("This domain is excluded from all generic solutions.");
     } else {
-        a.generic();
+        //Basic
+        if (a.domCmp([], true)) {
+            console.log("This domain is excluded from basic generic solutions.");
+        } else {
+            a.generic();
+        }
         //Adfly
         if (a.domCmp([], true)) {
             console.log("This domain is excluded from Adfly bypasser.");
         } else {
             a.generic.Adfly();
-        }
-        //ads.js v2
-        if (a.domCmp(["gamersclub.com.br", "uploadboy.com", "vidoza.net", "videohelp.com", "zeiz.me",
-            "passionea300allora.it", "memurlar.net", "palemoon.org", "stocks.cafe", "listamais.com.br",
-            "acquavivalive.it", "palolive.it", "molfettalive.it", "sledujserialy.sk"])) {
-            a.generic.adsjsV2();
         }
         //NoAdBlock
         if (a.domCmp([], true)) {
@@ -61,6 +60,12 @@
         } else {
             a.generic.NoAdBlock();
         }
+    }
+    //ads.js v2
+    if (a.domCmp(["gamersclub.com.br", "uploadboy.com", "vidoza.net", "videohelp.com", "zeiz.me",
+        "passionea300allora.it", "memurlar.net", "palemoon.org", "stocks.cafe", "listamais.com.br",
+        "acquavivalive.it", "palolive.it", "molfettalive.it", "sledujserialy.sk"])) {
+        a.generic.adsjsV2();
     }
     //uBO-Extra white list
     if (a.domCmp([], true)) {
