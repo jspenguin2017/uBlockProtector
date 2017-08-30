@@ -456,7 +456,7 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "echi
         let loadCounter = 0; //The index of next item to load
         let networkBusy = false; //A flag to prevent sending a new request before the first one is done
         let networkErrorCounter = 0; //Will stop sending request if this is over 5
-        let isInBackground = false; //A flag to prevent excessive CPU usage when the tab is in background
+        let isInBackground = false;
         //The player container matcher
         let containerMatcher = ".wp-player-outer, .player__container, .wp-player, .embed-container, .uBlockProtectorVideo";
         const reMatcher = /mid[=,](\d+)/;
@@ -466,7 +466,7 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "echi
         addEventListener(magic, (e) => {
             //Must verify as data from injected script cannot be trusted
             const match = reMatcher.exec(String(e.detail));
-            if (reMidValidator.test(match[1])) {
+            if (match && reMidValidator.test(match[1])) {
                 midArray1Counter++;
                 !midArray1.includes(match[1]) && midArray1.push(match[1]);
             }
@@ -495,9 +495,9 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "echi
             })();`, true);
             //Mid extracting method 2
             {
-                let selection = $(containerMatcher).filter("iframe", true);
+                let selection = $(containerMatcher).filter("iframe", true).first();
                 if (selection.length) {
-                    const elem = selection.first().copy().find(".titlecont a.title");
+                    const elem = selection.copy().find(".titlecont a.title");
                     let thisMid = elem.attr("href");
                     //Check if I got the element
                     if (thisMid) {
@@ -534,7 +534,7 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "echi
                 } else {
                     return;
                 }
-                //Get media JSON, I do not need to check if mid is found since the function will return if it is not
+                //Get media JSON
                 networkBusy = true;
                 a.request({
                     method: "GET",
