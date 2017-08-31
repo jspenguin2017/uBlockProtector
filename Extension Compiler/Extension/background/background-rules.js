@@ -203,6 +203,7 @@ a.generic();
                 "*://links.orgasmatrix.com/*",
                 "*://wik34.com/*",
                 "*://zryydi.com/*",
+                "*://skiip.me/*",
             ],
             types: [
                 "main_frame",

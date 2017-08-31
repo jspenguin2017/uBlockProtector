@@ -331,6 +331,7 @@ if ( !abort ) {
             'infinitiev.com',
             'lajollalight.com',
             'leaderpost.com',
+            'legacy.com',
             'lifewire.com',
             'lolking.net',
             'mcall.com',
