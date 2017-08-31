@@ -36,32 +36,36 @@ a.init = () => {
                  */
                 case "xhr":
                     if (typeof args[0].details === "object") {
-                        console.log(`Sending cross origin request to ${args[0].details.url}`);
-                        let req = new XMLHttpRequest();
-                        //Event handler
-                        req.onreadystatechange = () => {
-                            if (req.readyState === 4) {
-                                try {
-                                    args[2](req.responseText);
-                                } catch (err) { }
+                        const method = String(args[0].details.method);
+                        if (method === "GET" || method === "POST") {
+                            console.log(`Sending cross origin request to ${args[0].details.url}`);
+                            let req = new XMLHttpRequest();
+                            //Event handler
+                            req.onreadystatechange = () => {
+                                if (req.readyState === 4) {
+                                    try {
+                                        args[2](req.responseText);
+                                    } catch (err) { }
+                                }
+                            };
+                            //Create request
+                            req.open(method, String(args[0].details.url));
+                            //Set headers
+                            if (typeof args[0].details.headers === "object") {
+                                for (let key in args[0].details.headers) {
+                                    req.setRequestHeader(key, String(args[0].details.headers[key]));
+                                }
                             }
-                        };
-                        //Create request
-                        req.open(String(args[0].details.method), String(args[0].details.url));
-                        //Set headers
-                        if (typeof args[0].details.headers === "object") {
-                            for (let key in args[0].details.headers) {
-                                req.setRequestHeader(key, String(args[0].details.headers[key]));
+                            //Send request
+                            let payload = null;
+                            if (args[0].details.payload) {
+                                payload = String(args[0].details.payload);
                             }
-                        }
-                        //Send request
-                        let payload = null;
-                        if (args[0].details.payload) {
-                            payload = String(args[0].details.payload);
-                        }
-                        req.send(payload);
-                        return true; //The callback is done after this handler returns
+                            req.send(payload);
+                            return true; //The callback is done after this handler returns
+                        } //Ignore if method is not valid
                     } //Ignore if details is not valid
+                    break;
                 /**
                  * Forcefully close the sender tab.
                  */

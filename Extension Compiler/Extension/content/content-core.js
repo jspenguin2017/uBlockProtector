@@ -793,8 +793,8 @@ a.cookie = (key, val, time = 31536000000, path = "/") => {
  * Generate a native HTML5 player with controls but not autoplay.
  * @function
  * @param {string} source - The source of the video.
- * @param {string} [type=(Auto Detect)] - The type of the video, will be automatically detected if not supplied, defaults to MP4
- ** if detection failed.
+ * @param {string} [type=(Auto Detect)] - The type of the video, will be automatically detected if not supplied,
+ ** defaults to MP4 if detection failed.
  * @param {string} [width="100%"] - The width of the player.
  * @param {string} [height="auto"] - The height of the player.
  * @return {string} An HTML string of the video player.
@@ -1024,28 +1024,6 @@ a.generic = () => {
             //Remove element
             insertedNode.remove();
         }
-        //BlockAdBlock
-        /*
-        //Chromium does not always supply textContent for large scripts
-        if (insertedNode.nodeName === "SCRIPT" &&
-            insertedNode.textContent &&
-            insertedNode.textContent.includes("// Place this code snippet near the footer of your page before " +
-                "the close of the /body tag") &&
-            insertedNode.textContent.includes("// LEGAL NOTICE: The content of this website and all associated " +
-                "program code are protected under the Digital Millennium Copyright Act. Intentionally circumventing " +
-                "this code may constitute a violation of the DMCA.")) {
-            //Log
-            a.err("BlockAdBlock");
-            //Cancel script execution
-            insertedNode.remove();
-            //Undo style
-            if (document.body) {
-                document.body.style.removeProperty("visibility");
-            }
-            const elem = document.getElementById("babasbmsgx");
-            elem && elem.remove();
-        }
-        */
     };
     a.onInsert(onInsertHandler);
     //==================
@@ -1473,7 +1451,8 @@ a.generic.adsjsV2 = () => {
         "use strict";
         const error = window.console.error.bind(window.console);
         const matcher = /[a-zA-Z0-9]{11,14}/;
-        const err = new window.TypeError("Failed to execute 'getElementById' on 'Document': 1 argument required, but only 0 present.");
+        const err = new window.TypeError("Failed to execute 'getElementById' on 'Document': " +
+            "1 argument required, but only 0 present.");
         let original; //document.getElementById
         const newFunc = (...args) => {
             if (args.length) {
@@ -1527,7 +1506,8 @@ a.generic.NoAdBlock = () => {
                                     if (key === "preview") {
                                         //Preview does not really matter, just hard code something that works for now
                                         window.document.body.insertAdjacentHTML("beforeend",
-                                            "<style>html, body { overflow:scroll !important; } cf-div { display:none !important; }</style>");
+                                            "<style>html, body { overflow:scroll !important; } " +
+                                            "cf-div { display:none !important; }</style>");
                                     } else {
                                         window.Object.defineProperty(installs[key], "URLPatterns", {
                                             configurable: false,
@@ -1614,7 +1594,7 @@ a.backgroundLog = (log) => {
  * @function
  * @param {Special} func, delay, ...args - Arguments for setInterval(), the first parameter must
  ** be a function, cannot be raw code.
- * @return {Integer} Cancellation token, can be passed to clearInterval() to clear the interval.
+ * @return {Token} Cancellation token, can be passed to clearInterval() to clear the interval.
  */
 a.setBenchmarkedInterval = (func, delay, ...args) => {
     if (!a.debugMode) {
