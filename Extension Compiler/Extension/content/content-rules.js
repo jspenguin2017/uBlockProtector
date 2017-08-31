@@ -367,22 +367,21 @@ if (a.domCmp(["tvregionalna24.pl"])) {
         });
     });
 }
-if (a.domCmp(["tvn.pl", "tvnstyle.pl", "tvnturbo.pl", "kuchniaplus.pl", "miniminiplus.pl"])) {
-    //Replace player - Thanks to szymon1118
-    //Potential related domains:
-    //["tvnfabula.pl", "itvnextra.pl", "tvn24bis.pl", "ttv.pl", "x-news.pl", "tvn7.pl", "itvn.pl", "tvn.pl", "tvn24.pl"]
-    const homePages = ["http://www.tvn.pl/", "http://www.tvnstyle.pl/", "http://www.tvnturbo.pl/"];
-    //Homepages are partially fixed and are handled by List
-    if (!homePages.includes(location.href)) {
-        const handler = () => {
-            const elem = $(".videoPlayer");
-            if (elem.length) {
-                const src = elem.data("src");
-                elem.parent().after(a.nativePlayer(src)).remove();
-            }
-        };
-        setInterval(handler, 1500);
-    }
+if (a.domCmp(["itvn.pl", "itvnextra.pl", "kuchniaplus.pl", "miniminiplus.pl", "ttv.pl", "tvn.pl", "tvn24.pl",
+    "tvn24bis.pl", "tvn7.pl", "tvnfabula.pl", "tvnstyle.pl", "tvnturbo.pl", "x-news.pl"])) {
+    a.readOnly("isAdBlockEnabled", () => {
+        "use strict";
+        window.adBlockEnabled = false;
+        return false;
+    });
+    a.loopback((ignored, url) => {
+        console.log(url);
+        if (url.startsWith("http://tvn.adocean.pl/ad.xml")) {
+            return `<VAST version="2.0"></VAST>`;
+        } else {
+            return null;
+        }
+    });
 }
 if (a.domCmp(["player.pl"])) {
     const matcher = /[.,]/;
