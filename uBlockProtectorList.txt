@@ -113,6 +113,8 @@ android-zone.ws,cmacapps.com,l2network.eu,animes-mangas-ddl.net,fuckingsession.c
 sectorsatoshi-amarillo.website,sectorsatoshi-azul.website,sectorsatoshi-blanco.website,sectorsatoshi-celeste.website,sectorsatoshi-gris.website,sectorsatoshi-naranja.website##script:inject(bab-defuser.js)
 sectorsatoshi-negro.website,sectorsatoshi-rosa.website,sectorsatoshi-verde.website,sectorsatoshi-violeta.website,forumcoin.win##script:inject(bab-defuser.js)
 themarker.com,nachrichten.at##script:inject(abort-on-property-read.js, adblockDetector)
+megawarez.org,descargatelocorp.com,tipeo.net##div.onp-sl-content:style(display: block !important;)
+megawarez.org,descargatelocorp.com,tipeo.net##div.onp-sl-social-locker
 ||lukkr.com/website/pf.js
 abczdrowie.pl,autokrata.pl,autokult.pl,biztok.pl,gadzetomania.pl,hotmoney.pl,kafeteria.pl,kafeteria.tv,komediowo.pl,komorkomania.pl,money.pl,pudelek.tv,sfora.pl,snobka.pl##.windowErrCont
 wawalove.pl,wp.pl,wp.tv,wrzuta.pl,pudelek.pl,fotoblogia.pl,parenting.pl,echirurgia.pl,pudelekx.pl,o2.pl,kardiolo.pl##.windowErrCont
@@ -371,8 +373,6 @@ tvnow.de##.no-flash-box:has-text(Adblocker)
 @@||manifest.auditude.com^$xmlhttprequest,domain=pga.com
 kiss.com.tw#@##ads
 igeeksblog.com###quads-ad1_widget
-megawarez.org,descargatelocorp.com##div.onp-sl-content:style(display: block !important;)
-megawarez.org,descargatelocorp.com##div.onp-sl-social-locker
 @@||acortar.net/rollups/aes.js$domain=dclinks.info
 *$script,third-party,domain=linclik.com
 ||espresso.repubblica.it/pw/pw2-espressosfoglio.js

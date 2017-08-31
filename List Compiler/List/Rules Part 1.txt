@@ -142,6 +142,9 @@ sectorsatoshi-amarillo.website,sectorsatoshi-azul.website,sectorsatoshi-blanco.w
 sectorsatoshi-negro.website,sectorsatoshi-rosa.website,sectorsatoshi-verde.website,sectorsatoshi-violeta.website,forumcoin.win##script:inject(bab-defuser.js)
 ! === AdBlock Detector
 themarker.com,nachrichten.at##script:inject(abort-on-property-read.js, adblockDetector)
+! === Social Locker
+megawarez.org,descargatelocorp.com,tipeo.net##div.onp-sl-content:style(display: block !important;)
+megawarez.org,descargatelocorp.com,tipeo.net##div.onp-sl-social-locker
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/254
 ||lukkr.com/website/pf.js
 ! ==============================
@@ -595,9 +598,7 @@ tvnow.de##.no-flash-box:has-text(Adblocker)
 kiss.com.tw#@##ads
 ! === igeeksblog.com
 igeeksblog.com###quads-ad1_widget
-! === megawarez.org, descargatelocorp.com
-megawarez.org,descargatelocorp.com##div.onp-sl-content:style(display: block !important;)
-megawarez.org,descargatelocorp.com##div.onp-sl-social-locker
+! === dclinks.info
 @@||acortar.net/rollups/aes.js$domain=dclinks.info
 ! === linclik.com
 *$script,third-party,domain=linclik.com
