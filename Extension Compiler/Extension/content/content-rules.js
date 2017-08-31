@@ -375,7 +375,6 @@ if (a.domCmp(["itvn.pl", "itvnextra.pl", "kuchniaplus.pl", "miniminiplus.pl", "t
         return false;
     });
     a.loopback((ignored, url) => {
-        console.log(url);
         if (url.startsWith("http://tvn.adocean.pl/ad.xml")) {
             return `<VAST version="2.0"></VAST>`;
         } else {
