@@ -3532,6 +3532,12 @@ if (a.domCmp(["haaretz.com", "themarker.com"])) {
 if (a.domCmp(["nontonanime.org"])) {
     a.readOnly("ADBLOCK", true);
 }
-if (a.domCmp(["graphiq.com"])) {
-    //a.trace("FTBAds");
+if (a.domCmp(["graphiq-stories.graphiq.com"])) {
+    a.loopback((ignored, url) => {
+        if (url.startsWith("/ad?")) {
+            return "window.FTBAds.blocking = false;";
+        } else {
+            return null;
+        }
+    });
 }
