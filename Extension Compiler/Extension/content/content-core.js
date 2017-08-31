@@ -7,7 +7,6 @@
  * @function
  */
 a.init = () => {
-    //Log domain
     console.log(`Domain: ${document.domain}`);
     //Home page installation test
     if (a.domCmp(["jspenguin2017.github.io"], true) && location.pathname.startsWith("/uBlockProtector/")) {
@@ -111,7 +110,6 @@ a.request = (details, onload, onerror) => {
  * @return {boolean} True if current domain is in the list, false otherwise.
  */
 a.domCmp = (domList, noErr) => {
-    //Loop though each element
     for (let i = 0; i < domList.length; i++) {
         if (document.domain.endsWith(domList[i]) &&
             (document.domain.length === domList[i].length ||
@@ -150,7 +148,6 @@ a.domCmpOnce = (dom, noErr) => {
  * @return {boolean} True if current domain is in the list, false otherwise.
  */
 a.domInc = (domList, noErr) => {
-    //Loop though each element
     for (let i = 0; i < domList.length; i++) {
         let index = document.domain.lastIndexOf(domList[i] + ".");
         //Make sure the character before, if exists, is "."
@@ -1559,6 +1556,42 @@ a.generic.NoAdBlock = () => {
 };
 
 //=====Debug Utilities=====
+/**
+ * Trace the access to a property, should be called on document-start.
+ * Only available in debug mode.
+ * @function
+ * @param {string} name - The name of the property to define.
+ * @param {string} [parent="window"] - The name of the parent object, use "." or bracket notation to separate layers.
+ ** The parent must exist.
+ */
+a.trace = (name, parent = "window") => {
+    if (!a.debugMode) {
+        console.error("a.trace() is only available in debug mode!");
+        return;
+    }
+    name = a.strEscape(name);
+    const strParent = a.strEscape(parent);
+    a.inject(`(() => {
+        "use strict";
+        const trace = window.console.trace.bind(window.console);
+        let val;
+        try {
+            window.Object.defineProperty(${parent}, "${name}", {
+                configurable: false,
+                set(v) {
+                    trace("SET ${strParent}.${name}", v);
+                    val = v;
+                },
+                get() {
+                    trace("GET ${strParent}.${name}", val);
+                    return val;
+                },
+            });
+        } catch (err) {
+            window.console.error("uBlock Protector failed to define traced property ${strParent}.${name}!");
+        }
+    })();`, true);
+};
 /**
  * Log data to the background console.
  * Only available in debug mode.
