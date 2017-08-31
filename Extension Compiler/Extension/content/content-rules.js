@@ -3529,3 +3529,6 @@ if (a.domCmp(["tuba.pl"])) {
 if (a.domCmp(["haaretz.com", "themarker.com"])) {
     a.noAccess("AdBlockUtil");
 }
+if (a.domCmp(["nontonanime.org"])) {
+    a.readOnly("ADBLOCK", true);
+}
