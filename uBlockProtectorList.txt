@@ -415,6 +415,8 @@ t3n.de#@##adsbox
 @@||yiv.com^$generichide
 yiv.com###LeftAdDiv
 yiv.com###RightAdDiv
+agar.io###advertisement
+||dolldivine.com/images/fairy-preview.jpg
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================

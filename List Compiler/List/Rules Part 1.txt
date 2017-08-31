@@ -674,3 +674,7 @@ t3n.de#@##adsbox
 @@||yiv.com^$generichide
 yiv.com###LeftAdDiv
 yiv.com###RightAdDiv
+! === agar.io
+agar.io###advertisement
+! === dolldivine.com
+||dolldivine.com/images/fairy-preview.jpg

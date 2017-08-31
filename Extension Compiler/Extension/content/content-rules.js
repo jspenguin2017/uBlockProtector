@@ -13,20 +13,28 @@
         "localhost", "127.0.0.1",
         //Google
         "google.it.ao", "google.ne.jp", "google.off.ai", "youtu.be", "youtube.com",
+        //Baidu
+        "baidu.com",
         //Microsoft
         "microsoft.com", "msn.com", "live.com", "bing.com",
-        //Other
-        "ask.com", "reddit.com", "stackoverflow.com", "tampermonkey.net", "twitter.com",
-        "360.cn", "baidu.com", "bufferapp.com", "chromeactions.com", "chatango.com", "calm.com",
-        "easyinplay.net", "ebay.com", "facebook.com", "flattr.com", "flickr.com", "imdb.com",
-        "imgbox.com", "imgur.com", "instagram.com", "jsbin.com", "jsfiddle.net", "linkedin.com", "mail.ru",
-        "paypal.com", "pinterest.com", "preloaders.net", "qq.com", "vimeo.com", "wikipedia.org",
-        "w3schools.com", "yandex.ru", "xemvtv.net", "spaste.com", "agar.io", "popmech.ru",
-        "pandoon.info", "fsf.org", "adblockplus.org", "plnkr.co", "exacttarget.com", "dolldivine.com",
+        //Wikipedia
+        "wikipedia.org",
+        //PayPal
+        "paypal.com", "paypal.me",
+        //JavaScript playgrounds
+        "stackoverflow.com", "ask.com", "w3schools.com", "jsbin.com", "jsfiddle.net", "plnkr.co",
+        "preloaders.net",
+        //Social sites (for performance)
+        "facebook.com", "messenger.com", "twitter.com", "instagram.com", "reddit.com", "linkedin.com",
+        "pinterest.com", "bufferapp.com", "chatango.com",
+        //Media sites (for performance)
+        "calm.com", "vimeo.com", "yandex.ru", "xemvtv.net",
+        //Image beds (for performance)
+        "imgur.com", "imgbox.com", "flickr.com",
         //Handled by specific rules
         "anandabazar.com", "o2.pl", "vod.pl",
         //False positives
-        "techradar.com",
+        "techradar.com", "imdb.com",
         //Damage control
         "viasatsport.se", "viasport.fi", "tv3sport.dk", "viasport.no",
     ];
@@ -35,8 +43,10 @@
         "192.168.0", "192.168.1",
         //Google
         "google", "google.co", "google.com",
-        //Other
-        "amazon", "yahoo",
+        //Yahoo
+        "yahoo",
+        //Stores
+        "amazon", "ebay",
     ];
     //Apply generic solutions
     if (a.domCmp(genericWhitelist1, true) || a.domInc(genericWhitelist2, true)) {
