@@ -670,3 +670,7 @@ t3n.de#@##adsbox
 ||thepiratebay.org^$inline-script
 ! === lmss.vn
 @@||lmss.vn^$generichide
+! === yiv.com
+@@||yiv.com^$generichide
+yiv.com###LeftAdDiv
+yiv.com###RightAdDiv

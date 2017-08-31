@@ -412,6 +412,9 @@ t3n.de#@##adsbox
 ||cloudfront.net^$script,domain=wateranik.com
 ||thepiratebay.org^$inline-script
 @@||lmss.vn^$generichide
+@@||yiv.com^$generichide
+yiv.com###LeftAdDiv
+yiv.com###RightAdDiv
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================
