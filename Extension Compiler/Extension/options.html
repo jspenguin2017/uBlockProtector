@@ -109,7 +109,7 @@
         <h4>tv3sport.dk, viasatsport.se, viasport.fi, viasport.no</h4>
         <p>
             Add the following filters to uBlock Origin. No ads shown, video not blurred, but may break some player functionalities.
-            Help wanted for finding a real solution.
+            Help wanted for finding a better solution that does not use white list.
         </p>
         <pre>@@||fwmrm.net^$domain=tv3sport.dk|viasatsport.se|viasport.fi|viasport.no
 ||freewheel-mtgx-tv.akamaized.net^$media,domain=tv3sport.dk|viasatsport.se|viasport.fi|viasport.no
@@ -130,7 +130,7 @@
         </div>
 
         <h4>channel4.com</h4>
-        <p>Add the following filters to uBlock Origin. No ads shown. Help wanted for finding a better solution.</p>
+        <p>Add the following filters to uBlock Origin. No ads shown. Help wanted for finding a solution that does not use white list.</p>
         <pre>@@/crossdomain.xml$domain=channel4.com
 @@||ak.http.anno.channel4.com^$domain=channel4.com
 @@||cf.http.anno.channel4.com^$domain=channel4.com</pre>
@@ -208,7 +208,16 @@
         </div>
 
         <h4>player.pl</h4>
-        <p>Widevine protected videos are not patched and will not be patched.</p>
+        <p>
+            Some video players are protected by Widevine so they cannot be patched. Help wanted for finding a solution that does not involve patching
+            the player.
+        </p>
+        <div>
+            <details>
+                <summary>Extra information</summary>
+                <code>Geo Lock (Poland)</code>
+            </details>
+        </div>
 
         <h4>Check open issues in the issues tracker for other known issues</h4>
     </div>

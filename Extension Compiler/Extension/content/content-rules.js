@@ -422,8 +422,8 @@ if (a.domCmp(["player.pl"])) {
                     elem.html(a.nativePlayer(vidSources[1].url));
                     $("video").css("maxHeight", "540px");
                 } else if (vidSources[0].src) {
-                    //DRM protected
-                    console.error("uBlock Protector will not replace this video player because it is DRM prtected.");
+                    //Widevine protected
+                    console.error("This video player is protected by Widevine.");
                 }
             } catch (err) {
                 console.error("uBlock Protector failed to find media URL!");
