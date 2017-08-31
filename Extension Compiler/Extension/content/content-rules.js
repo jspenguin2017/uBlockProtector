@@ -3370,9 +3370,8 @@ if (a.domCmp(["aargauerzeitung.ch", "badenertagblatt.ch", "basellandschaftlichez
     a.filter("setTimeout", a.matchMethod.string, "[native code]");
 }
 if (a.domCmp(["lolalytics.com"])) {
-    const re = /{\s*opacity:'\s*\+\s*\w+\s*\+\s*' !important;\s*}/;
     a.onBeforeScriptExecute((script) => {
-        if (re.test(script.textContent)) {
+        if (script.textContent && script.textContent.includes("XMLHttpRequest")) {
             script.textContent = script.textContent.replace("xhr.send(null);", "return;");
         }
     });
