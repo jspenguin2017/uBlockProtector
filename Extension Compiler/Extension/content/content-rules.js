@@ -3156,7 +3156,7 @@ if (a.domCmp(["kbb.com"])) {
         });
     });
 }
-if (a.domCmp(["catchcoin.pw", "tsa-algerie.com", "ilpuntotecnicoeadsl.com"])) {
+if (a.domCmp(["catchcoin.pw", "tsa-algerie.com", "ilpuntotecnicoeadsl.com", "kmspico.esy.es"])) {
     a.noAccess("adBlockDetected");
 }
 if (a.domCmp(["booogle.net"])) {
