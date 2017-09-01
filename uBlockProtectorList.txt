@@ -268,7 +268,7 @@ dailyuploads.net##script:inject(abort-on-property-read.js, adbClick)
 ||madisonross.com/adblock.html$subdocument
 sznpaste.net##script:inject(abort-on-property-write.js, _pop)
 raptu.com##script:inject(noeval.js)
-@@ajax.googleapis.com/ajax/libs/jquery^$script,domain=linkdrop.net
+@@ajax.googleapis.com/ajax/libs/jquery/$script,domain=linkdrop.net
 leechgear.net###block_on
 @@||leech.ae^$elemhide
 leech.ae##script:inject(abort-on-property-read.js, open)
