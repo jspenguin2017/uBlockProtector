@@ -84,6 +84,8 @@ if (a.debugMode) {
         });
     }
     */
+    /*
+    //A solution that does not involve replacing the player is preferred
     if (a.domCmp(["viasatsport.se", "viasport.fi", "tv3sport.dk", "viasport.no"])) {
         let isInBackground = false;
         const reMagicValidator = /^[a-zA-Z0-9_]+$/;
@@ -173,6 +175,7 @@ if (a.debugMode) {
         a.on("focus", () => { isInBackground = false; });
         a.on("blur", () => { isInBackground = true; });
     }
+    */
     /*
     //Handled by a slightly different version in release mode
     if (a.domCmp(["adageindia.in", "bombaytimes.com", "businessinsider.in", "gizmodo.in", "iamgujarat.com", "idiva.com",

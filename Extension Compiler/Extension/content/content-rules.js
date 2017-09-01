@@ -1525,17 +1525,6 @@ if (a.domCmp(["gamingroom.tv"])) {
     a.readOnly("adblock_video_msg_stop", () => { });
     a.readOnly("disable_chat", () => { });
 }
-if (a.domCmp(["rtl.de"])) {
-    a.ready(() => {
-        $("div[data-widget='video']").each((elem) => {
-            try {
-                const url = elem.dataset.playerLayerCfg.videoinfo.mp4url;
-                elem.insertAdjacentHTML("afterend", a.nativePlayer(url));
-                elem.remove();
-            } catch (err) { }
-        });
-    });
-}
 if (a.domCmp(["play.radio1.se", "play.bandit.se", "play.lugnafavoriter.com", "play.rixfm.se"])) {
     a.on("load", () => {
         a.inject(() => {
