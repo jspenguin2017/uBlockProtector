@@ -2905,7 +2905,9 @@ if (a.domCmp(["mywrestling.com.pl"])) {
 if (a.domCmp(["socketloop.com"])) {
     a.readOnly("epmads_block", false);
     a.readOnly("DMAds", true);
-    a.filter("setTimeout", a.matchMethod.RegExp, /document\.getElementById\('\w+'\)\.innerHTML='\s*';/);
+    a.antiCollapse("innerHTML", (ignored, val) => {
+        return !val.trim();
+    });
 }
 if (a.domCmp(["digitalpoint.com"])) {
     a.ready(() => {
