@@ -634,14 +634,8 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "echi
     "wrzuta.pl"])) {
     a.filter("addEventListener", a.matchMethod.stringExact, "advertisement");
     a.loopback((ignored, url) => {
-        let realPath = url.split('/');
-        realPath = realPath[realPath.length - 1];
-        try {
-            realPath = window.atob(realPath);
-        } catch (err) {
-            return null;
-        }
-        if (realPath.startsWith("vad.xml")) {
+        const realPath = url.substring(url.lastIndexOf('/') + 1);
+        if (realPath.startsWith("dmFkLnhtb")) { //vad.xml
             return `
 <?xml version="1.0" encoding="UTF-8"?>
 <VAST xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="vast2.xsd" version="2.0">
