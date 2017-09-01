@@ -3401,10 +3401,10 @@ if (a.domCmp(["aargauerzeitung.ch", "badenertagblatt.ch", "basellandschaftlichez
 }
 if (a.domCmp(["lolalytics.com"])) {
     a.readOnly("setTimeout", "window.setTimeout.bind(window)");
-    a.onBeforeScriptExecute((script) => {
-        if (script.textContent && script.textContent.includes("XMLHttpRequest")) {
-            script.textContent = script.textContent.replace("XMLHttpRequest", "XMLHttpRequest; return; //");
-        }
+    a.ready(() => {
+        $(".adsbygoogle").each((elem) => {
+            elem.append(document.createElement("iframe"));
+        });
     });
 }
 if (a.domCmp(["streamcloud.eu"])) {
