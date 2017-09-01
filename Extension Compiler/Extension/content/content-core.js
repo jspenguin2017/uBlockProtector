@@ -791,6 +791,7 @@ a.cookie = (key, val, time = 31536000000, path = "/") => {
 };
 /**
  * Generate a native HTML5 player with controls but not autoplay.
+ * Replacing player is not preferred, do not use this unless absolutely necessary.
  * @function
  * @param {string} source - The source of the video.
  * @param {string} [type=(Auto Detect)] - The type of the video, will be automatically detected if not supplied,

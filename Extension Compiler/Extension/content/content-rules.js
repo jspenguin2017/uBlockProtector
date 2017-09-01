@@ -2483,6 +2483,7 @@ if (a.domCmp(["fastserver.me"])) {
 if (a.domCmp(["ouo.io"])) {
     localStorage.setItem("snapLastPopAt", (new Date()).getTime());
 }
+/*
 if (a.domCmp(["canalplus.fr"])) {
     let videoElem; //Current video player element, used to replace it when changing episode
     const reMagicValidator = /^\d+$/;
@@ -2549,6 +2550,16 @@ if (a.domCmp(["canalplus.fr"])) {
             }
         });
     })();`, true);
+}
+*/
+if (a.domCmp(["canalplus.fr"])) {
+    a.loopback((ignored, url) => {
+        if (url.includes(".v.fwmrm.net/ad/")) {
+            return `<vmap:VMAP version='1.0' xmlns:vmap='http://www.iab.net/vmap-1.0'></vmap:VMAP>`;
+        } else {
+            return null;
+        }
+    });
 }
 if (a.domCmp(["receive-sms-online.info"])) {
     a.filter("addEventListener", a.matchMethod.stringExact, `function (b){return"undefined"!=typeof n&&` +
