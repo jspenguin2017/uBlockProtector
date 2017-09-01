@@ -3451,7 +3451,7 @@ if (a.domCmp(["gpro.net"])) {
 if (a.domCmp(["shutterdowner.com"])) {
     a.bait("div", "#zagshutter");
 }
-if (a.domCmp(["ur.ly"])) {
+if (a.domCmp(["ur.ly", "urly.mobi"])) {
     const re = /\?ref=.*/;
     a.onInsert((node) => {
         if (node.id === "skip_button1") {
