@@ -450,11 +450,11 @@ if (a.domCmp(["forbes.com"])) {
         location.href = a.cookie("toUrl") || "https://www.forbes.com/";
     }
 }
-if (!a.debugMode &&
-    a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "echirurgia.pl", "fotoblogia.pl", "gadzetomania.pl",
-        "hotmoney.pl", "kafeteria.pl", "kafeteria.tv", "kardiolo.pl", "komediowo.pl", "komorkomania.pl", "money.pl", "o2.pl",
-        "parenting.pl", "pudelek.pl", "pudelek.tv", "pudelekx.pl", "sfora.pl", "snobka.pl", "wawalove.pl", "wp.pl", "wp.tv",
-        "wrzuta.pl"])) {
+/*
+if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "echirurgia.pl", "fotoblogia.pl", "gadzetomania.pl",
+    "hotmoney.pl", "kafeteria.pl", "kafeteria.tv", "kardiolo.pl", "komediowo.pl", "komorkomania.pl", "money.pl", "o2.pl",
+    "parenting.pl", "pudelek.pl", "pudelek.tv", "pudelekx.pl", "sfora.pl", "snobka.pl", "wawalove.pl", "wp.pl", "wp.tv",
+    "wrzuta.pl"])) {
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/70
     a.cookie("ABCABC", "true");
     a.filter("addEventListener", a.matchMethod.stringExact, "advertisement");
@@ -626,6 +626,31 @@ if (!a.debugMode &&
     if (a.domCmp(["portal.abczdrowie.pl", "parenting.pl"])) {
         a.css("figcaption { display:none; }");
     }
+}
+*/
+if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "echirurgia.pl", "fotoblogia.pl", "gadzetomania.pl",
+    "hotmoney.pl", "kafeteria.pl", "kafeteria.tv", "kardiolo.pl", "komediowo.pl", "komorkomania.pl", "money.pl", "o2.pl",
+    "parenting.pl", "pudelek.pl", "pudelek.tv", "pudelekx.pl", "sfora.pl", "snobka.pl", "wawalove.pl", "wp.pl", "wp.tv",
+    "wrzuta.pl"])) {
+    a.filter("addEventListener", a.matchMethod.stringExact, "advertisement");
+    a.loopback((ignored, url) => {
+        let realPath = url.split('/');
+        realPath = realPath[realPath.length - 1];
+        try {
+            realPath = window.atob(realPath);
+        } catch (err) {
+            return null;
+        }
+        if (realPath.startsWith("vad.xml")) {
+            return `
+<?xml version="1.0" encoding="UTF-8"?>
+<VAST xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="vast2.xsd" version="2.0">
+</VAST>
+`;
+        } else {
+            return null;
+        }
+    });
 }
 if (a.domCmp(["wtkplay.pl"])) {
     a.readOnly("can_run_ads", true);

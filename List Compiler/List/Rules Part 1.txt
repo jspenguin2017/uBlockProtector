@@ -151,8 +151,7 @@ megawarez.org,descargatelocorp.com,tipeo.net,compucalitv.com##div.onp-sl-social-
 ! ===== Specific solutions =====
 ! ==============================
 ! === wp.pl and related domains
-abczdrowie.pl,autokrata.pl,autokult.pl,biztok.pl,gadzetomania.pl,hotmoney.pl,kafeteria.pl,kafeteria.tv,komediowo.pl,komorkomania.pl,money.pl,pudelek.tv,sfora.pl,snobka.pl##.windowErrCont
-wawalove.pl,wp.pl,wp.tv,wrzuta.pl,pudelek.pl,fotoblogia.pl,parenting.pl,echirurgia.pl,pudelekx.pl,o2.pl,kardiolo.pl##.windowErrCont
+||adv.wp.pl/$media,redirect=noopmp3-0.1s,important
 ||static-pilot.wp.pl/static/assets/js/ads.js$xmlhttprequest,redirect=noopjs
 ! === NSFW! zone-anime.net
 filez.tv###adblockinfo
