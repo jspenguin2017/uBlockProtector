@@ -3573,11 +3573,9 @@ if (a.domCmp(["viasatsport.se", "viasport.fi", "tv3sport.dk", "viasport.no"])) {
     a.inject(() => {
         "use strict";
         const observer = new window.MutationObserver(() => {
-            const videos = window.document.querySelectorAll("video");
+            const videos = window.document.querySelectorAll("video.blurred");
             for (let i = 0; i < videos.length; i++) {
-                if (videos[i].classList && videos[i].classList.contains("blurred")) {
-                    videos[i].classList.remove("blurred");
-                }
+                videos[i].classList.remove("blurred");
             }
             const buttons = window.document.querySelectorAll(".vjs-overlay-message-close-button");
             for (let i = 0; i < buttons.length; i++) {
@@ -3585,7 +3583,9 @@ if (a.domCmp(["viasatsport.se", "viasport.fi", "tv3sport.dk", "viasport.no"])) {
             }
             if (window.videoPlayers instanceof window.Object) {
                 for (let key in window.videoPlayers) {
-                    window.videoPlayers[key]._player.trigger("hideOverlayBlur");
+                    try {
+                        window.videoPlayers[key]._player.trigger("hideOverlayBlur");
+                    } catch (err) { }
                 }
             }
         });
