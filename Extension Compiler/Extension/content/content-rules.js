@@ -634,8 +634,8 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "echi
     "wrzuta.pl"])) {
     a.filter("addEventListener", a.matchMethod.stringExact, "advertisement");
     a.loopback((ignored, url) => {
-        const realPath = url.substring(url.lastIndexOf('/') + 1);
-        if (realPath.startsWith("dmFkLnhtb")) { //vad.xml
+        const path = url.substring(url.lastIndexOf('/') + 1);
+        if (path.startsWith("dmFkLnhtb")) { //vad.xml
             return `
 <?xml version="1.0" encoding="UTF-8"?>
 <VAST xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="vast2.xsd" version="2.0">
@@ -3398,9 +3398,10 @@ if (a.domCmp(["aargauerzeitung.ch", "badenertagblatt.ch", "basellandschaftlichez
     a.filter("setTimeout", a.matchMethod.string, "[native code]");
 }
 if (a.domCmp(["lolalytics.com"])) {
+    a.readOnly("setTimeout", "window.setTimeout.bind(window)");
     a.onBeforeScriptExecute((script) => {
         if (script.textContent && script.textContent.includes("XMLHttpRequest")) {
-            script.textContent = script.textContent.replace("xhr.send(null);", "return;");
+            script.textContent = script.textContent.replace("XMLHttpRequest", "XMLHttpRequest; return; //");
         }
     });
 }
