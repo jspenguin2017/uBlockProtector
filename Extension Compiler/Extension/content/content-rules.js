@@ -3402,9 +3402,7 @@ if (a.domCmp(["aargauerzeitung.ch", "badenertagblatt.ch", "basellandschaftlichez
 if (a.domCmp(["lolalytics.com"])) {
     a.readOnly("setTimeout", "window.setTimeout.bind(window)");
     a.ready(() => {
-        $(".adsbygoogle").each((elem) => {
-            elem.append(document.createElement("iframe"));
-        });
+        $("div").includes("using AdBlock which").remove();
     });
 }
 if (a.domCmp(["streamcloud.eu"])) {
