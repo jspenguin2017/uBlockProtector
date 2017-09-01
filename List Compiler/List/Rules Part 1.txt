@@ -673,3 +673,5 @@ yiv.com###RightAdDiv
 agar.io###advertisement
 ! === dolldivine.com
 ||dolldivine.com/images/fairy-preview.jpg
+! === kmspico.esy.es
+kmspico.esy.es##script:inject(abort-on-property-read.js, adBlockDetected)

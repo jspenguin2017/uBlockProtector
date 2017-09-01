@@ -414,6 +414,7 @@ yiv.com###LeftAdDiv
 yiv.com###RightAdDiv
 agar.io###advertisement
 ||dolldivine.com/images/fairy-preview.jpg
+kmspico.esy.es##script:inject(abort-on-property-read.js, adBlockDetected)
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================
