@@ -186,7 +186,7 @@ if (a.domCmp(["debridnet.com", "adshort.co", "linksh.top", "adshorte.com", "coin
 if (a.domCmp(["linx.cloud"])) {
     a.noAccess("popns");
 }
-if (a.domCmp(["psarips.com", "sawlive.tv", "streamcloud.eu", "jzrputtbut.net"])) {
+if (a.domCmp(["psarips.com", "sawlive.tv", "streamcloud.eu", "jzrputtbut.net", "arenabg.ch"])) {
     a.noAccess("open");
 }
 //---a.bait---
@@ -3567,5 +3567,31 @@ if (a.domCmp(["graphiq-stories.graphiq.com"])) {
         } else {
             return null;
         }
+    });
+}
+if (a.domCmp(["viasatsport.se", "viasport.fi", "tv3sport.dk", "viasport.no"])) {
+    a.inject(() => {
+        "use strict";
+        const observer = new window.MutationObserver(() => {
+            const videos = window.document.querySelectorAll("video");
+            for (let i = 0; i < videos.length; i++) {
+                if (videos[i].classList && videos[i].classList.contains("blurred")) {
+                    videos[i].classList.remove("blurred");
+                }
+            }
+            const buttons = window.document.querySelectorAll(".vjs-overlay-message-close-button");
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].click();
+            }
+            if (window.videoPlayers instanceof window.Object) {
+                for (let key in window.videoPlayers) {
+                    window.videoPlayers[key]._player.trigger("hideOverlayBlur");
+                }
+            }
+        });
+        observer.observe(window.document, {
+            childList: true,
+            subtree: true,
+        });
     });
 }
