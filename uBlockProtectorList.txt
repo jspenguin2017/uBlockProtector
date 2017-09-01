@@ -211,7 +211,7 @@ u2s.io,l2s.io,linkhits.us#@#.myTestAd
 @@||solvemedia.com^$domain=u2s.io
 ||5g9quwq.com^$third-party
 telegraph.co.uk##.adblocker-message
-pwn.pl##script:inject(abort-on-property-read.js, adblock)
+pwn.pl,vendiscuss.net##script:inject(abort-on-property-read.js, adblock)
 afreesms.com##script:inject(noeval.js)
 ||tiptonvillepylesville.com^$domain=clubic.com
 animeid.io,jkanime.co,gogoanime.ch,chiaanime.co,animeflv.co##script:inject(setTimeout-defuser.js, #player)
@@ -279,7 +279,6 @@ kitguru.net##.gofollow
 vidnow.to###adplayer
 ||gigaleecher.com/templates/plugmod/giga.js$script
 |https://$third-party,script,domain=photobucket.com,badfilter
-vendiscuss.net##script:inject(abort-on-property-read.js, adblock)
 diariodenavarra.es###abMsgWrap
 darmowe-pornosy.pl,polskie-aktorki-porno.pl#@#.myTestAd
 |https://$third-party,script,domain=hothardware.com,badfilter
@@ -415,6 +414,7 @@ yiv.com###RightAdDiv
 agar.io###advertisement
 ||dolldivine.com/images/fairy-preview.jpg
 kmspico.esy.es##script:inject(abort-on-property-read.js, adBlockDetected)
+gulmeklazim.com##script:inject(setTimeout-defuser.js, adblock)
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================
