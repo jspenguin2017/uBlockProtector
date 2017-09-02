@@ -179,6 +179,9 @@ if (a.domCmp(["games.nydailynews.com", "games.express.co.uk", "puzzles.independe
     a.readOnly("Adv_ab", false);
 }
 //---a.noAccess---
+if (a.domCmp(["catchcoin.pw", "tsa-algerie.com", "ilpuntotecnicoeadsl.com", "kmspico.esy.es", "irc-source.com"])) {
+    a.noAccess("adBlockDetected");
+}
 if (a.domCmp(["debridnet.com", "adshort.co", "linksh.top", "adshorte.com", "coinb.ink", "animeforce.org",
     "imgrock.info"])) {
     a.noAccess("_pop");
@@ -3155,9 +3158,6 @@ if (a.domCmp(["kbb.com"])) {
             },
         });
     });
-}
-if (a.domCmp(["catchcoin.pw", "tsa-algerie.com", "ilpuntotecnicoeadsl.com", "kmspico.esy.es"])) {
-    a.noAccess("adBlockDetected");
 }
 if (a.domCmp(["booogle.net"])) {
     a.readOnly("gadb", false);
