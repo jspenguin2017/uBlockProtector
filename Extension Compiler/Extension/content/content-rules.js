@@ -3597,9 +3597,14 @@ if (a.domCmp(["wifihack.me"])) {
 }
 if (a.domCmp(["lolalytics.com"])) {
     a.filter("setTimeout");
-    a.readOnly("setTimeout", "window.setTimeout.bind(window)");
     a.readOnly("cookie", `""`, "window.document");
+    a.ready(() => {
+        $(".adsbygoogle").each((elem) => {
+            elem.append(document.createElement("div"));
+        });
+    });
     a.css("div[class] { opacity:1; }");
+    /*
     a.ready(() => {
         const re = /(?:4|a)d ?(?:8|b)(?:1|l|i)(?:0|o)ck[\s\S]+(?:4|a)d ?(?:8|b)(?:1|l|i)(?:0|o)cker/i;
         $("div").each((elem) => {
@@ -3619,4 +3624,5 @@ if (a.domCmp(["lolalytics.com"])) {
             e.disconnect();
         }
     });
+    */
 }
