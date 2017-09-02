@@ -3399,24 +3399,6 @@ if (a.domCmp(["aargauerzeitung.ch", "badenertagblatt.ch", "basellandschaftlichez
     "limmattalerzeitung.ch", "solothurnerzeitung.ch", "grenchnertagblatt.ch", "oltnertagblatt.ch"])) {
     a.filter("setTimeout", a.matchMethod.string, "[native code]");
 }
-if (a.domCmp(["lolalytics.com"])) {
-    a.readOnly("setTimeout", "window.setTimeout.bind(window)");
-    a.readOnly("cookie", `""`, "window.document");
-    a.css("div[class] { opacity:1; }");
-    a.ready(() => {
-        const re = /AdBlock[\s\S]+adblocker/;
-        $("div").each((elem) => {
-            if (re.test(elem.innerText)) {
-                elem.remove();
-            }
-        });
-    });
-    a.onBeforeScriptExecute((script) => {
-        if (script.textContent && script.textContent.includes("XMLHttpRequest")) {
-            script.remove();
-        }
-    });
-}
 if (a.domCmp(["streamcloud.eu"])) {
     a.css(".info_notice { display:none; } #login > div[style^='width'] { display:block; }");
 }
@@ -3605,5 +3587,23 @@ if (a.domCmp(["viasatsport.se", "viasport.fi", "tv3sport.dk", "viasport.no"])) {
             childList: true,
             subtree: true,
         });
+    });
+}
+if (a.domCmp(["lolalytics.com"], true)) {
+    a.readOnly("setTimeout", "window.setTimeout.bind(window)");
+    a.readOnly("cookie", `""`, "window.document");
+    a.css("div[class] { opacity:1; }");
+    a.ready(() => {
+        const re = /AdBlock[\s\S]+adblocker/;
+        $("div").each((elem) => {
+            if (re.test(elem.innerText)) {
+                elem.remove();
+            }
+        });
+    });
+    a.onBeforeScriptExecute((script) => {
+        if (script.textContent && script.textContent.includes("XMLHttpRequest")) {
+            script.remove();
+        }
     });
 }
