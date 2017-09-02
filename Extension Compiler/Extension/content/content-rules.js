@@ -3594,6 +3594,8 @@ if (a.domCmp(["wifihack.me"])) {
     a.noAccess("AdBlocked");
 }
 if (a.domCmp(["lolalytics.com"])) {
+    //https://github.com/AdguardTeam/AdguardFilters/issues/6280
+    //https://github.com/uBlockOrigin/uAssets/issues/668
     a.filter("setTimeout");
     a.readOnly("cookie", `""`, "window.document");
     a.ready(() => {

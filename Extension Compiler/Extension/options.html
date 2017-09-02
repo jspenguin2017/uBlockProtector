@@ -63,8 +63,8 @@
     <div>
         <h4>Will there be a configurable white list?</h4>
         <p>
-            Not until I have a reliable way to synchronously send configuration data to content scripts. This is a limitation of
-            Chromium / Chrome.
+            Not until I have a reliable way to synchronously send configuration data to content scripts. This is a limitation
+            of Chromium / Chrome.
         </p>
 
         <h4>uBlock Protector is causing (further) breakage.</h4>
@@ -140,6 +140,22 @@
 
     <h3>Known Issues</h3>
     <div>
+        <h4>player.pl</h4>
+        <p>
+            It looks like the current solution broke after their website was updated by the end of August 2017. Join the discussion
+            <a href="https://github.com/jspenguin2017/uBlockProtector/issues/561" target="_blank">here</a>.
+        </p>
+        <div>
+            <details>
+                <summary>Extra information</summary>
+                <code>Geo Lock (Poland)</code>
+                <h4>Test Links</h4>
+                <link-template>http://player.pl/programy-online/kuba-wojewodzki-talk-show-odcinki,2497/odcinek-306,kuba-wojewodzki-odcinek-specjalny,S00E306,70253.html?atpl</link-template>
+                <h4>Issues</h4>
+                <link-template>https://github.com/jspenguin2017/uBlockProtector/issues/561</link-template>
+            </details>
+        </div>
+
         <h4>hulu.com, viz.com</h4>
         <p>Only accessible in the United States of America and detect proxy. I do not have a way to debug and fix these websites. Help wanted.</p>
         <div>
@@ -165,19 +181,6 @@
                 <link-template>https://www.viafree.no/programmer/underholdning/paradise-hotel/sesong-9/episode-14</link-template>
                 <h4>Issues</h4>
                 <link-template>https://github.com/jspenguin2017/uBlockProtector/issues/110</link-template>
-            </details>
-        </div>
-
-        <h4>player.pl</h4>
-        <p>The solution does not always work. Help wanted for finding a solution that is more stable and does not involve replacing the player.</p>
-        <div>
-            <details>
-                <summary>Extra information</summary>
-                <code>Geo Lock (Poland)</code>
-                <h4>Test Links</h4>
-                <link-template>http://player.pl/programy-online/kuba-wojewodzki-talk-show-odcinki,2497/odcinek-306,kuba-wojewodzki-odcinek-specjalny,S00E306,70253.html?atpl</link-template>
-                <h4>Issues</h4>
-                <link-template>https://github.com/jspenguin2017/uBlockProtector/issues/60</link-template>
             </details>
         </div>
 
