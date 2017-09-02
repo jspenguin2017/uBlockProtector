@@ -151,6 +151,8 @@ megawarez.org,descargatelocorp.com,tipeo.net,compucalitv.com##div.onp-sl-social-
 ! ==============================
 ! ===== Specific solutions =====
 ! ==============================
+! === live.com
+live.com##div:if(:scope > div > span:has-text(an ad blocker))
 ! === wp.pl and related domains
 ||adv.wp.pl/$media,redirect=noopmp3-0.1s,important
 ||static-pilot.wp.pl/static/assets/js/ads.js$xmlhttprequest,redirect=noopjs

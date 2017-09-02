@@ -15,8 +15,6 @@
         "google.it.ao", "google.ne.jp", "google.off.ai", "youtu.be", "youtube.com",
         //Baidu
         "baidu.com",
-        //Microsoft
-        "microsoft.com", "msn.com", "live.com", "bing.com",
         //Wikipedia
         "wikipedia.org",
         //PayPal
