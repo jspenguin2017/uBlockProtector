@@ -667,6 +667,10 @@ t3n.de#@##adsbox
 @@||yiv.com^$generichide
 yiv.com###LeftAdDiv
 yiv.com###RightAdDiv
+! === 4j.com
+@@||4j.com^$generichide
+4j.com###game_bottom_ad
+4j.com###game_top_ad
 ! === agar.io
 agar.io###advertisement
 ! === dolldivine.com
