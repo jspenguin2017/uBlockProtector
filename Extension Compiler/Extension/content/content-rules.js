@@ -32,11 +32,10 @@
         //Image beds (for performance)
         "imgur.com", "imgbox.com", "flickr.com",
         //Handled by specific rules
-        "anandabazar.com", "o2.pl", "vod.pl",
+        "anandabazar.com", "o2.pl", "vod.pl", "viasatsport.se", "viasport.fi", "tv3sport.dk",
+        "viasport.no",
         //False positives
         "techradar.com", "imdb.com",
-        //Damage control
-        "viasatsport.se", "viasport.fi", "tv3sport.dk", "viasport.no",
     ];
     const genericWhitelist2 = [
         //Local network
