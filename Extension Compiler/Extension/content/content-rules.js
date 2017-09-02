@@ -3589,6 +3589,9 @@ if (a.domCmp(["viasatsport.se", "viasport.fi", "tv3sport.dk", "viasport.no"])) {
         });
     });
 }
+if (a.domCmp(["gntai.xyz"])) {
+    a.readOnly("showAds", true);
+}
 if (a.domCmp(["lolalytics.com"])) {
     a.filter("setTimeout");
     a.readOnly("setTimeout", "window.setTimeout.bind(window)");
