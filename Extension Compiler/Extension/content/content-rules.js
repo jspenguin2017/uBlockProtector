@@ -3589,21 +3589,27 @@ if (a.domCmp(["viasatsport.se", "viasport.fi", "tv3sport.dk", "viasport.no"])) {
         });
     });
 }
-if (a.domCmp(["lolalytics.com"], true)) {
+if (a.domCmp(["lolalytics.com"])) {
     a.readOnly("setTimeout", "window.setTimeout.bind(window)");
     a.readOnly("cookie", `""`, "window.document");
     a.css("div[class] { opacity:1; }");
     a.ready(() => {
-        const re = /AdBlock[\s\S]+adblocker/;
+        const re = /AdBlock[\s\S]+adblocker/i;
         $("div").each((elem) => {
             if (re.test(elem.innerText)) {
                 elem.remove();
             }
         });
+        $("style").each((style) => {
+            if (style.sheet.rules.length === 1 && style.sheet.rules[0].cssText.includes("opacity")) {
+                style.remove();
+            }
+        });
     });
-    a.onBeforeScriptExecute((script) => {
+    a.onBeforeScriptExecute((script, ignored, e) => {
         if (script.textContent && script.textContent.includes("XMLHttpRequest")) {
             script.remove();
+            e.disconnect();
         }
     });
 }

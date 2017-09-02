@@ -360,12 +360,13 @@ a.uid = (() => {
  * @param {Function} handler - The mutation handler.
  ** @param {HTMLElement} insertedNode - The inserted node.
  ** @param {HTMLElement} target - The parent of the inserted node.
+ ** @param {MutationObserver} e - The observer object, call disconnect on it to stop observing.
  */
 a.onInsert = (handler) => {
     const observer = new MutationObserver((mutations) => {
         for (let i = 0; i < mutations.length; i++) {
             for (let j = 0; j < mutations[i].addedNodes.length; j++) {
-                handler(mutations[i].addedNodes[j], mutations[i].target);
+                handler(mutations[i].addedNodes[j], mutations[i].target, observer);
             }
         }
     });
@@ -380,12 +381,13 @@ a.onInsert = (handler) => {
  * @param {Function} handler - The mutation handler.
  ** @param {HTMLElement} removedNode - The removed node.
  ** @param {HTMLElement} target - The parent of the removed node.
+ ** @param {MutationObserver} e - The observer object, call disconnect on it to stop observing.
  */
 a.onRemove = (handler) => {
     const observer = new MutationObserver((mutations) => {
         for (let i = 0; i < mutations.length; i++) {
             for (let j = 0; j < mutations[i].removedNodes.length; j++) {
-                handler(mutations[i].removedNodes[j], mutations[i].target);
+                handler(mutations[i].removedNodes[j], mutations[i].target, observer);
             }
         }
     });
@@ -401,11 +403,12 @@ a.onRemove = (handler) => {
  * @param {Function} handler - The event handler.
  ** @param {HTMLScriptElement} script - The script that is about to be executed, it may not have its final textContent.
  ** @param {HTMLElement} parent - The parent node of this script.
+ ** @param {MutationObserver} e - The observer object, call disconnect on it to stop observing.
  */
 a.onBeforeScriptExecute = (handler) => {
-    a.onInsert((node, target) => {
+    a.onInsert((node, target, observer) => {
         if (node.tagName === "SCRIPT") {
-            handler(node, target);
+            handler(node, target, observer);
         }
     });
 };
