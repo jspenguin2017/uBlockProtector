@@ -1560,6 +1560,7 @@ a.trace = (name, parent = "window") => {
         const trace = window.console.trace.bind(window.console);
         let val;
         try {
+            val = ${parent}["${name}"];
             window.Object.defineProperty(${parent}, "${name}", {
                 configurable: false,
                 set(v) {
