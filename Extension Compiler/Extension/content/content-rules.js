@@ -3594,7 +3594,7 @@ if (a.domCmp(["lolalytics.com"])) {
     a.readOnly("cookie", `""`, "window.document");
     a.css("div[class] { opacity:1; }");
     a.ready(() => {
-        const re = /AdBlock[\s\S]+adblocker/i;
+        const re = /(?:4|a)d ?(?:8|b)(?:1|l|i)(?:0|o)ck[\s\S]+(?:4|a)d ?(?:8|b)(?:1|l|i)(?:0|o)cker/i;
         $("div").each((elem) => {
             if (re.test(elem.innerText)) {
                 elem.remove();
