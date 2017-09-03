@@ -680,3 +680,5 @@ agar.io###advertisement
 ||dolldivine.com/images/fairy-preview.jpg
 ! === gulmeklazim.com
 gulmeklazim.com##script:inject(setTimeout-defuser.js, adblock)
+! === peugeot-metropolis.de
+peugeot-metropolis.de##script:inject(abort-current-inline-script.js, $, #gandalfads)
