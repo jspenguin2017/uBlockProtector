@@ -481,7 +481,7 @@ a.filter = (name, method, filter, parent = "window") => {
     const strParent = a.strEscape(parent);
     a.inject(`(() => {
         "use strict";
-        let matcher = ${a.getMatcher(method, filter)};
+        const matcher = ${a.getMatcher(method, filter)};
         //Cache console functions as some web pages do change them
         const log = window.console.log.bind(window.console);
         const warn = window.console.warn.bind(window.console);
@@ -581,7 +581,7 @@ a.antiCollapse = (name, filter) => {
 a.timewarp = (timer, method, filter, ratio = 0.02) => {
     a.inject(`(() => {
         "use strict";
-        let matcher = ${a.getMatcher(method, filter)};
+        const matcher = ${a.getMatcher(method, filter)};
         //Cache console functions as some web pages do change them
         const log = window.console.log.bind(window.console);
         const warn = window.console.warn.bind(window.console);
