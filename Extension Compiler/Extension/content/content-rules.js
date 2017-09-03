@@ -373,8 +373,6 @@ if (a.domCmp(["florydinvaslui.ro"])) {
         const re = /^https?:\/\/thinkdigitalro\.adocean\.pl\/ad\.xml/;
         if (re.test(url)) {
             return `<VAST version="2.0"></VAST>`;
-        } else {
-            return null;
         }
     });
 }
@@ -389,8 +387,6 @@ if (a.domCmp(["itvn.pl", "itvnextra.pl", "kuchniaplus.pl", "miniminiplus.pl", "t
         const re = /^https?:\/\/tvn\.adocean\.pl\/ad\.xml/;
         if (re.test(url)) {
             return `<VAST version="2.0"></VAST>`;
-        } else {
-            return null;
         }
     });
 }
@@ -647,13 +643,9 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "echi
     a.loopback((ignored, url) => {
         const path = url.substring(url.lastIndexOf('/') + 1);
         if (path.startsWith("dmFkLnhtb")) { //vad.xml
-            return `
-<?xml version="1.0" encoding="UTF-8"?>
+            return `<?xml version="1.0" encoding="UTF-8"?>
 <VAST xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="vast2.xsd" version="2.0">
-</VAST>
-`;
-        } else {
-            return null;
+</VAST>`;
         }
     });
 }
@@ -2557,8 +2549,6 @@ if (a.domCmp(["canalplus.fr"])) {
     a.loopback((ignored, url) => {
         if (url.includes(".v.fwmrm.net/ad/")) {
             return `<vmap:VMAP version='1.0' xmlns:vmap='http://www.iab.net/vmap-1.0'></vmap:VMAP>`;
-        } else {
-            return null;
         }
     });
 }
@@ -2636,8 +2626,6 @@ if (a.domCmp(["rtl.be"])) {
     a.loopback((ignored, url) => {
         if (url.endsWith("rtl.be/videos/player/aab_config.json")) {
             return `{ "enabled": false }`;
-        } else {
-            return null;
         }
     });
 }
@@ -2921,26 +2909,18 @@ if (a.domCmp(["digitalpoint.com"])) {
 if (a.domCmp(["itv.com"])) {
     a.loopback((ignored, url) => {
         if (url.startsWith("https://tom.itv.com/itv/tserver/size=")) {
-            return `
-<?xml version="1.0" encoding="utf-8"?>
+            return `<?xml version="1.0" encoding="utf-8"?>
 <VAST version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="vast.xsd">
-</VAST>
-`;
-        } else {
-            return null;
+</VAST>`;
         }
     });
 }
 if (a.domCmp(["di.fm", "jazzradio.com"])) {
     a.loopback((ignored, url) => {
         if (url.startsWith("https://pubads.g.doubleclick.net/")) {
-            return `
-<?xml version="1.0" encoding="UTF-8"?>
+            return `<?xml version="1.0" encoding="UTF-8"?>
 <VAST xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="vast.xsd" version="3.0">
-</VAST>
-`;
-        } else {
-            return null;
+</VAST>`;
         }
     });
 }
@@ -3556,8 +3536,6 @@ if (a.domCmp(["graphiq-stories.graphiq.com"])) {
     a.loopback((ignored, url) => {
         if (url.startsWith("/ad?")) {
             return "window.FTBAds.blocking = false;";
-        } else {
-            return null;
         }
     });
 }

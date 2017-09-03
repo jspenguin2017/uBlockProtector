@@ -833,7 +833,7 @@ a.nativePlayer = (source, type, width = "100%", height = "auto") => {
  * @function
  * @param {Function} server - The loopback server.
  ** @param {Any} ...args - The arguments supplied to open.
- ** @return {string|null} Return a string to override the result of this request, return null to not interfere.
+ ** @return {string|Any} Return a string to override the result of this request, return anything else to not interfere.
  */
 a.loopback = (server) => {
     a.inject(`(() => {
@@ -845,7 +845,7 @@ a.loopback = (server) => {
             const _open = wrapped.open;
             wrapped.open = function (...args) {
                 const data = server(...args);
-                if (data !== null) {
+                if (typeof data === "string") {
                     window.Object.defineProperties(this, {
                         "responseText": {
                             configurable: false,
