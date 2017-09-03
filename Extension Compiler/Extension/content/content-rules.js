@@ -1849,16 +1849,6 @@ if (a.domCmp(["sport-show.fr", "vipflash.net", "2site.me", "crackhex.ch"])) {
         "display:none; } #blockblockA td p { visibility:invisible; display:none; } #blockblockB " +
         "{ visibility:visible; display:block; }");
 }
-if (a.domCmp(["gametransfers.com", "winandmac.com", "free-steam-giveaways.com", "canalwp.com",
-    "alphahistory.com", "nordpresse.be", "sospc.name", "baboo.com.br", "nflix.pl"])) {
-    a.always(() => {
-        a.cookie("anCookie", "true");
-        a.inject(() => {
-            "use strict";
-            window.anOptions = {};
-        });
-    });
-}
 if (a.domCmp(["lewebtvbouquetfrancophone.overblog.com", "webtv.bloguez.com", "latelegratuite.blogspot.com",
     "totaldebrid.org", "37.187.173.205", "tvgratuite.blogspot.com"])) {
     a.bait("div", "#my_ad_div");

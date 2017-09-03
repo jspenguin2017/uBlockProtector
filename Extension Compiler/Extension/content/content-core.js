@@ -1076,6 +1076,41 @@ a.generic = () => {
         } catch (err) {
             error("uBlock Protector failed to set up Playwire uBlock Origin detector defuser!");
         }
+        //AdBlock Notify
+        try {
+            let val;
+            let isEvil = false;
+            const anErr = new window.Error("AdBlock Notify uBlock Origin detector is not allowed on this device!");
+            window.Object.defineProperty(window, "anOptions", {
+                configurable: false,
+                set(arg) {
+                    try {
+                        if (arg instanceof window.Object &&
+                            arg.anAlternativeText !== undefined &&
+                            arg.anOptionAdsSelectors !== undefined &&
+                            arg.anOptionChoice !== undefined &&
+                            arg.anOptionModalShowAfter !== undefined &&
+                            arg.anOptionModalclose !== undefined &&
+                            arg.anSiteID !== undefined &&
+                            arg.modalHTML !== undefined) {
+                            err("AdBlock Notify");
+                            isEvil = true;
+                            return;
+                        }
+                    } catch (err) { }
+                    val = arg;
+                },
+                get() {
+                    if (isEvil) {
+                        throw anErr;
+                    } else {
+                        return val;
+                    }
+                },
+            });
+        } catch (err) {
+            error("uBlock Protector failed to set up AdBlock Notify uBlock Origin detector defuser!");
+        }
         //---document-idle---
         window.addEventListener("DOMContentLoaded", () => {
             //AdBlock Detector (XenForo Rellect)
