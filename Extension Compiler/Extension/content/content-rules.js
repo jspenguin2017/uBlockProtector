@@ -81,6 +81,12 @@
     }
 }
 
+//=====Candidate For Generic Rules=====
+if (a.domCmp(["mywrestling.com.pl", "zxctunnel.com", "tsa-algerie.com", "ilpuntotecnicoeadsl.com",
+    "kmspico.esy.es", "orgasmnaut.com", "mytunnel.info"])) {
+    a.generic.FuckAdBlock("KillAdBlock", "killAdBlock");
+}
+
 //=====Common Specific Rules=====
 //---a.filter---
 if (a.domCmp(["usapoliticstoday.com", "vidlox.tv", "exrapidleech.info", "urle.co", "gsmarena.com",
@@ -176,10 +182,6 @@ if (a.domCmp(["games.nydailynews.com", "games.express.co.uk", "puzzles.independe
     a.readOnly("Adv_ab", false);
 }
 //---a.noAccess---
-if (a.domCmp(["catchcoin.pw", "tsa-algerie.com", "ilpuntotecnicoeadsl.com", "kmspico.esy.es", "irc-source.com",
-    "orgasmnaut.com"])) {
-    a.noAccess("adBlockDetected");
-}
 if (a.domCmp(["debridnet.com", "adshort.co", "linksh.top", "adshorte.com", "coinb.ink", "animeforce.org",
     "imgrock.info"])) {
     a.noAccess("_pop");
@@ -229,6 +231,9 @@ if (a.domCmp(["bitcoiner.net", "litecoiner.net"])) {
 }
 
 //=====Other Specific Rules=====
+if (a.domCmp(["catchcoin.pw", "irc-source.com"])) {
+    a.noAccess("adBlockDetected");
+}
 if (a.domCmp(["mid-day.com", "happytrips.com", "jagranjunction.com"])) {
     a.readOnly("canRun", true);
 }
@@ -1814,9 +1819,6 @@ if (a.domCmp(["newyorker.com"])) {
 if (a.domCmp(["mangasproject.com.br", "mangasproject.net.br", "mangas.zlx.com.br"])) {
     a.generic.FuckAdBlock(a.uid(), "mangasLeitorSlider");
 }
-if (a.domCmp(["qnimate.com"])) {
-    a.readOnly("adBlockDetected", () => { });
-}
 if (a.domCmp(["eurotransport.de"])) {
     a.generic.FuckAdBlock(a.uid(), "antiAdBlock");
 }
@@ -2776,10 +2778,6 @@ if (a.domCmp(["cyberterminators.co"])) {
         });
     });
 }
-if (a.domCmp(["youtube-videos.tv"])) {
-    a.css(".cactus-video-content div { display:block; } .mts-cl-horizontal.mts-cl-social-locker { display:none; }");
-    a.noAccess("KillAdBlock");
-}
 if (a.domCmp(["dailyuploads.net"])) {
     a.css("#downloadBtnClickOrignal { display:block; } #downloadBtnClick { display:none; } #chkIsAdd { display:none; }");
 }
@@ -2887,9 +2885,6 @@ if (a.domCmp(["ohmymag.com", "ohmymag.com.br", "ohmymag.de", "gentside.com", "ge
         };
         window.prebid.init = () => { };
     });
-}
-if (a.domCmp(["mywrestling.com.pl"])) {
-    a.generic.FuckAdBlock("KillAdBlock", "killAdBlock");
 }
 if (a.domCmp(["socketloop.com"])) {
     a.readOnly("epmads_block", false);
