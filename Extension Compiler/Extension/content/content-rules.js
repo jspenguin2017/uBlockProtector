@@ -3594,34 +3594,34 @@ if (a.domCmp(["wifihack.me"])) {
 }
 if (a.domCmp(["lolalytics.com"])) {
     //https://github.com/AdguardTeam/AdguardFilters/issues/6280
+    //https://github.com/AdguardTeam/AdguardFilters/issues/6576
     //https://github.com/uBlockOrigin/uAssets/issues/668
-    a.filter("setTimeout");
-    a.readOnly("cookie", `""`, "window.document");
-    a.ready(() => {
-        $(".adsbygoogle").each((elem) => {
-            elem.append(document.createElement("div"));
-        });
-    });
+    a.timewarp("setTimeout", a.matchMethod.matchAll, null, 1e9);
+    a.readOnly("cookie", undefined, "window.document");
     a.css("div[class] { opacity:1; }");
-    /*
-    a.ready(() => {
-        const re = /(?:4|a)d ?(?:8|b)(?:1|l|i)(?:0|o)ck[\s\S]+(?:4|a)d ?(?:8|b)(?:1|l|i)(?:0|o)cker/i;
-        $("div").each((elem) => {
-            if (re.test(elem.innerText)) {
-                elem.remove();
-            }
-        });
-        $("style").each((style) => {
-            if (style.sheet.rules.length === 1 && style.sheet.rules[0].cssText.includes("opacity")) {
-                style.remove();
-            }
-        });
-    });
     a.onBeforeScriptExecute((script, ignored, e) => {
         if (script.textContent && script.textContent.includes("XMLHttpRequest")) {
-            script.remove();
+            script.textContent = script.textContent.replace("send(null)", "return");
             e.disconnect();
         }
     });
-    */
+    a.ready(() => {
+        $(".adsbygoogle").each((elem) => {
+            elem.append(document.createElement("div"), document.createElement("iframe"));
+        });
+        let data = [];
+        $("style").each((elem) => {
+            for (let i = 0; i < elem.sheet.rules.length; i++) {
+                try {
+                    if (elem.sheet.rules[i].style.opacity.startsWith("0.") &&
+                        !data.includes(elem.sheet.rules[i].selectorText)) {
+                        data.push(elem.sheet.rules[i].selectorText);
+                    }
+                } catch (err) { }
+            }
+        });
+        for (let i = 0; i < data.length; i++) {
+            a.css(`${data[i]} { opacity:1; }`);
+        }
+    });
 }
