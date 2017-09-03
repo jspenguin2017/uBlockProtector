@@ -369,7 +369,7 @@ if (a.domCmp(["tvregionalna24.pl"])) {
     });
 }
 if (a.domCmp(["itvn.pl", "itvnextra.pl", "kuchniaplus.pl", "miniminiplus.pl", "ttv.pl", "tvn.pl", "tvn24.pl",
-    "tvn24bis.pl", "tvn7.pl", "tvnfabula.pl", "tvnstyle.pl", "tvnturbo.pl", "x-news.pl"])) {
+    "tvn24bis.pl", "tvn7.pl", "tvnfabula.pl", "tvnstyle.pl", "tvnturbo.pl", "x-news.pl", "player.pl"])) {
     a.readOnly("isAdBlockEnabled", () => {
         "use strict";
         window.adBlockEnabled = false;
@@ -383,6 +383,7 @@ if (a.domCmp(["itvn.pl", "itvnextra.pl", "kuchniaplus.pl", "miniminiplus.pl", "t
         }
     });
 }
+/*
 if (a.domCmp(["player.pl"])) {
     const matcher = /[.,]/;
     a.on("load", () => {
@@ -403,13 +404,10 @@ if (a.domCmp(["player.pl"])) {
             m: "getItem",
             id: id,
         };
-        const api = "https://api.tvnplayer.pl/api/?" + a.serialize(params);
-        const proxy = "http://www.proxy.xmc.pl/index.php?hl=3e5&q=";
         //Send request
-        const requestURL = (a.cookie("tvn_location2") === "1") ? api : proxy + encodeURIComponent(api);
         a.request({
             method: "GET",
-            url: requestURL,
+            url: "https://api.tvnplayer.pl/api/?" + a.serialize(params),
         }, (result) => {
             //Find media url
             let url;
@@ -432,6 +430,7 @@ if (a.domCmp(["player.pl"])) {
         });
     });
 }
+*/
 if (a.domCmp(["ewallstreeter.com"])) {
     a.readOnly("OAS_rdl", 1);
 }
