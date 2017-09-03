@@ -368,6 +368,16 @@ if (a.domCmp(["tvregionalna24.pl"])) {
         });
     });
 }
+if (a.domCmp(["florydinvaslui.ro"])) {
+    a.loopback((ignored, url) => {
+        const re = /^https?:\/\/thinkdigitalro\.adocean\.pl\/ad\.xml/;
+        if (re.test(url)) {
+            return `<VAST version="2.0"></VAST>`;
+        } else {
+            return null;
+        }
+    });
+}
 if (a.domCmp(["itvn.pl", "itvnextra.pl", "kuchniaplus.pl", "miniminiplus.pl", "ttv.pl", "tvn.pl", "tvn24.pl",
     "tvn24bis.pl", "tvn7.pl", "tvnfabula.pl", "tvnstyle.pl", "tvnturbo.pl", "x-news.pl", "player.pl"])) {
     a.readOnly("isAdBlockEnabled", () => {
