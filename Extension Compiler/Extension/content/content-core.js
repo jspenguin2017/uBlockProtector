@@ -1093,7 +1093,6 @@ a.generic = () => {
                             arg.anOptionModalclose !== undefined &&
                             arg.anSiteID !== undefined &&
                             arg.modalHTML !== undefined) {
-                            err("AdBlock Notify");
                             isEvil = true;
                             return;
                         }
