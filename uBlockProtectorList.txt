@@ -413,6 +413,7 @@ agar.io###advertisement
 ||dolldivine.com/images/fairy-preview.jpg
 gulmeklazim.com##script:inject(setTimeout-defuser.js, adblock)
 peugeot-metropolis.de##script:inject(abort-current-inline-script.js, $, #gandalfads)
+@@||freedomoutpost.com^$generichide
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================

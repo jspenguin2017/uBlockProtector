@@ -673,3 +673,5 @@ agar.io###advertisement
 gulmeklazim.com##script:inject(setTimeout-defuser.js, adblock)
 ! === peugeot-metropolis.de
 peugeot-metropolis.de##script:inject(abort-current-inline-script.js, $, #gandalfads)
+! === freedomoutpost.com
+@@||freedomoutpost.com^$generichide
