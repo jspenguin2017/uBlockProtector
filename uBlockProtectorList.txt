@@ -103,10 +103,10 @@ nontonanime.org##nav.navbar + div.banner > a[href^="https://goo.gl/"]
 ||pelcro.com^$third-party
 ||perceivequarter.com^$third-party
 ||hammerhearing.com^$third-party
-blockadblock.com,futbolchile.net,freeomovie.com,appdrop.net,skmedix.pl,yalujailbreak.net,cloudwebcopy.com,milaulas.com,tout-bon.com,sznpaste.net,linkdrop.net,themeslide.com##script:inject(bab-defuser.js)
-android-zone.ws,cmacapps.com,l2network.eu,animes-mangas-ddl.net,fuckingsession.com,klartext-ne.de,forumcoin.win,androidemulator.in##script:inject(bab-defuser.js)
 sectorsatoshi-amarillo.website,sectorsatoshi-azul.website,sectorsatoshi-blanco.website,sectorsatoshi-celeste.website,sectorsatoshi-gris.website,sectorsatoshi-naranja.website##script:inject(bab-defuser.js)
-sectorsatoshi-negro.website,sectorsatoshi-rosa.website,sectorsatoshi-verde.website,sectorsatoshi-violeta.website,forumcoin.win##script:inject(bab-defuser.js)
+sectorsatoshi-negro.website,sectorsatoshi-rosa.website,sectorsatoshi-verde.website,sectorsatoshi-violeta.website##script:inject(bab-defuser.js)
+blockadblock.com,futbolchile.net,freeomovie.com,appdrop.net,skmedix.pl,yalujailbreak.net,cloudwebcopy.com,milaulas.com,tout-bon.com,sznpaste.net,linkdrop.net,themeslide.com##script:inject(bab-defuser.js)
+android-zone.ws,cmacapps.com,l2network.eu,animes-mangas-ddl.net,fuckingsession.com,klartext-ne.de,forumcoin.win,androidemulator.in,forumcoin.win##script:inject(bab-defuser.js)
 themarker.com,nachrichten.at##script:inject(abort-on-property-read.js, adblockDetector)
 megawarez.org,descargatelocorp.com,tipeo.net,compucalitv.com##div.onp-sl-content:style(display: block !important;)
 megawarez.org,descargatelocorp.com,tipeo.net,compucalitv.com##div.onp-sl-social-locker
@@ -414,6 +414,7 @@ agar.io###advertisement
 gulmeklazim.com##script:inject(setTimeout-defuser.js, adblock)
 peugeot-metropolis.de##script:inject(abort-current-inline-script.js, $, #gandalfads)
 @@||freedomoutpost.com^$generichide
+@@||libertyunyielding.com^$generichide
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================
