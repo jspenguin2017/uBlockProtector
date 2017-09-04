@@ -677,3 +677,6 @@ peugeot-metropolis.de##script:inject(abort-current-inline-script.js, $, #gandalf
 @@||freedomoutpost.com^$generichide
 ! === libertyunyielding.com
 @@||libertyunyielding.com^$generichide
+! === streamplay.gdn
+||cloudfront.net^$script,domain=eagerse.com
+@@||streamplay.gdn^$generichide
