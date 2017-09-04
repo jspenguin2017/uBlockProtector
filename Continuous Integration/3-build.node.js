@@ -603,21 +603,13 @@ const getLocalVersion = () => {
 const build = (newVer) => {
     //Upload and publish
     let data, token;
-    disableDebugMode().then(() => {
-        return require("./ChromiumBugsWorkaroundEngine.node.js")();
-    }).then(() => {
-        return zip();
-    }).then((d) => {
+    disableDebugMode().then(() => require("./ChromiumBugsWorkaroundEngine.node.js")()).then(() => zip()).then((d) => {
         data = d;
         return OAuth2();
     }).then((t) => {
         token = t;
         return upload(token, data);
-    }).then(() => {
-        return publish(token);
-    }).then(() => {
-        return setLastBuildVersion(newVer);
-    }).then(exit).catch((err) => {
+    }).then(() => publish(token)).then(() => setLastBuildVersion(newVer)).then(exit).catch((err) => {
         process.emit("uncaughtException", err);
     });
 };
