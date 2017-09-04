@@ -680,3 +680,5 @@ peugeot-metropolis.de##script:inject(abort-current-inline-script.js, $, #gandalf
 ! === streamplay.gdn
 ||cloudfront.net^$script,domain=eagerse.com
 @@||streamplay.gdn^$generichide
+! === cbs.com
+@@||cbs.com^$generichide
