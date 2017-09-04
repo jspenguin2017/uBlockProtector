@@ -23,7 +23,9 @@
         "common.js",
         "content/content-domlib.js",
         "content/content-core.js",
-        "content/content-rules.js",
+        "content/content-rules-common.js",
+        "content/content-rules-specific.js",
+        "content/content-rules-sticky.js",
         "content/content-debug.js",
         "content/ubo-extra.js"
       ],
@@ -59,5 +61,5 @@
     "webRequest",
     "webRequestBlocking"
   ],
-  "version": "11.227"
+  "version": "11.228"
 }

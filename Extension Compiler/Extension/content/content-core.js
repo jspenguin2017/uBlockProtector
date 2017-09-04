@@ -531,6 +531,17 @@ a.filter = (name, method, filter, parent = "window") => {
  ** @return {boolean} True to block the assignment, false to allow.
  */
 a.antiCollapse = (name, filter) => {
+    let parent = "Element"; //innerHTML is on Element
+    switch (name) {
+        case "innerText":
+            parent = "HTMLElement";
+            break;
+        case "textContent":
+            parent = "Node";
+            break;
+        default:
+            break;
+    }
     a.inject(`(() => {
         "use strict";
         const handler = ${filter};
@@ -540,10 +551,10 @@ a.antiCollapse = (name, filter) => {
         const String = window.String.bind(window);
         try {
             //Get setter and getter
-            const descriptor = window.Object.getOwnPropertyDescriptor(window.Element.prototype, "${name}");
+            const descriptor = window.Object.getOwnPropertyDescriptor(window.${parent}.prototype, "${name}");
             const _set = descriptor.set;
             const _get = descriptor.get;
-            window.Object.defineProperty(window.Element.prototype, "${name}", {
+            window.Object.defineProperty(window.${parent}.prototype, "${name}", {
                 configurable: false,
                 set(val) {
                     if (${a.debugMode}) {
