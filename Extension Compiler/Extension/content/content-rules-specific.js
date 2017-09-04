@@ -823,6 +823,9 @@ if (a.domCmp(["jbzdy.pl"])) {
 if (a.domCmp(["comptoir-hardware.com"])) {
     a.readOnly("adblock", `"non"`);
 }
+if (a.domCmp(["infoua.biz"])) {
+    a.filter("setTimeout", a.matchMethod.stringExact, "function (){b()}");
+}
 if (a.domCmp(["narkive.com"])) {
     a.readOnly("adblock_status", () => false);
 }
