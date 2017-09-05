@@ -5,7 +5,8 @@ if (a.domCmp(["socketloop.com"])) {
     a.readOnly("epmads_block", false);
     a.readOnly("DMAds", true);
     a.antiCollapse("innerHTML", (ignored, val) => {
-        return !val.trim();
+        const realVal = val.trim();
+        return !realVal || realVal === "<br>";
     });
     a.antiCollapse("innerText", (ignored, val) => {
         return !val.trim();
