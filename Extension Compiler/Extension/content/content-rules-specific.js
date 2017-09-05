@@ -2544,13 +2544,16 @@ if (a.domCmp(["nulledvar.com"])) {
 if (a.domCmp(["searchftps.net"])) {
     $("html").append(`<iframe width="336" height="280" style="display:none;"></iframe>`);
 }
-if (a.domCmp(["cyberterminators.co"])) {
+if (a.domCmp(["cyberterminators.co", "wakfutemporada2subs.blogspot.com"])) {
     a.ready(() => {
         a.inject(() => {
             "use strict";
             window.document.oncontextmenu = null;
         });
     });
+}
+if (a.domCmp(["wakfutemporada2subs.blogspot.com"])) {
+    a.noAccess("disabletext");
 }
 if (a.domCmp(["dailyuploads.net"])) {
     a.css("#downloadBtnClickOrignal { display:block; } #downloadBtnClick { display:none; } #chkIsAdd { display:none; }");
