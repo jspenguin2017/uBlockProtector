@@ -116,7 +116,8 @@ if (a.domCmp(["apkmirror.com", "freepdf-books.com", "bc.vc", "themeslide.com", "
     "lewat.id", "cutwin.com", "cut-urls.com", "adbull.me", "xess.pro", "clik.pw", "admove.co",
     "adshort.co", "linksh.top", "adshorte.com", "coinb.ink", "123link.top", "fas.li", "zeiz.me",
     "u2s.io", "linclik.com", "xurl.us", "adbilty.me", "cpmlink.net", "gsurl.in", "linkhits.us",
-    "coshurl.co", "leechall.com", "gratisjuegos.co", "zonadescarga.info", "firstone.tv", "shortzero.com"])) {
+    "coshurl.co", "leechall.com", "gratisjuegos.co", "zonadescarga.info", "firstone.tv", "shortzero.com",
+    "veneapp.com"])) {
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
 if (a.domCmp(["katfile.com", "goldescargas.com"])) {
@@ -210,7 +211,7 @@ if (a.domCmp(["alein.org"])) {
     a.bait("div", "#tester", true);
 }
 if (a.domCmp(["cutwin.com", "cut-urls.com", "adbull.me", "xess.pro", "clik.pw", "admove.co", "urle.co",
-    "adshort.co", "linksh.top", "adshorte.com", "coinb.ink", "l2s.io", "shortzero.com"])) {
+    "adshort.co", "linksh.top", "adshorte.com", "coinb.ink", "l2s.io", "shortzero.com", "veneapp.com"])) {
     a.bait("div", "#test-block", true);
 }
 if (a.domCmp(["filecom.net", "upshare.org", "skippyfile.com", "mwfiles.net", "up-flow.org", "globeslot.com"])) {
