@@ -38,6 +38,7 @@ only open issue about them here if:
 * They cannot be blocked with just filters 
 
 **Title of your issue**: The domain of the website. Prepend `NSFW! ` if the website may contain contents that are not safe for work. 
+Prepend `URGENT! ` if the issue is **caused** by uBlock Protector. 
 
 **Comment of your issue**: Use the template. Do not wrap links, keep them clickable. 
 
