@@ -405,7 +405,7 @@ a.onRemove = (handler) => {
  ** @param {HTMLElement} parent - The parent node of this script.
  ** @param {MutationObserver} e - The observer object, call disconnect on it to stop observing.
  */
-a.onBeforeScriptExecute = (handler) => {
+a.beforeScript = (handler) => {
     a.onInsert((node, target, observer) => {
         if (node.tagName === "SCRIPT") {
             handler(node, target, observer);
@@ -1587,7 +1587,7 @@ a.generic.NoAdBlock = () => {
 //=====Debug Utilities=====
 /**
  * Trace the access to a property, should be called on document-start.
- * Only available in debug mode.
+ * Only available in debug mode, conflict with other functions that lock variables.
  * @function
  * @param {string} name - The name of the property to define.
  * @param {string} [parent="window"] - The name of the parent object, use "." or bracket notation to separate layers.

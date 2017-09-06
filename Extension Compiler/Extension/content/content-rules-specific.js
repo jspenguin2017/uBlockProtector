@@ -678,7 +678,7 @@ if (a.domCmp(["debridnet.com"])) {
     });
     */
     const re = /\.height\(\) < \d+/;
-    a.onBeforeScriptExecute((script) => {
+    a.beforeScript((script) => {
         if (!script.textContent) {
             return;
         }
@@ -2730,7 +2730,7 @@ if (a.domCmp(["vvvvid.it"])) {
     });
 }
 if (a.domCmp(["onet.pl", "komputerswiat.pl"])) {
-    a.onBeforeScriptExecute((script) => {
+    a.beforeScript((script) => {
         if (script.id === "adsinit") {
             script.remove();
         }

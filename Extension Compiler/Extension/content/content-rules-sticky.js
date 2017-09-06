@@ -19,7 +19,7 @@ if (a.domCmp(["lolalytics.com"])) {
     a.timewarp("setTimeout", a.matchMethod.matchAll, null, 1e9);
     a.readOnly("cookie", undefined, "window.document");
     a.css("div[class] { opacity:1; }");
-    a.onBeforeScriptExecute((script, ignored, e) => {
+    a.beforeScript((script, ignored, e) => {
         if (script.textContent && script.textContent.includes("XMLHttpRequest")) {
             script.textContent = script.textContent.replace("send(null)", "return");
             e.disconnect();
