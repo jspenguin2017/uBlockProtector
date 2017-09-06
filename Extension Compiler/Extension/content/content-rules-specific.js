@@ -2902,7 +2902,7 @@ if (a.domCmp(["kbb.com"])) {
         });
     });
 }
-if (a.domCmp(["booogle.net"])) {
+if (a.domCmp(["booogle.net", "nsspot.net"])) {
     a.readOnly("gadb", false);
 }
 if (a.domCmp(["samehadaku.net"])) {
