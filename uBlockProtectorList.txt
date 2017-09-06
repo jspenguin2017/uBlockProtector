@@ -420,6 +420,9 @@ peugeot-metropolis.de##script:inject(abort-current-inline-script.js, $, #gandalf
 @@||cbs.com^$generichide
 warforum.cz###popwrapper
 ||ad.kisscartoon.io^$important
+@@||randaris-anime.net^$generichide
+randaris-anime.net##.advert1
+randaris-anime.net##.adblock-box
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================

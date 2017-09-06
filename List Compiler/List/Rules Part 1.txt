@@ -686,3 +686,7 @@ peugeot-metropolis.de##script:inject(abort-current-inline-script.js, $, #gandalf
 warforum.cz###popwrapper
 ! === kisscartoon.io
 ||ad.kisscartoon.io^$important
+! === randaris-anime.net
+@@||randaris-anime.net^$generichide
+randaris-anime.net##.advert1
+randaris-anime.net##.adblock-box
