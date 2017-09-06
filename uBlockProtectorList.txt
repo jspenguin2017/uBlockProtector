@@ -419,6 +419,7 @@ peugeot-metropolis.de##script:inject(abort-current-inline-script.js, $, #gandalf
 @@||streamplay.gdn^$generichide
 @@||cbs.com^$generichide
 warforum.cz###popwrapper
+||ad.kisscartoon.io^$important
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================

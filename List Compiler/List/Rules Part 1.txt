@@ -684,3 +684,5 @@ peugeot-metropolis.de##script:inject(abort-current-inline-script.js, $, #gandalf
 @@||cbs.com^$generichide
 ! === warforum.cz
 warforum.cz###popwrapper
+! === kisscartoon.io
+||ad.kisscartoon.io^$important
