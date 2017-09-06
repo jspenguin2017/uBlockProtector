@@ -117,7 +117,7 @@ if (a.domCmp(["apkmirror.com", "freepdf-books.com", "bc.vc", "themeslide.com", "
     "adshort.co", "linksh.top", "adshorte.com", "coinb.ink", "123link.top", "fas.li", "zeiz.me",
     "u2s.io", "linclik.com", "xurl.us", "adbilty.me", "cpmlink.net", "gsurl.in", "linkhits.us",
     "coshurl.co", "leechall.com", "gratisjuegos.co", "zonadescarga.info", "firstone.tv", "shortzero.com",
-    "veneapp.com"])) {
+    "veneapp.com", "shink.in"])) {
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
 if (a.domCmp(["katfile.com", "goldescargas.com"])) {
