@@ -696,3 +696,5 @@ randaris-anime.net##.advert1
 randaris-anime.net##.adblock-box
 ! === reviewmeta.com
 reviewmeta.com##.ad_gu_tr
+! === androidsage.com
+androidsage.com##script:inject(abort-on-property-read.js, blckad)
