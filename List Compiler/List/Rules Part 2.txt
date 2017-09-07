@@ -257,8 +257,6 @@ clubedohardware.com.br#@#.nexusad
 clubedohardware.com.br#@##banner
 clubedohardware.com.br#@#.ipsAd
 @@||secret-zone.net/abp/adblock_detector.js$script
-@@||analytics.edgesuite.net^$domain=cbs.com,object-subrequest
-@@||ailde.biz/a.sponsorads.js$domain=cbs.com,script
 gamingroom.tv#@#.adsbygoogle
 @@||ad4.liverail.com^$xmlhttprequest,domain=gamingroom.tv
 @@||upf.co.il/advertisment.js$script
