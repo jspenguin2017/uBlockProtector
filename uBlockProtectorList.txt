@@ -98,6 +98,9 @@ nontonanime.org##nav.navbar + div.banner > a[href^="https://goo.gl/"]
 */adblock-detector/*
 /adblock-popup.
 /detectadblock.
+||fastly.net/ads/$image,redirect=2x2-transparent.png
+||fastly.net/ads/$script,redirect=noopjs
+||fastly.net/ads/$xmlhttprequest,redirect=nooptext
 /jquery.adi.css
 /jquery.adi.js$domain=123link.top
 ||pelcro.com^$third-party
