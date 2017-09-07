@@ -3330,3 +3330,6 @@ if (a.domCmp(["gntai.xyz"])) {
 if (a.domCmp(["wifihack.me"])) {
     a.noAccess("AdBlocked");
 }
+if (a.domCmp(["flashx.tv"])) {
+    a.filter("addEventListener", a.matchMethod.stringExact, "keydown", "window.document");
+}
