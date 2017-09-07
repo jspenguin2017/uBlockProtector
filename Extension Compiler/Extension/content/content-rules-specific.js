@@ -3333,3 +3333,19 @@ if (a.domCmp(["wifihack.me"])) {
 if (a.domCmp(["flashx.tv"])) {
     a.filter("addEventListener", a.matchMethod.stringExact, "keydown", "window.document");
 }
+if (a.domCmp(["wowtoken.info"])) {
+    const re = /fail\(\);/g;
+    a.beforeScript((script) => {
+        if (script.src && script.src.includes("/js/main.js")) {
+            $.request({
+                method: "GET",
+                url: script.src,
+            }, (data) => {
+                a.inject(data.replace(re, "true;"), true);
+            }, () => {
+                console.error("uBlock Protector failed to patch main script!");
+            });
+            script.remove();
+        }
+    });
+}
