@@ -314,6 +314,7 @@ der-postillon.com###steady-adblock-overlay-container
 ||jalopnik.com/sp/
 ||jezebel.com/sp/
 ||kotaku.com/sp/
+||mms.kotaku.com^$script,xmlhttprequest
 ||lifehacker.com/sp/
 ||theroot.com/sp/
 ||dailymotion.com^$domain=adshorte.com
