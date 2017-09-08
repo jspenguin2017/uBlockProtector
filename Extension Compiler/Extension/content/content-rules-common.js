@@ -119,7 +119,7 @@ if (a.domCmp(["apkmirror.com", "freepdf-books.com", "bc.vc", "themeslide.com", "
     "adshort.co", "linksh.top", "adshorte.com", "coinb.ink", "123link.top", "fas.li", "zeiz.me",
     "u2s.io", "linclik.com", "xurl.us", "adbilty.me", "cpmlink.net", "gsurl.in", "linkhits.us",
     "coshurl.co", "leechall.com", "gratisjuegos.co", "zonadescarga.info", "firstone.tv", "shortzero.com",
-    "veneapp.com", "shink.in", "iiv.pl"])) {
+    "veneapp.com", "shink.in", "iiv.pl", "uskip.me"])) {
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
 if (a.domCmp(["katfile.com", "goldescargas.com"])) {
@@ -127,7 +127,7 @@ if (a.domCmp(["katfile.com", "goldescargas.com"])) {
 }
 
 //a.readOnly
-if (a.domCmp(["jansatta.com", "financialexpress.com", "indianexpress.com", "shink.in"])) {
+if (a.domCmp(["jansatta.com", "financialexpress.com", "indianexpress.com", "shink.in", "uskip.me"])) {
     a.readOnly("RunAds", true);
 }
 if (a.domCmp(["jagranjunction.com", "nekopoi.bid", "catcatyfaucet.xyz"])) {
