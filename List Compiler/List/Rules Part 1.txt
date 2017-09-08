@@ -124,6 +124,7 @@ nontonanime.org##nav.navbar + div.banner > a[href^="https://goo.gl/"]
 ||fastly.net/ads/$image,redirect=2x2-transparent.png
 ||fastly.net/ads/$script,redirect=noopjs
 ||fastly.net/ads/$xmlhttprequest,redirect=nooptext
+||doubleclick.net/instream/ad_status.js$script,redirect=doubleclick.net/instream/ad_status.js
 ! === Adblock Identifier
 ! Can cause crash, need to test each case
 /jquery.adi.css
