@@ -157,7 +157,7 @@ animmex.*##a[href^="https://forum.animmex.com/viewtopic.php"]
 ||flakyfeast.com^$domain=gry.pl
 pixiv.net##.popular-introduction-block
 youtube.com###companion
-@@||linkneverdie.com^$elemhide
+@@||linkneverdie.com^$generichide
 linkneverdie.com##script:inject(setTimeout-defuser.js, #wrapper)
 pogdesign.co.uk##.replace
 ||p207208.clksite.com^$subdocument,redirect=noopframe,domain=ally.sh|al.ly
@@ -186,7 +186,7 @@ gelbooru.com#@#center > a[href]
 ||assets.gelbooru.com/r18/
 ||gelbooru.com/script/application.js.php$important
 ||thedoujin.com/bload.php
-@@||ff14angler.com^$elemhide
+@@||ff14angler.com^$generichide
 ||games.softgames.de/assets/showads.js$script,redirect=noopjs
 ||softgames.de/sg-mc.js*$script,redirect=noopjs
 ||bidvertiser.com$important,domain=exrapidleech.info
@@ -201,7 +201,7 @@ pwn.pl,vendiscuss.net##script:inject(abort-on-property-read.js, adblock)
 afreesms.com##script:inject(noeval.js)
 ||tiptonvillepylesville.com^$domain=clubic.com
 animeid.io,jkanime.co,gogoanime.ch,chiaanime.co,animeflv.co##script:inject(setTimeout-defuser.js, #player)
-@@||comicallyincorrect.com^$elemhide
+@@||comicallyincorrect.com^$generichide
 @@||comicincorrect.wpengine.netdna-cdn.com/wp-content/uploads/*
 savetodrive.net##script:inject(setTimeout-defuser.js, ad)
 rarbgmirror.com,swfchan.net,swfchan.com,zippyshare.com##script:inject(abort-on-property-read.js, open)
@@ -256,7 +256,7 @@ sznpaste.net##script:inject(abort-on-property-write.js, _pop)
 raptu.com##script:inject(noeval.js)
 @@ajax.googleapis.com/ajax/libs/jquery/$script,domain=linkdrop.net
 leechgear.net###block_on
-@@||leech.ae^$elemhide
+@@||leech.ae^$generichide
 leech.ae##script:inject(abort-on-property-read.js, open)
 wiwo.de,handelsblatt.com##script:inject(abort-on-property-read.js, AdController)
 tvregionalna24.pl##.diablo-placeholder

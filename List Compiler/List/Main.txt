@@ -226,7 +226,7 @@ pixiv.net##.popular-introduction-block
 youtube.com###companion
 ! === linkneverdie.com
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/146
-@@||linkneverdie.com^$elemhide
+@@||linkneverdie.com^$generichide
 linkneverdie.com##script:inject(setTimeout-defuser.js, #wrapper)
 ! === pogdesign.co.uk
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/149
@@ -270,7 +270,7 @@ gelbooru.com#@#center > a[href]
 ||gelbooru.com/script/application.js.php$important
 ||thedoujin.com/bload.php
 ! === ff14angler.com
-@@||ff14angler.com^$elemhide
+@@||ff14angler.com^$generichide
 ! === games.softgames.de
 ||games.softgames.de/assets/showads.js$script,redirect=noopjs
 ||softgames.de/sg-mc.js*$script,redirect=noopjs
@@ -298,7 +298,7 @@ afreesms.com##script:inject(noeval.js)
 ! === animeid.io and similar domains
 animeid.io,jkanime.co,gogoanime.ch,chiaanime.co,animeflv.co##script:inject(setTimeout-defuser.js, #player)
 ! === comicallyincorrect.com
-@@||comicallyincorrect.com^$elemhide
+@@||comicallyincorrect.com^$generichide
 @@||comicincorrect.wpengine.netdna-cdn.com/wp-content/uploads/*
 ! === savetodrive.net
 savetodrive.net##script:inject(setTimeout-defuser.js, ad)
@@ -398,7 +398,7 @@ raptu.com##script:inject(noeval.js)
 ! === leechgear.net
 leechgear.net###block_on
 ! === leech.ae
-@@||leech.ae^$elemhide
+@@||leech.ae^$generichide
 leech.ae##script:inject(abort-on-property-read.js, open)
 ! === wiwo.de
 wiwo.de,handelsblatt.com##script:inject(abort-on-property-read.js, AdController)
