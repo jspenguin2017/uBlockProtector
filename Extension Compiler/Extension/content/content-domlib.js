@@ -461,7 +461,8 @@ $.Selection = class {
 
 //=====Utilities=====
 /**
- * Same as a.request(), but request directly in the content script.
+ * Similar to a.request(), but is not privileged and the request is done directly in the content
+ * script context.
  * @function
  */
 $.request = (details, onload, onerror) => {

@@ -78,7 +78,8 @@ a.err = (name) => {
     }
 };
 /**
- * Do a cross origin request.
+ * Send a highly privileged XMLHttpRequest, it goes though Cross Origin Resource Sharing policies
+ * as well as uBlock Origin filtering.
  * @function
  * @param {Object} details - Details about this request.
  ** @param {string} method - The method of the request, usually "GET" or "POST".
@@ -89,6 +90,7 @@ a.err = (name) => {
  ** @param {string} response - The response text.
  * @param {Function} onerror - The error event handler.
  */
+/*
 a.request = (details, onload, onerror) => {
     chrome.runtime.sendMessage({
         cmd: "xhr",
@@ -101,6 +103,7 @@ a.request = (details, onload, onerror) => {
         }
     });
 };
+*/
 /**
  * Check if current domain ends with one of the domains in the list.
  * "example.com" will match domains that matches /(^|.*\.)example\.com$/.
@@ -1655,6 +1658,6 @@ a.setBenchmarkedInterval = (func, delay, ...args) => {
         const t0 = performance.now();
         func(...args);
         const t1 = performance.now();
-        console.log("Benchmarked Interval: Function " + func.name + " used " + (t1 - t0) + "ms");
+        console.log(`Benchmarked Interval: Function ${func.name} used ${t1 - t0} ms`);
     }, delay);
 };

@@ -34,6 +34,7 @@ a.init = () => {
                  ** for more information.
                  * @return {string|null} The response text, or null if the request failed.
                  */
+                /*
                 case "xhr":
                     if (typeof args[0].details === "object") {
                         const method = String(args[0].details.method);
@@ -66,6 +67,7 @@ a.init = () => {
                         } //Ignore if method is not valid
                     } //Ignore if details is not valid
                     break;
+                */
                 /**
                  * Forcefully close the sender tab.
                  */
