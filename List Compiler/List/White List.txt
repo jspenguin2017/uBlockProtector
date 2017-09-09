@@ -1,3 +1,7 @@
+! ======================
+! ===== White List =====
+! ======================
+! These white lists will not allow ads to show, but may open third party connections
 ! === ovar.io
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/155
 @@||imasdk.googleapis.com/js/sdkloader/outstream.js$script,domain=ovar.io
