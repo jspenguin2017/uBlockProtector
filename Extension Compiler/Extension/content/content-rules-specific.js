@@ -1456,7 +1456,7 @@ if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "pl
     a.on("blur", () => { isInBackground = true; });
 }
 */
-if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "play.tv3.lt", "tv3play.tv3.ee"])) {
+if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se"])) {
     a.replace(() => {
         const re = /\/api\/playClient.*resource=adinfo\?/;
         if (re.test(url)) {
@@ -1465,6 +1465,21 @@ if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "pl
                     try {
                         let payload = window.JSON.parse(this.responseText);
                         payload.data.ab_allowed = true;
+                        replace(this, window.JSON.stringify(payload));
+                    } catch (err) { }
+                }
+            });
+        }
+    });
+}
+if (a.domCmp(["tvplay.skaties.lv", "play.tv3.lt", "tv3play.tv3.ee"])) {
+    a.replace(() => {
+        if (url && url.includes("/adinfo?")) {
+            this.addEventListener("readystatechange", () => {
+                if (this.readyState === 4) {
+                    try {
+                        let payload = window.JSON.parse(this.responseText);
+                        payload.ab_allowed = true;
                         replace(this, window.JSON.stringify(payload));
                     } catch (err) { }
                 }

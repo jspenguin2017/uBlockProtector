@@ -436,6 +436,7 @@ flashx.tv##script:inject(abort-on-property-read.js, open)
 @@/crossdomain.xml$domain=channel4.com
 @@||ak.http.anno.channel4.com^$domain=channel4.com
 @@||cf.http.anno.channel4.com^$domain=channel4.com
+@@||playapi.mtgx.tv/v3/adinfo?$xmlhttprequest,domain=tvplay.skaties.lv|play.tv3.lt|tv3play.tv3.ee
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================
