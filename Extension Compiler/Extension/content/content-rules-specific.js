@@ -2275,7 +2275,7 @@ if (a.domCmp(["exrapidleech.info"])) {
 if (a.domCmp(["fastserver.me"])) {
     a.filter("alert", a.matchMethod.string, "Adblocker Detected!!");
 }
-if (a.domCmp(["ouo.io"])) {
+if (a.domCmp(["ouo.io", "ouo.press"])) {
     localStorage.setItem("snapLastPopAt", (new Date()).getTime());
 }
 /*
