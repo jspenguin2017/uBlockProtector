@@ -493,8 +493,9 @@ paksociety.com##.blocked
 ! === cleveland.com
 ||fastly.net/mms-client.js$domain=cleveland.com
 ||fastly.net/messaging.js$domain=cleveland.com
-! === viz.com
+! === viz.com, hulu.com
 @@||viz.com^$generichide
+@@||hulu.com^$generichide
 ! === couponcabin.com
 couponcabin.com###adblocker-reminder
 ! === tubeninja.net

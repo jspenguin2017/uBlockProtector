@@ -2791,7 +2791,7 @@ if (a.domCmp(["1tv.ru"])) {
             },
             detect(f) {
                 window.setTimeout(f.cb, 10, false, this);
-                return this
+                return this;
             },
         };
         window.EUMP = {};

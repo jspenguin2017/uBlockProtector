@@ -312,6 +312,7 @@ paksociety.com##.blocked
 ||fastly.net/mms-client.js$domain=cleveland.com
 ||fastly.net/messaging.js$domain=cleveland.com
 @@||viz.com^$generichide
+@@||hulu.com^$generichide
 couponcabin.com###adblocker-reminder
 @@||tubeninja.net/ads.js$first-party
 tlz.de##.ab-shader
