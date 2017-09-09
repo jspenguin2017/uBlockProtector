@@ -1667,7 +1667,7 @@ if (a.domCmp(["thebatavian.com"])) {
 if (a.domCmp(["zrabatowani.pl"])) {
     a.cookie("adblockAlert", "yes");
 }
-if (a.domCmp(["hanime.tv", "ah-me.com"])) {
+if (a.domCmp(["hanime.tv", "ah-me.com", "shortin.ga"])) {
     //NSFW!
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/76
     //Issue: https://github.com/reek/anti-adblock-killer/issues/3563

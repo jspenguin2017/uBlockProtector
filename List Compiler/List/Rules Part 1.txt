@@ -701,3 +701,6 @@ randaris-anime.net##.adblock-box
 reviewmeta.com##.ad_gu_tr
 ! === androidsage.com
 androidsage.com##script:inject(abort-on-property-read.js, blckad)
+! === globalbesthosting.com
+! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/584
+@@||globalbesthosting.com^$generichide

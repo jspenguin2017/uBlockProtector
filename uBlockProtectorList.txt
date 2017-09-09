@@ -432,6 +432,7 @@ randaris-anime.net##.advert1
 randaris-anime.net##.adblock-box
 reviewmeta.com##.ad_gu_tr
 androidsage.com##script:inject(abort-on-property-read.js, blckad)
+@@||globalbesthosting.com^$generichide
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================
