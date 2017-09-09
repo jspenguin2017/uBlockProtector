@@ -224,17 +224,6 @@ animmex.*##a[href^="https://forum.animmex.com/viewtopic.php"]
 pixiv.net##.popular-introduction-block
 ! === youtube.com
 youtube.com###companion
-! === flashx.tv - Thanks to lain566
-||flashx.tv/checkembed.php
-@@||flashx1.tv/js/showad*.js$script
-@@||flashx1.tv/sidead.js$script
-@@||flashx.to/counter.cgi$script
-@@||flashx1.tv/jquery2.js$script
-||static.flashx.tv/js/flashx.js$script
-@@||/popunder.gif$xmlhttprequest,domain=flashx.tv
-||static.flashx.tv/img/player.png$image
-flashx.tv##script:inject(abort-on-property-read.js, open)
-@@||zencdn.net^$script,domain=flashx.tv
 ! === linkneverdie.com
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/146
 @@||linkneverdie.com^$elemhide
@@ -252,9 +241,6 @@ ally.sh,al.ly##script:inject(popads.net.js)
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/35
 ||hackintosh.*/donate/donate.php
 hackintosh.computer##.adsbygoogle
-! === ovar.io
-! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/155
-@@||imasdk.googleapis.com/js/sdkloader/outstream.js$script,domain=ovar.io
 ! === aftonbladet.se
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/163
 ||damoh.*^$media
@@ -262,12 +248,6 @@ hackintosh.computer##.adsbygoogle
 ||ooul.tv/nocache/se-aftonbladet/aab/aftonbladet_config.js$script,redirect=noopjs,domain=aftonbladet.se
 ! === filechoco.net, keezmovies.com
 filechoco.net,keezmovies.com##script:inject(noeval.js)
-! === graffica.info
-*$script,third-party,domain=graffica.info
-@@||grafficainfo.disqus.com^$domain=graffica.info
-@@||connect.facebook.net^$domain=graffica.info
-@@||disquscdn.com^$domain=graffica.info
-@@|https://disqus.com/next/config.js$domain=graffica.info
 ! === rule34hentai.net
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/177
 ||rule34hentai.net^$inline-script

@@ -16,16 +16,24 @@ for (let i = 0; i < lines.length; i++) {
     let line = lines[i].trim();
     line && output.push(line);
 }
-//Process rules part 1, remove empty lines and comments
-lines = readFileSync("./List/Rules Part 1.txt", "utf8").split("\n");
+//Process main filters, remove empty lines and comments
+lines = readFileSync("./List/Main.txt", "utf8").split("\n");
 for (let i = 0; i < lines.length; i++) {
     let line = lines[i].trim();
     if (line && line.charAt(0) !== '!') {
         output.push(line);
     }
 }
-//Process rules part 2, remove empty lines
-lines = readFileSync("./List/Rules Part 2.txt", "utf8").split("\n");
+//Process white list filters, remove empty lines and comments
+lines = readFileSync("./List/White List.txt", "utf8").split("\n");
+for (let i = 0; i < lines.length; i++) {
+    let line = lines[i].trim();
+    if (line && line.charAt(0) !== '!') {
+        output.push(line);
+    }
+}
+//Process other filters, remove empty lines
+lines = readFileSync("./List/Other.txt", "utf8").split("\n");
 for (let i = 0; i < lines.length; i++) {
     let line = lines[i].trim();
     line && output.push(line);
