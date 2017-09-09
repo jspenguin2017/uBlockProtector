@@ -2770,7 +2770,7 @@ if (a.domCmp(["vod.pl"])) {
     });
 }
 if (a.domCmp(["viz.com"])) {
-    a.css("#player_error { display:none; } #player { display:block; }");
+    a.readOnly("show_dfp_preroll", false);
 }
 if (a.domCmp(["1tv.ru"])) {
     a.inject(() => {
