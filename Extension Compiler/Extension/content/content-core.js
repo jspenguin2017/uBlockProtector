@@ -939,7 +939,7 @@ a.replace = (handler) => {
  * Forcefully close the current tab. This is asynchronous.
  * @function
  */
-a.forceClose = () => {
+a.close = () => {
     chrome.runtime.sendMessage({
         cmd: "remove tab",
     });

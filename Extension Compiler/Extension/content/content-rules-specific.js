@@ -1689,9 +1689,16 @@ if (a.domCmp(["hanime.tv", "ah-me.com", "shortin.ga"])) {
     //NSFW!
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/76
     //Issue: https://github.com/reek/anti-adblock-killer/issues/3563
+    a.inject(() => {
+        window.open = (url) => {
+            window.location.href = url;
+            throw new window.Error("uBlock Origin detectors are not allowed on this device!");
+        };
+    });
+    /*
     const magic = a.uid();
     addEventListener(magic, () => {
-        a.forceClose();
+        a.close();
     });
     a.inject(`(() => {
         "use strict";
@@ -1701,6 +1708,7 @@ if (a.domCmp(["hanime.tv", "ah-me.com", "shortin.ga"])) {
             window.dispatchEvent(new window.CustomEvent("${magic}"));
         };
     })();`, true);
+    */
 }
 if (a.domCmp(["hanime.tv"])) {
     a.noAccess("confirm");
