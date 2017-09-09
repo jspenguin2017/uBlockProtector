@@ -1327,6 +1327,7 @@ if (a.domCmp(["dplay.com", "dplay.dk", "dplay.se"])) {
     });
     a.cookie("dsc-adblock", value);
 }
+/*
 if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "play.tv3.lt", "tv3play.tv3.ee"])) {
     //Thanks to szymon1118
     let isInBackground = false;
@@ -1452,6 +1453,23 @@ if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "pl
     handler();
     a.on("focus", () => { isInBackground = false; });
     a.on("blur", () => { isInBackground = true; });
+}
+*/
+if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "play.tv3.lt", "tv3play.tv3.ee"])) {
+    a.replace(() => {
+        const re = /\/api\/playClient.*resource=adinfo\?/;
+        if (re.test(url)) {
+            this.addEventListener("readystatechange", () => {
+                if (this.readyState === 4) {
+                    try {
+                        let payload = window.JSON.parse(this.responseText);
+                        payload.data.ab_allowed = true;
+                        replace(this, window.JSON.stringify(payload));
+                    } catch (err) { }
+                }
+            });
+        }
+    });
 }
 if (a.domCmp(["firstrow.co", "firstrows.ru", "firstrows.tv", "firstrows.org", "firstrows.co",
     "firstrows.biz", "firstrowus.eu", "firstrow1us.eu", "firstsrowsports.eu", "firstrowsportes.tv",
