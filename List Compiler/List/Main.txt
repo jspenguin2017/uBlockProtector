@@ -687,3 +687,5 @@ androidsage.com##script:inject(abort-on-property-read.js, blckad)
 @@||globalbesthosting.com^$generichide
 ! === stern.de
 stern.de##script:inject(abort-on-property-read.js, _sp_.mms)
+! === cwseed.com
+cwseed.com##script:inject(abort-on-property-read.js, wc.url)
