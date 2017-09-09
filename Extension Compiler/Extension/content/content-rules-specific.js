@@ -3350,3 +3350,6 @@ if (a.domCmp(["wowtoken.info"])) {
         }
     });
 }
+if (a.domCmp(["arenavision.us"])) {
+    a.noAccess("H7WWWW");
+}
