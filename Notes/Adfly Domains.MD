@@ -39,6 +39,9 @@ http://babblecase.com/2Sv
 `bluenik.com`
 http://bluenik.com/7VT
 
+`yoalizer.com`
+http://yoalizer.com/1QWs
+
 `gamecopyworld.click`
 http://rd1.gamecopyworld.click/OrPg
 
