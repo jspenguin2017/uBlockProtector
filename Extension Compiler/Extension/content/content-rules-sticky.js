@@ -12,6 +12,7 @@ if (a.domCmp(["socketloop.com"])) {
         return !val.trim();
     });
 }
+/*
 if (a.domCmp(["lolalytics.com"])) {
     //https://github.com/AdguardTeam/AdguardFilters/issues/6280
     //https://github.com/AdguardTeam/AdguardFilters/issues/6576
@@ -45,3 +46,4 @@ if (a.domCmp(["lolalytics.com"])) {
         }
     });
 }
+*/
