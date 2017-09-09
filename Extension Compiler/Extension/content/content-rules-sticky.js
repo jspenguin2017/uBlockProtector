@@ -4,12 +4,55 @@
 if (a.domCmp(["socketloop.com"])) {
     a.readOnly("epmads_block", false);
     a.readOnly("DMAds", true);
+    /*
     a.antiCollapse("innerHTML", (ignored, val) => {
         const realVal = val.trim();
         return !realVal || realVal === "<br>";
     });
     a.antiCollapse("innerText", (ignored, val) => {
         return !val.trim();
+    });
+    */
+    a.replace(() => {
+        this.addEventListener("readystatechange", () => {
+            if (this.readyState === 4 && this.status !== 200) {
+                window.Object.defineProperties(this, {
+                    "responseText": {
+                        configurable: false,
+                        set() { },
+                        get() {
+                            return "Connection Established";
+                        },
+                    },
+                    "status": {
+                        configurable: false,
+                        set() { },
+                        get() {
+                            return 200;
+                        },
+                    },
+                    "statusText": {
+                        configurable: false,
+                        set() { },
+                        get() {
+                            return "OK";
+                        },
+                    },
+                });
+            }
+        });
+    });
+    a.inject(() => {
+        "use strict";
+        delete window.fetch;
+    });
+    a.ready(() => {
+        a.inject(() => {
+            "use strict";
+            try {
+                window.console.meme(" ", " ", "90's Problems");
+            } catch (err) { }
+        });
     });
 }
 /*
