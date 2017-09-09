@@ -3369,3 +3369,12 @@ if (a.domCmp(["wowtoken.info"])) {
 if (a.domCmp(["arenavision.us"])) {
     a.noAccess("H7WWWW");
 }
+if (a.domCmp(["cbs.com"])) {
+    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/578
+    if (!a.cookie("first_page_today") && !sessionStorage.getItem("_first_page_today_fallback")) {
+        sessionStorage.setItem("_first_page_today_fallback", true);
+        a.ready(() => {
+            location.reload();
+        });
+    }
+}
