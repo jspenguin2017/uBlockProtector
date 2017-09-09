@@ -193,7 +193,7 @@ if (a.domCmp(["debridnet.com", "adshort.co", "linksh.top", "adshorte.com", "coin
 if (a.domCmp(["linx.cloud"])) {
     a.noAccess("popns");
 }
-if (a.domCmp(["psarips.com", "sawlive.tv", "streamcloud.eu", "jzrputtbut.net", "arenabg.ch"])) {
+if (a.domCmp(["psarips.com", "sawlive.tv", "streamcloud.eu", "jzrputtbut.net", "arenabg.ch", "solidfiles.com"])) {
     a.noAccess("open");
 }
 
