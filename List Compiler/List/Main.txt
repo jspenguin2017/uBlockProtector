@@ -321,7 +321,7 @@ wordsense.eu##script:inject(setTimeout-defuser.js, ad, 2000)
 @@||uol.com.br^$generichide
 uol.com.br##.bannersticky-top:has(div.ads-wrapper)
 ! === transparentcalifornia.com
-/magnific-popup.js/$domain=transparentcalifornia.com
+*/magnific-popup.js/*$domain=transparentcalifornia.com
 ! === javsex.net
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/244
 @@||yamvideo.com/pop1/jwplayer.js$domain=javsex.net

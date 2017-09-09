@@ -216,7 +216,7 @@ wordsense.eu##script:inject(setTimeout-defuser.js, ad, 2000)
 ||jsuol.com.br/*/detectadblock.js$script,important,domain=uol.com.br
 @@||uol.com.br^$generichide
 uol.com.br##.bannersticky-top:has(div.ads-wrapper)
-/magnific-popup.js/$domain=transparentcalifornia.com
+*/magnific-popup.js/*$domain=transparentcalifornia.com
 @@||yamvideo.com/pop1/jwplayer.js$domain=javsex.net
 ||nowvideo.ec^$inline-script
 ||nowvideo.li^$inline-script
