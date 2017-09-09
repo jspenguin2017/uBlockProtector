@@ -299,7 +299,7 @@ afreesms.com##script:inject(noeval.js)
 animeid.io,jkanime.co,gogoanime.ch,chiaanime.co,animeflv.co##script:inject(setTimeout-defuser.js, #player)
 ! === comicallyincorrect.com
 @@||comicallyincorrect.com^$generichide
-@@||comicincorrect.wpengine.netdna-cdn.com/wp-content/uploads/*
+@@||comicincorrect.wpengine.netdna-cdn.com/wp-content/uploads/
 ! === savetodrive.net
 savetodrive.net##script:inject(setTimeout-defuser.js, ad)
 ! === rarbgmirror.com, swfchan.net, swfchan.com, zippyshare.com
@@ -309,7 +309,7 @@ rarbgmirror.com,swfchan.net,swfchan.com,zippyshare.com##script:inject(abort-on-p
 ! === steamcustomizer.com
 steamcustomizer.com###sadcat
 steamcustomizer.com##.notice.support-notice
-@@||steamcustomizer.com/cache/skin/ad/*$image
+@@||steamcustomizer.com/cache/skin/ad/$image
 ! === iframes of shqiptvlive.net
 shqiperiatv.com,albtvhd.com,tvshqiphd.com,www.balkanweb.com,cdn.livestream.com,livestream.artmotion.al,shqip-tv.info##body > *[id^="blockblock"]:style(visibility: visible !important; display: block !important;)
 shqiperiatv.com,albtvhd.com,tvshqiphd.com,www.balkanweb.com,cdn.livestream.com,livestream.artmotion.al,shqip-tv.info##table[id^='blockblock']

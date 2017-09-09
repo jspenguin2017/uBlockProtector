@@ -202,13 +202,13 @@ afreesms.com##script:inject(noeval.js)
 ||tiptonvillepylesville.com^$domain=clubic.com
 animeid.io,jkanime.co,gogoanime.ch,chiaanime.co,animeflv.co##script:inject(setTimeout-defuser.js, #player)
 @@||comicallyincorrect.com^$generichide
-@@||comicincorrect.wpengine.netdna-cdn.com/wp-content/uploads/*
+@@||comicincorrect.wpengine.netdna-cdn.com/wp-content/uploads/
 savetodrive.net##script:inject(setTimeout-defuser.js, ad)
 rarbgmirror.com,swfchan.net,swfchan.com,zippyshare.com##script:inject(abort-on-property-read.js, open)
 ||googlesyndication.com^$script,redirect=noopjs,domain=pipocas.tv
 steamcustomizer.com###sadcat
 steamcustomizer.com##.notice.support-notice
-@@||steamcustomizer.com/cache/skin/ad/*$image
+@@||steamcustomizer.com/cache/skin/ad/$image
 shqiperiatv.com,albtvhd.com,tvshqiphd.com,www.balkanweb.com,cdn.livestream.com,livestream.artmotion.al,shqip-tv.info##body > *[id^="blockblock"]:style(visibility: visible !important; display: block !important;)
 shqiperiatv.com,albtvhd.com,tvshqiphd.com,www.balkanweb.com,cdn.livestream.com,livestream.artmotion.al,shqip-tv.info##table[id^='blockblock']
 wordsense.eu##script:inject(setTimeout-defuser.js, ad, 2000)
