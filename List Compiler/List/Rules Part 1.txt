@@ -704,3 +704,5 @@ androidsage.com##script:inject(abort-on-property-read.js, blckad)
 ! === globalbesthosting.com
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/584
 @@||globalbesthosting.com^$generichide
+! === stern.de
+stern.de##script:inject(abort-on-property-read.js, _sp_.mms)
