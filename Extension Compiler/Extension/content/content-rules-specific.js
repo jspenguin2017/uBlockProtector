@@ -2416,6 +2416,24 @@ if (a.domCmp(["idlelivelink.blogspot.com", "animeforce.org"])) {
         });
     });
 }
+if (a.domCmp(["shortin.ga"])) {
+    a.ready(() => {
+        a.inject(() => {
+            "use strict";
+            window.document.oncontextmenu = null;
+            window.document.onselectstart = null;
+            window.document.onmousedown = null;
+        });
+    });
+}
+if (a.domCmp(["cyberterminators.co", "wakfutemporada2subs.blogspot.com"])) {
+    a.ready(() => {
+        a.inject(() => {
+            "use strict";
+            window.document.oncontextmenu = null;
+        });
+    });
+}
 if (a.domCmp(["hackinformer.com", "chelsea24news.pl", "windowstechinfo.com",
     "sectorsatoshi-amarillo.website", "sectorsatoshi-azul.website",
     "sectorsatoshi-blanco.website", "sectorsatoshi-celeste.website",
@@ -2541,14 +2559,6 @@ if (a.domCmp(["nulledvar.com"])) {
 }
 if (a.domCmp(["searchftps.net"])) {
     $("html").append(`<iframe width="336" height="280" style="display:none;"></iframe>`);
-}
-if (a.domCmp(["cyberterminators.co", "wakfutemporada2subs.blogspot.com"])) {
-    a.ready(() => {
-        a.inject(() => {
-            "use strict";
-            window.document.oncontextmenu = null;
-        });
-    });
 }
 if (a.domCmp(["wakfutemporada2subs.blogspot.com"])) {
     a.noAccess("disabletext");
