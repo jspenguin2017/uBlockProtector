@@ -1690,6 +1690,7 @@ if (a.domCmp(["hanime.tv", "ah-me.com", "shortin.ga"])) {
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/76
     //Issue: https://github.com/reek/anti-adblock-killer/issues/3563
     a.inject(() => {
+        "use strict";
         window.open = (url) => {
             window.location.href = url;
             throw new window.Error("uBlock Origin detectors are not allowed on this device!");
