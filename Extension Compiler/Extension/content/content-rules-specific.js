@@ -1684,6 +1684,9 @@ if (a.domCmp(["hanime.tv", "ah-me.com"])) {
         };
     })();`, true);
 }
+if (a.domCmp(["hanime.tv"])) {
+    a.noAccess("confirm");
+}
 if (a.domCmp(["firstonetv.eu"])) {
     a.readOnly("blocked", () => { });
     a.readOnly("adFuckBlock", () => { });
