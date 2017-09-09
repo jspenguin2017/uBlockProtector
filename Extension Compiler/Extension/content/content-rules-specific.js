@@ -772,6 +772,7 @@ if (a.domCmp(["folha.uol.com.br"])) {
     a.readOnly("folha_ads", true);
 }
 if (a.domCmp(["uol.com.br"])) {
+    a.readOnly("detectingAdblocks", false);
     a.inject(() => {
         "use strict";
         window.UOLPD = {

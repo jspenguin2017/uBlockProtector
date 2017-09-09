@@ -214,6 +214,8 @@ shqiperiatv.com,albtvhd.com,tvshqiphd.com,www.balkanweb.com,cdn.livestream.com,l
 wordsense.eu##script:inject(setTimeout-defuser.js, ad, 2000)
 ||uol.com.br/*/detectadblock/$script,important
 ||jsuol.com.br/*/detectadblock.js$script,important,domain=uol.com.br
+@@||uol.com.br^$generichide
+uol.com.br##.bannersticky-top:has(div.ads-wrapper)
 /magnific-popup.js/$domain=transparentcalifornia.com
 @@||yamvideo.com/pop1/jwplayer.js$domain=javsex.net
 ||nowvideo.ec^$inline-script
