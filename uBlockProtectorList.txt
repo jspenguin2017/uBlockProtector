@@ -425,9 +425,9 @@ stern.de##script:inject(abort-on-property-read.js, _sp_.mms)
 @@||flashx.to/counter.cgi$script
 @@||flashx1.tv/jquery2.js$script
 ||static.flashx.tv/js/flashx.js$script
-@@||/popunder.gif$xmlhttprequest,domain=flashx.tv
 ||static.flashx.tv/img/player.png$image
 flashx.tv##script:inject(abort-on-property-read.js, open)
+@@||/popunder.gif$xmlhttprequest,domain=flashx.tv
 @@||zencdn.net^$script,domain=flashx.tv
 @@/crossdomain.xml$domain=channel4.com
 @@||ak.http.anno.channel4.com^$domain=channel4.com
