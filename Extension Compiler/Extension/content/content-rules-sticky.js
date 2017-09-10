@@ -4,11 +4,11 @@
 if (a.domCmp(["socketloop.com"])) {
     a.readOnly("epmads_block", false);
     a.readOnly("DMAds", true);
-    /*
     a.antiCollapse("innerHTML", (ignored, val) => {
         const realVal = val.trim();
         return !realVal || realVal === "<br>";
     });
+    /*
     a.antiCollapse("innerText", (ignored, val) => {
         return !val.trim();
     });
@@ -45,14 +45,6 @@ if (a.domCmp(["socketloop.com"])) {
     a.inject(() => {
         "use strict";
         delete window.fetch;
-    });
-    a.ready(() => {
-        a.inject(() => {
-            "use strict";
-            try {
-                window.console.meme(" ", " ", "90's Problems");
-            } catch (err) { }
-        });
     });
 }
 /*
