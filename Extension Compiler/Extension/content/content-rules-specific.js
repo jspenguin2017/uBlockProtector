@@ -101,7 +101,7 @@ if (a.domCmp(["pinkrod.com", "wetplace.com"])) {
     a.readOnly("getAd", () => { });
     a.readOnly("getUtm", () => { });
 }
-if (a.domCmp(["hackintosh.zone", "elfqrin.com", "lne.es", "diariodemallorca.es"])) {
+if (a.domCmp(["hackintosh.zone", "elfqrin.com", "lne.es", "diariodemallorca.es", "artesacro.org"])) {
     a.ready(() => {
         a.inject(() => {
             "use strict";
