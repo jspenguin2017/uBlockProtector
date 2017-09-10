@@ -420,6 +420,7 @@ stern.de##script:inject(abort-on-property-read.js, _sp_.mms)
 cwseed.com##script:inject(abort-on-property-read.js, wc.url)
 ||wasabisyrup.com/template/plugin02.js
 @@||behindwoods.com^$generichide
+@@||prevention.com/*/pubads$script,first-party
 @@||imasdk.googleapis.com/js/sdkloader/outstream.js$script,domain=ovar.io
 ||flashx.tv/checkembed.php
 @@||flashx1.tv/js/showad*.js$script
