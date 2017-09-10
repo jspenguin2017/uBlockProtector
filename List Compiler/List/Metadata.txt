@@ -1,4 +1,4 @@
-[uBlock Origin 1.13.8]
+[uBlock Origin 1.14.8+]
 ! Title: uBlock Protector List
 ! Description: An anti-adblock defuser for uBlock Origin
 ! Expires: 2 days
