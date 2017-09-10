@@ -3421,3 +3421,10 @@ if (a.domCmp(["cbs.com"])) {
 if (a.domCmp(["solowrestling.com"])) {
     a.readOnly("bloq", 1);
 }
+if (a.domCmp(["anonymousemail.me"])) {
+    a.beforeScript((script) => {
+        if (script.textContent && script.textContent.includes("anonymousemail.me/adblock.php")) {
+            script.remove();
+        }
+    });
+}
