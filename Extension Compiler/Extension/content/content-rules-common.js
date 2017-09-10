@@ -150,7 +150,8 @@ if (a.domCmp(["openload.co", "openload.io", "openload.tv", "nekopoi.bid", "trans
     "outdoorpartner.net"])) {
     a.readOnly("adblock", false);
 }
-if (a.domCmp(["mexashare.com", "kisshentai.net", "hanime.tv", "mega-estrenos.com", "shortin.ga"])) {
+if (a.domCmp(["mexashare.com", "kisshentai.net", "hanime.tv", "mega-estrenos.com", "shortin.ga", "popunderjs.com",
+    "code.ptcong.com"])) {
     a.readOnly("BetterJsPop", "window.Object.freeze({})");
 }
 if (a.domCmp(["youwatch.to", "he2eini7ka.com", "shink.in"])) {
