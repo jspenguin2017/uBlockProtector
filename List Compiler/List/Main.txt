@@ -143,6 +143,8 @@ themarker.com,nachrichten.at##script:inject(abort-on-property-read.js, adblockDe
 ! === Social Locker
 megawarez.org,tipeo.net,compucalitv.com,intercambiosvirtuales.pro,tecmaxsoft.com##div.onp-sl-content:style(display: block !important;)
 megawarez.org,tipeo.net,compucalitv.com,intercambiosvirtuales.pro,tecmaxsoft.com##div.onp-sl-social-locker
+anonymousemail.me##div.onp-sociallocker-content:style(display: block !important;)
+anonymousemail.me##div.onp-sociallocker
 descargatelocorp.com##div[id^="informer"]:style(display: block !important; opacity: 1 !important; max-height: none !important;)
 descargatelocorp.com##div[class*="cool_ramka"]
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/254
