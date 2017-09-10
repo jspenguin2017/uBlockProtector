@@ -4,6 +4,7 @@
 @@/adframe.js$script,first-party
 @@/advertisement*.js$script,first-party
 @@/advert.js$script,first-party,domain=~adultmult.tv
+@@||googleads.g.doubleclick.net/pagead/ads$subdocument,third-party,domain=~afreesms.com,redirect=noopframe
 ||trymask.com/api/$third-party
 @@||adworkmedia.com/gLoader.php?GID=$script,third-party
 @@||adworkmedia.com/gTemplate.php?GID=$subdocument,third-party
@@ -616,13 +617,7 @@ tree.tv#@##adverts
 @@||pagead2.googlesyndication.com/pagead/js/r*/r*/show_ads_impl.js$script,domain=xiaopan.co
 @@||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js$script,domain=djawir.com
 @@||pagead2.googlesyndication.com/pagead/js/r*/r*/show_ads_impl.js$script,domain=djawir.com
-@@||vvvvid.it/img/ad/advertisement.xml$xmlhttprequest
-@@||static.vvvvid.it/img/ad$domain=vvvvid.it
-@@||des.smartclip.net/ads?$domain=vvvvid.it
-@@||adx.adform.net/adx$domain=vvvvid.it
-@@||adx.adform.net/videoad/?$domain=vvvvid.it
 @@||api.captchme.net/api/media$image
-@@||googleads.g.doubleclick.net/pagead/ads$subdocument,third-party,domain=~afreesms.com
 torrent-tv.ru##.page > .right-side > .section + .section + .section
 @@||tsa-algerie.com/wp-content/themes/tsa/js/ads.js$script
 freemulticoins.com#@#.adsbygoogle
