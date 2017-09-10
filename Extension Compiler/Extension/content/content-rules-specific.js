@@ -790,7 +790,7 @@ if (a.domCmp(["gamer.com.tw"])) {
 if (a.domCmp(["armorgames.com"])) {
     a.readOnly("ga_detect", null);
 }
-if (a.domCmp(["mangahost.com"])) {
+if (a.domCmp(["mangahost.com", "mangahost.org"])) {
     a.readOnly("testDisplay", false);
 }
 if (a.domCmp(["videowood.tv"])) {
