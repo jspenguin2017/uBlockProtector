@@ -689,4 +689,4 @@ cwseed.com##script:inject(abort-on-property-read.js, wc.url)
 @@||behindwoods.com^$generichide
 ! === prevention.com
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/589
-@@||prevention.com/*/pubads$script,first-party
+prevention.com##script:inject(setTimeout-defuser.js, adblock)
