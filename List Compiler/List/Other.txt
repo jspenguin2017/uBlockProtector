@@ -304,9 +304,6 @@ redtube.com##.add-blocker-msg
 @@||5d427.v.fwmrm.net/ad/p/1$domain=play.novatv.bg,object-subrequest
 @@||5d3e9.v.fwmrm.net/ad/l/1$domain=play.novatv.bg,object-subrequest
 ||mackproject.com/tara.php$subdocument
-apkmirror.com##script:contains(canRunAds = false)
-apkmirror.com#@#.adsbygoogle
-@@||pagead2.googlesyndication.com/pagead/js/$script,domain=apkmirror.com
 streamlive.to###adblockplus
 gtaxscripting.blogspot.com#@##AdSense2
 @@||pagead2.googlesyndication.com/pagead/js/$script,domain=gtaxscripting.blogspot.com
