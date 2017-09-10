@@ -3418,3 +3418,6 @@ if (a.domCmp(["cbs.com"])) {
         });
     }
 }
+if (a.domCmp(["solowrestling.com"])) {
+    a.readOnly("bloq", 1);
+}
