@@ -122,7 +122,7 @@ live.com##div:if(:scope > div > span:has-text(an ad blocker))
 ||static-pilot.wp.pl/static/assets/js/ads.js$xmlhttprequest,redirect=noopjs
 filez.tv###adblockinfo
 @@||urlex.org^$generichide
-@@||video.gazeta.pl/cdn/ads/ad/banner/_adsense_/_adserver/_adview_.ad.json$xmlhttprequest,domain=video.gazeta.pl
+@@||video.gazeta.pl/cdn/ads/ad/banner/_adsense_/_adserver/_adview_.ad.json$xmlhttprequest,first-party
 ||tribdss.com/meter/assets$script,domain=www.latimes.com
 *$xmlhttprequest,domain=thewindowsclub.com
 @@||disquscdn.com^$script,domain=thewindowsclub.com
@@ -177,7 +177,7 @@ easyvideo.me#@#div[style^="width:"]
 videowing.me#@#div[style^="width:"]
 videozoo.me#@#div[style^="width:"]
 ||gelbooru.com^$inline-script,badfilter
-@@||ajax.googleapis.com/ajax/libs/jquery/*$script,domain=gelbooru.com
+@@||ajax.googleapis.com/ajax/libs/jquery/$script,domain=gelbooru.com
 gelbooru.com#@#[style*="height:"][width]
 gelbooru.com#@#[style*="width:"][height]
 gelbooru.com#@##paginator
@@ -208,7 +208,7 @@ rarbgmirror.com,swfchan.net,swfchan.com,zippyshare.com##script:inject(abort-on-p
 ||googlesyndication.com^$script,redirect=noopjs,domain=pipocas.tv
 steamcustomizer.com###sadcat
 steamcustomizer.com##.notice.support-notice
-@@||steamcustomizer.com/cache/skin/ad/$image
+@@||steamcustomizer.com/cache/skin/ad/$image,first-party
 shqiperiatv.com,albtvhd.com,tvshqiphd.com,www.balkanweb.com,cdn.livestream.com,livestream.artmotion.al,shqip-tv.info##body > *[id^="blockblock"]:style(visibility: visible !important; display: block !important;)
 shqiperiatv.com,albtvhd.com,tvshqiphd.com,www.balkanweb.com,cdn.livestream.com,livestream.artmotion.al,shqip-tv.info##table[id^='blockblock']
 wordsense.eu##script:inject(setTimeout-defuser.js, ad, 2000)
@@ -228,7 +228,7 @@ receive-a-sms.com##script:inject(abort-current-inline-script.js, $, showads.js)
 ||pagead2.googlesyndication.com^$important,domain=receive-a-sms.com
 ||googleads.g.doubleclick.net^$important,domain=receive-a-sms.com
 newyorker.com##iframe[src*="/wp-content/assets/"]
-@@||politiken.dk/*ad*$script
+@@||politiken.dk/*ad*$script,first-party
 ||kissasian.com/*.aspx
 ||wholecloud.net^$inline-script
 link.tl##.adblockBox
@@ -256,7 +256,7 @@ dailyuploads.net##script:inject(abort-on-property-read.js, adbClick)
 ||madisonross.com/adblock.html$subdocument
 sznpaste.net##script:inject(abort-on-property-write.js, _pop)
 raptu.com##script:inject(noeval.js)
-@@ajax.googleapis.com/ajax/libs/jquery/$script,domain=linkdrop.net
+@@||ajax.googleapis.com/ajax/libs/jquery/$script,domain=linkdrop.net
 leechgear.net###block_on
 @@||leech.ae^$generichide
 leech.ae##script:inject(abort-on-property-read.js, open)
@@ -273,7 +273,6 @@ darmowe-pornosy.pl,polskie-aktorki-porno.pl#@#.myTestAd
 themarker.com###ad-block-wrapper
 @@||jsuol.com.br/c/detectadblock/$script,domain=uol.com.br,badfilter
 @@*$csp,domain=vidlox.tv
-@@||edgedatg.com^$script,domain=abc.go.com
 ||zeusnews.it/antiadb.js
 @@||static.ipornia.com^$image,domain=ipornia.hdzog.com
 hdzog.com##.msg-adblock.msg
@@ -354,11 +353,8 @@ sportspyder.com##script:inject(setTimeout-defuser.js, BlockerChecker)
 ||sportspyder.com/assets/application-$script,badfilter
 @@||salon.com/combo/js$script,first-party
 tvnow.de##.no-flash-box:has-text(Adblocker)
-@@||pga.com^$generichide
-@@||manifest.auditude.com^$xmlhttprequest,domain=pga.com
 kiss.com.tw#@##ads
 igeeksblog.com###quads-ad1_widget
-@@||acortar.net/rollups/aes.js$domain=dclinks.info
 *$script,third-party,domain=linclik.com
 ||espresso.repubblica.it/pw/pw2-espressosfoglio.js
 @@||24opole.pl^$generichide
@@ -438,6 +434,10 @@ flashx.tv##script:inject(abort-on-property-read.js, open)
 @@||ak.http.anno.channel4.com^$domain=channel4.com
 @@||cf.http.anno.channel4.com^$domain=channel4.com
 @@||playapi.mtgx.tv/v3/adinfo?$xmlhttprequest,domain=tvplay.skaties.lv|play.tv3.lt|tv3play.tv3.ee
+@@||edgedatg.com^$script,domain=abc.go.com
+@@||pga.com^$generichide
+@@||manifest.auditude.com^$xmlhttprequest,domain=pga.com
+@@||acortar.net/rollups/aes.js$domain=dclinks.info
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================

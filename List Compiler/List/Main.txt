@@ -160,7 +160,7 @@ filez.tv###adblockinfo
 ! === urlex.org
 @@||urlex.org^$generichide
 ! === video.gazeta.pl
-@@||video.gazeta.pl/cdn/ads/ad/banner/_adsense_/_adserver/_adview_.ad.json$xmlhttprequest,domain=video.gazeta.pl
+@@||video.gazeta.pl/cdn/ads/ad/banner/_adsense_/_adserver/_adview_.ad.json$xmlhttprequest,first-party
 ! === latimes.com - Thanks to okiehsch
 ||tribdss.com/meter/assets$script,domain=www.latimes.com
 ! === thewindowsclub.com
@@ -260,7 +260,7 @@ videozoo.me#@#div[style^="width:"]
 ! === gelbooru.com - Thanks to lain566
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/182
 ||gelbooru.com^$inline-script,badfilter
-@@||ajax.googleapis.com/ajax/libs/jquery/*$script,domain=gelbooru.com
+@@||ajax.googleapis.com/ajax/libs/jquery/$script,domain=gelbooru.com
 gelbooru.com#@#[style*="height:"][width]
 gelbooru.com#@#[style*="width:"][height]
 gelbooru.com#@##paginator
@@ -309,7 +309,7 @@ rarbgmirror.com,swfchan.net,swfchan.com,zippyshare.com##script:inject(abort-on-p
 ! === steamcustomizer.com
 steamcustomizer.com###sadcat
 steamcustomizer.com##.notice.support-notice
-@@||steamcustomizer.com/cache/skin/ad/$image
+@@||steamcustomizer.com/cache/skin/ad/$image,first-party
 ! === iframes of shqiptvlive.net
 shqiperiatv.com,albtvhd.com,tvshqiphd.com,www.balkanweb.com,cdn.livestream.com,livestream.artmotion.al,shqip-tv.info##body > *[id^="blockblock"]:style(visibility: visible !important; display: block !important;)
 shqiperiatv.com,albtvhd.com,tvshqiphd.com,www.balkanweb.com,cdn.livestream.com,livestream.artmotion.al,shqip-tv.info##table[id^='blockblock']
@@ -345,7 +345,7 @@ receive-a-sms.com##script:inject(abort-current-inline-script.js, $, showads.js)
 newyorker.com##iframe[src*="/wp-content/assets/"]
 ! === politiken.dk
 ! === Issue: https://gitlab.com/xuhaiyang1234/AAK-Cont/issues/17
-@@||politiken.dk/*ad*$script
+@@||politiken.dk/*ad*$script,first-party
 ! === NSFW! kissasian.com
 ||kissasian.com/*.aspx
 ! === wholecloud.net
@@ -396,7 +396,7 @@ sznpaste.net##script:inject(abort-on-property-write.js, _pop)
 ! === raptu.com
 raptu.com##script:inject(noeval.js)
 ! === linkdrop.net
-@@ajax.googleapis.com/ajax/libs/jquery/$script,domain=linkdrop.net
+@@||ajax.googleapis.com/ajax/libs/jquery/$script,domain=linkdrop.net
 ! === leechgear.net
 leechgear.net###block_on
 ! === leech.ae
@@ -428,12 +428,9 @@ themarker.com###ad-block-wrapper
 @@||jsuol.com.br/c/detectadblock/$script,domain=uol.com.br,badfilter
 ! === vidlox.tv
 @@*$csp,domain=vidlox.tv
-! === abc.go.com
-! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/338
-@@||edgedatg.com^$script,domain=abc.go.com
 ! === zeusnews.it
 ||zeusnews.it/antiadb.js
-! === hdzog.com
+! === ipornia.hdzog.com
 @@||static.ipornia.com^$image,domain=ipornia.hdzog.com
 hdzog.com##.msg-adblock.msg
 ! === ncaa.com
@@ -568,15 +565,10 @@ sportspyder.com##script:inject(setTimeout-defuser.js, BlockerChecker)
 @@||salon.com/combo/js$script,first-party
 ! === tvnow.de
 tvnow.de##.no-flash-box:has-text(Adblocker)
-! === pga.com
-@@||pga.com^$generichide
-@@||manifest.auditude.com^$xmlhttprequest,domain=pga.com
 ! === kiss.com.tw
 kiss.com.tw#@##ads
 ! === igeeksblog.com
 igeeksblog.com###quads-ad1_widget
-! === dclinks.info
-@@||acortar.net/rollups/aes.js$domain=dclinks.info
 ! === linclik.com
 *$script,third-party,domain=linclik.com
 ! === espresso.repubblica.it

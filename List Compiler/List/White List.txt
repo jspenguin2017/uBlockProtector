@@ -21,3 +21,11 @@ flashx.tv##script:inject(abort-on-property-read.js, open)
 @@||cf.http.anno.channel4.com^$domain=channel4.com
 ! === tvplay.skaties.lv, play.tv3.lt, tv3play.tv3.ee
 @@||playapi.mtgx.tv/v3/adinfo?$xmlhttprequest,domain=tvplay.skaties.lv|play.tv3.lt|tv3play.tv3.ee
+! === abc.go.com
+! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/338
+@@||edgedatg.com^$script,domain=abc.go.com
+! === pga.com
+@@||pga.com^$generichide
+@@||manifest.auditude.com^$xmlhttprequest,domain=pga.com
+! === dclinks.info
+@@||acortar.net/rollups/aes.js$domain=dclinks.info
