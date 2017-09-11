@@ -53,9 +53,6 @@ if (a.domCmp(["debridnet.com"])) {
     */
     const re = /\.height\(\)/g;
     a.beforeScript((script) => {
-        if (!script.textContent) {
-            return;
-        }
         if (script.textContent) {
             script.textContent = script.textContent.replace(re, " && false && 0");
         }
