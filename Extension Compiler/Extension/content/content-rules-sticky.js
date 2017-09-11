@@ -52,7 +52,7 @@ if (a.domCmp(["lolalytics.com"])) {
     //https://github.com/AdguardTeam/AdguardFilters/issues/6280
     //https://github.com/AdguardTeam/AdguardFilters/issues/6576
     //https://github.com/uBlockOrigin/uAssets/issues/668
-    a.timewarp("setTimeout", a.matchMethod.matchAll, null, 1e9);
+    a.timewarp("setTimeout", a.matchMethod.matchAll, null, 600000); //Maximum delay is 24.8 days
     a.readOnly("cookie", undefined, "window.document");
     a.css("div[class] { opacity:1; }");
     a.beforeScript((script, ignored, e) => {
