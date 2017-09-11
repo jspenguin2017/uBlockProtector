@@ -671,24 +671,6 @@ if (a.domCmp(["hentaihaven.org"])) {
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/76
     a.noAccess("desktop_variants");
 }
-if (a.domCmp(["debridnet.com"])) {
-    /*
-    a.ready(() => {
-        $("script[src*='clksite.com']").parent().text(`Enter a link below and press "Start":`);
-    });
-    */
-    const re = /\.height\(\) < \d+/;
-    a.beforeScript((script) => {
-        if (!script.textContent) {
-            return;
-        }
-        script.textContent = script.textContent.replace("location.href = 'http://debridnet.com/ad-blocker';", "");
-        if (script.textContent.trim().startsWith("$(window).load(function(){")) {
-            script.textContent = script.textContent.replace(re, " && false");
-        }
-    });
-    a.timewarp("setTimeout", a.matchMethod.RegExp, /^\d+000$/, 0.2);
-}
 if (a.domCmp(["bluesatoshi.com"])) {
     a.css("#test { height:280px; }");
 }
