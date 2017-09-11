@@ -4,11 +4,11 @@
 if (a.domCmp(["socketloop.com"])) {
     a.readOnly("epmads_block", false);
     a.readOnly("DMAds", true);
-    a.antiCollapse("innerHTML", (ignored, val) => {
-        const realVal = val.trim();
-        return !realVal || realVal === "<br>";
-    });
+    a.filter("fetch", a.matchMethod.RegExp, /^(?:http|\/\/)/);
     /*
+    a.antiCollapse("innerHTML", (ignored, val) => {
+        return !realVal.trim();
+    });
     a.antiCollapse("innerText", (ignored, val) => {
         return !val.trim();
     });
@@ -41,10 +41,6 @@ if (a.domCmp(["socketloop.com"])) {
                 });
             }
         });
-    });
-    a.inject(() => {
-        "use strict";
-        delete window.fetch;
     });
 }
 /*
