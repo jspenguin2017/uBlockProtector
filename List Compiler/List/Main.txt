@@ -696,3 +696,5 @@ prevention.com##script:inject(setTimeout-defuser.js, adblock)
 kshowes.net##script:inject(abort-current-inline-script.js, setTimeout, Im.offsetHeight<=0)
 kshowes.net###hide:style(display: block !important;)
 kshowes.net##input.buttonlink#contador
+! === moat.com
+moat.com##script:inject(setTimeout-defuser.js, adbCheckBlocker)
