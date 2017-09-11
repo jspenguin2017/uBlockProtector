@@ -2706,6 +2706,7 @@ if (a.domCmp(["ohmymag.com", "ohmymag.com.br", "ohmymag.de", "gentside.com", "ge
         init() { },
         removeAdblockPopup() { },
     }`);
+    /*
     a.inject(() => {
         "use strict";
         window.prebid = (i, f) => {
@@ -2713,6 +2714,7 @@ if (a.domCmp(["ohmymag.com", "ohmymag.com.br", "ohmymag.de", "gentside.com", "ge
         };
         window.prebid.init = () => { };
     });
+    */
 }
 if (a.domCmp(["digitalpoint.com"])) {
     a.ready(() => {
