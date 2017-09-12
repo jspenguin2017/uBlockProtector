@@ -303,6 +303,7 @@ if ( !abort ) {
             'chowhound.com',
             'chroniclelive.co.uk',
             'citypaper.com',
+            'cnet.com',
             'comingsoon.net',
             'computershopper.com',
             'courant.com',
