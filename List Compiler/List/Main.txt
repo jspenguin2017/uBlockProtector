@@ -700,4 +700,4 @@ kshowes.net##input.buttonlink#contador
 moat.com##script:inject(setTimeout-defuser.js, adbCheckBlocker)
 ! === imleagues.com
 @@||imleagues.com^$generichide
-||imleagues.com/spa/ads/show_ads.js$script,redirect=noopjs
+imleagues.com##script:inject(setTimeout-defuser.js, show_ads.js)

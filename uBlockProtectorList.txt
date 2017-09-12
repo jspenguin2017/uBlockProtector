@@ -428,7 +428,7 @@ kshowes.net###hide:style(display: block !important;)
 kshowes.net##input.buttonlink#contador
 moat.com##script:inject(setTimeout-defuser.js, adbCheckBlocker)
 @@||imleagues.com^$generichide
-||imleagues.com/spa/ads/show_ads.js$script,redirect=noopjs
+imleagues.com##script:inject(setTimeout-defuser.js, show_ads.js)
 @@||imasdk.googleapis.com/js/sdkloader/outstream.js$script,domain=ovar.io
 ||flashx.tv/checkembed.php
 @@||flashx1.tv/js/showad*.js$script
