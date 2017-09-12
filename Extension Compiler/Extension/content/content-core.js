@@ -56,7 +56,7 @@ a.on = (...args) => { addEventListener(...args); };
  */
 a.ready = (...args) => { addEventListener("DOMContentLoaded", ...args); }
 /**
- * Run function that is passed in on document-start, document-idle, and document-end.
+ * Run a function on document-start, document-end, and document-idle.
  * @function
  * @param {Special} ...args - ...args in addEventListener("...", ...args).
  */
@@ -967,7 +967,7 @@ a.generic = () => {
     a.readOnly("canRunAds", true);
     a.readOnly("canShowAds", true);
     a.readOnly("isAdBlockActive", false);
-    //---document-idle---
+    //---document-end---
     a.ready(() => {
         //AdBlock Alerter (WP)
         if ($("div.adb_overlay > div.adb_modal_img").length) {
@@ -1124,7 +1124,7 @@ a.generic = () => {
         } catch (err) {
             error("uBlock Protector failed to set up AdBlock Notify uBlock Origin detector defuser!");
         }
-        //---document-idle---
+        //---document-end---
         window.addEventListener("DOMContentLoaded", () => {
             //AdBlock Detector (XenForo Rellect)
             if (window.XenForo && typeof window.XenForo.rellect === "object") {
