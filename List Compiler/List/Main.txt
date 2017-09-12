@@ -698,3 +698,6 @@ kshowes.net###hide:style(display: block !important;)
 kshowes.net##input.buttonlink#contador
 ! === moat.com
 moat.com##script:inject(setTimeout-defuser.js, adbCheckBlocker)
+! === imleagues.com
+@@||imleagues.com^$generichide
+||imleagues.com/spa/ads/show_ads.js$script,redirect=noopjs
