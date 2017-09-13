@@ -1442,7 +1442,7 @@ a.generic.Adfly = () => {
             }
             //Decode URL
             let var1 = "", var2 = "";
-            for (let i = 0; i < encodedURL.length; ++i) {
+            for (let i = 0; i < encodedURL.length; i++) {
                 if (i % 2 === 0) {
                     var1 = var1 + encodedURL.charAt(i);
                 } else {
@@ -1456,7 +1456,7 @@ a.generic.Adfly = () => {
                         if (isDigit.test(data[ii])) {
                             const temp = parseInt(data[i]) ^ parseInt(data[ii]);
                             if (temp < 10) {
-                                data[ii] = temp.toString();
+                                data[i] = temp.toString();
                             }
                             i = ii;
                             break;
@@ -1466,11 +1466,6 @@ a.generic.Adfly = () => {
             }
             data = data.join("");
             const decodedURL = window.atob(data).slice(16, -16);
-
-            //DEBUG ONLY
-            console.log(decodedURL);
-            debugger;
-
             //Redirect
             window.stop();
             window.onbeforeunload = null;
@@ -1490,12 +1485,7 @@ a.generic.Adfly = () => {
                             if (typeof value === "string") {
                                 handler(value);
                             }
-                        } catch (err) {
-                            
-                            //DEBUG ONLY
-                            console.log(err);
-                            
-                        }
+                        } catch (err) { }
                     }
                     //In case this is not an Adfly page, this variable must be functional
                     val = value;
