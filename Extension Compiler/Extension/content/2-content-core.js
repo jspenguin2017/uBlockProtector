@@ -1438,11 +1438,6 @@ a.generic.Adfly = () => {
                 //This is not an Adfly page
                 return;
             }
-            //Some checking
-            const index = encodedURL.indexOf("!HiTommy");
-            if (index > -1) {
-                encodedURL = encodedURL.substring(0, index);
-            }
             //Decode URL
             let var1 = "", var2 = "";
             for (let i = 0; i < encodedURL.length; ++i) {
@@ -1456,14 +1451,11 @@ a.generic.Adfly = () => {
             if (window.location.hash) {
                 decodedURL += location.hash;
             }
-            //Make sure the URL is not obviously bad
-            if (decodedURL.length > 3 && decodedURL.includes(".")) {
-                //Stop the window
-                window.stop();
-                //Redirect
-                window.onbeforeunload = null;
-                window.location.href = decodedURL;
-            }
+            //Stop the window
+            window.stop();
+            //Redirect
+            window.onbeforeunload = null;
+            window.location.href = decodedURL;
         };
         //Setup variable hijacker
         try {
