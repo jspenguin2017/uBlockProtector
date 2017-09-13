@@ -120,7 +120,6 @@ live.com##div:if(:scope > div > span:has-text(an ad blocker))
 ||adv.wp.pl/$media,redirect=noopmp3-0.1s,important
 ||static-pilot.wp.pl/static/assets/js/ads.js$xmlhttprequest,redirect=noopjs
 filez.tv###adblockinfo
-@@||urlex.org^$generichide
 @@||video.gazeta.pl/cdn/ads/ad/banner/_adsense_/_adserver/_adview_.ad.json$xmlhttprequest,first-party
 ||tribdss.com/meter/assets$script,domain=www.latimes.com
 *$xmlhttprequest,domain=thewindowsclub.com
@@ -156,12 +155,9 @@ animmex.*##a[href^="https://forum.animmex.com/viewtopic.php"]
 ||flakyfeast.com^$domain=gry.pl
 pixiv.net##.popular-introduction-block
 youtube.com###companion
-@@||linkneverdie.com^$generichide
 linkneverdie.com##script:inject(setTimeout-defuser.js, #wrapper)
 pogdesign.co.uk##.replace
 ||p207208.clksite.com^$subdocument,redirect=noopframe,domain=ally.sh|al.ly
-@@||ally.sh^$generichide
-@@||al.ly^$generichide
 ally.sh,al.ly##script:inject(popads.net.js)
 ||hackintosh.*/donate/donate.php
 hackintosh.computer##.adsbygoogle
@@ -185,11 +181,9 @@ gelbooru.com#@#center > a[href]
 ||assets.gelbooru.com/r18/
 ||gelbooru.com/script/application.js.php$important
 ||thedoujin.com/bload.php
-@@||ff14angler.com^$generichide
 ||games.softgames.de/assets/showads.js$script,redirect=noopjs
 ||softgames.de/sg-mc.js*$script,redirect=noopjs
 ||bidvertiser.com$important,domain=exrapidleech.info
-@@||atresplayer.com^$generichide
 ||broadcastbed.com^$domain=mmo-champion.com
 bracknellnews.co.uk##script:inject(abort-on-property-write.js, _sp_)
 u2s.io,l2s.io,linkhits.us#@#.myTestAd
@@ -200,7 +194,6 @@ pwn.pl,vendiscuss.net##script:inject(abort-on-property-read.js, adblock)
 afreesms.com##script:inject(noeval.js)
 ||tiptonvillepylesville.com^$domain=clubic.com
 animeid.io,jkanime.co,gogoanime.ch,chiaanime.co,animeflv.co##script:inject(setTimeout-defuser.js, #player)
-@@||comicallyincorrect.com^$generichide
 @@||comicincorrect.wpengine.netdna-cdn.com/wp-content/uploads/
 savetodrive.net##script:inject(setTimeout-defuser.js, ad)
 rarbgmirror.com,swfchan.net,swfchan.com,zippyshare.com##script:inject(abort-on-property-read.js, open)
@@ -213,7 +206,6 @@ shqiperiatv.com,albtvhd.com,tvshqiphd.com,www.balkanweb.com,cdn.livestream.com,l
 wordsense.eu##script:inject(setTimeout-defuser.js, ad, 2000)
 ||uol.com.br/*/detectadblock/$script,important
 ||jsuol.com.br/*/detectadblock.js$script,important,domain=uol.com.br
-@@||uol.com.br^$generichide
 uol.com.br##.bannersticky-top:has(div.ads-wrapper)
 */magnific-popup.js/*$domain=transparentcalifornia.com
 @@||yamvideo.com/pop1/jwplayer.js$domain=javsex.net
@@ -257,7 +249,6 @@ sznpaste.net##script:inject(abort-on-property-write.js, _pop)
 raptu.com##script:inject(noeval.js)
 @@||ajax.googleapis.com/ajax/libs/jquery/$script,domain=linkdrop.net
 leechgear.net###block_on
-@@||leech.ae^$generichide
 leech.ae##script:inject(abort-on-property-read.js, open)
 wiwo.de,handelsblatt.com##script:inject(abort-on-property-read.js, AdController)
 tvregionalna24.pl##.diablo-placeholder
@@ -275,7 +266,6 @@ themarker.com###ad-block-wrapper
 ||zeusnews.it/antiadb.js
 @@||static.ipornia.com^$image,domain=ipornia.hdzog.com
 hdzog.com##.msg-adblock.msg
-@@||ncaa.com^$generichide
 webcheats.com.br##script:inject(abort-on-property-read.js, can_run_ads)
 webcheats.com.br###bg_trasp
 totomi.co##script:inject(setInterval-defuser.js, /display/.test)
@@ -311,13 +301,10 @@ der-postillon.com###steady-adblock-overlay-container
 paksociety.com##.blocked
 ||fastly.net/mms-client.js$domain=cleveland.com
 ||fastly.net/messaging.js$domain=cleveland.com
-@@||viz.com^$generichide
-@@||hulu.com^$generichide
 couponcabin.com###adblocker-reminder
 @@||tubeninja.net/ads.js$first-party
 tlz.de##.ab-shader
 ||v.adfox.ru^$xmlhttprequest,redirect=nooptext,domain=1tv.ru
-@@||hells-hack.com^$generichide
 |https://$third-party,script,domain=uptobox.com|uptostream.com,badfilter
 1tiny.net##script:inject(abort-on-property-read.js, jQuery.ready)
 thevideo.me##.notification-adblock
@@ -338,7 +325,6 @@ klisza.org##.spu-box
 @@||womenshealthmag.com^$script,first-party
 ||mitele.es/vendor/adjs.js$xmlhttprequest,redirect=noopjs
 ||mitele.es/vendor/fuckadblock.js$xmlhttprequest,redirect=noopjs
-@@||mitele.es^$generichide
 ||player.ooyala.com/*/ad-plugin/$important,script,badfilter
 ||player.ooyala.com/*/ad-plugin/$important,script,domain=~mitele.es
 ||player.ooyala.com/*/ad-plugin/$important,script,domain=mitele.es,redirect=noopjs
@@ -346,7 +332,6 @@ virgilio.it##script:inject(abort-on-property-read.js, VVIDEO.adBlock)
 ||auroravid.to^$inline-script
 amarujala.com##script:inject(abort-on-property-read.js, call_adblocker)
 imagebam.com###hideifpossible
-@@||flooxer.com^$generichide
 ||oddreaders.com/wp-content/plugins/sociallocker-next-premium/
 sportspyder.com##script:inject(setTimeout-defuser.js, BlockerChecker)
 ||sportspyder.com/assets/application-$script,badfilter
@@ -356,7 +341,6 @@ kiss.com.tw#@##ads
 igeeksblog.com###quads-ad1_widget
 *$script,third-party,domain=linclik.com
 ||espresso.repubblica.it/pw/pw2-espressosfoglio.js
-@@||24opole.pl^$generichide
 net.hr#@#.reklama
 net.hr#@#.reklama1
 */adblock/*$domain=televisa.com|lasestrellas.tv
@@ -365,24 +349,20 @@ stol.it###block-message
 sledujufilmy.cz##.bottom-advert
 sledujufilmy.cz##.ads-position
 sledujufilmy.cz##.riding-banner
-@@||9anime.to^$generichide
 9anime.to,mycloud.to###jwa
 9anime.to###playerad:style(positon: absolute !important; top: -9999px !important; left: -9999px !important;)
 mmorpgitalia.it##.noticeContainer:has-text(ADBLOCK)
 insurancenewsnet.com,advisornews.com##script:inject(abort-on-property-read.js, adblock_detect)
-@@||gamestar.de^$generichide
 mmovie.it###advleft
 zeperfs.com##script:inject(noeval-if.js, AdBlock)
 iptvultra.com##script:inject(setTimeout-defuser.js, div.table_download)
 ||pcgames-download.com/wp-content/plugins/noadb-leftthenicemessage/
 grazia-magazin.de##.subNaviNotification:has-text(Adblocker)
-@@||gala.de^$generichide
 ||metin2bot.net/kontrol/adb.js
 @@||afdah.to/show-ad$first-party
 @@||vertamedia.com/assets/img/adimage.png$first-party
 receivesmsonline.net##script:inject(abort-current-inline-script.js, elms)
 rallye-magazin.de###billboardattention
-@@||main-echo.de^$generichide
 schwarzwaelder-bote.de###blocker-note
 wer-weiss-was.de###hint
 peugeot-metropolis.de###displaywise
@@ -391,30 +371,21 @@ peugeot-metropolis.de###displaywise
 t3n.de#@##adsbox
 ||cloudfront.net^$script,domain=wateranik.com
 ||thepiratebay.org^$inline-script
-@@||lmss.vn^$generichide
-@@||yiv.com^$generichide
 yiv.com###LeftAdDiv
 yiv.com###RightAdDiv
-@@||4j.com^$generichide
 4j.com###game_bottom_ad
 4j.com###game_top_ad
 agar.io###advertisement
 ||dolldivine.com/images/fairy-preview.jpg
 gulmeklazim.com##script:inject(setTimeout-defuser.js, adblock)
 peugeot-metropolis.de##script:inject(abort-current-inline-script.js, $, #gandalfads)
-@@||freedomoutpost.com^$generichide
-@@||libertyunyielding.com^$generichide
 ||cloudfront.net^$script,domain=eagerse.com
-@@||streamplay.gdn^$generichide
-@@||cbs.com^$generichide
 warforum.cz###popwrapper
 ||ad.kisscartoon.io^$important
-@@||randaris-anime.net^$generichide
 randaris-anime.net##.advert1
 randaris-anime.net##.adblock-box
 reviewmeta.com##.ad_gu_tr
 androidsage.com##script:inject(abort-on-property-read.js, blckad)
-@@||globalbesthosting.com^$generichide
 stern.de##script:inject(abort-on-property-read.js, _sp_.mms)
 cwseed.com##script:inject(abort-on-property-read.js, wc.url)
 ||wasabisyrup.com/template/plugin02.js
@@ -430,6 +401,35 @@ nontonanime.org##nav.navbar + div.banner > a[href^="https://goo.gl/"]
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide
 @@||behindwoods.com^$generichide
+@@||globalbesthosting.com^$generichide
+@@||randaris-anime.net^$generichide
+@@||cbs.com^$generichide
+@@||streamplay.gdn^$generichide
+@@||libertyunyielding.com^$generichide
+@@||freedomoutpost.com^$generichide
+@@||4j.com^$generichide
+@@||yiv.com^$generichide
+@@||lmss.vn^$generichide
+@@||main-echo.de^$generichide
+@@||gala.de^$generichide
+@@||gamestar.de^$generichide
+@@||9anime.to^$generichide
+@@||24opole.pl^$generichide
+@@||flooxer.com^$generichide
+@@||mitele.es^$generichide
+@@||hells-hack.com^$generichide
+@@||viz.com^$generichide
+@@||hulu.com^$generichide
+@@||ncaa.com^$generichide
+@@||leech.ae^$generichide
+@@||uol.com.br^$generichide
+@@||comicallyincorrect.com^$generichide
+@@||atresplayer.com^$generichide
+@@||ff14angler.com^$generichide
+@@||ally.sh^$generichide
+@@||al.ly^$generichide
+@@||linkneverdie.com^$generichide
+@@||urlex.org^$generichide
 @@||imasdk.googleapis.com/js/sdkloader/outstream.js$script,domain=ovar.io
 ||flashx.tv/checkembed.php
 @@||flashx1.tv/js/showad*.js$script

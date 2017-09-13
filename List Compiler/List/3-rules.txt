@@ -121,8 +121,6 @@ live.com##div:if(:scope > div > span:has-text(an ad blocker))
 ||static-pilot.wp.pl/static/assets/js/ads.js$xmlhttprequest,redirect=noopjs
 ! === NSFW! zone-anime.net
 filez.tv###adblockinfo
-! === urlex.org
-@@||urlex.org^$generichide
 ! === video.gazeta.pl
 @@||video.gazeta.pl/cdn/ads/ad/banner/_adsense_/_adserver/_adview_.ad.json$xmlhttprequest,first-party
 ! === latimes.com - Thanks to okiehsch
@@ -190,7 +188,6 @@ pixiv.net##.popular-introduction-block
 youtube.com###companion
 ! === linkneverdie.com
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/146
-@@||linkneverdie.com^$generichide
 linkneverdie.com##script:inject(setTimeout-defuser.js, #wrapper)
 ! === pogdesign.co.uk
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/149
@@ -198,8 +195,6 @@ pogdesign.co.uk##.replace
 ! === ally.sh, al.ly
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/148
 ||p207208.clksite.com^$subdocument,redirect=noopframe,domain=ally.sh|al.ly
-@@||ally.sh^$generichide
-@@||al.ly^$generichide
 ally.sh,al.ly##script:inject(popads.net.js)
 ! === hackintosh.zone, hackintosh.computer - Thanks to F4z
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/35
@@ -233,16 +228,11 @@ gelbooru.com#@#center > a[href]
 ||assets.gelbooru.com/r18/
 ||gelbooru.com/script/application.js.php$important
 ||thedoujin.com/bload.php
-! === ff14angler.com
-@@||ff14angler.com^$generichide
 ! === games.softgames.de
 ||games.softgames.de/assets/showads.js$script,redirect=noopjs
 ||softgames.de/sg-mc.js*$script,redirect=noopjs
 ! === exrapidleech.info
 ||bidvertiser.com$important,domain=exrapidleech.info
-! === atresplayer.com
-! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/180
-@@||atresplayer.com^$generichide
 ! === mmo-champion.com
 ||broadcastbed.com^$domain=mmo-champion.com
 ! === bracknellnews.co.uk
@@ -262,7 +252,6 @@ afreesms.com##script:inject(noeval.js)
 ! === animeid.io and similar domains
 animeid.io,jkanime.co,gogoanime.ch,chiaanime.co,animeflv.co##script:inject(setTimeout-defuser.js, #player)
 ! === comicallyincorrect.com
-@@||comicallyincorrect.com^$generichide
 @@||comicincorrect.wpengine.netdna-cdn.com/wp-content/uploads/
 ! === savetodrive.net
 savetodrive.net##script:inject(setTimeout-defuser.js, ad)
@@ -282,7 +271,6 @@ wordsense.eu##script:inject(setTimeout-defuser.js, ad, 2000)
 ! === uol.com.br
 ||uol.com.br/*/detectadblock/$script,important
 ||jsuol.com.br/*/detectadblock.js$script,important,domain=uol.com.br
-@@||uol.com.br^$generichide
 uol.com.br##.bannersticky-top:has(div.ads-wrapper)
 ! === transparentcalifornia.com
 */magnific-popup.js/*$domain=transparentcalifornia.com
@@ -364,7 +352,6 @@ raptu.com##script:inject(noeval.js)
 ! === leechgear.net
 leechgear.net###block_on
 ! === leech.ae
-@@||leech.ae^$generichide
 leech.ae##script:inject(abort-on-property-read.js, open)
 ! === wiwo.de
 wiwo.de,handelsblatt.com##script:inject(abort-on-property-read.js, AdController)
@@ -397,9 +384,6 @@ themarker.com###ad-block-wrapper
 ! === ipornia.hdzog.com
 @@||static.ipornia.com^$image,domain=ipornia.hdzog.com
 hdzog.com##.msg-adblock.msg
-! === ncaa.com
-! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/344
-@@||ncaa.com^$generichide
 ! === webcheats.com.br
 webcheats.com.br##script:inject(abort-on-property-read.js, can_run_ads)
 webcheats.com.br###bg_trasp
@@ -456,9 +440,6 @@ paksociety.com##.blocked
 ! === cleveland.com
 ||fastly.net/mms-client.js$domain=cleveland.com
 ||fastly.net/messaging.js$domain=cleveland.com
-! === viz.com, hulu.com
-@@||viz.com^$generichide
-@@||hulu.com^$generichide
 ! === couponcabin.com
 couponcabin.com###adblocker-reminder
 ! === tubeninja.net
@@ -467,8 +448,6 @@ couponcabin.com###adblocker-reminder
 tlz.de##.ab-shader
 ! === 1tv.ru
 ||v.adfox.ru^$xmlhttprequest,redirect=nooptext,domain=1tv.ru
-! === hells-hack.com
-@@||hells-hack.com^$generichide
 ! === uptobox.com, uptostream.com
 |https://$third-party,script,domain=uptobox.com|uptostream.com,badfilter
 ! === 1tiny.net
@@ -506,7 +485,6 @@ klisza.org##.spu-box
 ! === mitele.es
 ||mitele.es/vendor/adjs.js$xmlhttprequest,redirect=noopjs
 ||mitele.es/vendor/fuckadblock.js$xmlhttprequest,redirect=noopjs
-@@||mitele.es^$generichide
 ||player.ooyala.com/*/ad-plugin/$important,script,badfilter
 ||player.ooyala.com/*/ad-plugin/$important,script,domain=~mitele.es
 ||player.ooyala.com/*/ad-plugin/$important,script,domain=mitele.es,redirect=noopjs
@@ -518,8 +496,6 @@ virgilio.it##script:inject(abort-on-property-read.js, VVIDEO.adBlock)
 amarujala.com##script:inject(abort-on-property-read.js, call_adblocker)
 ! === imagebam.com
 imagebam.com###hideifpossible
-! === flooxer.com
-@@||flooxer.com^$generichide
 ! === oddreaders.com
 ||oddreaders.com/wp-content/plugins/sociallocker-next-premium/
 ! === sportspyder.com
@@ -537,8 +513,6 @@ igeeksblog.com###quads-ad1_widget
 *$script,third-party,domain=linclik.com
 ! === espresso.repubblica.it
 ||espresso.repubblica.it/pw/pw2-espressosfoglio.js
-! === 24opole.pl
-@@||24opole.pl^$generichide
 ! === net.hr
 net.hr#@#.reklama
 net.hr#@#.reklama1
@@ -553,15 +527,12 @@ sledujufilmy.cz##.bottom-advert
 sledujufilmy.cz##.ads-position
 sledujufilmy.cz##.riding-banner
 ! === 9anime.to
-@@||9anime.to^$generichide
 9anime.to,mycloud.to###jwa
 9anime.to###playerad:style(positon: absolute !important; top: -9999px !important; left: -9999px !important;)
 ! === mmorpgitalia.it
 mmorpgitalia.it##.noticeContainer:has-text(ADBLOCK)
 ! === insurancenewsnet.com, advisornews.com
 insurancenewsnet.com,advisornews.com##script:inject(abort-on-property-read.js, adblock_detect)
-! === gamestar.de
-@@||gamestar.de^$generichide
 ! === mmovie.it
 mmovie.it###advleft
 ! === zeperfs.com
@@ -572,8 +543,6 @@ iptvultra.com##script:inject(setTimeout-defuser.js, div.table_download)
 ||pcgames-download.com/wp-content/plugins/noadb-leftthenicemessage/
 ! === grazia-magazin.de
 grazia-magazin.de##.subNaviNotification:has-text(Adblocker)
-! === gala.de
-@@||gala.de^$generichide
 ! === dreamfancy.org, trhileci.com
 ||metin2bot.net/kontrol/adb.js
 ! === afdah.to
@@ -584,8 +553,6 @@ grazia-magazin.de##.subNaviNotification:has-text(Adblocker)
 receivesmsonline.net##script:inject(abort-current-inline-script.js, elms)
 ! === rallye-magazin.de
 rallye-magazin.de###billboardattention
-! === main-echo.de
-@@||main-echo.de^$generichide
 ! === schwarzwaelder-bote.de
 schwarzwaelder-bote.de###blocker-note
 ! === wer-weiss-was.de
@@ -601,14 +568,10 @@ t3n.de#@##adsbox
 ! === thepiratebay.org
 ||cloudfront.net^$script,domain=wateranik.com
 ||thepiratebay.org^$inline-script
-! === lmss.vn
-@@||lmss.vn^$generichide
 ! === yiv.com
-@@||yiv.com^$generichide
 yiv.com###LeftAdDiv
 yiv.com###RightAdDiv
 ! === 4j.com
-@@||4j.com^$generichide
 4j.com###game_bottom_ad
 4j.com###game_top_ad
 ! === agar.io
@@ -619,30 +582,19 @@ agar.io###advertisement
 gulmeklazim.com##script:inject(setTimeout-defuser.js, adblock)
 ! === peugeot-metropolis.de
 peugeot-metropolis.de##script:inject(abort-current-inline-script.js, $, #gandalfads)
-! === freedomoutpost.com
-@@||freedomoutpost.com^$generichide
-! === libertyunyielding.com
-@@||libertyunyielding.com^$generichide
 ! === streamplay.gdn
 ||cloudfront.net^$script,domain=eagerse.com
-@@||streamplay.gdn^$generichide
-! === cbs.com
-@@||cbs.com^$generichide
 ! === warforum.cz
 warforum.cz###popwrapper
 ! === kisscartoon.io
 ||ad.kisscartoon.io^$important
 ! === randaris-anime.net
-@@||randaris-anime.net^$generichide
 randaris-anime.net##.advert1
 randaris-anime.net##.adblock-box
 ! === reviewmeta.com
 reviewmeta.com##.ad_gu_tr
 ! === androidsage.com
 androidsage.com##script:inject(abort-on-property-read.js, blckad)
-! === globalbesthosting.com
-! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/584
-@@||globalbesthosting.com^$generichide
 ! === stern.de
 stern.de##script:inject(abort-on-property-read.js, _sp_.mms)
 ! === cwseed.com
