@@ -18,7 +18,7 @@ const source = "https://raw.githubusercontent.com/gorhill/uBO-Extra/master/conte
  * The output file path, expects the current working directory is "Git Root/Extension Compiler".
  * @const {string}
  */
-const output = "./Extension/content/ubo-extra.js";
+const output = "./Extension/content/5-ubo-extra.js";
 /**
  * The write stream of the output.
  * @const {Stream}
