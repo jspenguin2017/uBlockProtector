@@ -46,7 +46,7 @@ global.document.domain = "localhost";
 let a = {};
 a.debugMode = false;
 //Load the core
-eval(readFileSync("./Extension Compiler/Extension/content/content-core.js", "utf8"));
+eval(readFileSync("./Extension Compiler/Extension/content/2-content-core.js", "utf8"));
 
 //a.cookie
 //USE global.document.cookie

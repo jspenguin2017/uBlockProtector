@@ -43,9 +43,9 @@ a.domInc = (domList, noErr) => {
 }
 
 //Test
-eval(readFileSync("./Extension Compiler/Extension/content/content-rules-common.js", "utf8"));
-eval(readFileSync("./Extension Compiler/Extension/content/content-rules-specific.js", "utf8"));
-eval(readFileSync("./Extension Compiler/Extension/content/content-rules-sticky.js", "utf8"));
+eval(readFileSync("./Extension Compiler/Extension/content/3-content-rules-1-common.js", "utf8"));
+eval(readFileSync("./Extension Compiler/Extension/content/3-content-rules-2-specific.js", "utf8"));
+eval(readFileSync("./Extension Compiler/Extension/content/3-content-rules-3-sticky.js", "utf8"));
 console.log("Calls to a.domCmp() and a.domInc() are valid.");
 
 console.log("=====2-test-3-content-rules.node.js ends=====");
