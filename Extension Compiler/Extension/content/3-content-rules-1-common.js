@@ -58,7 +58,7 @@
         if (a.domCmp([], true)) {
             console.log("This domain is excluded from Adfly bypasser.");
         } else {
-            //a.generic.Adfly();
+            a.debugMode && a.generic.Adfly();
         }
         //NoAdBlock
         if (a.domCmp([], true)) {

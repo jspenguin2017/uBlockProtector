@@ -1433,6 +1433,8 @@ a.generic.Adfly = () => {
     //Based on AdsBypasser
     //License: https://github.com/adsbypasser/adsbypasser/blob/master/LICENSE
     a.inject(() => {
+        "use strict";
+        const isDigit = /^\d$/;
         const handler = (encodedURL) => {
             if (window.document.body) {
                 //This is not an Adfly page
@@ -1447,13 +1449,30 @@ a.generic.Adfly = () => {
                     var2 = encodedURL.charAt(i) + var2;
                 }
             }
-            let decodedURL = window.atob(var1 + var2).substring(2);
-            if (window.location.hash) {
-                decodedURL += location.hash;
+            let data = (var1 + var2).split("");
+            for (let i = 0; i < data.length; i++) {
+                if (isDigit.test(data[i])) {
+                    for (let ii = i + 1; ii < data.length; ii++) {
+                        if (isDigit.test(data[ii])) {
+                            const temp = parseInt(data[i]) ^ parseInt(data[ii]);
+                            if (temp < 10) {
+                                data[ii] = temp.toString();
+                            }
+                            i = ii;
+                            break;
+                        }
+                    }
+                }
             }
-            //Stop the window
-            window.stop();
+            data = data.join("");
+            const decodedURL = window.atob(data).slice(16, -16);
+
+            //DEBUG ONLY
+            console.log(decodedURL);
+            debugger;
+
             //Redirect
+            window.stop();
             window.onbeforeunload = null;
             window.location.href = decodedURL;
         };
@@ -1471,7 +1490,12 @@ a.generic.Adfly = () => {
                             if (typeof value === "string") {
                                 handler(value);
                             }
-                        } catch (err) { }
+                        } catch (err) {
+                            
+                            //DEBUG ONLY
+                            console.log(err);
+                            
+                        }
                     }
                     //In case this is not an Adfly page, this variable must be functional
                     val = value;
