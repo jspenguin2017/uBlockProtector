@@ -3,9 +3,9 @@
   "background": {
     "scripts": [
       "common.js",
-      "background/background-core.js",
-      "background/background-rules.js",
-      "background/background-debug.js"
+      "background/1-background-core.js",
+      "background/2-background-rules.js",
+      "background/3-background-debug.js"
     ]
   },
   "browser_action": {
@@ -21,13 +21,13 @@
       "all_frames": true,
       "js": [
         "common.js",
-        "content/content-domlib.js",
-        "content/content-core.js",
-        "content/content-rules-common.js",
-        "content/content-rules-specific.js",
-        "content/content-rules-sticky.js",
-        "content/content-debug.js",
-        "content/ubo-extra.js"
+        "content/1-content-domlib.js",
+        "content/2-content-core.js",
+        "content/3-content-rules-1-common.js",
+        "content/3-content-rules-2-specific.js",
+        "content/3-content-rules-3-sticky.js",
+        "content/4-content-debug.js",
+        "content/5-ubo-extra.js"
       ],
       "match_about_blank": true,
       "matches": [
@@ -61,5 +61,5 @@
     "webRequest",
     "webRequestBlocking"
   ],
-  "version": "11.278"
+  "version": "11.279"
 }

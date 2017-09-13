@@ -1,36 +1,3 @@
-! =======================
-! ===== Integration =====
-! =======================
-! These are filters for integration with uBlock Protector Extension, all whitelists in this section are handled by uBlock Protector Extension
-! === Installation test
-jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
-! === Callback API placeholder, must be blocked, this file does not actually exist
-|https://jspenguin.com/API/uBlockProtector/Solutions/Blocked.php$important
-! === Files under this folder are blocked unless whitelisted, this folder does not actually exist
-|https://jspenguin.com/API/uBlockProtector/Solutions/
-@@|https://jspenguin.com/API/uBlockProtector/Solutions/MoatFreeWheelJSPEM.js|$script
-! === Generic
-@@|https://*.moatads.com/*/MoatFreeWheelJSPEM.js*$script
-@@|https://ads.korri.fr/index.js|$script
-@@|http://*.medianetworkinternational.com/js/advertisement.js*$script
-@@|https://imasdk.googleapis.com/js/sdkloader/ima3.js*$script
-@@|http://imasdk.googleapis.com/js/sdkloader/ima3.js*$script
-! === NoAdBlock
-hackintosh.zone,clubedohardware.com.br,itavisen.no#@#script:inject(abort-on-property-read.js, CloudflareApps.installs)
-! === ncaa.com, pga.com
-@@|http://mmod.v.fwmrm.net/ad/g/*$script,domain=ncaa.com
-@@|https://mmod.v.fwmrm.net/ad/g/*$script,domain=ncaa.com
-@@|http://bea4.v.fwmrm.net/ad/g/*$script,domain=pga.com
-@@|https://bea4.v.fwmrm.net/ad/g/*$script,domain=pga.com
-! === cbsnews.com
-! Their poster logic is broken, but the error is somehow suppressed by the original IMA SDK
-||cbsnews.com/news/*/[object%20object]$image,redirect=1x1-transparent.gif
-||cbsnews.com/news/*/undefined$image,redirect=1x1-transparent.gif
-! === streamable.com
-! This website works better with the IMA SDK blocked
-||imasdk.googleapis.com/js/sdkloader/ima3.js$script,important,domain=streamable.com
-! === bild.de
-bild.de#@#script:inject(abort-on-property-read.js, de.bild.cmsKonfig.a.b.a)
 ! ======================
 ! ===== Missed Ads =====
 ! ======================
@@ -105,11 +72,6 @@ bild.de#@#script:inject(abort-on-property-read.js, de.bild.cmsKonfig.a.b.a)
 @@||foilpolyth.com^$domain=tf1.fr,badfilter
 ||foilpolyth.com^$xmlhttprequest,redirect=nooptext,important,domain=tf1.fr
 ||louccrossc.com^$xmlhttprequest,redirect=nooptext,important,domain=tf1.fr
-! === indiatimes.com
-indiatimes.com###append_overlay_photo_ads
-! === nontonanime.org
-nontonanime.org##nav.navbar + div.banner > a[href^="https://goo.gl/"]
-||eurifsiooyof.bid^$script,third-party
 ! ============================
 ! ===== Common Solutions =====
 ! ============================
@@ -687,8 +649,6 @@ stern.de##script:inject(abort-on-property-read.js, _sp_.mms)
 cwseed.com##script:inject(abort-on-property-read.js, wc.url)
 ! === wasabisyrup.com
 ||wasabisyrup.com/template/plugin02.js
-! === behindwoods.com
-@@||behindwoods.com^$generichide
 ! === prevention.com
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/589
 prevention.com##script:inject(setTimeout-defuser.js, adblock)
@@ -698,6 +658,9 @@ kshowes.net###hide:style(display: block !important;)
 kshowes.net##input.buttonlink#contador
 ! === moat.com
 moat.com##script:inject(setTimeout-defuser.js, adbCheckBlocker)
-! === imleagues.com
-@@||imleagues.com^$generichide
 imleagues.com##script:inject(setTimeout-defuser.js, show_ads.js)
+! === indiatimes.com
+indiatimes.com###append_overlay_photo_ads
+! === nontonanime.org
+nontonanime.org##nav.navbar + div.banner > a[href^="https://goo.gl/"]
+||eurifsiooyof.bid^$script,third-party

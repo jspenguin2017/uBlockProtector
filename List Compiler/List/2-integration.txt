@@ -1,0 +1,33 @@
+! =======================
+! ===== Integration =====
+! =======================
+! These are filters for integration with uBlock Protector Extension, all whitelists in this section are handled by uBlock Protector Extension
+! === Installation test
+jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
+! === Callback API placeholder, must be blocked, this file does not actually exist
+|https://jspenguin.com/API/uBlockProtector/Solutions/Blocked.php$important
+! === Files under this folder are blocked unless whitelisted, this folder does not actually exist
+|https://jspenguin.com/API/uBlockProtector/Solutions/
+@@|https://jspenguin.com/API/uBlockProtector/Solutions/MoatFreeWheelJSPEM.js|$script
+! === Generic
+@@|https://*.moatads.com/*/MoatFreeWheelJSPEM.js*$script
+@@|https://ads.korri.fr/index.js|$script
+@@|http://*.medianetworkinternational.com/js/advertisement.js*$script
+@@|https://imasdk.googleapis.com/js/sdkloader/ima3.js*$script
+@@|http://imasdk.googleapis.com/js/sdkloader/ima3.js*$script
+! === NoAdBlock
+hackintosh.zone,clubedohardware.com.br,itavisen.no#@#script:inject(abort-on-property-read.js, CloudflareApps.installs)
+! === ncaa.com, pga.com
+@@|http://mmod.v.fwmrm.net/ad/g/*$script,domain=ncaa.com
+@@|https://mmod.v.fwmrm.net/ad/g/*$script,domain=ncaa.com
+@@|http://bea4.v.fwmrm.net/ad/g/*$script,domain=pga.com
+@@|https://bea4.v.fwmrm.net/ad/g/*$script,domain=pga.com
+! === cbsnews.com
+! Their poster logic is broken, but the error is somehow suppressed by the original IMA SDK
+||cbsnews.com/news/*/[object%20object]$image,redirect=1x1-transparent.gif
+||cbsnews.com/news/*/undefined$image,redirect=1x1-transparent.gif
+! === streamable.com
+! This website works better with the IMA SDK blocked
+||imasdk.googleapis.com/js/sdkloader/ima3.js$script,important,domain=streamable.com
+! === bild.de
+bild.de#@#script:inject(abort-on-property-read.js, de.bild.cmsKonfig.a.b.a)
