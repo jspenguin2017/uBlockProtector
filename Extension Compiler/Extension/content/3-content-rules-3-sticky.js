@@ -1,11 +1,29 @@
 //Content rules for sticky websites
 "use strict";
 
-if (a.domCmp(["socketloop.com"])) {
+if (a.debugMode && a.domCmp(["socketloop.com"])) {
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/366
     a.readOnly("epmads_block", false);
     a.readOnly("DMAds", true);
-    a.filter("fetch", a.matchMethod.RegExp, /^(?:http|\/\/)/);
+    a.inject(() => {
+        "use strict";
+        const _fetch = window.fetch;
+        const re = /^https?:\/\//;
+        const newFunc = (url, ...rest) => {
+            if (re.test(url)) {
+                return new window.Promise(() => {});
+            } else {
+                return _fetch.call(window, url, ...rest);
+            }
+        };
+        window.Object.defineProperty(window, "fetch", {
+            configurable: false,
+            set() {},
+            get() {
+                return newFunc;
+            },
+        });
+    });
     /*
     a.antiCollapse("innerHTML", (ignored, val) => {
         return !realVal.trim();
