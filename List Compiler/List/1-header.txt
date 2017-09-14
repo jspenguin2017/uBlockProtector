@@ -11,5 +11,9 @@
 ! ===== MUST READ ===== MUST READ ===== MUST READ ===== MUST READ ===== MUST READ ===== MUST READ =====
 ! This filter list is intended to be used with uBlock Protector Extension
 ! Visit my home page for more information: https://jspenguin2017.github.io/uBlockProtector/
+!
+! There are a few filters for the domain jspenguin.com, those are placeholder paths, no requests will
+! ever be sent there if you have properly installed uBlock Protector.
+! Do not visit those paths manually as I do log access to my server.
 ! ===== MUST READ ===== MUST READ ===== MUST READ ===== MUST READ ===== MUST READ ===== MUST READ =====
 !
