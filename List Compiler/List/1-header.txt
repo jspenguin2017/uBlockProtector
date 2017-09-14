@@ -14,6 +14,6 @@
 !
 ! There are a few filters for the domain jspenguin.com, those are placeholder paths, no requests will
 ! ever be sent there if you have properly installed uBlock Protector.
-! Do not visit those paths manually as I do log access to my server.
+! Do not visit those paths manually, my server will log your access but will not send a response.
 ! ===== MUST READ ===== MUST READ ===== MUST READ ===== MUST READ ===== MUST READ ===== MUST READ =====
 !
