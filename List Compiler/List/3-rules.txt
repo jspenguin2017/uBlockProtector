@@ -618,3 +618,7 @@ nontonanime.org##nav.navbar + div.banner > a[href^="https://goo.gl/"]
 ||eurifsiooyof.bid^$script,third-party
 ! === lavozdealmeria.es
 ||lavozdealmeria.es/js/addblock.js
+! === all-in.de
+all-in.de###a_info
+! === greenocktelegraph.co.uk
+greenocktelegraph.co.uk##.dfp-top-ad-container

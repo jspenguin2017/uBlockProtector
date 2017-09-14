@@ -403,6 +403,8 @@ indiatimes.com###append_overlay_photo_ads
 nontonanime.org##nav.navbar + div.banner > a[href^="https://goo.gl/"]
 ||eurifsiooyof.bid^$script,third-party
 ||lavozdealmeria.es/js/addblock.js
+all-in.de###a_info
+greenocktelegraph.co.uk##.dfp-top-ad-container
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide
 @@||behindwoods.com^$generichide
@@ -435,6 +437,7 @@ nontonanime.org##nav.navbar + div.banner > a[href^="https://goo.gl/"]
 @@||al.ly^$generichide
 @@||linkneverdie.com^$generichide
 @@||urlex.org^$generichide
+@@||greenocktelegraph.co.uk^$generichide
 @@||imasdk.googleapis.com/js/sdkloader/outstream.js$script,domain=ovar.io
 ||flashx.tv/checkembed.php
 @@||flashx1.tv/js/showad*.js$script
