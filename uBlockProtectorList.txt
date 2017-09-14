@@ -402,6 +402,7 @@ imleagues.com##script:inject(setTimeout-defuser.js, show_ads.js)
 indiatimes.com###append_overlay_photo_ads
 nontonanime.org##nav.navbar + div.banner > a[href^="https://goo.gl/"]
 ||eurifsiooyof.bid^$script,third-party
+||lavozdealmeria.es/js/addblock.js
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide
 @@||behindwoods.com^$generichide

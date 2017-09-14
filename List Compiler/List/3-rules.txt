@@ -616,3 +616,5 @@ indiatimes.com###append_overlay_photo_ads
 ! === nontonanime.org
 nontonanime.org##nav.navbar + div.banner > a[href^="https://goo.gl/"]
 ||eurifsiooyof.bid^$script,third-party
+! === lavozdealmeria.es
+||lavozdealmeria.es/js/addblock.js
