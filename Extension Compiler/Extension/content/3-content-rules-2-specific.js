@@ -3406,3 +3406,14 @@ if (a.domCmp(["anonymousemail.me"])) {
         }
     });
 }
+if (a.domCmp(["timesofindia.indiatimes.com"])) {
+    a.ready(() => {
+        setTimeout(() => {
+            if (location.href.includes("interstitial")) {
+                a.cookie("nsIstial_Cook", "1");
+                a.cookie("ns", "1");
+                location.href = "https://timesofindia.indiatimes.com/";
+            }
+        }, 300);
+    });
+}
