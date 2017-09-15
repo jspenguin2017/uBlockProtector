@@ -113,6 +113,9 @@ if (a.domCmp(["hackintosh.zone", "elfqrin.com", "lne.es", "diariodemallorca.es",
 if (a.domCmp(["hackintosh.computer"])) {
     //Prevent article hidding
     a.noAccess("google_jobrunner");
+    a.readOnly("ai_adb_detected", (...args) => {
+        return window.ai_adb_undetected(...args);
+    });
 }
 if (a.domCmp(["tvregionalna24.pl"])) {
     a.inject(() => {

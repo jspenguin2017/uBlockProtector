@@ -632,12 +632,6 @@ cast4u.tv###video_ads_overdiv
 la-faculte.net#@##adsense
 @@||sascdn.com/config.js?nwid=$domain=femmeactuelle.fr
 @@||sascdn.com/diff/js/smart.js$domain=femmeactuelle.fr
-@@||hackintosh.zone^*/ads.js$script
-@@||hackintosh.computer^$generichide
-@@||hackintosh.computer/*ad$script
-@@||pagead2.googlesyndication.com^$script,domain=hackintosh.computer
-hackintosh.computer##.adscenter
-hackintosh.computer###googleads
 turbodebrideur.com#@##pubdirecte
 @@||openload.io^$elemhide
 @@||openload.co^$elemhide
