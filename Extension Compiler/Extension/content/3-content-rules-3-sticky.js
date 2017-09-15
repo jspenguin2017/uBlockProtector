@@ -12,7 +12,7 @@ if (a.domCmp(["socketloop.com"])) {
         const re2 = /^https?:\/\/[^/]*socketloop\.com\//;
         const newFunc = (url, ...rest) => {
             if (re1.test(url) && !re2.test(url)) {
-                return new window.Promise(() => { });
+                return new window.Promise((f) => { f(); });
             } else {
                 return _fetch.call(window, url, ...rest);
             }
