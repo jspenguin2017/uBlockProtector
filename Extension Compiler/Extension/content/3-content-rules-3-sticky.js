@@ -3,7 +3,7 @@
 
 if (a.domCmp(["socketloop.com"])) {
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/366
-    a.readOnly("epmads_block", false);
+    a.readOnly("epmads_block", true);
     a.readOnly("DMAds", true);
     a.inject(() => {
         "use strict";
