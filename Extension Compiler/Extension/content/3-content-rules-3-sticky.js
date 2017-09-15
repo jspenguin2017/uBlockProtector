@@ -86,6 +86,13 @@ if (a.domCmp(["lolalytics.com"])) {
     //https://github.com/AdguardTeam/AdguardFilters/issues/6280
     //https://github.com/AdguardTeam/AdguardFilters/issues/6576
     //https://github.com/uBlockOrigin/uAssets/issues/668
+    a.readOnly("md5", () => "5744e32ecdee8530adbe9359b5ef21ae");
+    a.ready(() => {
+        const data = ("1").repeat(928);
+        $(".adsbygoogle").each((elem) => {
+            elem.append(data);
+        });
+    });
     /*
     a.timewarp("setTimeout", a.matchMethod.matchAll, null, 600000); //Maximum delay is 24.8 days
     a.readOnly("cookie", undefined, "window.document");
@@ -96,7 +103,6 @@ if (a.domCmp(["lolalytics.com"])) {
             e.disconnect();
         }
     });
-    */
     a.ready(() => {
         let data;
         for (let i = 0; i < 50; i++) {
@@ -105,7 +111,6 @@ if (a.domCmp(["lolalytics.com"])) {
         $(".adsbygoogle").each((elem) => {
             elem.append(data);
         });
-        /*
         let data = [];
         $("style").each((elem) => {
             for (let i = 0; i < elem.sheet.rules.length; i++) {
@@ -120,6 +125,6 @@ if (a.domCmp(["lolalytics.com"])) {
         for (let i = 0; i < data.length; i++) {
             a.css(`${data[i]} { opacity:1; }`);
         }
-        */
     });
+    */
 }
