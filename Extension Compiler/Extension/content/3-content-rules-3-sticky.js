@@ -11,14 +11,14 @@ if (a.debugMode && a.domCmp(["socketloop.com"])) {
         const re = /^https?:\/\//;
         const newFunc = (url, ...rest) => {
             if (re.test(url)) {
-                return new window.Promise(() => {});
+                return new window.Promise(() => { });
             } else {
                 return _fetch.call(window, url, ...rest);
             }
         };
         window.Object.defineProperty(window, "fetch", {
             configurable: false,
-            set() {},
+            set() { },
             get() {
                 return newFunc;
             },
