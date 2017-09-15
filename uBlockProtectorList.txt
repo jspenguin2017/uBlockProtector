@@ -405,6 +405,7 @@ nontonanime.org##nav.navbar + div.banner > a[href^="https://goo.gl/"]
 all-in.de###a_info
 greenocktelegraph.co.uk##.dfp-top-ad-container
 ||ouo.press/js/pop.t.js
+linkkawy.com###exestylepopupdiv
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide
 @@||behindwoods.com^$generichide

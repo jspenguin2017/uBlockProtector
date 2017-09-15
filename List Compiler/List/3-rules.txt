@@ -623,3 +623,5 @@ all-in.de###a_info
 greenocktelegraph.co.uk##.dfp-top-ad-container
 ! === ouo.press
 ||ouo.press/js/pop.t.js
+! === linkkawy.com
+linkkawy.com###exestylepopupdiv
