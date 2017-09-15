@@ -199,7 +199,6 @@ ally.sh,al.ly##script:inject(popads.net.js)
 ! === hackintosh.zone, hackintosh.computer - Thanks to F4z
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/35
 ||hackintosh.*/donate/donate.php
-hackintosh.computer##.adsbygoogle
 ! === aftonbladet.se
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/163
 ||damoh.*^$media

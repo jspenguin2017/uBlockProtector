@@ -164,7 +164,6 @@ pogdesign.co.uk##.replace
 ||p207208.clksite.com^$subdocument,redirect=noopframe,domain=ally.sh|al.ly
 ally.sh,al.ly##script:inject(popads.net.js)
 ||hackintosh.*/donate/donate.php
-hackintosh.computer##.adsbygoogle
 ||damoh.*^$media
 ||ooul.tv/contrib/se-aftonbladet/aab/aftonbladet_plugin.js$script,redirect=noopjs,domain=aftonbladet.se
 ||ooul.tv/nocache/se-aftonbladet/aab/aftonbladet_config.js$script,redirect=noopjs,domain=aftonbladet.se
