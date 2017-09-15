@@ -113,8 +113,8 @@ sectorsatoshi-negro.website,sectorsatoshi-rosa.website,sectorsatoshi-verde.websi
 blockadblock.com,futbolchile.net,freeomovie.com,appdrop.net,skmedix.pl,yalujailbreak.net,cloudwebcopy.com,milaulas.com,tout-bon.com,sznpaste.net,linkdrop.net,themeslide.com##script:inject(bab-defuser.js)
 android-zone.ws,cmacapps.com,l2network.eu,animes-mangas-ddl.net,fuckingsession.com,klartext-ne.de,forumcoin.win,androidemulator.in,forumcoin.win##script:inject(bab-defuser.js)
 themarker.com,nachrichten.at##script:inject(abort-on-property-read.js, adblockDetector)
-megawarez.org,tipeo.net,compucalitv.com,intercambiosvirtuales.pro,tecmaxsoft.com##div.onp-sl-content:style(display: block !important;)
-megawarez.org,tipeo.net,compucalitv.com,intercambiosvirtuales.pro,tecmaxsoft.com##div.onp-sl-social-locker
+megawarez.org,tipeo.net,compucalitv.com,intercambiosvirtuales.pro,tecmaxsoft.com,descargatelocorp.com##div.onp-sl-content:style(display: block !important;)
+megawarez.org,tipeo.net,compucalitv.com,intercambiosvirtuales.pro,tecmaxsoft.com,descargatelocorp.com##div.onp-sl-social-locker
 anonymousemail.me##div.onp-sociallocker-content:style(display: block !important;)
 anonymousemail.me##div.onp-sociallocker
 descargatelocorp.com##div[id^="informer"]:style(display: block !important; opacity: 1 !important; max-height: none !important;)
