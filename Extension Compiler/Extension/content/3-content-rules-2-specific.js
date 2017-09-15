@@ -3121,7 +3121,7 @@ if (a.domCmp(["identi.li"])) {
 if (a.domCmp(["peliculasmega.info"])) {
     a.css(".linkhidder { display:none; } a[class*='hidden_'] { display:block; }");
 }
-if (a.domCmp(["acortar.net", "acortalo.net", "vellenger.com"])) {
+if (a.domCmp(["acortar.net", "acortalo.net", "vellenger.com", "infobae.net"])) {
     a.on("load", () => {
         a.inject(() => {
             "use strict";
