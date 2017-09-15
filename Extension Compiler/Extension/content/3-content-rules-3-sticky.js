@@ -1,16 +1,17 @@
 //Content rules for sticky websites
 "use strict";
 
-if (a.debugMode && a.domCmp(["socketloop.com"])) {
+if (a.domCmp(["socketloop.com"])) {
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/366
     a.readOnly("epmads_block", false);
     a.readOnly("DMAds", true);
     a.inject(() => {
         "use strict";
         const _fetch = window.fetch;
-        const re = /^https?:\/\//;
+        const re1 = /^https?:\/\//;
+        const re2 = /^https?:\/\/[^/]*socketloop\.com\//;
         const newFunc = (url, ...rest) => {
-            if (re.test(url)) {
+            if (re1.test(url) && !re2.test(url)) {
                 return new window.Promise(() => { });
             } else {
                 return _fetch.call(window, url, ...rest);
