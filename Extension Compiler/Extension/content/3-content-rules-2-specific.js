@@ -3418,3 +3418,6 @@ if (a.domCmp(["timesofindia.indiatimes.com"])) {
         }, 300);
     });
 }
+if (a.domCmp(["zimuku.net"])) {
+    a.readOnly("isAdEnabled", true);
+}
