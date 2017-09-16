@@ -32,3 +32,4 @@
 @@||urlex.org^$generichide
 @@||greenocktelegraph.co.uk^$generichide
 @@||getrelax.club^$generichide
+@@||mycinema.pro^$generichide

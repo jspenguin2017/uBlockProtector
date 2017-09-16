@@ -629,3 +629,5 @@ linkkawy.com###exestylepopupdiv
 homebank.free.fr###disablemessage
 ! === getrelax.club
 getrelax.club##.loaded-popup-wrapper
+! === mycinema.pro
+mycinema.pro##.adsbygoogle
