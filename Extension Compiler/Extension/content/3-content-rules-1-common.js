@@ -169,7 +169,7 @@ if (a.domCmp(["game-debate.com", "scan-mx.com", "onepiece-mx.net", "naruto-mx.ne
 if (a.domCmp(["freebitcoins.nx.tc", "getbitcoins.nx.tc"])) {
     a.readOnly("ad_block_test", () => false);
 }
-if (a.domCmp(["kissanime.io", "1movies.tv"])) {
+if (a.domCmp(["kissanime.io", "kisscartoon.es", "1movies.tv"])) {
     a.readOnly("check_adblock", true);
 }
 if (a.domCmp(["fourchette-et-bikini.fr", "meteocity.com"])) {
