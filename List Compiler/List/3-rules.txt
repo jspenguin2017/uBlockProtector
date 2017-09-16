@@ -625,3 +625,5 @@ greenocktelegraph.co.uk##.dfp-top-ad-container
 ||ouo.press/js/pop.t.js
 ! === linkkawy.com
 linkkawy.com###exestylepopupdiv
+! === homebank.free.fr
+homebank.free.fr###disablemessage
