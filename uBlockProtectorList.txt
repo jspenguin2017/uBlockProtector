@@ -407,6 +407,7 @@ greenocktelegraph.co.uk##.dfp-top-ad-container
 ||ouo.press/js/pop.t.js
 linkkawy.com###exestylepopupdiv
 homebank.free.fr###disablemessage
+getrelax.club##.loaded-popup-wrapper
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide
 @@||behindwoods.com^$generichide
@@ -440,6 +441,7 @@ homebank.free.fr###disablemessage
 @@||linkneverdie.com^$generichide
 @@||urlex.org^$generichide
 @@||greenocktelegraph.co.uk^$generichide
+@@||getrelax.club^$generichide
 @@||imasdk.googleapis.com/js/sdkloader/outstream.js$script,domain=ovar.io
 ||flashx.tv/checkembed.php
 @@||flashx1.tv/js/showad*.js$script

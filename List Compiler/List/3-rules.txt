@@ -627,3 +627,5 @@ greenocktelegraph.co.uk##.dfp-top-ad-container
 linkkawy.com###exestylepopupdiv
 ! === homebank.free.fr
 homebank.free.fr###disablemessage
+! === getrelax.club
+getrelax.club##.loaded-popup-wrapper

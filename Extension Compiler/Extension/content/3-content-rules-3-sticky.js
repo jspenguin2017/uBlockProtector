@@ -1,7 +1,7 @@
 //Content rules for sticky websites
 "use strict";
 
-if (a.domCmp(["socketloop.com"])) {
+if (a.debugMode && a.domCmp(["socketloop.com"])) {
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/366
     a.readOnly("epmads_block", true);
     a.readOnly("DMAds", true);
