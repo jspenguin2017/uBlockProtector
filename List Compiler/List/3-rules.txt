@@ -585,8 +585,8 @@ peugeot-metropolis.de##script:inject(abort-current-inline-script.js, $, #gandalf
 ||cloudfront.net^$script,domain=eagerse.com
 ! === warforum.cz
 warforum.cz###popwrapper
-! === kisscartoon.io
-||ad.kisscartoon.io^$important
+! === kisscartoon.io and related domains
+||ad.kisscartoon.*^$important
 ! === randaris-anime.net
 randaris-anime.net##.advert1
 randaris-anime.net##.adblock-box

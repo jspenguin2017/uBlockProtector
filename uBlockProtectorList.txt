@@ -384,7 +384,7 @@ gulmeklazim.com##script:inject(setTimeout-defuser.js, adblock)
 peugeot-metropolis.de##script:inject(abort-current-inline-script.js, $, #gandalfads)
 ||cloudfront.net^$script,domain=eagerse.com
 warforum.cz###popwrapper
-||ad.kisscartoon.io^$important
+||ad.kisscartoon.*^$important
 randaris-anime.net##.advert1
 randaris-anime.net##.adblock-box
 reviewmeta.com##.ad_gu_tr
