@@ -2107,9 +2107,11 @@ if (a.domCmp(["ally.sh", "al.ly", "croco.site"])) {
         window.open = null;
     });
 }
+/*
 if (a.domCmp(["nbc.com"])) {
     a.noAccess("mps");
 }
+*/
 if (a.domCmp(["filmyiseriale.net"])) {
     //https://github.com/jspenguin2017/uBlockProtector/issues/152
     a.ready(() => {
