@@ -63,26 +63,7 @@ if (a.debugMode && a.domCmp(["socketloop.com"])) {
         });
     });
 }
-if (a.domCmp(["debridnet.com"])) {
-    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/77
-    /*
-    a.ready(() => {
-        $("script[src*='clksite.com']").parent().text(`Enter a link below and press "Start":`);
-    });
-    */
-    const re = /\.height\(\)/g;
-    a.beforeScript((script) => {
-        if (script.textContent) {
-            script.textContent = script.textContent.replace(re, " && false && 0");
-        }
-    });
-    a.timewarp("setTimeout", a.matchMethod.RegExp, /^\d+000$/, 0.2);
-    for (let i = 0; i < 15; i++) {
-        const s = document.createElement("script");
-        document.documentElement.append(s);
-    }
-}
-if (a.domCmp(["lolalytics.com"])) {
+if (a.debugMode && a.domCmp(["lolalytics.com"])) {
     //https://github.com/AdguardTeam/AdguardFilters/issues/6280
     //https://github.com/AdguardTeam/AdguardFilters/issues/6576
     //https://github.com/uBlockOrigin/uAssets/issues/668
@@ -127,4 +108,23 @@ if (a.domCmp(["lolalytics.com"])) {
         }
     });
     */
+}
+if (a.domCmp(["debridnet.com"])) {
+    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/77
+    /*
+    a.ready(() => {
+        $("script[src*='clksite.com']").parent().text(`Enter a link below and press "Start":`);
+    });
+    */
+    const re = /\.height\(\)/g;
+    a.beforeScript((script) => {
+        if (script.textContent) {
+            script.textContent = script.textContent.replace(re, " && false && 0");
+        }
+    });
+    a.timewarp("setTimeout", a.matchMethod.RegExp, /^\d+000$/, 0.2);
+    for (let i = 0; i < 15; i++) {
+        const s = document.createElement("script");
+        document.documentElement.append(s);
+    }
 }
