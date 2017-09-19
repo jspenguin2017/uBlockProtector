@@ -410,6 +410,8 @@ linkkawy.com###exestylepopupdiv
 homebank.free.fr###disablemessage
 getrelax.club##.loaded-popup-wrapper
 mycinema.pro##.adsbygoogle
+okkazeo.com###ads
+digitalinformationworld.com##script:inject(abort-on-property-read.js, adsbygoogle)
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide
 @@||behindwoods.com^$generichide

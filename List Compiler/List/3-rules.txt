@@ -632,3 +632,7 @@ homebank.free.fr###disablemessage
 getrelax.club##.loaded-popup-wrapper
 ! === mycinema.pro
 mycinema.pro##.adsbygoogle
+! === okkazeo.com
+okkazeo.com###ads
+! === digitalinformationworld.com
+digitalinformationworld.com##script:inject(abort-on-property-read.js, adsbygoogle)

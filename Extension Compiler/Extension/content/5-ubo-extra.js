@@ -390,6 +390,7 @@ if ( !abort ) {
             'twincities.com',
             'vancouversun.com',
             'vibe.com',
+            'washingtonpost.com',
             'wikia.com',
             'windsorstar.com',
             'winnipegsun.com',
