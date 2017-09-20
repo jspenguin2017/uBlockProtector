@@ -386,6 +386,7 @@ if ( !abort ) {
             'timeanddate.com',
             'torontosun.com',
             'totalbeauty.com',
+            'trustedreviews.com',
             'tv.com',
             'twincities.com',
             'vancouversun.com',
