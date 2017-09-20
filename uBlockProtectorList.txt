@@ -168,7 +168,7 @@ ally.sh,al.ly##script:inject(popads.net.js)
 ||damoh.*^$media
 ||ooul.tv/contrib/se-aftonbladet/aab/aftonbladet_plugin.js$script,redirect=noopjs,domain=aftonbladet.se
 ||ooul.tv/nocache/se-aftonbladet/aab/aftonbladet_config.js$script,redirect=noopjs,domain=aftonbladet.se
-filechoco.net,keezmovies.com##script:inject(noeval.js)
+filechoco.net,keezmovies.com,raptu.com,afreesms.com##script:inject(noeval.js)
 ||rule34hentai.net^$inline-script
 rule34hentai.net###babasbmsgx
 playbb.me#@#div[style^="width:"]
@@ -195,7 +195,6 @@ u2s.io,l2s.io,linkhits.us#@#.myTestAd
 ||5g9quwq.com^$third-party
 telegraph.co.uk##.adblocker-message
 pwn.pl,vendiscuss.net##script:inject(abort-on-property-read.js, adblock)
-afreesms.com##script:inject(noeval.js)
 ||tiptonvillepylesville.com^$domain=clubic.com
 animeid.io,jkanime.co,gogoanime.ch,chiaanime.co,animeflv.co##script:inject(setTimeout-defuser.js, #player)
 @@||comicincorrect.wpengine.netdna-cdn.com/wp-content/uploads/
@@ -250,7 +249,6 @@ dailyuploads.net##script:inject(abort-on-property-read.js, popns)
 dailyuploads.net##script:inject(abort-on-property-read.js, adbClick)
 ||madisonross.com/adblock.html$subdocument
 sznpaste.net##script:inject(abort-on-property-write.js, _pop)
-raptu.com##script:inject(noeval.js)
 @@||ajax.googleapis.com/ajax/libs/jquery/$script,domain=linkdrop.net
 leechgear.net###block_on
 leech.ae##script:inject(abort-on-property-read.js, open)
@@ -359,6 +357,7 @@ mmorpgitalia.it##.noticeContainer:has-text(ADBLOCK)
 insurancenewsnet.com,advisornews.com##script:inject(abort-on-property-read.js, adblock_detect)
 mmovie.it###advleft
 zeperfs.com##script:inject(noeval-if.js, AdBlock)
+mashable.com##script:inject(noeval-if.js, adblock)
 iptvultra.com##script:inject(setTimeout-defuser.js, div.table_download)
 ||pcgames-download.com/wp-content/plugins/noadb-leftthenicemessage/
 grazia-magazin.de##.subNaviNotification:has-text(Adblocker)
