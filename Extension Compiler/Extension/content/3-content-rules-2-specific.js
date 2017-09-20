@@ -3423,3 +3423,12 @@ if (a.domCmp(["timesofindia.indiatimes.com"])) {
 if (a.domCmp(["zimuku.net"])) {
     a.readOnly("isAdEnabled", true);
 }
+if (a.domCmp(["cdn-surfline.com"])) {
+    a.filter("setTimeout", a.matchMethod.string, "ad blocker");
+    a.ready(() => {
+        a.inject(() => {
+            "use strict";
+            window.doFallBackonAdError = () => { };
+        });
+    });
+}
