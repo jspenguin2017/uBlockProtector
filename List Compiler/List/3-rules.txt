@@ -205,8 +205,8 @@ ally.sh,al.ly##script:inject(popads.net.js)
 ||damoh.*^$media
 ||ooul.tv/contrib/se-aftonbladet/aab/aftonbladet_plugin.js$script,redirect=noopjs,domain=aftonbladet.se
 ||ooul.tv/nocache/se-aftonbladet/aab/aftonbladet_config.js$script,redirect=noopjs,domain=aftonbladet.se
-! === filechoco.net, keezmovies.com
-filechoco.net,keezmovies.com##script:inject(noeval.js)
+! === filechoco.net, keezmovies.com, raptu.com, afreesms.com
+filechoco.net,keezmovies.com,raptu.com,afreesms.com##script:inject(noeval.js)
 ! === rule34hentai.net
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/177
 ||rule34hentai.net^$inline-script
@@ -245,8 +245,6 @@ u2s.io,l2s.io,linkhits.us#@#.myTestAd
 telegraph.co.uk##.adblocker-message
 ! === pwn.pl, vendiscuss.net
 pwn.pl,vendiscuss.net##script:inject(abort-on-property-read.js, adblock)
-! === afreesms.com
-afreesms.com##script:inject(noeval.js)
 ! === clubic.com
 ||tiptonvillepylesville.com^$domain=clubic.com
 ! === animeid.io and similar domains
@@ -345,8 +343,6 @@ dailyuploads.net##script:inject(abort-on-property-read.js, adbClick)
 ||madisonross.com/adblock.html$subdocument
 ! === sznpaste.net
 sznpaste.net##script:inject(abort-on-property-write.js, _pop)
-! === raptu.com
-raptu.com##script:inject(noeval.js)
 ! === linkdrop.net
 @@||ajax.googleapis.com/ajax/libs/jquery/$script,domain=linkdrop.net
 ! === leechgear.net
@@ -537,6 +533,8 @@ insurancenewsnet.com,advisornews.com##script:inject(abort-on-property-read.js, a
 mmovie.it###advleft
 ! === zeperfs.com
 zeperfs.com##script:inject(noeval-if.js, AdBlock)
+! === mashable.com
+mashable.com##script:inject(noeval-if.js, adblock)
 ! === iptvultra.com
 iptvultra.com##script:inject(setTimeout-defuser.js, div.table_download)
 ! === pcgames-download.com
