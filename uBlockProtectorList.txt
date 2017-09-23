@@ -412,6 +412,8 @@ getrelax.club##.loaded-popup-wrapper
 mycinema.pro##.adsbygoogle
 okkazeo.com###ads
 digitalinformationworld.com##script:inject(abort-on-property-read.js, adsbygoogle)
+@@||moat.com/creatives/advertiser/$first-party
+@@||moat.com/api/entity_report/advertiser/$first-party
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide
 @@||behindwoods.com^$generichide
