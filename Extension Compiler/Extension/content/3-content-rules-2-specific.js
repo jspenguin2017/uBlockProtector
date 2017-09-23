@@ -1678,7 +1678,7 @@ if (a.domCmp(["thebatavian.com"])) {
 if (a.domCmp(["zrabatowani.pl"])) {
     a.cookie("adblockAlert", "yes");
 }
-if (a.domCmp(["hanime.tv", "ah-me.com", "shortin.ga"])) {
+if (a.domCmp(["hanime.tv", "ah-me.com", "shortin.ga", "wolink.in"])) {
     //NSFW!
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/76
     //Issue: https://github.com/reek/anti-adblock-killer/issues/3563
@@ -1689,7 +1689,8 @@ if (a.domCmp(["hanime.tv", "ah-me.com", "shortin.ga"])) {
             throw new window.Error("uBlock Origin detectors are not allowed on this device!");
         };
     });
-    /*
+}
+if (a.domCmp(["git.tc"])) {
     const magic = a.uid();
     addEventListener(magic, () => {
         a.close();
@@ -1702,7 +1703,6 @@ if (a.domCmp(["hanime.tv", "ah-me.com", "shortin.ga"])) {
             window.dispatchEvent(new window.CustomEvent("${magic}"));
         };
     })();`, true);
-    */
 }
 if (a.domCmp(["hanime.tv"])) {
     a.noAccess("confirm");
