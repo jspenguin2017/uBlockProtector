@@ -78,6 +78,7 @@
 ! === Generic Cosmetic Rules
 ###adblockBanner
 ###like-us-adblock-modal
+##.admania_adblock_detector
 ##.popup-premium__apla
 ! === Generic Network Rules
 */adblock-detector/*

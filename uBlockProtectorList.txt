@@ -95,6 +95,7 @@ bild.de#@#script:inject(abort-on-property-read.js, de.bild.cmsKonfig.a.b.a)
 ||louccrossc.com^$xmlhttprequest,redirect=nooptext,important,domain=tf1.fr
 ###adblockBanner
 ###like-us-adblock-modal
+##.admania_adblock_detector
 ##.popup-premium__apla
 */adblock-detector/*
 /adblock-popup.
