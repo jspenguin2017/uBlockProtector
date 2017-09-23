@@ -3435,3 +3435,6 @@ if (a.domCmp(["cdn-surfline.com"])) {
 if (a.domCmp(["player.radiojazzfm.ru"])) {
     a.bait("div", "#tester", true);
 }
+if (a.domCmp(["hackingwithphp.com"])) {
+    a.readOnly("areAdsDisplayed", true);
+}
