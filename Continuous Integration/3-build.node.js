@@ -186,7 +186,7 @@ const secureErrorReport = (ref, err) => {
 };
 
 /**
- * Disable debug mode, also remove proprietary code.
+ * Disable debug mode and remove proprietary code.
  * Will fail the build if this task could not be completed.
  * @function
  * @return {Promise} The promise of the task.
