@@ -3440,3 +3440,6 @@ if (a.domCmp(["player.radiojazzfm.ru"])) {
 if (a.domCmp(["hackingwithphp.com"])) {
     a.readOnly("areAdsDisplayed", true);
 }
+if (a.domCmp(["muyinteresante.es"])) {
+    a.readOnly("ads", true);
+}
