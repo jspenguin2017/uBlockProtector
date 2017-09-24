@@ -1,5 +1,5 @@
 //Proprietary scripts loader, only runs in debug mode
-//This file should be stripped by the compiler before uploading to Web Store
+//This file should be emptied by the compiler before uploading to Web Store
 "use strict";
 
 if (a.debugMode) {
