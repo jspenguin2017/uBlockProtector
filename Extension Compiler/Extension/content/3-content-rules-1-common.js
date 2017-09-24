@@ -136,7 +136,7 @@ if (a.domCmp(["jansatta.com", "financialexpress.com", "indianexpress.com", "shin
 if (a.domCmp(["jagranjunction.com", "nekopoi.bid", "catcatyfaucet.xyz"])) {
     a.readOnly("isAdsDisplayed", true);
 }
-if (a.domCmp(["swissadspaysfaucet.com", "swissadspaysethfaucet.com"])) {
+if (a.domCmp(["swissadspaysfaucet.com", "swissadspaysethfaucet.com", "stream.nbcsports.com"])) {
     a.readOnly("adBlockEnabled", false);
 }
 if (a.domCmp(["ratemyprofessors.com"])) {

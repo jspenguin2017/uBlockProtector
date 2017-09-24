@@ -449,6 +449,7 @@ digitalinformationworld.com##script:inject(abort-on-property-read.js, adsbygoogl
 @@||greenocktelegraph.co.uk^$generichide
 @@||getrelax.club^$generichide
 @@||mycinema.pro^$generichide
+@@||stream.nbcsports.com^$generichide
 @@||imasdk.googleapis.com/js/sdkloader/outstream.js$script,domain=ovar.io
 ||flashx.tv/checkembed.php
 @@||flashx1.tv/js/showad*.js$script
