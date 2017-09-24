@@ -3,7 +3,7 @@
 "use strict";
 
 if (a.debugMode) {
-    if (a.domCmp(["lolalytics.com"])) {
+    if (a.isTopFrame && a.domCmp(["lolalytics.com"])) {
         //https://github.com/AdguardTeam/AdguardFilters/issues/6280
         //https://github.com/AdguardTeam/AdguardFilters/issues/6576
         //https://github.com/uBlockOrigin/uAssets/issues/668
