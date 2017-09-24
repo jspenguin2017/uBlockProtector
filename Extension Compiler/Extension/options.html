@@ -159,6 +159,16 @@
             </details>
         </div>
 
+        <h4>lolalytics.com</h4>
+        <p>
+            After months of intense cat and mouse game, I have decided to give up. This is unfortunate but this is the only way to go. I highly recommend
+            you to stop visiting these websites. If that is not an option, you can load uBlock Protector Extension in debug mode to activate proprietary
+            solutions. Click
+            <a href="https://github.com/jspenguin2017/uBlockProtector/blob/master/Extension%20Compiler/Extension/content/3-content-rules-4-proprietary.js" target="_blank">here</a>
+            to learn more, make sure to read and understand all the instructions.
+        </p>
+        <p>The code for loading these proprietary solutions are not uploaded to the Web Store.</p>
+
         <h4>Check open issues in the issues tracker for other known issues</h4>
     </div>
 
@@ -188,7 +198,10 @@
     <h3>For Developers</h3>
     <div>
         <p>You need to edit and load the unpacked extension if you want to enable debug mode or to change rules.</p>
-        <p>Debug switch is in <code>common.js</code>. It may be already on when you pull the repository.</p>
+        <p>
+            Debug switch is in <code>common.js</code>. It may be already on when you pull the repository. Be aware that proprietary code loaders
+            located in <code>content/3-content-rules-4-proprietary.js</code> may run when the extension is loaded in debug mode.
+        </p>
         <p>
             Documentation of my custom API is in <code>content/content-core.js</code>, <code>content/content-domlib.js</code>, and
             <code>background/background-core.js</code>. <code>$</code> is not jQuery.
