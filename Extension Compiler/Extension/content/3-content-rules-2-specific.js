@@ -2938,7 +2938,7 @@ if (a.domCmp(["booogle.net", "nsspot.net"])) {
     a.readOnly("gadb", false);
 }
 if (a.domCmp(["samehadaku.net"])) {
-    a.readOnly("tieE3", true);
+    a.readOnly("$tieE3", true);
 }
 if (a.domCmp(["docer.pl"])) {
     a.readOnly("ads_unblocked", true);
