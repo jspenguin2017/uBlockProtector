@@ -3404,7 +3404,9 @@ if (a.domCmp(["solowrestling.com"])) {
 }
 if (a.domCmp(["anonymousemail.me"])) {
     a.beforeScript((script) => {
-        if (script.textContent && script.textContent.includes("anonymousemail.me/adblock.php")) {
+        if (script.textContent &&
+            (script.textContent.includes("anonymousemail.me/adblock.php") ||
+                script.textContent.includes("\\x61\\x64\\x62\\x6C\\x6F\\x63\\x6B\\x2E\\x70\\x68\\x70"))) {
             script.remove();
         }
     });
