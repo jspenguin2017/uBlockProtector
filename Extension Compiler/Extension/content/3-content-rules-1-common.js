@@ -150,7 +150,7 @@ if (a.domCmp(["megogo.net"])) {
 }
 if (a.domCmp(["openload.co", "openload.io", "openload.tv", "nekopoi.bid", "translatica.pl",
     "angrybirdsnest.com", "4tests.com", "urlaubspartner.net", "freizeitpartnerweb.de",
-    "outdoorpartner.net"])) {
+    "outdoorpartner.net", "8bbit.com"])) {
     a.readOnly("adblock", false);
 }
 if (a.domCmp(["mexashare.com", "kisshentai.net", "hanime.tv", "mega-estrenos.com", "shortin.ga", "popunderjs.com",
