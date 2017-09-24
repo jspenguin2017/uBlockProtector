@@ -26,6 +26,7 @@
         "content/3-content-rules-1-common.js",
         "content/3-content-rules-2-specific.js",
         "content/3-content-rules-3-sticky.js",
+        "content/3-content-rules-4-proprietary.js",
         "content/4-content-debug.js",
         "content/5-ubo-extra.js"
       ],
@@ -61,5 +62,5 @@
     "webRequest",
     "webRequestBlocking"
   ],
-  "version": "11.318"
+  "version": "11.319"
 }

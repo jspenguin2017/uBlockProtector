@@ -186,34 +186,50 @@ const secureErrorReport = (ref, err) => {
 };
 
 /**
- * Disable debug mode.
+ * Disable debug mode, also remove proprietary code.
  * Will fail the build if this task could not be completed.
  * @function
  * @return {Promise} The promise of the task.
  */
 const disableDebugMode = () => {
-    console.log("Setting debug switch to false...");
-    return new Promise((resolve) => {
-        const file = "./Extension Compiler/Extension/common.js";
-        fs.readFile(file, { encoding: "utf8" }, (err, data) => {
-            if (err) {
-                console.error("Could not set debug switch: Could not read file.");
-                process.exit(1);
-            } else {
-                fs.writeFile(file, data.replace(
-                    "a.debugMode = true; //@pragma-debug-switch",
-                    "a.debugMode = false; //@pragma-debug-switch"
-                ), (err) => {
+    console.log("Setting debug switch to false and removing proprietary code...");
+    return Promise.all([
+        new Promise((resolve) => {
+            const file = "./Extension Compiler/Extension/common.js";
+            fs.readFile(file, { encoding: "utf8" }, (err, data) => {
+                if (err) {
+                    console.error("Could not set debug switch: Could not read file.");
+                    process.exit(1);
+                } else {
+                    fs.writeFile(file, data.replace(
+                        "a.debugMode = true; //@pragma-debug-switch",
+                        "a.debugMode = false; //@pragma-debug-switch",
+                    ), (err) => {
+                        if (err) {
+                            console.error("Could not set debug switch: Could not write to file.");
+                            process.exit(1);
+                        } else {
+                            resolve();
+                        }
+                    });
+                }
+            });
+        }),
+        new Promise((resolve) => {
+            fs.writeFile(
+                "./Extension Compiler/Extension/content/3-content-rules-4-proprietary.js",
+                "//Proprietary solutions are only available in debug mode\n",
+                (err) => {
                     if (err) {
-                        console.error("Could not set debug switch: Could not write to file.");
+                        console.error("Could not remove proprietary code: Could not write to file.");
                         process.exit(1);
                     } else {
                         resolve();
                     }
-                });
-            }
-        });
-    });
+                },
+            )
+        }),
+    ]);
 };
 /**
  * Create zip archive ready for upload.
