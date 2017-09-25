@@ -11,6 +11,8 @@
 //
 // DO NOT open the console, DO NOT request the files manually, and ONLY use latest Chromium or Chrome
 // browser
+// Your IP might be temporarily banned if you attempt to reverse engineer these solutions, and they
+// will not work while your IP is banned
 // ===== MUST READ ===== MUST READ ===== MUST READ ===== MUST READ ===== MUST READ ===== MUST READ =====
 //
 "use strict";
