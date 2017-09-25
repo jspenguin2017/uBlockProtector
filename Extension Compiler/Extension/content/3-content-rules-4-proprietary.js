@@ -4,7 +4,10 @@
 // ===== MUST READ ===== MUST READ ===== MUST READ ===== MUST READ ===== MUST READ ===== MUST READ =====
 // I highly recommend you to stop visiting these websites over using these proprietary solutions
 // If you still want to use them, load uBlock Protector Extension is debug mode and they will run
+//
 // You may need to refresh the page a couple times for the file to be properly cached
+// Also try to clear cookies by clicking on the green padlock near the address bar, then the link below
+// "Cookies", then the button "Remove", DO NOT use the console
 //
 // DO NOT open the console, DO NOT request the files manually, and ONLY use latest Chromium or Chrome
 // browser
