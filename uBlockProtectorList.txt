@@ -124,6 +124,7 @@ descargatelocorp.com##div[id^="informer"]:style(display: block !important; opaci
 descargatelocorp.com##div[class*="cool_ramka"]
 ||lukkr.com/website/pf.js
 live.com##div:if(:scope > div > span:has-text(an ad blocker))
+live.com##div:if(:scope > div > div > span:has-text(an ad blocker))
 ||adv.wp.pl/$media,redirect=noopmp3-0.1s,important
 ||static-pilot.wp.pl/static/assets/js/ads.js$xmlhttprequest,redirect=noopjs
 ||adv.wp.pl/*/inline-videostar.js$xmlhttprequest,redirect=noopjs,important,domain=pilot.wp.pl

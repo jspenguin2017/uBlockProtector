@@ -117,6 +117,7 @@ descargatelocorp.com##div[class*="cool_ramka"]
 ! ==============================
 ! === live.com
 live.com##div:if(:scope > div > span:has-text(an ad blocker))
+live.com##div:if(:scope > div > div > span:has-text(an ad blocker))
 ! === wp.pl and related domains
 ||adv.wp.pl/$media,redirect=noopmp3-0.1s,important
 ||static-pilot.wp.pl/static/assets/js/ads.js$xmlhttprequest,redirect=noopjs
