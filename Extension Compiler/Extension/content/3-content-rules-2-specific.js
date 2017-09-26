@@ -3368,7 +3368,7 @@ if (a.domCmp(["gntai.xyz"])) {
 if (a.domCmp(["wifihack.me"])) {
     a.noAccess("AdBlocked");
 }
-if (a.domCmp(["flashx.tv"])) {
+if (a.domCmp(["flashx.tv", "flashx.to"])) {
     a.filter("addEventListener", a.matchMethod.stringExact, "keydown", "window.document");
 }
 if (a.domCmp(["wowtoken.info"])) {

@@ -89,7 +89,7 @@ if (a.domCmp(["mywrestling.com.pl", "zxctunnel.com", "tsa-algerie.com", "ilpunto
 
 //a.filter
 if (a.domCmp(["usapoliticstoday.com", "vidlox.tv", "exrapidleech.info", "urle.co", "gsmarena.com",
-    "darmowe-pornosy.pl", "salon.com", "linx.cloud", "flashx.tv"])) {
+    "darmowe-pornosy.pl", "salon.com", "linx.cloud", "flashx.tv", "flashx.to"])) {
     a.filter("eval");
 }
 if (a.domCmp(["sc2casts.com", "webqc.org", "cloudwebcopy.com"])) {
