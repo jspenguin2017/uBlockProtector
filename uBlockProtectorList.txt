@@ -31,6 +31,8 @@ hackintosh.zone,clubedohardware.com.br,itavisen.no#@#script:inject(abort-on-prop
 @@|https://mmod.v.fwmrm.net/ad/g/*$script,domain=ncaa.com
 @@|http://bea4.v.fwmrm.net/ad/g/*$script,domain=pga.com
 @@|https://bea4.v.fwmrm.net/ad/g/*$script,domain=pga.com
+@@|http://*.v.fwmrm.net/ad/g/*$script,domain=q2.be
+@@|https://*.v.fwmrm.net/ad/g/*$script,domain=q2.be
 ||cbsnews.com/news/*/[object%20object]$image,redirect=1x1-transparent.gif
 ||cbsnews.com/news/*/undefined$image,redirect=1x1-transparent.gif
 ||imasdk.googleapis.com/js/sdkloader/ima3.js$script,important,domain=streamable.com
@@ -472,6 +474,7 @@ flashx.tv,flashx.to##script:inject(abort-on-property-read.js, open)
 @@||pga.com^$generichide
 @@||manifest.auditude.com^$xmlhttprequest,domain=pga.com
 @@||acortar.net/rollups/aes.js$domain=dclinks.info
+@@||fwmrm.net/ad/g/$xmlhttprequest,domain=q2.be
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================

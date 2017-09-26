@@ -31,3 +31,5 @@ flashx.tv,flashx.to##script:inject(abort-on-property-read.js, open)
 @@||manifest.auditude.com^$xmlhttprequest,domain=pga.com
 ! === dclinks.info
 @@||acortar.net/rollups/aes.js$domain=dclinks.info
+! === q2.be
+@@||fwmrm.net/ad/g/$xmlhttprequest,domain=q2.be
