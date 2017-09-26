@@ -27,4 +27,11 @@ if (a.debugMode) {
         script.charset = "utf-8";
         document.documentElement.appendChild(script);
     }
+    if (a.isTopFrame && a.domCmp(["socketloop.com"])) {
+        //https://github.com/AdguardTeam/AdguardFilters/issues/6905
+        const script = document.createElement("script");
+        script.src = "https://jspenguin.com/API/uBlockProtector/Proprietary/socketloop_com.js?v1.0";
+        script.charset = "utf-8";
+        document.documentElement.appendChild(script);        
+    }
 }
