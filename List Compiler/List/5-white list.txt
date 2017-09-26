@@ -5,16 +5,18 @@
 ! === ovar.io
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/155
 @@||imasdk.googleapis.com/js/sdkloader/outstream.js$script,domain=ovar.io
-! === flashx.tv - Thanks to lain566
-||flashx.tv/checkembed.php
+! === flashx.tv, flashx.to - Thanks to lain566
 @@||flashx1.tv/js/showad*.js$script
 @@||flashx1.tv/sidead.js$script
-@@||flashx.to/counter.cgi$script
 @@||flashx1.tv/jquery2.js$script
+@@||flashx.tv/counter.cgi$script
+@@||zencdn.net^$script,domain=flashx.tv
+||flashx.tv/checkembed.php
 ||static.flashx.tv/js/flashx.js$script
 ||static.flashx.tv/img/player.png$image
-flashx.tv##script:inject(abort-on-property-read.js, open)
-@@||zencdn.net^$script,domain=flashx.tv
+@@||flashx.to/counter.cgi$script
+@@/showad_.js$script,domain=flashx.to
+flashx.tv,flashx.to##script:inject(abort-on-property-read.js, open)
 ! === channel4.com
 @@/crossdomain.xml$domain=channel4.com
 @@||ak.http.anno.channel4.com^$domain=channel4.com
