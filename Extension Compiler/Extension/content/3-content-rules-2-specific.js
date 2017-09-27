@@ -3431,3 +3431,6 @@ if (a.domCmp(["hackingwithphp.com"])) {
 if (a.domCmp(["muyinteresante.es"])) {
     a.readOnly("ads", true);
 }
+if (a.domCmp(["zdnet.de"])) {
+    a.readOnly("can_i_run_ads", true);
+}
