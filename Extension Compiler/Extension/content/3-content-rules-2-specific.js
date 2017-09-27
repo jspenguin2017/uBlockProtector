@@ -598,9 +598,6 @@ if (a.domCmp(["lg-firmware-rom.com"])) {
 if (a.domCmp(["xmac.xyz"])) {
     a.readOnly("killAds", true);
 }
-if (a.domCmp(["independent.co.uk"])) {
-    a.cookie("adblock_detected", "ignored");
-}
 if (a.domCmp(["3dnews.ru"])) {
     a.cookie("adblockwarn", "1");
     a.css("#earAds { width:401px; }");
