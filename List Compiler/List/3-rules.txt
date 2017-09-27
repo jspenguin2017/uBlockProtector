@@ -643,3 +643,5 @@ digitalinformationworld.com##script:inject(abort-on-property-read.js, adsbygoogl
 @@||moat.com/api/entity_report/advertiser/$first-party
 ! === mangashost.net
 mangashost.net##script:inject(setTimeout-defuser.js, ads160left)
+! === cnn.com
+||mms.cnn.com^$script

@@ -419,6 +419,7 @@ digitalinformationworld.com##script:inject(abort-on-property-read.js, adsbygoogl
 @@||moat.com/creatives/advertiser/$first-party
 @@||moat.com/api/entity_report/advertiser/$first-party
 mangashost.net##script:inject(setTimeout-defuser.js, ads160left)
+||mms.cnn.com^$script
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide
 @@||behindwoods.com^$generichide
