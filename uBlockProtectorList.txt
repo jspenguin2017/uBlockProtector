@@ -1790,15 +1790,6 @@ proplanta.de#@#.searchad
 @@||anitoonstv.com/ver/banner.gif$image
 @@||investing.com/js/ads.js$script
 @@||static.doubleclick.net/instream/ad_status.js$domain=investing.com
-@||crunchyroll.com/*/ads_enabled_flag*.js$script
-||indiatimes.in/*/detector.js$script
-||indiatimes.com/detector/$script
-||indiatimes.com/detector.cms$script
-||indiatimes.com/ads_native_js^$script
-@@||indiatimes.com/ads.cms$script
-@@||indiatimes.com/toi_js_ads/ads/*$script
-indiatimes.com#@#div[id^="div-gpt-ad"]
-@@||hindustantimes.com^/ads.js$script
 ||vakarm.net/css/sprite_vkm_2.css
 @@||loi1901.com^$generichide
 @@||googleads.g.doubleclick.net/favicon.ico$domain=loi1901.com
