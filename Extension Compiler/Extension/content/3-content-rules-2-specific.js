@@ -3399,15 +3399,6 @@ if (a.domCmp(["cbs.com"])) {
 if (a.domCmp(["solowrestling.com"])) {
     a.readOnly("bloq", 1);
 }
-if (a.domCmp(["anonymousemail.me"])) {
-    a.beforeScript((script) => {
-        if (script.textContent &&
-            (script.textContent.includes("anonymousemail.me/adblock.php") ||
-                script.textContent.includes("\\x61\\x64\\x62\\x6C\\x6F\\x63\\x6B\\x2E\\x70\\x68\\x70"))) {
-            script.remove();
-        }
-    });
-}
 if (a.domCmp(["timesofindia.indiatimes.com"])) {
     a.ready(() => {
         setTimeout(() => {
