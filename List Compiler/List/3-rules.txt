@@ -104,8 +104,8 @@ android-zone.ws,cmacapps.com,l2network.eu,animes-mangas-ddl.net,fuckingsession.c
 ! === AdBlock Detector
 themarker.com,nachrichten.at##script:inject(abort-on-property-read.js, adblockDetector)
 ! === Social Locker
-megawarez.org,tipeo.net,compucalitv.com,intercambiosvirtuales.pro,tecmaxsoft.com,descargatelocorp.com##div.onp-sl-content:style(display: block !important;)
-megawarez.org,tipeo.net,compucalitv.com,intercambiosvirtuales.pro,tecmaxsoft.com,descargatelocorp.com##div.onp-sl-social-locker
+megawarez.org,tipeo.net,compucalitv.com,intercambiosvirtuales.pro,tecmaxsoft.com,descargatelocorp.com,hackstore.net##div.onp-sl-content:style(display: block !important;)
+megawarez.org,tipeo.net,compucalitv.com,intercambiosvirtuales.pro,tecmaxsoft.com,descargatelocorp.com,hackstore.net##div.onp-sl-social-locker
 anonymousemail.me##div.onp-sociallocker-content:style(display: block !important;)
 anonymousemail.me##div.onp-sociallocker
 descargatelocorp.com##div[id^="informer"]:style(display: block !important; opacity: 1 !important; max-height: none !important;)
