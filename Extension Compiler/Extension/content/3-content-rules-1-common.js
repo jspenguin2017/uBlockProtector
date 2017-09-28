@@ -122,7 +122,7 @@ if (a.domCmp(["apkmirror.com", "freepdf-books.com", "bc.vc", "themeslide.com", "
     "veneapp.com", "shink.in", "iiv.pl", "uskip.me", "link-cash.com", "ouo.press", "coinlink.us",
     "tmearn.com", "url.gem-flash.com", "cuturlink.com", "linkhits.net", "shorteurl.com", "bit-url.com",
     "leenlink.com", "linkkawy.com", "cut-egy.ml", "igram.im", "adlinkme.com", "oke.io", "wolink.in",
-    "bilink.xyz", "git.tc", "zlshorte.net", "ur.ly"])) {
+    "bilink.xyz", "git.tc", "zlshorte.net", "ur.ly", "shink.me"])) {
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
 if (a.domCmp(["katfile.com", "goldescargas.com", "globalbesthosting.com", "userupload.net",
@@ -131,7 +131,8 @@ if (a.domCmp(["katfile.com", "goldescargas.com", "globalbesthosting.com", "useru
 }
 
 //a.readOnly
-if (a.domCmp(["jansatta.com", "financialexpress.com", "indianexpress.com", "shink.in", "uskip.me"])) {
+if (a.domCmp(["jansatta.com", "financialexpress.com", "indianexpress.com", "shink.in", "uskip.me",
+    "shink.me"])) {
     a.readOnly("RunAds", true);
 }
 if (a.domCmp(["jagranjunction.com", "nekopoi.bid", "catcatyfaucet.xyz"])) {
@@ -158,7 +159,7 @@ if (a.domCmp(["mexashare.com", "kisshentai.net", "hanime.tv", "mega-estrenos.com
     "code.ptcong.com"])) {
     a.readOnly("BetterJsPop", "window.Object.freeze({})");
 }
-if (a.domCmp(["youwatch.to", "he2eini7ka.com", "shink.in"])) {
+if (a.domCmp(["youwatch.to", "he2eini7ka.com", "shink.in", "shink.me"])) {
     a.readOnly("jsPopunder", () => { });
 }
 if (a.domCmp(["youwatch.org", "chouhaa.info", "ahzahg6ohb.com", "youwatch.to", "he2eini7ka.com", "exashare.com",
