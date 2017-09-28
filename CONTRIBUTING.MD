@@ -43,7 +43,7 @@ Prepend `URGENT! ` if the issue is caused by uBlock Protector.
 An issue is considered caused by uBlock Protector if the issue persists after white listing the website but no longer occur once 
 uBlock Protector Extension is disabled. Misusing `URGENT! ` title can lead to a ban. 
 
-**Comment of your issue**: Use the template. Do not wrap links, keep them clickable. 
+**Comment of your issue**: Use the template. Wrap links in backticks to make them not clickable. 
 
 ### Reporting a bug
 

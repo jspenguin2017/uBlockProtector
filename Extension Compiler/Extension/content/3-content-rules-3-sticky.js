@@ -16,7 +16,10 @@ if (a.domCmp(["debridnet.com"])) {
 }
 if (a.domCmp(["anonymousemail.me"])) {
     a.beforeScript((script) => {
-        if (script.textContent && script.textContent.includes(`window.location="https://bit.ly/`)) {
+        if (script.textContent && (
+            script.textContent.includes(`window.location="https://bit.ly/`) ||
+            script.textContent.includes(`/adblock.php`)
+        )) {
             script.remove();
         }
     });
