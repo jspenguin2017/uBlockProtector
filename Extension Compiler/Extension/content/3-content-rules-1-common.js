@@ -102,7 +102,7 @@ if (a.domCmp(["vidoza.net", "videowood.tv", "l2s.io", "adshort.co", "linksh.top"
     "firstrowsportes.com", "justfirstrowsports.com", "hahasport.me", "wiziwig.ru", "wiziwig.sx",
     "wiziwig.to", "wiziwig.tv", "myp2p.biz", "myp2p.tv", "myp2p.la", "myp2p.ec", "myp2p.eu", "myp2p.sx",
     "myp2p.ws", "myp2p.com", "atdhe.ru", "atdhe.se", "atdhe.bz", "atdhe.top", "u2s.io", "linclik.com",
-    "iiv.pl", "linkkawy.com", "zlshorte.net", "ur.ly"])) {
+    "iiv.pl", "linkkawy.com", "zlshorte.net", "ur.ly", "oload.stream"])) {
     a.filter("open");
 }
 if (a.domCmp(["drivearabia.com", "putlocker.com", "doatoolsita.altervista.org", "sockshare.com",
@@ -122,7 +122,7 @@ if (a.domCmp(["apkmirror.com", "freepdf-books.com", "bc.vc", "themeslide.com", "
     "veneapp.com", "shink.in", "iiv.pl", "uskip.me", "link-cash.com", "ouo.press", "coinlink.us",
     "tmearn.com", "url.gem-flash.com", "cuturlink.com", "linkhits.net", "shorteurl.com", "bit-url.com",
     "leenlink.com", "linkkawy.com", "cut-egy.ml", "igram.im", "adlinkme.com", "oke.io", "wolink.in",
-    "bilink.xyz", "git.tc", "zlshorte.net", "ur.ly", "shink.me"])) {
+    "bilink.xyz", "git.tc", "zlshorte.net", "ur.ly", "shink.me", "oload.stream"])) {
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
 if (a.domCmp(["katfile.com", "goldescargas.com", "globalbesthosting.com", "userupload.net",
@@ -150,9 +150,9 @@ if (a.domCmp(["link.tl"])) {
 if (a.domCmp(["megogo.net"])) {
     a.readOnly("adBlock", false);
 }
-if (a.domCmp(["openload.co", "openload.io", "openload.tv", "nekopoi.bid", "translatica.pl",
-    "angrybirdsnest.com", "4tests.com", "urlaubspartner.net", "freizeitpartnerweb.de",
-    "outdoorpartner.net", "8bbit.com"])) {
+if (a.domCmp(["openload.co", "openload.io", "openload.tv", "oload.stream", "nekopoi.bid", "translatica.pl",
+    "angrybirdsnest.com", "4tests.com", "urlaubspartner.net", "freizeitpartnerweb.de", "8bbit.com",
+    "outdoorpartner.net"])) {
     a.readOnly("adblock", false);
 }
 if (a.domCmp(["mexashare.com", "kisshentai.net", "hanime.tv", "mega-estrenos.com", "shortin.ga", "popunderjs.com",

@@ -1224,7 +1224,7 @@ if (a.domCmp(["kisscartoon.me", "kisscartoon.se"])) {
         $("iframe[id^='adsIfrme']").remove();
     });
 }
-if (a.domCmp(["openload.co", "openload.io", "openload.tv"])) {
+if (a.domCmp(["openload.co", "openload.io", "openload.tv","oload.stream"])) {
     a.readOnly("adblock2", false);
     a.readOnly("popAdsLoaded", true);
 }
