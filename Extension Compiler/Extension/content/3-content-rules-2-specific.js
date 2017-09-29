@@ -1544,15 +1544,7 @@ if (a.domCmp(["pxstream.tv"])) {
     });
 }
 if (a.domCmp(["sawlive.tv"])) {
-    a.ready(() => {
-        if (location.pathname.toLowerCase().startsWith("/embed/watch/")) {
-            a.inject(() => {
-                "use strict";
-                window.display = false;
-                window.closeMyAd();
-            });
-        }
-    });
+    a.timewarp("setTimeout", a.matchMethod.string, "closeMyAd");
 }
 if (a.domCmp(["goodcast.co"])) {
     a.ready(() => {
