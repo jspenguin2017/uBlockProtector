@@ -645,3 +645,5 @@ digitalinformationworld.com##script:inject(abort-on-property-read.js, adsbygoogl
 mangashost.net##script:inject(setTimeout-defuser.js, ads160left)
 ! === cnn.com
 ||mms.cnn.com^$script
+! === speedtest.net
+|http://$xmlhttprequest,domain=speedtest.net,badfilter
