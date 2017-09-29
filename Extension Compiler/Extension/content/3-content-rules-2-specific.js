@@ -1545,6 +1545,7 @@ if (a.domCmp(["pxstream.tv"])) {
 }
 if (a.domCmp(["sawlive.tv"])) {
     a.timewarp("setTimeout", a.matchMethod.string, "closeMyAd");
+    a.noAccess("onclick", "window.document");
 }
 if (a.domCmp(["goodcast.co"])) {
     a.ready(() => {
