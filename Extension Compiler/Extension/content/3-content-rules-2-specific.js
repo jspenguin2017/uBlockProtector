@@ -1224,7 +1224,7 @@ if (a.domCmp(["kisscartoon.me", "kisscartoon.se"])) {
         $("iframe[id^='adsIfrme']").remove();
     });
 }
-if (a.domCmp(["openload.co", "openload.io", "openload.tv","oload.stream"])) {
+if (a.domCmp(["openload.co", "openload.io", "openload.tv", "oload.stream"])) {
     a.readOnly("adblock2", false);
     a.readOnly("popAdsLoaded", true);
 }
@@ -1879,7 +1879,7 @@ if (a.domCmp(["bonusbitcoin.co"])) {
         });
     });
 }
-if (a.domCmp(["shink.in"])) {
+if (a.domCmp(["shink.in", "shink.me"])) {
     //Skip countdown
     if (location.pathname.startsWith("/go/")) {
         a.ready(() => {
