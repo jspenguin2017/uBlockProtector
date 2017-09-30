@@ -160,7 +160,6 @@ animmex.*##a[href^="https://forum.animmex.com/viewtopic.php"]
 ||flakyfeast.com^$domain=gry.pl
 pixiv.net##.popular-introduction-block
 youtube.com###companion
-linkneverdie.com##script:inject(setTimeout-defuser.js, #wrapper)
 pogdesign.co.uk##.replace
 ||p207208.clksite.com^$subdocument,redirect=noopframe,domain=ally.sh|al.ly
 ally.sh,al.ly##script:inject(popads.net.js)

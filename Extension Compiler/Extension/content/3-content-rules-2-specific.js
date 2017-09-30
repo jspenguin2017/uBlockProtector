@@ -3427,3 +3427,16 @@ if (a.domCmp(["muyinteresante.es"])) {
 if (a.domCmp(["zdnet.de"])) {
     a.readOnly("can_i_run_ads", true);
 }
+if (a.domCmp(["linkneverdie.com"])) {
+    a.ready(() => {
+        a.inject(() => {
+            "use strict";
+            const _removeChild = window.document.body.removeChild;
+            window.document.body.removeChild = function (child, ...rest) {
+                if (child.id !== "wrapper") {
+                    _removeChild.call(this, child, ...rest);
+                }
+            };
+        });
+    });
+}

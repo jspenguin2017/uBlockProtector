@@ -189,9 +189,6 @@ animmex.*##a[href^="https://forum.animmex.com/viewtopic.php"]
 pixiv.net##.popular-introduction-block
 ! === youtube.com
 youtube.com###companion
-! === linkneverdie.com
-! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/146
-linkneverdie.com##script:inject(setTimeout-defuser.js, #wrapper)
 ! === pogdesign.co.uk
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/149
 pogdesign.co.uk##.replace
