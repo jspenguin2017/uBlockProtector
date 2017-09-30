@@ -102,7 +102,7 @@ if (a.domCmp(["vidoza.net", "videowood.tv", "l2s.io", "adshort.co", "linksh.top"
     "firstrowsportes.com", "justfirstrowsports.com", "hahasport.me", "wiziwig.ru", "wiziwig.sx",
     "wiziwig.to", "wiziwig.tv", "myp2p.biz", "myp2p.tv", "myp2p.la", "myp2p.ec", "myp2p.eu", "myp2p.sx",
     "myp2p.ws", "myp2p.com", "atdhe.ru", "atdhe.se", "atdhe.bz", "atdhe.top", "u2s.io", "linclik.com",
-    "iiv.pl", "linkkawy.com", "zlshorte.net", "ur.ly", "oload.stream"])) {
+    "iiv.pl", "linkkawy.com", "zlshorte.net", "ur.ly", "oload.stream", "sawlive.tv"])) {
     a.filter("open");
 }
 if (a.domCmp(["drivearabia.com", "putlocker.com", "doatoolsita.altervista.org", "sockshare.com",
@@ -199,8 +199,7 @@ if (a.domCmp(["debridnet.com", "adshort.co", "linksh.top", "adshorte.com", "coin
 if (a.domCmp(["linx.cloud"])) {
     a.noAccess("popns");
 }
-if (a.domCmp(["psarips.com", "sawlive.tv", "streamcloud.eu", "jzrputtbut.net", "arenabg.ch", "solidfiles.com",
-    "adlinkme.com"])) {
+if (a.domCmp(["psarips.com", "streamcloud.eu", "jzrputtbut.net", "arenabg.ch", "solidfiles.com", "adlinkme.com"])) {
     a.noAccess("open");
 }
 
