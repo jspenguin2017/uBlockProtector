@@ -7,7 +7,7 @@ a.generic();
 
 //Rules
 {
-    //ncaa.com, pga.com
+    //fwmrm.net
     //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/344
     const genPayload = (csid, caid, cbfn) => {
         //Event callbacks are blocked by List
@@ -136,7 +136,7 @@ a.generic();
             } else {
                 console.log("Could not extract parameters from a request to v.fwmrm.net");
                 a.debugMode && console.log(details);
-                return { cancel: true };
+                return { cancel: true }; //Block the request as a fallback
             }
         },
         [

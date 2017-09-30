@@ -29,12 +29,14 @@ a.init = () => {
                     } //Ignore if not called from a proper tab
                     break;
                 /**
-                 * Do a cross origin XMLHttpRequest.
+                 * Send a highly privileged XMLHttpRequest, it goes though Cross Origin Resource
+                 * Sharing policies as well as uBlock Origin filtering.
                  * @param {Object} details - The details object, see a.request() of content-core
                  ** for more information.
                  * @return {string|null} The response text, or null if the request failed.
                  */
                 /*
+                //Never used
                 case "xhr":
                     if (typeof args[0].details === "object") {
                         const method = String(args[0].details.method);
