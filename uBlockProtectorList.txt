@@ -419,6 +419,7 @@ attorz.com##script:inject(abort-on-property-write.js, isAdBlocked)
 attorz.com###lineage104_pic
 resourcepacks24.de##script:inject(setTimeout-defuser.js, google_jobrunner)
 literaturcafe.de##script:inject(setTimeout-defuser.js, blockStatus)
+deckshop.pro###friendlyReminder
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide
 @@||behindwoods.com^$generichide

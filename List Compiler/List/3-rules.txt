@@ -650,3 +650,5 @@ attorz.com###lineage104_pic
 resourcepacks24.de##script:inject(setTimeout-defuser.js, google_jobrunner)
 ! === literaturcafe.de
 literaturcafe.de##script:inject(setTimeout-defuser.js, blockStatus)
+! === deckshop.pro
+deckshop.pro###friendlyReminder
