@@ -18,12 +18,8 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 ! === NoAdBlock
 hackintosh.zone,clubedohardware.com.br,itavisen.no#@#script:inject(abort-on-property-read.js, CloudflareApps.installs)
 ! === ncaa.com, pga.com, q2.be
-@@|http://mmod.v.fwmrm.net/ad/g/*$script,domain=ncaa.com
-@@|https://mmod.v.fwmrm.net/ad/g/*$script,domain=ncaa.com
-@@|http://bea4.v.fwmrm.net/ad/g/*$script,domain=pga.com
-@@|https://bea4.v.fwmrm.net/ad/g/*$script,domain=pga.com
-@@|http://*.v.fwmrm.net/ad/g/*$script,domain=q2.be
-@@|https://*.v.fwmrm.net/ad/g/*$script,domain=q2.be
+@@|http://*.v.fwmrm.net/ad/g/*$script,domain=ncaa.com|pga.com|q2.be|vtm.be
+@@|https://*.v.fwmrm.net/ad/g/*$script,domain=ncaa.com|pga.com|q2.be|vtm.be
 ! === cbsnews.com
 ! Their poster logic is broken, but the error is somehow suppressed by the original IMA SDK
 ||cbsnews.com/news/*/[object%20object]$image,redirect=1x1-transparent.gif

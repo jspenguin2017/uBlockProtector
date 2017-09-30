@@ -32,4 +32,4 @@ flashx.tv,flashx.to##script:inject(abort-on-property-read.js, open)
 ! === dclinks.info
 @@||acortar.net/rollups/aes.js$domain=dclinks.info
 ! === q2.be
-@@||fwmrm.net/ad/g/$xmlhttprequest,domain=q2.be
+@@||fwmrm.net/ad/g/$xmlhttprequest,domain=q2.be|vtm.be

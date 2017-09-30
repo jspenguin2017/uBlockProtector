@@ -121,55 +121,6 @@ a.generic();
     //Loopback ads request
     a.dynamicServer(
         [
-            "http://mmod.v.fwmrm.net/ad/g/*",
-            "https://mmod.v.fwmrm.net/ad/g/*",
-        ],
-        [
-            "script",
-        ],
-        (details) => {
-            const csid = reCsid.exec(details.url);
-            const caid = reCaid.exec(details.url);
-            const cbfn = reCbfn.exec(details.url);
-            if (csid && caid && cbfn) {
-                return { redirectUrl: genPayload(csid[1], caid[1], decodeURIComponent(cbfn[1])) };
-            } else {
-                //Block the request as a fallback
-                console.log("Could not extract parameters from a request to mmod.v.fwmrm.net");
-                a.debugMode && console.log(details);
-                return { cancel: true };
-            }
-        },
-        [
-            "ncaa.com",
-        ],
-    );
-    a.dynamicServer(
-        [
-            "http://bea4.v.fwmrm.net/ad/g/*",
-            "https://bea4.v.fwmrm.net/ad/g/*",
-        ],
-        [
-            "script",
-        ],
-        (details) => {
-            const csid = reCsid.exec(details.url);
-            const caid = reCaid.exec(details.url);
-            const cbfn = reCbfn.exec(details.url);
-            if (csid && caid && cbfn) {
-                return { redirectUrl: genPayload(csid[1], caid[1], decodeURIComponent(cbfn[1])) };
-            } else {
-                console.log("Could not extract parameters from a request to bea4.v.fwmrm.net");
-                a.debugMode && console.log(details);
-                return { cancel: true };
-            }
-        },
-        [
-            "pga.com",
-        ],
-    );
-    a.dynamicServer(
-        [
             "http://*.v.fwmrm.net/ad/g/*",
             "https://*.v.fwmrm.net/ad/g/*",
         ],
@@ -189,7 +140,10 @@ a.generic();
             }
         },
         [
+            "ncaa.com",
+            "pga.com",
             "q2.be",
+            "vtm.be",
         ],
     );
 }

@@ -27,12 +27,8 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 @@|https://imasdk.googleapis.com/js/sdkloader/ima3.js*$script
 @@|http://imasdk.googleapis.com/js/sdkloader/ima3.js*$script
 hackintosh.zone,clubedohardware.com.br,itavisen.no#@#script:inject(abort-on-property-read.js, CloudflareApps.installs)
-@@|http://mmod.v.fwmrm.net/ad/g/*$script,domain=ncaa.com
-@@|https://mmod.v.fwmrm.net/ad/g/*$script,domain=ncaa.com
-@@|http://bea4.v.fwmrm.net/ad/g/*$script,domain=pga.com
-@@|https://bea4.v.fwmrm.net/ad/g/*$script,domain=pga.com
-@@|http://*.v.fwmrm.net/ad/g/*$script,domain=q2.be
-@@|https://*.v.fwmrm.net/ad/g/*$script,domain=q2.be
+@@|http://*.v.fwmrm.net/ad/g/*$script,domain=ncaa.com|pga.com|q2.be|vtm.be
+@@|https://*.v.fwmrm.net/ad/g/*$script,domain=ncaa.com|pga.com|q2.be|vtm.be
 ||cbsnews.com/news/*/[object%20object]$image,redirect=1x1-transparent.gif
 ||cbsnews.com/news/*/undefined$image,redirect=1x1-transparent.gif
 ||imasdk.googleapis.com/js/sdkloader/ima3.js$script,important,domain=streamable.com
@@ -233,7 +229,6 @@ link.tl##.adblockBox
 link.tl##.adblockOverlay
 *$third-party,script,domain=themelot.net
 batchnime.net##script:inject(abort-on-property-read.js, killAdBlock)
-||fwmrm.net^$xmlhttprequest,redirect=1x1-transparent.gif,domain=vtm.be
 uplod.ws##script:inject(abort-on-property-read.js, $.ready)
 ||utils.cedsdigital.it/checkSubscription/checkSubscription.js
 windowsreport.com##script:inject(silent-noeval.js)
@@ -476,7 +471,7 @@ flashx.tv,flashx.to##script:inject(abort-on-property-read.js, open)
 @@||pga.com^$generichide
 @@||manifest.auditude.com^$xmlhttprequest,domain=pga.com
 @@||acortar.net/rollups/aes.js$domain=dclinks.info
-@@||fwmrm.net/ad/g/$xmlhttprequest,domain=q2.be
+@@||fwmrm.net/ad/g/$xmlhttprequest,domain=q2.be|vtm.be
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================
