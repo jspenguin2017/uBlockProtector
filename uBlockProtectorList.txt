@@ -415,6 +415,8 @@ digitalinformationworld.com##script:inject(abort-on-property-read.js, adsbygoogl
 @@||moat.com/api/entity_report/advertiser/$first-party
 mangashost.net##script:inject(setTimeout-defuser.js, ads160left)
 ||mms.cnn.com^$script
+attorz.com##script:inject(abort-on-property-write.js, isAdBlocked)
+attorz.com###lineage104_pic
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide
 @@||behindwoods.com^$generichide

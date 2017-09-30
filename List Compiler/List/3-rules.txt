@@ -643,3 +643,6 @@ digitalinformationworld.com##script:inject(abort-on-property-read.js, adsbygoogl
 mangashost.net##script:inject(setTimeout-defuser.js, ads160left)
 ! === cnn.com
 ||mms.cnn.com^$script
+! === attorz.com
+attorz.com##script:inject(abort-on-property-write.js, isAdBlocked)
+attorz.com###lineage104_pic
