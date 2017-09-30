@@ -646,3 +646,5 @@ mangashost.net##script:inject(setTimeout-defuser.js, ads160left)
 ! === attorz.com
 attorz.com##script:inject(abort-on-property-write.js, isAdBlocked)
 attorz.com###lineage104_pic
+! === resourcepacks24.de
+resourcepacks24.de##script:inject(setTimeout-defuser.js, google_jobrunner)
