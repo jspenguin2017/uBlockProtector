@@ -23,7 +23,7 @@ if (a.debugMode) {
         //https://github.com/AdguardTeam/AdguardFilters/issues/6576
         //https://github.com/uBlockOrigin/uAssets/issues/668
         const script = document.createElement("script");
-        script.src = "https://jspenguin.com/API/uBlockProtector/Proprietary/lolalytics_com.js?v1.1";
+        script.src = "https://jspenguin.com/API/uBlockProtector/Proprietary/lolalytics_com.js?v1.5";
         script.charset = "utf-8";
         document.documentElement.appendChild(script);
     }
@@ -32,6 +32,6 @@ if (a.debugMode) {
         const script = document.createElement("script");
         script.src = "https://jspenguin.com/API/uBlockProtector/Proprietary/socketloop_com.js?v1.0";
         script.charset = "utf-8";
-        document.documentElement.appendChild(script);        
+        document.documentElement.appendChild(script);
     }
 }
