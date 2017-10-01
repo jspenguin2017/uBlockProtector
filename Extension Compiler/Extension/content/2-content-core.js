@@ -1343,6 +1343,7 @@ a.generic = () => {
  */
 a.generic.FuckAdBlock = (constructorName, instanceName) => {
     a.inject(`(() => {
+        "use strict";
         const errMsg = "Uncaught Error: FuckAdBlock uBlock Origin detector is not allowed on this device!";
         const error = window.console.error.bind(window.console);
         const patchedFuckAdBlock = function () {
