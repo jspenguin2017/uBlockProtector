@@ -649,3 +649,8 @@ resourcepacks24.de##script:inject(setTimeout-defuser.js, google_jobrunner)
 literaturcafe.de##script:inject(setTimeout-defuser.js, blockStatus)
 ! === deckshop.pro
 deckshop.pro###friendlyReminder
+! === citytv.com
+citytv.com##.widget_ad-widget
+citytv.com##.adv_wrap
+citytv.com##.adv_leaderboard
+citytv.com##.ad_bigbox

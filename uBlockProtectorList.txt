@@ -419,6 +419,10 @@ attorz.com###lineage104_pic
 resourcepacks24.de##script:inject(setTimeout-defuser.js, google_jobrunner)
 literaturcafe.de##script:inject(setTimeout-defuser.js, blockStatus)
 deckshop.pro###friendlyReminder
+citytv.com##.widget_ad-widget
+citytv.com##.adv_wrap
+citytv.com##.adv_leaderboard
+citytv.com##.ad_bigbox
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide
 @@||behindwoods.com^$generichide
@@ -455,6 +459,7 @@ deckshop.pro###friendlyReminder
 @@||getrelax.club^$generichide
 @@||mycinema.pro^$generichide
 @@||stream.nbcsports.com^$generichide
+@@||citytv.com^$generichide
 @@||imasdk.googleapis.com/js/sdkloader/outstream.js$script,domain=ovar.io
 @@||flashx1.tv/js/showad*.js$script
 @@||flashx1.tv/sidead.js$script
