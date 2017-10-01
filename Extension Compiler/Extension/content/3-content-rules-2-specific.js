@@ -3443,3 +3443,6 @@ if (a.domCmp(["linkneverdie.com"])) {
 if (a.domCmp(["megawrzuta.pl"])) {
     a.cookie("slickModal-1", "true");
 }
+if (a.domCmp(["animeheaven.eu"])) {
+    a.readOnly("canRunAds2", true);
+}
