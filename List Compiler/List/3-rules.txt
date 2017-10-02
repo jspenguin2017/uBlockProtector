@@ -654,3 +654,5 @@ citytv.com##.widget_ad-widget
 citytv.com##.adv_wrap
 citytv.com##.adv_leaderboard
 citytv.com##.ad_bigbox
+! === maisgasolina.com
+maisgasolina.com##script:inject(setTimeout-defuser.js, window.google_jobrunner)
