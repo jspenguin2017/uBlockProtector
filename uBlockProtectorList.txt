@@ -424,6 +424,7 @@ citytv.com##.adv_wrap
 citytv.com##.adv_leaderboard
 citytv.com##.ad_bigbox
 maisgasolina.com##script:inject(setTimeout-defuser.js, window.google_jobrunner)
+@@||vaughnlive.tv/ad/banner/_adsense_/_adserver/_adview_.ad.json$xmlhttprequest,first-party
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide
 @@||behindwoods.com^$generichide
