@@ -221,7 +221,7 @@ if (a.domCmp(["alein.org"])) {
 if (a.domCmp(["cutwin.com", "cut-urls.com", "adbull.me", "xess.pro", "clik.pw", "admove.co", "urle.co", "link-cash.com",
     "adshort.co", "linksh.top", "adshorte.com", "coinb.ink", "l2s.io", "shortzero.com", "veneapp.com", "coinlink.us",
     "tmearn.com", "url.gem-flash.com", "cuturlink.com", "shorteurl.com", "linkkawy.com", "cut-egy.ml", "igram.im",
-    "adlinkme.com", "ecut.io"])) {
+    "adlinkme.com", "ecut.io", "bit-url.com"])) {
     a.bait("div", "#test-block", true);
 }
 if (a.domCmp(["filecom.net", "upshare.org", "skippyfile.com", "mwfiles.net", "up-flow.org", "globeslot.com"])) {
