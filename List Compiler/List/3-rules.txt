@@ -658,3 +658,5 @@ citytv.com##.ad_bigbox
 maisgasolina.com##script:inject(setTimeout-defuser.js, window.google_jobrunner)
 ! === vaughnlive.tv
 @@||vaughnlive.tv/ad/banner/_adsense_/_adserver/_adview_.ad.json$xmlhttprequest,first-party
+! === insuranceage.co.uk
+||adpass.co.uk^
