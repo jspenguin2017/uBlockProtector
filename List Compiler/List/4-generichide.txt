@@ -36,3 +36,5 @@
 @@||stream.nbcsports.com^$generichide
 @@||citytv.com^$generichide
 @@||20min.ch^$generichide
+@@||clik.pw^$generichide
+@@||linksh.top^$generichide
