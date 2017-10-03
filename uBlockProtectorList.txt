@@ -425,6 +425,7 @@ citytv.com##.adv_leaderboard
 citytv.com##.ad_bigbox
 maisgasolina.com##script:inject(setTimeout-defuser.js, window.google_jobrunner)
 @@||vaughnlive.tv/ad/banner/_adsense_/_adserver/_adview_.ad.json$xmlhttprequest,first-party
+||adpass.co.uk^
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide
 @@||behindwoods.com^$generichide
@@ -463,6 +464,8 @@ maisgasolina.com##script:inject(setTimeout-defuser.js, window.google_jobrunner)
 @@||stream.nbcsports.com^$generichide
 @@||citytv.com^$generichide
 @@||20min.ch^$generichide
+@@||clik.pw^$generichide
+@@||linksh.top^$generichide
 @@||imasdk.googleapis.com/js/sdkloader/outstream.js$script,domain=ovar.io
 @@||flashx1.tv/js/showad*.js$script
 @@||flashx1.tv/sidead.js$script
