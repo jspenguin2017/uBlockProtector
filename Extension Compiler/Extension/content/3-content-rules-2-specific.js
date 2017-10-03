@@ -3446,3 +3446,17 @@ if (a.domCmp(["megawrzuta.pl"])) {
 if (a.domCmp(["animeheaven.eu"])) {
     a.readOnly("canRunAds2", true);
 }
+if (a.domCmp(["4downfiles.org"])) {
+    a.ready(() => {
+        a.inject(() => {
+            "use strict";
+            const link = window.document.querySelector("#direct_link > a");
+            if (link && link.href) {
+                const i = link.href.indexOf("=");
+                if (i > -1) {
+                    link.href = link.href.substring(i + 1);
+                }
+            }
+        });
+    });
+}
