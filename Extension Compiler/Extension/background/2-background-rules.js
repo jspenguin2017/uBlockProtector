@@ -144,6 +144,7 @@ a.generic();
             "pga.com",
             "q2.be",
             "vtm.be",
+            "ruutu.fi",
         ],
     );
 }
