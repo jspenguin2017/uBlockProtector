@@ -153,11 +153,10 @@ if (a.domCmp(["megogo.net"])) {
 }
 if (a.domCmp(["openload.co", "openload.io", "openload.tv", "oload.stream", "nekopoi.bid", "translatica.pl",
     "angrybirdsnest.com", "4tests.com", "urlaubspartner.net", "freizeitpartnerweb.de", "8bbit.com",
-    "outdoorpartner.net", "kisshentai.net"])) {
+    "outdoorpartner.net"])) {
     a.readOnly("adblock", false);
 }
-if (a.domCmp(["mexashare.com", "kisshentai.net", "hanime.tv", "mega-estrenos.com", "shortin.ga", "popunderjs.com",
-    "code.ptcong.com"])) {
+if (a.domCmp(["mexashare.com", "hanime.tv", "mega-estrenos.com", "shortin.ga", "popunderjs.com", "code.ptcong.com"])) {
     a.readOnly("BetterJsPop", "window.Object.freeze({})");
 }
 if (a.domCmp(["youwatch.to", "he2eini7ka.com", "shink.in", "shink.me"])) {
