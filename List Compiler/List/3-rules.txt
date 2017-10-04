@@ -662,3 +662,5 @@ maisgasolina.com##script:inject(setTimeout-defuser.js, window.google_jobrunner)
 ||adpass.co.uk^
 ! === foodnetwork.com
 foodnetwork.com##.o-AdhesionNotifier
+! === strefadb.pl
+strefadb.pl###videoad

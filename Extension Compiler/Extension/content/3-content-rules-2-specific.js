@@ -3463,3 +3463,21 @@ if (a.domCmp(["4downfiles.org"])) {
         });
     });
 }
+if (a.domCmp(["strefadb.pl"])) {
+    a.inject(() => {
+        "use strict";
+        let counter = 0;
+        window.Object.defineProperty(window, "FuckAdBlock", {
+            configurable: false,
+            set() { },
+            get() {
+                counter++;
+                if (counter === 2) {
+                    return true;
+                } else {
+                    return undefined;
+                }
+            },
+        });
+    });
+}

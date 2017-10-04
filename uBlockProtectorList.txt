@@ -427,6 +427,7 @@ maisgasolina.com##script:inject(setTimeout-defuser.js, window.google_jobrunner)
 @@||vaughnlive.tv/ad/banner/_adsense_/_adserver/_adview_.ad.json$xmlhttprequest,first-party
 ||adpass.co.uk^
 foodnetwork.com##.o-AdhesionNotifier
+strefadb.pl###videoad
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide
 @@||behindwoods.com^$generichide
