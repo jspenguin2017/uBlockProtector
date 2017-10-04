@@ -30,9 +30,9 @@
         "imgur.com", "imgbox.com", "flickr.com",
         //Handled by specific rules
         "anandabazar.com", "o2.pl", "vod.pl", "viasatsport.se", "viasport.fi", "tv3sport.dk",
-        "viasport.no",
+        "viasport.no", "strefadb.pl",
         //False positives
-        "techradar.com", "imdb.com", "babbel.com", "strefadb.pl",
+        "techradar.com", "imdb.com", "babbel.com",
     ];
     const genericWhitelist2 = [
         //Local network
