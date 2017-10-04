@@ -2847,6 +2847,9 @@ if (a.domCmp(["dilidili.wang"])) {
     a.antiCollapse("innerHTML", (elem) => elem === window.document.body);
     //a.filter("querySelectorAll", a.matchMethod.stringExact, "[href*=toGame] img", "window.document");
 }
+if (a.domCmp(["overclockers.ru"])) {
+    a.antiCollapse("innerHTML", (ignored, val) => val.includes("images/hungry.png"));
+}
 if (a.domCmp(["gamekit.com"])) {
     a.filter("setInterval", a.matchMethod.string, "a-d-block-popup");
 }
