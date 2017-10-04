@@ -1225,7 +1225,7 @@ if (a.domCmp(["kisscartoon.me", "kisscartoon.se"])) {
     });
 }
 if (a.domCmp(["openload.co", "openload.io", "openload.tv", "oload.stream"])) {
-    a.readOnly("adblock2", false);
+    //a.readOnly("adblock2", false);
     a.readOnly("popAdsLoaded", true);
 }
 if (a.domCmp(["youwatch.org", "chouhaa.info", "ahzahg6ohb.com"])) {
