@@ -1,4 +1,13 @@
 ! ======================
+! ===== Anti Miner =====
+! ======================
+/coinhive.js
+/coinhive.min.js
+/c-hive.js
+/c-hive.min.js
+/cryptonight.wasm
+||cqfnvznw.info^
+! ======================
 ! ===== Missed Ads =====
 ! ======================
 ! These are ads or tracking servers that I believe EasyList will not block any time soon
