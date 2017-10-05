@@ -435,6 +435,7 @@ maisgasolina.com##script:inject(setTimeout-defuser.js, window.google_jobrunner)
 ||adpass.co.uk^
 foodnetwork.com##.o-AdhesionNotifier
 strefadb.pl###videoad
+ultimate-catch.eu##.special-message-wrapper
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide
 @@||behindwoods.com^$generichide

@@ -676,3 +676,5 @@ maisgasolina.com##script:inject(setTimeout-defuser.js, window.google_jobrunner)
 foodnetwork.com##.o-AdhesionNotifier
 ! === strefadb.pl
 strefadb.pl###videoad
+! === ultimate-catch.eu
+ultimate-catch.eu##.special-message-wrapper
