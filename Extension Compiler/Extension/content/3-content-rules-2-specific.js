@@ -1225,6 +1225,7 @@ if (a.domCmp(["kisscartoon.me", "kisscartoon.se"])) {
     });
 }
 if (a.domCmp(["openload.co", "openload.io", "openload.tv", "oload.stream"])) {
+    //Conflict with an uBlock Origin scriptlet
     //a.readOnly("adblock2", false);
     a.readOnly("popAdsLoaded", true);
 }
