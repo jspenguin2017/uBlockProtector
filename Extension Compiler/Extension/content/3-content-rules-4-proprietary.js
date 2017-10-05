@@ -22,8 +22,9 @@ if (a.debugMode) {
         //https://github.com/AdguardTeam/AdguardFilters/issues/6280
         //https://github.com/AdguardTeam/AdguardFilters/issues/6576
         //https://github.com/uBlockOrigin/uAssets/issues/668
+        //Also, this filter is required: @@||lolalytics.com^$generichide
         const script = document.createElement("script");
-        script.src = "https://jspenguin.com/API/uBlockProtector/Proprietary/lolalytics_com.js?v1.7";
+        script.src = "https://jspenguin.com/API/uBlockProtector/Proprietary/lolalytics_com.js?v1.15";
         script.charset = "utf-8";
         document.documentElement.appendChild(script);
     }

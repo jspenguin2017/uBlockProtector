@@ -437,6 +437,7 @@ foodnetwork.com##.o-AdhesionNotifier
 strefadb.pl###videoad
 ultimate-catch.eu##.special-message-wrapper
 alemdarleech.com##script:inject(abort-on-property-read.js, koddostu_com_adblock_yok)
+@@||lolalytics.com^$generichide
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide
 @@||behindwoods.com^$generichide
