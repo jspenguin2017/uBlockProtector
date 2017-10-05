@@ -39,6 +39,7 @@ bild.de#@#script:inject(abort-on-property-read.js, de.bild.cmsKonfig.a.b.a)
 /c-hive.min.js
 /cryptonight.wasm
 ||cqfnvznw.info^
+||jyhfuqoh.info^
 ||d.0emm.com^$third-party
 ||d.0emn.com^$third-party
 ||d.0enm.com^$third-party

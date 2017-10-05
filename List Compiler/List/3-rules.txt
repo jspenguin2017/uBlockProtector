@@ -1,12 +1,15 @@
 ! ======================
 ! ===== Anti Miner =====
 ! ======================
+! === CoinHive Generic
 /coinhive.js
 /coinhive.min.js
 /c-hive.js
 /c-hive.min.js
 /cryptonight.wasm
+! === CoinHive Specific
 ||cqfnvznw.info^
+||jyhfuqoh.info^
 ! ======================
 ! ===== Missed Ads =====
 ! ======================
