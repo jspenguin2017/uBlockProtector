@@ -678,3 +678,5 @@ foodnetwork.com##.o-AdhesionNotifier
 strefadb.pl###videoad
 ! === ultimate-catch.eu
 ultimate-catch.eu##.special-message-wrapper
+! === alemdarleech.com
+alemdarleech.com##script:inject(abort-on-property-read.js, koddostu_com_adblock_yok)
