@@ -435,6 +435,7 @@ maisgasolina.com##script:inject(setTimeout-defuser.js, window.google_jobrunner)
 ||adpass.co.uk^
 foodnetwork.com##.o-AdhesionNotifier
 strefadb.pl###videoad
+alemdarleech.com##script:inject(abort-on-property-read.js, koddostu_com_adblock_yok)
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide
 @@||behindwoods.com^$generichide

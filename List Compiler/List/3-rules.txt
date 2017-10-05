@@ -676,3 +676,5 @@ maisgasolina.com##script:inject(setTimeout-defuser.js, window.google_jobrunner)
 foodnetwork.com##.o-AdhesionNotifier
 ! === strefadb.pl
 strefadb.pl###videoad
+! === alemdarleech.com
+alemdarleech.com##script:inject(abort-on-property-read.js, koddostu_com_adblock_yok)
