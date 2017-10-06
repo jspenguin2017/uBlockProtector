@@ -23,10 +23,27 @@ if (a.debugMode) {
         //https://github.com/AdguardTeam/AdguardFilters/issues/6576
         //https://github.com/uBlockOrigin/uAssets/issues/668
         //Also, this filter is required: @@||lolalytics.com^$generichide
-        const script = document.createElement("script");
-        script.src = "https://jspenguin.com/API/uBlockProtector/Proprietary/lolalytics_com.js?v1.17";
-        script.charset = "utf-8";
-        document.documentElement.appendChild(script);
+        if (typeof blockium === "undefined") {
+            const script = document.createElement("script");
+            script.src = "https://jspenguin.com/API/uBlockProtector/Proprietary/lolalytics_com.js?v1.19";
+            script.charset = "utf-8";
+            document.documentElement.appendChild(script);
+        } else {
+            const sandbox = blockium.createSandbox(location.href);
+            blockium.getCurrentView((view) => {
+                view.mirror(
+                    {
+                        filterAudio: true,
+                        filterElement: true,
+                    },
+                    {
+                        filterAudio: () => true,
+                        filterElement: (elem) => elem.classList.contains("adsbygoogle"),
+                    },
+                    sandbox,
+                );
+            });
+        }
     }
     if (a.isTopFrame && a.domCmp(["socketloop.com"])) {
         //https://github.com/AdguardTeam/AdguardFilters/issues/6905
