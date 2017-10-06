@@ -33,15 +33,17 @@ if (a.debugMode) {
             blockium.getCurrentView((view) => {
                 view.mirror(
                     {
-                        filterAudio: true,
-                        filterElement: true,
+                        filterAudio: blockium.mirrorOptions.blockAll,
+                        filterElement: blockium.mirrorOptions.callback,
                     },
                     {
-                        filterAudio: () => true,
                         filterElement: (elem) => elem.classList.contains("adsbygoogle"),
                     },
                     sandbox,
                 );
+                view.addEventListener("closed", () => {
+                    sandbox.dispose();
+                });
             });
         }
     }
