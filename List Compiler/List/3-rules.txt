@@ -631,8 +631,9 @@ nontonanime.org##nav.navbar + div.banner > a[href^="https://goo.gl/"]
 all-in.de###a_info
 ! === greenocktelegraph.co.uk
 greenocktelegraph.co.uk##.dfp-top-ad-container
-! === ouo.press
+! === ouo.press, ouo.io
 ||ouo.press/js/pop.t.js
+*$script,third-party,domain=ouo.press|ouo.io
 ! === linkkawy.com
 linkkawy.com###exestylepopupdiv
 ! === homebank.free.fr
