@@ -682,3 +682,5 @@ ultimate-catch.eu##.special-message-wrapper
 alemdarleech.com##script:inject(abort-on-property-read.js, koddostu_com_adblock_yok)
 ! === animedao5.xyz
 animedao5.xyz##script:inject(abort-current-inline-script.js, adblockDetect)
+! === communitech.ca
+communitech.ca#@#a[href*="/?aff="]
