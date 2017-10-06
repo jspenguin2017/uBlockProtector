@@ -24,7 +24,7 @@ if (a.debugMode) {
         //https://github.com/uBlockOrigin/uAssets/issues/668
         //Also, this filter is required: @@||lolalytics.com^$generichide
         const script = document.createElement("script");
-        script.src = "https://jspenguin.com/API/uBlockProtector/Proprietary/lolalytics_com.js?v1.15";
+        script.src = "https://jspenguin.com/API/uBlockProtector/Proprietary/lolalytics_com.js?v1.17";
         script.charset = "utf-8";
         document.documentElement.appendChild(script);
     }

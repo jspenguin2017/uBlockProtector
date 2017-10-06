@@ -31,6 +31,8 @@
         //Handled by specific rules
         "anandabazar.com", "o2.pl", "vod.pl", "viasatsport.se", "viasport.fi", "tv3sport.dk",
         "viasport.no", "strefadb.pl",
+        //Handled by proprietary rules
+        "lolalytics.com",
         //False positives
         "techradar.com", "imdb.com", "babbel.com",
     ];
