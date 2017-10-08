@@ -448,6 +448,7 @@ communitech.ca#@#a[href*="/?aff="]
 oload.info##script:inject(noeval-if, stopOver)
 vidfile.net##.rek
 ||cdn.cdnserv.pw/js/cnads.js$script,redirect=noopjs,domain=strikeout.co
+crash-aerien.news##script:inject(abort-on-property-read.js, noPub)
 @@||lolalytics.com^$generichide
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide

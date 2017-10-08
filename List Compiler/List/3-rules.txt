@@ -697,3 +697,5 @@ oload.info##script:inject(noeval-if, stopOver)
 vidfile.net##.rek
 ! === strikeout.co
 ||cdn.cdnserv.pw/js/cnads.js$script,redirect=noopjs,domain=strikeout.co
+! === crash-aerien.news
+crash-aerien.news##script:inject(abort-on-property-read.js, noPub)
