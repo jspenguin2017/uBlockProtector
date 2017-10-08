@@ -3482,3 +3482,19 @@ if (a.domCmp(["strefadb.pl"])) {
         });
     });
 }
+if (a.domCmp(["tune.pk"])) {
+    a.replace(() => {
+        if (url.startsWith("https://tune.pk/api_public/playerConfigs/?")) {
+            this.addEventListener("readystatechange", () => {
+                if (this.readyState === 4) {
+                    try {
+                        let payload = window.JSON.parse(this.responseText);
+                        delete payload.data.plugins.overlayAd;
+                        delete payload.data.plugins.annoy;
+                        replace(this, window.JSON.stringify(payload));
+                    } catch (err) { }
+                }
+            });
+        }
+    });
+}
