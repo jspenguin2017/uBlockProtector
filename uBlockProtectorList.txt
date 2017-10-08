@@ -441,6 +441,7 @@ alemdarleech.com##script:inject(abort-on-property-read.js, koddostu_com_adblock_
 animedao5.xyz##script:inject(abort-current-inline-script.js, adblockDetect)
 communitech.ca#@#a[href*="/?aff="]
 oload.info##script:inject(noeval-if, stopOver)
+vidfile.net##.rek
 @@||lolalytics.com^$generichide
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide
