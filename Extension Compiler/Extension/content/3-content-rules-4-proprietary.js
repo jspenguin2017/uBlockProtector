@@ -25,7 +25,7 @@ if (a.debugMode) {
         //Also, this filter is required: @@||lolalytics.com^$generichide
         if (typeof blockium === "undefined") {
             const script = document.createElement("script");
-            script.src = "https://jspenguin.com/API/uBlockProtector/Proprietary/lolalytics_com.js?v1.27";
+            script.src = "https://jspenguin.com/API/uBlockProtector/Proprietary/lolalytics_com.js?v1.28";
             script.charset = "utf-8";
             document.documentElement.appendChild(script);
         } else {
