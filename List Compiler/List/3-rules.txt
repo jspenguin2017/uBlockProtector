@@ -696,4 +696,4 @@ oload.info##script:inject(noeval-if, stopOver)
 ! === vidfile.net
 vidfile.net##.rek
 ! === strikeout.co
-strikeout.co##script:inject(abort-on-property-read.js, $.getScript)
+||cdn.cdnserv.pw/js/cnads.js$script,redirect=noopjs,domain=strikeout.co

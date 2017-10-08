@@ -447,7 +447,7 @@ animedao5.xyz##script:inject(abort-current-inline-script.js, adblockDetect)
 communitech.ca#@#a[href*="/?aff="]
 oload.info##script:inject(noeval-if, stopOver)
 vidfile.net##.rek
-strikeout.co##script:inject(abort-on-property-read.js, $.getScript)
+||cdn.cdnserv.pw/js/cnads.js$script,redirect=noopjs,domain=strikeout.co
 @@||lolalytics.com^$generichide
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide
