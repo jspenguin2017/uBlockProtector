@@ -78,6 +78,12 @@
 ! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/286
 ||spike.itv.com/itv/tserver/size=*/viewid=
 ||tom.itv.com/itv/tserver/size=
+! === NSFW! zmovs.com
+||zmovs.com^$csp=sandbox allow-forms allow-presentation allow-scripts allow-top-navigation allow-orientation-lock allow-pointer-lock allow-same-origin
+zmovs.com##.tc-col-sm-offset-7.hidden-xs
+zmovs.com##.closeBtn
+zmovs.com##.inplayer_banners
+zmovs.com##.close-banner.js-close.banner
 ! === Breakage caused by French EasyList and Firefox
 ! === Issue: https://github.com/uBlockOrigin/uAssets/issues/442
 @@||louccrossc.com^$domain=tf1.fr,badfilter
