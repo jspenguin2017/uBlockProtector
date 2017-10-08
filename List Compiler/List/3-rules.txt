@@ -695,3 +695,5 @@ communitech.ca#@#a[href*="/?aff="]
 oload.info##script:inject(noeval-if, stopOver)
 ! === vidfile.net
 vidfile.net##.rek
+! === strikeout.co
+strikeout.co##script:inject(abort-on-property-read.js, $.getScript)
