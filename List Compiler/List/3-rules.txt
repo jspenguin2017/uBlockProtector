@@ -256,7 +256,7 @@ gelbooru.com#@#center > a[href]
 bracknellnews.co.uk##script:inject(abort-on-property-write.js, _sp_)
 ! === u2s.io, l2s.io, linkhits.us
 u2s.io,l2s.io,linkhits.us#@#.myTestAd
-@@||solvemedia.com^$domain=u2s.io
+@@||solvemedia.com^$domain=u2s.io|l2s.io
 ||5g9quwq.com^$third-party
 ! === telegraph.co.uk
 telegraph.co.uk##.adblocker-message
