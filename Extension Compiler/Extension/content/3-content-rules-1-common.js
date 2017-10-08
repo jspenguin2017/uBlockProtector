@@ -202,7 +202,8 @@ if (a.domCmp(["debridnet.com", "adshort.co", "linksh.top", "adshorte.com", "coin
 if (a.domCmp(["linx.cloud"])) {
     a.noAccess("popns");
 }
-if (a.domCmp(["psarips.com", "streamcloud.eu", "jzrputtbut.net", "arenabg.ch", "solidfiles.com", "adlinkme.com"])) {
+if (a.domCmp(["psarips.com", "streamcloud.eu", "jzrputtbut.net", "arenabg.ch", "solidfiles.com", "adlinkme.com",
+    "maango.info"])) {
     a.noAccess("open");
 }
 
