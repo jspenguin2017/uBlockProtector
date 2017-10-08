@@ -81,62 +81,23 @@ if (a.debugMode) {
 //Rules
 if (a.debugMode) {
     /*
-    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/343
-    //Seems to be validated on the server side, this does not work, actually, modifying the cookie makes it worse
+    //Looks like viz.com is no longer embedding hulu.com
     {
-        //Generate cookie value
-        const mkVal = () => {
-            const timestamp = Math.floor(Date.now() / 1000) + 1000;
-            return `10_${timestamp}`;
-        };
-        //The cookie matcher
-        const reMatcher = /countdownToAd=[^;]+/;
-        //Listen and modify headers
-        chrome.webRequest.onBeforeSendHeaders.addListener(
-            (details) => {
-                for (let i = 0; i < details.requestHeaders.length; i++) {
-                    if (details.requestHeaders[i].name === "Cookie") {
-                        if (details.requestHeaders[i].value.includes("countdownToAd=")) {
-                            details.requestHeaders[i].value =
-                                details.requestHeaders[i].value.replace(reMatcher, `countdownToAd=${mkVal()}`);
-                        } else {
-                            details.requestHeaders[i].value += `; countdownToAd=${mkVal()}`;
-                        }
-                    }
-                }
-                //Debug log
-                console.log(details);
-                return { requestHeaders: details.requestHeaders };
-            },
-            {
-                urls: [
-                    "*://gamereactor.eu/*",
-                    "*://*.gamereactor.eu/*",
-                ],
-                types: [
-                    "main_frame",
-                ],
-            },
+        //https://github.com/AdguardTeam/AdguardFilters/issues/6718
+        a.staticServer(
             [
-                "blocking",
-                "requestHeaders",
+                "*://ads-v-darwin.hulustream.com/published/*.mp4",
+                "*://*.ads-v-darwin.hulustream.com/published/*.mp4",
             ],
+            [
+                "media",
+            ],
+            a.blankMP4,
+            [
+                "player.hulu.com",
+            ],
+            true,
         );
     }
     */
-    //https://github.com/AdguardTeam/AdguardFilters/issues/6718
-    a.staticServer(
-        [
-            "*://ads-v-darwin.hulustream.com/published/*.mp4",
-            "*://*.ads-v-darwin.hulustream.com/published/*.mp4",
-        ],
-        [
-            "media",
-        ],
-        a.blankMP4,
-        [
-            "player.hulu.com",
-        ],
-        true,
-    );
 }
