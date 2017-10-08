@@ -124,4 +124,19 @@ if (a.debugMode) {
         );
     }
     */
+    //https://github.com/AdguardTeam/AdguardFilters/issues/6718
+    a.staticServer(
+        [
+            "*://ads-v-darwin.hulustream.com/published/*.mp4",
+            "*://*.ads-v-darwin.hulustream.com/published/*.mp4",
+        ],
+        [
+            "media",
+        ],
+        a.blankMP4,
+        [
+            "player.hulu.com",
+        ],
+        true,
+    );
 }
