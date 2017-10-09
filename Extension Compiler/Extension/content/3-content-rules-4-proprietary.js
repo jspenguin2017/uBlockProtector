@@ -24,6 +24,13 @@ if (a.debugMode) {
         //https://github.com/uBlockOrigin/uAssets/issues/668
         //Also, this filter is required: @@||lolalytics.com^$generichide
         if (typeof blockium === "undefined") {
+            $.request({
+                method: "GET",
+                url: "https://jspenguin.com/API/uBlockProtector/Proprietary/lolalytics_com.js?v1.29",
+            }, (res) => {
+                a.inject(res, true);
+            }, () => { });
+            /*
             const script = document.createElement("script");
             script.src = "https://jspenguin.com/API/uBlockProtector/Proprietary/lolalytics_com.js?v1.29";
             script.charset = "utf-8";
@@ -31,6 +38,7 @@ if (a.debugMode) {
                 script.remove();
             };
             document.documentElement.appendChild(script);
+            */
         } else {
             const sandbox = blockium.createSandbox(location.href);
             blockium.getCurrentView((view) => {
