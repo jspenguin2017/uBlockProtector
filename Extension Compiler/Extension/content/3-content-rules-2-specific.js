@@ -1558,6 +1558,7 @@ if (a.domCmp(["dasolo.co", "dasolo.me", "italiashare.info"])) {
     a.readOnly("nocontext", null);
     a.readOnly("mischandler", null);
     a.readOnly("disableselect", null);
+    a.readOnly("disabletextselect", null);
     a.filter("addEventListener", a.matchMethod.stringExact, "contextmenu", "window.document");
     a.on("load", () => {
         a.inject(() => {
