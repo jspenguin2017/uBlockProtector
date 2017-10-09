@@ -450,6 +450,7 @@ vidfile.net##.rek
 crash-aerien.news##script:inject(abort-on-property-read.js, noPub)
 gratispeliculas.xyz##div[id^="hide"]:style(display: block !important;)
 gratispeliculas.xyz##input[id^="contar"]
+freestocks.org##.popup
 @@||lolalytics.com^$generichide
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide

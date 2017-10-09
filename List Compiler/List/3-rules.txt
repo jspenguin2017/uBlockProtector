@@ -701,3 +701,5 @@ crash-aerien.news##script:inject(abort-on-property-read.js, noPub)
 ! === gratispeliculas.xyz
 gratispeliculas.xyz##div[id^="hide"]:style(display: block !important;)
 gratispeliculas.xyz##input[id^="contar"]
+! === freestocks.org
+freestocks.org##.popup
