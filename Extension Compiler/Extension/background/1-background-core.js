@@ -7,10 +7,8 @@
  * @function
  */
 a.init = () => {
-    //Message listener
     chrome.runtime.onMessage.addListener((...args) => {
         if (args.length === 3) {
-            //Each message must have "cmd" field for the command
             switch (args[0]["cmd"]) {
                 /**
                  * Inject CSS to the caller tab.
@@ -22,12 +20,11 @@ a.init = () => {
                             code: args[0]["data"],
                             frameId: args[1].frameId || 0,
                         }, () => {
-                            if (chrome.runtime.lastError) {
-                                //Ignore, assume the tab is closed
-                            }
+                            void chrome.runtime.lastError;
                         });
-                    } //Ignore if not called from a proper tab
+                    }
                     break;
+
                 /**
                  * Send a highly privileged XMLHttpRequest, it goes though Cross Origin Resource
                  * Sharing policies as well as uBlock Origin filtering.
@@ -35,15 +32,13 @@ a.init = () => {
                  ** for more information.
                  * @return {string|null} The response text, or null if the request failed.
                  */
-                /*
-                //Never used
                 case "xhr":
                     if (typeof args[0].details === "object") {
                         const method = String(args[0].details.method);
                         if (method === "GET" || method === "POST") {
                             console.log(`Sending cross origin request to ${args[0].details.url}`);
                             let req = new XMLHttpRequest();
-                            //Event handler
+
                             req.onreadystatechange = () => {
                                 if (req.readyState === 4) {
                                     try {
@@ -51,37 +46,39 @@ a.init = () => {
                                     } catch (err) { }
                                 }
                             };
-                            //Create request
+
                             req.open(method, String(args[0].details.url));
-                            //Set headers
+
                             if (typeof args[0].details.headers === "object") {
                                 for (let key in args[0].details.headers) {
                                     req.setRequestHeader(key, String(args[0].details.headers[key]));
                                 }
                             }
-                            //Send request
+
                             let payload = null;
                             if (args[0].details.payload) {
                                 payload = String(args[0].details.payload);
                             }
                             req.send(payload);
-                            return true; //The callback is done after this handler returns
-                        } //Ignore if method is not valid
-                    } //Ignore if details is not valid
+
+                            //Must return true since I need to respond to content script asynchronously
+                            return true;
+                        }
+                    }
                     break;
-                */
+
                 /**
                  * Forcefully close the sender tab.
                  */
                 case "remove tab":
                     if (args[1].tab && args[1].tab.id !== chrome.tabs.TAB_ID_NONE) {
                         chrome.tabs.remove(args[1].tab.id, () => {
-                            if (chrome.runtime.lastError) {
-                                //Ignore, assume the tab is already closed
-                            }
+                            void chrome.runtime.lastError;
                         });
-                    } //Ignore if not called from a proper tab
+                    }
                     break;
+
+                //@pragma-if-debug
                 /**
                  * Log data to console. Only available in debug mode.
                  * @param {string} data - The data to log.
@@ -91,19 +88,20 @@ a.init = () => {
                         console.log(args[0].data);
                     }
                     break;
+                //@pragma-end-if
+
                 default:
-                    //Invalid command, ignore
                     break;
             }
-        } //No command, ignore
+        }
     });
-    //Extension icon click handler, open options page
+
     chrome.browserAction.onClicked.addListener(() => {
         chrome.runtime.openOptionsPage();
     });
-    //Set badge
+
+    //@pragma-if-debug
     if (a.debugMode) {
-        //Debug mode
         chrome.browserAction.setBadgeText({
             text: "DBG",
         });
@@ -111,14 +109,15 @@ a.init = () => {
             color: "#6996FF",
         });
     } else if (chrome.runtime.id !== "ggolfgbegefeeoocgjbmkembbncoadlb") {
-        //Unpacked extension but not in debug mode
+        //Unpacked extension
         chrome.browserAction.setBadgeText({
             text: "DEV",
         });
         chrome.browserAction.setBadgeBackgroundColor({
             color: "#25BA42",
         });
-    } //No badge otherwise
+    }
+    //@pragma-end-if
 };
 
 //=====Resources=====
@@ -126,7 +125,6 @@ a.init = () => {
  * Base 64 encoded blank MP4.
  * @const {string}
  */
-/*
 a.blankMP4 =
     "data:video/mp4;base64, AAAAHGZ0eXBNNFYgAAACAGlzb21pc28yYXZjMQAAAAhmcmVlAAAGF21kYXTeBAAAbGliZmFhYyAxLjI4AABCAJMgBDIARwAAArEGBf//rdxF6b3m2Ui3lizYINkj7u9" +
     "4MjY0IC0gY29yZSAxNDIgcjIgOTU2YzhkOCAtIEguMjY0L01QRUctNCBBVkMgY29kZWMgLSBDb3B5bGVmdCAyMDAzLTIwMTQgLSBodHRwOi8vd3d3LnZpZGVvbGFuLm9yZy94MjY0Lmh0bWwgLSBvc" +
@@ -162,7 +160,6 @@ a.blankMP4 =
     "JAAAACQAAAAkAAAAJAAAACQAAAAkAAAAJAAAACQAAAAkAAAAJAAAACQAAAAkAAACMc3RjbwAAAAAAAAAfAAAALAAAA1UAAANyAAADhgAAA6IAAAO+AAAD0QAAA+0AAAQAAAAEHAAABC8AAARLAAAEZ" +
     "wAABHoAAASWAAAEqQAABMUAAATYAAAE9AAABRAAAAUjAAAFPwAABVIAAAVuAAAFgQAABZ0AAAWwAAAFzAAABegAAAX7AAAGFwAAAGJ1ZHRhAAAAWm1ldGEAAAAAAAAAIWhkbHIAAAAAAAAAAG1kaXJ" +
     "hcHBsAAAAAAAAAAAAAAAALWlsc3QAAAAlqXRvbwAAAB1kYXRhAAAAAQAAAABMYXZmNTUuMzMuMTAw";
-*/
 
 //=====Utilities=====
 /**
@@ -173,13 +170,14 @@ a.blankMP4 =
  * @return {string} The URL of the tab, or an empty string if it is not known.
  */
 a.getTabURL = (() => {
-    //The tabs database
     let tabs = {};
+
+    //@pragma-if-debug
     if (a.debugMode) {
-        //Expose private object in debug mode
         window.getTabURLInternal = tabs;
     }
-    //Query existing tabs
+    //@pragma-end-if
+
     chrome.tabs.query({}, (existingTabs) => {
         for (let i = 0; i < existingTabs.length; i++) {
             const id = existingTabs[i].id;
@@ -187,14 +185,11 @@ a.getTabURL = (() => {
                 if (!tabs[id]) {
                     tabs[id] = {};
                 }
-                //Only assign if it does not exist
                 tabs[id][0] = tabs[id][0] || existingTabs[i].url;
-                //Query frames
+
                 chrome.webNavigation.getAllFrames({ tabId: id }, (frames) => {
-                    //This can fail if the tab is closed at the right timing
                     if (!chrome.runtime.lastError && tabs[id]) {
                         for (let ii = 0; ii < frames.length; ii++) {
-                            //Only assign if it does not exist
                             tabs[id][frames[ii].frameId] = tabs[id][frames[ii].frameId] || frames[ii].url;
                         }
                     }
@@ -202,7 +197,7 @@ a.getTabURL = (() => {
             }
         }
     });
-    //Bind event handlers
+
     chrome.webNavigation.onCommitted.addListener((details) => {
         if (!tabs[details.tabId]) {
             tabs[details.tabId] = {};
@@ -210,10 +205,9 @@ a.getTabURL = (() => {
         tabs[details.tabId][details.frameId] = details.url;
     });
     chrome.tabs.onRemoved.addListener((id) => {
-        //Free memory when tab is closed
         delete tabs[id];
     });
-    //Return closure function
+
     return (tab, frame) => {
         if (tabs[tab]) {
             return tabs[tab][frame] || "";
@@ -236,11 +230,10 @@ a.domCmp = (() => {
     return (url, domList, isMatch) => {
         let dom = domainExtractor.exec(url);
         if (!dom) {
-            //Defaults to not match if the scheme is not supported or the URL is not valid
             return false;
         }
         dom = dom[1];
-        //Loop though each element
+
         for (let i = 0; i < domList.length; i++) {
             if (dom.endsWith(domList[i]) &&
                 (dom.length === domList[i].length || dom.charAt(dom.length - domList[i].length - 1) === '.')) {
@@ -309,7 +302,6 @@ a.dynamicServer = (urls, types, server, domList, isMatch = true) => {
  */
 a.generic = () => {
     //---jQuery plugin---
-    //Payload generator
     /*
     a.mkPayload("jQuery plugin", () => {
         "use strict";
@@ -337,9 +329,8 @@ a.generic = () => {
         "aW5kb3cualF1ZXJ5LmFkYmxvY2sgPSBmYWxzZTt9IGNhdGNoIChlcnIpIHsgfX0pKCk7",
     );
     //---Interactive Media Ads Software Development Kit---
-    //Payload generator
-    /*
     //https://developers.google.com/interactive-media-ads/docs/sdks/html5/v3/apis
+    /*
     a.mkPayload("IMA SDK", () => {
         "use strict";
         try {
@@ -706,7 +697,6 @@ a.generic = () => {
         */
     );
     //---MoatFreeWheelJSPEM.js---
-    //Payload generator
     /*
     a.mkPayload("MoatFreeWheelJSPEM.js", () => {
         "use strict";
@@ -732,6 +722,7 @@ a.generic = () => {
     );
 };
 
+//@pragma-if-debug
 //=====Debug Utilities=====
 /**
  * Attempt to make the server think the request is from a different IP. Rarely works.
@@ -746,6 +737,7 @@ a.proxy = (urls, ip, log) => {
         console.error("a.proxy() is only available in debug mode!");
         return;
     }
+
     chrome.webRequest.onBeforeSendHeaders.addListener(
         (details) => {
             details.requestHeaders.push({
@@ -784,17 +776,16 @@ a.mkPayload = (title, payload, type = "text/javascript") => {
         console.error("a.mkPayload() is only available in debug mode!");
         return;
     }
-    //Trim each line to make it smaller
+
     let lines = (`(${payload})();`).split("\n");
     for (let i = 0; i < lines.length; i++) {
         lines[i] = lines[i].trim();
-        //Remove comments
         if (lines[i].startsWith("//")) {
             lines.splice(i, 1);
             i--;
         }
     }
-    //Encode and pretty print
+
     payload = `data:${type};base64,` + btoa(lines.join(""));
     const originalPayload = payload;
     let output = "";
@@ -806,3 +797,4 @@ a.mkPayload = (title, payload, type = "text/javascript") => {
     console.log(output);
     return originalPayload;
 };
+//@pragma-end-if

@@ -1,3 +1,4 @@
+//Build filter list
 "use strict";
 
 
@@ -13,6 +14,7 @@ const { EOL } = require("os");
  * @var {Array.<string>}
  */
 let output = [];
+
 /**
  * Load and process a file.
  * @param {string} path - The path to the file.

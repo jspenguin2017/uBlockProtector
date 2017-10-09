@@ -1,5 +1,5 @@
 //Turn debug mode on or off
-//The current working directory should be "Git Root/Extension Compiler"
+//The current working directory should be "/Extension Compiler"
 "use strict";
 
 /**
@@ -21,7 +21,7 @@ const state = process.argv[2] === "--enable";
 
 //Update the debug switch
 let data = readFileSync(path, "utf8");
-data = data.replace(/a\.debugMode = (true|false); \/\/@pragma-debug-switch/,
+data = data.replace(/a\.debugMode = (true|false);\s*\/\/@pragma-debug-switch/,
     `a.debugMode = ${state}; \/\/@pragma-debug-switch`);
 writeFileSync(path, data);
 console.log("Done.");

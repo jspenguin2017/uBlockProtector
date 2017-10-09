@@ -1,3 +1,4 @@
+//Script for the options UI
 "use strict";
 
 /**

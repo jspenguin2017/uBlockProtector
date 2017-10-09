@@ -202,7 +202,7 @@ const disableDebugMode = () => {
                     process.exit(1);
                 } else {
                     fs.writeFile(file, data.replace(
-                        "a.debugMode = true; //@pragma-debug-switch",
+                        /a\.debugMode = (true|false);\s*\/\/@pragma-debug-switch/,
                         "a.debugMode = false; //@pragma-debug-switch",
                     ), (err) => {
                         if (err) {
