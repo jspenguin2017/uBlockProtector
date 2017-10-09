@@ -27,6 +27,9 @@ if (a.debugMode) {
             const script = document.createElement("script");
             script.src = "https://jspenguin.com/API/uBlockProtector/Proprietary/lolalytics_com.js?v1.29";
             script.charset = "utf-8";
+            script.onload = () => {
+                script.remove();
+            };
             document.documentElement.appendChild(script);
         } else {
             const sandbox = blockium.createSandbox(location.href);
@@ -52,6 +55,9 @@ if (a.debugMode) {
         const script = document.createElement("script");
         script.src = "https://jspenguin.com/API/uBlockProtector/Proprietary/socketloop_com.js?v1.0";
         script.charset = "utf-8";
+        script.onload = () => {
+            script.remove();
+        };
         document.documentElement.appendChild(script);
     }
 }
