@@ -2250,7 +2250,9 @@ if (a.domCmp(["vvvvid.it"])) {
 
                 window.vvvvid.cab4 = function (a, b) {
                     this.isAdBlockActive = false;
-                    b && b(false);
+                    if (b) {
+                        b(false);
+                    }
                 };
                 const func = window.String(window.vvvvid.models.PlayerObj.prototype.startAdv);
                 if (!re.test(func)) {
@@ -2524,7 +2526,7 @@ if (a.domCmp(["adageindia.in", "bombaytimes.com", "businessinsider.in", "gizmodo
                     try {
                         r = getter();
                     } catch (err) { }
-                } while (!r && (++i) < 100);
+                } while (!r && i++ < 100);
                 return null;
             },
         });

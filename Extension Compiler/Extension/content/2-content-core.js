@@ -1548,7 +1548,8 @@ a.backgroundLog = (log) => {
 };
 /**
  * setInterval() with benchmark.
- * Should only be used in debug mode, will be mapped to setInterval() in non-debug mode.
+ * Should only be used in debug mode, will be mapped to setInterval() in developer mode, not available
+ * in production mode.
  * @function
  * @param {Special} func, delay, ...args - Arguments for setInterval(), the first parameter must
  ** be a function, cannot be raw code.
