@@ -133,7 +133,13 @@ a.generic();
                 return { redirectUrl: genPayload(csid[1], caid[1], decodeURIComponent(cbfn[1])) };
             } else {
                 console.log("Could not extract parameters from a request to v.fwmrm.net");
-                a.debugMode && console.log(details);
+
+                //@pragma-if-debug
+                if (a.debugMode) {
+                    console.log(details);
+                }
+                //@pragma-end-if
+
                 //Block the request as a fallback
                 return { cancel: true };
             }
