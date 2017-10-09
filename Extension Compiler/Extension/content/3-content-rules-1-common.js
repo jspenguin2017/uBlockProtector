@@ -3,10 +3,8 @@
 //Anti-Adblock Killer Repository (contains original source code and license): https://github.com/reek/anti-adblock-killer
 "use strict";
 
-//Initialization
 {
     a.init();
-    //White list
     const genericWhitelist1 = [
         //Local network
         "localhost", "127.0.0.1",
@@ -46,37 +44,36 @@
         //Stores
         "amazon", "ebay",
     ];
-    //Apply generic solutions
+
     if (a.domCmp(genericWhitelist1, true) || a.domInc(genericWhitelist2, true)) {
         console.log("This domain is excluded from all generically applied solutions.");
     } else {
-        //Basic
         if (a.domCmp([], true)) {
             console.log("This domain is excluded from common generic solutions.");
         } else {
             a.generic();
         }
-        //Adfly
+
         if (a.domCmp([], true)) {
             console.log("This domain is excluded from Adfly bypasser.");
         } else {
             a.generic.Adfly();
         }
-        //NoAdBlock
+
         if (a.domCmp([], true)) {
             console.log("This domain is excluded from NoAdBlock defuser.");
         } else {
             a.generic.NoAdBlock();
         }
     }
-    //ads.js v2
+
     if (a.domCmp(["gamersclub.com.br", "uploadboy.com", "vidoza.net", "videohelp.com", "zeiz.me",
         "passionea300allora.it", "memurlar.net", "palemoon.org", "stocks.cafe", "listamais.com.br",
         "acquavivalive.it", "palolive.it", "molfettalive.it", "sledujserialy.sk", "warforum.cz",
         "lolskinlistgenerator.com", "beinsports.com"])) {
         a.generic.adsjsV2();
     }
-    //uBO-Extra white list
+
     if (a.domCmp([], true)) {
         a.uBOExtraExcluded = true;
         console.log("uBlock Protector excluded this domain from uBO-Extra.");

@@ -17,6 +17,8 @@
 //
 "use strict";
 
+//@pragma-if-debug
+
 if (a.debugMode) {
     if (a.isTopFrame && a.domCmp(["lolalytics.com"])) {
         //https://github.com/AdguardTeam/AdguardFilters/issues/6280
@@ -69,3 +71,5 @@ if (a.debugMode) {
         document.documentElement.appendChild(script);
     }
 }
+
+//@pragma-end-if

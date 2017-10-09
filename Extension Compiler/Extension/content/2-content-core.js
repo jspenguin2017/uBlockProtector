@@ -90,7 +90,6 @@ a.err = (name) => {
  ** @param {string} response - The response text.
  * @param {Function} onerror - The error event handler.
  */
-/*
 a.request = (details, onload, onerror) => {
     chrome.runtime.sendMessage({
         cmd: "xhr",
@@ -103,7 +102,6 @@ a.request = (details, onload, onerror) => {
         }
     });
 };
-*/
 /**
  * Check if current domain ends with one of the domains in the list.
  * "example.com" will match domains that matches /(^|.*\.)example\.com$/.
@@ -117,30 +115,14 @@ a.domCmp = (domList, noErr) => {
         if (document.domain.endsWith(domList[i]) &&
             (document.domain.length === domList[i].length ||
                 document.domain.charAt(document.domain.length - domList[i].length - 1) === '.')) {
-            !noErr && a.err();
+            if (!noErr) {
+                a.err();
+            }
             return true;
         }
     }
     return false;
 };
-/**
- * Same as a.domCmp(), but only compare one domain.
- * @function
- * @param {string} dom - The domain to compare.
- */
-/*
-//Does not make a difference
-a.domCmpOnce = (dom, noErr) => {
-    if (document.domain.endsWith(dom) &&
-        (document.domain.length === dom.length ||
-            document.domain.charAt(document.domain.length - dom.length - 1) === '.')) {
-        !noErr && a.err();
-        return true;
-    } else {
-        return false;
-    }
-};
-*/
 /**
  * Check if current domain includes one of the strings that is in the list.
  * "example" will match domains that matches /(^|.*\.)example\.[^\.]*$/.
@@ -153,41 +135,20 @@ a.domCmpOnce = (dom, noErr) => {
 a.domInc = (domList, noErr) => {
     for (let i = 0; i < domList.length; i++) {
         let index = document.domain.lastIndexOf(domList[i] + ".");
-        //Make sure the character before, if exists, is "."
         if (index > 0 && document.domain.charAt(index - 1) !== '.') {
             continue;
         }
         if (index > -1) {
             if (!document.domain.substring(index + domList[i].length + 1).includes(".")) {
-                !noErr && a.err();
+                if (!noErr) {
+                    a.err();
+                }
                 return true;
             }
         }
     }
     return false;
 };
-/**
- * Same as a.domInc(), but only compare one domain.
- * @function
- * @param {string} dom - The domain to compare.
- */
-/*
-//Does not make a difference
-a.domIncOnce = (dom, noErr) => {
-    let index = document.domain.lastIndexOf(dom + ".");
-    //Make sure the character before, if exists, is "."
-    if (index > 0 && document.domain.charAt(index - 1) !== '.') {
-        return false;
-    }
-    if (index > -1) {
-        if (!document.domain.substring(index + dom.length + 1).includes(".")) {
-            !noErr && a.err();
-            return true;
-        }
-    }
-    return false;
-};
-*/
 /**
  * Match methods.
  * @const {Enumeration}
@@ -237,6 +198,7 @@ a.getMatcher = (method, filter) => {
                 }
                 return false;
             }`;
+
         case a.matchMethod.stringExact:
             return `(args) => {
                 for (let i = 0; i < args.length; i++) {
@@ -246,6 +208,7 @@ a.getMatcher = (method, filter) => {
                 }
                 return false;
             }`;
+
         case a.matchMethod.RegExp:
             return `(args) => {
                 const matcher = ${filter};
@@ -256,10 +219,11 @@ a.getMatcher = (method, filter) => {
                 }
                 return false;
             }`;
+
         case a.matchMethod.callback:
             return String(filter);
+
         default:
-            //Match all
             return `() => true`;
     }
 };
@@ -277,7 +241,11 @@ a.inject = (payload, isReady) => {
         s.remove();
     } catch (err) {
         console.error("uBlock Protector failed to inject a standalone script!");
-        a.debugMode && console.log(s.textContent);
+        //@pragma-if-debug
+        if (a.debugMode) {
+            console.log(s.textContent);
+        }
+        //@pragma-end-if
     }
 };
 /**
@@ -295,13 +263,11 @@ a.inject = (payload, isReady) => {
  *** The execution will be done on the next tick, which makes it not truly synchronous.
  */
 a.injectWithRuntime = (payload, isReady) => {
-    //Set up event listener
     const magic = a.uid();
     addEventListener(magic, (e) => {
-        //dispatchEvent and CustomEvent are cached by runtime, this is safe
         a.inject(e.detail, true);
     });
-    //Process payload
+
     const runtime = `(() => {
         "use strict";
         const dispatchEvent = window.dispatchEvent.bind(window);
@@ -313,15 +279,19 @@ a.injectWithRuntime = (payload, isReady) => {
         };
         ${isReady ? payload : `(${payload})();`}
     })();`;
-    //Inject payload
+
     let s = document.createElement("script");
     s.textContent = runtime;
     try {
         document.documentElement.prepend(s);
         s.remove();
     } catch (err) {
-        console.error("uBlock Protector failed to inject a runtime wrapped standalone script!");
-        a.debugMode && console.log(s.textContent);
+        console.error("uBlock Protector failed to inject a standalone script with runtime!");
+        //@pragma-if-debug
+        if (a.debugMode) {
+            console.log(s.textContent);
+        }
+        //@pragma-end-if
     }
 };
 /**
@@ -428,13 +398,11 @@ a.css = (() => {
     const reMatcher = /;/g;
     return (code, stealthy) => {
         const payload = code.replace(reMatcher, " !important;");
-        //Add from background page
         chrome.runtime.sendMessage({
             cmd: "inject css",
             data: payload,
         });
         if (!stealthy) {
-            //Add directly
             let s = document.createElement("style");
             s.textContent = payload;
             document.documentElement.append(s);
@@ -450,9 +418,7 @@ a.css = (() => {
  * @param {boolean} [hidden=false] - Whether the element should be hidden.
  */
 a.bait = (type, identifier, hidden) => {
-    //Create element
     let elem = document.createElement(type);
-    //Add identifier
     switch (identifier.charAt(0)) {
         case '#':
             elem.id = identifier.substring(1);
@@ -461,11 +427,9 @@ a.bait = (type, identifier, hidden) => {
             elem.className = identifier.substring(1);
             break;
     }
-    //Hide element if needed
     if (hidden) {
         elem.style.display = "none";
     }
-    //Add content and prepend to HTML
     elem.innerHTML = "<br>";
     document.documentElement.prepend(elem);
 };
@@ -485,41 +449,36 @@ a.filter = (name, method, filter, parent = "window") => {
     a.inject(`(() => {
         "use strict";
         const matcher = ${a.getMatcher(method, filter)};
-        //Cache console functions as some web pages do change them
+
         const log = window.console.log.bind(window.console);
         const warn = window.console.warn.bind(window.console);
         const error = window.console.error.bind(window.console);
-        //The original funciton, will be set later
+
         let parent, original;
-        //The replacement function with filters
         const newFunc = (...args) => {
-            //Call log
+            //@pragma-if-debug
             if (${a.debugMode}) {
                 warn("${strParent}.${name} is called with these arguments:");
                 for (let i = 0; i < args.length; i++) {
                     log(String(args[i]));
                 }
             }
-            //Apply filter
+            //@pragma-end-if
+
             if (matcher(args)) {
-                //Not allowed log
                 error("Uncaught Error: uBlock Origin detectors are not allowed on this device!");
             } else {
-                //Allowed log
                 log("Tests passed.");
                 return original.apply(parent, args);
             }
         };
-        //Try to replace the function
+
         try {
             parent = ${parent};
             original = ${parent}["${name}"];
-            //Replace
             ${parent}["${name}"] = newFunc;
-            //Activate log
             log("Filter activated on ${strParent}.${name}");
         } catch (err) {
-            //Failed to activate
             error("uBlock Protector failed to activate filter on ${strParent}.${name}!");
         }
     })();`, true);
@@ -534,36 +493,47 @@ a.filter = (name, method, filter, parent = "window") => {
  ** @return {boolean} True to block the assignment, false to allow.
  */
 a.antiCollapse = (name, filter) => {
-    let parent = "Element"; //innerHTML is on Element
+    let parent;
     switch (name) {
+        case "innerHTML":
+            parent = "Element";
+            break;
+
         case "innerText":
             parent = "HTMLElement";
             break;
+
         case "textContent":
             parent = "Node";
             break;
+
         default:
+            parent = "Element";
             break;
     }
     a.inject(`(() => {
         "use strict";
         const handler = ${filter};
+
         const log = window.console.log.bind(window.console);
         const warn = window.console.warn.bind(window.console);
         const error = window.console.error.bind(window.console);
         const String = window.String.bind(window);
+
         try {
-            //Get setter and getter
             const descriptor = window.Object.getOwnPropertyDescriptor(window.${parent}.prototype, "${name}");
             const _set = descriptor.set;
             const _get = descriptor.get;
             window.Object.defineProperty(window.${parent}.prototype, "${name}", {
                 configurable: false,
                 set(val) {
+                    //@pragma-if-debug
                     if (${a.debugMode}) {
                         warn("${name} of an element is being assigned to:");
                         log(val);
                     }
+                    //@pragma-end-if
+
                     if (handler(this, String(val))) {
                         error("Uncaught Error: uBlock Origin detectors are not allowed on this device!");
                     } else {
@@ -575,9 +545,8 @@ a.antiCollapse = (name, filter) => {
                     return _get.call(this);
                 },
             });
-            window.console.log("Element collapse defuser activated on ${name}");
+            log("Element collapse defuser activated on ${name}");
         } catch (err) {
-            //Failed to activate
             error("uBlock Protector failed to activate element collapse defuser on ${name}!");
         }
     })();`, true);
@@ -596,22 +565,22 @@ a.timewarp = (timer, method, filter, ratio = 0.02) => {
     a.inject(`(() => {
         "use strict";
         const matcher = ${a.getMatcher(method, filter)};
-        //Cache console functions as some web pages do change them
+
         const log = window.console.log.bind(window.console);
         const warn = window.console.warn.bind(window.console);
         const error = window.console.error.bind(window.console);
-        //The original funciton, will be set later
+
         let original;
-        //The replacement function with filters
         const newFunc = (...args) => {
-            //Call log
+            //@pragma-if-debug
             if (${a.debugMode}) {
                 warn("window.${timer} is called with these arguments:");
                 for (let i = 0; i < args.length; i++) {
                     log(String(args[i]));
                 }
             }
-            //Apply filter
+            //@pragma-end-if
+
             if (matcher(args)) {
                 error("Timewarped.");
                 args[1] *= ${ratio};
@@ -620,15 +589,12 @@ a.timewarp = (timer, method, filter, ratio = 0.02) => {
             }
             return original.apply(window, args);
         };
-        //Try to replace the function
+
         try {
             original = window.${timer};
-            //Replace
             window.${timer} = newFunc;
-            //Activate log
             log("Timewarp activated on window.${timer}");
         } catch (err) {
-            //Failed to activate
             error("uBlock Protector failed to activate filter on window.${timer}!");
         }
     })();`, true);
@@ -649,7 +615,6 @@ a.readOnly = (name, val, parent = "window") => {
     a.inject(`(() => {
         "use strict";
         const val = ${val};
-        //This is synchronous so I do not need to cache the reference of the console functions
         try {
             window.Object.defineProperty(${parent}, "${name}", {
                 configurable: false,
@@ -658,9 +623,12 @@ a.readOnly = (name, val, parent = "window") => {
                     return val;
                 },
             });
+
+            //@pragma-if-debug
             if (${a.debugMode}) {
                 window.console.log("Defined read-only property ${strParent}.${name}");
             }
+            //@pragma-end-if
         } catch (err) {
             window.console.error("uBlock Protector failed to define read-only property ${strParent}.${name}!");
         }
@@ -689,9 +657,12 @@ a.noAccess = (name, parent = "window") => {
                     throw err;
                 },
             });
+
+            //@pragma-if-debug
             if (${a.debugMode}) {
                 window.console.log("Defined non-accessible property ${strParent}.${name}");
             }
+            //@pragma-end-if
         } catch (err) {
             window.console.error("uBlock Protector failed to define non-accessible property ${strParent}.${name}!");
         }
@@ -708,22 +679,20 @@ a.noAccessExt = (chain) => {
         //Based on uAssets
         //License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
         "use strict";
-        //Prepare
         const error = window.console.error.bind(window.console);
         const err = new window.Error("This property may not be accessed!");
         const Object = window.Object.bind(window);
         const descriptor = window.Object.getOwnPropertyDescriptor.bind(window.Object);
         const define = window.Object.defineProperty.bind(window.Object);
-        //Setters and getters
+
         const throwErr = () => {
             throw err;
         };
         let trustedSetters = {};
-        //Property chain patcher
+
         const proxy = (parent, chain) => {
             const i = chain.indexOf(".");
             if (i === -1) {
-                //Last property in the chain, nuke whatever is present
                 const current = descriptor(parent, chain);
                 if (!current || current.set !== throwErr || current.get !== throwErr) {
                     define(parent, chain, {
@@ -733,11 +702,9 @@ a.noAccessExt = (chain) => {
                     });
                 }
             } else {
-                //Process current property name
                 const name = chain.slice(0, i);
                 let val = parent[name];
                 chain = chain.substring(i + 1);
-                //Patch current property
                 if (val instanceof Object) {
                     proxy(val, chain);
                 } else {
@@ -763,6 +730,7 @@ a.noAccessExt = (chain) => {
                 }
             }
         };
+
         try {
             proxy(window, "${chain}");
             window.console.log("Defined non-accessible property ${chain}");
@@ -788,14 +756,12 @@ a.cookie = (key, val, time = 31536000000, path = "/") => {
         const i = cookies.indexOf(`${key}=`);
         const j = cookies.indexOf(";", i);
         if (i === -1) {
-            //Not found
             return null;
         } else {
             if (j === -1) {
                 //Goes to the end
                 return cookies.substring(i + key.length + 1);
             } else {
-                //Extract the value
                 return cookies.substring(i + key.length + 1, j);
             }
         }
@@ -807,40 +773,6 @@ a.cookie = (key, val, time = 31536000000, path = "/") => {
     }
 };
 /**
- * Generate a native HTML5 player with controls but not autoplay.
- * Replacing player is not preferred, do not use this unless absolutely necessary.
- * @function
- * @param {string} source - The source of the video.
- * @param {string} [type=(Auto Detect)] - The type of the video, will be automatically detected if not supplied,
- ** defaults to MP4 if detection failed.
- * @param {string} [width="100%"] - The width of the player.
- * @param {string} [height="auto"] - The height of the player.
- * @return {string} An HTML string of the video player.
- */
-a.nativePlayer = (source, type, width = "100%", height = "auto") => {
-    //Detect type
-    if (!type) {
-        const i = source.lastIndexOf(".");
-        let temp;
-        if (i > -1) {
-            temp = source.substring(i + 1);
-        }
-        switch (temp) {
-            case "webm":
-            case "mp4":
-            case "ogg":
-                type = "video/" + temp;
-                break;
-            default:
-                //Defaults to MP4
-                type = "video/mp4";
-                break;
-        }
-    }
-    //Construct HTML string
-    return `<video width="${width}" height="${height}" controls><source src="${source}" type="${type}" /></video>`;
-};
-/**
  * Install XMLHttpRequest loopback engine. Should be called once on document-start if needed.
  * The request will always be sent so event handlers can be triggered. Depending on the website, a background redirect
  * may also be required.
@@ -849,11 +781,11 @@ a.nativePlayer = (source, type, width = "100%", height = "auto") => {
  ** @param {Any} ...args - The arguments supplied to open.
  ** @return {string|Any} Return a string to override the result of this request, return anything else to not interfere.
  */
-a.loopback = (server) => {
+a.loopbackXHR = (server) => {
     a.inject(`(() => {
         "use strict";
         const server = ${server};
-        let original; //XMLHttpRequest
+        let original;
         const newXHR = function (...args) {
             const wrapped = new (window.Function.prototype.bind.apply(original, args));
             const _open = wrapped.open;
@@ -908,7 +840,7 @@ a.loopback = (server) => {
  ** @param {This} that - The keyword this.
  ** @param {string} text - The new payload.
  */
-a.replace = (handler) => {
+a.replaceXHR = (handler) => {
     a.inject(`(() => {
         "use strict";
         const replace = (that, text) => {
@@ -956,9 +888,8 @@ a.close = () => {
 a.generic = () => {
     //Based on generic solutions of Anti-Adblock Killer, modified to fit my API
     //License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
-    //========================
-    //=====Content Script=====
-    //========================
+
+
     //---document-start---
     //FuckAdBlock
     a.generic.FuckAdBlock("FuckAdBlock", "fuckAdBlock");
@@ -967,27 +898,25 @@ a.generic = () => {
     a.readOnly("canRunAds", true);
     a.readOnly("canShowAds", true);
     a.readOnly("isAdBlockActive", false);
+
     //---document-end---
     a.ready(() => {
         //AdBlock Alerter (WP)
         if ($("div.adb_overlay > div.adb_modal_img").length) {
-            //Log
-            a.err("AdBlock Alerter");
-            //Remove alert and allow scrolling
             $("div.adb_overlay").remove();
             a.css("html, body { height:auto; overflow:auto; }");
+            a.err("AdBlock Alerter");
         }
         //Generic block screens
         {
             const elem = document.getElementById("blockdiv");
             if (elem && elem.innerHTML === "disable ad blocking or use another browser without any adblocker when you visit") {
-                //Log
-                console.error("Uncaught Error: Generic block screens are not allowed on this device!");
-                //Remove block screen
                 elem.remove();
+                console.error("Uncaught Error: Generic block screens are not allowed on this device!");
             }
         }
     });
+
     //---on-insert---
     //No-Adblock
     const re1 = /^[a-z0-9]*$/;
@@ -998,7 +927,7 @@ a.generic = () => {
     const reImgId = /^(?:x|g)d$/;
     const reImgSrc = /\/ads\/banner\.jpg/;
     const reIframeSrc = /\/adhandler\/|\/adimages\/|ad\.html/;
-    //Handler
+
     const onInsertHandler = (insertedNode) => {
         //No-Adblock
         if (insertedNode.nodeName === "DIV" &&
@@ -1009,10 +938,9 @@ a.generic = () => {
             insertedNode.firstChild.id &&
             insertedNode.firstChild.id === insertedNode.id &&
             insertedNode.innerHTML.includes("no-adblock.com")) {
-            //Log
-            a.err("No-Adblock");
-            //Remove element
+
             insertedNode.remove();
+            a.err("No-Adblock");
         }
         //StopAdblock
         if (insertedNode.nodeName === "DIV" &&
@@ -1023,10 +951,9 @@ a.generic = () => {
             insertedNode.parentNode.id &&
             insertedNode.parentNode.id === insertedNode.id + "2" &&
             insertedNode.innerHTML.includes("stopadblock.org")) {
-            //Log
-            a.err("StopAdblock");
-            //Remove element
+
             insertedNode.remove();
+            a.err("StopAdblock");
         }
         //AntiAdblock (Packer)
         if (insertedNode.id &&
@@ -1037,24 +964,25 @@ a.generic = () => {
             reIframeId.test(insertedNode.id) &&
             insertedNode.nodeName === "IFRAME" &&
             reIframeSrc.test(insertedNode.src)) {
-            //Log
-            a.err("AntiAdblock");
-            //Remove element
+
             insertedNode.remove();
+            a.err("AntiAdblock");
         }
     };
     a.onInsert(onInsertHandler);
-    //==================
-    //=====Injected=====
-    //==================
+
+
+    //---injected---
     a.inject(() => {
         "use strict";
+
         //---Initialization---
         let data = {};
         const error = window.console.error.bind(window.console);
         const err = (name) => {
             error(`Uncaught Error: ${name} uBlock Origin detector is not allowed on this device!`);
         };
+
         //---document-start---
         //Playwire
         //Test link: http://support.playwire.com/article/adblock-detector-demo/
@@ -1065,7 +993,7 @@ a.generic = () => {
                     f();
                 },
             };
-            //Since this is generic I cannot assign it to an object yet
+            //Since this is generic I cannot assign it to an object here
             let val;
             window.Object.defineProperty(window, "Zeus", {
                 configurable: false,
@@ -1124,25 +1052,22 @@ a.generic = () => {
         } catch (err) {
             error("uBlock Protector failed to set up AdBlock Notify uBlock Origin detector defuser!");
         }
+
         //---document-end---
         window.addEventListener("DOMContentLoaded", () => {
             //AdBlock Detector (XenForo Rellect)
             if (window.XenForo && typeof window.XenForo.rellect === "object") {
-                //Log
-                err("XenForo");
-                //Patch detector
                 window.XenForo.rellect = {
                     AdBlockDetector: {
                         start() { },
                     },
                 };
+                err("XenForo");
             }
             //Adbuddy
             if (typeof window.closeAdbuddy === "function") {
-                //Log
-                err("Adbuddy");
-                //Disable
                 window.closeAdbuddy();
+                err("Adbuddy");
             }
             //Antiblock.org v2
             try {
@@ -1159,10 +1084,8 @@ a.generic = () => {
                             const scripts = window.document.querySelectorAll("script");
                             for (let k = 0; k < scripts.length; k++) {
                                 if (scripts[k].textContent.includes(`w.addEventListener('load',${id},false)`)) {
-                                    //Log
-                                    err("Antiblock.org v2");
-                                    //Set data for future uses
                                     data.abo2 = id;
+                                    err("Antiblock.org v2");
                                     break outmost;
                                 }
                             }
@@ -1189,16 +1112,13 @@ a.generic = () => {
                                 method.getStyle &&
                                 method.insert &&
                                 method.nextFunction) {
+
                                 if (method.toggle) {
-                                    //Log
-                                    err("BetterStopAdblock");
-                                    //Set data for future uses
                                     data.bsa = prop;
+                                    err("BetterStopAdblock");
                                 } else {
-                                    //Log
-                                    err("Antiblock.org v3");
-                                    //Set data for future uses
                                     data.abo3 = prop;
+                                    err("Antiblock.org v3");
                                 }
                                 window[prop] = null;
                             }
@@ -1206,7 +1126,6 @@ a.generic = () => {
                             if (window.Object.keys(method).length === 3) {
                                 //Each key should be 10 character long, one of the 3 keys can be "bab"
                                 let isBAB = true;
-                                //Verify length
                                 const keyLen = window.Object.keys(method).join("").length;
                                 if (keyLen !== 30 && keyLen !== 23) {
                                     isBAB = false;
@@ -1219,10 +1138,8 @@ a.generic = () => {
                                     }
                                 }
                                 if (isBAB) {
-                                    //Log
-                                    err("BlockAdBlock");
-                                    //Remove property
                                     window[prop] = null;
+                                    err("BlockAdBlock");
                                 }
                             }
                         }
@@ -1230,6 +1147,7 @@ a.generic = () => {
                 }
             }
         });
+
         //---on-insert---
         //Antiblock.org (all version) and BetterStopAdblock
         const reMsgId = /^[a-z0-9]{4,10}$/i;
@@ -1258,35 +1176,31 @@ a.generic = () => {
                 reTag1.test(insertedNode.nodeName) &&
                 reTag2.test(insertedNode.firstChild.nodeName)) {
                 const audio = insertedNode.querySelector("audio[loop]");
+
                 if (audio) {
-                    //Log
-                    err("Antiblock.org");
-                    //Stop audio message
                     audio.pause();
                     audio.remove();
+                    err("Antiblock.org");
                 } else if ((data.abo2 && insertedNode.id === data.abo2) ||
                     (insertedNode.firstChild.hasChildNodes() &&
                         reWords1.test(insertedNode.firstChild.innerHTML) &&
                         reWords2.test(insertedNode.firstChild.innerHTML))) {
-                    //Log
-                    err("Antiblock.org v2");
-                    //Defuse
+
                     insertedNode.remove();
+                    err("Antiblock.org v2");
                 } else if ((data.abo3 && insertedNode.id === data.abo3) ||
                     (insertedNode.firstChild.hasChildNodes() &&
                         insertedNode.firstChild.firstChild.nodeName === "IMG" &&
                         insertedNode.firstChild.firstChild.src.startsWith("data:image/png;base64"))) {
-                    //Log
-                    err("Antiblock.org v3");
-                    //Defuse
+
                     window[data.abo3] = null;
                     insertedNode.remove();
+                    err("Antiblock.org v3");
                 } else if (data.bsa && insertedNode.id === data.bsa) {
-                    //Log
-                    err("BetterStopAdblock");
-                    //Defuse
+
                     window[data.bsa] = null;
                     insertedNode.remove();
+                    err("BetterStopAdblock");
                 }
             }
             //Adunblock
@@ -1305,18 +1219,18 @@ a.generic = () => {
                     reBg.test(insertedNode.nextSibling.className) &&
                     insertedNode.nextSibling.style &&
                     insertedNode.nextSibling.style.display !== "none") {
-                    //Log
-                    a.err("Adunblock Premium");
+
                     //Full Screen Message (Premium)
                     insertedNode.nextSibling.remove();
                     insertedNode.remove();
+                    a.err("Adunblock Premium");
                 } else if (insertedNode.nextSibling.id &&
                     reId.test(insertedNode.nextSibling.id) &&
                     insertedNode.innerHTML.includes("Il semblerait que vous utilisiez un bloqueur de publicité !")) {
-                    //Log
-                    a.err("Adunblock Free");
+
                     //Top bar Message (Free)
                     insertedNode.remove();
+                    a.err("Adunblock Free");
                 }
             }
         };
@@ -1349,62 +1263,51 @@ a.generic.FuckAdBlock = (constructorName, instanceName) => {
         const patchedFuckAdBlock = function () {
             //Based on FuckAdBlock
             //License: https://github.com/sitexw/FuckAdBlock/blob/master/LICENSE
-            //===Init===
-            //On not detected callbacks
+
             this._callbacks = [];
-            //Add on load event
             window.addEventListener("load", () => {
                 this.emitEvent();
             });
-            //===v3 Methods===
-            //Set options, do nothing
+
+            //v3 methods
             this.setOption = () => {
                 return this;
             };
-            //Check, call on not detected callbacks
             this.check = () => {
                 this.emitEvent();
                 return true;
             };
-            //Call on not detected callbacks
             this.emitEvent = () => {
-                //Call callbacks
                 for (let i = 0; i < this._callbacks.length; i++) {
                     this._callbacks[i]();
                 }
                 return this;
             };
-            //Clear events, empty callback array
             this.clearEvent = () => {
                 this._callbacks = [];
             };
-            //Add event handler
             this.on = (detected, func) => {
-                //Log
-                error(errMsg);
                 if (!detected) {
                     this._callbacks.push(func);
                 }
-                return this;
-            };
-            //Add on detected handler, do nothing
-            this.onDetected = () => {
-                //Log
                 error(errMsg);
                 return this;
             };
-            //Add on not detected handler
+            this.onDetected = () => {
+                error(errMsg);
+                return this;
+            };
             this.onNotDetected = (func) => {
                 return this.on(false, func);
             };
-            //===v4 Methods===
+
+            //v4 methods
             this.debug = {};
-            //Set debug state, do nothing
             this.debug.set = () => {
                 return this;
             };
         };
-        //Define properties
+
         try {
             window.Object.defineProperty(window, "${a.strEscape(constructorName)}", {
                 configurable: false,
@@ -1438,10 +1341,9 @@ a.generic.Adfly = () => {
         const isDigit = /^\d$/;
         const handler = (encodedURL) => {
             if (window.document.body) {
-                //This is not an Adfly page
                 return;
             }
-            //Decode URL
+
             let var1 = "", var2 = "";
             for (let i = 0; i < encodedURL.length; i++) {
                 if (i % 2 === 0) {
@@ -1467,15 +1369,14 @@ a.generic.Adfly = () => {
             }
             data = data.join("");
             const decodedURL = window.atob(data).slice(16, -16);
-            //Redirect
+
             window.stop();
             window.onbeforeunload = null;
             window.location.href = decodedURL;
         };
-        //Setup variable hijacker
+
         try {
             let val;
-            //Prevent running multiple times
             let flag = true;
             window.Object.defineProperty(window, "ysmm", {
                 configurable: false,
@@ -1488,7 +1389,6 @@ a.generic.Adfly = () => {
                             }
                         } catch (err) { }
                     }
-                    //In case this is not an Adfly page, this variable must be functional
                     val = value;
                 },
                 get() {
@@ -1506,13 +1406,13 @@ a.generic.Adfly = () => {
  * @function
  */
 a.generic.adsjsV2 = () => {
-    a.inject(() => {
+    a.inject((min = 11, max = 14) => {
         "use strict";
         const error = window.console.error.bind(window.console);
-        const matcher = /[a-zA-Z0-9]{11,14}/;
+        const matcher = new window.RegExp(`[a-zA-Z0-9]{${min},${max}}`);
         const err = new window.TypeError("Failed to execute 'getElementById' on 'Document': " +
             "1 argument required, but only 0 present.");
-        let original; //document.getElementById
+        let original;
         const newFunc = (...args) => {
             if (args.length) {
                 if (matcher.test(String(args[0]))) {
@@ -1547,7 +1447,6 @@ a.generic.NoAdBlock = () => {
     a.inject(() => {
         "use strict";
         try {
-            //Prevent the page from tampering this function
             const error = window.console.error.bind(window.console);
             let needDefuse = true;
             let installs = {};
@@ -1563,7 +1462,6 @@ a.generic.NoAdBlock = () => {
                             for (let key in installs) {
                                 if (installs[key].appId === "ziT6U3epKObS" && installs[key].options) {
                                     if (key === "preview") {
-                                        //Preview does not really matter, just hard code something that works for now
                                         window.document.body.insertAdjacentHTML("beforeend",
                                             "<style>html, body { overflow:scroll !important; } " +
                                             "cf-div { display:none !important; }</style>");
@@ -1576,14 +1474,11 @@ a.generic.NoAdBlock = () => {
                                             },
                                         });
                                     }
-                                    //Update flag and log
                                     needDefuse = false;
                                     error("Uncaught Error: NoAdBlock uBlock Origin detector is not allowed on this device!");
                                 }
                             }
-                        } catch (err) {
-                            //window.console.log(err);
-                        }
+                        } catch (err) { }
                     }
                     return installs;
                 },
@@ -1594,6 +1489,7 @@ a.generic.NoAdBlock = () => {
     });
 };
 
+//@pragma-if-debug
 //=====Debug Utilities=====
 /**
  * Trace the access to a property, should be called on document-start.
@@ -1668,3 +1564,4 @@ a.setBenchmarkedInterval = (func, delay, ...args) => {
         console.log(`Benchmarked Interval: Function ${func.name} used ${t1 - t0} ms`);
     }, delay);
 };
+//@pragma-end-if

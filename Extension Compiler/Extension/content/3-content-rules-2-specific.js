@@ -72,9 +72,7 @@ if (a.domCmp(["theinquirer.net"])) {
 }
 if (a.domCmp(["tweaktown.com"])) {
     a.on("load", () => {
-        //Force enable scrolling
         a.css("html, body { overflow:scroll; }");
-        //Watch and remove block screen
         const blockScreenRemover = () => {
             if ($("body").children("div").last().text().includes("Ads slowing you down?")) {
                 $("body").children("div").last().remove();
@@ -111,14 +109,12 @@ if (a.domCmp(["hackintosh.zone", "elfqrin.com", "lne.es", "diariodemallorca.es",
     });
 }
 if (a.domCmp(["hackintosh.computer"])) {
-    //Prevent article hidding
     a.noAccess("google_jobrunner");
     a.readOnly("ai_adb_detected", (...args) => window.ai_adb_undetected(...args));
 }
 if (a.domCmp(["tvregionalna24.pl"])) {
     a.inject(() => {
         "use strict";
-        //Listen and extract functions
         let text = [];
         const matcher = /var _ended=(.*);var _skipButton/;
         const newFunc = (a, b, func) => {
@@ -133,7 +129,6 @@ if (a.domCmp(["tvregionalna24.pl"])) {
                 return newFunc;
             },
         });
-        //Dispatch extracted functions on load
         window.addEventListener("load", function replace() {
             if (text.length > 0 && window.document.getElementsByClassName("vjs-poster").length > 0) {
                 for (let i = 0; i < text.length; i++) {
@@ -146,7 +141,7 @@ if (a.domCmp(["tvregionalna24.pl"])) {
     });
 }
 if (a.domCmp(["florydinvaslui.ro"])) {
-    a.loopback((ignored, url) => {
+    a.loopbackXHR((ignored, url) => {
         const re = /^https?:\/\/thinkdigitalro\.adocean\.pl\/ad\.xml/;
         if (re.test(url)) {
             return `<VAST version="2.0"></VAST>`;
@@ -160,61 +155,13 @@ if (a.domCmp(["itvn.pl", "itvnextra.pl", "kuchniaplus.pl", "miniminiplus.pl", "t
         window.adBlockEnabled = false;
         return false;
     });
-    a.loopback((ignored, url) => {
+    a.loopbackXHR((ignored, url) => {
         const re = /^https?:\/\/tvn\.adocean\.pl\/ad\.xml/;
         if (re.test(url)) {
             return `<VAST version="2.0"></VAST>`;
         }
     });
 }
-/*
-if (a.domCmp(["player.pl"])) {
-    const matcher = /[.,]/;
-    a.on("load", () => {
-        //Check element
-        let elem = $("header.detailImage");
-        if (elem.length === 0) {
-            return;
-        }
-        //Get ID
-        const parts = location.href.split(matcher);
-        const id = parts[parts.length - 2];
-        const params = {
-            platform: "ConnectedTV",
-            terminal: "Panasonic",
-            format: "json",
-            authKey: "064fda5ab26dc1dd936f5c6e84b7d3c2",
-            v: "3.1",
-            m: "getItem",
-            id: id,
-        };
-        //Send request
-        a.request({
-            method: "GET",
-            url: "https://api.tvnplayer.pl/api/?" + a.serialize(params),
-        }, (result) => {
-            //Find media url
-            let url;
-            try {
-                let data = JSON.parse(result);
-                let vidSources = data.item.videos.main.video_content;
-                if (vidSources[1].url) {
-                    //Native player
-                    elem.html(a.nativePlayer(vidSources[1].url));
-                    $("video").css("maxHeight", "540px");
-                } else if (vidSources[0].src) {
-                    //Widevine protected
-                    console.error("This video player is protected by Widevine.");
-                }
-            } catch (err) {
-                console.error("uBlock Protector failed to find media URL!");
-            }
-        }, () => {
-            console.error("uBlock Protector failed to find media URL!");
-        });
-    });
-}
-*/
 if (a.domCmp(["ewallstreeter.com"])) {
     a.readOnly("OAS_rdl", 1);
 }
@@ -227,190 +174,12 @@ if (a.domCmp(["elektroda.pl"])) {
 if (a.domCmp(["anandabazar.com"])) {
     a.readOnly("canRunAds", false);
 }
-/*
-if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "echirurgia.pl", "fotoblogia.pl", "gadzetomania.pl",
-    "hotmoney.pl", "kafeteria.pl", "kafeteria.tv", "kardiolo.pl", "komediowo.pl", "komorkomania.pl", "money.pl", "o2.pl",
-    "parenting.pl", "pudelek.pl", "pudelek.tv", "pudelekx.pl", "sfora.pl", "snobka.pl", "wawalove.pl", "wp.pl", "wp.tv",
-    "wrzuta.pl"])) {
-    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/70
-    a.cookie("ABCABC", "true");
-    a.filter("addEventListener", a.matchMethod.stringExact, "advertisement");
-    a.readOnly("hasSentinel", () => false);
-    //Thanks to szymon1118
-    if (true) {
-        let mid; //Media ID of next video
-        let midArray1 = []; //Media IDs from method 1
-        let midArray1Counter = 0;
-        let midArray2 = []; //Media IDs from method 2
-        let url = null; //URL of the next video
-        let replaceCounter = 0; //The number of video players that are replaced
-        let loadCounter = 0; //The index of next item to load
-        let networkBusy = false; //A flag to prevent sending a new request before the first one is done
-        let networkErrorCounter = 0; //Will stop sending request if this is over 5
-        let isInBackground = false;
-        //The player container matcher
-        let containerMatcher = ".wp-player-outer, .player__container, .wp-player, .embed-container, .uBlockProtectorVideo";
-        const reMatcher = /mid[=,](\d+)/;
-        const reMidValidator = /^\d+$/;
-        //Mid extracting method 1 magic listener
-        const magic = a.uid();
-        addEventListener(magic, (e) => {
-            //Must verify as data from injected script cannot be trusted
-            const match = reMatcher.exec(String(e.detail));
-            if (match && reMidValidator.test(match[1])) {
-                midArray1Counter++;
-                !midArray1.includes(match[1]) && midArray1.push(match[1]);
-            }
-        });
-        //Main function
-        const main = () => {
-            //Do not tick when in background
-            if (isInBackground) {
-                return;
-            }
-            //Log media ID arrays
-            a.debugMode && console.log(midArray1, midArray2);
-            //Mid extracting method 1
-            a.inject(`(() => {
-                "use strict";
-                try {
-                    if (window.WP.player.list.length > ${midArray1Counter}) {
-                        let thisMid = window.WP.player.list[${midArray1Counter}].p.url;
-                        if (thisMid) {
-                            window.dispatchEvent(new window.CustomEvent("${magic}", {
-                                detail: thisMid,
-                            }));
-                        }
-                    }
-                } catch (err) { }
-            })();`, true);
-            //Mid extracting method 2
-            {
-                let selection = $(containerMatcher).filter("iframe", true).first();
-                if (selection.length) {
-                    const elem = selection.copy().find(".titlecont a.title");
-                    let thisMid = elem.attr("href");
-                    //Check if I got the element
-                    if (thisMid) {
-                        thisMid = reMatcher.exec(thisMid)[1].toString();
-                        //I will destroy the player soon anyway, I will remove this now so I will not extract it twice
-                        elem.remove();
-                    }
-                    //Extra safety check
-                    if (thisMid) {
-                        if (midArray2.includes(thisMid)) {
-                            selection.rmClass().remove();
-                        } else {
-                            midArray2.push(thisMid);
-                        }
-                    }
-                }
-            }
-            //See if I need to load next URL
-            if (loadCounter === replaceCounter) {
-                //Check flag and error counter
-                if (networkBusy) {
-                    return
-                } else if (networkErrorCounter > 5) {
-                    //Abort
-                    clearInterval(timerToken);
-                    return;
-                }
-                //Get media ID
-                let mid;
-                //Prefer media ID extracting method 2
-                const midArray = (midArray1.length > midArray2.length) ? midArray1 : midArray2;
-                if (midArray.length > loadCounter) {
-                    mid = midArray[loadCounter];
-                } else {
-                    return;
-                }
-                //Get media JSON
-                networkBusy = true;
-                a.request({
-                    method: "GET",
-                    url: `http://wp.tv/player/mid,${mid},embed.json`,
-                }, (res) => {
-                    //Try to find media URL
-                    try {
-                        const response = JSON.parse(res);
-                        for (let i = 0; i < response.clip.url.length; i++) {
-                            let item = response.clip.url[i];
-                            if (item.quality === "HQ" && item.type.startsWith("mp4")) {
-                                url = item.url;
-                                break;
-                            }
-                        }
-                        //Check if I found the URL
-                        if (!url) {
-                            throw "Media URL Not Found";
-                        }
-                        //Update counter
-                        loadCounter++;
-                        //Reset error counter
-                        networkErrorCounter = 0;
-                    } catch (err) {
-                        console.error("uBlock Protector failed to find media URL!");
-                        networkErrorCounter += 1;
-                    }
-                    //Update flag
-                    networkBusy = false;
-                }, () => {
-                    console.error("uBlock Protector failed to load media JSON!");
-                    networkErrorCounter += 0.5;
-                    //Update flag
-                    networkBusy = false;
-                });
-            } else if ($(containerMatcher).filter("iframe", true).length) {
-                //Replace player
-                if (document.domain === "wp.tv") {
-                    //The wrapper is different for this domain
-                    $(".npp-container").after(a.nativePlayer(url)).remove();
-                } else {
-                    //Need to remove class or it will be caught in anti-collapsing observer
-                    $(containerMatcher).filter("iframe", true).first().after(a.nativePlayer(url)).rmClass().remove();
-                }
-                //Update variables and counter
-                url = null;
-                replaceCounter++;
-            }
-        };
-        //The function will not run if the page is in the background, once per second will be fine
-        const timerToken = setInterval(main, 1000);
-        a.on("focus", () => { isInBackground = false; });
-        a.on("blur", () => { isInBackground = true; });
-    }
-    if (a.domCmp(["wiadomosci.wp.pl"])) {
-        //Prevent website from trying to fix the video
-        a.onInsert((node) => {
-            if (node && node.id && node.id.startsWith("Player") && node.id !== "Player0") {
-                node.className = "";
-                node.remove();
-            }
-        });
-        //Prevent the video player from collapsing
-        a.onRemove((node, target) => {
-            if (node) {
-                if ((node.querySelector && node.querySelector("video > source")) ||
-                    (node.classList && node.classList.contains("wp-player"))) {
-                    node.className = "uBlockProtectorVideo";
-                    node.id = "";
-                    document.querySelector("article").appendChild(node);
-                }
-            }
-        });
-    }
-    if (a.domCmp(["portal.abczdrowie.pl", "parenting.pl"])) {
-        a.css("figcaption { display:none; }");
-    }
-}
-*/
 if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "echirurgia.pl", "fotoblogia.pl", "gadzetomania.pl",
     "hotmoney.pl", "kafeteria.pl", "kafeteria.tv", "kardiolo.pl", "komediowo.pl", "komorkomania.pl", "money.pl", "o2.pl",
     "parenting.pl", "pudelek.pl", "pudelek.tv", "pudelekx.pl", "sfora.pl", "snobka.pl", "wawalove.pl", "wp.pl", "wp.tv",
     "wrzuta.pl"])) {
     a.filter("addEventListener", a.matchMethod.stringExact, "advertisement");
-    a.loopback((ignored, url) => {
+    a.loopbackXHR((ignored, url) => {
         const path = url.substring(url.lastIndexOf('/') + 1);
         if (path.startsWith("dmFkLnhtb")) { //vad.xml
             return `<?xml version="1.0" encoding="UTF-8"?>
@@ -549,7 +318,7 @@ if (a.domCmp(["workupload.com"])) {
     });
 }
 if (a.domCmp(["intoday.in", "businesstoday.in", "lovesutras.com"])) {
-    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/109
+    //https://github.com/jspenguin2017/uBlockProtector/issues/109
     a.css("#adbocker_alt { display:none; }");
     a.readOnly("openPopup", () => { });
 }
@@ -659,8 +428,7 @@ if (a.domCmp(["cubeupload.com"])) {
 }
 if (a.domCmp(["hentaihaven.org"])) {
     //NSFW!
-    //Thanks to uBlock-user
-    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/76
+    //https://github.com/jspenguin2017/uBlockProtector/issues/76
     a.noAccess("desktop_variants");
 }
 if (a.domCmp(["bluesatoshi.com"])) {
@@ -826,8 +594,7 @@ if (a.domCmp(["notre-planete.info"])) {
     a.readOnly("pubpop", () => { });
 }
 if (a.domCmp(["apkmirror.com"])) {
-    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/241
-    //a.readOnly("doCheck", () => { });
+    //https://github.com/jspenguin2017/uBlockProtector/issues/241
     a.noAccess("ranTwice");
 }
 if (a.domCmp(["mtlblog.com"])) {
@@ -1225,8 +992,6 @@ if (a.domCmp(["kisscartoon.me", "kisscartoon.se"])) {
     });
 }
 if (a.domCmp(["openload.co", "openload.io", "openload.tv", "oload.stream"])) {
-    //Conflict with an uBlock Origin scriptlet
-    //a.readOnly("adblock2", false);
     a.readOnly("popAdsLoaded", true);
 }
 if (a.domCmp(["youwatch.org", "chouhaa.info", "ahzahg6ohb.com"])) {
@@ -1303,136 +1068,8 @@ if (a.domCmp(["dplay.com", "dplay.dk", "dplay.se"])) {
     });
     a.cookie("dsc-adblock", value);
 }
-/*
-if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se", "tvplay.skaties.lv", "play.tv3.lt", "tv3play.tv3.ee"])) {
-    //Thanks to szymon1118
-    let isInBackground = false;
-    const reMatcher = /\/(\d+)/;
-    const reMagicValidator = /^\d+$/;
-    let videoID;
-    const findIDFlag = a.domCmp(["tvplay.skaties.lv", "play.tv3.lt", "tv3play.tv3.ee"], true);
-    const magic = a.uid();
-    addEventListener(magic, (e) => {
-        if (reMagicValidator.test(e.detail)) {
-            videoID = e.detail;
-        };
-    });
-    const videoJS = (source, type, width, height) => {
-        return `<iframe srcdoc='<html><head><link href="https://cdnjs.cloudflare.com/ajax/libs/video.js/5.10.5/al` +
-            `t/video-js-cdn.min.css" rel="stylesheet"><script src="https://cdnjs.cloudflare.com/ajax/libs/video.j` +
-            `s/5.10.5/video.min.js"><\/script><script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib` +
-            `-hls/3.1.0/videojs-contrib-hls.min.js"><\/script><style type="text/css">html, body{padding:0; margin` +
-            `:0;}.vjs-default-skin{color:#eee}.vjs-default-skin .vjs-play-progress,.vjs-default-skin .vjs-volume-` +
-            `level{background-color:#eee}.vjs-default-skin .vjs-big-play-button,.vjs-default-skin .vjs-control-ba` +
-            `r{background:rgba(0,0,0,.2)}.vjs-default-skin .vjs-slider{background:rgba(0,0,0,.3)}</style></head><` +
-            `body><video id="uBlock_Protector_Video_Player" class="video-js vjs-default-skin" controls preload="a` +
-            `uto" width="${width}" height="${height}"><source src="${source}" type="${type}"></video><script>vide` +
-            `ojs("uBlock_Protector_Video_Player")<\/script></body></html>' width="${width}" height="${height}" fr` +
-            `ameborder="0" scrolling="no" allowfullscreen="true"></iframe>`;
-    };
-    const handler = () => {
-        if (isInBackground) {
-            setTimeout(handler, 1000);
-            return;
-        }
-        //Check player existance
-        if (!document.getElementById("video-player")) {
-            setTimeout(handler, 1000);
-            return;
-        }
-        //Find ID
-        if (findIDFlag) {
-            let tmp = reMatcher.exec(location.href);
-            if (tmp) {
-                videoID = tmp[1];
-            }
-        } else {
-            a.inject(`(() => {
-                "use strict";
-                try {
-                    if (window.vfAvodpConfig.videoId) {
-                        window.dispatchEvent(new window.CustomEvent("${magic}"), {
-                            detail: window.vfAvodpConfig.videoId,
-                        });
-                    }
-                } catch (err) { }
-            })();`, true);
-        }
-        //Assume failed if no event dispatched in 1 second
-        setTimeout(() => {
-            if (!videoID) {
-                setTimeout(handler, 1000);
-                return;
-            }
-            //Request data JSON
-            //The proxy does not seem work anymore
-            //const proxy = "http://www.sagkjeder.no/p/browse.php?u=";
-            a.request({
-                method: "GET",
-                url: `http://playapi.mtgx.tv/v3/videos/stream/${videoID}`,
-            }, (result) => {
-                if (a.debugMode) {
-                    console.log("Response received:");
-                    console.log(result);
-                }
-                parser(result);
-            }, () => {
-                console.error("uBlock Protector failed to find media URL!");
-            });
-        }, 1000);
-    };
-    const parser = (data) => {
-        //Parse response
-        let streams;
-        try {
-            const parsedData = JSON.parse(data);
-            streams = parsedData.streams;
-            if (!streams) {
-                throw "Media URL Not Found";
-            }
-        } catch (err) {
-            console.error("uBlock Protector failed to find media URL!");
-            return;
-        }
-        //Check source and type
-        let source, type;
-        if (streams.high && streams.high !== "") {
-            source = streams.high;
-            type = "video/mp4";
-        } else if (streams.hls && streams.hls !== "") {
-            source = streams.hls;
-            type = "application/x-mpegURL";
-        } else if (streams.medium && streams.medium !== "") {
-            source = streams.medium;
-            type = streams.medium.startsWith("rtmp") ? "rtmp/mp4" : "application/f4m+xml";
-        } else {
-            console.error("uBlock Protector failed to find media URL!");
-            return;
-        }
-        if (a.debugMode) {
-            console.log("Potential media URLs:");
-            console.log([streams.high, streams.hls, streams.medium]);
-            console.log("Used media URL:");
-            console.log(source);
-        }
-        //Replace player
-        const player = $("#video-player");
-        const width = player.width();
-        const height = player.height();
-        player.after(videoJS(source, type, width, height)).remove();
-        //Watch for more video players
-        videoID = null;
-        //I think it will only have one player, and I need a way to prevent replacing the same player over and over
-        //handler();
-    };
-    //Start
-    handler();
-    a.on("focus", () => { isInBackground = false; });
-    a.on("blur", () => { isInBackground = true; });
-}
-*/
 if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se"])) {
-    a.replace(() => {
+    a.replaceXHR(() => {
         const re = /\/api\/playClient.*resource=adinfo\?/;
         if (re.test(url)) {
             this.addEventListener("readystatechange", () => {
@@ -1448,7 +1085,7 @@ if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se"])) {
     });
 }
 if (a.domCmp(["tvplay.skaties.lv", "play.tv3.lt", "tv3play.tv3.ee"])) {
-    a.replace(() => {
+    a.replaceXHR(() => {
         if (url && url.includes("/adinfo?")) {
             this.addEventListener("readystatechange", () => {
                 if (this.readyState === 4) {
@@ -1671,8 +1308,8 @@ if (a.domCmp(["zrabatowani.pl"])) {
 }
 if (a.domCmp(["hanime.tv", "ah-me.com", "shortin.ga", "wolink.in"])) {
     //NSFW!
-    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/76
-    //Issue: https://github.com/reek/anti-adblock-killer/issues/3563
+    //https://github.com/jspenguin2017/uBlockProtector/issues/76
+    //https://github.com/reek/anti-adblock-killer/issues/3563
     a.inject(() => {
         "use strict";
         window.open = (url) => {
@@ -1708,7 +1345,7 @@ if (a.domCmp(["whosampled.com"])) {
 if (a.domCmp(["pornhub.com", "redtube.com", "youporn.com", "tube8.com", "pornmd.com",
     "thumbzilla.com", "xtube.com", "peeperz.com", "czechhq.net", "29443kmq.video"])) {
     //NSFW!
-    //29443kmq.video is the iframe of czechhq.net, other domains are part of Porthub Network
+    //29443kmq.video is the iframe of czechhq.net, other domains are part of Pornhub Network
     a.inject(() => {
         "use strict";
         window.open = (arg) => {
@@ -1726,28 +1363,25 @@ if (a.domCmp(["xnxx.com", "xvideos.com", "xvideos.works"])) {
     a.readOnly("openpop", () => { });
 }
 if (a.domCmp(["burning-feed.com"])) {
-    //Thanks to uBlock-user
-    //a.readOnly("testab", `"1"`);
-    //a.readOnly("ads_enable", `"true"`);
     a.readOnly("ads_enable", () => { });
 }
 if (a.domCmp(["ghame.ru"])) {
     a.cookie("adblock", "1");
 }
 if (a.domCmp(["thevideo.me", "fmovies.to", "fmovies.se", "fmovies.is"])) {
-    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/86
-    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/99
+    //https://github.com/jspenguin2017/uBlockProtector/issues/86
+    //https://github.com/jspenguin2017/uBlockProtector/issues/99
     a.inject(() => {
         "use strict";
         window.open = () => { };
     });
 }
 if (a.domCmp(["is.fi"])) {
-    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/88
+    //https://github.com/jspenguin2017/uBlockProtector/issues/88
     a.readOnly("Sabdetect_load", false);
 }
 if (a.domCmp(["gearsuite.com"])) {
-    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/96
+    //https://github.com/jspenguin2017/uBlockProtector/issues/96
     a.css("html,body { overflow-y:scroll; } .BOX-wrap { display:none; }");
 }
 if (a.domCmp(["sandiegouniontribune.com"])) {
@@ -1764,7 +1398,7 @@ if (a.domCmp(["startclass.com", "sandiegouniontribune.com"])) {
     a.filter("addEventListener", a.matchMethod.stringExact, "scroll");
 }
 if (a.domCmp(["adz.bz", "mellow.link", "hop.bz", "mellowads.com", "url.vin", "clik.bz"])) {
-    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/106
+    //https://github.com/jspenguin2017/uBlockProtector/issues/106
     a.inject(() => {
         "use strict";
         let val;
@@ -1807,7 +1441,7 @@ if (a.domCmp(["adz.bz", "mellow.link", "hop.bz", "mellowads.com", "url.vin", "cl
     });
 }
 if (a.domCmp(["zap.in"])) {
-    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/201
+    //https://github.com/jspenguin2017/uBlockProtector/issues/201
     a.inject(() => {
         "use strict";
         let val;
@@ -1849,7 +1483,7 @@ if (a.domCmp(["zap.in"])) {
     });
 }
 if (a.domCmp(["bonusbitcoin.co"])) {
-    //Issue: https://github.com/reek/anti-adblock-killer/issues/3377
+    //https://github.com/reek/anti-adblock-killer/issues/3377
     a.injectWithRuntime(() => {
         "use strict";
         const matcher1 = /adBlocked:[^,]+/;
@@ -1874,7 +1508,6 @@ if (a.domCmp(["bonusbitcoin.co"])) {
     });
 }
 if (a.domCmp(["shink.in", "shink.me"])) {
-    //Skip countdown
     if (location.pathname.startsWith("/go/")) {
         a.ready(() => {
             const link = document.getElementById("btn-main");
@@ -1883,35 +1516,7 @@ if (a.domCmp(["shink.in", "shink.me"])) {
             location.href = url;
         });
     }
-    //Block popup
-    a.inject(() => {
-        "use strict";
-        window.open = () => { };
-        const _createElement = window.document.createElement;
-        window.document.createElement = (...args) => {
-            switch (args[0].toLowerCase()) {
-                case "a":
-                    return null;
-                case "iframe":
-                    let elem = _createElement.apply(window.document, args);
-                    /*
-                    //Causes some problems
-                    elem.onload = () => {
-                        try {
-                            //Remove open and createElement
-                            elem.contentWindow.open = () => { };
-                            elem.contentWindow.document.createElement = () => { };
-                        } catch (err) {
-                            //reCaptcha frame, ignore
-                        }
-                    };
-                    */
-                    return elem;
-                default:
-                    return _createElement.apply(window.document, args);
-            }
-        };
-    });
+    a.filter("createElement", a.matchMethod.stringExact, "a", "window.document");
 }
 if (a.domCmp(["gamezhero.com"])) {
     a.readOnly("ads", true);
@@ -1921,7 +1526,7 @@ if (a.domCmp(["freetvall.com"])) {
     a.readOnly("clickNS", () => { });
 }
 if (a.domCmp(["hotslogs.com"])) {
-    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/121
+    //https://github.com/jspenguin2017/uBlockProtector/issues/121
     a.inject(() => {
         "use strict";
         window.MonkeyBroker = {};
@@ -1932,9 +1537,8 @@ if (a.domCmp(["undeniable.info"])) {
     a.bait("div", "#testadblock");
 }
 if (a.domInc(["gamereactor"])) {
-    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/124
+    //https://github.com/jspenguin2017/uBlockProtector/issues/124
     a.cookie("overlayMessage", "1");
-    //Skip welcome page
     a.ready(() => {
         if ($("a.buttonBox.continue > span").startsWith("Continue to ").length) {
             location.reload();
@@ -1942,20 +1546,19 @@ if (a.domInc(["gamereactor"])) {
     });
 }
 if (a.domCmp(["dasolo.co", "dasolo.me", "italiashare.info"])) {
-    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/126
+    //https://github.com/jspenguin2017/uBlockProtector/issues/126
     a.inject(() => {
         "use strict";
         window.eval = () => { };
     });
     a.noAccess("adblockblock");
+    a.noAccess("alert");
     a.bait("div", "#loveyou");
-    //Remove right click and shortcut keys blocker
-    //a.readOnly will crash function declaration, so these are enough
+    //https://github.com/jspenguin2017/uBlockProtector/issues/280
     a.readOnly("nocontext", null);
     a.readOnly("mischandler", null);
     a.readOnly("disableselect", null);
     a.filter("addEventListener", a.matchMethod.stringExact, "contextmenu", "window.document");
-    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/280
     a.on("load", () => {
         a.inject(() => {
             "use strict";
@@ -1968,16 +1571,13 @@ if (a.domCmp(["dasolo.co", "dasolo.me", "italiashare.info"])) {
             }, 250);
         });
     });
-    //Prevent redirect
-    a.noAccess("alert");
 }
 if (a.domCmp(["titulky.com"])) {
-    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/128
+    //https://github.com/jspenguin2017/uBlockProtector/issues/128
     a.generic.FuckAdBlock("FADB", "fADB");
 }
 if (a.domCmp(["vaughnlive.tv"])) {
     a.readOnly("init", () => { });
-    //a.generic.FuckAdBlock("FAdB", "fAdB");
 }
 if (a.domCmp(["discoveryrom.org"])) {
     a.inject(() => {
@@ -2030,7 +1630,7 @@ if (a.domCmp(["sthelensstar.co.uk", "runcornandwidnesworld.co.uk", "leighjournal
     "penarthtimes.co.uk", "eveningtimes.co.uk", "s1cars.com", "s1community.com", "s1homes.com",
     "s1jobs.com", "s1rental.com", "thescottishfarmer.co.uk", "heraldscotland.com", "thenational.scot"])) {
     //These are NewsQuest related domains, add other domains that share this rule elsewhere
-    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/137
+    //https://github.com/jspenguin2017/uBlockProtector/issues/137
     a.readOnly("_sp_", null);
 }
 if (a.domCmp(["nyheter24.se"])) {
@@ -2067,7 +1667,7 @@ if (a.domCmp(["aetv.com", "history.com", "mylifetime.com"])) {
     });
 }
 if (a.domCmp(["finalservers.net"])) {
-    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/125
+    //https://github.com/jspenguin2017/uBlockProtector/issues/125
     a.ready(() => {
         a.inject(() => {
             "use strict";
@@ -2076,7 +1676,7 @@ if (a.domCmp(["finalservers.net"])) {
     });
 }
 if (a.domCmp(["filmy.to", "histock.info"])) {
-    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/130
+    //https://github.com/jspenguin2017/uBlockProtector/issues/130
     a.inject(() => {
         "use strict";
         window.open = () => {
@@ -2098,11 +1698,6 @@ if (a.domCmp(["ally.sh", "al.ly", "croco.site"])) {
         window.open = null;
     });
 }
-/*
-if (a.domCmp(["nbc.com"])) {
-    a.noAccess("mps");
-}
-*/
 if (a.domCmp(["filmyiseriale.net"])) {
     //https://github.com/jspenguin2017/uBlockProtector/issues/152
     a.ready(() => {
@@ -2113,7 +1708,7 @@ if (a.domCmp(["filmyiseriale.net"])) {
     });
 }
 if (a.domCmp(["tf2center.com"])) {
-    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/141
+    //https://github.com/jspenguin2017/uBlockProtector/issues/141
     a.filter("setInterval", a.matchMethod.string, '"/adblock"');
     a.filter("setTimeout", a.matchMethod.stringExact, "function (){B(F+1)}");
 }
@@ -2126,7 +1721,6 @@ if (a.domCmp(["gaybeeg.info"])) {
     });
     a.noAccess("uid");
     a.ready(() => {
-        //Patch download button
         $(".download a.button").each((elem) => {
             elem.classList.remove("locked");
             elem.href = elem.dataset.href;
@@ -2237,7 +1831,6 @@ if (a.domCmp(["nicematin.com", "alcpu.com"])) {
 }
 if (a.domCmp(["up-4ever.com"])) {
     a.filter("setTimeout", a.matchMethod.string, "$('#adblock_detected').val(1);");
-    //Force show download links
     a.css("#hiddensection { display:block; }");
     a.ready(() => {
         $("#hiddensection").show();
@@ -2245,12 +1838,9 @@ if (a.domCmp(["up-4ever.com"])) {
     });
 }
 if (a.domCmp(["exrapidleech.info"])) {
-    //Thanks to lain566
-    //Prevent sending to verify page
     a.readOnly("PopAds", `"this is a string"`);
     a.cookie("popcashpuCap", "1");
     a.cookie("popcashpu", "1");
-    //Remove warnings
     a.ready(() => {
         $(".alert-danger.lead").includes("block").remove();
         $("p").includes("Please disable ads block").remove();
@@ -2263,77 +1853,8 @@ if (a.domCmp(["fastserver.me"])) {
 if (a.domCmp(["ouo.io", "ouo.press"])) {
     localStorage.setItem("snapLastPopAt", (new Date()).getTime());
 }
-/*
 if (a.domCmp(["canalplus.fr"])) {
-    let videoElem; //Current video player element, used to replace it when changing episode
-    const reMagicValidator = /^\d+$/;
-    const magic = a.uid();
-    addEventListener(magic, (e) => {
-        if (reMagicValidator.test(e.detail)) {
-            videoElem.text("Loading...");
-            a.request({
-                method: "GET",
-                url: `http://service.canal-plus.com/video/rest/getVideos/cplus/${e.detail}?format=json`,
-            }, (res) => {
-                //Try to find media URL
-                try {
-                    const response = JSON.parse(res);
-                    const url = response.MEDIA.VIDEOS.HD;
-                    if (url) {
-                        videoElem.after(a.nativePlayer(url + "?secret=pqzerjlsmdkjfoiuerhsdlfknaes")).remove();
-                        videoElem = $("video");
-                    } else {
-                        throw "Media URL Not Found";
-                    }
-                } catch (err) {
-                    console.error("uBlock Protector failed to find media URL!");
-                }
-            }, () => {
-                console.error("uBlock Protector failed to load media JSON!");
-            });
-        }
-    });
-    a.ready(() => {
-        //Get the original player
-        videoElem = $("#onePlayerHolder");
-    });
-    a.inject(`(() => {
-        "use strict";
-        let original; //Will be set later
-        let currentVideoId = null; //So I do not switch unless it is different
-        //New handler
-        const newFunc = function (onglet, liste, page, pid, ztid, videoId, progid) {
-            //Switch video
-            if (videoId !== currentVideoId) {
-                currentVideoId = videoId;
-                videoSwitcher(videoId);
-            }
-            //Run original function
-            original.apply(window, arguments);
-        };
-        //Video switcher
-        const videoSwitcher = function (videoID) {
-            window.dispatchEvent(new window.CustomEvent("${magic}", {
-                detail: videoID,
-            }));
-        };
-        //Initialization
-        window.addEventListener("DOMContentLoaded", () => {
-            //Insert our handler in between theirs
-            original = window.changeOngletColonneCentrale;
-            window.changeOngletColonneCentrale = newFunc;
-            //Set current video ID then patch the player for the first time
-            const elem = window.document.getElementById("onePlayerHolder");
-            if (elem && elem.getAttribute("data-video")) {
-                currentVideoId = elem.getAttribute("data-video");
-                videoSwitcher(currentVideoId);
-            }
-        });
-    })();`, true);
-}
-*/
-if (a.domCmp(["canalplus.fr"])) {
-    a.loopback((ignored, url) => {
+    a.loopbackXHR((ignored, url) => {
         if (url.includes(".v.fwmrm.net/ad/")) {
             return `<vmap:VMAP version='1.0' xmlns:vmap='http://www.iab.net/vmap-1.0'></vmap:VMAP>`;
         }
@@ -2357,7 +1878,7 @@ if (a.domCmp(["cda.pl"])) {
     a.readOnly("adblockV1", true);
 }
 if (a.domCmp(["linternaute.com"])) {
-    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/224
+    //https://github.com/jspenguin2017/uBlockProtector/issues/224
     a.inject(() => {
         "use strict";
         let val;
@@ -2378,7 +1899,6 @@ if (a.domCmp(["linternaute.com"])) {
 if (a.domCmp(["vgtv.no"])) {
     a.inject(() => {
         "use strict";
-        //Prepare value
         let callback;
         let val = {
             load(...args) {
@@ -2397,7 +1917,7 @@ if (a.domCmp(["vgtv.no"])) {
             },
         });
         val = window.Object.freeze(val);
-        //Define property
+
         window.OO = {};
         window.Object.defineProperty(window.OO, "AAB", {
             configurable: false,
@@ -2409,8 +1929,8 @@ if (a.domCmp(["vgtv.no"])) {
     });
 }
 if (a.domCmp(["rtl.be"])) {
-    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/421
-    a.loopback((ignored, url) => {
+    //https://github.com/jspenguin2017/uBlockProtector/issues/421
+    a.loopbackXHR((ignored, url) => {
         if (url.endsWith("rtl.be/videos/player/aab_config.json")) {
             return `{ "enabled": false }`;
         }
@@ -2472,13 +1992,13 @@ if (a.domCmp(["codepo8.github.io"]) && location.pathname.startsWith("/detecting-
     a.css(".notblocked { display:block; } .blocked { display:none; }");
 }
 if (a.domCmp(["altadefinizione.media"])) {
-    //Issue: https://gitlab.com/xuhaiyang1234/uBlockProtectorSecretIssues/issues/1
+    //https://gitlab.com/xuhaiyang1234/uBlockProtectorSecretIssues/issues/1
     a.ready(() => {
         $("a[href='http://altarisoluzione.online/HD/play5.php']").remove();
     });
 }
 if (a.domCmp(["hdpass.net"])) {
-    //Issue: https://gitlab.com/xuhaiyang1234/uBlockProtectorSecretIssues/issues/1
+    //https://gitlab.com/xuhaiyang1234/uBlockProtectorSecretIssues/issues/1
     a.inject(() => {
         "use strict";
         let flag = false;
@@ -2496,19 +2016,19 @@ if (a.domCmp(["hdpass.net"])) {
     });
 }
 if (a.domCmp(["nowvideo.ec", "nowvideo.li", "ewingoset.info"])) {
-    //Issue: https://gitlab.com/xuhaiyang1234/uBlockProtectorSecretIssues/issues/2
-    //Issue: https://gitlab.com/xuhaiyang1234/uBlockProtectorSecretIssues/issues/5
+    //https://gitlab.com/xuhaiyang1234/uBlockProtectorSecretIssues/issues/2
+    //https://gitlab.com/xuhaiyang1234/uBlockProtectorSecretIssues/issues/5
     a.ready(() => {
         $("#cty").append(`<input type="hidden" name="ab" value="1">`);
     });
 }
 if (a.domCmp(["karibusana.org"])) {
-    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/253
+    //https://github.com/jspenguin2017/uBlockProtector/issues/253
     a.noAccess("bizpanda");
     a.css(".onp-locker-call { display:block; }");
 }
 if (a.domCmp(["lewat.id", "u2s.io"])) {
-    //Issue: https://gitlab.com/xuhaiyang1234/uBlockProtectorSecretIssues/issues/4
+    //https://gitlab.com/xuhaiyang1234/uBlockProtectorSecretIssues/issues/4
     let matcher;
     if (a.domCmp(["lewat.id"], true)) {
         matcher = /^https?:\/\/lewat\.id\//i;
@@ -2646,7 +2166,6 @@ if (a.domCmp(["yiv.com"])) {
 }
 if (a.domCmp(["short.am"])) {
     if (location.pathname !== "/") {
-        //Skip to prevent popup
         a.readOnly("RunAds", undefined);
         a.ready(() => {
             let check = $("#disable > div.alert-danger");
@@ -2676,15 +2195,6 @@ if (a.domCmp(["ohmymag.com", "ohmymag.com.br", "ohmymag.de", "gentside.com", "ge
         init() { },
         removeAdblockPopup() { },
     }`);
-    /*
-    a.inject(() => {
-        "use strict";
-        window.prebid = (i, f) => {
-            f();
-        };
-        window.prebid.init = () => { };
-    });
-    */
 }
 if (a.domCmp(["digitalpoint.com"])) {
     a.ready(() => {
@@ -2695,7 +2205,7 @@ if (a.domCmp(["digitalpoint.com"])) {
     });
 }
 if (a.domCmp(["itv.com"])) {
-    a.loopback((ignored, url) => {
+    a.loopbackXHR((ignored, url) => {
         if (url.startsWith("https://tom.itv.com/itv/tserver/size=")) {
             return `<?xml version="1.0" encoding="utf-8"?>
 <VAST version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="vast.xsd">
@@ -2704,7 +2214,7 @@ if (a.domCmp(["itv.com"])) {
     });
 }
 if (a.domCmp(["di.fm", "jazzradio.com"])) {
-    a.loopback((ignored, url) => {
+    a.loopbackXHR((ignored, url) => {
         if (url.startsWith("https://pubads.g.doubleclick.net/")) {
             return `<?xml version="1.0" encoding="UTF-8"?>
 <VAST xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="vast.xsd" version="3.0">
@@ -2728,6 +2238,7 @@ if (a.domCmp(["oddreaders.com"])) {
     });
 }
 if (a.domCmp(["vvvvid.it"])) {
+    //https://github.com/Robotex/KAADIVVVV/issues/16
     a.ready(() => {
         a.inject(() => {
             //Based on KAADIVVVV
@@ -2736,7 +2247,7 @@ if (a.domCmp(["vvvvid.it"])) {
             if (window.vvvvid) {
                 const re = /var a=function.*};/;
                 const data = `var a=function(){vvvvid.advPlayer=null,$(c.playerControlsClass).removeClass("ppad"),d()};`;
-                //Patch properties
+
                 window.vvvvid.cab4 = function (a, b) {
                     this.isAdBlockActive = false;
                     b && b(false);
@@ -2745,8 +2256,6 @@ if (a.domCmp(["vvvvid.it"])) {
                 if (!re.test(func)) {
                     window.console.error("uBlock Protector failed to set up VVVVID uBlock Origin detector defuser!");
                 }
-                //That variable name feels like a trap
-                //https://github.com/Robotex/KAADIVVVV/issues/16
                 window.eval("window[mnsJHnyT] = window.vvvvid.models.PlayerObj.prototype.startAdv = " + func.replace(re, data));
             }
         });
@@ -2772,7 +2281,6 @@ if (a.domCmp(["viz.com"])) {
 if (a.domCmp(["1tv.ru"])) {
     a.inject(() => {
         "use strict";
-        //Stage 1
         const fakeAntiblock = {
             opts: {
                 url: "",
@@ -2799,7 +2307,7 @@ if (a.domCmp(["1tv.ru"])) {
                 return fakeAntiblock;
             },
         });
-        //Stage 2
+
         const original = window.XMLHttpRequest;
         window.XMLHttpRequest = function (...args) {
             const wrapped = new (window.Function.prototype.bind.apply(original, args));
@@ -2846,7 +2354,6 @@ if (a.domCmp(["gamejolt.net"])) {
 if (a.domCmp(["dilidili.wang"])) {
     a.filter("addEventListener", a.matchMethod.stringExact, "DOMNodeInserted", "window.document");
     a.antiCollapse("innerHTML", (elem) => elem === window.document.body);
-    //a.filter("querySelectorAll", a.matchMethod.stringExact, "[href*=toGame] img", "window.document");
 }
 if (a.domCmp(["overclockers.ru"])) {
     a.antiCollapse("innerHTML", (ignored, val) => val.includes("images/hungry.png"));
@@ -2855,7 +2362,6 @@ if (a.domCmp(["gamekit.com"])) {
     a.filter("setInterval", a.matchMethod.string, "a-d-block-popup");
 }
 if (a.domCmp(["linkshrink.net"])) {
-    //Skip glitchy timer caused by blocking popup
     //Based on AdsBypasser
     //License: https://github.com/adsbypasser/adsbypasser/blob/master/LICENSE
     const matcher = /revC\("([^"]+)"\)/;
@@ -2891,7 +2397,6 @@ if (a.domCmp(["playok.com", "kurnik.pl"])) {
     a.filter("getElementById", a.matchMethod.stringExact, "abp", "window.document");
 }
 if (a.domCmp(["gp.se", "bohuslaningen.se", "hallandsposten.se", "hn.se", "stromstadstidning.se", "ttela.se"])) {
-    //a.filter("addEventListener", a.matchMethod.stringExact, "scroll");
     a.inject(() => {
         "use strict";
         window.scrollTo = () => { };
@@ -2941,7 +2446,7 @@ if (a.domCmp(["docer.pl"])) {
     });
 }
 if (a.domCmp(["mitele.es"])) {
-    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/448
+    //https://github.com/jspenguin2017/uBlockProtector/issues/448
     a.inject(() => {
         "use strict";
         window.google = {};
@@ -2949,7 +2454,7 @@ if (a.domCmp(["mitele.es"])) {
 }
 if (a.domCmp(["telecinco.es", "cuatro.com", "divinity.es", "factoriadeficcion.com", "energytv.es", "bemad.es",
     "eltiempohoy.es", "mtmad.es"])) {
-    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/448
+    //https://github.com/jspenguin2017/uBlockProtector/issues/448
     a.inject(() => {
         "use strict";
         const err = new TypeError("Failed to execute 'getElementById' on 'Document': 'adsFooter' is not a valid ID.");
@@ -2972,7 +2477,6 @@ if (a.domCmp(["aternos.org"])) {
 if (a.domCmp(["adageindia.in", "bombaytimes.com", "businessinsider.in", "gizmodo.in", "iamgujarat.com", "idiva.com",
     "in.techradar.com", "indiatimes.com", "lifehacker.co.in", "mensxp.com", "samayam.com", "gadgetsnow.com"])) {
     //https://gitlab.com/xuhaiyang1234/uBlockProtectorSecretIssues/issues/8
-    //Part 1
     a.inject(() => {
         "use strict";
         const magic = "a" + window.Math.random().toString(36).substring(2);
@@ -3019,9 +2523,7 @@ if (a.domCmp(["adageindia.in", "bombaytimes.com", "businessinsider.in", "gizmodo
                 do {
                     try {
                         r = getter();
-                    } catch (err) {
-                        //window.console.error(err);
-                    }
+                    } catch (err) { }
                 } while (!r && (++i) < 100);
                 return null;
             },
@@ -3030,7 +2532,7 @@ if (a.domCmp(["adageindia.in", "bombaytimes.com", "businessinsider.in", "gizmodo
             void window.trev;
         });
     });
-    //Part 2
+
     let isInBackground = false;
     const reStart = /^\/[a-z_]+\.cms/;
     const reEnd = /^ \d{5,} \d{1,2} $/;
@@ -3092,7 +2594,6 @@ if (a.domCmp(["identi.li"])) {
     a.ready(() => {
         a.inject(() => {
             "use strict";
-            //Type 1
             const blocks = window.document.querySelectorAll(".info_bbc");
             for (let i = 0; i < blocks.length; i++) {
                 if (!blocks[i].firstChild.tagName) {
@@ -3102,7 +2603,7 @@ if (a.domCmp(["identi.li"])) {
                     blocks[i].parentNode.previousSibling.remove();
                 }
             }
-            //Type 2
+
             if (window.$) {
                 window.$("div #decrypt.myjdownloader").unbind("click").click(function () {
                     window._decrypt.fnID = "jdownloader";
@@ -3139,7 +2640,7 @@ if (a.domCmp(["egobits.com"])) {
     a.noAccess("detector_launch");
 }
 if (a.domCmp(["tvnow.de"])) {
-    a.replace(() => {
+    a.replaceXHR(() => {
         if (url.includes("/v3/movies/")) {
             this.addEventListener("readystatechange", () => {
                 if (this.readyState === 4) {
@@ -3225,7 +2726,7 @@ if (a.domCmp(["falter.at"])) {
     a.noAccess("showFalterGif");
 }
 if (a.domCmp(["webnovel.com"])) {
-    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/457
+    //https://github.com/jspenguin2017/uBlockProtector/issues/457
     const bookExtractor = /\/book\/([^/]+)/;
     let isInBackground = false;
     const scanner = () => {
@@ -3233,27 +2734,23 @@ if (a.domCmp(["webnovel.com"])) {
             return;
         }
         $(".cha-content._lock").each((lock) => {
-            //Remove flag
             lock.classList.remove("_lock");
-            //Remove video
             const video = lock.closest(".chapter_content").querySelector(".lock-video");
             if (video) {
                 video.remove();
             }
-            //Let user know what is happening
+
             const contentElem = lock.querySelector(".cha-words");
             contentElem.insertAdjacentHTML("beforeend", "<p style='opacity:0.5;'>" +
                 "uBlock Protector is fetching the rest of this chapter, this can take up to 30 seconds.</p>");
-            //Get IDs
+
             const bookID = bookExtractor.exec(location.href)[1];
             const chapterID = lock.querySelector("[data-cid]").dataset.cid;
-            //Check if I got IDs
             if (!bookID || !chapterID) {
                 return;
             }
-            //Get cookie
             const cookie = encodeURIComponent(a.cookie("_csrfToken"));
-            //Get token
+
             $.request({
                 method: "GET",
                 url: `https://www.webnovel.com/apiajax/chapter/GetChapterContentToken?_csrfToken=` +
@@ -3324,7 +2821,7 @@ if (a.domCmp(["nontonanime.org"])) {
     a.readOnly("ADBLOCK", true);
 }
 if (a.domCmp(["graphiq-stories.graphiq.com"])) {
-    a.loopback((ignored, url) => {
+    a.loopbackXHR((ignored, url) => {
         if (url.startsWith("/ad?")) {
             return "window.FTBAds.blocking = false;";
         }
@@ -3385,7 +2882,7 @@ if (a.domCmp(["arenavision.us"])) {
     a.noAccess("H7WWWW");
 }
 if (a.domCmp(["cbs.com"])) {
-    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/578
+    //https://github.com/jspenguin2017/uBlockProtector/issues/578
     if (!a.cookie("first_page_today") && !sessionStorage.getItem("_first_page_today_fallback")) {
         sessionStorage.setItem("_first_page_today_fallback", true);
         a.ready(() => {
@@ -3483,7 +2980,7 @@ if (a.domCmp(["strefadb.pl"])) {
     });
 }
 if (a.domCmp(["tune.pk"])) {
-    a.replace(() => {
+    a.replaceXHR(() => {
         if (url.startsWith("https://tune.pk/api_public/playerConfigs/?")) {
             this.addEventListener("readystatechange", () => {
                 if (this.readyState === 4) {

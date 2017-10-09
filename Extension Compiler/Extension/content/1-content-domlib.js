@@ -127,7 +127,7 @@ $.Selection = class {
         if (this.selection.length) {
             this.selection = [this.selection[0]];
             this.length = 1
-        } //Ignore if nothing is selected
+        }
         return this;
     }
     /**
@@ -148,7 +148,7 @@ $.Selection = class {
                 this.selection = [];
                 this.length = 0;
             }
-        } //Ignore if nothing is selected
+        }
         return this;
     }
     /**
@@ -159,7 +159,7 @@ $.Selection = class {
         if (this.selection.length) {
             this.selection = [this.selection[this.selection.length - 1]];
             this.length = 1
-        } //Ignore if nothing is selected
+        }
         return this;
     }
     /**
@@ -212,7 +212,6 @@ $.Selection = class {
      */
     parent() {
         for (let i = 0; i < this.selection.length; i++) {
-            //Only update if current element has a parent
             const elem = this.selection[i].parentNode;
             if (elem) {
                 this.selection[i] = elem;
@@ -435,7 +434,7 @@ $.Selection = class {
      * @return {integer} The offsetWidth, or -1 if the offsetWidth cannot be retrieved.
      */
     width() {
-        return this.selection.length ? this.selection[0].offsetWidth : -1;
+        return (this.selection.length ? this.selection[0].offsetWidth : -1);
     }
     /**
      * Get offsetHeight of the first selected element.
@@ -443,7 +442,7 @@ $.Selection = class {
      * @return {integer} The offsetHeight, or -1 if the offsetHeight cannot be retrieved.
      */
     height() {
-        return this.selection.length ? this.selection[0].offsetHeight : -1;
+        return (this.selection.length ? this.selection[0].offsetHeight : -1);
     }
     /**
      * Loop though each selected element.
@@ -461,13 +460,13 @@ $.Selection = class {
 
 //=====Utilities=====
 /**
- * Similar to a.request(), but is not privileged and the request is done directly in the content
- * script context.
+ * Same as a.request() of content-core except that the request is sent directly in the content script
+ * scope and is not privileged.
  * @function
  */
 $.request = (details, onload, onerror) => {
     let req = new XMLHttpRequest();
-    //Event handler
+
     req.onreadystatechange = () => {
         if (req.readyState === 4) {
             if (req.responseText === null) {
@@ -477,14 +476,14 @@ $.request = (details, onload, onerror) => {
             }
         }
     };
-    //Create request
+
     req.open(details.method, details.url);
-    //Set headers
+
     if (details.headers) {
         for (let key in details.headers) {
             req.setRequestHeader(key, details.headers[key]);
         }
     }
-    //Send request
+
     req.send(details.payload || null);
 };
