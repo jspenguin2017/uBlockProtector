@@ -1404,12 +1404,14 @@ a.generic.Adfly = () => {
  * Set up ads.js v2 defuser, call once on document-start if needed.
  * This defuser may cause some websites to malfunction.
  * @function
+ * @param {integer} [min=11] - The minimum length of bait element ID.
+ * @param {integer} [max=14] - The maximum length of bait element ID.
  */
-a.generic.adsjsV2 = () => {
-    a.inject((min = 11, max = 14) => {
+a.generic.adsjsV2 = (min = 11, max = 14) => {
+    a.inject(`(() => {
         "use strict";
         const error = window.console.error.bind(window.console);
-        const matcher = new window.RegExp(`[a-zA-Z0-9]{${min},${max}}`);
+        const matcher = new window.RegExp("[a-zA-Z0-9]{${min},${max}}");
         const err = new window.TypeError("Failed to execute 'getElementById' on 'Document': " +
             "1 argument required, but only 0 present.");
         let original;
@@ -1436,7 +1438,7 @@ a.generic.adsjsV2 = () => {
         } catch (err) {
             error("uBlock Protector failed to set up ads.js v2 uBlock Origin detector defuser!");
         }
-    });
+    })();`, true);
 };
 /**
  * Set up NoAdBlock defuser, call once on document-start if needed.
