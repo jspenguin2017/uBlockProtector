@@ -1,14 +1,12 @@
 //Background rules
 "use strict";
 
-//Initialize
 a.init();
 a.generic();
 
-//Rules
 {
     //fwmrm.net
-    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/344
+    //https://github.com/jspenguin2017/uBlockProtector/issues/344
     const genPayload = (csid, caid, cbfn) => {
         //Event callbacks are blocked by List
         let payload = `(() => {
@@ -114,11 +112,11 @@ a.generic();
         })();`;
         return "data:text/javascript;base64," + btoa(payload);
     };
-    //Matchers
+
     const reCsid = /csid=([^&]+)/;
     const reCaid = /caid=([^&]+)/;
     const reCbfn = /cbfn=([^&]+)/;
-    //Loopback ads request
+
     a.dynamicServer(
         [
             "http://*.v.fwmrm.net/ad/g/*",
@@ -136,7 +134,8 @@ a.generic();
             } else {
                 console.log("Could not extract parameters from a request to v.fwmrm.net");
                 a.debugMode && console.log(details);
-                return { cancel: true }; //Block the request as a fallback
+                //Block the request as a fallback
+                return { cancel: true };
             }
         },
         [
@@ -150,7 +149,7 @@ a.generic();
 }
 {
     //shorte.st and related domains
-    //Issue: https://github.com/jspenguin2017/uBlockProtector/issues/169
+    //https://github.com/jspenguin2017/uBlockProtector/issues/169
     chrome.webRequest.onBeforeSendHeaders.addListener(
         (details) => {
             for (let i = 0; i < details.requestHeaders.length; i++) {
