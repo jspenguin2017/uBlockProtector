@@ -118,12 +118,11 @@ if (a.domCmp(["apkmirror.com", "freepdf-books.com", "bc.vc", "themeslide.com", "
     "lewat.id", "cutwin.com", "cut-urls.com", "adbull.me", "xess.pro", "clik.pw", "admove.co",
     "adshort.co", "linksh.top", "adshorte.com", "coinb.ink", "123link.top", "fas.li", "zeiz.me",
     "u2s.io", "linclik.com", "xurl.us", "adbilty.me", "cpmlink.net", "gsurl.in", "linkhits.us",
-    "coshurl.co", "leechall.com", "gratisjuegos.co", "zonadescarga.info", "firstone.tv", "shortzero.com",
+    "coshurl.co", "leechall.com", "zonadescarga.info", "firstone.tv", "shortzero.com", "adbilty.me",
     "veneapp.com", "shink.in", "iiv.pl", "uskip.me", "link-cash.com", "ouo.press", "coinlink.us",
     "tmearn.com", "url.gem-flash.com", "cuturlink.com", "linkhits.net", "shorteurl.com", "bit-url.com",
     "leenlink.com", "linkkawy.com", "cut-egy.ml", "igram.im", "adlinkme.com", "oke.io", "wolink.in",
-    "bilink.xyz", "git.tc", "zlshorte.net", "ur.ly", "shink.me", "oload.stream", "ecut.io", "cut-earn.com",
-    "adbilty.me"])) {
+    "bilink.xyz", "git.tc", "zlshorte.net", "ur.ly", "shink.me", "oload.stream", "ecut.io", "cut-earn.com"])) {
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
 if (a.domCmp(["katfile.com", "goldescargas.com", "globalbesthosting.com", "userupload.net",

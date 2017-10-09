@@ -8,9 +8,11 @@
  */
 var a = {};
 
+//@pragma-if-debug
 /**
  * Whether the extension is loaded in debug mode.
  * The compiler is responsible in hard coding this switch.
  * @const {boolean}
  */
-a.debugMode = true; //@pragma-debug-switch
+a.debugMode = true;
+//@pragma-end-if

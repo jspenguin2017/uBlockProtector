@@ -201,10 +201,7 @@ const disableDebugMode = () => {
                     console.error("Could not set debug switch: Could not read file.");
                     process.exit(1);
                 } else {
-                    fs.writeFile(file, data.replace(
-                        /a\.debugMode = (true|false);\s*\/\/@pragma-debug-switch/,
-                        "a.debugMode = false; //@pragma-debug-switch",
-                    ), (err) => {
+                    fs.writeFile(file, data.replace("a.debugMode = true;", "a.debugMode = false;"), (err) => {
                         if (err) {
                             console.error("Could not set debug switch: Could not write to file.");
                             process.exit(1);

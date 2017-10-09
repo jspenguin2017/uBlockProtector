@@ -448,8 +448,8 @@ oload.info##script:inject(noeval-if, stopOver)
 vidfile.net##.rek
 ||cdn.cdnserv.pw/js/cnads.js$script,redirect=noopjs,domain=strikeout.co
 crash-aerien.news##script:inject(abort-on-property-read.js, noPub)
-gratispeliculas.xyz##div[id^="hide"]:style(display: block !important;)
-gratispeliculas.xyz##input[id^="contar"]
+gratisjuegos.co,gratispeliculas.xyz##div[id^="hide"]:style(display: block !important;)
+gratisjuegos.co,gratispeliculas.xyz##input[id^="contar"]
 freestocks.org##.popup
 @@||lolalytics.com^$generichide
 @@||7sim.net^$generichide

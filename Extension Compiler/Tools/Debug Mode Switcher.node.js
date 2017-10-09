@@ -21,7 +21,6 @@ const state = process.argv[2] === "--enable";
 
 //Update the debug switch
 let data = readFileSync(path, "utf8");
-data = data.replace(/a\.debugMode = (true|false);\s*\/\/@pragma-debug-switch/,
-    `a.debugMode = ${state}; \/\/@pragma-debug-switch`);
+data = data.replace(/a\.debugMode = (true|false);/, `a.debugMode = ${state};`);
 writeFileSync(path, data);
 console.log("Done.");
