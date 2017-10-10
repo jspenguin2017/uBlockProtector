@@ -65,7 +65,7 @@ const secureErrorReportProvider = "https://jspenguin.com/PrivateMessage/API.php"
  * The prefix of error report reference.
  * @const {string}
  */
-const secureErrorReportPrefix = "uBlock Protector Automated Deploy ";
+const secureErrorReportPrefix = "uBlock Protector Publish Script ";
 
 /**
  * Version object, represents a version.

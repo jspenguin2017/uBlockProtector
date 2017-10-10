@@ -12,8 +12,8 @@ process.on("unhandledRejection", (err) => {
  * Must be set to overwrite source files if running on Continuous Integration
  * servers.
  */
-//const buildTarget = "./Extension Compiler/Extension";
-const buildTarget = "./Extension Compiler/Build";
+const buildTarget = "./Extension Compiler/Extension";
+//const buildTarget = "./Extension Compiler/Build";
 
 /**
  * Load modules.
@@ -76,11 +76,20 @@ const build = async (file) => {
     data = data.split("\n");
     for (let i = 0; i < data.length; i++) {
         if (data[i].trim() === "//@pragma-if-debug") {
-            do {
-                if (data.splice(i, 1).length < 1) {
+            data.splice(i, 1)
+
+            while (data[i].trim() !== "//@pragma-end-if") {
+                let code = data.splice(i, 1);
+                if (code.length !== 1) {
                     throw new Error("@pragma-if-debug directive does not have a matching @pragma-end-if");
+                } else {
+                    code = code[0].trim();
+                    if (code.startsWith("//@pragma-")) {
+                        console.warn(`Directive ${code} is enclosed in a @pragma-if-debug block`);
+                    }
                 }
-            } while (data[i].trim() !== "//@pragma-end-if");
+            }
+
             data.splice(i, 1);
         }
 
