@@ -243,7 +243,7 @@ const OAuth2 = () => {
             res.on("data", (c) => { data += c; });
             res.on("error", () => {
                 console.error("Could not obtain access token: Could not connect to remote server.");
-                process.exit(1);
+                throw abortMagic;
             });
             res.on("end", () => {
                 try {
@@ -256,7 +256,7 @@ const OAuth2 = () => {
                     }
                 } catch (err) {
                     console.error("Could not obtain access token: Could not parse response.");
-                    process.exit(1);
+                    throw abortMagic;
                 }
             });
         });

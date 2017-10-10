@@ -29,6 +29,8 @@ const fs = (() => {
         readFile: util.promisify(ofs.readFile),
         mkdir: util.promisify(ofs.mkdir),
         writeFile: util.promisify(ofs.writeFile),
+
+        appendFile: util.promisify(ofs.appendFile),
     };
 })();
 const path = require("path");
@@ -65,6 +67,8 @@ const crawler = async (dir) => {
  * @param {string} file - The path to the file to build.
  */
 const build = async (file) => {
+    console.log(`Building ${file}`);
+
     const pathFrags = file.split(/\/|\\/);
     let data = await fs.readFile(file, "utf8");
 
@@ -72,7 +76,9 @@ const build = async (file) => {
     for (let i = 0; i < data.length; i++) {
         if (data[i].trim() === "//@pragma-if-debug") {
             do {
-                data.splice(i, 1);
+                if (data.splice(i, 1).length < 1) {
+                    throw new Error("@pragma-if-debug directive does not have a matching @pragma-end-if");
+                }
             } while (data[i].trim() !== "//@pragma-end-if");
             data.splice(i, 1);
         }
@@ -96,49 +102,61 @@ const build = async (file) => {
     }
     await fs.writeFile(currentPath, data, { encoding: "utf8" });
 
-    console.log(`Built ${file}`);
+    console.log(`Built to ${buildPath}`);
 };
 
 
-//Show status
-console.log(`Current working directory: ${process.cwd()}`);
-console.log(`Current time:              ${new Date().toString()}`);
-console.log(`Esprima version:           ${esprima.version}`);
-console.log();
-
-//Find files to build
-crawler("./Extension Compiler/Extension").then(files => {
-    console.log(`${files.length} files to build`);
-    files.forEach(build);
-});
-
-//Workaround a bug in Chrome 60
 (async () => {
-    const crawler = async (dir) => {
-        let filesToCheck = [];
+    console.log(`Current working directory: ${process.cwd()}`);
+    console.log(`Current time:              ${new Date().toString()}`);
+    console.log(`Esprima version:           ${esprima.version}`);
+    console.log();
 
-        const _crawler = async (dir) => {
-            const files = await fs.readdir(dir);
+    const files = await crawler("./Extension Compiler/Extension")
+    console.log(`${files.length} files to build`);
+    for (let i = 0; i < files.length; i++) {
+        await build(files[i]);
+    }
 
-            for (let i = 0; i < files.length; i++) {
-                const newPath = path.join(dir, files[i]);
 
-                if ((await fs.stat(newPath)).isDirectory()) {
-                    await _crawler(newPath);
-                } else {
-                    filesToCheck.push(`./${newPath}`);
+    //Workaround a bug in Chrome 60
+    {
+        console.log("Trying to workaround https://bugs.chromium.org/p/chromium/issues/detail?id=754282");
+
+        const crawler = async (dir) => {
+            let filesToCheck = [];
+
+            const _crawler = async (dir) => {
+                const files = await fs.readdir(dir);
+
+                for (let i = 0; i < files.length; i++) {
+                    const newPath = path.join(dir, files[i]);
+
+                    if ((await fs.stat(newPath)).isDirectory()) {
+                        await _crawler(newPath);
+                    } else {
+                        filesToCheck.push(`./${newPath}`);
+                    }
                 }
+            }
+
+            await _crawler(dir);
+            return filesToCheck;
+        };
+
+        const files = await crawler(buildTarget);
+        for (let i = 0; i < files.length; i++) {
+            const size = (await fs.stat(files[i])).size;
+
+            if (size % 4096 === 0) {
+                if (files[i].endsWith(".png")) {
+                    throw new Error("An image file has size that is a multiple of 4096!");
+                }
+
+                await fs.appendFile(files[i], "  ", { encoding: "utf8" });
             }
         }
 
-        await _crawler(dir);
-        return filesToCheck;
-    };
-
-    (await crawler("./Extension Compiler/Extension")).filter(file => {
-        if (file.endsWith(".png")) {
-            throw new Error("An image file has size that is a multiple of 4096!");
-        }
-        
-    });
+        console.log("Done");
+    }
 })();
