@@ -202,14 +202,11 @@ const getPublishedVersion = () => {
                 throw abortMagic;
             });
             res.on("end", () => {
-                let match;
-                try {
-                    match = (/<meta itemprop="version" content="(\d+\.\d+)"\/>/).exec(data);
-                } catch (err) { } //Error handled below
+                let match = (/<meta itemprop="version" content="(\d+\.\d+)"\/>/).exec(data);
                 if (match) {
                     resolve(new Version(match[1]));
                 } else {
-                    console.error("Could not obtain published version number, unparsable response.");
+                    console.error("Could not obtain published version number, unexpected response.");
                     throw abortMagic;
                 }
             });
@@ -234,7 +231,7 @@ const getLastBuildVersion = () => {
         const onError = (() => {
             let errorCount = 0;
             return (doLog = true) => {
-                doLog && console.error("Could not obtain version number of last build: Could not connect to remote server.");
+                doLog && console.error("Could not obtain version number of last build, connection error.");
                 if ((++errorCount) > 5) {
                     console.error("Too many trails, default to 1.0.");
                     resolve(new Version("1.0"));
@@ -254,7 +251,7 @@ const getLastBuildVersion = () => {
                     if ((/^\d+\.\d+$/).test(data)) {
                         resolve(new Version(data));
                     } else {
-                        console.error("Could not obtain version number of last build: Unexpected response.");
+                        console.error("Could not obtain version number of last build, unexpected response.");
                         onError(false);
                     }
                 });
@@ -285,7 +282,7 @@ const getLocalVersion = () => {
                     if ((/^\d+\.\d+$/).test(ver)) {
                         resolve(new Version(ver));
                     } else {
-                        console.error("Could not obtain local version number, manifest is invalid.");
+                        console.error("Could not obtain local version number, manifest does not contain a valid version.");
                         throw abortMagic;
                     }
                 } catch (err) {
@@ -420,7 +417,7 @@ const upload = (token, data) => {
                         console.log("Remote server is processing the uploaded package, continuing in 1 minute...");
                         setTimeout(resolve, 60 * 1000); //Wait a minute
                     } else {
-                        console.error("Could not upload new build: Remote server returned an error.");
+                        console.error("Could not upload new build, remote server returned an error.");
                         secureErrorReport(`${secureErrorReportPrefix}Upload Failed`, data);
                     }
                 } catch (err) {
@@ -466,7 +463,7 @@ const publish = (token) => {
                 try {
                     const response = JSON.parse(data);
                     if (response.error) {
-                        console.error("Could not publish new build: Remote server returned an error.");
+                        console.error("Could not publish new build, remote server returned an error.");
                         secureErrorReport(`${secureErrorReportPrefix}Publish Failed`, data);
                     } else if (response.status.includes("OK")) {
                         console.log("New build is published.");
@@ -504,7 +501,7 @@ const setLastBuildVersion = (v) => {
         const onError = (() => {
             let errorCount = 0;
             return () => {
-                console.error("Could not save version number for next build: Could not connect to remote server.");
+                console.error("Could not save version number for next build, connection error.");
                 if ((++errorCount) > 5) {
                     console.error("Too many trails, aborting...");
                     throw abortMagic;
@@ -517,15 +514,8 @@ const setLastBuildVersion = (v) => {
         const doRequest = () => {
             let payload;
             try {
-                /*
-                payload = serialize({
-                    key: process.env.VERSION_KEY,
-                    data: v.toString(),
-                });
-                */
-                //Different POST logic for the new server
                 if (typeof process.env.VERSION_KEY !== "string") {
-                    throw "Secure environment variables missing";
+                    throw "Secure Environment Variables Missing";
                 }
                 payload = `${process.env.VERSION_KEY}\n${v.toString()}`;
             } catch (err) {
@@ -535,7 +525,6 @@ const setLastBuildVersion = (v) => {
             let request = https.request(Object.assign(url.parse(`${extendedAPIProvider}/API.php`), {
                 method: "POST",
                 headers: {
-                    //"Content-Type": "application/x-www-form-urlencoded",
                     "Content-Length": Buffer.byteLength(payload),
                 },
             }), (res) => {
@@ -564,13 +553,13 @@ const setLastBuildVersion = (v) => {
 //Check if I have credentials, pull requests do not have access to credentials, I do not want to push to store for pull
 //requests anyway, do not fail the build as that can cause confusions
 if (!process.env.CLIENT_ID || !process.env.CLIENT_SECRET || !process.env.REFRESH_TOKEN || !process.env.VERSION_KEY) {
-    console.warn("Secure environment variables are missing.");
+    console.warn("Secure environment variables are missing, publish skipped.");
 } else {
-    if (process.env.TRAVIS_COMMIT_MESSAGE.startsWith("@build-script-do-not-run")) {
-        console.log("Do not build instruction received.");
+    if (process.env.TRAVIS_COMMIT_MESSAGE.startsWith("@pragma-no-publish")) {
+        console.log("No publish instruction received.");
     } else {
         (async () => {
-            const build = async (newVer) => {
+            const doPublish = async (newVer) => {
                 const data = await zip();
                 const token = await OAuth2();
                 await upload(token, data);
@@ -578,13 +567,13 @@ if (!process.env.CLIENT_ID || !process.env.CLIENT_SECRET || !process.env.REFRESH
                 await setLastBuildVersion(newVer);
             };
 
-            if (process.env.TRAVIS_COMMIT_MESSAGE.startsWith("@build-script-force-run")) {
-                console.log("Force build instruction received.");
-                await build(await getLocalVersion());
+            if (process.env.TRAVIS_COMMIT_MESSAGE.startsWith("@pragma-force-publish")) {
+                console.log("Force publish instruction received.");
+                await doPublish(await getLocalVersion());
             } else {
                 const [remoteVer, localVer] = await Promise.all([
-                    //getPublishedVersion(),
                     getLastBuildVersion(),
+                    //getPublishedVersion(),
 
                     getLocalVersion(),
                 ]);
@@ -592,7 +581,7 @@ if (!process.env.CLIENT_ID || !process.env.CLIENT_SECRET || !process.env.REFRESH
                 if (verSame(remoteVer, localVer)) {
                     console.log("Store version up to date, nothing to build.");
                 } else if (verNeedUpdate(remoteVer, localVer)) {
-                    await build(localVer);
+                    await doPublish(localVer);
                 } else {
                     console.error("Version error, maybe last build was not properly completed.");
                     throw abortMagic;
