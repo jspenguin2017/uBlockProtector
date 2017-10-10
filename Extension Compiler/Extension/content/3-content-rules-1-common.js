@@ -119,10 +119,10 @@ if (a.domCmp(["apkmirror.com", "freepdf-books.com", "bc.vc", "themeslide.com", "
     "adshort.co", "linksh.top", "adshorte.com", "coinb.ink", "123link.top", "fas.li", "zeiz.me",
     "u2s.io", "linclik.com", "xurl.us", "adbilty.me", "cpmlink.net", "gsurl.in", "linkhits.us",
     "coshurl.co", "leechall.com", "zonadescarga.info", "firstone.tv", "shortzero.com", "adbilty.me",
-    "veneapp.com", "shink.in", "iiv.pl", "uskip.me", "link-cash.com", "ouo.press", "coinlink.us",
+    "veneapp.com", "iiv.pl", "uskip.me", "link-cash.com", "ouo.press", "coinlink.us", "cut-earn.com",
     "tmearn.com", "url.gem-flash.com", "cuturlink.com", "linkhits.net", "shorteurl.com", "bit-url.com",
     "leenlink.com", "linkkawy.com", "cut-egy.ml", "igram.im", "adlinkme.com", "oke.io", "wolink.in",
-    "bilink.xyz", "git.tc", "zlshorte.net", "ur.ly", "shink.me", "oload.stream", "ecut.io", "cut-earn.com"])) {
+    "bilink.xyz", "git.tc", "zlshorte.net", "ur.ly", "shink.me", "oload.stream", "ecut.io"])) {
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
 if (a.domCmp(["katfile.com", "goldescargas.com", "globalbesthosting.com", "userupload.net",
@@ -131,8 +131,7 @@ if (a.domCmp(["katfile.com", "goldescargas.com", "globalbesthosting.com", "useru
 }
 
 //a.readOnly
-if (a.domCmp(["jansatta.com", "financialexpress.com", "indianexpress.com", "shink.in", "uskip.me",
-    "shink.me"])) {
+if (a.domCmp(["jansatta.com", "financialexpress.com", "indianexpress.com", "uskip.me"])) {
     a.readOnly("RunAds", true);
 }
 if (a.domCmp(["jagranjunction.com", "nekopoi.bid", "catcatyfaucet.xyz"])) {
@@ -158,7 +157,7 @@ if (a.domCmp(["openload.co", "openload.io", "openload.tv", "oload.stream", "neko
 if (a.domCmp(["mexashare.com", "hanime.tv", "mega-estrenos.com", "shortin.ga", "popunderjs.com", "code.ptcong.com"])) {
     a.readOnly("BetterJsPop", "window.Object.freeze({})");
 }
-if (a.domCmp(["youwatch.to", "he2eini7ka.com", "shink.in", "shink.me"])) {
+if (a.domCmp(["youwatch.to", "he2eini7ka.com"])) {
     a.readOnly("jsPopunder", () => { });
 }
 if (a.domCmp(["youwatch.org", "chouhaa.info", "ahzahg6ohb.com", "youwatch.to", "he2eini7ka.com", "exashare.com",

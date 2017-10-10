@@ -1507,7 +1507,7 @@ if (a.domCmp(["bonusbitcoin.co"])) {
         });
     });
 }
-if (a.domCmp(["shink.in", "shink.me"])) {
+if (a.domCmp(["shink.me"])) {
     if (location.pathname.startsWith("/go/")) {
         a.ready(() => {
             const link = document.getElementById("btn-main");
@@ -1516,7 +1516,6 @@ if (a.domCmp(["shink.in", "shink.me"])) {
             location.href = url;
         });
     }
-    a.filter("createElement", a.matchMethod.stringExact, "a", "window.document");
 }
 if (a.domCmp(["gamezhero.com"])) {
     a.readOnly("ads", true);
