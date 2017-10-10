@@ -129,7 +129,6 @@ const build = async (file) => {
         await build(files[i]);
     }
     console.log("Done");
-
     console.log();
 
     //Workaround a bug in Chrome 60
