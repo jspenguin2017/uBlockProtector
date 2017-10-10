@@ -1411,7 +1411,7 @@ a.generic.adsjsV2 = (min = 11, max = 14) => {
     a.inject(`(() => {
         "use strict";
         const error = window.console.error.bind(window.console);
-        const matcher = new window.RegExp("[a-zA-Z0-9]{${min},${max}}");
+        const matcher = /[a-zA-Z0-9]{${min},${max}}/;
         const err = new window.TypeError("Failed to execute 'getElementById' on 'Document': " +
             "1 argument required, but only 0 present.");
         let original;

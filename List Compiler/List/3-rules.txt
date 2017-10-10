@@ -698,8 +698,8 @@ vidfile.net##.rek
 ||cdn.cdnserv.pw/js/cnads.js$script,redirect=noopjs,domain=strikeout.co
 ! === crash-aerien.news
 crash-aerien.news##script:inject(abort-on-property-read.js, noPub)
-! === gratisjuegos.co, gratispeliculas.xyz
-gratisjuegos.co,gratispeliculas.xyz##div[id^="hide"]:style(display: block !important;)
-gratisjuegos.co,gratispeliculas.xyz##input[id^="contar"]
+! === gratisprogramas.co, gratisjuegos.co, gratispeliculas.xyz
+gratisprogramas.co,gratisjuegos.co,gratispeliculas.xyz##div[id^="hide"]:style(display: block !important;)
+gratisprogramas.co,gratisjuegos.co,gratispeliculas.xyz##input[id^="contar"]
 ! === freestocks.org
 freestocks.org##.popup
