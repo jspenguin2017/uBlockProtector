@@ -47,11 +47,12 @@ const crawler = async (dir) => {
         const files = await fs.readdir(dir);
 
         for (let i = 0; i < files.length; i++) {
-            const newPath = path.join(dir, files[i]);
+            let newPath = path.join(dir, files[i]);
 
             if ((await fs.stat(newPath)).isDirectory()) {
                 await _crawler(newPath);
             } else if (newPath.endsWith(".js")) {
+                newPath = newPath.replace(/\\/g, "/");
                 scripts.push(`./${newPath}`);
             }
         }
@@ -69,7 +70,7 @@ const crawler = async (dir) => {
 const build = async (file) => {
     console.log(`Building ${file}`);
 
-    const pathFrags = file.split(/\/|\\/);
+    const pathFrags = file.split("/");
     let data = await fs.readFile(file, "utf8");
 
     data = data.split("\n");
@@ -81,6 +82,16 @@ const build = async (file) => {
                 }
             } while (data[i].trim() !== "//@pragma-end-if");
             data.splice(i, 1);
+        }
+
+        //Cannot cache the trimmed line since the line may change
+        if (data[i].trim() === "//@pragma-end-if") {
+            throw new Error("@pragma-end-if directive does not have a matching @pragma-if-*");
+        }
+
+        const line = data[i].trim();
+        if (line.startsWith("//@pragma-")) {
+            console.warn(`Unrecognized directive ${line}`);
         }
     }
     data = data.join("\n");
@@ -102,7 +113,7 @@ const build = async (file) => {
     }
     await fs.writeFile(currentPath, data, { encoding: "utf8" });
 
-    console.log(`Built to ${buildPath}`);
+    console.log(`Built to ${currentPath}`);
 };
 
 
@@ -112,12 +123,14 @@ const build = async (file) => {
     console.log(`Esprima version:           ${esprima.version}`);
     console.log();
 
-    const files = await crawler("./Extension Compiler/Extension")
+    const files = await crawler("./Extension Compiler/Extension");
     console.log(`${files.length} files to build`);
     for (let i = 0; i < files.length; i++) {
         await build(files[i]);
     }
+    console.log("Done");
 
+    console.log();
 
     //Workaround a bug in Chrome 60
     {
@@ -130,11 +143,12 @@ const build = async (file) => {
                 const files = await fs.readdir(dir);
 
                 for (let i = 0; i < files.length; i++) {
-                    const newPath = path.join(dir, files[i]);
+                    let newPath = path.join(dir, files[i]);
 
                     if ((await fs.stat(newPath)).isDirectory()) {
                         await _crawler(newPath);
                     } else {
+                        newPath = newPath.replace(/\\/g, "/");
                         filesToCheck.push(`./${newPath}`);
                     }
                 }
