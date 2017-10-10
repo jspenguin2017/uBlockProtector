@@ -565,6 +565,7 @@ if (!process.env.CLIENT_ID || !process.env.CLIENT_SECRET || !process.env.REFRESH
                 await upload(token, data);
                 await publish(token);
                 await setLastBuildVersion(newVer);
+                console.log("Done.");
             };
 
             if (process.env.TRAVIS_COMMIT_MESSAGE.startsWith("@pragma-force-publish")) {
