@@ -163,7 +163,7 @@ const build = async (file) => {
 
             if (size % 4096 === 0) {
                 if (files[i].endsWith(".png")) {
-                    throw new Error("An image file has size that is a multiple of 4096!");
+                    throw new Error("An image file has a size that is a multiple of 4096!");
                 }
 
                 await fs.appendFile(files[i], "  ", { encoding: "utf8" });

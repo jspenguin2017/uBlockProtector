@@ -11,6 +11,7 @@
 //If commit message starts with "@pragma-force-publish", then version check is skipped
 "use strict";
 
+
 process.on("uncaughtException", (err) => {
     if (err !== abortMagic) {
         console.error("Unknown error, this is probably caused by a bug in the publish script.");
@@ -18,6 +19,11 @@ process.on("uncaughtException", (err) => {
     //Must throw abort magic instead of the actual error
     throw abortMagic;
 });
+process.on("unhandledRejection", (err) => {
+    //Error thrown here will go to uncaughtException handler
+    throw err;
+});
+
 
 /**
  * The error to throw if the error is not unknown.
@@ -36,7 +42,7 @@ let archiver;
 try {
     archiver = require("archiver");
 } catch (err) {
-    console.error("Could not load archiver module.");
+    console.error("Could not find archiver module.");
     throw abortMagic;
 }
 
@@ -143,7 +149,7 @@ const secureErrorReport = (ref, err) => {
         }
         payload = `send\n${ref}\n${err}`;
     } catch (err) {
-        console.error("Could not report error: Error reference or message is not valid.");
+        console.error("Could not report error, reference or message is not valid.");
         throw abortMagic;
     }
 
@@ -157,289 +163,24 @@ const secureErrorReport = (ref, err) => {
         res.setEncoding("utf8");
         res.on("data", (c) => { data += c; });
         res.on("error", () => {
-            console.error("Could not report error: Could not connect to remote server.");
+            console.error("Could not report error, connection error.");
             throw abortMagic;
         });
         res.on("end", () => {
             if (data === "ok") {
                 console.log("Error reported.");
             } else {
-                console.error("Could not report error: Remote server returned an error.");
+                console.error("Could not report error, remote server returned an error.");
             }
             throw abortMagic;
         });
     });
     request.on("error", () => {
-        console.error("Could not report error: Could not connect to remote server.");
+        console.error("Could not report error, connection error.");
         throw abortMagic;
     });
     request.write(payload);
     request.end();
-};
-
-/**
- * Create zip archive ready for upload.
- * Will fail the build if this task could not be completed.
- * @function
- * @return {Promise} The promise of the task.
- ** @param {Buffer} data - The zip data.
- */
-const zip = () => {
-    console.log("Creating zip archive...");
-    return new Promise((resolve) => {
-        let data = [];
-        let archive = archiver.create("zip", {});
-        archive.on("warning", () => {
-            console.error("Could not create archive: Something went wrong.");
-            throw abortMagic;
-        });
-        archive.on("error", () => {
-            console.error("Could not create archive: Something went wrong.");
-            throw abortMagic;
-        });
-        archive.on("data", (c) => { data.push(c); });
-        archive.on("end", () => {
-            resolve(Buffer.concat(data));
-        });
-        archive.directory(packageDirectory, false);
-        archive.finalize();
-    });
-};
-
-/**
- * Obtain OAuth2 access token, credentials are read from secure environment variables.
- * Will fail the build if this task could not be completed.
- * Obtain client ID and secret: https://developers.google.com/identity/protocols/OAuth2
- * Obtain OAuth2 code and redeem refresh token: https://developer.chrome.com/webstore/using_webstore_api
- * @function
- * @return {Promise} The promise of the task.
- ** @param {string} token - The access token.
- */
-const OAuth2 = () => {
-    console.log("Obtaining access token...");
-    return new Promise((resolve) => {
-        let payload;
-        try {
-            payload = serialize({
-                client_id: process.env.CLIENT_ID,
-                client_secret: process.env.CLIENT_SECRET,
-                refresh_token: process.env.REFRESH_TOKEN,
-                grant_type: "refresh_token",
-            });
-        } catch (err) {
-            console.error("Could not obtain access token: Secure environment variables are invalid.");
-            process.exit(1);
-        }
-
-        let request = https.request(Object.assign(url.parse("https://accounts.google.com/o/oauth2/token"), {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded",
-                "Content-Length": Buffer.byteLength(payload),
-            },
-        }), (res) => {
-            let data = "";
-            res.setEncoding("utf8");
-            res.on("data", (c) => { data += c; });
-            res.on("error", () => {
-                console.error("Could not obtain access token: Could not connect to remote server.");
-                throw abortMagic;
-            });
-            res.on("end", () => {
-                try {
-                    const response = JSON.parse(data);
-                    if (response.error || typeof response.access_token !== "string") {
-                        console.error("Could not obtain access token: Remote server returned an error.");
-                        secureErrorReport(`${secureErrorReportPrefix}OAuth2 Error`, data);
-                    } else {
-                        resolve(response.access_token);
-                    }
-                } catch (err) {
-                    console.error("Could not obtain access token: Could not parse response.");
-                    throw abortMagic;
-                }
-            });
-        });
-        request.on("error", () => {
-            console.error("Could not obtain access token: Could not connect to remote server.");
-            process.exit(1);
-        });
-        request.write(payload);
-        request.end();
-    });
-};
-/**
- * Upload a new build to the store.
- * Will fail the build if this task could not be completed.
- * @function
- * @param {string} token - The access token.
- * @param {Buffer} data - The new build package.
- * @return {Promise} The promise of the task.
- */
-const upload = (token, data) => {
-    console.log("Uploading new build...");
-    return new Promise((resolve) => {
-        let request = https.request(Object.assign(url.parse("https://www.googleapis.com/upload/chromewebstore/v1.1/items/ggolfgbegefeeoocgjbmkembbncoadlb"), {
-            method: "PUT",
-            headers: {
-                "Authorization": `Bearer ${token}`,
-                "x-goog-api-version": "2",
-            },
-        }), (res) => {
-            let data = "";
-            res.setEncoding("utf8");
-            res.on("data", (c) => { data += c; });
-            res.on("error", () => {
-                console.error("Could not upload new build: Could not connect to remote server.");
-                process.exit(1);
-            });
-            res.on("end", () => {
-                try {
-                    const response = JSON.parse(data);
-                    if (response.uploadState === "SUCCESS") {
-                        resolve();
-                    } else if (response.uploadState === "IN_PROGRESS") {
-                        console.log("Remote server is processing the uploaded package, continuing in 1 minute...");
-                        setTimeout(resolve, 60 * 1000); //Wait a minute
-                    } else {
-                        console.error("Could not upload new build: Remote server returned an error.");
-                        secureErrorReport(`${secureErrorReportPrefix}Upload Failed`, data);
-                    }
-                } catch (err) {
-                    console.error("Could not upload new build: Could not parse response.");
-                    process.exit(1);
-                }
-            });
-        });
-        request.on("error", () => {
-            console.error("Could not upload new build: Could not connect to remote server.");
-            process.exit(1);
-        });
-        request.write(data);
-        request.end();
-    });
-};
-/**
- * Publish the new build.
- * Will fail the build if this task could not be completed.
- * @function
- * @param {string} token - The access token.
- * @return {Promise} The promise of the task.
- */
-const publish = (token) => {
-    console.log("Publishing new build...");
-    return new Promise((resolve) => {
-        let request = https.request(Object.assign(url.parse("https://www.googleapis.com/chromewebstore/v1.1/items/ggolfgbegefeeoocgjbmkembbncoadlb/publish"), {
-            method: "POST",
-            headers: {
-                "Authorization": `Bearer ${token}`,
-                "X-Goog-API-Version": "2",
-                "Content-Length": "0",
-            },
-        }), (res) => {
-            let data = "";
-            res.setEncoding("utf8");
-            res.on("data", (c) => { data += c; });
-            res.on("error", () => {
-                console.error("Could not publish new build: Could not connect to remote server.");
-                process.exit(1);
-            });
-            res.on("end", () => {
-                try {
-                    const response = JSON.parse(data);
-                    if (response.error) {
-                        console.error("Could not publish new build: Remote server returned an error.");
-                        secureErrorReport(`${secureErrorReportPrefix}Publish Failed`, data);
-                    } else if (response.status.includes("OK")) {
-                        console.log("New build is published.");
-                        resolve();
-                    } else if (response.status.includes("ITEM_PENDING_REVIEW")) {
-                        console.log("New build is published, but it is currently under review.");
-                        resolve();
-                    } else {
-                        console.error("Could not publish new build: Remote server returned an error.");
-                        secureErrorReport(`${secureErrorReportPrefix}Publish Failed`, data);
-                    }
-                } catch (err) {
-                    console.error("Could not publish new build: Could not parse response.");
-                    process.exit(1);
-                }
-            });
-        });
-        request.on("error", () => {
-            console.error("Could not publish new build: Could not connect to remote server.");
-            process.exit(1);
-        });
-        request.end();
-    });
-};
-/**
- * Save version number for next build.
- * Will fail the build if this task could not be completed. Will try 5 times.
- * @function
- * @param {Version} v - The version to set.
- * @return {Promise} The promise of the task.
- */
-const setLastBuildVersion = (v) => {
-    console.log("Saving version number for next build...");
-    return new Promise((resolve) => {
-        const onError = (() => {
-            let errorCount = 0;
-            return () => {
-                console.error("Could not save version number for next build: Could not connect to remote server.");
-                if ((++errorCount) > 5) {
-                    console.error("Too many trails, aborting...");
-                    process.exit(1);
-                } else {
-                    console.log("Retrying in 1 minute...");
-                    setTimeout(doRequest, 60 * 1000);
-                }
-            };
-        })();
-        const doRequest = () => {
-            let payload;
-            try {
-                /*
-                payload = serialize({
-                    key: process.env.VERSION_KEY,
-                    data: v.toString(),
-                });
-                */
-                //Different POST logic for the new server
-                if (typeof process.env.VERSION_KEY !== "string") {
-                    throw "Secure environment variables missing";
-                }
-                payload = `${process.env.VERSION_KEY}\n${v.toString()}`;
-            } catch (err) {
-                console.error("Could not save version number for next build: Secure environment variables are invalid.");
-                process.exit(1);
-            }
-            let request = https.request(Object.assign(url.parse(`${extendedAPIProvider}/API.php`), {
-                method: "POST",
-                headers: {
-                    //"Content-Type": "application/x-www-form-urlencoded",
-                    "Content-Length": Buffer.byteLength(payload),
-                },
-            }), (res) => {
-                let data = "";
-                res.setEncoding("utf8");
-                res.on("data", (c) => { data += c; });
-                res.on("error", onError);
-                res.on("end", () => {
-                    if (data === "ok") {
-                        resolve();
-                    } else {
-                        console.error("Could not save version number for next build: Remote server returned an error.");
-                        secureErrorReport(`${secureErrorReportPrefix}Save Version Failed`, `\nPayload sent: ${payload}\nServer response: ${data}`);
-                    }
-                });
-            });
-            request.on("error", onError);
-            request.write(payload);
-            request.end();
-        };
-        doRequest();
-    });
 };
 
 /**
@@ -457,8 +198,8 @@ const getPublishedVersion = () => {
             res.setEncoding("utf8");
             res.on("data", (c) => { data += c; });
             res.on("error", () => {
-                console.error("Could not obtain published version number: Could not connect to remote server.");
-                process.exit(1);
+                console.error("Could not obtain published version number, connection error.");
+                throw abortMagic;
             });
             res.on("end", () => {
                 let match;
@@ -468,14 +209,14 @@ const getPublishedVersion = () => {
                 if (match) {
                     resolve(new Version(match[1]));
                 } else {
-                    console.error("Could not obtain published version number: Could not parse response.");
-                    process.exit(1);
+                    console.error("Could not obtain published version number, unparsable response.");
+                    throw abortMagic;
                 }
             });
         });
         request.on("error", (err) => {
-            console.error("Could not obtain published version number: Could not connect to remote server.");
-            process.exit(1);
+            console.error("Could not obtain published version number, connection error.");
+            throw abortMagic;
         });
         request.end();
     });
@@ -536,82 +277,327 @@ const getLocalVersion = () => {
     return new Promise((resolve) => {
         fs.readFile("./Extension Compiler/Extension/manifest.json", { encoding: "utf8" }, (err, data) => {
             if (err) {
-                console.error("Could not obtain local version number: Could not open manifest.");
-                process.exit(1);
+                console.error("Could not obtain local version number, could not open manifest.");
+                throw abortMagic;
             } else {
                 try {
                     const ver = JSON.parse(data).version;
                     if ((/^\d+\.\d+$/).test(ver)) {
                         resolve(new Version(ver));
                     } else {
-                        console.error("Could not obtain local version number: Manifest is invalid.");
-                        process.exit(1);
+                        console.error("Could not obtain local version number, manifest is invalid.");
+                        throw abortMagic;
                     }
                 } catch (err) {
-                    console.error("Could not obtain local version number: Could not parse manifest.");
-                    process.exit(1);
+                    console.error("Could not obtain local version number, unparsable manifest.");
+                    throw abortMagic;
                 }
             }
         });
     });
 };
-
 /**
- * Build and publish.
+ * Create zip archive ready for upload.
+ * Will fail the build if this task could not be completed.
  * @function
- * @param {Version} newVer - The new version.
+ * @return {Promise} The promise of the task.
+ ** @param {Buffer} data - The zip data.
  */
-const build = (newVer) => {
-    //Upload and publish
-    let data, token;
-    disableDebugMode().then(() => require("./ChromiumBugsWorkaroundEngine.node.js")()).then(() => zip()).then((d) => {
-        data = d;
-        return OAuth2();
-    }).then((t) => {
-        token = t;
-        return upload(token, data);
-    }).then(() => publish(token)).then(() => setLastBuildVersion(newVer)).then(exit).catch((err) => {
-        process.emit("uncaughtException", err);
+const zip = () => {
+    console.log("Creating zip archive...");
+    return new Promise((resolve) => {
+        let data = [];
+        let archive = archiver.create("zip", {});
+        archive.on("warning", () => {
+            console.error("Could not create archive.");
+            throw abortMagic;
+        });
+        archive.on("error", () => {
+            console.error("Could not create archive.");
+            throw abortMagic;
+        });
+        archive.on("data", (c) => { data.push(c); });
+        archive.on("end", () => {
+            resolve(Buffer.concat(data));
+        });
+        archive.directory(packageDirectory, false);
+        archive.finalize();
     });
 };
+/**
+ * Obtain OAuth2 access token, credentials are read from secure environment variables.
+ * Will fail the build if this task could not be completed.
+ * Obtain client ID and secret: https://developers.google.com/identity/protocols/OAuth2
+ * Obtain OAuth2 code and redeem refresh token: https://developer.chrome.com/webstore/using_webstore_api
+ * @function
+ * @return {Promise} The promise of the task.
+ ** @param {string} token - The access token.
+ */
+const OAuth2 = () => {
+    console.log("Obtaining access token...");
+    return new Promise((resolve) => {
+        let payload;
+        try {
+            payload = serialize({
+                client_id: process.env.CLIENT_ID,
+                client_secret: process.env.CLIENT_SECRET,
+                refresh_token: process.env.REFRESH_TOKEN,
+                grant_type: "refresh_token",
+            });
+        } catch (err) {
+            console.error("Could not obtain access token, secure environment variables are invalid.");
+            throw abortMagic;
+        }
+
+        let request = https.request(Object.assign(url.parse("https://accounts.google.com/o/oauth2/token"), {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Content-Length": Buffer.byteLength(payload),
+            },
+        }), (res) => {
+            let data = "";
+            res.setEncoding("utf8");
+            res.on("data", (c) => { data += c; });
+            res.on("error", () => {
+                console.error("Could not obtain access token, connection error.");
+                throw abortMagic;
+            });
+            res.on("end", () => {
+                try {
+                    const response = JSON.parse(data);
+                    if (response.error || typeof response.access_token !== "string") {
+                        console.error("Could not obtain access token, remote server returned an error.");
+                        secureErrorReport(`${secureErrorReportPrefix}OAuth2 Error`, data);
+                    } else {
+                        resolve(response.access_token);
+                    }
+                } catch (err) {
+                    console.error("Could not obtain access token, unparsable response.");
+                    throw abortMagic;
+                }
+            });
+        });
+        request.on("error", () => {
+            console.error("Could not obtain access token, connection error.");
+            throw abortMagic;
+        });
+        request.write(payload);
+        request.end();
+    });
+};
+/**
+ * Upload a new build to the store.
+ * Will fail the build if this task could not be completed.
+ * @function
+ * @param {string} token - The access token.
+ * @param {Buffer} data - The new build package.
+ * @return {Promise} The promise of the task.
+ */
+const upload = (token, data) => {
+    console.log("Uploading new build...");
+    return new Promise((resolve) => {
+        let request = https.request(Object.assign(url.parse("https://www.googleapis.com/upload/chromewebstore/v1.1/items/ggolfgbegefeeoocgjbmkembbncoadlb"), {
+            method: "PUT",
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "x-goog-api-version": "2",
+            },
+        }), (res) => {
+            let data = "";
+            res.setEncoding("utf8");
+            res.on("data", (c) => { data += c; });
+            res.on("error", () => {
+                console.error("Could not upload new build, connection error.");
+                throw abortMagic;
+            });
+            res.on("end", () => {
+                try {
+                    const response = JSON.parse(data);
+                    if (response.uploadState === "SUCCESS") {
+                        resolve();
+                    } else if (response.uploadState === "IN_PROGRESS") {
+                        console.log("Remote server is processing the uploaded package, continuing in 1 minute...");
+                        setTimeout(resolve, 60 * 1000); //Wait a minute
+                    } else {
+                        console.error("Could not upload new build: Remote server returned an error.");
+                        secureErrorReport(`${secureErrorReportPrefix}Upload Failed`, data);
+                    }
+                } catch (err) {
+                    console.error("Could not upload new build, unparsable response.");
+                    throw abortMagic;
+                }
+            });
+        });
+        request.on("error", () => {
+            console.error("Could not upload new build, connection error.");
+            throw abortMagic;
+        });
+        request.write(data);
+        request.end();
+    });
+};
+/**
+ * Publish the new build.
+ * Will fail the build if this task could not be completed.
+ * @function
+ * @param {string} token - The access token.
+ * @return {Promise} The promise of the task.
+ */
+const publish = (token) => {
+    console.log("Publishing new build...");
+    return new Promise((resolve) => {
+        let request = https.request(Object.assign(url.parse("https://www.googleapis.com/chromewebstore/v1.1/items/ggolfgbegefeeoocgjbmkembbncoadlb/publish"), {
+            method: "POST",
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "X-Goog-API-Version": "2",
+                "Content-Length": "0",
+            },
+        }), (res) => {
+            let data = "";
+            res.setEncoding("utf8");
+            res.on("data", (c) => { data += c; });
+            res.on("error", () => {
+                console.error("Could not publish new build, connection error.");
+                throw abortMagic;
+            });
+            res.on("end", () => {
+                try {
+                    const response = JSON.parse(data);
+                    if (response.error) {
+                        console.error("Could not publish new build: Remote server returned an error.");
+                        secureErrorReport(`${secureErrorReportPrefix}Publish Failed`, data);
+                    } else if (response.status.includes("OK")) {
+                        console.log("New build is published.");
+                        resolve();
+                    } else if (response.status.includes("ITEM_PENDING_REVIEW")) {
+                        console.log("New build is published, but it is currently under review.");
+                        resolve();
+                    } else {
+                        console.error("Could not publish new build, remote server returned an error.");
+                        secureErrorReport(`${secureErrorReportPrefix}Publish Failed`, data);
+                    }
+                } catch (err) {
+                    console.error("Could not publish new build, unparsable response response.");
+                    throw abortMagic;
+                }
+            });
+        });
+        request.on("error", () => {
+            console.error("Could not publish new build, connection error.");
+            throw abortMagic;
+        });
+        request.end();
+    });
+};
+/**
+ * Save version number for next build.
+ * Will fail the build if this task could not be completed. Will try 5 times.
+ * @function
+ * @param {Version} v - The version to set.
+ * @return {Promise} The promise of the task.
+ */
+const setLastBuildVersion = (v) => {
+    console.log("Saving version number for next build...");
+    return new Promise((resolve) => {
+        const onError = (() => {
+            let errorCount = 0;
+            return () => {
+                console.error("Could not save version number for next build: Could not connect to remote server.");
+                if ((++errorCount) > 5) {
+                    console.error("Too many trails, aborting...");
+                    throw abortMagic;
+                } else {
+                    console.log("Retrying in 1 minute...");
+                    setTimeout(doRequest, 60 * 1000);
+                }
+            };
+        })();
+        const doRequest = () => {
+            let payload;
+            try {
+                /*
+                payload = serialize({
+                    key: process.env.VERSION_KEY,
+                    data: v.toString(),
+                });
+                */
+                //Different POST logic for the new server
+                if (typeof process.env.VERSION_KEY !== "string") {
+                    throw "Secure environment variables missing";
+                }
+                payload = `${process.env.VERSION_KEY}\n${v.toString()}`;
+            } catch (err) {
+                console.error("Could not save version number for next build, secure environment variables are invalid.");
+                throw abortMagic;
+            }
+            let request = https.request(Object.assign(url.parse(`${extendedAPIProvider}/API.php`), {
+                method: "POST",
+                headers: {
+                    //"Content-Type": "application/x-www-form-urlencoded",
+                    "Content-Length": Buffer.byteLength(payload),
+                },
+            }), (res) => {
+                let data = "";
+                res.setEncoding("utf8");
+                res.on("data", (c) => { data += c; });
+                res.on("error", onError);
+                res.on("end", () => {
+                    if (data === "ok") {
+                        resolve();
+                    } else {
+                        console.error("Could not save version number for next build, remote server returned an error.");
+                        secureErrorReport(`${secureErrorReportPrefix}Save Version Failed`, `\nPayload sent: ${payload}\nServer response: ${data}`);
+                    }
+                });
+            });
+            request.on("error", onError);
+            request.write(payload);
+            request.end();
+        };
+        doRequest();
+    });
+};
+
 
 //Check if I have credentials, pull requests do not have access to credentials, I do not want to push to store for pull
 //requests anyway, do not fail the build as that can cause confusions
 if (!process.env.CLIENT_ID || !process.env.CLIENT_SECRET || !process.env.REFRESH_TOKEN || !process.env.VERSION_KEY) {
-    console.log("Secure environment variables are missing, skipping build.");
-    exit();
-}
-//Check do not build instruction
-if (process.env.TRAVIS_COMMIT_MESSAGE.startsWith("@build-script-do-not-run")) {
-    console.log("Do not build instruction received.");
-    exit();
-}
-//Check force build instruction
-if (process.env.TRAVIS_COMMIT_MESSAGE.startsWith("@build-script-force-run")) {
-    console.warn("Force build instruction received.");
-    //I still need to fetch local version since I need to save it at the end
-    getLocalVersion().then(build).catch((err) => {
-        process.emit("uncaughtException", err);
-    });
+    console.warn("Secure environment variables are missing.");
 } else {
-    //Fetch versions
-    Promise.all([
-        //getPublishedVersion(),
-        getLastBuildVersion(),
-        getLocalVersion(),
-    ]).then((versions) => {
-        if (verSame(...versions)) {
-            //Nothing to do
-            console.log("Store version up to date, nothing to build.");
-            exit();
-        } else if (verNeedUpdate(...versions)) {
-            build(versions[1]);
-        } else {
-            //Version is broken
-            console.error("Version error: Unexpected versions, maybe last build was not properly completed.");
-            process.exit(1);
-        }
-    }).catch((err) => {
-        process.emit("uncaughtException", err);
-    });
+    if (process.env.TRAVIS_COMMIT_MESSAGE.startsWith("@build-script-do-not-run")) {
+        console.log("Do not build instruction received.");
+    } else {
+        (async () => {
+            const build = async (newVer) => {
+                const data = await zip();
+                const token = await OAuth2();
+                await upload(token, data);
+                await publish(token);
+                await setLastBuildVersion(newVer);
+            };
+
+            if (process.env.TRAVIS_COMMIT_MESSAGE.startsWith("@build-script-force-run")) {
+                console.log("Force build instruction received.");
+                await build(await getLocalVersion());
+            } else {
+                const [remoteVer, localVer] = await Promise.all([
+                    //getPublishedVersion(),
+                    getLastBuildVersion(),
+
+                    getLocalVersion(),
+                ]);
+
+                if (verSame(remoteVer, localVer)) {
+                    console.log("Store version up to date, nothing to build.");
+                } else if (verNeedUpdate(remoteVer, localVer)) {
+                    await build(localVer);
+                } else {
+                    console.error("Version error, maybe last build was not properly completed.");
+                    throw abortMagic;
+                }
+            }
+        })();
+    }
 }
