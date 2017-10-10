@@ -30,7 +30,7 @@ if (a.debugMode) {
                 method: "GET",
                 url: "https://jspenguin.com/API/uBlockProtector/Proprietary/lolalytics_com.js?v1.29",
             }, (res) => {
-                a.inject(res, true);
+                a.inject(`(() => {${res}})();`, true);
             }, () => { });
             /*
             const script = document.createElement("script");

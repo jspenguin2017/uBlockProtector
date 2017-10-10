@@ -2,13 +2,18 @@
 "use strict";
 
 
+process.on("unhandledRejection", (err) => {
+    throw err;
+});
+
+
 /**
- * The build output path. Only JavaScript files will be built. 
+ * The build output path. Only JavaScript files will be built.
  * Must be set to overwrite source files if running on Continuous Integration
  * servers.
  */
-const buildTarget = "./Extension Compiler/Build";
 //const buildTarget = "./Extension Compiler/Extension";
+const buildTarget = "./Extension Compiler/Build";
 
 /**
  * Load modules.
@@ -63,7 +68,6 @@ const build = async (file) => {
     const pathFrags = file.split(/\/|\\/);
     let data = await fs.readFile(file, "utf8");
 
-    //Remove debug code
     data = data.split("\n");
     for (let i = 0; i < data.length; i++) {
         if (data[i].trim() === "//@pragma-if-debug") {
@@ -75,10 +79,8 @@ const build = async (file) => {
     }
     data = data.join("\n");
 
-    //Validate syntax
     esprima.parse(data);
 
-    //Write output
     let buildPath = pathFrags.slice(3);
     let currentPath = buildTarget;
     for (let i = 0; i < buildPath.length; i++) {
@@ -93,6 +95,8 @@ const build = async (file) => {
         currentPath += `/${buildPath[i]}`;
     }
     await fs.writeFile(currentPath, data, { encoding: "utf8" });
+
+    console.log(`Built ${file}`);
 };
 
 
@@ -107,3 +111,34 @@ crawler("./Extension Compiler/Extension").then(files => {
     console.log(`${files.length} files to build`);
     files.forEach(build);
 });
+
+//Workaround a bug in Chrome 60
+(async () => {
+    const crawler = async (dir) => {
+        let filesToCheck = [];
+
+        const _crawler = async (dir) => {
+            const files = await fs.readdir(dir);
+
+            for (let i = 0; i < files.length; i++) {
+                const newPath = path.join(dir, files[i]);
+
+                if ((await fs.stat(newPath)).isDirectory()) {
+                    await _crawler(newPath);
+                } else {
+                    filesToCheck.push(`./${newPath}`);
+                }
+            }
+        }
+
+        await _crawler(dir);
+        return filesToCheck;
+    };
+
+    (await crawler("./Extension Compiler/Extension")).filter(file => {
+        if (file.endsWith(".png")) {
+            throw new Error("An image file has size that is a multiple of 4096!");
+        }
+        
+    });
+})();
