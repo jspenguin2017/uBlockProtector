@@ -135,6 +135,7 @@ live.com##div:if(:scope > div > div > span:has-text(an ad blocker))
 ||adv.wp.pl/$media,redirect=noopmp3-0.1s,important
 ||static-pilot.wp.pl/static/assets/js/ads.js$xmlhttprequest,redirect=noopjs
 ||adv.wp.pl/*/inline-videostar.js$xmlhttprequest,redirect=noopjs,important,domain=pilot.wp.pl
+||adv.wp.pl/adverts*.js$xmlhttprequest,redirect=noopjs,important,domain=pilot.wp.pl
 filez.tv###adblockinfo
 @@||video.gazeta.pl/cdn/ads/ad/banner/_adsense_/_adserver/_adview_.ad.json$xmlhttprequest,first-party
 ||tribdss.com/meter/assets$script,domain=www.latimes.com
