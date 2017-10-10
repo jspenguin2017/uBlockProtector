@@ -1,5 +1,4 @@
 //Proprietary scripts loader, only runs in debug mode
-//This file should be emptied by the compiler before uploading to Web Store
 //
 // ===== MUST READ ===== MUST READ ===== MUST READ ===== MUST READ ===== MUST READ ===== MUST READ =====
 // I highly recommend you to stop visiting these websites over using these proprietary solutions
