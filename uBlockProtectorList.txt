@@ -493,6 +493,7 @@ freestocks.org##.popup
 @@||20min.ch^$generichide
 @@||clik.pw^$generichide
 @@||linksh.top^$generichide
+@@||tvsportslive.stream^$generichide
 @@||imasdk.googleapis.com/js/sdkloader/outstream.js$script,domain=ovar.io
 @@||flashx1.tv/js/showad*.js$script
 @@||flashx1.tv/sidead.js$script
