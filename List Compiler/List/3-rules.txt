@@ -706,3 +706,5 @@ gratisprogramas.co,gratisjuegos.co,gratispeliculas.xyz##input[id^="contar"]
 freestocks.org##.popup
 ! === NSFW! pornhub.com
 pornhub.com##script:inject(abort-on-property-read.js, userABMessage)
+! === rus.delfi.ee
+rus.delfi.ee###ab--notification-ribbon
