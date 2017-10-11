@@ -452,6 +452,7 @@ crash-aerien.news##script:inject(abort-on-property-read.js, noPub)
 gratisprogramas.co,gratisjuegos.co,gratispeliculas.xyz##div[id^="hide"]:style(display: block !important;)
 gratisprogramas.co,gratisjuegos.co,gratispeliculas.xyz##input[id^="contar"]
 freestocks.org##.popup
+pornhub.com##script:inject(abort-on-property-read.js, userABMessage)
 @@||lolalytics.com^$generichide
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide
@@ -1502,8 +1503,8 @@ leo.org##div.floatRight.p.tf1
 joyreactor.cc##div#sidebar
 @@||kupongid.ru/design/js/adblock_detector.js$script
 @@||media.trafficjunky.net/js/holiday-promo.js$script,domain=pornhub.com|tube8.fr|tube8.es|tube8.com
-pornhub.com,tube8.fr,tube8.es,tube8.com###adBlockAlertWrap
-pornhub.com,tube8.fr,tube8.es,tube8.com###abAlert
+tube8.fr,tube8.es,tube8.com###adBlockAlertWrap
+tube8.fr,tube8.es,tube8.com###abAlert
 @@||hackingwithswift.com/js/adsbygoogle.js$script
 @@||st.vtomske.ru/js/adv*.js$script
 @@||ge-map-overlays.appspot.com/files/js/ads.js$script

@@ -704,3 +704,5 @@ gratisprogramas.co,gratisjuegos.co,gratispeliculas.xyz##div[id^="hide"]:style(di
 gratisprogramas.co,gratisjuegos.co,gratispeliculas.xyz##input[id^="contar"]
 ! === freestocks.org
 freestocks.org##.popup
+! === NSFW! pornhub.com
+pornhub.com##script:inject(abort-on-property-read.js, userABMessage)
