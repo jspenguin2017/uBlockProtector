@@ -3000,3 +3000,14 @@ if (a.domCmp(["tune.pk"])) {
         }
     });
 }
+if (a.domCmp(["ultrahorny.com"])) {
+    //NSFW!
+    if (location.pathname === "/encrypt/encriptar.php") {
+        a.beforeScript((script, ignored, e) => {
+            if (script.src === "") {
+                script.remove();
+                e.disconnect();
+            }
+        });
+    }
+}
