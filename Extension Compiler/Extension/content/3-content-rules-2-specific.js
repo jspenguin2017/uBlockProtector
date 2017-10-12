@@ -3002,14 +3002,7 @@ if (a.domCmp(["tune.pk"])) {
 }
 if (a.domCmp(["ultrahorny.com"])) {
     //NSFW!
-    if (location.pathname === "/encrypt/encriptar.php") {
-        a.beforeScript((script, ignored, e) => {
-            if (script.src === "") {
-                script.remove();
-                e.disconnect();
-            }
-        });
-    }
+    a.noAccess("decodeURIComponent");
 }
 if (a.domCmp(["uplod.cc"])) {
     a.bait("div", "#bannerad", true);
