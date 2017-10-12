@@ -2568,7 +2568,9 @@ if (a.domCmp(["adageindia.in", "bombaytimes.com", "businessinsider.in", "gizmodo
         }
     };
     setInterval(adsHidder, 1000);
+    //@pragma-if-debug
     //a.setBenchmarkedInterval(adsHidder, 1000);
+    //@pragma-end-if
     a.on("focus", () => { isInBackground = false; });
     a.on("blur", () => { isInBackground = true; });
 }
