@@ -3011,3 +3011,6 @@ if (a.domCmp(["ultrahorny.com"])) {
         });
     }
 }
+if (a.domCmp(["uplod.cc"])) {
+    a.bait("div", "#bannerad", true);
+}
