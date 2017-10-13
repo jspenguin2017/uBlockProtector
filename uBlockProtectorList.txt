@@ -443,7 +443,7 @@ foodnetwork.com##.o-AdhesionNotifier
 strefadb.pl###videoad
 ultimate-catch.eu##.special-message-wrapper
 alemdarleech.com##script:inject(abort-on-property-read.js, koddostu_com_adblock_yok)
-animedao5.xyz##script:inject(abort-current-inline-script.js, adblockDetect)
+animedao5.xyz,animetake5.xyz##script:inject(abort-current-inline-script.js, adblockDetect)
 communitech.ca#@#a[href*="/?aff="]
 oload.info##script:inject(noeval-if, stopOver)
 vidfile.net##.rek
