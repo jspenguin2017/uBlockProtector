@@ -2196,9 +2196,11 @@ if (a.domCmp(["short.am"])) {
                     let f = document.createElement("form");
                     f.style.display = "none";
                     f.method = "post";
+
                     let i = document.createElement("input");
                     i.name = "_image";
                     i.value = "Continue";
+
                     f.appendChild(i);
                     document.body.append(f);
                     f.submit();
@@ -2626,7 +2628,6 @@ if (a.domCmp(["identi.li"])) {
                     blocks[i].parentNode.previousSibling.remove();
                 }
             }
-
             if (window.$) {
                 window.$("div #decrypt.myjdownloader").unbind("click").click(function () {
                     window._decrypt.fnID = "jdownloader";
