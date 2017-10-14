@@ -114,16 +114,15 @@ if (a.domCmp(["drivearabia.com", "putlocker.com", "doatoolsita.altervista.org", 
 
 //a.timewarp
 if (a.domCmp(["apkmirror.com", "freepdf-books.com", "bc.vc", "themeslide.com", "linkdrop.net",
-    "l2s.io", "ally.sh", "al.ly", "croco.site", "urle.co", "ouo.io", "idlelivelink.blogspot.com",
+    "l2s.io", "ally.sh", "al.ly", "croco.site", "urle.co", "idlelivelink.blogspot.com", "ecut.io",
     "lewat.id", "cutwin.com", "cut-urls.com", "adbull.me", "xess.pro", "clik.pw", "admove.co",
     "adshort.co", "linksh.top", "adshorte.com", "coinb.ink", "123link.top", "fas.li", "zeiz.me",
     "u2s.io", "linclik.com", "xurl.us", "adbilty.me", "cpmlink.net", "gsurl.in", "linkhits.us",
     "coshurl.co", "leechall.com", "zonadescarga.info", "firstone.tv", "shortzero.com", "adbilty.me",
-    "veneapp.com", "iiv.pl", "uskip.me", "link-cash.com", "ouo.press", "coinlink.us", "cut-earn.com",
+    "veneapp.com", "iiv.pl", "uskip.me", "link-cash.com", "coinlink.us", "cut-earn.com", "ur.ly",
     "tmearn.com", "url.gem-flash.com", "cuturlink.com", "linkhits.net", "shorteurl.com", "bit-url.com",
     "leenlink.com", "linkkawy.com", "cut-egy.ml", "igram.im", "adlinkme.com", "oke.io", "wolink.in",
-    "bilink.xyz", "git.tc", "zlshorte.net", "ur.ly", "shink.me", "oload.stream", "ecut.io",
-    "egy-links.com"])) {
+    "bilink.xyz", "git.tc", "zlshorte.net", "shink.me", "oload.stream", "egy-links.com"])) {
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
 if (a.domCmp(["katfile.com", "goldescargas.com", "globalbesthosting.com", "userupload.net",
