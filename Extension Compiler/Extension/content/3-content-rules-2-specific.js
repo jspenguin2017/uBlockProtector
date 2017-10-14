@@ -1854,21 +1854,23 @@ if (a.domCmp(["fastserver.me"])) {
     a.filter("alert", a.matchMethod.string, "Adblocker Detected!!");
 }
 if (a.domCmp(["ouo.io", "ouo.press"])) {
-    stop();
-    const url = document.URL.split("/")[3];
+    const url = location.href.split("/")[3];
+    if (url) {
+        stop();
 
-    const form = document.createElement("form");
-    form.method = "POST";
-    form.action = `http://ouo.io/rgo/${url}`;
-    form.acceptCharset = "utf-8";
+        const form = document.createElement("form");
+        form.method = "POST";
+        form.action = `http://ouo.io/rgo/${url}`;
+        form.acceptCharset = "utf-8";
 
-    const input = document.createElement("input");
-    input.name = "_token";
-    input.value = "EAuykxGRRnwaEegFapn51CZk5hcwHMsFYx02Ia7j";
+        const input = document.createElement("input");
+        input.name = "_token";
+        input.value = "EAuykxGRRnwaEegFapn51CZk5hcwHMsFYx02Ia7j";
 
-    form.append(input);
-    document.documentElement.append(form);
-    form.submit();
+        form.append(input);
+        document.documentElement.append(form);
+        form.submit();
+    }
 }
 if (a.domCmp(["canalplus.fr"])) {
     a.loopbackXHR((ignored, url) => {
