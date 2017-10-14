@@ -706,3 +706,5 @@ freestocks.org##.popup
 pornhub.com##script:inject(abort-on-property-read.js, userABMessage)
 ! === rus.delfi.ee
 rus.delfi.ee###ab--notification-ribbon
+! === imgur.com
+imgur.com##.footerlink-report-ads

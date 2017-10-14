@@ -453,6 +453,7 @@ gratisprogramas.co,gratisjuegos.co,gratispeliculas.xyz##input[id^="contar"]
 freestocks.org##.popup
 pornhub.com##script:inject(abort-on-property-read.js, userABMessage)
 rus.delfi.ee###ab--notification-ribbon
+imgur.com##.footerlink-report-ads
 @@||lolalytics.com^$generichide
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide
