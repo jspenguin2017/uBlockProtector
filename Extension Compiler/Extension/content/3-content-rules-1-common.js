@@ -122,7 +122,8 @@ if (a.domCmp(["apkmirror.com", "freepdf-books.com", "bc.vc", "themeslide.com", "
     "veneapp.com", "iiv.pl", "uskip.me", "link-cash.com", "coinlink.us", "cut-earn.com", "ur.ly",
     "tmearn.com", "url.gem-flash.com", "cuturlink.com", "linkhits.net", "shorteurl.com", "bit-url.com",
     "leenlink.com", "linkkawy.com", "cut-egy.ml", "igram.im", "adlinkme.com", "oke.io", "wolink.in",
-    "bilink.xyz", "git.tc", "zlshorte.net", "shink.me", "oload.stream", "egy-links.com", "infinityurl.co"])) {
+    "bilink.xyz", "git.tc", "zlshorte.net", "shink.me", "oload.stream", "egy-links.com", "infinityurl.co",
+    "adsurl.xyz"])) {
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
 if (a.domCmp(["katfile.com", "goldescargas.com", "globalbesthosting.com", "userupload.net",
@@ -220,7 +221,8 @@ if (a.domCmp(["alein.org"])) {
 if (a.domCmp(["cutwin.com", "cut-urls.com", "adbull.me", "xess.pro", "clik.pw", "admove.co", "urle.co", "link-cash.com",
     "adshort.co", "linksh.top", "adshorte.com", "coinb.ink", "l2s.io", "shortzero.com", "veneapp.com", "coinlink.us",
     "tmearn.com", "url.gem-flash.com", "cuturlink.com", "shorteurl.com", "linkkawy.com", "cut-egy.ml", "igram.im",
-    "adlinkme.com", "ecut.io", "bit-url.com", "cut-earn.com", "adbilty.me", "egy-links.com", "infinityurl.co"])) {
+    "adlinkme.com", "ecut.io", "bit-url.com", "cut-earn.com", "adbilty.me", "egy-links.com", "infinityurl.co",
+    "adsurl.xyz"])) {
     a.bait("div", "#test-block", true);
 }
 if (a.domCmp(["filecom.net", "upshare.org", "skippyfile.com", "mwfiles.net", "up-flow.org", "globeslot.com"])) {
