@@ -8,7 +8,8 @@ a.generic();
     //fwmrm.net
     //https://github.com/jspenguin2017/uBlockProtector/issues/344
     const genPayload = (csid, caid, cbfn) => {
-        //Event callbacks are blocked by List
+        //Paths in this payload are placeholders, no request to jspenguin.com will leave the browser
+        //Event callbacks are blocked by uBlock Protector List
         let payload = `(() => {
             "use strict";
             try {
