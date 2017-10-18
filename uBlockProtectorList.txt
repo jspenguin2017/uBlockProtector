@@ -102,6 +102,8 @@ zmovs.com##.inplayer_banners
 @@||foilpolyth.com^$domain=tf1.fr,badfilter
 ||foilpolyth.com^$xmlhttprequest,redirect=nooptext,important,domain=tf1.fr
 ||louccrossc.com^$xmlhttprequest,redirect=nooptext,important,domain=tf1.fr
+||report-uri.io^$third-party
+||report-uri.com^$third-party
 ###adblockBanner
 ###like-us-adblock-modal
 ##.admania_adblock_detector
