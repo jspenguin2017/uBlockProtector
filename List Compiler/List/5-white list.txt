@@ -3,7 +3,7 @@
 ! ======================
 ! These white lists will not allow ads to show, but may open third party connections
 ! === ovar.io
-! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/155
+! === https://github.com/jspenguin2017/uBlockProtector/issues/155
 @@||imasdk.googleapis.com/js/sdkloader/outstream.js$script,domain=ovar.io
 ! === flashx.tv, flashx.to - Thanks to lain566
 @@||flashx1.tv/js/showad*.js$script
@@ -24,7 +24,7 @@ flashx.tv,flashx.to##script:inject(abort-on-property-read.js, open)
 ! === tvplay.skaties.lv, play.tv3.lt, tv3play.tv3.ee
 @@||playapi.mtgx.tv/v3/adinfo?$xmlhttprequest,domain=tvplay.skaties.lv|play.tv3.lt|tv3play.tv3.ee
 ! === abc.go.com
-! === Issue: https://github.com/jspenguin2017/uBlockProtector/issues/338
+! === https://github.com/jspenguin2017/uBlockProtector/issues/338
 @@||edgedatg.com^$script,domain=abc.go.com
 ! === pga.com
 @@||pga.com^$generichide
