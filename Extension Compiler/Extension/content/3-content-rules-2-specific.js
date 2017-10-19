@@ -2816,6 +2816,8 @@ if (a.domCmp(["webnovel.com"])) {
         tick();
     };
     const drawChapter = (content, contentElem) => {
+        contentElem.innerHTML = content;
+        /*
         const lines = content.split("\n");
         contentElem.innerHTML = "";
         for (let i = 0; i < lines.length; i++) {
@@ -2827,6 +2829,7 @@ if (a.domCmp(["webnovel.com"])) {
             p.textContent = line;
             contentElem.append(p);
         }
+        */
     };
     setInterval(scanner, 1000);
     a.on("focus", () => { isInBackground = false; });
