@@ -151,6 +151,8 @@ a.generic();
             "q2.be",
             "vtm.be",
             "ruutu.fi",
+            "medialaancdn.be",
+            "medialaan.be",
         ],
     );
 }
