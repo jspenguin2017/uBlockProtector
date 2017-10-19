@@ -2802,7 +2802,10 @@ if (a.domCmp(["webnovel.com"])) {
                 try {
                     const content = JSON.parse(data).data.content.trim();
                     if (content) {
-                        drawChapter(content, contentElem);
+                        contentElem.innerHTML = content;
+                        setTimeout(() => {
+                            drawChapter(content, contentElem);
+                        }, 500);
                     } else {
                         setTimeout(tick, 2000);
                     }
@@ -2816,20 +2819,19 @@ if (a.domCmp(["webnovel.com"])) {
         tick();
     };
     const drawChapter = (content, contentElem) => {
-        contentElem.innerHTML = content;
-        /*
-        const lines = content.split("\n");
-        contentElem.innerHTML = "";
-        for (let i = 0; i < lines.length; i++) {
-            const line = lines[i].trim();
-            if (!line) {
-                continue;
+        if (!contentElem.innerHTML.includes("<p>")) {
+            const lines = content.split("\n");
+            contentElem.innerHTML = "";
+            for (let i = 0; i < lines.length; i++) {
+                const line = lines[i].trim();
+                if (!line) {
+                    continue;
+                }
+                const p = document.createElement("p");
+                p.textContent = line;
+                contentElem.append(p);
             }
-            const p = document.createElement("p");
-            p.textContent = line;
-            contentElem.append(p);
         }
-        */
     };
     setInterval(scanner, 1000);
     a.on("focus", () => { isInBackground = false; });
