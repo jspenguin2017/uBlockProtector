@@ -2,11 +2,12 @@
 ! ===== Miners =====
 ! ==================
 ! === CoinHive Generic
-/coinhive.js
-/coinhive.min.js
-/c-hive.js
-/c-hive.min.js
-/cryptonight.wasm
+/coinhive.js$domain=~authedmine.com
+/coinhive.min.js$domain=~authedmine.com
+/c-hive.js$domain=~authedmine.com
+/c-hive.min.js$domain=~authedmine.com
+/cryptonight.wasm$domain=~authedmine.com
+/cn.wasm$domain=~authedmine.com
 ! === CoinHive Specific
 ||cqfnvznw.info^
 ||jyhfuqoh.info^

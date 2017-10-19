@@ -33,11 +33,12 @@ hackintosh.zone,clubedohardware.com.br,itavisen.no#@#script:inject(abort-on-prop
 ||cbsnews.com/news/*/undefined$image,redirect=1x1-transparent.gif
 ||imasdk.googleapis.com/js/sdkloader/ima3.js$script,important,domain=streamable.com|fox.com
 bild.de#@#script:inject(abort-on-property-read.js, de.bild.cmsKonfig.a.b.a)
-/coinhive.js
-/coinhive.min.js
-/c-hive.js
-/c-hive.min.js
-/cryptonight.wasm
+/coinhive.js$domain=~authedmine.com
+/coinhive.min.js$domain=~authedmine.com
+/c-hive.js$domain=~authedmine.com
+/c-hive.min.js$domain=~authedmine.com
+/cryptonight.wasm$domain=~authedmine.com
+/cn.wasm$domain=~authedmine.com
 ||cqfnvznw.info^
 ||jyhfuqoh.info^
 ||report-uri.io^$third-party
