@@ -499,6 +499,7 @@ imgur.com##.footerlink-report-ads
 @@||clik.pw^$generichide
 @@||linksh.top^$generichide
 @@||tvsportslive.stream^$generichide
+@@||symbolab.com^generichide
 @@||imasdk.googleapis.com/js/sdkloader/outstream.js$script,domain=ovar.io
 @@||flashx1.tv/js/showad*.js$script
 @@||flashx1.tv/sidead.js$script
