@@ -40,6 +40,8 @@ bild.de#@#script:inject(abort-on-property-read.js, de.bild.cmsKonfig.a.b.a)
 /cryptonight.wasm
 ||cqfnvznw.info^
 ||jyhfuqoh.info^
+||report-uri.io^$third-party
+||report-uri.com^$third-party
 ||d.0emm.com^$third-party
 ||d.0emn.com^$third-party
 ||d.0enm.com^$third-party
@@ -102,8 +104,6 @@ zmovs.com##.inplayer_banners
 @@||foilpolyth.com^$domain=tf1.fr,badfilter
 ||foilpolyth.com^$xmlhttprequest,redirect=nooptext,important,domain=tf1.fr
 ||louccrossc.com^$xmlhttprequest,redirect=nooptext,important,domain=tf1.fr
-||report-uri.io^$third-party
-||report-uri.com^$third-party
 ###adblockBanner
 ###like-us-adblock-modal
 ##.admania_adblock_detector

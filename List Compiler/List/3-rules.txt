@@ -1,6 +1,6 @@
-! ======================
-! ===== Anti Miner =====
-! ======================
+! ==================
+! ===== Miners =====
+! ==================
 ! === CoinHive Generic
 /coinhive.js
 /coinhive.min.js
@@ -10,6 +10,13 @@
 ! === CoinHive Specific
 ||cqfnvznw.info^
 ||jyhfuqoh.info^
+! ====================
+! ===== Tracking =====
+! ====================
+! === report-uri.io, report-uri.com
+! === https://github.com/gorhill/uBlock/issues/3140
+||report-uri.io^$third-party
+||report-uri.com^$third-party
 ! ======================
 ! ===== Missed Ads =====
 ! ======================
@@ -89,13 +96,6 @@ zmovs.com##.inplayer_banners
 @@||foilpolyth.com^$domain=tf1.fr,badfilter
 ||foilpolyth.com^$xmlhttprequest,redirect=nooptext,important,domain=tf1.fr
 ||louccrossc.com^$xmlhttprequest,redirect=nooptext,important,domain=tf1.fr
-! =================================
-! ===== Anti CSP Report Abuse =====
-! =================================
-! === report-uri.io, report-uri.com
-! === https://github.com/gorhill/uBlock/issues/3140
-||report-uri.io^$third-party
-||report-uri.com^$third-party
 ! ============================
 ! ===== Common Solutions =====
 ! ============================
