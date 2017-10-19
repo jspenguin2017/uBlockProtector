@@ -1355,7 +1355,7 @@ if (a.domCmp(["pornhub.com", "redtube.com", "youporn.com", "tube8.com", "pornmd.
         };
     });
     a.ready(() => {
-        $(".tja").remove();
+        $(".tja, .footerAd").remove();
     });
 }
 if (a.domCmp(["pastebin.com"])) {
