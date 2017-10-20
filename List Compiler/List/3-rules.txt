@@ -720,4 +720,4 @@ rus.delfi.ee###ab--notification-ribbon
 imgur.com##.footerlink-report-ads
 ! === simply-debrid.com
 simply-debrid.com##.adsbygoogle
-simply-debrid.com###google_ads:style(height: 1px !important;)
+simply-debrid.com###google_ads:style(height: 1px !important; visibility: hidden !important;)

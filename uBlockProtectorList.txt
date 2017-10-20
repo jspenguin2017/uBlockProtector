@@ -459,7 +459,7 @@ pornhub.com##script:inject(abort-on-property-read.js, userABMessage)
 rus.delfi.ee###ab--notification-ribbon
 imgur.com##.footerlink-report-ads
 simply-debrid.com##.adsbygoogle
-simply-debrid.com###google_ads:style(height: 1px !important;)
+simply-debrid.com###google_ads:style(height: 1px !important; visibility: hidden !important;)
 @@||lolalytics.com^$generichide
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide
