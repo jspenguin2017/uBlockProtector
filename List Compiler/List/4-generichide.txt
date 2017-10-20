@@ -41,3 +41,4 @@
 @@||linksh.top^$generichide
 @@||tvsportslive.stream^$generichide
 @@||symbolab.com^generichide
+@@||simply-debrid.com^$generichide
