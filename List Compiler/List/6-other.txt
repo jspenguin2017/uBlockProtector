@@ -23,8 +23,6 @@
 /js/adbuddy.min.js$script
 ###adbuddy-no-adb-container
 ###adbuddy-overlay
-#@##sponsored-ad
-#@#.afs_ads
 /aadb/script.js|$script
 ||codeclan.altervista.org/wp-content/uploads/*/*/*.mp3$media
 /plugins/better-stop-adblock/*
@@ -55,7 +53,6 @@
 b-website.com#@##adsense
 ||adunblock.com/code/*.html
 ||adblockconverter.com/js/aab.js$script,third-party
-#@##banner_ad
 @@||adternal.com/*/ad-loading.bmp$image
 @@||s3-eu-west-1.amazonaws.com/bucket-ad/ad-image.png=$image
 @@||d2jqs2kfmi9hwf.cloudfront.net/ad-image.png=$image
