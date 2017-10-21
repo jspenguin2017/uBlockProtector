@@ -2243,6 +2243,14 @@ if (a.domCmp(["di.fm", "jazzradio.com"])) {
         }
     });
 }
+if (a.domCmp(["stream.nbcsports.com"])) {
+    a.loopbackXHR((ignored, url) => {
+        if (url.includes(".v.fwmrm.net/ad/g/1")) {
+            return `<VAST version='3.0' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:noNamespaceSchemaLocation='vast.xsd'>
+</VAST>`;
+        }
+    });
+}
 if (a.domCmp(["gry.wp.pl", "maketecheasier.com"])) {
     a.filter("atob");
 }
