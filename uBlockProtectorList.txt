@@ -371,7 +371,7 @@ mmorpgitalia.it##.noticeContainer:has-text(ADBLOCK)
 insurancenewsnet.com,advisornews.com##script:inject(abort-on-property-read.js, adblock_detect)
 mmovie.it###advleft
 zeperfs.com##script:inject(noeval-if.js, AdBlock)
-userupload.net##script:inject(noeval-if.js, Adblock)
+userupload.net,firstonetv.net##script:inject(noeval-if.js, Adblock)
 mashable.com,niezalezna.pl##script:inject(noeval-if.js, adblock)
 iptvultra.com##script:inject(setTimeout-defuser.js, div.table_download)
 ||pcgames-download.com/wp-content/plugins/noadb-leftthenicemessage/

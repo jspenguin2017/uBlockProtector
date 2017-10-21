@@ -558,8 +558,8 @@ insurancenewsnet.com,advisornews.com##script:inject(abort-on-property-read.js, a
 mmovie.it###advleft
 ! === zeperfs.com
 zeperfs.com##script:inject(noeval-if.js, AdBlock)
-! === userupload.net
-userupload.net##script:inject(noeval-if.js, Adblock)
+! === userupload.net,firstonetv.net
+userupload.net,firstonetv.net##script:inject(noeval-if.js, Adblock)
 ! === mashable.com, niezalezna.pl
 mashable.com,niezalezna.pl##script:inject(noeval-if.js, adblock)
 ! === iptvultra.com
