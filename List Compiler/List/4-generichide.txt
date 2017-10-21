@@ -42,3 +42,4 @@
 @@||tvsportslive.stream^$generichide
 @@||symbolab.com^generichide
 @@||simply-debrid.com^$generichide
+@@||tv.yahoo.com^$generichide

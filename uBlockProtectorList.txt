@@ -506,6 +506,7 @@ slader.com##.ads
 @@||tvsportslive.stream^$generichide
 @@||symbolab.com^generichide
 @@||simply-debrid.com^$generichide
+@@||tv.yahoo.com^$generichide
 @@||imasdk.googleapis.com/js/sdkloader/outstream.js$script,domain=ovar.io
 @@||flashx1.tv/js/showad*.js$script
 @@||flashx1.tv/sidead.js$script
