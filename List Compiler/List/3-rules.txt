@@ -560,8 +560,8 @@ mmovie.it###advleft
 zeperfs.com##script:inject(noeval-if.js, AdBlock)
 ! === userupload.net
 userupload.net##script:inject(noeval-if.js, Adblock)
-! === mashable.com
-mashable.com##script:inject(noeval-if.js, adblock)
+! === mashable.com, niezalezna.pl
+mashable.com,niezalezna.pl##script:inject(noeval-if.js, adblock)
 ! === iptvultra.com
 iptvultra.com##script:inject(setTimeout-defuser.js, div.table_download)
 ! === pcgames-download.com
