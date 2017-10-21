@@ -461,7 +461,7 @@ imgur.com##.footerlink-report-ads
 simply-debrid.com##.adsbygoogle
 simply-debrid.com###google_ads:style(height: 1px !important; visibility: hidden !important;)
 slader.com##script:inject(abort-on-property-read.js, sladerAbm)
-slader.com##.ads
+slader.com##a[href="/payment/premium/"]
 @@||lolalytics.com^$generichide
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide

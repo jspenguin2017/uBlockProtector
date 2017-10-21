@@ -723,4 +723,4 @@ simply-debrid.com##.adsbygoogle
 simply-debrid.com###google_ads:style(height: 1px !important; visibility: hidden !important;)
 ! === slader.com
 slader.com##script:inject(abort-on-property-read.js, sladerAbm)
-slader.com##.ads
+slader.com##a[href="/payment/premium/"]
