@@ -463,6 +463,9 @@ simply-debrid.com###google_ads:style(height: 1px !important; visibility: hidden 
 slader.com##script:inject(abort-on-property-read.js, sladerAbm)
 slader.com##a[href="/payment/premium/"]
 jsfiddle.net###keep-us-running
+@@||anonymousemail.me/js/$first-party
+anonymousemail.me##.adsense:style(height: 1px !important;)
+anonymousemail.me##.adsbygoogle:style(height: 1px !important; width: 1px !important;)
 @@||lolalytics.com^$generichide
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide
