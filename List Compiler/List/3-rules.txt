@@ -733,3 +733,5 @@ anonymousemail.me##.adsbygoogle:style(height: 1px !important; width: 1px !import
 ! === NSFW! avgle.com
 avgle.com##div:has(:scope > div#blocked-if)
 avgle.com###aoverlay
+! === animeheaven.eu
+@@||animeheaven.eu^$script,first-party

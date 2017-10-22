@@ -468,6 +468,7 @@ anonymousemail.me##.adsense:style(height: 1px !important;)
 anonymousemail.me##.adsbygoogle:style(height: 1px !important; width: 1px !important;)
 avgle.com##div:has(:scope > div#blocked-if)
 avgle.com###aoverlay
+@@||animeheaven.eu^$script,first-party
 @@||lolalytics.com^$generichide
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide

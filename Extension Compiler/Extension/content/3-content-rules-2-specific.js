@@ -2983,9 +2983,6 @@ if (a.domCmp(["linkneverdie.com"])) {
 if (a.domCmp(["megawrzuta.pl"])) {
     a.cookie("slickModal-1", "true");
 }
-if (a.domCmp(["animeheaven.eu"])) {
-    a.readOnly("canRunAds2", true);
-}
 if (a.domCmp(["4downfiles.org"])) {
     a.ready(() => {
         a.inject(() => {
@@ -3040,14 +3037,6 @@ if (a.domCmp(["ultrahorny.com"])) {
 }
 if (a.domCmp(["uplod.cc"])) {
     a.bait("div", "#bannerad", true);
-}
-if (a.domCmp(["animeheaven.eu"])) {
-    a.inject(() => {
-        "use strict";
-        for (let i = 0; i < 15; i++) {
-            window[`canRunAds${i}`] = true;
-        }
-    });
 }
 if (a.domCmp(["hyperdebrid.net"])) {
     a.filter("eval", a.matchMethod.string, "eval(function(p,a,c,k,e,d){");
