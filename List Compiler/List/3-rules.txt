@@ -730,3 +730,6 @@ jsfiddle.net###keep-us-running
 @@||anonymousemail.me/js/$first-party
 anonymousemail.me##.adsense:style(height: 1px !important;)
 anonymousemail.me##.adsbygoogle:style(height: 1px !important; width: 1px !important;)
+! === NSFW! avgle.com
+avgle.com##div:has(:scope > div#blocked-if)
+avgle.com###aoverlay
