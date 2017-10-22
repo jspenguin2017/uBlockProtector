@@ -831,7 +831,7 @@ a.loopbackXHR = (server) => {
 /**
  * Install XMLHttpRequest replace engine. Should be called once on document-start if needed.
  * @function
- * @param {Function} handler - The replace handler.
+ * @param {Function} handler - The replace handler, must be an arrow function.
  * @runtime this, method, url, isAsync, user, passwd, ...rest
  ** Keyword this and arguments passed to XMLHttpRequest.prototype.open().
  * @runtime replace
