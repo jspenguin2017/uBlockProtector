@@ -462,6 +462,7 @@ simply-debrid.com##.adsbygoogle
 simply-debrid.com###google_ads:style(height: 1px !important; visibility: hidden !important;)
 slader.com##script:inject(abort-on-property-read.js, sladerAbm)
 slader.com##a[href="/payment/premium/"]
+jsfiddle.net###keep-us-running
 @@||lolalytics.com^$generichide
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide

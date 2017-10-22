@@ -724,3 +724,5 @@ simply-debrid.com###google_ads:style(height: 1px !important; visibility: hidden 
 ! === slader.com
 slader.com##script:inject(abort-on-property-read.js, sladerAbm)
 slader.com##a[href="/payment/premium/"]
+! === jsfiddle.net
+jsfiddle.net###keep-us-running
