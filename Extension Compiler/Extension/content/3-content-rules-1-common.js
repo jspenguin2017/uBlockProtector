@@ -70,7 +70,7 @@
     if (a.domCmp(["gamersclub.com.br", "uploadboy.com", "vidoza.net", "videohelp.com", "zeiz.me",
         "passionea300allora.it", "memurlar.net", "palemoon.org", "stocks.cafe", "listamais.com.br",
         "acquavivalive.it", "palolive.it", "molfettalive.it", "sledujserialy.sk", "warforum.cz",
-        "lolskinlistgenerator.com", "beinsports.com"])) {
+        "lolskinlistgenerator.com", "beinsports.com", "m.delfi.ee"])) {
         a.generic.adsjsV2();
     }
 

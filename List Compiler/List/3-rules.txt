@@ -739,3 +739,5 @@ avgle.com###aoverlay
 ! === gej-porno.pl
 gej-porno.pl#@#.myTestAd
 gej-porno.pl##a[href^="//"]
+! === m.delfi.ee
+m.delfi.ee##.md-banner-placement
