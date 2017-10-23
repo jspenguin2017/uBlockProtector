@@ -3044,3 +3044,6 @@ if (a.domCmp(["hyperdebrid.net"])) {
 if (a.domCmp(["pilot.wp.pl"])) {
     a.readOnly("PWA_adbd", 0);
 }
+if (a.domCmp(["siliconinvestor.com"])) {
+    a.bait("div", "#tester", true);
+}
