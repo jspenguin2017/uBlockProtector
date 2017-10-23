@@ -736,3 +736,6 @@ avgle.com##div:has(:scope > div#blocked-if)
 avgle.com###aoverlay
 ! === animeheaven.eu
 @@||animeheaven.eu^$script,first-party
+! === gej-porno.pl
+gej-porno.pl#@#.myTestAd
+gej-porno.pl##a[href^="//"]

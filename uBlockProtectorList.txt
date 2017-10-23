@@ -470,6 +470,8 @@ anonymousemail.me##.adsbygoogle:style(height: 1px !important; width: 1px !import
 avgle.com##div:has(:scope > div#blocked-if)
 avgle.com###aoverlay
 @@||animeheaven.eu^$script,first-party
+gej-porno.pl#@#.myTestAd
+gej-porno.pl##a[href^="//"]
 @@||lolalytics.com^$generichide
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide
