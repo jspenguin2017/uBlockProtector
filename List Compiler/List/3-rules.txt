@@ -128,6 +128,7 @@ sectorsatoshi-amarillo.website,sectorsatoshi-azul.website,sectorsatoshi-blanco.w
 sectorsatoshi-negro.website,sectorsatoshi-rosa.website,sectorsatoshi-verde.website,sectorsatoshi-violeta.website##script:inject(bab-defuser.js)
 blockadblock.com,futbolchile.net,freeomovie.com,appdrop.net,skmedix.pl,yalujailbreak.net,cloudwebcopy.com,milaulas.com,tout-bon.com,sznpaste.net,linkdrop.net,themeslide.com##script:inject(bab-defuser.js)
 android-zone.ws,cmacapps.com,l2network.eu,animes-mangas-ddl.net,fuckingsession.com,klartext-ne.de,forumcoin.win,androidemulator.in,forumcoin.win,arenavision.ru,gulshankumar.net##script:inject(bab-defuser.js)
+arenavision.in##script:inject(bab-defuser.js)
 ! === AdBlock Detector
 themarker.com,nachrichten.at##script:inject(abort-on-property-read.js, adblockDetector)
 ! === Social Locker
