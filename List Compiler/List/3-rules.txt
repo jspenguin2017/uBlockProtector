@@ -744,3 +744,5 @@ gej-porno.pl##a[href^="//"]
 m.delfi.ee##.md-banner-placement
 ! === filmweb.pl
 filmweb.pl##script:inject(setTimeout-defuser.js, notDetected)
+! === jacquieetmicheltv.net
+jacquieetmicheltv.net##script:inject(abort-on-property-read.js, is_adblocked)

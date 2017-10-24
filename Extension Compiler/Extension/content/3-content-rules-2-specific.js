@@ -3047,3 +3047,12 @@ if (a.domCmp(["pilot.wp.pl"])) {
 if (a.domCmp(["siliconinvestor.com"])) {
     a.bait("div", "#tester", true);
 }
+if (a.domCmp(["jacquieetmicheltv.net"])) {
+    a.ready(() => {
+        $("#disclaimerOkButton").on("click", (e) => {
+            $(".disclaimer-wrapper").remove();
+            e.preventDefault();
+            e.stopPropagation();
+        });
+    });
+}

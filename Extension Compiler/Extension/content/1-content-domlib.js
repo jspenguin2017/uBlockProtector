@@ -286,6 +286,18 @@ $.Selection = class {
 
     //---Events---
     /**
+     * Add an event listener to all selected elements.
+     * @param {string} event - The event name.
+     * @param {Function} func - The event handler.
+     ** @param {Event} e - The appropriate event object.
+     */
+    on(event, func) {
+        for (let i = 0; i < this.selection.length; i++) {
+            this.selection[i].addEventListener(event, func);
+        }
+        return this;
+    }
+    /**
      * Trigger a click event to all selected elements.
      * @method
      */
