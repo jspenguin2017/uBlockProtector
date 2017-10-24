@@ -742,3 +742,5 @@ gej-porno.pl#@#.myTestAd
 gej-porno.pl##a[href^="//"]
 ! === m.delfi.ee
 m.delfi.ee##.md-banner-placement
+! === filmweb.pl
+filmweb.pl##script:inject(setTimeout-defuser.js, notDetected)
