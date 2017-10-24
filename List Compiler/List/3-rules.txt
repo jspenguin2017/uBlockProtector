@@ -724,7 +724,8 @@ simply-debrid.com##.adsbygoogle
 simply-debrid.com###google_ads:style(height: 1px !important; visibility: hidden !important;)
 ! === slader.com
 slader.com##script:inject(abort-on-property-read.js, sladerAbm)
-slader.com##a[href="/payment/premium/"]
+slader.com##section.solutions-list.loading:style(height: auto !important;)
+slader.com##.ads.ads-to-hide
 ! === jsfiddle.net
 jsfiddle.net###keep-us-running
 ! === anonymousemail.me
