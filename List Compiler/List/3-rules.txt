@@ -748,3 +748,5 @@ filmweb.pl##script:inject(setTimeout-defuser.js, notDetected)
 jacquieetmicheltv.net##script:inject(abort-on-property-read.js, is_adblocked)
 ! === haberler.com
 haberler.com##.playButton
+! === livesport.ws
+livesport.ws##script:inject(abort-on-property-read.js, document.avp_ready)
