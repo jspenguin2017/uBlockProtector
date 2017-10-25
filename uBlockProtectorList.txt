@@ -476,6 +476,7 @@ gej-porno.pl##a[href^="//"]
 m.delfi.ee##.md-banner-placement
 filmweb.pl##script:inject(setTimeout-defuser.js, notDetected)
 jacquieetmicheltv.net##script:inject(abort-on-property-read.js, is_adblocked)
+haberler.com##.playButton
 @@||lolalytics.com^$generichide
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide

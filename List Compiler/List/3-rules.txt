@@ -746,3 +746,5 @@ m.delfi.ee##.md-banner-placement
 filmweb.pl##script:inject(setTimeout-defuser.js, notDetected)
 ! === jacquieetmicheltv.net
 jacquieetmicheltv.net##script:inject(abort-on-property-read.js, is_adblocked)
+! === haberler.com
+haberler.com##.playButton
