@@ -628,6 +628,10 @@ cwseed.com##script:inject(abort-on-property-read.js, wc.url)
 ! === prevention.com, avoiderrors.net, gulmeklazim.com
 ! === https://github.com/jspenguin2017/uBlockProtector/issues/589
 prevention.com,avoiderrors.net,gulmeklazim.com##script:inject(setTimeout-defuser.js, adblock)
+! === getfree-bitcoin.com
+getfree-bitcoin.com##script:inject(setTimeout-defuser.js, Adblock)
+getfree-bitcoin.com##.left-advertisement
+getfree-bitcoin.com##a[href^="//mellowads.com/"]
 ! === kshowes.net
 kshowes.net##script:inject(abort-current-inline-script.js, setTimeout, Im.offsetHeight<=0)
 kshowes.net###hide:style(display: block !important;)
