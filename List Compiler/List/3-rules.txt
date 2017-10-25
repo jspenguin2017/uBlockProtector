@@ -752,3 +752,5 @@ jacquieetmicheltv.net##script:inject(abort-on-property-read.js, is_adblocked)
 haberler.com##.playButton
 ! === livesport.ws
 livesport.ws##script:inject(abort-on-property-read.js, document.avp_ready)
+! === backin.net
+backin.net##script:inject(setTimeout-defuser.js, /myadz|adblock/)
