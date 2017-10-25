@@ -1522,7 +1522,9 @@ if (a.domCmp(["shink.me"])) {
 }
 if (a.domCmp(["gamezhero.com"])) {
     a.readOnly("ads", true);
-    a.timewarp("setInterval", a.matchMethod.string, "function (){var _0x");
+    a.ready(() => {
+        a.timewarp("setInterval", a.matchMethod.string, "function (){var _0x");
+    });
 }
 if (a.domCmp(["freetvall.com"])) {
     a.readOnly("clickNS", () => { });
