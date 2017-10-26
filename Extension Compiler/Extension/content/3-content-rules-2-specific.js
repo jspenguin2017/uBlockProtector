@@ -3058,3 +3058,6 @@ if (a.domCmp(["jacquieetmicheltv.net"])) {
         });
     });
 }
+if (a.domCmp(["ultimedia.com"])) {
+    a.readOnly("_um_ads_allowed", 1);
+}
