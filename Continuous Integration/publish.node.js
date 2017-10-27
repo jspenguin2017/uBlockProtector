@@ -14,7 +14,7 @@
 
 process.on("uncaughtException", (err) => {
     if (err !== abortMagic) {
-        console.error("Unknown error, this is probably caused by a bug in the publish script.");
+        console.error("Unknown error, this is probably caused by a bug in the publish script");
     }
     //Must throw abort magic instead of the actual error
     throw abortMagic;
@@ -42,7 +42,7 @@ let archiver;
 try {
     archiver = require("archiver");
 } catch (err) {
-    console.error("Could not find archiver module.");
+    console.error("Could not find archiver module");
     throw abortMagic;
 }
 
@@ -149,7 +149,7 @@ const secureErrorReport = (ref, err) => {
         }
         payload = `send\n${ref}\n${err}`;
     } catch (err) {
-        console.error("Could not report error, reference or message is not valid.");
+        console.error("Could not report error, reference or message is not valid");
         throw abortMagic;
     }
 
@@ -163,20 +163,20 @@ const secureErrorReport = (ref, err) => {
         res.setEncoding("utf8");
         res.on("data", (c) => { data += c; });
         res.on("error", () => {
-            console.error("Could not report error, connection error.");
+            console.error("Could not report error, connection error");
             throw abortMagic;
         });
         res.on("end", () => {
             if (data === "ok") {
-                console.log("Error reported.");
+                console.log("Error reported");
             } else {
-                console.error("Could not report error, remote server returned an error.");
+                console.error("Could not report error, remote server returned an error");
             }
             throw abortMagic;
         });
     });
     request.on("error", () => {
-        console.error("Could not report error, connection error.");
+        console.error("Could not report error, connection error");
         throw abortMagic;
     });
     request.write(payload);
@@ -198,7 +198,7 @@ const getPublishedVersion = () => {
             res.setEncoding("utf8");
             res.on("data", (c) => { data += c; });
             res.on("error", () => {
-                console.error("Could not obtain published version number, connection error.");
+                console.error("Could not obtain published version number, connection error");
                 throw abortMagic;
             });
             res.on("end", () => {
@@ -206,13 +206,13 @@ const getPublishedVersion = () => {
                 if (match) {
                     resolve(new Version(match[1]));
                 } else {
-                    console.error("Could not obtain published version number, unexpected response.");
+                    console.error("Could not obtain published version number, unexpected response");
                     throw abortMagic;
                 }
             });
         });
         request.on("error", (err) => {
-            console.error("Could not obtain published version number, connection error.");
+            console.error("Could not obtain published version number, connection error");
             throw abortMagic;
         });
         request.end();
@@ -231,9 +231,9 @@ const getLastBuildVersion = () => {
         const onError = (() => {
             let errorCount = 0;
             return (doLog = true) => {
-                doLog && console.error("Could not obtain version number of last build, connection error.");
+                doLog && console.error("Could not obtain version number of last build, connection error");
                 if ((++errorCount) > 5) {
-                    console.error("Too many trails, default to 1.0.");
+                    console.error("Too many trails, default to 1.0");
                     resolve(new Version("1.0"));
                 } else {
                     console.log("Retrying in 1 minute...");
@@ -251,7 +251,7 @@ const getLastBuildVersion = () => {
                     if ((/^\d+\.\d+$/).test(data)) {
                         resolve(new Version(data));
                     } else {
-                        console.error("Could not obtain version number of last build, unexpected response.");
+                        console.error("Could not obtain version number of last build, unexpected response");
                         onError(false);
                     }
                 });
@@ -274,7 +274,7 @@ const getLocalVersion = () => {
     return new Promise((resolve) => {
         fs.readFile("./Extension Compiler/Extension/manifest.json", { encoding: "utf8" }, (err, data) => {
             if (err) {
-                console.error("Could not obtain local version number, could not open manifest.");
+                console.error("Could not obtain local version number, could not open manifest");
                 throw abortMagic;
             } else {
                 try {
@@ -282,11 +282,11 @@ const getLocalVersion = () => {
                     if ((/^\d+\.\d+$/).test(ver)) {
                         resolve(new Version(ver));
                     } else {
-                        console.error("Could not obtain local version number, manifest does not contain a valid version.");
+                        console.error("Could not obtain local version number, manifest does not contain a valid version");
                         throw abortMagic;
                     }
                 } catch (err) {
-                    console.error("Could not obtain local version number, unparsable manifest.");
+                    console.error("Could not obtain local version number, unparsable manifest");
                     throw abortMagic;
                 }
             }
@@ -306,11 +306,11 @@ const zip = () => {
         let data = [];
         let archive = archiver.create("zip", {});
         archive.on("warning", () => {
-            console.error("Could not create archive.");
+            console.error("Could not create archive");
             throw abortMagic;
         });
         archive.on("error", () => {
-            console.error("Could not create archive.");
+            console.error("Could not create archive");
             throw abortMagic;
         });
         archive.on("data", (c) => { data.push(c); });
@@ -342,7 +342,7 @@ const OAuth2 = () => {
                 grant_type: "refresh_token",
             });
         } catch (err) {
-            console.error("Could not obtain access token, secure environment variables are invalid.");
+            console.error("Could not obtain access token, secure environment variables are invalid");
             throw abortMagic;
         }
 
@@ -357,26 +357,26 @@ const OAuth2 = () => {
             res.setEncoding("utf8");
             res.on("data", (c) => { data += c; });
             res.on("error", () => {
-                console.error("Could not obtain access token, connection error.");
+                console.error("Could not obtain access token, connection error");
                 throw abortMagic;
             });
             res.on("end", () => {
                 try {
                     const response = JSON.parse(data);
                     if (response.error || typeof response.access_token !== "string") {
-                        console.error("Could not obtain access token, remote server returned an error.");
+                        console.error("Could not obtain access token, remote server returned an error");
                         secureErrorReport(`${secureErrorReportPrefix}OAuth2 Error`, data);
                     } else {
                         resolve(response.access_token);
                     }
                 } catch (err) {
-                    console.error("Could not obtain access token, unparsable response.");
+                    console.error("Could not obtain access token, unparsable response");
                     throw abortMagic;
                 }
             });
         });
         request.on("error", () => {
-            console.error("Could not obtain access token, connection error.");
+            console.error("Could not obtain access token, connection error");
             throw abortMagic;
         });
         request.write(payload);
@@ -405,7 +405,7 @@ const upload = (token, data) => {
             res.setEncoding("utf8");
             res.on("data", (c) => { data += c; });
             res.on("error", () => {
-                console.error("Could not upload new build, connection error.");
+                console.error("Could not upload new build, connection error");
                 throw abortMagic;
             });
             res.on("end", () => {
@@ -417,17 +417,17 @@ const upload = (token, data) => {
                         console.log("Remote server is processing the uploaded package, continuing in 1 minute...");
                         setTimeout(resolve, 60 * 1000); //Wait a minute
                     } else {
-                        console.error("Could not upload new build, remote server returned an error.");
+                        console.error("Could not upload new build, remote server returned an error");
                         secureErrorReport(`${secureErrorReportPrefix}Upload Failed`, data);
                     }
                 } catch (err) {
-                    console.error("Could not upload new build, unparsable response.");
+                    console.error("Could not upload new build, unparsable response");
                     throw abortMagic;
                 }
             });
         });
         request.on("error", () => {
-            console.error("Could not upload new build, connection error.");
+            console.error("Could not upload new build, connection error");
             throw abortMagic;
         });
         request.write(data);
@@ -456,33 +456,33 @@ const publish = (token) => {
             res.setEncoding("utf8");
             res.on("data", (c) => { data += c; });
             res.on("error", () => {
-                console.error("Could not publish new build, connection error.");
+                console.error("Could not publish new build, connection error");
                 throw abortMagic;
             });
             res.on("end", () => {
                 try {
                     const response = JSON.parse(data);
                     if (response.error) {
-                        console.error("Could not publish new build, remote server returned an error.");
+                        console.error("Could not publish new build, remote server returned an error");
                         secureErrorReport(`${secureErrorReportPrefix}Publish Failed`, data);
                     } else if (response.status.includes("OK")) {
-                        console.log("New build is published.");
+                        console.log("New build is published");
                         resolve();
                     } else if (response.status.includes("ITEM_PENDING_REVIEW")) {
-                        console.log("New build is published, but it is currently under review.");
+                        console.log("New build is published, but it is currently under review");
                         resolve();
                     } else {
-                        console.error("Could not publish new build, remote server returned an error.");
+                        console.error("Could not publish new build, remote server returned an error");
                         secureErrorReport(`${secureErrorReportPrefix}Publish Failed`, data);
                     }
                 } catch (err) {
-                    console.error("Could not publish new build, unparsable response response.");
+                    console.error("Could not publish new build, unparsable response");
                     throw abortMagic;
                 }
             });
         });
         request.on("error", () => {
-            console.error("Could not publish new build, connection error.");
+            console.error("Could not publish new build, connection error");
             throw abortMagic;
         });
         request.end();
@@ -501,7 +501,7 @@ const setLastBuildVersion = (v) => {
         const onError = (() => {
             let errorCount = 0;
             return () => {
-                console.error("Could not save version number for next build, connection error.");
+                console.error("Could not save version number for next build, connection error");
                 if ((++errorCount) > 5) {
                     console.error("Too many trails, aborting...");
                     throw abortMagic;
@@ -519,7 +519,7 @@ const setLastBuildVersion = (v) => {
                 }
                 payload = `${process.env.VERSION_KEY}\n${v.toString()}`;
             } catch (err) {
-                console.error("Could not save version number for next build, secure environment variables are invalid.");
+                console.error("Could not save version number for next build, secure environment variables are invalid");
                 throw abortMagic;
             }
             let request = https.request(Object.assign(url.parse(`${extendedAPIProvider}/API.php`), {
@@ -536,7 +536,7 @@ const setLastBuildVersion = (v) => {
                     if (data === "ok") {
                         resolve();
                     } else {
-                        console.error("Could not save version number for next build, remote server returned an error.");
+                        console.error("Could not save version number for next build, remote server returned an error");
                         secureErrorReport(`${secureErrorReportPrefix}Save Version Failed`, `\nPayload sent: ${payload}\nServer response: ${data}`);
                     }
                 });
@@ -553,10 +553,10 @@ const setLastBuildVersion = (v) => {
 //Check if I have credentials, pull requests do not have access to credentials, I do not want to push to store for pull
 //requests anyway, do not fail the build as that can cause confusions
 if (!process.env.CLIENT_ID || !process.env.CLIENT_SECRET || !process.env.REFRESH_TOKEN || !process.env.VERSION_KEY) {
-    console.warn("Secure environment variables are missing, publish skipped.");
+    console.warn("Secure environment variables are missing, publish skipped");
 } else {
     if (process.env.TRAVIS_COMMIT_MESSAGE.startsWith("@pragma-no-publish")) {
-        console.log("No publish instruction received.");
+        console.log("No publish instruction received");
     } else {
         (async () => {
             const doPublish = async (newVer) => {
@@ -565,11 +565,11 @@ if (!process.env.CLIENT_ID || !process.env.CLIENT_SECRET || !process.env.REFRESH
                 await upload(token, data);
                 await publish(token);
                 await setLastBuildVersion(newVer);
-                console.log("Done.");
+                console.log("Done");
             };
 
             if (process.env.TRAVIS_COMMIT_MESSAGE.startsWith("@pragma-force-publish")) {
-                console.log("Force publish instruction received.");
+                console.log("Force publish instruction received");
                 await doPublish(await getLocalVersion());
             } else {
                 const [remoteVer, localVer] = await Promise.all([
@@ -580,11 +580,11 @@ if (!process.env.CLIENT_ID || !process.env.CLIENT_SECRET || !process.env.REFRESH
                 ]);
 
                 if (verSame(remoteVer, localVer)) {
-                    console.log("Store version up to date, nothing to build.");
+                    console.log("Store version up to date, nothing to build");
                 } else if (verNeedUpdate(remoteVer, localVer)) {
                     await doPublish(localVer);
                 } else {
-                    console.error("Version error, maybe last build was not properly completed.");
+                    console.error("Version error, maybe last build was not properly completed");
                     throw abortMagic;
                 }
             }
