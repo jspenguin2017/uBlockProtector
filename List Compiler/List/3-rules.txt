@@ -755,3 +755,5 @@ livesport.ws##script:inject(abort-on-property-read.js, document.avp_ready)
 backin.net##script:inject(setTimeout-defuser.js, /myadz|adblock/)
 ! === stealive.club
 ||stealive.club/js/ht.js
+! === mejorescanales.com
+mejorescanales.com##script:inject(abort-on-property-read.js, jQuery.adblock)

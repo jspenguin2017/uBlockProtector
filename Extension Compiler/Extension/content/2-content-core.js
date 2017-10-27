@@ -685,7 +685,17 @@ a.noAccessExt = (chain) => {
         const descriptor = window.Object.getOwnPropertyDescriptor.bind(window.Object);
         const define = window.Object.defineProperty.bind(window.Object);
 
+        //@pragma-if-debug
+        const Error = window.Error.bind(window);
+        //@pragma-end-if
+
         const throwErr = () => {
+            //@pragma-if-debug
+            if (${a.debugMode}) {
+                throw new Error("This property may not be accessed!");
+            }
+            //@pragma-end-if
+
             throw err;
         };
         let trustedSetters = {};
