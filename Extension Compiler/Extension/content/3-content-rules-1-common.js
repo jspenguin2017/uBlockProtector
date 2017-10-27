@@ -199,7 +199,7 @@ if (a.domCmp(["linx.cloud"])) {
     a.noAccess("popns");
 }
 if (a.domCmp(["psarips.com", "streamcloud.eu", "jzrputtbut.net", "arenabg.ch", "solidfiles.com", "adlinkme.com",
-    "maango.info", "vidfile.net"])) {
+    "maango.info", "vidfile.net", "torrentfunk.com"])) {
     a.noAccess("open");
 }
 
