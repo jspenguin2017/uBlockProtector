@@ -844,6 +844,7 @@ a.loopbackXHR = (server) => {
  * @param {Function} handler - The replace handler, must be an arrow function.
  * @runtime this, method, url, isAsync, user, passwd, ...rest
  ** Keyword this and arguments passed to XMLHttpRequest.prototype.open().
+ ** Keep in mind that the array rest includes isAsync, user, and passwd.
  * @runtime replace
  ** Replace payload.
  ** @function
@@ -871,9 +872,10 @@ a.replaceXHR = (handler) => {
         };
         try {
             const _open = window.XMLHttpRequest.prototype.open
-            window.XMLHttpRequest.prototype.open = function (method, url, isAsync, user, passwd, ...rest) {
+            window.XMLHttpRequest.prototype.open = function (method, url, ...rest) {
+                const [isAsync, user, passwd] = rest;
                 (${handler})();
-                return _open.call(this, method, url, isAsync, user, passwd, ...rest);
+                return _open.call(this, method, url, ...rest);
             };
         } catch (err) {
             window.console.error("uBlock Protector failed to set up XMLHttpRequest replace engine!");

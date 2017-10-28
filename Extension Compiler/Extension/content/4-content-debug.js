@@ -15,7 +15,27 @@ if (a.debugMode) {
 
 //Rules
 if (a.debugMode) {
-    //No rules for now
+    if (a.domCmp(["fox.com"])) {
+        a.replaceXHR(() => {
+
+            console.warn(url);
+
+            if (url.includes("uplynk.com/preplay")) {
+                this.addEventListener("readystatechange", () => {
+                    if (this.readyState === 4) {
+                        try {
+
+                            console.log(this.responseText);
+
+                            let payload = window.JSON.parse(this.responseText);
+                            payload.ads = {};
+                            replace(this, window.JSON.stringify(payload));
+                        } catch (err) { }
+                    }
+                });
+            }
+        });
+    }
 }
 
 //@pragma-end-if
