@@ -16,6 +16,7 @@ if (a.debugMode) {
 //Rules
 if (a.debugMode) {
     if (a.domCmp(["fox.com"])) {
+        //https://github.com/jspenguin2017/uBlockProtector/issues/660
         a.replaceXHR(() => {
 
             console.warn(url);
@@ -25,7 +26,7 @@ if (a.debugMode) {
                     if (this.readyState === 4) {
                         try {
 
-                            console.log(this.responseText);
+                            console.warn(this.responseText);
 
                             let payload = window.JSON.parse(this.responseText);
                             payload.ads = {};
