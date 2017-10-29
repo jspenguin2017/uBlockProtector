@@ -178,7 +178,6 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "echi
     "hotmoney.pl", "kafeteria.pl", "kafeteria.tv", "kardiolo.pl", "komediowo.pl", "komorkomania.pl", "money.pl", "o2.pl",
     "parenting.pl", "pudelek.pl", "pudelek.tv", "pudelekx.pl", "sfora.pl", "snobka.pl", "wawalove.pl", "wp.pl", "wp.tv",
     "wrzuta.pl"])) {
-    a.filter("addEventListener", a.matchMethod.stringExact, "advertisement");
     a.loopbackXHR((ignored, url) => {
         const path = url.substring(url.lastIndexOf('/') + 1);
         if (path.startsWith("dmFkLnhtb")) { //vad.xml
