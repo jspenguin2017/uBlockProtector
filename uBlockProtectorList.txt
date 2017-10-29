@@ -529,6 +529,7 @@ mejorescanales.com##script:inject(abort-on-property-read.js, jQuery.adblock)
 @@||simply-debrid.com^$generichide
 @@||tv.yahoo.com^$generichide
 @@||aftonbladet.se^$generichide
+@@||wp.pl^$generichide
 @@||imasdk.googleapis.com/js/sdkloader/outstream.js$script,domain=ovar.io
 @@||flashx1.tv/js/showad*.js$script
 @@||flashx1.tv/sidead.js$script
