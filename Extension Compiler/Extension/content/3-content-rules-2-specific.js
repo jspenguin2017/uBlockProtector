@@ -3060,3 +3060,18 @@ if (a.domCmp(["jacquieetmicheltv.net"])) {
 if (a.domCmp(["ultimedia.com"])) {
     a.readOnly("_um_ads_allowed", 1);
 }
+if (a.domCmp(["nova.cz"])) {
+    a.inject(() => {
+        "use strict";
+        const String = window.String.bind(window);
+        const _Promise = window.Promise;
+        window.Promise = class extends _Promise {
+            constructor(func, ...rest) {
+                if (String(func).includes("adblock")) {
+                    func = (resolve) => { resolve(); };
+                }
+                super(func, ...rest);
+            }
+        };
+    });
+}
