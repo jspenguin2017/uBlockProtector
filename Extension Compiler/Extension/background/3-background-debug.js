@@ -46,8 +46,8 @@ if (a.debugMode) {
         //Looks like viz.com is no longer embedding hulu.com
         a.staticServer(
             [
-                "*://ads-v-darwin.hulustream.com/published/*.mp4",
-                "*://*.ads-v-darwin.hulustream.com/published/*.mp4",
+                "*://ads-v-darwin.hulustream.com/published/*.mp4*",
+                "*://*.ads-v-darwin.hulustream.com/published/*.mp4*",
             ],
             [
                 "media",
@@ -60,6 +60,23 @@ if (a.debugMode) {
         );
     }
     */
+    {
+        //https://github.com/jspenguin2017/uBlockProtector/issues/660
+        const payload = "data:application/json;base64," + btoa(JSON.stringify({}));
+        a.staticServer(
+            [
+                "*://*.uplynk.com/preplay/*",
+            ],
+            [
+                "xmlhttprequest",
+            ],
+            payload,
+            [
+                "fox.com",
+            ],
+            true,
+        );
+    }
 }
 
 //@pragma-end-if
