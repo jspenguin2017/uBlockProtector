@@ -3075,3 +3075,10 @@ if (a.domCmp(["nova.cz"])) {
         };
     });
 }
+if (a.domCmp(["pornovoisines.com"])) {
+    a.noAccess("isAdBlocked");
+    a.noAccess("getPubUrl2");
+    a.ready(() => {
+        $("#disclaimerOkButton").attr("target", "_self");
+    });
+}
