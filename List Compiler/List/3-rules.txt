@@ -756,3 +756,6 @@ backin.net##script:inject(setTimeout-defuser.js, /myadz|adblock/)
 ||stealive.club/js/ht.js
 ! === mejorescanales.com
 mejorescanales.com##script:inject(abort-on-property-read.js, jQuery.adblock)
+! === gr8forte.org
+gr8forte.org###alert-block
+gr8forte.org##script:inject(abort-on-property-read.js, clickNS)

@@ -482,6 +482,8 @@ livesport.ws##script:inject(abort-on-property-read.js, document.avp_ready)
 backin.net##script:inject(setTimeout-defuser.js, /myadz|adblock/)
 ||stealive.club/js/ht.js
 mejorescanales.com##script:inject(abort-on-property-read.js, jQuery.adblock)
+gr8forte.org###alert-block
+gr8forte.org##script:inject(abort-on-property-read.js, clickNS)
 @@||lolalytics.com^$generichide
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide
