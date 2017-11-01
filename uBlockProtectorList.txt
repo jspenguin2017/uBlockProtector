@@ -90,8 +90,8 @@ bild.de#@#script:inject(abort-on-property-read.js, de.bild.cmsKonfig.a.b.a)
 ||w.nn0e.com^$third-party
 ||w.rpts.org^$third-party
 ||adiode.com^$third-party
-||googlesyndication.com^$important,domain=short.am|clubedohardware.com.br
-||doubleclick.net^$important,domain=aetv.com|history.com|mylifetime.com
+||googlesyndication.com^$important,domain=short.am|clubedohardware.com.br|receive-a-sms.com
+||doubleclick.net^$important,domain=aetv.com|history.com|mylifetime.com|receive-a-sms.com
 ||a.optnmnstr.com^$third-party
 ||a.optnmstr.com^$third-party
 ||zergnet.com^$script,third-party
@@ -235,8 +235,7 @@ rapidvideo.com##script:inject(noeval.js)
 rapidvideo.com##script:inject(abort-on-property-read.js, popns)
 ||cloudvideoplatform.com/advert.jpg$image,redirect=1x1-transparent.gif,domain=nana10.co.il
 receive-a-sms.com##script:inject(abort-current-inline-script.js, $, showads.js)
-||pagead2.googlesyndication.com^$important,domain=receive-a-sms.com
-||googleads.g.doubleclick.net^$important,domain=receive-a-sms.com
+@@||receive-a-sms.com/showads.js$xmlhttprequest,first-party
 newyorker.com##iframe[src*="/wp-content/assets/"]
 @@||politiken.dk/*ad*$script,first-party
 ||kissasian.com/*.aspx

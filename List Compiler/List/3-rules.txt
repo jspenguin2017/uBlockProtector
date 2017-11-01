@@ -73,8 +73,8 @@
 ! === https://github.com/jspenguin2017/uBlockProtector/issues/346
 ||adiode.com^$third-party
 ! === AdSense, DoubleClick
-||googlesyndication.com^$important,domain=short.am|clubedohardware.com.br
-||doubleclick.net^$important,domain=aetv.com|history.com|mylifetime.com
+||googlesyndication.com^$important,domain=short.am|clubedohardware.com.br|receive-a-sms.com
+||doubleclick.net^$important,domain=aetv.com|history.com|mylifetime.com|receive-a-sms.com
 ! === OptinMonster
 ! === https://github.com/jspenguin2017/uBlockProtector/issues/251
 ||a.optnmnstr.com^$third-party
@@ -316,8 +316,7 @@ rapidvideo.com##script:inject(abort-on-property-read.js, popns)
 ! === receive-a-sms.com
 ! === https://github.com/jspenguin2017/uBlockProtector/issues/257
 receive-a-sms.com##script:inject(abort-current-inline-script.js, $, showads.js)
-||pagead2.googlesyndication.com^$important,domain=receive-a-sms.com
-||googleads.g.doubleclick.net^$important,domain=receive-a-sms.com
+@@||receive-a-sms.com/showads.js$xmlhttprequest,first-party
 ! === newyorker.com
 newyorker.com##iframe[src*="/wp-content/assets/"]
 ! === politiken.dk

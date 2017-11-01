@@ -1209,8 +1209,8 @@ if (a.domCmp(["cityam.com", "computerworlduk.com", "techworld.com", "v3.co.uk"])
         });
     });
 }
-if (a.domCmp(["next-episode.net", "kingmaker.news", "gamespowerita.com", "todayidol.com", "receive-a-sms.com",
-    "wakeupcallme.com", "ringmycellphone.com", "faqmozilla.org", "thememypc.com", "bizled.co.in"])) {
+if (a.domCmp(["next-episode.net", "kingmaker.news", "gamespowerita.com", "todayidol.com", "bizled.co.in",
+    "wakeupcallme.com", "ringmycellphone.com", "faqmozilla.org", "thememypc.com"])) {
     a.always(() => {
         a.inject(() => {
             "use strict";
