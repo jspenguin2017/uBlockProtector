@@ -3082,3 +3082,6 @@ if (a.domCmp(["pornovoisines.com"])) {
         $("#disclaimerOkButton").attr("target", "_self");
     });
 }
+if (a.domCmp(["letribunaldunet.fr"])) {
+    a.noAccess("adback");
+}
