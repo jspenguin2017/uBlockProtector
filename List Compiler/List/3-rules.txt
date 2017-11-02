@@ -758,3 +758,5 @@ mejorescanales.com##script:inject(abort-on-property-read.js, jQuery.adblock)
 ! === gr8forte.org
 gr8forte.org###alert-block
 gr8forte.org##script:inject(abort-on-property-read.js, clickNS)
+! === diariosur.es
+||static.vocento.com/adbd/

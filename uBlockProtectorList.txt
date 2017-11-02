@@ -484,6 +484,7 @@ backin.net##script:inject(setTimeout-defuser.js, /myadz|adblock/)
 mejorescanales.com##script:inject(abort-on-property-read.js, jQuery.adblock)
 gr8forte.org###alert-block
 gr8forte.org##script:inject(abort-on-property-read.js, clickNS)
+||static.vocento.com/adbd/
 @@||lolalytics.com^$generichide
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide
