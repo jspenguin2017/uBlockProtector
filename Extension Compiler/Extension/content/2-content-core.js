@@ -647,15 +647,25 @@ a.noAccess = (name, parent = "window") => {
     a.inject(`(() => {
         "use strict";
         const err = new window.Error("This property may not be accessed!");
+
+        //@pragma-if-debug
+        const Error = window.Error.bind(window);
+        //@pragma-end-if
+
+        const throwErr = () => {
+            //@pragma-if-debug
+            if (${a.debugMode}) {
+                throw new Error("This property may not be accessed!");
+            }
+            //@pragma-end-if
+
+            throw err;
+        };
         try {
             window.Object.defineProperty(${parent}, "${name}", {
                 configurable: false,
-                set() {
-                    throw err;
-                },
-                get() {
-                    throw err;
-                },
+                set: throwErr,
+                get: throwErr,
             });
 
             //@pragma-if-debug
