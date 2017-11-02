@@ -3085,3 +3085,6 @@ if (a.domCmp(["pornovoisines.com"])) {
 if (a.domCmp(["letribunaldunet.fr"])) {
     a.noAccess("adback");
 }
+if (a.domCmp(["filmweb.pl"])) {
+    a.noAccessExt("document.onreadystatechange");
+}
