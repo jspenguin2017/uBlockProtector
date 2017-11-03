@@ -465,9 +465,7 @@ slader.com##script:inject(abort-on-property-read.js, sladerAbm)
 slader.com##section.solutions-list.loading:style(height: auto !important;)
 slader.com##.ads.ads-to-hide
 jsfiddle.net###keep-us-running
-@@||anonymousemail.me/js/$first-party
-anonymousemail.me##.adsense:style(height: 1px !important;)
-anonymousemail.me##.adsbygoogle:style(height: 1px !important; width: 1px !important;)
+@@||anonymousemail.me^$first-party
 avgle.com##div:has(:scope > div#blocked-if)
 avgle.com###aoverlay
 @@||animeheaven.eu^$script,first-party
@@ -530,6 +528,7 @@ gr8forte.org##script:inject(abort-on-property-read.js, clickNS)
 @@||tv.yahoo.com^$generichide
 @@||aftonbladet.se^$generichide
 @@||wp.pl^$generichide
+@@||anonymousemail.me^$generichide
 @@||imasdk.googleapis.com/js/sdkloader/outstream.js$script,domain=ovar.io
 @@||flashx1.tv/js/showad*.js$script
 @@||flashx1.tv/sidead.js$script
