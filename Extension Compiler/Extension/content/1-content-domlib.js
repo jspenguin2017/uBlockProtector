@@ -1,7 +1,6 @@
 //The DOM manipulation library for content core and rules, this library behaves differently than jQuery
 "use strict";
 
-//=====Shortcuts=====
 /**
  * Shortcut for new $.Selection(input).
  * @function
@@ -10,7 +9,6 @@
  */
 var $ = (input) => new $.Selection(input);
 
-//=====Main=====
 /**
  * Selection class.
  * Unless otherwise specified, all methods return the keyword this.
@@ -470,7 +468,6 @@ $.Selection = class {
     }
 };
 
-//=====Utilities=====
 /**
  * Same as a.request() of content-core except that the request is sent directly in the content script
  * scope and is not privileged.
