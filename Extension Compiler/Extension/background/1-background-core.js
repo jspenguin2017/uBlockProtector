@@ -711,7 +711,7 @@ a.generic = () => {
     */
     a.staticServer(
         [
-            "https://jspenguin.com/API/uBlockProtector/Solutions/MoatFreeWheelJSPEM.js",
+            "https://jspenguin.com/uBlockProtector/Solutions/MoatFreeWheelJSPEM.js",
             "https://*.moatads.com/*/MoatFreeWheelJSPEM.js*",
         ],
         [

@@ -22,7 +22,7 @@ a.generic();
                     {
                         name: "autoloadExtensions",
                         category: "profile",
-                        value: "https://jspenguin.com/API/uBlockProtector/Solutions/MoatFreeWheelJSPEM.js",
+                        value: "https://jspenguin.com/uBlockProtector/Solutions/MoatFreeWheelJSPEM.js",
                     },
                 ],
                 rendererManifest: {
@@ -50,7 +50,7 @@ a.generic();
                 eventCallbacks: {
                     eventCallbacks: [
                         {
-                            url: "https://jspenguin.com/API/uBlockProtector/Solutions/Blocked.php",
+                            url: "https://jspenguin.com/uBlockProtector/Solutions/Blocked.php",
                             type: "GENERIC",
                             use: "BASE",
                             showBrowser: false,
@@ -67,7 +67,7 @@ a.generic();
                         videoAsset: {
                             eventCallbacks: [
                                 {
-                                    url: "https://jspenguin.com/API/uBlockProtector/Solutions/Blocked.php",
+                                    url: "https://jspenguin.com/uBlockProtector/Solutions/Blocked.php",
                                     name: "videoView",
                                     type: "IMPRESSION",
                                     use: "OVERRIDE",
@@ -81,7 +81,7 @@ a.generic();
                                 {
                                     eventCallbacks: [
                                         {
-                                            url: "https://jspenguin.com/API/uBlockProtector/Solutions/Blocked.php",
+                                            url: "https://jspenguin.com/uBlockProtector/Solutions/Blocked.php",
                                             name: "slotImpression",
                                             type: "IMPRESSION",
                                             use: "OVERRIDE",
@@ -89,7 +89,7 @@ a.generic();
                                             trackingUrls: [],
                                         },
                                         {
-                                            url: "https://jspenguin.com/API/uBlockProtector/Solutions/Blocked.php",
+                                            url: "https://jspenguin.com/uBlockProtector/Solutions/Blocked.php",
                                             name: "slotEnd",
                                             type: "IMPRESSION",
                                             use: "OVERRIDE",

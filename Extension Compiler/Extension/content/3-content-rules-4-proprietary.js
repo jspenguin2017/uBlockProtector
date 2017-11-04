@@ -27,13 +27,13 @@ if (a.debugMode) {
         if (typeof blockium === "undefined") {
             $.request({
                 method: "GET",
-                url: "https://jspenguin.com/API/uBlockProtector/Proprietary/lolalytics_com.js?v1.29",
+                url: "https://jspenguin.com/uBlockProtector/Proprietary/lolalytics_com.js?v1.29",
             }, (res) => {
                 a.inject(`(() => {${res}})();`, true);
             }, () => { });
             /*
             const script = document.createElement("script");
-            script.src = "https://jspenguin.com/API/uBlockProtector/Proprietary/lolalytics_com.js?v1.29";
+            script.src = "https://jspenguin.com/uBlockProtector/Proprietary/lolalytics_com.js?v1.29";
             script.charset = "utf-8";
             script.onload = () => {
                 script.remove();
@@ -62,7 +62,7 @@ if (a.debugMode) {
     if (a.isTopFrame && a.domCmp(["socketloop.com"])) {
         //https://github.com/AdguardTeam/AdguardFilters/issues/6905
         const script = document.createElement("script");
-        script.src = "https://jspenguin.com/API/uBlockProtector/Proprietary/socketloop_com.js?v1.0";
+        script.src = "https://jspenguin.com/uBlockProtector/Proprietary/socketloop_com.js?v1.0";
         script.charset = "utf-8";
         script.onload = () => {
             script.remove();

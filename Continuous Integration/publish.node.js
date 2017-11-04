@@ -55,7 +55,7 @@ const packageDirectory = "./Extension Compiler/Extension";
  * The provider of extended API.
  * @const {string}
  */
-const extendedAPIProvider = "https://jspenguin.com/API/uBlockProtector";
+const extendedAPIProvider = "https://jspenguin.com/uBlockProtector";
 /**
  * The provider of secure error reporting channel.
  * @const {string}
@@ -242,7 +242,7 @@ const getLastBuildVersion = () => {
             };
         })();
         const doRequest = () => {
-            let request = https.request(url.parse(`${extendedAPIProvider}/Data.txt`), (res) => {
+            let request = https.request(url.parse(`${extendedAPIProvider}/Version`), (res) => {
                 let data = "";
                 res.setEncoding("utf8");
                 res.on("data", (c) => { data += c; });
@@ -522,7 +522,7 @@ const setLastBuildVersion = (v) => {
                 console.error("Could not save version number for next build, secure environment variables are invalid");
                 throw abortMagic;
             }
-            let request = https.request(Object.assign(url.parse(`${extendedAPIProvider}/API.php`), {
+            let request = https.request(Object.assign(url.parse(`${extendedAPIProvider}/VersionWrite.php`), {
                 method: "POST",
                 headers: {
                     "Content-Length": Buffer.byteLength(payload),

@@ -5,10 +5,10 @@
 ! === Installation test
 jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 ! === Callback API placeholder, must be blocked, this file does not actually exist
-|https://jspenguin.com/API/uBlockProtector/Solutions/Blocked.php$important
+|https://jspenguin.com/uBlockProtector/Solutions/Blocked.php$important
 ! === Files under this folder are blocked unless whitelisted, this folder does not actually exist
-|https://jspenguin.com/API/uBlockProtector/Solutions/
-@@|https://jspenguin.com/API/uBlockProtector/Solutions/MoatFreeWheelJSPEM.js|$script
+|https://jspenguin.com/uBlockProtector/Solutions/
+@@|https://jspenguin.com/uBlockProtector/Solutions/MoatFreeWheelJSPEM.js|$script
 ! === Generic
 @@|https://*.moatads.com/*/MoatFreeWheelJSPEM.js*$script
 @@|https://ads.korri.fr/index.js|$script

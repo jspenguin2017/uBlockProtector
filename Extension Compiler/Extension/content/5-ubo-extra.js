@@ -329,6 +329,7 @@ if ( !abort ) {
             'extremetech.com',
             'fieldandstream.com',
             'financialpost.com',
+            'focus.de',
             'gamerevolution.com',
             'geek.com',
             'gofugyourself.com',
