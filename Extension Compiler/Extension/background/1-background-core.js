@@ -42,7 +42,11 @@ a.init = () => {
                             req.onreadystatechange = () => {
                                 if (req.readyState === 4) {
                                     try {
-                                        args[2](req.responseText);
+                                        if (req.status === 200) {
+                                            args[2](req.responseText);
+                                        } else {
+                                            args[2](null);
+                                        }
                                     } catch (err) { }
                                 }
                             };

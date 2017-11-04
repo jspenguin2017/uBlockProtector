@@ -479,10 +479,10 @@ $.request = (details, onload, onerror) => {
 
     req.onreadystatechange = () => {
         if (req.readyState === 4) {
-            if (req.responseText === null) {
-                onerror();
-            } else {
+            if (req.status === 200) {
                 onload(req.responseText);
+            } else {
+                onerror();
             }
         }
     };
