@@ -60,7 +60,8 @@ $.Selection = class {
         return this;
     }
     /**
-     * Hide all selected elements. Current state will not be saved. Things may break if you try to show them again.
+     * Hide all selected elements. Current display mode will not be saved.
+     * Things may break if you try to show them again.
      * @method
      */
     hide() {
