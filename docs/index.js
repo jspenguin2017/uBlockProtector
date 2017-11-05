@@ -25,10 +25,12 @@ const checkInstallation = (() => {
 })();
 
 
-const token = setInterval(checkInstallation, 1000);
+{
+    const token = setInterval(checkInstallation, 1000);
 
-checkInstallation();
+    checkInstallation();
 
-setTimeout(() => {
-    clearInterval(token);
-}, 30000);
+    setTimeout(() => {
+        clearInterval(token);
+    }, 30000);
+}
