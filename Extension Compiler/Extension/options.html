@@ -91,8 +91,8 @@
     <div>
         <h4>Will there be a configurable white list?</h4>
         <p>
-            Not until I have a reliable way to synchronously send configuration data to content scripts. This is a limitation
-            of Chromium / Chrome.
+            Not until I have a reliable way to synchronously send configuration data to content scripts. This is a
+            limitation of Chromium / Chrome.
         </p>
 
         <h4>uBlock Protector is causing (further) breakage.</h4>
@@ -103,10 +103,10 @@
 
         <h4>A website freezes with uBlock Protector enabled.</h4>
         <p>
-            Some websites will intentionally freeze (with an infinite loop for example) once they detect uBlock Protector,
-            it could also be caused by a bug in uBlock Protector, either way, report it and I will try to take care of it within
-            2 days. Keep in mind that this only apply to freezings <strong>caused</strong> by uBlock Protector, other freezings
-            may not be fixed this fast.
+            Some websites will intentionally freeze (with an infinite loop for example) once they detect uBlock
+            Protector, it could also be caused by a bug in uBlock Protector, either way, report it and I will try
+            to take care of it within 2 days. Keep in mind that this only apply to freezings <strong>caused</strong>
+            by uBlock Protector, other freezings may not be fixed this fast.
         </p>
         <p>
             You can use task manager to terminate the tab that froze, go to <code>Menu -&gt; More tools -&gt; Task manager</code>,
@@ -115,15 +115,15 @@
 
         <h4>A website is still detecting uBlock Origin.</h4>
         <p>
-            uBlock Protector is not magical, a lot of websites need to be fixed on a case by case basis. Report it and I will have a look.
-            Depending on the website, it can take some time.
+            uBlock Protector is not magical, a lot of websites need to be fixed on a case by case basis. Report it
+            and I will have a look. Depending on the website, it can take some time.
         </p>
 
         <h4>I loaded this extension in a browser that is not Chromium / Chrome and it works.</h4>
         <p>
-            I am aware that this extension runs in more than just Chromium / Chrome, but I am not willing to spend time testing and
-            fixing issues specific to other browsers. Therefore, you must test to make sure issues you encounter are reproducible on
-            Chromium / Chrome before reporting them.
+            I am aware that this extension runs in more than just Chromium / Chrome, but I am not willing to spend
+            time testing and fixing issues specific to other browsers. Therefore, you must test to make sure issues
+            you encounter are reproducible on Chromium / Chrome before reporting them.
         </p>
         <p>I will only publish this extension to Web Store.</p>
 
@@ -134,15 +134,57 @@
 
     <h3>Known Issues</h3>
     <div>
+        <h4>nbc.com</h4>
+        <p>Help wanted.</p>
+        <div>
+            <details>
+                <summary>Extra information</summary>
+                <code>Geo Lock (United States of America)</code>
+                <h4>Test Links</h4>
+                <link-template>
+                    https://www.nbc.com/the-voice/video/next-kelly-clarkson-ups-the-game/3613327
+                </link-template>
+                <h4>Issues</h4>
+                <link-template>https://github.com/jspenguin2017/uBlockProtector/issues/143</link-template>
+            </details>
+        </div>
+
+        <h4>crackle.com</h4>
+        <p>Video stuck at loading. Help wanted.</p>
+        <div>
+            <details>
+                <summary>Extra information</summary>
+                <code>Geo Lock (United States of America)</code>
+                <h4>Test Links</h4>
+                <link-template>https://www.crackle.com/scary-movie-3/2498104</link-template>
+                <h4>Issues</h4>
+                <link-template>https://github.com/jspenguin2017/uBlockProtector/issues/622</link-template>
+            </details>
+        </div>
+
+        <h4>fox.com</h4>
+        <p>Preroll ads not blocked. Help wanted.</p>
+        <div>
+            <details>
+                <summary>Extra information</summary>
+                <code>Geo Lock (United States of America)</code>
+                <h4>Test Links</h4>
+                <link-template>https://www.fox.com/watch/2046d8741d77ef3febfb6004f68a55f2/</link-template>
+                <h4>Issues</h4>
+                <link-template>https://github.com/jspenguin2017/uBlockProtector/issues/660</link-template>
+            </details>
+        </div>
+
         <h4>hulu.com</h4>
         <p>
-            The Flash based video player will show a placeholder with a timer when ads fail to load. Video does continue normally once the timer finishes.
-            Help wanted.
+            The Flash based video player will show a placeholder with a timer when ads fail to load. Video does
+            continue normally once the timer finishes. Help wanted.
         </p>
         <div>
             <details>
                 <summary>Extra information</summary>
-                <code>Account Required</code> <code>Geo Lock (United States of America)</code> <code>Detects VPN</code>
+                <code>Account Required</code> <code>Geo Lock (United States of America)</code>
+                <code>Detects VPN</code>
                 <h4>Test Links</h4>
                 <link-template>https://www.hulu.com/watch/132768?d=AnimePlanet</link-template>
                 <h4>Issues</h4>
@@ -152,10 +194,14 @@
 
         <h4>cnhv.co</h4>
         <p>
-            Their Proof of Work Captcha is not bypassable, I will not add a white list as they start the mining process as soon as the page loads. The
-            control is in your hand, white list the page if you absolutely need the resource locked behind the Captcha.
+            Their Proof of Work Captcha is not bypassable, I will not add a white list as they start the mining
+            process as soon as the page loads. The control is in your hand, white list the page if you absolutely
+            need the resource locked behind the Captcha.
         </p>
-        <p>I will be fixing websites that only ask for Proof of Work when it detects uBlock Origin, but I cannot fix those that ask for it unconditionally.</p>
+        <p>
+            I will be fixing websites that only ask for Proof of Work when it detects uBlock Origin, but I cannot
+            fix those that ask for it unconditionally.
+        </p>
         <div>
             <details>
                 <summary>Extra information</summary>
@@ -165,8 +211,8 @@
         </div>
 
         <h4>
-            adageindia.in, bombaytimes.com, businessinsider.in, gizmodo.in, iamgujarat.com, idiva.com, in.techradar.com, indiatimes.com, lifehacker.co.in,
-            mensxp.com, samayam.com, gadgetsnow.com
+            adageindia.in, bombaytimes.com, businessinsider.in, gizmodo.in, iamgujarat.com, idiva.com, in.techradar.com,
+            indiatimes.com, lifehacker.co.in, mensxp.com, samayam.com, gadgetsnow.com
         </h4>
         <p>It can take up to 1 second for first party ads to be hidden. Help wanted for finding a better solution.</p>
         <div>
@@ -180,13 +226,14 @@
 
         <h4>lolalytics.com, socketloop.com</h4>
         <p>
-            After months of intense cat and mouse game, I have decided to give up. This is unfortunate but this is the only way to go. I highly recommend
-            you to stop visiting these websites. If that is not an option, you can load uBlock Protector Extension in debug mode to activate proprietary
-            solutions. Click
-            <a href="https://github.com/jspenguin2017/uBlockProtector/blob/master/Extension%20Compiler/Extension/content/3-content-rules-4-proprietary.js" target="_blank">here</a>
+            After months of intense cat and mouse game, I have decided to give up. This is unfortunate but this is the
+            only way to go. I highly recommend you to stop visiting these websites. If that is not an option, you can
+            load uBlock Protector Extension in debug mode to activate proprietary solutions. Click
+            <a href="https://github.com/jspenguin2017/uBlockProtector/blob/master/Extension%20Compiler/Extension/content/3-content-rules-4-proprietary.js"
+               target="_blank">here</a>
             to learn more, make sure to read and understand all the instructions.
         </p>
-        <p>The code for loading these proprietary solutions are not uploaded to the Web Store.</p>
+        <p>The code for loading these proprietary solutions will not uploaded to the Web Store.</p>
 
         <h4>Check open issues in the issues tracker for other known issues</h4>
     </div>
@@ -196,7 +243,8 @@
     <div>
         <p>
             Read the
-            <a href="https://github.com/jspenguin2017/uBlockProtector/blob/master/CONTRIBUTING.MD" target="_blank">contribution guideline</a>
+            <a href="https://github.com/jspenguin2017/uBlockProtector/blob/master/CONTRIBUTING.MD"
+               target="_blank">contribution guideline</a>
             then open an issue in the issues tracker if appropriate.
         </p>
     </div>
@@ -218,17 +266,19 @@
     <div>
         <p>You need to edit and load the unpacked extension if you want to enable debug mode or to change rules.</p>
         <p>
-            Debug switch is in <code>common.js</code>. It may be already on when you pull the repository. Be aware that proprietary code loaders
-            located in <code>content/3-content-rules-4-proprietary.js</code> may run when the extension is loaded in debug mode.
+            Debug switch is in <code>common.js</code>. It may be already on when you pull the repository. Be aware that
+            proprietary code loaders located in <code>content/3-content-rules-4-proprietary.js</code> may run when the
+            extension is loaded in debug mode.
         </p>
         <p>
-            Documentation of my custom API is in <code>content/content-core.js</code>, <code>content/content-domlib.js</code>, and
-            <code>background/background-core.js</code>. <code>$</code> is not jQuery.
+            Documentation of my custom API is in <code>content/content-core.js</code>, <code>content/content-domlib.js</code>,
+            and <code>background/background-core.js</code>. <code>$</code> is not jQuery.
         </p>
         <p>Rules are in <code>content/3-content-rules-*.js</code> and <code>background/background-rules.js</code>.</p>
         <p>
-            Some rules that will help with debugging, along with rules that are work in progress, are in <code>content/content-debug.js</code>
-            and <code>background/background-debug.js</code>. They will only run in debug mode.
+            Some rules that will help with debugging, along with rules that are work in progress, are in
+            <code>content/content-debug.js</code> and <code>background/background-debug.js</code>. They will only run in
+            debug mode.
         </p>
         <p><a href="https://github.com/jspenguin2017/uBlockProtector" target="_blank">View source code</a></p>
     </div>
