@@ -5,93 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="author" content="jspenguin2017" />
     <title>uBlock Protector</title>
-    <!-- CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
-    <!-- JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" charset="utf-8" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" charset="utf-8" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script>
-        "use strict";
-
-        /**
-         * Check installation of uBlock Protector.
-         * @function
-         */
-        const checkInstallation = () => {
-            //List
-            try {
-                if (window.google_ad_status === 1) {
-                    $("#listTestDiv").hide();
-                }
-            } catch (err) { }
-            //Script
-            try {
-                if (window.uBlock_Protector_Extension === true) {
-                    $("#extensionTestDiv").hide();
-                }
-            } catch (err) { }
-        };
-    </script>
+    <link rel="stylesheet" href="https://jspenguin.com/Static/Paper.css" crossorigin="anonymous" />
+    <script src="index.js" charset="utf-8" defer></script>
 </head>
 <body>
-    <div style="height:30px;"></div>
-    <!-- uBlock Protector -->
     <div class="container">
-        <div class="jumbotron">
-            <h1>uBlock Protector</h1>
-            <p>An anti-adblock defuser for uBlock Origin</p>
-            <div id="banner-ads">
-                <p style="color:red;">uBlock Origin is not enabled!</p>
-            </div>
-            <div id="listTestDiv">
-                <p style="color:red;">uBlock Protector List is not enabled!</p>
-            </div>
-            <div id="extensionTestDiv">
-                <p style="color:red;">uBlock Protector Extension is not enabled!</p>
-            </div>
-            <script>
-                "use strict";
+        <h1>uBlock Protector</h1>
 
-                //All divs are loaded, I can check installation here
-                checkInstallation();
-                //Since the function is very lightweight, I will check again every second for half a minute to prevent false positives from race conditions
-                const token = setInterval(checkInstallation, 1000);
-                setTimeout(() => {
-                    clearInterval(token);
-                }, 30000);
-            </script>
+        <p>An anti-adblock defuser for uBlock Origin</p>
+
+        <div id="banner-ads">
+            <p class="red">uBlock Origin is not enabled!</p>
+        </div>
+        <div id="list-test">
+            <p class="red">uBlock Protector List is not enabled!</p>
+        </div>
+        <div id="extension-test">
+            <p class="red">uBlock Protector Extension is not enabled!</p>
         </div>
     </div>
-    <!-- Installation instructions -->
+
     <div class="container">
-        <div class="jumbotron">
-            <h2>Installation instructions</h2>
-            <p>You must be using Chromium / Chrome and uBlock Origin to use this project.</p>
-            <p>Check out <a href="https://xuhaiyang1234.gitlab.io/AAK-Cont/">AAK-Cont</a> if you do not want to switch your setup.</p>
-            <br />
-            <p>Step 1. Enable Adblock Warning Removal List from uBlock Origin settings page.</p>
-            <!-- Spaces in href should be escaped, but uBlock Origin does not unescape them, since Chromium and Chrome allows space in href like below, I will just leave this as is -->
-            <p>
-                Step 2. Click <a href="abp://subscribe/?location=https://github.com/jspenguin2017/uBlockProtector/raw/master/uBlockProtectorList.txt&title=uBlock Protector List">here</a>
-                to install uBlock Protector List.
-            </p>
-            <!--
-            <p>
-                Step 2. Enable uBlock Protector List from uBlock Origin settings page. Cannot find it?
-                Click <a href="abp://subscribe/?location=https://github.com/jspenguin2017/uBlockProtector/raw/master/uBlockProtectorList.txt&title=uBlock Protector List">here</a> to install it manually.
-            </p>
-            -->
-            <p>Step 3. Install <a href="https://chrome.google.com/webstore/detail/ublock-protector-extensio/ggolfgbegefeeoocgjbmkembbncoadlb" target="_blank">uBlock Protector Extension</a>.</p>
-            <br />
-            <p>Click on the extension icon if you need more information.</p>
-        </div>
+        <h2>Installation instructions</h2>
+
+        <p>You must be using Chromium / Chrome and uBlock Origin to use this project.</p>
+        <p>Check out <a href="https://xuhaiyang1234.gitlab.io/AAK-Cont/">AAK-Cont</a> if you do not want to switch your setup.</p>
+        <br />
+
+        <p>Step 1. Enable Adblock Warning Removal List from uBlock Origin settings page.</p>
+        <!-- Spaces in href should be escaped, but uBlock Origin does not unescape them, since Chromium and Chrome allow spaces in href like below, I will just leave this as is -->
+        <p>
+            Step 2. Click <a href="abp://subscribe/?location=https://github.com/jspenguin2017/uBlockProtector/raw/master/uBlockProtectorList.txt&title=uBlock Protector List">here</a>
+            to install uBlock Protector List.
+        </p>
+        <p>Step 3. Install <a href="https://chrome.google.com/webstore/detail/ublock-protector-extensio/ggolfgbegefeeoocgjbmkembbncoadlb" target="_blank">uBlock Protector Extension</a>.</p>
+        <br />
+
+        <p>Click on the extension icon if you need more information.</p>
     </div>
-    <!-- Source code and license -->
+
     <div class="container">
-        <div class="jumbotron">
-            <h2>Source code and license</h2>
-            <p><a href="https://github.com/jspenguin2017/uBlockProtector" target="_blank">View on GitHub</a></p>
-        </div>
+        <h2>Source code and license</h2>
+        <p><a href="https://github.com/jspenguin2017/uBlockProtector" target="_blank">View on GitHub</a></p>
     </div>
 </body>
 </html>
