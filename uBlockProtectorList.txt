@@ -481,6 +481,12 @@ mejorescanales.com##script:inject(abort-on-property-read.js, jQuery.adblock)
 gr8forte.org###alert-block
 gr8forte.org##script:inject(abort-on-property-read.js, clickNS)
 ||static.vocento.com/adbd/
+flashx.tv,flashx.to##script:inject(abort-on-property-read.js, open)
+||flashx.tv/checkembed.php
+||static.flashx.tv/js/flashx.js$script
+||static.flashx.tv/img/player.png$image
+/adjs.js$script,important,redirect=noopjs,domain=
+/fuckadblock.js$script,important,redirect=noopjs,domain=mitele.es
 @@||lolalytics.com^$generichide
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide
@@ -534,13 +540,9 @@ gr8forte.org##script:inject(abort-on-property-read.js, clickNS)
 @@||flashx1.tv/sidead.js$script
 @@||flashx1.tv/jquery2.js$script
 @@||flashx.tv/counter.cgi$script
-@@||zencdn.net^$script,domain=flashx.tv
-||flashx.tv/checkembed.php
-||static.flashx.tv/js/flashx.js$script
-||static.flashx.tv/img/player.png$image
 @@||flashx.to/counter.cgi$script
+@@||zencdn.net^$script,domain=flashx.tv
 @@/showad_.js$script,domain=flashx.to
-flashx.tv,flashx.to##script:inject(abort-on-property-read.js, open)
 @@/crossdomain.xml$domain=channel4.com
 @@||ak.http.anno.channel4.com^$domain=channel4.com
 @@||cf.http.anno.channel4.com^$domain=channel4.com
@@ -551,6 +553,7 @@ flashx.tv,flashx.to##script:inject(abort-on-property-read.js, open)
 @@||acortar.net/rollups/aes.js$domain=dclinks.info
 @@||fwmrm.net/ad/g/$xmlhttprequest,domain=q2.be|vtm.be|medialaancdn.be|medialaan.be
 @@||rtl.be/videos/player/vp4_webanalytics.js$script,first-party
+@@||akamaihd.net^$xmlhttprequest,domain=mitele.es
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================

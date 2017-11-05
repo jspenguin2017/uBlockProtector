@@ -755,3 +755,11 @@ gr8forte.org###alert-block
 gr8forte.org##script:inject(abort-on-property-read.js, clickNS)
 ! === diariosur.es
 ||static.vocento.com/adbd/
+! === flashx.tv, flashx.to
+flashx.tv,flashx.to##script:inject(abort-on-property-read.js, open)
+||flashx.tv/checkembed.php
+||static.flashx.tv/js/flashx.js$script
+||static.flashx.tv/img/player.png$image
+! === mitele.es
+/adjs.js$script,important,redirect=noopjs,domain=
+/fuckadblock.js$script,important,redirect=noopjs,domain=mitele.es
