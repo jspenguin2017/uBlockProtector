@@ -32,4 +32,4 @@
 ! === rtl.be
 @@||rtl.be/videos/player/vp4_webanalytics.js$script,first-party
 ! === mitele.es
-@@||akamaihd.net^$xmlhttprequest,domain=mitele.es
+@@||akamaihd.net^$xmlhttprequest,script,domain=mitele.es
