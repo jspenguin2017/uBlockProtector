@@ -487,6 +487,7 @@ flashx.tv,flashx.to##script:inject(abort-on-property-read.js, open)
 ||static.flashx.tv/img/player.png$image
 dailyuploads.net###adblockinfo
 programminginsider.com##script:inject(addEventListener-defuser.js, load, ad-blocker)
+||allnorilsk.ru/js/adb.js
 @@||lolalytics.com^$generichide
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide
