@@ -46,3 +46,4 @@
 @@||aftonbladet.se^$generichide
 @@||wp.pl^$generichide
 @@||anonymousemail.me^$generichide
+@@||playstation.com^$generichide

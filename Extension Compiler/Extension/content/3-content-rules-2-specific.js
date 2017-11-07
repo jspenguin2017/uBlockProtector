@@ -3088,3 +3088,6 @@ if (a.domCmp(["letribunaldunet.fr"])) {
 if (a.domCmp(["filmweb.pl"])) {
     a.noAccessExt("document.onreadystatechange");
 }
+if (a.domCmp(["playstation.com"])) {
+    a.readOnly("adFileLoaded", true);
+}

@@ -534,6 +534,7 @@ dailyuploads.net###adblockinfo
 @@||aftonbladet.se^$generichide
 @@||wp.pl^$generichide
 @@||anonymousemail.me^$generichide
+@@||playstation.com^$generichide
 @@||imasdk.googleapis.com/js/sdkloader/outstream.js$script,domain=ovar.io
 @@||flashx1.tv/js/showad*.js$script
 @@||flashx1.tv/sidead.js$script
