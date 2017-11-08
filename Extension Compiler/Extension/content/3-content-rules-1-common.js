@@ -102,7 +102,7 @@ if (a.domCmp(["vidoza.net", "videowood.tv", "l2s.io", "adshort.co", "linksh.top"
     "wiziwig.to", "wiziwig.tv", "myp2p.biz", "myp2p.tv", "myp2p.la", "myp2p.ec", "myp2p.eu", "myp2p.sx",
     "myp2p.ws", "myp2p.com", "atdhe.ru", "atdhe.se", "atdhe.bz", "atdhe.top", "u2s.io", "linclik.com",
     "iiv.pl", "linkkawy.com", "zlshorte.net", "ur.ly", "oload.stream", "sawlive.tv", "arenavision.in",
-    "urle.co", "oload.info", "shink.me", "doramasflv.net", "backin.net"])) {
+    "urle.co", "oload.info", "shink.me", "doramasflv.net", "backin.net", "adshort.im"])) {
     a.filter("open");
 }
 if (a.domCmp(["drivearabia.com", "putlocker.com", "doatoolsita.altervista.org", "sockshare.com",
@@ -124,7 +124,7 @@ if (a.domCmp(["apkmirror.com", "freepdf-books.com", "bc.vc", "themeslide.com", "
     "leenlink.com", "linkkawy.com", "cut-egy.ml", "igram.im", "adlinkme.com", "oke.io", "wolink.in",
     "bilink.xyz", "git.tc", "zlshorte.net", "shink.me", "oload.stream", "egy-links.com", "infinityurl.co",
     "adsurl.xyz", "firstonetv.net", "lkcash.net", "123link.io", "curs.io", "psl.io", "teqani-plus.com",
-    "link-money.com", "meulink.tk", "mlink.club", "shink.xyz", "tui.click"])) {
+    "link-money.com", "meulink.tk", "mlink.club", "shink.xyz", "tui.click", "adshort.im"])) {
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
 if (a.domCmp(["katfile.com", "goldescargas.com", "globalbesthosting.com", "userupload.net",
@@ -223,7 +223,8 @@ if (a.domCmp(["cutwin.com", "cut-urls.com", "adbull.me", "xess.pro", "clik.pw", 
     "adshort.co", "linksh.top", "adshorte.com", "coinb.ink", "l2s.io", "shortzero.com", "veneapp.com", "coinlink.us",
     "tmearn.com", "url.gem-flash.com", "cuturlink.com", "shorteurl.com", "linkkawy.com", "cut-egy.ml", "igram.im",
     "adlinkme.com", "ecut.io", "bit-url.com", "cut-earn.com", "adbilty.me", "egy-links.com", "infinityurl.co",
-    "adsurl.xyz", "lkcash.net", "123link.io", "curs.io", "psl.io", "teqani-plus.com", "meulink.tk", "tui.click"])) {
+    "adsurl.xyz", "lkcash.net", "123link.io", "curs.io", "psl.io", "teqani-plus.com", "meulink.tk", "tui.click",
+    "adshort.im"])) {
     a.bait("div", "#test-block", true);
 }
 if (a.domCmp(["filecom.net", "upshare.org", "skippyfile.com", "mwfiles.net", "up-flow.org", "globeslot.com"])) {
