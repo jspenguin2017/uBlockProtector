@@ -124,7 +124,7 @@ if (a.domCmp(["apkmirror.com", "freepdf-books.com", "bc.vc", "themeslide.com", "
     "leenlink.com", "linkkawy.com", "cut-egy.ml", "igram.im", "adlinkme.com", "oke.io", "wolink.in",
     "bilink.xyz", "git.tc", "zlshorte.net", "shink.me", "oload.stream", "egy-links.com", "infinityurl.co",
     "adsurl.xyz", "firstonetv.net", "lkcash.net", "123link.io", "curs.io", "psl.io", "teqani-plus.com",
-    "link-money.com", "meulink.tk", "mlink.club", "shink.xyz", "tui.click", "adshort.im"])) {
+    "link-money.com", "meulink.tk", "mlink.club", "shink.xyz", "tui.click", "adshort.im", "123link.press"])) {
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
 if (a.domCmp(["katfile.com", "goldescargas.com", "globalbesthosting.com", "userupload.net",
