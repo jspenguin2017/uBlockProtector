@@ -767,3 +767,5 @@ programminginsider.com##script:inject(addEventListener-defuser.js, load, ad-bloc
 programminginsider.com##.g1-top:style(display: block !important;)
 ! === allnorilsk.ru
 ||allnorilsk.ru/js/adb.js
+! === discudemy.com
+discudemy.com##.closeAdBlock
