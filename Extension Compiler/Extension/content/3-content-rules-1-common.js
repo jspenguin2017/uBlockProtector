@@ -246,7 +246,3 @@ if (a.domCmp(["freesportsbet.com", "sportsplays.com"])) {
 if (a.domCmp(["bitcoiner.net", "litecoiner.net"])) {
     a.bait("div", "#ad-top");
 }
-if (a.domCmp(["animezone.pl"])) {
-    a.filter("eval", a.matchMethod.string, "googlesyndication");
-    a.noAccess("o6c6e");
-}

@@ -3091,3 +3091,13 @@ if (a.domCmp(["filmweb.pl"])) {
 if (a.domCmp(["playstation.com"])) {
     a.readOnly("adFileLoaded", true);
 }
+if (a.domCmp(["animezone.pl", "egy.best"])) {
+    a.filter("eval", a.matchMethod.string, "googlesyndication");
+}
+if (a.domCmp(["animezone.pl"])) {
+    a.noAccess("o6c6e");
+}
+if (a.domCmp(["egy.best"])) {
+    a.generic.FuckAdBlock("_AdBlock", "_AdBlock_init");
+    a.noAccess("V4d4P");
+}
