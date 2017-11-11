@@ -1956,6 +1956,13 @@ if (a.domCmp(["rtl.be"])) {
         }
     });
 }
+if (a.domCmp(["tv4play.se"])) {
+    a.loopbackXHR((ignored, url) => {
+        if (url.includes("svonm.com/global_config.json")) {
+            return `{ "enabled": false }`;
+        }
+    });
+}
 if (a.domCmp(["new-skys.net"])) {
     a.noAccess("alert");
 }
