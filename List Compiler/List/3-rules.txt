@@ -69,18 +69,20 @@
 ||w.nfd81.com^$third-party
 ||w.nn0e.com^$third-party
 ||w.rpts.org^$third-party
-! === adiode.com
-! === https://github.com/jspenguin2017/uBlockProtector/issues/346
-||adiode.com^$third-party
 ! === AdSense, DoubleClick
 ||googlesyndication.com^$important,domain=short.am|clubedohardware.com.br|receive-a-sms.com
 ||doubleclick.net^$important,domain=aetv.com|history.com|mylifetime.com|receive-a-sms.com
+! === Preroll Ads
+||damoh.*^$media
 ! === OptinMonster
 ! === https://github.com/jspenguin2017/uBlockProtector/issues/251
 ||a.optnmnstr.com^$third-party
 ||a.optnmstr.com^$third-party
 ! === ZergNet
 ||zergnet.com^$script,third-party
+! === adiode.com
+! === https://github.com/jspenguin2017/uBlockProtector/issues/346
+||adiode.com^$third-party
 ! === itv.com
 ! === https://github.com/jspenguin2017/uBlockProtector/issues/286
 ||spike.itv.com/itv/tserver/size=*/viewid=
@@ -229,7 +231,6 @@ ally.sh,al.ly##script:inject(popads.net.js)
 ||hackintosh.*/donate/donate.php
 ! === aftonbladet.se
 ! === https://github.com/jspenguin2017/uBlockProtector/issues/163
-||damoh.*^$media
 ||ooul.tv/contrib/se-aftonbladet/aab/aftonbladet_plugin.js$script,redirect=noopjs,domain=aftonbladet.se
 ||ooul.tv/nocache/se-aftonbladet/aab/aftonbladet_config.js$script,redirect=noopjs,domain=aftonbladet.se
 ! === filechoco.net, keezmovies.com, raptu.com, afreesms.com
