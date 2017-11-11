@@ -769,3 +769,5 @@ programminginsider.com##.g1-top:style(display: block !important;)
 ||allnorilsk.ru/js/adb.js
 ! === discudemy.com
 discudemy.com##.closeAdBlock
+! === okdiario.com
+||okdiario.com/*/check-blocker.js
