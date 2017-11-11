@@ -142,16 +142,11 @@ const serialize = (obj) => {
  */
 const secureErrorReport = (ref, err) => {
     console.log("Reporting this error to a secure channel...");
-    let payload;
-    try {
-        if (typeof ref !== "string" || typeof err !== "string") {
-            throw new Error("Invalid Reference or Message");
-        }
-        payload = `send\n${ref}\n${err}`;
-    } catch (err) {
+    if (typeof ref !== "string" || typeof err !== "string") {
         console.error("Could not report error, reference or message is not valid");
         throw abortMagic;
     }
+    const payload = `send\n${ref}\n${err}`;
 
     let request = https.request(Object.assign(url.parse(secureErrorReportProvider), {
         method: "POST",
@@ -277,16 +272,17 @@ const getLocalVersion = () => {
                 console.error("Could not obtain local version number, could not open manifest");
                 throw abortMagic;
             } else {
+                let ver;
                 try {
-                    const ver = JSON.parse(data).version;
-                    if ((/^\d+\.\d+$/).test(ver)) {
-                        resolve(new Version(ver));
-                    } else {
-                        console.error("Could not obtain local version number, manifest does not contain a valid version");
-                        throw abortMagic;
-                    }
+                    ver = JSON.parse(data).version;
                 } catch (err) {
                     console.error("Could not obtain local version number, unparsable manifest");
+                    throw abortMagic;
+                }
+                if ((/^\d+\.\d+$/).test(ver)) {
+                    resolve(new Version(ver));
+                } else {
+                    console.error("Could not obtain local version number, manifest does not contain a valid version");
                     throw abortMagic;
                 }
             }
@@ -361,17 +357,18 @@ const OAuth2 = () => {
                 throw abortMagic;
             });
             res.on("end", () => {
+                let response
                 try {
-                    const response = JSON.parse(data);
-                    if (response.error || typeof response.access_token !== "string") {
-                        console.error("Could not obtain access token, remote server returned an error");
-                        secureErrorReport(`${secureErrorReportPrefix}OAuth2 Error`, data);
-                    } else {
-                        resolve(response.access_token);
-                    }
+                    response = JSON.parse(data);
                 } catch (err) {
                     console.error("Could not obtain access token, unparsable response");
                     throw abortMagic;
+                }
+                if (response.error || typeof response.access_token !== "string") {
+                    console.error("Could not obtain access token, remote server returned an error");
+                    secureErrorReport(`${secureErrorReportPrefix}OAuth2 Error`, data);
+                } else {
+                    resolve(response.access_token);
                 }
             });
         });
@@ -409,20 +406,21 @@ const upload = (token, data) => {
                 throw abortMagic;
             });
             res.on("end", () => {
+                let response;
                 try {
-                    const response = JSON.parse(data);
-                    if (response.uploadState === "SUCCESS") {
-                        resolve();
-                    } else if (response.uploadState === "IN_PROGRESS") {
-                        console.log("Remote server is processing the uploaded package, continuing in 1 minute...");
-                        setTimeout(resolve, 60 * 1000); //Wait a minute
-                    } else {
-                        console.error("Could not upload new build, remote server returned an error");
-                        secureErrorReport(`${secureErrorReportPrefix}Upload Failed`, data);
-                    }
+                    response = JSON.parse(data);
                 } catch (err) {
                     console.error("Could not upload new build, unparsable response");
                     throw abortMagic;
+                }
+                if (response.uploadState === "SUCCESS") {
+                    resolve();
+                } else if (response.uploadState === "IN_PROGRESS") {
+                    console.log("Remote server is processing the uploaded package, continuing in 1 minute...");
+                    setTimeout(resolve, 60 * 1000); //Wait a minute
+                } else {
+                    console.error("Could not upload new build, remote server returned an error");
+                    secureErrorReport(`${secureErrorReportPrefix}Upload Failed`, data);
                 }
             });
         });
@@ -460,24 +458,25 @@ const publish = (token) => {
                 throw abortMagic;
             });
             res.on("end", () => {
+                let response;
                 try {
-                    const response = JSON.parse(data);
-                    if (response.error) {
-                        console.error("Could not publish new build, remote server returned an error");
-                        secureErrorReport(`${secureErrorReportPrefix}Publish Failed`, data);
-                    } else if (response.status.includes("OK")) {
-                        console.log("New build is published");
-                        resolve();
-                    } else if (response.status.includes("ITEM_PENDING_REVIEW")) {
-                        console.log("New build is published, but it is currently under review");
-                        resolve();
-                    } else {
-                        console.error("Could not publish new build, remote server returned an error");
-                        secureErrorReport(`${secureErrorReportPrefix}Publish Failed`, data);
-                    }
+                    response = JSON.parse(data);
                 } catch (err) {
                     console.error("Could not publish new build, unparsable response");
                     throw abortMagic;
+                }
+                if (response.error) {
+                    console.error("Could not publish new build, remote server returned an error");
+                    secureErrorReport(`${secureErrorReportPrefix}Publish Failed`, data);
+                } else if (response.status.includes("OK")) {
+                    console.log("New build is published");
+                    resolve();
+                } else if (response.status.includes("ITEM_PENDING_REVIEW")) {
+                    console.log("New build is published, but it is currently under review");
+                    resolve();
+                } else {
+                    console.error("Could not publish new build, remote server returned an error");
+                    secureErrorReport(`${secureErrorReportPrefix}Publish Failed`, data);
                 }
             });
         });
@@ -512,16 +511,11 @@ const setLastBuildVersion = (v) => {
             };
         })();
         const doRequest = () => {
-            let payload;
-            try {
-                if (typeof process.env.VERSION_KEY !== "string") {
-                    throw "Secure Environment Variables Missing";
-                }
-                payload = `${process.env.VERSION_KEY}\n${v.toString()}`;
-            } catch (err) {
+            if (typeof process.env.VERSION_KEY !== "string") {
                 console.error("Could not save version number for next build, secure environment variables are invalid");
                 throw abortMagic;
             }
+            const payload = `${process.env.VERSION_KEY}\n${v.toString()}`;
             let request = https.request(Object.assign(url.parse(`${extendedAPIProvider}/VersionWrite.php`), {
                 method: "POST",
                 headers: {
