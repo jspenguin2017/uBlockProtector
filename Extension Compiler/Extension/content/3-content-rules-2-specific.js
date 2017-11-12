@@ -3108,3 +3108,26 @@ if (a.domCmp(["egy.best"])) {
     a.generic.FuckAdBlock("_AdBlock", "_AdBlock_init");
     a.noAccess("V4d4P");
 }
+if (a.domCmp(["player.radioloyalty.com"])) {
+    a.beforeScript((script) => {
+        if (script.textContent &&
+            script.textContent.includes("mainView = new MainView({model: playerManager});")) {
+            script.textContent = script.textContent.replace("mainView", "window._mainView = mainView");
+            setTimeout(() => {
+                a.inject(() => {
+                    "use strict";
+                    window.setTimeout(() => {
+                        window.$("#videoPlayerModal").modal("hide");
+                    }, 1000);
+                    window.Object.defineProperty(window._mainView.player.player.attributes, "playingAd", {
+                        configurable: false,
+                        set() { },
+                        get() {
+                            return false;
+                        },
+                    });
+                });
+            }, 100);
+        }
+    });
+}
