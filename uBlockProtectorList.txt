@@ -136,7 +136,6 @@ anonymousemail.me##div.onp-sociallocker
 descargatelocorp.com##div[id^="informer"]:style(display: block !important; opacity: 1 !important; max-height: none !important;)
 descargatelocorp.com##div[class*="cool_ramka"]
 ||lukkr.com/website/pf.js
-||doopads.com/DoopADS.js
 live.com##div:if(:scope > div > span:has-text(an ad blocker))
 live.com##div:if(:scope > div > div > span:has-text(an ad blocker))
 ||adv.wp.pl/$media,redirect=noopmp3-0.1s,important
