@@ -491,6 +491,8 @@ programminginsider.com##.g1-top:style(display: block !important;)
 ||allnorilsk.ru/js/adb.js
 discudemy.com##.closeAdBlock
 ||okdiario.com/*/check-blocker.js
+radioloyalty.com###bottomDisplayAd
+radioloyalty.com###mainDisplayAd
 @@||lolalytics.com^$generichide
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide

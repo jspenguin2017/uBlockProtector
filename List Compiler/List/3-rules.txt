@@ -772,3 +772,6 @@ programminginsider.com##.g1-top:style(display: block !important;)
 discudemy.com##.closeAdBlock
 ! === okdiario.com
 ||okdiario.com/*/check-blocker.js
+! === radioloyalty.com
+radioloyalty.com###bottomDisplayAd
+radioloyalty.com###mainDisplayAd
