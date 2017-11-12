@@ -139,8 +139,12 @@ anonymousemail.me##div.onp-sociallocker-content:style(display: block !important;
 anonymousemail.me##div.onp-sociallocker
 descargatelocorp.com##div[id^="informer"]:style(display: block !important; opacity: 1 !important; max-height: none !important;)
 descargatelocorp.com##div[class*="cool_ramka"]
+! === lukkr.com
 ! === https://github.com/jspenguin2017/uBlockProtector/issues/254
 ||lukkr.com/website/pf.js
+! === doopads.com
+! === https://github.com/reek/anti-adblock-killer/issues/3729
+||doopads.com/DoopADS.js
 ! ==============================
 ! ===== Specific solutions =====
 ! ==============================
