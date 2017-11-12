@@ -3135,3 +3135,18 @@ if (a.domCmp(["player.radioloyalty.com"])) {
         }
     });
 }
+if (a.domCmp(["insuranceloansonline.com"])) {
+    a.css("#openPubli { display:none; }")
+    a.ready(() => {
+        a.inject(() => {
+            "use strict";
+            const isLink = /^https?:\/\//;
+            for (let key in window) {
+                if (key.length === 1 && isLink.test(window[key])) {
+                    location.href = window[key];
+                    break;
+                }
+            }
+        });
+    });
+}
