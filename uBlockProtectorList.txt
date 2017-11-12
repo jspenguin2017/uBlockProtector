@@ -493,6 +493,7 @@ discudemy.com##.closeAdBlock
 ||okdiario.com/*/check-blocker.js
 radioloyalty.com###bottomDisplayAd
 radioloyalty.com###mainDisplayAd
+moviesroom.pl###advert-notice
 @@||lolalytics.com^$generichide
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide
