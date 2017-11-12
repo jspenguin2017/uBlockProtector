@@ -1727,7 +1727,9 @@ if (a.domCmp(["gaybeeg.info"])) {
     a.ready(() => {
         $(".download a.button").each((elem) => {
             elem.classList.remove("locked");
-            elem.href = elem.dataset.href;
+            if (elem.dataset.href) {
+                elem.href = elem.dataset.href;
+            }
         });
     });
 }
@@ -1736,7 +1738,9 @@ if (a.domCmp(["netdna-storage.com"])) {
     a.noAccess("uid");
     a.ready(() => {
         $(".plan-footer-item").each((elem) => {
-            elem.href = elem.dataset.link;
+            if (elem.dataset.link) {
+                elem.href = elem.dataset.link;
+            }
         });
     });
 }
