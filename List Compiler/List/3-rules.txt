@@ -105,6 +105,7 @@ zmovs.com##.inplayer_banners
 ###adblockBanner
 ###like-us-adblock-modal
 ##.admania_adblock_detector
+##.o-AdhesionNotifier
 ##.popup-premium__apla
 ! === Generic Network Rules
 */adblock-detector/*
@@ -690,8 +691,6 @@ maisgasolina.com##script:inject(setTimeout-defuser.js, window.google_jobrunner)
 @@||vaughnlive.tv/ad/banner/_adsense_/_adserver/_adview_.ad.json$xmlhttprequest,first-party
 ! === insuranceage.co.uk
 ||adpass.co.uk^
-! === foodnetwork.com
-foodnetwork.com##.o-AdhesionNotifier
 ! === strefadb.pl
 strefadb.pl###videoad
 ! === ultimate-catch.eu
