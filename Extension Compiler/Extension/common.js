@@ -1,4 +1,4 @@
-//Constants, used by both background and content script
+//Common bootstrapper, used by both background and content script
 "use strict";
 
 /**
