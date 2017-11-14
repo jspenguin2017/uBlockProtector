@@ -3143,7 +3143,7 @@ if (a.domCmp(["insuranceloansonline.com"])) {
             const isLink = /^https?:\/\//;
             for (let key in window) {
                 if (key.length === 1 && isLink.test(window[key])) {
-                    location.href = window[key];
+                    window.location.href = window[key];
                     break;
                 }
             }
