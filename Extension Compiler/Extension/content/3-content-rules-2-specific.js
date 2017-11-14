@@ -3102,7 +3102,7 @@ if (a.domCmp(["filmweb.pl"])) {
 if (a.domCmp(["playstation.com"])) {
     a.readOnly("adFileLoaded", true);
 }
-if (a.domCmp(["animezone.pl", "egy.best"])) {
+if (a.domCmp(["animezone.pl", "egy.best", "newpct.com"])) {
     a.filter("eval", a.matchMethod.string, "googlesyndication");
 }
 if (a.domCmp(["animezone.pl"])) {
@@ -3111,6 +3111,9 @@ if (a.domCmp(["animezone.pl"])) {
 if (a.domCmp(["egy.best"])) {
     a.generic.FuckAdBlock("_AdBlock", "_AdBlock_init");
     a.noAccess("V4d4P");
+}
+if (a.domCmp(["newpct.com"])) {
+    a.noAccess("Y9z5A");
 }
 if (a.domCmp(["player.radioloyalty.com"])) {
     a.beforeScript((script) => {

@@ -734,9 +734,9 @@ avgle.com##div:has(:scope > div#blocked-if)
 avgle.com###aoverlay
 ! === animeheaven.eu
 @@||animeheaven.eu^$script,first-party
-! === gej-porno.pl
+! === gej-porno.pl, animezone.pl, egy.best, newpct.com
 gej-porno.pl#@#.myTestAd
-gej-porno.pl##a[href^="//"]
+gej-porno.pl,animezone.pl,egy.best,newpct.com##a[href^="//"]
 ! === m.delfi.ee
 m.delfi.ee##.md-banner-placement
 ! === jacquieetmicheltv.net
