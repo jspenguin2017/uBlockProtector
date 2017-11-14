@@ -2511,7 +2511,7 @@ if (a.domCmp(["telecinco.es", "cuatro.com", "divinity.es", "factoriadeficcion.co
                 return original.call(window.document, id, ...rest);
             }
         }
-    })
+    });
 }
 if (a.domCmp(["webcafe.bg"])) {
     a.readOnly("bDetect", false);
