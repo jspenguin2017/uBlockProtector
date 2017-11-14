@@ -494,6 +494,7 @@ discudemy.com##.closeAdBlock
 radioloyalty.com###bottomDisplayAd
 radioloyalty.com###mainDisplayAd
 moviesroom.pl###advert-notice
+@@||playview.io/*/showads.js$xmlhttprequest,first-party
 @@||lolalytics.com^$generichide
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide

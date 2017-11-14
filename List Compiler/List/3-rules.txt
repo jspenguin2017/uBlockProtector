@@ -777,3 +777,5 @@ radioloyalty.com###bottomDisplayAd
 radioloyalty.com###mainDisplayAd
 ! === moviesroom.pl
 moviesroom.pl###advert-notice
+! === playview.io
+@@||playview.io/*/showads.js$xmlhttprequest,first-party
