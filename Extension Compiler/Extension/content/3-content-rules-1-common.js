@@ -28,7 +28,7 @@
         "imgur.com", "imgbox.com", "flickr.com",
         //Handled by specific rules
         "anandabazar.com", "o2.pl", "vod.pl", "viasatsport.se", "viasport.fi", "tv3sport.dk",
-        "viasport.no", "strefadb.pl", "wp.pl",
+        "viasport.no", "strefadb.pl", "wp.pl", "ostrzeszowinfo.pl",
         //Handled by proprietary rules
         "lolalytics.com", "socketloop.com",
         //False positives
