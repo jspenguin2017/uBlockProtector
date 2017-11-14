@@ -1633,7 +1633,7 @@ if (a.domCmp(["sthelensstar.co.uk", "runcornandwidnesworld.co.uk", "leighjournal
     "freepressseries.co.uk", "monmouthshirecountylife.co.uk", "barryanddistrictnews.co.uk",
     "penarthtimes.co.uk", "eveningtimes.co.uk", "s1cars.com", "s1community.com", "s1homes.com",
     "s1jobs.com", "s1rental.com", "thescottishfarmer.co.uk", "heraldscotland.com", "thenational.scot"])) {
-    //These are NewsQuest related domains, add other domains that share this rule elsewhere
+    //These are NewsQuest related domains, put other domains that share this rule elsewhere
     //https://github.com/jspenguin2017/uBlockProtector/issues/137
     a.readOnly("_sp_", null);
 }
