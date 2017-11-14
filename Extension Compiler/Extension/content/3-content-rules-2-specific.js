@@ -3153,6 +3153,6 @@ if (a.domCmp(["insuranceloansonline.com"])) {
 if (a.domCmp(["letras.mus.br"])) {
     a.readOnly("canAds", true);
 }
-if (a.domCmp(["ostrzeszowinfo.pl"])) {
+if (a.domCmp(["ostrzeszowinfo.pl", "infostrow.pl"])) {
     a.readOnly("canRunAds", undefined);
 }
