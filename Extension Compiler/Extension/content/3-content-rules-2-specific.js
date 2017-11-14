@@ -3150,3 +3150,6 @@ if (a.domCmp(["insuranceloansonline.com"])) {
         });
     });
 }
+if (a.domCmp(["letras.mus.br"])) {
+    a.readOnly("canAds", true);
+}
