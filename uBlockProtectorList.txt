@@ -495,7 +495,7 @@ radioloyalty.com###bottomDisplayAd
 radioloyalty.com###mainDisplayAd
 moviesroom.pl###advert-notice
 @@||playview.io/*/showads.js$xmlhttprequest,first-party
-dogecatch.website###fuck-adb-not-enabled
+dogecatch.website,dashcatch.xyz###fuck-adb-not-enabled
 @@||lolalytics.com^$generichide
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide

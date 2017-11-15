@@ -1,7 +1,7 @@
 //Content rules for specific websites
 "use strict";
 
-if (a.domCmp(["catchcoin.pw", "irc-source.com", "dogecatch.website"])) {
+if (a.domCmp(["catchcoin.pw", "irc-source.com", "dogecatch.website", "dashcatch.xyz"])) {
     a.noAccess("adBlockDetected");
 }
 if (a.domCmp(["mid-day.com", "happytrips.com", "jagranjunction.com"])) {
