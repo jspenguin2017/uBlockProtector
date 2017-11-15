@@ -1,7 +1,7 @@
 //Content rules for sticky websites
 "use strict";
 
-if ((/^anime(?:dao|take)\d*?\.xyz$/).test(document.domain)) {
+if ((/^anime(?:dao|take)\d*?\.[^.]+$/).test(document.domain)) {
     //These websites use rolling domains to dodge scriptlet rules
     a.beforeScript((script) => {
         if (script.textContent && script.textContent.includes("adblockDetect")) {
