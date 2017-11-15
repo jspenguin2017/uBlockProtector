@@ -494,6 +494,7 @@ discudemy.com##.closeAdBlock
 radioloyalty.com###bottomDisplayAd
 radioloyalty.com###mainDisplayAd
 moviesroom.pl###advert-notice
+playview.io##.ads_player
 @@||playview.io/*/showads.js$xmlhttprequest,first-party
 dogecatch.website,dashcatch.xyz###fuck-adb-not-enabled
 @@||lolalytics.com^$generichide
