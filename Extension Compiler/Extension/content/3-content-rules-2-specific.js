@@ -2644,10 +2644,12 @@ if (a.domCmp(["identi.li"])) {
             const blocks = window.document.querySelectorAll(".info_bbc");
             for (let i = 0; i < blocks.length; i++) {
                 if (!blocks[i].firstChild.tagName) {
-                    const links = window.GibberishAES.dec(blocks[i].textContent, window.hash);
-                    blocks[i].innerHTML = window.linkify(links);
-                    blocks[i].style.display = "block";
-                    blocks[i].parentNode.previousSibling.remove();
+                    try {
+                        const links = window.GibberishAES.dec(blocks[i].textContent, window.hash);
+                        blocks[i].innerHTML = window.linkify(links);
+                        blocks[i].style.display = "block";
+                        blocks[i].parentNode.previousSibling.remove();
+                    } catch (err) { }
                 }
             }
             if (window.$) {
