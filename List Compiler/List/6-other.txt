@@ -1865,7 +1865,4 @@ urlchecker.net###ads_notify
 urlchecker.org###adchecker
 urlchecker.org###adchecker_btn
 urlchecker.org###ads_notify
-@@||cdn.jsdelivr.net/jwplayer/5.10/jwplayer.js$script
-@@||vjs.zencdn.net/4.12/video.js$script
-@@||jwpsrv.com/library/5V3tOP97EeK2SxIxOUCPzg.js$script
 gaara-fr.com###ga-skin-top
