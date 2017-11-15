@@ -2495,6 +2495,7 @@ if (a.domCmp(["mitele.es"])) {
     a.inject(() => {
         "use strict";
         window.google = {};
+        window.AkaHTML5MediaAnalytics = class { };
     });
 }
 if (a.domCmp(["telecinco.es", "cuatro.com", "divinity.es", "factoriadeficcion.com", "energytv.es", "bemad.es",
