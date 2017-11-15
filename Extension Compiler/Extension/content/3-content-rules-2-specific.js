@@ -2642,12 +2642,13 @@ if (a.domCmp(["identi.li"])) {
     a.ready(() => {
         a.inject(() => {
             "use strict";
+            const nbsp = /&nbsp;/g;
             const blocks = window.document.querySelectorAll(".info_bbc");
             for (let i = 0; i < blocks.length; i++) {
                 if (!blocks[i].firstChild.tagName) {
                     try {
                         const links = window.GibberishAES.dec(blocks[i].textContent, window.hash);
-                        blocks[i].innerHTML = window.linkify(links);
+                        blocks[i].innerHTML = window.linkify(links.replace(nbsp, " "));
                         blocks[i].style.display = "block";
                         blocks[i].parentNode.previousSibling.remove();
                     } catch (err) { }
