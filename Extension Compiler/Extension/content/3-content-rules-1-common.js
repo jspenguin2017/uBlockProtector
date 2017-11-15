@@ -214,7 +214,7 @@ if (a.domCmp(["720pmkv.com", "psarips.com"])) {
 }
 if (a.domCmp(["osoarcade.com", "d3brid4y0u.info", "fileice.net", "nosteam.ro", "openrunner.com", "easybillets.com",
     "spox.fr", "yovoyages.com", "tv3.co.nz", "freeallmusic.info", "putlocker.com", "sockshare.com", "dramapassion.com",
-    "yooclick.com", "online.ua", "tgo-tv.com", "bitcoiner.net", "litecoiner.net"])) {
+    "yooclick.com", "online.ua", "tgo-tv.com", "bitcoiner.net", "litecoiner.net", "dogecatch.website"])) {
     a.bait("div", "#tester");
 }
 if (a.domCmp(["alein.org"])) {
