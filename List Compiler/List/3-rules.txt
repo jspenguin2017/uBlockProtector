@@ -283,8 +283,8 @@ animeid.io,jkanime.co,gogoanime.ch,chiaanime.co,animeflv.co##script:inject(setTi
 @@||comicincorrect.wpengine.netdna-cdn.com/wp-content/uploads/
 ! === savetodrive.net
 savetodrive.net##script:inject(setTimeout-defuser.js, ad)
-! === rarbgmirror.com, swfchan.net, swfchan.com, zippyshare.com, leech.ae, vizer.tv, liens-telechargement.com
-rarbgmirror.com,swfchan.net,swfchan.com,zippyshare.com,leech.ae,vizer.tv,liens-telechargement.com##script:inject(abort-on-property-read.js, open)
+! === rarbgmirror.com, swfchan.net, swfchan.com, zippyshare.com, leech.ae, vizer.tv
+rarbgmirror.com,swfchan.net,swfchan.com,zippyshare.com,leech.ae,vizer.tv##script:inject(abort-on-property-read.js, open)
 ! === pipocas.tv
 ||googlesyndication.com^$script,redirect=noopjs,domain=pipocas.tv
 ! === steamcustomizer.com

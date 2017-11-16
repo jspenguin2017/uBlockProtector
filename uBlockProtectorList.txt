@@ -216,7 +216,7 @@ pwn.pl,vendiscuss.net##script:inject(abort-on-property-read.js, adblock)
 animeid.io,jkanime.co,gogoanime.ch,chiaanime.co,animeflv.co##script:inject(setTimeout-defuser.js, #player)
 @@||comicincorrect.wpengine.netdna-cdn.com/wp-content/uploads/
 savetodrive.net##script:inject(setTimeout-defuser.js, ad)
-rarbgmirror.com,swfchan.net,swfchan.com,zippyshare.com,leech.ae,vizer.tv,liens-telechargement.com##script:inject(abort-on-property-read.js, open)
+rarbgmirror.com,swfchan.net,swfchan.com,zippyshare.com,leech.ae,vizer.tv##script:inject(abort-on-property-read.js, open)
 ||googlesyndication.com^$script,redirect=noopjs,domain=pipocas.tv
 steamcustomizer.com###sadcat
 steamcustomizer.com##.notice.support-notice
