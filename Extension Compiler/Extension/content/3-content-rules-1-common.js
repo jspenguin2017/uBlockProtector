@@ -128,8 +128,7 @@ if (a.domCmp(["apkmirror.com", "freepdf-books.com", "bc.vc", "themeslide.com", "
     "coin.mg", "arpa7com.com", "cutearn.com", "3rabshort.com"])) {
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
-if (a.domCmp(["katfile.com", "goldescargas.com", "globalbesthosting.com", "userupload.net",
-    "jzrputtbut.net"])) {
+if (a.domCmp(["katfile.com", "goldescargas.com", "globalbesthosting.com", "userupload.net"])) {
     a.timewarp("setTimeout", a.matchMethod.stringExact, "1000");
 }
 
