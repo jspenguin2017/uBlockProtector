@@ -6,7 +6,7 @@
 
 Note: Issues that are specific to Chromium may not be fixed as I cannot test on it. 
 
-Check out [AAK-Cont](https://xuhaiyang1234.gitlab.io/AAK-Cont/) if you do not want to switch your setup. 
+Check out [AdBlock Protector 2](https://adblockprotector2.github.io/AdBlockProtector2/) if you do not want to switch your setup. 
 
 ---
 

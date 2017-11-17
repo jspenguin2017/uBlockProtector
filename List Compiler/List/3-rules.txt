@@ -324,7 +324,6 @@ receive-a-sms.com##script:inject(abort-current-inline-script.js, $, showads.js)
 ! === newyorker.com
 newyorker.com##iframe[src*="/wp-content/assets/"]
 ! === politiken.dk
-! === https://gitlab.com/xuhaiyang1234/AAK-Cont/issues/17
 @@||politiken.dk/*ad*$script,first-party
 ! === NSFW! kissasian.com
 ||kissasian.com/*.aspx
@@ -383,7 +382,6 @@ tvregionalna24.pl##.diablo-placeholder
 kitguru.net#@#div > a[class] > img[src]
 kitguru.net##.gofollow
 ! === vidnow.to
-! === https://gitlab.com/xuhaiyang1234/AAK-Cont/issues/72
 vidnow.to###adplayer
 ! === gigaleecher.com
 ||gigaleecher.com/templates/plugmod/giga.js$script
