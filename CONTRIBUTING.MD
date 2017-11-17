@@ -66,4 +66,4 @@ supported setups nor for help with installation, one exception is when you are s
 
 Take the time to understand this project, do not submit low quality Pull Requests. You should at least skim over everything 
 before submitting your first Pull Request. Also, nicely comment your code and thoroughly explain what it does and why the 
-change is necessary. 
+change is necessary. Use the template if appropriate. 
