@@ -178,7 +178,7 @@ finalservers.net##script:inject(abort-on-property-read.js, _gunggo)
 animmex.*###M148617ScriptRootC75329
 animmex.*##a[href^="https://forum.animmex.com/viewtopic.php"]
 ||flakyfeast.com^$domain=gry.pl
-pixiv.net##.popular-introduction-block
+pixiv.net##.popular-introduction-overlay
 youtube.com###companion
 pogdesign.co.uk##.replace
 ||p207208.clksite.com^$subdocument,redirect=noopframe,domain=ally.sh|al.ly
