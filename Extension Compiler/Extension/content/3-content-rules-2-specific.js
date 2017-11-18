@@ -3163,3 +3163,8 @@ if (a.domCmp(["letras.mus.br"])) {
 if (a.domCmp(["ostrzeszowinfo.pl", "infostrow.pl"])) {
     a.readOnly("canRunAds", undefined);
 }
+if (a.domCmp(["wurstclient.net"])) {
+    a.ready(() => {
+        $(".adsbygoogle").remove();
+    });
+}
