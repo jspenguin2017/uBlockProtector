@@ -498,6 +498,7 @@ moviesroom.pl###advert-notice
 playview.io##.ads_player
 @@||playview.io/*/showads.js$xmlhttprequest,first-party
 dogecatch.website,dashcatch.xyz###fuck-adb-not-enabled
+depositfiles.com##.adblock_alert
 @@||lolalytics.com^$generichide
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide
