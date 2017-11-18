@@ -783,3 +783,5 @@ playview.io##.ads_player
 dogecatch.website,dashcatch.xyz###fuck-adb-not-enabled
 ! === depositfiles.com
 depositfiles.com##.adblock_alert
+! === locopelis.com
+locopelis.com##.div-banner-popup-event
