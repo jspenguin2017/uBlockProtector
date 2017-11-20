@@ -410,6 +410,7 @@ getfree-bitcoin.com##script:inject(setTimeout-defuser.js, Adblock)
 getfree-bitcoin.com##.left-advertisement
 getfree-bitcoin.com##a[href^="//mellowads.com/"]
 estrenos10.com##script:inject(setTimeout-defuser.js, AdBlock)
+programinadresi.com##script:inject(setTimeout-defuser.js, adBlock)
 kshowes.net##script:inject(abort-current-inline-script.js, setTimeout, Im.offsetHeight<=0)
 kshowes.net###hide:style(display: block !important;)
 kshowes.net##input.buttonlink#contador
