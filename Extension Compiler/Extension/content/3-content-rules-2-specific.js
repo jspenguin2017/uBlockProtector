@@ -3163,3 +3163,6 @@ if (a.domCmp(["wurstclient.net"])) {
         $(".adsbygoogle").remove();
     });
 }
+if (a.domCmp(["version2.dk"])) {
+    a.bait("div", "#banner", true);
+}
