@@ -782,3 +782,4 @@ dogecatch.website,dashcatch.xyz###fuck-adb-not-enabled
 depositfiles.com##.adblock_alert
 ! === locopelis.com
 locopelis.com##.div-banner-popup-event
+locopelis.com##script:inject(abort-on-property-write.js, adbClick)
