@@ -138,6 +138,7 @@ anonymousemail.me##div.onp-sociallocker
 descargatelocorp.com##div[id^="informer"]:style(display: block !important; opacity: 1 !important; max-height: none !important;)
 descargatelocorp.com##div[class*="cool_ramka"]
 ||lukkr.com/website/pf.js
+||cloudfront.net^$domain=adbull.me|shink.in|dbzsuper.tv|croco.site|adshorte.com|pasteca.sh|cloudyfiles.org|cuturlink.com|wateranik.com|eagerse.com|estrenos10.com
 live.com##div:if(:scope > div > span:has-text(an ad blocker))
 live.com##div:if(:scope > div > div > span:has-text(an ad blocker))
 ||adv.wp.pl/$media,redirect=noopmp3-0.1s,important
@@ -164,7 +165,6 @@ ps4news.com##script:inject(noeval.js)
 ps4news.com##body > *[id^="blockblock"]:style(visibility: visible !important; display: block !important;)
 ps4news.com##table[id^='blockblock']
 ||7636ca6cb9fc.com^
-||cloudfront.net^$domain=adbull.me|shink.in|dbzsuper.tv|croco.site|adshorte.com|pasteca.sh|cloudyfiles.org|cuturlink.com
 okazje.co###AdBlockDetected
 pornvibe.org##.special-message-content
 ||$third-party,script,domain=pornvibe.org
@@ -388,7 +388,6 @@ peugeot-metropolis.de###displaywise
 ||topagrar.com/_themes/topagrar-responsive/_js/ads.js$script,redirect=noopjs
 /tgs.teaser-ad.js$domain=tagesspiegel.de
 t3n.de#@##adsbox
-||cloudfront.net^$script,domain=wateranik.com
 ||thepiratebay.org^$inline-script
 yiv.com###LeftAdDiv
 yiv.com###RightAdDiv
@@ -397,7 +396,6 @@ yiv.com###RightAdDiv
 agar.io###advertisement
 ||dolldivine.com/images/fairy-preview.jpg
 peugeot-metropolis.de##script:inject(abort-current-inline-script.js, $, #gandalfads)
-||cloudfront.net^$script,domain=eagerse.com
 warforum.cz###popwrapper
 ||ad.kisscartoon.*^$important
 randaris-anime.net##.advert1
@@ -411,6 +409,7 @@ prevention.com,avoiderrors.net,gulmeklazim.com##script:inject(setTimeout-defuser
 getfree-bitcoin.com##script:inject(setTimeout-defuser.js, Adblock)
 getfree-bitcoin.com##.left-advertisement
 getfree-bitcoin.com##a[href^="//mellowads.com/"]
+estrenos10.com##script:inject(setTimeout-defuser.js, AdBlock)
 kshowes.net##script:inject(abort-current-inline-script.js, setTimeout, Im.offsetHeight<=0)
 kshowes.net###hide:style(display: block !important;)
 kshowes.net##input.buttonlink#contador
@@ -500,6 +499,7 @@ playview.io##.ads_player
 dogecatch.website,dashcatch.xyz###fuck-adb-not-enabled
 depositfiles.com##.adblock_alert
 locopelis.com##.div-banner-popup-event
+locopelis.com##script:inject(abort-on-property-write.js, adbClick)
 @@||lolalytics.com^$generichide
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide

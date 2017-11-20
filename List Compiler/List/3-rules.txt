@@ -147,6 +147,8 @@ descargatelocorp.com##div[class*="cool_ramka"]
 ! ==============================
 ! ===== Specific solutions =====
 ! ==============================
+! === cloudfront.net
+||cloudfront.net^$domain=adbull.me|shink.in|dbzsuper.tv|croco.site|adshorte.com|pasteca.sh|cloudyfiles.org|cuturlink.com|wateranik.com|eagerse.com|estrenos10.com
 ! === live.com
 live.com##div:if(:scope > div > span:has-text(an ad blocker))
 live.com##div:if(:scope > div > div > span:has-text(an ad blocker))
@@ -191,10 +193,6 @@ ps4news.com##table[id^='blockblock']
 ! === 7636ca6cb9fc.com
 ! === https://github.com/jspenguin2017/uBlockProtector/issues/99
 ||7636ca6cb9fc.com^
-! === adbull.me, shink.in, dbzsuper.tv, croco.site, adshorte.com, pasteca.sh, cloudyfiles.org, cuturlink.com
-! === https://github.com/jspenguin2017/uBlockProtector/issues/108
-! === https://github.com/jspenguin2017/uBlockProtector/issues/120
-||cloudfront.net^$domain=adbull.me|shink.in|dbzsuper.tv|croco.site|adshorte.com|pasteca.sh|cloudyfiles.org|cuturlink.com
 ! === okazje.co
 ! === https://github.com/jspenguin2017/uBlockProtector/issues/114
 okazje.co###AdBlockDetected
@@ -590,7 +588,6 @@ peugeot-metropolis.de###displaywise
 ! === t3n.de
 t3n.de#@##adsbox
 ! === thepiratebay.org
-||cloudfront.net^$script,domain=wateranik.com
 ||thepiratebay.org^$inline-script
 ! === yiv.com
 yiv.com###LeftAdDiv
@@ -604,8 +601,6 @@ agar.io###advertisement
 ||dolldivine.com/images/fairy-preview.jpg
 ! === peugeot-metropolis.de
 peugeot-metropolis.de##script:inject(abort-current-inline-script.js, $, #gandalfads)
-! === streamplay.gdn
-||cloudfront.net^$script,domain=eagerse.com
 ! === warforum.cz
 warforum.cz###popwrapper
 ! === kisscartoon.io and related domains
@@ -630,6 +625,8 @@ prevention.com,avoiderrors.net,gulmeklazim.com##script:inject(setTimeout-defuser
 getfree-bitcoin.com##script:inject(setTimeout-defuser.js, Adblock)
 getfree-bitcoin.com##.left-advertisement
 getfree-bitcoin.com##a[href^="//mellowads.com/"]
+! === estrenos10.com
+estrenos10.com##script:inject(setTimeout-defuser.js, AdBlock)
 ! === kshowes.net
 kshowes.net##script:inject(abort-current-inline-script.js, setTimeout, Im.offsetHeight<=0)
 kshowes.net###hide:style(display: block !important;)
@@ -785,3 +782,4 @@ dogecatch.website,dashcatch.xyz###fuck-adb-not-enabled
 depositfiles.com##.adblock_alert
 ! === locopelis.com
 locopelis.com##.div-banner-popup-event
+locopelis.com##script:inject(abort-on-property-write.js, adbClick)
