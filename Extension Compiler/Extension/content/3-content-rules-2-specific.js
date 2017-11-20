@@ -3070,7 +3070,7 @@ if (a.domCmp(["jacquieetmicheltv.net"])) {
 if (a.domCmp(["ultimedia.com"])) {
     a.readOnly("_um_ads_allowed", 1);
 }
-if (a.domCmp(["nova.cz"])) {
+if (a.domCmp(["nova.cz", "popcornflix.com"])) {
     a.inject(() => {
         "use strict";
         const String = window.String.bind(window);
