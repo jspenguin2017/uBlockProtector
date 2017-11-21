@@ -502,6 +502,7 @@ depositfiles.com##.adblock_alert
 locopelis.com##.div-banner-popup-event
 locopelis.com##script:inject(abort-on-property-write.js, adbClick)
 */assets/js/sourcepoint/*$script,domain=nba.com
+nbc.com##script:inject(abort-on-property-read.js, mps._ab)
 @@||lolalytics.com^$generichide
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide

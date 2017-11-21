@@ -787,3 +787,5 @@ locopelis.com##.div-banner-popup-event
 locopelis.com##script:inject(abort-on-property-write.js, adbClick)
 ! === nba.com
 */assets/js/sourcepoint/*$script,domain=nba.com
+! === nbc.com
+nbc.com##script:inject(abort-on-property-read.js, mps._ab)
