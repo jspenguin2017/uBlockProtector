@@ -212,7 +212,7 @@ u2s.io,l2s.io,linkhits.us#@#.myTestAd
 @@||solvemedia.com^$domain=u2s.io|l2s.io
 ||5g9quwq.com^$third-party
 telegraph.co.uk##.adblocker-message
-pwn.pl,vendiscuss.net##script:inject(abort-on-property-read.js, adblock)
+pwn.pl,vendiscuss.net,rufootballtv.org##script:inject(abort-on-property-read.js, adblock)
 ||tiptonvillepylesville.com^$domain=clubic.com
 animeid.io,jkanime.co,gogoanime.ch,chiaanime.co,animeflv.co##script:inject(setTimeout-defuser.js, #player)
 @@||comicincorrect.wpengine.netdna-cdn.com/wp-content/uploads/
