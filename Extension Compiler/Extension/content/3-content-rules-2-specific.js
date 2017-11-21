@@ -2930,6 +2930,7 @@ if (a.domCmp(["wowtoken.info"])) {
 }
 if (a.domCmp(["arenavision.us"])) {
     a.noAccess("H7WWWW");
+    a.noAccess("adbClick");
 }
 if (a.domCmp(["cbs.com"])) {
     //https://github.com/jspenguin2017/uBlockProtector/issues/578
