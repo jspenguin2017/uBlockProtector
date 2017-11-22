@@ -33,3 +33,8 @@
 @@||rtl.be/videos/player/vp4_webanalytics.js$script,first-party
 ! === mitele.es
 @@||akamaihd.net^$xmlhttprequest,script,domain=mitele.es
+! === viasatsport.se
+@@||fwmrm.net^$domain=viasatsport.se
+||freewheel-mtgx-tv.akamaized.net^$media,domain=viasatsport.se
+||fwmrm.net^$image,important,domain=viasatsport.se
+||fwmrm.net/ad/*$xmlhttprequest,important,redirect=nooptext,domain=viasatsport.se

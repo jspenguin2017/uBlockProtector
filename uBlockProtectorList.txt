@@ -572,6 +572,10 @@ sledujserialy.sk##div.w-episode-source > div:has(iframe[src*="ad.php"])
 @@||fwmrm.net/ad/g/$xmlhttprequest,domain=q2.be|vtm.be|medialaancdn.be|medialaan.be
 @@||rtl.be/videos/player/vp4_webanalytics.js$script,first-party
 @@||akamaihd.net^$xmlhttprequest,script,domain=mitele.es
+@@||fwmrm.net^$domain=viasatsport.se
+||freewheel-mtgx-tv.akamaized.net^$media,domain=viasatsport.se
+||fwmrm.net^$image,important,domain=viasatsport.se
+||fwmrm.net/ad/*$xmlhttprequest,important,redirect=nooptext,domain=viasatsport.se
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================
