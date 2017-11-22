@@ -544,6 +544,9 @@ if (a.domCmp(["videowood.tv"])) {
 if (a.domCmp(["infojobs.com.br"])) {
     a.readOnly("adblock", 0);
 }
+if (a.domCmp(["sadistic.pl"])) {
+    a.bait("div", "#is-media-valid", true);
+}
 if (a.domCmp(["jbzdy.pl"])) {
     a.inject(() => {
         "use strict";
