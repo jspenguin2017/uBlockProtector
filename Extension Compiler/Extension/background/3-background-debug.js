@@ -43,7 +43,7 @@ if (a.debugMode) {
     /*
     {
         //https://github.com/AdguardTeam/AdguardFilters/issues/6718
-        //Looks like viz.com is no longer embedding hulu.com
+        //The file path seems to have changed
         a.staticServer(
             [
                 "*://ads-v-darwin.hulustream.com/published/*.mp4*",
