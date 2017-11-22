@@ -47,4 +47,3 @@
 @@||wp.pl^$generichide
 @@||anonymousemail.me^$generichide
 @@||playstation.com^$generichide
-@@||player.hulu.com^$generichide
