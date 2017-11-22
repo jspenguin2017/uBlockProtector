@@ -17,8 +17,8 @@
 @@/crossdomain.xml$domain=channel4.com
 @@||ak.http.anno.channel4.com^$domain=channel4.com
 @@||cf.http.anno.channel4.com^$domain=channel4.com
-! === tvplay.skaties.lv, play.tv3.lt, tv3play.tv3.ee
-@@||playapi.mtgx.tv/v3/adinfo?$xmlhttprequest,domain=tvplay.skaties.lv|play.tv3.lt|tv3play.tv3.ee
+! === tvplay.skaties.lv, play.tv3.lt, tv3play.tv3.ee, play.nova.bg
+@@||playapi.mtgx.tv/v3/adinfo?$xmlhttprequest,domain=tvplay.skaties.lv|play.tv3.lt|tv3play.tv3.ee|play.nova.bg
 ! === abc.go.com
 ! === https://github.com/jspenguin2017/uBlockProtector/issues/338
 @@||edgedatg.com^$script,domain=abc.go.com

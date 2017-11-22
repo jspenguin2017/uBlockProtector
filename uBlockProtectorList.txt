@@ -564,7 +564,7 @@ sledujserialy.sk##div.w-episode-source > div:has(iframe[src*="ad.php"])
 @@/crossdomain.xml$domain=channel4.com
 @@||ak.http.anno.channel4.com^$domain=channel4.com
 @@||cf.http.anno.channel4.com^$domain=channel4.com
-@@||playapi.mtgx.tv/v3/adinfo?$xmlhttprequest,domain=tvplay.skaties.lv|play.tv3.lt|tv3play.tv3.ee
+@@||playapi.mtgx.tv/v3/adinfo?$xmlhttprequest,domain=tvplay.skaties.lv|play.tv3.lt|tv3play.tv3.ee|play.nova.bg
 @@||edgedatg.com^$script,domain=abc.go.com
 @@||pga.com^$generichide
 @@||manifest.auditude.com^$xmlhttprequest,domain=pga.com

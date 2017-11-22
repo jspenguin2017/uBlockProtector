@@ -1086,7 +1086,7 @@ if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se"])) {
         }
     });
 }
-if (a.domCmp(["tvplay.skaties.lv", "play.tv3.lt", "tv3play.tv3.ee"])) {
+if (a.domCmp(["tvplay.skaties.lv", "play.tv3.lt", "tv3play.tv3.ee", "play.nova.bg"])) {
     a.replaceXHR(() => {
         if (url && url.includes("/adinfo?")) {
             this.addEventListener("readystatechange", () => {
