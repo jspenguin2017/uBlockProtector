@@ -504,6 +504,7 @@ locopelis.com##script:inject(abort-on-property-write.js, adbClick)
 */assets/js/sourcepoint/*$script,domain=nba.com
 nbc.com##script:inject(abort-on-property-read.js, mps._ab)
 sledujserialy.sk##div.w-episode-source > div:has(iframe[src*="ad.php"])
+eurogamer.de##script:inject(abort-on-property-read.js, _sp_.msg.displayMessage)
 @@||lolalytics.com^$generichide
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide
