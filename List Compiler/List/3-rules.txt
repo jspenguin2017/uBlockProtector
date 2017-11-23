@@ -793,3 +793,5 @@ nbc.com##script:inject(abort-on-property-read.js, mps._ab)
 sledujserialy.sk##div.w-episode-source > div:has(iframe[src*="ad.php"])
 ! === eurogamer.de
 eurogamer.de##script:inject(abort-on-property-read.js, _sp_.msg.displayMessage)
+! === deportesmax.info
+deportesmax.info###wmpu
