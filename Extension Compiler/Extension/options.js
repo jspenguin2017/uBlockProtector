@@ -19,6 +19,6 @@ const template = (link) => {
 const links = document.querySelectorAll("link-template");
 for (let i = 0; i < links.length; i++) {
     const p = document.createElement("p");
-    p.appendChild(template(links[i].textContent));
+    p.appendChild(template(links[i].textContent.trim()));
     links[i].parentNode.replaceChild(p, links[i]);
 }
