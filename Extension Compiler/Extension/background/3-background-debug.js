@@ -52,7 +52,7 @@ if (a.debugMode) {
             [
                 "media",
             ],
-            a.blankMP4,
+            a.tinyMP4,
             [
                 "player.hulu.com",
             ],
