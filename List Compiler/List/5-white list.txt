@@ -39,4 +39,4 @@
 ||fwmrm.net^$image,important,domain=viasatsport.se
 ||fwmrm.net/ad/*$xmlhttprequest,important,redirect=nooptext,domain=viasatsport.se
 ! === hulu.com, viz.com
-@@||svastx.moatads.com/huluvpaid784529785/moatwrapper.js$script,domain=hulu.com|viz.com
+@@||moatads.com/*/moatwrapper.js$script,domain=hulu.com|viz.com

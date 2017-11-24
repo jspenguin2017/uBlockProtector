@@ -580,7 +580,7 @@ deportesmax.info###wmpu
 ||freewheel-mtgx-tv.akamaized.net^$media,domain=viasatsport.se
 ||fwmrm.net^$image,important,domain=viasatsport.se
 ||fwmrm.net/ad/*$xmlhttprequest,important,redirect=nooptext,domain=viasatsport.se
-@@||svastx.moatads.com/huluvpaid784529785/moatwrapper.js$script,domain=hulu.com|viz.com
+@@||moatads.com/*/moatwrapper.js$script,domain=hulu.com|viz.com
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================
