@@ -800,3 +800,4 @@ deportesmax.info###wmpu
 ! === hulu.com
 hulu.com###banner-ad-container
 hulu.com##.ad-choices
+||ads-v-darwin.hulustream.com^

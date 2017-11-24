@@ -3171,3 +3171,18 @@ if (a.domCmp(["version2.dk"])) {
 if (a.domCmp(["adyou.me"])) {
     a.filter("eval", a.matchMethod.RegExp, /acPrefetch|LEGAL NOTICE/);
 }
+if (a.domCmp(["hulu.com"])) {
+    a.onInsert((node) => {
+        let btn;
+        if (node.querySelector) {
+            btn = node.querySelector(".ad-selector-option");
+            if (btn) {
+
+                //DEBUG ONLY
+                console.warn("clicked", btn);
+
+                btn.click();
+            }
+        }
+    });
+}

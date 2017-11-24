@@ -510,6 +510,7 @@ deportesmax.info###wmpu
 9anime.*##.alert.alert-warning:has-text(AdBlock)
 hulu.com###banner-ad-container
 hulu.com##.ad-choices
+||ads-v-darwin.hulustream.com^
 @@||lolalytics.com^$generichide
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide
