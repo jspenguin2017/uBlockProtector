@@ -3173,15 +3173,22 @@ if (a.domCmp(["adyou.me"])) {
 }
 if (a.domCmp(["hulu.com"])) {
     a.onInsert((node) => {
-        let btn;
         if (node.querySelector) {
-            btn = node.querySelector(".ad-selector-option");
-            if (btn) {
+            if (node.classList.contains("ad-selector-option")) {
+                node.click();
 
                 //DEBUG ONLY
-                console.warn("clicked", btn);
+                console.warn("clicked", node);
 
-                btn.click();
+            } else {
+                const btn = node.querySelector(".ad-selector-option");
+                if (btn) {
+                    btn.click();
+
+                    //DEBUG ONLY
+                    console.warn("clicked", btn);
+
+                }
             }
         }
     });
