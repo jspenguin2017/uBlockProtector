@@ -42,26 +42,6 @@ if (a.debugMode) {
 if (a.debugMode) {
     /*
     {
-        //https://github.com/AdguardTeam/AdguardFilters/issues/6718
-        //The file path seems to have changed
-        a.staticServer(
-            [
-                "*://ads-v-darwin.hulustream.com/published/*.mp4*",
-                "*://*.ads-v-darwin.hulustream.com/published/*.mp4*",
-            ],
-            [
-                "media",
-            ],
-            a.tinyMP4,
-            [
-                "player.hulu.com",
-            ],
-            true,
-        );
-    }
-    */
-    /*
-    {
         //https://github.com/jspenguin2017/uBlockProtector/issues/660
         //Looks like links to real video is enclosed in this request
         const payload = "data:application/json;base64," + btoa(JSON.stringify({}));
