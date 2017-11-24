@@ -33,6 +33,7 @@ hackintosh.zone,clubedohardware.com.br,itavisen.no#@#script:inject(abort-on-prop
 ||cbsnews.com/news/*/undefined$image,redirect=1x1-transparent.gif
 ||imasdk.googleapis.com/js/sdkloader/ima3.js$script,important,domain=streamable.com|popcornflix.com|fox.com
 bild.de#@#script:inject(abort-on-property-read.js, de.bild.cmsKonfig.a.b.a)
+@@||ads-v-darwin.hulustream.com/published/*.mp4$domain=hulu.com
 /coinhive.js$domain=~authedmine.com
 /coinhive.min.js$domain=~authedmine.com
 /c-hive.js$domain=~authedmine.com
@@ -579,6 +580,7 @@ deportesmax.info###wmpu
 ||freewheel-mtgx-tv.akamaized.net^$media,domain=viasatsport.se
 ||fwmrm.net^$image,important,domain=viasatsport.se
 ||fwmrm.net/ad/*$xmlhttprequest,important,redirect=nooptext,domain=viasatsport.se
+@@||svastx.moatads.com/huluvpaid784529785/moatwrapper.js$script,domain=viz.com
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================
