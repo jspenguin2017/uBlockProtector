@@ -881,7 +881,7 @@ a.replaceXHR = (handler) => {
             });
         };
         try {
-            const _open = window.XMLHttpRequest.prototype.open
+            const _open = window.XMLHttpRequest.prototype.open;
             window.XMLHttpRequest.prototype.open = function (method, url, ...rest) {
                 const [isAsync, user, passwd] = rest;
                 (${handler})();
