@@ -1736,6 +1736,7 @@ if (a.domCmp(["gaybeeg.info"])) {
 if (a.domCmp(["netdna-storage.com"])) {
     //NSFW!
     a.noAccess("uid");
+    a.noAccess("adcashMacros");
     a.ready(() => {
         $(".plan-footer-item").each((elem) => {
             if (elem.dataset.link) {
