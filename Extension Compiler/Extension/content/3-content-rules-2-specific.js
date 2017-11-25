@@ -1879,7 +1879,7 @@ if (a.domCmp(["ouo.io", "ouo.press"])) {
     }
 }
 if (a.domCmp(["canalplus.fr"])) {
-    a.loopbackXHRSelfContained((ignored, url) => {
+    a.loopbackXHR((ignored, url) => {
         if (url.includes(".v.fwmrm.net/ad/")) {
             return `<vmap:VMAP version='1.0' xmlns:vmap='http://www.iab.net/vmap-1.0'></vmap:VMAP>`;
         }

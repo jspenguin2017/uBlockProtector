@@ -849,69 +849,6 @@ a.loopbackXHR = (server) => {
     })();`, true);
 };
 /**
- * Same as a.loopbackXHR() except that a background redirect is never required.
- * @function
- */
-a.loopbackXHRSelfContained = (server) => {
-    a.inject(`(() => {
-        "use strict";
-        const server = ${server};
-        let original;
-        const newXHR = function (...args) {
-            const wrapped = new (window.Function.prototype.bind.apply(original, args));
-            const _open = wrapped.open;
-            wrapped.open = function (...args) {
-                const data = server(...args);
-                if (typeof data === "string") {
-                    window.Object.defineProperties(this, {
-                        "onerror": {
-                            configurable: false,
-                            set() { },
-                            get() {
-                                return () => { };
-                            },
-                        },
-                        "responseText": {
-                            configurable: false,
-                            set() { },
-                            get() {
-                                return data;
-                            },
-                        },
-                        "status": {
-                            configurable: false,
-                            set() { },
-                            get() {
-                                return 200;
-                            },
-                        },
-                        "statusText": {
-                            configurable: false,
-                            set() { },
-                            get() {
-                                return "OK";
-                            },
-                        },
-                    });
-                    this.onreadystatechange = () => {
-                        if (this.readyState === 4 && typeof this.onload === "function") {
-                            this.onload();
-                        }
-                    };
-                }
-                return _open.apply(wrapped, args);
-            };
-            return wrapped;
-        };
-        try {
-            original = window.XMLHttpRequest;
-            window.XMLHttpRequest = newXHR;
-        } catch (err) {
-            window.console.error("uBlock Protector failed to set up XMLHttpRequest loopback engine!");
-        }
-    })();`, true);
-};
-/**
  * Install XMLHttpRequest replace engine. Should be called once on document-start if needed.
  * @function
  * @param {Function} handler - The replace handler, must be an arrow function.
