@@ -3172,22 +3172,25 @@ if (a.domCmp(["adyou.me"])) {
     a.filter("eval", a.matchMethod.RegExp, /acPrefetch|LEGAL NOTICE/);
 }
 if (a.domCmp(["hulu.com"])) {
+    const performClick = (btn) => {
+        if (btn.classList.contains("ublock-protector-clicked")) {
+            return;
+        }
+
+        btn.classList.add("ublock-protector-clicked");
+        btn.click();
+
+        //DEBUG ONLY
+        console.warn("clicked", btn);
+    };
     a.onInsert((node) => {
         if (node.querySelector) {
             if (node.classList.contains("ad-selector-option") || node.classList.contains("trailer-selector-watch-trailer-button")) {
-                node.click();
-
-                //DEBUG ONLY
-                console.warn("clicked", node);
-
+                setTimeout(performClick, 1000, node);
             } else {
                 const btn = node.querySelector(".ad-selector-option, .trailer-selector-watch-trailer-button");
                 if (btn) {
-                    btn.click();
-
-                    //DEBUG ONLY
-                    console.warn("clicked", btn);
-
+                    setTimeout(performClick, 1000, btn);
                 }
             }
         }
