@@ -3180,7 +3180,7 @@ if (a.domCmp(["hulu.com"])) {
         btn.classList.add("ublock-protector-clicked");
         btn.click();
 
-        //DEBUG ONLY
+        //TODO - DEBUG ONLY
         console.warn("clicked", btn);
     };
     a.onInsert((node) => {
