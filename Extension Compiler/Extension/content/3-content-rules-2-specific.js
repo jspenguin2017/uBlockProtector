@@ -3174,14 +3174,14 @@ if (a.domCmp(["adyou.me"])) {
 if (a.domCmp(["hulu.com"])) {
     a.onInsert((node) => {
         if (node.querySelector) {
-            if (node.classList.contains("ad-selector-option")) {
+            if (node.classList.contains("ad-selector-option") || node.classList.contains("trailer-selector-watch-trailer-button")) {
                 node.click();
 
                 //DEBUG ONLY
                 console.warn("clicked", node);
 
             } else {
-                const btn = node.querySelector(".ad-selector-option");
+                const btn = node.querySelector(".ad-selector-option, .trailer-selector-watch-trailer-button");
                 if (btn) {
                     btn.click();
 
