@@ -40,7 +40,7 @@
 @@||clik.pw^$generichide
 @@||linksh.top^$generichide
 @@||tvsportslive.stream^$generichide
-@@||symbolab.com^generichide
+@@||symbolab.com^$generichide
 @@||simply-debrid.com^$generichide
 @@||tv.yahoo.com^$generichide
 @@||aftonbladet.se^$generichide
