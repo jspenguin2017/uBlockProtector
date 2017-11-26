@@ -512,6 +512,8 @@ hulu.com###banner-ad-container
 hulu.com##.ad-choices
 ||ads-v-darwin.hulustream.com^
 msfn.org##.displayGlobalMessage:has-text(ad-blocking)
+theguardian.com##div.site-message:has(a[href^="https://membership.theguardian.com/"])
+theguardian.com##.contributions__epic
 @@||lolalytics.com^$generichide
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide
