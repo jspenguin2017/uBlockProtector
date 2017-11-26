@@ -11,5 +11,8 @@ Before submitting a Pull Request, you MUST read the contribution guideline. Fail
 ### Screenshots and reproduction steps (if applicable): 
 
 
+### Issues that are related (if applicable): 
+
+
 ### Add everything else that you believe to be useful below (optional): 
 
