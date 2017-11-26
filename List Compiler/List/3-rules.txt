@@ -801,3 +801,5 @@ deportesmax.info###wmpu
 hulu.com###banner-ad-container
 hulu.com##.ad-choices
 ||ads-v-darwin.hulustream.com^
+! === msfn.org
+msfn.org##.displayGlobalMessage:has-text(ad-blocking)

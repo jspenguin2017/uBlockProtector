@@ -511,6 +511,7 @@ deportesmax.info###wmpu
 hulu.com###banner-ad-container
 hulu.com##.ad-choices
 ||ads-v-darwin.hulustream.com^
+msfn.org##.displayGlobalMessage:has-text(ad-blocking)
 @@||lolalytics.com^$generichide
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide
