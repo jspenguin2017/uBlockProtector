@@ -2288,9 +2288,9 @@ if (a.domCmp(["vvvvid.it"])) {
             "use strict";
             if (window.vvvvid) {
                 const re = /var a=function.*};/;
-                const data = `var a=function(){vvvvid.advPlayer=null,$(c.playerControlsClass).removeClass("ppad"),d()};`;
+                const data = `var a=function(){vvvvid.advPlayer=null,$(c.playerControlsClass).removeClass("ppad"),e()};`;
 
-                window.vvvvid.cab4 = function (a, b) {
+                window.vvvvid.cab5 = function (a, b) {
                     this.isAdBlockActive = false;
                     if (b) {
                         b(false);
