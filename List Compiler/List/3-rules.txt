@@ -808,3 +808,5 @@ theguardian.com##div.site-message:has(a[href^="https://membership.theguardian.co
 theguardian.com##.contributions__epic
 ! === krassotaa.com
 krassotaa.com###haider
+! === onvasortir.com
+onvasortir.com##script:inject(abort-on-property-read.js, adBlockDetected)
