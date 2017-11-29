@@ -806,3 +806,5 @@ msfn.org##.displayGlobalMessage:has-text(ad-blocking)
 ! === theguardian.com
 theguardian.com##div.site-message:has(a[href^="https://membership.theguardian.com/"])
 theguardian.com##.contributions__epic
+! === krassotaa.com
+krassotaa.com###haider
