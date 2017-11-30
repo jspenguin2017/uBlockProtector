@@ -810,3 +810,5 @@ theguardian.com##.contributions__epic
 krassotaa.com###haider
 ! === onvasortir.com
 onvasortir.com##script:inject(abort-on-property-read.js, adBlockDetected)
+! === kryminalnapolska.pl
+kryminalnapolska.pl##script:inject(abort-on-property-read.js, ai_adb_detected)

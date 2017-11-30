@@ -516,6 +516,7 @@ theguardian.com##div.site-message:has(a[href^="https://membership.theguardian.co
 theguardian.com##.contributions__epic
 krassotaa.com###haider
 onvasortir.com##script:inject(abort-on-property-read.js, adBlockDetected)
+kryminalnapolska.pl##script:inject(abort-on-property-read.js, ai_adb_detected)
 @@||lolalytics.com^$generichide
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide
