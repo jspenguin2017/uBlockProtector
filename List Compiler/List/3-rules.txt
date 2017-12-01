@@ -812,3 +812,6 @@ krassotaa.com###haider
 onvasortir.com##script:inject(abort-on-property-read.js, adBlockDetected)
 ! === kryminalnapolska.pl
 kryminalnapolska.pl##script:inject(abort-on-property-read.js, ai_adb_detected)
+! === nakednepaligirl.com
+nakednepaligirl.com##.rmedia
+nakednepaligirl.com##script:inject(window.open-defuser.js)
