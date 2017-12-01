@@ -316,7 +316,7 @@ der-postillon.com###steady-adblock-overlay-container
 ||lifehacker.com/sp/
 ||theroot.com/sp/
 ||dailymotion.com^$domain=adshorte.com
-paksociety.com##.blocked
+paksociety.com,f-hd.net##.blocked
 ||fastly.net/mms-client.js$domain=cleveland.com
 ||fastly.net/messaging.js$domain=cleveland.com
 couponcabin.com###adblocker-reminder

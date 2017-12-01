@@ -453,8 +453,8 @@ der-postillon.com###steady-adblock-overlay-container
 ||theroot.com/sp/
 ! === adshorte.com
 ||dailymotion.com^$domain=adshorte.com
-! === paksociety.com
-paksociety.com##.blocked
+! === paksociety.com, f-hd.net
+paksociety.com,f-hd.net##.blocked
 ! === cleveland.com
 ||fastly.net/mms-client.js$domain=cleveland.com
 ||fastly.net/messaging.js$domain=cleveland.com
