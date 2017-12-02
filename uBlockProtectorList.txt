@@ -103,6 +103,7 @@ bild.de#@#script:inject(abort-on-property-read.js, de.bild.cmsKonfig.a.b.a)
 zmovs.com##.tc-col-sm-offset-7.hidden-xs
 zmovs.com##.closeBtn
 zmovs.com##.inplayer_banners
+||amazonaws.com^$domain=dailymotion.com
 @@||louccrossc.com^$domain=tf1.fr,badfilter
 @@||foilpolyth.com^$domain=tf1.fr,badfilter
 ||foilpolyth.com^$xmlhttprequest,redirect=nooptext,important,domain=tf1.fr

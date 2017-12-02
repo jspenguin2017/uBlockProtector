@@ -92,6 +92,8 @@
 zmovs.com##.tc-col-sm-offset-7.hidden-xs
 zmovs.com##.closeBtn
 zmovs.com##.inplayer_banners
+! === dailymotion.com
+||amazonaws.com^$domain=dailymotion.com
 ! === Breakage caused by French EasyList and Firefox
 ! === https://github.com/uBlockOrigin/uAssets/issues/442
 @@||louccrossc.com^$domain=tf1.fr,badfilter
