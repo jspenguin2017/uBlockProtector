@@ -126,7 +126,7 @@ if (a.domCmp(["apkmirror.com", "freepdf-books.com", "bc.vc", "themeslide.com", "
     "adsurl.xyz", "firstonetv.net", "lkcash.net", "123link.io", "curs.io", "psl.io", "teqani-plus.com",
     "link-money.com", "meulink.tk", "mlink.club", "shink.xyz", "tui.click", "adshort.im", "123link.press",
     "coin.mg", "arpa7com.com", "cutearn.com", "3rabshort.com", "ourl.io", "cutwi.in", "cut-win.com",
-    "qe.pe", "onlinebee.in"])) {
+    "qe.pe", "onlinebee.in", "peliculasmegahdd.net"])) {
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
 if (a.domCmp(["katfile.com", "goldescargas.com", "globalbesthosting.com", "userupload.net"])) {
