@@ -519,6 +519,7 @@ onvasortir.com##script:inject(abort-on-property-read.js, adBlockDetected)
 kryminalnapolska.pl##script:inject(abort-on-property-read.js, ai_adb_detected)
 nakednepaligirl.com##.rmedia
 nakednepaligirl.com##script:inject(window.open-defuser.js)
+doublemesh.com##script:inject(setTimeout-defuser.js, ads)
 @@||lolalytics.com^$generichide
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide

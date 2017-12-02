@@ -815,3 +815,5 @@ kryminalnapolska.pl##script:inject(abort-on-property-read.js, ai_adb_detected)
 ! === nakednepaligirl.com
 nakednepaligirl.com##.rmedia
 nakednepaligirl.com##script:inject(window.open-defuser.js)
+! === doublemesh.com
+doublemesh.com##script:inject(setTimeout-defuser.js, ads)
