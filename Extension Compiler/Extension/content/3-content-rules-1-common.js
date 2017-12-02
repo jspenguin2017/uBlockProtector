@@ -129,7 +129,7 @@ if (a.domCmp(["apkmirror.com", "freepdf-books.com", "bc.vc", "themeslide.com", "
     "qe.pe", "onlinebee.in", "peliculasmegahdd.net"])) {
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
 }
-if (a.domCmp(["katfile.com", "goldescargas.com", "globalbesthosting.com", "userupload.net"])) {
+if (a.domCmp(["katfile.com", "goldescargas.com", "globalbesthosting.com", "userupload.net", "shortify.pw"])) {
     a.timewarp("setTimeout", a.matchMethod.stringExact, "1000");
 }
 
@@ -214,7 +214,8 @@ if (a.domCmp(["720pmkv.com", "psarips.com"])) {
 }
 if (a.domCmp(["osoarcade.com", "d3brid4y0u.info", "fileice.net", "nosteam.ro", "openrunner.com", "easybillets.com",
     "spox.fr", "yovoyages.com", "tv3.co.nz", "freeallmusic.info", "putlocker.com", "sockshare.com", "dramapassion.com",
-    "yooclick.com", "online.ua", "tgo-tv.com", "bitcoiner.net", "litecoiner.net", "dogecatch.website", "dashcatch.xyz"])) {
+    "yooclick.com", "online.ua", "tgo-tv.com", "bitcoiner.net", "litecoiner.net", "dogecatch.website", "dashcatch.xyz",
+    "shortify.pw"])) {
     a.bait("div", "#tester");
 }
 if (a.domCmp(["alein.org"])) {
