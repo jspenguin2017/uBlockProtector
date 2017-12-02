@@ -521,6 +521,7 @@ kryminalnapolska.pl##script:inject(abort-on-property-read.js, ai_adb_detected)
 nakednepaligirl.com##.rmedia
 nakednepaligirl.com##script:inject(window.open-defuser.js)
 doublemesh.com##script:inject(setTimeout-defuser.js, ads)
+crockolinks.com##script:inject(addEventListener-defuser.js, mousedown)
 @@||lolalytics.com^$generichide
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide

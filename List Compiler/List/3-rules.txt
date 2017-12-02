@@ -819,3 +819,5 @@ nakednepaligirl.com##.rmedia
 nakednepaligirl.com##script:inject(window.open-defuser.js)
 ! === doublemesh.com
 doublemesh.com##script:inject(setTimeout-defuser.js, ads)
+! === crockolinks.com
+crockolinks.com##script:inject(addEventListener-defuser.js, mousedown)

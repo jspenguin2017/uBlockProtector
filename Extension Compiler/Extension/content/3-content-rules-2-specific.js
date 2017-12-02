@@ -3197,3 +3197,6 @@ if (a.domCmp(["hulu.com"])) {
         }
     });
 }
+if (a.domCmp(["crockolinks.com"])) {
+    a.noAccess("test");
+}
