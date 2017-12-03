@@ -134,7 +134,7 @@ if (a.domCmp(["katfile.com", "goldescargas.com", "globalbesthosting.com", "useru
 }
 
 //a.readOnly
-if (a.domCmp(["jansatta.com", "financialexpress.com", "indianexpress.com", "uskip.me"])) {
+if (a.domCmp(["jansatta.com", "financialexpress.com", "indianexpress.com", "uskip.me", "srt.am"])) {
     a.readOnly("RunAds", true);
 }
 if (a.domCmp(["jagranjunction.com", "nekopoi.bid", "catcatyfaucet.xyz"])) {
@@ -194,7 +194,7 @@ if (a.domCmp(["games.nydailynews.com", "games.express.co.uk", "puzzles.independe
 
 //a.noAccess
 if (a.domCmp(["debridnet.com", "adshort.co", "linksh.top", "adshorte.com", "coinb.ink", "animeforce.org",
-    "imgrock.info"])) {
+    "imgrock.info", "srt.am"])) {
     a.noAccess("_pop");
 }
 if (a.domCmp(["linx.cloud"])) {
