@@ -3203,3 +3203,24 @@ if (a.domCmp(["crockolinks.com"])) {
 if (a.domCmp(["srt.am"])) {
     a.noAccess("acPrefetch");
 }
+if (a.domCmp(["uflash.tv"])) {
+    a.inject(() => {
+        "use strict";
+        const codeExtractor = /if\(h&&check3\)({[^}]+})/;
+        let payload;
+        const _eval = window.eval;
+        window.eval = (code, ...rest) => {
+            const match = codeExtractor.exec(code); debugger;
+            if (match) {
+                payload = match[1];
+            } else {
+                _eval.call(window, code, ...rest);
+            }
+        };
+        window.addEventListener("load", () => {
+            if (payload) {
+                _eval.call(window, payload);
+            }
+        });
+    });
+}
