@@ -522,6 +522,8 @@ nakednepaligirl.com##.rmedia
 nakednepaligirl.com##script:inject(window.open-defuser.js)
 doublemesh.com##script:inject(setTimeout-defuser.js, ads)
 crockolinks.com##script:inject(addEventListener-defuser.js, mousedown)
+fakeporn.tv##script:inject(setTimeout-defuser.js, innerText)
+fakeporn.tv##script:inject(abort-on-property-write.js, prPuShown)
 @@||lolalytics.com^$generichide
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide
