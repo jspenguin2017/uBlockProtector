@@ -3210,7 +3210,7 @@ if (a.domCmp(["uflash.tv"])) {
         let payload;
         const _eval = window.eval;
         window.eval = (code, ...rest) => {
-            const match = codeExtractor.exec(code); debugger;
+            const match = codeExtractor.exec(code);
             if (match) {
                 payload = match[1];
             } else {
