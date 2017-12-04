@@ -1548,7 +1548,7 @@ if (a.domInc(["gamereactor"])) {
         }
     });
 }
-if (a.domCmp(["dasolo.co", "dasolo.me", "italiashare.info"])) {
+if (a.domCmp(["dasolo.co", "dasolo.me", "italiashare.info", "italiashare.life"])) {
     //https://github.com/jspenguin2017/uBlockProtector/issues/126
     a.inject(() => {
         "use strict";
