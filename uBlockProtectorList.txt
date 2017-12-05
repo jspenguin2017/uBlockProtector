@@ -26,7 +26,7 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 @@|http://*.medianetworkinternational.com/js/advertisement.js*$script
 @@|https://imasdk.googleapis.com/js/sdkloader/ima3.js*$script
 @@|http://imasdk.googleapis.com/js/sdkloader/ima3.js*$script
-hackintosh.zone,clubedohardware.com.br,itavisen.no#@#script:inject(abort-on-property-read.js, CloudflareApps.installs)
+#@#script:inject(adfly-defuser.js)
 @@|http://*.v.fwmrm.net/ad/g/*$script,domain=ncaa.com|pga.com|q2.be|vtm.be|ruutu.fi|medialaancdn.be|medialaan.be
 @@|https://*.v.fwmrm.net/ad/g/*$script,domain=ncaa.com|pga.com|q2.be|vtm.be|ruutu.fi|medialaancdn.be|medialaan.be
 ||cbsnews.com/news/*/[object%20object]$image,redirect=1x1-transparent.gif
