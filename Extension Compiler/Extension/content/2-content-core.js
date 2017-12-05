@@ -1485,19 +1485,13 @@ a.generic.NoAdBlock = () => {
                         try {
                             for (let key in installs) {
                                 if (installs[key].appId === "ziT6U3epKObS" && installs[key].options) {
-                                    if (key === "preview") {
-                                        window.document.body.insertAdjacentHTML("beforeend",
-                                            "<style>html, body { overflow:scroll !important; } " +
-                                            "cf-div { display:none !important; }</style>");
-                                    } else {
-                                        window.Object.defineProperty(installs[key], "URLPatterns", {
-                                            configurable: false,
-                                            set() { },
-                                            get() {
-                                                return ["$^"];
-                                            },
-                                        });
-                                    }
+                                    window.Object.defineProperty(installs[key], "URLPatterns", {
+                                        configurable: false,
+                                        set() { },
+                                        get() {
+                                            return ["$^"];
+                                        },
+                                    });
                                     needDefuse = false;
                                     error("Uncaught Error: NoAdBlock uBlock Origin detector is not allowed on this device!");
                                 }
