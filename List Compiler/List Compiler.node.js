@@ -22,15 +22,66 @@ let output = [];
  */
 const loadFile = (path, removeComments = true) => {
     const lines = readFileSync(path, "utf8").split("\n");
+
+    let accepting = true;
+    let inPragmaBlock = false;
+
     for (let i = 0; i < lines.length; i++) {
         let line = lines[i].trim();
         if (!line) {
             continue;
         }
+
+        if (line.startsWith("!@pragma-if-true")) {
+            if (inPragmaBlock) {
+                throw new Error("A @pragma-if-true directive is enclosed in another @pragma-if-* block");
+            }
+
+            accepting = true;
+            inPragmaBlock = true;
+            continue;
+        }
+        if (line.startsWith("!@pragma-if-false")) {
+            if (inPragmaBlock) {
+                throw new Error("A @pragma-if-false directive is enclosed in another @pragma-if-* block");
+            }
+
+            accepting = false;
+            inPragmaBlock = true;
+            continue;
+        }
+        if (line.startsWith("!@pragma-else")) {
+            if (!inPragmaBlock) {
+                throw new Error("A @pragma-else directive does not have a matching @pragma-if-* directive");
+            }
+
+            accepting = !accepting;
+            continue;
+        }
+        if (line.startsWith("!@pragma-end-if")) {
+            if (!inPragmaBlock) {
+                throw new Error("A @pragma-end-if directive does not have a matching @pragma-if-* directive");
+            }
+
+            accepting = true;
+            inPragmaBlock = false;
+            continue;
+        }
+        if (line.startsWith("!@pragma-")) {
+            console.warn(`Unrecognized directive ${line.substring(1)}`);
+        }
+
         if (removeComments && line.charAt(0) === '!') {
             continue;
         }
-        output.push(line);
+
+        if (accepting) {
+            output.push(line);
+        }
+    }
+
+    if (inPragmaBlock) {
+        throw new Error("A @pragma-if-* directive does not have a matching @pragma-end-if directive");
     }
 };
 

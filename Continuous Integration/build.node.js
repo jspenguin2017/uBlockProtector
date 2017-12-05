@@ -81,11 +81,11 @@ const build = async (file) => {
             while (data[i].trim() !== "//@pragma-end-if") {
                 let code = data.splice(i, 1);
                 if (code.length !== 1) {
-                    throw new Error("@pragma-if-debug directive does not have a matching @pragma-end-if");
+                    throw new Error("A @pragma-if-debug directive does not have a matching @pragma-end-if directive");
                 } else {
                     code = code[0].trim();
                     if (code.startsWith("//@pragma-")) {
-                        console.warn(`Directive ${code} is enclosed in a @pragma-if-debug block`);
+                        console.warn(`Directive ${code.substring(2)} is enclosed in a @pragma-if-debug block`);
                     }
                 }
             }
@@ -95,7 +95,7 @@ const build = async (file) => {
 
         //Cannot cache the trimmed line since the line may change
         if (data[i].trim() === "//@pragma-end-if") {
-            throw new Error("@pragma-end-if directive does not have a matching @pragma-if-*");
+            throw new Error("A @pragma-end-if directive does not have a matching @pragma-if-* directive");
         }
 
         const line = data[i].trim();
