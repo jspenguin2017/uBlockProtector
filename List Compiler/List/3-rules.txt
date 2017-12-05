@@ -2,12 +2,23 @@
 ! ===== Miners =====
 ! ==================
 ! === CoinHive Generic
+! Asking for permission does not have an enforced cooldown, can be exploited to make the permission request to be not refusable
+! More information: https://github.com/uBlockOrigin/uAssets/issues/770
+!@pragma-if-false
 /coinhive.js$domain=~authedmine.com
 /coinhive.min.js$domain=~authedmine.com
 /c-hive.js$domain=~authedmine.com
 /c-hive.min.js$domain=~authedmine.com
 /cryptonight.wasm$domain=~authedmine.com
 /cn.wasm$domain=~authedmine.com
+!@pragma-else
+/coinhive.js
+/coinhive.min.js
+/c-hive.js
+/c-hive.min.js
+/cryptonight.wasm
+/cn.wasm
+!@pragma-end-if
 ! === CoinHive Specific
 ||cqfnvznw.info^
 ||jyhfuqoh.info^
