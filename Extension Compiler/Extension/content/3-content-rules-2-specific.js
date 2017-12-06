@@ -2633,7 +2633,7 @@ if (a.domCmp(["kiss.com.tw"])) {
     a.bait("div", "#ads");
 }
 if (a.domCmp(["identi.li"])) {
-    a.css(".linkhidder { display:none; } div[id^='hidden_'] { display:block; }");
+    a.css("div[id^='hidden_'] { display:block; }");
     a.cookie("BetterJsPop0", "1");
     a.cookie("BetterJsPop1", "1");
     a.ready(() => {
@@ -2663,7 +2663,10 @@ if (a.domCmp(["identi.li"])) {
     });
 }
 if (a.domCmp(["peliculasmega.info"])) {
-    a.css(".linkhidder { display:none; } a[class*='hidden_'] { display:block; }");
+    a.css("a[class*='hidden_'] { display:block; }");
+}
+if (a.domCmp(["navegacom.com"])) {
+    a.css(".series-indeti { display:block; }");
 }
 if (a.domCmp(["acortar.net", "acortalo.net", "vellenger.com", "infobae.net"])) {
     a.on("load", () => {
