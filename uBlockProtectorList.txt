@@ -34,6 +34,9 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 ||imasdk.googleapis.com/js/sdkloader/ima3.js$script,important,domain=streamable.com|popcornflix.com|fox.com
 bild.de#@#script:inject(abort-on-property-read.js, de.bild.cmsKonfig.a.b.a)
 @@||ads-v-darwin.hulustream.com/published/*.mp4$domain=hulu.com
+! Asking for permission does not have an enforced cooldown, can be exploited to make the permission request to be not refusable
+! More information: https://github.com/uBlockOrigin/uAssets/issues/770
+||authedmine.com^$important
 /coinhive.js
 /coinhive.min.js
 /c-hive.js

@@ -23,8 +23,9 @@ let output = [];
 const loadFile = (path, removeComments = true) => {
     const lines = readFileSync(path, "utf8").split("\n");
 
-    let accepting = true;
     let inPragmaBlock = false;
+    let accepting = true;
+    let keepNextComment = false;
 
     for (let i = 0; i < lines.length; i++) {
         let line = lines[i].trim();
@@ -32,25 +33,25 @@ const loadFile = (path, removeComments = true) => {
             continue;
         }
 
-        if (line.startsWith("!@pragma-if-true")) {
+        if (line === "!@pragma-if-true") {
             if (inPragmaBlock) {
                 throw new Error("A @pragma-if-true directive is enclosed in another @pragma-if-* block");
             }
 
-            accepting = true;
             inPragmaBlock = true;
+            accepting = true;
             continue;
         }
-        if (line.startsWith("!@pragma-if-false")) {
+        if (line === "!@pragma-if-false") {
             if (inPragmaBlock) {
                 throw new Error("A @pragma-if-false directive is enclosed in another @pragma-if-* block");
             }
 
-            accepting = false;
             inPragmaBlock = true;
+            accepting = false;
             continue;
         }
-        if (line.startsWith("!@pragma-else")) {
+        if (line === "!@pragma-else") {
             if (!inPragmaBlock) {
                 throw new Error("A @pragma-else directive does not have a matching @pragma-if-* directive");
             }
@@ -58,21 +59,38 @@ const loadFile = (path, removeComments = true) => {
             accepting = !accepting;
             continue;
         }
-        if (line.startsWith("!@pragma-end-if")) {
+        if (line === "!@pragma-end-if") {
             if (!inPragmaBlock) {
                 throw new Error("A @pragma-end-if directive does not have a matching @pragma-if-* directive");
             }
 
-            accepting = true;
             inPragmaBlock = false;
+            accepting = true;
             continue;
         }
+
+        if (line === "!@pragma-keep-next-comment") {
+            if (keepNextComment) {
+                throw new Error("Last @pragma-keep-next-comment directive was not consumed");
+            }
+
+            if (accepting) {
+                keepNextComment = true;
+            }
+
+            continue;
+        }
+
         if (line.startsWith("!@pragma-")) {
             console.warn(`Unrecognized directive ${line.substring(1)}`);
         }
 
         if (removeComments && line.charAt(0) === '!') {
-            continue;
+            if (keepNextComment) {
+                keepNextComment = false;
+            } else {
+                continue;
+            }
         }
 
         if (accepting) {
