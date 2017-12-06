@@ -45,6 +45,8 @@ bild.de#@#script:inject(abort-on-property-read.js, de.bild.cmsKonfig.a.b.a)
 /cn.wasm
 ||cqfnvznw.info^
 ||jyhfuqoh.info^
+! These domains are exploiting CSP reports to log most of the things that extensions insert onto webpages
+! More information: https://github.com/gorhill/uBlock/issues/3140
 ||report-uri.io^$third-party
 ||report-uri.com^$third-party
 ||d.0emm.com^$third-party
