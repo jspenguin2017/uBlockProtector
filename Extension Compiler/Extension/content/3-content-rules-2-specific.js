@@ -3203,7 +3203,7 @@ if (a.domCmp(["hulu.com"])) {
 if (a.domCmp(["crockolinks.com"])) {
     a.noAccess("test");
 }
-if (a.domCmp(["srt.am"])) {
+if (a.domCmp(["srt.am", "tny.ec"])) {
     a.noAccess("acPrefetch");
 }
 if (a.domCmp(["uflash.tv"])) {
