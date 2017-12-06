@@ -843,3 +843,5 @@ fakeporn.tv##script:inject(setTimeout-defuser.js, innerText)
 fakeporn.tv##script:inject(abort-on-property-write.js, prPuShown)
 ! === bigbtc.win
 bigbtc.win##script:inject(abort-on-property-read.js, ad_block_test)
+! === egarwolin.pl
+@@||egarwolin.pl/static/js/ads.js$script,first-party
