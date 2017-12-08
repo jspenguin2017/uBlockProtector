@@ -1,7 +1,7 @@
 ! =======================
 ! ===== Integration =====
 ! =======================
-! These are filters for integration with uBlock Protector Extension, all white lists in this section are handled by uBlock Protector Extension
+! These are filters for integration with Nano Defender, all white lists in this section are handled by Nano Defender
 ! === Installation test
 jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 ! === Callback API placeholder, must be blocked, this file does not actually exist

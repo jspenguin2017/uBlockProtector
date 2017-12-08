@@ -1,6 +1,6 @@
-[uBlock Origin 1.14.8+]
-! Title: uBlock Protector List
-! Description: An anti-adblock defuser for uBlock Origin
+[Nano Adblocker 1.0.0.3+]
+! Title: Nano Defender Integration
+! Description: An anti-adblock defuser for Nano Adblocker and uBlock Origin
 ! Expires: 2 days
 ! Author: jspenguin2017
 ! Homepage: https://jspenguin2017.github.io/uBlockProtector/
@@ -9,11 +9,11 @@
 ! License: GPL-3.0
 !
 ! ===== MUST READ ===== MUST READ ===== MUST READ ===== MUST READ ===== MUST READ ===== MUST READ =====
-! This filter list is intended to be used with uBlock Protector Extension
+! This filter list is intended to be used with Nano Defender (a.k.a. uBlock Protector)
 ! Visit my home page for more information: https://jspenguin2017.github.io/uBlockProtector/
 !
 ! There are a few filters for the domain jspenguin.com, those are placeholder paths, no requests will
-! ever be sent there if you have properly installed uBlock Protector.
+! ever be sent there if you have properly installed Nano Defender.
 ! Do not visit those paths manually, my server will log your access but will not send a response.
 ! ===== MUST READ ===== MUST READ ===== MUST READ ===== MUST READ ===== MUST READ ===== MUST READ =====
 !
