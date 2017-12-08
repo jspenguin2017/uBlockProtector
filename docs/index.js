@@ -1,26 +1,26 @@
 "use strict";
 
 /**
- * Check installation of uBlock Protector.
+ * Check installation of Nano Defender.
  * @function
  */
 const checkInstallation = (() => {
-    const $list = document.getElementById("list-test");
     const $ext = document.getElementById("extension-test");
+    const $list = document.getElementById("list-test");
     const $browser = document.getElementById("browser-test");
 
     const reExtractBrowserVersion = /Chrom(?:ium|e)\/(\d+)/;
 
     return () => {
         try {
-            if (window.google_ad_status === 1) {
-                $list.classList.add("hidden");
+            if (window.uBlock_Protector_Extension === true) {
+                $ext.classList.add("hidden");
             }
         } catch (err) { }
 
         try {
-            if (window.uBlock_Protector_Extension === true) {
-                $ext.classList.add("hidden");
+            if (window.google_ad_status === 1) {
+                $list.classList.add("hidden");
             }
         } catch (err) { }
 
@@ -29,7 +29,10 @@ const checkInstallation = (() => {
             if (version >= 62) {
                 $browser.classList.add("hidden");
             }
-        } catch (err) { }
+        } catch (err) {
+            //Unsupported browser, hide the message as it can be confusing
+            $browser.classList.add("hidden");
+        }
     };
 })();
 
