@@ -1,10 +1,6 @@
-### You are prohibited from opening issues in this repository if you are not using Chromium / Chrome and uBlock Origin. 
+### You are prohibited from opening issues in this repository if you are not using Chromium / Chrome and Nano Adblocker / uBlock Origin. 
 
-### You must install and enable BOTH uBlock Protector List and uBlock Protector Extension. Everything must be updated to the latest stable version. 
-
-### Installation instructions are on my [home page](https://jspenguin2017.github.io/uBlockProtector/). 
-
-Note: Issues that are specific to Chromium may not be fixed as I cannot test on it. 
+### Installation instructions are on my [home page](https://jspenguin2017.github.io/uBlockProtector/). You must verify that you have properly installed everything before opening issues. 
 
 Check out [AdBlock Protector 2](https://adblockprotector2.github.io/AdBlockProtector2/) if you do not want to switch your setup. 
 
