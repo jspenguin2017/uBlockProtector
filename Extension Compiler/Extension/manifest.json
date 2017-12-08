@@ -10,9 +10,7 @@
   },
   "browser_action": {
     "default_icon": {
-      "16": "icons/16x16.png",
-      "24": "icons/24x24.png",
-      "32": "icons/32x32.png"
+      "128": "icon128.png"
     },
     "default_title": "uBlock Protector Extension"
   },
@@ -41,10 +39,7 @@
   "description": "An anti-adblock defuser for uBlock Origin",
   "homepage_url": "https://jspenguin2017.github.io/uBlockProtector/",
   "icons": {
-    "128": "icons/128x128.png",
-    "16": "icons/16x16.png",
-    "32": "icons/32x32.png",
-    "48": "icons/48x48.png"
+    "128": "icon128.png"
   },
   "incognito": "spanning",
   "manifest_version": 2,

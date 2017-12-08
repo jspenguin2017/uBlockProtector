@@ -33,7 +33,7 @@ Chromium documentation is generated, which means it sometimes includes weird thi
 * `idltest`: Internal use for Chromium developers only, documentation page returns 404 not found, 
  https://bugs.chromium.org/p/chromium/issues/detail?id=644010
 
-## Specific notes for uBlock Protector Extension
+## Specific notes for Nano Defender
 
 ### Requested permissions
 
@@ -48,7 +48,6 @@ Chromium documentation is generated, which means it sometimes includes weird thi
 
 ### Credits
 
-The icons of uBlock Protector Extension are created based on icons of uBO-Extra (by gorhill). License and original source code 
-of uBO-Extra are available [here](https://github.com/gorhill/uBO-Extra). 
+Nano Defender uses code from uBO-Extra, license and original source code are available [here](https://github.com/gorhill/uBO-Extra). 
 
 Credits for solutions are in the source code. 
