@@ -29,15 +29,15 @@ You are not allowed to promote proprietary software in this repository, and you 
 **Missed ads and popups are to be reported to [EasyList](https://forums.lanik.us/) or 
 [uAssets](https://github.com/uBlockOrigin/uAssets/issues) first**, 
 only open issue about them here if: 
-* uBlock Protector caused them to be unblocked, or 
+* Nano Defender caused them to be unblocked, or 
 * Blocking them triggers anti-adblock, or 
 * They cannot be blocked with just filters 
 
 **Title of your issue**: The domain of the website. Prepend `NSFW! ` if the website may contain contents that are not safe for work. 
-Prepend `URGENT! ` if the issue is caused by uBlock Protector. 
+Prepend `URGENT! ` if the issue is caused by Nano Defender. 
 
-An issue is considered caused by uBlock Protector if the issue persists after white listing the website but no longer occur once 
-uBlock Protector Extension is disabled. Misusing `URGENT! ` title can lead to a ban. 
+An issue is considered caused by Nano Defender if the issue persists after white listing the website but no longer occur once 
+Nano Defender Extension is disabled. Misusing `URGENT! ` title can lead to a ban. 
 
 **Comment of your issue**: Use the template. Wrap links in backticks to make them not clickable. 
 
