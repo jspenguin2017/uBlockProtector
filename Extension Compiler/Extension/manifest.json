@@ -12,7 +12,7 @@
     "default_icon": {
       "128": "icon128.png"
     },
-    "default_title": "uBlock Protector Extension"
+    "default_title": "Nano Defender"
   },
   "content_scripts": [
     {
@@ -36,7 +36,7 @@
       "run_at": "document_start"
     }
   ],
-  "description": "An anti-adblock defuser for uBlock Origin",
+  "description": "An anti-adblock defuser for Nano Adblocker and uBlock Origin",
   "homepage_url": "https://jspenguin2017.github.io/uBlockProtector/",
   "icons": {
     "128": "icon128.png"
@@ -44,7 +44,7 @@
   "incognito": "spanning",
   "manifest_version": 2,
   "minimum_chrome_version": "59.0",
-  "name": "uBlock Protector Extension",
+  "name": "Nano Defender",
   "options_ui": {
     "chrome_style": true,
     "page": "options.html"
@@ -57,5 +57,5 @@
     "webRequest",
     "webRequestBlocking"
   ],
-  "version": "12.130"
+  "version": "12.131"
 }
