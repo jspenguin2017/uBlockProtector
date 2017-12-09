@@ -1,4 +1,6 @@
-//Build extension in production mode
+/**
+ * Build extension in production mode.
+ */
 "use strict";
 
 

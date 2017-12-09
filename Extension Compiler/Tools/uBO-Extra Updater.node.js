@@ -1,5 +1,7 @@
-//Download and update uBO-Extra file from upstream
-//The current working directory should be "/Extension Compiler"
+/**
+ * Download and update uBO-Extra file from upstream.
+ * The current working directory should be "/Extension Compiler".
+ */
 "use strict";
 
 /**

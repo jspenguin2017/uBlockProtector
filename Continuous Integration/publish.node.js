@@ -1,14 +1,16 @@
-//Publish a new version, this script will swallow all errors and only display hard coded generic
-//messages for security, some errors will be reported to a secure channel
-//
-//Requires these secure environment variables:
-//  CLIENT_ID, CLIENT_SECRET: Client ID and secret
-//  REFRESH_TOKEN: Refresh token
-//  VERSION_KEY: Key used to save last build version
-//
-//If commit message starts with "@pragma-no-publish", then this script will do nothing and
-//immediately exit
-//If commit message starts with "@pragma-force-publish", then version check is skipped
+/**
+ * Publish a new version, this script will swallow all errors and only display hard coded generic
+ * messages for security, some errors will be reported to a secure channel.
+ *
+ * Requires these secure environment variables:
+ ** CLIENT_ID, CLIENT_SECRET: Client ID and secret
+ ** REFRESH_TOKEN: Refresh token
+ ** VERSION_KEY: Key used to save last build version
+ *
+ * If commit message starts with "@pragma-no-publish", then this script will do nothing and
+ * immediately exit.
+ * If commit message starts with "@pragma-force-publish", then version check is skipped.
+ */
 "use strict";
 
 

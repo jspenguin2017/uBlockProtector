@@ -1,3 +1,6 @@
+/**
+ * Home page main script, check installation.
+ */
 "use strict";
 
 /**

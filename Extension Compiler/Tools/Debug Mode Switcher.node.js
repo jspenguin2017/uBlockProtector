@@ -1,5 +1,7 @@
-//Turn debug mode on or off
-//The current working directory should be "/Extension Compiler"
+/**
+ * Turn debug mode on or off.
+ * The current working directory should be "/Extension Compiler".
+ */
 "use strict";
 
 /**

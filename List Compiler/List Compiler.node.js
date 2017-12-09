@@ -1,4 +1,6 @@
-//Build filter list
+/**
+ * Filter list builder.
+ */
 "use strict";
 
 
