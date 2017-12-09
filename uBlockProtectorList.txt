@@ -532,7 +532,7 @@ fakeporn.tv##script:inject(abort-on-property-write.js, prPuShown)
 bigbtc.win##script:inject(abort-on-property-read.js, ad_block_test)
 @@||egarwolin.pl/static/js/ads.js$script,first-party
 @@||blockergame.com^$generichide
-blockergame.com##.ads > #ads-body:style(height: 41px !important;)
+blockersurvive.com,blockergame.com##.ads > #ads-body:style(height: 41px !important;)
 @@||lolalytics.com^$generichide
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide
@@ -582,6 +582,8 @@ blockergame.com##.ads > #ads-body:style(height: 41px !important;)
 @@||wp.pl^$generichide
 @@||anonymousemail.me^$generichide
 @@||playstation.com^$generichide
+@@||blockergame.com^$generichide
+@@||blockersurvive.com^$generichide
 @@||imasdk.googleapis.com/js/sdkloader/outstream.js$script,domain=ovar.io
 @@||flashx1.tv/js/showad*.js$script
 @@||flashx1.tv/sidead.js$script
