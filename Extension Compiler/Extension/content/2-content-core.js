@@ -7,7 +7,7 @@
  * @function
  */
 a.init = () => {
-    console.log(`Domain: ${document.domain}`);
+    console.log(`[Nano] Nano Defender Activated :: ${document.domain}`);
     //Home page installation test
     if (a.domCmp(["jspenguin2017.github.io"], true) && location.pathname.startsWith("/uBlockProtector/")) {
         a.inject(() => {
@@ -68,18 +68,18 @@ a.always = (...args) => {
 /**
  * Write an error message to console.
  * @function
- * @param {string} [name=undefined] - The name of the uBlock Origin detector.
+ * @param {string} [name=undefined] - The name of the adblocker detector.
  */
 a.err = (name) => {
     if (name) {
-        console.error(`Uncaught Error: ${name} uBlock Origin detector is not allowed on this device!`);
+        console.error(`[Nano] Generic Solution Triggered :: ${name}`);
     } else {
-        console.error("Uncaught Error: uBlock Origin detectors are not allowed on this device!");
+        console.error("[Nano] Specific Solution Triggered");
     }
 };
 /**
  * Send a highly privileged XMLHttpRequest, it goes though Cross Origin Resource Sharing policies
- * as well as uBlock Origin filtering.
+ * as well as adblocker filtering.
  * @function
  * @param {Object} details - Details about this request.
  ** @param {string} method - The method of the request, usually "GET" or "POST".
@@ -240,7 +240,7 @@ a.inject = (payload, isReady) => {
         document.documentElement.prepend(s);
         s.remove();
     } catch (err) {
-        console.error("uBlock Protector failed to inject a standalone script!");
+        console.error("[Nano] Failed :: Inject Standalone Script");
         //@pragma-if-debug
         if (a.debugMode) {
             console.log(s.textContent);
@@ -286,7 +286,7 @@ a.injectWithRuntime = (payload, isReady) => {
         document.documentElement.prepend(s);
         s.remove();
     } catch (err) {
-        console.error("uBlock Protector failed to inject a standalone script with runtime!");
+        console.error("[Nano] Failed :: Inject Script With Runtime");
         //@pragma-if-debug
         if (a.debugMode) {
             console.log(s.textContent);
@@ -458,7 +458,7 @@ a.filter = (name, method, filter, parent = "window") => {
         const newFunc = (...args) => {
             //@pragma-if-debug
             if (${a.debugMode}) {
-                warn("${strParent}.${name} is called with these arguments:");
+                warn("[Nano] Filtered Function Called :: ${strParent}.${name}");
                 for (let i = 0; i < args.length; i++) {
                     log(String(args[i]));
                 }
@@ -466,9 +466,9 @@ a.filter = (name, method, filter, parent = "window") => {
             //@pragma-end-if
 
             if (matcher(args)) {
-                error("Uncaught Error: uBlock Origin detectors are not allowed on this device!");
+                error("[Nano] Blocked :: ${strParent}.${name}");
             } else {
-                log("Tests passed.");
+                log("[Nano] Allowed :: ${strParent}.${name}");
                 return original.apply(parent, args);
             }
         };
@@ -477,9 +477,9 @@ a.filter = (name, method, filter, parent = "window") => {
             parent = ${parent};
             original = ${parent}["${name}"];
             ${parent}["${name}"] = newFunc;
-            log("Filter activated on ${strParent}.${name}");
+            log("[Nano] Filter Activated :: ${strParent}.${name}");
         } catch (err) {
-            error("uBlock Protector failed to activate filter on ${strParent}.${name}!");
+            error("[Nano] Failed :: Activate Filter On ${strParent}.${name}");
         }
     })();`, true);
 };
@@ -529,15 +529,15 @@ a.antiCollapse = (name, filter) => {
                 set(val) {
                     //@pragma-if-debug
                     if (${a.debugMode}) {
-                        warn("${name} of an element is being assigned to:");
+                        warn("[Nano] Element Modification :: ${name}");
                         log(val);
                     }
                     //@pragma-end-if
 
                     if (handler(this, String(val))) {
-                        error("Uncaught Error: uBlock Origin detectors are not allowed on this device!");
+                        error("[Nano] Blocked :: Element Collapse");
                     } else {
-                        log("Tests passed.");
+                        log("[Nano] Blocked :: Element Collapse");
                         _set.call(this, val);
                     }
                 },
@@ -545,9 +545,9 @@ a.antiCollapse = (name, filter) => {
                     return _get.call(this);
                 },
             });
-            log("Element collapse defuser activated on ${name}");
+            log("[Nano] Element Collapse Protection :: ${name}");
         } catch (err) {
-            error("uBlock Protector failed to activate element collapse defuser on ${name}!");
+            error("[Nano] Failed :: Element Collapse Protection On ${name}");
         }
     })();`, true);
 };
@@ -574,7 +574,7 @@ a.timewarp = (timer, method, filter, ratio = 0.02) => {
         const newFunc = (...args) => {
             //@pragma-if-debug
             if (${a.debugMode}) {
-                warn("window.${timer} is called with these arguments:");
+                warn("[Nano] Timer Called :: window.${timer}");
                 for (let i = 0; i < args.length; i++) {
                     log(String(args[i]));
                 }
@@ -582,10 +582,10 @@ a.timewarp = (timer, method, filter, ratio = 0.02) => {
             //@pragma-end-if
 
             if (matcher(args)) {
-                error("Timewarped.");
+                error("[Nano] Timewarped");
                 args[1] *= ${ratio};
             } else {
-                log("Not timewarped.");
+                log("[Nano] Not Timewarped");
             }
             return original.apply(window, args);
         };
@@ -593,9 +593,9 @@ a.timewarp = (timer, method, filter, ratio = 0.02) => {
         try {
             original = window.${timer};
             window.${timer} = newFunc;
-            log("Timewarp activated on window.${timer}");
+            log("[Nano] Timewarp Activated :: window.${timer}");
         } catch (err) {
-            error("uBlock Protector failed to activate filter on window.${timer}!");
+            error("[Nano] Failed :: Activate Timewarp On window.${timer}!");
         }
     })();`, true);
 };
@@ -626,11 +626,11 @@ a.readOnly = (name, val, parent = "window") => {
 
             //@pragma-if-debug
             if (${a.debugMode}) {
-                window.console.log("Defined read-only property ${strParent}.${name}");
+                window.console.log("[Nano] Read-only Property :: ${strParent}.${name}");
             }
             //@pragma-end-if
         } catch (err) {
-            window.console.error("uBlock Protector failed to define read-only property ${strParent}.${name}!");
+            window.console.error("[Nano] Failed :: Read-only Property ${strParent}.${name}");
         }
     })();`, true);
 };
@@ -646,7 +646,7 @@ a.noAccess = (name, parent = "window") => {
     const strParent = a.strEscape(parent);
     a.inject(`(() => {
         "use strict";
-        const err = new window.Error("This property may not be accessed!");
+        const err = new window.Error("[Nano] Blocked :: Property Access");
 
         //@pragma-if-debug
         const Error = window.Error.bind(window);
@@ -655,7 +655,7 @@ a.noAccess = (name, parent = "window") => {
         const throwErr = () => {
             //@pragma-if-debug
             if (${a.debugMode}) {
-                throw new Error("This property may not be accessed!");
+                throw new Error("[Nano] Blocked :: Property Access");
             }
             //@pragma-end-if
 
@@ -670,11 +670,11 @@ a.noAccess = (name, parent = "window") => {
 
             //@pragma-if-debug
             if (${a.debugMode}) {
-                window.console.log("Defined non-accessible property ${strParent}.${name}");
+                window.console.log("[Nano] Non-accessible Property :: ${strParent}.${name}");
             }
             //@pragma-end-if
         } catch (err) {
-            window.console.error("uBlock Protector failed to define non-accessible property ${strParent}.${name}!");
+            window.console.error("[Nano] Failed :: Non-accessible Property ${strParent}.${name}");
         }
     })();`, true);
 };
@@ -702,7 +702,7 @@ a.noAccessExt = (chain) => {
         const throwErr = () => {
             //@pragma-if-debug
             if (${a.debugMode}) {
-                throw new Error("This property may not be accessed!");
+                throw new Error("[Nano] Blocked :: Property Access");
             }
             //@pragma-end-if
 
@@ -736,7 +736,7 @@ a.noAccessExt = (chain) => {
                                     proxy(value, chain);
                                     val = value;
                                 } catch (err) {
-                                    error("uBlock Protector failed to refresh non-accessible property ${chain}!");
+                                    error("[Nano] Failed :: Refresh Non-accessible Property ${chain}");
                                 }
                             }
                         };
@@ -753,9 +753,9 @@ a.noAccessExt = (chain) => {
 
         try {
             proxy(window, "${chain}");
-            window.console.log("Defined non-accessible property ${chain}");
+            window.console.log("[Nano] Non-accessible Property :: ${chain}");
         } catch (err) {
-            error("uBlock Protector failed to define non-accessible property ${chain}!");
+            error("[Nano] Failed :: Non-accessible Property ${chain}");
         }
     })();`, true);
 };
@@ -844,7 +844,7 @@ a.loopbackXHR = (server) => {
             original = window.XMLHttpRequest;
             window.XMLHttpRequest = newXHR;
         } catch (err) {
-            window.console.error("uBlock Protector failed to set up XMLHttpRequest loopback engine!");
+            window.console.error("[Nano] Failed :: XMLHttpRequest Loopback Engine");
         }
     })();`, true);
 };
@@ -888,7 +888,7 @@ a.replaceXHR = (handler) => {
                 return _open.call(this, method, url, ...rest);
             };
         } catch (err) {
-            window.console.error("uBlock Protector failed to set up XMLHttpRequest replace engine!");
+            window.console.error("[Nano] Failed to set up XMLHttpRequest replace engine!");
         }
     })();`, true);
 };
@@ -1002,7 +1002,7 @@ a.generic = () => {
         let data = {};
         const error = window.console.error.bind(window.console);
         const err = (name) => {
-            error(`Uncaught Error: ${name} uBlock Origin detector is not allowed on this device!`);
+            error(`Uncaught Error: ${name} adblocker detector is not allowed on this device!`);
         };
 
         //---document-start---
@@ -1038,13 +1038,13 @@ a.generic = () => {
                 },
             });
         } catch (err) {
-            error("uBlock Protector failed to set up Playwire uBlock Origin detector defuser!");
+            error("[Nano] Failed to set up Playwire anti-adblock defuser!");
         }
         //AdBlock Notify
         try {
             let val;
             let isEvil = false;
-            const anErr = new window.Error("AdBlock Notify uBlock Origin detector is not allowed on this device!");
+            const anErr = new window.Error("[Nano] AdBlock Notify is not allowed on this device!");
             window.Object.defineProperty(window, "anOptions", {
                 configurable: false,
                 set(arg) {
@@ -1072,7 +1072,7 @@ a.generic = () => {
                 },
             });
         } catch (err) {
-            error("uBlock Protector failed to set up AdBlock Notify uBlock Origin detector defuser!");
+            error("[Nano] Failed to set up AdBlock Notify defuser!");
         }
 
         //---document-end---
@@ -1280,7 +1280,7 @@ a.generic = () => {
 a.generic.FuckAdBlock = (constructorName, instanceName) => {
     a.inject(`(() => {
         "use strict";
-        const errMsg = "Uncaught Error: FuckAdBlock uBlock Origin detector is not allowed on this device!";
+        const errMsg = "Uncaught Error: FuckAdBlock adblocker detector is not allowed on this device!";
         const error = window.console.error.bind(window.console);
         const patchedFuckAdBlock = function () {
             //Based on FuckAdBlock
@@ -1347,7 +1347,7 @@ a.generic.FuckAdBlock = (constructorName, instanceName) => {
                 },
             });
         } catch (err) {
-            window.console.error("uBlock Protector failed to set up FuckAdBlock defuser!");
+            window.console.error("[Nano] Failed to set up FuckAdBlock defuser!");
         }
     })();`, true);
 };
@@ -1418,7 +1418,7 @@ a.generic.Adfly = () => {
                 },
             });
         } catch (err) {
-            window.console.error("uBlock Protector failed to set up Adfly bypasser!");
+            window.console.error("[Nano] Failed to set up Adfly bypasser!");
         }
     });
 };
@@ -1444,7 +1444,7 @@ a.generic.adsjsV2 = (min = 11, max = 14) => {
                     if (elem) {
                         return elem;
                     } else {
-                        error("Uncaught Error: ads.js v2 uBlock Origin detector is not allowed on this device!");
+                        error("Uncaught Error: ads.js v2 adblocker detector is not allowed on this device!");
                         return window.document.createElement("div");
                     }
                 } else {
@@ -1458,7 +1458,7 @@ a.generic.adsjsV2 = (min = 11, max = 14) => {
             original = window.document.getElementById;
             window.document.getElementById = newFunc;
         } catch (err) {
-            error("uBlock Protector failed to set up ads.js v2 uBlock Origin detector defuser!");
+            error("[Nano] Failed to set up ads.js v2 adblocker detector defuser!");
         }
     })();`, true);
 };
@@ -1493,7 +1493,7 @@ a.generic.NoAdBlock = () => {
                                         },
                                     });
                                     needDefuse = false;
-                                    error("Uncaught Error: NoAdBlock uBlock Origin detector is not allowed on this device!");
+                                    error("Uncaught Error: NoAdBlock adblocker detector is not allowed on this device!");
                                 }
                             }
                         } catch (err) { }
@@ -1502,7 +1502,7 @@ a.generic.NoAdBlock = () => {
                 },
             });
         } catch (err) {
-            window.console.error("uBlock Protector failed to set up NoAdBlock uBlock Origin detector defuser!");
+            window.console.error("[Nano] Failed to set up NoAdBlock adblocker detector defuser!");
         }
     });
 };
@@ -1542,7 +1542,7 @@ a.trace = (name, parent = "window") => {
                 },
             });
         } catch (err) {
-            window.console.error("uBlock Protector failed to define traced property ${strParent}.${name}!");
+            window.console.error("[Nano] Failed to define traced property ${strParent}.${name}!");
         }
     })();`, true);
 };
