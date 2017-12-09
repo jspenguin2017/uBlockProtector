@@ -845,3 +845,6 @@ fakeporn.tv##script:inject(abort-on-property-write.js, prPuShown)
 bigbtc.win##script:inject(abort-on-property-read.js, ad_block_test)
 ! === egarwolin.pl
 @@||egarwolin.pl/static/js/ads.js$script,first-party
+! === blockergame.com
+@@||blockergame.com^$generichide
+blockergame.com##.ads > #ads-body:style(height: 41px !important;)
