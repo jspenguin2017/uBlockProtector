@@ -848,3 +848,6 @@ bigbtc.win##script:inject(abort-on-property-read.js, ad_block_test)
 ! === blockersurvive.com, blockergame.com
 @@||blockergame.com^$generichide
 blockersurvive.com,blockergame.com##.ads > #ads-body:style(height: 41px !important;)
+! === squadd.io
+||imasdk.googleapis.com/js/sdkloader/outstream.js$script,redirect=noopjs,domain=squadd.io
+squadd.io###mc-videoads-overlay
