@@ -1,4 +1,3 @@
-//Common bootstrapper, used by both background and content script
 "use strict";
 
 /**

@@ -1,5 +1,5 @@
-//Script for the options UI
 "use strict";
+
 
 /**
  * Create an anchor element from a link.
@@ -15,10 +15,16 @@ const template = (link) => {
     return anchor;
 };
 
-//Replace link templates
+
 const links = document.querySelectorAll("link-template");
 for (let i = 0; i < links.length; i++) {
     const p = document.createElement("p");
     p.appendChild(template(links[i].textContent.trim()));
     links[i].parentNode.replaceChild(p, links[i]);
 }
+
+window.onkeyup = (e) => {
+    if (e.keyCode === 27) { //Esc
+        window.close();
+    }
+};

@@ -339,9 +339,9 @@ a.generic = () => {
         [
             "script",
         ],
-        "data:text/javascript;base64,KCgpID0+IHsidXNlIHN0cmljdCI7dHJ5IHt3aW5kb3cuY29uc29sZS5lcnJvcigiVW5jYXVnaHQgRXJyb3I6IGpRdWVyeSB1QmxvY2sgT3JpZ2luIGRldGVjdG" +
-        "9yIHBsdWdpbiBpcyBub3QgYWxsb3dlZCBvbiB0aGlzIGRldmljZSEiKTt9IGNhdGNoIChlcnIpIHsgfXRyeSB7d2luZG93LiQuYWRibG9jayA9IGZhbHNlO30gY2F0Y2ggKGVycikgeyB9dHJ5IHt3" +
-        "aW5kb3cualF1ZXJ5LmFkYmxvY2sgPSBmYWxzZTt9IGNhdGNoIChlcnIpIHsgfX0pKCk7",
+        "data:text/javascript;base64,KCgpID0+IHsidXNlIHN0cmljdCI7dHJ5IHt3aW5kb3cuY29uc29sZS5lcnJvcigiW05hbm9dIEdlbmVyaWMgU29sdXRpb24gVHJpZ2dlcmVkIDo6IGpRdWVyeS" +
+        "BQbHVnaW4iKTt9IGNhdGNoIChlcnIpIHsgfXRyeSB7d2luZG93LiQuYWRibG9jayA9IGZhbHNlO30gY2F0Y2ggKGVycikgeyB9dHJ5IHt3aW5kb3cualF1ZXJ5LmFkYmxvY2sgPSBmYWxzZTt9IGNh" +
+        "dGNoIChlcnIpIHsgfX0pKCk7",
     );
     //---Interactive Media Ads Software Development Kit---
     //https://developers.google.com/interactive-media-ads/docs/sdks/html5/v3/apis
