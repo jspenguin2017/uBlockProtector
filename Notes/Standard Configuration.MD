@@ -21,4 +21,4 @@ Other settings do not matter.
 
 ## Nano Adblocker: 
 
-Default settings. 
+Default settings plus `Nano Defender Integration` filter enabled. 

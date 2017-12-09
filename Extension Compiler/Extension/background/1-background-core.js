@@ -104,6 +104,18 @@ a.init = () => {
         chrome.runtime.openOptionsPage();
     });
 
+    setTimeout(() => {
+        chrome.runtime.sendMessage(
+            "gabbbocakeomblphkmmnoamkioajlkfo", //Nano Adblocker
+            {
+                data: "Nano Defender Enabled",
+            },
+            () => {
+                void chrome.runtime.lastError;
+            },
+        );
+    }, 2500);
+
     //@pragma-if-debug
     if (a.debugMode) {
         chrome.browserAction.setBadgeText({

@@ -37,7 +37,7 @@ only open issue about them here if:
 Prepend `URGENT! ` if the issue is caused by Nano Defender. 
 
 An issue is considered caused by Nano Defender if the issue persists after white listing the website but no longer occur once 
-Nano Defender Extension is disabled. Misusing `URGENT! ` title can lead to a ban. 
+Nano Defender is disabled. Misusing `URGENT! ` title can lead to a ban. 
 
 **Comment of your issue**: Use the template. Wrap links in backticks to make them not clickable. 
 
