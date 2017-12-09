@@ -1,3 +1,7 @@
+/**
+ * The script for options UI, replaces some elements and binds Esc
+ * key to close.
+ */
 "use strict";
 
 

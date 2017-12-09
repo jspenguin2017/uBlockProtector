@@ -1,4 +1,6 @@
-//Content rules for specific websites
+/**
+ * Content rules for specific websites.
+ */
 "use strict";
 
 if (a.domCmp(["catchcoin.pw", "irc-source.com", "dogecatch.website", "dashcatch.xyz"])) {

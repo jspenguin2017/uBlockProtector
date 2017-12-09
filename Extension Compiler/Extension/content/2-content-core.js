@@ -1,4 +1,6 @@
-//The content core library for content rules
+/**
+ * Core library for content rules.
+ */
 "use strict";
 
 //=====Control=====

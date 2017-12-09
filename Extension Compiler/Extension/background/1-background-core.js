@@ -1,4 +1,6 @@
-//The background core library for background rules
+/**
+ * Core library for background rules.
+ */
 "use strict";
 
 //=====Control=====

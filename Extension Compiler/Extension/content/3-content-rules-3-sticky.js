@@ -1,4 +1,6 @@
-//Content rules for sticky websites
+/**
+ * Content rules for sticky websites.
+ */
 "use strict";
 
 if ((/^anime(?:dao|take)\d*?\.[^.]+$/).test(document.domain)) {

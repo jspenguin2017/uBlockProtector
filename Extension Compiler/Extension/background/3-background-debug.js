@@ -1,4 +1,6 @@
-//This file contains background rules for debugging purposes, they are only activated in debug mode
+/**
+ * Background rules for debugging. Only run in debug mode.
+ */
 "use strict";
 
 //@pragma-if-debug

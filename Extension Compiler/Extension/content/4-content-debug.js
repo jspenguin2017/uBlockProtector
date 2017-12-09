@@ -1,4 +1,6 @@
-//This file contains content rules for debugging purposes, they are only activated in debug mode
+/**
+ * Content rules for debugging. Only run in debug mode.
+ */
 "use strict";
 
 //@pragma-if-debug

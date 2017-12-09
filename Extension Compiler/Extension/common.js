@@ -1,3 +1,6 @@
+/**
+ * The common bootstrapper for background and content script.
+ */
 "use strict";
 
 /**

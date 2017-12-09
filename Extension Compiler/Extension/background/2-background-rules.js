@@ -1,4 +1,6 @@
-//Background rules
+/**
+ * Background rules.
+ */
 "use strict";
 
 a.init();
