@@ -1313,7 +1313,7 @@ if (a.domCmp(["hanime.tv", "ah-me.com", "shortin.ga", "wolink.in"])) {
         "use strict";
         window.open = (url) => {
             window.location.href = url;
-            throw new window.Error("uBlock Origin detectors are not allowed on this device!");
+            throw new window.Error("[Nano] Blocked :: Popunder");
         };
     });
 }
@@ -2176,7 +2176,7 @@ if (a.domCmp(["sport365.live"])) {
 if (a.domCmp(["myfxbook.com"])) {
     a.inject(() => {
         "use strict";
-        const err = new window.Error("This property may not be accessed!");
+        const err = new window.Error("[Nano] Blocked :: Property Access");
         window.Object.defineProperty(window, "isAdBlockerExist", {
             configurable: false,
             set(val) {
@@ -2298,7 +2298,7 @@ if (a.domCmp(["vvvvid.it"])) {
                 };
                 const func = window.String(window.vvvvid.models.PlayerObj.prototype.startAdv);
                 if (!re.test(func)) {
-                    window.console.error("uBlock Protector failed to set up VVVVID uBlock Origin detector defuser!");
+                    window.console.error("[Nano] Failed :: VVVVID Defuser");
                 }
                 window.eval("window[mnsJHnyT] = window.vvvvid.models.PlayerObj.prototype.startAdv = " + func.replace(re, data));
             }
@@ -2792,7 +2792,7 @@ if (a.domCmp(["webnovel.com"])) {
 
             const contentElem = lock.querySelector(".cha-words");
             contentElem.insertAdjacentHTML("beforeend", "<p style='opacity:0.5;'>" +
-                "uBlock Protector is fetching the rest of this chapter, this can take up to 30 seconds.</p>");
+                "Nano Defender is fetching the rest of this chapter, this can take up to 15 seconds.</p>");
 
             const bookID = bookExtractor.exec(location.href)[1];
             const chapterID = lock.querySelector("[data-cid]").dataset.cid;
@@ -2811,10 +2811,10 @@ if (a.domCmp(["webnovel.com"])) {
                     token = encodeURIComponent(token);
                     fetchChapter(cookie, token, contentElem);
                 } catch (err) {
-                    console.error("uBlock Protector failed to find chapter token!");
+                    console.error("[Nano] Failed :: Find Chapter Token");
                 }
             }, () => {
-                console.error("uBlock Protector failed to find chapter token!");
+                console.error("[Nano] Failed :: Find Chapter Token");
             });
         });
     };
@@ -2927,7 +2927,7 @@ if (a.domCmp(["wowtoken.info"])) {
             }, (data) => {
                 a.inject(data.replace(re, "true;"), true);
             }, () => {
-                console.error("uBlock Protector failed to patch main script!");
+                console.error("[Nano] Failed :: Patch Main Script");
             });
             script.remove();
         }

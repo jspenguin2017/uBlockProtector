@@ -46,22 +46,22 @@
     ];
 
     if (a.domCmp(genericWhitelist1, true) || a.domInc(genericWhitelist2, true)) {
-        console.log("This domain is excluded from all generically applied solutions.");
+        console.log("[Nano] Excluded :: All Generically Applied Solutions");
     } else {
         if (a.domCmp([], true)) {
-            console.log("This domain is excluded from common generic solutions.");
+            console.log("[Nano] Excluded :: Common Generic Solutions");
         } else {
             a.generic();
         }
 
         if (a.domCmp([], true)) {
-            console.log("This domain is excluded from Adfly bypasser.");
+            console.log("[Nano] Excluded :: Adfly Bypasser");
         } else {
             a.generic.Adfly();
         }
 
         if (a.domCmp([], true)) {
-            console.log("This domain is excluded from NoAdBlock defuser.");
+            console.log("[Nano] Excluded :: NoAdBlock Defuser");
         } else {
             a.generic.NoAdBlock();
         }
@@ -76,7 +76,7 @@
 
     if (a.domCmp([], true)) {
         a.uBOExtraExcluded = true;
-        console.log("uBlock Protector excluded this domain from uBO-Extra.");
+        console.log("[Nano] Excluded :: uBO-Extra");
     }
 }
 

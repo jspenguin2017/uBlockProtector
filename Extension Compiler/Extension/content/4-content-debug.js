@@ -19,7 +19,7 @@ if (a.debugMode) {
         //https://github.com/jspenguin2017/uBlockProtector/issues/660
         a.replaceXHR(() => {
 
-            console.warn("xhr", url);
+            console.warn("[Nano] xhr", url);
 
             if (url.includes("uplynk.com/preplay")) {
                 this.addEventListener("readystatechange", () => {
@@ -41,7 +41,7 @@ if (a.debugMode) {
             const _fetch = window.fetch;
             window.fetch = (...args) => {
 
-                console.warn("fetch", args);
+                console.warn("[Nano] fetch", args);
 
                 return _fetch.apply(window, args);
             };
