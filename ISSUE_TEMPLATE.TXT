@@ -7,14 +7,14 @@ Before opening an issue, you MUST read the contribution guideline. Failure to do
 
 ### Screenshot of the web page (including address bar and extension icons) (required): 
 <!--
-Your screenshot should look something like this: https://i.imgur.com/nxT9UqA.png
+Your screenshot should look something like this: https://i.imgur.com/UiKwWc7.png
 You are required to show all extension icons, you can disable unrelated extensions if you want to keep them private
 -->
 
 
 ### Screenshot of the console (press `F12` to bring up the console) (required): 
 <!--
-Your screenshot should look something like this: https://i.imgur.com/Yi4k5SK.png
+Your screenshot should look something like this: https://i.imgur.com/qnVB0K7.png
 -->
 
 
