@@ -479,7 +479,7 @@ a.filter = (name, method, filter, parent = "window") => {
             ${parent}["${name}"] = newFunc;
             log("[Nano] Filter Activated :: ${strParent}.${name}");
         } catch (err) {
-            error("[Nano] Failed :: Activate Filter On ${strParent}.${name}");
+            error("[Nano] Failed :: Filter On ${strParent}.${name}");
         }
     })();`, true);
 };
@@ -535,9 +535,9 @@ a.antiCollapse = (name, filter) => {
                     //@pragma-end-if
 
                     if (handler(this, String(val))) {
-                        error("[Nano] Blocked :: Element Collapse");
+                        error("[Nano] Blocked :: Element Modification");
                     } else {
-                        log("[Nano] Blocked :: Element Collapse");
+                        log("[Nano] Allowed :: Element Modification");
                         _set.call(this, val);
                     }
                 },
@@ -595,7 +595,7 @@ a.timewarp = (timer, method, filter, ratio = 0.02) => {
             window.${timer} = newFunc;
             log("[Nano] Timewarp Activated :: window.${timer}");
         } catch (err) {
-            error("[Nano] Failed :: Activate Timewarp On window.${timer}!");
+            error("[Nano] Failed :: Timewarp On window.${timer}!");
         }
     })();`, true);
 };
@@ -690,7 +690,7 @@ a.noAccessExt = (chain) => {
         //License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
         "use strict";
         const error = window.console.error.bind(window.console);
-        const err = new window.Error("This property may not be accessed!");
+        const err = new window.Error("[Nano] Blocked :: Property Access");
         const Object = window.Object.bind(window);
         const descriptor = window.Object.getOwnPropertyDescriptor.bind(window.Object);
         const define = window.Object.defineProperty.bind(window.Object);
@@ -888,7 +888,7 @@ a.replaceXHR = (handler) => {
                 return _open.call(this, method, url, ...rest);
             };
         } catch (err) {
-            window.console.error("[Nano] Failed to set up XMLHttpRequest replace engine!");
+            window.console.error("[Nano] Failed :: XMLHttpRequest Replace Engine");
         }
     })();`, true);
 };
@@ -934,7 +934,7 @@ a.generic = () => {
             const elem = document.getElementById("blockdiv");
             if (elem && elem.innerHTML === "disable ad blocking or use another browser without any adblocker when you visit") {
                 elem.remove();
-                console.error("Uncaught Error: Generic block screens are not allowed on this device!");
+                console.error("[Nano] Generic Solution Triggered :: Generic Block Screens");
             }
         }
     });
@@ -1002,7 +1002,7 @@ a.generic = () => {
         let data = {};
         const error = window.console.error.bind(window.console);
         const err = (name) => {
-            error(`Uncaught Error: ${name} adblocker detector is not allowed on this device!`);
+            error(`[Nano] Generic Solution Triggered :: ${name}`);
         };
 
         //---document-start---
@@ -1038,13 +1038,13 @@ a.generic = () => {
                 },
             });
         } catch (err) {
-            error("[Nano] Failed to set up Playwire anti-adblock defuser!");
+            error("[Nano] Failed :: Playwire Defuser");
         }
         //AdBlock Notify
         try {
             let val;
             let isEvil = false;
-            const anErr = new window.Error("[Nano] AdBlock Notify is not allowed on this device!");
+            const anErr = new window.Error("[Nano] Generic Solution Triggered :: AdBlock Notify");
             window.Object.defineProperty(window, "anOptions", {
                 configurable: false,
                 set(arg) {
@@ -1072,7 +1072,7 @@ a.generic = () => {
                 },
             });
         } catch (err) {
-            error("[Nano] Failed to set up AdBlock Notify defuser!");
+            error("[Nano] Failed :: AdBlock Notify Defuser");
         }
 
         //---document-end---
@@ -1280,7 +1280,7 @@ a.generic = () => {
 a.generic.FuckAdBlock = (constructorName, instanceName) => {
     a.inject(`(() => {
         "use strict";
-        const errMsg = "Uncaught Error: FuckAdBlock adblocker detector is not allowed on this device!";
+        const errMsg = "[Nano] Generic Solution Triggered :: FuckAdBlock";
         const error = window.console.error.bind(window.console);
         const patchedFuckAdBlock = function () {
             //Based on FuckAdBlock
@@ -1347,7 +1347,7 @@ a.generic.FuckAdBlock = (constructorName, instanceName) => {
                 },
             });
         } catch (err) {
-            window.console.error("[Nano] Failed to set up FuckAdBlock defuser!");
+            window.console.error("[Nano] Failed :: FuckAdBlock Defuser");
         }
     })();`, true);
 };
@@ -1418,7 +1418,7 @@ a.generic.Adfly = () => {
                 },
             });
         } catch (err) {
-            window.console.error("[Nano] Failed to set up Adfly bypasser!");
+            window.console.error("[Nano] Failed :: Adfly Bypasser");
         }
     });
 };
@@ -1444,7 +1444,7 @@ a.generic.adsjsV2 = (min = 11, max = 14) => {
                     if (elem) {
                         return elem;
                     } else {
-                        error("Uncaught Error: ads.js v2 adblocker detector is not allowed on this device!");
+                        error("[Nano] Generic Solution Triggered :: ads.js v2");
                         return window.document.createElement("div");
                     }
                 } else {
@@ -1458,7 +1458,7 @@ a.generic.adsjsV2 = (min = 11, max = 14) => {
             original = window.document.getElementById;
             window.document.getElementById = newFunc;
         } catch (err) {
-            error("[Nano] Failed to set up ads.js v2 adblocker detector defuser!");
+            error("[Nano] Failed :: ads.js v2 Defuser");
         }
     })();`, true);
 };
@@ -1493,7 +1493,7 @@ a.generic.NoAdBlock = () => {
                                         },
                                     });
                                     needDefuse = false;
-                                    error("Uncaught Error: NoAdBlock adblocker detector is not allowed on this device!");
+                                    error("[Nano] Generic Solution Triggered :: NoAdBlock");
                                 }
                             }
                         } catch (err) { }
@@ -1502,7 +1502,7 @@ a.generic.NoAdBlock = () => {
                 },
             });
         } catch (err) {
-            window.console.error("[Nano] Failed to set up NoAdBlock adblocker detector defuser!");
+            window.console.error("[Nano] Failed :: NoAdBlock Defuser");
         }
     });
 };
@@ -1533,16 +1533,16 @@ a.trace = (name, parent = "window") => {
             window.Object.defineProperty(${parent}, "${name}", {
                 configurable: false,
                 set(v) {
-                    trace("SET ${strParent}.${name}", v);
+                    trace("[Nano] SET ${strParent}.${name}", v);
                     val = v;
                 },
                 get() {
-                    trace("GET ${strParent}.${name}", val);
+                    trace("[Nano] GET ${strParent}.${name}", val);
                     return val;
                 },
             });
         } catch (err) {
-            window.console.error("[Nano] Failed to define traced property ${strParent}.${name}!");
+            window.console.error("[Nano] Failed :: Trace Property ${strParent}.${name}");
         }
     })();`, true);
 };
@@ -1580,7 +1580,7 @@ a.setBenchmarkedInterval = (func, delay, ...args) => {
         const t0 = performance.now();
         func(...args);
         const t1 = performance.now();
-        console.log(`Benchmarked Interval: Function ${func.name} used ${t1 - t0} ms`);
+        console.log(`[Nano] Benchmark Interval :: ${func.name} Used ${t1 - t0} Milliseconds`);
     }, delay);
 };
 //@pragma-end-if
