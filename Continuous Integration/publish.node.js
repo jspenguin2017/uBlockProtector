@@ -190,7 +190,7 @@ const secureErrorReport = (ref, err) => {
 const getPublishedVersion = () => {
     console.log("Obtaining published version number...");
     return new Promise((resolve) => {
-        let request = https.request(url.parse("https://chrome.google.com/webstore/detail/ublock-protector-extensio/ggolfgbegefeeoocgjbmkembbncoadlb"), (res) => {
+        let request = https.request(url.parse("https://chrome.google.com/webstore/detail/nano-defender/ggolfgbegefeeoocgjbmkembbncoadlb"), (res) => {
             let data = "";
             res.setEncoding("utf8");
             res.on("data", (c) => { data += c; });
