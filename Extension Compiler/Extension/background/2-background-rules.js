@@ -9,11 +9,11 @@ a.generic();
     //https://github.com/jspenguin2017/uBlockProtector/issues/344
     const genPayload = (csid, caid, cbfn) => {
         //Paths in this payload are placeholders, no request to jspenguin.com will leave the browser
-        //Event callbacks are blocked by uBlock Protector List
+        //Event callbacks are blocked by Nano Defender Integration filter list
         let payload = `(() => {
             "use strict";
             try {
-                window.console.log("A request to v.fwmrm.net is locally loopbacked by uBlock Protector.");
+                window.console.log("[Nano] Request Loopback :: v.fwmrm.net");
             } catch (err) { }
             ${cbfn}({
                 version: "1",
@@ -133,7 +133,7 @@ a.generic();
             if (csid && caid && cbfn) {
                 return { redirectUrl: genPayload(csid[1], caid[1], decodeURIComponent(cbfn[1])) };
             } else {
-                console.log("Could not extract parameters from a request to v.fwmrm.net");
+                console.log("[Nano] Failed :: Extract Parameters From A Request To v.fwmrm.net");
 
                 //@pragma-if-debug
                 if (a.debugMode) {

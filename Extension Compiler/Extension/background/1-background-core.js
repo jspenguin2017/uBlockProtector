@@ -36,7 +36,7 @@ a.init = () => {
                     if (typeof args[0].details === "object") {
                         const method = String(args[0].details.method);
                         if (method === "GET" || method === "POST") {
-                            console.log(`Sending cross origin request to ${args[0].details.url}`);
+                            console.log(`[Nano] Cross Origin Request :: ${args[0].details.url}`);
                             let req = new XMLHttpRequest();
 
                             req.onreadystatechange = () => {
@@ -321,7 +321,7 @@ a.generic = () => {
     a.mkPayload("jQuery plugin", () => {
         "use strict";
         try {
-            window.console.error("Uncaught Error: jQuery uBlock Origin detector plugin is not allowed on this device!");
+            window.console.error("[Nano] Generic Solution Triggered :: jQuery Plugin");
         } catch (err) { }
         try {
             window.$.adblock = false;
@@ -349,7 +349,7 @@ a.generic = () => {
     a.mkPayload("IMA SDK", () => {
         "use strict";
         try {
-            window.console.error("Uncaught Error: IMA SDK is not allowed on this device!");
+            window.console.error("[Nano] Surrogate Injected :: IMA SDK");
         } catch (err) { }
         let warnCount = 0;
         //I think I can get away with not implementing interfaces
@@ -436,7 +436,7 @@ a.generic = () => {
                     } else if (warnCount < 10) {
                         warnCount++;
                         try {
-                            window.console.warn(`IMA event ${event} is ignored by uBlock Protector.`);
+                            window.console.warn(`[Nano] IMA Event Ignored :: ${event}`);
                         } catch (err) { }
                     }
                 }
@@ -476,7 +476,7 @@ a.generic = () => {
             AdsManagerLoadedEvent: class extends Event {
                 constructor() {
                     //I think I can get away with it as long as I do not dispatch the event
-                    throw new window.Error("Neutralized AdsManager is not implemented.");
+                    throw new window.Error("[Nano] Not Implemented :: Neutralized AdsManager");
                 }
             },
             AdsRenderingSettings: class {
@@ -716,7 +716,7 @@ a.generic = () => {
     a.mkPayload("MoatFreeWheelJSPEM.js", () => {
         "use strict";
         try {
-            window.console.error("Uncaught Error: FreeWheel SDK is not allowed on this device!");
+            window.console.error("[Nano] Surrogate Injected :: FreeWheel SDK");
         } catch (err) { }
         window.MoatFreeWheelJSPEM = class {
             init() { }
