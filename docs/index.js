@@ -9,8 +9,10 @@
  */
 const checkInstallation = (() => {
     const $ext = document.getElementById("extension-test");
+    /*
     const $list = document.getElementById("list-test");
     const $browser = document.getElementById("browser-test");
+    */
 
     const reExtractBrowserVersion = /Chrom(?:ium|e)\/(\d+)/;
 
@@ -21,6 +23,7 @@ const checkInstallation = (() => {
             }
         } catch (err) { }
 
+        /*
         try {
             if (window.google_ad_status === 1) {
                 $list.classList.add("hidden");
@@ -36,6 +39,7 @@ const checkInstallation = (() => {
             //Unsupported browser, hide the message as it can be confusing
             $browser.classList.add("hidden");
         }
+        */
     };
 })();
 
