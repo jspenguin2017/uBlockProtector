@@ -39,15 +39,11 @@
 
         <!-- Spaces in href should be escaped, but uBlock Origin does not unescape them, since Chromium and Chrome allow spaces in href like below, I will just leave this as is -->
         <p>Step 1. Install <a href="https://chrome.google.com/webstore/detail/nano-defender/ggolfgbegefeeoocgjbmkembbncoadlb" target="_blank">Nano Defender</a>.</p>
-
-        <!-- TODO Nano can't auto-config yet -->
-        <p>Step 3. Install <a href="abp://subscribe/?location=https://raw.githubusercontent.com/jspenguin2017/uBlockProtector/master/uBlockProtectorList.txt&title=Nano Defender Integration">Nano Defender Integration</a> filter list.</p>
-        <p>Nano Adblocker will soon have the ability to automatically configure this integration filter, but for now, you have to manually enable it. (And yes, I can count, I will fix it)</p>
-
         <p><strong>That is it if you are using Nano Adblocker! If you are using uBlock Origin, then you have a few more steps to follow...</strong></p>
         <br />
 
         <p>Step 2. Enable <a href="abp://subscribe/?location=https://easylist-downloads.adblockplus.org/antiadblockfilters.txt&title=Adblock Warning Removal List">Adblock Warning Removal List</a>.</p>
+        <p>Step 3. Install <a href="abp://subscribe/?location=https://raw.githubusercontent.com/jspenguin2017/uBlockProtector/master/uBlockProtectorList.txt&title=Nano Defender Integration">Nano Defender Integration</a> filter list.</p>
         <p>Step 4. Go to uBlock Origin dashboard, select "Settings" tab, check "I am an advanced user", click the gears that shows up, replace "unset" after "userResourcesLocation" by "https://raw.githubusercontent.com/NanoAdblocker/NanoFilters/master/NanoFilters/NanoResources.txt" (without quotes).</p>
         <p>Step 5. Install <a href="abp://subscribe/?location=https://raw.githubusercontent.com/NanoAdblocker/NanoFilters/master/NanoFilters/NanoBase.txt&title=Nano filters">Nano filters</a>.</p>
         <p>Note: If you have another User Resources in use, then you would need to either switch to Nano Adblocker or manually merge resources. It takes an eternity to get any resources into uAssets, I have tried.</p>
