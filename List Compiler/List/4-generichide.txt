@@ -47,5 +47,3 @@
 @@||wp.pl^$generichide
 @@||anonymousemail.me^$generichide
 @@||playstation.com^$generichide
-@@||blockergame.com^$generichide
-@@||blockersurvive.com^$generichide
