@@ -16,7 +16,8 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 @@|https://imasdk.googleapis.com/js/sdkloader/ima3.js*$script
 @@|http://imasdk.googleapis.com/js/sdkloader/ima3.js*$script
 ! === Adfly
-#@#script:inject(adfly-defuser.js)
+! What can possibly go wrong?
+!#@#script:inject(adfly-defuser.js)
 ! === ncaa.com, pga.com, q2.be, medialaancdn.be, medialaan.be
 @@|http://*.v.fwmrm.net/ad/g/*$script,domain=ncaa.com|pga.com|q2.be|vtm.be|ruutu.fi|medialaancdn.be|medialaan.be
 @@|https://*.v.fwmrm.net/ad/g/*$script,domain=ncaa.com|pga.com|q2.be|vtm.be|ruutu.fi|medialaancdn.be|medialaan.be
@@ -27,7 +28,8 @@ jspenguin2017.github.io##script:inject(doubleclick.net/instream/ad_status.js)
 ! === streamable.com, popcornflix.com, fox.com
 ! These websites work better with the IMA SDK blocked
 ||imasdk.googleapis.com/js/sdkloader/ima3.js$script,important,domain=streamable.com|popcornflix.com|fox.com
-! === bild.de
-bild.de#@#script:inject(abort-on-property-read.js, de.bild.cmsKonfig.a.b.a)
 ! === hulu.com
 @@||ads-v-darwin.hulustream.com/published/*.mp4$domain=hulu.com
+! === bild.de
+! The hard coded rule in Nano Defender can crash other script snippets of Nano Adblocker
+bild.de#@#script:inject(abort-on-property-read.js, de.bild.cmsKonfig.a.b.a)
