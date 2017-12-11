@@ -202,15 +202,6 @@ if (a.domCmp(["osoarcade.com", "d3brid4y0u.info", "fileice.net", "nosteam.ro", "
 if (a.domCmp(["alein.org"])) {
     a.bait("div", "#tester", true);
 }
-if (a.domCmp(["cutwin.com", "cut-urls.com", "adbull.me", "xess.pro", "clik.pw", "admove.co", "urle.co", "link-cash.com",
-    "adshort.co", "linksh.top", "adshorte.com", "coinb.ink", "l2s.io", "shortzero.com", "veneapp.com", "coinlink.us",
-    "tmearn.com", "url.gem-flash.com", "cuturlink.com", "shorteurl.com", "linkkawy.com", "cut-egy.ml", "igram.im",
-    "adlinkme.com", "ecut.io", "bit-url.com", "cut-earn.com", "adbilty.me", "egy-links.com", "infinityurl.co",
-    "adsurl.xyz", "lkcash.net", "123link.io", "curs.io", "psl.io", "teqani-plus.com", "meulink.tk", "tui.click",
-    "adshort.im", "coin.mg", "arpa7com.com", "cutearn.com", "3rabshort.com", "ourl.io", "cutwi.in", "cut-win.com",
-    "qe.pe", "onlinebee.in"])) {
-    a.bait("div", "#test-block", true);
-}
 if (a.domCmp(["filecom.net", "upshare.org", "skippyfile.com", "mwfiles.net", "up-flow.org", "globeslot.com"])) {
     a.bait("div", "#add");
 }
@@ -229,3 +220,16 @@ if (a.domCmp(["freesportsbet.com", "sportsplays.com"])) {
 if (a.domCmp(["bitcoiner.net", "litecoiner.net"])) {
     a.bait("div", "#ad-top");
 }
+
+// >>>>>>>>>>>>>>> Added to Nano Filters >>>>>>>>>>>>>>>
+// Waiting for migration
+if (a.domCmp(["cutwin.com", "cut-urls.com", "adbull.me", "xess.pro", "clik.pw", "admove.co", "urle.co", "link-cash.com",
+    "adshort.co", "linksh.top", "adshorte.com", "coinb.ink", "l2s.io", "shortzero.com", "veneapp.com", "coinlink.us",
+    "tmearn.com", "url.gem-flash.com", "cuturlink.com", "shorteurl.com", "linkkawy.com", "cut-egy.ml", "igram.im",
+    "adlinkme.com", "ecut.io", "bit-url.com", "cut-earn.com", "adbilty.me", "egy-links.com", "infinityurl.co",
+    "adsurl.xyz", "lkcash.net", "123link.io", "curs.io", "psl.io", "teqani-plus.com", "meulink.tk", "tui.click",
+    "adshort.im", "coin.mg", "arpa7com.com", "cutearn.com", "3rabshort.com", "ourl.io", "cutwi.in", "cut-win.com",
+    "qe.pe", "onlinebee.in"])) {
+    a.bait("div", "#test-block", true);
+}
+// <<<<<<<<<<<<<<< Added to Nano Filters <<<<<<<<<<<<<<<
