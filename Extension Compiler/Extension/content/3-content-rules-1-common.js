@@ -114,28 +114,6 @@ if (a.domCmp(["drivearabia.com", "putlocker.com", "doatoolsita.altervista.org", 
     a.filter("alert");
 }
 
-//a.timewarp
-if (a.domCmp(["apkmirror.com", "freepdf-books.com", "bc.vc", "themeslide.com", "linkdrop.net",
-    "l2s.io", "ally.sh", "al.ly", "croco.site", "urle.co", "idlelivelink.blogspot.com", "ecut.io",
-    "lewat.id", "cutwin.com", "cut-urls.com", "adbull.me", "xess.pro", "clik.pw", "admove.co",
-    "adshort.co", "linksh.top", "adshorte.com", "coinb.ink", "123link.top", "fas.li", "zeiz.me",
-    "u2s.io", "linclik.com", "xurl.us", "adbilty.me", "cpmlink.net", "gsurl.in", "linkhits.us",
-    "coshurl.co", "leechall.com", "zonadescarga.info", "firstone.tv", "shortzero.com", "adbilty.me",
-    "veneapp.com", "iiv.pl", "uskip.me", "link-cash.com", "coinlink.us", "cut-earn.com", "ur.ly",
-    "tmearn.com", "url.gem-flash.com", "cuturlink.com", "linkhits.net", "shorteurl.com", "bit-url.com",
-    "leenlink.com", "linkkawy.com", "cut-egy.ml", "igram.im", "adlinkme.com", "oke.io", "wolink.in",
-    "bilink.xyz", "git.tc", "zlshorte.net", "shink.me", "oload.stream", "egy-links.com", "infinityurl.co",
-    "adsurl.xyz", "firstonetv.net", "lkcash.net", "123link.io", "curs.io", "psl.io", "teqani-plus.com",
-    "link-money.com", "meulink.tk", "mlink.club", "shink.xyz", "tui.click", "adshort.im", "123link.press",
-    "coin.mg", "arpa7com.com", "cutearn.com", "3rabshort.com", "ourl.io", "cutwi.in", "cut-win.com",
-    "qe.pe", "onlinebee.in", "peliculasmegahdd.net", "crockolinks.com", "met.bz", "tny.ec"])) {
-    a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
-}
-if (a.domCmp(["katfile.com", "goldescargas.com", "globalbesthosting.com", "userupload.net", "shortify.pw",
-    "srt.am"])) {
-    a.timewarp("setTimeout", a.matchMethod.stringExact, "1000");
-}
-
 //a.readOnly
 if (a.domCmp(["jansatta.com", "financialexpress.com", "indianexpress.com", "uskip.me", "srt.am"])) {
     a.readOnly("RunAds", true);
