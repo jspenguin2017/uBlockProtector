@@ -95,7 +95,7 @@ bild.de#@#script:inject(abort-on-property-read.js, de.bild.cmsKonfig.a.b.a)
 ||w.rpts.org^$third-party
 ||googlesyndication.com^$important,domain=short.am|clubedohardware.com.br|receive-a-sms.com
 ||doubleclick.net^$important,domain=aetv.com|history.com|mylifetime.com|receive-a-sms.com
-||damoh.*^$media
+||damoh.*$media
 ||a.optnmnstr.com^$third-party
 ||a.optnmstr.com^$third-party
 ||zergnet.com^$script,third-party
@@ -116,7 +116,7 @@ zmovs.com##.inplayer_banners
 ##.admania_adblock_detector
 ##.o-AdhesionNotifier
 ##.popup-premium__apla
-*/adblock-detector/*
+/adblock-detector/*
 /adblock-popup.
 /detectadblock.
 ||fastly.net/ads/$image,redirect=2x2-transparent.png
@@ -129,7 +129,7 @@ zmovs.com##.inplayer_banners
 ||perceivequarter.com^$third-party
 ||hammerhearing.com^$third-party
 ||sixscissors.com^$third-party
-*/wp-content/plugins/pause-adblocker/*
+/wp-content/plugins/pause-adblocker/*
 sectorsatoshi-amarillo.website,sectorsatoshi-azul.website,sectorsatoshi-blanco.website,sectorsatoshi-celeste.website,sectorsatoshi-gris.website,sectorsatoshi-naranja.website##script:inject(bab-defuser.js)
 sectorsatoshi-negro.website,sectorsatoshi-rosa.website,sectorsatoshi-verde.website,sectorsatoshi-violeta.website##script:inject(bab-defuser.js)
 blockadblock.com,futbolchile.net,freeomovie.com,appdrop.net,skmedix.pl,yalujailbreak.net,cloudwebcopy.com,milaulas.com,tout-bon.com,sznpaste.net,linkdrop.net,themeslide.com##script:inject(bab-defuser.js)
@@ -233,7 +233,7 @@ wordsense.eu##script:inject(setTimeout-defuser.js, ad, 2000)
 ||uol.com.br/*/detectadblock/$script,important
 ||jsuol.com.br/*/detectadblock.js$script,important,domain=uol.com.br
 uol.com.br##.bannersticky-top:has(div.ads-wrapper)
-*/magnific-popup.js/*$domain=transparentcalifornia.com
+/magnific-popup.js/*$domain=transparentcalifornia.com
 @@||yamvideo.com/pop1/jwplayer.js$domain=javsex.net
 ||nowvideo.ec^$inline-script
 ||nowvideo.li^$inline-script
@@ -365,7 +365,7 @@ igeeksblog.com###quads-ad1_widget
 ||espresso.repubblica.it/pw/pw2-espressosfoglio.js
 net.hr#@#.reklama
 net.hr#@#.reklama1
-*/adblock/*$domain=televisa.com|lasestrellas.tv
+/adblock/*$domain=televisa.com|lasestrellas.tv
 watson.ch##.adget.frog_block_alert
 stol.it###block-message
 sledujufilmy.cz##.bottom-advert
@@ -506,7 +506,7 @@ dogecatch.website,dashcatch.xyz###fuck-adb-not-enabled
 depositfiles.com##.adblock_alert
 locopelis.com##.div-banner-popup-event
 locopelis.com##script:inject(abort-on-property-write.js, adbClick)
-*/assets/js/sourcepoint/*$script,domain=nba.com
+/assets/js/sourcepoint/*$script,domain=nba.com
 nbc.com##script:inject(abort-on-property-read.js, mps._ab)
 sledujserialy.sk##div.w-episode-source > div:has(iframe[src*="ad.php"])
 eurogamer.de##script:inject(abort-on-property-read.js, _sp_.msg.displayMessage)
