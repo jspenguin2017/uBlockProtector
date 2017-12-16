@@ -41,6 +41,3 @@
 ! === crackle.com
 @@||crackle.com/vendor/AdManager.js$script,first-party
 @@||secure-dcr.imrworldwide.com/novms/js/$script,domain=crackle.com
-
-! === rtl.be (broken)
-!@@||rtl.be/videos/player/vp4_webanalytics.js$script,first-party

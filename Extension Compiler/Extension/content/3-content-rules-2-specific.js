@@ -2459,14 +2459,6 @@ if (a.domCmp(["docer.pl"])) {
         $("#square-1").css("width", "1px");
     });
 }
-if (a.domCmp(["mitele.es"])) {
-    //https://github.com/jspenguin2017/uBlockProtector/issues/448
-    a.inject(() => {
-        "use strict";
-        window.google = {};
-        window.AkaHTML5MediaAnalytics = class { };
-    });
-}
 if (a.domCmp(["telecinco.es", "cuatro.com", "divinity.es", "factoriadeficcion.com", "energytv.es", "bemad.es",
     "eltiempohoy.es", "mtmad.es"])) {
     //https://github.com/jspenguin2017/uBlockProtector/issues/448
@@ -3197,12 +3189,12 @@ if (a.domCmp(["uflash.tv"])) {
 }
 
 /* broken
-if (a.domCmp(["rtl.be"])) {
-    //https://github.com/jspenguin2017/uBlockProtector/issues/421
-    a.loopbackXHR((ignored, url) => {
-        if (url.endsWith("rtl.be/videos/player/aab_config.json")) {
-            return `{ "enabled": false }`;
-        }
+if (a.domCmp(["mitele.es"])) {
+    //https://github.com/jspenguin2017/uBlockProtector/issues/448
+    a.inject(() => {
+        "use strict";
+        window.google = {};
+        window.AkaHTML5MediaAnalytics = class { };
     });
 }
 */
