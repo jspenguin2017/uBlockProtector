@@ -116,7 +116,7 @@ a.init = () => {
                 void chrome.runtime.lastError;
             },
         );
-    }, 2500);
+    }, 10000);
 
     //@pragma-if-debug
     if (a.debugMode) {
