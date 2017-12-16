@@ -116,7 +116,7 @@ a.init = () => {
                 void chrome.runtime.lastError;
             },
         );
-    }, 10000);
+    }, 30000); //TODO: Temporary measure until https://github.com/NanoAdblocker/NanoCore/issues/49 is fixed
 
     //@pragma-if-debug
     if (a.debugMode) {
