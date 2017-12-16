@@ -1955,14 +1955,6 @@ if (a.domCmp(["vgtv.no"])) {
         });
     });
 }
-if (a.domCmp(["rtl.be"])) {
-    //https://github.com/jspenguin2017/uBlockProtector/issues/421
-    a.loopbackXHR((ignored, url) => {
-        if (url.endsWith("rtl.be/videos/player/aab_config.json")) {
-            return `{ "enabled": false }`;
-        }
-    });
-}
 if (a.domCmp(["tv4play.se"])) {
     a.loopbackXHR((ignored, url) => {
         if (url.includes("svonm.com/global_config.json")) {
@@ -3204,32 +3196,13 @@ if (a.domCmp(["uflash.tv"])) {
     });
 }
 
-// >>>>>>>>>>>>>>> Added to Nano Filters >>>>>>>>>>>>>>>
-// Waiting for migration
-if (a.domCmp(["vvvvid.it"])) {
-    //https://github.com/Robotex/KAADIVVVV/issues/16
-    a.ready(() => {
-        a.inject(() => {
-            //Based on KAADIVVVV
-            //License: https://github.com/Robotex/KAADIVVVV/blob/master/LICENSE
-            "use strict";
-            if (window.vvvvid) {
-                const re = /var a=function.*};/;
-                const data = `var a=function(){vvvvid.advPlayer=null,$(c.playerControlsClass).removeClass("ppad"),e()};`;
-
-                window.vvvvid.cab5 = function (a, b) {
-                    this.isAdBlockActive = false;
-                    if (b) {
-                        b(false);
-                    }
-                };
-                const func = window.String(window.vvvvid.models.PlayerObj.prototype.startAdv);
-                if (!re.test(func)) {
-                    window.console.error("[Nano] Failed :: VVVVID Defuser");
-                }
-                window.eval("window[mnsJHnyT] = window.vvvvid.models.PlayerObj.prototype.startAdv = " + func.replace(re, data));
-            }
-        });
+/* broken
+if (a.domCmp(["rtl.be"])) {
+    //https://github.com/jspenguin2017/uBlockProtector/issues/421
+    a.loopbackXHR((ignored, url) => {
+        if (url.endsWith("rtl.be/videos/player/aab_config.json")) {
+            return `{ "enabled": false }`;
+        }
     });
 }
-// <<<<<<<<<<<<<<< Added to Nano Filters <<<<<<<<<<<<<<<
+*/

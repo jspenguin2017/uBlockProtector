@@ -29,8 +29,6 @@
 @@||acortar.net/rollups/aes.js$domain=dclinks.info
 ! === q2.be, vtm.be, medialaancdn.be, medialaan.be
 @@||fwmrm.net/ad/g/$xmlhttprequest,domain=q2.be|vtm.be|medialaancdn.be|medialaan.be
-! === rtl.be
-@@||rtl.be/videos/player/vp4_webanalytics.js$script,first-party
 ! === mitele.es
 @@||akamaihd.net^$xmlhttprequest,script,domain=mitele.es
 ! === viasatsport.se
@@ -43,3 +41,6 @@
 ! === crackle.com
 @@||crackle.com/vendor/AdManager.js$script,first-party
 @@||secure-dcr.imrworldwide.com/novms/js/$script,domain=crackle.com
+
+! === rtl.be (broken)
+!@@||rtl.be/videos/player/vp4_webanalytics.js$script,first-party

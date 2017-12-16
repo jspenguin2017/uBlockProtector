@@ -601,7 +601,6 @@ squadd.io###mc-videoads-overlay
 @@||manifest.auditude.com^$xmlhttprequest,domain=pga.com
 @@||acortar.net/rollups/aes.js$domain=dclinks.info
 @@||fwmrm.net/ad/g/$xmlhttprequest,domain=q2.be|vtm.be|medialaancdn.be|medialaan.be
-@@||rtl.be/videos/player/vp4_webanalytics.js$script,first-party
 @@||akamaihd.net^$xmlhttprequest,script,domain=mitele.es
 @@||fwmrm.net^$domain=viasatsport.se
 ||freewheel-mtgx-tv.akamaized.net^$media,domain=viasatsport.se
