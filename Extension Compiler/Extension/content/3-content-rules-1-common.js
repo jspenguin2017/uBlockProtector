@@ -166,12 +166,6 @@ if (a.domCmp(["vipleague.is", "vipleague.ws", "vipleague.tv", "vipleague.se", "v
     "homerun.re", "vipboxtv.co", "securenetsystems.net"])) {
     a.readOnly("iExist", true);
 }
-if (a.domCmp(["games.nydailynews.com", "games.express.co.uk", "puzzles.independent.co.uk", "games.orlandosentinel.com",
-    "puzzles.standard.co.uk", "games.parade.com", "games.baltimoresun.com", "games.mcall.com", "games.somersetlive.co.uk",
-    "games.sun-sentinel.com", "games.reviewjournal.com", "games.dailypress.com", "puzzles.bestforpuzzles.com",
-    "games.sandiegouniontribune.com", "games.charlotteobserver.com", "games.chicagotribune.com"])) {
-    a.readOnly("Adv_ab", false);
-}
 
 //a.noAccess
 if (a.domCmp(["debridnet.com", "adshort.co", "linksh.top", "adshorte.com", "coinb.ink", "animeforce.org",
@@ -220,3 +214,13 @@ if (a.domCmp(["freesportsbet.com", "sportsplays.com"])) {
 if (a.domCmp(["bitcoiner.net", "litecoiner.net"])) {
     a.bait("div", "#ad-top");
 }
+
+// >>>>> >>>>> >>>>> >>>>> >>>>> >>>>>
+//Migrating to uAssets
+if (a.domCmp(["games.nydailynews.com", "games.express.co.uk", "puzzles.independent.co.uk", "games.orlandosentinel.com",
+    "puzzles.standard.co.uk", "games.parade.com", "games.baltimoresun.com", "games.mcall.com", "games.somersetlive.co.uk",
+    "games.sun-sentinel.com", "games.reviewjournal.com", "games.dailypress.com", "puzzles.bestforpuzzles.com",
+    "games.sandiegouniontribune.com", "games.charlotteobserver.com", "games.chicagotribune.com"])) {
+    a.readOnly("Adv_ab", false);
+}
+// <<<<< <<<<< <<<<< <<<<< <<<<< <<<<<
