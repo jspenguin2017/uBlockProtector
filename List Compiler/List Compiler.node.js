@@ -111,7 +111,7 @@ loadFile("./List/1-header.txt", false);
 loadFile("./List/2-integration.txt");
 loadFile("./List/3-rules.txt");
 loadFile("./List/4-generichide.txt");
-loadFile("./List/5-white list.txt");
+loadFile("./List/5-whitelist.txt");
 loadFile("./List/6-other.txt", false);
 
 //Add an empty line at the end of the output

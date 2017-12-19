@@ -1,7 +1,7 @@
 ! =======================
 ! ===== Integration =====
 ! =======================
-! These are filters for integration with Nano Defender, all white lists in this section are handled by Nano Defender
+! These are filters for integration with Nano Defender, all whitelists in this section are handled by Nano Defender
 ! === Callback API placeholder, must be blocked, this file does not actually exist
 |https://jspenguin.com/uBlockProtector/Solutions/Blocked.php$important
 ! === Resource placeholder, these files do not actually exist
