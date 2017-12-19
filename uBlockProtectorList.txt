@@ -34,7 +34,8 @@
 bild.de#@#script:inject(abort-on-property-read.js, de.bild.cmsKonfig.a.b.a)
 ! Asking for permission does not have an enforced cooldown, can be exploited to make the permission request to be not refusable
 ! More information: https://github.com/uBlockOrigin/uAssets/issues/770
-||authedmine.com^$important
+||authedmine.com^$third-party
+@@||authedmine.com^$domain=coinhive.com|filecrypt.cc
 /coinhive.js
 /coinhive.min.js
 /c-hive.js
