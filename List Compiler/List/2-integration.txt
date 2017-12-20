@@ -13,9 +13,6 @@
 @@|http://*.medianetworkinternational.com/js/advertisement.js*$script
 @@|https://imasdk.googleapis.com/js/sdkloader/ima3.js*$script
 @@|http://imasdk.googleapis.com/js/sdkloader/ima3.js*$script
-! === Adfly
-! What can possibly go wrong?
-!#@#script:inject(adfly-defuser.js)
 ! === ncaa.com, pga.com, q2.be, medialaancdn.be, medialaan.be
 @@|http://*.v.fwmrm.net/ad/g/*$script,domain=ncaa.com|pga.com|q2.be|vtm.be|ruutu.fi|medialaancdn.be|medialaan.be
 @@|https://*.v.fwmrm.net/ad/g/*$script,domain=ncaa.com|pga.com|q2.be|vtm.be|ruutu.fi|medialaancdn.be|medialaan.be
@@ -31,3 +28,7 @@
 ! === bild.de
 ! The hard coded rule in Nano Defender can crash other script snippets of Nano Adblocker
 bild.de#@#script:inject(abort-on-property-read.js, de.bild.cmsKonfig.a.b.a)
+
+! === Adfly
+! What can possibly go wrong?
+!#@#script:inject(adfly-defuser.js)

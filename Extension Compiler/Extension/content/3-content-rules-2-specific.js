@@ -3111,31 +3111,6 @@ if (a.domCmp(["version2.dk"])) {
 if (a.domCmp(["adyou.me"])) {
     a.filter("eval", a.matchMethod.RegExp, /acPrefetch|LEGAL NOTICE/);
 }
-if (a.domCmp(["hulu.com"])) {
-    const performClick = (btn) => {
-        if (btn.classList.contains("ublock-protector-clicked")) {
-            return;
-        }
-
-        btn.classList.add("ublock-protector-clicked");
-        btn.click();
-
-        //TODO - DEBUG ONLY
-        console.warn("clicked", btn);
-    };
-    a.onInsert((node) => {
-        if (node.querySelector) {
-            if (node.classList.contains("ad-selector-option") || node.classList.contains("trailer-selector-watch-trailer-button")) {
-                setTimeout(performClick, 1000, node);
-            } else {
-                const btn = node.querySelector(".ad-selector-option, .trailer-selector-watch-trailer-button");
-                if (btn) {
-                    setTimeout(performClick, 1000, btn);
-                }
-            }
-        }
-    });
-}
 if (a.domCmp(["crockolinks.com"])) {
     a.noAccess("test");
 }
@@ -3164,8 +3139,39 @@ if (a.domCmp(["uflash.tv"])) {
     });
 }
 
-/* broken
-if (a.domCmp(["hdpass.net"])) {
+// >>>>> >>>>> >>>>> >>>>> >>>>> >>>>>
+//Partially working
+if (a.domCmp(["hulu.com"])) {
+    const performClick = (btn) => {
+        if (btn.classList.contains("ublock-protector-clicked")) {
+            return;
+        }
+
+        btn.classList.add("ublock-protector-clicked");
+        btn.click();
+
+        //TODO - DEBUG ONLY
+        console.warn("clicked", btn);
+    };
+    a.onInsert((node) => {
+        if (node.querySelector) {
+            if (node.classList.contains("ad-selector-option") || node.classList.contains("trailer-selector-watch-trailer-button")) {
+                setTimeout(performClick, 1000, node);
+            } else {
+                const btn = node.querySelector(".ad-selector-option, .trailer-selector-watch-trailer-button");
+                if (btn) {
+                    setTimeout(performClick, 1000, btn);
+                }
+            }
+        }
+    });
+}
+// <<<<< <<<<< <<<<< <<<<< <<<<< <<<<<
+
+//@pragma-if-debug
+// >>>>> >>>>> >>>>> >>>>> >>>>> >>>>>
+//Broken
+if (a.debugMode && a.domCmp(["hdpass.net"])) {
     //https://gitlab.com/xuhaiyang1234/uBlockProtectorSecretIssues/issues/1
     a.inject(() => {
         "use strict";
@@ -3183,12 +3189,5 @@ if (a.domCmp(["hdpass.net"])) {
         });
     });
 }
-if (a.domCmp(["mitele.es"])) {
-    //https://github.com/jspenguin2017/uBlockProtector/issues/448
-    a.inject(() => {
-        "use strict";
-        window.google = {};
-        window.AkaHTML5MediaAnalytics = class { };
-    });
-}
-*/
+// <<<<< <<<<< <<<<< <<<<< <<<<< <<<<<
+//@pragma-end-if
