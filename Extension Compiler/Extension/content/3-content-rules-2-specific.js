@@ -2017,30 +2017,6 @@ if (a.domCmp(["bild.de"])) {
 if (a.domCmp(["codepo8.github.io"]) && location.pathname.startsWith("/detecting-adblock/")) {
     a.css(".notblocked { display:block; } .blocked { display:none; }");
 }
-if (a.domCmp(["altadefinizione.media"])) {
-    //https://gitlab.com/xuhaiyang1234/uBlockProtectorSecretIssues/issues/1
-    a.ready(() => {
-        $("a[href='http://altarisoluzione.online/HD/play5.php']").remove();
-    });
-}
-if (a.domCmp(["hdpass.net"])) {
-    //https://gitlab.com/xuhaiyang1234/uBlockProtectorSecretIssues/issues/1
-    a.inject(() => {
-        "use strict";
-        let flag = false;
-        window.open = () => {
-            flag = true;
-        };
-        window.addEventListener("load", () => {
-            let token = window.setInterval(() => {
-                window.$(".wrapSpot span#closeSpot").click();
-                if (flag) {
-                    window.clearInterval(token);
-                }
-            }, 500);
-        });
-    });
-}
 if (a.domCmp(["nowvideo.ec", "nowvideo.li", "ewingoset.info"])) {
     //https://gitlab.com/xuhaiyang1234/uBlockProtectorSecretIssues/issues/2
     //https://gitlab.com/xuhaiyang1234/uBlockProtectorSecretIssues/issues/5
@@ -3189,6 +3165,24 @@ if (a.domCmp(["uflash.tv"])) {
 }
 
 /* broken
+if (a.domCmp(["hdpass.net"])) {
+    //https://gitlab.com/xuhaiyang1234/uBlockProtectorSecretIssues/issues/1
+    a.inject(() => {
+        "use strict";
+        let flag = false;
+        window.open = () => {
+            flag = true;
+        };
+        window.addEventListener("load", () => {
+            let token = window.setInterval(() => {
+                window.$(".wrapSpot span#closeSpot").click();
+                if (flag) {
+                    window.clearInterval(token);
+                }
+            }, 500);
+        });
+    });
+}
 if (a.domCmp(["mitele.es"])) {
     //https://github.com/jspenguin2017/uBlockProtector/issues/448
     a.inject(() => {
