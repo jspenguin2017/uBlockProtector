@@ -3138,6 +3138,24 @@ if (a.domCmp(["uflash.tv"])) {
         });
     });
 }
+if (a.domCmp(["hdpass.net"])) {
+    //https://gitlab.com/xuhaiyang1234/uBlockProtectorSecretIssues/issues/1
+    a.inject(() => {
+        "use strict";
+        const expandClickArea = () => {
+            const btn = window.document.querySelector(".wrapSpot");
+            if (btn) {
+                btn.addEventListener("click", () => {
+                    const realBtn = window.document.getElementById("closeSpot");
+                    if (realBtn) {
+                        realBtn.click();
+                    }
+                });
+            }
+        };
+        window.addEventListener("DOMContentLoaded", expandClickArea);
+    });
+}
 
 // >>>>> >>>>> >>>>> >>>>> >>>>> >>>>>
 //Partially working
@@ -3167,27 +3185,3 @@ if (a.domCmp(["hulu.com"])) {
     });
 }
 // <<<<< <<<<< <<<<< <<<<< <<<<< <<<<<
-
-//@pragma-if-debug
-// >>>>> >>>>> >>>>> >>>>> >>>>> >>>>>
-//Broken
-if (a.debugMode && a.domCmp(["hdpass.net"])) {
-    //https://gitlab.com/xuhaiyang1234/uBlockProtectorSecretIssues/issues/1
-    a.inject(() => {
-        "use strict";
-        let flag = false;
-        window.open = () => {
-            flag = true;
-        };
-        window.addEventListener("load", () => {
-            let token = window.setInterval(() => {
-                window.$(".wrapSpot span#closeSpot").click();
-                if (flag) {
-                    window.clearInterval(token);
-                }
-            }, 500);
-        });
-    });
-}
-// <<<<< <<<<< <<<<< <<<<< <<<<< <<<<<
-//@pragma-end-if
