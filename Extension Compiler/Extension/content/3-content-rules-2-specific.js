@@ -3156,6 +3156,9 @@ if (a.domCmp(["hdpass.net"])) {
         window.addEventListener("DOMContentLoaded", expandClickArea);
     });
 }
+if (a.domCmp(["moondash.co.in"])) {
+    a.bait("div", "#claimAd");
+}
 
 // >>>>> >>>>> >>>>> >>>>> >>>>> >>>>>
 //Partially working
