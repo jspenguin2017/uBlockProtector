@@ -10,6 +10,12 @@
  */
 var a = {};
 
+/**
+ * Whether current browser is Firefox.
+ * @const {boolean}
+ */
+a.isFirefox = false;
+
 //@pragma-if-debug
 /**
  * Whether the extension is loaded in debug mode.
