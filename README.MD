@@ -14,7 +14,7 @@ Before opening an issue, **always** check if there is already another issue abou
 
 The version of uBlock Origin that Nano Adblocker uses can be found in About section of Nano Dashboard. I am aware 
 that Nano Adblocker is different, but when it comes to filters, 99% of the time things work the same. If you have 
-been told by contributors at uAssets that your issue could not be reproduced, **ping** @jspenguin2017 or report it 
+been told by contributors at uAssets that your issue could not be reproduced, **ping @jspenguin2017** or report it 
 again to [NanoFilters](https://github.com/NanoAdblocker/NanoFilters). 
 
 Be sure to check if you have proper **regional filters** activated. 
