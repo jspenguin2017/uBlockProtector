@@ -64,7 +64,7 @@
         <p>Are you using another extension that may cause conflicts?</p>
         <p>Are you using another filter list that may cause conflicts?</p>
         <p>Did you change any settings that may cause your adblocker to misbehave?</p>
-        <p class="only-chrome">
+        <p>
             If you are using uBlock Origin, did you properly follow the
             <a href="https://jspenguin2017.github.io/uBlockProtector/" target="_blank">extra installation steps</a>?
         </p>
@@ -95,18 +95,22 @@
         <p>In production mode, all the console messages will begin with <code>[Nano]</code>, so you can easily filter them.</p>
 
         <h4>Nano Defender is causing (further) breakage.</h4>
-        <p>
+        <p class="only-chrome">
             Report it and I will try to take care of it within 2 days. Keep in mind that this only apply to breakage
             <strong>caused</strong> by Nano Defender, other breakages may not be fixed this fast.
         </p>
+        <p class="only-firefox">Report it and I will have a look.</p>
 
         <h4>A website freezes with Nano Defender enabled.</h4>
         <p>
             Some websites will intentionally freeze (with an infinite loop for example) once they detect Nano Defender,
-            it could also be caused by a bug in Nano Defender, either way, report it and I will try
-            to take care of it within 2 days. Keep in mind that this only apply to freezings <strong>caused</strong>
-            by Nano Defender, other freezings may not be fixed this fast.
+            it could also be caused by a bug in Nano Defender.
         </p>
+        <p class="only-chrome">
+            Either way, report it and I will try to take care of it within 2 days. Keep in mind that this only apply 
+            to freezings <strong>caused</strong> by Nano Defender, other freezings may not be fixed this fast.
+        </p>
+        <p class="only-firefox">Either way, report it and I will have a look.</p>
         <p>
             You can use task manager to terminate the tab that froze, go to <code>Menu -&gt; More tools -&gt; Task manager</code>,
             select the tab that froze, then click <code>End process</code>.
