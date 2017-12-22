@@ -32,3 +32,15 @@ window.onkeyup = (e) => {
         window.close();
     }
 };
+
+let style = document.createElement("style");
+if (a.isFirefox) {
+    style.textContent = ".only-chrome {" +
+        "display: none;" +
+        "}";
+} else {
+    style.textContent = ".only-firefox {" +
+        "display: none;" +
+        "}";
+}
+document.head.append(style);
