@@ -6,7 +6,7 @@ An anti-adblock defuser for Nano Adblocker
 
 ### [(Beta) Get it for Firefox](https://addons.mozilla.org/firefox/addon/real-nano-defender/)
 
-## For Developers
+## For developers
 
 ### [Firefox version discussion thread](https://github.com/NanoAdblocker/NanoCore/issues/41)
 
