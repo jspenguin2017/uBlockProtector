@@ -106,17 +106,21 @@ a.init = () => {
         chrome.runtime.openOptionsPage();
     });
 
-    setTimeout(() => {
-        chrome.runtime.sendMessage(
-            "gabbbocakeomblphkmmnoamkioajlkfo", //Nano Adblocker
-            {
-                data: "Nano Defender Enabled",
-            },
-            () => {
-                void chrome.runtime.lastError;
-            },
-        );
-    }, 15000);
+    if (a.isFirefox) {
+        // TODO
+    } else {
+        setTimeout(() => {
+            chrome.runtime.sendMessage(
+                "gabbbocakeomblphkmmnoamkioajlkfo", //Nano Adblocker
+                {
+                    data: "Nano Defender Enabled",
+                },
+                () => {
+                    void chrome.runtime.lastError;
+                },
+            );
+        }, 15000);
+    }
 
     //@pragma-if-debug
     if (a.debugMode) {
@@ -126,7 +130,7 @@ a.init = () => {
         chrome.browserAction.setBadgeBackgroundColor({
             color: "#6996FF",
         });
-    } else if (chrome.runtime.id !== "ggolfgbegefeeoocgjbmkembbncoadlb") {
+    } else if (!a.isFirefox && chrome.runtime.id !== "ggolfgbegefeeoocgjbmkembbncoadlb") {
         //Unpacked extension
         chrome.browserAction.setBadgeText({
             text: "DEV",

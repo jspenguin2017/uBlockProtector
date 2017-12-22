@@ -17,6 +17,9 @@ a.init = () => {
             window.uBlock_Protector_Extension = true;
         });
     }
+    if (a.isFirefox && document.head) {
+        throw new Error("[Nano] Aborting :: Page Already Loaded");
+    }
 };
 /**
  * Whether uBO-Extra should not run.
@@ -381,6 +384,9 @@ a.onRemove = (handler) => {
  ** @param {MutationObserver} e - The observer object, call disconnect on it to stop observing.
  */
 a.beforeScript = (handler) => {
+    if (a.isFirefox) {
+        console.warn("[Nano] Firefox Incompatibility :: a.beforeScript");
+    }
     a.onInsert((node, target, observer) => {
         if (node.tagName === "SCRIPT") {
             handler(node, target, observer);
