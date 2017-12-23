@@ -36,8 +36,13 @@
         <h2>Installation instructions</h2>
 
         <p>Nano Defender <strong>only</strong> works with <a href="https://github.com/NanoAdblocker/NanoCore#nano-adblocker-core" target="_blank">Nano Adblocker</a> and uBlock Origin.</p>
-        <p>Because Firefox Add-ons store <a href="https://github.com/gorhill/uBlock/commit/126110c9a0a0630cd556f5cb215422296a961029" target="_blank">prohibits remote script snippets</a>, uBlock Origin on Firefox may not always work properly with Nano Defender. It should, however, work properly most of the time, although I will not be fixing cases where it does misbehave. Nano Adblocker has a fast release cycle and has its extra resources hard packaged in the extension so it does not suffer from the problem to the same extent.</p>
-        <p>The issue about onbeforescriptexecute polyfill is still not fixed on Firefox and it looks like they are not fixing it anytime soon, so some rules in Nano Defender will only work on Chromium. Firefox is the first browser to get that event and is also the first to lose it, how sad.</p>
+        <br />
+
+        <p><strong>TLDR: </strong>Every browser has its own problems, some solutions in Nano Defender only work in one browser and there is nothing I can do about that.</p>
+        <p>Firefox Add-ons store <a href="https://github.com/gorhill/uBlock/commit/126110c9a0a0630cd556f5cb215422296a961029" target="_blank">prohibits remote script snippets</a>, so uBlock Origin on Firefox may not always work properly with Nano Defender. It should, however, work properly <i>most</i> of the time. Nano Adblocker has a fast release cycle and has its extra resources hard packaged in the extension so it does not suffer from the problem to the same extent, but since it has a fast release cycle, it tend to be more buggy, but fixes land fast too, it goes both ways. I guess everything has its own problems.</p>
+        <p>The onbeforescriptexecute event polyfill still does not work on Firefox and it looks like it is not getting fixed anytime soon, so some rules in Nano Defender will only work on Chromium but not Firefox. Firefox is the first browser to get that event and is also the first one to lose it, how sad.</p>
+        <p>The biggest problem on Firefox right now is Content Security Policy, but thankfully that is getting fixed soon. I recommend you to block all CSP reports until Firefox got the correct implementation of CSP.</p>
+        <p>On the flip side, thanks of some extra APIs that Firefox has, some rules only work on Firefox but not Chromium, I guess unless you are willing to jump between the two browsers, you cannot have the best of both worlds.</p>
         <br />
 
         <!-- Spaces in href should be escaped, but uBlock Origin does not unescape them, since Chromium and Chrome allow spaces in href like below, I will just leave this as is -->
