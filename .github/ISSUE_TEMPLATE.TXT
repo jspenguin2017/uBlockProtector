@@ -20,7 +20,7 @@ Your screenshot should look something like this: https://i.imgur.com/qnVB0K7.png
 -->
 
 
-### Environment (Required)
+### Environment (Required): 
 
 - Operating System and Version: 
 - Browser and Version: 
