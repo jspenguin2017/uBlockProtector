@@ -248,7 +248,7 @@ if (a.isFirefox) {
                 filter.onstop = () => {
                     try {
                         payload = JSON.parse(payload);
-                    } catch (e) {
+                    } catch (err) {
                         filter.write(encoder.encode(payload));
                         filter.disconnect();
                         return;
