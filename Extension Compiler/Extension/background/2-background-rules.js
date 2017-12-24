@@ -254,6 +254,12 @@ if (a.isFirefox) {
                         return;
                     }
 
+                    //@pragma-if-debug
+                    if (a.debugMode) {
+                        console.log(payload.ads);
+                    }
+                    //@pragma-end-if
+
                     payload.ads = {
                         breakOffsets: [],
                         breaks: [],
