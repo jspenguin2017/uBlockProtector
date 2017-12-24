@@ -24,7 +24,7 @@ Your screenshot should look something like this: https://i.imgur.com/qnVB0K7.png
 
 - Operating System and Version: 
 - Browser and Version: 
-- Nano Adblocker Version: 
+- Adblocker and Version: 
 
 ### Explain what was not right (optional if obvious): 
 
