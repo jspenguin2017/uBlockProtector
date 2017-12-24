@@ -26,16 +26,6 @@
 ! === CoinHive Specific
 ||cqfnvznw.info^
 ||jyhfuqoh.info^
-! ====================
-! ===== Tracking =====
-! ====================
-! === report-uri.io, report-uri.com
-!@pragma-keep-next-comment
-! These domains are exploiting CSP reports to log most of the things that extensions insert onto webpages
-!@pragma-keep-next-comment
-! More information: https://github.com/gorhill/uBlock/issues/3140
-||report-uri.io^$third-party
-||report-uri.com^$third-party
 ! ======================
 ! ===== Missed Ads =====
 ! ======================
