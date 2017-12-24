@@ -42,26 +42,7 @@ if (a.debugMode) {
 
 //Rules
 if (a.debugMode) {
-    /*
-    {
-        //https://github.com/jspenguin2017/uBlockProtector/issues/660
-        //Looks like links to real video is enclosed in this request
-        const payload = "data:application/json;base64," + btoa(JSON.stringify({}));
-        a.staticServer(
-            [
-                "*://*.uplynk.com/preplay/*",
-            ],
-            [
-                "xmlhttprequest",
-            ],
-            payload,
-            [
-                "fox.com",
-            ],
-            true,
-        );
-    }
-    */
+    //Nothing for now
 }
 
 //@pragma-end-if
