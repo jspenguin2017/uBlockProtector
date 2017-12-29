@@ -4,7 +4,6 @@
 @@/adframe.js$script,first-party
 @@/advertisement*.js$script,first-party
 @@/advert.js$script,first-party,domain=~adultmult.tv
-@@||googleads.g.doubleclick.net/pagead/ads$subdocument,third-party,domain=~afreesms.com,redirect=noopframe
 ||trymask.com/api/$third-party
 @@||adworkmedia.com/gLoader.php?GID=$script,third-party
 @@||adworkmedia.com/gTemplate.php?GID=$subdocument,third-party
