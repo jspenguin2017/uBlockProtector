@@ -31,7 +31,6 @@
 ! ======================
 ! === Google
 ! === https://github.com/jspenguin2017/uBlockProtector/issues/245
-! === https://github.com/jspenguin2017/uBlockProtector/issues/776
 ||d.0emm.com^$third-party
 ||d.0emn.com^$third-party
 ||d.0enm.com^$third-party
