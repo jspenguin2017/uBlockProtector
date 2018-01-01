@@ -622,8 +622,8 @@ randaris-anime.net##.adblock-box
 reviewmeta.com##.ad_gu_tr
 ! === androidsage.com
 androidsage.com##script:inject(abort-on-property-read.js, blckad)
-! === stern.de, bento.de, pcgamer.com
-stern.de,bento.de,pcgamer.com##script:inject(abort-on-property-read.js, _sp_.mms)
+! === bento.de, pcgamer.com
+bento.de,pcgamer.com##script:inject(abort-on-property-read.js, _sp_.mms)
 ! === cwseed.com
 cwseed.com##script:inject(abort-on-property-read.js, wc.url)
 ! === wasabisyrup.com
