@@ -235,8 +235,6 @@ uol.com.br##.bannersticky-top:has(div.ads-wrapper)
 ||nowvideo.ec^$inline-script
 ||nowvideo.li^$inline-script
 ||ewingoset.info^$inline-script
-rapidvideo.com##script:inject(noeval.js)
-rapidvideo.com##script:inject(abort-on-property-read.js, popns)
 ||cloudvideoplatform.com/advert.jpg$image,redirect=1x1-transparent.gif,domain=nana10.co.il
 receive-a-sms.com##script:inject(abort-current-inline-script.js, $, showads.js)
 @@||receive-a-sms.com/showads.js$xmlhttprequest,first-party
