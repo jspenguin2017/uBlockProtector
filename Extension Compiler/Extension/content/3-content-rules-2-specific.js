@@ -2252,6 +2252,9 @@ if (a.domCmp(["oddreaders.com"])) {
 if (a.domCmp(["onet.pl", "komputerswiat.pl", "przegladsportowy.pl"])) {
     a.beforeScript((script) => {
         if (script.id === "adsinit") {
+            if (a.isFirefox) {
+                script.textContent = "";
+            }
             script.remove();
         }
     });
