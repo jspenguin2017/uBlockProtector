@@ -2249,7 +2249,7 @@ if (a.domCmp(["oddreaders.com"])) {
         }
     });
 }
-if (a.domCmp(["onet.pl", "komputerswiat.pl"])) {
+if (a.domCmp(["onet.pl", "komputerswiat.pl", "przegladsportowy.pl"])) {
     a.beforeScript((script) => {
         if (script.id === "adsinit") {
             script.remove();
