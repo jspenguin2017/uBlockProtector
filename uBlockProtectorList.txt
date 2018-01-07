@@ -2464,3 +2464,5 @@ urlchecker.org###adchecker
 urlchecker.org###adchecker_btn
 urlchecker.org###ads_notify
 gaara-fr.com###ga-skin-top
+@@|arabcut.com/js/ads.js|$script
+@@|https://arabcut.com/js/ads.js|$script
