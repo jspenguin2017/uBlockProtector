@@ -17,9 +17,6 @@ a.init = () => {
             window.uBlock_Protector_Extension = true;
         });
     }
-    if (a.isFirefox && document.head) {
-        throw new Error("[Nano] Aborting :: Page Already Loaded");
-    }
 };
 /**
  * Whether uBO-Extra should not run.
