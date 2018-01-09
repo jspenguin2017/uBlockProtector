@@ -5,7 +5,7 @@
     uBO-Extra - A companion extension to uBlock Origin: to gain ability to
                 foil early hostile anti-user mechanisms working around
                 content blockers.
-    Copyright (C) 2016-2017 Raymond Hill
+    Copyright (C) 2016-2018 Raymond Hill
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -378,6 +378,7 @@ if ( !abort ) {
             'sfgate.com',
             'sherdog.com',
             'slate.com',
+            'slickdeals.net',
             'southflorida.com',
             'space.com',
             'spin.com',
