@@ -222,7 +222,7 @@ a.getTabURL = (() => {
     });
 
     chrome.webNavigation.onCommitted.addListener((details) => {
-        if (!tabs[details.tabId]) {
+        if (!tabs[details.tabId] || details.frameId === 0) {
             tabs[details.tabId] = {};
         }
         tabs[details.tabId][details.frameId] = details.url;
