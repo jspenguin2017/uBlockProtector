@@ -30,7 +30,6 @@
 @@||ally.sh^$generichide
 @@||al.ly^$generichide
 @@||linkneverdie.com^$generichide
-@@||urlex.org^$generichide
 @@||greenocktelegraph.co.uk^$generichide
 @@||getrelax.club^$generichide
 @@||mycinema.pro^$generichide
