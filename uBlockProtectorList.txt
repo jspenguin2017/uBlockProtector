@@ -555,7 +555,6 @@ bigbtc.win##script:inject(abort-on-property-read.js, ad_block_test)
 @@||ally.sh^$generichide
 @@||al.ly^$generichide
 @@||linkneverdie.com^$generichide
-@@||urlex.org^$generichide
 @@||greenocktelegraph.co.uk^$generichide
 @@||getrelax.club^$generichide
 @@||mycinema.pro^$generichide

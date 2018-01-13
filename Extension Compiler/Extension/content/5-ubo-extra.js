@@ -396,6 +396,7 @@ if ( !abort ) {
             'thoughtco.com',
             'timeanddate.com',
             'tomsguide.com',
+            'tomsguide.fr',
             'tomshardware.co.uk',
             'tomshardware.com',
             'tomshardware.de',
