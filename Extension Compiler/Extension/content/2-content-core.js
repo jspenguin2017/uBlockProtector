@@ -7,6 +7,35 @@
 if (a.isEdge) {
     window.edge = window.chrome || {};
     window.chrome = window.browser;
+
+    //Polyfills and fixes
+    (function () {
+        var _querySelectorAll = document.querySelectorAll;
+        document.querySelectorAll = function () {
+            var result = _querySelectorAll.apply(this, arguments);
+            return Array.prototype.slice.call(result);
+        };
+    })();
+    (function () {
+        var _querySelectorAll = Element.prototype.querySelectorAll;
+        Element.prototype.querySelectorAll = function () {
+            var result = _querySelectorAll.apply(this, arguments);
+            return Array.prototype.slice.call(result);
+        };
+    })();
+    (function () {
+        Element.prototype.prepend = function () {
+            var docFrag = document.createDocumentFragment();
+            for (var arg of arguments) {
+                if (arg instanceof Node) {
+                    docFrag.appendChild(arg);
+                } else {
+                    docFrag.appendChild(document.createTextNode(String(argItem)));
+                }
+            }
+            this.insertBefore(docFrag, this.firstChild);
+        };
+    })();
 }
 
 //=====Control=====
