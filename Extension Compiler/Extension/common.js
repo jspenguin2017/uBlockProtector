@@ -15,6 +15,11 @@ var a = {};
  * @const {boolean}
  */
 a.isFirefox = false;
+/**
+ * Whether current browser is Edge.
+ * @const {boolean}
+ */
+a.isEdge = false;
 
 //@pragma-if-debug
 /**

@@ -9,6 +9,11 @@
  * @function
  */
 a.init = () => {
+    if (a.isEdge) {
+        window.edge = window.chrome || {};
+        window.chrome = window.browser;
+    }
+
     chrome.runtime.onMessage.addListener((...args) => {
         if (args.length === 3) {
             switch (args[0]["cmd"]) {
@@ -131,14 +136,6 @@ a.init = () => {
         });
         chrome.browserAction.setBadgeBackgroundColor({
             color: "#6996FF",
-        });
-    } else if (!a.isFirefox && chrome.runtime.id !== "ggolfgbegefeeoocgjbmkembbncoadlb") {
-        //Unpacked extension
-        chrome.browserAction.setBadgeText({
-            text: "DEV",
-        });
-        chrome.browserAction.setBadgeBackgroundColor({
-            color: "#25BA42",
         });
     }
     //@pragma-end-if
