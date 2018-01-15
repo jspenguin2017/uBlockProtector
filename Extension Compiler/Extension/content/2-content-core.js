@@ -3,17 +3,18 @@
  */
 "use strict";
 
+//Edge shim
+if (a.isEdge) {
+    window.edge = window.chrome || {};
+    window.chrome = window.browser;
+}
+
 //=====Control=====
 /**
  * Initialization.
  * @function
  */
 a.init = () => {
-    if (a.isEdge) {
-        window.edge = window.chrome || {};
-        window.chrome = window.browser;
-    }
-
     console.log(`[Nano] Nano Defender Activated :: ${document.domain}`);
     //Home page installation test
     if (a.domCmp(["jspenguin2017.github.io"], true) && location.pathname.startsWith("/uBlockProtector/")) {

@@ -3,17 +3,18 @@
  */
 "use strict";
 
+//Edge shim
+if (a.isEdge) {
+    window.edge = window.chrome || {};
+    window.chrome = window.browser;
+}
+
 //=====Control=====
 /**
  * Initialization.
  * @function
  */
 a.init = () => {
-    if (a.isEdge) {
-        window.edge = window.chrome || {};
-        window.chrome = window.browser;
-    }
-
     chrome.runtime.onMessage.addListener((...args) => {
         if (args.length === 3) {
             switch (args[0]["cmd"]) {
