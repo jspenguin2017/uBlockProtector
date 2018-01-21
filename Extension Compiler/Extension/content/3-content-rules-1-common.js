@@ -34,7 +34,7 @@
         //Handled by proprietary rules
         "lolalytics.com", "socketloop.com",
         //False positives
-        "techradar.com", "imdb.com", "babbel.com", "buxfer.com",
+        "techradar.com", "imdb.com", "babbel.com", "buxfer.com", "store.playstation.com",
     ];
     const genericWhitelist2 = [
         //Local network
