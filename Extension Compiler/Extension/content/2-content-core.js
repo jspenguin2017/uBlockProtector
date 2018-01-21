@@ -8,7 +8,6 @@ if (a.isEdge) {
     window.edge = window.chrome || {};
     window.chrome = window.browser;
 
-    //Polyfills and fixes
     (function () {
         var _querySelectorAll = document.querySelectorAll;
         document.querySelectorAll = function () {
@@ -23,6 +22,7 @@ if (a.isEdge) {
             return Array.prototype.slice.call(result);
         };
     })();
+
     (function () {
         Element.prototype.prepend = function () {
             var docFrag = document.createDocumentFragment();
@@ -34,6 +34,19 @@ if (a.isEdge) {
                 }
             }
             this.insertBefore(docFrag, this.firstChild);
+        };
+    })();
+    (function () {
+        Element.prototype.append = function () {
+            var docFrag = document.createDocumentFragment();
+            for (var arg of arguments) {
+                if (arg instanceof Node) {
+                    docFrag.appendChild(arg);
+                } else {
+                    docFrag.appendChild(document.createTextNode(String(argItem)));
+                }
+            }
+            this.appendChild(docFrag);
         };
     })();
 }

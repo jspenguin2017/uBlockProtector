@@ -5,6 +5,24 @@
 "use strict";
 
 
+//Edge shim
+if (a.isEdge) {
+    (function () {
+        Element.prototype.append = function () {
+            var docFrag = document.createDocumentFragment();
+            for (var arg of arguments) {
+                if (arg instanceof Node) {
+                    docFrag.appendChild(arg);
+                } else {
+                    docFrag.appendChild(document.createTextNode(String(argItem)));
+                }
+            }
+            this.appendChild(docFrag);
+        };
+    })();
+}
+
+
 /**
  * Create an anchor element from a link.
  * @function
@@ -34,7 +52,7 @@ window.onkeyup = (e) => {
 };
 
 let style = document.createElement("style");
-if (a.isFirefox) {
+if (a.isFirefox || a.isEdge) {
     style.textContent = ".only-chrome {" +
         "display: none;" +
         "}";
@@ -44,3 +62,7 @@ if (a.isFirefox) {
         "}";
 }
 document.head.append(style);
+
+if (a.isEdge) {
+    document.body.style.margin = "auto";
+}

@@ -7,6 +7,11 @@
 if (a.isEdge) {
     window.edge = window.chrome || {};
     window.chrome = window.browser;
+
+    const optionsPage = chrome.runtime.getURL("options.html");
+    chrome.runtime.openOptionsPage = () => {
+        chrome.tabs.create({ url: optionsPage });
+    };
 }
 
 //=====Control=====
