@@ -1550,7 +1550,7 @@ if (a.domInc(["gamereactor"])) {
         }
     });
 }
-if (a.domCmp(["dasolo.co", "dasolo.me", "italiashare.info", "italiashare.life"])) {
+if (a.domCmp(["dasolo.co", "dasolo.me", "italiashare.info", "italiashare.life", "italiashare.net"])) {
     //https://github.com/jspenguin2017/uBlockProtector/issues/126
     a.inject(() => {
         "use strict";
@@ -1571,6 +1571,7 @@ if (a.domCmp(["dasolo.co", "dasolo.me", "italiashare.info", "italiashare.life"])
             window.document.oncontextmenu = null;
             window.document.onmousedown = null;
             window.document.onmouseup = null;
+            window.document.onselectstart = null;
             window.setTimeout(() => {
                 window.$("body").unbind("contextmenu");
                 window.$("#id").unbind("contextmenu");
