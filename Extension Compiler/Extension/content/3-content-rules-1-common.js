@@ -45,6 +45,8 @@
         "yahoo",
         //Stores
         "amazon", "ebay",
+        //False positives
+        "italiashare",
     ];
 
     if (a.domCmp(genericWhitelist1, true) || a.domInc(genericWhitelist2, true)) {
