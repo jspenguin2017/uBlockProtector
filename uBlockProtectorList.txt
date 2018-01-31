@@ -523,6 +523,7 @@ crockolinks.com##script:inject(addEventListener-defuser.js, mousedown)
 fakeporn.tv##script:inject(setTimeout-defuser.js, innerText)
 fakeporn.tv##script:inject(abort-on-property-write.js, prPuShown)
 bigbtc.win##script:inject(abort-on-property-read.js, ad_block_test)
+@@/adguard.$domain=github.com
 @@||lolalytics.com^$generichide
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide
