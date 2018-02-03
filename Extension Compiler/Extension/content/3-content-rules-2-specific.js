@@ -3083,6 +3083,16 @@ if (a.domCmp(["fuckadblock.sitexw.fr"])) {
         });
     });
 }
+if (a.domCmp(["videolab.io"])) {
+    a.inject(() => {
+        "use strict";
+        window.open = () => {
+            return {
+                focus() { },
+            };
+        };
+    });
+}
 
 // >>>>> >>>>> >>>>> >>>>> >>>>> >>>>>
 //Partially working
