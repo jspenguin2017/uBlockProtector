@@ -118,6 +118,7 @@ const verNeedUpdate = (v1, v2) => {
 
 /**
  * Serialize an object to parameters, throws error if the object is invalid.
+ * @function
  * @param {Object} obj - The object to serialize.
  * @return {string} The serialized string.
  */
