@@ -1,9 +1,3 @@
 # Nano Defender Integration
-# ===== MUST READ ===== MUST READ ===== MUST READ ===== MUST READ ===== MUST READ ===== MUST READ =====
 # This filter list is intended to be used with Nano Defender (a.k.a. uBlock Protector)
 # Visit my home page for more information: https://jspenguin2017.github.io/uBlockProtector/
-#
-# There are a few filters for the domain jspenguin.com, those are placeholder paths, no requests will
-# ever be sent there if you have properly installed Nano Defender.
-# Do not visit those paths manually, my server will log your access but will not send a response.
-# ===== MUST READ ===== MUST READ ===== MUST READ ===== MUST READ ===== MUST READ ===== MUST READ =====
