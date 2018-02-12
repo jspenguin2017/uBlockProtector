@@ -1994,15 +1994,6 @@ if (a.domCmp(["cyberterminators.co", "wakfutemporada2subs.blogspot.com"])) {
         });
     });
 }
-if (a.domCmp(["hackinformer.com", "chelsea24news.pl", "windowstechinfo.com",
-    "sectorsatoshi-amarillo.website", "sectorsatoshi-azul.website",
-    "sectorsatoshi-blanco.website", "sectorsatoshi-celeste.website",
-    "sectorsatoshi-gris.website", "sectorsatoshi-naranja.website",
-    "sectorsatoshi-negro.website", "sectorsatoshi-rosa.website",
-    "sectorsatoshi-verde.website", "sectorsatoshi-violeta.website",
-    "cryptovertise.tk", "katholisches.info"])) {
-    a.readOnly("AlobaidiDetectAdBlock", true);
-}
 if (a.domCmp(["hackinformer.com"])) {
     a.ready(() => {
         $(".special-message-wrapper").includes("your ad blocker").remove();
