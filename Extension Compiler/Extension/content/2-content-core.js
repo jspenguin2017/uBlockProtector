@@ -1476,6 +1476,37 @@ a.generic.Adfly = () => {
     });
 };
 /**
+ * Set up app_vars defuser, call once on document-start if needed.
+ * @function
+ */
+a.generic.app_vars = () => {
+    a.inject(() => {
+        try {
+            let _app_vars;
+            window.Object.defineProperty(window, "app_vars", {
+                configurable: true,
+                set(val) {
+                    _app_vars = val;
+                    try {
+                        window.Object.defineProperty(_app_vars, "force_disable_adblock", {
+                            configurable: true,
+                            set() { },
+                            get() {
+                                return "0";
+                            },
+                        });
+                    } catch (err) { }
+                },
+                get() {
+                    return _app_vars;
+                },
+            });
+        } catch (err) {
+            window.consol.error("[Nano] Failed :: app_vars Defuser");
+        }
+    });
+};
+/**
  * Set up ads.js v2 defuser, call once on document-start if needed.
  * This defuser may cause some websites to malfunction.
  * @function
