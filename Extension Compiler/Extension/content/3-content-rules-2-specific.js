@@ -3092,11 +3092,11 @@ if (a.domCmp(["videolab.io"])) {
 //Partially working
 if (a.domCmp(["hulu.com"])) {
     const performClick = (btn) => {
-        if (btn.classList.contains("ublock-protector-clicked")) {
+        if (btn.classList.contains("nano-defender-clicked")) {
             return;
         }
 
-        btn.classList.add("ublock-protector-clicked");
+        btn.classList.add("nano-defender-clicked");
         btn.click();
 
         //TODO - DEBUG ONLY
