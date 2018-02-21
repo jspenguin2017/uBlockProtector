@@ -834,3 +834,5 @@ bigbtc.win##script:inject(abort-on-property-read.js, ad_block_test)
 @@/adguard.$domain=github.com
 ! === reviewmeta.com
 reviewmeta.com##script:inject(setTimeout-defuser.js, adsbygoogle)
+! === askleo.com
+askleo.com##[class^="askleo_adblock1"]
