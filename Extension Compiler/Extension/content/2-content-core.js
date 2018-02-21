@@ -1482,6 +1482,7 @@ a.generic.Adfly = () => {
 a.generic.app_vars = () => {
     a.inject(() => {
         try {
+            const _setInterval = window.setInterval;
             let _app_vars;
             window.Object.defineProperty(window, "app_vars", {
                 configurable: true, //Must be true to not crash script snippets
@@ -1490,7 +1491,14 @@ a.generic.app_vars = () => {
                     try {
                         window.Object.defineProperty(_app_vars, "force_disable_adblock", {
                             configurable: true,
-                            set() { },
+                            set() {
+                                window.setInterval = (func, delay, ...args) => {
+                                    if (delay === 1000) {
+                                        delay = 50;
+                                    }
+                                    return _setInterval.call(window, func, delay, ...args);
+                                };
+                            },
                             get() {
                                 return "0";
                             },

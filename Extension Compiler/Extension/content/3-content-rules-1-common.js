@@ -59,15 +59,15 @@
         }
 
         if (a.domCmp([], true)) {
-            console.log("[Nano] Excluded :: app_vars Defuser");
-        } else {
-            a.generic.app_vars();
-        }
-
-        if (a.domCmp([], true)) {
             console.log("[Nano] Excluded :: Adfly Bypasser");
         } else {
             a.generic.Adfly();
+        }
+
+        if (a.domCmp([], true)) {
+            console.log("[Nano] Excluded :: app_vars Defuser");
+        } else {
+            a.generic.app_vars();
         }
 
         if (a.domCmp([], true)) {
