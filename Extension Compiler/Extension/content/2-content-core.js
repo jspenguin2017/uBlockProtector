@@ -1484,7 +1484,7 @@ a.generic.app_vars = () => {
         try {
             let _app_vars;
             window.Object.defineProperty(window, "app_vars", {
-                configurable: true,
+                configurable: true, //Must be true to not crash script snippets
                 set(val) {
                     _app_vars = val;
                     try {
