@@ -510,6 +510,7 @@ bigbtc.win##script:inject(abort-on-property-read.js, ad_block_test)
 @@/adguard.$domain=github.com
 reviewmeta.com##script:inject(setTimeout-defuser.js, adsbygoogle)
 askleo.com##[class^="askleo_adblock1"]
+||mope.io/img/blocked.png$image,first-party
 @@||lolalytics.com^$generichide
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide

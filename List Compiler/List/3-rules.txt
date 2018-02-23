@@ -836,3 +836,5 @@ bigbtc.win##script:inject(abort-on-property-read.js, ad_block_test)
 reviewmeta.com##script:inject(setTimeout-defuser.js, adsbygoogle)
 ! === askleo.com
 askleo.com##[class^="askleo_adblock1"]
+! === mope.io
+||mope.io/img/blocked.png$image,first-party
