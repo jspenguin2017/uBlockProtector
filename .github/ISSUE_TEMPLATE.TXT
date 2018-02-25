@@ -1,7 +1,7 @@
 <!--
 For hard anti-adblock (allow ads or leave type), open issue in uAssets instead (unless they do not have a solution): 
 https://github.com/uBlockOrigin/uAssets
-If you are using Nano Adblocker, your uBlock Origin version is in About section of Nano Dashboard
+uBlock Origin version that Nano Adblocker uses can be found in About section of Nano Dashboard. 
 -->
 
 ### Test link (required): 
