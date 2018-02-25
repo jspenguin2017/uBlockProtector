@@ -838,3 +838,5 @@ reviewmeta.com##script:inject(setTimeout-defuser.js, adsbygoogle)
 askleo.com##[class^="askleo_adblock1"]
 ! === mope.io
 ||mope.io/img/blocked.png$image,first-party
+! === geektyper.com
+geektyper.com###itemz
