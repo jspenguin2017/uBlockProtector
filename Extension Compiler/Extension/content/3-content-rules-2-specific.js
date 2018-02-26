@@ -1908,7 +1908,7 @@ if (a.domCmp(["comicallyincorrect.com"])) {
 if (a.domCmp(["cda.pl"])) {
     a.readOnly("adblockV1", true);
 }
-if (a.domCmp(["linternaute.com"])) {
+if (a.domCmp(["linternaute.com", "mtv.fi"])) {
     //https://github.com/jspenguin2017/uBlockProtector/issues/224
     a.inject(() => {
         "use strict";
