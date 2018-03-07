@@ -969,6 +969,7 @@ a.generic = () => {
     //FuckAdBlock
     a.generic.FuckAdBlock("FuckAdBlock", "fuckAdBlock");
     a.generic.FuckAdBlock("BlockAdBlock", "blockAdBlock");
+    a.generic.FuckAdBlock("KillAdBlock", "killAdBlock");
     //ads.js v1
     a.readOnly("canRunAds", true);
     a.readOnly("canShowAds", true);
@@ -1385,7 +1386,7 @@ a.generic.FuckAdBlock = (constructorName, instanceName) => {
 
         try {
             window.Object.defineProperty(window, "${a.strEscape(constructorName)}", {
-                configurable: false,
+                configurable: true,
                 set() { },
                 get() {
                     return patchedFuckAdBlock;
@@ -1393,7 +1394,7 @@ a.generic.FuckAdBlock = (constructorName, instanceName) => {
             });
             const instance = new patchedFuckAdBlock();
             window.Object.defineProperty(window, "${a.strEscape(instanceName)}", {
-                configurable: false,
+                configurable: true,
                 set() { },
                 get() {
                     return instance;

@@ -90,12 +90,6 @@
     }
 }
 
-//Candidate For Generic Rules
-if (a.domCmp(["mywrestling.com.pl", "zxctunnel.com", "tsa-algerie.com", "ilpuntotecnicoeadsl.com",
-    "kmspico.esy.es", "orgasmnaut.com", "mytunnel.info", "odcinki-seriali.pl", "filmowoonline.cba.pl"])) {
-    a.generic.FuckAdBlock("KillAdBlock", "killAdBlock");
-}
-
 //a.filter
 if (a.domCmp(["usapoliticstoday.com", "vidlox.tv", "exrapidleech.info", "urle.co", "gsmarena.com",
     "darmowe-pornosy.pl", "salon.com", "linx.cloud", "flashx.tv", "flashx.to"])) {
