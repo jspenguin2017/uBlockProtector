@@ -3,8 +3,10 @@ For hard anti-adblock (allow ads or leave type), open issue in uAssets instead (
 https://github.com/uBlockOrigin/uAssets
 uBlock Origin version that Nano Adblocker uses can be found in About section of Nano Dashboard. 
 -->
-
 ### Test link (required): 
+<!--
+Please use the domain as the title
+-->
 
 
 ### Screenshot of the web page (including address bar and extension icons) (required): 
