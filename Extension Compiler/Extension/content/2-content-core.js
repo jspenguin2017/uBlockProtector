@@ -1199,21 +1199,37 @@ a.generic = () => {
                                 window[prop] = null;
                             }
                             //BlockAdBlock
-                            if (window.Object.keys(method).length === 3) {
-                                //Each key should be 10 character long, one of the 3 keys can be "bab"
-                                let isBAB = true;
-                                const keyLen = window.Object.keys(method).join("").length;
-                                if (keyLen !== 30 && keyLen !== 23) {
-                                    isBAB = false;
-                                } else {
-                                    for (let prop in method) {
-                                        if (prop.length !== 10 && prop !== "bab") {
-                                            isBAB = false;
-                                            break;
-                                        }
+                            BlockAdBlock: {
+                                if (method.length) {
+                                    break BlockAdBlock;
+                                }
+
+                                let keyLen = 0;
+                                let hasBab = false;
+                                let keyCount = 0;
+                                for (let k in method) {
+                                    if (k.length === 10) {
+                                        keyLen += k.length;
+                                    } else if (k === "bab") {
+                                        hasBab = true;
+                                    } else {
+                                        break BlockAdBlock;
+                                    }
+                                    if (keyLen > 30) {
+                                        break BlockAdBlock;
+                                    }
+
+                                    keyCount += 1;
+                                    if (keyCount > 3) {
+                                        break BlockAdBlock;
                                     }
                                 }
-                                if (isBAB) {
+
+                                if (hasBab) {
+                                    keyLen += 10;
+                                }
+
+                                if (keyLen === 30 && keyCount === 3) {
                                     window[prop] = null;
                                     err("BlockAdBlock");
                                 }
