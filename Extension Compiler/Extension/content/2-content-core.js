@@ -1200,7 +1200,8 @@ a.generic = () => {
                             }
                             //BlockAdBlock
                             BlockAdBlock: {
-                                if (method.length) {
+                                //https://github.com/jspenguin2017/uBlockProtector/issues/321
+                                if (method.length) { //Important, otherwise large arrays chokes this
                                     break BlockAdBlock;
                                 }
 
@@ -1228,7 +1229,6 @@ a.generic = () => {
                                 if (hasBab) {
                                     keyLen += 10;
                                 }
-
                                 if (keyLen === 30 && keyCount === 3) {
                                     window[prop] = null;
                                     err("BlockAdBlock");
