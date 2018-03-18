@@ -28,6 +28,8 @@
         "calm.com", "vimeo.com", "yandex.ru", "xemvtv.net",
         //Image beds (for performance)
         "imgur.com", "imgbox.com", "flickr.com",
+        //Advanced tools (for performance)
+        "lab.wolframcloud.com",
         //Handled by specific rules
         "anandabazar.com", "o2.pl", "vod.pl", "viasatsport.se", "viasport.fi", "tv3sport.dk",
         "viasport.no", "strefadb.pl", "wp.pl", "ostrzeszowinfo.pl", "infostrow.pl",
