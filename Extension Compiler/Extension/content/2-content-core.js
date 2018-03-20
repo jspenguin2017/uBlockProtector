@@ -1400,12 +1400,52 @@ a.generic.FuckAdBlock = (constructorName, instanceName) => {
             };
         };
 
+        const isSafeCall = () => {
+            const script = window.document.currentScript;
+            if (!script || script.src || !script.textContent) {
+                return true;
+            }
+            if (script.textContent.includes("adBlockDetected") && script.textContent.includes("importFAB.onerror")) {
+                return false;
+            }
+            return true;
+        };
+        const defuseCDN = (() => {
+            let done = false;
+            return () => {
+                if (done) {
+                    return;
+                }
+
+                const _createElement = window.document.createElement;
+                window.document.createElement = function (name, ...rest) {
+                    let element = _createElement.call(this, name, ...rest);
+                    if (name === "script") {
+                        element.addEventListener("error", (e) => {
+                            if (element.src && element.src.startsWith("https://cdnjs.cloudflare.com/ajax/libs/fuckadblock/")) {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                element.onload();
+                            }
+                        }, true);
+                    };
+                    return element;
+                };
+
+                done = true;
+            };
+        })();
+
         try {
             window.Object.defineProperty(window, "${a.strEscape(constructorName)}", {
                 configurable: true,
                 set() { },
                 get() {
-                    return patchedFuckAdBlock;
+                    if (isSafeCall()) {
+                        return patchedFuckAdBlock;
+                    } else {
+                        defuseCDN();
+                    }
                 },
             });
             const instance = new patchedFuckAdBlock();
@@ -1413,7 +1453,11 @@ a.generic.FuckAdBlock = (constructorName, instanceName) => {
                 configurable: true,
                 set() { },
                 get() {
-                    return instance;
+                    if (isSafeCall()) {
+                        return instance;
+                    } else {
+                        defuseCDN();
+                    }
                 },
             });
         } catch (err) {

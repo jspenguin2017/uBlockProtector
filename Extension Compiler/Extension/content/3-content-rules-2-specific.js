@@ -3044,14 +3044,6 @@ if (a.domCmp(["hdpass.net"])) {
 if (a.domCmp(["moondash.co.in"])) {
     a.bait("div", "#claimAd");
 }
-if (a.domCmp(["fuckadblock.sitexw.fr"])) {
-    a.on("load", () => {
-        a.inject(() => {
-            "use strict";
-            adBlockNotDetected();
-        });
-    });
-}
 if (a.domCmp(["videolab.io"])) {
     a.inject(() => {
         "use strict";
