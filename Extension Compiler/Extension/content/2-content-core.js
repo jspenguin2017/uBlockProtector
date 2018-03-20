@@ -1428,7 +1428,7 @@ a.generic.FuckAdBlock = (constructorName, instanceName) => {
                                 element.onload();
                             }
                         }, true);
-                    };
+                    }
                     return element;
                 };
 
