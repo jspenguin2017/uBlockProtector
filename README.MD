@@ -1,4 +1,4 @@
-# Nano Defender (a.k.a. uBlock Protector) [![Build Status](https://travis-ci.org/jspenguin2017/uBlockProtector.svg?branch=master)](https://travis-ci.org/jspenguin2017/uBlockProtector)
+# Nano Defender [![Build Status](https://travis-ci.org/jspenguin2017/uBlockProtector.svg?branch=master)](https://travis-ci.org/jspenguin2017/uBlockProtector)
 
 An anti-adblock defuser for Nano Adblocker and uBlock Origin
 
