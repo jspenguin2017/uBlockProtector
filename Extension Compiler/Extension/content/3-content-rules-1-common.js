@@ -37,6 +37,7 @@
         "lolalytics.com", "socketloop.com",
         //False positives
         "techradar.com", "imdb.com", "babbel.com", "buxfer.com", "store.playstation.com", "lemonde.fr",
+        "derstandard.at",
     ];
     const genericWhitelist2 = [
         //Local network
