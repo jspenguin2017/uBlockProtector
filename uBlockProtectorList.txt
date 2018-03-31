@@ -512,6 +512,7 @@ reviewmeta.com##script:inject(setTimeout-defuser.js, adsbygoogle)
 askleo.com##[class^="askleo_adblock1"]
 ||mope.io/img/blocked.png$image,first-party
 geektyper.com###itemz
+||demotywatory.pl/res/js/advertisement.js$script,important
 @@||lolalytics.com^$generichide
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide
