@@ -477,7 +477,6 @@ uptobox.com#@##adblocktrap
 uptobox.com#@#.ad-leader
 uptobox.com#@#.ad-leader > div[id]
 litecoiner.net,bitcoiner.net#@##ad-top
-softpedia.com#@#.ad
 gamejolt.com###pre-roll-ad-container
 @@||yllix.com/banner_show.php$subdocument,domain=ogmods.net
 yllix.com##[href^="http://click2.yllix.com/"]
