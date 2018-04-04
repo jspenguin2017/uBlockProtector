@@ -441,6 +441,7 @@ if ( !abort ) {
             'twincities.com',
             'utvdriver.com',
             'vancouversun.com',
+            'vg.no',
             'vibe.com',
             'wakeboardingmag.com',
             'washingtonpost.com',
