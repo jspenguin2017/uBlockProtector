@@ -1619,7 +1619,6 @@ a.generic.adsjsV2 = (min = 11, max = 14) => {
 };
 /**
  * Set up NoAdBlock defuser, call once on document-start if needed.
- * Many solutions enclosed here, change useSolution constant to set the one to activate.
  * @function
  */
 a.generic.NoAdBlock = () => {
