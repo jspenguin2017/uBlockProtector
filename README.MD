@@ -1,4 +1,4 @@
-# Nano Defender [![Build Status](https://travis-ci.org/jspenguin2017/uBlockProtector.svg?branch=master)](https://travis-ci.org/jspenguin2017/uBlockProtector)
+# Nano Defender Firefox [![Build Status](https://travis-ci.org/krystian3w/NanoDefender.svg?branch=master)](https://travis-ci.org/krystian3w/NanoDefender)
 
 An anti-adblock defuser for Nano Adblocker and uBlock Origin
 
