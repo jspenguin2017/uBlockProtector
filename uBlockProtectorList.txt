@@ -512,6 +512,7 @@ reviewmeta.com##script:inject(setTimeout-defuser.js, adsbygoogle)
 askleo.com##[class^="askleo_adblock1"]
 ||mope.io/img/blocked.png$image,first-party
 geektyper.com###itemz
+||demotywatory.pl/res/js/advertisement.js$script,important
 @@||lolalytics.com^$generichide
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide
@@ -1064,7 +1065,6 @@ uptobox.com#@##adblocktrap
 uptobox.com#@#.ad-leader
 uptobox.com#@#.ad-leader > div[id]
 litecoiner.net,bitcoiner.net#@##ad-top
-softpedia.com#@#.ad
 gamejolt.com###pre-roll-ad-container
 @@||yllix.com/banner_show.php$subdocument,domain=ogmods.net
 yllix.com##[href^="http://click2.yllix.com/"]

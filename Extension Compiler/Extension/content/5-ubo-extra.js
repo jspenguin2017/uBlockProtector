@@ -25,7 +25,7 @@
 
 'use strict';
 
-/* global dispatchEvent, HTMLDocument, XMLDocument */
+/* global HTMLDocument, XMLDocument */
 
 /*******************************************************************************
 
@@ -90,142 +90,6 @@ if ( !abort ) {
     // Don't inject if document is from local network.
     abort = /^192\.168\.\d+\.\d+$/.test(hostname);
 }
-
-/*******************************************************************************
-
-    Websocket abuse buster.
-
-    https://github.com/gorhill/uBlock/issues/1936
-
-**/
-
-(function() {
-    if ( abort ) { return; }
-
-    // webRequest API is websocket-aware as of Chromium 58: no need to
-    // wrap for Chromium 58 and above.
-    if ( /\bChrom(?:e|ium)\/(?:[34][0-9]|5[0-7])\b/.test(navigator.userAgent) === false ) {
-        return;
-    }
-
-    // https://bugs.chromium.org/p/chromium/issues/detail?id=129353
-    // https://github.com/gorhill/uBlock/issues/956
-    // https://github.com/gorhill/uBlock/issues/1497
-    // Trap calls to WebSocket constructor, and expose websocket-based network
-    // requests to uBO's filtering engine, logger, etc.
-    // Counterpart of following block of code is found in "vapi-background.js" --
-    // search for "https://github.com/gorhill/uBlock/issues/1497".
-
-    /* jshint multistr: true */
-
-    // https://github.com/gorhill/uBlock/issues/1604
-    //return;
-
-    // Fix won't be applied on older versions of Chromium.
-    if ( window.WebSocket instanceof Function === false ) { return false; }
-
-    // Only for dynamically created frames and http/https documents.
-    if ( /^(https?:|about:)/.test(window.location.protocol) !== true ) {
-        return false;
-    }
-
-    var doc = document,
-        parent = doc.head || doc.documentElement;
-    if ( parent === null ) { return false; }
-
-    // Websocket-attempt handler.
-    self.addEventListener(contentScriptSecret, function(ev) {
-        var details = ev.detail || {};
-        if ( details.what !== 'websocket' ) { return; }
-        var onResponseReceived = function(sender) {
-            this.onload = this.onerror = null;
-            dispatchEvent(new CustomEvent(sender, { detail: this.status !== 0 ? '' : 'nope' }));
-        };
-        var url = window.location.origin + '?' +
-            'r=' + encodeURIComponent(window.location.origin) + '&' +
-            'u=' + encodeURIComponent(details.url) +
-            '&ubofix=f41665f3028c7fd10eecf573336216d3';
-        var xhr = new XMLHttpRequest();
-        xhr.open('HEAD', url);
-        xhr.onload = onResponseReceived.bind(xhr, details.sender);
-        xhr.onerror = onResponseReceived.bind(xhr, details.sender);
-        xhr.send();
-    });
-
-    // WebSocket reference: https://html.spec.whatwg.org/multipage/comms.html
-    // The script tag will remove itself from the DOM once it completes
-    // execution.
-    //
-    // This new implementation was borrowed from https://github.com/kzar (ABP
-    // developer), which is cleaner and does not have issues of the previous
-    // implementation, see <https://github.com/gorhill/uBO-Extra/issues/12>.
-    //
-    // The scriptlet code below is based on this commit in ABP's repo:
-    // https://github.com/adblockplus/adblockpluschrome/commit/457a336ee55a433217c3ffe5d363e5c6980f26f4#diff-c65c7b9a7a7b1819bef1a2957f08e8ceR441
-    //
-    // In order to respect authorship in the commit history, I manually
-    // imported/adapted the changes above, then I committed these changes with
-    // proper authorship proper information taken from the commit above (I did
-    // not ask explicit permission, the license of both projects are GPLv3.)
-    //
-    // The 'dummy'local variable in WrappedWebSocket is needed. See
-    // https://github.com/uBlockOrigin/uAssets/issues/227#issuecomment-275879231
-
-    var scriptlet = function(secret) {
-        var RealWebSocket = window.WebSocket,
-            addEventListener = self.addEventListener.bind(window),
-            removeEventListener = self.removeEventListener.bind(window),
-            dispatchEvent = self.dispatchEvent.bind(window);
-
-        var queryContentScript = function(websocket, url) {
-            var uid = secret + Math.floor(Math.random() * 982451653 + 982451653).toString(36);
-            var handler = function(ev) {
-                removeEventListener(ev.type, handler);
-                if ( ev.detail === 'nope' ) { websocket.close(); }
-            };
-            addEventListener(uid, handler);
-            dispatchEvent(new CustomEvent(secret, {
-                detail: { what: 'websocket', sender: uid, url: url }
-            }));
-        };
-
-        var WrappedWebSocket = function(url) {
-            var surl = url.toString();
-            // Throw correct exceptions if the constructor is used improperly.
-            if ( this instanceof WrappedWebSocket === false ) {
-                return RealWebSocket();
-            }
-            if ( arguments.length < 1 ) {
-                return new RealWebSocket();
-            }
-            var websocket = arguments.length === 1 ?
-                new RealWebSocket(surl) :
-                new RealWebSocket(surl, arguments[1]);
-            queryContentScript(websocket, surl);
-            return websocket;
-        };
-
-        WrappedWebSocket.prototype = RealWebSocket.prototype;
-        window.WebSocket = WrappedWebSocket.bind(window);
-
-        Object.defineProperties(window.WebSocket, {
-            CONNECTING: { value: RealWebSocket.CONNECTING, enumerable: true },
-            OPEN: { value: RealWebSocket.OPEN, enumerable: true },
-            CLOSING: { value: RealWebSocket.CLOSING, enumerable: true },
-            CLOSED: { value: RealWebSocket.CLOSED, enumerable: true },
-            name: { value: 'WebSocket' },
-            prototype: { value: RealWebSocket.prototype }
-        });
-    };
-
-    scriptlets.push({
-        scriptlet: scriptlet,
-        exceptions: [
-            'beam.pro',
-            'plex.tv',
-        ]
-    });
-})();
 
 /*******************************************************************************
 
@@ -441,6 +305,7 @@ if ( !abort ) {
             'twincities.com',
             'utvdriver.com',
             'vancouversun.com',
+            'vg.no',
             'vibe.com',
             'wakeboardingmag.com',
             'washingtonpost.com',

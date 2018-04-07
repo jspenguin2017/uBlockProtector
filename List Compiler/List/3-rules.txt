@@ -840,3 +840,5 @@ askleo.com##[class^="askleo_adblock1"]
 ||mope.io/img/blocked.png$image,first-party
 ! === geektyper.com
 geektyper.com###itemz
+! === demotywatory.pl
+||demotywatory.pl/res/js/advertisement.js$script,important
