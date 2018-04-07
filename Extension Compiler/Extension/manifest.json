@@ -43,7 +43,6 @@
   },
   "incognito": "spanning",
   "manifest_version": 2,
-  "minimum_chrome_version": "59.0",
   "name": "Nano Defender",
   "options_ui": {
     "chrome_style": true,
@@ -58,4 +57,9 @@
     "webRequestBlocking"
   ],
   "version": "13.51"
+  "applications": {
+    "gecko": {
+      "strict_min_version": "57.0"
+    }
+  }
 }
