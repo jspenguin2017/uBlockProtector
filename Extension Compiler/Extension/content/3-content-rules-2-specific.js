@@ -2496,7 +2496,7 @@ if (a.domCmp(["adageindia.in", "bombaytimes.com", "businessinsider.in", "gizmodo
     let isInBackground = false;
     const reStart = /^\/[a-z_]+\.cms/;
     const reEnd = /^ \d{5,} \d{1,2} $/;
-    const adsHidder = (node) => {
+    const adsHidder = () => {
         if (!document.body || isInBackground) {
             return;
         }
