@@ -2434,7 +2434,8 @@ if (a.domCmp(["aternos.org"])) {
     a.filter("setTimeout", a.matchMethod.string, ".ad-detect");
 }
 if (a.domCmp(["adageindia.in", "bombaytimes.com", "businessinsider.in", "gizmodo.in", "iamgujarat.com", "idiva.com",
-    "in.techradar.com", "indiatimes.com", "lifehacker.co.in", "mensxp.com", "samayam.com", "gadgetsnow.com"])) {
+    "in.techradar.com", "indiatimes.com", "timesofindia.com", "lifehacker.co.in", "mensxp.com", "samayam.com",
+    "gadgetsnow.com"])) {
     //https://gitlab.com/xuhaiyang1234/uBlockProtectorSecretIssues/issues/8
     a.inject(() => {
         "use strict";
