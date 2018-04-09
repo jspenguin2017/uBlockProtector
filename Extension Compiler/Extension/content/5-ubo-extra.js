@@ -311,6 +311,7 @@ if ( !abort ) {
             'washingtonpost.com',
             'waterskimag.com',
             'wikia.com',
+            'windowscentral.com',
             'windsorstar.com',
             'winnipegsun.com',
             'workingmother.com',
