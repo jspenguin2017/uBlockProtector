@@ -513,6 +513,11 @@ askleo.com##[class^="askleo_adblock1"]
 ||mope.io/img/blocked.png$image,first-party
 geektyper.com###itemz
 ||demotywatory.pl/res/js/advertisement.js$script,important
+twinsagadb.com##.top-content
+redtube.com###video_right_col > .clearfix
+redtube.com##div[class][style]:has(> a.removeAdLink)
+redtube.com##div[class][style]:has(> div[class][style] > a.removeAdLink)
+@@||rdtcdn.com^$script,domain=redtube.com
 @@||lolalytics.com^$generichide
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide

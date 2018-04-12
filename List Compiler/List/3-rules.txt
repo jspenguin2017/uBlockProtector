@@ -842,3 +842,10 @@ askleo.com##[class^="askleo_adblock1"]
 geektyper.com###itemz
 ! === demotywatory.pl
 ||demotywatory.pl/res/js/advertisement.js$script,important
+! === twinsagadb.com
+twinsagadb.com##.top-content
+! === redtube.com
+redtube.com###video_right_col > .clearfix
+redtube.com##div[class][style]:has(> a.removeAdLink)
+redtube.com##div[class][style]:has(> div[class][style] > a.removeAdLink)
+@@||rdtcdn.com^$script,domain=redtube.com
