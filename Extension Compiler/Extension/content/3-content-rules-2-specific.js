@@ -3060,12 +3060,12 @@ if (a.domCmp(["boost.ink"])) {
     a.ready(() => {
         a.inject(() => {
             "use strict";
-            const btn = document.querySelector(".complete_btn");
+            const btn = window.document.querySelector(".complete_btn");
             if (btn) {
                 const aesCbc = new window.aesjs.ModeOfOperation.cbc(
                     window.strToArr(
                         window.adjustKeySize(
-                            window.location.pathname.toString()
+                            window.location.pathname
                         )
                     )
                 );
