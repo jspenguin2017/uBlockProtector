@@ -3055,6 +3055,32 @@ if (a.domCmp(["videolab.io"])) {
         };
     });
 }
+if (a.domCmp(["boost.ink"])) {
+    //https://github.com/jspenguin2017/uBlockProtector/issues/908
+    a.ready(() => {
+        a.inject(() => {
+            "use strict";
+            const btn = document.querySelector(".complete_btn");
+            if (btn) {
+                const aesCbc = new window.aesjs.ModeOfOperation.cbc(
+                    window.strToArr(
+                        window.adjustKeySize(
+                            window.location.pathname.toString()
+                        )
+                    )
+                );
+                const decryptedBytes = aesCbc.decrypt(
+                    window.strToArr(
+                        window.atob(btn.dataset.href)
+                    )
+                );
+                const decryptedText = window.aesjs.utils.utf8.fromBytes(decryptedBytes)
+                    .split(window.String.fromCharCode(15))[0];
+                window.location.href = decryptedText;
+            }
+        });
+    });
+}
 
 // >>>>> >>>>> >>>>> >>>>> >>>>> >>>>>
 //Partially working
