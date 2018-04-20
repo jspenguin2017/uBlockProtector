@@ -25,13 +25,3 @@
 ||imasdk.googleapis.com/js/sdkloader/ima3.js$script,important,domain=streamable.com|popcornflix.com|fox.com|tv2.dk|it.motorsport.com
 ! === hulu.com
 @@||ads-v-darwin.hulustream.com/published/*.mp4$domain=hulu.com
-! === bild.de
-! The hard coded rule in Nano Defender can crash other script snippets of Nano Adblocker
-bild.de#@#script:inject(abort-on-property-read.js, de.bild.cmsKonfig.a.b.a)
-
-! === Adfly
-! What can possibly go wrong?
-!#@#script:inject(adfly-defuser.js)
-! === app_vars
-! What can possibly go wrong?
-!#@#script:inject(abort-on-property-read.js, app_vars.force_disable_adblock)
