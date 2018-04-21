@@ -206,6 +206,7 @@ if ( !abort ) {
             'floridatravellife.com',
             'flyingmag.com',
             'focus.de',
+            'gamepedia.com',
             'gamerevolution.com',
             'geek.com',
             'gofugyourself.com',
