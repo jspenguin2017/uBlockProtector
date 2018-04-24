@@ -28,7 +28,7 @@ if (a.debugMode) {
         );
     }
     {
-        //https://gitlab.com/xuhaiyang1234/uBlockProtectorSecretIssues/issues/10
+        //https://gitlab.com/xuhaiyang1234/NanoAdblockerSecretIssues/issues/10
         a.proxy(
             [
                 "*://tvnow.de/*",

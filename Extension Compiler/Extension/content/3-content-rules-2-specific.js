@@ -1991,8 +1991,8 @@ if (a.domCmp(["codepo8.github.io"]) && location.pathname.startsWith("/detecting-
     a.css(".notblocked { display:block; } .blocked { display:none; }");
 }
 if (a.domCmp(["nowvideo.ec", "nowvideo.li", "ewingoset.info"])) {
-    //https://gitlab.com/xuhaiyang1234/uBlockProtectorSecretIssues/issues/2
-    //https://gitlab.com/xuhaiyang1234/uBlockProtectorSecretIssues/issues/5
+    //https://gitlab.com/xuhaiyang1234/NanoAdblockerSecretIssues/issues/2
+    //https://gitlab.com/xuhaiyang1234/NanoAdblockerSecretIssues/issues/5
     a.ready(() => {
         $("#cty").append(`<input type="hidden" name="ab" value="1">`);
     });
@@ -2003,7 +2003,7 @@ if (a.domCmp(["karibusana.org"])) {
     a.css(".onp-locker-call { display:block; }");
 }
 if (a.domCmp(["lewat.id", "u2s.io"])) {
-    //https://gitlab.com/xuhaiyang1234/uBlockProtectorSecretIssues/issues/4
+    //https://gitlab.com/xuhaiyang1234/NanoAdblockerSecretIssues/issues/4
     let matcher;
     if (a.domCmp(["lewat.id"], true)) {
         matcher = /^https?:\/\/lewat\.id\//i;
@@ -2436,7 +2436,7 @@ if (a.domCmp(["aternos.org"])) {
 if (a.domCmp(["adageindia.in", "bombaytimes.com", "businessinsider.in", "gizmodo.in", "iamgujarat.com", "idiva.com",
     "in.techradar.com", "indiatimes.com", "timesofindia.com", "lifehacker.co.in", "mensxp.com", "samayam.com",
     "gadgetsnow.com"])) {
-    //https://gitlab.com/xuhaiyang1234/uBlockProtectorSecretIssues/issues/8
+    //https://gitlab.com/xuhaiyang1234/NanoAdblockerSecretIssues/issues/8
     a.inject(() => {
         "use strict";
         const magic = "a" + window.Math.random().toString(36).substring(2);
@@ -3025,7 +3025,7 @@ if (a.domCmp(["uflash.tv"])) {
     });
 }
 if (a.domCmp(["hdpass.net"])) {
-    //https://gitlab.com/xuhaiyang1234/uBlockProtectorSecretIssues/issues/1
+    //https://gitlab.com/xuhaiyang1234/NanoAdblockerSecretIssues/issues/1
     a.inject(() => {
         "use strict";
         const expandClickArea = () => {
