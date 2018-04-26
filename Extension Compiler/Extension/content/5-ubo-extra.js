@@ -208,6 +208,7 @@ if ( !abort ) {
             'focus.de',
             'gamepedia.com',
             'gamerevolution.com',
+            'gamespot.com',
             'geek.com',
             'gofugyourself.com',
             'growthspotter.com',
