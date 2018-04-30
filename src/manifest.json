@@ -3,7 +3,9 @@
   "background": {
     "scripts": [
       "common.js",
+      "platform/chromium-vars.js",
       "background/1-background-core.js",
+      "platform/chromium-background.js",
       "background/2-background-rules.js",
       "background/3-background-debug.js"
     ]
