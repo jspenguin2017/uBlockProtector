@@ -80,8 +80,8 @@ a.err = (name) => {
     }
 };
 /**
- * Send a highly privileged XMLHttpRequest, it goes though Cross Origin Resource Sharing policies
- * as well as adblocker filtering.
+ * Send a highly privileged XMLHttpRequest, it goes though Cross Origin
+ * Resource Sharing policies as well as adblocker filtering.
  * @function
  * @param {Object} details - Details about this request.
  ** @param {string} method - The method of the request, usually "GET" or "POST".
@@ -109,7 +109,8 @@ a.request = (details, onload, onerror) => {
  * "example.com" will match domains that matches /(^|.*\.)example\.com$/.
  * @function
  * @param {Array.<string>} domList - The list of domains to compare.
- * @param {boolean} [noErr=false] - Set to true to prevent showing error message.
+ * @param {boolean} [noErr=false] - Set to true to prevent showing error
+ ** message.
  * @return {boolean} True if current domain is in the list, false otherwise.
  */
 a.domCmp = (domList, noErr) => {
@@ -131,7 +132,8 @@ a.domCmp = (domList, noErr) => {
  * "git.example" will match domains that matches /(^|.*\.)git\.example\.[^\.]*$/.
  * @function
  * @param {Array.<string>} domList - The list of strings to compare.
- * @param {boolean} [noErr=false] - Set to true to prevent showing error message.
+ * @param {boolean} [noErr=false] - Set to true to prevent showing error
+ ** message.
  * @return {boolean} True if current domain is in the list, false otherwise.
  */
 a.domInc = (domList, noErr) => {
@@ -162,17 +164,20 @@ a.matchMethod = {
      */
     matchAll: 0,
     /**
-     * Partial string match. Result in match if one of the arguments contains the filter.
+     * Partial string match. Result in match if one of the arguments contains
+     * the filter.
      * @param {string} filter - The filter.
      */
     string: 1,
     /**
-     * Exact string match. Result in match if one of the arguments is exactly the filter.
+     * Exact string match. Result in match if one of the arguments is exactly
+     * the filter.
      * @param {string} filter - The filter.
      */
     stringExact: 2,
     /**
-     * Regular expression based matching, filter.test() will be used to apply matching.
+     * Regular expression based matching, filter.test() will be used to apply
+     * matching.
      * @param {RegExp} filter - The filter.
      */
     RegExp: 3,
@@ -186,7 +191,8 @@ a.matchMethod = {
  * Get a matcher function, the filter will be "hard coded" into it.
  * @function
  * @param {Enumeration} method - The method to use.
- * @param {undefined|null|string|RegExp|Function} filter - An appropriate filter.
+ * @param {undefined|null|string|RegExp|Function} filter - An appropriate
+ ** filter.
  * @return {string} A matcher function.
  */
 a.getMatcher = (method, filter) => {
@@ -233,7 +239,8 @@ a.getMatcher = (method, filter) => {
  * Inject a standalone script to the page.
  * @function
  * @param {string|Function} payload - The script to inject.
- * @param {boolean} [isReady=false] - Set this to true if the payload does not need a execution wrapper.
+ * @param {boolean} [isReady=false] - Set this to true if the payload does not
+ ** need a execution wrapper.
  */
 a.inject = (payload, isReady) => {
     let s = document.createElement("script");
@@ -251,18 +258,22 @@ a.inject = (payload, isReady) => {
     }
 };
 /**
- * Similar to a.inject(), but the injected code is enclosed in a wrapper that have some rumtime functions.
+ * Similar to a.inject(), but the injected code is enclosed in a wrapper that
+ * have some rumtime functions.
  * Must be called on document-start to ensure security.
  * @function
  * @param {string|Function} payload - The script to inject.
- * @param {boolean} [isReady=false] - Set this to true if the payload does not need a execution wrapper.
+ * @param {boolean} [isReady=false] - Set this to true if the payload does not
+ ** need a execution wrapper.
  * @runtime dispatchEvent, CustomEvent
- ** The real dispatchEvent and CustomEvent, useful when you need custom messaging.
+ ** The real dispatchEvent and CustomEvent, useful when you need custom
+ ** messaging.
  * @runtime execute
  ** Run code ignoring Content Security Policy.
  ** @function
- ** @param {string} code - The code to execute, must already have execution wrapper if it needs one.
- *** The execution will be done on the next tick, which makes it not truly synchronous.
+ ** @param {string} code - The code to execute, must already have execution
+ *** wrapper if it needs one. The execution will be done on the next tick,
+ *** which makes it not truly synchronous.
  */
 a.injectWithRuntime = (payload, isReady) => {
     const magic = a.uid();
@@ -335,7 +346,8 @@ a.uid = (() => {
  * @param {Function} handler - The mutation handler.
  ** @param {HTMLElement} insertedNode - The inserted node.
  ** @param {HTMLElement} target - The parent of the inserted node.
- ** @param {MutationObserver} e - The observer object, call disconnect on it to stop observing.
+ ** @param {MutationObserver} e - The observer object, call disconnect on it to
+ *** stop observing.
  */
 a.onInsert = (handler) => {
     const observer = new MutationObserver((mutations) => {
@@ -356,7 +368,8 @@ a.onInsert = (handler) => {
  * @param {Function} handler - The mutation handler.
  ** @param {HTMLElement} removedNode - The removed node.
  ** @param {HTMLElement} target - The parent of the removed node.
- ** @param {MutationObserver} e - The observer object, call disconnect on it to stop observing.
+ ** @param {MutationObserver} e - The observer object, call disconnect on it
+ *** to stop observing.
  */
 a.onRemove = (handler) => {
     const observer = new MutationObserver((mutations) => {
@@ -376,9 +389,11 @@ a.onRemove = (handler) => {
  * Can only interfere execution of scripts hard coded into the main document.
  * @function
  * @param {Function} handler - The event handler.
- ** @param {HTMLScriptElement} script - The script that is about to be executed, it may not have its final textContent.
+ ** @param {HTMLScriptElement} script - The script that is about to be executed,
+ *** it may not have its final textContent.
  ** @param {HTMLElement} parent - The parent node of this script.
- ** @param {MutationObserver} e - The observer object, call disconnect on it to stop observing.
+ ** @param {MutationObserver} e - The observer object, call disconnect on it to
+ *** stop observing.
  */
 a.beforeScript = (handler) => {
     a.onInsert((node, target, observer) => {
@@ -393,8 +408,10 @@ a.beforeScript = (handler) => {
  * Inject CSS, "!important" will be added automatically.
  * @function
  * @param {string} code - The CSS to inject.
- * @param {boolean} [stealthy=false] - Whether the style should only be injected from background page only, this will
- ** not carete a style element, but the injected style have a lower priority. The injection from background is asynchronous.
+ * @param {boolean} [stealthy=false] - Whether the style should only be
+ ** injected from background page only, this will not carete a style element,
+ ** but the injected style have a lower priority. The injection from background
+ ** is asynchronous.
  */
 a.css = (() => {
     const reMatcher = /;/g;
@@ -412,11 +429,15 @@ a.css = (() => {
     };
 })();
 /**
- * Add a bait element, this sometimes has a side effect that adds an empty bar on top of the page.
- * Sometimes the height of the bait element is checked, so I cannot make it 0 height.
+ * Add a bait element, this sometimes has a side effect that adds an empty bar
+ * on top of the page.
+ * Sometimes the height of the bait element is checked, so I cannot make it 0
+ * height.
  * @function
- * @param {string} type - The type of the element, example: div.
- * @param {string} identifier - The class or id, example: .test (class), #test (id).
+ * @param {string} type - The type of the element, example: div
+ * @param {string} identifier - The class or id, examples:
+ ** Class: .test
+ ** ID: #test
  * @param {boolean} [hidden=false] - Whether the element should be hidden.
  */
 a.bait = (type, identifier, hidden) => {
@@ -439,11 +460,12 @@ a.bait = (type, identifier, hidden) => {
  * Filter a function, should be called on document-start.
  * @function
  * @param {string} name - The name of the function.
- * @param {Enumeration} [method=a.matchMethod.matchAll] - An option from a.matchMethods, omit or pass null defaults
- ** to match all.
- * @param {Many} filter - The filter to apply, this must be appropriate for the method.
- * @param {string} [parent="window"] - The name of the parent object, use "." or bracket notation to separate layers.
- ** The parent must exist.
+ * @param {Enumeration} [method=a.matchMethod.matchAll] - An option from
+ ** a.matchMethods, omit or pass null defaults to match all.
+ * @param {Many} filter - The filter to apply, this must be appropriate for the
+ ** method.
+ * @param {string} [parent="window"] - The name of the parent object, use "."
+ ** or bracket notation to separate layers. The parent must exist.
  */
 a.filter = (name, method, filter, parent = "window") => {
     name = a.strEscape(name);
@@ -486,10 +508,13 @@ a.filter = (name, method, filter, parent = "window") => {
     })();`, true);
 };
 /**
- * Filter assignment of innerHTML, innerText, or textContent. Should be called on document-start.
+ * Filter assignment of innerHTML, innerText, or textContent. Should be called
+ * on document-start.
  * @function
- * @param {string} name - The name of the property to filter, can be "innerHTML", "innerText", or "textContent".
- * @param {Function} filter - The filter function. Use closure and self execution if you need to initialize.
+ * @param {string} name - The name of the property to filter, can be
+ ** "innerHTML", "innerText", or "textContent".
+ * @param {Function} filter - The filter function. Use closure and self
+ ** execution if you need to initialize.
  ** @param {HTMLElement} elem - The target element.
  ** @param {string} val - The value that is set.
  ** @return {boolean} True to block the assignment, false to allow.
@@ -554,14 +579,17 @@ a.antiCollapse = (name, filter) => {
     })();`, true);
 };
 /**
- * Change the execution delay for setTimeout or setInterval, should be called on document-start.
+ * Change the execution delay for setTimeout or setInterval, should be called
+ * on document-start.
  * @function
- * @param {string} timer - The name of the timer to patch, can be "setTimeout" or "setInterval".
- * @param {Enumeration} [method=method=a.matchMethod.matchAll] - An option from a.matchMethods, omit or pass null defaults
- ** to match all.
- * @param {Many} filter - The filter to apply, this must be appropriate for the method.
- * @param {float} [ratio=0.02] - The boost ratio, between 0 and 1 for speed up, larger than 1 for slow down, defaults to
- ** speed up 50 times.
+ * @param {string} timer - The name of the timer to patch, can be "setTimeout"
+ ** or "setInterval".
+ * @param {Enumeration} [method=method=a.matchMethod.matchAll] - An option from
+ ** a.matchMethods, omit or pass null defaults to match all.
+ * @param {Many} filter - The filter to apply, this must be appropriate for the
+ ** method.
+ * @param {float} [ratio=0.02] - The boost ratio, between 0 and 1 for speed up,
+ ** larger than 1 for slow down, defaults to speed up 50 times.
  */
 a.timewarp = (timer, method, filter, ratio = 0.02) => {
     a.inject(`(() => {
@@ -606,10 +634,11 @@ a.timewarp = (timer, method, filter, ratio = 0.02) => {
  * May not be able to lock the property's own properties.
  * @function
  * @param {string} name - The name of the property to define.
- * @param {Any} val - The value to set, must have extra quotes if it is a literal string. If it is a funciton,
- ** it will lose its scope, if it is an object, you are responsible in making it into a string.
- * @param {string} [parent="window"] - The name of the parent object, use "." or bracket notation to separate layers.
- ** The parent must exist.
+ * @param {Any} val - The value to set, must have extra quotes if it is a
+ ** literal string. If it is a funciton, it will lose its scope, if it is an
+ ** object, you are responsible in making it into a string.
+ * @param {string} [parent="window"] - The name of the parent object, use "."
+ ** or bracket notation to separate layers. The parent must exist.
  */
 a.readOnly = (name, val, parent = "window") => {
     name = a.strEscape(name);
@@ -640,8 +669,8 @@ a.readOnly = (name, val, parent = "window") => {
  * Defines a non-accessible property, should be called on document-start.
  * @function
  * @param {string} name - The name of the property to define.
- * @param {string} [parent="window"] - The name of the parent object, use "." or bracket notation to separate layers.
- ** The parent must exist.
+ * @param {string} [parent="window"] - The name of the parent object, use "."
+ ** or bracket notation to separate layers. The parent must exist.
  */
 a.noAccess = (name, parent = "window") => {
     name = a.strEscape(name);
@@ -681,9 +710,10 @@ a.noAccess = (name, parent = "window") => {
     })();`, true);
 };
 /**
- * Similar to a.noAccess(), but with a more complicated property looping algorithm.
+ * Similar to a.noAccess(), but with a more complicated property looping logic.
  * @function
- * @param {string} chain - The property chain, use "." to separate layers. Do not include "window".
+ * @param {string} chain - The property chain, use "." to separate layers. Do
+ ** not include "window".
  */
 a.noAccessExt = (chain) => {
     chain = a.strEscape(chain);
@@ -765,11 +795,14 @@ a.noAccessExt = (chain) => {
  * Set or get a cookie.
  * @function
  * @param {string} key - The key of the cookie.
- * @param {string} [val=undefined] - The value to set, omit this to get the cookie.
- * @param {integer} [time=31536000000] - In how many milliseconds will it expire, defaults to 1 year.
+ * @param {string} [val=undefined] - The value to set, omit this to get the
+ ** cookie.
+ * @param {integer} [time=31536000000] - In how many milliseconds will it
+ ** expire, defaults to 1 year.
  * @param {string} [path="/"] - The path to set.
- * @return {string|null|undefined} The value of the cookie, null will be returned if the cookie does not exist, and undefined
- ** will be returned in set mode.
+ * @return {string|null|undefined} The value of the cookie, null will be
+ ** returned if the cookie does not exist, and undefined will be returned in
+ ** set mode.
  */
 a.cookie = (key, val, time = 31536000000, path = "/") => {
     if (val === undefined) {
@@ -795,13 +828,15 @@ a.cookie = (key, val, time = 31536000000, path = "/") => {
     }
 };
 /**
- * Install XMLHttpRequest loopback engine. Should be called once on document-start if needed.
- * The request will always be sent so event handlers can be triggered. Depending on the website, a background redirect
- * may also be required.
+ * Install XMLHttpRequest loopback engine. Should be called once on
+ * document-start if needed.
+ * The request will always be sent so event handlers can be triggered.
+ * Depending on the website, a background redirect may also be required.
  * @function
  * @param {Function} server - The loopback server.
  ** @param {Any} ...args - The arguments supplied to open.
- ** @return {string|Any} Return a string to override the result of this request, return anything else to not interfere.
+ ** @return {string|Any} Return a string to override the result of this request,
+ *** return anything else to not interfere.
  */
 a.loopbackXHR = (server) => {
     a.inject(`(() => {
@@ -851,7 +886,8 @@ a.loopbackXHR = (server) => {
     })();`, true);
 };
 /**
- * Install XMLHttpRequest replace engine. Should be called once on document-start if needed.
+ * Install XMLHttpRequest replace engine. Should be called once on
+ * document-start if needed.
  * @function
  * @param {Function} handler - The replace handler, must be an arrow function.
  * @runtime this, method, url, isAsync, user, passwd, ...rest
@@ -1149,7 +1185,8 @@ a.generic = () => {
                             // BlockAdBlock
                             BlockAdBlock: {
                                 // https://github.com/jspenguin2017/uBlockProtector/issues/321
-                                if (method.length) { // Important, otherwise large arrays chokes this
+                                // Important, otherwise large arrays chokes this
+                                if (method.length) {
                                     break BlockAdBlock;
                                 }
 
@@ -1193,12 +1230,16 @@ a.generic = () => {
         const reMsgId = /^[a-z0-9]{4,10}$/i;
         const reTag1 = /^(?:div|span|b|i|font|strong|center)$/i;
         const reTag2 = /^(?:a|b|i|s|u|q|p|strong|center)$/i;
-        const reWords1 = new window.RegExp("ad blocker|ad block|ad-block|adblocker|ad-blocker|adblock|bloqueur|bloqueador|" +
-            "Werbeblocker|adblockert|&#1570;&#1583;&#1576;&#1604;&#1608;&#1603; &#1576;&#1604;&#1587;|блокировщиком", "i");
-        const reWords2 = new window.RegExp("kapat|disable|désactivez|désactiver|desactivez|desactiver|desative|desactivar|" +
-            "desactive|desactiva|deaktiviere|disabilitare|&#945;&#960;&#949;&#957;&#949;&#961;&#947;&#959;&#960;&#959;&#943;" +
-            "&#951;&#963;&#951;|&#1079;&#1072;&#1087;&#1088;&#1077;&#1097;&#1072;&#1090;&#1100;|állítsd le|publicités|" +
-            "рекламе|verhindert|advert|kapatınız", "i");
+        const reWords1 = new window.RegExp("ad blocker|ad block|ad-block|adbl" +
+            "ocker|ad-blocker|adblock|bloqueur|bloqueador|Werbeblocker|adbloc" +
+            "kert|&#1570;&#1583;&#1576;&#1604;&#1608;&#1603; &#1576;&#1604;&#" +
+            "1587;|блокировщиком", "i");
+        const reWords2 = new window.RegExp("kapat|disable|désactivez|désactiv" +
+            "er|desactivez|desactiver|desative|desactivar|desactive|desactiva" +
+            "|deaktiviere|disabilitare|&#945;&#960;&#949;&#957;&#949;&#961;&#" +
+            "947;&#959;&#960;&#959;&#943;&#951;&#963;&#951;|&#1079;&#1072;&#1" +
+            "087;&#1088;&#1077;&#1097;&#1072;&#1090;&#1100;|állítsd le|public" +
+            "ités|рекламе|verhindert|advert|kapatınız", "i");
         // Adunblock
         const reId = /^[a-z]{8}$/;
         const reClass = /^[a-z]{8} [a-z]{8}/;
@@ -1290,7 +1331,8 @@ a.generic = () => {
     });
 };
 /**
- * Create a non-overridable FuckAdBlock constructor and instance that always returns not detected.
+ * Create a non-overridable FuckAdBlock constructor and instance that always
+ * returns not detected.
  * @function
  * @param {string} constructorName - The name of the constructor.
  * @param {string} instanceName - The name of the instance.
@@ -1494,7 +1536,7 @@ a.generic.app_vars = () => {
             // const _setInterval = window.setInterval;
             let _app_vars;
             window.Object.defineProperty(window, "app_vars", {
-                configurable: true, // Must be true to not crash script snippets
+                configurable: true,
                 set(val) {
                     _app_vars = val;
                     try {
@@ -1613,11 +1655,12 @@ a.generic.NoAdBlock = () => {
 //@pragma-if-debug
 /**
  * Trace the access to a property, should be called on document-start.
- * Only available in debug mode, conflict with other functions that lock variables.
+ * Only available in debug mode, conflict with other functions that lock
+ * variables.
  * @function
  * @param {string} name - The name of the property to define.
- * @param {string} [parent="window"] - The name of the parent object, use "." or bracket notation to separate layers.
- ** The parent must exist.
+ * @param {string} [parent="window"] - The name of the parent object, use "."
+ ** or bracket notation to separate layers. The parent must exist.
  */
 a.trace = (name, parent = "window") => {
     if (!a.debugMode) {
@@ -1666,12 +1709,13 @@ a.backgroundLog = (log) => {
 };
 /**
  * setInterval() with benchmark.
- * Should only be used in debug mode, will be mapped to setInterval() in developer mode, not available
- * in production mode.
+ * Should only be used in debug mode, will be mapped to setInterval() in
+ * developer mode, not available in production mode.
  * @function
- * @param {Special} func, delay, ...args - Arguments for setInterval(), the first parameter must
- ** be a function, cannot be raw code.
- * @return {Token} Cancellation token, can be passed to clearInterval() to clear the interval.
+ * @param {Special} func, delay, ...args - Arguments for setInterval(), the
+ ** first parameter must be a function, cannot be raw code.
+ * @return {Token} Cancellation token, can be passed to clearInterval() to
+ ** clear the interval.
  */
 a.setBenchmarkedInterval = (func, delay, ...args) => {
     if (!a.debugMode) {
