@@ -300,13 +300,12 @@ $.Selection = class {
 
     /**
      * Add an event listener to all selected elements.
-     * @param {string} event - The event name.
-     * @param {Function} func - The event handler.
+     * @param {string} ...args - Listener details
      ** @param {Event} e - The appropriate event object.
      */
-    on(event, func) {
+    on(...args) {
         for (let s of this.selection) {
-            s.addEventListener(event, func);
+            s.addEventListener(...args);
         }
         return this;
     }
