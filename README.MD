@@ -2,4 +2,5 @@
 
 An anti-adblock defuser for Nano Adblocker and uBlock Origin
 
-Installation instructions are available on my [home page](http://jspenguin2017.github.io/uBlockProtector/). 
+Installation instructions are available on my
+[home page](http://jspenguin2017.github.io/uBlockProtector/).
