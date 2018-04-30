@@ -3,8 +3,8 @@
  */
 "use strict";
 
-// Simply removing the node does not prevent execution of the script.
 {
+    // Simply removing the node does not prevent execution of the script
     const _remove = Element.prototype.remove;
     const remove = function () {
         if (this.tagName === "SCRIPT") {
