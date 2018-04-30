@@ -381,9 +381,6 @@ a.onRemove = (handler) => {
  ** @param {MutationObserver} e - The observer object, call disconnect on it to stop observing.
  */
 a.beforeScript = (handler) => {
-    if (a.isFirefox) {
-        console.warn("[Nano] Firefox Incompatibility :: a.beforeScript");
-    }
     a.onInsert((node, target, observer) => {
         if (node.tagName === "SCRIPT") {
             handler(node, target, observer);
