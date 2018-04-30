@@ -7,11 +7,13 @@ a.init();
 a.generic();
 
 {
-    //fwmrm.net
-    //https://github.com/jspenguin2017/uBlockProtector/issues/344
+    // fwmrm.net
+    // https://github.com/jspenguin2017/uBlockProtector/issues/344
     const genPayload = (csid, caid, cbfn) => {
-        //Paths in this payload are placeholders, no request to jspenguin.com will leave the browser
-        //Event callbacks are blocked by Nano Defender Integration filter list
+        // Paths in this payload are placeholders, no request to jspenguin.com
+        // will leave the browser
+        // Event callbacks are blocked by Nano Defender Integration filter
+        // list
         let payload = `(() => {
             "use strict";
             try {
@@ -143,7 +145,7 @@ a.generic();
                 }
                 //@pragma-end-if
 
-                //Block the request as a fallback
+                // Block the request as a fallback
                 return { cancel: true };
             }
         },
@@ -159,8 +161,8 @@ a.generic();
     );
 }
 {
-    //shorte.st and related domains
-    //https://github.com/jspenguin2017/uBlockProtector/issues/169
+    // shorte.st and related domains
+    // https://github.com/jspenguin2017/uBlockProtector/issues/169
     chrome.webRequest.onBeforeSendHeaders.addListener(
         (details) => {
             for (let i = 0; i < details.requestHeaders.length; i++) {
@@ -204,76 +206,4 @@ a.generic();
             "requestHeaders",
         ],
     );
-}
-if (!a.isEdge) {
-    //https://github.com/jspenguin2017/uBlockProtector/issues/398
-    //https://gitlab.com/xuhaiyang1234/NanoAdblockerSecretIssues/issues/12
-    //https://github.com/AdguardTeam/AdguardFilters/issues/6718
-    a.staticServer(
-        [
-            "*://ads-v-darwin.hulustream.com/published/*.mp4*",
-            "*://*.ads-v-darwin.hulustream.com/published/*.mp4*",
-        ],
-        [
-            "media",
-        ],
-        a.blankMP4,
-        [
-            "hulu.com",
-        ],
-        true,
-    );
-}
-
-if (a.isFirefox) {
-    {
-        //https://github.com/jspenguin2017/uBlockProtector/issues/660
-        a.dynamicServer(
-            [
-                "*://*.uplynk.com/preplay/*",
-            ],
-            [
-                "xmlhttprequest",
-            ],
-            (details) => {
-                let payload = "";
-
-                let filter = browser.webRequest.filterResponseData(details.requestId);
-                let decoder = new TextDecoder("utf-8");
-                let encoder = new TextEncoder();
-
-                filter.ondata = (e) => {
-                    payload += decoder.decode(e.data, { stream: true });
-                };
-                filter.onstop = () => {
-                    try {
-                        payload = JSON.parse(payload);
-                    } catch (err) {
-                        filter.write(encoder.encode(payload));
-                        filter.disconnect();
-                        return;
-                    }
-
-                    //@pragma-if-debug
-                    if (a.debugMode) {
-                        console.log(payload.ads);
-                    }
-                    //@pragma-end-if
-
-                    payload.ads = {
-                        breakOffsets: [],
-                        breaks: [],
-                        placeholderOffsets: [],
-                    };
-
-                    filter.write(encoder.encode(JSON.stringify(payload)));
-                    filter.disconnect();
-                };
-            },
-            [
-                "fox.com",
-            ],
-            true,
-        );
-    }
 }

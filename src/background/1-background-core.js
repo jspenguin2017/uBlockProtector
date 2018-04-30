@@ -3,7 +3,7 @@
  */
 "use strict";
 
-//=====Control=====
+
 /**
  * Initialization.
  * @function
@@ -108,23 +108,17 @@ a.init = () => {
         });
     });
 
-    {
-        let NanoAdblockerExtensionID = "gabbbocakeomblphkmmnoamkioajlkfo";
-        if (a.isFirefox) {
-            NanoAdblockerExtensionID = "{acf5b849-adb0-4004-b4ff-7f5332f48567}";
-        }
-        setTimeout(() => {
-            chrome.runtime.sendMessage(
-                NanoAdblockerExtensionID,
-                {
-                    data: "Nano Defender Enabled",
-                },
-                () => {
-                    void chrome.runtime.lastError;
-                },
-            );
-        }, 15000);
-    }
+    setTimeout(() => {
+        chrome.runtime.sendMessage(
+            a.NanoAdblockerExtensionID,
+            {
+                data: "Nano Defender Enabled",
+            },
+            () => {
+                void chrome.runtime.lastError;
+            },
+        );
+    }, 15000);
 
     //@pragma-if-debug
     if (a.debugMode) {
@@ -138,7 +132,7 @@ a.init = () => {
     //@pragma-end-if
 };
 
-//=====Resources=====
+
 /**
  * Base 64 encoded blank MP4.
  * @const {string}
@@ -178,7 +172,7 @@ a.blankMP4 =
     "AAQAAAAEHAAABC8AAARLAAAEZwAABHoAAASWAAAEqQAABMUAAATYAAAE9AAABRAAAAUjAAAFPwAABVIAAAVuAAAFgQAABZ0AAAWwAAAFzAAABegAAAX7AAAGFwAAAGJ1ZHRhAAAAWm1ldGEAAAAAAAAAIW" +
     "hkbHIAAAAAAAAAAG1kaXJhcHBsAAAAAAAAAAAAAAAALWlsc3QAAAAlqXRvbwAAAB1kYXRhAAAAAQAAAABMYXZmNTUuMzMuMTAw";
 
-//=====Utilities=====
+
 /**
  * Get the URL of a frame of a tab.
  * @function
@@ -312,13 +306,13 @@ a.dynamicServer = (urls, types, server, domList, isMatch = true) => {
     );
 };
 
-//=====Generic=====
+
 /**
  * Apply generic rules.
  * @function
  */
 a.generic = () => {
-    //---jQuery plugin---
+    // jQuery plugin
     /*
     a.mkPayload("jQuery plugin", () => {
         "use strict";
@@ -345,8 +339,8 @@ a.generic = () => {
         "BQbHVnaW4iKTt9IGNhdGNoIChlcnIpIHsgfXRyeSB7d2luZG93LiQuYWRibG9jayA9IGZhbHNlO30gY2F0Y2ggKGVycikgeyB9dHJ5IHt3aW5kb3cualF1ZXJ5LmFkYmxvY2sgPSBmYWxzZTt9IGNh" +
         "dGNoIChlcnIpIHsgfX0pKCk7",
     );
-    //---Interactive Media Ads Software Development Kit---
-    //https://developers.google.com/interactive-media-ads/docs/sdks/html5/v3/apis
+    // Interactive Media Ads Software Development Kit
+    // https://developers.google.com/interactive-media-ads/docs/sdks/html5/v3/apis
     /*
     a.mkPayload("IMA SDK", () => {
         "use strict";
@@ -713,7 +707,7 @@ a.generic = () => {
         false,
         */
     );
-    //---MoatFreeWheelJSPEM.js---
+    // MoatFreeWheelJSPEM.js
     /*
     a.mkPayload("MoatFreeWheelJSPEM.js", () => {
         "use strict";
@@ -739,8 +733,8 @@ a.generic = () => {
     );
 };
 
+
 //@pragma-if-debug
-//=====Debug Utilities=====
 /**
  * Attempt to make the server think the request is from a different IP. Rarely works.
  * Only available in debug mode.

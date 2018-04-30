@@ -1,5 +1,5 @@
 /**
- * Special content core library for Firefox.
+ * Special content script for Firefox.
  */
 "use strict";
 
