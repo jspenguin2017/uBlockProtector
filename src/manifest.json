@@ -45,10 +45,6 @@
   "manifest_version": 2,
   "minimum_chrome_version": "63.0",
   "name": "Nano Defender",
-  "options_ui": {
-    "chrome_style": true,
-    "page": "options.html"
-  },
   "permissions": [
     "http://*/*",
     "https://*/*",
