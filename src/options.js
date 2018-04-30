@@ -1,26 +1,8 @@
 /**
- * The script for options UI, replaces some elements and binds Esc
- * key to close.
+ * The script for options UI, replaces some elements and binds Esc key to
+ * close.
  */
 "use strict";
-
-
-//Edge shim
-if (a.isEdge) {
-    (function () {
-        Element.prototype.append = function () {
-            var docFrag = document.createDocumentFragment();
-            for (var arg of arguments) {
-                if (arg instanceof Node) {
-                    docFrag.appendChild(arg);
-                } else {
-                    docFrag.appendChild(document.createTextNode(String(argItem)));
-                }
-            }
-            this.appendChild(docFrag);
-        };
-    })();
-}
 
 
 /**
@@ -51,18 +33,6 @@ window.onkeyup = (e) => {
     }
 };
 
-let style = document.createElement("style");
-if (a.isFirefox || a.isEdge) {
-    style.textContent = ".only-chrome {" +
-        "display: none;" +
-        "}";
-} else {
-    style.textContent = ".only-firefox {" +
-        "display: none;" +
-        "}";
-}
-document.head.append(style);
-
-if (a.isEdge) {
+if (typeof elib === "object") {
     document.body.style.margin = "auto";
 }

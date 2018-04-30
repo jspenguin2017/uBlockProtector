@@ -34,13 +34,6 @@
 
         <h3>Announcements</h3>
         <div>
-            <h4 class="only-chrome">December 10, 2017</h4>
-            <p class="only-chrome">
-                If you are using uBlock Origin, you need to head over to my
-                <a href="https://jspenguin2017.github.io/uBlockProtector/" target="_blank">home page</a>
-                to do a few more installation steps. Everything will be automatically updated for Nano Adblocker users.
-            </p>
-
             <h4>September 19, 2017</h4>
             <p>
                 Nano Defender is <strong>100% free</strong>, and I do <strong>not</strong> accept donation.
@@ -53,12 +46,6 @@
             <p>
                 Since Flash player will be completely removed in 2020, websites that have anti-adblock after requesting
                 Flash support are now low priority.
-            </p>
-
-            <h4 class="only-chrome">July 24, 2017</h4>
-            <p class="only-chrome">
-                I am aware that this page is a lot wider than it should on high DPI devices, it is caused by a bug in
-                Chromium / Chrome and is fixed in Chromium / Chrome 61.
             </p>
         </div>
 
@@ -87,13 +74,9 @@
         <h3>Common Questions and Problems</h3>
         <div>
             <h4>Will there be a configurable whitelist for Nano Defender?</h4>
-            <p class="only-chrome">
+            <p>
                 Not until I have a reliable way to synchronously send configuration data to content scripts. This is a
                 limitation of Chromium / Chrome.
-            </p>
-            <p class="only-firefox">
-                I will think about it, but probably no since it is quite complex and when you encounter a problem, you
-                should report it.
             </p>
 
             <h4>Can console messages be turned off?</h4>
@@ -104,23 +87,21 @@
             <p>In production mode, all the console messages will begin with <code>[Nano]</code>, so you can easily filter them.</p>
 
             <h4>Nano Defender is causing (further) breakage.</h4>
-            <p class="only-chrome">
+            <p>
                 Report it and I will try to take care of it within 2 days. Keep in mind that this only apply to breakage
                 <strong>caused</strong> by Nano Defender, other breakages may not be fixed this fast.
             </p>
-            <p class="only-firefox">Report it and I will have a look.</p>
 
             <h4>A website freezes with Nano Defender enabled.</h4>
             <p>
                 Some websites will intentionally freeze (with an infinite loop for example) once they detect Nano Defender,
                 it could also be caused by a bug in Nano Defender.
             </p>
-            <p class="only-chrome">
+            <p>
                 Either way, report it and I will try to take care of it within 2 days. Keep in mind that this only apply
                 to freezings <strong>caused</strong> by Nano Defender, other freezings may not be fixed this fast.
             </p>
-            <p class="only-firefox">Either way, report it and I will have a look.</p>
-            <p class="only-chrome">
+            <p>
                 You can use task manager to terminate the tab that froze, go to <code>Menu -&gt; More tools -&gt; Task manager</code>,
                 select the tab that froze, then click <code>End process</code>.
             </p>
@@ -242,21 +223,16 @@
             </div>
 
             <h4>lolalytics.com, socketloop.com</h4>
-            <p class="only-chrome">
+            <p>
                 After months of intense cat and mouse game, I have decided to give up. This is unfortunate but this is the
                 only way to go. I highly recommend you to stop visiting these websites. If that is not an option, you can
                 load Nano Defender in debug mode to activate proprietary solutions. Click
                 <a href="https://github.com/jspenguin2017/uBlockProtector/blob/master/Extension%20Compiler/Extension/content/3-content-rules-4-proprietary.js" target="_blank">here</a>
                 to learn more, make sure to read and understand all the instructions.
             </p>
-            <p class="only-chrome">The code for loading these proprietary solutions will not uploaded to the Web Store.</p>
-            <p class="only-firefox">There is no solution for Firefox at the moment.</p>
+            <p>The code for loading these proprietary solutions will not uploaded to the Web Store.</p>
 
-            <h4 class="only-chrome">Check open issues in the issues tracker for other known issues</h4>
-            <h4 class="only-firefox">
-                Check <a href="https://github.com/NanoAdblocker/NanoFilters/issues" target="_blank">NanoFilters</a>
-                issues tracker for other known issues
-            </h4>
+            <h4>Check open issues in the issues tracker for other known issues</h4>
         </div>
 
 
@@ -272,15 +248,8 @@
         <h3>For Developers</h3>
         <div>
             <p>You need to edit and load the unpacked extension if you want to enable debug mode or to change rules.</p>
-            <p>
-                Debug switch is in <code>common.js</code>. It may be already on when you pull the repository. Be aware that
-                proprietary code loaders located in <code>content/3-content-rules-4-proprietary.js</code> may run when the
-                extension is loaded in debug mode.
-            </p>
-            <p>
-                Documentation of my custom API is in <code>content/content-core.js</code>, <code>content/content-domlib.js</code>,
-                and <code>background/background-core.js</code>. <code>$</code> is not jQuery.
-            </p>
+            <p>Debug switch is in <code>common.js</code>. It may be already on when you pull the repository. Be aware that proprietary code loaders located in <code>content/3-content-rules-4-proprietary.js</code> may run when the extension is loaded in debug mode.</p>
+            <p>Documentation of my custom API is in <code>content/content-core.js</code>, <code>content/content-domlib.js</code>, and <code>background/background-core.js</code>. <code>$</code> is not jQuery.</p>
             <p>Rules are in <code>content/3-content-rules-*.js</code> and <code>background/background-rules.js</code>.</p>
             <p>
                 Some rules that will help with debugging, along with rules that are work in progress, are in
