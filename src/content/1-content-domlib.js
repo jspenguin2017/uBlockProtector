@@ -465,7 +465,8 @@ $.Selection = class {
     /**
      * Get offsetWidth of the first selected element.
      * @method
-     * @return {integer} The offsetWidth, or -1 if the offsetWidth cannot be retrieved.
+     * @return {integer} The offsetWidth, or -1 if the offsetWidth cannot be
+     ** retrieved.
      */
     width() {
         return (this.selection.length ? this.selection[0].offsetWidth : -1);
@@ -473,7 +474,8 @@ $.Selection = class {
     /**
      * Get offsetHeight of the first selected element.
      * @method
-     * @return {integer} The offsetHeight, or -1 if the offsetHeight cannot be retrieved.
+     * @return {integer} The offsetHeight, or -1 if the offsetHeight cannot be
+     ** retrieved.
      */
     height() {
         return (this.selection.length ? this.selection[0].offsetHeight : -1);
@@ -493,8 +495,8 @@ $.Selection = class {
 };
 
 /**
- * Same as a.request() of content-core except that the request is sent
- * directly in the content script scope and is not privileged.
+ * Same as a.request() of content-core except that the request is sent directly
+ * in the content script scope and is not privileged.
  * @function
  */
 $.request = (details, onload, onerror) => {

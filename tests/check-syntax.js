@@ -50,7 +50,8 @@ exports.validateDirectory = async (directory) => {
         assert(!tasks[i].isSymbolicLink());
 
         if (tasks[i].isDirectory()) {
-            // One directory at a time to make sure things will not get overloaded
+            // One directory at a time to make sure things will not get
+            // overloaded
             await exports.validateDirectory(directory + "/" + files[i]);
             continue;
         }
