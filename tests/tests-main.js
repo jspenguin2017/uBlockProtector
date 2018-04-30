@@ -19,5 +19,5 @@ process.on("unhandledRejection", (e) => {
 assert(/[\\/]uBlockProtector$/.test(process.cwd()));
 
 (async () => {
-    await checkSyntax.validateDirectory(".");
+    await checkSyntax.validateDirectory("./src");
 })();
