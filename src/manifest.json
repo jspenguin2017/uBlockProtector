@@ -3,7 +3,9 @@
   "background": {
     "scripts": [
       "common.js",
+      "platform/chromium-vars.js",
       "background/1-background-core.js",
+      "platform/chromium-background.js",
       "background/2-background-rules.js",
       "background/3-background-debug.js"
     ]
@@ -45,10 +47,6 @@
   "manifest_version": 2,
   "minimum_chrome_version": "63.0",
   "name": "Nano Defender",
-  "options_ui": {
-    "chrome_style": true,
-    "page": "options.html"
-  },
   "permissions": [
     "http://*/*",
     "https://*/*",
@@ -57,5 +55,5 @@
     "webRequest",
     "webRequestBlocking"
   ],
-  "version": "13.61"
+  "version": "14.0"
 }

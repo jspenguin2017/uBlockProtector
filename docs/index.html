@@ -4,54 +4,211 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="author" content="jspenguin2017" />
+
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://jspenguin.com/;" />
+    <meta name="referrer" content="no-referrer" />
+
     <title>Nano Defender</title>
     <link rel="stylesheet" href="https://jspenguin.com/Static/Paper.css" />
+    <link rel="stylesheet" href="index.css" />
 </head>
 <body>
-    <div class="container">
+    <div class="container" id="nano-defender">
         <h1>Nano Defender</h1>
         <p>An anti-adblock defuser for Nano Adblocker and uBlock Origin</p>
     </div>
 
-    <div class="container">
-        <h2>Installation instructions</h2>
+    <div class="container" id="installation">
+        <h2>Installation</h2>
 
         <p>Nano Defender can only protect <strong>either</strong> <a href="https://github.com/NanoAdblocker/NanoCore#nano-adblocker-core" target="_blank">Nano Adblocker</a> or uBlock Origin, and will prioritize Nano Adblocker.</p>
-        <p><strong>We are looking for maintainers for Firefox and Safari ports.</strong></p>
         <br />
 
-        <p>Step 1. Install <a href="https://github.com/NanoAdblocker/NanoDefender#nano-defender" target="_blank">Nano Defender</a>.</p>
-        <p><strong>That is it if you are using Nano Adblocker! If you are using uBlock Origin, then you have a few more steps to follow...</strong></p>
+        <p><strong><a href="https://chrome.google.com/webstore/detail/nano-defender/ggolfgbegefeeoocgjbmkembbncoadlb" target="_blank">Get Nano Defender for Chrome</a></strong></p>
+        <p><strong><a href="https://github.com/NanoAdblocker/NanoCore/blob/master/notes/install-in-edge.MD#install-in-edge" target="_blank">(Developers Only) Get Nano Defender for Edge</a></strong></p>
         <br />
 
-        <p>Step 2. Enable <a href="ubo://subscribe?location=https%3A%2F%2Feasylist-downloads.adblockplus.org%2Fantiadblockfilters.txt&title=Adblock%20Warning%20Removal%20List">Adblock Warning Removal List</a>.</p>
-        <p>Step 3. Install <a href="ubo://subscribe?location=https%3A%2F%2Fjspenguin.com%2FNanoAdblocker%2FAssetsMirror%2FNanoDefender.txt&title=Nano%20Defender%20Integration">Nano Defender Integration</a> filter list.</p>
-        <p>Step 4. Go to uBlock Origin dashboard, select "Settings" tab, check "I am an advanced user", click the gears that shows up, <strong>replace</strong> "unset" after "userResourcesLocation" by "https://jspenguin.com/NanoAdblocker/AssetsMirror/NanoResources.txt" (without quotes).</p>
-        <p>Note: If you have another User Resources in use, then you would need to either switch to Nano Adblocker or manually merge resources. It takes an eternity to get any resources into uAssets, I have tried.</p>
-        <p>Note: If you are using uBlock Origin, then you <strong>must</strong> have a functional Internet connection when you touch anything in the dashboard.</p>
-        <p>Step 5. Install <a href="ubo://subscribe?location=https%3A%2F%2Fjspenguin.com%2FNanoAdblocker%2FAssetsMirror%2FNanoBase.txt&title=Nano%20filters">Nano filters</a>.</p>
-        <p>Step 6. Install <a href="ubo://subscribe?location=https%3A%2F%2Fjspenguin.com%2FNanoAdblocker%2FAssetsMirror%2FNanoWhitelist.txt&title=Nano%20filters%20-%20Whitelist">Nano filters - Whitelist</a>.</p>
-        <p>Note: My filter lists are now hosted on my own server after <a href="https://github.com/gorhill/uBlock/issues/3406" target="_blank">criticism from Raymond Hill</a>. Although the old links will still work if you prefer them.</p>
+        <p>Maintainers wanted for other browsers (open an issue on GitHub to let me know).</p>
+        <p>If you are using uBlock Origin, there are a few <a href="#extra-installation-steps-for-ublock-origin">extra installation steps</a> to follow.</p>
     </div>
 
-    <div class="container">
-        <h2>Other information</h2>
+    <div class="container" id="announcements">
+        <h2>Announcements</h2>
 
-        <p>Click on the extension icon for announcements, troubleshooting, FAQ, and known issues.</p>
-        <p>We are aware that some may want to see those information before installing; we are reworking the way those information is delivered.</p>
-        <!--
+        <h4>September 19, 2017</h4>
+        <p>Nano Defender is <strong>100% free</strong>, and I do <strong>not</strong> accept donation. <strong>Now and in the future.</strong> My GitHub ID is <code>jspenguin2017</code>, my GitLab ID is <code>xuhaiyang1234</code>, and my domain is <code>jspenguin.com</code>. Be careful to not get scammed by someone who is pretending to be a developer of Nano Defender.</p>
         <br />
 
-        <p>The onbeforescriptexecute event polyfill still does not work on Firefox and it looks like it is not getting fixed anytime soon, so some rules in Nano Defender will only work on Chromium but not Firefox. Firefox is the first browser to get that event and is also the first one to lose it, how sad.</p>
-        <p>The biggest problem on Firefox right now is Content Security Policy, but thankfully that is getting fixed soon. I recommend you to block all CSP reports until Firefox got the correct implementation of CSP.</p>
-        <p>On the flip side, thanks of some extra APIs that Firefox has, some rules only work on Firefox but not Chromium, I guess unless you are willing to jump between the two browsers, you cannot have the best of both worlds.</p>
-        -->
+        <h4>August 6, 2017</h4>
+        <p>Since Flash player will be completely removed in 2020, websites that have anti-adblock after requesting Flash support are now low priority.</p>
     </div>
 
-    <div class="container">
-        <h2>Source code and license</h2>
-        <p><a href="https://github.com/jspenguin2017/uBlockProtector" target="_blank">View on GitHub</a></p>
+    <div class="container" id="basic-troubleshooting">
+        <h2>Basic troubleshooting</h2>
+
+        <p>Are your filters up to date?</p>
+        <p>Do you have proper regional filters activated?</p>
+        <p>Is Nano Defender up to date?</p>
+        <p>Are you using another extension that may cause conflicts?</p>
+        <p>Are you using another filter list that may cause conflicts?</p>
+        <p>Did you change any settings that may cause your adblocker to misbehave?</p>
+        <p>If you are using uBlock Origin, did you properly follow the <a href="#extra-installation-steps-for-ublock-origin">extra installation steps</a>?</p>
+        <p>Are you using Anti-Adblock Killer, AAK-Cont, or uBO-Extra? Nano Defender does similar things as they do which can lead to conflicts.</p>
+        <p>Are you using more than one adblocker? Nano Defender can only protect one adblocker and will prioritize Nano Adblocker.</p>
+    </div>
+
+    <div class="container" id="common-questions-and-problems">
+        <h2>Common questions and problems</h2>
+
+        <p><strong>Will there be a configurable whitelist for Nano Defender?</strong></p>
+        <p>Not until I have a reliable way to synchronously send configuration data to content scripts. This is a limitation of browser APIs.</p>
+        <br />
+
+        <p><strong>Can console messages be turned off?</strong></p>
+        <p>No, I need to see the console output on your end to quickly find the cause of your issues, that is why I ask for a screenshot of the console when you open an issue.</p>
+        <p>In production mode, all the console messages will begin with <code>[Nano]</code>, so you can easily filter them out.</p>
+        <br />
+
+        <p><strong>Can mining wall be bypassed?</strong></p>
+        <p>No, that is not possible if the implementation on the server side is correct.</p>
+        <p>Adblockers block mining scripts by default and I will not add an exception if the mining process is started automatically.</p>
+        <p>The control is in your hand, whitelist the page if you absolutely need the resource locked behind the Captcha.</p>
+        <br />
+
+        <p><strong>Nano Defender is causing (further) breakage.</strong></p>
+        <p><a href="#reporting-a-problem">Report it</a> and I will try to take care of it within 2 days. Keep in mind that this only apply to breakage <strong>caused</strong> by Nano Defender, other breakages may not be fixed this fast.</p>
+        <br />
+
+        <p><strong>A website freezes with Nano Defender enabled.</strong></p>
+        <p>Some websites will intentionally freeze (with an infinite loop for example) once they detect Nano Defender, it could also be caused by a bug in Nano Defender.</p>
+        <p>Either way, <a href="#reporting-a-problem">report it</a> and I will try to take care of it within 2 days. Keep in mind that this only apply to freezings <strong>caused</strong> by Nano Defender, other freezings may not be fixed this fast.</p>
+        <p>You can use task manager to terminate the tab that froze, go to <code>Menu -&gt; More tools -&gt; Task manager</code>, select the tab that froze, then click <code>End process</code>.</p>
+        <br />
+
+        <p><strong>A website is still detecting my adblocker.</strong></p>
+        <p>Nano Defender is not magical, a lot of websites need to be fixed on a case by case basis. <a href="#reporting-a-problem">Report it</a> and I will have a look. Depending on the website, it can take some time.</p>
+        <br />
+
+        <p><strong>A website is perceptibly slower with Nano Defender enabled.</strong></p>
+        <p><a href="#reporting-a-problem">Report it</a> and I will have a look.</p>
+    </div>
+
+    <div class="container" id="known-issues">
+        <h2>Known issues</h2>
+
+        <!-- Work in progress -->
+
+        <p><strong>uplynk.com</strong></p>
+        <p>Preroll ads not blocked. Help wanted.</p>
+        <p><code>Geo Lock (United States of America)</code></p>
+        <p>
+            <a href="https://www.nbc.com/the-voice/video/next-kelly-clarkson-ups-the-game/3613327" target="_blank">Test link 1</a>
+            <a href="https://www.fox.com/watch/2046d8741d77ef3febfb6004f68a55f2/" target="_blank">Test link 2</a>
+        </p>
+        <p>
+            <a href="https://github.com/jspenguin2017/uBlockProtector/issues/143" target="_blank">Issue 1</a>
+            <a href="https://github.com/jspenguin2017/uBlockProtector/issues/660" target="_blank">Issue 2</a>
+            <a href="https://github.com/uBlockOrigin/uAssets/issues/772" target="_blank">Issue 3</a>
+            <a href="https://github.com/uBlockOrigin/uAssets/issues/1905" target="_blank">Issue 4</a>
+            <a href="https://github.com/uBlockOrigin/uAssets/issues/1541" target="_blank">Issue 5</a>
+        </p>
+        <br />
+
+        <p><strong>hulu.com</strong></p>
+        <p>The video player will sometimes show a placeholder with a timer when ads fail to load. Video does continues normally when the timer finishes. Help wanted.</p>
+        <p>The video player will sometimes show a screen that asks the user what type of ads he wants. Help wanted.</p>
+        <p><code>Account Required</code> <code>Geo Lock (United States of America)</code> <code>Detects VPN</code></p>
+        <p>
+            <a href="https://www.hulu.com/watch/132768?d=AnimePlanet" target="_blank">Test link 1</a>
+            <a href="https://www.hulu.com/watch/1177361" target="_blank">Test link 2</a>
+        </p>
+        <p>
+            <a href="https://github.com/jspenguin2017/uBlockProtector/issues/398" target="_blank">Issue 1</a>
+        </p>
+        <br />
+
+        <p><strong>crackle.com</strong></p>
+        <p>Video sometimes stuck at loading, refreshing the page usually corrects the problem. Help wanted.</p>
+        <p><code>Geo Lock (United States of America)</code></p>
+        <p>
+            <a href="https://www.crackle.com/scary-movie-3/2498104" target="_blank">Test link 1</a>
+        </p>
+        <p>
+            <a href="https://github.com/jspenguin2017/uBlockProtector/issues/622" target="_blank">Issue 1</a>
+        </p>
+        <br />
+
+        <!-- Low priority -->
+
+        <p><strong>channel4.com</strong></p>
+        <p>The Flash based video player will show a placeholder with a timer when ads fail to load. Video does continue normally once the timer finishes. Help wanted.</p>
+        <p><code>Low Priority (Flash)</code> <code>Geo Lock (United Kingdom)</code></p>
+        <p>
+            <a href="http://www.channel4.com/programmes/britain-at-low-tide/on-demand/64335-001" target="_blank">Test link 1</a>
+        </p>
+        <p>
+            <a href="https://github.com/jspenguin2017/uBlockProtector/issues/712" target="_blank">Issue 1</a>
+        </p>
+        <br />
+
+        <!-- Probably will not fix in a long time -->
+
+        <p><strong>adageindia.in, bombaytimes.com, businessinsider.in, gizmodo.in, iamgujarat.com, idiva.com, in.techradar.com, indiatimes.com, timesofindia.com, lifehacker.co.in, mensxp.com, samayam.com, gadgetsnow.com</strong></p>
+        <p>It can take up to 1 second to hide the ads, also the solution is quite inefficient. Help wanted.</p>
+        <p>
+            <a href="http://timesofindia.indiatimes.com/" target="_blank">Test link 1</a>
+            <a href="http://www.lifehacker.co.in/" target="_blank">Test link 2</a>
+        </p>
+        <p>
+            <a href="https://github.com/NanoAdblocker/NanoFilters/issues/57" target="_blank">Issue 1</a>
+        </p>
+        <br />
+
+        <p><strong>lolalytics.com, socketloop.com</strong></p>
+        <p>After months of intense cat and mouse game, I have decided to give up. This is unfortunate but this is the only way to go. I highly recommend you to stop visiting these websites. If that is not an option, you can load Nano Defender in debug mode into Chromium or Chrome to activate proprietary solutions. Click <a href="https://github.com/jspenguin2017/uBlockProtector/blob/master/src/content/3-content-rules-4-proprietary.js" target="_blank">here</a> to learn more, make sure to read and understand all the instructions.</p>
+        <p>The code for loading these proprietary solutions will not uploaded to the Web Store.</p>
+        <br />
+
+        <h4>Check open issues in the issues trackers for other known issues</h4>
+    </div>
+
+    <div class="container" id="reporting-a-problem">
+        <h2>Reporting a problem</h2>
+
+        <p>Before opening an issue, <strong>always</strong> check if there is already another issue opened for your problem.</p>
+        <p>For hard anti-adblock (allow ads or leave type), missed ads, and popup, report to <a href="https://github.com/uBlockOrigin/uAssets" target="_blank">uAssets</a>.</p>
+        <p>For any other filter issues, report to <a href="https://github.com/NanoAdblocker/NanoFilters/issues" target="_blank">NanoFilters</a>.</p>
+        <p>For bugs, suggestions, and questions, report to <a href="https://github.com/NanoAdblocker/NanoCore/issues" target="_blank">NanoCore</a>.</p>
+        <p>The version of uBlock Origin that Nano Adblocker uses can be found in About section of Nano Dashboard. I am aware that Nano Adblocker is different, but when it comes to filters, 99% of the time things work the same. If you have been told by contributors at uAssets that your issue could not be reproduced, <strong>ping @jspenguin2017</strong> or report it again to <a href="https://github.com/NanoAdblocker/NanoFilters/issues" target="_blank">NanoFilters</a>.</p>
+    </div>
+
+    <div class="container" id="extra-installation-steps-for-ublock-origin">
+        <h2>Extra installation steps for uBlock Origin</h2>
+
+        <p>Step 1. Enable <a href="ubo://subscribe?location=https%3A%2F%2Feasylist-downloads.adblockplus.org%2Fantiadblockfilters.txt&title=Adblock%20Warning%20Removal%20List">Adblock Warning Removal List</a>.</p>
+        <p>Step 2. Install <a href="ubo://subscribe?location=https%3A%2F%2Fjspenguin.com%2FNanoAdblocker%2FAssetsMirror%2FNanoDefender.txt&title=Nano%20Defender%20Integration">Nano Defender Integration</a> filter list.</p>
+        <p>Step 3. Go to uBlock Origin dashboard, select "Settings" tab, check "I am an advanced user", click the gears that shows up, <strong>replace</strong> "unset" after "userResourcesLocation" by "https://jspenguin.com/NanoAdblocker/AssetsMirror/NanoResources.txt" (without quotes).</p>
+        <p><i>Note:</i> If you have another User Resources in use, then you would need to either switch to Nano Adblocker or manually merge resources. It takes an eternity to get any resources into uAssets, I have tried.</p>
+        <p>Step 4. Install <a href="ubo://subscribe?location=https%3A%2F%2Fjspenguin.com%2FNanoAdblocker%2FAssetsMirror%2FNanoBase.txt&title=Nano%20filters">Nano filters</a>.</p>
+        <p>Step 5. Install <a href="ubo://subscribe?location=https%3A%2F%2Fjspenguin.com%2FNanoAdblocker%2FAssetsMirror%2FNanoWhitelist.txt&title=Nano%20filters%20-%20Whitelist">Nano filters - Whitelist</a>.</p>
+        <p><i>Note:</i> My filter lists are now hosted on my own server after <a href="https://github.com/gorhill/uBlock/issues/3406" target="_blank">criticism from Raymond Hill</a>. Although the old links will still work if you prefer them.</p>
+    </div>
+
+    <div class="container" id="links">
+        <h2>Links</h2>
+        <p><a href="https://github.com/jspenguin2017/uBlockProtector" target="_blank">View source code</a></p>
+        <p><a href="https://github.com/jspenguin2017/uBlockProtector/blob/master/LICENSE" target="_blank">View license</a></p>
+        <p><a href="https://github.com/jspenguin2017/uBlockProtector/blob/master/Extension%20Compiler/Extension%20Notes.MD#credits" target="_blank">View credits</a></p>
+    </div>
+
+    <div class="container" id="for-developers">
+        <h2>For Developers</h2>
+
+        <p>You need to edit and load the unpacked extension if you want to enable debug mode or to change rules.</p>
+        <p>Debug switch is in <code>common.js</code>. It may be already on when you pull the repository. Be aware that proprietary code loaders located in <code>content/3-content-rules-4-proprietary.js</code> may run when the extension is loaded in debug mode.</p>
+        <p>Documentation of my custom API is in <code>content/content-core.js</code>, <code>content/content-domlib.js</code>, and <code>background/background-core.js</code>. <code>$</code> is not jQuery.</p>
+        <p>Rules are in <code>content/3-content-rules-*.js</code> and <code>background/background-rules.js</code>.</p>
+        <p>Some rules that will help with debugging, along with rules that are work in progress, are in <code>content/content-debug.js</code> and <code>background/background-debug.js</code>. They will only run in debug mode.</p>
     </div>
 </body>
 </html>
