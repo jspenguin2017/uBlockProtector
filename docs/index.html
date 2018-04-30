@@ -177,7 +177,9 @@
         <h2>Reporting a problem</h2>
 
         <p>Before opening an issue, <strong>always</strong> check if there is already another issue opened for your problem.</p>
-        <p>For hard anti-adblock (allow ads or leave type), missed ads, and popup, report to <a href="https://github.com/uBlockOrigin/uAssets" target="_blank">uAssets</a>.</p>
+        <p>For missed ads and tracking scripts, report to <a href="https://github.com/easylist/easylist/issues" target="_blank">EasyList</a>.</p>
+        <p>For hard anti-adblock (allow ads or leave type) and popups, report to <a href="https://github.com/uBlockOrigin/uAssets" target="_blank">uAssets</a>.</p>
+        <p>For cookie notices, report to <a href="https://github.com/ryanbr/fanboy-adblock/issues" target="_blank">Fanboy</a>.</p>
         <p>For any other filter issues, report to <a href="https://github.com/NanoAdblocker/NanoFilters/issues" target="_blank">NanoFilters</a>.</p>
         <p>For bugs, suggestions, and questions, report to <a href="https://github.com/NanoAdblocker/NanoCore/issues" target="_blank">NanoCore</a>.</p>
         <p>The version of uBlock Origin that Nano Adblocker uses can be found in About section of Nano Dashboard. I am aware that Nano Adblocker is different, but when it comes to filters, 99% of the time things work the same. If you have been told by contributors at uAssets that your issue could not be reproduced, <strong>ping @jspenguin2017</strong> or report it again to <a href="https://github.com/NanoAdblocker/NanoFilters/issues" target="_blank">NanoFilters</a>.</p>
@@ -200,16 +202,6 @@
         <p><a href="https://github.com/jspenguin2017/uBlockProtector" target="_blank">View source code</a></p>
         <p><a href="https://github.com/jspenguin2017/uBlockProtector/blob/master/LICENSE" target="_blank">View license</a></p>
         <p><a href="https://github.com/jspenguin2017/uBlockProtector/blob/master/Extension%20Compiler/Extension%20Notes.MD#credits" target="_blank">View credits</a></p>
-    </div>
-
-    <div class="container" id="for-developers">
-        <h2>For Developers</h2>
-
-        <p>You need to edit and load the unpacked extension if you want to enable debug mode or to change rules.</p>
-        <p>Debug switch is in <code>common.js</code>. It may be already on when you pull the repository. Be aware that proprietary code loaders located in <code>content/3-content-rules-4-proprietary.js</code> may run when the extension is loaded in debug mode.</p>
-        <p>Documentation of my custom API is in <code>content/content-core.js</code>, <code>content/content-domlib.js</code>, and <code>background/background-core.js</code>. <code>$</code> is not jQuery.</p>
-        <p>Rules are in <code>content/3-content-rules-*.js</code> and <code>background/background-rules.js</code>.</p>
-        <p>Some rules that will help with debugging, along with rules that are work in progress, are in <code>content/content-debug.js</code> and <code>background/background-debug.js</code>. They will only run in debug mode.</p>
     </div>
 </body>
 </html>
