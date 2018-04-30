@@ -3,62 +3,14 @@
  */
 "use strict";
 
-//Edge shim
-if (a.isEdge) {
-    window.edge = window.chrome || {};
-    window.chrome = window.browser;
 
-    (function () {
-        var _querySelectorAll = document.querySelectorAll;
-        document.querySelectorAll = function () {
-            var result = _querySelectorAll.apply(this, arguments);
-            return Array.prototype.slice.call(result);
-        };
-    })();
-    (function () {
-        var _querySelectorAll = Element.prototype.querySelectorAll;
-        Element.prototype.querySelectorAll = function () {
-            var result = _querySelectorAll.apply(this, arguments);
-            return Array.prototype.slice.call(result);
-        };
-    })();
-
-    (function () {
-        Element.prototype.prepend = function () {
-            var docFrag = document.createDocumentFragment();
-            for (var arg of arguments) {
-                if (arg instanceof Node) {
-                    docFrag.appendChild(arg);
-                } else {
-                    docFrag.appendChild(document.createTextNode(String(argItem)));
-                }
-            }
-            this.insertBefore(docFrag, this.firstChild);
-        };
-    })();
-    (function () {
-        Element.prototype.append = function () {
-            var docFrag = document.createDocumentFragment();
-            for (var arg of arguments) {
-                if (arg instanceof Node) {
-                    docFrag.appendChild(arg);
-                } else {
-                    docFrag.appendChild(document.createTextNode(String(argItem)));
-                }
-            }
-            this.appendChild(docFrag);
-        };
-    })();
-}
-
-//=====Control=====
 /**
  * Initialization.
  * @function
  */
 a.init = () => {
     console.log(`[Nano] Nano Defender Activated :: ${document.domain}`);
-    //Home page installation test
+    // Home page installation test
     if (a.domCmp(["jspenguin2017.github.io"], true) && location.pathname.startsWith("/uBlockProtector/")) {
         a.inject(() => {
             "use strict";
@@ -72,7 +24,7 @@ a.init = () => {
  */
 a.uBOExtraExcluded = false;
 
-//=====Utilities=====
+
 /**
  * Escape double quotes in a string.
  * @function
@@ -91,7 +43,7 @@ a.isTopFrame = (() => {
     try {
         return window.self === window.top;
     } catch (err) {
-        //Top frame not accessible due to security policy
+        // Top frame not accessible due to security policy
         return false;
     }
 })();
@@ -439,7 +391,7 @@ a.beforeScript = (handler) => {
     });
 };
 
-//=====Solutions=====
+
 /**
  * Inject CSS, "!important" will be added automatically.
  * @function
@@ -955,18 +907,18 @@ a.close = () => {
     });
 };
 
-//=====Generic=====
+
 /**
  * Apply generic solutions, call once on document-start if needed.
  * @function
  */
 a.generic = () => {
-    //Based on generic solutions of Anti-Adblock Killer, modified to fit my API
-    //License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
+    // Based on generic solutions of Anti-Adblock Killer, modified to fit my API
+    // License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
 
 
-    //---document-start---
-    //FuckAdBlock
+    // document-start
+    // FuckAdBlock
     a.generic.FuckAdBlock("FuckAdBlock", "fuckAdBlock");
     a.generic.FuckAdBlock("BlockAdBlock", "blockAdBlock");
     a.generic.FuckAdBlock("KillAdBlock", "killAdBlock");
@@ -975,15 +927,15 @@ a.generic = () => {
     a.readOnly("canShowAds", true);
     a.readOnly("isAdBlockActive", false);
 
-    //---document-end---
+    // document-end
     a.ready(() => {
-        //AdBlock Alerter (WP)
+        // AdBlock Alerter (WP)
         if ($("div.adb_overlay > div.adb_modal_img").length) {
             $("div.adb_overlay").remove();
             a.css("html, body { height:auto; overflow:auto; }");
             a.err("AdBlock Alerter");
         }
-        //Generic block screens
+        // Generic block screens
         {
             const elem = document.getElementById("blockdiv");
             if (elem && elem.innerHTML === "disable ad blocking or use another browser without any adblocker when you visit") {
@@ -993,19 +945,19 @@ a.generic = () => {
         }
     });
 
-    //---on-insert---
-    //No-Adblock
+    // on-insert
+    // No-Adblock
     const re1 = /^[a-z0-9]*$/;
-    //StopAdBlock
+    // StopAdBlock
     const re2 = /^a[a-z0-9]*$/;
-    //AntiAdblock (Packer)
+    // AntiAdblock (Packer)
     const reIframeId = /^(?:z|w)d$/;
     const reImgId = /^(?:x|g)d$/;
     const reImgSrc = /\/ads\/banner\.jpg/;
     const reIframeSrc = /\/adhandler\/|\/adimages\/|ad\.html/;
 
     const onInsertHandler = (insertedNode) => {
-        //No-Adblock
+        // No-Adblock
         if (insertedNode.nodeName === "DIV" &&
             insertedNode.id &&
             insertedNode.id.length === 4 &&
@@ -1018,7 +970,7 @@ a.generic = () => {
             insertedNode.remove();
             a.err("No-Adblock");
         }
-        //StopAdblock
+        // StopAdblock
         if (insertedNode.nodeName === "DIV" &&
             insertedNode.id &&
             insertedNode.id.length === 7 &&
@@ -1031,7 +983,7 @@ a.generic = () => {
             insertedNode.remove();
             a.err("StopAdblock");
         }
-        //AntiAdblock (Packer)
+        // AntiAdblock (Packer)
         if (insertedNode.id &&
             reImgId.test(insertedNode.id) &&
             insertedNode.nodeName === "IMG" &&
@@ -1048,20 +1000,19 @@ a.generic = () => {
     a.onInsert(onInsertHandler);
 
 
-    //---injected---
     a.inject(() => {
         "use strict";
 
-        //---Initialization---
+        // Initialization
         let data = {};
         const error = window.console.error.bind(window.console);
         const err = (name) => {
             error(`[Nano] Generic Solution Triggered :: ${name}`);
         };
 
-        //---document-start---
-        //Playwire
-        //Test link: http://support.playwire.com/article/adblock-detector-demo/
+        // document-start
+        // Playwire
+        // Test link: http://support.playwire.com/article/adblock-detector-demo/
         try {
             const fakeTester = {
                 check(f) {
@@ -1069,7 +1020,7 @@ a.generic = () => {
                     f();
                 },
             };
-            //Since this is generic I cannot assign it to an object here
+            // Since this is generic I cannot assign it to an object here
             let val;
             window.Object.defineProperty(window, "Zeus", {
                 configurable: false,
@@ -1094,7 +1045,7 @@ a.generic = () => {
         } catch (err) {
             error("[Nano] Failed :: Playwire Defuser");
         }
-        //AdBlock Notify
+        // AdBlock Notify
         try {
             let val;
             let isEvil = false;
@@ -1129,9 +1080,9 @@ a.generic = () => {
             error("[Nano] Failed :: AdBlock Notify Defuser");
         }
 
-        //---document-end---
+        // document-end
         window.addEventListener("DOMContentLoaded", () => {
-            //AdBlock Detector (XenForo Rellect)
+            // AdBlock Detector (XenForo Rellect)
             if (window.XenForo && typeof window.XenForo.rellect === "object") {
                 window.XenForo.rellect = {
                     AdBlockDetector: {
@@ -1140,12 +1091,12 @@ a.generic = () => {
                 };
                 err("XenForo");
             }
-            //Adbuddy
+            // Adbuddy
             if (typeof window.closeAdbuddy === "function") {
                 window.closeAdbuddy();
                 err("Adbuddy");
             }
-            //Antiblock.org v2
+            // Antiblock.org v2
             try {
                 const re = /^#([a-z0-9]{4,10}) ~ \* \{ display: none; \}/;
                 const styles = window.document.querySelectorAll("style");
@@ -1169,7 +1120,7 @@ a.generic = () => {
                     }
                 }
             } catch (err) { }
-            //BetterStopAdblock, Antiblock.org v3, and BlockAdBlock
+            // BetterStopAdblock, Antiblock.org v3, and BlockAdBlock
             {
                 const re = /^[a-z0-9]{4,12}$/i;
                 for (let prop in window) {
@@ -1181,7 +1132,7 @@ a.generic = () => {
                             window.hasOwnProperty(prop) &&
                             typeof window[prop] === "object") {
                             const method = window[prop];
-                            //BetterStopAdblock and Antiblock.org v3
+                            // BetterStopAdblock and Antiblock.org v3
                             if (method.deferExecution &&
                                 method.displayMessage &&
                                 method.getElementBy &&
@@ -1198,10 +1149,10 @@ a.generic = () => {
                                 }
                                 window[prop] = null;
                             }
-                            //BlockAdBlock
+                            // BlockAdBlock
                             BlockAdBlock: {
-                                //https://github.com/jspenguin2017/uBlockProtector/issues/321
-                                if (method.length) { //Important, otherwise large arrays chokes this
+                                // https://github.com/jspenguin2017/uBlockProtector/issues/321
+                                if (method.length) { // Important, otherwise large arrays chokes this
                                     break BlockAdBlock;
                                 }
 
@@ -1240,8 +1191,8 @@ a.generic = () => {
             }
         });
 
-        //---on-insert---
-        //Antiblock.org (all version) and BetterStopAdblock
+        // on-insert
+        // Antiblock.org (all version) and BetterStopAdblock
         const reMsgId = /^[a-z0-9]{4,10}$/i;
         const reTag1 = /^(?:div|span|b|i|font|strong|center)$/i;
         const reTag2 = /^(?:a|b|i|s|u|q|p|strong|center)$/i;
@@ -1251,12 +1202,12 @@ a.generic = () => {
             "desactive|desactiva|deaktiviere|disabilitare|&#945;&#960;&#949;&#957;&#949;&#961;&#947;&#959;&#960;&#959;&#943;" +
             "&#951;&#963;&#951;|&#1079;&#1072;&#1087;&#1088;&#1077;&#1097;&#1072;&#1090;&#1100;|állítsd le|publicités|" +
             "рекламе|verhindert|advert|kapatınız", "i");
-        //Adunblock
+        // Adunblock
         const reId = /^[a-z]{8}$/;
         const reClass = /^[a-z]{8} [a-z]{8}/;
         const reBg = /^[a-z]{8}-bg$/;
         const onInsertHandler = (insertedNode) => {
-            //Antiblock.org (all version) and BetterStopAdblock
+            // Antiblock.org (all version) and BetterStopAdblock
             if (insertedNode.parentNode &&
                 insertedNode.id &&
                 insertedNode.style &&
@@ -1295,7 +1246,7 @@ a.generic = () => {
                     err("BetterStopAdblock");
                 }
             }
-            //Adunblock
+            // Adunblock
             if (window.vtfab !== undefined &&
                 window.adblock_antib !== undefined &&
                 insertedNode.parentNode &&
@@ -1312,7 +1263,7 @@ a.generic = () => {
                     insertedNode.nextSibling.style &&
                     insertedNode.nextSibling.style.display !== "none") {
 
-                    //Full Screen Message (Premium)
+                    // Full Screen Message (Premium)
                     insertedNode.nextSibling.remove();
                     insertedNode.remove();
                     a.err("Adunblock Premium");
@@ -1320,7 +1271,7 @@ a.generic = () => {
                     reId.test(insertedNode.nextSibling.id) &&
                     insertedNode.innerHTML.includes("Il semblerait que vous utilisiez un bloqueur de publicité !")) {
 
-                    //Top bar Message (Free)
+                    // Top bar Message (Free)
                     insertedNode.remove();
                     a.err("Adunblock Free");
                 }
@@ -1353,8 +1304,8 @@ a.generic.FuckAdBlock = (constructorName, instanceName) => {
         const errMsg = "[Nano] Generic Solution Triggered :: FuckAdBlock";
         const error = window.console.error.bind(window.console);
         const patchedFuckAdBlock = function () {
-            //Based on FuckAdBlock
-            //License: https://github.com/sitexw/FuckAdBlock/blob/master/LICENSE
+            // Based on FuckAdBlock
+            // License: https://github.com/sitexw/FuckAdBlock/blob/master/LICENSE
 
             this._callbacks = [];
             window.addEventListener("load", () => {
@@ -1470,8 +1421,8 @@ a.generic.FuckAdBlock = (constructorName, instanceName) => {
  * @function
  */
 a.generic.Adfly = () => {
-    //Based on AdsBypasser
-    //License: https://github.com/adsbypasser/adsbypasser/blob/master/LICENSE
+    // Based on AdsBypasser
+    // License: https://github.com/adsbypasser/adsbypasser/blob/master/LICENSE
     a.inject(() => {
         "use strict";
         const isDigit = /^\d$/;
@@ -1543,10 +1494,10 @@ a.generic.Adfly = () => {
 a.generic.app_vars = () => {
     a.inject(() => {
         try {
-            //const _setInterval = window.setInterval;
+            // const _setInterval = window.setInterval;
             let _app_vars;
             window.Object.defineProperty(window, "app_vars", {
-                configurable: true, //Must be true to not crash script snippets
+                configurable: true, // Must be true to not crash script snippets
                 set(val) {
                     _app_vars = val;
                     try {
@@ -1661,8 +1612,8 @@ a.generic.NoAdBlock = () => {
     });
 };
 
+
 //@pragma-if-debug
-//=====Debug Utilities=====
 /**
  * Trace the access to a property, should be called on document-start.
  * Only available in debug mode, conflict with other functions that lock variables.
