@@ -5,12 +5,12 @@ body {
 }
 
 .wrapper {
-    border-bottom: 1px dashed #808080;
+    border-bottom: 1px dashed #CCCCCC;
     padding: 6px;
 }
 
     .wrapper.separator {
-        border-bottom: 2px solid #808080;
+        border-bottom: 1px solid #000000;
     }
 
     .wrapper:last-of-type {
@@ -22,7 +22,7 @@ body {
     }
 
     .wrapper > svg {
-        margin: 1px 3px 1px 1px;
+        margin: 1px 5px 1px 1px;
         position: relative;
         top: 1px;
     }
@@ -30,5 +30,5 @@ body {
     .wrapper > span {
         font-size: 14px;
         position: relative;
-        top: -2px;
+        top: -3px;
     }

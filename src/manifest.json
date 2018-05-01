@@ -4,10 +4,10 @@
     "scripts": [
       "common.js",
       "platform/chromium-vars.js",
-      "background/1-background-core.js",
+      "background/core.js",
       "platform/chromium-background.js",
-      "background/2-background-rules.js",
-      "background/3-background-debug.js"
+      "background/rules.js",
+      "background/debug.js"
     ]
   },
   "browser_action": {
@@ -22,14 +22,14 @@
       "all_frames": true,
       "js": [
         "common.js",
-        "content/1-content-domlib.js",
-        "content/2-content-core.js",
-        "content/3-content-rules-1-common.js",
-        "content/3-content-rules-2-specific.js",
-        "content/3-content-rules-3-sticky.js",
-        "content/3-content-rules-4-proprietary.js",
-        "content/4-content-debug.js",
-        "content/5-ubo-extra.js"
+        "libdom.js",
+        "content/core.js",
+        "content/rules-common.js",
+        "content/rules-specific.js",
+        "content/rules-sticky.js",
+        "content/rules-proprietary.js",
+        "content/debug.js",
+        "content/ubo-extra.js"
       ],
       "match_about_blank": true,
       "matches": [

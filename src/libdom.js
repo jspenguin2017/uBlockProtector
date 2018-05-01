@@ -1,5 +1,5 @@
 /**
- * A DOM manipulation library, will be expanded as needed.
+ * A lightweight DOM manipulation library, will be expanded as needed.
  * Behaves quite differently than jQuery.
  */
 "use strict";

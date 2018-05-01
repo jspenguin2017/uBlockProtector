@@ -60,10 +60,3 @@ things. Here are some extra notes that might be helpful.
 
 * `cookies`: Could be useful when monitoring changes to a cookie is needed, but
   this is asynchronous, could be hard to use
-
-### Credits
-
-Nano Defender uses code from uBO-Extra, license and original source code are
-available [here](https://github.com/gorhill/uBO-Extra).
-
-Credits for solutions are in the source code.
