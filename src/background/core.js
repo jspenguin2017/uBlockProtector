@@ -102,14 +102,6 @@ a.init = () => {
         }
     });
 
-    /*
-    chrome.browserAction.onClicked.addListener(() => {
-        chrome.tabs.create({
-            url: "https://jspenguin2017.github.io/uBlockProtector/#announcements",
-        });
-    });
-    */
-
     setTimeout(() => {
         chrome.runtime.sendMessage(
             a.NanoAdblockerExtensionID,
@@ -128,7 +120,14 @@ a.init = () => {
             text: "DBG",
         });
         chrome.browserAction.setBadgeBackgroundColor({
-            color: "#6996FF",
+            color: "#406BD1",
+        });
+    } else {
+        chrome.browserAction.setBadgeText({
+            text: "DEV",
+        });
+        chrome.browserAction.setBadgeBackgroundColor({
+            color: "#00871D",
         });
     }
     //@pragma-end-if
