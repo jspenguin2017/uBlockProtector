@@ -529,7 +529,7 @@ if (a.domCmp(["uol.com.br"])) {
 }
 if (a.domCmp(["gamer.com.tw"])) {
     a.readOnly("AntiAd", null);
-};
+}
 if (a.domCmp(["armorgames.com"])) {
     a.readOnly("ga_detect", null);
 }
