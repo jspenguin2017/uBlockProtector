@@ -1,0 +1,34 @@
+body {
+    margin: 2px 7px 2px 7px;
+    user-select: none;
+    width: 200px;
+}
+
+.wrapper {
+    border-bottom: 1px dashed #808080;
+    padding: 6px;
+}
+
+    .wrapper.separator {
+        border-bottom: 2px solid #808080;
+    }
+
+    .wrapper:last-of-type {
+        border-bottom: none;
+    }
+
+    .wrapper:hover {
+        background-color: #EEEEEE;
+    }
+
+    .wrapper > svg {
+        margin: 1px 3px 1px 1px;
+        position: relative;
+        top: 1px;
+    }
+
+    .wrapper > span {
+        font-size: 14px;
+        position: relative;
+        top: -2px;
+    }

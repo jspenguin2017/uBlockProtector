@@ -102,11 +102,13 @@ a.init = () => {
         }
     });
 
+    /*
     chrome.browserAction.onClicked.addListener(() => {
         chrome.tabs.create({
             url: "https://jspenguin2017.github.io/uBlockProtector/#announcements",
         });
     });
+    */
 
     setTimeout(() => {
         chrome.runtime.sendMessage(
