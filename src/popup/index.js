@@ -1,5 +1,5 @@
 /**
- * Script for popup pane.
+ * Script for popup panel.
  */
 "use strict";
 
