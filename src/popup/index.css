@@ -22,13 +22,14 @@ body {
     }
 
     .wrapper > svg {
-        margin: 1px 5px 1px 1px;
+        margin-right: 3px;
         position: relative;
         top: 1px;
+        width: 16px;
     }
 
     .wrapper > span {
         font-size: 14px;
         position: relative;
-        top: -3px;
+        top: -2px;
     }
