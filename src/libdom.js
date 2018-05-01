@@ -132,7 +132,7 @@ $.Selection = class {
     first() {
         if (this.selection.length) {
             this.selection = [this.selection[0]];
-            this.length = 1
+            this.length = 1;
         }
         return this;
     }
@@ -166,7 +166,7 @@ $.Selection = class {
     last() {
         if (this.selection.length) {
             this.selection = [this.selection[this.selection.length - 1]];
-            this.length = 1
+            this.length = 1;
         }
         return this;
     }
@@ -515,7 +515,7 @@ $.request = (details, onload, onerror) => {
     req.open(details.method, details.url);
 
     if (details.headers) {
-        for (let key in details.headers) {
+        for (const key in details.headers) {
             req.setRequestHeader(key, details.headers[key]);
         }
     }
