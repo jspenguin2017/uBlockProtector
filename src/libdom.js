@@ -167,6 +167,12 @@ $.Selection = class {
         let newSelection = [];
         for (const s of this.selection) {
             const elems = s.querySelectorAll(selector);
+            // newSelection = newSelection.concat(elems); also works, but this
+            // creates a new array every time, so it may not be faster
+            //
+            // Note that the number of arguments is capped at around 30,000
+            // depending on the browser, but there should not be that many
+            // elements in the document
             newSelection.push(...elems);
         }
         this.selection = newSelection;
