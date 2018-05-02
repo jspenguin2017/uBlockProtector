@@ -8,9 +8,9 @@
  * Shortcut for new $.Selection(input).
  * @function
  * @param {string} input - The query selector.
- * @return {$.Selection} The Selection object.
+ * @return {$.Selection} The selection object.
  */
-var $ = (input) => new $.Selection(input);
+var $ = input => new $.Selection(input);
 
 /**
  * Selection class.
@@ -44,7 +44,7 @@ $.Selection = class {
      * Set or update CSS of all selected elements.
      * @method
      * @param {string} key - The key of the style, use "maxHeight" instead of
-     ** "max-height" (same for all other similar keys).
+     ** "max-height", similar for other keys with dashes in them.
      * @param {string} val - The value to set.
      */
     css(key, val) {
@@ -60,10 +60,7 @@ $.Selection = class {
      ** "block".
      */
     show(state = "block") {
-        for (let s of this.selection) {
-            s.style.display = state;
-        }
-        return this;
+        return this.css("display", state);
     }
     /**
      * Hide all selected elements. Current display mode will not be saved.
@@ -71,10 +68,7 @@ $.Selection = class {
      * @method
      */
     hide() {
-        for (let s of this.selection) {
-            s.style.display = "none";
-        }
-        return this;
+        return this.css("display", "none");
     }
     /**
      * Remove all selected elements from DOM.
@@ -126,17 +120,6 @@ $.Selection = class {
         return new $.Selection(null, this.selection.slice());
     }
     /**
-     * Update current selection, only keep the first selected element.
-     * @method
-     */
-    first() {
-        if (this.selection.length) {
-            this.selection = [this.selection[0]];
-            this.length = 1;
-        }
-        return this;
-    }
-    /**
      * Update current selection, only keep the selected element with given
      * index.
      * Clear current selection if no selected element has that index.
@@ -160,14 +143,33 @@ $.Selection = class {
         return this;
     }
     /**
+     * Update current selection, only keep the first selected element.
+     * @method
+     */
+    first() {
+        return this.eq(0);
+    }
+    /**
      * Update current selection, only keep the last selected element.
      * @method
      */
     last() {
-        if (this.selection.length) {
-            this.selection = [this.selection[this.selection.length - 1]];
-            this.length = 1;
+        return this.eq(-1);
+    }
+    /**
+     * Update current selection, set it to children of each selected elements
+     * that match the new selector.
+     * @method
+     * @param {string} selector - The new query selector.
+     */
+    find(selector) {
+        let newSelection = [];
+        for (const s of this.selection) {
+            const elems = s.querySelectorAll(selector);
+            newSelection.push(...elems);
         }
+        this.selection = newSelection;
+        this.length = newSelection.length;
         return this;
     }
     /**
@@ -180,43 +182,9 @@ $.Selection = class {
         return this.find(":scope > " + selector);
     }
     /**
-     * Update current selection, set it to children of each selected elements
-     * that match the new selector.
-     * @method
-     * @param {string} selector - The new query selector.
-     */
-    find(selector) {
-        let newSelection = [];
-        for (const s of this.selection) {
-            const elems = s.querySelectorAll(selector);
-            for (const e of elems) {
-                newSelection.push(e);
-            }
-        }
-        this.selection = newSelection;
-        this.length = newSelection.length;
-        return this;
-    }
-    /**
-     * Update current selection, unselect elements that do not have children
-     * matching the given selector.
-     * @method
-     * @param {string} selector - The selector.
-     * @param {boolean} [match=false] - Set to true to unselect elements that
-     ** do have childrem matching the given selector instead.
-     */
-    filter(selector, match = false) {
-        for (let i = this.selection.length - 1; i >= 0; i--) {
-            if (Boolean(this.selection[i].querySelector(selector)) === match) {
-                this.selection.splice(i, 1);
-            }
-        }
-        this.length = this.selection.length;
-        return this;
-    }
-    /**
      * Update current selection, set it to the parent of each selected
-     * elements.
+     * elements if exist.
+     * Elements that do not have a parent will not be updated.
      * @method
      */
     parent() {
@@ -226,6 +194,25 @@ $.Selection = class {
                 this.selection[i] = elem;
             }
         }
+        return this;
+    }
+    /**
+     * Update current selection, only keep elements that have children
+     * matching a given selector.
+     * @method
+     * @param {string} selector - The query selector.
+     * @param {boolean} [match=true] - Set to false to only keep elements
+     ** that do not have children matching the selector.
+     */
+    filter(selector, match = true) {
+        let newSelection = [];
+        for (const s of this.selection) {
+            if (match === Boolean(s.querySelector(selector))) {
+                newSelection.push(s);
+            }
+        }
+        this.selection = newSelection;
+        this.length = newSelection.length;
         return this;
     }
     /**
@@ -366,8 +353,8 @@ $.Selection = class {
      * @method
      * @param {string} name - The name of the data entry.
      * @param {string} [val=undefined] - The value to set, omit to get.
-     * @return {Any|this} Something appropriate in get mode, the keyword
-     ** this in set mode.
+     * @return {Any|this} The data in get mode, the keyword this in set mode.
+     ** Undefined will be returned if the data cannot be retrieved.
      */
     data(name, val) {
         if (val === undefined) {
@@ -380,38 +367,39 @@ $.Selection = class {
         }
     }
     /**
-     * Get, set, or delete an attribute. Affect only the first element on
-     * get mode, but affect all selected elements in set or delete mode.
-     * Set del to true for delete mode, set val but not del for set mode,
-     * omit both val and del for get mode.
+     * Get or set attribute. Affect only the first element on get mode, but
+     * affect all selected elements in set mode.
      * @method
      * @param {string} name - The name of the attribute.
      * @param {string} [val=undefined] - The value to set.
-     * @param {boolean} [del=false] - Whether this attribute should be
-     ** deleted.
-     * @return {Any|this} Something appropriate in get mode, the keyword
-     ** this in other modes.
+     * @return {Any|this} The data in get mode, the keyword this in set mode.
+     ** Undefined will be returned if the data cannot be retrieved.
      */
-    attr(name, val, del) {
-        if (val === undefined && !del) {
+    attr(name, val) {
+        if (val === undefined) {
             return this.selection.length ? this.selection[0][name] : undefined;
         } else {
-            if (del) {
-                for (let s of this.selection) {
-                    s.removeAttribute(name);
-                }
-            } else {
-                for (let s of this.selection) {
-                    s.setAttribute(name, val);
-                }
+            for (let s of this.selection) {
+                s.setAttribute(name, val);
             }
             return this;
         }
     }
+    /**
+     * Delete an attribute.
+     * @method
+     * @param {string} name - The name of the attribute.
+     */
+    rmAttr(name) {
+        for (let s of this.selection) {
+            s.removeAttribute(name);
+        }
+        return this;
+    }
 
 
     /**
-     * Insert HTML before the beginning of each selected elements.
+     * Insert HTML before the beginning of each selected elements if possible.
      * @method
      * @param {DOMString} input - The DOM string to insert.
      */
@@ -447,7 +435,7 @@ $.Selection = class {
         return this;
     }
     /**
-     * Insert HTML after the end of each selected elements.
+     * Insert HTML after the end of each selected elements if possible.
      * @method
      * @param {DOMString} input - The DOM string to insert.
      */
@@ -469,7 +457,7 @@ $.Selection = class {
      ** retrieved.
      */
     width() {
-        return (this.selection.length ? this.selection[0].offsetWidth : -1);
+        return this.selection.length ? this.selection[0].offsetWidth : -1;
     }
     /**
      * Get offsetHeight of the first selected element.
@@ -478,7 +466,7 @@ $.Selection = class {
      ** retrieved.
      */
     height() {
-        return (this.selection.length ? this.selection[0].offsetHeight : -1);
+        return this.selection.length ? this.selection[0].offsetHeight : -1;
     }
     /**
      * Loop though each selected element.
@@ -516,7 +504,9 @@ $.request = (details, onload, onerror) => {
 
     if (details.headers) {
         for (const key in details.headers) {
-            req.setRequestHeader(key, details.headers[key]);
+            if (details.headers.hasOwnProperty(key)) {
+                req.setRequestHeader(key, details.headers[key]);
+            }
         }
     }
 
