@@ -378,7 +378,7 @@ $.Selection = class {
      */
     attr(name, val) {
         if (val === undefined) {
-            return this.selection.length ? this.selection[0][name] : undefined;
+            return this.selection.length ? this.selection[0].getAttribute(name) : undefined;
         } else {
             for (let s of this.selection) {
                 s.setAttribute(name, val);
