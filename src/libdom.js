@@ -4,6 +4,7 @@
  */
 "use strict";
 
+
 /**
  * Shortcut for new $.Selection(input).
  * @function
@@ -482,16 +483,26 @@ $.Selection = class {
     }
 };
 
+
 /**
- * Same as a.request() of content-core except that the request is sent directly
- * in the content script scope and is not privileged.
+ * Send a XMLHttpRequest.
  * @function
+ * @param {Object} details - Details about this request.
+ ** @param {string} method - The method of the request, usually "GET" or
+ *** "POST".
+ ** @param {string} url - The URL of the request.
+ ** @param {Object|undefined} [headers=undefined] - The headers of the
+ *** request.
+ ** @param {string|null} [payload=null] - The payload of the request.
+ * @param {Function} onload - The load event handler.
+ ** @param {string} response - The response text.
+ * @param {Function} onerror - The error event handler.
  */
 $.request = (details, onload, onerror) => {
     let req = new XMLHttpRequest();
 
     req.onreadystatechange = () => {
-        if (req.readyState === 4) {
+        if (req.readyState === XMLHttpRequest.DONE) {
             if (req.status === 200) {
                 onload(req.responseText);
             } else {
