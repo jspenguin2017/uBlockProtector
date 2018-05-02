@@ -57,7 +57,9 @@ a.init = () => {
 
                             if (typeof args[0].details.headers === "object") {
                                 for (let key in args[0].details.headers) {
-                                    req.setRequestHeader(key, String(args[0].details.headers[key]));
+                                    if (args[0].details.headers.hasOwnProperty(key)) {
+                                        req.setRequestHeader(key, String(args[0].details.headers[key]));
+                                    }
                                 }
                             }
 
