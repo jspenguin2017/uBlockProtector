@@ -43,6 +43,7 @@
         // False positives
         "techradar.com", "imdb.com", "babbel.com", "buxfer.com",
         "store.playstation.com", "lemonde.fr", "derstandard.at",
+        "download.ipeenk.com",
     ];
     const genericWhitelist2 = [
         // Local network
