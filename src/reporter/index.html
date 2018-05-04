@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -15,7 +15,7 @@
     <script src="index.js" defer></script>
 </head>
 <body>
-    <div class="container" id="main">
+    <div class="container hidden" id="main">
         <h2>Quick Issue Reporter</h2>
 
         <label class="bold" for="category">The problem:</label>
@@ -29,14 +29,14 @@
         </select>
         <br /><br />
 
-        <label class="bold" for="url">URL where the problem occure:</label>
+        <label class="bold" for="url">URL where this problem occure:</label>
         <br />
         <input type="text" id="url" />
         <br /><br />
 
-        <label class="bold" for="message">Additional details:</label>
+        <label class="bold" for="details">Additional details:</label>
         <br />
-        <textarea rows="5" id="message"></textarea>
+        <textarea rows="5" id="details"></textarea>
         <br /><br />
 
         <button class="large blue" id="send">Send</button>
@@ -54,23 +54,26 @@
     <div class="popup-container" id="msg-report-sent">
         <div class="popup">
             <h4>Report Sent</h4>
-            <p>The report is sent.</p>
-            <p>It usually take less than 3 days for a problem to be fixed, however, depending on the problem it can take longer.</p>
+            <p>The report was sent.</p>
+            <p>It usually takes less than 3 days for an issue to be fixed. However, depending on the issue, it can take longer.</p>
+            <p>You can close this page now.</p>
         </div>
     </div>
 
     <div class="popup-container" id="msg-rate-limited">
         <div class="popup">
-            <h4>Take a Break!</h4>
+            <h4>Rate Limited</h4>
             <p>Quick Issue Reporter is still in beta, you can only submit one report every 15 minutes for now.</p>
         </div>
     </div>
 
-    <div class="popup-container" id="msg-network-error">
+    <div class="popup-container" id="msg-generic-error">
         <div class="popup">
-            <h4>Connection Error</h4>
-            <p>Something went wrong, check your Internet connection. This could also be a problem on the server side.</p>
+            <h4>Error</h4>
+            <p>Something went wrong. Check your Internet connection and try again later.</p>
             <p>Quick Issue Reporter is still in beta, if you repeatedly see this error, let me know by <a href="https://github.com/jspenguin2017/uBlockProtector/issues" target="_blank">opening an issue on GitHub</a>.</p>
+            <button class="float-right">OK</button>
+            <div class="clear-both"></div>
         </div>
     </div>
 </body>

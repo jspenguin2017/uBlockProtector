@@ -8,3 +8,11 @@ select {
     width: 100%;
     padding: 1px 0px 1px 0px;
 }
+
+.float-right {
+    float: right;
+}
+
+.clear-both {
+    clear: both;
+}
