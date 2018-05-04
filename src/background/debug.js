@@ -5,10 +5,10 @@
 
 //@pragma-if-debug
 
-//Tools
+// Tools
 if (a.debugMode) {
     {
-        //https://github.com/jspenguin2017/uBlockProtector/issues/338
+        // https://github.com/jspenguin2017/uBlockProtector/issues/338
         a.proxy(
             [
                 "*://go.com/*",
@@ -18,7 +18,7 @@ if (a.debugMode) {
         );
     }
     {
-        //https://github.com/jspenguin2017/uBlockProtector/issues/286
+        // https://github.com/jspenguin2017/uBlockProtector/issues/286
         a.proxy(
             [
                 "*://itv.com/*",
@@ -28,7 +28,7 @@ if (a.debugMode) {
         );
     }
     {
-        //https://gitlab.com/xuhaiyang1234/NanoAdblockerSecretIssues/issues/10
+        // https://gitlab.com/xuhaiyang1234/NanoAdblockerSecretIssues/issues/10
         a.proxy(
             [
                 "*://tvnow.de/*",
@@ -37,12 +37,12 @@ if (a.debugMode) {
             "46.101.180.199",
         );
     }
-    //a.proxy() does not work for: viasport.fi, topserialy.to
+    // a.proxy() does not work for: viasport.fi, topserialy.to
 }
 
-//Rules
+// Rules
 if (a.debugMode) {
-    //Nothing for now
+    // Nothing for now
 }
 
 //@pragma-end-if
