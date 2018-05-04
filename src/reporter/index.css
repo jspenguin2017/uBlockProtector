@@ -1,0 +1,10 @@
+body {
+    font-size: 100%;
+}
+
+select {
+    border: 0px;
+    font-size: 1.2em;
+    width: 100%;
+    padding: 1px 0px 1px 0px;
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="author" content="jspenguin2017" />
+
+    <meta name="referrer" content="no-referrer" />
+    <title>Quick Issue Reporter</title>
+
+    <link rel="stylesheet" href="paper.css" />
+    <link rel="stylesheet" href="index.css" />
+
+    <script src="../libdom.js" defer></script>
+    <script src="paper.js" defer></script>
+    <script src="index.js" defer></script>
+</head>
+<body>
+    <div class="container" id="main">
+        <h2>Quick Issue Reporter</h2>
+
+        <label class="bold" for="category">The problem:</label>
+        <br />
+        <select id="category">
+            <option valie="" selected>Choose one...</option>
+            <option value="anti-adblock">Anti-Adblock</option>
+            <option value="missed ads">Missed Ads</option>
+            <option value="false positive">False Positive</option>
+            <option value="other">Other (Explain Below)</option>
+        </select>
+        <br /><br />
+
+        <label class="bold" for="url">URL where the problem occure:</label>
+        <br />
+        <input type="text" id="url" />
+        <br /><br />
+
+        <label class="bold" for="message">Additional details:</label>
+        <br />
+        <textarea rows="5" id="message"></textarea>
+        <br /><br />
+
+        <button class="large blue" id="send">Send</button>
+        <br /><br />
+    </div>
+
+
+    <div class="popup-container" id="paper-wait">
+        <div class="popup">
+            <h4>Please wait...</h4>
+            <p>Processing your request...</p>
+        </div>
+    </div>
+
+    <div class="popup-container" id="msg-report-sent">
+        <div class="popup">
+            <h4>Report Sent</h4>
+            <p>The report is sent.</p>
+            <p>It usually take less than 3 days for a problem to be fixed, however, depending on the problem it can take longer.</p>
+        </div>
+    </div>
+
+    <div class="popup-container" id="msg-rate-limited">
+        <div class="popup">
+            <h4>Take a Break!</h4>
+            <p>Quick Issue Reporter is still in beta, you can only submit one report every 15 minutes for now.</p>
+        </div>
+    </div>
+
+    <div class="popup-container" id="msg-network-error">
+        <div class="popup">
+            <h4>Connection Error</h4>
+            <p>Something went wrong, check your Internet connection. This could also be a problem on the server side.</p>
+            <p>Quick Issue Reporter is still in beta, if you repeatedly see this error, let me know by <a href="https://github.com/jspenguin2017/uBlockProtector/issues" target="_blank">opening an issue on GitHub</a>.</p>
+        </div>
+    </div>
+</body>
+</html>

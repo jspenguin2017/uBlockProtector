@@ -1,0 +1,251 @@
+/* Paper stylesheet */
+
+/* General */
+* {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    margin: 0px;
+}
+
+input[type="text"], textarea {
+    width: 100%;
+    margin: 0px;
+    border: none;
+    font-size: 1.2em;
+}
+
+textarea {
+    resize: vertical;
+}
+
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin: 5px;
+    border: 2px solid #808080;
+    background-color: #FFFFFF;
+}
+
+    input[type="checkbox"]:checked {
+        background-color: #3F3F3F;
+    }
+
+    input[type="checkbox"]:focus {
+        outline: none;
+    }
+
+    input[type="checkbox"] ~ label {
+        position: relative;
+        top: -9px;
+    }
+
+@media (min-width: 600px) {
+    h1 {
+        font-size: 3em;
+    }
+
+    h2 {
+        font-size: 2.25em;
+    }
+
+    h3 {
+        font-size: 1.755em;
+    }
+
+    h4 {
+        font-size: 1.5em;
+    }
+
+    h5 {
+        font-size: 1.245em;
+    }
+
+    h6 {
+        font-size: 1.005em;
+    }
+
+    p {
+        font-size: 1.5em;
+    }
+}
+
+/* Basic */
+.hidden {
+    display: none;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+/* Colors */
+.green {
+    color: #FFFFFF;
+    background-color: #009323;
+}
+
+.blue {
+    color: #FFFFFF;
+    background-color: #2463C9;
+}
+
+.red {
+    color: #FFFFFF;
+    background-color: #FF5555;
+}
+
+/* Navigation Bar */
+.navbar {
+    height: 60px;
+    background-color: #F8F8F8;
+}
+
+    .navbar .title {
+        font-weight: bold;
+        font-size: 1.2em;
+        margin: 0px;
+        padding: 19px 2px;
+        color: #5E5E5E;
+    }
+
+    .navbar > .left {
+        margin-left: 10px;
+        float: left;
+    }
+
+    .navbar > .right {
+        margin-right: 10px;
+        float: right;
+    }
+
+    .navbar > .clear {
+        clear: both;
+    }
+
+@media (min-width: 600px) {
+    .navbar > .left {
+        margin-left: 10%;
+    }
+
+    .navbar > .right {
+        margin-right: 10%;
+    }
+}
+
+.navbar button {
+    height: 60px;
+}
+
+/* Buttons */
+button {
+    font-weight: bold;
+    height: 40px;
+    margin: 0px;
+    padding: 0px 15px;
+    border: none;
+    opacity: 0.7;
+}
+
+    button:hover {
+        opacity: 0.85;
+    }
+
+    button:active {
+        opacity: 1;
+    }
+
+    button:focus {
+        outline: none;
+    }
+
+    button.large {
+        font-size: 1.2em;
+        height: 60px;
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+/* Containers */
+.container {
+    margin: 20px 0px;
+    padding: 10px;
+    background-color: #EEEEEE;
+}
+
+@media (min-width: 600px) {
+    .container {
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+}
+
+.container.footer {
+    margin: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    background-color: #FFFFFF;
+}
+
+    .container.footer p {
+        font-size: 0.8em;
+        color: #808080;
+    }
+
+/* Pagination */
+.pagination {
+    text-align: center;
+}
+
+    .pagination button {
+        background-color: #FFFFFF;
+    }
+
+        .pagination button.active {
+            color: #FFFFFF;
+            background-color: #2463C9;
+            opacity: 1;
+        }
+
+/* Table */
+table {
+    width: 100%;
+}
+
+/* Popups */
+.popup-container {
+    display: none;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.33);
+}
+
+    .popup-container.open {
+        display: block;
+    }
+
+.popup {
+    width: 500px;
+    margin: 40px auto;
+    padding: 25px;
+    background-color: #FFFFFF;
+    opacity: 1;
+}
+
+    .popup h1, .popup h2, .popup h3, .popup h4, .popup h5, .popup h6 {
+        margin: 0px;
+        border-bottom: 1px solid #808080;
+    }
+
+@media (max-width: 599px) {
+    .popup {
+        width: 80%;
+    }
+}
