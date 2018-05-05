@@ -1,4 +1,4 @@
-# Privacy policy for Quick Issue Reporter
+# Privacy Policy for Quick Issue Reporter
 
 Your data will only be collect if you use the Quick Issue Reporter tool.
 Alternatively, you can report issues to the GitHub issues tracker.
