@@ -5,7 +5,8 @@ Alternatively, you can report issues to the GitHub issues tracker.
 
 ### What are collected?
 
-Your user agent string and IP address, and obviously the form that you filled.
+Your user agent string, IP address, and the version of Nano Adblocker and Nano
+Defender; and obviously the form that you filled.
 
 You can use a VPN, but make sure the issue you are reporting can be reproduced
 while using your VPN.
