@@ -36,7 +36,7 @@ const post = (payload) => {
         let req = new XMLHttpRequest();
 
         req.onreadystatechange = () => {
-            if (req.readyState === 4) {
+            if (req.readyState === XMLHttpRequest.DONE) {
                 wait();
 
                 if (req.status === 200) {
