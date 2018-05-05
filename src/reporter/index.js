@@ -108,7 +108,11 @@ $("#msg-specific-error button").on("click", () => {
 
 {
     const init = () => {
-        const lastReport = localStorage.getItem(storageKeyLastReport);
+        let lastReport = localStorage.getItem(storageKeyLastReport);
+        if (/^\d+$/.test(lastReport)) {
+            lastReport = parseInt(lastReport);
+        }
+
         const now = Date.now();
         if (typeof lastReport === "number" && lastReport + rateLimit > now) {
             $("#msg-rate-limited").addClass("open");
