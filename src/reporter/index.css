@@ -2,6 +2,10 @@ body {
     font-size: 100%;
 }
 
+label {
+    font-size: 1.2em;
+}
+
 select {
     border: 0px;
     font-size: 1.2em;

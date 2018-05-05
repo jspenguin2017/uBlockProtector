@@ -19,7 +19,7 @@ const rateLimit = 900000;
  * The number of characters the details field can contain.
  * @const {number}
  */
-const detailsLimit = 4096;
+const detailsLimit = 3072;
 /**
  * Update the character count.
  * @function
@@ -54,7 +54,7 @@ updateDetailsLimit();
 
 $("#send").on("click", async () => {
     const category = $("#category").prop("value");
-    const url = $("#url").prop("value");
+    const url = $("#url").prop("value").trim();
     const details = $("#details").prop("value");
 
     if (!category) {
@@ -74,7 +74,7 @@ $("#send").on("click", async () => {
         return;
     }
 
-    let response
+    let response;
     try {
         response = await post(
             "send\n" +
@@ -112,9 +112,9 @@ $("#msg-specific-error button").on("click", () => {
         const now = Date.now();
         if (typeof lastReport === "number" && lastReport + rateLimit > now) {
             $("#msg-rate-limited").addClass("open");
-        } else {
-            $("#main").rmClass("hidden");
         }
+
+        $("#main").rmClass("hidden");
     };
 
     if (/^\?\d+$/.test(location.search)) {
@@ -122,6 +122,7 @@ $("#msg-specific-error button").on("click", () => {
             if (!chrome.runtime.lastError) {
                 $("#url").prop("value", tab.url);
             }
+
             init();
         });
     } else {
