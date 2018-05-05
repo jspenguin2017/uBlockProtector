@@ -1,8 +1,20 @@
 body {
-    margin: 2px 7px 2px 7px;
+    margin: 0px;
     user-select: none;
-    width: 200px;
+    width: 250px;
 }
+
+.title {
+    background-color: #444444;
+    color: #FFFFFF;
+    font-size: 12px;
+    text-align: center;
+    padding: 5px;
+}
+
+    .title > p {
+        margin: 0px;
+    }
 
 .wrapper {
     border-bottom: 1px dashed #CCCCCC;

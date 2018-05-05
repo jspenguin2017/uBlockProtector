@@ -12,6 +12,7 @@ const home = [
     "",
     "https://jspenguin2017.github.io/uBlockProtector/",
     "https://github.com/jspenguin2017/uBlockProtector",
+    chrome.runtime.getURL("/reporter/index.html"),
 ];
 
 /**
@@ -27,4 +28,14 @@ const onclick = function () {
 };
 
 
+chrome.tabs.query({
+    active: true,
+    currentWindow: true,
+}, (tabs) => {
+    if (chrome.runtime.lastError || tabs.length === 0) {
+        return;
+    }
+    home[3] += "?" + tabs[0].id;
+});
+$(".title > p").text("Nano Defender " + chrome.runtime.getManifest().version);
 $(".wrapper").on("click", onclick);

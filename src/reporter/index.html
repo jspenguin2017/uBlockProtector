@@ -34,7 +34,11 @@
         <input type="text" id="url" />
         <br /><br />
 
-        <label class="bold" for="details">Additional details (optional):</label>
+        <label class="bold" for="details">
+            <span>Additional details (optional):</span>
+            <span class="float-right" id="character-count">0/4096</span>
+            <span class="clear-both"></span>
+        </label>
         <br />
         <textarea rows="7" id="details"></textarea>
         <br /><br />
@@ -74,6 +78,15 @@
             <h4>Error</h4>
             <p>Something went wrong. Check your Internet connection and try again later.</p>
             <p>Quick Issue Reporter is still in beta, if you repeatedly see this error, let me know by <a href="https://github.com/jspenguin2017/uBlockProtector/issues" target="_blank">opening an issue on GitHub</a>.</p>
+            <button class="float-right">OK</button>
+            <div class="clear-both"></div>
+        </div>
+    </div>
+
+    <div class="popup-container" id="msg-specific-error">
+        <div class="popup">
+            <h4>Error</h4>
+            <p></p>
             <button class="float-right">OK</button>
             <div class="clear-both"></div>
         </div>
