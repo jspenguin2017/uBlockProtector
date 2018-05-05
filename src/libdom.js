@@ -378,9 +378,9 @@ $.Selection = class {
      * affect all selected elements in set mode.
      * @method
      * @param {string} name - The name of the attribute.
-     * @param {string} [val=undefined] - The value to set.
-     * @return {Any|this} The data in get mode, the keyword this in set mode.
-     ** Undefined will be returned if the data cannot be retrieved.
+     * @param {string} [val=undefined] - The value to set, omit to get.
+     * @return {Any|this} The attribute in get mode, the keyword this in set
+     ** mode. Undefined will be returned if the attribute cannot be retrieved.
      */
     attr(name, val) {
         if (val === undefined) {
@@ -402,6 +402,25 @@ $.Selection = class {
             s.removeAttribute(name);
         }
         return this;
+    }
+    /**
+     * Get or set property. Affect only the first element on get mode, but
+     * affect all selected elements in set mode.
+     * @method
+     * @param {string} name - The name of the property.
+     * @param {string} [val=undefined] - The value to set, omit to get.
+     * @return {Any|this} The property in get mode, the keyword this in set
+     ** mode. Undefined will be returned if the property cannot be retrieved.
+     */
+    prop(name, val) {
+        if (val === undefined) {
+            return this.selection.length ? this.selection[0][name] : undefined;
+        } else {
+            for (let s of this.selection) {
+                s[name] = val;
+            }
+            return this;
+        }
     }
 
 
