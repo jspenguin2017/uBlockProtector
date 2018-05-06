@@ -109,8 +109,9 @@ $("#msg-specific-error button").on("click", () => {
 {
     const init = () => {
         let lastReport = localStorage.getItem(storageKeyLastReport);
-        // Maximum accuracy of integer is about 16 digits, this is good for
-        // 30 thousand years
+        // Maximum accuracy of integer is about 16 digits
+        // Cap at 15 digits to be safe, which is still more than enough to
+        // represent the next 30 thousand years
         if (/^\d{13,15}$/.test(lastReport)) {
             lastReport = parseInt(lastReport);
         }
