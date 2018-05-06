@@ -3083,7 +3083,7 @@ if (a.domCmp(["boost.ink"])) {
 // TODO - Convert to filter (or remove if already in uAssets) when minimum required version of Chrome can handle
 // removing injected stylesheet
 if (a.domCmp(["hdblog.it", "hdmotori.it"])) {
-    a.css("body { background:none; overflow:auto;}");
+    a.css("body { background:none; overflow:auto; }");
 }
 
 // Partially working
