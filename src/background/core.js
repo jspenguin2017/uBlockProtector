@@ -18,12 +18,23 @@ a.init = () => {
                  */
                 case "inject css":
                     if (args[1].tab && args[1].tab.id !== chrome.tabs.TAB_ID_NONE) {
-                        chrome.tabs.insertCSS(args[1].tab.id, {
-                            code: args[0]["data"],
-                            frameId: args[1].frameId || 0,
-                        }, () => {
-                            void chrome.runtime.lastError;
-                        });
+                        // TODO: Clean this up when minimum required version of Chrome is 66 or higher
+                        try {
+                            chrome.tabs.insertCSS(args[1].tab.id, {
+                                code: args[0]["data"],
+                                frameId: args[1].frameId || 0,
+                                cssOrigin: "user",
+                            }, () => {
+                                void chrome.runtime.lastError;
+                            });
+                        } catch (err) {
+                            chrome.tabs.insertCSS(args[1].tab.id, {
+                                code: args[0]["data"],
+                                frameId: args[1].frameId || 0,
+                            }, () => {
+                                void chrome.runtime.lastError;
+                            });
+                        }
                     }
                     break;
 

@@ -3079,6 +3079,12 @@ if (a.domCmp(["boost.ink"])) {
     });
 }
 
+// Nano Adblocker does not support UserCSS because it breaks DOM Inspector, duct tape it here
+// TODO: Convert to filter (or remove if already in uAssets) when minimum required version of Chrome is 66 or higher
+if (a.domCmp(["hdblog.it", "hdmotori.it"])) {
+    a.css("body { background:none; overflow:auto;}");
+}
+
 // >>>>> >>>>> >>>>> >>>>> >>>>> >>>>>
 //Partially working
 if (a.domCmp(["hulu.com"])) {
