@@ -296,6 +296,7 @@ if ( !abort ) {
             'theprovince.com',
             'thespruce.com',
             'thestarphoenix.com',
+            'thoughtcatalog.com',
             'thoughtco.com',
             'timeanddate.com',
             'tomsguide.com',
