@@ -5,6 +5,7 @@
 
 if (/^anime(?:dao|take|-update)\d*?\.[^.]+$/.test(document.domain)) {
     // These websites use rolling domains to dodge filter rules
+    a.err();
     a.beforeScript((script) => {
         if (script.textContent && script.textContent.includes("adblockDetect")) {
             script.remove();
