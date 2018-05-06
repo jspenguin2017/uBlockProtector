@@ -48,6 +48,16 @@ const appName = (() => {
     return manifest.name + " " + manifest.version;
 })();
 
+/**
+ * Show a specific error message.
+ * @function
+ * @param {string} msg - The message to show
+ */
+const showError = (msg) => {
+    $("#msg-specific-error p").text(msg);
+    $("#msg-specific-error").addClass("open");
+};
+
 
 $("#details").on("input", updateDetailsLimit);
 updateDetailsLimit();
@@ -58,19 +68,22 @@ $("#send").on("click", async () => {
     const details = $("#details").prop("value");
 
     if (!category) {
-        $("#msg-specific-error p").text("You must choose a category.");
-        $("#msg-specific-error").addClass("open");
+        showError("You must choose a category.");
         return;
     }
-    if (!url) {
-        $("#msg-specific-error p").text("You must fill the URL field.");
-        $("#msg-specific-error").addClass("open");
+    if (
+        !url || !/^https?:/.test(url) ||
+        // Whitelist extension stores
+        url.startsWith("https://chrome.google.com/") ||
+        url.startsWith("https://www.microsoft.com/") ||
+        url.startsWith("https://addons.mozilla.org/")
+    ) {
+        showError("You must enter a valid URL.");
         return;
     }
     if (details.length > detailsLimit) {
-        $("#msg-specific-error p").text("Additional details can be at most "
-            + detailsLimit.toString() + " characters long.");
-        $("#msg-specific-error").addClass("open");
+        showError("Additional details can be at most " +
+            detailsLimit.toString() + " characters long.");
         return;
     }
 
