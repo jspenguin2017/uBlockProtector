@@ -2456,5 +2456,3 @@ urlchecker.org###adchecker
 urlchecker.org###adchecker_btn
 urlchecker.org###ads_notify
 gaara-fr.com###ga-skin-top
-mail.yahoo.com##div[aria-describedby="adblock-upsell-description"]
-mail.yahoo.com##div[aria-labelledby="adBlock-upsell-welcome-message"]
