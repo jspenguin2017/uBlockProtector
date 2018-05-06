@@ -17,7 +17,8 @@ while using your VPN.
 
 It will be used to improve Nano Adblocker and Nano Defender. Your user agent
 string and the form may be shared with other people or publicly. The country
-that your IP address belongs to may also be shared.
+that your IP address belongs to and/or part of your IP address may also be
+shared.
 
 If you submitted a test account in the form, it will not be shared unless you
 indicated otherwise.
