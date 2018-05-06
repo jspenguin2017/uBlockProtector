@@ -14,8 +14,8 @@ if (a.domCmp(["voici.fr", "programme-tv.net"])) {
 }
 if (a.domCmp(["chip.de", "moviepilot.com", "nowloading.co", "champions.co", "trendblog.net",
     "immobilienscout24.de", "theage.com.au", "thestudentroom.co.uk", "drugs.com", "tucson.com"])) {
-    //https://github.com/jspenguin2017/uBlockProtector/issues/271
-    //https://github.com/jspenguin2017/uBlockProtector/issues/363
+    // https://github.com/jspenguin2017/uBlockProtector/issues/271
+    // https://github.com/jspenguin2017/uBlockProtector/issues/363
     a.noAccess("stop");
 }
 if (a.domCmp(["badtv.it", "badtaste.it", "badgames.it", "badcomics.it"])) {
@@ -53,7 +53,7 @@ if (a.domCmp(["userscloud.com"])) {
     });
 }
 if (a.domCmp(["vidlox.tv", "vidoza.net", "dato.porn"])) {
-    //NSFW!
+    // NSFW!
     a.readOnly("xRds", false);
     a.readOnly("cRAds", true);
 }
@@ -65,7 +65,7 @@ if (a.domCmp(["superfilm.pl"])) {
     a.readOnly("adbp", true);
 }
 if (a.domCmp(["cwtv.com"])) {
-    //Thanks to szymon1118
+    // Thanks to szymon1118
     a.readOnly("wallConfig", false);
     a.readOnly("CWTVIsAdBlocking", undefined);
 }
@@ -98,7 +98,7 @@ if (a.domCmp(["cbox.ws"])) {
     a.readOnly("koddostu_com_adblock_yok", true);
 }
 if (a.domCmp(["pinkrod.com", "wetplace.com"])) {
-    //NSFW!
+    // NSFW!
     a.readOnly("getAd", () => { });
     a.readOnly("getUtm", () => { });
 }
@@ -182,7 +182,7 @@ if (a.domCmp(["abczdrowie.pl", "autokrata.pl", "autokult.pl", "biztok.pl", "echi
     "wrzuta.pl"])) {
     a.loopbackXHR((ignored, url) => {
         const path = url.substring(url.lastIndexOf('/') + 1);
-        if (path.startsWith("dmFkLnhtb")) { //vad.xml
+        if (path.startsWith("dmFkLnhtb")) { // vad.xml
             return `<?xml version="1.0" encoding="UTF-8"?>
 <VAST xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="vast2.xsd" version="2.0">
 </VAST>`;
@@ -319,7 +319,7 @@ if (a.domCmp(["workupload.com"])) {
     });
 }
 if (a.domCmp(["intoday.in", "businesstoday.in", "lovesutras.com"])) {
-    //https://github.com/jspenguin2017/uBlockProtector/issues/109
+    // https://github.com/jspenguin2017/uBlockProtector/issues/109
     a.css("#adbocker_alt { display:none; }");
     a.readOnly("openPopup", () => { });
 }
@@ -428,8 +428,8 @@ if (a.domCmp(["cubeupload.com"])) {
     a.filter("write", a.matchMethod.string, "Please consider removing adblock to help us pay our bills", "window.document");
 }
 if (a.domCmp(["hentaihaven.org"])) {
-    //NSFW!
-    //https://github.com/jspenguin2017/uBlockProtector/issues/76
+    // NSFW!
+    // https://github.com/jspenguin2017/uBlockProtector/issues/76
     a.noAccess("desktop_variants");
 }
 if (a.domCmp(["bluesatoshi.com"])) {
@@ -595,7 +595,7 @@ if (a.domCmp(["notre-planete.info"])) {
     a.readOnly("pubpop", () => { });
 }
 if (a.domCmp(["apkmirror.com"])) {
-    //https://github.com/jspenguin2017/uBlockProtector/issues/241
+    // https://github.com/jspenguin2017/uBlockProtector/issues/241
     a.noAccess("ranTwice");
 }
 if (a.domCmp(["mtlblog.com"])) {
@@ -767,7 +767,7 @@ if (a.domCmp(["zoomtv.me"])) {
     a.readOnly("iaxpEnabled", true);
 }
 if (a.domCmp(["pornve.com"])) {
-    //NSFW!
+    // NSFW!
     a.readOnly("adxjwupdate", 1);
 }
 if (a.domCmp(["lol.moa.tw"])) {
@@ -1308,9 +1308,9 @@ if (a.domCmp(["zrabatowani.pl"])) {
     a.cookie("adblockAlert", "yes");
 }
 if (a.domCmp(["hanime.tv", "ah-me.com", "shortin.ga", "wolink.in"])) {
-    //NSFW!
-    //https://github.com/jspenguin2017/uBlockProtector/issues/76
-    //https://github.com/reek/anti-adblock-killer/issues/3563
+    // NSFW!
+    // https://github.com/jspenguin2017/uBlockProtector/issues/76
+    // https://github.com/reek/anti-adblock-killer/issues/3563
     a.inject(() => {
         "use strict";
         window.open = (url) => {
@@ -1345,8 +1345,8 @@ if (a.domCmp(["whosampled.com"])) {
 }
 if (a.domCmp(["pornhub.com", "redtube.com", "youporn.com", "tube8.com", "pornmd.com",
     "thumbzilla.com", "xtube.com", "peeperz.com", "czechhq.net", "29443kmq.video"])) {
-    //NSFW!
-    //29443kmq.video is the iframe of czechhq.net, other domains are part of Pornhub Network
+    // NSFW!
+    // 29443kmq.video is the iframe of czechhq.net, other domains are part of Pornhub Network
     a.inject(() => {
         "use strict";
         window.open = (arg) => {
@@ -1373,15 +1373,15 @@ if (a.domCmp(["ghame.ru"])) {
     a.cookie("adblock", "1");
 }
 if (a.domCmp(["thevideo.me", "fmovies.to", "fmovies.se", "fmovies.is"])) {
-    //https://github.com/jspenguin2017/uBlockProtector/issues/86
-    //https://github.com/jspenguin2017/uBlockProtector/issues/99
+    // https://github.com/jspenguin2017/uBlockProtector/issues/86
+    // https://github.com/jspenguin2017/uBlockProtector/issues/99
     a.inject(() => {
         "use strict";
         window.open = () => { };
     });
 }
 if (a.domCmp(["is.fi"])) {
-    //https://github.com/jspenguin2017/uBlockProtector/issues/88
+    // https://github.com/jspenguin2017/uBlockProtector/issues/88
     a.readOnly("Sabdetect_load", false);
 }
 if (a.domCmp(["gearsuite.com"])) {
@@ -3053,7 +3053,7 @@ if (a.domCmp(["videolab.io"])) {
     });
 }
 if (a.domCmp(["boost.ink"])) {
-    //https://github.com/jspenguin2017/uBlockProtector/issues/908
+    // https://github.com/jspenguin2017/uBlockProtector/issues/908
     a.ready(() => {
         a.inject(() => {
             "use strict";
@@ -3080,13 +3080,13 @@ if (a.domCmp(["boost.ink"])) {
 }
 
 // Nano Adblocker does not support UserCSS because it breaks DOM Inspector, duct tape it here
-// TODO: Convert to filter (or remove if already in uAssets) when minimum required version of Chrome is 66 or higher
+// TODO - Convert to filter (or remove if already in uAssets) when minimum required version of Chrome can handle
+// removing injected stylesheet
 if (a.domCmp(["hdblog.it", "hdmotori.it"])) {
     a.css("body { background:none; overflow:auto;}");
 }
 
-// >>>>> >>>>> >>>>> >>>>> >>>>> >>>>>
-//Partially working
+// Partially working
 if (a.domCmp(["hulu.com"])) {
     const performClick = (btn) => {
         if (btn.classList.contains("nano-defender-clicked")) {
@@ -3096,7 +3096,7 @@ if (a.domCmp(["hulu.com"])) {
         btn.classList.add("nano-defender-clicked");
         btn.click();
 
-        //TODO - DEBUG ONLY
+        // TODO - DEBUG ONLY
         console.warn("clicked", btn);
     };
     a.onInsert((node) => {
@@ -3112,4 +3112,3 @@ if (a.domCmp(["hulu.com"])) {
         }
     });
 }
-// <<<<< <<<<< <<<<< <<<<< <<<<< <<<<<
