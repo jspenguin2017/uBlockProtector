@@ -3,15 +3,6 @@
  */
 "use strict";
 
-if (/^anime(?:dao|take|-update)\d*?\.[^.]+$/.test(document.domain)) {
-    // These websites use rolling domains to dodge filter rules
-    a.err();
-    a.beforeScript((script) => {
-        if (script.textContent && script.textContent.includes("adblockDetect")) {
-            script.remove();
-        }
-    });
-}
 if (a.domCmp(["debridnet.com"])) {
     const re = /\.height\(\)/g;
     a.beforeScript((script) => {
@@ -24,4 +15,15 @@ if (a.domCmp(["debridnet.com"])) {
         const s = document.createElement("script");
         document.documentElement.append(s);
     }
+}
+
+// TODO - Syncing to uAssets
+if (/^anime(?:dao|take|-update)\d*?\.[^.]+$/.test(document.domain)) {
+    // These websites use rolling domains to dodge filter rules
+    a.err();
+    a.beforeScript((script) => {
+        if (script.textContent && script.textContent.includes("adblockDetect")) {
+            script.remove();
+        }
+    });
 }
