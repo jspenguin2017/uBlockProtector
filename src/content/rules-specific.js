@@ -13,7 +13,8 @@ if (a.domCmp(["voici.fr", "programme-tv.net"])) {
     a.bait("div", "#sas_script2");
 }
 if (a.domCmp(["chip.de", "moviepilot.com", "nowloading.co", "champions.co", "trendblog.net",
-    "immobilienscout24.de", "theage.com.au", "thestudentroom.co.uk", "drugs.com", "tucson.com"])) {
+    "immobilienscout24.de", "theage.com.au", "thestudentroom.co.uk", "drugs.com", "tucson.com",
+    "ottawacitizen.com"])) {
     // https://github.com/jspenguin2017/uBlockProtector/issues/271
     // https://github.com/jspenguin2017/uBlockProtector/issues/363
     a.noAccess("stop");
