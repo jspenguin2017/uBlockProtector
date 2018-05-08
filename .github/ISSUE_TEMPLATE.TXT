@@ -2,46 +2,46 @@
 PLEASE FIRST READ THIS:
 https://jspenguin2017.github.io/uBlockProtector/#reporting-an-issue
 -->
-### Test link (required): 
+### Test link (required):
 <!--
 Please use the domain as the title
 -->
 
 
-### Screenshot of the web page (including address bar and extension icons) (required): 
+### Screenshot of the web page (including address bar and extension icons) (required):
 <!--
 Your screenshot should look something like this: https://i.imgur.com/UiKwWc7.png
 You are required to show all extension icons, you can disable unrelated extensions if you want to keep them private
 -->
 
 
-### Screenshot of the console (press `F12` to bring up the console) (required): 
+### Screenshot of the console (press `F12` to bring up the console) (required):
 <!--
 Your screenshot should look something like this: https://i.imgur.com/qnVB0K7.png
 -->
 
 
-### Explain what was not right (optional if obvious): 
+### Explain what was not right (optional if obvious):
 
 
-### Reproduction steps (optional if trivial): 
+### Reproduction steps (optional if trivial):
 
 
-### Environment (Required): 
+### Environment (Required):
 
 - Operating System and Version: 
 - Browser and Version: 
 - Adblocker and Version: 
 
 
-#### Your filter lists (Required): 
+#### Your filter lists (Required):
 <!--
 List filters you have enabled or disabled from the default settings
 -->
 
 
-#### Your custom filters (Required if you have any): 
+#### Your custom filters (Required if you have any):
 
 
-### Add everything else that you believe to be useful below (optional): 
+### Add everything else that you believe to be useful below (optional):
 
