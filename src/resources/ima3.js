@@ -1,5 +1,5 @@
 /**
- * Interactive Media Ads Software Development Kit Surrogate
+ * Interactive Media Ads Software Development Kit surrogate.
  * https://developers.google.com/interactive-media-ads/docs/sdks/html5/v3/apis
  */
 ; (() => {

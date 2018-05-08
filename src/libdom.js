@@ -24,8 +24,8 @@ $.Selection = class {
      * @constructor
      * @param {string} selector - The query selector.
      * @param {Array.<DOMElement>} [override=undefined] - If this parameter
-     ** is present, current selection will be set to it and the query selector
-     ** will be ignored.
+     * is present, current selection will be set to it and the query selector
+     * will be ignored.
      */
     constructor(selector, override) {
         /**
@@ -45,7 +45,7 @@ $.Selection = class {
      * Set or update CSS of all selected elements.
      * @method
      * @param {string} key - The key of the style, use "maxHeight" instead of
-     ** "max-height", similar for other keys with dashes in them.
+     * "max-height", similar for other keys with dashes in them.
      * @param {string} val - The value to set.
      */
     css(key, val) {
@@ -58,7 +58,7 @@ $.Selection = class {
      * Show all selected elements.
      * @method
      * @param {string} [state="block"] - The state to apply, defaults to
-     ** "block".
+     * "block".
      */
     show(state = "block") {
         return this.css("display", state);
@@ -126,7 +126,7 @@ $.Selection = class {
      * Clear current selection if no selected element has that index.
      * @method
      * @param {integer} i - The index, give a negative number to count from
-     ** end.
+     * end.
      */
     eq(i) {
         if (this.selection.length) {
@@ -209,7 +209,7 @@ $.Selection = class {
      * @method
      * @param {string} selector - The query selector.
      * @param {boolean} [match=true] - Set to false to only keep elements
-     ** that do not have children matching the selector.
+     * that do not have children matching the selector.
      */
     filter(selector, match = true) {
         let newSelection = [];
@@ -295,7 +295,7 @@ $.Selection = class {
     /**
      * Add an event listener to all selected elements.
      * @param {string} ...args - Listener details
-     ** @param {Event} e - The appropriate event object.
+     *     @param {Event} e - The appropriate event object.
      */
     on(...args) {
         for (let s of this.selection) {
@@ -321,8 +321,8 @@ $.Selection = class {
      * @method
      * @param {string} [text=undefined] - The text to set, omit to get.
      * @return {string|this} String in get mode, the keyword this in set mode.
-     ** An empty string will be returned if the textContent cannot be
-     ** retrieved.
+     * An empty string will be returned if the textContent cannot be
+     * retrieved.
      */
     text(text) {
         if (text === undefined) {
@@ -339,10 +339,10 @@ $.Selection = class {
      * affects all selected elements in set mode.
      * @method
      * @param {DOMString} [html=undefined] - The DOM string to set, omit to
-     ** get.
+     * get.
      * @return {DOMString|this} DOM string in get mode, the keyword this in
-     ** set mode. An empty string will be returned if the innerHTML cannot
-     ** be retrieved.
+     * set mode. An empty string will be returned if the innerHTML cannot
+     * be retrieved.
      */
     html(html) {
         if (html === undefined) {
@@ -361,7 +361,7 @@ $.Selection = class {
      * @param {string} name - The name of the data entry.
      * @param {string} [val=undefined] - The value to set, omit to get.
      * @return {Any|this} The data in get mode, the keyword this in set mode.
-     ** Undefined will be returned if the data cannot be retrieved.
+     * Undefined will be returned if the data cannot be retrieved.
      */
     data(name, val) {
         if (val === undefined) {
@@ -380,7 +380,7 @@ $.Selection = class {
      * @param {string} name - The name of the attribute.
      * @param {string} [val=undefined] - The value to set, omit to get.
      * @return {Any|this} The attribute in get mode, the keyword this in set
-     ** mode. Undefined will be returned if the attribute cannot be retrieved.
+     * mode. Undefined will be returned if the attribute cannot be retrieved.
      */
     attr(name, val) {
         if (val === undefined) {
@@ -410,7 +410,7 @@ $.Selection = class {
      * @param {string} name - The name of the property.
      * @param {string} [val=undefined] - The value to set, omit to get.
      * @return {Any|this} The property in get mode, the keyword this in set
-     ** mode. Undefined will be returned if the property cannot be retrieved.
+     * mode. Undefined will be returned if the property cannot be retrieved.
      */
     prop(name, val) {
         if (val === undefined) {
@@ -480,7 +480,7 @@ $.Selection = class {
      * Get offsetWidth of the first selected element.
      * @method
      * @return {integer} The offsetWidth, or -1 if the offsetWidth cannot be
-     ** retrieved.
+     * retrieved.
      */
     width() {
         return this.selection.length ? this.selection[0].offsetWidth : -1;
@@ -489,7 +489,7 @@ $.Selection = class {
      * Get offsetHeight of the first selected element.
      * @method
      * @return {integer} The offsetHeight, or -1 if the offsetHeight cannot be
-     ** retrieved.
+     * retrieved.
      */
     height() {
         return this.selection.length ? this.selection[0].offsetHeight : -1;
@@ -498,7 +498,7 @@ $.Selection = class {
      * Loop though each selected element.
      * @method
      * @param {Function} func - The handler.
-     ** @param {DOMElement} elem - The current DOM element.
+     *     @param {DOMElement} elem - The current DOM element.
      */
     each(func) {
         for (let s of this.selection) {
@@ -513,14 +513,14 @@ $.Selection = class {
  * Send a XMLHttpRequest.
  * @function
  * @param {Object} details - Details about this request.
- ** @param {string} method - The method of the request, usually "GET" or
- *** "POST".
- ** @param {string} url - The URL of the request.
- ** @param {Object|undefined} [headers=undefined] - The headers of the
- *** request.
- ** @param {string|null} [payload=null] - The payload of the request.
+ *     @param {string} method - The method of the request, usually "GET" or
+ *     "POST".
+ *     @param {string} url - The URL of the request.
+ *     @param {Object|undefined} [headers=undefined] - The headers of the
+ *     request.
+ *     @param {string|null} [payload=null] - The payload of the request.
  * @param {Function} onload - The load event handler.
- ** @param {string} response - The response text.
+ *     @param {string} response - The response text.
  * @param {Function} onerror - The error event handler.
  */
 $.request = (details, onload, onerror) => {
