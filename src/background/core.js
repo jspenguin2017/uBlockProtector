@@ -33,8 +33,9 @@ a.init = () => {
              * @param {string} data - The CSS code to inject.
              */
             case "inject css":
-                if (typeof msg.data === "string")
+                if (typeof msg.data === "string") {
                     a.userCSS(tab, frame, msg.data);
+                }
                 break;
 
             /**
@@ -43,14 +44,20 @@ a.init = () => {
              * filtering.
              * @param {Object} details - The details object, see a.xhr().
              * @return {string|null} The response text, or null if the request
-             ** failed.
+             * failed.
              */
             case "xhr":
                 if (typeof msg.details === "object") {
-                    if (a.xhr(msg.details, res, () => { res(null); })) {
+                    const onerror = () => {
+                        res(null);
+                    };
+
+                    if (a.xhr(msg.details, res, onerror)) {
                         // Must return true since I need to respond to content
                         // script asynchronously
                         return true;
+                    } else {
+                        onerror();
                     }
                 }
                 break;
@@ -138,26 +145,28 @@ a.noopErr = () => {
 
 
 /**
- * Access key for resources.
+ * Resource access secret.
  * @const {string}
  */
-a.rSecret = Math.random().toString(36).substring(2) +
+a.rSecret =
+    Math.random().toString(36).substring(2) +
     Math.random().toString(36).substring(2);
 /**
- * The root directory of resource.
+ * Resource root directory.
  * @const {string}
  */
 a.rRoot = chrome.runtime.getURL("/resources/");
 /**
- * Create URL for a resource.
+ * Create resource access URL.
  * @function
- * @param {string} name - The name of the resource.
+ * @param {string} name - The file name of the resource.
  */
 a.rLink = (name) => {
     return a.rRoot + name + "?s=" + a.rSecret;
 };
 /**
- * Base 64 encoded blank MP4.
+ * 1 second blank MP4, taken from:
+ * https://github.com/uBlockOrigin/uAssets/blob/2068e45e97ff4fd6efda0584508173a4de7915e8/filters/resources.txt#L72
  * @const {string}
  */
 a.blankMP4 = a.rLink("blank.mp4");
