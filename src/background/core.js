@@ -99,7 +99,7 @@ a.init = () => {
         },
         {
             urls: [
-                a.rRoot,
+                a.rRoot + "*",
             ],
         },
         [
