@@ -115,6 +115,22 @@ a.init = () => {
         }
     });
 
+    // Taken from:
+    // https://github.com/gorhill/uBlock/blob/7e5661383a77689e1ec67f6c32783c2b6f933cae/platform/chromium/vapi-background.js#L988
+    const root = chrome.runtime.getURL("/");
+    const guard = function (details) {
+        if (!details.url.endsWith(a.resourceSecret)) {
+            return { redirectUrl: root };
+        }
+    };
+    chrome.webRequest.onBeforeRequest.addListener(
+        guard,
+        {
+            urls: [a.resourceRoot],
+        },
+        ["blocking"],
+    );
+
     setTimeout(() => {
         chrome.runtime.sendMessage(
             a.NanoAdblockerExtensionID,
@@ -147,6 +163,16 @@ a.init = () => {
 };
 
 
+/**
+ * Access key for resources.
+ * @const {string}
+ */
+a.resourceSecret = Math.random().toString(36).substring(2) + Math.random().toString(36).substring(2);
+/**
+ * The root directory of resource.
+ * @const {string}
+ */
+a.resourceRoot = chrome.runtime.getURL("/resources/");
 /**
  * Base 64 encoded blank MP4.
  * @const {string}
@@ -353,308 +379,7 @@ a.generic = () => {
         "BQbHVnaW4iKTt9IGNhdGNoIChlcnIpIHsgfXRyeSB7d2luZG93LiQuYWRibG9jayA9IGZhbHNlO30gY2F0Y2ggKGVycikgeyB9dHJ5IHt3aW5kb3cualF1ZXJ5LmFkYmxvY2sgPSBmYWxzZTt9IGNh" +
         "dGNoIChlcnIpIHsgfX0pKCk7",
     );
-    // Interactive Media Ads Software Development Kit
-    // https://developers.google.com/interactive-media-ads/docs/sdks/html5/v3/apis
-    /*
-    a.mkPayload("IMA SDK", () => {
-        "use strict";
-        try {
-            window.console.error("[Nano] Surrogate Injected :: IMA SDK");
-        } catch (err) { }
-        let warnCount = 0;
-        //I think I can get away with not implementing interfaces
-        window.google = window.google || {};
-        window.google.ima = {
-            AdDisplayContainer: class {
-                //constructor(container, video, click) { }
-                initialize() { }
-                destroy() { }
-            },
-            AdError: class {
-                constructor(message, code, type) {
-                    this._message = message;
-                    this._code = code;
-                    this._type = type;
-                }
-                getErrorCode() {
-                    return this._code;
-                }
-                getInnerError() {
-                    return null;
-                }
-                getMessage() {
-                    return this._message;
-                }
-                getType() {
-                    return this._type;
-                }
-                getVastErrorCode() {
-                    return window.google.ima.AdError.ErrorCode.UNKNOWN_ERROR;
-                }
-                toString() {
-                    return `AdError ${this._code}: ${this._message}.`;
-                }
-            },
-            AdErrorEvent: class extends ErrorEvent {
-                constructor(error, context) {
-                    super(error);
-                    this._errObj = error;
-                    this._context = context;
-                }
-                getError() {
-                    return this._errObj;
-                }
-                getUserRequestContext() {
-                    return this._context;
-                }
-            },
-            AdEvent: class extends Event {
-                constructor(type, ad, adData) {
-                    super(type);
-                    this._ad = ad;
-                    this._adData = adData;
-                }
-                getAd() {
-                    return this._ad;
-                }
-                getAdData() {
-                    return this._adData;
-                }
-            },
-            AdsLoader: class {
-                //Event logic
-                constructor() {
-                    //Error event callbacks
-                    this._onError = [];
-                    this._onErrorScope = [];
-                    //The error event object
-                    this._error = new window.google.ima.AdErrorEvent(
-                        new window.google.ima.AdError(
-                            "No ads available",
-                            window.google.ima.AdError.ErrorCode.VAST_NO_ADS_AFTER_WRAPPER,
-                            window.google.ima.AdError.Type.AD_LOAD,
-                        ),
-                        {},
-                    );
-                }
-                addEventListener(event, handler, capture, scope) {
-                    //I think I can get away with returning error for all ads requests
-                    //The whitelisted SDK would also always error out
-                    if (event === window.google.ima.AdErrorEvent.Type.AD_ERROR) {
-                        this._onError.push(handler);
-                        this._onErrorScope.push(scope);
-                    } else if (warnCount < 10) {
-                        warnCount++;
-                        try {
-                            window.console.warn(`[Nano] IMA Event Ignored :: ${event}`);
-                        } catch (err) { }
-                    }
-                }
-                removeEventListener(event, handler) {
-                    //capture and scope are not checked
-                    if (event === window.google.ima.AdErrorEvent.Type.AD_ERROR) {
-                        for (let i = 0; i < this._onError.length; i++) {
-                            //This should be good enough
-                            if (this._onError[i] === handler) {
-                                this._onError.splice(i, 1);
-                                this._onErrorScope.splice(i, 1);
-                                i--;
-                            }
-                        }
-                    }
-                    //Ignore otherwise
-                }
-                _dispatchError() {
-                    for (let i = 0; i < this._onError.length; i++) {
-                        if (this._onErrorScope[i]) {
-                            this._onError[i].call(this._onErrorScope[i], this._error);
-                        } else {
-                            this._onError[i](this._error);
-                        }
-                    }
-                }
-                //Other logic
-                contentComplete() { }
-                destroy() { }
-                getSettings() {
-                    return window.google.ima.settings;
-                }
-                requestAds() {
-                    window.setTimeout(this._dispatchError.bind(this), 10);
-                }
-            },
-            AdsManagerLoadedEvent: class extends Event {
-                constructor() {
-                    //I think I can get away with it as long as I do not dispatch the event
-                    throw new window.Error("[Nano] Not Implemented :: Neutralized AdsManager");
-                }
-            },
-            AdsRenderingSettings: class {
-                //I think I can get away with not defining anything
-                //constructor() { }
-            },
-            AdsRequest: class {
-                //I think I can get away with not defining anything
-                //constructor() { }
-                setAdWillAutoPlay() { }
-            },
-            CompanionAdSelectionSettings: class {
-                //I think I can get away with not defining anything
-                //constructor() { }
-            },
-            ImaSdkSettings: class {
-                //I think I can get away with not defining anything
-                //constructor() { }
-                getCompanionBackfill() {
-                    return window.google.ima.ImaSdkSettings.CompanionBackfillMode.ALWAYS;
-                }
-                getDisableCustomPlaybackForIOS10Plus() {
-                    return false;
-                }
-                getDisableFlashAds() {
-                    return true;
-                }
-                getLocale() {
-                    return "en-CA";
-                }
-                getNumRedirects() {
-                    return 1;
-                }
-                getPlayerType() {
-                    return "Unknown";
-                }
-                getPlayerVersion() {
-                    return "1.0.0";
-                }
-                getPpid() {
-                    return "2GjCgoECAP0IbU";
-                }
-                //Hopefully this will not blow up
-                setAutoPlayAdBreaks() { }
-                setCompanionBackfill() { }
-                setDisableCustomPlaybackForIOS10Plus() { }
-                setDisableFlashAds() { }
-                setLocale() { }
-                setNumRedirects() { }
-                setPlayerType() { }
-                setPlayerVersion() { }
-                setPpid() { }
-                setVpaidAllowed() { }
-                setVpaidMode() { }
-            },
-            UiElements: {
-                COUNTDOWN: "countdown",
-            },
-            ViewMode: {
-                FULLSCREEN: "fullscreen",
-                NORMAL: "normal",
-            },
-            VERSION: "3.173.4",
-        };
-        //Nested properties
-        window.google.ima.AdError.ErrorCode = {
-            VIDEO_PLAY_ERROR: 400,
-            FAILED_TO_REQUEST_ADS: 1005,
-            REQUIRED_LISTENERS_NOT_ADDED: 900,
-            VAST_LOAD_TIMEOUT: 301,
-            VAST_NO_ADS_AFTER_WRAPPER: 303,
-            VAST_MEDIA_LOAD_TIMEOUT: 402,
-            VAST_TOO_MANY_REDIRECTS: 302,
-            VAST_ASSET_MISMATCH: 403,
-            VAST_LINEAR_ASSET_MISMATCH: 403,
-            VAST_NONLINEAR_ASSET_MISMATCH: 503,
-            VAST_ASSET_NOT_FOUND: 1007,
-            VAST_UNSUPPORTED_VERSION: 102,
-            VAST_SCHEMA_VALIDATION_ERROR: 101,
-            VAST_TRAFFICKING_ERROR: 200,
-            VAST_UNEXPECTED_LINEARITY: 201,
-            VAST_UNEXPECTED_DURATION_ERROR: 202,
-            VAST_WRAPPER_ERROR: 300,
-            NONLINEAR_DIMENSIONS_ERROR: 501,
-            COMPANION_REQUIRED_ERROR: 602,
-            VAST_EMPTY_RESPONSE: 1009,
-            UNSUPPORTED_LOCALE: 1011,
-            INVALID_ADX_EXTENSION: 1105,
-            INVALID_ARGUMENTS: 1101,
-            UNKNOWN_AD_RESPONSE: 1010,
-            UNKNOWN_ERROR: 900,
-            OVERLAY_AD_PLAYING_FAILED: 500,
-            VIDEO_ELEMENT_USED: -1,
-            VIDEO_ELEMENT_REQUIRED: -1,
-            VAST_MEDIA_ERROR: -1,
-            ADSLOT_NOT_VISIBLE: -1,
-            OVERLAY_AD_LOADING_FAILED: -1,
-            VAST_MALFORMED_RESPONSE: -1,
-            COMPANION_AD_LOADING_FAILED: -1,
-        };
-        window.google.ima.AdError.Type = {
-            AD_LOAD: "adLoadError",
-            AD_PLAY: "adPlayError",
-        };
-        window.google.ima.AdErrorEvent.Type = {
-            AD_ERROR: "adError",
-        };
-        window.google.ima.AdEvent.Type = {
-            CONTENT_RESUME_REQUESTED: "contentResumeRequested",
-            CONTENT_PAUSE_REQUESTED: "contentPauseRequested",
-            CLICK: "click",
-            DURATION_CHANGE: "durationChange",
-            EXPANDED_CHANGED: "expandedChanged",
-            STARTED: "start",
-            IMPRESSION: "impression",
-            PAUSED: "pause",
-            RESUMED: "resume",
-            FIRST_QUARTILE: "firstquartile",
-            MIDPOINT: "midpoint",
-            THIRD_QUARTILE: "thirdquartile",
-            COMPLETE: "complete",
-            USER_CLOSE: "userClose",
-            LINEAR_CHANGED: "linearChanged",
-            LOADED: "loaded",
-            AD_CAN_PLAY: "adCanPlay",
-            AD_METADATA: "adMetadata",
-            AD_BREAK_READY: "adBreakReady",
-            INTERACTION: "interaction",
-            ALL_ADS_COMPLETED: "allAdsCompleted",
-            SKIPPED: "skip",
-            SKIPPABLE_STATE_CHANGED: "skippableStateChanged",
-            LOG: "log",
-            VIEWABLE_IMPRESSION: "viewable_impression",
-            VOLUME_CHANGED: "volumeChange",
-            VOLUME_MUTED: "mute",
-        };
-        window.google.ima.AdsManagerLoadedEvent.Type = {
-            ADS_MANAGER_LOADED: "adsManagerLoaded",
-        };
-        window.google.ima.CompanionAdSelectionSettings.CreativeType = {
-            ALL: "All",
-            FLASH: "Flash",
-            IMAGE: "Image",
-        };
-        window.google.ima.CompanionAdSelectionSettings.ResourceType = {
-            ALL: "All",
-            HTML: "Html",
-            IFRAME: "IFrame",
-            STATIC: "Static",
-        };
-        window.google.ima.CompanionAdSelectionSettings.SizeCriteria = {
-            IGNORE: "IgnoreSize",
-            SELECT_EXACT_MATCH: "SelectExactMatch",
-            SELECT_NEAR_MATCH: "SelectNearMatch",
-        };
-        window.google.ima.ImaSdkSettings.CompanionBackfillMode = {
-            ALWAYS: "always",
-            ON_MASTER_AD: "on_master_ad",
-        };
-        window.google.ima.ImaSdkSettings.VpaidMode = {
-            DISABLED: 0,
-            ENABLED: 1,
-            INSECURE: 2,
-        };
-        //Initialization
-        window.google.ima.settings = new window.google.ima.ImaSdkSettings();
-    });
-    */
+
     a.staticServer(
         [
             "https://imasdk.googleapis.com/js/sdkloader/ima3.js*",
@@ -663,58 +388,7 @@ a.generic = () => {
         [
             "script",
         ],
-        "data:text/javascript;base64,KCgpID0+IHsidXNlIHN0cmljdCI7dHJ5IHt3aW5kb3cuY29uc29sZS5lcnJvcigiW05hbm9dIFN1cnJvZ2F0ZSBJbmplY3RlZCA6OiBJTUEgU0RLIik7fSBjYX" +
-        "RjaCAoZXJyKSB7IH1sZXQgd2FybkNvdW50ID0gMDt3aW5kb3cuZ29vZ2xlID0gd2luZG93Lmdvb2dsZSB8fCB7fTt3aW5kb3cuZ29vZ2xlLmltYSA9IHtBZERpc3BsYXlDb250YWluZXI6IGNsYXNz" +
-        "IHtpbml0aWFsaXplKCkgeyB9ZGVzdHJveSgpIHsgfX0sQWRFcnJvcjogY2xhc3Mge2NvbnN0cnVjdG9yKG1lc3NhZ2UsIGNvZGUsIHR5cGUpIHt0aGlzLl9tZXNzYWdlID0gbWVzc2FnZTt0aGlzLl" +
-        "9jb2RlID0gY29kZTt0aGlzLl90eXBlID0gdHlwZTt9Z2V0RXJyb3JDb2RlKCkge3JldHVybiB0aGlzLl9jb2RlO31nZXRJbm5lckVycm9yKCkge3JldHVybiBudWxsO31nZXRNZXNzYWdlKCkge3Jl" +
-        "dHVybiB0aGlzLl9tZXNzYWdlO31nZXRUeXBlKCkge3JldHVybiB0aGlzLl90eXBlO31nZXRWYXN0RXJyb3JDb2RlKCkge3JldHVybiB3aW5kb3cuZ29vZ2xlLmltYS5BZEVycm9yLkVycm9yQ29kZS" +
-        "5VTktOT1dOX0VSUk9SO310b1N0cmluZygpIHtyZXR1cm4gYEFkRXJyb3IgJHt0aGlzLl9jb2RlfTogJHt0aGlzLl9tZXNzYWdlfS5gO319LEFkRXJyb3JFdmVudDogY2xhc3MgZXh0ZW5kcyBFcnJv" +
-        "ckV2ZW50IHtjb25zdHJ1Y3RvcihlcnJvciwgY29udGV4dCkge3N1cGVyKGVycm9yKTt0aGlzLl9lcnJPYmogPSBlcnJvcjt0aGlzLl9jb250ZXh0ID0gY29udGV4dDt9Z2V0RXJyb3IoKSB7cmV0dX" +
-        "JuIHRoaXMuX2Vyck9iajt9Z2V0VXNlclJlcXVlc3RDb250ZXh0KCkge3JldHVybiB0aGlzLl9jb250ZXh0O319LEFkRXZlbnQ6IGNsYXNzIGV4dGVuZHMgRXZlbnQge2NvbnN0cnVjdG9yKHR5cGUs" +
-        "IGFkLCBhZERhdGEpIHtzdXBlcih0eXBlKTt0aGlzLl9hZCA9IGFkO3RoaXMuX2FkRGF0YSA9IGFkRGF0YTt9Z2V0QWQoKSB7cmV0dXJuIHRoaXMuX2FkO31nZXRBZERhdGEoKSB7cmV0dXJuIHRoaX" +
-        "MuX2FkRGF0YTt9fSxBZHNMb2FkZXI6IGNsYXNzIHtjb25zdHJ1Y3RvcigpIHt0aGlzLl9vbkVycm9yID0gW107dGhpcy5fb25FcnJvclNjb3BlID0gW107dGhpcy5fZXJyb3IgPSBuZXcgd2luZG93" +
-        "Lmdvb2dsZS5pbWEuQWRFcnJvckV2ZW50KG5ldyB3aW5kb3cuZ29vZ2xlLmltYS5BZEVycm9yKCJObyBhZHMgYXZhaWxhYmxlIix3aW5kb3cuZ29vZ2xlLmltYS5BZEVycm9yLkVycm9yQ29kZS5WQV" +
-        "NUX05PX0FEU19BRlRFUl9XUkFQUEVSLHdpbmRvdy5nb29nbGUuaW1hLkFkRXJyb3IuVHlwZS5BRF9MT0FELCkse30sKTt9YWRkRXZlbnRMaXN0ZW5lcihldmVudCwgaGFuZGxlciwgY2FwdHVyZSwg" +
-        "c2NvcGUpIHtpZiAoZXZlbnQgPT09IHdpbmRvdy5nb29nbGUuaW1hLkFkRXJyb3JFdmVudC5UeXBlLkFEX0VSUk9SKSB7dGhpcy5fb25FcnJvci5wdXNoKGhhbmRsZXIpO3RoaXMuX29uRXJyb3JTY2" +
-        "9wZS5wdXNoKHNjb3BlKTt9IGVsc2UgaWYgKHdhcm5Db3VudCA8IDEwKSB7d2FybkNvdW50Kys7dHJ5IHt3aW5kb3cuY29uc29sZS53YXJuKGBbTmFub10gSU1BIEV2ZW50IElnbm9yZWQgOjogJHtl" +
-        "dmVudH1gKTt9IGNhdGNoIChlcnIpIHsgfX19cmVtb3ZlRXZlbnRMaXN0ZW5lcihldmVudCwgaGFuZGxlcikge2lmIChldmVudCA9PT0gd2luZG93Lmdvb2dsZS5pbWEuQWRFcnJvckV2ZW50LlR5cG" +
-        "UuQURfRVJST1IpIHtmb3IgKGxldCBpID0gMDsgaSA8IHRoaXMuX29uRXJyb3IubGVuZ3RoOyBpKyspIHtpZiAodGhpcy5fb25FcnJvcltpXSA9PT0gaGFuZGxlcikge3RoaXMuX29uRXJyb3Iuc3Bs" +
-        "aWNlKGksIDEpO3RoaXMuX29uRXJyb3JTY29wZS5zcGxpY2UoaSwgMSk7aS0tO319fX1fZGlzcGF0Y2hFcnJvcigpIHtmb3IgKGxldCBpID0gMDsgaSA8IHRoaXMuX29uRXJyb3IubGVuZ3RoOyBpKy" +
-        "spIHtpZiAodGhpcy5fb25FcnJvclNjb3BlW2ldKSB7dGhpcy5fb25FcnJvcltpXS5jYWxsKHRoaXMuX29uRXJyb3JTY29wZVtpXSwgdGhpcy5fZXJyb3IpO30gZWxzZSB7dGhpcy5fb25FcnJvcltp" +
-        "XSh0aGlzLl9lcnJvcik7fX19Y29udGVudENvbXBsZXRlKCkgeyB9ZGVzdHJveSgpIHsgfWdldFNldHRpbmdzKCkge3JldHVybiB3aW5kb3cuZ29vZ2xlLmltYS5zZXR0aW5nczt9cmVxdWVzdEFkcy" +
-        "gpIHt3aW5kb3cuc2V0VGltZW91dCh0aGlzLl9kaXNwYXRjaEVycm9yLmJpbmQodGhpcyksIDEwKTt9fSxBZHNNYW5hZ2VyTG9hZGVkRXZlbnQ6IGNsYXNzIGV4dGVuZHMgRXZlbnQge2NvbnN0cnVj" +
-        "dG9yKCkge3Rocm93IG5ldyB3aW5kb3cuRXJyb3IoIltOYW5vXSBOb3QgSW1wbGVtZW50ZWQgOjogTmV1dHJhbGl6ZWQgQWRzTWFuYWdlciIpO319LEFkc1JlbmRlcmluZ1NldHRpbmdzOiBjbGFzcy" +
-        "B7fSxBZHNSZXF1ZXN0OiBjbGFzcyB7c2V0QWRXaWxsQXV0b1BsYXkoKSB7IH19LENvbXBhbmlvbkFkU2VsZWN0aW9uU2V0dGluZ3M6IGNsYXNzIHt9LEltYVNka1NldHRpbmdzOiBjbGFzcyB7Z2V0" +
-        "Q29tcGFuaW9uQmFja2ZpbGwoKSB7cmV0dXJuIHdpbmRvdy5nb29nbGUuaW1hLkltYVNka1NldHRpbmdzLkNvbXBhbmlvbkJhY2tmaWxsTW9kZS5BTFdBWVM7fWdldERpc2FibGVDdXN0b21QbGF5Ym" +
-        "Fja0ZvcklPUzEwUGx1cygpIHtyZXR1cm4gZmFsc2U7fWdldERpc2FibGVGbGFzaEFkcygpIHtyZXR1cm4gdHJ1ZTt9Z2V0TG9jYWxlKCkge3JldHVybiAiZW4tQ0EiO31nZXROdW1SZWRpcmVjdHMo" +
-        "KSB7cmV0dXJuIDE7fWdldFBsYXllclR5cGUoKSB7cmV0dXJuICJVbmtub3duIjt9Z2V0UGxheWVyVmVyc2lvbigpIHtyZXR1cm4gIjEuMC4wIjt9Z2V0UHBpZCgpIHtyZXR1cm4gIjJHakNnb0VDQV" +
-        "AwSWJVIjt9c2V0QXV0b1BsYXlBZEJyZWFrcygpIHsgfXNldENvbXBhbmlvbkJhY2tmaWxsKCkgeyB9c2V0RGlzYWJsZUN1c3RvbVBsYXliYWNrRm9ySU9TMTBQbHVzKCkgeyB9c2V0RGlzYWJsZUZs" +
-        "YXNoQWRzKCkgeyB9c2V0TG9jYWxlKCkgeyB9c2V0TnVtUmVkaXJlY3RzKCkgeyB9c2V0UGxheWVyVHlwZSgpIHsgfXNldFBsYXllclZlcnNpb24oKSB7IH1zZXRQcGlkKCkgeyB9c2V0VnBhaWRBbG" +
-        "xvd2VkKCkgeyB9c2V0VnBhaWRNb2RlKCkgeyB9fSxVaUVsZW1lbnRzOiB7Q09VTlRET1dOOiAiY291bnRkb3duIix9LFZpZXdNb2RlOiB7RlVMTFNDUkVFTjogImZ1bGxzY3JlZW4iLE5PUk1BTDog" +
-        "Im5vcm1hbCIsfSxWRVJTSU9OOiAiMy4xNzMuNCIsfTt3aW5kb3cuZ29vZ2xlLmltYS5BZEVycm9yLkVycm9yQ29kZSA9IHtWSURFT19QTEFZX0VSUk9SOiA0MDAsRkFJTEVEX1RPX1JFUVVFU1RfQU" +
-        "RTOiAxMDA1LFJFUVVJUkVEX0xJU1RFTkVSU19OT1RfQURERUQ6IDkwMCxWQVNUX0xPQURfVElNRU9VVDogMzAxLFZBU1RfTk9fQURTX0FGVEVSX1dSQVBQRVI6IDMwMyxWQVNUX01FRElBX0xPQURf" +
-        "VElNRU9VVDogNDAyLFZBU1RfVE9PX01BTllfUkVESVJFQ1RTOiAzMDIsVkFTVF9BU1NFVF9NSVNNQVRDSDogNDAzLFZBU1RfTElORUFSX0FTU0VUX01JU01BVENIOiA0MDMsVkFTVF9OT05MSU5FQV" +
-        "JfQVNTRVRfTUlTTUFUQ0g6IDUwMyxWQVNUX0FTU0VUX05PVF9GT1VORDogMTAwNyxWQVNUX1VOU1VQUE9SVEVEX1ZFUlNJT046IDEwMixWQVNUX1NDSEVNQV9WQUxJREFUSU9OX0VSUk9SOiAxMDEs" +
-        "VkFTVF9UUkFGRklDS0lOR19FUlJPUjogMjAwLFZBU1RfVU5FWFBFQ1RFRF9MSU5FQVJJVFk6IDIwMSxWQVNUX1VORVhQRUNURURfRFVSQVRJT05fRVJST1I6IDIwMixWQVNUX1dSQVBQRVJfRVJST1" +
-        "I6IDMwMCxOT05MSU5FQVJfRElNRU5TSU9OU19FUlJPUjogNTAxLENPTVBBTklPTl9SRVFVSVJFRF9FUlJPUjogNjAyLFZBU1RfRU1QVFlfUkVTUE9OU0U6IDEwMDksVU5TVVBQT1JURURfTE9DQUxF" +
-        "OiAxMDExLElOVkFMSURfQURYX0VYVEVOU0lPTjogMTEwNSxJTlZBTElEX0FSR1VNRU5UUzogMTEwMSxVTktOT1dOX0FEX1JFU1BPTlNFOiAxMDEwLFVOS05PV05fRVJST1I6IDkwMCxPVkVSTEFZX0" +
-        "FEX1BMQVlJTkdfRkFJTEVEOiA1MDAsVklERU9fRUxFTUVOVF9VU0VEOiAtMSxWSURFT19FTEVNRU5UX1JFUVVJUkVEOiAtMSxWQVNUX01FRElBX0VSUk9SOiAtMSxBRFNMT1RfTk9UX1ZJU0lCTEU6" +
-        "IC0xLE9WRVJMQVlfQURfTE9BRElOR19GQUlMRUQ6IC0xLFZBU1RfTUFMRk9STUVEX1JFU1BPTlNFOiAtMSxDT01QQU5JT05fQURfTE9BRElOR19GQUlMRUQ6IC0xLH07d2luZG93Lmdvb2dsZS5pbW" +
-        "EuQWRFcnJvci5UeXBlID0ge0FEX0xPQUQ6ICJhZExvYWRFcnJvciIsQURfUExBWTogImFkUGxheUVycm9yIix9O3dpbmRvdy5nb29nbGUuaW1hLkFkRXJyb3JFdmVudC5UeXBlID0ge0FEX0VSUk9S" +
-        "OiAiYWRFcnJvciIsfTt3aW5kb3cuZ29vZ2xlLmltYS5BZEV2ZW50LlR5cGUgPSB7Q09OVEVOVF9SRVNVTUVfUkVRVUVTVEVEOiAiY29udGVudFJlc3VtZVJlcXVlc3RlZCIsQ09OVEVOVF9QQVVTRV" +
-        "9SRVFVRVNURUQ6ICJjb250ZW50UGF1c2VSZXF1ZXN0ZWQiLENMSUNLOiAiY2xpY2siLERVUkFUSU9OX0NIQU5HRTogImR1cmF0aW9uQ2hhbmdlIixFWFBBTkRFRF9DSEFOR0VEOiAiZXhwYW5kZWRD" +
-        "aGFuZ2VkIixTVEFSVEVEOiAic3RhcnQiLElNUFJFU1NJT046ICJpbXByZXNzaW9uIixQQVVTRUQ6ICJwYXVzZSIsUkVTVU1FRDogInJlc3VtZSIsRklSU1RfUVVBUlRJTEU6ICJmaXJzdHF1YXJ0aW" +
-        "xlIixNSURQT0lOVDogIm1pZHBvaW50IixUSElSRF9RVUFSVElMRTogInRoaXJkcXVhcnRpbGUiLENPTVBMRVRFOiAiY29tcGxldGUiLFVTRVJfQ0xPU0U6ICJ1c2VyQ2xvc2UiLExJTkVBUl9DSEFO" +
-        "R0VEOiAibGluZWFyQ2hhbmdlZCIsTE9BREVEOiAibG9hZGVkIixBRF9DQU5fUExBWTogImFkQ2FuUGxheSIsQURfTUVUQURBVEE6ICJhZE1ldGFkYXRhIixBRF9CUkVBS19SRUFEWTogImFkQnJlYW" +
-        "tSZWFkeSIsSU5URVJBQ1RJT046ICJpbnRlcmFjdGlvbiIsQUxMX0FEU19DT01QTEVURUQ6ICJhbGxBZHNDb21wbGV0ZWQiLFNLSVBQRUQ6ICJza2lwIixTS0lQUEFCTEVfU1RBVEVfQ0hBTkdFRDog" +
-        "InNraXBwYWJsZVN0YXRlQ2hhbmdlZCIsTE9HOiAibG9nIixWSUVXQUJMRV9JTVBSRVNTSU9OOiAidmlld2FibGVfaW1wcmVzc2lvbiIsVk9MVU1FX0NIQU5HRUQ6ICJ2b2x1bWVDaGFuZ2UiLFZPTF" +
-        "VNRV9NVVRFRDogIm11dGUiLH07d2luZG93Lmdvb2dsZS5pbWEuQWRzTWFuYWdlckxvYWRlZEV2ZW50LlR5cGUgPSB7QURTX01BTkFHRVJfTE9BREVEOiAiYWRzTWFuYWdlckxvYWRlZCIsfTt3aW5k" +
-        "b3cuZ29vZ2xlLmltYS5Db21wYW5pb25BZFNlbGVjdGlvblNldHRpbmdzLkNyZWF0aXZlVHlwZSA9IHtBTEw6ICJBbGwiLEZMQVNIOiAiRmxhc2giLElNQUdFOiAiSW1hZ2UiLH07d2luZG93Lmdvb2" +
-        "dsZS5pbWEuQ29tcGFuaW9uQWRTZWxlY3Rpb25TZXR0aW5ncy5SZXNvdXJjZVR5cGUgPSB7QUxMOiAiQWxsIixIVE1MOiAiSHRtbCIsSUZSQU1FOiAiSUZyYW1lIixTVEFUSUM6ICJTdGF0aWMiLH07" +
-        "d2luZG93Lmdvb2dsZS5pbWEuQ29tcGFuaW9uQWRTZWxlY3Rpb25TZXR0aW5ncy5TaXplQ3JpdGVyaWEgPSB7SUdOT1JFOiAiSWdub3JlU2l6ZSIsU0VMRUNUX0VYQUNUX01BVENIOiAiU2VsZWN0RX" +
-        "hhY3RNYXRjaCIsU0VMRUNUX05FQVJfTUFUQ0g6ICJTZWxlY3ROZWFyTWF0Y2giLH07d2luZG93Lmdvb2dsZS5pbWEuSW1hU2RrU2V0dGluZ3MuQ29tcGFuaW9uQmFja2ZpbGxNb2RlID0ge0FMV0FZ" +
-        "UzogImFsd2F5cyIsT05fTUFTVEVSX0FEOiAib25fbWFzdGVyX2FkIix9O3dpbmRvdy5nb29nbGUuaW1hLkltYVNka1NldHRpbmdzLlZwYWlkTW9kZSA9IHtESVNBQkxFRDogMCxFTkFCTEVEOiAxLE" +
-        "lOU0VDVVJFOiAyLH07d2luZG93Lmdvb2dsZS5pbWEuc2V0dGluZ3MgPSBuZXcgd2luZG93Lmdvb2dsZS5pbWEuSW1hU2RrU2V0dGluZ3MoKTt9KSgpOw==",
+        a.resourceRoot + "ima3.js?s=" + a.resourceSecret,
         /*
         [
         ],
