@@ -17,7 +17,7 @@ Nano Defender uses open source code from the following projects (alphabetical):
 
 [anti-adblock-killer](https://github.com/reek/anti-adblock-killer)
 
-[Octicons](https://github.com/primer/octicons/)
+[octicons](https://github.com/primer/octicons/)
 
 [uAssets](https://github.com/uBlockOrigin/uAssets)
 
