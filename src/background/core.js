@@ -27,6 +27,13 @@ a.init = () => {
         const tab = sender.tab.id;
         const frame = sender.frameId || 0;
 
+        if (
+            typeof tab !== "number" ||
+            typeof frame !== "number"
+        ) {
+            return;
+        }
+
         switch (msg.cmd) {
             /**
              * Inject UserCSS to the caller tab.
@@ -340,13 +347,6 @@ a.dynamicServer = (urls, types, server, domList, isMatch = true) => {
  * @param {string} code - The CSS code to inject.
  */
 a.userCSS = (tab, frame, code) => {
-    if (
-        typeof tab !== "number" ||
-        typeof frame !== "number" ||
-        typeof code !== "string"
-    ) {
-        return;
-    }
     if (tab === chrome.tabs.TAB_ID_NONE) {
         return;
     }
