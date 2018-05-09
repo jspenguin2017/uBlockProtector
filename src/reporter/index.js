@@ -68,7 +68,7 @@ $("#send").on("click", async () => {
     const details = $("#details").prop("value");
 
     if (!category) {
-        showError("You must choose a category.");
+        showError("Please select an issue type.");
         return;
     }
     if (
@@ -78,7 +78,7 @@ $("#send").on("click", async () => {
         url.startsWith("https://www.microsoft.com/") ||
         url.startsWith("https://addons.mozilla.org/")
     ) {
-        showError("You must enter a valid URL.");
+        showError("Please enter a valid URL.");
         return;
     }
     if (details.length > detailsLimit) {

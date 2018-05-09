@@ -16,16 +16,16 @@
 </head>
 <body>
     <div class="container hidden" id="main">
-        <h2>Quick Issue Reporter</h2>
+        <h2>Quick Issue Reporter (Beta)</h2>
 
         <label class="bold" for="category">Issue type:</label>
         <br />
         <select id="category">
             <option value="" selected>Choose one...</option>
-            <option value="anti-adblock">Anti-adblock</option>
-            <option value="missed ads">Missed ads</option>
-            <option value="false positive">False positive</option>
-            <option value="other">Other (explain below)</option>
+            <option value="Anti-adblock">Anti-adblock</option>
+            <option value="Ads">Ads or popup not blocked</option>
+            <option value="False positive">Blocking too much</option>
+            <option value="Other">Other (explain below)</option>
         </select>
         <br /><br />
 
@@ -52,7 +52,7 @@
 
     <div class="popup-container" id="paper-wait">
         <div class="popup">
-            <h4>Please wait...</h4>
+            <h4>Please Wait</h4>
             <p>Processing your request...</p>
         </div>
     </div>
@@ -60,8 +60,8 @@
     <div class="popup-container" id="msg-report-sent">
         <div class="popup">
             <h4>Report Sent</h4>
-            <p>The report was sent.</p>
-            <p>It usually takes less than 3 days for an issue to be fixed. However, depending on the issue, it can take longer.</p>
+            <p>Your report was sent.</p>
+            <p>Most issues are fixed within 3 days, but some can take a lot longer.</p>
             <p>You can close this page now.</p>
         </div>
     </div>
@@ -76,8 +76,8 @@
     <div class="popup-container" id="msg-generic-error">
         <div class="popup">
             <h4>Error</h4>
-            <p>Something went wrong. Check your Internet connection and try again later.</p>
-            <p>Quick Issue Reporter is still in beta, if you repeatedly see this error, let me know by <a href="https://github.com/jspenguin2017/uBlockProtector/issues" target="_blank">opening an issue on GitHub</a>.</p>
+            <p>Something went wrong. Please check your Internet connection and try again later.</p>
+            <p>Quick Issue Reporter is still in beta, if you repeatedly see this error, please let me know by <a href="https://github.com/jspenguin2017/uBlockProtector/issues" target="_blank">opening an issue on GitHub</a>.</p>
             <button class="float-right">OK</button>
             <div class="clear-both"></div>
         </div>
