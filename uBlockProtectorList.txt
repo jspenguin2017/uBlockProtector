@@ -449,7 +449,6 @@ slader.com##script:inject(abort-on-property-read.js, sladerAbm)
 slader.com##section.solutions-list.loading:style(height: auto !important;)
 slader.com##.ads.ads-to-hide
 jsfiddle.net###keep-us-running
-@@||anonymousemail.me^$first-party
 avgle.com##div:has(:scope > div#blocked-if)
 avgle.com###aoverlay
 @@||animeheaven.eu^$script,first-party
@@ -563,7 +562,6 @@ redtube.com##div[class][style]:has(> div[class][style] > a.removeAdLink)
 @@||tv.yahoo.com^$generichide
 @@||aftonbladet.se^$generichide
 @@||wp.pl^$generichide
-@@||anonymousemail.me^$generichide
 @@||playstation.com^$generichide
 @@||imasdk.googleapis.com/js/sdkloader/outstream.js$script,domain=ovar.io
 @@||flashx1.tv/js/showad*.js$script
