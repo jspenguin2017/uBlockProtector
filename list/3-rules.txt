@@ -731,9 +731,6 @@ slader.com##section.solutions-list.loading:style(height: auto !important;)
 slader.com##.ads.ads-to-hide
 ! === jsfiddle.net
 jsfiddle.net###keep-us-running
-! === NSFW! avgle.com
-avgle.com##div:has(:scope > div#blocked-if)
-avgle.com###aoverlay
 ! === animeheaven.eu
 @@||animeheaven.eu^$script,first-party
 ! === gej-porno.pl, animezone.pl, egy.best, newpct.com

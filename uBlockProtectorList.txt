@@ -449,8 +449,6 @@ slader.com##script:inject(abort-on-property-read.js, sladerAbm)
 slader.com##section.solutions-list.loading:style(height: auto !important;)
 slader.com##.ads.ads-to-hide
 jsfiddle.net###keep-us-running
-avgle.com##div:has(:scope > div#blocked-if)
-avgle.com###aoverlay
 @@||animeheaven.eu^$script,first-party
 gej-porno.pl#@#.myTestAd
 gej-porno.pl,animezone.pl,egy.best,newpct.com##a[href^="//"]
