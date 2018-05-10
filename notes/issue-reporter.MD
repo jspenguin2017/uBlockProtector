@@ -1,7 +1,7 @@
 # Privacy Policy for Quick Issue Reporter
 
 This tool will only collect your data if you use it, and will not send anything
-to remove server before you click the "Send" button. Alternatively, you can
+to remote server before you click the "Send" button. Alternatively, you can
 submit issues manually to respective issues trackers.
 
 ### What are collected? How will the data be used?
