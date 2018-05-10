@@ -993,9 +993,6 @@ if (a.domCmp(["kisscartoon.me", "kisscartoon.se"])) {
         $("iframe[id^='adsIfrme']").remove();
     });
 }
-if (a.domCmp(["openload.co", "openload.io", "openload.tv", "oload.stream"])) {
-    a.readOnly("popAdsLoaded", true);
-}
 if (a.domCmp(["youwatch.org", "chouhaa.info", "ahzahg6ohb.com"])) {
     a.ready(() => {
         $("#player_imj, #player_imj + div[id]").remove();
