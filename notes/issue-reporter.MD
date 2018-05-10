@@ -13,16 +13,15 @@ group of people or publicly unless otherwise indicated below.
 1. Your IP address
    - You can use a VPN, but make sure the issue you are reporting can be
      reproduced while using your VPN
-   - The country that your IP belongs to and/or part of your IP address may be
-     shared
+   - The country that your IP address belongs to and/or part of your IP address
+     may be shared
 2. User agent string of your browser
    - Do not try to mask or change it; if the maintainers are unable to
      reproduce the issue, your report will be discarded
-3. The name and version of the host extension that you are using
+3. The version of Nano Adblocker and/or Nano Defender that you are using
 4. The form that you filled
-   - If you supplied a test account in the form, then this account will not be
+   - If you supplied a test account in the form, this account will not be
      shared unless you indicated otherwise
-5. Some or all of settings of the host extension
 
 ### How secure is the server?
 
