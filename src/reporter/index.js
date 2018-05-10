@@ -40,7 +40,7 @@ const updateDetailsLimit = () => {
 };
 
 /**
- * The name of the host app.
+ * The name and version of the host app.
  * @const {string}
  */
 const appName = (() => {
