@@ -380,7 +380,7 @@ a.userCSS = (tab, frame, code) => {
  *     @param {string} response - The response text.
  * @param {Function} onerror - The error event handler.
  * @return {boolean} True if the request is sent, false if details are not
- ** valid and the request was not sent.
+ * valid and the request was not sent.
  */
 a.xhr = (details, onload, onerror) => {
     if (
