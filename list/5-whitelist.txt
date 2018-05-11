@@ -38,6 +38,3 @@
 ||fwmrm.net/ad/*$xmlhttprequest,important,redirect=nooptext,domain=viasatsport.se
 ! === hulu.com, viz.com
 @@||moatads.com/*/moatwrapper.js$script,domain=hulu.com|viz.com
-! === crackle.com
-@@||crackle.com/vendor/AdManager.js$script,first-party
-@@||secure-dcr.imrworldwide.com/novms/js/$script,domain=crackle.com

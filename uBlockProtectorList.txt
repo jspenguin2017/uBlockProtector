@@ -584,8 +584,6 @@ redtube.com##div[class][style]:has(> div[class][style] > a.removeAdLink)
 ||fwmrm.net^$image,important,domain=viasatsport.se
 ||fwmrm.net/ad/*$xmlhttprequest,important,redirect=nooptext,domain=viasatsport.se
 @@||moatads.com/*/moatwrapper.js$script,domain=hulu.com|viz.com
-@@||crackle.com/vendor/AdManager.js$script,first-party
-@@||secure-dcr.imrworldwide.com/novms/js/$script,domain=crackle.com
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================
