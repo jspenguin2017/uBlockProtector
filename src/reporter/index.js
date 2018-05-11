@@ -67,6 +67,9 @@ const knownGood = [
     "chrome.google.com",
     "www.microsoft.com",
 
+    "github.com",
+    "jspenguin2017.github.io",
+
     "derstandard.at",
     "soft98.ir",
 ];
