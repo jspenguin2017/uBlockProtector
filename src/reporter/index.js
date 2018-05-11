@@ -68,6 +68,7 @@ const knownGood = [
     "www.microsoft.com",
 
     "github.com",
+    "jspenguin.com",
     "jspenguin2017.github.io",
 
     "derstandard.at",
@@ -151,6 +152,7 @@ $("#send").on("click", async () => {
     if (response === "ok") {
         localStorage.setItem(storageKeyLastReport, Date.now());
         $("#msg-report-sent").addClass("open");
+        $("#main").addClass("hidden");
     } else {
         console.error(response);
         $("#msg-generic-error").addClass("open");
@@ -174,9 +176,9 @@ $(".popup-container button.float-right").on("click", function () {
         const now = Date.now();
         if (typeof lastReport === "number" && lastReport + rateLimit > now) {
             $("#msg-rate-limited").addClass("open");
+        } else {
+            $("#main").rmClass("hidden");
         }
-
-        $("#main").rmClass("hidden");
     };
 
     if (/^\?\d{1,15}$/.test(location.search)) {
