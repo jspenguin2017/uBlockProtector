@@ -2566,6 +2566,14 @@ if (a.domCmp(["identi.li"])) {
                     window._decrypt.objeto = null;
                     window._decrypt.open();
                 });
+                window.$("button.link-d").unbind("click").click(function () {
+                    let d = this.dataset.link;
+                    while (!d.includes("%")) {
+                        d = window.atob(d);
+                    }
+                    d = window.decodeURIComponent(d);
+                    window.open(d);
+                });
             }
         });
     });
