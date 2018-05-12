@@ -3076,6 +3076,13 @@ if (a.domCmp(["boost.ink"])) {
         });
     });
 }
+if (a.domCmp(["3dzone.link"])) {
+    a.ready(() => {
+        $("a").filter(":scope > img[src^='https://authedmine.com/']").each((e) => {
+            e.textContent = e.href;
+        });
+    });
+}
 
 // Nano Adblocker does not support UserCSS because it breaks DOM Inspector, duct tape it here
 // TODO - Convert to filter (or remove if already in uAssets) when minimum required version of Chrome can handle
