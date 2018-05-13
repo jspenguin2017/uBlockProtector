@@ -3063,11 +3063,11 @@ if (a.domCmp(["boost.ink"])) {
     a.inject(() => {
         "use strict";
         const strToArr = (s) => {
-            let a = [];
+            let arr = [];
             for (const l of s) {
-                a.push(l.charCodeAt(0));
+                arr.push(l.charCodeAt(0));
             }
-            return a;
+            return arr;
         };
 
         let key;
@@ -3083,7 +3083,7 @@ if (a.domCmp(["boost.ink"])) {
 
         window.addEventListener("DOMContentLoaded", () => {
             const btn = window.document.querySelector(".complete_btn");
-            if (btn) {
+            if (btn && key) {
                 const aesCbc = new window.aesjs.ModeOfOperation.cbc(strToArr(key));
                 const decryptedBytes = aesCbc.decrypt(strToArr(window.atob(btn.dataset.href)));
                 const decryptedText = window.aesjs.utils.utf8.fromBytes(decryptedBytes)
