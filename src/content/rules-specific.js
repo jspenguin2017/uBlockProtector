@@ -3060,23 +3060,32 @@ if (a.domCmp(["videolab.io"])) {
 }
 if (a.domCmp(["boost.ink"])) {
     // https://github.com/jspenguin2017/uBlockProtector/issues/908
-    a.ready(() => {
-        a.inject(() => {
-            "use strict";
+    a.inject(() => {
+        "use strict";
+        const strToArr = (s) => {
+            let a = [];
+            for (const l of s) {
+                a.push(l.charCodeAt(0));
+            }
+            return a;
+        };
+
+        let key;
+        window.Object.defineProperty(window, "adjustKeySize", {
+            configurable: false,
+            set(val) {
+                key = val();
+            },
+            get() {
+                return true;
+            },
+        });
+
+        window.addEventListener("DOMContentLoaded", () => {
             const btn = window.document.querySelector(".complete_btn");
             if (btn) {
-                const aesCbc = new window.aesjs.ModeOfOperation.cbc(
-                    window.strToArr(
-                        window.adjustKeySize(
-                            window.location.pathname
-                        )
-                    )
-                );
-                const decryptedBytes = aesCbc.decrypt(
-                    window.strToArr(
-                        window.atob(btn.dataset.href)
-                    )
-                );
+                const aesCbc = new window.aesjs.ModeOfOperation.cbc(strToArr(key));
+                const decryptedBytes = aesCbc.decrypt(strToArr(window.atob(btn.dataset.href)));
                 const decryptedText = window.aesjs.utils.utf8.fromBytes(decryptedBytes)
                     .split(window.String.fromCharCode(15))[0];
                 window.location.href = decryptedText;
