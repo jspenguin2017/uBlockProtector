@@ -3060,38 +3060,8 @@ if (a.domCmp(["videolab.io"])) {
 }
 if (a.domCmp(["boost.ink"])) {
     // https://github.com/jspenguin2017/uBlockProtector/issues/908
-    a.inject(() => {
-        "use strict";
-        const strToArr = (s) => {
-            let arr = [];
-            for (const l of s) {
-                arr.push(l.charCodeAt(0));
-            }
-            return arr;
-        };
-
-        let key;
-        window.Object.defineProperty(window, "adjustKeySize", {
-            configurable: false,
-            set(val) {
-                key = val();
-            },
-            get() {
-                return true;
-            },
-        });
-
-        window.addEventListener("DOMContentLoaded", () => {
-            const btn = window.document.querySelector(".complete_btn");
-            if (btn && key) {
-                const aesCbc = new window.aesjs.ModeOfOperation.cbc(strToArr(key));
-                const decryptedBytes = aesCbc.decrypt(strToArr(window.atob(btn.dataset.href)));
-                const decryptedText = window.aesjs.utils.utf8.fromBytes(decryptedBytes)
-                    .split(window.String.fromCharCode(15))[0];
-                window.location.href = decryptedText;
-            }
-        });
-    });
+    a.readOnly("onMobile", true);
+    a.filter("open");
 }
 if (a.domCmp(["3dzone.link"])) {
     a.ready(() => {
