@@ -58,8 +58,7 @@ const showError = (msg) => {
 };
 
 /**
- * Domains that are known to be working and those that are known to be broken.
- * @const {Array.<string>}
+ * Domains that are known to be good.
  * @const {Array.<string>}
  */
 const knownGood = [
@@ -74,6 +73,10 @@ const knownGood = [
     "derstandard.at",
     "soft98.ir",
 ];
+/**
+ * Domains that are known to be bad where only technical help is needed.
+ * @const {Array.<string>}
+ */
 const knownBad = [
     "avgle.com", // NSFW
 ];
