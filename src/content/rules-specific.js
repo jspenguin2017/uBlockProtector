@@ -3065,6 +3065,34 @@ if (a.domCmp(["3dzone.link"])) {
         });
     });
 }
+if (a.domCmp(["boost.ink"])) {
+    // https://github.com/jspenguin2017/uBlockProtector/issues/908
+    a.inject(() => {
+        "use strict";
+        const _addEventListener = window.EventTarget.prototype.addEventListener;
+        const _addEventListener_string = _addEventListener.toString();
+        const _addEventListener_new = function (ev, func, ...rest) {
+            if (ev === "blur" || ev === "focus") {
+                return;
+            }
+            return _addEventListener.call(this, ev, func, ...rest);
+        };
+        window.EventTarget.prototype.addEventListener = _addEventListener_new;
+
+        const _toString = window.Function.prototype.toString;
+        const _toString_string = _toString.toString();
+        const _toString_new = function (...args) {
+            if (this === _addEventListener_new) {
+                return _addEventListener_string;
+            } else if (this === _toString_new) {
+                return _toString_string;
+            } else {
+                return _toString.apply(this, args);
+            }
+        };
+        window.Function.prototype.toString = _toString_new;
+    });
+}
 
 // Nano Adblocker does not support UserCSS because it breaks DOM Inspector, duct tape it here
 // TODO - Convert to filter (or remove if already in uAssets) when minimum required version of Chrome can handle
