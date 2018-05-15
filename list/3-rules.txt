@@ -847,3 +847,5 @@ redtube.com##div[class][style]:has(> div[class][style] > a.removeAdLink)
 ! === boost.ink
 ! === https://github.com/jspenguin2017/uBlockProtector/issues/908
 *$popup,domain=boost.ink
+! === bild.de
+||acdn.adnxs.com/*/adplayer.css$stylesheet,redirect=noopcss,domain=bild.de

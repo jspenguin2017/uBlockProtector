@@ -515,6 +515,7 @@ redtube.com##div[class][style]:has(> a.removeAdLink)
 redtube.com##div[class][style]:has(> div[class][style] > a.removeAdLink)
 @@||rdtcdn.com^$script,domain=redtube.com
 *$popup,domain=boost.ink
+||acdn.adnxs.com/*/adplayer.css$stylesheet,redirect=noopcss,domain=bild.de
 @@||lolalytics.com^$generichide
 @@||7sim.net^$generichide
 @@||imleagues.com^$generichide
