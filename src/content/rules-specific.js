@@ -3071,26 +3071,26 @@ if (a.domCmp(["boost.ink"])) {
         "use strict";
         const _addEventListener = window.EventTarget.prototype.addEventListener;
         const _addEventListener_string = _addEventListener.toString();
-        const _addEventListener_new = function (ev, func, ...rest) {
+        const addEventListener = function (ev, func, ...rest) {
             if (ev === "blur" || ev === "focus") {
                 return;
             }
             return _addEventListener.call(this, ev, func, ...rest);
         };
-        window.EventTarget.prototype.addEventListener = _addEventListener_new;
+        window.EventTarget.prototype.addEventListener = addEventListener;
 
         const _toString = window.Function.prototype.toString;
         const _toString_string = _toString.toString();
-        const _toString_new = function (...args) {
-            if (this === _addEventListener_new) {
+        const toString = function (...args) {
+            if (this === addEventListener) {
                 return _addEventListener_string;
-            } else if (this === _toString_new) {
+            } else if (this === toString) {
                 return _toString_string;
             } else {
                 return _toString.apply(this, args);
             }
         };
-        window.Function.prototype.toString = _toString_new;
+        window.Function.prototype.toString = toString;
     });
 }
 
