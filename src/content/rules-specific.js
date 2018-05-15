@@ -3058,11 +3058,6 @@ if (a.domCmp(["videolab.io"])) {
         };
     });
 }
-if (a.domCmp(["boost.ink"])) {
-    // https://github.com/jspenguin2017/uBlockProtector/issues/908
-    a.readOnly("onMobile", true);
-    a.filter("open");
-}
 if (a.domCmp(["3dzone.link"])) {
     a.ready(() => {
         $("a").filter(":scope > img[src^='https://authedmine.com/']").each((e) => {
