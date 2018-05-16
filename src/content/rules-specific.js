@@ -3069,17 +3069,18 @@ if (a.domCmp(["boost.ink"])) {
     // https://github.com/jspenguin2017/uBlockProtector/issues/908
     a.inject(() => {
         "use strict";
-        window.addEventListener("blur", (e) => {
-            if (e.isTrusted) {
-                e.stopPropagation();
-            }
-        }, true);
-        /*
         const _addEventListener = window.EventTarget.prototype.addEventListener;
         const _addEventListener_string = _addEventListener.toString();
         const addEventListener = function (ev, func, ...rest) {
             if (ev === "blur" || ev === "focus") {
-                return;
+                const _func = func;
+                func = function (e, ...rest) {
+                    if (e.isTrusted) {
+                        return;
+                    }
+
+                    _func.call(this, e, ...rest);
+                };
             }
             return _addEventListener.call(this, ev, func, ...rest);
         };
@@ -3097,7 +3098,6 @@ if (a.domCmp(["boost.ink"])) {
             }
         };
         window.Function.prototype.toString = toString;
-        */
     });
 }
 
