@@ -3067,20 +3067,45 @@ if (a.domCmp(["3dzone.link"])) {
 }
 if (a.domCmp(["boost.ink"])) {
     // https://github.com/jspenguin2017/uBlockProtector/issues/908
+    //
+    // Oh seriously? I thought the second argument must be a function...
+    // Well, I learnt one more thing today. Thanks :)
+    //
+    // BTW, you aren't really getting any money by breaking my popup blocker,
+    // if I understood right how your website works, the popup is set by the
+    // user, I don't see how does that give you profit
+    //
+    // I sure have better things to do, but by that I mean I have better things
+    // to do than making a fast bypass
+    //
+    // If your goal is to keep the user on your website 2 ~ 3 seconds, my
+    // popup blocker isn't in your way
     a.inject(() => {
         "use strict";
         const _addEventListener = window.EventTarget.prototype.addEventListener;
+        // const _removeEventListener = window.EventTarget.prototype.removeEventListener;
         const _addEventListener_string = _addEventListener.toString();
         const addEventListener = function (ev, func, ...rest) {
             if (ev === "blur" || ev === "focus") {
-                const _func = func;
-                func = function (e, ...rest) {
-                    if (e.isTrusted) {
-                        return;
-                    }
+                let _func;
+                if (typeof func === "function") {
+                    _func = func;
+                } else if (
+                    typeof func === "object" &&
+                    typeof func.handleEvent === "function"
+                ) {
+                        _func = func.handleEvent;
+                }
 
-                    _func.call(this, e, ...rest);
-                };
+                if (typeof _func === "function") {
+                    func = function (e, ...rest) {
+                        if (e.isTrusted) {
+                            return;
+                        }
+
+                        _func.call(this, e, ...rest);
+                    };
+                }
             }
             return _addEventListener.call(this, ev, func, ...rest);
         };
