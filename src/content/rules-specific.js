@@ -3094,7 +3094,7 @@ if (a.domCmp(["boost.ink"])) {
                     typeof func === "object" &&
                     typeof func.handleEvent === "function"
                 ) {
-                        _func = func.handleEvent;
+                    _func = func.handleEvent;
                 }
 
                 if (typeof _func === "function") {
