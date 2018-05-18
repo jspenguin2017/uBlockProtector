@@ -24,3 +24,10 @@ Nano Defender uses open source code from the following projects (alphabetical):
 [uBlock](https://github.com/gorhill/uBlock)
 
 [uBO-Extra](https://github.com/gorhill/uBO-Extra)
+
+## Special Thanks
+
+Nano Defender is made possible with the help of the following individuals
+(alphabetical):
+
+**@lain566**
