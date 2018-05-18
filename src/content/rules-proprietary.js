@@ -19,46 +19,6 @@
 
 //@pragma-if-debug
 if (a.debugMode) {
-    if (a.isTopFrame && a.domCmp(["lolalytics.com"])) {
-        //https://github.com/AdguardTeam/AdguardFilters/issues/6280
-        //https://github.com/AdguardTeam/AdguardFilters/issues/6576
-        //https://github.com/uBlockOrigin/uAssets/issues/668
-        //Also, this filter is required: @@||lolalytics.com^$generichide
-        if (typeof blockium === "undefined") {
-            $.request({
-                method: "GET",
-                url: "https://jspenguin.com/uBlockProtector/Proprietary/lolalytics_com.js?v1.29",
-            }, (res) => {
-                a.inject(`(() => {${res}})();`, true);
-            }, () => { });
-            /*
-            const script = document.createElement("script");
-            script.src = "https://jspenguin.com/uBlockProtector/Proprietary/lolalytics_com.js?v1.29";
-            script.charset = "utf-8";
-            script.onload = () => {
-                script.remove();
-            };
-            document.documentElement.appendChild(script);
-            */
-        } else {
-            const sandbox = blockium.createSandbox(location.href);
-            blockium.getCurrentView((view) => {
-                view.mirror(
-                    {
-                        filterAudio: blockium.mirrorOptions.blockAll,
-                        filterElement: blockium.mirrorOptions.callback,
-                    },
-                    {
-                        filterElement: (elem) => elem.classList.contains("adsbygoogle"),
-                    },
-                    sandbox,
-                );
-                view.addEventListener("closed", () => {
-                    sandbox.dispose();
-                });
-            });
-        }
-    }
     if (a.isTopFrame && a.domCmp(["socketloop.com"])) {
         //https://github.com/AdguardTeam/AdguardFilters/issues/6905
         const script = document.createElement("script");
