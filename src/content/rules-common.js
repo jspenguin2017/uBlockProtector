@@ -38,12 +38,12 @@
         "anandabazar.com", "o2.pl", "vod.pl", "viasatsport.se", "viasport.fi",
         "tv3sport.dk", "viasport.no", "strefadb.pl", "wp.pl",
         "ostrzeszowinfo.pl", "infostrow.pl",
-        // Handled by proprietary rules
-        "lolalytics.com", "socketloop.com",
+        // Handled in Nano Defender Extra
+        "boost.ink", "lolalytics.com", "socketloop.com",
         // False positives
         "techradar.com", "imdb.com", "babbel.com", "buxfer.com",
         "store.playstation.com", "lemonde.fr", "derstandard.at",
-        "download.ipeenk.com", "boost.ink",
+        "download.ipeenk.com",
     ];
     const genericWhitelist2 = [
         // Local network
