@@ -3065,58 +3065,6 @@ if (a.domCmp(["3dzone.link"])) {
         });
     });
 }
-if (a.domCmp(["boost.ink"])) {
-    // https://github.com/jspenguin2017/uBlockProtector/issues/908
-    a.inject(() => {
-        "use strict";
-        return;
-        const _addEventListener = window.EventTarget.prototype.addEventListener;
-        // const _removeEventListener = window.EventTarget.prototype.removeEventListener;
-        const _addEventListener_string = _addEventListener.toString();
-        const addEventListener = function (ev, func, ...rest) {
-            if (ev === "blur" || ev === "focus") {
-                let _func;
-                if (typeof func === "function") {
-                    if (!_toString.call(func).startsWith("class")) {
-                        _func = func;
-                    }
-                } else if (
-                    typeof func === "object" &&
-                    typeof func.handleEvent === "function"
-                ) {
-                    _func = func.handleEvent;
-                }
-
-                if (typeof _func === "function") {
-                    func = function (e, ...rest) {
-                        if (e.isTrusted) {
-                            e.preventDefault();
-                            e.stopPropagation();
-                        }
-
-                        //_func.call(this, e, ...rest);
-                    };
-                    _addEventListener.call(this, ev, _func, ...rest);
-                }
-            }
-            return _addEventListener.call(this, ev, func, ...rest);
-        };
-        window.EventTarget.prototype.addEventListener = addEventListener;
-
-        const _toString = window.Function.prototype.toString;
-        const _toString_string = _toString.toString();
-        const toString = function (...args) {
-            if (this === addEventListener) {
-                return _addEventListener_string;
-            } else if (this === toString) {
-                return _toString_string;
-            } else {
-                return _toString.apply(this, args);
-            }
-        };
-        window.Function.prototype.toString = toString;
-    });
-}
 
 // Nano Adblocker does not support UserCSS because it breaks DOM Inspector, duct tape it here
 // TODO - Convert to filter (or remove if already in uAssets) when minimum required version of Chrome can handle
