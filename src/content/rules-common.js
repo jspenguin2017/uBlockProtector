@@ -39,11 +39,11 @@
         "tv3sport.dk", "viasport.no", "strefadb.pl", "wp.pl",
         "ostrzeszowinfo.pl", "infostrow.pl",
         // Handled in Nano Defender Extra
-        "boost.ink", "lolalytics.com", "socketloop.com",
+        "boost.ink", "lolalytics.com",
         // False positives
         "techradar.com", "imdb.com", "babbel.com", "buxfer.com",
         "store.playstation.com", "lemonde.fr", "derstandard.at",
-        "download.ipeenk.com",
+        "download.ipeenk.com", "socketloop.com",
     ];
     const genericWhitelist2 = [
         // Local network

@@ -10,13 +10,6 @@
  */
 a.init = () => {
     console.log(`[Nano] Nano Defender Activated :: ${document.domain}`);
-    // Home page installation test
-    if (a.domCmp(["jspenguin2017.github.io"], true) && location.pathname.startsWith("/uBlockProtector/")) {
-        a.inject(() => {
-            "use strict";
-            window.uBlock_Protector_Extension = true;
-        });
-    }
 };
 /**
  * Whether uBO-Extra should not run.
