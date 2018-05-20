@@ -27,7 +27,6 @@
 @@||libertyunyielding.com^$generichide
 @@||linkneverdie.com^$generichide
 @@||linksh.top^$generichide
-@@||lolalytics.com^$generichide
 @@||lolstat.gg^$generichide
 @@||main-echo.de^$generichide
 @@||mitele.es^$generichide
