@@ -2,7 +2,7 @@
 
 An anti-adblock defuser for Nano Adblocker and uBlock Origin
 
-![Popup Panel Screenshot](https://i.imgur.com/lCnwWM3.png)
+![Popup Panel Screenshot](https://i.imgur.com/xEtuqxH.png)
 
 ### [Get it Now](http://jspenguin2017.github.io/uBlockProtector/)
 
