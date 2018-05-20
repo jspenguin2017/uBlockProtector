@@ -3060,8 +3060,13 @@ if (a.domCmp(["videolab.io"])) {
 }
 if (a.domCmp(["3dzone.link"])) {
     a.ready(() => {
-        $("a").filter(":scope > img[src^='https://authedmine.com/']").each((e) => {
-            e.textContent = e.href;
+        $("a").each((e) => {
+            if (
+                e.textContent.trim() === "" ||
+                e.querySelector(":scope > img[src^='https://authedmine.com/']")
+            ) {
+                e.textContent = e.href;
+            }
         });
     });
 }
