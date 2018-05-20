@@ -252,6 +252,7 @@ if ( !abort ) {
             'nasdaq.com',
             'nationalpost.com',
             'newsarama.com',
+            'newsweek.com',
             'orlandosentinel.com',
             'ottawacitizen.com',
             'ottawasun.com',
