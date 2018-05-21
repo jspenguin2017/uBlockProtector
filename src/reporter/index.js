@@ -121,11 +121,6 @@ $("#send").on("click", async () => {
         showMessage("Please select an issue type.");
         return;
     }
-    if (category === "Other" && details.length < 5) {
-        showMessage("Please add a quick explanation for the " +
-            "&quot;Other&quot; category that you have chosen.");
-        return;
-    }
 
     let domain = /^https?:\/\/([^/]+)/.exec(url);
     if (!domain) {
@@ -142,6 +137,11 @@ $("#send").on("click", async () => {
         return;
     }
 
+    if (category === "Other" && details.length < 5) {
+        showMessage("Please add a quick explanation for the " +
+            "&quot;Other&quot; category that you have chosen.");
+        return;
+    }
     if (details.length > detailsLimit) {
         showMessage("Additional details can be at most " +
             detailsLimit.toString() + " characters long.");
