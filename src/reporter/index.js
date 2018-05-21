@@ -50,10 +50,10 @@ const appName = (() => {
 /**
  * Show a specific error message.
  * @function
- * @param {string} msg - The message to show
+ * @param {DOMString} msg - The message to show
  */
-const showError = (msg) => {
-    $("#msg-specific-error p").text(msg);
+const showMessage = (msg) => {
+    $("#msg-specific-error p").html(msg);
     $("#msg-specific-error").addClass("open");
 };
 
@@ -102,6 +102,13 @@ const domCmp = (domain, matchers) => {
 };
 
 
+$("#category").on("change", function () {
+    if (this.value === "Ads") {
+        showMessage("For missed ads and popups, please try the " +
+            "<a href='https://forums.lanik.us/'>EasyList Forum</a> first.");
+    }
+});
+
 $("#details").on("input", updateDetailsLimit);
 updateDetailsLimit();
 
@@ -111,13 +118,18 @@ $("#send").on("click", async () => {
     const details = $("#details").prop("value");
 
     if (!category) {
-        showError("Please select an issue type.");
+        showMessage("Please select an issue type.");
+        return;
+    }
+    if (category === "Other" && details.length < 5) {
+        showMessage("Please add a quick explanation for the " +
+            "&quot;Other&quot; category that you have chosen.");
         return;
     }
 
     let domain = /^https?:\/\/([^/]+)/.exec(url);
     if (!domain) {
-        showError("Please enter a valid URL.");
+        showMessage("Please enter a valid URL.");
         return;
     }
     domain = domain[1];
@@ -131,7 +143,7 @@ $("#send").on("click", async () => {
     }
 
     if (details.length > detailsLimit) {
-        showError("Additional details can be at most " +
+        showMessage("Additional details can be at most " +
             detailsLimit.toString() + " characters long.");
         return;
     }
