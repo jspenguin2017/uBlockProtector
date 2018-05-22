@@ -78,6 +78,7 @@ const knownGood = [
  * @const {Array.<string>}
  */
 const knownBad = [
+    "9anime.is",
     "avgle.com", // NSFW
 ];
 /**
