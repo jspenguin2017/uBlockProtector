@@ -323,7 +323,7 @@ a.dynamicServer = (urls, types, server, domList, isMatch = true) => {
                 const response = server(details);
 
                 //@pragma-if-debug
-                if (a.debugMode) {
+                if (a.debugMode && response) {
                     if (response.cancel) {
                         console.log("Cancelled " + details.url);
                     } else if (response.redirect) {
