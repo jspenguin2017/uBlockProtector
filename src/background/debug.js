@@ -45,7 +45,7 @@ if (a.debugMode) {
     {
         // uplynk.com
         // https://github.com/uBlockOrigin/uAssets/issues/772
-        const re = /https:\/\/content\.uplynk\.com\/.*\.m3u8\?/;
+        const re = /^https:\/\/content\.uplynk\.com\/.*\.m3u8\?/;
 
         a.dynamicServer(
             [
