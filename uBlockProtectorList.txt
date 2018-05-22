@@ -110,12 +110,12 @@ zmovs.com##.inplayer_banners
 ||hammerhearing.com^$third-party
 ||sixscissors.com^$third-party
 /wp-content/plugins/pause-adblocker/*
-sectorsatoshi-amarillo.website,sectorsatoshi-azul.website,sectorsatoshi-blanco.website,sectorsatoshi-celeste.website,sectorsatoshi-gris.website,sectorsatoshi-naranja.website##script:inject(bab-defuser.js)
-sectorsatoshi-negro.website,sectorsatoshi-rosa.website,sectorsatoshi-verde.website,sectorsatoshi-violeta.website##script:inject(bab-defuser.js)
-blockadblock.com,futbolchile.net,freeomovie.com,appdrop.net,skmedix.pl,yalujailbreak.net,cloudwebcopy.com,milaulas.com,tout-bon.com,sznpaste.net,linkdrop.net,themeslide.com##script:inject(bab-defuser.js)
-android-zone.ws,cmacapps.com,l2network.eu,animes-mangas-ddl.net,fuckingsession.com,klartext-ne.de,forumcoin.win,androidemulator.in,forumcoin.win,arenavision.ru,gulshankumar.net##script:inject(bab-defuser.js)
-arenavision.in,arenavision.us,discudemy.com,practicetestgeeks.com,iptvbin.com,imojado.org,xossip.com,adyou.me,funcinema.ga,ddlfr.pw,freecoursesonline.us##script:inject(bab-defuser.js)
-themarker.com,nachrichten.at##script:inject(abort-on-property-read.js, adblockDetector)
+sectorsatoshi-amarillo.website,sectorsatoshi-azul.website,sectorsatoshi-blanco.website,sectorsatoshi-celeste.website,sectorsatoshi-gris.website,sectorsatoshi-naranja.website##+js(bab-defuser.js)
+sectorsatoshi-negro.website,sectorsatoshi-rosa.website,sectorsatoshi-verde.website,sectorsatoshi-violeta.website##+js(bab-defuser.js)
+blockadblock.com,futbolchile.net,freeomovie.com,appdrop.net,skmedix.pl,yalujailbreak.net,cloudwebcopy.com,milaulas.com,tout-bon.com,sznpaste.net,linkdrop.net,themeslide.com##+js(bab-defuser.js)
+android-zone.ws,cmacapps.com,l2network.eu,animes-mangas-ddl.net,fuckingsession.com,klartext-ne.de,forumcoin.win,androidemulator.in,forumcoin.win,arenavision.ru,gulshankumar.net##+js(bab-defuser.js)
+arenavision.in,arenavision.us,discudemy.com,practicetestgeeks.com,iptvbin.com,imojado.org,xossip.com,adyou.me,funcinema.ga,ddlfr.pw,freecoursesonline.us##+js(bab-defuser.js)
+themarker.com,nachrichten.at##+js(abort-on-property-read.js, adblockDetector)
 megawarez.org,tipeo.net,compucalitv.com,intercambiosvirtuales.pro,tecmaxsoft.com,descargatelocorp.com,hackstore.net##div.onp-sl-content:style(display: block !important;)
 megawarez.org,tipeo.net,compucalitv.com,intercambiosvirtuales.pro,tecmaxsoft.com,descargatelocorp.com,hackstore.net##div.onp-sl-social-locker
 anonymousemail.me##div.onp-sociallocker-content:style(display: block !important;)
@@ -139,14 +139,14 @@ filez.tv###adblockinfo
 ||8muses.com^$inline-script
 @@||8muses.com/comix/picture^$inline-script
 ||allmusic.com^$inline-script
-xmovies8.org,moviezr.org##script:inject(abort-on-property-read.js, $.getScript)
+xmovies8.org,moviezr.org##+js(abort-on-property-read.js, $.getScript)
 tune.pk###annoy-wrapper
 29443kmq.video,dato.porn###a
-dato.porn##script:inject(abort-on-property-read.js, open)
-dato.porn##script:inject(noeval-if.js, var r3H4=window;for(var v4 in r3H4))
+dato.porn##+js(abort-on-property-read.js, open)
+dato.porn##+js(noeval-if.js, var r3H4=window;for(var v4 in r3H4))
 engineeringtoolbox.com##.adblo
 engineeringtoolbox.com##.contentDocumentAd
-ps4news.com##script:inject(noeval.js)
+ps4news.com##+js(noeval.js)
 ps4news.com##body > *[id^="blockblock"]:style(visibility: visible !important; display: block !important;)
 ps4news.com##table[id^='blockblock']
 ||7636ca6cb9fc.com^
@@ -159,7 +159,7 @@ answers.com##.end_of_slideshow
 ||openx.gamereactor.*/multi.php$script,important
 ||finalservers.net^$inline-script
 finalservers.net###babasbmsgx
-finalservers.net##script:inject(abort-on-property-read.js, _gunggo)
+finalservers.net##+js(abort-on-property-read.js, _gunggo)
 animmex.*###M148617ScriptRootC75329
 animmex.*##a[href^="https://forum.animmex.com/viewtopic.php"]
 ||flakyfeast.com^$domain=gry.pl
@@ -167,11 +167,11 @@ pixiv.net##.popular-introduction-overlay
 youtube.com###companion
 pogdesign.co.uk##.replace
 ||p207208.clksite.com^$subdocument,redirect=noopframe,domain=ally.sh|al.ly
-ally.sh,al.ly##script:inject(popads.net.js)
+ally.sh,al.ly##+js(popads.net.js)
 ||hackintosh.*/donate/donate.php
 ||ooul.tv/contrib/se-aftonbladet/aab/aftonbladet_plugin.js$script,redirect=noopjs,domain=aftonbladet.se
 ||ooul.tv/nocache/se-aftonbladet/aab/aftonbladet_config.js$script,redirect=noopjs,domain=aftonbladet.se
-filechoco.net,keezmovies.com,raptu.com,afreesms.com##script:inject(noeval.js)
+filechoco.net,keezmovies.com,raptu.com,afreesms.com##+js(noeval.js)
 ||rule34hentai.net^$inline-script
 rule34hentai.net###babasbmsgx
 playbb.me#@#div[style^="width:"]
@@ -192,24 +192,24 @@ gelbooru.com#@#center > a[href]
 ||softgames.de/sg-mc.js*$script,redirect=noopjs
 ||bidvertiser.com$important,domain=exrapidleech.info
 ||broadcastbed.com^$domain=mmo-champion.com
-bracknellnews.co.uk##script:inject(abort-on-property-write.js, _sp_)
+bracknellnews.co.uk##+js(abort-on-property-write.js, _sp_)
 u2s.io,l2s.io,linkhits.us#@#.myTestAd
 @@||solvemedia.com^$domain=u2s.io|l2s.io
 ||5g9quwq.com^$third-party
 telegraph.co.uk##.adblocker-message
-pwn.pl,vendiscuss.net,rufootballtv.org##script:inject(abort-on-property-read.js, adblock)
+pwn.pl,vendiscuss.net,rufootballtv.org##+js(abort-on-property-read.js, adblock)
 ||tiptonvillepylesville.com^$domain=clubic.com
-animeid.io,jkanime.co,gogoanime.ch,chiaanime.co,animeflv.co##script:inject(setTimeout-defuser.js, #player)
+animeid.io,jkanime.co,gogoanime.ch,chiaanime.co,animeflv.co##+js(setTimeout-defuser.js, #player)
 @@||comicincorrect.wpengine.netdna-cdn.com/wp-content/uploads/
-savetodrive.net##script:inject(setTimeout-defuser.js, ad)
-rarbgmirror.com,swfchan.net,swfchan.com,zippyshare.com,leech.ae,vizer.tv##script:inject(abort-on-property-read.js, open)
+savetodrive.net##+js(setTimeout-defuser.js, ad)
+rarbgmirror.com,swfchan.net,swfchan.com,zippyshare.com,leech.ae,vizer.tv##+js(abort-on-property-read.js, open)
 ||googlesyndication.com^$script,redirect=noopjs,domain=pipocas.tv
 steamcustomizer.com###sadcat
 steamcustomizer.com##.notice.support-notice
 @@||steamcustomizer.com/cache/skin/ad/$image,first-party
 shqiperiatv.com,albtvhd.com,tvshqiphd.com,www.balkanweb.com,cdn.livestream.com,livestream.artmotion.al,shqip-tv.info##body > *[id^="blockblock"]:style(visibility: visible !important; display: block !important;)
 shqiperiatv.com,albtvhd.com,tvshqiphd.com,www.balkanweb.com,cdn.livestream.com,livestream.artmotion.al,shqip-tv.info##table[id^='blockblock']
-wordsense.eu##script:inject(setTimeout-defuser.js, ad, 2000)
+wordsense.eu##+js(setTimeout-defuser.js, ad, 2000)
 ||uol.com.br/*/detectadblock/$script,important
 ||jsuol.com.br/*/detectadblock.js$script,important,domain=uol.com.br
 uol.com.br##.bannersticky-top:has(div.ads-wrapper)
@@ -219,7 +219,7 @@ uol.com.br##.bannersticky-top:has(div.ads-wrapper)
 ||nowvideo.li^$inline-script
 ||ewingoset.info^$inline-script
 ||cloudvideoplatform.com/advert.jpg$image,redirect=1x1-transparent.gif,domain=nana10.co.il
-receive-a-sms.com##script:inject(abort-current-inline-script.js, $, showads.js)
+receive-a-sms.com##+js(abort-current-inline-script.js, $, showads.js)
 @@||receive-a-sms.com/showads.js$xmlhttprequest,first-party
 newyorker.com##iframe[src*="/wp-content/assets/"]
 @@||politiken.dk/*ad*$script,first-party
@@ -228,29 +228,29 @@ newyorker.com##iframe[src*="/wp-content/assets/"]
 link.tl##.adblockBox
 link.tl##.adblockOverlay
 *$third-party,script,domain=themelot.net
-batchnime.net##script:inject(abort-on-property-read.js, killAdBlock)
-uplod.ws##script:inject(abort-on-property-read.js, $.ready)
+batchnime.net##+js(abort-on-property-read.js, killAdBlock)
+uplod.ws##+js(abort-on-property-read.js, $.ready)
 ||utils.cedsdigital.it/checkSubscription/checkSubscription.js
-windowsreport.com##script:inject(silent-noeval.js)
-haxmaps.com,haxrec.com,haxcolors.com##script:inject(setTimeout-defuser.js, /.*/, 10000)
+windowsreport.com##+js(silent-noeval.js)
+haxmaps.com,haxrec.com,haxcolors.com##+js(setTimeout-defuser.js, /.*/, 10000)
 animesync.tv##.modal-adblock
 ||active.cache.el-mundo.net/js/*_expansion.js$domain=expansion.com
-watchfree.to##script:inject(abort-on-property-read.js, UAParser)
-firstonetv.eu,firstone.tv##script:inject(noeval-if.js, Please disable your Adblocker)
+watchfree.to##+js(abort-on-property-read.js, UAParser)
+firstonetv.eu,firstone.tv##+js(noeval-if.js, Please disable your Adblocker)
 |https://$third-party,script,domain=streamwoop.tv,badfilter
 |https://$third-party,xmlhttprequest,domain=streamwoop.tv,badfilter
 vooxe.com###blockedAddons
-gentecheesisterealmente.com##script:inject(abort-on-property-read.js, admaniastchk)
+gentecheesisterealmente.com##+js(abort-on-property-read.js, admaniastchk)
 ||litv.tv/promo/
 litv.tv##.fp-pausebn
 ||$third-party,script,domain=litv.tv
-dailyuploads.net##script:inject(abort-on-property-read.js, popns)
-dailyuploads.net##script:inject(abort-on-property-read.js, adbClick)
+dailyuploads.net##+js(abort-on-property-read.js, popns)
+dailyuploads.net##+js(abort-on-property-read.js, adbClick)
 ||madisonross.com/adblock.html$subdocument
-sznpaste.net##script:inject(abort-on-property-write.js, _pop)
+sznpaste.net##+js(abort-on-property-write.js, _pop)
 @@||ajax.googleapis.com/ajax/libs/jquery/$script,domain=linkdrop.net
 leechgear.net###block_on
-wiwo.de,handelsblatt.com##script:inject(abort-on-property-read.js, AdController)
+wiwo.de,handelsblatt.com##+js(abort-on-property-read.js, AdController)
 tvregionalna24.pl##.diablo-placeholder
 kitguru.net#@#div > a[class] > img[src]
 kitguru.net##.gofollow
@@ -266,12 +266,12 @@ themarker.com###ad-block-wrapper
 ||zeusnews.it/antiadb.js
 @@||static.ipornia.com^$image,domain=ipornia.hdzog.com
 hdzog.com##.msg-adblock.msg
-webcheats.com.br##script:inject(abort-on-property-read.js, can_run_ads)
+webcheats.com.br##+js(abort-on-property-read.js, can_run_ads)
 webcheats.com.br###bg_trasp
-totomi.co##script:inject(setInterval-defuser.js, /display/.test)
-naisho.asia##script:inject(abort-on-property-write.js, adBlock)
+totomi.co##+js(setInterval-defuser.js, /display/.test)
+naisho.asia##+js(abort-on-property-write.js, adBlock)
 ||sovrnlabs.net^$domain=westeros.org
-sankakucomplex.com##script:inject(abort-on-property-read.js, BetterJsPop)
+sankakucomplex.com##+js(abort-on-property-read.js, BetterJsPop)
 @@||short.am^$generichide,badfilter
 wdbloog.com###unblocker
 dingit.tv,jan-magazine.nl,glamour.nl,quest.nl#@#.adsbox
@@ -306,7 +306,7 @@ couponcabin.com###adblocker-reminder
 tlz.de##.ab-shader
 ||v.adfox.ru^$xmlhttprequest,redirect=nooptext,domain=1tv.ru
 |https://$third-party,script,domain=uptobox.com|uptostream.com,badfilter
-1tiny.net##script:inject(abort-on-property-read.js, jQuery.ready)
+1tiny.net##+js(abort-on-property-read.js, jQuery.ready)
 thevideo.me##.notification-adblock
 ||fas.li/js/p.js
 smashingmagazine.com###blocked
@@ -314,7 +314,7 @@ smashingmagazine.com###blocked
 @@||latin.it/banner.php$first-party
 ||stocks.cafe/amazon/google$subdocument
 ||laterpay.net^$domain=geo.de
-techforever.net##script:inject(setTimeout-defuser.js, canABP)
+techforever.net##+js(setTimeout-defuser.js, canABP)
 @@||seekingalpha.com^$script,badfilter
 ||seekingalpha.com/ads_data.js$script,redirect=noopjs
 /checkme.js$domain=btcinbtc.com|hamsab.net|20hk.com|my115.net|bitcoball.com|seek-inn.com|at-spot.com
@@ -328,12 +328,12 @@ klisza.org##.spu-box
 ||player.ooyala.com/*/ad-plugin/$important,script,badfilter
 ||player.ooyala.com/*/ad-plugin/$important,script,domain=~mitele.es
 ||player.ooyala.com/*/ad-plugin/$important,script,domain=mitele.es,redirect=noopjs
-virgilio.it##script:inject(abort-on-property-read.js, VVIDEO.adBlock)
+virgilio.it##+js(abort-on-property-read.js, VVIDEO.adBlock)
 ||auroravid.to^$inline-script
-amarujala.com##script:inject(abort-on-property-read.js, call_adblocker)
+amarujala.com##+js(abort-on-property-read.js, call_adblocker)
 imagebam.com###hideifpossible
 ||oddreaders.com/wp-content/plugins/sociallocker-next-premium/
-sportspyder.com##script:inject(setTimeout-defuser.js, BlockerChecker)
+sportspyder.com##+js(setTimeout-defuser.js, BlockerChecker)
 ||sportspyder.com/assets/application-$script,badfilter
 @@||salon.com/combo/js$script,first-party
 tvnow.de##.no-flash-box:has-text(Adblocker)
@@ -352,18 +352,18 @@ sledujufilmy.cz##.riding-banner
 9anime.to,mycloud.to###jwa
 9anime.to###playerad:style(positon: absolute !important; top: -9999px !important; left: -9999px !important;)
 mmorpgitalia.it##.noticeContainer:has-text(ADBLOCK)
-insurancenewsnet.com,advisornews.com##script:inject(abort-on-property-read.js, adblock_detect)
+insurancenewsnet.com,advisornews.com##+js(abort-on-property-read.js, adblock_detect)
 mmovie.it###advleft
-zeperfs.com##script:inject(noeval-if.js, AdBlock)
-userupload.net,firstonetv.net##script:inject(noeval-if.js, Adblock)
-mashable.com,niezalezna.pl##script:inject(noeval-if.js, adblock)
-iptvultra.com##script:inject(setTimeout-defuser.js, div.table_download)
+zeperfs.com##+js(noeval-if.js, AdBlock)
+userupload.net,firstonetv.net##+js(noeval-if.js, Adblock)
+mashable.com,niezalezna.pl##+js(noeval-if.js, adblock)
+iptvultra.com##+js(setTimeout-defuser.js, div.table_download)
 ||pcgames-download.com/wp-content/plugins/noadb-leftthenicemessage/
 grazia-magazin.de##.subNaviNotification:has-text(Adblocker)
 ||metin2bot.net/kontrol/adb.js
 @@||afdah.to/show-ad$first-party
 @@||vertamedia.com/assets/img/adimage.png$first-party
-receivesmsonline.net##script:inject(abort-current-inline-script.js, elms)
+receivesmsonline.net##+js(abort-current-inline-script.js, elms)
 rallye-magazin.de###billboardattention
 schwarzwaelder-bote.de###blocker-note
 wer-weiss-was.de###hint
@@ -378,27 +378,27 @@ yiv.com###RightAdDiv
 4j.com###game_top_ad
 agar.io###advertisement
 ||dolldivine.com/images/fairy-preview.jpg
-peugeot-metropolis.de##script:inject(abort-current-inline-script.js, $, #gandalfads)
+peugeot-metropolis.de##+js(abort-current-inline-script.js, $, #gandalfads)
 warforum.cz###popwrapper
 ||ad.kisscartoon.*^$important
 randaris-anime.net##.advert1
 randaris-anime.net##.adblock-box
 reviewmeta.com##.ad_gu_tr
-androidsage.com##script:inject(abort-on-property-read.js, blckad)
-bento.de,pcgamer.com##script:inject(abort-on-property-read.js, _sp_.mms)
-cwseed.com##script:inject(abort-on-property-read.js, wc.url)
+androidsage.com##+js(abort-on-property-read.js, blckad)
+bento.de,pcgamer.com##+js(abort-on-property-read.js, _sp_.mms)
+cwseed.com##+js(abort-on-property-read.js, wc.url)
 ||wasabisyrup.com/template/plugin02.js
-prevention.com,avoiderrors.net,gulmeklazim.com##script:inject(setTimeout-defuser.js, adblock)
-getfree-bitcoin.com##script:inject(setTimeout-defuser.js, Adblock)
+prevention.com,avoiderrors.net,gulmeklazim.com##+js(setTimeout-defuser.js, adblock)
+getfree-bitcoin.com##+js(setTimeout-defuser.js, Adblock)
 getfree-bitcoin.com##.left-advertisement
 getfree-bitcoin.com##a[href^="//mellowads.com/"]
-estrenos10.com##script:inject(setTimeout-defuser.js, AdBlock)
-programinadresi.com##script:inject(setTimeout-defuser.js, adBlock)
-kshowes.net##script:inject(abort-current-inline-script.js, setTimeout, Im.offsetHeight<=0)
+estrenos10.com##+js(setTimeout-defuser.js, AdBlock)
+programinadresi.com##+js(setTimeout-defuser.js, adBlock)
+kshowes.net##+js(abort-current-inline-script.js, setTimeout, Im.offsetHeight<=0)
 kshowes.net###hide:style(display: block !important;)
 kshowes.net##input.buttonlink#contador
-moat.com##script:inject(setTimeout-defuser.js, adbCheckBlocker)
-imleagues.com##script:inject(setTimeout-defuser.js, show_ads.js)
+moat.com##+js(setTimeout-defuser.js, adbCheckBlocker)
+imleagues.com##+js(setTimeout-defuser.js, show_ads.js)
 indiatimes.com###append_overlay_photo_ads
 nontonanime.org##nav.navbar + div.banner > a[href^="https://goo.gl/"]
 ||eurifsiooyof.bid^$script,third-party
@@ -412,40 +412,40 @@ homebank.free.fr###disablemessage
 getrelax.club##.loaded-popup-wrapper
 mycinema.pro##.adsbygoogle
 okkazeo.com###ads
-digitalinformationworld.com##script:inject(abort-on-property-read.js, adsbygoogle)
+digitalinformationworld.com##+js(abort-on-property-read.js, adsbygoogle)
 @@||moat.com/creatives/advertiser/$first-party
 @@||moat.com/api/entity_report/advertiser/$first-party
-mangashost.net,mangashost.com##script:inject(setTimeout-defuser.js, ads160left)
+mangashost.net,mangashost.com##+js(setTimeout-defuser.js, ads160left)
 ||mms.cnn.com^$script
-attorz.com##script:inject(abort-on-property-write.js, isAdBlocked)
+attorz.com##+js(abort-on-property-write.js, isAdBlocked)
 attorz.com###lineage104_pic
-resourcepacks24.de##script:inject(setTimeout-defuser.js, google_jobrunner)
-literaturcafe.de##script:inject(setTimeout-defuser.js, blockStatus)
+resourcepacks24.de##+js(setTimeout-defuser.js, google_jobrunner)
+literaturcafe.de##+js(setTimeout-defuser.js, blockStatus)
 deckshop.pro###friendlyReminder
 citytv.com##.widget_ad-widget
 citytv.com##.adv_wrap
 citytv.com##.adv_leaderboard
 citytv.com##.ad_bigbox
-maisgasolina.com##script:inject(setTimeout-defuser.js, window.google_jobrunner)
+maisgasolina.com##+js(setTimeout-defuser.js, window.google_jobrunner)
 @@||vaughnlive.tv/ad/banner/_adsense_/_adserver/_adview_.ad.json$xmlhttprequest,first-party
 ||adpass.co.uk^
 strefadb.pl###videoad
 ultimate-catch.eu##.special-message-wrapper
-alemdarleech.com##script:inject(abort-on-property-read.js, koddostu_com_adblock_yok)
+alemdarleech.com##+js(abort-on-property-read.js, koddostu_com_adblock_yok)
 communitech.ca#@#a[href*="/?aff="]
-oload.info##script:inject(noeval-if, stopOver)
+oload.info##+js(noeval-if, stopOver)
 vidfile.net##.rek
 ||cdn.cdnserv.pw/js/cnads.js$script,redirect=noopjs,domain=strikeout.co
-crash-aerien.news##script:inject(abort-on-property-read.js, noPub)
+crash-aerien.news##+js(abort-on-property-read.js, noPub)
 gratisprogramas.co,gratisjuegos.co,gratispeliculas.xyz##div[id^="hide"]:style(display: block !important;)
 gratisprogramas.co,gratisjuegos.co,gratispeliculas.xyz##input[id^="contar"]
 freestocks.org##.popup
-pornhub.com##script:inject(abort-on-property-read.js, userABMessage)
+pornhub.com##+js(abort-on-property-read.js, userABMessage)
 rus.delfi.ee###ab--notification-ribbon
 imgur.com##.footerlink-report-ads
 simply-debrid.com##.adsbygoogle
 simply-debrid.com###google_ads:style(height: 1px !important; visibility: hidden !important;)
-slader.com##script:inject(abort-on-property-read.js, sladerAbm)
+slader.com##+js(abort-on-property-read.js, sladerAbm)
 slader.com##section.solutions-list.loading:style(height: auto !important;)
 slader.com##.ads.ads-to-hide
 jsfiddle.net###keep-us-running
@@ -453,21 +453,21 @@ jsfiddle.net###keep-us-running
 gej-porno.pl#@#.myTestAd
 gej-porno.pl,animezone.pl,egy.best,newpct.com##a[href^="//"]
 m.delfi.ee##.md-banner-placement
-jacquieetmicheltv.net##script:inject(abort-on-property-read.js, is_adblocked)
+jacquieetmicheltv.net##+js(abort-on-property-read.js, is_adblocked)
 haberler.com##.playButton
-livesport.ws##script:inject(abort-on-property-read.js, document.avp_ready)
-backin.net##script:inject(setTimeout-defuser.js, /myadz|adblock/)
+livesport.ws##+js(abort-on-property-read.js, document.avp_ready)
+backin.net##+js(setTimeout-defuser.js, /myadz|adblock/)
 ||stealive.club/js/ht.js
-mejorescanales.com##script:inject(abort-on-property-read.js, jQuery.adblock)
+mejorescanales.com##+js(abort-on-property-read.js, jQuery.adblock)
 gr8forte.org###alert-block
-gr8forte.org##script:inject(abort-on-property-read.js, clickNS)
+gr8forte.org##+js(abort-on-property-read.js, clickNS)
 ||static.vocento.com/adbd/
-flashx.tv,flashx.to##script:inject(abort-on-property-read.js, open)
+flashx.tv,flashx.to##+js(abort-on-property-read.js, open)
 ||flashx.tv/checkembed.php
 ||static.flashx.tv/js/flashx.js$script
 ||static.flashx.tv/img/player.png$image
 dailyuploads.net###adblockinfo
-programminginsider.com##script:inject(addEventListener-defuser.js, load, ad-blocker)
+programminginsider.com##+js(addEventListener-defuser.js, load, ad-blocker)
 programminginsider.com##.g1-top:style(display: block !important;)
 ||allnorilsk.ru/js/adb.js
 discudemy.com##.closeAdBlock
@@ -480,11 +480,11 @@ playview.io##.ads_player
 dogecatch.website,dashcatch.xyz###fuck-adb-not-enabled
 depositfiles.com##.adblock_alert
 locopelis.com##.div-banner-popup-event
-locopelis.com##script:inject(abort-on-property-write.js, adbClick)
+locopelis.com##+js(abort-on-property-write.js, adbClick)
 /assets/js/sourcepoint/*$script,domain=nba.com
-nbc.com##script:inject(abort-on-property-read.js, mps._ab)
+nbc.com##+js(abort-on-property-read.js, mps._ab)
 sledujserialy.sk##div.w-episode-source > div:has(iframe[src*="ad.php"])
-eurogamer.de##script:inject(abort-on-property-read.js, _sp_.msg.displayMessage)
+eurogamer.de##+js(abort-on-property-read.js, _sp_.msg.displayMessage)
 deportesmax.info###wmpu
 9anime.*##.alert.alert-warning:has-text(AdBlock)
 hulu.com###banner-ad-container
@@ -494,17 +494,17 @@ msfn.org##.displayGlobalMessage:has-text(ad-blocking)
 theguardian.com##div.site-message:has(a[href^="https://membership.theguardian.com/"])
 theguardian.com##.contributions__epic
 krassotaa.com###haider
-onvasortir.com##script:inject(abort-on-property-read.js, adBlockDetected)
-kryminalnapolska.pl##script:inject(abort-on-property-read.js, ai_adb_detected)
+onvasortir.com##+js(abort-on-property-read.js, adBlockDetected)
+kryminalnapolska.pl##+js(abort-on-property-read.js, ai_adb_detected)
 nakednepaligirl.com##.rmedia
-nakednepaligirl.com##script:inject(window.open-defuser.js)
-doublemesh.com##script:inject(setTimeout-defuser.js, ads)
-crockolinks.com##script:inject(addEventListener-defuser.js, mousedown)
-fakeporn.tv##script:inject(setTimeout-defuser.js, innerText)
-fakeporn.tv##script:inject(abort-on-property-write.js, prPuShown)
-bigbtc.win##script:inject(abort-on-property-read.js, ad_block_test)
+nakednepaligirl.com##+js(window.open-defuser.js)
+doublemesh.com##+js(setTimeout-defuser.js, ads)
+crockolinks.com##+js(addEventListener-defuser.js, mousedown)
+fakeporn.tv##+js(setTimeout-defuser.js, innerText)
+fakeporn.tv##+js(abort-on-property-write.js, prPuShown)
+bigbtc.win##+js(abort-on-property-read.js, ad_block_test)
 @@/adguard.$domain=github.com
-reviewmeta.com##script:inject(setTimeout-defuser.js, adsbygoogle)
+reviewmeta.com##+js(setTimeout-defuser.js, adsbygoogle)
 askleo.com##[class^="askleo_adblock1"]
 ||mope.io/img/blocked.png$image,first-party
 geektyper.com###itemz
