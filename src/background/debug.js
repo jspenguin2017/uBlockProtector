@@ -56,7 +56,7 @@ if (a.debugMode) {
             ],
             (details) => {
                 if (details.url.startsWith("https://content.uplynk.com/preplay/")) {
-                    //return { cancel: true };
+                    // return { cancel: true };
                 } else if (re.test(details.url)) {
                     const i = details.url.indexOf('?');
                     return { redirectUrl: details.url.substring(0, i) };
