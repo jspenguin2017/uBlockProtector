@@ -282,14 +282,15 @@ a.domCmp = (() => {
 a.staticServer = (urls, types, data, domList, isMatch = true) => {
     chrome.webRequest.onBeforeRequest.addListener(
         (details) => {
-            if (
-                !domList ||
-                a.domCmp(
-                    a.getTabURL(details.tabId, details.frameId),
-                    domList,
-                    isMatch,
-                )
-            ) {
+            const url = a.getTabURL(details.tabId, details.frameId);
+            if (!domList || a.domCmp(url, domList, isMatch)) {
+
+                //@pragma-if-debug
+                if (a.debugMode) {
+                    console.log("Redirected " + details.url + " to " + data);
+                }
+                //@pragma-end-if
+
                 return { redirectUrl: data };
             }
         },
@@ -317,15 +318,22 @@ a.staticServer = (urls, types, data, domList, isMatch = true) => {
 a.dynamicServer = (urls, types, server, domList, isMatch = true) => {
     chrome.webRequest.onBeforeRequest.addListener(
         (details) => {
-            if (
-                !domList ||
-                a.domCmp(
-                    a.getTabURL(details.tabId, details.frameId),
-                    domList,
-                    isMatch,
-                )
-            ) {
-                return server(details);
+            const url = a.getTabURL(details.tabId, details.frameId);
+            if (!domList || a.domCmp(url, domList, isMatch)) {
+                const response = server(details);
+
+                //@pragma-if-debug
+                if (a.debugMode) {
+                    if (response.cancel) {
+                        console.log("Cancelled " + details.url);
+                    } else if (response.redirect) {
+                        console.log("Redirected " + details.url + " to " +
+                            response.redirect);
+                    }
+                }
+                //@pragma-end-if
+
+                return response;
             }
         },
         {
