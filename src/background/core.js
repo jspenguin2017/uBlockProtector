@@ -326,9 +326,9 @@ a.dynamicServer = (urls, types, server, domList, isMatch = true) => {
                 if (a.debugMode && response) {
                     if (response.cancel) {
                         console.log("Cancelled " + details.url);
-                    } else if (response.redirect) {
+                    } else if (response.redirectUrl) {
                         console.log("Redirected " + details.url + " to " +
-                            response.redirect);
+                            response.redirectUrl);
                     }
                 }
                 //@pragma-end-if

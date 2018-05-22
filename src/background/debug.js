@@ -55,13 +55,11 @@ if (a.debugMode) {
                 "xmlhttprequest",
             ],
             (details) => {
-                console.log(details);
-
                 if (details.url.startsWith("https://content.uplynk.com/preplay/")) {
                     //return { cancel: true };
                 } else if (re.test(details.url)) {
                     const i = details.url.indexOf('?');
-                    return { redirect: details.url.substring(0, i) };
+                    return { redirectUrl: details.url.substring(0, i) };
                 }
             },
         );
