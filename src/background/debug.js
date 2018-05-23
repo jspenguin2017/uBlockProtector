@@ -46,7 +46,7 @@ if (a.debugMode) {
         // uplynk.com
         // https://github.com/uBlockOrigin/uAssets/issues/772
         const reBlock = /^https?:\/\/(?:[^.]*?\.)?uplynk\.com\/api\/v3\/preplay\//;
-        const reStrip = /^https?:\/\/(?:[^.]*?\.)?uplynk\.com\/[^?]*\.m3u8\?/;
+        const reStrip = /^https?:\/\/(?:[^.]*?\.)?uplynk\.com\/ext\/[^?]*\.m3u8\?/;
 
         a.dynamicServer(
             [
