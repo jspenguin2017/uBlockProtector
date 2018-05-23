@@ -45,19 +45,21 @@ if (a.debugMode) {
     {
         // uplynk.com
         // https://github.com/uBlockOrigin/uAssets/issues/772
-        const re = /^https:\/\/content\.uplynk\.com\/.*\.m3u8\?/;
+        const reBlock = /^https?:\/\/content[^.]*?\.uplynk\.com\/api\/v3\/preplay2\//;
+        const reStrip = /^https?:\/\/content[^.]*?\.uplynk\.com\/.*\.m3u8\?/;
 
         a.dynamicServer(
             [
-                "https://content.uplynk.com/*",
+                "*://uplynk.com/*",
+                "*://*.uplynk.com/*",
             ],
             [
                 "xmlhttprequest",
             ],
             (details) => {
-                if (details.url.startsWith("https://content.uplynk.com/preplay/")) {
+                if (reBlock.test(details.url)) {
                     // return { cancel: true };
-                } else if (re.test(details.url)) {
+                } else if (reStrip.test(details.url)) {
                     const i = details.url.indexOf('?');
                     return { redirectUrl: details.url.substring(0, i) };
                 }
