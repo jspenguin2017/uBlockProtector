@@ -1,3 +1,4 @@
 # Nano Defender Integration
 # This filter list is intended to be used with Nano Defender (a.k.a. uBlock Protector)
 # Visit my home page for more information: https://jspenguin2017.github.io/uBlockProtector/
+# This file is a compiled binary, any modification will be overwritten on the next build
