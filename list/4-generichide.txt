@@ -2,7 +2,6 @@
 @@||24opole.pl^$generichide
 @@||4j.com^$generichide
 @@||7sim.net^$generichide
-@@||9anime.to^$generichide
 @@||aftonbladet.se^$generichide
 @@||al.ly^$generichide
 @@||ally.sh^$generichide

@@ -550,9 +550,8 @@ stol.it###block-message
 sledujufilmy.cz##.bottom-advert
 sledujufilmy.cz##.ads-position
 sledujufilmy.cz##.riding-banner
-! === 9anime.to
-9anime.to,mycloud.to###jwa
-9anime.to###playerad:style(positon: absolute !important; top: -9999px !important; left: -9999px !important;)
+! === mycloud.to
+mycloud.to###jwa
 ! === mmorpgitalia.it
 mmorpgitalia.it##.noticeContainer:has-text(ADBLOCK)
 ! === insurancenewsnet.com, advisornews.com
@@ -796,8 +795,6 @@ sledujserialy.sk##div.w-episode-source > div:has(iframe[src*="ad.php"])
 eurogamer.de##+js(abort-on-property-read.js, _sp_.msg.displayMessage)
 ! === deportesmax.info
 deportesmax.info###wmpu
-! === 9anime.*
-9anime.*##.alert.alert-warning:has-text(AdBlock)
 ! === hulu.com
 hulu.com###banner-ad-container
 hulu.com##.ad-choices
