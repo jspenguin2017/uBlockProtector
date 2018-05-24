@@ -108,9 +108,13 @@ a.request = (details, onload, onerror) => {
  */
 a.domCmp = (domList, noErr) => {
     for (let i = 0; i < domList.length; i++) {
-        if (document.domain.endsWith(domList[i]) &&
-            (document.domain.length === domList[i].length ||
-                document.domain.charAt(document.domain.length - domList[i].length - 1) === '.')) {
+        if (
+            document.domain.endsWith(domList[i]) &&
+            (
+                document.domain.length === domList[i].length ||
+                document.domain.charAt(document.domain.length - domList[i].length - 1) === '.'
+            )
+        ) {
             if (!noErr) {
                 a.err();
             }
