@@ -843,5 +843,3 @@ redtube.com##div[class][style]:has(> div[class][style] > a.removeAdLink)
 @@||rdtcdn.com^$script,domain=redtube.com
 ! === bild.de
 ||acdn.adnxs.com/*/adplayer.css$stylesheet,redirect=noopcss,domain=bild.de
-! === washingtonpost.com
-||washingtonpost.com/wp-stat/pwapi/prod/*

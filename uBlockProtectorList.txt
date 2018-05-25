@@ -514,7 +514,6 @@ redtube.com##div[class][style]:has(> a.removeAdLink)
 redtube.com##div[class][style]:has(> div[class][style] > a.removeAdLink)
 @@||rdtcdn.com^$script,domain=redtube.com
 ||acdn.adnxs.com/*/adplayer.css$stylesheet,redirect=noopcss,domain=bild.de
-||washingtonpost.com/wp-stat/pwapi/prod/*
 @@||20min.ch^$generichide
 @@||24opole.pl^$generichide
 @@||4j.com^$generichide
