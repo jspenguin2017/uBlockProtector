@@ -442,7 +442,6 @@ dirtstyle.tv##.lightbox
 @@||pubads.g.doubleclick.net/gampad/ads?$object-subrequest,domain=viki.mx|viki.com
 alientube.co###adblockContainer
 proboards.com,freeforums.net,boards.net###support-message
-@@||kwejk.pl^$elemhide
 @@||ps3-infos.fr/adsense/openads/ads/ads.js$script
 plej.tv#@#.advert_box
 @@||danslescoulisses.com/fr/min/$stylesheet
