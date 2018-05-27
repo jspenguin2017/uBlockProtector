@@ -158,6 +158,7 @@ $("#send").on("click", async () => {
             appName + "\n" +
             "\n" +
             "[" + category + "] " + url + "\n" +
+            "\n" +
             details
         );
     } catch (e) {
