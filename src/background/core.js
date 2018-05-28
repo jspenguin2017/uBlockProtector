@@ -114,6 +114,34 @@ a.init = () => {
         ],
     );
 
+    const reporter = chrome.runtime.getURL("/reporter/index.html");
+    chrome.runtime.onMessageExternal.addListener((msg, sender, res) => {
+        if (
+            msg === null || typeof msg !== "object" ||
+            typeof msg.data !== "string" ||
+            sender.id !== a.NanoAdblockerExtensionID
+        ) {
+            return;
+        }
+
+        switch (msg.data) {
+            case "Ping":
+                res({ data: "ok" });
+                break;
+
+            case "Open Quick Issue Reporter":
+                if (typeof msg.tab === "number") {
+                    chrome.tabs.create({
+                        url: reporter + "?" + msg.tab.toString(),
+                    });
+                }
+                break;
+
+            default:
+                break;
+        }
+    });
+
     setTimeout(() => {
         chrome.runtime.sendMessage(
             a.NanoAdblockerExtensionID,
