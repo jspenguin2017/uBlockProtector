@@ -134,6 +134,7 @@ a.init = () => {
                     chrome.tabs.create({
                         url: reporter + "?" + msg.tab.toString(),
                     });
+                    res({ data: "ok" });
                 }
                 break;
 
