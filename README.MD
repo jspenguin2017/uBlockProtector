@@ -27,7 +27,7 @@ Nano Defender uses open source code from the following projects (alphabetical):
 
 ## Special Thanks
 
-Nano Defender is made possible with the help of the following individuals
-(alphabetical):
+Nano Defender is developed by **@jspenguin2017** with the help of the following
+individuals (alphabetical):
 
 **@lain566**
