@@ -3070,6 +3070,11 @@ if (a.domCmp(["3dzone.link"])) {
         });
     });
 }
+if (a.domCmp(["washingtonpost.com"])) {
+    a.ready(() => {
+        $("body").attr("data-no_ads", "true");
+    });
+}
 
 // Nano Adblocker does not support UserCSS because it breaks DOM Inspector, duct tape it here
 // TODO - Convert to filter (or remove if already in uAssets) when minimum required version of Chrome can handle
