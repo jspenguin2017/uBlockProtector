@@ -1067,22 +1067,6 @@ if (a.domCmp(["dplay.com", "dplay.dk", "dplay.se"])) {
     });
     a.cookie("dsc-adblock", value);
 }
-if (a.domCmp(["viafree.no", "viafree.dk", "viafree.se"])) {
-    a.replaceXHR(() => {
-        const re = /\/api\/playClient.*resource=adinfo\?/;
-        if (re.test(url)) {
-            this.addEventListener("readystatechange", () => {
-                if (this.readyState === 4) {
-                    try {
-                        let payload = window.JSON.parse(this.responseText);
-                        payload.data.ab_allowed = true;
-                        replace(this, window.JSON.stringify(payload));
-                    } catch (err) { }
-                }
-            });
-        }
-    });
-}
 if (a.domCmp(["tvplay.skaties.lv", "play.tv3.lt", "tv3play.tv3.ee", "play.nova.bg"])) {
     a.replaceXHR(() => {
         if (url && url.includes("/adinfo?")) {
