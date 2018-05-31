@@ -12,6 +12,7 @@
     const genericWhitelist1 = [
         // Local network
         "localhost", "127.0.0.1",
+
         // Google
         "google.it.ao", "google.ne.jp", "google.off.ai", "youtu.be",
         "youtube.com",
@@ -24,6 +25,7 @@
         // JavaScript playgrounds
         "stackoverflow.com", "ask.com", "w3schools.com", "jsbin.com",
         "jsfiddle.net", "plnkr.co", "preloaders.net",
+
         // Social sites (for performance)
         "facebook.com", "messenger.com", "twitter.com", "instagram.com",
         "reddit.com", "linkedin.com",
@@ -34,12 +36,15 @@
         "imgur.com", "imgbox.com", "flickr.com",
         // Advanced tools (for performance)
         "lab.wolframcloud.com",
+
         // Handled by specific rules
         "anandabazar.com", "o2.pl", "vod.pl", "viasatsport.se", "viasport.fi",
         "tv3sport.dk", "viasport.no", "strefadb.pl", "wp.pl",
         "ostrzeszowinfo.pl", "infostrow.pl",
+
         // Handled by Nano Defender Extra
         "boost.ink", "lolalytics.com",
+
         // False positives
         "babbel.com", "buxfer.com", "derstandard.at", "download.ipeenk.com",
         "imdb.com", "lemonde.fr", "socketloop.com", "store.playstation.com",
