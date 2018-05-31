@@ -41,9 +41,9 @@
         // Handled by Nano Defender Extra
         "boost.ink", "lolalytics.com",
         // False positives
-        "techradar.com", "imdb.com", "babbel.com", "buxfer.com",
-        "store.playstation.com", "lemonde.fr", "derstandard.at",
-        "download.ipeenk.com", "socketloop.com",
+        "babbel.com", "buxfer.com", "derstandard.at", "download.ipeenk.com",
+        "imdb.com", "lemonde.fr", "socketloop.com", "store.playstation.com",
+        "techradar.com", "viafree.dk", "viafree.no", "viafree.se",
     ];
     const genericWhitelist2 = [
         // Local network
