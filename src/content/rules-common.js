@@ -47,8 +47,9 @@
 
         // False positives
         "babbel.com", "buxfer.com", "derstandard.at", "download.ipeenk.com",
-        "imdb.com", "lemonde.fr", "socketloop.com", "store.playstation.com",
-        "techradar.com", "viafree.dk", "viafree.no", "viafree.se",
+        "kissasian.ch", "imdb.com", "lemonde.fr", "socketloop.com",
+        "store.playstation.com", "techradar.com", "viafree.dk", "viafree.no",
+        "viafree.se",
     ];
     const genericWhitelist2 = [
         // Local network
