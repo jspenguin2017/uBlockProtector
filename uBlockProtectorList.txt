@@ -1,5 +1,5 @@
 # Nano Defender Integration
-# This filter list is intended to be used with Nano Defender (a.k.a. uBlock Protector)
+# This filter list is intended to be used with Nano Defender
 # Visit my home page for more information: https://jspenguin2017.github.io/uBlockProtector/
 # This file is a compiled binary, any modification will be overwritten on the next build
 |https://jspenguin.com/uBlockProtector/Solutions/Blocked.php$important
@@ -190,8 +190,6 @@ animesync.tv##.modal-adblock
 ||active.cache.el-mundo.net/js/*_expansion.js$domain=expansion.com
 watchfree.to##+js(abort-on-property-read.js, UAParser)
 firstonetv.eu,firstone.tv##+js(noeval-if.js, Please disable your Adblocker)
-|https://$third-party,script,domain=streamwoop.tv,badfilter
-|https://$third-party,xmlhttprequest,domain=streamwoop.tv,badfilter
 vooxe.com###blockedAddons
 gentecheesisterealmente.com##+js(abort-on-property-read.js, admaniastchk)
 ||litv.tv/promo/
@@ -209,10 +207,8 @@ kitguru.net#@#div > a[class] > img[src]
 kitguru.net##.gofollow
 vidnow.to###adplayer
 ||gigaleecher.com/templates/plugmod/giga.js$script
-|https://$third-party,script,domain=photobucket.com,badfilter
 diariodenavarra.es###abMsgWrap
 darmowe-pornosy.pl,polskie-aktorki-porno.pl#@#.myTestAd
-|https://$third-party,script,domain=hothardware.com,badfilter
 themarker.com###ad-block-wrapper
 @@||jsuol.com.br/c/detectadblock/$script,domain=uol.com.br,badfilter
 @@*$csp,domain=vidlox.tv
@@ -258,7 +254,6 @@ couponcabin.com###adblocker-reminder
 @@||tubeninja.net/ads.js$first-party
 tlz.de##.ab-shader
 ||v.adfox.ru^$xmlhttprequest,redirect=nooptext,domain=1tv.ru
-|https://$third-party,script,domain=uptobox.com|uptostream.com,badfilter
 1tiny.net##+js(abort-on-property-read.js, jQuery.ready)
 thevideo.me##.notification-adblock
 ||fas.li/js/p.js

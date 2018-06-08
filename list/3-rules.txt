@@ -307,9 +307,6 @@ animesync.tv##.modal-adblock
 watchfree.to##+js(abort-on-property-read.js, UAParser)
 ! === firstonetv.eu, firstone.tv
 firstonetv.eu,firstone.tv##+js(noeval-if.js, Please disable your Adblocker)
-! === streamwoop.tv
-|https://$third-party,script,domain=streamwoop.tv,badfilter
-|https://$third-party,xmlhttprequest,domain=streamwoop.tv,badfilter
 ! === vooxe.com
 vooxe.com###blockedAddons
 ! === gentecheesisterealmente.com
@@ -340,14 +337,10 @@ kitguru.net##.gofollow
 vidnow.to###adplayer
 ! === gigaleecher.com
 ||gigaleecher.com/templates/plugmod/giga.js$script
-! === photobucket.com
-|https://$third-party,script,domain=photobucket.com,badfilter
 ! === diariodenavarra.es
 diariodenavarra.es###abMsgWrap
 ! === NSFW! darmowe-pornosy.pl, polskie-aktorki-porno.pl
 darmowe-pornosy.pl,polskie-aktorki-porno.pl#@#.myTestAd
-! === hothardware.com
-|https://$third-party,script,domain=hothardware.com,badfilter
 ! === themarker.com
 themarker.com###ad-block-wrapper
 ! === jsuol.com.br
@@ -423,8 +416,6 @@ couponcabin.com###adblocker-reminder
 tlz.de##.ab-shader
 ! === 1tv.ru
 ||v.adfox.ru^$xmlhttprequest,redirect=nooptext,domain=1tv.ru
-! === uptobox.com, uptostream.com
-|https://$third-party,script,domain=uptobox.com|uptostream.com,badfilter
 ! === 1tiny.net
 1tiny.net##+js(abort-on-property-read.js, jQuery.ready)
 ! === thevideo.me
