@@ -72,6 +72,9 @@ const knownGood = [
 
     "derstandard.at",
     "soft98.ir",
+    "moonbit.co.in",
+    "moondoge.co.in",
+    "moonliteco.in",
 ];
 /**
  * Domains that are known to be bad where only technical help is needed.
