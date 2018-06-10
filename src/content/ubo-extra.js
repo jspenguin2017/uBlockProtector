@@ -169,6 +169,7 @@ if ( !abort ) {
             'baltimoresun.com',
             'boatingmag.com',
             'boston.com',
+            'cafemom.com',
             'calgaryherald.com',
             'calgarysun.com',
             'capitalgazette.com',
