@@ -2197,13 +2197,6 @@ if (a.domCmp(["oddreaders.com"])) {
         }
     });
 }
-if (a.domCmp(["onet.pl", "komputerswiat.pl", "przegladsportowy.pl", "fakt.pl"])) {
-    a.beforeScript((script) => {
-        if (script.id === "adsinit") {
-            script.remove();
-        }
-    });
-}
 if (a.domCmp(["vod.pl"])) {
     a.onInsert((node) => {
         if (node.tagName !== "SCRIPT" && node.innerText && node.innerText.includes("Prosimy, odblokuj wy\u015Bwietlanie reklam")) {
