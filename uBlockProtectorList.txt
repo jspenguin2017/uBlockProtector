@@ -125,8 +125,6 @@ ally.sh,al.ly##+js(popads.net.js)
 ||ooul.tv/contrib/se-aftonbladet/aab/aftonbladet_plugin.js$script,redirect=noopjs,domain=aftonbladet.se
 ||ooul.tv/nocache/se-aftonbladet/aab/aftonbladet_config.js$script,redirect=noopjs,domain=aftonbladet.se
 filechoco.net,keezmovies.com,raptu.com,afreesms.com##+js(noeval.js)
-||rule34hentai.net^$inline-script
-rule34hentai.net###babasbmsgx
 playbb.me#@#div[style^="width:"]
 easyvideo.me#@#div[style^="width:"]
 videowing.me#@#div[style^="width:"]

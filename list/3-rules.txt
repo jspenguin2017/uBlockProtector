@@ -197,11 +197,7 @@ ally.sh,al.ly##+js(popads.net.js)
 ||ooul.tv/nocache/se-aftonbladet/aab/aftonbladet_config.js$script,redirect=noopjs,domain=aftonbladet.se
 ! === filechoco.net, keezmovies.com, raptu.com, afreesms.com
 filechoco.net,keezmovies.com,raptu.com,afreesms.com##+js(noeval.js)
-! === rule34hentai.net
-! === https://github.com/jspenguin2017/uBlockProtector/issues/177
-||rule34hentai.net^$inline-script
-rule34hentai.net###babasbmsgx
-! === iframes of goodanime.co - Thanks to uBlock-user
+! === iframes of goodanime.co
 playbb.me#@#div[style^="width:"]
 easyvideo.me#@#div[style^="width:"]
 videowing.me#@#div[style^="width:"]
