@@ -2850,9 +2850,6 @@ if (a.domCmp(["ultrahorny.com"])) {
 if (a.domCmp(["uplod.cc"])) {
     a.bait("div", "#bannerad", true);
 }
-if (a.domCmp(["hyperdebrid.net"])) {
-    a.filter("eval", a.matchMethod.string, "eval(function(p,a,c,k,e,d){");
-}
 if (a.domCmp(["pilot.wp.pl"])) {
     a.readOnly("PWA_adbd", 0);
 }
