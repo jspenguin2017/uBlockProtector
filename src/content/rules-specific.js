@@ -614,12 +614,6 @@ if (a.domCmp(["diarioinformacion.com", "mallorcazeitung.es", "diaridegirona.cat"
 if (a.domCmp(["cnbeta.com"])) {
     a.readOnly("JB", () => { });
 }
-if (a.domCmp(["haaretz.co.il"])) {
-    a.inject(() => {
-        "use strict";
-        window.AdBlockUtil = {};
-    });
-}
 if (a.domCmp(["pipocas.tv"])) {
     a.cookie("popup_user_login", "yes");
 }
