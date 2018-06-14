@@ -15,15 +15,15 @@ Nano Defender is built using
 
 Nano Defender uses open source code from the following projects (alphabetical):
 
-[anti-adblock-killer](https://github.com/reek/anti-adblock-killer)
+[reek/anti-adblock-killer](https://github.com/reek/anti-adblock-killer)
 
-[octicons](https://github.com/primer/octicons/)
+[primer/octicons](https://github.com/primer/octicons/)
 
-[uAssets](https://github.com/uBlockOrigin/uAssets)
+[uBlockOrigin/uAssets](https://github.com/uBlockOrigin/uAssets)
 
-[uBlock](https://github.com/gorhill/uBlock)
+[gorhill/uBlock](https://github.com/gorhill/uBlock)
 
-[uBO-Extra](https://github.com/gorhill/uBO-Extra)
+[gorhill/uBO-Extra](https://github.com/gorhill/uBO-Extra)
 
 ## Special Thanks
 
