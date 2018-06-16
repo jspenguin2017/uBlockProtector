@@ -227,8 +227,6 @@ bracknellnews.co.uk##+js(abort-on-property-write.js, _sp_)
 u2s.io,l2s.io,linkhits.us#@#.myTestAd
 @@||solvemedia.com^$domain=u2s.io|l2s.io
 ||5g9quwq.com^$third-party
-! === telegraph.co.uk
-telegraph.co.uk##.adblocker-message
 ! === pwn.pl, vendiscuss.net, rufootballtv.org
 pwn.pl,vendiscuss.net,rufootballtv.org##+js(abort-on-property-read.js, adblock)
 ! === clubic.com

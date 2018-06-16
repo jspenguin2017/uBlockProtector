@@ -3037,11 +3037,15 @@ if (a.domCmp(["washingtonpost.com"])) {
     });
 }
 
-// Nano Adblocker does not support UserCSS because it breaks DOM Inspector, duct tape it here
-// TODO - Convert to filter (or remove if already in uAssets) when minimum required version of Chrome can handle
-// removing injected stylesheet
+// Nano Adblocker does not support UserCSS because it breaks DOM Inspector,
+// duct tape it here
+// TODO - Convert to filter (or remove if already in uAssets) when minimum
+// required version of Chrome can handle removing injected stylesheet
 if (a.domCmp(["hdblog.it", "hdmotori.it"])) {
     a.css("body { background:none; overflow:auto; }");
+}
+if (a.domCmp(["telegraph.co.uk"])) {
+    a.css(".adblocker-message { display:none; }");
 }
 
 // Partially working
