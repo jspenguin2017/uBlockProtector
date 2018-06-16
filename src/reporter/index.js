@@ -75,6 +75,7 @@ const knownGood = [
     "moonbit.co.in",
     "moondoge.co.in",
     "moonliteco.in",
+    "tvp.pl",
 ];
 /**
  * Domains that are known to be bad where only technical help is needed.
