@@ -108,7 +108,14 @@ if ( !abort ) {
     var scriptlet = function() {
         var magic = String.fromCharCode(Date.now() % 26 + 97) +
                     Math.floor(Math.random() * 982451653 + 982451653).toString(36),
-            targets = [ 'atob', 'console.error', 'INSTART', 'INSTART_TARGET_NAME', 'performance', 'require' ],
+            targets = [
+                'atob',
+                'console.error',
+                'INSTART',
+                'INSTART_TARGET_NAME',
+                'performance',
+                'require'
+            ],
             reScriptText = /\b(?:Instart-|I10C|IXC_|INSTART)/,
             reScriptSrc = /\babd.*?\/instart.js/;
         var validate = function() {
@@ -313,6 +320,7 @@ if ( !abort ) {
             'trustedreviews.com',
             'tv.com',
             'tvguide.com',
+            'tvtropes.org',
             'twincities.com',
             'utvdriver.com',
             'vancouversun.com',
@@ -575,21 +583,16 @@ if ( !abort ) {
 
     if ( scriptText.length === 0 ) { return; }
 
-    // Have the script tag remove itself once executed (leave a clean
-    // DOM behind).
-    var cleanup = function() {
-        var c = document.currentScript, p = c && c.parentNode;
-        if ( p ) {
-            p.removeChild(c);
-        }
-    };
-    scriptText.push('(' + cleanup.toString() + ')();');
-
     var elem = document.createElement('script');
     elem.appendChild(document.createTextNode(scriptText.join('\n')));
     try {
         (document.head || document.documentElement).appendChild(elem);
     } catch(ex) {
+    }
+    // Remove the script tag once executed (leave a clean DOM behind).
+    elem.textContent = '';
+    if ( elem.parentNode ) {
+        elem.parentNode.removeChild(elem);
     }
 })();
 
