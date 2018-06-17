@@ -70,6 +70,7 @@ const knownGood = [
     "jspenguin.com",
     "jspenguin2017.github.io",
 
+    "blockadblock.com",
     "derstandard.at",
     "soft98.ir",
     "moonbit.co.in",
