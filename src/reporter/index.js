@@ -72,6 +72,7 @@ const knownGood = [
 
     "blockadblock.com",
     "derstandard.at",
+    "kwejk.pl",
     "soft98.ir",
     "moonbit.co.in",
     "moondoge.co.in",
