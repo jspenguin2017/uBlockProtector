@@ -11,8 +11,9 @@
 @@|https://*.moatads.com/*/MoatFreeWheelJSPEM.js*$script
 @@|https://ads.korri.fr/index.js|$script
 @@|http://*.medianetworkinternational.com/js/advertisement.js*$script
-@@|https://imasdk.googleapis.com/js/sdkloader/ima3.js*$script,domain=~fox.com|~motorsport.tv|~pandora.com|~popcornflix.com|~streamable.com|~tv2.dk
-@@|http://imasdk.googleapis.com/js/sdkloader/ima3.js*$script,domain=~fox.com|~motorsport.tv|~pandora.com|~popcornflix.com|~streamable.com|~tv2.dk
+! Not working correctly
+! @@|https://imasdk.googleapis.com/js/sdkloader/ima3.js*$script,domain=~fox.com|~log.com.tr|~motorsport.tv|~pandora.com|~popcornflix.com|~streamable.com|~tv2.dk
+! @@|http://imasdk.googleapis.com/js/sdkloader/ima3.js*$script,domain=~fox.com|~log.com.tr|~motorsport.tv|~pandora.com|~popcornflix.com|~streamable.com|~tv2.dk
 ! === ncaa.com, pga.com, q2.be, medialaancdn.be, medialaan.be
 @@|https://*.v.fwmrm.net/ad/g/*$script,domain=ncaa.com|pga.com|q2.be|vtm.be|ruutu.fi|medialaancdn.be|medialaan.be
 @@|http://*.v.fwmrm.net/ad/g/*$script,domain=ncaa.com|pga.com|q2.be|vtm.be|ruutu.fi|medialaancdn.be|medialaan.be

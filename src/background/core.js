@@ -487,6 +487,8 @@ a.generic = () => {
         ],
         a.rLink("jquery.js"),
     );
+    /*
+    // Not working correctly
     a.staticServer(
         [
             "https://imasdk.googleapis.com/js/sdkloader/ima3.js*",
@@ -496,12 +498,12 @@ a.generic = () => {
             "script",
         ],
         a.rLink("ima3.js"),
-        /*
-        [
-        ],
-        false,
-        */
+        // List whitelisted domains in the array
+        // [
+        // ],
+        // false,
     );
+    */
     a.staticServer(
         [
             "https://jspenguin.com/uBlockProtector/Solutions/MoatFreeWheelJSPEM.js",
