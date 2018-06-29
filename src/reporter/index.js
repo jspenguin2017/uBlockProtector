@@ -72,7 +72,6 @@ const knownGood = [
 
     "blockadblock.com",
     "derstandard.at",
-    "kissanime.ru",
     "kwejk.pl",
     "soft98.ir",
     "moonbit.co.in",
@@ -88,6 +87,9 @@ const knownBad = [
     "9anime.is",
     "avgle.com", // NSFW
     "cointiply.com",
+
+    // Temporary, causing massive spam on the API server
+    "kissanime.ru",
 ];
 /**
  * Check if a domain matches one of the matchers.
