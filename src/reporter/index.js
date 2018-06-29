@@ -87,9 +87,6 @@ const knownBad = [
     "9anime.is",
     "avgle.com", // NSFW
     "cointiply.com",
-
-    // Temporary, causing massive spam on the API server
-    "kissanime.ru",
 ];
 /**
  * Check if a domain matches one of the matchers.
