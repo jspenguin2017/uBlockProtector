@@ -87,6 +87,7 @@ const knownBad = [
     "9anime.is",
     "avgle.com", // NSFW
     "cointiply.com",
+    "kissanime.ru",
 ];
 /**
  * Check if a domain matches one of the matchers.
