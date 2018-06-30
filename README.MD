@@ -6,6 +6,9 @@ An anti-adblock defuser for Nano Adblocker and uBlock Origin
 
 ### [Get it Now](http://jspenguin2017.github.io/uBlockProtector/)
 
+*Formerly uBlock Protector. Repository name will not be updated as it would
+break too many links.*
+
 ## Building
 
 Nano Defender is built using
