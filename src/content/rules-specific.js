@@ -15,7 +15,7 @@ if (a.domCmp(["voici.fr", "programme-tv.net"])) {
 if (a.domCmp(["badtv.it", "badtaste.it", "badgames.it", "badcomics.it"])) {
     a.cookie("adBlockChecked", "disattivo");
 }
-if (a.domCmp(["bknime.com", "go4up.com", "debrido.com", "thepcspy.com"])) {
+if (a.domCmp(["bknime.com", "debrido.com", "thepcspy.com"])) {
     a.css(".myTestAd { height:1px; }");
 }
 if (a.domCmp(["buzina.xyz", "farmet.info", "rimladi.com", "kitorelo.com", "omnipola.com", "porosin.co.uk",
@@ -3046,6 +3046,18 @@ if (a.domCmp(["hdblog.it", "hdmotori.it"])) {
 }
 if (a.domCmp(["telegraph.co.uk"])) {
     a.css(".adblocker-message { display:none; }");
+}
+if (a.domCmp(["go4up.com"])) {
+    a.inject(() => {
+        "use strict";
+        const _getElementById = window.document.getElementById;
+        window.document.getElementById = function (elem, ...rest) {
+            if (elem === "dlbuttonimg") {
+                return window.document.createElement("div");
+            }
+            return _getElementById.call(this, elem, ...rest);
+        };
+    });
 }
 
 // Partially working
