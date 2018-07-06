@@ -37,31 +37,31 @@
         // Advanced tools (for performance)
         "lab.wolframcloud.com",
 
-        // Handled by specific rules
-        "anandabazar.com", "o2.pl", "vod.pl", "viasatsport.se", "viasport.fi",
-        "tv3sport.dk", "viasport.no", "strefadb.pl", "wp.pl",
-        "ostrzeszowinfo.pl", "infostrow.pl",
-
         // Handled by Nano Defender Extra
         "boost.ink", "lolalytics.com",
 
-        // False positives
+        // Handled by specific rules or false positives
         "babbel.com", "buxfer.com", "derstandard.at", "download.ipeenk.com",
         "kissasian.ch", "imdb.com", "lemonde.fr", "socketloop.com",
         "store.playstation.com", "techradar.com", "viafree.dk", "viafree.no",
-        "viafree.se",
+        "viafree.se", "sport-tv-guide.live", "anandabazar.com", "o2.pl",
+        "vod.pl", "viasatsport.se", "viasport.fi", "tv3sport.dk",
+        "viasport.no", "strefadb.pl", "wp.pl", "ostrzeszowinfo.pl",
+        "infostrow.pl",
     ];
     const genericWhitelist2 = [
         // Local network
         "192.168.0", "192.168.1",
+
         // Google
         "google", "google.co", "google.com",
         // Yahoo
         "yahoo",
         // Stores
         "amazon", "ebay",
+
         // False positives
-        "9anime", "italiashare",
+        "9anime", "italiashare", "kissanime",
     ];
 
     if (a.domCmp(genericWhitelist1, true) || a.domInc(genericWhitelist2, true)) {
