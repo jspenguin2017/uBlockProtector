@@ -40,7 +40,7 @@
         // Handled by Nano Defender Extra
         "boost.ink", "lolalytics.com",
 
-        // Handled by specific rules or false positives
+        // False positives
         "babbel.com", "buxfer.com", "derstandard.at", "download.ipeenk.com",
         "kissasian.ch", "imdb.com", "lemonde.fr", "socketloop.com",
         "store.playstation.com", "techradar.com", "viafree.dk", "viafree.no",
