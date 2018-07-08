@@ -3036,6 +3036,9 @@ if (a.domCmp(["washingtonpost.com"])) {
         $("body").attr("data-no_ads", "true");
     });
 }
+if (a.domCmp(["lcpdfr.com"])) {
+    a.noAccess("FuckAdBlock");
+}
 
 // Nano Adblocker does not support UserCSS because it breaks DOM Inspector,
 // duct tape it here
