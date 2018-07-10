@@ -1,7 +1,8 @@
 body {
     margin: 0px;
     user-select: none;
-    width: 250px;
+    min-width: 250px;
+    width: auto;
 }
 
 .title {
