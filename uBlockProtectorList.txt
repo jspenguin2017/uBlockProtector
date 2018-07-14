@@ -5,6 +5,7 @@
 |https://jspenguin.com/uBlockProtector/Solutions/Blocked.php$important
 |https://jspenguin.com/uBlockProtector/Solutions/
 @@|https://jspenguin.com/uBlockProtector/Solutions/MoatFreeWheelJSPEM.js|$script
+@@||github.com/jspenguin2017/*/ima3.js
 @@|https://*.moatads.com/*/MoatFreeWheelJSPEM.js*$script
 @@|https://ads.korri.fr/index.js|$script
 @@|http://*.medianetworkinternational.com/js/advertisement.js*$script
