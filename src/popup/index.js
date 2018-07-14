@@ -22,9 +22,7 @@ const home = [
  */
 const onclick = function () {
     const url = home[this.dataset.home] + this.dataset.href;
-    chrome.tabs.create({
-        url: url,
-    });
+    chrome.tabs.create({ url: url });
 };
 
 

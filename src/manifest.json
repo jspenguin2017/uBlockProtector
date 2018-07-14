@@ -5,7 +5,6 @@
       "common.js",
       "platform/chromium-vars.js",
       "background/core.js",
-      "platform/chromium-background.js",
       "background/rules.js",
       "background/debug.js"
     ]

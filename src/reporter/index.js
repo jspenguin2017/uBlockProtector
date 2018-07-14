@@ -58,7 +58,7 @@ const showMessage = (msg) => {
 };
 
 /**
- * Domains that are known to be good.
+ * Domains that are known to be working as intended.
  * @const {Array.<string>}
  */
 const knownGood = [
