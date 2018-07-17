@@ -47,7 +47,7 @@
         "viafree.se", "sport-tv-guide.live", "anandabazar.com", "o2.pl",
         "vod.pl", "viasatsport.se", "viasport.fi", "tv3sport.dk",
         "viasport.no", "strefadb.pl", "wp.pl", "ostrzeszowinfo.pl",
-        "infostrow.pl", "lcpdfr.com",
+        "infostrow.pl", "lcpdfr.com", "dallasnews.com",
     ];
     const genericWhitelist2 = [
         // Local network
