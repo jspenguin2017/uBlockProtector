@@ -11,8 +11,6 @@
 @@|http://*.medianetworkinternational.com/js/advertisement.js*$script
 @@|https://*.v.fwmrm.net/ad/g/*$script,domain=ncaa.com|pga.com|q2.be|vtm.be|ruutu.fi|medialaancdn.be|medialaan.be
 @@|http://*.v.fwmrm.net/ad/g/*$script,domain=ncaa.com|pga.com|q2.be|vtm.be|ruutu.fi|medialaancdn.be|medialaan.be
-||cbsnews.com/news/*/[object%20object]$image,redirect=1x1-transparent.gif
-||cbsnews.com/news/*/undefined$image,redirect=1x1-transparent.gif
 @@||ads-v-darwin.hulustream.com/published/*.mp4$domain=hulu.com
 ! Asking for permission does not have an enforced cooldown, can be exploited to make the permission request to be not refusable
 ! More information: https://github.com/uBlockOrigin/uAssets/issues/770
