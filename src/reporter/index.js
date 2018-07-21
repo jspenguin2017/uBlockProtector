@@ -79,6 +79,7 @@ const knownGood = [
     "moonliteco.in",
     "techradar.com",
     "tvp.pl",
+    "washingtonpost.com",
 ];
 /**
  * Domains that are known to be bad where only technical help is needed.
