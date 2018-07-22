@@ -80,6 +80,7 @@ const knownGood = [
     "techradar.com",
     "tvp.pl",
     "washingtonpost.com",
+    "wp.pl",
 ];
 /**
  * Domains that are known to be bad where only technical help is needed.
