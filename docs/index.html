@@ -77,8 +77,8 @@
 
         <p><strong>Can mining wall be bypassed?</strong></p>
         <p>No, that is not possible if the implementation on the server side is correct.</p>
-        <p>Adblockers block mining scripts by default and I will not add an exception if the mining process is started automatically.</p>
-        <p>The control is in your hand, whitelist the page if you absolutely need the resource locked behind the Captcha.</p>
+        <p>Adblockers block mining scripts by default and I will not add exceptions if the mining process is started automatically.</p>
+        <p>The control is in your hand, whitelist the page if you absolutely need the resources locked behind the wall.</p>
         <br />
 
         <p><strong>Nano Defender is causing (further) breakage.</strong></p>
@@ -106,7 +106,7 @@
 
         <p><strong>6abc.com, abc7.com, cwtv.com, discovery.com, fox.com, investigationdiscovery.com, nbc.com, sciencechannel.com, threenow.co.nz, viceland.com, watch.hgtv.com</strong></p>
         <p>Server side ads injection, video ads not blocked.</p>
-        <p><code>Geo Lock (New Zealand)</code> <code>Geo Lock (United States of America)</code> <code>Account Required</code></p>
+        <p><code>Account Required</code> <code>Geo Lock (New Zealand)</code> <code>Geo Lock (United States of America)</code></p>
         <p>
             <a href="http://6abc.com/health/stretching-for-safety---todays-tip/3506389/" target="_blank">Test link 1</a>
             <a href="https://www.fox.com/watch/2046d8741d77ef3febfb6004f68a55f2/" target="_blank">Test link 2</a>
@@ -118,9 +118,9 @@
         <br />
 
         <p><strong>hulu.com</strong></p>
-        <p>Video player <i>sometimes</i> shows a screen that asks the user what type of ads he wants. Choose to watch trailer if available; actual ads are skipped after choosing.</p>
+        <p>Video player sometimes shows a screen that asks the user what type of ads he wants. Choose to watch trailer if available; actual ads are <i>usually</i> skipped after choosing.</p>
         <p>Video ads are replaced by 1 second blank video but they would still cause a slight interruption.</p>
-        <p><code>Account Required</code> <code>Geo Lock (United States of America)</code> <code>Detects VPN</code></p>
+        <p><code>Account Required</code> <code>VPN Detected</code> <code>Geo Lock (United States of America)</code></p>
         <p>
             <a href="https://www.hulu.com/watch/132768?d=AnimePlanet" target="_blank">Test link 1</a>
             <a href="https://www.hulu.com/watch/1177361" target="_blank">Test link 2</a>
@@ -135,7 +135,7 @@
 
         <p><strong>channel4.com</strong></p>
         <p>Video ads not blocked.</p>
-        <p><code>Low Priority (Flash)</code> <code>Geo Lock (United Kingdom)</code></p>
+        <p><code>Geo Lock (United Kingdom)</code> <code>Low Priority (Flash)</code></p>
         <p>
             <a href="http://www.channel4.com/programmes/britain-at-low-tide/on-demand/64335-001" target="_blank">Test link 1</a>
             <a href="http://www.channel4.com/programmes/formula-1/on-demand" target="_blank">Test link 2</a>
@@ -148,8 +148,7 @@
 
         <!-- Probably will not fix in a long time -->
 
-        <p><strong>colombiaonline.com</strong></p>
-        <p>Affects: adageindia.in, bombaytimes.com, businessinsider.in, gadgetsnow.com, gizmodo.in, iamgujarat.com, idiva.com, in.techradar.com, indiatimes.com, lifehacker.co.in, mensxp.com, samayam.com, timesofindia.com</p>
+        <p><strong>adageindia.in, bombaytimes.com, businessinsider.in, gadgetsnow.com, gizmodo.in, iamgujarat.com, idiva.com, in.techradar.com, indiatimes.com, lifehacker.co.in, mensxp.com, samayam.com, timesofindia.com</strong></p>
         <p>Ads take up to 1 second to hide, also the solution is quite inefficient.</p>
         <p>
             <a href="http://www.lifehacker.co.in/" target="_blank">Test link 1</a>
@@ -184,6 +183,7 @@
 
         <p><strong>cc.com, youtube.com</strong></p>
         <p>Ads and sponsored contents are not removed when they are baked into the video stream.</p>
+        <p>Unlike server side ads injection, the player does not know when the ads and sponsored contents play, so it would be near impossible to accurately detect them.</p>
         <br />
 
         <p><strong>Check open issues in the following issues trackers for other known issues</strong></p>
