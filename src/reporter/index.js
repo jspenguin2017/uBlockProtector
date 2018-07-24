@@ -77,6 +77,7 @@ const knownGood = [
     "moonbit.co.in",
     "moondoge.co.in",
     "moonliteco.in",
+    "onet.pl",
     "techradar.com",
     "tvp.pl",
     "washingtonpost.com",
