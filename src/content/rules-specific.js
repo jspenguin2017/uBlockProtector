@@ -1354,7 +1354,7 @@ if (a.domCmp(["is.fi"])) {
     a.readOnly("Sabdetect_load", false);
 }
 if (a.domCmp(["gearsuite.com"])) {
-    //https://github.com/jspenguin2017/uBlockProtector/issues/96
+    // https://github.com/jspenguin2017/uBlockProtector/issues/96
     a.css("html,body { overflow-y:scroll; } .BOX-wrap { display:none; }");
 }
 if (a.domCmp(["sandiegouniontribune.com"])) {
@@ -1371,7 +1371,7 @@ if (a.domCmp(["startclass.com", "sandiegouniontribune.com"])) {
     a.filter("addEventListener", a.matchMethod.stringExact, "scroll");
 }
 if (a.domCmp(["adz.bz", "mellow.link", "hop.bz", "mellowads.com", "url.vin", "clik.bz"])) {
-    //https://github.com/jspenguin2017/uBlockProtector/issues/106
+    // https://github.com/jspenguin2017/uBlockProtector/issues/106
     a.inject(() => {
         "use strict";
         let val;
@@ -1414,7 +1414,7 @@ if (a.domCmp(["adz.bz", "mellow.link", "hop.bz", "mellowads.com", "url.vin", "cl
     });
 }
 if (a.domCmp(["zap.in"])) {
-    //https://github.com/jspenguin2017/uBlockProtector/issues/201
+    // https://github.com/jspenguin2017/uBlockProtector/issues/201
     a.inject(() => {
         "use strict";
         let val;
@@ -1456,7 +1456,7 @@ if (a.domCmp(["zap.in"])) {
     });
 }
 if (a.domCmp(["bonusbitcoin.co"])) {
-    //https://github.com/reek/anti-adblock-killer/issues/3377
+    // https://github.com/reek/anti-adblock-killer/issues/3377
     a.injectWithRuntime(() => {
         "use strict";
         const matcher1 = /adBlocked:[^,]+/;
@@ -1500,7 +1500,7 @@ if (a.domCmp(["freetvall.com"])) {
     a.readOnly("clickNS", () => { });
 }
 if (a.domCmp(["hotslogs.com"])) {
-    //https://github.com/jspenguin2017/uBlockProtector/issues/121
+    // https://github.com/jspenguin2017/uBlockProtector/issues/121
     a.inject(() => {
         "use strict";
         window.MonkeyBroker = {};
@@ -1511,7 +1511,7 @@ if (a.domCmp(["undeniable.info"])) {
     a.bait("div", "#testadblock");
 }
 if (a.domInc(["gamereactor"])) {
-    //https://github.com/jspenguin2017/uBlockProtector/issues/124
+    // https://github.com/jspenguin2017/uBlockProtector/issues/124
     a.cookie("overlayMessage", "1");
     a.ready(() => {
         if ($("a.buttonBox.continue > span").startsWith("Continue to ").length) {
@@ -1520,7 +1520,7 @@ if (a.domInc(["gamereactor"])) {
     });
 }
 if (a.domCmp(["dasolo.co", "dasolo.me"])) {
-    //https://github.com/jspenguin2017/uBlockProtector/issues/126
+    // https://github.com/jspenguin2017/uBlockProtector/issues/126
     a.inject(() => {
         "use strict";
         window.eval = () => { };
@@ -1528,7 +1528,7 @@ if (a.domCmp(["dasolo.co", "dasolo.me"])) {
     a.noAccess("adblockblock");
     a.noAccess("alert");
     a.bait("div", "#loveyou");
-    //https://github.com/jspenguin2017/uBlockProtector/issues/280
+    // https://github.com/jspenguin2017/uBlockProtector/issues/280
     a.readOnly("nocontext", null);
     a.readOnly("mischandler", null);
     a.readOnly("disableselect", null);
@@ -1549,7 +1549,7 @@ if (a.domCmp(["dasolo.co", "dasolo.me"])) {
     });
 }
 if (a.domCmp(["titulky.com"])) {
-    //https://github.com/jspenguin2017/uBlockProtector/issues/128
+    // https://github.com/jspenguin2017/uBlockProtector/issues/128
     a.generic.FuckAdBlock("FADB", "fADB");
 }
 if (a.domCmp(["vaughnlive.tv"])) {
@@ -1605,8 +1605,9 @@ if (a.domCmp(["sthelensstar.co.uk", "runcornandwidnesworld.co.uk", "leighjournal
     "freepressseries.co.uk", "monmouthshirecountylife.co.uk", "barryanddistrictnews.co.uk",
     "penarthtimes.co.uk", "eveningtimes.co.uk", "s1cars.com", "s1community.com", "s1homes.com",
     "s1jobs.com", "s1rental.com", "thescottishfarmer.co.uk", "heraldscotland.com", "thenational.scot"])) {
-    //These are NewsQuest related domains, put other domains that share this rule elsewhere
-    //https://github.com/jspenguin2017/uBlockProtector/issues/137
+    // These are NewsQuest related domains, put other domains that share this
+    // rule elsewhere
+    // https://github.com/jspenguin2017/uBlockProtector/issues/137
     a.readOnly("_sp_", null);
 }
 if (a.domCmp(["nyheter24.se"])) {
@@ -1643,7 +1644,7 @@ if (a.domCmp(["aetv.com", "history.com", "mylifetime.com"])) {
     });
 }
 if (a.domCmp(["finalservers.net"])) {
-    //https://github.com/jspenguin2017/uBlockProtector/issues/125
+    // https://github.com/jspenguin2017/uBlockProtector/issues/125
     a.ready(() => {
         a.inject(() => {
             "use strict";
@@ -1652,7 +1653,7 @@ if (a.domCmp(["finalservers.net"])) {
     });
 }
 if (a.domCmp(["filmy.to", "histock.info"])) {
-    //https://github.com/jspenguin2017/uBlockProtector/issues/130
+    // https://github.com/jspenguin2017/uBlockProtector/issues/130
     a.inject(() => {
         "use strict";
         window.open = () => {
@@ -1675,7 +1676,7 @@ if (a.domCmp(["ally.sh", "al.ly", "croco.site"])) {
     });
 }
 if (a.domCmp(["filmyiseriale.net"])) {
-    //https://github.com/jspenguin2017/uBlockProtector/issues/152
+    // https://github.com/jspenguin2017/uBlockProtector/issues/152
     a.ready(() => {
         a.inject(() => {
             "use strict";
@@ -1684,12 +1685,12 @@ if (a.domCmp(["filmyiseriale.net"])) {
     });
 }
 if (a.domCmp(["tf2center.com"])) {
-    //https://github.com/jspenguin2017/uBlockProtector/issues/141
+    // https://github.com/jspenguin2017/uBlockProtector/issues/141
     a.filter("setInterval", a.matchMethod.string, '"/adblock"');
     a.filter("setTimeout", a.matchMethod.stringExact, "function (){B(F+1)}");
 }
 if (a.domCmp(["gaybeeg.info"])) {
-    //NSFW!
+    // NSFW!
     a.onInsert((node) => {
         if (node.innerHTML && node.innerHTML.includes("AdBloker Detected")) {
             node.remove();
@@ -1706,7 +1707,7 @@ if (a.domCmp(["gaybeeg.info"])) {
     });
 }
 if (a.domCmp(["netdna-storage.com"])) {
-    //NSFW!
+    // NSFW!
     a.noAccess("uid");
     a.noAccess("adcashMacros");
     a.ready(() => {
@@ -1742,12 +1743,12 @@ if (a.domCmp(["gaana.com"])) {
         "use strict";
         const noop = () => { };
         const pType = {
-            _auds: "", //all
+            _auds: "", // all
             isauds: false,
             lotamecall: false,
             itemInfo: [],
             colombiaAdeURL: "",
-            deviceType: "", //desktop
+            deviceType: "", // desktop
             colombiaCookies: "",
             privateMode: true,
             adIconInfo: [],
@@ -1856,7 +1857,7 @@ if (a.domCmp(["cda.pl"])) {
     a.readOnly("adblockV1", true);
 }
 if (a.domCmp(["linternaute.com", "mtv.fi"])) {
-    //https://github.com/jspenguin2017/uBlockProtector/issues/224
+    // https://github.com/jspenguin2017/uBlockProtector/issues/224
     a.inject(() => {
         "use strict";
         let val;
@@ -1959,19 +1960,19 @@ if (a.domCmp(["codepo8.github.io"]) && location.pathname.startsWith("/detecting-
     a.css(".notblocked { display:block; } .blocked { display:none; }");
 }
 if (a.domCmp(["nowvideo.ec", "nowvideo.li", "ewingoset.info"])) {
-    //https://gitlab.com/xuhaiyang1234/NanoAdblockerSecretIssues/issues/2
-    //https://gitlab.com/xuhaiyang1234/NanoAdblockerSecretIssues/issues/5
+    // https://gitlab.com/xuhaiyang1234/NanoAdblockerSecretIssues/issues/2
+    // https://gitlab.com/xuhaiyang1234/NanoAdblockerSecretIssues/issues/5
     a.ready(() => {
         $("#cty").append(`<input type="hidden" name="ab" value="1">`);
     });
 }
 if (a.domCmp(["karibusana.org"])) {
-    //https://github.com/jspenguin2017/uBlockProtector/issues/253
+    // https://github.com/jspenguin2017/uBlockProtector/issues/253
     a.noAccess("bizpanda");
     a.css(".onp-locker-call { display:block; }");
 }
 if (a.domCmp(["lewat.id", "u2s.io"])) {
-    //https://gitlab.com/xuhaiyang1234/NanoAdblockerSecretIssues/issues/4
+    // https://gitlab.com/xuhaiyang1234/NanoAdblockerSecretIssues/issues/4
     let matcher;
     if (a.domCmp(["lewat.id"], true)) {
         matcher = /^https?:\/\/lewat\.id\//i;
@@ -2115,8 +2116,8 @@ if (a.domCmp(["short.am"])) {
             if (check.length) {
                 check.text("Please wait...");
                 a.on("load", () => {
-                    //Based on AdsBypasser
-                    //License: https://github.com/adsbypasser/adsbypasser/blob/master/LICENSE
+                    // Based on AdsBypasser
+                    // License: https://github.com/adsbypasser/adsbypasser/blob/master/LICENSE
                     let f = document.createElement("form");
                     f.style.display = "none";
                     f.method = "post";
@@ -2255,7 +2256,7 @@ if (a.domCmp(["paksociety.com"])) {
     a.css("html, body { overflow:scroll; }");
 }
 if (a.domCmp(["rule34hentai.net"])) {
-    //NSFW!
+    // NSFW!
     a.inject(() => {
         "use strict";
         window.base_href = "";
@@ -2286,13 +2287,13 @@ if (a.domCmp(["gamekit.com"])) {
     a.filter("setInterval", a.matchMethod.string, "a-d-block-popup");
 }
 if (a.domCmp(["linkshrink.net"])) {
-    //Based on AdsBypasser
-    //License: https://github.com/adsbypasser/adsbypasser/blob/master/LICENSE
+    // Based on AdsBypasser
+    // License: https://github.com/adsbypasser/adsbypasser/blob/master/LICENSE
     const matcher = /revC\("([^"]+)"\)/;
     a.ready(() => {
         let match;
         const scripts = document.querySelectorAll("script");
-        //Start from end as the script tend to be at the end
+        // Start from end as the script tend to be at the end
         for (let i = scripts.length - 1; i >= 0; i--) {
             if (match = matcher.exec(scripts[i].textContent)) {
                 location.pathname = "/" + atob(match[1]);
@@ -2371,7 +2372,7 @@ if (a.domCmp(["docer.pl"])) {
 }
 if (a.domCmp(["telecinco.es", "cuatro.com", "divinity.es", "factoriadeficcion.com", "energytv.es", "bemad.es",
     "eltiempohoy.es", "mtmad.es"])) {
-    //https://github.com/jspenguin2017/uBlockProtector/issues/448
+    // https://github.com/jspenguin2017/uBlockProtector/issues/448
     a.inject(() => {
         "use strict";
         const err = new TypeError("Failed to execute 'getElementById' on 'Document': 'adsFooter' is not a valid ID.");
@@ -2394,7 +2395,7 @@ if (a.domCmp(["aternos.org"])) {
 if (a.domCmp(["adageindia.in", "bombaytimes.com", "businessinsider.in", "gizmodo.in", "iamgujarat.com", "idiva.com",
     "in.techradar.com", "indiatimes.com", "timesofindia.com", "lifehacker.co.in", "mensxp.com", "samayam.com",
     "gadgetsnow.com"])) {
-    //https://gitlab.com/xuhaiyang1234/NanoAdblockerSecretIssues/issues/8
+    // https://gitlab.com/xuhaiyang1234/NanoAdblockerSecretIssues/issues/8
     a.inject(() => {
         "use strict";
         const magic = "a" + window.Math.random().toString(36).substring(2);
@@ -2726,7 +2727,7 @@ if (a.domCmp(["arenavision.us"])) {
     a.noAccess("adbClick");
 }
 if (a.domCmp(["cbs.com"])) {
-    //https://github.com/jspenguin2017/uBlockProtector/issues/578
+    // https://github.com/jspenguin2017/uBlockProtector/issues/578
     if (!a.cookie("first_page_today") && !sessionStorage.getItem("_first_page_today_fallback")) {
         sessionStorage.setItem("_first_page_today_fallback", true);
         a.ready(() => {
@@ -2837,7 +2838,7 @@ if (a.domCmp(["tune.pk"])) {
     });
 }
 if (a.domCmp(["ultrahorny.com"])) {
-    //NSFW!
+    // NSFW!
     a.noAccess("decodeURIComponent");
 }
 if (a.domCmp(["uplod.cc"])) {
@@ -2988,7 +2989,7 @@ if (a.domCmp(["uflash.tv"])) {
     });
 }
 if (a.domCmp(["hdpass.net"])) {
-    //https://gitlab.com/xuhaiyang1234/NanoAdblockerSecretIssues/issues/1
+    // https://gitlab.com/xuhaiyang1234/NanoAdblockerSecretIssues/issues/1
     a.inject(() => {
         "use strict";
         const expandClickArea = () => {
@@ -3037,6 +3038,15 @@ if (a.domCmp(["washingtonpost.com"])) {
 }
 if (a.domCmp(["lcpdfr.com"])) {
     a.noAccess("FuckAdBlock");
+}
+
+// Script snippet race condition
+if (a.domCmp(["derstandard.at"])) {
+    // https://github.com/NanoAdblocker/NanoFilters/issues/149
+    a.inject(() => {
+        "use strict";
+        window.nuggprof = function () { };
+    });
 }
 
 // Nano Adblocker does not support UserCSS because it breaks DOM Inspector,
