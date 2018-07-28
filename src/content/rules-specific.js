@@ -3040,15 +3040,6 @@ if (a.domCmp(["lcpdfr.com"])) {
     a.noAccess("FuckAdBlock");
 }
 
-// Script snippet race condition
-if (a.domCmp(["derstandard.at"])) {
-    // https://github.com/NanoAdblocker/NanoFilters/issues/149
-    a.inject(() => {
-        "use strict";
-        window.nuggprof = function () { };
-    });
-}
-
 // Nano Adblocker does not support UserCSS because it breaks DOM Inspector,
 // duct tape it here
 // TODO - Convert to filter (or remove if already in uAssets) when minimum
