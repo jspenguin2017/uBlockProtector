@@ -71,7 +71,7 @@ const knownGood = [
     "jspenguin2017.github.io",
 
     "blockadblock.com",
-    "derstandard.at",
+    "businessinsider.com",
     "kwejk.pl",
     "soft98.ir",
     "moonbit.co.in",
