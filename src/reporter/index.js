@@ -72,6 +72,7 @@ const knownGood = [
 
     "blockadblock.com",
     "businessinsider.com",
+    "kissasian.sh",
     "kwejk.pl",
     "soft98.ir",
     "moonbit.co.in",
