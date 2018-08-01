@@ -70,18 +70,22 @@ const knownGood = [
     "jspenguin.com",
     "jspenguin2017.github.io",
 
+    "androidcentral.com",
     "blockadblock.com",
     "businessinsider.com",
     "kissasian.sh",
-    "kwejk.pl",
     "soft98.ir",
     "moonbit.co.in",
     "moondoge.co.in",
     "moonliteco.in",
-    "onet.pl",
     "techradar.com",
-    "tvp.pl",
     "washingtonpost.com",
+
+    // Fixed in regional filters
+    "kwejk.pl",
+    "onet.pl",
+    "tvp.pl",
+    "visioncloud.rocks",
     "wp.pl",
 ];
 /**
