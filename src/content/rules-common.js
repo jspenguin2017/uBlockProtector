@@ -47,8 +47,9 @@
         "viafree.se", "sport-tv-guide.live", "anandabazar.com", "o2.pl",
         "vod.pl", "viasatsport.se", "viasport.fi", "tv3sport.dk",
         "viasport.no", "strefadb.pl", "wp.pl", "ostrzeszowinfo.pl",
-        "infostrow.pl", "lcpdfr.com", "dallasnews.com", "rmcmv.us",
-        "juprimaulana.com",
+        "infostrow.pl", "lcpdfr.com", "dallasnews.com",
+        // Reversed FuckAdBlock
+        "rmcmv.us", "juprimaulana.com",
     ];
     const genericWhitelist2 = [
         // Local network
