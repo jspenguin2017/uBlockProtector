@@ -85,7 +85,8 @@ zmovs.com##.inplayer_banners
 ||pelcro.com^$third-party
 ||perceivequarter.com^$third-party
 ||hammerhearing.com^$third-party
-||sixscissors.com^$third-party
+! https://github.com/jspenguin2017/uBlockProtector/issues/978
+||sixscissors.com^$third-party,domain=~itavisen.no
 ! === Pause Adblocker
 /wp-content/plugins/pause-adblocker/*
 ! === BlockAdBlock
