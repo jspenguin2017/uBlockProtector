@@ -87,8 +87,6 @@ zmovs.com##.inplayer_banners
 ||hammerhearing.com^$third-party
 ! https://github.com/jspenguin2017/uBlockProtector/issues/978
 ||sixscissors.com^$third-party,domain=~itavisen.no
-! === Pause Adblocker
-/wp-content/plugins/pause-adblocker/*
 ! === BlockAdBlock
 sectorsatoshi-amarillo.website,sectorsatoshi-azul.website,sectorsatoshi-blanco.website,sectorsatoshi-celeste.website,sectorsatoshi-gris.website,sectorsatoshi-naranja.website##+js(bab-defuser.js)
 sectorsatoshi-negro.website,sectorsatoshi-rosa.website,sectorsatoshi-verde.website,sectorsatoshi-violeta.website##+js(bab-defuser.js)

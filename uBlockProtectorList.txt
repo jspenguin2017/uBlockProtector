@@ -60,7 +60,6 @@ zmovs.com##.inplayer_banners
 ||perceivequarter.com^$third-party
 ||hammerhearing.com^$third-party
 ||sixscissors.com^$third-party,domain=~itavisen.no
-/wp-content/plugins/pause-adblocker/*
 sectorsatoshi-amarillo.website,sectorsatoshi-azul.website,sectorsatoshi-blanco.website,sectorsatoshi-celeste.website,sectorsatoshi-gris.website,sectorsatoshi-naranja.website##+js(bab-defuser.js)
 sectorsatoshi-negro.website,sectorsatoshi-rosa.website,sectorsatoshi-verde.website,sectorsatoshi-violeta.website##+js(bab-defuser.js)
 blockadblock.com,futbolchile.net,freeomovie.com,appdrop.net,skmedix.pl,yalujailbreak.net,cloudwebcopy.com,milaulas.com,tout-bon.com,sznpaste.net,linkdrop.net,themeslide.com##+js(bab-defuser.js)
