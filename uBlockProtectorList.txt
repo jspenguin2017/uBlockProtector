@@ -310,7 +310,6 @@ peugeot-metropolis.de###displaywise
 ||topagrar.com/_themes/topagrar-responsive/_js/ads.js$script,redirect=noopjs
 /tgs.teaser-ad.js$domain=tagesspiegel.de
 t3n.de#@##adsbox
-||thepiratebay.org^$inline-script
 yiv.com###LeftAdDiv
 yiv.com###RightAdDiv
 4j.com###game_bottom_ad
