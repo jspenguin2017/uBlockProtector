@@ -71,6 +71,7 @@ const knownGood = [
     "jspenguin2017.github.io",
 
     "androidcentral.com",
+    "bild.de",
     "blockadblock.com",
     "businessinsider.com",
     "kissasian.sh",

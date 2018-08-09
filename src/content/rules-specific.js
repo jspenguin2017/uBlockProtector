@@ -1953,9 +1953,6 @@ if (a.domCmp(["hackinformer.com"])) {
 if (a.domCmp(["tg007.net"])) {
     a.bait("div", "#gads", true);
 }
-if (a.domCmp(["bild.de"])) {
-    a.filter("querySelector", a.matchMethod.stringExact, "body", "window.document");
-}
 if (a.domCmp(["codepo8.github.io"]) && location.pathname.startsWith("/detecting-adblock/")) {
     a.css(".notblocked { display:block; } .blocked { display:none; }");
 }
