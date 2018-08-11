@@ -98,6 +98,7 @@ const knownBad = [
     "9anime.is",
     "avgle.com", // NSFW
     "cointiply.com",
+    "cryptomininggame.com",
     "kissanime.ru",
 ];
 /**
