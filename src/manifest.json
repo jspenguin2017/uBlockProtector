@@ -42,7 +42,7 @@
   "icons": {
     "128": "icon128.png"
   },
-  "incognito": "spanning",
+  "incognito": "split",
   "manifest_version": 2,
   "minimum_chrome_version": "63.0",
   "name": "Nano Defender",
@@ -54,7 +54,7 @@
     "webRequest",
     "webRequestBlocking"
   ],
-  "version": "15.0.0.29",
+  "version": "15.0.0.30",
   "web_accessible_resources": [
     "resources/*"
   ]
