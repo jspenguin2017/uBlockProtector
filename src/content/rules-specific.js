@@ -3039,6 +3039,20 @@ if (a.domCmp(["washingtonpost.com"])) {
 if (a.domCmp(["lcpdfr.com"])) {
     a.noAccess("FuckAdBlock");
 }
+if (a.domCmp(["wowescape.com"])) {
+    // https://github.com/uBlockOrigin/uAssets/issues/3200
+    a.beforeScript((script) => {
+        if (
+            script.textContent &&
+            script.textContent.includes("var adsManager;")
+        ) {
+            script.textContent = script.textContent.replace(
+                "setUpIMA();",
+                "onAdSKIPPED();",
+            );
+        }
+    });
+}
 
 // Nano Adblocker does not support UserCSS because it breaks DOM Inspector,
 // duct tape it here
