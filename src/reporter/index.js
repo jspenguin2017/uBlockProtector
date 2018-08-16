@@ -84,6 +84,7 @@ const knownGood = [
     "washingtonpost.com",
 
     // Fixed in regional filters
+    "dn.se",
     "kwejk.pl",
     "onet.pl",
     "tvp.pl",
