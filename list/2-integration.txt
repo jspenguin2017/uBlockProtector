@@ -18,15 +18,6 @@
 @@|http://*.v.fwmrm.net/ad/g/*$script,domain=ncaa.com|pga.com|q2.be|vtm.be|ruutu.fi|medialaancdn.be|medialaan.be
 ! === hulu.com
 @@||ads-v-darwin.hulustream.com/published/*.mp4$domain=hulu.com
-! === wowescape.com
-! https://github.com/uBlockOrigin/uAssets/issues/3200
-@@||wowescape.com^$generichide,badfilter
-@@||imasdk.googleapis.com/js/sdkloader/ima3.js$script,domain=wowescape.com,badfilter
-@@||pagead2.googlesyndication.com/pagead/$script,domain=wowescape.com,badfilter
-@@||googleads.g.doubleclick.net/pagead/*wowescape.com$xmlhttprequest,domain=imasdk.googleapis.com,badfilter
-@@||youtube.com/get_video?$media,domain=wowescape.com,badfilter
-wowescape.com##+js(setTimeout-defuser.js, document.getElementsByClassName('afs_ads'))
-wowescape.com#@#.afs_ads
 
 ! === IMA SDK surrogate integration
 ! Not working correctly
