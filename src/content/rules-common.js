@@ -49,7 +49,7 @@
         "viasport.no", "strefadb.pl", "wp.pl", "ostrzeszowinfo.pl",
         "infostrow.pl", "lcpdfr.com", "dallasnews.com", "bild.de",
         // Custom FuckAdBlock
-        "rmcmv.us", "juprimaulana.com", "yuukithemes.com",
+        "rmcmv.us", "juprimaulana.com", "yuukithemes.com", "atresplayer.com",
     ];
     const genericWhitelist2 = [
         // Local network
