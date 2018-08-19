@@ -2280,9 +2280,6 @@ if (a.domCmp(["dilidili.wang"])) {
 if (a.domCmp(["dilidili.wang", "reevown.com"])) {
     a.antiCollapse("innerHTML", (elem) => elem === window.document.body);
 }
-if (a.domCmp(["overclockers.ru"])) {
-    a.antiCollapse("innerHTML", (ignored, val) => val.includes("images/hungry.png"));
-}
 if (a.domCmp(["gamekit.com"])) {
     a.filter("setInterval", a.matchMethod.string, "a-d-block-popup");
 }
