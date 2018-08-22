@@ -184,6 +184,7 @@ if ( !abort ) {
             'cattime.com',
             'chicagotribune.com',
             'chowhound.com',
+            'chron.com',
             'chroniclelive.co.uk',
             'citypaper.com',
             'cnet.com',
