@@ -113,14 +113,17 @@ if ( !abort ) {
                 'console.error',
                 'INSTART',
                 'INSTART_TARGET_NAME',
+                'navigator.userAgent',
                 'performance',
                 'require'
             ],
-            reScriptText = /\b(?:Instart-|I10C|IXC_|INSTART)/,
-            reScriptSrc = /\babd.*?\/instart.js/;
+            reScriptText = /\b(?:Instart-|I10C|I11C|IXC_|INSTART)/,
+            reScriptSrc = /\babd.*?\/instart.js|\?i10c\./,
+            thisScript = document.currentScript;
         var validate = function() {
             var script = document.currentScript;
             if ( script instanceof HTMLScriptElement === false ) { return; }
+            if ( script === thisScript ) { return; }
             if ( script.src === '' ) {
                 if ( reScriptText.test(script.textContent) ) {
                     throw new ReferenceError(magic);
@@ -258,6 +261,7 @@ if ( !abort ) {
             'msn.com',
             'musicfeeds.com.au',
             'mustangandfords.com',
+            'mysanantonio.com',
             'nasdaq.com',
             'nationalpost.com',
             'newsarama.com',
@@ -456,7 +460,6 @@ if ( !abort ) {
         targets: [
             'calgaryherald.com',
             'edmontonjournal.com',
-            'edmunds.com',
             'financialpost.com',
             'leaderpost.com',
             'montrealgazette.com',
