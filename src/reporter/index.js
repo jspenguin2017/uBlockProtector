@@ -102,6 +102,7 @@ const knownBad = [
     "cointiply.com",
     "cryptomininggame.com",
     "kissanime.ru",
+    "wowescape.com",
 ];
 /**
  * Check if a domain matches one of the matchers.
