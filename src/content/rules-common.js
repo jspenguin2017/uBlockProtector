@@ -18,10 +18,11 @@
 
 *******************************************************************************
 
-    Content rules initialization and common content rules.
-
-    Solutions from Anti-Adblock Killer (originally by Reek) are modified to
-    fit my core library API.
+    Handle whitelist and initialize generic content solutions. Then apply
+    common content rules.
+    
+    Solutions from Anti-Adblock Killer (by Reek) are modified to fit the
+    content core library.
 
     Anti-Adblock Killer Repository (contains original source code and license):
     https://github.com/reek/anti-adblock-killer
@@ -40,7 +41,7 @@
 
     /*************************************************************************/
 
-    const genericWhitelist1 = [
+    const domCmpWhitelist = [
         // Local network
         "localhost",
         "127.0.0.1",
@@ -138,7 +139,7 @@
         "yuukithemes.com",
     ];
 
-    const genericWhitelist2 = [
+    const domIncWhitelist = [
         // Local network
         "192.168.0",
         "192.168.1",
@@ -163,12 +164,12 @@
 
     /*************************************************************************/
 
-    if (
-        a.domCmp(genericWhitelist1, true) ||
-        a.domInc(genericWhitelist2, true)
-    ) {
+    if (a.domCmp(domCmpWhitelist, true) || a.domInc(domIncWhitelist, true)) {
+
         console.log("[Nano] Excluded :: All Generically Applied Solutions");
+
     } else {
+
         if (a.domCmp([], true))
             console.log("[Nano] Excluded :: Common Generic Solutions");
         else
@@ -188,6 +189,7 @@
             console.log("[Nano] Excluded :: NoAdBlock Defuser");
         else
             a.generic.NoAdBlock();
+
     }
 
     /*************************************************************************/
@@ -217,7 +219,8 @@
 
     /*************************************************************************/
 
-    if (a.domCmp([], true)) {
+    if (a.domCmp([
+    ], true)) {
         a.uBOExtraExcluded = true;
         console.log("[Nano] Excluded :: uBO-Extra");
     }
@@ -522,6 +525,7 @@ if (a.domCmp([
 ])) {
     a.noAccess("popns");
 }
+
 if (a.domCmp([
     "adlinkme.com",
     "arenabg.ch",
