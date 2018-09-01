@@ -949,10 +949,10 @@ a.generic = () => {
 
     // document-start
     // FuckAdBlock
-    a.generic.FuckAdBlock("FuckAdBlock", "fuckAdBlock");
+    // a.generic.FuckAdBlock("FuckAdBlock", "fuckAdBlock");
     a.generic.FuckAdBlock("BlockAdBlock", "blockAdBlock");
     a.generic.FuckAdBlock("KillAdBlock", "killAdBlock");
-    //ads.js v1
+    // ads.js v1
     a.readOnly("canRunAds", true);
     a.readOnly("canShowAds", true);
     a.readOnly("isAdBlockActive", false);

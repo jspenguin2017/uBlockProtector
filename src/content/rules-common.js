@@ -50,6 +50,7 @@
         "infostrow.pl", "lcpdfr.com", "dallasnews.com", "bild.de",
         // Custom FuckAdBlock
         "rmcmv.us", "juprimaulana.com", "yuukithemes.com", "atresplayer.com",
+        "paraedu.id",
     ];
     const genericWhitelist2 = [
         // Local network
