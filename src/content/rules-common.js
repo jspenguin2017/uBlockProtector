@@ -1,115 +1,235 @@
-/**
- * Content rules initialization and common content rules.
- * Solutions from Anti-Adblock Killer (originally by Reek) are modified to fit
- * my core library API.
- * Anti-Adblock Killer Repository (contains original source code and license):
- * https://github.com/reek/anti-adblock-killer
- */
+/******************************************************************************
+
+    Nano Defender - An anti-adblock defuser
+    Copyright (C) 2016-2018  Nano Defender contributors
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+*******************************************************************************
+
+    Content rules initialization and common content rules.
+
+    Solutions from Anti-Adblock Killer (originally by Reek) are modified to
+    fit my core library API.
+
+    Anti-Adblock Killer Repository (contains original source code and license):
+    https://github.com/reek/anti-adblock-killer
+
+******************************************************************************/
+
 "use strict";
 
+/*****************************************************************************/
+
 {
+
+    /*************************************************************************/
+
     a.init();
+
+    /*************************************************************************/
+
     const genericWhitelist1 = [
         // Local network
-        "localhost", "127.0.0.1",
+        "localhost",
+        "127.0.0.1",
 
         // Google
-        "google.it.ao", "google.ne.jp", "google.off.ai", "youtu.be",
+        "google.it.ao",
+        "google.ne.jp",
+        "google.off.ai",
+        "youtu.be",
         "youtube.com",
+
         // Baidu
         "baidu.com",
+
         // Wikipedia
         "wikipedia.org",
+
         // PayPal
-        "paypal.com", "paypal.me",
+        "paypal.com",
+        "paypal.me",
+
         // JavaScript playgrounds
-        "stackoverflow.com", "ask.com", "w3schools.com", "jsbin.com",
-        "jsfiddle.net", "plnkr.co", "preloaders.net",
+        "ask.com",
+        "jsbin.com",
+        "jsfiddle.net",
+        "plnkr.co",
+        "preloaders.net",
+        "stackoverflow.com",
+        "w3schools.com",
 
         // Social sites (for performance)
-        "facebook.com", "messenger.com", "twitter.com", "instagram.com",
-        "reddit.com", "linkedin.com",
-        "pinterest.com", "bufferapp.com", "chatango.com",
+        "bufferapp.com",
+        "chatango.com",
+        "facebook.com",
+        "instagram.com",
+        "linkedin.com",
+        "messenger.com",
+        "pinterest.com",
+        "reddit.com",
+        "twitter.com",
+
         // Media sites (for performance)
-        "calm.com", "vimeo.com", "yandex.ru", "xemvtv.net",
+        "calm.com",
+        "vimeo.com",
+        "xemvtv.net",
+        "yandex.ru",
+
         // Image beds (for performance)
-        "imgur.com", "imgbox.com", "flickr.com",
+        "flickr.com",
+        "imgbox.com",
+        "imgur.com",
+
         // Advanced tools (for performance)
         "lab.wolframcloud.com",
 
         // Handled by Nano Defender Extra
-        "boost.ink", "lolalytics.com",
+        "boost.ink",
+        "lolalytics.com",
 
         // False positives
-        "babbel.com", "buxfer.com", "derstandard.at", "download.ipeenk.com",
-        "kissasian.ch", "imdb.com", "lemonde.fr", "socketloop.com",
-        "store.playstation.com", "techradar.com", "viafree.dk", "viafree.no",
-        "viafree.se", "sport-tv-guide.live", "anandabazar.com", "o2.pl",
-        "vod.pl", "viasatsport.se", "viasport.fi", "tv3sport.dk",
-        "viasport.no", "strefadb.pl", "wp.pl", "ostrzeszowinfo.pl",
-        "infostrow.pl", "lcpdfr.com", "dallasnews.com", "bild.de",
+        "anandabazar.com",
+        "babbel.com",
+        "bild.de",
+        "buxfer.com",
+        "dallasnews.com",
+        "derstandard.at",
+        "download.ipeenk.com",
+        "imdb.com",
+        "infostrow.pl",
+        "kissasian.ch",
+        "lcpdfr.com",
+        "lemonde.fr",
+        "o2.pl",
+        "ostrzeszowinfo.pl",
+        "socketloop.com",
+        "sport-tv-guide.live",
+        "store.playstation.com",
+        "strefadb.pl",
+        "techradar.com",
+        "tv3sport.dk",
+        "viafree.dk",
+        "viafree.no",
+        "viafree.se",
+        "viasatsport.se",
+        "viasport.fi",
+        "viasport.no",
+        "vod.pl",
+        "wp.pl",
+
         // Custom FuckAdBlock
-        "rmcmv.us", "juprimaulana.com", "yuukithemes.com", "atresplayer.com",
+        "atresplayer.com",
+        "juprimaulana.com",
         "paraedu.id",
+        "rmcmv.us",
+        "yuukithemes.com",
     ];
+
     const genericWhitelist2 = [
         // Local network
-        "192.168.0", "192.168.1",
+        "192.168.0",
+        "192.168.1",
 
         // Google
-        "google", "google.co", "google.com",
+        "google",
+        "google.co",
+        "google.com",
+
         // Yahoo
         "yahoo",
+
         // Stores
-        "amazon", "ebay",
+        "amazon",
+        "ebay",
 
         // False positives
-        "9anime", "italiashare", "kissanime",
+        "9anime",
+        "italiashare",
+        "kissanime",
     ];
 
-    if (a.domCmp(genericWhitelist1, true) || a.domInc(genericWhitelist2, true)) {
+    /*************************************************************************/
+
+    if (
+        a.domCmp(genericWhitelist1, true) ||
+        a.domInc(genericWhitelist2, true)
+    ) {
         console.log("[Nano] Excluded :: All Generically Applied Solutions");
     } else {
-        if (a.domCmp([], true)) {
+        if (a.domCmp([], true))
             console.log("[Nano] Excluded :: Common Generic Solutions");
-        } else {
+        else
             a.generic();
-        }
 
-        if (a.domCmp([], true)) {
+        if (a.domCmp([], true))
             console.log("[Nano] Excluded :: Adfly Bypasser");
-        } else {
+        else
             a.generic.Adfly();
-        }
 
-        if (a.domCmp([], true)) {
+        if (a.domCmp([], true))
             console.log("[Nano] Excluded :: app_vars Defuser");
-        } else {
+        else
             a.generic.app_vars();
-        }
 
-        if (a.domCmp([], true)) {
+        if (a.domCmp([], true))
             console.log("[Nano] Excluded :: NoAdBlock Defuser");
-        } else {
+        else
             a.generic.NoAdBlock();
-        }
     }
 
-    if (a.domCmp(["gamersclub.com.br", "uploadboy.com", "vidoza.net",
-        "videohelp.com", "zeiz.me", "passionea300allora.it", "memurlar.net",
-        "palemoon.org", "stocks.cafe", "listamais.com.br", "acquavivalive.it",
-        "palolive.it", "molfettalive.it", "sledujserialy.sk", "warforum.cz",
-        "lolskinlistgenerator.com", "beinsports.com", "m.delfi.ee"])) {
+    /*************************************************************************/
+
+    if (a.domCmp([
+        "acquavivalive.it",
+        "beinsports.com",
+        "gamersclub.com.br",
+        "listamais.com.br",
+        "lolskinlistgenerator.com",
+        "m.delfi.ee",
+        "memurlar.net",
+        "molfettalive.it",
+        "palemoon.org",
+        "palolive.it",
+        "passionea300allora.it",
+        "sledujserialy.sk",
+        "stocks.cafe",
+        "uploadboy.com",
+        "videohelp.com",
+        "vidoza.net",
+        "warforum.cz",
+        "zeiz.me",
+    ])) {
         a.generic.adsjsV2();
     }
+
+    /*************************************************************************/
 
     if (a.domCmp([], true)) {
         a.uBOExtraExcluded = true;
         console.log("[Nano] Excluded :: uBO-Extra");
     }
+
+    /*************************************************************************/
+
 }
 
-//a.filter
+/*****************************************************************************/
+
+// a.filter
+
 if (a.domCmp(["usapoliticstoday.com", "vidlox.tv", "exrapidleech.info",
     "urle.co", "gsmarena.com", "darmowe-pornosy.pl", "salon.com",
     "linx.cloud", "flashx.tv", "flashx.to"])) {
@@ -143,7 +263,10 @@ if (a.domCmp(["drivearabia.com", "putlocker.com", "kooora.com", "kooora.com",
     a.filter("alert");
 }
 
-//a.readOnly
+/*****************************************************************************/
+
+// a.readOnly
+
 if (a.domCmp(["jansatta.com", "financialexpress.com", "indianexpress.com",
     "uskip.me", "srt.am"])) {
     a.readOnly("RunAds", true);
@@ -205,7 +328,10 @@ if (a.domCmp(["vipleague.is", "vipleague.ws", "vipleague.tv", "vipleague.se",
     a.readOnly("iExist", true);
 }
 
-//a.noAccess
+/*****************************************************************************/
+
+// a.noAccess
+
 if (a.domCmp(["debridnet.com", "adshort.co", "linksh.top", "adshorte.com",
     "coinb.ink", "animeforce.org",
     "imgrock.info", "srt.am"])) {
@@ -220,7 +346,10 @@ if (a.domCmp(["psarips.com", "streamcloud.eu", "jzrputtbut.net", "arenabg.ch",
     a.noAccess("open");
 }
 
-//a.bait
+/*****************************************************************************/
+
+// a.bait
+
 if (a.domCmp(["primeshare.tv", "leveldown.fr"])) {
     a.bait("div", "#adblock");
 }
@@ -258,3 +387,5 @@ if (a.domCmp(["freesportsbet.com", "sportsplays.com"])) {
 if (a.domCmp(["bitcoiner.net", "litecoiner.net"])) {
     a.bait("div", "#ad-top");
 }
+
+/*****************************************************************************/
