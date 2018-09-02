@@ -314,6 +314,7 @@ if ( !abort ) {
             'thoughtcatalog.com',
             'thoughtco.com',
             'timeanddate.com',
+            'timesunion.com',
             'tomsguide.com',
             'tomsguide.fr',
             'tomshardware.co.uk',

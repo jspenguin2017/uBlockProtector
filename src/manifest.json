@@ -54,7 +54,7 @@
     "webRequest",
     "webRequestBlocking"
   ],
-  "version": "15.0.0.41",
+  "version": "15.0.0.42",
   "web_accessible_resources": [
     "resources/*"
   ]
