@@ -1090,9 +1090,6 @@ hireteen.com###adb-enabled
 @@||gram.pl/js/advertising.js$script
 @@||lggautotrasporti.esy.es^$elemhide
 @@||lggautotrasporti.esy.es/images/logofinaleLGG.png$image,domain=lggautotrasporti.esy.es
-@@||spaste.com/ads/$subdocument
-@@||spaste.com^$generichide
-||taboola.com^$domain=spaste.com
 @@||advert.com/advert$image,domain=mupvl.us
 @@||sportsplays.com/ads/banner.jpg$image
 @@||sportsplays.com/ads/ad.html$subdocument
