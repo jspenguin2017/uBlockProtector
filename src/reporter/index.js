@@ -74,6 +74,7 @@ const knownGood = [
     "bild.de",
     "blockadblock.com",
     "businessinsider.com",
+    "hdblog.it", // Broken by the non-default ABP X Files
     "kissasian.sh",
     "soft98.ir",
     "moonbit.co.in",
