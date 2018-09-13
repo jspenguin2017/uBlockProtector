@@ -170,13 +170,39 @@ if (a.domCmp(["elektroda.pl"])) {
 if (a.domCmp(["anandabazar.com"])) {
     a.readOnly("canRunAds", false);
 }
-if (!a.domCmp(["poczta.o2.pl"], true) && a.domCmp(["abczdrowie.pl",
-    "autokrata.pl", "autokult.pl", "biztok.pl", "echirurgia.pl",
-    "fotoblogia.pl", "gadzetomania.pl", "hotmoney.pl", "kafeteria.pl",
-    "kafeteria.tv", "kardiolo.pl", "komediowo.pl", "komorkomania.pl",
-    "money.pl", "o2.pl", "parenting.pl", "pudelek.pl", "pudelek.tv",
-    "pudelekx.pl", "sfora.pl", "snobka.pl", "wawalove.pl", "wp.pl",
-    "wp.tv", "wrzuta.pl"])) {
+if (
+    !a.domCmp([
+        "poczta.o2.pl",
+        "poczta.wp.pl",
+    ], true) &&
+    a.domCmp([
+        "abczdrowie.pl",
+        "autokrata.pl",
+        "autokult.pl",
+        "biztok.pl",
+        "echirurgia.pl",
+        "fotoblogia.pl",
+        "gadzetomania.pl",
+        "hotmoney.pl",
+        "kafeteria.pl",
+        "kafeteria.tv",
+        "kardiolo.pl",
+        "komediowo.pl",
+        "komorkomania.pl",
+        "money.pl",
+        "o2.pl",
+        "parenting.pl",
+        "pudelek.pl",
+        "pudelek.tv",
+        "pudelekx.pl",
+        "sfora.pl",
+        "snobka.pl",
+        "wawalove.pl",
+        "wp.pl",
+        "wp.tv",
+        "wrzuta.pl",
+    ])
+) {
     a.loopbackXHR((ignored, url) => {
         const path = url.substring(url.lastIndexOf('/') + 1);
         if (path.startsWith("dmFkLnhtb")) { // vad.xml
