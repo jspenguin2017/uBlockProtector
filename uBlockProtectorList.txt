@@ -798,11 +798,6 @@ eclypsia.com#@##adv_tester
 ||javso.com/popjs/popred.js$script
 ||js.adkrazy.com^$script,domain=javso.com
 ||adkrazy.com^$popup,domain=javso.com
-@@||lequipe.fr/*/js/ads-v*.js$script
-@@||smartadserver.com/config.js$script,domain=lequipe.fr
-@@||smartadserver.com/diff/js/smart.js$script,domain=lequipe.fr
-||lequipe.fr/v6/js/popinVideo.js$script
-||idalia.assariaburdine.com/happiness.js$script,domain=lequipe.fr
 @@||receive-sms-online.info/advert*.js$script
 ||linkguard.biz/adblock-detector.htm$subdocument
 ||sylnk.net/adblock-detector.htm$subdocument
