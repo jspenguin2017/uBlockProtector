@@ -827,12 +827,6 @@ if (a.domCmp(["tny.cz", "pasted.co"])) {
     a.cookie("__.popunderCap", "1");
     a.cookie("__.popunder", "1");
 }
-if (a.domCmp(["debrastagi.com"])) {
-    a.ready(() => {
-        $("#stp-main").remove();
-        $("#stp-bg").remove();
-    });
-}
 if (a.domCmp(["ddlfrench.org"])) {
     a.ready(() => {
         $("#dle-content .d-content").rmClass();
