@@ -1410,7 +1410,6 @@ se.pl###adb_popup
 @@||talktv.vn/resource/third-party/jwplayer/ads.js$object-subrequest
 @@||telegraaf.tcdn.nl/javascript/showads.*.js$script
 @@/js/lib/controllers/Leitor/Leitor.min.js$script,domain=mangasproject.com.br|mangasproject.net.br|mangas.zlx.com.br
-||optimizely.com^$third-party
 bleachmx.co#@##adsense
 twojeip.wp.pl#@##adverts
 @@||ad.71i.de/global_js/$script,domain=sportdeutschland.tv
