@@ -2853,9 +2853,6 @@ if (a.domCmp(["ultrahorny.com"])) {
 if (a.domCmp(["uplod.cc"])) {
     a.bait("div", "#bannerad", true);
 }
-if (a.domCmp(["pilot.wp.pl"])) {
-    a.readOnly("PWA_adbd", 0);
-}
 if (a.domCmp(["siliconinvestor.com"])) {
     a.bait("div", "#tester", true);
 }
