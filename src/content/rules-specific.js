@@ -2855,6 +2855,10 @@ if (a.domCmp(["uplod.cc"])) {
 }
 if (a.domCmp(["pilot.wp.pl"])) {
     a.readOnly("PWA_adbd", 0);
+    a.ready(() => {
+        "use strict";
+        a.readOnly("sealed", () => false, "WP.crux");
+    });
 }
 if (a.domCmp(["siliconinvestor.com"])) {
     a.bait("div", "#tester", true);
