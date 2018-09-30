@@ -62,28 +62,19 @@ const showMessage = (msg) => {
  * @const {Array.<string>}
  */
 const knownGood = [
+    // Wrong page
     "addons.mozilla.org",
     "chrome.google.com",
-    "www.microsoft.com",
-
     "github.com",
     "jspenguin.com",
     "jspenguin2017.github.io",
+    "www.microsoft.com",
 
-    "androidcentral.com",
-    "bild.de",
+    // Bad installation
     "blockadblock.com",
-    "businessinsider.com",
-    "hdblog.it", // Broken by the non-default ABP X Files
-    "kissasian.sh",
-    "soft98.ir",
-    "moonbit.co.in",
-    "moondoge.co.in",
-    "moonliteco.in",
-    "pixlr.com",
-    "symbolab.com",
-    "techradar.com",
-    "washingtonpost.com",
+
+    // Broken by non-default ABP X Files
+    "hdblog.it",
 
     // Fixed in regional filters
     "dn.se",
@@ -98,12 +89,8 @@ const knownGood = [
  * @const {Array.<string>}
  */
 const knownBad = [
-    "9anime.is",
-    "avgle.com", // NSFW
-    "cointiply.com",
-    "cryptomininggame.com",
     "kissanime.ru",
-    "wowescape.com",
+    "twitch.tv",
 ];
 /**
  * Check if a domain matches one of the matchers.
