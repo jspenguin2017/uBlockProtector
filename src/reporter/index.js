@@ -76,6 +76,9 @@ const knownGood = [
     // Broken by non-default ABP X Files
     "hdblog.it",
 
+    // Broken by Firefox Tracking Protection
+    "bild.de",
+
     // Fixed in regional filters
     "dn.se",
     "kwejk.pl",
