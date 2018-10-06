@@ -18,10 +18,10 @@ group of people or publicly unless otherwise indicated below.
 2. User agent string of your browser
    - Do not try to mask or change it; if the maintainers are unable to
      reproduce the issue, your report will be discarded
-3. The version of Nano Adblocker and/or Nano Defender that you are using
+3. Version string of Nano Adblocker and/or Nano Defender that you are using
 4. The form that you filled
    - If you supplied a test account in the form, this account will not be
-     shared unless you indicated otherwise
+     shared publicly unless you indicated otherwise
 
 ### How secure is the server?
 
