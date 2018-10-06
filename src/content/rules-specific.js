@@ -1996,9 +1996,6 @@ if (a.domCmp(["lewat.id", "u2s.io"])) {
         }
     }, 250);
 }
-if (a.domCmp(["shinden.pl"])) {
-    a.readOnly("shinden_ads", true);
-}
 if (a.domCmp(["onhax.me"])) {
     a.inject(() => {
         "use strict";
