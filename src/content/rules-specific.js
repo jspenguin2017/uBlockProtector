@@ -353,7 +353,7 @@ if (a.domCmp(["mariage-franco-marocain.net"])) {
     a.css("#my_ad_div { height:1px; }");
 }
 if (a.domCmp(["happy-hack.ru"])) {
-    a.css("#blockblockF4 { visibility:invisible; display:none; } #blockblockF4 td {visibility:invisible; display:none; } " +
+    a.css("#blockblockF4 { visibility:invisible; display:none; } #blockblockF4 td { visibility:invisible; display:none; } " +
         "#blockblockF4 td p { visibility:invisible; display:none; } #blockblockD3 { visibility:visible; display:block; }");
 }
 if (a.domCmp(["tgo-tv.com"])) {
@@ -586,9 +586,6 @@ if (a.domCmp(["jbzdy.pl"])) {
             },
         });
     });
-}
-if (a.domCmp(["comptoir-hardware.com"])) {
-    a.readOnly("adblock", `"non"`);
 }
 if (a.domCmp(["infoua.biz"])) {
     a.filter("setTimeout", a.matchMethod.stringExact, "function (){b()}");
