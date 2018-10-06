@@ -3,7 +3,7 @@
  */
 "use strict";
 
-if (a.domCmp(["catchcoin.pw", "irc-source.com", "dogecatch.website", "dashcatch.xyz"])) {
+if (a.domCmp(["catchcoin.pw", "irc-source.com", "dashcatch.xyz"])) {
     a.noAccess("adBlockDetected");
 }
 if (a.domCmp(["mid-day.com", "happytrips.com", "jagranjunction.com"])) {
