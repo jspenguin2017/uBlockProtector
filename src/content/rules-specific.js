@@ -1698,15 +1698,6 @@ if (a.domCmp(["ally.sh", "al.ly", "croco.site"])) {
         window.open = null;
     });
 }
-if (a.domCmp(["filmyiseriale.net"])) {
-    // https://github.com/jspenguin2017/uBlockProtector/issues/152
-    a.ready(() => {
-        a.inject(() => {
-            "use strict";
-            window.konik = 1;
-        });
-    });
-}
 if (a.domCmp(["tf2center.com"])) {
     // https://github.com/jspenguin2017/uBlockProtector/issues/141
     a.filter("setInterval", a.matchMethod.string, '"/adblock"');
