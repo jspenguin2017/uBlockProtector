@@ -2949,9 +2949,6 @@ if (a.domCmp(["wurstclient.net"])) {
 if (a.domCmp(["version2.dk"])) {
     a.bait("div", "#banner", true);
 }
-if (a.domCmp(["adyou.me"])) {
-    a.filter("eval", a.matchMethod.RegExp, /acPrefetch|LEGAL NOTICE/);
-}
 if (a.domCmp(["crockolinks.com"])) {
     a.noAccess("test");
 }
