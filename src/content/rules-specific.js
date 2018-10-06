@@ -1732,9 +1732,6 @@ if (a.domCmp(["netdna-storage.com"])) {
         });
     });
 }
-if (a.domCmp(["mma-core.com"])) {
-    a.noAccess("displayAdBlockedVideo");
-}
 if (a.domCmp(["menshealth.pl", "womenshealth.pl", "runners-world.pl", "auto-motor-i-sport.pl", "motocykl-online.pl",
     "mojeauto.pl"])) {
     a.ready(() => {
