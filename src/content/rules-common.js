@@ -117,6 +117,7 @@
         "lemonde.fr",
         "o2.pl",
         "ostrzeszowinfo.pl",
+        "shinden.pl",
         "socketloop.com",
         "sport-tv-guide.live",
         "store.playstation.com",
