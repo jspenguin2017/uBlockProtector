@@ -1212,9 +1212,6 @@ if (a.domCmp(["next-episode.net", "kingmaker.news", "gamespowerita.com", "todayi
 if (a.domCmp(["sports.fr", "europe1.fr"])) {
     a.generic.FuckAdBlock("FabInstance", "fabInstance");
 }
-if (a.domCmp(["newyorker.com"])) {
-    a.generic.FuckAdBlock("SniffAdBlock", "sniffAdBlock");
-}
 if (a.domCmp(["mangasproject.com.br", "mangasproject.net.br", "mangas.zlx.com.br"])) {
     a.generic.FuckAdBlock(a.uid(), "mangasLeitorSlider");
 }
