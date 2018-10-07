@@ -774,3 +774,6 @@ redtube.com##div[class][style]:has(> div[class][style] > a.removeAdLink)
 @@||rdtcdn.com^$script,domain=redtube.com
 ! === bild.de
 ||acdn.adnxs.com/*/adplayer.css$stylesheet,redirect=noopcss,domain=bild.de
+! === blockads.fivefilters.org
+||blockads.fivefilters.org$inline-script
+blockads.fivefilters.org###no-blocking:style(display: block !important;)
