@@ -1305,10 +1305,6 @@ if (a.domCmp(["hanime.tv", "ah-me.com", "shortin.ga", "wolink.in"])) {
 if (a.domCmp(["hanime.tv"])) {
     a.noAccess("confirm");
 }
-if (a.domCmp(["firstonetv.eu"])) {
-    a.readOnly("blocked", () => { });
-    a.readOnly("adFuckBlock", () => { });
-}
 if (a.domCmp(["whosampled.com"])) {
     a.readOnly("showAdBlockerOverlay", () => { });
 }
