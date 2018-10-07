@@ -2024,9 +2024,6 @@ if (a.domCmp(["dailyuploads.net"])) {
 if (a.domCmp(["buickforums.com"])) {
     a.bait("div", "#TestAdBlock", true);
 }
-if (a.domCmp(["realkana.com"])) {
-    a.generic.FuckAdBlock("HooAdBlock", "hooAdBlock");
-}
 if (a.domCmp(["generatorlinkpremium.com"])) {
     a.ready(() => {
         $("#quick").attr("href", $("#normal").attr("href") + "&h=1")
