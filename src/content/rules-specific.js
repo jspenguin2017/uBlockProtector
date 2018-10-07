@@ -1302,20 +1302,6 @@ if (a.domCmp(["hanime.tv", "ah-me.com", "shortin.ga", "wolink.in"])) {
         };
     });
 }
-if (a.domCmp(["git.tc"])) {
-    const magic = a.uid();
-    addEventListener(magic, () => {
-        a.close();
-    });
-    a.inject(`(() => {
-        "use strict";
-        const _open = window.open;
-        window.open = (...args) => {
-            _open.apply(window, args);
-            window.dispatchEvent(new window.CustomEvent("${magic}"));
-        };
-    })();`, true);
-}
 if (a.domCmp(["hanime.tv"])) {
     a.noAccess("confirm");
 }
