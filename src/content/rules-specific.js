@@ -1209,9 +1209,6 @@ if (a.domCmp(["next-episode.net", "kingmaker.news", "gamespowerita.com", "todayi
         });
     });
 }
-if (a.domCmp(["dawn.com"])) {
-    a.generic.FuckAdBlock("DetectAdBlock", "detectAdBlock");
-}
 if (a.domCmp(["sports.fr", "europe1.fr"])) {
     a.generic.FuckAdBlock("FabInstance", "fabInstance");
 }
