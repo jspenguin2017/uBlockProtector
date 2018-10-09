@@ -93,6 +93,7 @@ const knownGood = [
  */
 const knownBad = [
     "kissanime.ru",
+    "kissmanga.com",
     "twitch.tv",
 ];
 /**
