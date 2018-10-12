@@ -1271,11 +1271,6 @@ if (a.domCmp(["emuparadise.me"])) {
 if (a.domCmp(["sapib.ca"])) {
     a.readOnly("Abd_Detector", () => { });
 }
-if (a.domCmp(["wowhead.com"])) {
-    a.ready(() => {
-        $("div[id^='ad-']").parent().parent().parent().remove();
-    });
-}
 if (a.domCmp(["epiotrkow.pl"])) {
     a.bait("div", "#adboxx");
 }
