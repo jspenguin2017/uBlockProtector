@@ -68,7 +68,7 @@ const knownGood = [
     "github.com",
     "jspenguin.com",
     "jspenguin2017.github.io",
-    "www.microsoft.com",
+    "www.microsoft.com", // Do not remove "www"
 
     // Bad installation
     "blockadblock.com",
