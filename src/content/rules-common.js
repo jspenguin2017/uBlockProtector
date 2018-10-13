@@ -131,6 +131,7 @@
         "viasport.fi",
         "viasport.no",
         "vod.pl",
+        "wilmaa.com",
         "wp.pl",
 
         // Custom FuckAdBlock
