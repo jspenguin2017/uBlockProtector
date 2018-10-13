@@ -4,3 +4,7 @@ code {
     font-family: Consolas, monospace;
     padding: 3px 7px 3px 7px;
 }
+
+p.red {
+    padding: 5px;
+}
