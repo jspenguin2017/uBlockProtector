@@ -3023,30 +3023,3 @@ if (a.domCmp(["go4up.com"])) {
         };
     });
 }
-
-// Partially working
-if (a.domCmp(["hulu.com"])) {
-    const performClick = (btn) => {
-        if (btn.classList.contains("nano-defender-clicked")) {
-            return;
-        }
-
-        btn.classList.add("nano-defender-clicked");
-        btn.click();
-
-        // TODO - DEBUG ONLY
-        console.warn("clicked", btn);
-    };
-    a.onInsert((node) => {
-        if (node.querySelector) {
-            if (node.classList.contains("ad-selector-option") || node.classList.contains("trailer-selector-watch-trailer-button")) {
-                setTimeout(performClick, 1000, node);
-            } else {
-                const btn = node.querySelector(".ad-selector-option, .trailer-selector-watch-trailer-button");
-                if (btn) {
-                    setTimeout(performClick, 1000, btn);
-                }
-            }
-        }
-    });
-}
