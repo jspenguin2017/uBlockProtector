@@ -203,21 +203,23 @@ a.init = () => {
     // Instruct user to update subscription link since RawGit is shutting
     // down
 
+    const upgradeMessageKey = "rawgitupgrade";
+
     chrome.browserAction.onClicked.addListener(() => {
+        chrome.browserAction.setBadgeText({ text: "" });
+        chrome.browserAction.setPopup({ popup: "popup/index.html" });
+
         localStorage.setItem(upgradeMessageKey, "true");
-        chrome.tabs.create(
-            {
-                url: "https://jspenguin2017.github.io/uBlockProtector/#announcements",
-            },
-            () => {
-                chrome.browserAction.setBadgeText({ text: "" });
-                chrome.browserAction.setPopup({ popup: "popup/index.html" });
-            },
-        );
+
+        chrome.tabs.create({
+            url: "https://jspenguin2017.github.io/uBlockProtector/#announcements",
+        });
     });
 
-    const upgradeMessageKey = "rawgitupgrade";
-    if (!localStorage.getItem(upgradeMessageKey)) {
+    if (
+        !chrome.extension.inIncognitoContext &&
+        !localStorage.getItem(upgradeMessageKey)
+    ) {
         chrome.browserAction.setBadgeText({ text: "NEW" });
         chrome.browserAction.setBadgeBackgroundColor({ color: "#FF0000" });
 
