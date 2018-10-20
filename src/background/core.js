@@ -197,7 +197,10 @@ a.init = () => {
     // Instruct user to update subscription link since RawGit is shutting
     // down
     const upgradeMessageKey = "rawgitupgrade";
-    if (!localStorage.getItem(upgradeMessageKey)) {
+    if (
+        !chrome.extension.inIncognitoContext &&
+        !localStorage.getItem(upgradeMessageKey)
+    ) {
         chrome.browserAction.setBadgeText({
             text: "NEW",
         });

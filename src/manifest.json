@@ -44,7 +44,7 @@
   },
   "incognito": "split",
   "manifest_version": 2,
-  "minimum_chrome_version": "63.0",
+  "minimum_chrome_version": "66.0",
   "name": "Nano Defender",
   "permissions": [
     "http://*/*",
@@ -54,7 +54,7 @@
     "webRequest",
     "webRequestBlocking"
   ],
-  "version": "15.0.0.61",
+  "version": "15.0.0.62",
   "web_accessible_resources": [
     "resources/*"
   ]
