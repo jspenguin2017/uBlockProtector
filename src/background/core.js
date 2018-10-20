@@ -212,6 +212,10 @@ a.init = () => {
                     url: "https://jspenguin2017.github.io/uBlockProtector/#announcements",
                 },
                 () => {
+                    // Reload somehow does not clear badge
+                    chrome.browserAction.setBadgeText({
+                        text: "",
+                    });
                     chrome.runtime.reload();
                 },
             );
