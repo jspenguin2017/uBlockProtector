@@ -62,7 +62,7 @@ zmovs.com##.inplayer_banners
 ||sixscissors.com^$third-party,domain=~itavisen.no
 sectorsatoshi-amarillo.website,sectorsatoshi-azul.website,sectorsatoshi-blanco.website,sectorsatoshi-celeste.website,sectorsatoshi-gris.website,sectorsatoshi-naranja.website##+js(bab-defuser.js)
 sectorsatoshi-negro.website,sectorsatoshi-rosa.website,sectorsatoshi-verde.website,sectorsatoshi-violeta.website##+js(bab-defuser.js)
-blockadblock.com,futbolchile.net,freeomovie.com,appdrop.net,skmedix.pl,yalujailbreak.net,cloudwebcopy.com,milaulas.com,tout-bon.com,sznpaste.net,linkdrop.net,themeslide.com##+js(bab-defuser.js)
+futbolchile.net,freeomovie.com,appdrop.net,skmedix.pl,yalujailbreak.net,cloudwebcopy.com,milaulas.com,tout-bon.com,sznpaste.net,linkdrop.net,themeslide.com##+js(bab-defuser.js)
 android-zone.ws,cmacapps.com,l2network.eu,animes-mangas-ddl.net,fuckingsession.com,klartext-ne.de,forumcoin.win,androidemulator.in,forumcoin.win,arenavision.ru,gulshankumar.net##+js(bab-defuser.js)
 arenavision.in,arenavision.us,discudemy.com,practicetestgeeks.com,iptvbin.com,imojado.org,xossip.com,adyou.me,funcinema.ga,ddlfr.pw,freecoursesonline.us##+js(bab-defuser.js)
 themarker.com,nachrichten.at##+js(abort-on-property-read.js, adblockDetector)
