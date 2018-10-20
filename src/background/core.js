@@ -31,6 +31,9 @@
  * @function
  */
 a.init = () => {
+
+    /*************************************************************************/
+
     chrome.runtime.onMessage.addListener((msg, sender, res) => {
         if (
             typeof msg !== "object" ||
@@ -117,6 +120,8 @@ a.init = () => {
         }
     });
 
+    /*************************************************************************/
+
     // Taken from:
     // https://github.com/gorhill/uBlock/blob/7e5661383a77689e1ec67f6c32783c2b6f933cae/platform/chromium/vapi-background.js#L988
     const root = chrome.runtime.getURL("/");
@@ -135,6 +140,8 @@ a.init = () => {
             "blocking",
         ],
     );
+
+    /*************************************************************************/
 
     const reporter = chrome.runtime.getURL("/reporter/index.html");
     chrome.runtime.onMessageExternal.addListener((msg, sender, res) => {
@@ -175,57 +182,53 @@ a.init = () => {
         );
     }, 15000);
 
+    /*************************************************************************/
+
     //@pragma-if-debug
+
     if (a.debugMode) {
-        chrome.browserAction.setBadgeText({
-            text: "DBG",
-        });
-        chrome.browserAction.setBadgeBackgroundColor({
-            color: "#406BD1",
-        });
+        chrome.browserAction.setBadgeText({ text: "DBG" });
+        chrome.browserAction.setBadgeBackgroundColor({ color: "#406BD1" });
     } else {
-        chrome.browserAction.setBadgeText({
-            text: "DEV",
-        });
-        chrome.browserAction.setBadgeBackgroundColor({
-            color: "#00871D",
-        });
+        chrome.browserAction.setBadgeText({ text: "DEV" });
+        chrome.browserAction.setBadgeBackgroundColor({ color: "#00871D" });
     }
+
     //@pragma-end-if
 
+    /*************************************************************************/
+
     // TODO: Remove when the grand majority of users have migrated
+
     // Instruct user to update subscription link since RawGit is shutting
     // down
+
+    chrome.browserAction.onClicked.addListener(() => {
+        localStorage.setItem(upgradeMessageKey, "true");
+        chrome.tabs.create(
+            {
+                url: "https://jspenguin2017.github.io/uBlockProtector/#announcements",
+            },
+            () => {
+                chrome.browserAction.setBadgeText({ text: "" });
+                chrome.browserAction.setPopup({ popup: "popup/index.html" });
+            },
+        );
+    });
+
     const upgradeMessageKey = "rawgitupgrade";
-    if (
-        !chrome.extension.inIncognitoContext &&
-        !localStorage.getItem(upgradeMessageKey)
-    ) {
-        chrome.browserAction.setBadgeText({
-            text: "NEW",
-        });
-        chrome.browserAction.setBadgeBackgroundColor({
-            color: "#FF0000",
-        });
+    if (!localStorage.getItem(upgradeMessageKey)) {
+        chrome.browserAction.setBadgeText({ text: "NEW" });
+        chrome.browserAction.setBadgeBackgroundColor({ color: "#FF0000" });
+
         chrome.browserAction.setPopup({ popup: "" });
-        chrome.browserAction.onClicked.addListener(() => {
-            localStorage.setItem(upgradeMessageKey, "true");
-            chrome.tabs.create(
-                {
-                    url: "https://jspenguin2017.github.io/uBlockProtector/#announcements",
-                },
-                () => {
-                    // Reload somehow does not clear badge
-                    chrome.browserAction.setBadgeText({
-                        text: "",
-                    });
-                    chrome.runtime.reload();
-                },
-            );
-        });
     }
-    // Clean up when above is removed
+
+    // TODO: Clean up when above is removed
     //localStorage.removeItem(upgradeMessageKey);
+
+    /*************************************************************************/
+
 };
 
 /*****************************************************************************/
