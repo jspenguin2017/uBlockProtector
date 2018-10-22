@@ -207,6 +207,8 @@ a.init = () => {
 
     chrome.browserAction.onClicked.addListener(() => {
         chrome.browserAction.setBadgeText({ text: "" });
+
+        // Important: This must match the manifest
         chrome.browserAction.setPopup({ popup: "popup/index.html" });
 
         localStorage.setItem(upgradeMessageKey, "true");
@@ -222,7 +224,6 @@ a.init = () => {
     ) {
         chrome.browserAction.setBadgeText({ text: "NEW" });
         chrome.browserAction.setBadgeBackgroundColor({ color: "#FF0000" });
-
         chrome.browserAction.setPopup({ popup: "" });
     }
 
