@@ -187,6 +187,9 @@ a.init = () => {
     /*************************************************************************/
 
     const hasNews = false;
+    const newsPage =
+        "https://jspenguin2017.github.io/uBlockProtector/#announcements";
+
     const newsReadFlag = "news-read";
 
     // This handler will become inactive when there is a popup page set
@@ -198,9 +201,7 @@ a.init = () => {
 
         localStorage.setItem(newsReadFlag, "true");
 
-        chrome.tabs.create({
-            url: "https://jspenguin2017.github.io/uBlockProtector/#announcements",
-        });
+        chrome.tabs.create({ url: newsPage });
     });
 
     if (hasNews) {
@@ -264,8 +265,7 @@ a.rLink = (name) => {
 /*****************************************************************************/
 
 /**
- * 1 second blank MP4, taken from:
- * https://github.com/uBlockOrigin/uAssets/blob/2068e45e97ff4fd6efda0584508173a4de7915e8/filters/resources.txt#L72
+ * 1 second blank MP4, taken from https://bit.ly/2JcYAyq
  * @const {string}
  */
 a.blankMP4 = a.rLink("blank.mp4");
@@ -353,7 +353,7 @@ a.domCmp = (() => {
                 dom.endsWith(domList[i]) &&
                 (
                     dom.length === domList[i].length ||
-                    dom.charAt(dom.length - domList[i].length - 1) === '.'
+                    dom.charAt(dom.length - domList[i].length - 1) === "."
                 )
             ) {
                 return true === isMatch;
