@@ -224,6 +224,7 @@ a.init = () => {
     ) {
         chrome.browserAction.setBadgeText({ text: "NEW" });
         chrome.browserAction.setBadgeBackgroundColor({ color: "#FF0000" });
+
         chrome.browserAction.setPopup({ popup: "" });
     }
 
