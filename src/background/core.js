@@ -112,7 +112,7 @@ a.init = () => {
 
     /*************************************************************************/
 
-    // Taken from https://bit.ly/2OJzDAI
+    // Taken from https://bit.ly/2OJzDAI (GitHub gorhill/uBlock)
     const root = chrome.runtime.getURL("/");
     chrome.webRequest.onBeforeRequest.addListener(
         (details) => {
@@ -265,7 +265,8 @@ a.rLink = (name) => {
 /*****************************************************************************/
 
 /**
- * 1 second blank MP4, taken from https://bit.ly/2JcYAyq
+ * 1 second blank MP4, taken from
+ * https://bit.ly/2JcYAyq (GitHub uBlockOrigin/uAssets).
  * @const {string}
  */
 a.blankMP4 = a.rLink("blank.mp4");
