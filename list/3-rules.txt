@@ -72,7 +72,6 @@ zmovs.com##.inplayer_banners
 ! === Generic Network Rules
 /adblock-detector/*
 /adblock-popup.
-/detectadblock.
 ||fastly.net/ads/$image,redirect=2x2-transparent.png
 ||fastly.net/ads/$script,redirect=noopjs
 ||fastly.net/ads/$xmlhttprequest,redirect=nooptext
