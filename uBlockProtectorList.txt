@@ -49,7 +49,6 @@ zmovs.com##.inplayer_banners
 ##.popup-premium__apla
 /adblock-detector/*
 /adblock-popup.
-/detectadblock.
 ||fastly.net/ads/$image,redirect=2x2-transparent.png
 ||fastly.net/ads/$script,redirect=noopjs
 ||fastly.net/ads/$xmlhttprequest,redirect=nooptext
