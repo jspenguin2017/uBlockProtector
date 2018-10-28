@@ -7,8 +7,6 @@
 ! === Resource placeholder, these files do not actually exist
 |https://jspenguin.com/uBlockProtector/Solutions/
 @@|https://jspenguin.com/uBlockProtector/Solutions/MoatFreeWheelJSPEM.js|$script
-! === Unbreak contributors loading
-@@||github.com/jspenguin2017/*/ima3.js
 ! === Generic
 @@|https://*.moatads.com/*/MoatFreeWheelJSPEM.js*$script
 @@|https://ads.korri.fr/index.js|$script
