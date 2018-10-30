@@ -36,7 +36,7 @@
 /blockBlock.jquery.js$script
 /plugins/anti-block/*
 /anti-block-modal.js$script
-@@plugins/blockalyzer-adblock-counter/img/ads/$image
+@@/plugins/blockalyzer-adblock-counter/img/ads/$image
 @@/plugins/blockalyzer-adblock-counter/js/advert.js$script
 @@/plugins/ad-blocking-detector/assets/js/*$script
 /wp-content/plugins/*/adblock-detector.min.js$script
