@@ -1,9 +1,6 @@
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================
-@@/adframe.js$script,first-party
-@@/advertisement*.js$script,first-party
-@@/advert.js$script,first-party,domain=~adultmult.tv
 ||trymask.com/api/$third-party
 @@||adworkmedia.com/gLoader.php?GID=$script,third-party
 @@||adworkmedia.com/gTemplate.php?GID=$subdocument,third-party
