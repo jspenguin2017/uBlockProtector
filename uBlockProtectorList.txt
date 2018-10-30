@@ -523,9 +523,6 @@ blockads.fivefilters.org###no-blocking:style(display: block !important;)
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================
-@@/adframe.js$script,first-party
-@@/advertisement*.js$script,first-party
-@@/advert.js$script,first-party,domain=~adultmult.tv
 ||trymask.com/api/$third-party
 @@||adworkmedia.com/gLoader.php?GID=$script,third-party
 @@||adworkmedia.com/gTemplate.php?GID=$subdocument,third-party
@@ -561,7 +558,7 @@ blockads.fivefilters.org###no-blocking:style(display: block !important;)
 /blockBlock.jquery.js$script
 /plugins/anti-block/*
 /anti-block-modal.js$script
-@@plugins/blockalyzer-adblock-counter/img/ads/$image
+@@/plugins/blockalyzer-adblock-counter/img/ads/$image
 @@/plugins/blockalyzer-adblock-counter/js/advert.js$script
 @@/plugins/ad-blocking-detector/assets/js/*$script
 /wp-content/plugins/*/adblock-detector.min.js$script
@@ -2085,25 +2082,6 @@ junksport.com##DIV[style="background-color: rgb(251, 236, 173); position: absolu
 @@||zatnawqy.net/intermission/loadTargetUrl$xmlhttprequest
 @@||zff.co/intermission/loadTargetUrl$xmlhttprequest
 @@|http://*.net/*/$subdocument,third-party,domain=allanalpass.com|amy.gs|any.gs|cash4files.com|cash4links.co|deb.gs|drstickyfingers.com|dyo.gs|eafyfsuh.net|fapoff.com|filesonthe.net|freean.us|freegaysitepass.com|galleries.bz|goneviral.com|hornywood.tv|linkbabes.com|linkbucks.com|megaline.co|miniurls.co|picbucks.com|poontown.net|qqc.co|rqq.co|sasontnwc.net|seriousdeals.net|sexpalace.gs|theseblogs.com|theseforums.com|tinylinks.co|tnabucks.com|tubeviral.com|ultrafiles.net|urlbeat.net|whackyvidz.com|youfap.me|yyv.co|zatnawqy.net|zff.co
-||cdn.adf.ly/js/entry.js$script,third-party
-||cdn.j.gs/js/entry.js$script,third-party
-||cdn.q.gs/js/entry.js$script,third-party
-||cdn.ay.gy/js/entry.js$script,third-party
-||cdn.adf.ly/js/link-converter.js$script,third-party
-||cdn.j.gs/js/link-converter.js$script,third-party
-||cdn.q.gs/js/link-converter.js$script,third-party
-||cdn.ay.gy/js/link-converter.js$script,third-party
-||cdn.adf.ly/js/display.js$script,third-party
-||cdn.j.gs/js/display.js$script,third-party
-||cdn.q.gs/js/display.js$script,third-party
-||cdn.ay.gy/js/display.js$script,third-party
-@@||adf.ly^$generichide
-@@||j.gs^$generichide
-@@||q.gs^$generichide
-@@||ay.gy^$generichide
-@@||s1-adfly.com/show.php$subdocument,domain=adf.ly|j.gs|q.gs|ay.gy
-@@/static/image/ad*.png$image,domain=adf.ly|j.gs|q.gs|ay.gy
-@@||static.adf.ly/static/image/ad*.png$image,third-party
 ||cdn.shorte.st/link-converter.min.js$script,third-party
 ||bc.vc/js/link-converter.js$script,third-party
 ||bc.vc/js/bcvc_go.js$script,third-party
