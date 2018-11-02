@@ -47,7 +47,7 @@ const post = (payload) => {
             }
         };
 
-        req.open("POST", "https://jspenguin.com/PrivateMessage/Report.php");
+        req.open("POST", "https://legacy.hugoxu.com/PrivateMessage/Report.php");
         req.send(payload);
     });
 };
