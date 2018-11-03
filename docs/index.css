@@ -1,10 +1,27 @@
 code {
     background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 10px;
+    border-radius: 20px;
     font-family: Consolas, monospace;
-    padding: 3px 7px 3px 7px;
+    padding: 0px 8px 0px 8px;
+}
+
+p {
+    line-height: 1.3em;
 }
 
 p.red {
     padding: 5px;
+}
+
+div.scroll {
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+p.no-bot {
+    margin-bottom: 0px;
+}
+
+p.no-top {
+    margin-top: 0px;
 }
