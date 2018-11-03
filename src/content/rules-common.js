@@ -104,6 +104,7 @@
         // False positives
         "anandabazar.com",
         "animesync.tv",
+        "avgle.com",
         "babbel.com",
         "bild.de",
         "buxfer.com",
