@@ -9,9 +9,9 @@ p {
     line-height: 1.3em;
 }
 
-p.red {
-    padding: 5px;
-}
+    p.red {
+        padding: 5px;
+    }
 
 div.scroll {
     max-width: 100%;
@@ -20,8 +20,4 @@ div.scroll {
 
 p.no-bot {
     margin-bottom: 0px;
-}
-
-p.no-top {
-    margin-top: 0px;
 }
