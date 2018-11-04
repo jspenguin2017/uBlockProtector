@@ -242,7 +242,6 @@ if (a.domCmp([
     "exrapidleech.info",
     "flashx.to",
     "flashx.tv",
-    "gsmarena.com",
     "linx.cloud",
     "salon.com",
     "urle.co",
