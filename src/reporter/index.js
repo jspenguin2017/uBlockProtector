@@ -65,8 +65,8 @@ const knownGood = [
     // Wrong page
     "addons.mozilla.org",
     "chrome.google.com",
+    "hugoxu.com",
     "github.com",
-    "jspenguin.com",
     "jspenguin2017.github.io",
     "www.microsoft.com", // Do not remove "www"
 
