@@ -10,8 +10,8 @@ a.generic();
     // fwmrm.net
     // https://github.com/jspenguin2017/uBlockProtector/issues/344
     const genPayload = (csid, caid, cbfn) => {
-        // Paths in this payload are placeholders, no request to jspenguin.com
-        // will leave the browser
+        // Paths in this payload are placeholders, no request to
+        // legacy.hugoxu.com will leave the browser
         // Event callbacks are blocked by Nano Defender Integration filter
         // list
         let payload = `(() => {
@@ -26,7 +26,7 @@ a.generic();
                     {
                         name: "autoloadExtensions",
                         category: "profile",
-                        value: "https://jspenguin.com/uBlockProtector/Solutions/MoatFreeWheelJSPEM.js",
+                        value: "https://legacy.hugoxu.com/uBlockProtector/Solutions/MoatFreeWheelJSPEM.js",
                     },
                 ],
                 rendererManifest: {
@@ -54,7 +54,7 @@ a.generic();
                 eventCallbacks: {
                     eventCallbacks: [
                         {
-                            url: "https://jspenguin.com/uBlockProtector/Solutions/Blocked.php",
+                            url: "https://legacy.hugoxu.com/uBlockProtector/Solutions/Blocked.php",
                             type: "GENERIC",
                             use: "BASE",
                             showBrowser: false,
@@ -71,7 +71,7 @@ a.generic();
                         videoAsset: {
                             eventCallbacks: [
                                 {
-                                    url: "https://jspenguin.com/uBlockProtector/Solutions/Blocked.php",
+                                    url: "https://legacy.hugoxu.com/uBlockProtector/Solutions/Blocked.php",
                                     name: "videoView",
                                     type: "IMPRESSION",
                                     use: "OVERRIDE",
@@ -85,7 +85,7 @@ a.generic();
                                 {
                                     eventCallbacks: [
                                         {
-                                            url: "https://jspenguin.com/uBlockProtector/Solutions/Blocked.php",
+                                            url: "https://legacy.hugoxu.com/uBlockProtector/Solutions/Blocked.php",
                                             name: "slotImpression",
                                             type: "IMPRESSION",
                                             use: "OVERRIDE",
@@ -93,7 +93,7 @@ a.generic();
                                             trackingUrls: [],
                                         },
                                         {
-                                            url: "https://jspenguin.com/uBlockProtector/Solutions/Blocked.php",
+                                            url: "https://legacy.hugoxu.com/uBlockProtector/Solutions/Blocked.php",
                                             name: "slotEnd",
                                             type: "IMPRESSION",
                                             use: "OVERRIDE",
