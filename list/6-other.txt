@@ -804,7 +804,6 @@ hayan.tv#@##uzcrsite
 @@||ddtorun.pl/pl/js/show_ads.js$script
 @@||ddwloclawek.pl/pl/js/show_ads.js$script
 benchmark.pl###adblock-info
-@@||adserver.adtech.de/?adrawdata/$xmlhttprequest,domain=ruutu.fi
 zelaznalogika.net#@##adsense
 @@||mymanga.io/css/ads.css$stylesheet
 rychlost.cz###cpcbsd9z1

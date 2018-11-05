@@ -30,7 +30,6 @@
 @@||main-echo.de^$generichide
 @@||mitele.es^$generichide
 @@||mycinema.pro^$generichide
-@@||ncaa.com^$generichide
 @@||playstation.com^$generichide
 @@||randaris-anime.net^$generichide
 @@||simply-debrid.com^$generichide

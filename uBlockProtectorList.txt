@@ -8,8 +8,6 @@
 @@|https://*.moatads.com/*/MoatFreeWheelJSPEM.js*$script
 @@|https://ads.korri.fr/index.js|$script
 @@|http://*.medianetworkinternational.com/js/advertisement.js*$script
-@@|https://*.v.fwmrm.net/ad/g/*$script,domain=ncaa.com|pga.com|q2.be|vtm.be|ruutu.fi|medialaancdn.be|medialaan.be
-@@|http://*.v.fwmrm.net/ad/g/*$script,domain=ncaa.com|pga.com|q2.be|vtm.be|ruutu.fi|medialaancdn.be|medialaan.be
 @@||ads-v-darwin.hulustream.com/published/*.mp4$domain=hulu.com
 ! Asking for permission does not have an enforced cooldown, can be exploited to make the permission request to be not refusable
 ! More information: https://github.com/uBlockOrigin/uAssets/issues/770
@@ -484,7 +482,6 @@ blockads.fivefilters.org###no-blocking:style(display: block !important;)
 @@||main-echo.de^$generichide
 @@||mitele.es^$generichide
 @@||mycinema.pro^$generichide
-@@||ncaa.com^$generichide
 @@||playstation.com^$generichide
 @@||randaris-anime.net^$generichide
 @@||simply-debrid.com^$generichide
@@ -510,10 +507,7 @@ blockads.fivefilters.org###no-blocking:style(display: block !important;)
 @@||cf.http.anno.channel4.com^$domain=channel4.com
 @@||playapi.mtgx.tv/v3/adinfo?$xmlhttprequest,domain=tvplay.skaties.lv|play.tv3.lt|tv3play.tv3.ee|play.nova.bg
 @@||edgedatg.com^$script,domain=abc.go.com
-@@||pga.com^$generichide
-@@||manifest.auditude.com^$xmlhttprequest,domain=pga.com
 @@||acortar.net/rollups/aes.js$domain=dclinks.info
-@@||fwmrm.net/ad/g/$xmlhttprequest,domain=q2.be|vtm.be|medialaancdn.be|medialaan.be
 @@||akamaihd.net^$xmlhttprequest,script,domain=mitele.es
 @@||fwmrm.net^$domain=viasatsport.se
 ||freewheel-mtgx-tv.akamaized.net^$media,domain=viasatsport.se
@@ -1326,7 +1320,6 @@ hayan.tv#@##uzcrsite
 @@||ddtorun.pl/pl/js/show_ads.js$script
 @@||ddwloclawek.pl/pl/js/show_ads.js$script
 benchmark.pl###adblock-info
-@@||adserver.adtech.de/?adrawdata/$xmlhttprequest,domain=ruutu.fi
 zelaznalogika.net#@##adsense
 @@||mymanga.io/css/ads.css$stylesheet
 rychlost.cz###cpcbsd9z1

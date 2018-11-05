@@ -22,13 +22,8 @@
 ! === abc.go.com
 ! === https://github.com/jspenguin2017/uBlockProtector/issues/338
 @@||edgedatg.com^$script,domain=abc.go.com
-! === pga.com
-@@||pga.com^$generichide
-@@||manifest.auditude.com^$xmlhttprequest,domain=pga.com
 ! === dclinks.info
 @@||acortar.net/rollups/aes.js$domain=dclinks.info
-! === q2.be, vtm.be, medialaancdn.be, medialaan.be
-@@||fwmrm.net/ad/g/$xmlhttprequest,domain=q2.be|vtm.be|medialaancdn.be|medialaan.be
 ! === mitele.es
 @@||akamaihd.net^$xmlhttprequest,script,domain=mitele.es
 ! === viasatsport.se
