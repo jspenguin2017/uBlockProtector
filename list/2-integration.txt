@@ -11,9 +11,6 @@
 @@|https://*.moatads.com/*/MoatFreeWheelJSPEM.js*$script
 @@|https://ads.korri.fr/index.js|$script
 @@|http://*.medianetworkinternational.com/js/advertisement.js*$script
-! === ncaa.com, pga.com, q2.be, medialaancdn.be, medialaan.be
-@@|https://*.v.fwmrm.net/ad/g/*$script,domain=ncaa.com|pga.com|q2.be|vtm.be|ruutu.fi|medialaancdn.be|medialaan.be
-@@|http://*.v.fwmrm.net/ad/g/*$script,domain=ncaa.com|pga.com|q2.be|vtm.be|ruutu.fi|medialaancdn.be|medialaan.be
 ! === hulu.com
 @@||ads-v-darwin.hulustream.com/published/*.mp4$domain=hulu.com
 
