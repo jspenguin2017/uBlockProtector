@@ -2121,15 +2121,6 @@ if (a.domCmp(["itv.com"])) {
         }
     });
 }
-if (a.domCmp(["di.fm", "jazzradio.com"])) {
-    a.loopbackXHR((ignored, url) => {
-        if (url.startsWith("https://pubads.g.doubleclick.net/")) {
-            return `<?xml version="1.0" encoding="UTF-8"?>
-<VAST xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="vast.xsd" version="3.0">
-</VAST>`;
-        }
-    });
-}
 if (a.domCmp(["stream.nbcsports.com"])) {
     a.loopbackXHR((ignored, url) => {
         if (url.includes(".v.fwmrm.net/ad/g/1")) {
