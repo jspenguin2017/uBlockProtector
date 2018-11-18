@@ -308,8 +308,6 @@ peugeot-metropolis.de###displaywise
 t3n.de#@##adsbox
 yiv.com###LeftAdDiv
 yiv.com###RightAdDiv
-4j.com###game_bottom_ad
-4j.com###game_top_ad
 agar.io###advertisement
 ||dolldivine.com/images/fairy-preview.jpg
 peugeot-metropolis.de##+js(abort-current-inline-script.js, $, #gandalfads)
@@ -452,7 +450,6 @@ redtube.com##div[class][style]:has(> div[class][style] > a.removeAdLink)
 blockads.fivefilters.org###no-blocking:style(display: block !important;)
 @@||20min.ch^$generichide
 @@||24opole.pl^$generichide
-@@||4j.com^$generichide
 @@||7sim.net^$generichide
 @@||aftonbladet.se^$generichide
 @@||al.ly^$generichide
