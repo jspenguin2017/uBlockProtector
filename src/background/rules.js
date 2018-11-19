@@ -9,13 +9,12 @@ a.generic();
 {
     // shorte.st and related domains
     // https://github.com/jspenguin2017/uBlockProtector/issues/169
+    // https://github.com/NanoMeow/QuickReports/issues/333
     chrome.webRequest.onBeforeSendHeaders.addListener(
         (details) => {
-            for (let i = 0; i < details.requestHeaders.length; i++) {
-                if (details.requestHeaders[i].name === "User-Agent") {
-                    details.requestHeaders.splice(i, 1);
-                    break;
-                }
+            for (const header of details.requestHeaders) {
+                if (header.name === "User-Agent")
+                    header.value = "curl/7.47.0";
             }
             return { requestHeaders: details.requestHeaders };
         },
