@@ -33,6 +33,50 @@ if (a.domCmp([
     a.readOnly("AntiAd", null);
 }
 
+// https://github.com/NanoMeow/QuickReports/issues/373
+if (
+    !a.domCmp([
+        "poczta.o2.pl",
+        "poczta.wp.pl",
+    ], true) &&
+    a.domCmp([
+        "abczdrowie.pl",
+        "autokrata.pl",
+        "autokult.pl",
+        "biztok.pl",
+        "echirurgia.pl",
+        "fotoblogia.pl",
+        "gadzetomania.pl",
+        "hotmoney.pl",
+        "kafeteria.pl",
+        "kafeteria.tv",
+        "kardiolo.pl",
+        "komediowo.pl",
+        "komorkomania.pl",
+        "money.pl",
+        "o2.pl",
+        "parenting.pl",
+        "pudelek.pl",
+        "pudelek.tv",
+        "pudelekx.pl",
+        "sfora.pl",
+        "snobka.pl",
+        "wawalove.pl",
+        "wp.pl",
+        "wp.tv",
+        "wrzuta.pl",
+    ])
+) {
+    a.loopbackXHR((ignored, url) => {
+        const path = url.substring(url.lastIndexOf('/') + 1);
+        if (path.startsWith("dmFkLnhtb")) { // vad.xml
+            return `<?xml version="1.0" encoding="UTF-8"?>
+<VAST xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="vast2.xsd" version="2.0">
+</VAST>`;
+        }
+    });
+}
+
 // -------------------------------------------------------------------------- //
 
 if (a.domCmp(["catchcoin.pw", "irc-source.com", "dashcatch.xyz"])) {
@@ -201,48 +245,6 @@ if (a.domCmp(["elektroda.pl"])) {
 }
 if (a.domCmp(["anandabazar.com"])) {
     a.readOnly("canRunAds", false);
-}
-if (
-    !a.domCmp([
-        "poczta.o2.pl",
-        "poczta.wp.pl",
-    ], true) &&
-    a.domCmp([
-        "abczdrowie.pl",
-        "autokrata.pl",
-        "autokult.pl",
-        "biztok.pl",
-        "echirurgia.pl",
-        "fotoblogia.pl",
-        "gadzetomania.pl",
-        "hotmoney.pl",
-        "kafeteria.pl",
-        "kafeteria.tv",
-        "kardiolo.pl",
-        "komediowo.pl",
-        "komorkomania.pl",
-        "money.pl",
-        "o2.pl",
-        "parenting.pl",
-        "pudelek.pl",
-        "pudelek.tv",
-        "pudelekx.pl",
-        "sfora.pl",
-        "snobka.pl",
-        "wawalove.pl",
-        "wp.pl",
-        "wp.tv",
-        "wrzuta.pl",
-    ])
-) {
-    a.loopbackXHR((ignored, url) => {
-        const path = url.substring(url.lastIndexOf('/') + 1);
-        if (path.startsWith("dmFkLnhtb")) { // vad.xml
-            return `<?xml version="1.0" encoding="UTF-8"?>
-<VAST xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="vast2.xsd" version="2.0">
-</VAST>`;
-        }
-    });
 }
 if (a.domCmp(["wtkplay.pl"])) {
     a.readOnly("can_run_ads", true);
