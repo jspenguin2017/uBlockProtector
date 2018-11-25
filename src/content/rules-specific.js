@@ -1,7 +1,39 @@
-/**
- * Content rules for specific websites.
- */
+// -------------------------------------------------------------------------- //
+
+// Nano Defender - An anti-adblock defuser
+// Copyright (C) 2016-2018  Nano Defender contributors
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+// -------------------------------------------------------------------------- //
+
+// Content rules for specific websites.
+
+// -------------------------------------------------------------------------- //
+
 "use strict";
+
+// -------------------------------------------------------------------------- //
+
+// https://github.com/NanoMeow/QuickReports/issues/352
+if (a.domCmp([
+    "gamer.com.tw",
+])) {
+    a.readOnly("AntiAd", null);
+}
+
+// -------------------------------------------------------------------------- //
 
 if (a.domCmp(["catchcoin.pw", "irc-source.com", "dashcatch.xyz"])) {
     a.noAccess("adBlockDetected");
@@ -549,9 +581,6 @@ if (a.domCmp(["uol.com.br"])) {
             },
         };
     });
-}
-if (a.domCmp(["gamer.com.tw"])) {
-    a.readOnly("AntiAd", null);
 }
 if (a.domCmp(["armorgames.com"])) {
     a.readOnly("ga_detect", null);
@@ -2987,17 +3016,30 @@ if (a.domCmp(["telerium.tv"])) {
     });
 }
 
+// -------------------------------------------------------------------------- //
+
 // Nano Adblocker does not support UserCSS because it breaks DOM Inspector,
 // duct tape it here
+
 // TODO - Convert to filter (or remove if already in uAssets) when minimum
 // required version of Chrome can handle removing injected stylesheet
-if (a.domCmp(["hdblog.it", "hdmotori.it"])) {
-    a.css("body { background:none; overflow:auto; }");
+
+if (a.domCmp([
+    "hdblog.it",
+    "hdmotori.it",
+])) {
+    a.css("body { background: none; overflow: auto; }");
 }
-if (a.domCmp(["telegraph.co.uk"])) {
-    a.css(".adblocker-message { display:none; }");
+
+if (a.domCmp([
+    "telegraph.co.uk",
+])) {
+    a.css(".adblocker-message { display: none; }");
 }
-if (a.domCmp(["go4up.com"])) {
+
+if (a.domCmp([
+    "go4up.com",
+])) {
     a.inject(() => {
         "use strict";
         const _getElementById = window.document.getElementById;
@@ -3009,3 +3051,5 @@ if (a.domCmp(["go4up.com"])) {
         };
     });
 }
+
+// -------------------------------------------------------------------------- //
