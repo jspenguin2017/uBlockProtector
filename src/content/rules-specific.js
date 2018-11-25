@@ -891,11 +891,6 @@ if (a.domCmp(["rapid8.com"])) {
         $("div.backk").remove();
     });
 }
-if (a.domCmp(["turkdown.com"])) {
-    a.ready(() => {
-        $("#duyuru").remove();
-    });
-}
 if (a.domCmp(["privateinsta.com"])) {
     a.ready(() => {
         a.inject(() => {
