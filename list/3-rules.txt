@@ -722,10 +722,6 @@ sledujserialy.sk##div.w-episode-source > div:has(iframe[src*="ad.php"])
 eurogamer.de##+js(abort-on-property-read.js, _sp_.msg.displayMessage)
 ! === deportesmax.info
 deportesmax.info###wmpu
-! === hulu.com
-hulu.com###banner-ad-container
-hulu.com##.ad-choices
-||ads-v-darwin.hulustream.com^
 ! === msfn.org
 msfn.org##.displayGlobalMessage:has-text(ad-blocking)
 ! === theguardian.com
