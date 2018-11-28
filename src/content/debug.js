@@ -36,9 +36,8 @@ if (a.debugMode) {
 
     /*************************************************************************/
 
+    // Force Twitch to show debug logs
     if (a.domCmp(["twitch.tv"], true)) {
-        // Force Twitch to show debug logs
-
         a.readOnly("log", "window.console.log.bind(window.console)", "window.console");
         a.readOnly("warn", "window.console.warn.bind(window.console)", "window.console");
         a.readOnly("error", "window.console.error.bind(window.console)", "window.console");
@@ -53,35 +52,6 @@ if (a.debugMode) {
 // Rules
 
 if (a.debugMode) {
-
-    /*************************************************************************/
-
-    // Partially working
-    if (a.domCmp(["hulu.com"])) {
-        const performClick = (btn) => {
-            if (btn.classList.contains("nano-defender-clicked")) {
-                return;
-            }
-
-            btn.classList.add("nano-defender-clicked");
-            btn.click();
-
-            // TODO
-            console.warn("clicked", btn);
-        };
-        a.onInsert((node) => {
-            if (node.querySelector) {
-                if (node.classList.contains("ad-selector-option") || node.classList.contains("trailer-selector-watch-trailer-button")) {
-                    setTimeout(performClick, 1000, node);
-                } else {
-                    const btn = node.querySelector(".ad-selector-option, .trailer-selector-watch-trailer-button");
-                    if (btn) {
-                        setTimeout(performClick, 1000, btn);
-                    }
-                }
-            }
-        });
-    }
 
     /*************************************************************************/
 
