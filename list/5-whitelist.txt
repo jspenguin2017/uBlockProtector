@@ -31,3 +31,5 @@
 ||freewheel-mtgx-tv.akamaized.net^$media,domain=viasatsport.se
 ||fwmrm.net^$image,important,domain=viasatsport.se
 ||fwmrm.net/ad/*$xmlhttprequest,important,redirect=nooptext,domain=viasatsport.se
+! === viz.com
+@@||moatads.com/*/moatwrapper.js$script,domain=viz.com
