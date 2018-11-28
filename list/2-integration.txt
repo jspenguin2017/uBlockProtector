@@ -11,8 +11,6 @@
 @@|https://*.moatads.com/*/MoatFreeWheelJSPEM.js*$script
 @@|https://ads.korri.fr/index.js|$script
 @@|http://*.medianetworkinternational.com/js/advertisement.js*$script
-! === hulu.com
-@@||ads-v-darwin.hulustream.com/published/*.mp4$domain=hulu.com
 
 ! === IMA SDK surrogate integration
 ! Not working correctly
