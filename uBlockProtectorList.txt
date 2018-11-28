@@ -8,7 +8,6 @@
 @@|https://*.moatads.com/*/MoatFreeWheelJSPEM.js*$script
 @@|https://ads.korri.fr/index.js|$script
 @@|http://*.medianetworkinternational.com/js/advertisement.js*$script
-@@||ads-v-darwin.hulustream.com/published/*.mp4$domain=hulu.com
 ! Asking for permission does not have an enforced cooldown, can be exploited to make the permission request to be not refusable
 ! More information: https://github.com/uBlockOrigin/uAssets/issues/770
 ||authedmine.com^$third-party
@@ -418,9 +417,6 @@ nbc.com##+js(abort-on-property-read.js, mps._ab)
 sledujserialy.sk##div.w-episode-source > div:has(iframe[src*="ad.php"])
 eurogamer.de##+js(abort-on-property-read.js, _sp_.msg.displayMessage)
 deportesmax.info###wmpu
-hulu.com###banner-ad-container
-hulu.com##.ad-choices
-||ads-v-darwin.hulustream.com^
 msfn.org##.displayGlobalMessage:has-text(ad-blocking)
 theguardian.com##div.site-message:has(a[href^="https://membership.theguardian.com/"])
 theguardian.com##.contributions__epic
@@ -469,7 +465,6 @@ blockads.fivefilters.org###no-blocking:style(display: block !important;)
 @@||globalbesthosting.com^$generichide
 @@||greenocktelegraph.co.uk^$generichide
 @@||hells-hack.com^$generichide
-@@||hulu.com^$generichide
 @@||imleagues.com^$generichide
 @@||leech.ae^$generichide
 @@||libertyunyielding.com^$generichide
@@ -510,7 +505,7 @@ blockads.fivefilters.org###no-blocking:style(display: block !important;)
 ||freewheel-mtgx-tv.akamaized.net^$media,domain=viasatsport.se
 ||fwmrm.net^$image,important,domain=viasatsport.se
 ||fwmrm.net/ad/*$xmlhttprequest,important,redirect=nooptext,domain=viasatsport.se
-@@||moatads.com/*/moatwrapper.js$script,domain=hulu.com|viz.com
+@@||moatads.com/*/moatwrapper.js$script,domain=viz.com
 ! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
 ! License and original source code are available here: https://github.com/reek/anti-adblock-killer
 ! ================================================================================================
