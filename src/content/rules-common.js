@@ -120,6 +120,7 @@
         "lemonde.fr",
         "o2.pl",
         "ostrzeszowinfo.pl",
+        "pokyun.tv",
         "shinden.pl",
         "socketloop.com",
         "sport-tv-guide.live",
