@@ -1081,7 +1081,7 @@ a.generic = () => {
             let isEvil = false;
             const anErr = new window.Error("[Nano] Generic Solution Triggered :: AdBlock Notify");
             window.Object.defineProperty(window, "anOptions", {
-                configurable: true,
+                configurable: true, // Important, must allow script snippets to override
                 set(arg) {
                     try {
                         if (arg instanceof window.Object &&
