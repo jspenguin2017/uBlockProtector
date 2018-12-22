@@ -52,8 +52,6 @@ zmovs.com##.inplayer_banners
 /jquery.adi.css
 /jquery.adi.js$domain=123link.top
 ||pelcro.com^$third-party
-||perceivequarter.com^$third-party
-||hammerhearing.com^$third-party
 ||sixscissors.com^$third-party,domain=~itavisen.no
 sectorsatoshi-amarillo.website,sectorsatoshi-azul.website,sectorsatoshi-blanco.website,sectorsatoshi-celeste.website,sectorsatoshi-gris.website,sectorsatoshi-naranja.website##+js(bab-defuser.js)
 sectorsatoshi-negro.website,sectorsatoshi-rosa.website,sectorsatoshi-verde.website,sectorsatoshi-violeta.website##+js(bab-defuser.js)

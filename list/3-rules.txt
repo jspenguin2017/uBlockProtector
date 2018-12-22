@@ -82,8 +82,6 @@ zmovs.com##.inplayer_banners
 /jquery.adi.js$domain=123link.top
 ! === Admiral
 ||pelcro.com^$third-party
-||perceivequarter.com^$third-party
-||hammerhearing.com^$third-party
 ! https://github.com/jspenguin2017/uBlockProtector/issues/978
 ||sixscissors.com^$third-party,domain=~itavisen.no
 ! === BlockAdBlock
