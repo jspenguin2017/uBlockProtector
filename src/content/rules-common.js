@@ -129,6 +129,7 @@
         "techradar.com",
         "tv3sport.dk",
         "viafree.dk",
+        "viafree.fi",
         "viafree.no",
         "viafree.se",
         "viasatsport.se",
