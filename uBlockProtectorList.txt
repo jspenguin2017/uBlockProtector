@@ -466,7 +466,6 @@ blockads.fivefilters.org###no-blocking:style(display: block !important;)
 @@||imleagues.com^$generichide
 @@||leech.ae^$generichide
 @@||libertyunyielding.com^$generichide
-@@||linkneverdie.com^$generichide
 @@||linksh.top^$generichide
 @@||lolstat.gg^$generichide
 @@||main-echo.de^$generichide
