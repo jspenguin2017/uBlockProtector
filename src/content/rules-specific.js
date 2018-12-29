@@ -1,4 +1,4 @@
-// -------------------------------------------------------------------------- //
+// --------------------------------------------------------------------------------------------- //
 
 // Nano Defender - An anti-adblock defuser
 // Copyright (C) 2016-2018  Nano Defender contributors
@@ -16,15 +16,15 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-// -------------------------------------------------------------------------- //
+// --------------------------------------------------------------------------------------------- //
 
 // Content rules for specific websites.
 
-// -------------------------------------------------------------------------- //
+// --------------------------------------------------------------------------------------------- //
 
 "use strict";
 
-// -------------------------------------------------------------------------- //
+// --------------------------------------------------------------------------------------------- //
 
 // https://github.com/NanoMeow/QuickReports/issues/352
 if (a.domCmp([
@@ -70,9 +70,10 @@ if (
     a.loopbackXHR((ignored, url) => {
         const path = url.substring(url.lastIndexOf('/') + 1);
         if (path.startsWith("dmFkLnhtb")) { // vad.xml
-            return `<?xml version="1.0" encoding="UTF-8"?>
-<VAST xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="vast2.xsd" version="2.0">
-</VAST>`;
+            return '<?xml version="1.0" encoding="UTF-8"?>\n' +
+                '<VAST xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ' +
+                'xsi:noNamespaceSchemaLocation="vast2.xsd" version="2.0">\n' +
+                '</VAST>';
         }
     });
 }
@@ -84,7 +85,7 @@ if (a.domCmp(["linkneverdie.com"])) {
     });
 }
 
-// -------------------------------------------------------------------------- //
+// --------------------------------------------------------------------------------------------- //
 
 if (a.domCmp(["catchcoin.pw", "irc-source.com", "dashcatch.xyz"])) {
     a.noAccess("adBlockDetected");
@@ -3012,13 +3013,12 @@ if (a.domCmp(["telerium.tv"])) {
     });
 }
 
-// -------------------------------------------------------------------------- //
+// --------------------------------------------------------------------------------------------- //
 
-// Nano Adblocker does not support UserCSS because it breaks DOM Inspector,
-// duct tape it here
+// Nano Adblocker does not support UserCSS because it breaks DOM Inspector, duct tape it here
 
-// TODO - Convert to filter (or remove if already in uAssets) when minimum
-// required version of Chrome can handle removing injected stylesheet
+// TODO - Convert to filter (or remove if already in uAssets) when minimum required version of
+// Chrome can handle removing injected stylesheet
 
 if (a.domCmp([
     "hdblog.it",
@@ -3048,4 +3048,4 @@ if (a.domCmp([
     });
 }
 
-// -------------------------------------------------------------------------- //
+// --------------------------------------------------------------------------------------------- //
