@@ -714,8 +714,6 @@ locopelis.com##+js(abort-on-property-write.js, adbClick)
 /assets/js/sourcepoint/*$script,domain=nba.com
 ! === nbc.com
 nbc.com##+js(abort-on-property-read.js, mps._ab)
-! === sledujserialy.sk
-sledujserialy.sk##div.w-episode-source > div:has(iframe[src*="ad.php"])
 ! === eurogamer.de
 eurogamer.de##+js(abort-on-property-read.js, _sp_.msg.displayMessage)
 ! === deportesmax.info

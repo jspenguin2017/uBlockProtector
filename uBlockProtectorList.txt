@@ -412,7 +412,6 @@ locopelis.com##.div-banner-popup-event
 locopelis.com##+js(abort-on-property-write.js, adbClick)
 /assets/js/sourcepoint/*$script,domain=nba.com
 nbc.com##+js(abort-on-property-read.js, mps._ab)
-sledujserialy.sk##div.w-episode-source > div:has(iframe[src*="ad.php"])
 eurogamer.de##+js(abort-on-property-read.js, _sp_.msg.displayMessage)
 deportesmax.info###wmpu
 msfn.org##.displayGlobalMessage:has-text(ad-blocking)
