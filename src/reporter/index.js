@@ -86,6 +86,9 @@ const knownGood = [
     "tvp.pl",
     "visioncloud.rocks",
     "wp.pl",
+
+    // Other known good
+    "youtube.com",
 ];
 /**
  * Domains that are known to be bad where only technical help is needed.
@@ -94,6 +97,7 @@ const knownGood = [
 const knownBad = [
     "kissanime.ru",
     "kissmanga.com",
+    "maddertranslates.com",
     "twitch.tv",
     "pokyun.tv",
 ];
