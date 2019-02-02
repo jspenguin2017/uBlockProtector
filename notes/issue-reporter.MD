@@ -1,8 +1,10 @@
 # Privacy Policy for Quick Issue Reporter
 
 This tool will only collect your data if you use it, and will not send anything
-to remote server before you click the "Send" button. Alternatively, you can
-submit issues manually to respective issues trackers.
+to remote server before you click the "Send" button. By using this tool, you
+accept the privacy policy below, as well as the
+[privacy policy of GeoJS](https://www.geojs.io/privacy/). Alternatively, you
+can submit issues manually to respective issues trackers.
 
 ### What are collected? How will the data be used?
 
@@ -15,6 +17,7 @@ group of people or publicly unless otherwise indicated below.
      reproduced while using your VPN
    - The country that your IP address belongs to and/or part of your IP address
      may be shared
+   - We may use GeoJS to process your IP address
 2. User agent string of your browser
    - Do not try to mask or change it; if the maintainers are unable to
      reproduce the issue, your report will be discarded
