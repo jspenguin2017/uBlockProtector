@@ -1,7 +1,8 @@
 # Privacy Policy for Quick Issue Reporter
 
-The Quick Issue Reporter (the "Tool") allows you to quickly report issues you
-encounter when browsing the Internet.
+The Quick Issue Reporter (the "Tool") allows you to quickly report issues
+related to Nano Adblocker and Nano Defender (the "Projects") you encounter when
+browsing the Internet.
 
 The Tool will only collect your data when you use it, and will not connect to
 remote servers before the "Send" button is clicked.
@@ -23,14 +24,14 @@ to respective issues trackers manually.
 2. User agent string of your browser
    - Do not try to mask or change it; if the maintainers are unable to
      reproduce the issue, your report will be discarded
-3. Version string of Nano Adblocker and/or Nano Defender that you are using
+3. Version string of the Projects that you are using
 4. The form that you filled
    - If you supplied a test account in the form, that account will not be
      shared publicly unless you indicated otherwise
 
-Collected data will be used to improve Nano Adblocker, Nano Defender, and
-related projects such as uAssets. Collected data may be shared with a selected
-group of people or publicly unless otherwise indicated above.
+Collected data will be used to improve the Projects, as well as related
+projects such as uAssets. Collected data may be shared with a selected group of
+people or publicly unless otherwise indicated above.
 
 ### How secure is the server?
 
