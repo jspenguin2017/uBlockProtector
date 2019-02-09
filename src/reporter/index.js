@@ -99,7 +99,6 @@ const knownBad = [
     "kissmanga.com",
     "maddertranslates.com",
     "twitch.tv",
-    "pokyun.tv",
 ];
 /**
  * Check if a domain matches one of the matchers.
