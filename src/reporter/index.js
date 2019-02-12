@@ -81,6 +81,7 @@ const knownGood = [
 
     // Fixed in regional filters
     "dn.se",
+    "filmweb.pl",
     "kwejk.pl",
     "onet.pl",
     "tvp.pl",
