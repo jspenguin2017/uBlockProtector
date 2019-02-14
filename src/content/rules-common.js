@@ -112,6 +112,7 @@
         "derstandard.at",
         "di.fm",
         "download.ipeenk.com",
+        "filmweb.pl",
         "imdb.com",
         "infostrow.pl",
         "jazzradio.com",

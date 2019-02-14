@@ -2852,9 +2852,6 @@ if (a.domCmp(["pornovoisines.com"])) {
 if (a.domCmp(["letribunaldunet.fr"])) {
     a.noAccess("adback");
 }
-if (a.domCmp(["filmweb.pl"])) {
-    a.noAccessExt("document.onreadystatechange");
-}
 if (a.domCmp(["playstation.com"])) {
     a.readOnly("adFileLoaded", true);
 }
@@ -3031,6 +3028,14 @@ if (a.domCmp([
     "telegraph.co.uk",
 ])) {
     a.css(".adblocker-message { display: none; }");
+}
+
+// https://github.com/MajkiIT/polish-ads-filter/issues/12101
+if (a.domCmp([
+    "dobreprogramy.pl",
+])) {
+    a.css("[hidden] { display: none; }");
+    a.css('div[class*="tag-"].home-section > .span-8 { width: 100%; margin-right: 15px; }');
 }
 
 if (a.domCmp([
