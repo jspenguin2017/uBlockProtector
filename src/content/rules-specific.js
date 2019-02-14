@@ -3030,10 +3030,10 @@ if (a.domCmp([
     a.css(".adblocker-message { display: none; }");
 }
 
-// https://github.com/MajkiIT/polish-ads-filter/issues/12101
 if (a.domCmp([
     "dobreprogramy.pl",
 ])) {
+    // https://github.com/MajkiIT/polish-ads-filter/issues/12101
     a.css("[hidden] { display: none; }");
     a.css('div[class*="tag-"].home-section > .span-8 { width: 100%; margin-right: 15px; }');
 }
