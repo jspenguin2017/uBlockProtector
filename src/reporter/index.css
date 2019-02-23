@@ -184,10 +184,19 @@ button {
     .popup h1, .popup h2, .popup h3, .popup h4, .popup h5, .popup h6 {
         border-bottom: 1px solid #808080;
         margin: 0px;
+        padding-bottom: 3px;
     }
 
 @media (min-width: 600px) {
     .popup {
         width: 60%;
     }
+
+        .popup h1, .popup h2, .popup h3, .popup h4, .popup h5, .popup h6 {
+            padding-bottom: 7px;
+        }
+
+        .popup button {
+            transform: scale(0.75);
+        }
 }
