@@ -112,16 +112,16 @@ button {
     padding: 0px 15px;
 }
 
-    button:active {
-        opacity: 1;
-    }
-
     button:focus {
         outline: none;
     }
 
     button:hover {
         opacity: 0.85;
+    }
+
+    button:active {
+        opacity: 1;
     }
 
 @media (min-width: 600px) {
