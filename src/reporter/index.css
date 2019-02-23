@@ -13,7 +13,6 @@ body {
 
 input[type="text"], textarea {
     border: none;
-    font-size: 1.25em;
     margin: 0px;
     width: 100%;
 }
@@ -24,7 +23,6 @@ textarea {
 
 select {
     border: 0px;
-    font-size: 1.25em;
     padding: 1px 0px 1px 0px;
     width: 100%;
 }
@@ -60,6 +58,10 @@ select {
 
     p {
         font-size: 1.5em;
+    }
+
+    input[type="text"], textarea, select {
+        font-size: 1.25em;
     }
 }
 
@@ -104,11 +106,10 @@ select {
 button {
     border: none;
     font-weight: bold;
-    font-size: 1.5em;
-    height: 60px;
+    height: 35px;
     margin: 0px;
     opacity: 0.7;
-    padding: 0px 25px;
+    padding: 0px 15px;
 }
 
     button:active {
@@ -122,6 +123,14 @@ button {
     button:hover {
         opacity: 0.85;
     }
+
+@media (min-width: 600px) {
+    button {
+        font-size: 1.5em;
+        height: 60px;
+        padding: 0px 25px;
+    }
+}
 
 /* Containers */
 .container {
