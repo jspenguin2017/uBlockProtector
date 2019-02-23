@@ -129,6 +129,7 @@
         "strefadb.pl",
         "techradar.com",
         "tv3sport.dk",
+        "tvserial.it",
         "viafree.dk",
         "viafree.fi",
         "viafree.no",
