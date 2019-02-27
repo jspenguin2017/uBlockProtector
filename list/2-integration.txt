@@ -24,7 +24,7 @@
 # ---------------------------------------------------------------------------- #
 
 # https://github.com/uBlockOrigin/uAssets/issues/4293
-@@||vd.l.qq.com/proxyhttp$xhr
+@@||vd.l.qq.com/proxyhttp$xhr,domain=sports.qq.com|v.qq.com
 
 # ---------------------------------------------------------------------------- #
 
