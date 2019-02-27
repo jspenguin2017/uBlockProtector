@@ -8,6 +8,7 @@
 @@|https://*.moatads.com/*/MoatFreeWheelJSPEM.js*$script
 @@|https://ads.korri.fr/index.js|$script
 @@|http://*.medianetworkinternational.com/js/advertisement.js*$script
+@@||vd.l.qq.com/proxyhttp$xhr
 ! Asking for permission does not have an enforced cooldown, can be exploited to make the permission request to be not refusable
 ! More information: https://github.com/uBlockOrigin/uAssets/issues/770
 ||authedmine.com^$third-party

@@ -1,21 +1,40 @@
-! =======================
-! ===== Integration =====
-! =======================
-! These are filters for integration with Nano Defender, all whitelists in this section are handled by Nano Defender
-! === Callback API placeholder, must be blocked, this file does not actually exist
+# ---------------------------------------------------------------------------- #
+
+# Integration Rules
+# These are filters for integration with Nano Defender, all whitelists in this
+# section are handled by Nano Defender
+
+# ---------------------------------------------------------------------------- #
+
+# Callback API placeholder, must be blocked, this file does not actually exist
 |https://legacy.hugoxu.com/uBlockProtector/Solutions/Blocked.php$important
-! === Resource placeholder, these files do not actually exist
+
+# Resource placeholder, these files do not actually exist
 |https://legacy.hugoxu.com/uBlockProtector/Solutions/
 @@|https://legacy.hugoxu.com/uBlockProtector/Solutions/MoatFreeWheelJSPEM.js|$script
-! === Generic
+
+# ---------------------------------------------------------------------------- #
+
+# Generic
+
 @@|https://*.moatads.com/*/MoatFreeWheelJSPEM.js*$script
 @@|https://ads.korri.fr/index.js|$script
 @@|http://*.medianetworkinternational.com/js/advertisement.js*$script
 
-! === IMA SDK surrogate integration
-! Not working correctly
-! @@|https://imasdk.googleapis.com/js/sdkloader/ima3.js*$script,domain=~fox.com|~log.com.tr|~motorsport.tv|~pandora.com|~popcornflix.com|~streamable.com|~tv2.dk
-! @@|http://imasdk.googleapis.com/js/sdkloader/ima3.js*$script,domain=~fox.com|~log.com.tr|~motorsport.tv|~pandora.com|~popcornflix.com|~streamable.com|~tv2.dk
-! Their poster logic is broken, but the error is somehow suppressed by the original IMA SDK
-! ||cbsnews.com/news/*/[object%20object]$image,redirect=1x1-transparent.gif
-! ||cbsnews.com/news/*/undefined$image,redirect=1x1-transparent.gif
+# ---------------------------------------------------------------------------- #
+
+# https://github.com/uBlockOrigin/uAssets/issues/4293
+@@||vd.l.qq.com/proxyhttp$xhr
+
+# ---------------------------------------------------------------------------- #
+
+# Not working correctly
+
+# IMA SDK surrogate integration
+# @@|https://imasdk.googleapis.com/js/sdkloader/ima3.js*$script,domain=~fox.com|~log.com.tr|~motorsport.tv|~pandora.com|~popcornflix.com|~streamable.com|~tv2.dk
+# @@|http://imasdk.googleapis.com/js/sdkloader/ima3.js*$script,domain=~fox.com|~log.com.tr|~motorsport.tv|~pandora.com|~popcornflix.com|~streamable.com|~tv2.dk
+# Their poster logic is broken, but the error is somehow suppressed by the original IMA SDK
+# ||cbsnews.com/news/*/[object%20object]$image,redirect=1x1-transparent.gif
+# ||cbsnews.com/news/*/undefined$image,redirect=1x1-transparent.gif
+
+# ---------------------------------------------------------------------------- #
