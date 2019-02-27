@@ -6,6 +6,8 @@
 
 # ---------------------------------------------------------------------------- #
 
+# Special
+
 # Callback API placeholder, must be blocked, this file does not actually exist
 |https://legacy.hugoxu.com/uBlockProtector/Solutions/Blocked.php$important
 
@@ -23,13 +25,15 @@
 
 # ---------------------------------------------------------------------------- #
 
+# Specific
+
 # https://github.com/NanoMeow/QuickReports/issues/528
 # https://github.com/uBlockOrigin/uAssets/issues/4293
 @@||vd.l.qq.com/proxyhttp$xhr,domain=sports.qq.com|v.qq.com
 
 # ---------------------------------------------------------------------------- #
 
-# Not working correctly
+# Broken
 
 # IMA SDK surrogate integration
 # @@|https://imasdk.googleapis.com/js/sdkloader/ima3.js*$script,domain=~fox.com|~log.com.tr|~motorsport.tv|~pandora.com|~popcornflix.com|~streamable.com|~tv2.dk
