@@ -23,6 +23,7 @@
 
 # ---------------------------------------------------------------------------- #
 
+# https://github.com/NanoMeow/QuickReports/issues/528
 # https://github.com/uBlockOrigin/uAssets/issues/4293
 @@||vd.l.qq.com/proxyhttp$xhr,domain=sports.qq.com|v.qq.com
 
