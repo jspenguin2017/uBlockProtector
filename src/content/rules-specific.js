@@ -87,8 +87,10 @@ if (a.domCmp([
     });
 }
 
+// https://github.com/NanoMeow/QuickReports/issues/528
 // https://github.com/uBlockOrigin/uAssets/issues/4293
 if (a.domCmp([
+    "sports.qq.com",
     "v.qq.com",
 ])) {
     a.replaceXHR(() => {
