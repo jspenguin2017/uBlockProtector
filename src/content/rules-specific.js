@@ -59,7 +59,7 @@ if (a.domCmp([
                             "$('#ani_video_html5_api').hide()",
                             "$('#ani_video_html5_api').prop('muted', true)",
                         ].join(",") + ")");
-                    } catch { }
+                    } catch (err) { }
                     const script = window.document.createElement("script");
                     script.textContent = payload;
                     window.document.body.append(script);
