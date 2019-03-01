@@ -43,7 +43,6 @@ if (a.debugMode) {
         a.readOnly("error", "window.console.error.bind(window.console)", "window.console");
     }
 
-
     // ------------------------------------------------------------------------------------------------------------- //
 
 }
@@ -74,7 +73,6 @@ if (a.debugMode) {
     }
 
     // ------------------------------------------------------------------------------------------------------------- //
-
 
     // https://github.com/NanoMeow/QuickReports/issues/352
     if (a.domCmp([
@@ -107,7 +105,7 @@ if (a.debugMode) {
                                 "$('#ani_video_html5_api').hide()",
                                 "$('#ani_video_html5_api').prop('muted', true)",
                             ].join(",") + ")");
-                        } catch (err) { }
+                        } catch { }
                         const script = window.document.createElement("script");
                         script.textContent = payload;
                         window.document.body.append(script);
