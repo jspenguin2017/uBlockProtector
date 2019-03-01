@@ -30,6 +30,9 @@
 # https://github.com/NanoMeow/QuickReports/issues/528
 # https://github.com/uBlockOrigin/uAssets/issues/4293
 @@||vd.l.qq.com/proxyhttp$xhr,domain=sports.qq.com|v.qq.com
+# https://github.com/uBlockOrigin/uAssets/4290
+ani.gamer.com.tw##+js(nano-setInterval-booster.js,,,0.02)
+ani.gamer.com.tw##+js(nano-setTimeout-booster.js,,,0.02)
 
 # ---------------------------------------------------------------------------- #
 
