@@ -9,6 +9,7 @@
 @@|https://ads.korri.fr/index.js|$script
 @@|http://*.medianetworkinternational.com/js/advertisement.js*$script
 @@||vd.l.qq.com/proxyhttp$xhr,domain=sports.qq.com|v.qq.com
+ani.gamer.com.tw##body > div:has(a[href="https://goo.gl/PmkwWS"])
 ! Asking for permission does not have an enforced cooldown, can be exploited to make the permission request to be not refusable
 ! More information: https://github.com/uBlockOrigin/uAssets/issues/770
 ||authedmine.com^$third-party

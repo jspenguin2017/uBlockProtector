@@ -31,6 +31,9 @@
 # https://github.com/uBlockOrigin/uAssets/issues/4293
 @@||vd.l.qq.com/proxyhttp$xhr,domain=sports.qq.com|v.qq.com
 
+# https://github.com/uBlockOrigin/uAssets/issues/4290
+ani.gamer.com.tw##body > div:has(a[href="https://goo.gl/PmkwWS"])
+
 # ---------------------------------------------------------------------------- #
 
 # Broken
