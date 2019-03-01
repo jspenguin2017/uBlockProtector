@@ -80,18 +80,16 @@ if (a.debugMode) {
     if (a.domCmp([
         "gamer.com.tw",
     ])) {
-        a.readOnly("AntiAd", null);
-        a.timewarp("setTimeout");
-        a.timewarp("setInterval");
+        a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
         a.inject(() => {
             "use strict";
 
             const _XMLHttpRequest = window.XMLHttpRequest;
             const _appendChild = window.Element.prototype.appendChild;
 
-            let adsTimerDefinition = "<Duration>00:00:05</Duration>";
-            let adsTimerPrompt = /\w\.innerHTML="\u5ee3\u544a.*?\u6d88\u9664\u5ee3\u544a.*?\uff1f"/;
-            let adsSkipPrompt = /\w\.innerHTML="\u9ede\u6b64\u8df3\u904e\u5ee3\u544a"/;
+            const adsTimerDefinition = "<Duration>00:00:05</Duration>";
+            const adsTimerPrompt = /\w\.innerHTML="\u5ee3\u544a.*?\u6d88\u9664\u5ee3\u544a.*?\uff1f"/;
+            const adsSkipPrompt = /\w\.innerHTML="\u9ede\u6b64\u8df3\u904e\u5ee3\u544a"/;
             const patchPlayer = (src) => {
                 const req = new _XMLHttpRequest();
                 req.onreadystatechange = () => {
