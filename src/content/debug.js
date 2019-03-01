@@ -85,6 +85,7 @@ if (a.debugMode) {
             const _XMLHttpRequest = window.XMLHttpRequest;
             const _appendChild = window.Element.prototype.appendChild;
 
+            const adsTimerOffset = `<Linear skipoffset="00:00:30">`;
             const adsTimerDefinition = "<Duration>00:00:05</Duration>";
             const adsTimerPrompt = /\w\.innerHTML="\u5ee3\u544a.*?\u6d88\u9664\u5ee3\u544a.*?\uff1f"/;
             const adsSkipPrompt = /\w\.innerHTML="\u9ede\u6b64\u8df3\u904e\u5ee3\u544a"/;
@@ -94,6 +95,7 @@ if (a.debugMode) {
                     if (req.readyState === 4) {
                         let payload = req.responseText;
                         try {
+                            payload = payload.replace(adsTimerOffset, '<Linear skipoffset="00:00:03">');
                             payload = payload.replace(adsTimerDefinition, "<Duration>00:00:00</Duration>");
                             payload = payload.replace(adsSkipPrompt, [
                                 "$('.vast-skip-button')[0].click()",
@@ -119,7 +121,7 @@ if (a.debugMode) {
                 if (
                     elem.tagName === "SCRIPT" &&
                     elem.src &&
-                    elem.src.startsWith("https://i2.bahamut.com.tw/build/js/animeplayer.js")
+                    elem.src.startsWith("https://i2.bahamut.com.tw/build/js/animeplayer")
                 ) {
                     return void patchPlayer(elem.src);
                 }
