@@ -30,7 +30,6 @@
 if (a.domCmp([
     "gamer.com.tw",
 ])) {
-    a.readOnly("AntiAd", null);
     a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
     a.inject(() => {
         "use strict";
