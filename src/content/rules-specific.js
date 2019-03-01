@@ -1,4 +1,4 @@
-// --------------------------------------------------------------------------------------------- //
+﻿// --------------------------------------------------------------------------------------------- //
 
 // Nano Defender - An anti-adblock defuser
 // Copyright (C) 2016-2018  Nano Defender contributors
@@ -25,13 +25,6 @@
 "use strict";
 
 // --------------------------------------------------------------------------------------------- //
-
-// https://github.com/NanoMeow/QuickReports/issues/352
-if (a.domCmp([
-    "gamer.com.tw",
-])) {
-    a.readOnly("AntiAd", null);
-}
 
 // https://github.com/NanoMeow/QuickReports/issues/373
 if (
