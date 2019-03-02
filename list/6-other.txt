@@ -207,8 +207,6 @@ exashare.com##[href="http://www.videohube.eu/script/url.php?c=ep"]
 @@||exashare.com/ici.html$subdocument
 mydisc.net#@#.ad_1
 mydisc.net#@#.ad_2
-@@||yellowbridge.com^$elemhide
-@@||pagead2.googlesyndication.com/pagead/$script,domain=yellowbridge.com
 @@||b.scorecardresearch.com^$xmlhttprequest,object-subrequest,domain=tv.majorleaguegaming.com
 @@||pubads.g.doubleclick.net/gampad/ads?$object-subrequest,xmlhttprequest,domain=tv.majorleaguegaming.com
 hentai-flix.net###wppa-overlay-bg

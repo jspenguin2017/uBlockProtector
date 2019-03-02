@@ -1074,9 +1074,6 @@ if (a.domCmp(["thesimsresource.com"])) {
     a.readOnly("gadsize", true);
     a.readOnly("iHaveLoadedAds", true);
 }
-if (a.domCmp(["yellowbridge.com"])) {
-    a.readOnly("finalizePage", () => { });
-}
 if (a.domCmp(["kissanime.com", "kissanime.to", "kissanime.ru"])) {
     a.css("iframe[id^='adsIfrme'], .divCloseBut { display:none; }");
     const magic = a.uid();
