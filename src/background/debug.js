@@ -40,8 +40,8 @@ if (a.debugMode) {
 
         a.proxy(
             [
-                "*://go.com/*",
                 "*://*.go.com/*",
+                "*://go.com/*",
             ],
             "107.77.200.10",
         );
@@ -52,8 +52,8 @@ if (a.debugMode) {
 
         a.proxy(
             [
-                "*://itv.com/*",
                 "*://*.itv.com/*",
+                "*://itv.com/*",
             ],
             "88.82.2.10",
         );
@@ -64,8 +64,8 @@ if (a.debugMode) {
 
         a.proxy(
             [
-                "*://tvnow.de/*",
                 "*://*.tvnow.de/*",
+                "*://tvnow.de/*",
             ],
             "46.101.180.199",
         );
@@ -91,8 +91,8 @@ if (a.debugMode) {
 
         a.dynamicServer(
             [
-                "*://uplynk.com/*",
                 "*://*.uplynk.com/*",
+                "*://uplynk.com/*",
             ],
             [
                 "xmlhttprequest",
