@@ -1,7 +1,7 @@
 // ----------------------------------------------------------------------------------------------------------------- //
 
 // Nano Defender - An anti-adblock defuser
-// Copyright (C) 2016-2018  Nano Defender contributors
+// Copyright (C) 2016-2019  Nano Defender contributors
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -18,7 +18,8 @@
 
 // ----------------------------------------------------------------------------------------------------------------- //
 
-// Content rules for debugging. Only run in debug mode.
+// Content rules for debugging
+// Only run in debug mode
 
 // ----------------------------------------------------------------------------------------------------------------- //
 
@@ -37,7 +38,9 @@ if (a.debugMode) {
     // ------------------------------------------------------------------------------------------------------------- //
 
     // Force Twitch to show debug logs
-    if (a.domCmp(["twitch.tv"], true)) {
+    if (a.domCmp([
+        "twitch.tv",
+    ], true)) {
         a.readOnly("log", "window.console.log.bind(window.console)", "window.console");
         a.readOnly("warn", "window.console.warn.bind(window.console)", "window.console");
         a.readOnly("error", "window.console.error.bind(window.console)", "window.console");
