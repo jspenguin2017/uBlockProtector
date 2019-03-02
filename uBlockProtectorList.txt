@@ -449,6 +449,7 @@ blockads.fivefilters.org###no-blocking:style(display: block !important;)
 @@||aftonbladet.se^$generichide
 @@||al.ly^$generichide
 @@||ally.sh^$generichide
+@@||ani.gamer.com.tw^$generichide
 @@||atresplayer.com^$generichide
 @@||behindwoods.com^$generichide
 @@||cbs.com^$generichide
