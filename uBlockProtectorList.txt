@@ -454,7 +454,6 @@ blockads.fivefilters.org###no-blocking:style(display: block !important;)
 @@||behindwoods.com^$generichide
 @@||cbs.com^$generichide
 @@||citytv.com^$generichide
-@@||clik.pw^$generichide
 @@||comicallyincorrect.com^$generichide
 @@||ff14angler.com^$generichide
 @@||flooxer.com^$generichide
