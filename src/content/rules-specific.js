@@ -2079,7 +2079,7 @@ if (a.domCmp(["onhax.me"])) {
             if (args[1].startsWith("wpcom")) {
                 return _open.apply(window, args);
             }
-        }
+        };
     });
 }
 if (a.domCmp(["null-24.com", "apkmod1.com"])) {
@@ -2440,7 +2440,7 @@ if (a.domCmp(["telecinco.es", "cuatro.com", "divinity.es", "factoriadeficcion.co
             } else {
                 return original.call(window.document, id, ...rest);
             }
-        }
+        };
     });
 }
 if (a.domCmp(["webcafe.bg"])) {
@@ -2965,7 +2965,7 @@ if (a.domCmp(["player.radioloyalty.com"])) {
     });
 }
 if (a.domCmp(["insuranceloansonline.com"])) {
-    a.css("#openPubli { display:none; }")
+    a.css("#openPubli { display:none; }");
     a.ready(() => {
         a.inject(() => {
             "use strict";
