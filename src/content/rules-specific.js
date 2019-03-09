@@ -121,10 +121,12 @@ if (
     a.loopbackXHR((ignored, url) => {
         const path = url.substring(url.lastIndexOf('/') + 1);
         if (path.startsWith("dmFkLnhtb")) { // vad.xml
-            return '<?xml version="1.0" encoding="UTF-8"?>\n' +
+            return [
+                '<?xml version="1.0" encoding="UTF-8"?>',
                 '<VAST xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ' +
-                'xsi:noNamespaceSchemaLocation="vast2.xsd" version="2.0">\n' +
-                '</VAST>';
+                'xsi:noNamespaceSchemaLocation="vast2.xsd" version="2.0">',
+                '</VAST>',
+            ].join("\n");
         }
     });
 }
