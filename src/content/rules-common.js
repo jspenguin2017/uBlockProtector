@@ -1,45 +1,43 @@
-/******************************************************************************
+// ----------------------------------------------------------------------------------------------------------------- //
 
-    Nano Defender - An anti-adblock defuser
-    Copyright (C) 2016-2018  Nano Defender contributors
+// Nano Defender - An anti-adblock defuser
+// Copyright (C) 2016-2019  Nano Defender contributors
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
+// ----------------------------------------------------------------------------------------------------------------- //
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+// Handle whitelist and initialize generic content solutions. Then apply common content rules.
+//
+// Solutions from Anti-Adblock Killer (by Reek) are modified to fit the content core library.
+//
+// Anti-Adblock Killer Repository (contains original source code and license):
+// https://github.com/reek/anti-adblock-killer
 
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-*******************************************************************************
-
-    Handle whitelist and initialize generic content solutions. Then apply
-    common content rules.
-    
-    Solutions from Anti-Adblock Killer (by Reek) are modified to fit the
-    content core library.
-
-    Anti-Adblock Killer Repository (contains original source code and license):
-    https://github.com/reek/anti-adblock-killer
-
-******************************************************************************/
+// ----------------------------------------------------------------------------------------------------------------- //
 
 "use strict";
 
-/*****************************************************************************/
+// ----------------------------------------------------------------------------------------------------------------- //
 
 {
 
-    /*************************************************************************/
+    // ------------------------------------------------------------------------------------------------------------- //
 
     a.init();
 
-    /*************************************************************************/
+    // ------------------------------------------------------------------------------------------------------------- //
 
     const domCmpWhitelist = [
         // Local network
@@ -172,7 +170,7 @@
         "kissanime",
     ];
 
-    /*************************************************************************/
+    // ------------------------------------------------------------------------------------------------------------- //
 
     if (a.domCmp(domCmpWhitelist, true) || a.domInc(domIncWhitelist, true)) {
 
@@ -195,14 +193,17 @@
         else
             a.generic.app_vars();
 
+        /*
+        // NoAdBlock is removed from Cloudflare, disable rule for now
         if (a.domCmp([], true))
             console.log("[Nano] Excluded :: NoAdBlock Defuser");
         else
             a.generic.NoAdBlock();
+        */
 
     }
 
-    /*************************************************************************/
+    // ------------------------------------------------------------------------------------------------------------- //
 
     if (a.domCmp([
         "acquavivalive.it",
@@ -227,7 +228,7 @@
         a.generic.adsjsV2();
     }
 
-    /*************************************************************************/
+    // ------------------------------------------------------------------------------------------------------------- //
 
     if (a.domCmp([
     ], true)) {
@@ -235,11 +236,11 @@
         console.log("[Nano] Excluded :: uBO-Extra");
     }
 
-    /*************************************************************************/
+    // ------------------------------------------------------------------------------------------------------------- //
 
 }
 
-/*****************************************************************************/
+// ----------------------------------------------------------------------------------------------------------------- //
 
 // a.filter
 
@@ -355,7 +356,7 @@ if (a.domCmp([
     a.filter("alert");
 }
 
-/*****************************************************************************/
+// ----------------------------------------------------------------------------------------------------------------- //
 
 // a.readOnly
 
@@ -512,7 +513,7 @@ if (a.domCmp([
     a.readOnly("iExist", true);
 }
 
-/*****************************************************************************/
+// ----------------------------------------------------------------------------------------------------------------- //
 
 // a.noAccess
 
@@ -549,7 +550,7 @@ if (a.domCmp([
     a.noAccess("open");
 }
 
-/*****************************************************************************/
+// ----------------------------------------------------------------------------------------------------------------- //
 
 // a.bait
 
@@ -648,4 +649,4 @@ if (a.domCmp([
     a.bait("div", "#ad-top");
 }
 
-/*****************************************************************************/
+// ----------------------------------------------------------------------------------------------------------------- //
