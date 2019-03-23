@@ -110,6 +110,7 @@
         "derstandard.at",
         "di.fm",
         "download.ipeenk.com",
+        "egy.best",
         "filmweb.pl",
         "imdb.com",
         "infostrow.pl",
