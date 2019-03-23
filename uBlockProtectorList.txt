@@ -382,7 +382,7 @@ slader.com##.ads.ads-to-hide
 jsfiddle.net###keep-us-running
 @@||animeheaven.eu^$script,first-party
 gej-porno.pl#@#.myTestAd
-gej-porno.pl,animezone.pl,egy.best,newpct.com##a[href^="//"]
+gej-porno.pl,animezone.pl,newpct.com##a[href^="//"]
 m.delfi.ee##.md-banner-placement
 jacquieetmicheltv.net##+js(abort-on-property-read.js, is_adblocked)
 haberler.com##.playButton
