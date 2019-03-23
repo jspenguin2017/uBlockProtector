@@ -2928,15 +2928,11 @@ if (a.domCmp(["letribunaldunet.fr"])) {
 if (a.domCmp(["playstation.com"])) {
     a.readOnly("adFileLoaded", true);
 }
-if (a.domCmp(["animezone.pl", "egy.best", "newpct.com"])) {
+if (a.domCmp(["animezone.pl", "newpct.com"])) {
     a.filter("eval", a.matchMethod.string, "googlesyndication");
 }
 if (a.domCmp(["animezone.pl"])) {
     a.noAccess("o6c6e");
-}
-if (a.domCmp(["egy.best"])) {
-    a.generic.FuckAdBlock("_AdBlock", "_AdBlock_init");
-    a.noAccess("V4d4P");
 }
 if (a.domCmp(["newpct.com"])) {
     a.noAccess("Y9z5A");
