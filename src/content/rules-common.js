@@ -142,6 +142,7 @@
 
         // Custom FuckAdBlock
         "atresplayer.com",
+        "aviationweek.com",
         "juprimaulana.com",
         "paraedu.id",
         "rmcmv.us",
