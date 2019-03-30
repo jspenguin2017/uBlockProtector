@@ -40,28 +40,54 @@
     // ------------------------------------------------------------------------------------------------------------- //
 
     const domCmpWhitelist = [
+
+        // --------------------------------------------------------------------------------------------------------- //
+
         // Local network
         "127.0.0.1",
+        "local",
+
+        // Reserved TLDs
+        "example",
+        "invalid",
         "localhost",
+        "test",
+
+        // --------------------------------------------------------------------------------------------------------- //
+
+        // Baidu
+        "baidu.com",
 
         // Google
         "google.it.ao",
         "google.ne.jp",
         "google.off.ai",
-        "youtu.be",
-        "youtube.com",
-
-        // Baidu
-        "baidu.com",
-
-        // Wikipedia
-        "wikipedia.org",
 
         // PayPal
         "paypal.com",
         "paypal.me",
 
-        // JavaScript playgrounds
+        // Twitch
+        "twitch.tv",
+
+        // Wikipedia
+        "wikipedia.org",
+
+        // YouTube
+        "youtu.be",
+        "youtube.com",
+
+        // --------------------------------------------------------------------------------------------------------- //
+
+        // Advanced tools (for performance)
+        "lab.wolframcloud.com",
+
+        // Image hosts (for performance)
+        "flickr.com",
+        "imgbox.com",
+        "imgur.com",
+
+        // JavaScript playgrounds (for performance)
         "ask.com",
         "jsbin.com",
         "jsfiddle.net",
@@ -70,7 +96,13 @@
         "stackoverflow.com",
         "w3schools.com",
 
-        // Social sites (for performance)
+        // Media sites (for performance)
+        "calm.com",
+        "vimeo.com",
+        "xemvtv.net",
+        "yandex.ru",
+
+        // Social networks (for performance)
         "bufferapp.com",
         "chatango.com",
         "facebook.com",
@@ -81,23 +113,10 @@
         "reddit.com",
         "twitter.com",
 
-        // Media sites (for performance)
-        "calm.com",
-        "vimeo.com",
-        "xemvtv.net",
-        "yandex.ru",
+        // --------------------------------------------------------------------------------------------------------- //
 
-        // Image beds (for performance)
-        "flickr.com",
-        "imgbox.com",
-        "imgur.com",
-
-        // Advanced tools (for performance)
-        "lab.wolframcloud.com",
-
-        // Handled by Nano Defender Extra
+        // Handled by a special private extension
         "boost.ink",
-        "lolalytics.com",
 
         // False positives
         "anandabazar.com",
@@ -118,6 +137,7 @@
         "kissasian.ch",
         "lcpdfr.com",
         "lemonde.fr",
+        "lolalytics.com",
         "o2.pl",
         "ostrzeszowinfo.pl",
         "pokyun.tv",
@@ -147,12 +167,20 @@
         "paraedu.id",
         "rmcmv.us",
         "yuukithemes.com",
+
+        // --------------------------------------------------------------------------------------------------------- //
+
     ];
 
     const domIncWhitelist = [
+
+        // --------------------------------------------------------------------------------------------------------- //
+
         // Local network
         "192.168.0",
         "192.168.1",
+
+        // --------------------------------------------------------------------------------------------------------- //
 
         // Google
         "google",
@@ -162,14 +190,21 @@
         // Yahoo
         "yahoo",
 
-        // Stores
+        // --------------------------------------------------------------------------------------------------------- //
+
+        // Stores (for performance)
         "amazon",
         "ebay",
+
+        // --------------------------------------------------------------------------------------------------------- //
 
         // False positives
         "9anime",
         "italiashare",
         "kissanime",
+
+        // --------------------------------------------------------------------------------------------------------- //
+
     ];
 
     // ------------------------------------------------------------------------------------------------------------- //
