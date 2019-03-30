@@ -240,9 +240,6 @@ if (a.domCmp(["tweaktown.com"])) {
         setTimeout(blockScreenRemover, 500);
     });
 }
-if (a.domCmp(["ratemyprofessors.com"])) {
-    a.filter("addEventListener", a.matchMethod.RegExp, /^resize$/i);
-}
 if (a.domCmp(["gamepedia.com"])) {
     a.on("load", () => {
         $("#atflb").remove();

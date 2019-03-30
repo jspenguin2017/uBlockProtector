@@ -389,12 +389,6 @@ if (a.domCmp([
 }
 
 if (a.domCmp([
-    "ratemyprofessors.com",
-])) {
-    a.readOnly("adBlocker", false);
-}
-
-if (a.domCmp([
     "link.tl",
 ])) {
     a.readOnly("adblocker", false);
