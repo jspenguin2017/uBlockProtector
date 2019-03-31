@@ -131,6 +131,7 @@
         "download.ipeenk.com",
         "egy.best",
         "filmweb.pl",
+        "finobe.com",
         "imdb.com",
         "infostrow.pl",
         "jazzradio.com",
