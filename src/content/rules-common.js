@@ -124,6 +124,7 @@
         "avgle.com",
         "babbel.com",
         "bild.de",
+        "browserleaks.com",
         "buxfer.com",
         "dallasnews.com",
         "derstandard.at",
