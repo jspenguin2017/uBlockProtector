@@ -89,6 +89,7 @@
 
         // JavaScript playgrounds (for performance)
         "ask.com",
+        "codepen.io",
         "jsbin.com",
         "jsfiddle.net",
         "plnkr.co",
