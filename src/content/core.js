@@ -1605,10 +1605,10 @@ a.generic.adsjsV2 = (min = 11, max = 14) => {
     })();`, true);
 };
 /**
- * Set up NoAdBlock defuser, call once on document-start if needed.
+ * Set up Cloudflare Apps defuser, call once on document-start if needed.
  * @function
  */
-a.generic.NoAdBlock = () => {
+a.generic.CloudFlareApps = () => {
     a.inject(() => {
         "use strict";
         try {
@@ -1625,7 +1625,7 @@ a.generic.NoAdBlock = () => {
                     if (needDefuse && installs instanceof window.Object) {
                         try {
                             for (let key in installs) {
-                                if (installs[key].appId === "ziT6U3epKObS" && installs[key].options) {
+                                if (installs[key].appId === "ngqhM7rZolNP" && installs[key].options) {
                                     window.Object.defineProperty(installs[key], "URLPatterns", {
                                         configurable: false,
                                         set() { },
@@ -1634,7 +1634,7 @@ a.generic.NoAdBlock = () => {
                                         },
                                     });
                                     needDefuse = false;
-                                    error("[Nano] Generic Solution Triggered :: NoAdBlock");
+                                    error("[Nano] Generic Solution Triggered :: Cloudflare Apps");
                                 }
                             }
                         } catch (err) { }
@@ -1643,7 +1643,7 @@ a.generic.NoAdBlock = () => {
                 },
             });
         } catch (err) {
-            window.console.error("[Nano] Failed :: NoAdBlock Defuser");
+            window.console.error("[Nano] Failed :: Cloudflare Apps Defuser");
         }
     });
 };
