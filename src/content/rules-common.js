@@ -236,7 +236,7 @@
         if (a.domCmp([], true))
             console.log("[Nano] Excluded :: Cloudflare Apps Defuser");
         else
-            a.generic.CloudFlareApps();
+            a.generic.CloudflareApps();
 
     }
 

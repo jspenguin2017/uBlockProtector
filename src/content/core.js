@@ -1608,7 +1608,7 @@ a.generic.adsjsV2 = (min = 11, max = 14) => {
  * Set up Cloudflare Apps defuser, call once on document-start if needed.
  * @function
  */
-a.generic.CloudFlareApps = () => {
+a.generic.CloudflareApps = () => {
     a.inject(() => {
         "use strict";
         try {
