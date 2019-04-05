@@ -126,6 +126,7 @@
         "babbel.com",
         "bild.de",
         "browserleaks.com",
+        "bungie.net",
         "buxfer.com",
         "dallasnews.com",
         "derstandard.at",
