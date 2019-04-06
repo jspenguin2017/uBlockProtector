@@ -141,6 +141,7 @@
         "kissasian.ch",
         "lcpdfr.com",
         "lemonde.fr",
+        "linetv.tw",
         "lolalytics.com",
         "o2.pl",
         "ostrzeszowinfo.pl",
