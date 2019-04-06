@@ -28,7 +28,7 @@ to respective issues trackers manually.
      reproduce the issue, your report will be discarded
 3. Version string of the Projects that you are using
 4. The URL of the page where the Tool is opened
-5. The form that you filled
+5. The form that you have filled
    - If you supplied a test account in the form, that account will not be
      shared publicly unless you indicated otherwise
 
