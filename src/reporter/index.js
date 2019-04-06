@@ -71,7 +71,7 @@ let initialUrl = "";
 // ----------------------------------------------------------------------------------------------------------------- //
 
 const lastReportStorageKey = "quick-issue-reporter-last-report";
-const bugReportDomain = "-nanobugreport.hugoxu.com";
+const bugReportDomainSuffix = "-nanobugreport.hugoxu.com";
 
 const reportsRateLimit = 900000; // 15 minutes
 const detailsLengthLimit = 3072;
@@ -100,7 +100,7 @@ const showMessage = (msg) => {
 };
 
 const domCmp = (domain, matchers) => {
-    if (domain.endsWith(bugReportDomain))
+    if (domain.endsWith(bugReportDomainSuffix))
         return false;
 
     for (const d of matchers) {
@@ -126,7 +126,7 @@ $("#category").on("change", function () {
     }
 
     if (this.value === "Bug")
-        $("#url").prop("value", "https://" + randId() + bugReportDomain + "/").attr("disabled", "");
+        $("#url").prop("value", "https://" + randId() + bugReportDomainSuffix + "/").attr("disabled", "");
     else
         $("#url").prop("value", initialUrl).rmAttr("disabled");
 });
