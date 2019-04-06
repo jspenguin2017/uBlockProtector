@@ -25,7 +25,7 @@ to respective issues trackers manually.
      may be shared publicly
 2. User agent string of your browser
    - Do not try to mask or change it; if the maintainers are unable to
-     reproduce the issue, your report will be discarded
+     reproduce the issue, your report will be ignored
 3. Version string of the Projects that you are using
 4. The URL of the page where the Tool is opened
 5. The form that you have filled
