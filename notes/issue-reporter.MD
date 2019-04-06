@@ -30,8 +30,8 @@ to respective issues trackers manually.
 4. The URL of the page where the Tool is opened
 5. The form that you have filled
    - If you supplied a test account in the form, that account will not be
-     shared publicly unless you indicated otherwise, however, it may still be
-     shared with a selected group of people
+     shared publicly unless you indicated otherwise (it may still be shared
+     with a selected group of people)
 
 Collected data will be used to improve the Projects, as well as related
 projects such as uAssets. Collected data may be shared with a selected group of
