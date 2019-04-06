@@ -70,18 +70,18 @@ let initialUrl = "";
 
 // ----------------------------------------------------------------------------------------------------------------- //
 
-const storageKeyLastReport = "quick-issue-reporter-last-report";
-const bugReportDomain = "nanobugreport.hugoxu.com";
+const lastReportStorageKey = "quick-issue-reporter-last-report";
+const bugReportDomain = "-nanobugreport.hugoxu.com";
 
-const rateLimit = 900000; // 15 minutes
-const detailsLimit = 3072;
+const reportsRateLimit = 900000; // 15 minutes
+const detailsLengthLimit = 3072;
 
-const updateDetailsLimit = () => {
+const updateDetailsLengthDisplay = () => {
     const length = $("#details").prop("value").length;
 
-    $("#character-count").text(length.toString() + "/" + detailsLimit.toString());
+    $("#character-count").text(length.toString() + "/" + detailsLengthLimit.toString());
 
-    if (length > detailsLimit)
+    if (length > detailsLengthLimit)
         $("#character-count").addClass("red");
     else
         $("#character-count").rmClass("red");
@@ -100,7 +100,7 @@ const showMessage = (msg) => {
 };
 
 const domCmp = (domain, matchers) => {
-    if (domain === bugReportDomain)
+    if (domain.endsWith(bugReportDomain))
         return false;
 
     for (const d of matchers) {
@@ -110,23 +110,29 @@ const domCmp = (domain, matchers) => {
     return false;
 };
 
+const randId = () => {
+    const r = Math.random();
+    return r.toString(16).substring(2);
+};
+
 // ----------------------------------------------------------------------------------------------------------------- //
 
 $("#category").on("change", function () {
     if (this.value === "Ads") {
         showMessage(
-            "For missed ads and popups, please try the <a href='https://forums.lanik.us/'>EasyList Forum</a> first.",
+            "For missed ads and popups, please report to the <a href='https://forums.lanik.us/'>EasyList Forum</a> " +
+            "first.",
         );
     }
 
     if (this.value === "Bug")
-        $("#url").prop("value", "https://" + bugReportDomain + "/").attr("disabled", "");
+        $("#url").prop("value", "https://" + randId() + bugReportDomain + "/").attr("disabled", "");
     else
         $("#url").prop("value", initialUrl).rmAttr("disabled");
 });
 
-$("#details").on("input", updateDetailsLimit);
-updateDetailsLimit();
+$("#details").on("input", updateDetailsLengthDisplay);
+updateDetailsLengthDisplay();
 
 $("#send").on("click", async () => {
     const category = $("#category").prop("value");
@@ -146,35 +152,38 @@ $("#send").on("click", async () => {
     if (domCmp(domain, knownBad))
         return void $("#msg-known-bad").addClass("open");
 
-    if (category === "Other" && details.length < 5) {
-        showMessage("Please add a quick explanation for the &quot;Other&quot; category that you have chosen.");
-        return;
+    if (category === "Other" && details.length < 10) {
+        return void showMessage(
+            "Please add a quick explanation for the &quot;Other&quot; category that you have chosen.",
+        );
     }
     if (category === "Bug" && details.length < 100)
         return void showMessage("Please incude a detailed step-by-step reproduction guide of this bug.");
 
-    if (details.length > detailsLimit)
-        return void showMessage("Additional details can be at most " + detailsLimit.toString() + " characters long.");
+    if (details.length > detailsLengthLimit) {
+        return void showMessage(
+            "Additional details can be at most " + detailsLengthLimit.toString() + " characters long.",
+        );
+    }
 
     let response;
     try {
-        response = await post(
-            "send\n" +
-            "Quick Issue Reporter\n" +
-            navigator.userAgent + "\n" +
-            appName + "\n" +
-            "\n" +
-            "[" + category + "] " + url + "\n" +
-            "\n" +
-            details
-        );
-    } catch (e) {
-        $("#msg-generic-error").addClass("open");
-        return;
+        response = await post([
+            "send",
+            "Quick Issue Reporter",
+            navigator.userAgent,
+            appName,
+            "",
+            "[" + category + "] " + url,
+            "",
+            details,
+        ].join("\n"));
+    } catch (err) {
+        return void $("#msg-generic-error").addClass("open");
     }
 
     if (response === "ok") {
-        localStorage.setItem(storageKeyLastReport, Date.now());
+        localStorage.setItem(lastReportStorageKey, Date.now());
         $("#msg-report-sent").addClass("open");
         $("#main").addClass("hidden");
     } else {
@@ -190,14 +199,15 @@ $(".popup-container button.float-right").on("click", function () {
 // ----------------------------------------------------------------------------------------------------------------- //
 
 const init = () => {
-    let lastReport = localStorage.getItem(storageKeyLastReport);
+    let lastReport = localStorage.getItem(lastReportStorageKey);
+
     // Maximum accuracy of integer is about 16 digits
     // Cap at 15 digits to be safe, which is still more than enough to represent the next 30 thousand years
     if (/^\d{13,15}$/.test(lastReport))
         lastReport = parseInt(lastReport);
 
     const now = Date.now();
-    if (typeof lastReport === "number" && lastReport + rateLimit > now)
+    if (typeof lastReport === "number" && lastReport + reportsRateLimit > now)
         $("#msg-rate-limited").addClass("open");
     else
         $("#main").rmClass("hidden");
