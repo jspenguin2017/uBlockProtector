@@ -8,9 +8,9 @@ The Tool will only collect your data when you use it, and will not connect to
 remote servers before the "Send" button is clicked.
 
 By using the Tool, you accept:
-1. The most recent version of this privacy policy,
-2. The [privacy policy of GeoJS](https://www.geojs.io/privacy/), and
-3. The [privacy policy of MaxMind](https://www.maxmind.com/en/privacy-policy)
+- The most recent version of this privacy policy,
+- The [privacy policy of GeoJS](https://www.geojs.io/privacy/), and
+- The [privacy policy of MaxMind](https://www.maxmind.com/en/privacy-policy)
 
 The Tool is for your convenience only, you can alternatively report issues
 to respective issues trackers manually.
