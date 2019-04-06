@@ -166,18 +166,26 @@ $("#send").on("click", async () => {
         );
     }
 
+    const payload = [
+        "send",
+        "Quick Issue Reporter",
+        navigator.userAgent,
+        appName,
+        "",
+        "[" + category + "] " + url,
+        "",
+    ];
+    if (url !== initialUrl) {
+        payload.push(
+            "Original URL: `" + initialUrl + "`",
+            "",
+        );
+    }
+    payload.push(details);
+
     let response;
     try {
-        response = await post([
-            "send",
-            "Quick Issue Reporter",
-            navigator.userAgent,
-            appName,
-            "",
-            "[" + category + "] " + url,
-            "",
-            details,
-        ].join("\n"));
+        response = await post(payload.join("\n"));
     } catch (err) {
         return void $("#msg-generic-error").addClass("open");
     }
