@@ -26,64 +26,6 @@
 
 // --------------------------------------------------------------------------------------------- //
 
-// https://github.com/NanoMeow/QuickReports/issues/352
-// https://github.com/uBlockOrigin/uAssets/issues/4290
-// https://github.com/jspenguin2017/uBlockProtector/pull/1045
-if (a.domCmp([
-    "gamer.com.tw",
-])) {
-    a.timewarp("setInterval", a.matchMethod.stringExact, "1000");
-    a.inject(() => {
-        "use strict";
-
-        const _XMLHttpRequest = window.XMLHttpRequest;
-        const _appendChild = window.Element.prototype.appendChild;
-
-        const adsTimerOffset = '<Linear skipoffset="00:00:30">';
-        const adsTimerDefinition = "<Duration>00:00:05</Duration>";
-        const adsTimerPrompt = /\w\.innerHTML="\u5ee3\u544a.*?\u6d88\u9664\u5ee3\u544a.*?\uff1f"/;
-        const adsSkipPrompt = /\w\.innerHTML="\u9ede\u6b64\u8df3\u904e\u5ee3\u544a"/;
-        const patchPlayer = (src) => {
-            const req = new _XMLHttpRequest();
-            req.onreadystatechange = () => {
-                if (req.readyState === 4) {
-                    let payload = req.responseText;
-                    try {
-                        payload = payload.replace(adsTimerOffset, '<Linear skipoffset="00:00:03">');
-                        payload = payload.replace(adsTimerDefinition, "<Duration>00:00:00</Duration>");
-                        payload = payload.replace(adsSkipPrompt, [
-                            "$('.vast-skip-button')[0].click()",
-                            "$('#ani_video_html5_api').show()",
-                            "$('#ani_video_html5_api').prop('muted', false)",
-                        ].join(","));
-                        payload = payload.replace(adsTimerPrompt, "(" + [
-                            adsTimerPrompt.exec(payload)[0],
-                            "$('#ani_video_html5_api').hide()",
-                            "$('#ani_video_html5_api').prop('muted', true)",
-                        ].join(",") + ")");
-                    } catch (err) { }
-                    const script = window.document.createElement("script");
-                    script.textContent = payload;
-                    window.document.body.append(script);
-                }
-            };
-            req.open("GET", src);
-            req.send();
-        };
-
-        window.Element.prototype.appendChild = function (elem) {
-            if (
-                elem.tagName === "SCRIPT" &&
-                elem.src &&
-                elem.src.startsWith("https://i2.bahamut.com.tw/build/js/animeplayer")
-            ) {
-                return void patchPlayer(elem.src);
-            }
-            return _appendChild.apply(this, arguments);
-        };
-    });
-}
-
 // https://github.com/NanoMeow/QuickReports/issues/373
 if (
     !a.domCmp([
