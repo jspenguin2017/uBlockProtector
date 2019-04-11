@@ -90,12 +90,16 @@ if (a.debugMode) {
             const _XMLHttpRequest = window.XMLHttpRequest;
             const _appendChild = window.Element.prototype.appendChild;
 
-            const adsTimerOffset = '<Linear skipoffset="00:00:30">';
+            const adsTimerOffset = /<Linear skipoffset=.*?>/;
             const adsTimerDefinition = "<Duration>00:00:05</Duration>";
-            const adsTimerPrompt = /\w\.innerHTML="\u5ee3\u544a.*?\u6d88\u9664\u5ee3\u544a.*?\uff1f"/;
-            const adsSkipPrompt = /\w\.innerHTML="\u9ede\u6b64\u8df3\u904e\u5ee3\u544a"/;
-            const patchPlayer = (src) => {
+            const patchPlayer = (src, beta) => {
                 const req = new _XMLHttpRequest();
+                const adsTimerPrompt = beta ?
+                    /\w\.innerHTML='<p class="vast-skip-button-text">'\+window\._molSettings\.skipText.*?"<\/p>"/g :
+                    /\w\.innerHTML="\u5ee3\u544a.*?\u6d88\u9664\u5ee3\u544a.*?\uff1f"/;
+                const adsSkipPrompt = beta ?
+                    /\w\.innerHTML=window\._molSettings\.skipButtonText/g :
+                    /\w\.innerHTML="\u9ede\u6b64\u8df3\u904e\u5ee3\u544a"/;
                 req.onreadystatechange = () => {
                     if (req.readyState === 4) {
                         let payload = req.responseText;
@@ -107,11 +111,13 @@ if (a.debugMode) {
                                 "$('#ani_video_html5_api').show()",
                                 "$('#ani_video_html5_api').prop('muted', false)",
                             ].join(","));
-                            payload = payload.replace(adsTimerPrompt, "(" + [
-                                adsTimerPrompt.exec(payload)[0],
-                                "$('#ani_video_html5_api').hide()",
-                                "$('#ani_video_html5_api').prop('muted', true)",
-                            ].join(",") + ")");
+                            payload = payload.replace(adsTimerPrompt, (match) => {
+                                return "(" + [
+                                    match,
+                                    "$('#ani_video_html5_api').hide()",
+                                    "$('#ani_video_html5_api').prop('muted', true)",
+                                ].join(",") + ")"
+                            });
                         } catch (err) { }
                         const script = window.document.createElement("script");
                         script.textContent = payload;
@@ -128,7 +134,7 @@ if (a.debugMode) {
                     elem.src &&
                     elem.src.startsWith("https://i2.bahamut.com.tw/build/js/animeplayer")
                 ) {
-                    return void patchPlayer(elem.src);
+                    return void patchPlayer(elem.src, elem.src.includes('beta'));
                 }
                 return _appendChild.apply(this, arguments);
             };
