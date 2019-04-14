@@ -1,8 +1,30 @@
-/**
- * Core library for content rules.
- */
+// ----------------------------------------------------------------------------------------------------------------- //
+
+// Nano Defender - An anti-adblock defuser
+// Copyright (C) 2016-2019  Nano Defender contributors
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+// ----------------------------------------------------------------------------------------------------------------- //
+
+// Core library for content rules
+
+// ----------------------------------------------------------------------------------------------------------------- //
+
 "use strict";
 
+// ----------------------------------------------------------------------------------------------------------------- //
 
 /**
  * Initialization.
@@ -11,12 +33,14 @@
 a.init = () => {
     console.log(`[Nano] Nano Defender Activated :: ${document.domain}`);
 };
+
 /**
  * Whether uBO-Extra should not run.
  * @var {boolean}
  */
 a.uBOExtraExcluded = false;
 
+// ----------------------------------------------------------------------------------------------------------------- //
 
 /**
  * Escape double quotes in a string.
@@ -28,6 +52,7 @@ a.strEscape = (() => {
     const re = /"/g;
     return (str) => str.replace(re, `\\"`);
 })();
+
 /**
  * Whether this frame is top frame.
  * @const {boolean}
@@ -40,16 +65,23 @@ a.isTopFrame = (() => {
         return false;
     }
 })();
+
 /**
  * Shortcut for addEventListener(...args).
  * @const {Function}
  */
-a.on = (...args) => { addEventListener(...args); };
+a.on = (...args) => {
+    addEventListener(...args);
+};
+
 /**
  * Shortcut for addEventListener("DOMContentLoaded", ...args).
  * @const {Function}
  */
-a.ready = (...args) => { addEventListener("DOMContentLoaded", ...args); }
+a.ready = (...args) => {
+    addEventListener("DOMContentLoaded", ...args);
+};
+
 /**
  * Run a function on document-start, document-end, and document-idle.
  * @function
@@ -60,6 +92,7 @@ a.always = (...args) => {
     a.on("DOMContentLoaded", ...args);
     a.on("load", ...args);
 };
+
 /**
  * Write an error message to console.
  * @function
@@ -72,17 +105,18 @@ a.err = (name) => {
         console.error("[Nano] Specific Solution Triggered");
     }
 };
+
 /**
  * Send a highly privileged XMLHttpRequest, it goes though Cross Origin
  * Resource Sharing policies as well as adblocker filtering.
  * @function
  * @param {Object} details - Details about this request.
- ** @param {string} method - The method of the request, usually "GET" or "POST".
- ** @param {string} url - The URL of the request.
- ** @param {Object|undefined} [headers=undefined] - The headers of the request.
- ** @param {string|null} [payload=null] - The payload of the request.
+ *    @key {string} method - The method of the request, usually "GET" or "POST".
+ *    @key {string} url - The URL of the request.
+ *    @key {Object|undefined} [headers=undefined] - The headers of the request.
+ *    @key {string|null} [payload=null] - The payload of the request.
  * @param {Function} onload - The load event handler.
- ** @param {string} response - The response text.
+ *    @key {string} response - The response text.
  * @param {Function} onerror - The error event handler.
  */
 a.request = (details, onload, onerror) => {
@@ -97,13 +131,14 @@ a.request = (details, onload, onerror) => {
         }
     });
 };
+
 /**
  * Check if current domain ends with one of the domains in the list.
  * "example.com" will match domains that matches /(^|.*\.)example\.com$/.
  * @function
  * @param {Array.<string>} domList - The list of domains to compare.
  * @param {boolean} [noErr=false] - Set to true to prevent showing error
- ** message.
+ *     message.
  * @return {boolean} True if current domain is in the list, false otherwise.
  */
 a.domCmp = (domList, noErr) => {
@@ -123,6 +158,7 @@ a.domCmp = (domList, noErr) => {
     }
     return false;
 };
+
 /**
  * Check if current domain includes one of the strings that is in the list.
  * "example" will match domains that matches /(^|.*\.)example\.[^\.]*$/.
@@ -130,7 +166,7 @@ a.domCmp = (domList, noErr) => {
  * @function
  * @param {Array.<string>} domList - The list of strings to compare.
  * @param {boolean} [noErr=false] - Set to true to prevent showing error
- ** message.
+ *     message.
  * @return {boolean} True if current domain is in the list, false otherwise.
  */
 a.domInc = (domList, noErr) => {
@@ -150,6 +186,7 @@ a.domInc = (domList, noErr) => {
     }
     return false;
 };
+
 /**
  * Match methods.
  * @const {Enumeration}
@@ -184,12 +221,13 @@ a.matchMethod = {
      */
     callback: 4,
 };
+
 /**
  * Get a matcher function, the filter will be "hard coded" into it.
  * @function
  * @param {Enumeration} method - The method to use.
  * @param {undefined|null|string|RegExp|Function} filter - An appropriate
- ** filter.
+ *     filter.
  * @return {string} A matcher function.
  */
 a.getMatcher = (method, filter) => {
@@ -232,12 +270,13 @@ a.getMatcher = (method, filter) => {
             return `() => true`;
     }
 };
+
 /**
  * Inject a standalone script to the page.
  * @function
  * @param {string|Function} payload - The script to inject.
  * @param {boolean} [isReady=false] - Set this to true if the payload does not
- ** need a execution wrapper.
+ *     need a execution wrapper.
  */
 a.inject = (payload, isReady) => {
     let s = document.createElement("script");
