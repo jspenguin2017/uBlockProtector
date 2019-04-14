@@ -57,6 +57,66 @@ a.err = (name) => {
         console.error("[Nano] Specific Solution Triggered");
 };
 
+a.domCmp = (domList, noErr = false) => {
+    for (let i = 0; i < domList.length; i++) {
+        if (
+            document.domain.endsWith(domList[i]) &&
+            (
+                document.domain.length === domList[i].length ||
+                document.domain.charAt(document.domain.length - domList[i].length - 1) === "."
+            )
+        ) {
+            if (!noErr)
+                a.err();
+
+            return true;
+        }
+    }
+    return false;
+};
+
+a.domInc = (domList, noErr = false) => {
+    for (let i = 0; i < domList.length; i++) {
+        const index = document.domain.lastIndexOf(domList[i] + ".");
+        if (index > 0 && document.domain.charAt(index - 1) !== ".") {
+            continue;
+        }
+        if (index > -1) {
+            if (!document.domain.substring(index + domList[i].length + 1).includes(".")) {
+                if (!noErr)
+                    a.err();
+
+                return true;
+            }
+        }
+    }
+    return false;
+};
+
+// http://stackoverflow.com/questions/6566456/how-to-serialize-an-object-into-a-list-of-parameters
+a.serialize = (obj) => {
+    let str = "";
+    for (let key in obj) {
+        if (str !== "") {
+            str += "&";
+        }
+        str += `${key}=${encodeURIComponent(obj[key])}`;
+    }
+    return str;
+};
+
+a.uid = (() => {
+    let counter = 0;
+    return () => {
+        const chars = "abcdefghijklnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        let str = "";
+        for (let i = 0; i < 10; i++) {
+            str += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+        return str + (counter++).toString();
+    };
+})();
+
 // ----------------------------------------------------------------------------------------------------------------- //
 
 a.on = (...args) => {
@@ -93,42 +153,6 @@ a.request = (details, onload, onerror) => {
         else
             onload(response);
     });
-};
-
-a.domCmp = (domList, noErr = false) => {
-    for (let i = 0; i < domList.length; i++) {
-        if (
-            document.domain.endsWith(domList[i]) &&
-            (
-                document.domain.length === domList[i].length ||
-                document.domain.charAt(document.domain.length - domList[i].length - 1) === "."
-            )
-        ) {
-            if (!noErr)
-                a.err();
-
-            return true;
-        }
-    }
-    return false;
-};
-
-a.domInc = (domList, noErr = false) => {
-    for (let i = 0; i < domList.length; i++) {
-        const index = document.domain.lastIndexOf(domList[i] + ".");
-        if (index > 0 && document.domain.charAt(index - 1) !== ".") {
-            continue;
-        }
-        if (index > -1) {
-            if (!document.domain.substring(index + domList[i].length + 1).includes(".")) {
-                if (!noErr)
-                    a.err();
-
-                return true;
-            }
-        }
-    }
-    return false;
 };
 
 // ----------------------------------------------------------------------------------------------------------------- //
@@ -187,6 +211,7 @@ a.getMatcher = (method, filter) => {
 a.inject = (payload, isReady = false) => {
     let s = document.createElement("script");
     s.textContent = isReady ? payload : `(${payload})();`;
+
     try {
         document.documentElement.prepend(s);
         s.remove();
@@ -194,9 +219,8 @@ a.inject = (payload, isReady = false) => {
         console.error("[Nano] Failed :: Inject Standalone Script");
 
         //@pragma-if-debug
-        if (a.debugMode) {
+        if (a.debugMode)
             console.log(s.textContent);
-        }
         //@pragma-end-if
     }
 };
@@ -228,6 +252,7 @@ a.injectWithRuntime = (payload, isReady = false) => {
 
     let s = document.createElement("script");
     s.textContent = runtime;
+
     try {
         document.documentElement.prepend(s);
         s.remove();
@@ -235,38 +260,11 @@ a.injectWithRuntime = (payload, isReady = false) => {
         console.error("[Nano] Failed :: Inject Script With Runtime");
 
         //@pragma-if-debug
-        if (a.debugMode) {
+        if (a.debugMode)
             console.log(s.textContent);
-        }
         //@pragma-end-if
     }
 };
-
-// ----------------------------------------------------------------------------------------------------------------- //
-
-// http://stackoverflow.com/questions/6566456/how-to-serialize-an-object-into-a-list-of-parameters
-a.serialize = (obj) => {
-    let str = "";
-    for (let key in obj) {
-        if (str !== "") {
-            str += "&";
-        }
-        str += `${key}=${encodeURIComponent(obj[key])}`;
-    }
-    return str;
-};
-
-a.uid = (() => {
-    let counter = 0;
-    return () => {
-        const chars = "abcdefghijklnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        let str = "";
-        for (let i = 0; i < 10; i++) {
-            str += chars.charAt(Math.floor(Math.random() * chars.length));
-        }
-        return str + (counter++).toString();
-    };
-})();
 
 // ----------------------------------------------------------------------------------------------------------------- //
 
@@ -289,7 +287,6 @@ a.onInsert = (handler) => {
     });
 };
 
-// See above
 a.onRemove = (handler) => {
     const observer = new MutationObserver((mutations) => {
         for (let i = 0; i < mutations.length; i++) {
@@ -314,7 +311,7 @@ a.beforeScript = (handler) => {
 
 // ----------------------------------------------------------------------------------------------------------------- //
 
-// When stealthy is set to true, the style is only injected from the background page
+// When stealthy is true, style is only injected from the background page
 a.css = (() => {
     const reMatcher = /;/g;
     return (code, stealthy = false) => {
@@ -414,10 +411,11 @@ a.antiCollapse = (name, filter) => {
     })();`, true);
 };
 
-// Name   : Name of the function to filter
-// Method : Filtering method
-// Filter : Filtering argument (see getMatcher)
-// Parent : Parent object, use "." to separate levels
+// ----------------------------------------------------------------------------------------------------------------- //
+
+// Name           : Name of the function to filter
+// Method, Filter : See a.getMatcher
+// Parent         : Parent object, use "." to separate levels
 a.filter = (name, method, filter, parent = "window") => {
     name = a.strEscape(name);
     const strParent = a.strEscape(parent);
@@ -459,7 +457,7 @@ a.filter = (name, method, filter, parent = "window") => {
     })();`, true);
 };
 
-// Timer  : One of "setTimeout", "setInterval"
+// Timer : One of "setTimeout", "setInterval"
 a.timewarp = (timer, method, filter, ratio = 0.02) => {
     a.inject(`(() => {
         "use strict";
@@ -654,7 +652,6 @@ a.cookie = (key, val, time = 31536000000, path = "/") => {
             return null;
         } else {
             if (j === -1) {
-                // Goes to the end
                 return cookies.substring(i + key.length + 1);
             } else {
                 return cookies.substring(i + key.length + 1, j);
@@ -767,13 +764,13 @@ a.close = () => {
 
 // ----------------------------------------------------------------------------------------------------------------- //
 
-// Must call on document-start
+// These functions must be called on document-start
 
 a.generic = () => {
 
     // ------------------------------------------------------------------------------------------------------------- //
 
-    // Based on generic solutions of Anti-Adblock Killer, modified to fit my API
+    // Based on generic solutions of Anti-Adblock Killer
     // License: https://github.com/reek/anti-adblock-killer/blob/master/LICENSE
 
     // ------------------------------------------------------------------------------------------------------------- //
@@ -781,9 +778,10 @@ a.generic = () => {
     // document-start
 
     // FuckAdBlock
-    // a.generic.FuckAdBlock("FuckAdBlock", "fuckAdBlock");
     a.generic.FuckAdBlock("BlockAdBlock", "blockAdBlock");
     a.generic.FuckAdBlock("KillAdBlock", "killAdBlock");
+    // People customize this too much, and is causing problems
+    // a.generic.FuckAdBlock("FuckAdBlock", "fuckAdBlock");
 
     // ads.js v1
     a.readOnly("canRunAds", true);
@@ -793,6 +791,7 @@ a.generic = () => {
     // ------------------------------------------------------------------------------------------------------------- //
 
     // document-end
+
     a.ready(() => {
         // AdBlock Alerter (WP)
         if ($("div.adb_overlay > div.adb_modal_img").length) {
@@ -829,43 +828,46 @@ a.generic = () => {
 
     const onInsertHandler = (insertedNode) => {
         // No-Adblock
-        if (insertedNode.nodeName === "DIV" &&
+        if (
+            insertedNode.nodeName === "DIV" &&
             insertedNode.id &&
             insertedNode.id.length === 4 &&
             re1.test(insertedNode.id) &&
             insertedNode.firstChild &&
             insertedNode.firstChild.id &&
             insertedNode.firstChild.id === insertedNode.id &&
-            insertedNode.innerHTML.includes("no-adblock.com")) {
-
+            insertedNode.innerHTML.includes("no-adblock.com")
+        ) {
             insertedNode.remove();
             a.err("No-Adblock");
         }
 
         // StopAdblock
-        if (insertedNode.nodeName === "DIV" &&
+        if (
+            insertedNode.nodeName === "DIV" &&
             insertedNode.id &&
             insertedNode.id.length === 7 &&
             re2.test(insertedNode.id) &&
             insertedNode.parentNode &&
             insertedNode.parentNode.id &&
             insertedNode.parentNode.id === insertedNode.id + "2" &&
-            insertedNode.innerHTML.includes("stopadblock.org")) {
-
+            insertedNode.innerHTML.includes("stopadblock.org")
+        ) {
             insertedNode.remove();
             a.err("StopAdblock");
         }
 
         // AntiAdblock (Packer)
-        if (insertedNode.id &&
+        if (
+            insertedNode.id &&
             reImgId.test(insertedNode.id) &&
             insertedNode.nodeName === "IMG" &&
             reImgSrc.test(insertedNode.src) ||
             insertedNode.id &&
             reIframeId.test(insertedNode.id) &&
             insertedNode.nodeName === "IFRAME" &&
-            reIframeSrc.test(insertedNode.src)) {
-
+            reIframeSrc.test(insertedNode.src)
+        ) {
             insertedNode.remove();
             a.err("AntiAdblock");
         }
@@ -882,9 +884,10 @@ a.generic = () => {
 
         // --------------------------------------------------------------------------------------------------------- //
 
-        // Initialization
-        let data = {};
+        const data = {};
+
         const error = window.console.error.bind(window.console);
+
         const err = (name) => {
             error(`[Nano] Generic Solution Triggered :: ${name}`);
         };
@@ -893,58 +896,28 @@ a.generic = () => {
 
         // document-start
 
-        // Playwire
-        // Test link: http://support.playwire.com/article/adblock-detector-demo/
-        try {
-            const fakeTester = {
-                check(f) {
-                    err("Playwire");
-                    f();
-                },
-            };
-            // Since this is generic I cannot assign it to an object here
-            let val;
-            window.Object.defineProperty(window, "Zeus", {
-                configurable: false,
-                set(arg) {
-                    val = arg;
-                    try {
-                        if (val instanceof window.Object && val.AdBlockTester !== fakeTester) {
-                            window.Object.defineProperty(val, "AdBlockTester", {
-                                configurable: false,
-                                set() { },
-                                get() {
-                                    return fakeTester;
-                                },
-                            });
-                        }
-                    } catch (err) { }
-                },
-                get() {
-                    return val;
-                },
-            });
-        } catch (err) {
-            error("[Nano] Failed :: Playwire Defuser");
-        }
-
         // AdBlock Notify
         try {
             let val;
+
             let isEvil = false;
+
             const anErr = new window.Error("[Nano] Generic Solution Triggered :: AdBlock Notify");
+
             window.Object.defineProperty(window, "anOptions", {
-                configurable: true, // Important, must allow script snippets to override
+                configurable: true, // Important
                 set(arg) {
                     try {
-                        if (arg instanceof window.Object &&
+                        if (
+                            typeof arg === "object" && arg !== null &&
                             arg.anAlternativeText !== undefined &&
                             arg.anOptionAdsSelectors !== undefined &&
                             arg.anOptionChoice !== undefined &&
                             arg.anOptionModalShowAfter !== undefined &&
                             arg.anOptionModalclose !== undefined &&
                             arg.anSiteID !== undefined &&
-                            arg.modalHTML !== undefined) {
+                            arg.modalHTML !== undefined
+                        ) {
                             isEvil = true;
                             return;
                         }
@@ -952,11 +925,10 @@ a.generic = () => {
                     val = arg;
                 },
                 get() {
-                    if (isEvil) {
+                    if (isEvil)
                         throw anErr;
-                    } else {
+                    else
                         return val;
-                    }
                 },
             });
         } catch (err) {
@@ -969,7 +941,10 @@ a.generic = () => {
 
         window.addEventListener("DOMContentLoaded", () => {
             // AdBlock Detector (XenForo Rellect)
-            if (window.XenForo && typeof window.XenForo.rellect === "object") {
+            if (
+                typeof window.XenForo === "object" && window.XenForo !== null &&
+                typeof window.XenForo.rellect === "object"
+            ) {
                 window.XenForo.rellect = {
                     AdBlockDetector: {
                         start() { },
@@ -1014,22 +989,25 @@ a.generic = () => {
                 const re = /^[a-z0-9]{4,12}$/i;
                 for (let prop in window) {
                     try {
-                        if (!prop.startsWith("webkit") &&
+                        if (
+                            !prop.startsWith("webkit") &&
                             prop !== "document" &&
                             re.test(prop) &&
-                            (window[prop] instanceof window.HTMLDocument) === false &&
+                            window[prop] instanceof window.HTMLDocument === false &&
                             window.hasOwnProperty(prop) &&
-                            typeof window[prop] === "object") {
+                            typeof window[prop] === "object" && window[prop] !== null
+                        ) {
                             const method = window[prop];
 
                             // BetterStopAdblock and Antiblock.org v3
-                            if (method.deferExecution &&
+                            if (
+                                method.deferExecution &&
                                 method.displayMessage &&
                                 method.getElementBy &&
                                 method.getStyle &&
                                 method.insert &&
-                                method.nextFunction) {
-
+                                method.nextFunction
+                            ) {
                                 if (method.toggle) {
                                     data.bsa = prop;
                                     err("BetterStopAdblock");
@@ -1043,14 +1021,13 @@ a.generic = () => {
                             // BlockAdBlock
                             BlockAdBlock: {
                                 // https://github.com/jspenguin2017/uBlockProtector/issues/321
-                                // Important, otherwise large arrays chokes this
-                                if (method.length) {
+                                if (method.length)
                                     break BlockAdBlock;
-                                }
 
                                 let keyLen = 0;
                                 let hasBab = false;
                                 let keyCount = 0;
+
                                 for (let k in method) {
                                     if (k.length === 10) {
                                         keyLen += k.length;
@@ -1059,11 +1036,13 @@ a.generic = () => {
                                     } else {
                                         break BlockAdBlock;
                                     }
+
                                     if (keyLen > 30) {
                                         break BlockAdBlock;
                                     }
 
                                     keyCount += 1;
+
                                     if (keyCount > 3) {
                                         break BlockAdBlock;
                                     }
@@ -1072,6 +1051,7 @@ a.generic = () => {
                                 if (hasBab) {
                                     keyLen += 10;
                                 }
+
                                 if (keyLen === 30 && keyCount === 3) {
                                     window[prop] = null;
                                     err("BlockAdBlock");
@@ -1106,10 +1086,11 @@ a.generic = () => {
         const reId = /^[a-z]{8}$/;
         const reClass = /^[a-z]{8} [a-z]{8}/;
         const reBg = /^[a-z]{8}-bg$/;
-        const onInsertHandler = (insertedNode) => {
 
+        const onInsertHandler = (insertedNode) => {
             // Antiblock.org (all version) and BetterStopAdblock
-            if (insertedNode.parentNode &&
+            if (
+                insertedNode.parentNode &&
                 insertedNode.id &&
                 insertedNode.style &&
                 insertedNode.childNodes.length &&
@@ -1118,30 +1099,36 @@ a.generic = () => {
                 !insertedNode.firstChild.className &&
                 reMsgId.test(insertedNode.id) &&
                 reTag1.test(insertedNode.nodeName) &&
-                reTag2.test(insertedNode.firstChild.nodeName)) {
+                reTag2.test(insertedNode.firstChild.nodeName)
+            ) {
                 const audio = insertedNode.querySelector("audio[loop]");
 
                 if (audio) {
                     audio.pause();
                     audio.remove();
                     err("Antiblock.org");
-                } else if ((data.abo2 && insertedNode.id === data.abo2) ||
-                    (insertedNode.firstChild.hasChildNodes() &&
+                } else if (
+                    data.abo2 && insertedNode.id === data.abo2 ||
+                    (
+                        insertedNode.firstChild.hasChildNodes() &&
                         reWords1.test(insertedNode.firstChild.innerHTML) &&
-                        reWords2.test(insertedNode.firstChild.innerHTML))) {
-
+                        reWords2.test(insertedNode.firstChild.innerHTML)
+                    )
+                ) {
                     insertedNode.remove();
                     err("Antiblock.org v2");
-                } else if ((data.abo3 && insertedNode.id === data.abo3) ||
-                    (insertedNode.firstChild.hasChildNodes() &&
+                } else if (
+                    data.abo3 && insertedNode.id === data.abo3 ||
+                    (
+                        insertedNode.firstChild.hasChildNodes() &&
                         insertedNode.firstChild.firstChild.nodeName === "IMG" &&
-                        insertedNode.firstChild.firstChild.src.startsWith("data:image/png;base64"))) {
-
+                        insertedNode.firstChild.firstChild.src.startsWith("data:image/png;base64")
+                    )
+                ) {
                     window[data.abo3] = null;
                     insertedNode.remove();
                     err("Antiblock.org v3");
                 } else if (data.bsa && insertedNode.id === data.bsa) {
-
                     window[data.bsa] = null;
                     insertedNode.remove();
                     err("BetterStopAdblock");
@@ -1149,7 +1136,8 @@ a.generic = () => {
             }
 
             // Adunblock
-            if (window.vtfab !== undefined &&
+            if (
+                window.vtfab !== undefined &&
                 window.adblock_antib !== undefined &&
                 insertedNode.parentNode &&
                 insertedNode.parentNode.nodeName === "BODY" &&
@@ -1158,21 +1146,24 @@ a.generic = () => {
                 insertedNode.nodeName === "DIV" &&
                 insertedNode.nextSibling &&
                 insertedNode.nextSibling.className &&
-                insertedNode.nextSibling.nodeName === "DIV") {
-                if (insertedNode.className &&
+                insertedNode.nextSibling.nodeName === "DIV"
+            ) {
+                if (
+                    insertedNode.className &&
                     reClass.test(insertedNode.className) &&
                     reBg.test(insertedNode.nextSibling.className) &&
                     insertedNode.nextSibling.style &&
-                    insertedNode.nextSibling.style.display !== "none") {
-
+                    insertedNode.nextSibling.style.display !== "none"
+                ) {
                     // Full Screen Message (Premium)
                     insertedNode.nextSibling.remove();
                     insertedNode.remove();
                     a.err("Adunblock Premium");
-                } else if (insertedNode.nextSibling.id &&
+                } else if (
+                    insertedNode.nextSibling.id &&
                     reId.test(insertedNode.nextSibling.id) &&
-                    insertedNode.innerHTML.includes("Il semblerait que vous utilisiez un bloqueur de publicité !")) {
-
+                    insertedNode.innerHTML.includes("Il semblerait que vous utilisiez un bloqueur de publicité !")
+                ) {
                     // Top bar Message (Free)
                     insertedNode.remove();
                     a.err("Adunblock Free");
@@ -1324,33 +1315,33 @@ a.generic.Adfly = () => {
         "use strict";
         const isDigit = /^\d$/;
         const handler = (encodedURL) => {
-            if (window.document.body) {
+            if (window.document.body)
                 return;
-            }
 
             let var1 = "", var2 = "";
             for (let i = 0; i < encodedURL.length; i++) {
-                if (i % 2 === 0) {
+                if (i % 2 === 0)
                     var1 = var1 + encodedURL.charAt(i);
-                } else {
+                else
                     var2 = encodedURL.charAt(i) + var2;
-                }
             }
+
             let data = (var1 + var2).split("");
             for (let i = 0; i < data.length; i++) {
                 if (isDigit.test(data[i])) {
                     for (let ii = i + 1; ii < data.length; ii++) {
                         if (isDigit.test(data[ii])) {
                             const temp = parseInt(data[i]) ^ parseInt(data[ii]);
-                            if (temp < 10) {
+                            if (temp < 10)
                                 data[i] = temp.toString();
-                            }
+
                             i = ii;
                             break;
                         }
                     }
                 }
             }
+
             data = data.join("");
             const decodedURL = window.atob(data).slice(16, -16);
 
@@ -1368,9 +1359,8 @@ a.generic.Adfly = () => {
                     if (flag) {
                         flag = false;
                         try {
-                            if (typeof value === "string") {
+                            if (typeof value === "string")
                                 handler(value);
-                            }
                         } catch (err) { }
                     }
                     val = value;
@@ -1398,6 +1388,7 @@ a.generic.app_vars = () => {
                         window.Object.defineProperty(_app_vars, "force_disable_adblock", {
                             configurable: true,
                             set() {
+                                // Too many of them enforce timer on server side
                                 /*
                                 window.setInterval = (func, delay, ...args) => {
                                     if (delay === 1000) {
@@ -1422,7 +1413,6 @@ a.generic.app_vars = () => {
         }
     });
 };
-
 
 a.generic.CloudflareApps = () => {
     a.inject(() => {
@@ -1505,15 +1495,6 @@ a.generic.adsjsV2 = (min = 11, max = 14) => {
 
 // ----------------------------------------------------------------------------------------------------------------- //
 
-/**
- * Trace the access to a property, should be called on document-start.
- * Only available in debug mode, conflict with other functions that lock
- * variables.
- * @function
- * @param {string} name - The name of the property to define.
- * @param {string} [parent="window"] - The name of the parent object, use "."
- ** or bracket notation to separate layers. The parent must exist.
- */
 a.trace = (name, parent = "window") => {
     if (!a.debugMode) {
         console.error("a.trace() is only available in debug mode!");
@@ -1544,12 +1525,6 @@ a.trace = (name, parent = "window") => {
     })();`, true);
 };
 
-/**
- * Log data to the background console.
- * Only available in debug mode.
- * @function
- * @param {string} log - The data to log.
- */
 a.backgroundLog = (log) => {
     if (!a.debugMode) {
         console.error("a.backgroundLog() is only available in debug mode!");
@@ -1561,16 +1536,6 @@ a.backgroundLog = (log) => {
     });
 };
 
-/**
- * setInterval() with benchmark.
- * Should only be used in debug mode, will be mapped to setInterval() in
- * developer mode, not available in production mode.
- * @function
- * @param {Special} func, delay, ...args - Arguments for setInterval(), the
- ** first parameter must be a function, cannot be raw code.
- * @return {Token} Cancellation token, can be passed to clearInterval() to
- ** clear the interval.
- */
 a.setBenchmarkedInterval = (func, delay, ...args) => {
     if (!a.debugMode) {
         console.error("a.setBenchmarkedInterval() should only be used in debug mode!");
