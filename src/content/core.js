@@ -68,7 +68,6 @@ a.domCmp = (domList, noErr = false) => {
         ) {
             if (!noErr)
                 a.err();
-
             return true;
         }
     }
@@ -85,7 +84,6 @@ a.domInc = (domList, noErr = false) => {
             if (!document.domain.substring(index + domList[i].length + 1).includes(".")) {
                 if (!noErr)
                     a.err();
-
                 return true;
             }
         }
@@ -97,9 +95,8 @@ a.domInc = (domList, noErr = false) => {
 a.serialize = (obj) => {
     let str = "";
     for (let key in obj) {
-        if (str !== "") {
+        if (str !== "")
             str += "&";
-        }
         str += `${key}=${encodeURIComponent(obj[key])}`;
     }
     return str;
@@ -110,9 +107,8 @@ a.uid = (() => {
     return () => {
         const chars = "abcdefghijklnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
         let str = "";
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 10; i++)
             str += chars.charAt(Math.floor(Math.random() * chars.length));
-        }
         return str + (counter++).toString();
     };
 })();
@@ -276,9 +272,8 @@ a.injectWithRuntime = (payload, isReady = false) => {
 a.onInsert = (handler) => {
     const observer = new MutationObserver((mutations) => {
         for (let i = 0; i < mutations.length; i++) {
-            for (let j = 0; j < mutations[i].addedNodes.length; j++) {
+            for (let j = 0; j < mutations[i].addedNodes.length; j++)
                 handler(mutations[i].addedNodes[j], mutations[i].target, observer);
-            }
         }
     });
     observer.observe(document, {
@@ -290,9 +285,8 @@ a.onInsert = (handler) => {
 a.onRemove = (handler) => {
     const observer = new MutationObserver((mutations) => {
         for (let i = 0; i < mutations.length; i++) {
-            for (let j = 0; j < mutations[i].removedNodes.length; j++) {
+            for (let j = 0; j < mutations[i].removedNodes.length; j++)
                 handler(mutations[i].removedNodes[j], mutations[i].target, observer);
-            }
         }
     });
     observer.observe(document, {
@@ -303,9 +297,8 @@ a.onRemove = (handler) => {
 
 a.beforeScript = (handler) => {
     a.onInsert((node, target, observer) => {
-        if (node.tagName === "SCRIPT") {
+        if (node.tagName === "SCRIPT")
             handler(node, target, observer);
-        }
     });
 };
 
@@ -342,9 +335,8 @@ a.bait = (type, identifier, hidden) => {
             elem.className = identifier.substring(1);
             break;
     }
-    if (hidden) {
+    if (hidden)
         elem.style.display = "none";
-    }
     elem.innerHTML = "<br>";
     document.documentElement.prepend(elem);
 };
@@ -651,11 +643,10 @@ a.cookie = (key, val, time = 31536000000, path = "/") => {
         if (i === -1) {
             return null;
         } else {
-            if (j === -1) {
+            if (j === -1)
                 return cookies.substring(i + key.length + 1);
-            } else {
+            else
                 return cookies.substring(i + key.length + 1, j);
-            }
         }
     } else {
         // Set mode
@@ -803,7 +794,10 @@ a.generic = () => {
         // Generic block screens
         {
             const elem = document.getElementById("blockdiv");
-            if (elem && elem.innerHTML === "disable ad blocking or use another browser without any adblocker when you visit") {
+            if (
+                elem &&
+                elem.innerHTML === "disable ad blocking or use another browser without any adblocker when you visit"
+            ) {
                 elem.remove();
                 console.error("[Nano] Generic Solution Triggered :: Generic Block Screens");
             }
