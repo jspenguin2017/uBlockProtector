@@ -496,9 +496,10 @@ blockads.fivefilters.org###no-blocking:style(display: block !important;)
 ||fwmrm.net^$image,important,domain=viasatsport.se
 ||fwmrm.net/ad/*$xmlhttprequest,important,redirect=nooptext,domain=viasatsport.se
 @@||moatads.com/*/moatwrapper.js$script,domain=viz.com
-! ===== Patched Anti-Adblock Killer List (originally by Reek) ====================================
-! License and original source code are available here: https://github.com/reek/anti-adblock-killer
-! ================================================================================================
+# ------------------------------------------------------------------------------------------------------------------- #
+# Patched Anti-Adblock Killer List (originally by Reek)
+# License and original source code: https://github.com/reek/anti-adblock-killer
+# ------------------------------------------------------------------------------------------------------------------- #
 ||trymask.com/api/$third-party
 @@||adworkmedia.com/gLoader.php?GID=$script,third-party
 @@||adworkmedia.com/gTemplate.php?GID=$subdocument,third-party
@@ -2327,3 +2328,4 @@ urlchecker.org###adchecker
 urlchecker.org###adchecker_btn
 urlchecker.org###ads_notify
 gaara-fr.com###ga-skin-top
+# ------------------------------------------------------------------------------------------------------------------- #
