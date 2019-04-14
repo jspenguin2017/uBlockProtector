@@ -1,11 +1,10 @@
-! =====================
-! ===== Whitelist =====
-! =====================
-! These exceptions will not allow ads to show, but may open third party connections
-! === ovar.io
-! === https://github.com/jspenguin2017/uBlockProtector/issues/155
+# ------------------------------------------------------------------------------------------------------------------- #
+
+# These exceptions will not allow ads to show, but may open third party connections
+
+# https://github.com/jspenguin2017/uBlockProtector/issues/155
 @@||imasdk.googleapis.com/js/sdkloader/outstream.js$script,domain=ovar.io
-! === flashx.tv, flashx.to
+
 @@||flashx1.tv/js/showad*.js$script
 @@||flashx1.tv/sidead.js$script
 @@||flashx1.tv/jquery2.js$script
@@ -13,23 +12,25 @@
 @@||flashx.to/counter.cgi$script
 @@||zencdn.net^$script,domain=flashx.tv
 @@/showad_.js$script,domain=flashx.to
-! === channel4.com
+
 @@/crossdomain.xml$domain=channel4.com
 @@||ak.http.anno.channel4.com^$domain=channel4.com
 @@||cf.http.anno.channel4.com^$domain=channel4.com
-! === tvplay.skaties.lv, play.tv3.lt, tv3play.tv3.ee, play.nova.bg
+
 @@||playapi.mtgx.tv/v3/adinfo?$xmlhttprequest,domain=tvplay.skaties.lv|play.tv3.lt|tv3play.tv3.ee|play.nova.bg
-! === abc.go.com
-! === https://github.com/jspenguin2017/uBlockProtector/issues/338
+
+# https://github.com/jspenguin2017/uBlockProtector/issues/338
 @@||edgedatg.com^$script,domain=abc.go.com
-! === dclinks.info
+
 @@||acortar.net/rollups/aes.js$domain=dclinks.info
-! === mitele.es
+
 @@||akamaihd.net^$xmlhttprequest,script,domain=mitele.es
-! === viasatsport.se
+
 @@||fwmrm.net^$domain=viasatsport.se
 ||freewheel-mtgx-tv.akamaized.net^$media,domain=viasatsport.se
 ||fwmrm.net^$image,important,domain=viasatsport.se
 ||fwmrm.net/ad/*$xmlhttprequest,important,redirect=nooptext,domain=viasatsport.se
-! === viz.com
+
 @@||moatads.com/*/moatwrapper.js$script,domain=viz.com
+
+# ------------------------------------------------------------------------------------------------------------------- #
