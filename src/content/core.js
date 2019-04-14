@@ -28,14 +28,6 @@
 
 a.uBOExtraExcluded = false;
 
-// ----------------------------------------------------------------------------------------------------------------- //
-
-a.init = () => {
-    console.log(`[Nano] Nano Defender Activated :: ${document.domain}`);
-};
-
-// ----------------------------------------------------------------------------------------------------------------- //
-
 a.isTopFrame = (() => {
     // This can throw
     try {
@@ -47,10 +39,23 @@ a.isTopFrame = (() => {
 
 // ----------------------------------------------------------------------------------------------------------------- //
 
+a.init = () => {
+    console.log(`[Nano] Nano Defender Activated :: ${document.domain}`);
+};
+
+// ----------------------------------------------------------------------------------------------------------------- //
+
 a.strEscape = (() => {
     const re = /"/g;
     return (str) => str.replace(re, `\\"`);
 })();
+
+a.err = (name) => {
+    if (name)
+        console.error(`[Nano] Generic Solution Triggered :: ${name}`);
+    else
+        console.error("[Nano] Specific Solution Triggered");
+};
 
 // ----------------------------------------------------------------------------------------------------------------- //
 
@@ -70,20 +75,9 @@ a.always = (...args) => {
 
 // ----------------------------------------------------------------------------------------------------------------- //
 
-a.err = (name) => {
-    if (name) {
-        console.error(`[Nano] Generic Solution Triggered :: ${name}`);
-    } else {
-        console.error("[Nano] Specific Solution Triggered");
-    }
-};
-
-// ----------------------------------------------------------------------------------------------------------------- //
-
-// Send a highly privileged XMLHttpRequest, it goes though Cross Origin Resource Sharing policies as well as adblocker
-// filtering
+// Send privileged XMLHttpRequest, ignores CORS and adblocker filtering
 //
-// Details object:
+// Details:
 //
 // method   : string - Method of the request, usually "GET" or "POST"
 // url      : string - URL of the request
@@ -94,11 +88,10 @@ a.request = (details, onload, onerror) => {
         cmd: "xhr",
         details: details,
     }, (response) => {
-        if (response === null) {
+        if (response === null)
             onerror();
-        } else {
+        else
             onload(response);
-        }
     });
 };
 
@@ -108,12 +101,12 @@ a.domCmp = (domList, noErr = false) => {
             document.domain.endsWith(domList[i]) &&
             (
                 document.domain.length === domList[i].length ||
-                document.domain.charAt(document.domain.length - domList[i].length - 1) === '.'
+                document.domain.charAt(document.domain.length - domList[i].length - 1) === "."
             )
         ) {
-            if (!noErr) {
+            if (!noErr)
                 a.err();
-            }
+
             return true;
         }
     }
@@ -122,15 +115,15 @@ a.domCmp = (domList, noErr = false) => {
 
 a.domInc = (domList, noErr = false) => {
     for (let i = 0; i < domList.length; i++) {
-        let index = document.domain.lastIndexOf(domList[i] + ".");
-        if (index > 0 && document.domain.charAt(index - 1) !== '.') {
+        const index = document.domain.lastIndexOf(domList[i] + ".");
+        if (index > 0 && document.domain.charAt(index - 1) !== ".") {
             continue;
         }
         if (index > -1) {
             if (!document.domain.substring(index + domList[i].length + 1).includes(".")) {
-                if (!noErr) {
+                if (!noErr)
                     a.err();
-                }
+
                 return true;
             }
         }
