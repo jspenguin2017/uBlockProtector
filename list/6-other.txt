@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------------- #
 
-# Patched Anti-Adblock Killer List (originally by Reek)
-# License and original source code: https://github.com/reek/anti-adblock-killer
+# Modified Anti-Adblock Killer List
+# License and source code: https://github.com/reek/anti-adblock-killer
 
 # ------------------------------------------------------------------------------------------------------------------- #
 
