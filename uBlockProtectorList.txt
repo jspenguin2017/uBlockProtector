@@ -477,6 +477,7 @@ blockads.fivefilters.org###no-blocking:style(display: block !important;)
 @@||wp.pl^$generichide
 @@||yiv.com^$generichide
 @@||imasdk.googleapis.com/js/sdkloader/outstream.js$script,domain=ovar.io
+@@||edgedatg.com^$script,domain=abc.go.com
 @@||flashx1.tv/js/showad*.js$script
 @@||flashx1.tv/sidead.js$script
 @@||flashx1.tv/jquery2.js$script
@@ -488,7 +489,6 @@ blockads.fivefilters.org###no-blocking:style(display: block !important;)
 @@||ak.http.anno.channel4.com^$domain=channel4.com
 @@||cf.http.anno.channel4.com^$domain=channel4.com
 @@||playapi.mtgx.tv/v3/adinfo?$xmlhttprequest,domain=tvplay.skaties.lv|play.tv3.lt|tv3play.tv3.ee|play.nova.bg
-@@||edgedatg.com^$script,domain=abc.go.com
 @@||acortar.net/rollups/aes.js$domain=dclinks.info
 @@||akamaihd.net^$xmlhttprequest,script,domain=mitele.es
 @@||fwmrm.net^$domain=viasatsport.se

@@ -2,8 +2,15 @@
 
 # These exceptions will not allow ads to show, but may open third party connections
 
+# ------------------------------------------------------------------------------------------------------------------- #
+
 # https://github.com/jspenguin2017/uBlockProtector/issues/155
 @@||imasdk.googleapis.com/js/sdkloader/outstream.js$script,domain=ovar.io
+
+# https://github.com/jspenguin2017/uBlockProtector/issues/338
+@@||edgedatg.com^$script,domain=abc.go.com
+
+# ------------------------------------------------------------------------------------------------------------------- #
 
 @@||flashx1.tv/js/showad*.js$script
 @@||flashx1.tv/sidead.js$script
@@ -18,9 +25,6 @@
 @@||cf.http.anno.channel4.com^$domain=channel4.com
 
 @@||playapi.mtgx.tv/v3/adinfo?$xmlhttprequest,domain=tvplay.skaties.lv|play.tv3.lt|tv3play.tv3.ee|play.nova.bg
-
-# https://github.com/jspenguin2017/uBlockProtector/issues/338
-@@||edgedatg.com^$script,domain=abc.go.com
 
 @@||acortar.net/rollups/aes.js$domain=dclinks.info
 
