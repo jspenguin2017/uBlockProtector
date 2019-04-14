@@ -293,6 +293,7 @@ a.inject = (payload, isReady) => {
         //@pragma-end-if
     }
 };
+
 /**
  * Similar to a.inject(), but the injected code is enclosed in a wrapper that
  * have some rumtime functions.
@@ -343,6 +344,7 @@ a.injectWithRuntime = (payload, isReady) => {
         //@pragma-end-if
     }
 };
+
 /**
  * Serialize an object into GET request parameters.
  * Source: http://stackoverflow.com/questions/6566456/how-to-serialize-an-object-into-a-list-of-parameters
@@ -360,6 +362,7 @@ a.serialize = (obj) => {
     }
     return str;
 };
+
 /**
  * Returns an unique ID which is also a valid variable name.
  * @function
@@ -376,6 +379,7 @@ a.uid = (() => {
         return str + (counter++).toString();
     };
 })();
+
 /**
  * Set up DOM insert observer.
  * @function
@@ -398,6 +402,7 @@ a.onInsert = (handler) => {
         subtree: true,
     });
 };
+
 /**
  * Set up DOM remove observer.
  * @function
@@ -420,6 +425,7 @@ a.onRemove = (handler) => {
         subtree: true,
     });
 };
+
 /**
  * Set up script execution observer.
  * Can only interfere execution of scripts hard coded into the main document.
@@ -439,6 +445,7 @@ a.beforeScript = (handler) => {
     });
 };
 
+// ----------------------------------------------------------------------------------------------------------------- //
 
 /**
  * Inject CSS, "!important" will be added automatically.
@@ -464,6 +471,7 @@ a.css = (() => {
         }
     };
 })();
+
 /**
  * Add a bait element, this sometimes has a side effect that adds an empty bar
  * on top of the page.
@@ -492,6 +500,7 @@ a.bait = (type, identifier, hidden) => {
     elem.innerHTML = "<br>";
     document.documentElement.prepend(elem);
 };
+
 /**
  * Filter a function, should be called on document-start.
  * @function
@@ -543,6 +552,7 @@ a.filter = (name, method, filter, parent = "window") => {
         }
     })();`, true);
 };
+
 /**
  * Filter assignment of innerHTML, innerText, or textContent. Should be called
  * on document-start.
@@ -614,6 +624,7 @@ a.antiCollapse = (name, filter) => {
         }
     })();`, true);
 };
+
 /**
  * Change the execution delay for setTimeout or setInterval, should be called
  * on document-start.
@@ -665,6 +676,7 @@ a.timewarp = (timer, method, filter, ratio = 0.02) => {
         }
     })();`, true);
 };
+
 /**
  * Defines a read-only property, should be called on document-start.
  * May not be able to lock the property's own properties.
@@ -701,6 +713,7 @@ a.readOnly = (name, val, parent = "window") => {
         }
     })();`, true);
 };
+
 /**
  * Defines a non-accessible property, should be called on document-start.
  * @function
@@ -745,6 +758,7 @@ a.noAccess = (name, parent = "window") => {
         }
     })();`, true);
 };
+
 /**
  * Similar to a.noAccess(), but with a more complicated property looping logic.
  * @function
@@ -827,6 +841,7 @@ a.noAccessExt = (chain) => {
         }
     })();`, true);
 };
+
 /**
  * Set or get a cookie.
  * @function
@@ -863,6 +878,7 @@ a.cookie = (key, val, time = 31536000000, path = "/") => {
         document.cookie = `${key}=${encodeURIComponent(val)};expires=${expire.toGMTString()};path=${path}`;
     }
 };
+
 /**
  * Install XMLHttpRequest loopback engine. Should be called once on
  * document-start if needed.
@@ -921,6 +937,7 @@ a.loopbackXHR = (server) => {
         }
     })();`, true);
 };
+
 /**
  * Install XMLHttpRequest replace engine. Should be called once on
  * document-start if needed.
@@ -966,6 +983,7 @@ a.replaceXHR = (handler) => {
         }
     })();`, true);
 };
+
 /**
  * Forcefully close the current tab. This is asynchronous.
  * @function
@@ -976,6 +994,7 @@ a.close = () => {
     });
 };
 
+// ----------------------------------------------------------------------------------------------------------------- //
 
 /**
  * Apply generic solutions, call once on document-start if needed.
@@ -1366,6 +1385,7 @@ a.generic = () => {
         });
     });
 };
+
 /**
  * Create a non-overridable FuckAdBlock constructor and instance that always
  * returns not detected.
@@ -1491,6 +1511,7 @@ a.generic.FuckAdBlock = (constructorName, instanceName) => {
         }
     })();`, true);
 };
+
 /**
  * Setup generic Adfly bypasser, call once on document-start if needed.
  * @function
@@ -1562,6 +1583,7 @@ a.generic.Adfly = () => {
         }
     });
 };
+
 /**
  * Set up app_vars defuser, call once on document-start if needed.
  * @function
@@ -1603,6 +1625,7 @@ a.generic.app_vars = () => {
         }
     });
 };
+
 /**
  * Set up ads.js v2 defuser, call once on document-start if needed.
  * This defuser may cause some websites to malfunction.
@@ -1643,6 +1666,7 @@ a.generic.adsjsV2 = (min = 11, max = 14) => {
         }
     })();`, true);
 };
+
 /**
  * Set up Cloudflare Apps defuser, call once on document-start if needed.
  * @function
@@ -1687,8 +1711,12 @@ a.generic.CloudflareApps = () => {
     });
 };
 
+// ----------------------------------------------------------------------------------------------------------------- //
 
 //@pragma-if-debug
+
+// ----------------------------------------------------------------------------------------------------------------- //
+
 /**
  * Trace the access to a property, should be called on document-start.
  * Only available in debug mode, conflict with other functions that lock
@@ -1727,6 +1755,7 @@ a.trace = (name, parent = "window") => {
         }
     })();`, true);
 };
+
 /**
  * Log data to the background console.
  * Only available in debug mode.
@@ -1743,6 +1772,7 @@ a.backgroundLog = (log) => {
         data: log,
     });
 };
+
 /**
  * setInterval() with benchmark.
  * Should only be used in debug mode, will be mapped to setInterval() in
@@ -1765,4 +1795,9 @@ a.setBenchmarkedInterval = (func, delay, ...args) => {
         console.log(`[Nano] Benchmark Interval :: ${func.name} Used ${t1 - t0} Milliseconds`);
     }, delay);
 };
+
+// ----------------------------------------------------------------------------------------------------------------- //
+
 //@pragma-end-if
+
+// ----------------------------------------------------------------------------------------------------------------- //
