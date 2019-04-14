@@ -1,3 +1,10 @@
+# ------------------------------------------------------------------------------------------------------------------- #
+
+# https://github.com/jspenguin2017/uBlockProtector/issues/1054
+@@||gamersclub.com.br/js/ads.js$script,1p
+
+# ------------------------------------------------------------------------------------------------------------------- #
+
 ! ==================
 ! ===== Miners =====
 ! ==================
@@ -765,3 +772,5 @@ redtube.com##div[class][style]:has(> div[class][style] > a.removeAdLink)
 ! === blockads.fivefilters.org
 ||blockads.fivefilters.org$inline-script
 blockads.fivefilters.org###no-blocking:style(display: block !important;)
+
+# ------------------------------------------------------------------------------------------------------------------- #
