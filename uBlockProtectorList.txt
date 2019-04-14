@@ -10,25 +10,18 @@
 @@|http://*.medianetworkinternational.com/js/advertisement.js*$script
 @@||vd.l.qq.com/proxyhttp$xhr,domain=sports.qq.com|v.qq.com
 ani.gamer.com.tw##body > div:has(a[href="https://goo.gl/PmkwWS"])
-@@||gamersclub.com.br/*/adsbygoogle.js$script,1p
-! Asking for permission does not have an enforced cooldown, can be exploited to make the permission request to be not refusable
-! More information: https://github.com/uBlockOrigin/uAssets/issues/770
-||authedmine.com^$third-party
-@@||authedmine.com^$domain=coinhive.com|filecrypt.cc
 /coinhive.js
 /coinhive.min.js
 /c-hive.js
 /c-hive.min.js
 /cryptonight.wasm
 /cn.wasm
-||cqfnvznw.info^
-||jyhfuqoh.info^
-||googlesyndication.com^$important,domain=short.am|clubedohardware.com.br|receive-a-sms.com
-||doubleclick.net^$important,domain=aetv.com|history.com|mylifetime.com|receive-a-sms.com
+||googlesyndication.com^$important,domain=short.am|clubedohardware.com.br
+||doubleclick.net^$important,domain=aetv.com|history.com|mylifetime.com
 ||damoh.*$media
+||zergnet.com^$script,third-party
 ||a.optnmnstr.com^$third-party
 ||a.optnmstr.com^$third-party
-||zergnet.com^$script,third-party
 ||adiode.com^$third-party
 ||spike.itv.com/itv/tserver/size=*/viewid=
 ||tom.itv.com/itv/tserver/size=
@@ -160,8 +153,6 @@ uol.com.br##.bannersticky-top:has(div.ads-wrapper)
 ||nowvideo.li^$inline-script
 ||ewingoset.info^$inline-script
 ||cloudvideoplatform.com/advert.jpg$image,redirect=1x1-transparent.gif,domain=nana10.co.il
-receive-a-sms.com##+js(abort-current-inline-script.js, $, showads.js)
-@@||receive-a-sms.com/showads.js$xmlhttprequest,first-party
 newyorker.com##iframe[src*="/wp-content/assets/"]
 @@||politiken.dk/*ad*$script,first-party
 ||kissasian.com/*.aspx
