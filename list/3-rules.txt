@@ -47,48 +47,55 @@ zmovs.com##.inplayer_banners
 
 # ------------------------------------------------------------------------------------------------------------------- #
 
-! ============================
-! ===== Common Solutions =====
-! ============================
-! === Generic Cosmetic Rules
+# Common Solutions
+
 ###adblockBanner
 ###like-us-adblock-modal
 ##.admania_adblock_detector
 ##.o-AdhesionNotifier
 ##.popup-premium__apla
-! === Generic Network Rules
+
 /adblock-detector/*
 /adblock-popup.
 ||fastly.net/ads/$image,redirect=2x2-transparent.png
 ||fastly.net/ads/$script,redirect=noopjs
 ||fastly.net/ads/$xmlhttprequest,redirect=nooptext
 ||doubleclick.net/instream/ad_status.js$script,redirect=doubleclick.net/instream/ad_status.js
-! === Adblock Identifier
-! Can cause crash, need to test each case
+
+# Adblock Identifier
+# Can cause crash, need to test each case
 /jquery.adi.css
 /jquery.adi.js$domain=123link.top
-! === Admiral
+
+# Admiral
 ||pelcro.com^$third-party
-! https://github.com/jspenguin2017/uBlockProtector/issues/978
+
+# https://github.com/jspenguin2017/uBlockProtector/issues/978
 ||sixscissors.com^$third-party,domain=~itavisen.no
-! === BlockAdBlock
+
+# BlockAdBlock
 sectorsatoshi-amarillo.website,sectorsatoshi-azul.website,sectorsatoshi-blanco.website,sectorsatoshi-celeste.website,sectorsatoshi-gris.website,sectorsatoshi-naranja.website##+js(bab-defuser.js)
 sectorsatoshi-negro.website,sectorsatoshi-rosa.website,sectorsatoshi-verde.website,sectorsatoshi-violeta.website##+js(bab-defuser.js)
 futbolchile.net,freeomovie.com,appdrop.net,skmedix.pl,yalujailbreak.net,cloudwebcopy.com,milaulas.com,tout-bon.com,sznpaste.net,linkdrop.net,themeslide.com##+js(bab-defuser.js)
 android-zone.ws,cmacapps.com,l2network.eu,animes-mangas-ddl.net,fuckingsession.com,klartext-ne.de,forumcoin.win,androidemulator.in,forumcoin.win,arenavision.ru,gulshankumar.net##+js(bab-defuser.js)
 arenavision.in,arenavision.us,discudemy.com,practicetestgeeks.com,iptvbin.com,imojado.org,xossip.com,adyou.me,funcinema.ga,ddlfr.pw,freecoursesonline.us##+js(bab-defuser.js)
-! === AdBlock Detector
+
+# AdBlock Detector
 themarker.com,nachrichten.at##+js(abort-on-property-read.js, adblockDetector)
-! === Social Locker
+
+# Social Locker
 megawarez.org,tipeo.net,compucalitv.com,intercambiosvirtuales.pro,tecmaxsoft.com,descargatelocorp.com,hackstore.net##div.onp-sl-content:style(display: block !important;)
 megawarez.org,tipeo.net,compucalitv.com,intercambiosvirtuales.pro,tecmaxsoft.com,descargatelocorp.com,hackstore.net##div.onp-sl-social-locker
 anonymousemail.me##div.onp-sociallocker-content:style(display: block !important;)
 anonymousemail.me##div.onp-sociallocker
 descargatelocorp.com##div[id^="informer"]:style(display: block !important; opacity: 1 !important; max-height: none !important;)
 descargatelocorp.com##div[class*="cool_ramka"]
-! === lukkr.com
-! === https://github.com/jspenguin2017/uBlockProtector/issues/254
+
+# https://github.com/jspenguin2017/uBlockProtector/issues/254
 ||lukkr.com/website/pf.js
+
+# ------------------------------------------------------------------------------------------------------------------- #
+
 ! ==============================
 ! ===== Specific solutions =====
 ! ==============================
