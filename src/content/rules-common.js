@@ -135,6 +135,7 @@
         "egy.best",
         "filmweb.pl",
         "finobe.com",
+        "gamersclub.com.br",
         "imdb.com",
         "infostrow.pl",
         "jazzradio.com",
