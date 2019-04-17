@@ -618,10 +618,6 @@ la-faculte.net#@##adsense
 @@||sascdn.com/config.js?nwid=$domain=femmeactuelle.fr
 @@||sascdn.com/diff/js/smart.js$domain=femmeactuelle.fr
 turbodebrideur.com#@##pubdirecte
-@@||openload.io^$elemhide
-@@||openload.co^$elemhide
-@@||openload.tv^$elemhide
-@@/Advertisement.css$stylesheet,domain=openload.co|openload.io|openload.tv
 @@||multiup.org/pop.js$script,domain=filesupload.org
 biggestplayer.me##.masr
 popeoftheplayers.eu###html4

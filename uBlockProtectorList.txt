@@ -88,10 +88,6 @@ ps4news.com##body > *[id^="blockblock"]:style(visibility: visible !important; di
 ps4news.com##table[id^='blockblock']
 ||7636ca6cb9fc.com^
 okazje.co###AdBlockDetected
-pornvibe.org##.special-message-content
-||$third-party,script,domain=pornvibe.org
-@@||openload.co/embed^$third-party,domain=pornvibe.org
-@@||oloadcdn.net^$domain=pornvibe.org
 answers.com##.end_of_slideshow
 ||openx.gamereactor.*/multi.php$script,important
 ||finalservers.net^$inline-script
@@ -1113,10 +1109,6 @@ la-faculte.net#@##adsense
 @@||sascdn.com/config.js?nwid=$domain=femmeactuelle.fr
 @@||sascdn.com/diff/js/smart.js$domain=femmeactuelle.fr
 turbodebrideur.com#@##pubdirecte
-@@||openload.io^$elemhide
-@@||openload.co^$elemhide
-@@||openload.tv^$elemhide
-@@/Advertisement.css$stylesheet,domain=openload.co|openload.io|openload.tv
 @@||multiup.org/pop.js$script,domain=filesupload.org
 biggestplayer.me##.masr
 popeoftheplayers.eu###html4

@@ -1366,7 +1366,7 @@ if (a.domCmp(["mybank.pl", "rapidgrab.pl"])) {
 if (a.domCmp(["linkdrop.net", "revclouds.com", "leporno.org", "uploadshub.com", "dasolo.org",
     "fullstuff.net", "zeusnews.it", "cheminots.net", "lolsy.tv", "animes-mangas-ddl.com",
     "darkstars.org", "corepacks.com", "naturalbd.com", "yourlifeupdated.net", "computerworm.net",
-    "coolsoft.altervista.org", "openload.us", "cda-online.pl", "urbanplanet.org", "mamahd.com",
+    "coolsoft.altervista.org", "cda-online.pl", "urbanplanet.org", "mamahd.com",
     "sadeempc.com", "avmoo.com", "thailande-fr.com", "btaia.com", "tusoft.org", "hisse.net",
     "europeup.com", "nrj.fr", "srnk.co", "animmex.co", "crackhex.com", "revealedtricks4u.com",
     "pizzamaking.com"])) {
