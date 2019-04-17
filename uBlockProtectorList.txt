@@ -352,7 +352,6 @@ strefadb.pl###videoad
 ultimate-catch.eu##.special-message-wrapper
 alemdarleech.com##+js(abort-on-property-read.js, koddostu_com_adblock_yok)
 communitech.ca#@#a[href*="/?aff="]
-oload.info##+js(noeval-if, stopOver)
 vidfile.net##.rek
 ||cdn.cdnserv.pw/js/cnads.js$script,redirect=noopjs,domain=strikeout.co
 crash-aerien.news##+js(abort-on-property-read.js, noPub)

@@ -610,8 +610,6 @@ ultimate-catch.eu##.special-message-wrapper
 alemdarleech.com##+js(abort-on-property-read.js, koddostu_com_adblock_yok)
 ! === communitech.ca
 communitech.ca#@#a[href*="/?aff="]
-! === oload.info
-oload.info##+js(noeval-if, stopOver)
 ! === vidfile.net
 vidfile.net##.rek
 ! === strikeout.co
