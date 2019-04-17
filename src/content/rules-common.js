@@ -209,6 +209,7 @@
         "9anime",
         "italiashare",
         "kissanime",
+        "oladblock",
         "oload",
         "openload",
 
