@@ -18,9 +18,9 @@
 
 // ----------------------------------------------------------------------------------------------------------------- //
 
-// Handle whitelist and initialize generic content solutions. Then apply common content rules.
+// Handle whitelist and initialize generic content solutions. Then apply common content rules
 //
-// Solutions from Anti-Adblock Killer (by Reek) are modified to fit the content core library.
+// Solutions from Anti-Adblock Killer (by Reek) are modified to fit the content core library
 //
 // Anti-Adblock Killer Repository (contains original source code and license):
 // https://github.com/reek/anti-adblock-killer
