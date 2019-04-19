@@ -47,7 +47,7 @@ a.init = () => {
 
 a.strEscape = (() => {
     const re = /"/g;
-    return (str) => str.replace(re, `\\"`);
+    return (str) => str.replace(re, '\\"');
 })();
 
 a.err = (name) => {
@@ -77,9 +77,8 @@ a.domCmp = (domList, noErr = false) => {
 a.domInc = (domList, noErr = false) => {
     for (let i = 0; i < domList.length; i++) {
         const index = document.domain.lastIndexOf(domList[i] + ".");
-        if (index > 0 && document.domain.charAt(index - 1) !== ".") {
+        if (index > 0 && document.domain.charAt(index - 1) !== ".")
             continue;
-        }
         if (index > -1) {
             if (!document.domain.substring(index + domList[i].length + 1).includes(".")) {
                 if (!noErr)
@@ -94,7 +93,7 @@ a.domInc = (domList, noErr = false) => {
 // http://stackoverflow.com/questions/6566456/how-to-serialize-an-object-into-a-list-of-parameters
 a.serialize = (obj) => {
     let str = "";
-    for (let key in obj) {
+    for (const key in obj) {
         if (str !== "")
             str += "&";
         str += `${key}=${encodeURIComponent(obj[key])}`;
@@ -205,7 +204,7 @@ a.getMatcher = (method, filter) => {
 // ----------------------------------------------------------------------------------------------------------------- //
 
 a.inject = (payload, isReady = false) => {
-    let s = document.createElement("script");
+    const s = document.createElement("script");
     s.textContent = isReady ? payload : `(${payload})();`;
 
     try {
@@ -246,7 +245,7 @@ a.injectWithRuntime = (payload, isReady = false) => {
         ${isReady ? payload : `(${payload})();`}
     })();`;
 
-    let s = document.createElement("script");
+    const s = document.createElement("script");
     s.textContent = runtime;
 
     try {
@@ -314,7 +313,7 @@ a.css = (() => {
             data: payload,
         });
         if (!stealthy) {
-            let s = document.createElement("style");
+            const s = document.createElement("style");
             s.textContent = payload;
             document.documentElement.append(s);
         }
@@ -326,7 +325,7 @@ a.css = (() => {
 // Class : .test
 // ID    : #test
 a.bait = (type, identifier, hidden) => {
-    let elem = document.createElement(type);
+    const elem = document.createElement(type);
     switch (identifier.charAt(0)) {
         case '#':
             elem.id = identifier.substring(1);
@@ -650,7 +649,7 @@ a.cookie = (key, val, time = 31536000000, path = "/") => {
         }
     } else {
         // Set mode
-        let expire = new Date();
+        const expire = new Date();
         expire.setTime(expire.getTime() + time);
         document.cookie = `${key}=${encodeURIComponent(val)};expires=${expire.toGMTString()};path=${path}`;
     }
@@ -889,6 +888,9 @@ a.generic = () => {
         // --------------------------------------------------------------------------------------------------------- //
 
         // document-start
+
+        // AdBlocker Detector
+        window.$tieE3 = true;
 
         // AdBlock Notify
         try {
