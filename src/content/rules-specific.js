@@ -2406,23 +2406,6 @@ if (a.domCmp(["gp.se", "bohuslaningen.se", "hallandsposten.se", "hn.se", "stroms
         };
     });
 }
-if (a.domCmp(["kbb.com"])) {
-    a.inject(() => {
-        "use strict";
-        const v = window.Object.freeze({
-            init() { },
-            start() { },
-        });
-        window.KBB = {};
-        window.Object.defineProperty(window.KBB, "Abb", {
-            configurable: false,
-            set() { },
-            get() {
-                return v;
-            },
-        });
-    });
-}
 if (a.domCmp(["booogle.net", "nsspot.net"])) {
     a.readOnly("gadb", false);
 }
