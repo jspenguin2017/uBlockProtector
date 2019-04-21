@@ -172,6 +172,13 @@ if (a.domCmp([
     });
 }
 
+// https://github.com/NanoMeow/QuickReports/issues/999
+if (a.domCmp([
+    "javgay.co",
+])) {
+    a.readOnly("AlobaidiDetectAdBlock", true);
+}
+
 // --------------------------------------------------------------------------------------------- //
 
 if (a.domCmp(["catchcoin.pw", "irc-source.com", "dashcatch.xyz"])) {
