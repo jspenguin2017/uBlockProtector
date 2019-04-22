@@ -136,6 +136,7 @@
         "filmweb.pl",
         "finobe.com",
         "gamersclub.com.br",
+        "gaobook.review",
         "imdb.com",
         "infostrow.pl",
         "jazzradio.com",
