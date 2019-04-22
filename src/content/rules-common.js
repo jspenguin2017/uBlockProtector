@@ -139,7 +139,6 @@
         "imdb.com",
         "infostrow.pl",
         "jazzradio.com",
-        "kissasian.ch",
         "lcpdfr.com",
         "lemonde.fr",
         "linetv.tw",
@@ -155,10 +154,6 @@
         "techradar.com",
         "tv3sport.dk",
         "tvserial.it",
-        "viafree.dk",
-        "viafree.fi",
-        "viafree.no",
-        "viafree.se",
         "viasatsport.se",
         "viasport.fi",
         "viasport.no",
@@ -209,9 +204,11 @@
         "9anime",
         "italiashare",
         "kissanime",
+        "kissasian",
         "oladblock",
         "oload",
         "openload",
+        "viafree",
 
         // --------------------------------------------------------------------------------------------------------- //
 
