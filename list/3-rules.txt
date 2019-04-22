@@ -251,8 +251,6 @@ uol.com.br##.bannersticky-top:has(div.ads-wrapper)
 newyorker.com##iframe[src*="/wp-content/assets/"]
 ! === politiken.dk
 @@||politiken.dk/*ad*$script,first-party
-! === NSFW! kissasian.com
-||kissasian.com/*.aspx
 ! === wholecloud.net
 ||wholecloud.net^$inline-script
 ! === link.tl

@@ -151,7 +151,6 @@ uol.com.br##.bannersticky-top:has(div.ads-wrapper)
 ||cloudvideoplatform.com/advert.jpg$image,redirect=1x1-transparent.gif,domain=nana10.co.il
 newyorker.com##iframe[src*="/wp-content/assets/"]
 @@||politiken.dk/*ad*$script,first-party
-||kissasian.com/*.aspx
 ||wholecloud.net^$inline-script
 link.tl##.adblockBox
 link.tl##.adblockOverlay
