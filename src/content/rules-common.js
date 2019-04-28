@@ -133,6 +133,7 @@
         "derstandard.at",
         "di.fm",
         "download.ipeenk.com",
+        "duellinksmeta.com",
         "egy.best",
         "filmweb.pl",
         "finobe.com",
