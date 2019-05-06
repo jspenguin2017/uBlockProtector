@@ -129,7 +129,7 @@ if (
         "wrzuta.pl",
     ])
 ) {
-    a.loopbackXHR((ignored, url) => {
+    a.loopbackXHR((_, url) => {
         const path = url.substring(url.lastIndexOf('/') + 1);
         if (path.startsWith("dmFkLnhtb")) { // vad.xml
             return [
@@ -177,6 +177,13 @@ if (a.domCmp([
     "javgay.co",
 ])) {
     a.readOnly("AlobaidiDetectAdBlock", true);
+}
+
+// https://github.com/NanoMeow/QuickReports/issues/861
+if (a.domCmp([
+    "nhentai.net",
+])) {
+    a.filter("open");
 }
 
 // --------------------------------------------------------------------------------------------- //
