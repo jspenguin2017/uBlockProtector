@@ -429,8 +429,6 @@ virgilio.it##+js(abort-on-property-read.js, VVIDEO.adBlock)
 ||auroravid.to^$inline-script
 ! === amarujala.com
 amarujala.com##+js(abort-on-property-read.js, call_adblocker)
-! === imagebam.com
-imagebam.com###hideifpossible
 ! === oddreaders.com
 ||oddreaders.com/wp-content/plugins/sociallocker-next-premium/
 ! === sportspyder.com

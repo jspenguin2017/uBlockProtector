@@ -253,7 +253,6 @@ klisza.org##.spu-box
 virgilio.it##+js(abort-on-property-read.js, VVIDEO.adBlock)
 ||auroravid.to^$inline-script
 amarujala.com##+js(abort-on-property-read.js, call_adblocker)
-imagebam.com###hideifpossible
 ||oddreaders.com/wp-content/plugins/sociallocker-next-premium/
 sportspyder.com##+js(setTimeout-defuser.js, BlockerChecker)
 ||sportspyder.com/assets/application-$script,badfilter
