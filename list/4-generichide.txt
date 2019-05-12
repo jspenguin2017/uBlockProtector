@@ -37,7 +37,6 @@
 @@||symbolab.com^$generichide
 @@||tv.yahoo.com^$generichide
 @@||tvsportslive.stream^$generichide
-@@||uol.com.br^$generichide
 @@||viz.com^$generichide
 @@||wp.pl^$generichide
 @@||yiv.com^$generichide

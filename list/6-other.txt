@@ -1167,7 +1167,6 @@ vizer.tv#@#.adBlockDetected
 ||folha.uol.com.br/paywall/js/$script
 ||folha.uol.com.br/folha/furniture/paywall/$xmlhttprequest
 ||folha.uol.com.br/folha/furniture/paywall/loader.js$script
-@@||folha.uol.com.br/*/publicidade.ads.js$script
 zarabiajnaokazjach.pl#@##adsense
 @@||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js$domain=emucr.com
 @@||pagead2.googlesyndication.com/pagead/js/*/show_ads_impl.js$domain=emucr.com

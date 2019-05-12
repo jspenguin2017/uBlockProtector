@@ -140,9 +140,6 @@ steamcustomizer.com##.notice.support-notice
 shqiperiatv.com,albtvhd.com,tvshqiphd.com,www.balkanweb.com,cdn.livestream.com,livestream.artmotion.al,shqip-tv.info##body > *[id^="blockblock"]:style(visibility: visible !important; display: block !important;)
 shqiperiatv.com,albtvhd.com,tvshqiphd.com,www.balkanweb.com,cdn.livestream.com,livestream.artmotion.al,shqip-tv.info##table[id^='blockblock']
 wordsense.eu##+js(setTimeout-defuser.js, ad, 2000)
-||uol.com.br/*/detectadblock/$script,important
-||jsuol.com.br/*/detectadblock.js$script,important,domain=uol.com.br
-uol.com.br##.bannersticky-top:has(div.ads-wrapper)
 /magnific-popup.js/*$domain=transparentcalifornia.com
 @@||yamvideo.com/pop1/jwplayer.js$domain=javsex.net
 ||nowvideo.ec^$inline-script
@@ -184,7 +181,6 @@ vidnow.to###adplayer
 diariodenavarra.es###abMsgWrap
 darmowe-pornosy.pl,polskie-aktorki-porno.pl#@#.myTestAd
 themarker.com###ad-block-wrapper
-@@||jsuol.com.br/c/detectadblock/$script,domain=uol.com.br,badfilter
 @@*$csp,domain=vidlox.tv
 ||zeusnews.it/antiadb.js
 @@||static.ipornia.com^$image,domain=ipornia.hdzog.com
@@ -465,7 +461,6 @@ blockads.fivefilters.org###no-blocking:style(display: block !important;)
 @@||symbolab.com^$generichide
 @@||tv.yahoo.com^$generichide
 @@||tvsportslive.stream^$generichide
-@@||uol.com.br^$generichide
 @@||viz.com^$generichide
 @@||wp.pl^$generichide
 @@||yiv.com^$generichide
@@ -1655,7 +1650,6 @@ vizer.tv#@#.adBlockDetected
 ||folha.uol.com.br/paywall/js/$script
 ||folha.uol.com.br/folha/furniture/paywall/$xmlhttprequest
 ||folha.uol.com.br/folha/furniture/paywall/loader.js$script
-@@||folha.uol.com.br/*/publicidade.ads.js$script
 zarabiajnaokazjach.pl#@##adsense
 @@||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js$domain=emucr.com
 @@||pagead2.googlesyndication.com/pagead/js/*/show_ads_impl.js$domain=emucr.com

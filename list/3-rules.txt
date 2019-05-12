@@ -231,10 +231,6 @@ shqiperiatv.com,albtvhd.com,tvshqiphd.com,www.balkanweb.com,cdn.livestream.com,l
 shqiperiatv.com,albtvhd.com,tvshqiphd.com,www.balkanweb.com,cdn.livestream.com,livestream.artmotion.al,shqip-tv.info##table[id^='blockblock']
 ! === wordsense.eu
 wordsense.eu##+js(setTimeout-defuser.js, ad, 2000)
-! === uol.com.br
-||uol.com.br/*/detectadblock/$script,important
-||jsuol.com.br/*/detectadblock.js$script,important,domain=uol.com.br
-uol.com.br##.bannersticky-top:has(div.ads-wrapper)
 ! === transparentcalifornia.com
 /magnific-popup.js/*$domain=transparentcalifornia.com
 ! === javsex.net
@@ -312,8 +308,6 @@ diariodenavarra.es###abMsgWrap
 darmowe-pornosy.pl,polskie-aktorki-porno.pl#@#.myTestAd
 ! === themarker.com
 themarker.com###ad-block-wrapper
-! === jsuol.com.br
-@@||jsuol.com.br/c/detectadblock/$script,domain=uol.com.br,badfilter
 ! === vidlox.tv
 @@*$csp,domain=vidlox.tv
 ! === zeusnews.it
