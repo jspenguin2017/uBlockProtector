@@ -707,6 +707,9 @@ if (a.domCmp(["jbzdy.pl"])) {
         });
     });
 }
+if (a.domCmp(["folha.uol.com.br"])) {
+    a.readOnly("paywall_access", true);
+}
 if (a.domCmp(["infoua.biz"])) {
     a.filter("setTimeout", a.matchMethod.stringExact, "function (){b()}");
 }
