@@ -586,11 +586,6 @@ if (a.domCmp(["rmprepusb.com"])) {
 if (a.domCmp(["cubeupload.com"])) {
     a.filter("write", a.matchMethod.string, "Please consider removing adblock to help us pay our bills", "window.document");
 }
-if (a.domCmp(["hentaihaven.org"])) {
-    // NSFW!
-    // https://github.com/jspenguin2017/uBlockProtector/issues/76
-    a.noAccess("desktop_variants");
-}
 if (a.domCmp(["bluesatoshi.com"])) {
     a.css("#test { height:280px; }");
 }
@@ -1370,7 +1365,7 @@ if (a.domCmp(["linkdrop.net", "revclouds.com", "leporno.org", "uploadshub.com", 
 }
 if (a.domCmp(["demo-phoenix.com", "dpstream.net", "gum-gum-streaming.com", "jeu.info", "sofoot.com",
     "gaara-fr.com", "gaytube.com", "tuxboard.com", "xstory-fr.com", "hentaifr.net", "filmstreaming-hd.com",
-    "filmvf.net", "hentaihaven.org", "narutoshippudenvf.com", "thebadbuzz.com", "manga-news.com", "jeu.video",
+    "filmvf.net", "narutoshippudenvf.com", "thebadbuzz.com", "manga-news.com", "jeu.video",
     "mangas-fr.com"])) {
     a.css("body { visibility:visible; }");
 }
