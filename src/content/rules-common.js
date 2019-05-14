@@ -139,6 +139,7 @@
         "finobe.com",
         "gamersclub.com.br",
         "gaobook.review",
+        "hackintosh.computer",
         "imdb.com",
         "infostrow.pl",
         "jazzradio.com",

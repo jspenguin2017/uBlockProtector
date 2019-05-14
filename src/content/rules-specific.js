@@ -278,17 +278,13 @@ if (a.domCmp(["pinkrod.com", "wetplace.com"])) {
     a.readOnly("getAd", () => { });
     a.readOnly("getUtm", () => { });
 }
-if (a.domCmp(["hackintosh.zone", "elfqrin.com", "lne.es", "diariodemallorca.es", "artesacro.org"])) {
+if (a.domCmp(["elfqrin.com", "lne.es", "diariodemallorca.es", "artesacro.org"])) {
     a.ready(() => {
         a.inject(() => {
             "use strict";
             window.onload = null;
         });
     });
-}
-if (a.domCmp(["hackintosh.computer"])) {
-    a.noAccess("google_jobrunner");
-    a.readOnly("ai_adb_detected", (...args) => window.ai_adb_undetected(...args));
 }
 if (a.domCmp(["tvregionalna24.pl"])) {
     a.inject(() => {
