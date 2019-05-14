@@ -2259,13 +2259,6 @@ if (a.domCmp(["oddreaders.com"])) {
         }
     });
 }
-if (a.domCmp(["vod.pl"])) {
-    a.onInsert((node) => {
-        if (node.tagName !== "SCRIPT" && node.innerText && node.innerText.includes("Prosimy, odblokuj wy\u015Bwietlanie reklam")) {
-            node.remove();
-        }
-    });
-}
 if (a.domCmp(["viz.com"])) {
     a.readOnly("show_dfp_preroll", false);
 }
