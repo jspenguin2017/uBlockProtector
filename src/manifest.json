@@ -37,7 +37,7 @@
       "run_at": "document_start"
     }
   ],
-  "description": "An anti-adblock defuser for Nano Adblocker and uBlock Origin",
+  "description": "Companion extension for Nano Adblocker",
   "homepage_url": "https://jspenguin2017.github.io/uBlockProtector/",
   "icons": {
     "128": "icon128.png"
@@ -54,7 +54,7 @@
     "webRequest",
     "webRequestBlocking"
   ],
-  "version": "15.0.0.145",
+  "version": "15.0.0.146",
   "web_accessible_resources": [
     "resources/*"
   ]
