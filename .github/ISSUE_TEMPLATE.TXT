@@ -4,7 +4,7 @@ https://jspenguin2017.github.io/uBlockProtector/#reporting-an-issue
 -->
 ### Test link (required):
 <!--
-Please use the domain as the title
+Use the domain as the title
 -->
 
 
@@ -41,6 +41,9 @@ List filters you have enabled or disabled from the default settings
 
 
 #### Your custom filters (Required if you have any):
+
+
+#### Your other extensions (Required if you have any)
 
 
 ### Add everything else that you believe to be useful below (optional):
