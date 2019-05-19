@@ -29,8 +29,8 @@
 a.uBOExtraExcluded = false;
 
 a.isTopFrame = (() => {
-    // This can throw
     try {
+        // This can throw
         return window.self === window.top;
     } catch (err) {
         return false;
