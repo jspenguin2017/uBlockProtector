@@ -1,7 +1,6 @@
 # ------------------------------------------------------------------------------------------------------------------- #
 
-# These are filters for integration with Nano Defender, all whitelists in this
-# section are handled by Nano Defender
+# These are filters for integration with Nano Defender, all whitelists in this section are handled by Nano Defender
 
 # ------------------------------------------------------------------------------------------------------------------- #
 
