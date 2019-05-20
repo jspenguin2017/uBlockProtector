@@ -207,6 +207,12 @@
         // False positives
         "9anime",
         "italiashare",
+        "imgdew",
+        "imgfile",
+        "imgmaze",
+        "imgoutlet",
+        "imgrock",
+        "imgview",
         "kissanime",
         "kissasian",
         "oladblock",
