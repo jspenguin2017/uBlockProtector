@@ -43,7 +43,7 @@ List filters you have enabled or disabled from the default settings
 #### Your custom filters (Required if you have any):
 
 
-#### Your other extensions (Required if you have any)
+#### Your other extensions (Required if you have any):
 
 
 ### Add everything else that you believe to be useful below (optional):
