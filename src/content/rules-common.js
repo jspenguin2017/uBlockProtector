@@ -214,6 +214,7 @@
         "imgoutlet",
         "imgrock",
         "imgview",
+        "kiss-anime",
         "kissanime",
         "kissasian",
         "oladblock",
