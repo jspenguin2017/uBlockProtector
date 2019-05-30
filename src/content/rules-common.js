@@ -116,8 +116,14 @@
 
         // --------------------------------------------------------------------------------------------------------- //
 
-        // Handled by a special private extension
-        "boost.ink",
+        // Custom FuckAdBlock
+        "atresplayer.com",
+        "aviationweek.com",
+        "futbin.com",
+        "juprimaulana.com",
+        "paraedu.id",
+        "rmcmv.us",
+        "yuukithemes.com",
 
         // False positives
         "anandabazar.com",
@@ -149,6 +155,7 @@
         "lolalytics.com",
         "o2.pl",
         "ostrzeszowinfo.pl",
+        "pasty.link",
         "pokyun.tv",
         "shinden.pl",
         "socketloop.com",
@@ -165,14 +172,8 @@
         "wilmaa.com",
         "wp.pl",
 
-        // Custom FuckAdBlock
-        "atresplayer.com",
-        "aviationweek.com",
-        "futbin.com",
-        "juprimaulana.com",
-        "paraedu.id",
-        "rmcmv.us",
-        "yuukithemes.com",
+        // Handled by a special private extension
+        "boost.ink",
 
         // --------------------------------------------------------------------------------------------------------- //
 
