@@ -339,6 +339,7 @@ if ( !abort ) {
             'washingtonpost.com',
             'waterskimag.com',
             'webmd.com',
+            'wibc.com',
             'wikia.com',
             'windowscentral.com',
             'windsorstar.com',
