@@ -157,6 +157,7 @@
         "ostrzeszowinfo.pl",
         "pasty.link",
         "pokyun.tv",
+        "reevown.com",
         "shinden.pl",
         "socketloop.com",
         "sport-tv-guide.live",

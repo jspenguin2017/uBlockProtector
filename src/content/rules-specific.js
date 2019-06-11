@@ -2329,7 +2329,7 @@ if (a.domCmp(["gamejolt.net"])) {
 if (a.domCmp(["dilidili.wang"])) {
     a.filter("addEventListener", a.matchMethod.stringExact, "DOMNodeInserted", "window.document");
 }
-if (a.domCmp(["dilidili.wang", "reevown.com"])) {
+if (a.domCmp(["dilidili.wang"])) {
     a.antiCollapse("innerHTML", (elem) => elem === window.document.body);
 }
 if (a.domCmp(["gamekit.com"])) {
