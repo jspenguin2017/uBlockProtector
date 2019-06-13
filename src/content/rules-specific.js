@@ -1409,7 +1409,7 @@ if (a.domCmp(["hanime.tv"])) {
 if (a.domCmp(["whosampled.com"])) {
     a.readOnly("showAdBlockerOverlay", () => { });
 }
-if (a.domCmp(["pornhub.com", "redtube.com", "youporn.com", "tube8.com", "pornmd.com",
+if (a.domCmp(["redtube.com", "youporn.com", "tube8.com", "pornmd.com",
     "thumbzilla.com", "xtube.com", "peeperz.com", "czechhq.net", "29443kmq.video"])) {
     // NSFW!
     // 29443kmq.video is the iframe of czechhq.net, other domains are part of Pornhub Network

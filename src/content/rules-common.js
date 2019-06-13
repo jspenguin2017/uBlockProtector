@@ -157,6 +157,7 @@
         "ostrzeszowinfo.pl",
         "pasty.link",
         "pokyun.tv",
+        "pornhub.com",
         "reevown.com",
         "shinden.pl",
         "socketloop.com",
