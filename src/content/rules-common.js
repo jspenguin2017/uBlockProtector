@@ -128,6 +128,7 @@
         // False positives
         "anandabazar.com",
         "animesync.tv",
+        "automobile-propre.com",
         "avgle.com",
         "babbel.com",
         "bild.de",
