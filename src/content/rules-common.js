@@ -392,7 +392,6 @@ if (a.domCmp([
     "free-movie-home.com",
     "generatupremium.biz",
     "kooora.com",
-    "kooora.com",
     "mega-debrid.eu",
     "newsinlevels.com",
     "pc.online143.com",
