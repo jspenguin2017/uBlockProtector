@@ -1075,37 +1075,6 @@ if (a.domCmp(["thesimsresource.com"])) {
     a.readOnly("gadsize", true);
     a.readOnly("iHaveLoadedAds", true);
 }
-if (a.domCmp(["kissanime.com", "kissanime.to", "kissanime.ru"])) {
-    a.css("iframe[id^='adsIfrme'], .divCloseBut { display:none; }");
-    const magic = a.uid();
-    addEventListener(magic, () => {
-        $("iframe[id^='adsIfrme'], .divCloseBut").remove();
-    });
-    a.ready(() => {
-        a.inject(`(() => {
-            "use strict";
-            const divContentVideo = window.document.getElementById("divContentVideo");
-            if (window.DoDetect2) {
-                window.DoDetect2 = null;
-                window.CheckAdImage = null;
-            } else if (divContentVideo) {
-                const divDownload = window.document.getElementById("divDownload").cloneNode(true);
-                window.setTimeout(() => {
-                    divContentVideo.innerHTML = "";
-                    window.DoHideFake();
-                    divContentVideo.appendChild(divDownload);
-                    window.dispatchEvent(new window.CustomEvent("${magic}"));
-                }, 5500);
-            }
-        })();`, true);
-    });
-}
-if (a.domCmp(["kisscartoon.me", "kisscartoon.se"])) {
-    a.readOnly("xaZlE", () => { });
-    a.ready(() => {
-        $("iframe[id^='adsIfrme']").remove();
-    });
-}
 if (a.domCmp(["youwatch.org", "chouhaa.info", "ahzahg6ohb.com"])) {
     a.ready(() => {
         $("#player_imj, #player_imj + div[id]").remove();
