@@ -2,7 +2,7 @@
 
 This Privacy Policy (the "Policy") applies to the Quick Issue Reporter
 (the "Tool") published and distributed by @jspenguin2017 (the "Author").
-The Author has little control over forks of the Tool and the Policy may
+The Author has little control over forks of the Tool so the Policy may
 not apply to them. Furthermore, the Policy only applies to unmodified
 production builds of the Tool.
 
