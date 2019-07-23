@@ -1,21 +1,23 @@
 # Privacy Policy for Quick Issue Reporter
 
-The Quick Issue Reporter (the "Tool") allows you to quickly report issues
-related to Nano Adblocker and Nano Defender (the "Projects") you encounter when
-browsing the Internet.
+This Privacy Policy (the "Policy") applies to the Quick Issue Reporter
+(the "Tool") published and distributed by @jspenguin2017 (the "Author").
+The Author has little control over forks of the Tool and the Policy may
+not apply to them. Furthermore, the Policy only applies to unmodified
+production builds of the Tool.
 
-The Tool will only collect your data when you use it, and will not connect to
-remote servers before the "Send" button is clicked.
+The Tool allows you to quickly report issues related to Nano Adblocker and Nano
+Defender (the "Projects") you encounter when browsing the Internet.
+
+The Tool will only collect your data when you actively use it, and will not
+connect to remote servers before the "Send" button is clicked.
 
 By using the Tool, you accept:
 - The most recent version of this privacy policy,
 - The [privacy policy of GeoJS](https://www.geojs.io/privacy/), and
 - The [privacy policy of MaxMind](https://www.maxmind.com/en/privacy-policy)
 
-The Tool is for your convenience only, you can alternatively report issues
-to respective issues trackers manually.
-
-### What are collected? How will the data be used?
+### Collecting and Using Your Data
 
 1. Your IP address
    - We may use GeoJS and/or MaxMind to process your IP address
@@ -37,9 +39,21 @@ Collected data will be used to improve the Projects, as well as related
 projects such as uAssets. Collected data may be shared with a selected group of
 people or publicly unless otherwise indicated above.
 
-### How secure is the server?
+### Securing Your Data
 
-The server has a few systems in place to prevent unauthorized access, however,
-like many other open source projects, the Tool is delivered as-is and comes
-with absolutely no warranty. This privacy policy may also be modified at any
-time, with or without notice.
+The server has a few systems in place to prevent unauthorized access:
+- Two Factor Authentication on Amazon Web Services root account
+- Public key authentication for Secure Shell access
+- Firewall with only necessary ports open
+- Automatic HTTPS upgrade for production endpoints
+
+However, like many other open source projects, the Tool is delivered as-is and
+comes with absolutely no warranty.
+
+### Alternatives
+
+You can report issues to respective issues trackers manually.
+
+### Modification to the Policy
+
+The Policy may be modified at any time, with or without notice.
