@@ -34,6 +34,9 @@ By using the Tool, you accept:
    - If you supplied a test account in the form, that account will not be
      shared publicly (it may still be shared with a selected group of
      people)
+   - You are responsible in ensuring information you entered into this form
+     are not sensitive in nature and test accounts that you supply contains
+     only test data
 
 Collected data will be used to improve the Projects, as well as related
 projects such as uAssets. Collected data may be shared with a selected group of
