@@ -35,7 +35,7 @@ By using the Tool, you accept:
      shared publicly (it may still be shared with a selected group of
      people)
    - You are responsible in ensuring information you entered into this form
-     are not sensitive in nature and test accounts that you supply contains
+     is not sensitive in nature and test accounts that you supply contains
      only test data
 
 Collected data will be used to improve the Projects, as well as related
