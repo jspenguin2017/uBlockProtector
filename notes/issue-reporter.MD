@@ -3,7 +3,7 @@
 This Privacy Policy (the "Policy") applies to the Quick Issue Reporter
 (the "Tool") published and distributed by @jspenguin2017 (the "Author").
 The Author has little control over forks of the Tool so the Policy may
-not apply to them. Furthermore, the Policy only applies to unmodified
+not apply to them. Furthermore, the Policy only applies to latest unmodified
 production builds of the Tool.
 
 The Tool allows you to quickly report issues related to Nano Adblocker and Nano
