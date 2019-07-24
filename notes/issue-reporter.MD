@@ -55,8 +55,8 @@ not take back your contributions at a later date.
 
 ### Security Practices
 
-The server acting as temporary storage has a few systems in place to prevent
-unauthorized access:
+The server acting as temporary storage is controlled by the Author has a few
+systems in place to prevent unauthorized access:
 - Two Factor Authentication on Amazon Web Services root account
 - Public key authentication for Secure Shell access
 - Firewall with only necessary ports open
