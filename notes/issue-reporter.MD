@@ -50,7 +50,7 @@ people or publicly unless otherwise indicated above.
 ### Data Deletion
 
 By using the Tool, you are contributing to open source projects, and you may
-not take back your contributions at a later time.
+not take back your contributions at a later date.
 
 ### Security Practices
 
@@ -66,10 +66,10 @@ Moderated reports are stored in a GitHub issues tracker.
 However, like many other open source projects, the Tool is delivered as-is and
 comes with absolutely no warranty.
 
-### Alternatives to the Tool
+### Alternative Solutions
 
 You can report issues to respective issues trackers manually.
 
-### Modification to the Policy
+### Future Versions
 
 The Policy may be modified at any time, with or without notice.
