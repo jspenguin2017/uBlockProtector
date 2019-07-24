@@ -12,7 +12,7 @@ Defender (the "Projects") you encounter when browsing the Internet.
 The Tool will only collect your data when you actively use it, and will not
 connect to remote servers before the "Send" button is clicked.
 
-By using the Tool, you accept:
+By using the Tool, you consent to:
 - The most recent version of this privacy policy,
 - The [privacy policy of GeoJS](https://www.geojs.io/privacy/),
 - The [privacy policy of MaxMind](https://www.maxmind.com/en/privacy-policy),
