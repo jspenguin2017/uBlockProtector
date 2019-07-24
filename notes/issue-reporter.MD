@@ -14,10 +14,13 @@ connect to remote servers before the "Send" button is clicked.
 
 By using the Tool, you accept:
 - The most recent version of this privacy policy,
-- The [privacy policy of GeoJS](https://www.geojs.io/privacy/), and
-- The [privacy policy of MaxMind](https://www.maxmind.com/en/privacy-policy)
+- The [privacy policy of GeoJS](https://www.geojs.io/privacy/),
+- The [privacy policy of MaxMind](https://www.maxmind.com/en/privacy-policy),
+  and
+- The
+  [privacy policy of GitHub](https://help.github.com/en/articles/github-privacy-statement)
 
-### Collecting and Using Your Data
+### Data Collection and Usage
 
 1. Your IP address
    - We may use GeoJS and/or MaxMind to process your IP address
@@ -30,6 +33,8 @@ By using the Tool, you accept:
      reproduce the issue, your report will be ignored
 3. Version string of the Projects that you are using
 4. The URL of the page where the Tool is opened
+   - You are responsible in ensuring that you are not opening the Tool on a
+     page where the URL is sensitive
 5. The form that you have filled
    - If you supplied a test account in the form, that account will not be
      shared publicly (it may still be shared with a selected group of
@@ -42,18 +47,26 @@ Collected data will be used to improve the Projects, as well as related
 projects such as uAssets. Collected data may be shared with a selected group of
 people or publicly unless otherwise indicated above.
 
-### Securing Your Data
+### Data Deletion
 
-The server has a few systems in place to prevent unauthorized access:
+By using the Tool, you are contributing to open source projects, and you may
+not take back your contributions at a later time.
+
+### Data Storage
+
+The server acting as temporary storage has a few systems in place to prevent
+unauthorized access:
 - Two Factor Authentication on Amazon Web Services root account
 - Public key authentication for Secure Shell access
 - Firewall with only necessary ports open
 - Automatic HTTPS upgrade for production endpoints
 
+Moderated reports are stored in a GitHub issues tracker.
+
 However, like many other open source projects, the Tool is delivered as-is and
 comes with absolutely no warranty.
 
-### Alternatives
+### Alternatives to the Tool
 
 You can report issues to respective issues trackers manually.
 
