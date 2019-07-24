@@ -64,8 +64,9 @@ systems in place to prevent unauthorized access:
 
 Moderated reports are stored in GitHub and/or GitLab issues trackers.
 
-However, like many other open source projects, the Tool is delivered as-is and
-comes with absolutely no warranty.
+Please note that although the Author is committed to keep his server secure,
+there is no guarantee of any sort. Like many other open source projects, the
+Tool is delivered as-is and comes with absolutely no warranty.
 
 ### Alternative Solutions
 
