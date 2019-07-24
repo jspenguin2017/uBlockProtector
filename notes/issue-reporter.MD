@@ -52,7 +52,7 @@ people or publicly unless otherwise indicated above.
 By using the Tool, you are contributing to open source projects, and you may
 not take back your contributions at a later time.
 
-### Data Storage
+### Security Practices
 
 The server acting as temporary storage has a few systems in place to prevent
 unauthorized access:
