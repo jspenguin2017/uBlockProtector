@@ -16,9 +16,10 @@ By using the Tool, you consent to:
 - The most recent version of the Policy,
 - The [privacy policy of GeoJS](https://www.geojs.io/privacy/),
 - The [privacy policy of MaxMind](https://www.maxmind.com/en/privacy-policy),
-  and
 - The
-  [privacy policy of GitHub](https://help.github.com/en/articles/github-privacy-statement)
+  [privacy policy of GitHub](https://help.github.com/en/articles/github-privacy-statement),
+  and
+- The [privacy policy of GitLab](https://about.gitlab.com/privacy/)
 
 ### Data Collection and Usage
 
@@ -61,7 +62,7 @@ unauthorized access:
 - Firewall with only necessary ports open
 - Automatic HTTPS upgrade for production endpoints
 
-Moderated reports are stored in a GitHub issues tracker.
+Moderated reports are stored in GitHub and/or GitLab issues trackers.
 
 However, like many other open source projects, the Tool is delivered as-is and
 comes with absolutely no warranty.
