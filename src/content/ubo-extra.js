@@ -279,6 +279,7 @@ if ( !abort ) {
             'ranchosantafereview.com',
             'range365.com',
             'ranker.com',
+            'ratemyprofessors.com',
             'realclearpolitics.com',
             'realitytea.com',
             'redeyechicago.com',
