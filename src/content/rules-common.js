@@ -217,6 +217,7 @@
         "imgoutlet",
         "imgrock",
         "imgview",
+        "kickassanime",
         "kiss-anime",
         "kissanime",
         "kissasian",
