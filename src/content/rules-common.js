@@ -154,6 +154,7 @@
         "lemonde.fr",
         "linetv.tw",
         "lolalytics.com",
+        "myworkday.com",
         "o2.pl",
         "ostrzeszowinfo.pl",
         "pasty.link",
@@ -173,6 +174,7 @@
         "viasport.no",
         "vod.pl",
         "wilmaa.com",
+        "workday.com",
         "wp.pl",
 
         // Handled by a special private extension
