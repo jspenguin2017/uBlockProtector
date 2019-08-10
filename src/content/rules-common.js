@@ -289,7 +289,8 @@
 
     // ------------------------------------------------------------------------------------------------------------- //
 
-    if (a.domCmp([], true)) {
+    // TODO: uBO-Extra is causing issues, disable for now, waiting for upstream to update
+    if (a.domCmp([], true) || true) {
         a.uBOExtraExcluded = true;
         console.log("[Nano] Excluded :: uBO-Extra");
     }
