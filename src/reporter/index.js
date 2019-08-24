@@ -37,6 +37,7 @@ const knownGood = [
 
     // Bad installation
     "blockadblock.com",
+    "detectadblock.com",
 
     // Broken by non-default ABP X Files
     "hdblog.it",
@@ -46,15 +47,7 @@ const knownGood = [
 
     // Fixed in regional filters
     "dn.se",
-    "filmweb.pl",
-    "kwejk.pl",
-    "onet.pl",
-    "tvp.pl",
     "visioncloud.rocks",
-    "wp.pl",
-
-    // Other known good
-    "youtube.com",
 ];
 
 const knownBad = [
