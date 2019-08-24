@@ -2982,6 +2982,13 @@ if (a.domCmp([
     a.css('div[class*="tag-"].home-section > .span-8 { width: 100%; margin-right: 15px; }');
 }
 
+// https://github.com/NanoAdblocker/NanoFilters/issues/369
+if (a.domCmp([
+    "wp.pl",
+])) {
+    a.css("body > [class] { filter: none; }");
+}
+
 if (a.domCmp([
     "go4up.com",
 ])) {
