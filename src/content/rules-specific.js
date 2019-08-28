@@ -2983,7 +2983,9 @@ if (a.domCmp([
 }
 
 // https://github.com/NanoAdblocker/NanoFilters/issues/369
+// https://github.com/NanoMeow/QuickReports/issues/1704
 if (a.domCmp([
+    "pudelek.pl",
     "wp.pl",
 ])) {
     a.css("body > [class] { filter: none; }");
