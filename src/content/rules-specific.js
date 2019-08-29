@@ -2984,7 +2984,9 @@ if (a.domCmp([
 
 // https://github.com/NanoAdblocker/NanoFilters/issues/369
 // https://github.com/NanoMeow/QuickReports/issues/1704
+// https://github.com/NanoMeow/QuickReports/issues/1711
 if (a.domCmp([
+    "o2.pl",
     "pudelek.pl",
     "wp.pl",
 ])) {
