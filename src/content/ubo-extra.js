@@ -222,6 +222,7 @@ if ( !abort ) {
             'floridatravellife.com',
             'flyingmag.com',
             'focus.de',
+            'foxsports.com.au',
             'gamepedia.com',
             'gamerevolution.com',
             'gamespot.com',
