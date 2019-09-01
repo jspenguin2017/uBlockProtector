@@ -1,19 +1,39 @@
-/**
- * The common bootstrapper for background and content script.
- */
+// ----------------------------------------------------------------------------------------------------------------- //
+
+// Nano Defender - An anti-adblock defuser
+// Copyright (C) 2016-2019  Nano Defender contributors
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+// ----------------------------------------------------------------------------------------------------------------- //
+
+// Common constants and initializations for background and content script
+
+// ----------------------------------------------------------------------------------------------------------------- //
+
 "use strict";
 
-/**
- * The main namespace. Different methods will be added to this namespace
- * depending on the execution context.
- * @var {Namespace}
- */
+// ----------------------------------------------------------------------------------------------------------------- //
+
 var a = {};
 
+// ----------------------------------------------------------------------------------------------------------------- //
+
 //@pragma-if-debug
-/**
- * Whether the extension is loaded in debug mode.
- * @const {boolean}
- */
+
 a.debugMode = true;
+
 //@pragma-end-if
+
+// ----------------------------------------------------------------------------------------------------------------- //

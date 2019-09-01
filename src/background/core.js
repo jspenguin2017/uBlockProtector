@@ -1,49 +1,42 @@
-/******************************************************************************
+// ----------------------------------------------------------------------------------------------------------------- //
 
-    Nano Defender - An anti-adblock defuser
-    Copyright (C) 2016-2018  Nano Defender contributors
+// Nano Defender - An anti-adblock defuser
+// Copyright (C) 2016-2019  Nano Defender contributors
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
+// ----------------------------------------------------------------------------------------------------------------- //
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+// Core library for background rules
 
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-*******************************************************************************
-
-    Core library for background rules.
-
-******************************************************************************/
+// ----------------------------------------------------------------------------------------------------------------- //
 
 "use strict";
 
-/*****************************************************************************/
+// ----------------------------------------------------------------------------------------------------------------- //
 
-/**
- * Run initialization steps. Call once on start up.
- * @function
- */
 a.init = () => {
 
-    /*************************************************************************/
+    // ------------------------------------------------------------------------------------------------------------- //
+
+    // Internal messaging
 
     chrome.runtime.onMessage.addListener((msg, sender, res) => {
-        if (
-            msg === null || typeof msg !== "object" ||
-            sender === null || typeof sender !== "object" ||
-            typeof res !== "function"
-        ) {
+        if (msg instanceof Object === false || sender instanceof Object === false || typeof res !== "function")
             return;
-        }
 
-        if (typeof msg.cmd !== "string" || typeof sender.tab !== "object")
+        if (typeof msg.cmd !== "string" || sender.tab instanceof Object === false)
             return;
 
         const tab = sender.tab.id;
@@ -53,32 +46,33 @@ a.init = () => {
             return;
 
         switch (msg.cmd) {
-            /**
-             * Inject UserCSS to the caller tab.
-             * @param {string} data - The CSS code to inject.
-             */
+            // Inject UserCSS to caller frame
+            //
+            // data - CSS code to inject
             case "inject css":
                 if (typeof msg.data === "string")
                     a.userCSS(tab, frame, msg.data);
                 break;
 
-            /**
-             * Send a highly privileged XMLHttpRequest, it goes though
-             * Cross Origin Resource Sharing policies as well as adblocker
-             * filtering.
-             * @param {Object} details - The details object, see a.xhr().
-             * @return {string|null} The response text, or null if the request
-             * failed.
-             */
+            // Send a highly privileged XMLHttpRequest, it ignores Cross Origin Resource Sharing policies as well as
+            // adblocker filtering
+            // Requests must be explicitly whitelisted in a.sanitizeXhr()
+            //
+            // details - Details object, see a.xhr()
+            //
+            // Returns the response text, or null if the request failed
             case "xhr":
-                if (typeof msg.details === "object") {
+                if (msg.details instanceof Object) {
+                    const sanitizedDetails = a.sanitizeXhr(sender, msg.details);
+                    if (!sanitizedDetails)
+                        return;
+
                     const onerror = () => {
                         res(null);
                     };
 
-                    if (a.xhr(msg.details, res, onerror)) {
-                        // Must return true since I need to respond to content
-                        // script asynchronously
+                    if (a.xhr(sanitizedDetails, res, onerror)) {
+                        // Must return true since I need to respond to content script asynchronously
                         return true;
                     } else {
                         onerror();
@@ -86,23 +80,19 @@ a.init = () => {
                 }
                 break;
 
-            /**
-             * Forcefully close the sender tab.
-             */
+            // Forcefully close the caller tab
             case "remove tab":
                 if (tab !== chrome.tabs.TAB_ID_NONE)
                     chrome.tabs.remove(tab, a.noopErr);
                 break;
 
             //@pragma-if-debug
-            /**
-             * Log data to console. Only available in debug mode.
-             * @param {string} data - The data to log.
-             */
+
             case "log":
                 if (a.debugMode)
                     console.log(msg.data);
                 break;
+
             //@pragma-end-if
 
             default:
@@ -110,36 +100,18 @@ a.init = () => {
         }
     });
 
-    /*************************************************************************/
+    // ------------------------------------------------------------------------------------------------------------- //
 
-    // Taken from https://bit.ly/2OJzDAI (GitHub gorhill/uBlock)
-    const root = chrome.runtime.getURL("/");
-    chrome.webRequest.onBeforeRequest.addListener(
-        (details) => {
-            if (!details.url.endsWith(a.rSecret))
-                return { redirectUrl: root };
-        },
-        {
-            urls: [
-                a.rRoot + "*",
-            ],
-        },
-        [
-            "blocking",
-        ],
-    );
-
-    /*************************************************************************/
+    // External messaging
 
     const reporter = chrome.runtime.getURL("/reporter/index.html");
+
     chrome.runtime.onMessageExternal.addListener((msg, sender, res) => {
-        if (
-            msg === null || typeof msg !== "object" ||
-            typeof msg.data !== "string" ||
-            sender.id !== a.NanoAdblockerExtensionID
-        ) {
+        if (msg instanceof Object === false || sender instanceof Object === false || typeof res !== "function")
             return;
-        }
+
+        if (typeof msg.data !== "string" || sender.id !== a.NanoAdblockerExtensionID)
+            return;
 
         switch (msg.data) {
             case "Ping":
@@ -148,9 +120,7 @@ a.init = () => {
 
             case "Open Quick Issue Reporter":
                 if (typeof msg.tab === "number") {
-                    chrome.tabs.create({
-                        url: reporter + "?" + msg.tab.toString(),
-                    });
+                    chrome.tabs.create({ url: reporter + "?" + msg.tab.toString() });
                     res({ data: "ok" });
                 }
                 break;
@@ -168,9 +138,30 @@ a.init = () => {
             },
             a.noopErr,
         );
-    }, 15000);
+    }, 15 * 1000);
 
-    /*************************************************************************/
+    // ------------------------------------------------------------------------------------------------------------- //
+
+    // Taken from https://bit.ly/2OJzDAI (GitHub gorhill/uBlock)
+
+    const root = chrome.runtime.getURL("/");
+
+    chrome.webRequest.onBeforeRequest.addListener(
+        (details) => {
+            if (!details.url.endsWith(a.rSecret))
+                return { redirectUrl: root };
+        },
+        {
+            urls: [
+                a.rRoot + "*",
+            ],
+        },
+        [
+            "blocking",
+        ],
+    );
+
+    // ------------------------------------------------------------------------------------------------------------- //
 
     //@pragma-if-debug
 
@@ -184,19 +175,18 @@ a.init = () => {
 
     //@pragma-end-if
 
-    /*************************************************************************/
+    // ------------------------------------------------------------------------------------------------------------- //
 
     const hasNews = false;
-    const newsPage =
-        "https://jspenguin2017.github.io/uBlockProtector/#announcements";
 
+    const newsPage = "https://jspenguin2017.github.io/uBlockProtector/#announcements";
     const newsReadFlag = "news-read";
 
-    // This handler will become inactive when there is a popup page set
+    // This handler becomes inactive when there is a popup page set
     chrome.browserAction.onClicked.addListener(() => {
         chrome.browserAction.setBadgeText({ text: "" });
 
-        // Important: This must match the manifest
+        // IMPORTANT: This must match the manifest
         chrome.browserAction.setPopup({ popup: "popup/index.html" });
 
         localStorage.setItem(newsReadFlag, "true");
@@ -205,10 +195,7 @@ a.init = () => {
     });
 
     if (hasNews) {
-        if (
-            !chrome.extension.inIncognitoContext &&
-            !localStorage.getItem(newsReadFlag)
-        ) {
+        if (!chrome.extension.inIncognitoContext && !localStorage.getItem(newsReadFlag)) {
             chrome.browserAction.setBadgeText({ text: "NEW" });
             chrome.browserAction.setBadgeBackgroundColor({ color: "#FF0000" });
 
@@ -218,72 +205,65 @@ a.init = () => {
         localStorage.removeItem(newsReadFlag);
     }
 
-    /*************************************************************************/
+    // ------------------------------------------------------------------------------------------------------------- //
 
 };
 
-/*****************************************************************************/
+// ----------------------------------------------------------------------------------------------------------------- //
 
-/**
- * Check chrome.runtime.lastError and do nothing.
- * @function
- */
 a.noopErr = () => {
     void chrome.runtime.lastError;
 };
 
-/*****************************************************************************/
+// ----------------------------------------------------------------------------------------------------------------- //
 
-/**
- * Resource access secret.
- * @const {string}
- */
-a.rSecret =
-    Math.random().toString(36).substring(2) +
-    Math.random().toString(36).substring(2);
+a.cryptoRandom = () => {
+    const array = new Uint32Array(4);
+    crypto.getRandomValues(array);
 
-/**
- * Resource root directory.
- * @const {string}
- */
+    let out = "";
+    for (const entry of array)
+        out += entry.toString(16);
+
+    return out;
+};
+
+// ----------------------------------------------------------------------------------------------------------------- //
+
+// Redirect helpers
+
+a.rSecret = a.cryptoRandom();
+
 a.rRoot = chrome.runtime.getURL("/resources/");
 
-/**
- * Create resource access URL.
- * @function
- * @param {string} name - The file name of the resource.
- */
 a.rLink = (name) => {
     return a.rRoot + name + "?s=" + a.rSecret;
 };
 
-/*****************************************************************************/
+// ----------------------------------------------------------------------------------------------------------------- //
 
-/**
- * 1 second blank MP4, taken from
- * https://bit.ly/2JcYAyq (GitHub uBlockOrigin/uAssets).
- * @const {string}
- */
+// Redirect resources
+
+// 1 second blank MP4, taken from https://bit.ly/2JcYAyq (GitHub uBlockOrigin/uAssets).
 a.blankMP4 = a.rLink("blank.mp4");
 
-/*****************************************************************************/
+// ----------------------------------------------------------------------------------------------------------------- //
 
-/**
- * Get the URL of a frame of a tab.
- * @function
- * @param {integer} tab - The ID of the tab.
- * @param {integer} frame - The ID of the frame.
- * @return {string} The URL of the tab, or an empty string if it is not known.
- */
+// tab   - ID of the tab
+// frame - ID of the frame
+//
+// Returns the URL of the tab, or an empty string if it is not known
 a.getTabURL = (() => {
     let tabs = {};
 
     //@pragma-if-debug
-    if (a.debugMode) {
+
+    if (a.debugMode)
         window.getTabURLInternal = tabs;
-    }
+
     //@pragma-end-if
 
+    // TODO: Refactor
     chrome.tabs.query({}, (existingTabs) => {
         for (let i = 0; i < existingTabs.length; i++) {
             const id = existingTabs[i].id;
@@ -305,45 +285,44 @@ a.getTabURL = (() => {
         }
     });
 
+    // TODO: Refactor
     chrome.webNavigation.onCommitted.addListener((details) => {
-        if (!tabs[details.tabId] || details.frameId === 0) {
+        if (!tabs[details.tabId] || details.frameId === 0)
             tabs[details.tabId] = {};
-        }
         tabs[details.tabId][details.frameId] = details.url;
     });
+
     chrome.tabs.onRemoved.addListener((id) => {
         delete tabs[id];
     });
 
     return (tab, frame) => {
-        if (tabs[tab]) {
+        if (tabs[tab])
             return tabs[tab][frame] || "";
-        } else {
+        else
             return "";
-        }
     };
 })();
 
-/**
- * Check if the domain of an URL ends with one of the domains in the list.
- * A list entry "example.com" will match domains that matches
- * /(^|.*\.)example\.com$/.
- * @function
- * @param {string} url - The URL to check.
- * @param {Array.<string>} domList - The list of domains to compare.
- * @param {boolean} isMatch - Whether the domains list is a match list.
- * @return {boolean} True if the domain of the URL is in the list, false
- * otherwise.
- */
+// Check if the domain of an URL ends with one of the domains in the list
+// A list entry "example.com" will match domains that matches /(^|.*\.)example\.com$/
+//
+// url     - URL to check
+// domList - List of domains to compare
+// isMatch - Whether the domains list is a match list
+//
+// Returns true if the domain of the URL is in the list, false otherwise
 a.domCmp = (() => {
     const domainExtractor = /^https?:\/\/([^/]+)/;
+
     return (url, domList, isMatch) => {
         let dom = domainExtractor.exec(url);
-        if (!dom) {
+        if (!dom)
             return false;
-        }
+
         dom = dom[1];
 
+        // TODO: Refactor
         for (let i = 0; i < domList.length; i++) {
             if (
                 dom.endsWith(domList[i]) &&
@@ -355,33 +334,31 @@ a.domCmp = (() => {
                 return true === isMatch;
             }
         }
+
         return false === isMatch;
     };
 })();
 
-/*****************************************************************************/
+// ----------------------------------------------------------------------------------------------------------------- //
 
-/**
- * Register a static loopback server.
- * @function
- * @param {Array.<string>} urls - The urls to loopback.
- * @param {Array.<string>} types - The types of request to loopback.
- * @param {string} data - The data to loopback to, must be already encoded and
- * ready to serve.
- * @param {Array.<string>} [domList=undefined] - The domains list, omit to
- * match all domains.
- * @param {boolean} [isMatch=true] - Whether the domains list is a match list.
- */
+// urls    - Urls to loopback
+// types   - Types of request to loopback
+// data    - Data to loopback to, must be already encoded and ready to serve
+// domList - The domains list, omit to match all domains
+// isMatch - Whether the domains list is a match list, defaults to true
 a.staticServer = (urls, types, data, domList, isMatch = true) => {
     chrome.webRequest.onBeforeRequest.addListener(
         (details) => {
             const url = a.getTabURL(details.tabId, details.frameId);
+
             if (!domList || a.domCmp(url, domList, isMatch)) {
 
                 //@pragma-if-debug
+
                 if (a.debugMode) {
                     console.log("Redirected " + details.url + " to " + data);
                 }
+
                 //@pragma-end-if
 
                 return { redirectUrl: data };
@@ -397,34 +374,29 @@ a.staticServer = (urls, types, data, domList, isMatch = true) => {
     );
 };
 
-/**
- * Register a dynamic loopback server.
- * @function
- * @param {Array.<string>} urls - The urls to loopback.
- * @param {Array.<string>} types - The types of request to loopback.
- * @param {Function} server - The server, this function will be passed as the
- * event listener, view Chromium API documentations for more information:
- * https://developer.chrome.com/extensions/webRequest
- * @param {Array.<string>} [domList=undefined] - The domains list, omit to
- * match all domains.
- * @param {boolean} [isMatch=true] - Whether the domains list is a match list.
- */
+// urls    - Urls to loopback
+// types   - Types of request to loopback
+// server  - Server function, it will be passed as the event listener, view Chromium API documentations for more
+//           information: https://developer.chrome.com/extensions/webRequest
+// domList - The domains list, omit to match all domains
+// isMatch - Whether the domains list is a match list, defaults to true
 a.dynamicServer = (urls, types, server, domList, isMatch = true) => {
     chrome.webRequest.onBeforeRequest.addListener(
         (details) => {
             const url = a.getTabURL(details.tabId, details.frameId);
+
             if (!domList || a.domCmp(url, domList, isMatch)) {
                 const response = server(details);
 
                 //@pragma-if-debug
+
                 if (a.debugMode && response) {
-                    if (response.cancel) {
+                    if (response.cancel)
                         console.log("Cancelled " + details.url);
-                    } else if (response.redirectUrl) {
-                        console.log("Redirected " + details.url + " to " +
-                            response.redirectUrl);
-                    }
+                    else if (response.redirectUrl)
+                        console.log("Redirected " + details.url + " to " + response.redirectUrl);
                 }
+
                 //@pragma-end-if
 
                 return response;
@@ -440,22 +412,16 @@ a.dynamicServer = (urls, types, server, domList, isMatch = true) => {
     );
 };
 
-/*****************************************************************************/
+// ----------------------------------------------------------------------------------------------------------------- //
 
-/**
- * Inject UserCSS.
- * @function
- * @param {integer} tab - The target tab.
- * @param {integer} frame - The target frame.
- * @param {string} code - The CSS code to inject.
- */
+// tab   - Target tab
+// frame - Target frame
+// code  - CSS code to inject
 a.userCSS = (tab, frame, code) => {
-    if (tab === chrome.tabs.TAB_ID_NONE) {
+    if (tab === chrome.tabs.TAB_ID_NONE)
         return;
-    }
 
-    // TODO - Clean this up when minimum required version of Chrome is 66
-    // or higher
+    // TODO - Clean this up when minimum required version of Chrome is 66 or higher
     try {
         chrome.tabs.insertCSS(tab, {
             code: code,
@@ -470,47 +436,38 @@ a.userCSS = (tab, frame, code) => {
     }
 };
 
-/**
- * Send a cross origin XMLHttpRequest.
- * @function
- * @param {Object} details - Details about this request.
- *     @param {string} method - The method of the request, can be "GET" or
- *     "POST".
- *     @param {string} url - The URL of the request.
- *     @param {Object|undefined} [headers=undefined] - The headers of the
- *     request.
- *     @param {string|null} [payload=null] - The payload of the request.
- * @param {Function} onload - The load event handler.
- *     @param {string} response - The response text.
- * @param {Function} onerror - The error event handler.
- * @return {boolean} True if the request is sent, false if details are not
- * valid and the request was not sent.
- */
+// Nothing is allowed for now
+a.sanitizeXhr = (sener, details) => {
+    return null;
+};
+
+// details - Details about this request
+//     method   - Method of the request, can be 'GET' or 'POST'
+//     url      - Url of the request
+//     headers  - Headers of the request, optional
+//     payload  - Payload of the request, optional
+// onload  - Load event handler
+//     response - Response text
+// onerror - Error event handler
+//
+// Returns true if the request is sent, false if details are not valid and the request was not sent
 a.xhr = (details, onload, onerror) => {
-    if (
-        typeof details.method !== "string" ||
-        typeof details.url !== "string"
-    ) {
+    if (typeof details.method !== "string" || typeof details.url !== "string")
         return false;
-    }
-    if (
-        details.method !== "GET" &&
-        details.method !== "POST"
-    ) {
+
+    if (details.method !== "GET" && details.method !== "POST")
         return false;
-    }
 
     console.log("[Nano] Cross Origin Request ::", details.url);
 
-    let req = new XMLHttpRequest();
+    const req = new XMLHttpRequest();
 
     req.onreadystatechange = () => {
         if (req.readyState === XMLHttpRequest.DONE) {
-            if (req.status === 200) {
+            if (req.status === 200)
                 onload(req.responseText);
-            } else {
+            else
                 onerror();
-            }
         }
     };
 
@@ -520,30 +477,21 @@ a.xhr = (details, onload, onerror) => {
         for (const key in details.headers) {
             const header = details.headers[key];
 
-            if (
-                details.headers.hasOwnProperty(key) &&
-                typeof header === "string"
-            ) {
+            if (details.headers.hasOwnProperty(key) && typeof header === "string")
                 req.setRequestHeader(key, header);
-            }
         }
     }
 
-    if (typeof details.payload === "string") {
+    if (typeof details.payload === "string")
         req.send(payload);
-    } else {
+    else
         req.send(null);
-    }
 
     return true;
 };
 
-/*****************************************************************************/
+// ----------------------------------------------------------------------------------------------------------------- //
 
-/**
- * Apply generic rules. Call once on start up.
- * @function
- */
 a.generic = () => {
     a.staticServer(
         [
@@ -555,8 +503,9 @@ a.generic = () => {
         ],
         a.rLink("jquery.js"),
     );
-    /*
+
     // Not working correctly
+    /*
     a.staticServer(
         [
             "https://imasdk.googleapis.com/js/sdkloader/ima3.js*",
@@ -567,11 +516,12 @@ a.generic = () => {
         ],
         a.rLink("ima3.js"),
         // List whitelisted domains in the array
-        // [
-        // ],
-        // false,
+        //[
+        //],
+        //false,
     );
     */
+
     a.staticServer(
         [
             "https://legacy.hugoxu.com/uBlockProtector/Solutions/MoatFreeWheelJSPEM.js",
@@ -584,26 +534,19 @@ a.generic = () => {
     );
 };
 
-/*****************************************************************************/
+// ----------------------------------------------------------------------------------------------------------------- //
 
 //@pragma-if-debug
 
-/**
- * Attempt to make the server think the request is from a different IP. Rarely
- * works.
- * Only available in debug mode.
- * @function
- * @param {string} urls - The URLs to activate on.
- * @param {string} ip - The camouflage IP. Keep in mind that the server still
- * have access to your real IP.
- * @param {boolean} [log=false] - Whether details should be logged to console
- * for every matched request.
- */
+// Attempt to make the server think the request is from a different IP, rarely works
+// Only available in debug mode
+//
+// urls - Urls to activate on
+// ip   - Camouflage Ip, keep in mind that the server still have access to your real Ip
+// log  - Whether details should be logged to console for every matched request, defaults to false
 a.proxy = (urls, ip, log) => {
-    if (!a.debugMode) {
-        console.error("a.proxy() is only available in debug mode!");
-        return;
-    }
+    if (!a.debugMode)
+        return void console.error("a.proxy() is only available in debug mode!");
 
     chrome.webRequest.onBeforeSendHeaders.addListener(
         (details) => {
@@ -611,14 +554,14 @@ a.proxy = (urls, ip, log) => {
                 name: "X-Forwarded-For",
                 value: ip,
             });
+
             details.requestHeaders.push({
                 name: "Client-IP",
                 value: ip,
             });
 
-            if (log) {
+            if (log)
                 console.log(details);
-            }
 
             return { requestHeaders: details.requestHeaders };
         },
@@ -634,4 +577,4 @@ a.proxy = (urls, ip, log) => {
 
 //@pragma-end-if
 
-/*****************************************************************************/
+// ----------------------------------------------------------------------------------------------------------------- //
