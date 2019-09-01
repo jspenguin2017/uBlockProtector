@@ -67,15 +67,15 @@ a.init = () => {
                     if (!sanitizedDetails)
                         return;
 
-                    const onerror = () => {
+                    const onError = () => {
                         res(null);
                     };
 
-                    if (a.xhr(sanitizedDetails, res, onerror)) {
+                    if (a.xhr(sanitizedDetails, res, onError)) {
                         // Must return true since I need to respond to content script asynchronously
                         return true;
                     } else {
-                        onerror();
+                        onError();
                     }
                 }
                 break;
@@ -244,17 +244,18 @@ a.rLink = (name) => {
 
 // Redirect resources
 
-// 1 second blank MP4, taken from https://bit.ly/2JcYAyq (GitHub uBlockOrigin/uAssets).
+// 1 second blank video, taken from https://bit.ly/2JcYAyq (GitHub uBlockOrigin/uAssets).
 a.blankMP4 = a.rLink("blank.mp4");
 
 // ----------------------------------------------------------------------------------------------------------------- //
 
-// tab   - ID of the tab
-// frame - ID of the frame
+// tab   - Id of the tab
+// frame - Id of the frame
 //
-// Returns the URL of the tab, or an empty string if it is not known
+// Returns the Url of the tab, or an empty string if it is not known
 a.getTabURL = (() => {
-    let tabs = {};
+    // tabs[tabId][frameId] = url
+    const tabs = {};
 
     //@pragma-if-debug
 
@@ -263,33 +264,43 @@ a.getTabURL = (() => {
 
     //@pragma-end-if
 
-    // TODO: Refactor
     chrome.tabs.query({}, (existingTabs) => {
-        for (let i = 0; i < existingTabs.length; i++) {
-            const id = existingTabs[i].id;
-            if (id !== chrome.tabs.TAB_ID_NONE) {
-                if (!tabs[id]) {
-                    tabs[id] = {};
-                }
-                tabs[id][0] = tabs[id][0] || existingTabs[i].url;
+        for (const existingTab of existingTabs) {
+            const id = existingTab.id;
+            if (id === chrome.tabs.TAB_ID_NONE)
+                continue;
 
-                chrome.webNavigation.getAllFrames({ tabId: id }, (frames) => {
-                    if (!chrome.runtime.lastError && tabs[id]) {
-                        for (let ii = 0; ii < frames.length; ii++) {
-                            tabs[id][frames[ii].frameId] =
-                                tabs[id][frames[ii].frameId] || frames[ii].url;
-                        }
-                    }
-                });
-            }
+            if (!tabs[id])
+                tabs[id] = {};
+
+            // Keep existing Url because that is probably more up to date
+            tabs[id][0] = tabs[id][0] || existingTab.url;
+
+            chrome.webNavigation.getAllFrames({ tabId: id }, (frames) => {
+                if (chrome.runtime.lastError)
+                    return;
+
+                if (!tabs[id])
+                    return;
+
+                for (const frame of frames) {
+                    const frameId = frame.frameId;
+
+                    // Keep existing Url like before
+                    tabs[id][frameId] = tabs[id][frameId] || frame.url;
+                }
+            });
         }
     });
 
-    // TODO: Refactor
     chrome.webNavigation.onCommitted.addListener((details) => {
-        if (!tabs[details.tabId] || details.frameId === 0)
-            tabs[details.tabId] = {};
-        tabs[details.tabId][details.frameId] = details.url;
+        const { tabId, frameId, url } = details;
+
+        // Clear store when the tab has navigated
+        if (!tabs[tabId] || frameId === 0)
+            tabs[tabId] = {};
+
+        tabs[tabId][frameId] = url;
     });
 
     chrome.tabs.onRemoved.addListener((id) => {
@@ -322,13 +333,12 @@ a.domCmp = (() => {
 
         dom = dom[1];
 
-        // TODO: Refactor
-        for (let i = 0; i < domList.length; i++) {
+        for (const entry of domList) {
             if (
-                dom.endsWith(domList[i]) &&
+                dom.endsWith(entry) &&
                 (
-                    dom.length === domList[i].length ||
-                    dom.charAt(dom.length - domList[i].length - 1) === "."
+                    dom.length === entry.length ||
+                    dom.charAt(dom.length - entry.length - 1) === "."
                 )
             ) {
                 return true === isMatch;
@@ -344,7 +354,7 @@ a.domCmp = (() => {
 // urls    - Urls to loopback
 // types   - Types of request to loopback
 // data    - Data to loopback to, must be already encoded and ready to serve
-// domList - The domains list, omit to match all domains
+// domList - Domains list, omit to match all domains
 // isMatch - Whether the domains list is a match list, defaults to true
 a.staticServer = (urls, types, data, domList, isMatch = true) => {
     chrome.webRequest.onBeforeRequest.addListener(
@@ -355,9 +365,8 @@ a.staticServer = (urls, types, data, domList, isMatch = true) => {
 
                 //@pragma-if-debug
 
-                if (a.debugMode) {
+                if (a.debugMode)
                     console.log("Redirected " + details.url + " to " + data);
-                }
 
                 //@pragma-end-if
 
@@ -378,7 +387,7 @@ a.staticServer = (urls, types, data, domList, isMatch = true) => {
 // types   - Types of request to loopback
 // server  - Server function, it will be passed as the event listener, view Chromium API documentations for more
 //           information: https://developer.chrome.com/extensions/webRequest
-// domList - The domains list, omit to match all domains
+// domList - Domains list, omit to match all domains
 // isMatch - Whether the domains list is a match list, defaults to true
 a.dynamicServer = (urls, types, server, domList, isMatch = true) => {
     chrome.webRequest.onBeforeRequest.addListener(
@@ -421,23 +430,15 @@ a.userCSS = (tab, frame, code) => {
     if (tab === chrome.tabs.TAB_ID_NONE)
         return;
 
-    // TODO - Clean this up when minimum required version of Chrome is 66 or higher
-    try {
-        chrome.tabs.insertCSS(tab, {
-            code: code,
-            cssOrigin: "user",
-            frameId: frame,
-        }, a.noopErr);
-    } catch (err) {
-        chrome.tabs.insertCSS(tab, {
-            code: code,
-            frameId: frame,
-        }, a.noopErr);
-    }
+    chrome.tabs.insertCSS(tab, {
+        code: code,
+        cssOrigin: "user",
+        frameId: frame,
+    }, a.noopErr);
 };
 
-// Nothing is allowed for now
 a.sanitizeXhr = (sener, details) => {
+    // Nothing is allowed for now
     return null;
 };
 
@@ -446,9 +447,9 @@ a.sanitizeXhr = (sener, details) => {
 //     url      - Url of the request
 //     headers  - Headers of the request, optional
 //     payload  - Payload of the request, optional
-// onload  - Load event handler
+// onload  - Load handler
 //     response - Response text
-// onerror - Error event handler
+// onerror - Error handler
 //
 // Returns true if the request is sent, false if details are not valid and the request was not sent
 a.xhr = (details, onload, onerror) => {
@@ -463,17 +464,18 @@ a.xhr = (details, onload, onerror) => {
     const req = new XMLHttpRequest();
 
     req.onreadystatechange = () => {
-        if (req.readyState === XMLHttpRequest.DONE) {
-            if (req.status === 200)
-                onload(req.responseText);
-            else
-                onerror();
-        }
+        if (req.readyState !== XMLHttpRequest.DONE)
+            return;
+
+        if (req.status === 200)
+            onload(req.responseText);
+        else
+            onerror();
     };
 
     req.open(details.method, details.url);
 
-    if (typeof details.headers === "object") {
+    if (details.headers instanceof Object) {
         for (const key in details.headers) {
             const header = details.headers[key];
 
@@ -546,7 +548,7 @@ a.generic = () => {
 // log  - Whether details should be logged to console for every matched request, defaults to false
 a.proxy = (urls, ip, log) => {
     if (!a.debugMode)
-        return void console.error("a.proxy() is only available in debug mode!");
+        return void console.error("a.proxy() is only available in debug mode.");
 
     chrome.webRequest.onBeforeSendHeaders.addListener(
         (details) => {
