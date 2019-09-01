@@ -143,6 +143,9 @@ a.request = (details, onload, onerror) => {
         cmd: "xhr",
         details: details,
     }, (response) => {
+        if (chrome.runtime.lastError)
+            onerror();
+
         if (response === null)
             onerror();
         else
