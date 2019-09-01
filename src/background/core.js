@@ -324,7 +324,7 @@ a.getTabURL = (() => {
 //
 // Returns true if the domain of the URL is in the list, false otherwise
 a.domCmp = (() => {
-    const domainExtractor = /^https?:\/\/([^/]+)/;
+    const domainExtractor = /^https?:\/\/([^/:?#]+)/;
 
     return (url, domList, isMatch) => {
         let dom = domainExtractor.exec(url);
