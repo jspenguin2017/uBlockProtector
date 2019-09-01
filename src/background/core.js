@@ -497,7 +497,6 @@ a.xhr = (details, onload, onerror) => {
 a.generic = () => {
     a.staticServer(
         [
-            "https://ads.korri.fr/index.js",
             "http://*.medianetworkinternational.com/js/advertisement.js*",
         ],
         [
@@ -526,7 +525,6 @@ a.generic = () => {
 
     a.staticServer(
         [
-            "https://legacy.hugoxu.com/uBlockProtector/Solutions/MoatFreeWheelJSPEM.js",
             "https://*.moatads.com/*/MoatFreeWheelJSPEM.js*",
         ],
         [

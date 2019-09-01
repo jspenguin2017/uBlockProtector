@@ -4,7 +4,6 @@
 # This file is a compiled binary, any modification will be overwritten on the next build
 |https://legacy.hugoxu.com/uBlockProtector/Solutions/Blocked.php$important
 |https://legacy.hugoxu.com/uBlockProtector/Solutions/
-@@|https://legacy.hugoxu.com/uBlockProtector/Solutions/MoatFreeWheelJSPEM.js|$script
 @@|https://*.moatads.com/*/MoatFreeWheelJSPEM.js*$script
 @@|https://ads.korri.fr/index.js|$script
 @@|http://*.medianetworkinternational.com/js/advertisement.js*$script

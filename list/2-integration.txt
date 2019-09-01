@@ -11,7 +11,6 @@
 
 # Resource placeholder, these files do not actually exist
 |https://legacy.hugoxu.com/uBlockProtector/Solutions/
-@@|https://legacy.hugoxu.com/uBlockProtector/Solutions/MoatFreeWheelJSPEM.js|$script
 
 # ------------------------------------------------------------------------------------------------------------------- #
 
