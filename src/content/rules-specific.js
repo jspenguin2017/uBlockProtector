@@ -1037,13 +1037,6 @@ if (a.domCmp(["exashare.com", "chefti.info", "bojem3a.info", "ajihezo.info", "ya
 if (a.domCmp(["an1me.se"])) {
     a.readOnly("isBlockAds2", false);
 }
-if (a.domCmp(["hqq.tv"])) {
-    a.ready(() => {
-        if (location.pathname === "/player/embed_player.php") {
-            $("form[id^='form-']").submit();
-        }
-    });
-}
 if (a.domCmp(["koscian.net"])) {
     a.ready(() => {
         $(".ban").remove();
