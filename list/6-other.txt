@@ -343,8 +343,6 @@ pencurimovie.cc##.adb_overlay
 pencurimovie.cc###simplemodal-overlay
 pencurimovie.cc###simplemodal-container
 @@||sports.ru^*/adfox.$xmlhttprequest
-smashboards.com###noticeMain
-smashboards.com##.premiumContain
 doupe.zive.cz#@##adblock-leaderboard
 @@||ads.rubiconproject.com/ad/$script,domain=doupe.zive.cz
 ||doupe.zive.cz/Client.Scripts/jquery.onp.sociallocker.1.7.6.js$script
