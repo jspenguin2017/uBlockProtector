@@ -144,7 +144,7 @@ a.request = (details, onload, onerror) => {
         details: details,
     }, (response) => {
         if (chrome.runtime.lastError)
-            onerror();
+            return void onerror();
 
         if (response === null)
             onerror();
