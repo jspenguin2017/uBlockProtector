@@ -631,7 +631,7 @@ go4up.com##IMG[src="http://go4up.com/assets/img/downloadfr.gif"]
 @@||myspass.de/myspass/includes/apps/player/standard/avt_config.php?$object-subrequest
 @@||serving-sys.com^$third-party,domain=myspass.de
 @@||dbzog.de/Bilder/$image
-@@||dbzog.de^$elemhide
+@@||dbzog.de^$generichide
 @@||adhood.com^$third-party,domain=dizi-mag.com
 @@||syndication.exoclick.com/splash.php?$popup,domain=hentaistream.com
 @@||popunder.fpctraffic.com/pop.js$popup,domain=hentaistream.com
@@ -653,7 +653,7 @@ vostfr-vf.com##A[href^="http://api.adlure.net/partner/click/"]
 anisearch.com#@#.adsbygoogle
 anisearch.com#@##advertise
 anisearch.com##.box-error
-@@||maisgasolina.com^$elemhide
+@@||maisgasolina.com^$generichide
 @@||aniroleplay.com/adframe_*.js$script
 @@||roleplayer.me/adframe_*.js$script
 dailybitcoins.org#@#.ad-img
@@ -752,7 +752,7 @@ linkshrink.net#@##overlay_ad
 eclypsia.com#@##adv_tester
 @@||adverts.eclypsia.com/www/delivery/spcjs.php$script
 @@||pagead2.googlesyndication.com/pagead/$domain=eclypsia.com,script
-@@||coolkora.com^$elemhide
+@@||coolkora.com^$generichide
 @@/adblock/adblock.js$script,domain=javso.com
 ||javso.com/popjs/popred.js$script
 ||js.adkrazy.com^$script,domain=javso.com
@@ -763,7 +763,7 @@ eclypsia.com#@##adv_tester
 planetatvonlinehd.blogspot.com###tupiklan
 planetatvonlinehd.blogspot.com###anuncio
 ||videodroid.org/vip/adblockcheck.js$script
-@@||skiplimite.tv^$elemhide
+@@||skiplimite.tv^$generichide
 @@||pubdirecte.com/script/banniere.php?$domain=skiplimite.tv
 @@||adcash.com/a/display.php$subdocument,domain=skiplimite.tv
 tzetze.it#@##TzeTze_728x90
@@ -926,7 +926,7 @@ strikeout.me,strikeout.co##.in.fade.modal-backdrop
 forums.openpli.org###content > [style="text-align:center;"] > DIV[style="margin 0 auto;display:inline-block;width:728px; height:84px; border:1px solid #000000; text-align:center; font-family:century gothic, arial, helvetica, sans serif;padding:4px;font-weight:bold;"]
 @@||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js$script,domain=onvasortir.com
 @@||pagead2.googlesyndication.com/pagead/js/r*/r*/show_ads_impl.js$script,domain=onvasortir.com
-@@||urbeez.com^$elemhide
+@@||urbeez.com^$generichide
 @@||urbeez.com^$script
 @@||sparkylinux.org/images/ad/$image
 @@||demonoid.pw/show_ads_.js$script
@@ -983,7 +983,7 @@ t3n.de##.abContentMsg
 t3n.de##.adb
 @@||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js$domain=bricozone.fr
 @@||pagead2.googlesyndication.com/pagead/js/r*/r*/show_ads_impl.js$script,domain=bricozone.fr
-@@||heavenly-blue.net^$elemhide
+@@||heavenly-blue.net^$generichide
 @@||find-my-search.com/includes/js/adblockDetect/_advertisement.js$script
 @@||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js$domain=vide-greniers.org
 @@||pagead2.googlesyndication.com/pagead/js/r*/r*/show_ads_impl.js$script,domain=vide-greniers.org
@@ -1040,7 +1040,7 @@ crypto-clix.net#@#.ad-footer
 hireteen.com###adb-enabled
 @@||binbox.io/adblock.js$script
 @@||gram.pl/js/advertising.js$script
-@@||lggautotrasporti.esy.es^$elemhide
+@@||lggautotrasporti.esy.es^$generichide
 @@||lggautotrasporti.esy.es/images/logofinaleLGG.png$image,domain=lggautotrasporti.esy.es
 @@||advert.com/advert$image,domain=mupvl.us
 @@||sportsplays.com/ads/banner.jpg$image
@@ -1173,7 +1173,7 @@ zorofiles.com###z662
 @@||go.padstm.com/?id=$script,domain=mediatechnologycenter.info
 @@||go.padsdel.com/?id=$script,domain=mediatechnologycenter.info
 @@||hugo.zdunskawola24.pl/$script,domain=zdunskawola24.pl
-@@||tv3sport.dk^$elemhide
+@@||tv3sport.dk^$generichide
 @@||tv3sport.dk/ad.banner.adview.html
 @@||webshark.pl/adserver/*/main_script.js?advertise_check=1$script,domain=freedisc.pl
 ||ocs-pl.oktawave.com/v1/AUTH_*/Reklamy/$object-subrequest,domain=freedisc.pl|reseton.pl
@@ -1450,7 +1450,7 @@ tube8.fr,tube8.es,tube8.com###abAlert
 @@||st.vtomske.ru/js/adv*.js$script
 @@||ge-map-overlays.appspot.com/files/js/ads.js$script
 @@||serve.netsh.org/pub/*/ads.js$xmlhttprequest
-@@||di.se^$elemhide
+@@||di.se^$generichide
 @@||trackr.fr/sites/all/themes/contrib/touch/js/miroirs/adwordstracking.js$script
 @@||pagead2.googlesyndication.com/pagead/show_ads.js$script,domain=nokiahacking.pl
 @@||pagead2.googlesyndication.com/pagead/js/r*/r*/show_ads_impl.js$script,domain=nokiahacking.pl
@@ -1651,7 +1651,7 @@ zarabiajnaokazjach.pl#@##adsense
 @@||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js$domain=emucr.com
 @@||pagead2.googlesyndication.com/pagead/js/*/show_ads_impl.js$domain=emucr.com
 @@||ouest-france.fr/sites/all/themes/base/js/adblock.js$script
-@@||mmm.dk^$elemhide
+@@||mmm.dk^$generichide
 @@||webnews.bg/assets/js/ads.js$script,domain=topsport.bg|news.bg
 @@||webnews.bg/assets/js/min/dfp.js$script,domain=topsport.bg|news.bg
 @@||partner.googleadservices.com/gpt/pubads_impl_84.js$script,domain=topsport.bg|news.bg
@@ -1699,7 +1699,7 @@ forumdz.com###breadcrumb + center > [color="red"] > b
 cloud.jasaku.net##.adblock
 ||clarin.com/static/CLAClarinV3/js/comprimido.js$script
 @@||sumeronline.com^$generichide
-@@||kiplinger.com^$elemhide
+@@||kiplinger.com^$generichide
 @@||kiplinger.com/*/adblock.js$script
 @@||apk.tw/source/plugin/mydefplugin/advertise.js$script,~third-party
 012.tw#@#.ad728
