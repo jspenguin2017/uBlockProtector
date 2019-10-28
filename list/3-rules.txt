@@ -109,7 +109,7 @@ descargatelocorp.com##div[class*="cool_ramka"]
 filez.tv###adblockinfo
 ! === video.gazeta.pl
 @@||video.gazeta.pl/cdn/ads/ad/banner/_adsense_/_adserver/_adview_.ad.json$xmlhttprequest,first-party
-! === latimes.com - Thanks to okiehsch
+! === latimes.com
 ||tribdss.com/meter/assets$script,domain=www.latimes.com
 ! === thewindowsclub.com
 *$xmlhttprequest,domain=thewindowsclub.com
@@ -126,7 +126,7 @@ xmovies8.org,moviezr.org##+js(abort-on-property-read.js, $.getScript)
 ! === tune.pk
 ! === https://github.com/jspenguin2017/uBlockProtector/issues/92
 tune.pk###annoy-wrapper
-! === NSFW! 29443kmq.video, dato.porn - Thanks to uBlock-user
+! === NSFW! 29443kmq.video, dato.porn
 ! === https://github.com/jspenguin2017/uBlockProtector/issues/93
 29443kmq.video,dato.porn###a
 dato.porn##+js(abort-on-property-read.js, open)
@@ -134,7 +134,7 @@ dato.porn##+js(noeval-if.js, var r3H4=window;for(var v4 in r3H4))
 ! === engineeringtoolbox.com
 engineeringtoolbox.com##.adblo
 engineeringtoolbox.com##.contentDocumentAd
-! === ps4news.com - Thanks to okiehsch
+! === ps4news.com
 ps4news.com##+js(noeval.js)
 ps4news.com##body > *[id^="blockblock"]:style(visibility: visible !important; display: block !important;)
 ps4news.com##table[id^='blockblock']
@@ -149,7 +149,7 @@ answers.com##.end_of_slideshow
 ! === gamereactor.dk and related domains
 ! === https://github.com/jspenguin2017/uBlockProtector/issues/124
 ||openx.gamereactor.*/multi.php$script,important
-! === animmex.* - Thanks to uBlock-user
+! === animmex.*
 ! === https://github.com/jspenguin2017/uBlockProtector/issues/125
 ||finalservers.net^$inline-script
 finalservers.net###babasbmsgx
@@ -169,7 +169,7 @@ pogdesign.co.uk##.replace
 ! === https://github.com/jspenguin2017/uBlockProtector/issues/148
 ||p207208.clksite.com^$subdocument,redirect=noopframe,domain=ally.sh|al.ly
 ally.sh,al.ly##+js(popads.net.js)
-! === hackintosh.zone, hackintosh.computer - Thanks to F4z
+! === hackintosh.zone, hackintosh.computer
 ! === https://github.com/jspenguin2017/uBlockProtector/issues/35
 ||hackintosh.*/donate/donate.php
 ! === aftonbladet.se
@@ -183,7 +183,7 @@ playbb.me#@#div[style^="width:"]
 easyvideo.me#@#div[style^="width:"]
 videowing.me#@#div[style^="width:"]
 videozoo.me#@#div[style^="width:"]
-! === gelbooru.com - Thanks to lain566
+! === gelbooru.com
 ! === https://github.com/jspenguin2017/uBlockProtector/issues/182
 ||gelbooru.com^$inline-script,badfilter
 @@||ajax.googleapis.com/ajax/libs/jquery/$script,domain=gelbooru.com
