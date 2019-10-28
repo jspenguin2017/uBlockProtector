@@ -1,4 +1,4 @@
-// --------------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------------------------------- //
 
 // Nano Defender - An anti-adblock defuser
 // Copyright (C) 2016-2018  Nano Defender contributors
@@ -16,15 +16,15 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-// --------------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------------------------------- //
 
 // Content rules for specific websites.
 
-// --------------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------------------------------- //
 
 "use strict";
 
-// --------------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------------------------------- //
 
 // https://github.com/NanoMeow/QuickReports/issues/373
 if (
@@ -65,8 +65,7 @@ if (
         if (path.startsWith("dmFkLnhtb")) { // vad.xml
             return [
                 '<?xml version="1.0" encoding="UTF-8"?>',
-                '<VAST xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ' +
-                'xsi:noNamespaceSchemaLocation="vast2.xsd" version="2.0">',
+                '<VAST xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="vast2.xsd" version="2.0">',
                 '</VAST>',
             ].join("\n");
         }
@@ -103,13 +102,6 @@ if (a.domCmp([
     });
 }
 
-// https://github.com/NanoMeow/QuickReports/issues/999
-if (a.domCmp([
-    "javgay.co",
-])) {
-    a.readOnly("AlobaidiDetectAdBlock", true);
-}
-
 // https://github.com/NanoMeow/QuickReports/issues/861
 if (a.domCmp([
     "nhentai.net",
@@ -117,7 +109,18 @@ if (a.domCmp([
     a.filter("open");
 }
 
-// --------------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------------------------------- //
+
+// Unbreak for Chromium built-in adblocker
+
+// https://github.com/NanoMeow/QuickReports/issues/999
+if (a.domCmp([
+    "javgay.co",
+])) {
+    a.readOnly("AlobaidiDetectAdBlock", true);
+}
+
+// ----------------------------------------------------------------------------------------------------------------- //
 
 if (a.domCmp(["catchcoin.pw", "irc-source.com", "dashcatch.xyz"])) {
     a.noAccess("adBlockDetected");
@@ -175,7 +178,6 @@ if (a.domCmp(["superfilm.pl"])) {
     a.readOnly("adbp", true);
 }
 if (a.domCmp(["cwtv.com"])) {
-    // Thanks to szymon1118
     a.readOnly("wallConfig", false);
     a.readOnly("CWTVIsAdBlocking", undefined);
 }
@@ -2947,12 +2949,12 @@ if (a.domCmp(["telerium.tv"])) {
     });
 }
 
-// --------------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------------------------------- //
 
 // Nano Adblocker does not support UserCSS because it breaks DOM Inspector, duct tape it here
 
-// TODO - Convert to filter (or remove if already in uAssets) when minimum required version of
-// Chrome can handle removing injected stylesheet
+// TODO - Convert to filter (or remove if already in uAssets) when minimum required version of Chromium can handle
+// removing injected stylesheet
 
 if (a.domCmp([
     "hdblog.it",
@@ -3001,4 +3003,4 @@ if (a.domCmp([
     });
 }
 
-// --------------------------------------------------------------------------------------------- //
+// ----------------------------------------------------------------------------------------------------------------- //
