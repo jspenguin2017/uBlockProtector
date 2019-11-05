@@ -72,15 +72,6 @@ if (
     });
 }
 
-// https://github.com/NanoMeow/QuickReports/issues/13
-if (a.domCmp([
-    "linkneverdie.com",
-])) {
-    a.ready(() => {
-        $("a").filter("#adsqc").remove();
-    });
-}
-
 // https://github.com/uBlockOrigin/uAssets/issues/4293
 // https://github.com/NanoMeow/QuickReports/issues/528
 if (a.domCmp([
