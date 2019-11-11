@@ -45,16 +45,11 @@ const knownGood = [
     // Broken by Firefox Tracking Protection
     "bild.de",
 
-    // Fixed in regional filters
-    "dn.se",
-    "visioncloud.rocks",
+    // Other known good
+    "youtube.com",
 ];
 
 const knownBad = [
-    "kissanime.ru",
-    "kissmanga.com",
-    "maddertranslates.com",
-    "twitch.tv",
 ];
 
 // ----------------------------------------------------------------------------------------------------------------- //
