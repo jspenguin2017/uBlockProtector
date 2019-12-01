@@ -50,6 +50,8 @@ const knownGood = [
 ];
 
 const knownBad = [
+    // https://github.com/NanoMeow/QuickReports/issues/1760
+    "wp.pl",
 ];
 
 // ----------------------------------------------------------------------------------------------------------------- //
