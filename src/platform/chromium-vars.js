@@ -28,4 +28,7 @@
 
 a.NanoAdblockerExtensionID = "gabbbocakeomblphkmmnoamkioajlkfo";
 
+if (navigator.userAgent.includes(" Edg/"))
+    a.NanoAdblockerExtensionID = "epbkapkgcmdmfpogenoebpdeibmfinpf";
+
 // ----------------------------------------------------------------------------------------------------------------- //
