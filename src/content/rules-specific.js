@@ -474,36 +474,6 @@ if (a.domCmp(["thechive.com"])) {
         broadcastResult() { },
     }`);
 }
-if (a.domCmp(["richonrails.com"])) {
-    a.ready(() => {
-        $(".article-content").after(`<div class="article-content-2"></div>`).remove();
-        const payload = `"<ins+id="aswift_0_expand"+style="display:inline-table;border:none;height:90px;` +
-            `margin:0;padding:0;position:relative;visibility:visible;width:750px;background-color:transparent"><ins+id="aswi` +
-            `ft_0_anchor"+style="display:block;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visib` +
-            `le;width:750px;background-color:transparent"><iframe+marginwidth="0"+marginheight="0"+vspace="0"+hspace="0"+all` +
-            `owtransparency="true"+scrolling="no"+allowfullscreen="true"+onload="var+i=this.id,s=window.google_iframe_oncopy` +
-            `,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&am` +
-            `p;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else+if(h.match){try{h=s.upd(h,i)}catch(e){}w.` +
-            `location.replace(h)}}"+id="aswift_0"+name="aswift_0"+style="left:0;position:absolute;top:0;"+width="750"+frameb` +
-            `order="0"+height="90"></iframe></ins></ins>"`;
-        $.request({
-            method: "POST",
-            url: $(".article-content").data("url"),
-            headers: {
-                "Accept": "text/javascript",
-            },
-            payload: a.serialize({
-                html: payload,
-            }),
-        }, (result) => {
-            const exec = result.replace("$('.article-content')", "$('.article-content-2')");
-            a.inject(`(() => {
-                "use strict";
-                ${exec}
-            })();`, true);
-        }, () => { });
-    });
-}
 if (a.domCmp(["rmprepusb.com"])) {
     a.cookie("jot_viewer", "3");
 }
@@ -2993,5 +2963,45 @@ if (a.domCmp([
         };
     });
 }
+
+// ----------------------------------------------------------------------------------------------------------------- //
+
+//@pragma-if-debug
+
+// Google reviewers says this code looks sketchy; this rule is inherited from Anti-Adblock Killer and I actually have
+// no idea what it does, so removing this rule from package published on extension store
+
+if (a.domCmp(["richonrails.com"])) {
+    a.ready(() => {
+        $(".article-content").after(`<div class="article-content-2"></div>`).remove();
+        const payload = `"<ins+id="aswift_0_expand"+style="display:inline-table;border:none;height:90px;` +
+            `margin:0;padding:0;position:relative;visibility:visible;width:750px;background-color:transparent"><ins+id="aswi` +
+            `ft_0_anchor"+style="display:block;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visib` +
+            `le;width:750px;background-color:transparent"><iframe+marginwidth="0"+marginheight="0"+vspace="0"+hspace="0"+all` +
+            `owtransparency="true"+scrolling="no"+allowfullscreen="true"+onload="var+i=this.id,s=window.google_iframe_oncopy` +
+            `,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&am` +
+            `p;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else+if(h.match){try{h=s.upd(h,i)}catch(e){}w.` +
+            `location.replace(h)}}"+id="aswift_0"+name="aswift_0"+style="left:0;position:absolute;top:0;"+width="750"+frameb` +
+            `order="0"+height="90"></iframe></ins></ins>"`;
+        $.request({
+            method: "POST",
+            url: $(".article-content").data("url"),
+            headers: {
+                "Accept": "text/javascript",
+            },
+            payload: a.serialize({
+                html: payload,
+            }),
+        }, (result) => {
+            const exec = result.replace("$('.article-content')", "$('.article-content-2')");
+            a.inject(`(() => {
+                "use strict";
+                ${exec}
+            })();`, true);
+        }, () => { });
+    });
+}
+
+//@pragma-end-if
 
 // ----------------------------------------------------------------------------------------------------------------- //
