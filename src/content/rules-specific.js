@@ -2826,27 +2826,6 @@ if (a.domCmp(["crockolinks.com"])) {
 if (a.domCmp(["srt.am", "tny.ec"])) {
     a.noAccess("acPrefetch");
 }
-if (a.domCmp(["uflash.tv"])) {
-    a.inject(() => {
-        "use strict";
-        const codeExtractor = /if\(h&&check3\)({[^}]+})/;
-        let payload;
-        const _eval = window.eval;
-        window.eval = (code, ...rest) => {
-            const match = codeExtractor.exec(code);
-            if (match) {
-                payload = match[1];
-            } else {
-                _eval.call(window, code, ...rest);
-            }
-        };
-        window.addEventListener("load", () => {
-            if (payload) {
-                _eval.call(window, payload);
-            }
-        });
-    });
-}
 if (a.domCmp(["hdpass.net"])) {
     // https://gitlab.com/xuhaiyang1234/NanoAdblockerSecretIssues/issues/1
     a.inject(() => {
