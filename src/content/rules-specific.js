@@ -2594,22 +2594,6 @@ if (a.domCmp(["wifihack.me"])) {
 if (a.domCmp(["flashx.tv", "flashx.to"])) {
     a.filter("addEventListener", a.matchMethod.stringExact, "keydown", "window.document");
 }
-if (a.domCmp(["wowtoken.info"])) {
-    const re = /fail\(\);/g;
-    a.beforeScript((script) => {
-        if (script.src && script.src.includes("/js/main.js")) {
-            $.request({
-                method: "GET",
-                url: script.src,
-            }, (data) => {
-                a.inject(data.replace(re, "true;"), true);
-            }, () => {
-                console.error("[Nano] Failed :: Patch Main Script");
-            });
-            script.remove();
-        }
-    });
-}
 if (a.domCmp(["arenavision.us"])) {
     a.noAccess("H7WWWW");
     a.noAccess("adbClick");
