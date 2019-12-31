@@ -148,6 +148,26 @@ if (a.debugMode) {
 
     // ------------------------------------------------------------------------------------------------------------- //
 
+    // https://github.com/NanoMeow/QuickReports/issues/2618
+    if (a.domCmp(["wowtoken.info"])) {
+        const re = /fail\(\);/g;
+        a.beforeScript((script) => {
+            if (script.src && script.src.includes("/js/main.js")) {
+                $.request({
+                    method: "GET",
+                    url: script.src,
+                }, (data) => {
+                    a.inject(data.replace(re, "true;"), true);
+                }, () => {
+                    console.error("[Nano] Failed :: Patch Main Script");
+                });
+                script.remove();
+            }
+        });
+    }
+
+    // ------------------------------------------------------------------------------------------------------------- //
+
 }
 
 // ----------------------------------------------------------------------------------------------------------------- //
