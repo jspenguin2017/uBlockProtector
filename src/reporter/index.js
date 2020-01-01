@@ -50,6 +50,9 @@ const knownGood = [
 ];
 
 const knownBad = [
+    // https://github.com/NanoMeow/QuickReports/issues/903
+    "browserleaks.com",
+
     // https://github.com/NanoMeow/QuickReports/issues/1711
     "o2.pl",
 
