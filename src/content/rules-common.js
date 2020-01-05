@@ -125,7 +125,7 @@
         "rmcmv.us",
         "yuukithemes.com",
 
-        // False positives
+        // Other false positives
         "anandabazar.com",
         "animesync.tv",
         "automobile-propre.com",
@@ -210,9 +210,8 @@
 
         // --------------------------------------------------------------------------------------------------------- //
 
-        // False positives
+        // Other false positives
         "9anime",
-        "cutlinks",
         "italiashare",
         "imgdew",
         "imgfile",
@@ -241,25 +240,36 @@
 
     } else {
 
-        if (a.domCmp([], true))
+        if (false) {
             console.log("[Nano] Excluded :: Common Generic Solutions");
-        else
+        } else {
             a.generic();
+        }
 
-        if (a.domCmp([], true))
+        if (a.domCmp([
+            // https://github.com/NanoMeow/QuickReports/issues/2641
+            "topadnetworks.net",
+            "topshort.net",
+        ], true) || a.domInc([
+            // https://github.com/uBlockOrigin/uAssets/issues/6553
+            "cutlinks",
+        ], true)) {
             console.log("[Nano] Excluded :: Adfly Bypasser");
-        else
+        } else {
             a.generic.Adfly();
+        }
 
-        if (a.domCmp([], true))
+        if (false) {
             console.log("[Nano] Excluded :: app_vars Defuser");
-        else
+        } else {
             a.generic.app_vars();
+        }
 
-        if (a.domCmp([], true))
+        if (false) {
             console.log("[Nano] Excluded :: Cloudflare Apps Defuser");
-        else
+        } else {
             a.generic.CloudflareApps();
+        }
 
     }
 
@@ -291,7 +301,7 @@
     // ------------------------------------------------------------------------------------------------------------- //
 
     // TODO: uBO-Extra is causing issues, disable for now, waiting for upstream to update
-    if (a.domCmp([], true) || true) {
+    if (true) {
         a.uBOExtraExcluded = true;
         console.log("[Nano] Excluded :: uBO-Extra");
     }
