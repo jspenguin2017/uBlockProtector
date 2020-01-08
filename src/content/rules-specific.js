@@ -210,34 +210,6 @@ if (a.domCmp(["elfqrin.com", "lne.es", "diariodemallorca.es", "artesacro.org"]))
         });
     });
 }
-if (a.domCmp(["tvregionalna24.pl"])) {
-    a.inject(() => {
-        "use strict";
-        let text = [];
-        const matcher = /var _ended=(.*);var _skipButton/;
-        const newFunc = (a, b, func) => {
-            let temp = "(" + matcher.exec(String(func))[1] + ")();";
-            temp = temp.replace("player.dispose();", "");
-            text.push(temp);
-        };
-        window.Object.defineProperty(window, "videojs", {
-            configurable: false,
-            set() { },
-            get() {
-                return newFunc;
-            },
-        });
-        window.addEventListener("load", function replace() {
-            if (text.length > 0 && window.document.getElementsByClassName("vjs-poster").length > 0) {
-                for (let i = 0; i < text.length; i++) {
-                    window.eval(text[i]);
-                }
-            } else {
-                window.setTimeout(replace, 1000);
-            }
-        });
-    });
-}
 if (a.domCmp(["florydinvaslui.ro"])) {
     a.loopbackXHR((ignored, url) => {
         const re = /^https?:\/\/thinkdigitalro\.adocean\.pl\/ad\.xml/;
@@ -843,26 +815,6 @@ if (a.domCmp(["mega-debrid.eu"])) {
         $(".realbutton").attr("onclick", "").attr("type", "submit");
     });
 }
-if (a.domInc(["slideplayer"])) {
-    a.on("load", () => {
-        a.inject(() => {
-            "use strict";
-            window.force_remove_ads = true;
-            const slide_id = window.get_current_slide_id();
-            const slide_srv = window.document.getElementById("player_frame").src.split("/")[3];
-            const time = 86400 + window.Math.floor(window.Date.now() / 1000);
-            const secret = window.encodeURIComponent(window.strtr(window.MD5.base64("secret_preved slideplayer never solved " +
-                time + slide_id + ".ppt"), "+/", "- "));
-            const url = `http://player.slideplayer.org/download/${slide_srv}/${slide_id}/${secret}/${time}/${slide_id}.ppt`;
-            let links = window.document.querySelectorAll("a.download_link");
-            for (let i = 0; i < links.length; i++) {
-                let events = window.$._data(links[i]).events.click;
-                events.splice(0, events.length);
-                links[i].href = url;
-            }
-        });
-    });
-}
 if (a.domCmp(["bokepspot.com"])) {
     a.cookie("hideDialog", "hide");
     a.ready(() => {
@@ -974,24 +926,6 @@ if (a.domCmp(["youwatch.org", "chouhaa.info", "ahzahg6ohb.com"])) {
         $("#player_imj, #player_imj + div[id]").remove();
     });
 }
-if (a.domCmp(["youwatch.to", "he2eini7ka.com"])) {
-    a.ready(() => {
-        a.inject(() => {
-            "use strict";
-            let tries = 0;
-            const check = () => {
-                if (window.closeOnPlayerBanner) {
-                    window.closeOnPlayerBanner();
-                } else {
-                    if (tries++ < 20) {
-                        window.setTimeout(check, 500);
-                    }
-                }
-            };
-            check();
-        });
-    });
-}
 if (a.domCmp(["exashare.com", "chefti.info", "bojem3a.info", "ajihezo.info", "yahmaib3ai.com"])) {
     a.ready(() => {
         $("#player_gaz, #player_gaz + div[id]").remove();
@@ -1014,16 +948,6 @@ if (a.domCmp(["gamingroom.tv"])) {
     a.readOnly("adblock_video_msg_start", () => { });
     a.readOnly("adblock_video_msg_stop", () => { });
     a.readOnly("disable_chat", () => { });
-}
-if (a.domCmp(["play.radio1.se", "play.bandit.se", "play.lugnafavoriter.com", "play.rixfm.se"])) {
-    a.on("load", () => {
-        a.inject(() => {
-            "use strict";
-            window.setTimeout(() => {
-                window.player_load_live(window.stream_id);
-            }, 1000);
-        });
-    });
 }
 if (a.domCmp(["dplay.com", "dplay.dk", "dplay.se"])) {
     let date = new Date();
@@ -1082,30 +1006,6 @@ if (a.domCmp(["buzina.xyz"])) {
 if (a.domCmp(["allmyvideos.net", "amvtv.net"])) {
     a.cookie("_favbt33", "1");
 }
-if (a.domCmp(["ilive.to", "streamlive.to"])) {
-    a.on("load", () => {
-        if (location.pathname.toLowerCase().startsWith("/embedplayer.php")) {
-            setTimeout(() => {
-                a.inject(() => {
-                    "use strict";
-                    window.removeOverlayHTML();
-                });
-            }, 1000);
-        }
-    });
-}
-if (a.domCmp(["micast.tv"])) {
-    a.cookie("vid_main", "true");
-    a.cookie("vid_sub", "true");
-    a.on("load", () => {
-        a.inject(() => {
-            "use strict";
-            if (window.removeOverlayHTML) {
-                window.removeOverlayHTML();
-            }
-        });
-    });
-}
 if (a.domCmp(["sharecast.to"])) {
     a.ready(() => {
         if (location.pathname.startsWith("/embed.php")) {
@@ -1118,18 +1018,6 @@ if (a.domCmp(["sharecast.to"])) {
                 clearInterval(token);
             }, 5000);
             $("#table1").remove();
-        }
-    });
-}
-if (a.domCmp(["pxstream.tv"])) {
-    a.on("load", () => {
-        if (location.pathname.startsWith("/embedrouter.php")) {
-            setTimeout(() => {
-                a.inject(() => {
-                    "use strict";
-                    window.closeAd();
-                });
-            }, 1000);
         }
     });
 }
@@ -1322,116 +1210,6 @@ if (a.domCmp(["sandiegouniontribune.com"])) {
 }
 if (a.domCmp(["startclass.com", "sandiegouniontribune.com"])) {
     a.filter("addEventListener", a.matchMethod.stringExact, "scroll");
-}
-if (a.domCmp(["adz.bz", "mellow.link", "hop.bz", "mellowads.com", "url.vin", "clik.bz"])) {
-    // https://github.com/jspenguin2017/uBlockProtector/issues/106
-    a.inject(() => {
-        "use strict";
-        let val;
-        const newFunc = () => {
-            window.callAPI(
-                "publishing",
-                "VerifyLinkClick",
-                {
-                    linkRef: val.linkRef(),
-                    linkClickRef: window.$("#LinkClickRef")[0].value,
-                    recaptchaResponse: val.recaptchaResponse(),
-                },
-                "Verify",
-                "Verifying",
-                (response) => {
-                    if (response.result) {
-                        window.location.href = response.linkURL;
-                    } else {
-                        window.showMessageModal("Verify failed", response.resultHtml, response.result);
-                    }
-                },
-                null,
-                () => {
-                    window.grecaptcha.reset();
-                },
-            );
-        };
-        window.Object.defineProperty(window, "linkVM", {
-            configurable: false,
-            set(arg) {
-                val = arg;
-                try {
-                    val.verify = newFunc;
-                } catch (err) { }
-            },
-            get() {
-                return val;
-            },
-        });
-    });
-}
-if (a.domCmp(["zap.in"])) {
-    // https://github.com/jspenguin2017/uBlockProtector/issues/201
-    a.inject(() => {
-        "use strict";
-        let val;
-        const newFunc = () => {
-            window.callAPI(
-                "VerifyZapClick",
-                {
-                    linkRef: val.linkRef(),
-                    linkClickRef: window.$("#LinkClickRef")[0].value,
-                    recaptchaResponse: val.recaptchaResponse(),
-                },
-                "Verify",
-                "Verifying",
-                (response) => {
-                    if (response.result) {
-                        window.location.href = response.zapURL;
-                    } else {
-                        window.showMessageModal("Verify failed", response.resultHtml, response.result);
-                    }
-                },
-                null,
-                () => {
-                    window.grecaptcha.reset();
-                },
-            );
-        };
-        window.Object.defineProperty(window, "zapVM", {
-            configurable: false,
-            set(arg) {
-                val = arg;
-                try {
-                    val.verify = newFunc;
-                } catch (err) { }
-            },
-            get() {
-                return val;
-            },
-        });
-    });
-}
-if (a.domCmp(["bonusbitcoin.co"])) {
-    // https://github.com/reek/anti-adblock-killer/issues/3377
-    a.injectWithRuntime(() => {
-        "use strict";
-        const matcher1 = /adBlocked:[^,]+/;
-        const matcher2 = /self/g;
-        let val;
-        window.Object.defineProperty(window, "faucetVM", {
-            configurable: false,
-            set(arg) {
-                val = arg;
-                try {
-                    execute(`(() => {
-                        "use strict";
-                        window.faucetVM.claim = ${String(val.claim).replace(matcher1, "adBlocked: false")
-                            .replace(matcher2, "window.faucetVM")};
-                    })();`);
-                } catch (err) { }
-            },
-            get() {
-                return val;
-            },
-        });
-    });
 }
 if (a.domCmp(["shink.me"])) {
     if (location.pathname.startsWith("/go/")) {
@@ -2392,44 +2170,6 @@ if (a.domCmp(["nbcsports.com", "knowyourmeme.com"])) {
 if (a.domCmp(["kiss.com.tw"])) {
     a.bait("div", "#ads");
 }
-if (a.domCmp(["identi.li"])) {
-    a.css("div[id^='hidden_'] { display:block; }");
-    a.cookie("BetterJsPop0", "1");
-    a.cookie("BetterJsPop1", "1");
-    a.ready(() => {
-        a.inject(() => {
-            "use strict";
-            const nbsp = /&nbsp;/g;
-            const blocks = window.document.querySelectorAll(".info_bbc");
-            for (let i = 0; i < blocks.length; i++) {
-                if (!blocks[i].firstChild.tagName) {
-                    try {
-                        const links = window.GibberishAES.dec(blocks[i].textContent, window.hash);
-                        blocks[i].innerHTML = window.linkify(links.replace(nbsp, " "));
-                        blocks[i].style.display = "block";
-                        blocks[i].parentNode.previousSibling.remove();
-                    } catch (err) { }
-                }
-            }
-            if (window.$) {
-                window.$("div #decrypt.myjdownloader").unbind("click").click(function () {
-                    window._decrypt.fnID = "jdownloader";
-                    window._decrypt.fnURL = this.getAttribute("href");
-                    window._decrypt.objeto = null;
-                    window._decrypt.open();
-                });
-                window.$("button.link-d").unbind("click").click(function () {
-                    let d = this.dataset.link;
-                    while (!d.includes("%")) {
-                        d = window.atob(d);
-                    }
-                    d = window.decodeURIComponent(d);
-                    window.open(d);
-                });
-            }
-        });
-    });
-}
 if (a.domCmp(["peliculasmega.info"])) {
     a.css("a[class*='hidden_'] { display:block; }");
 }
@@ -2861,17 +2601,6 @@ if (a.domCmp(["washingtonpost.com"])) {
 if (a.domCmp(["lcpdfr.com"])) {
     a.noAccess("FuckAdBlock");
 }
-if (a.domCmp(["telerium.tv"])) {
-    a.on("load", () => {
-        a.inject(() => {
-            "use strict";
-            if (typeof window.closeads === "function") {
-                window.open = () => true;
-                window.closeads();
-            }
-        });
-    });
-}
 
 // ----------------------------------------------------------------------------------------------------------------- //
 
@@ -2929,12 +2658,44 @@ if (a.domCmp([
 
 // ----------------------------------------------------------------------------------------------------------------- //
 
-//@pragma-if-debug
+//@pragma-if-pro
 
-// These rules require patching or interacting with remote scripts and cannot be released to extension store
+// Rules below are only available to the pro version
+
+// ----------------------------------------------------------------------------------------------------------------- //
+
+// https://github.com/reek/anti-adblock-killer/issues/3377
+if (a.domCmp([
+    "bonusbitcoin.co",
+])) {
+    a.injectWithRuntime(() => {
+        "use strict";
+        const matcher1 = /adBlocked:[^,]+/;
+        const matcher2 = /self/g;
+        let val;
+        window.Object.defineProperty(window, "faucetVM", {
+            configurable: false,
+            set(arg) {
+                val = arg;
+                try {
+                    execute(`(() => {
+                        "use strict";
+                        window.faucetVM.claim = ${String(val.claim).replace(matcher1, "adBlocked: false")
+                            .replace(matcher2, "window.faucetVM")};
+                    })();`);
+                } catch (err) { }
+            },
+            get() {
+                return val;
+            },
+        });
+    });
+}
 
 // https://github.com/NanoMeow/QuickReports/issues/2618
-if (a.domCmp(["wowtoken.info"])) {
+if (a.domCmp([
+    "wowtoken.info",
+])) {
     const re = /fail\(\);/g;
     a.beforeScript((script) => {
         if (script.src && script.src.includes("/js/main.js")) {
@@ -2951,6 +2712,267 @@ if (a.domCmp(["wowtoken.info"])) {
         }
     });
 }
+
+// ----------------------------------------------------------------------------------------------------------------- //
+
+if (a.domCmp(["tvregionalna24.pl"])) {
+    a.inject(() => {
+        "use strict";
+        let text = [];
+        const matcher = /var _ended=(.*);var _skipButton/;
+        const newFunc = (a, b, func) => {
+            let temp = "(" + matcher.exec(String(func))[1] + ")();";
+            temp = temp.replace("player.dispose();", "");
+            text.push(temp);
+        };
+        window.Object.defineProperty(window, "videojs", {
+            configurable: false,
+            set() { },
+            get() {
+                return newFunc;
+            },
+        });
+        window.addEventListener("load", function replace() {
+            if (text.length > 0 && window.document.getElementsByClassName("vjs-poster").length > 0) {
+                for (let i = 0; i < text.length; i++) {
+                    window.eval(text[i]);
+                }
+            } else {
+                window.setTimeout(replace, 1000);
+            }
+        });
+    });
+}
+
+if (a.domInc(["slideplayer"])) {
+    a.on("load", () => {
+        a.inject(() => {
+            "use strict";
+            window.force_remove_ads = true;
+            const slide_id = window.get_current_slide_id();
+            const slide_srv = window.document.getElementById("player_frame").src.split("/")[3];
+            const time = 86400 + window.Math.floor(window.Date.now() / 1000);
+            const secret = window.encodeURIComponent(window.strtr(window.MD5.base64("secret_preved slideplayer never solved " +
+                time + slide_id + ".ppt"), "+/", "- "));
+            const url = `http://player.slideplayer.org/download/${slide_srv}/${slide_id}/${secret}/${time}/${slide_id}.ppt`;
+            let links = window.document.querySelectorAll("a.download_link");
+            for (let i = 0; i < links.length; i++) {
+                let events = window.$._data(links[i]).events.click;
+                events.splice(0, events.length);
+                links[i].href = url;
+            }
+        });
+    });
+}
+
+if (a.domCmp(["youwatch.to", "he2eini7ka.com"])) {
+    a.ready(() => {
+        a.inject(() => {
+            "use strict";
+            let tries = 0;
+            const check = () => {
+                if (window.closeOnPlayerBanner) {
+                    window.closeOnPlayerBanner();
+                } else {
+                    if (tries++ < 20) {
+                        window.setTimeout(check, 500);
+                    }
+                }
+            };
+            check();
+        });
+    });
+}
+
+if (a.domCmp(["play.radio1.se", "play.bandit.se", "play.lugnafavoriter.com", "play.rixfm.se"])) {
+    a.on("load", () => {
+        a.inject(() => {
+            "use strict";
+            window.setTimeout(() => {
+                window.player_load_live(window.stream_id);
+            }, 1000);
+        });
+    });
+}
+
+if (a.domCmp(["ilive.to", "streamlive.to"])) {
+    a.on("load", () => {
+        if (location.pathname.toLowerCase().startsWith("/embedplayer.php")) {
+            setTimeout(() => {
+                a.inject(() => {
+                    "use strict";
+                    window.removeOverlayHTML();
+                });
+            }, 1000);
+        }
+    });
+}
+
+if (a.domCmp(["micast.tv"])) {
+    a.cookie("vid_main", "true");
+    a.cookie("vid_sub", "true");
+    a.on("load", () => {
+        a.inject(() => {
+            "use strict";
+            if (window.removeOverlayHTML) {
+                window.removeOverlayHTML();
+            }
+        });
+    });
+}
+
+if (a.domCmp(["pxstream.tv"])) {
+    a.on("load", () => {
+        if (location.pathname.startsWith("/embedrouter.php")) {
+            setTimeout(() => {
+                a.inject(() => {
+                    "use strict";
+                    window.closeAd();
+                });
+            }, 1000);
+        }
+    });
+}
+
+if (a.domCmp(["adz.bz", "mellow.link", "hop.bz", "mellowads.com", "url.vin", "clik.bz"])) {
+    // https://github.com/jspenguin2017/uBlockProtector/issues/106
+    a.inject(() => {
+        "use strict";
+        let val;
+        const newFunc = () => {
+            window.callAPI(
+                "publishing",
+                "VerifyLinkClick",
+                {
+                    linkRef: val.linkRef(),
+                    linkClickRef: window.$("#LinkClickRef")[0].value,
+                    recaptchaResponse: val.recaptchaResponse(),
+                },
+                "Verify",
+                "Verifying",
+                (response) => {
+                    if (response.result) {
+                        window.location.href = response.linkURL;
+                    } else {
+                        window.showMessageModal("Verify failed", response.resultHtml, response.result);
+                    }
+                },
+                null,
+                () => {
+                    window.grecaptcha.reset();
+                },
+            );
+        };
+        window.Object.defineProperty(window, "linkVM", {
+            configurable: false,
+            set(arg) {
+                val = arg;
+                try {
+                    val.verify = newFunc;
+                } catch (err) { }
+            },
+            get() {
+                return val;
+            },
+        });
+    });
+}
+
+if (a.domCmp(["zap.in"])) {
+    // https://github.com/jspenguin2017/uBlockProtector/issues/201
+    a.inject(() => {
+        "use strict";
+        let val;
+        const newFunc = () => {
+            window.callAPI(
+                "VerifyZapClick",
+                {
+                    linkRef: val.linkRef(),
+                    linkClickRef: window.$("#LinkClickRef")[0].value,
+                    recaptchaResponse: val.recaptchaResponse(),
+                },
+                "Verify",
+                "Verifying",
+                (response) => {
+                    if (response.result) {
+                        window.location.href = response.zapURL;
+                    } else {
+                        window.showMessageModal("Verify failed", response.resultHtml, response.result);
+                    }
+                },
+                null,
+                () => {
+                    window.grecaptcha.reset();
+                },
+            );
+        };
+        window.Object.defineProperty(window, "zapVM", {
+            configurable: false,
+            set(arg) {
+                val = arg;
+                try {
+                    val.verify = newFunc;
+                } catch (err) { }
+            },
+            get() {
+                return val;
+            },
+        });
+    });
+}
+
+if (a.domCmp(["identi.li"])) {
+    a.css("div[id^='hidden_'] { display:block; }");
+    a.cookie("BetterJsPop0", "1");
+    a.cookie("BetterJsPop1", "1");
+    a.ready(() => {
+        a.inject(() => {
+            "use strict";
+            const nbsp = /&nbsp;/g;
+            const blocks = window.document.querySelectorAll(".info_bbc");
+            for (let i = 0; i < blocks.length; i++) {
+                if (!blocks[i].firstChild.tagName) {
+                    try {
+                        const links = window.GibberishAES.dec(blocks[i].textContent, window.hash);
+                        blocks[i].innerHTML = window.linkify(links.replace(nbsp, " "));
+                        blocks[i].style.display = "block";
+                        blocks[i].parentNode.previousSibling.remove();
+                    } catch (err) { }
+                }
+            }
+            if (window.$) {
+                window.$("div #decrypt.myjdownloader").unbind("click").click(function () {
+                    window._decrypt.fnID = "jdownloader";
+                    window._decrypt.fnURL = this.getAttribute("href");
+                    window._decrypt.objeto = null;
+                    window._decrypt.open();
+                });
+                window.$("button.link-d").unbind("click").click(function () {
+                    let d = this.dataset.link;
+                    while (!d.includes("%")) {
+                        d = window.atob(d);
+                    }
+                    d = window.decodeURIComponent(d);
+                    window.open(d);
+                });
+            }
+        });
+    });
+}
+
+if (a.domCmp(["telerium.tv"])) {
+    a.on("load", () => {
+        a.inject(() => {
+            "use strict";
+            if (typeof window.closeads === "function") {
+                window.open = () => true;
+                window.closeads();
+            }
+        });
+    });
+}
+
+// ----------------------------------------------------------------------------------------------------------------- //
 
 //@pragma-end-if
 
