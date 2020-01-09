@@ -14,7 +14,7 @@
       "128": "icon128.png"
     },
     "default_popup": "popup/index.html",
-    "default_title": "Nano Defender"
+    "default_title": "Nano Defender Debug"
   },
   "content_scripts": [
     {
@@ -45,7 +45,7 @@
   "incognito": "split",
   "manifest_version": 2,
   "minimum_chrome_version": "69.0",
-  "name": "Nano Defender",
+  "name": "Nano Defender Debug",
   "permissions": [
     "http://*/*",
     "https://*/*",
