@@ -2660,7 +2660,7 @@ if (a.domCmp([
 
 //@pragma-if-pro
 
-// Rules below are only available to the pro version
+// Rules below are only available to the Pro version
 
 // ----------------------------------------------------------------------------------------------------------------- //
 
