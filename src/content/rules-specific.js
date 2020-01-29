@@ -1344,7 +1344,7 @@ if (a.domCmp(["sthelensstar.co.uk", "runcornandwidnesworld.co.uk", "leighjournal
 if (a.domCmp(["nyheter24.se"])) {
     a.readOnly("_sp_", null);
 }
-if (a.domCmp(["aetv.com", "history.com", "mylifetime.com"])) {
+if (a.domCmp(["history.com", "mylifetime.com"])) {
     a.inject(() => {
         "use strict";
         const f = (e) => { e(false); };
@@ -1371,15 +1371,6 @@ if (a.domCmp(["aetv.com", "history.com", "mylifetime.com"])) {
                     return undefined;
                 },
             },
-        });
-    });
-}
-if (a.domCmp(["finalservers.net"])) {
-    // https://github.com/jspenguin2017/uBlockProtector/issues/125
-    a.ready(() => {
-        a.inject(() => {
-            "use strict";
-            window.videojs("video_1").videoJsResolutionSwitcher();
         });
     });
 }
@@ -1717,35 +1708,6 @@ if (a.domCmp(["onhax.me"])) {
 }
 if (a.domCmp(["null-24.com", "apkmod1.com"])) {
     a.timewarp("setInterval", a.matchMethod.stringExact, "1500");
-}
-if (a.domCmp(["null-24.com"])) {
-    a.noAccess("no_menu_msg");
-    a.noAccess("nocontext");
-    a.ready(() => {
-        setTimeout(() => {
-            a.inject(() => {
-                "use strict";
-                window.jQuery("a.FLMBTN-Btn.FLMBTN-Size-MD.FLMBTN-Color-Red, a.download-link").unbind("click");
-            });
-        }, 250);
-        const re = /https?:\/\/null-24\.com\/download\/\?link=([^&]+)/;
-        let match;
-        $(".custom-link").each((elem) => {
-            if (match = re.exec(elem.href)) {
-                elem.href = decodeURIComponent(match[1]);
-            }
-        });
-    });
-}
-if (a.domCmp(["nulledvar.com"])) {
-    a.ready(() => {
-        setTimeout(() => {
-            a.inject(() => {
-                "use strict";
-                window.jQuery("a.download-btn, a.alternative-btn, div.alternative ul li a").unbind("click");
-            });
-        }, 250);
-    });
 }
 if (a.domCmp(["searchftps.net"])) {
     $("html").append(`<iframe width="336" height="280" style="display:none;"></iframe>`);
@@ -2299,32 +2261,6 @@ if (a.domCmp(["graphiq-stories.graphiq.com"])) {
         }
     });
 }
-if (a.domCmp(["viasatsport.se", "viasport.fi", "tv3sport.dk", "viasport.no"])) {
-    a.inject(() => {
-        "use strict";
-        const observer = new window.MutationObserver(() => {
-            const videos = window.document.querySelectorAll("video.blurred");
-            for (let i = 0; i < videos.length; i++) {
-                videos[i].classList.remove("blurred");
-            }
-            const buttons = window.document.querySelectorAll(".vjs-overlay-message-close-button");
-            for (let i = 0; i < buttons.length; i++) {
-                buttons[i].click();
-            }
-            if (window.videoPlayers instanceof window.Object) {
-                for (let key in window.videoPlayers) {
-                    try {
-                        window.videoPlayers[key]._player.trigger("hideOverlayBlur");
-                    } catch (err) { }
-                }
-            }
-        });
-        observer.observe(window.document, {
-            childList: true,
-            subtree: true,
-        });
-    });
-}
 if (a.domCmp(["gntai.xyz"])) {
     a.readOnly("showAds", true);
 }
@@ -2491,29 +2427,6 @@ if (a.domCmp(["animezone.pl"])) {
 }
 if (a.domCmp(["newpct.com"])) {
     a.noAccess("Y9z5A");
-}
-if (a.domCmp(["player.radioloyalty.com"])) {
-    a.beforeScript((script) => {
-        if (script.textContent &&
-            script.textContent.includes("mainView = new MainView({model: playerManager});")) {
-            script.textContent = script.textContent.replace("mainView", "window._mainView = mainView");
-            setTimeout(() => {
-                a.inject(() => {
-                    "use strict";
-                    window.setTimeout(() => {
-                        window.$("#videoPlayerModal").modal("hide");
-                    }, 1000);
-                    window.Object.defineProperty(window._mainView.player.player.attributes, "playingAd", {
-                        configurable: false,
-                        set() { },
-                        get() {
-                            return false;
-                        },
-                    });
-                });
-            }, 100);
-        }
-    });
 }
 if (a.domCmp(["insuranceloansonline.com"])) {
     a.css("#openPubli { display:none; }");
@@ -2969,6 +2882,98 @@ if (a.domCmp(["telerium.tv"])) {
                 window.closeads();
             }
         });
+    });
+}
+
+if (a.domCmp(["finalservers.net"])) {
+    // https://github.com/jspenguin2017/uBlockProtector/issues/125
+    a.ready(() => {
+        a.inject(() => {
+            "use strict";
+            window.videojs("video_1").videoJsResolutionSwitcher();
+        });
+    });
+}
+
+if (a.domCmp(["null-24.com"])) {
+    a.noAccess("no_menu_msg");
+    a.noAccess("nocontext");
+    a.ready(() => {
+        setTimeout(() => {
+            a.inject(() => {
+                "use strict";
+                window.jQuery("a.FLMBTN-Btn.FLMBTN-Size-MD.FLMBTN-Color-Red, a.download-link").unbind("click");
+            });
+        }, 250);
+        const re = /https?:\/\/null-24\.com\/download\/\?link=([^&]+)/;
+        let match;
+        $(".custom-link").each((elem) => {
+            if (match = re.exec(elem.href)) {
+                elem.href = decodeURIComponent(match[1]);
+            }
+        });
+    });
+}
+
+if (a.domCmp(["nulledvar.com"])) {
+    a.ready(() => {
+        setTimeout(() => {
+            a.inject(() => {
+                "use strict";
+                window.jQuery("a.download-btn, a.alternative-btn, div.alternative ul li a").unbind("click");
+            });
+        }, 250);
+    });
+}
+
+if (a.domCmp(["viasatsport.se", "viasport.fi", "tv3sport.dk", "viasport.no"])) {
+    a.inject(() => {
+        "use strict";
+        const observer = new window.MutationObserver(() => {
+            const videos = window.document.querySelectorAll("video.blurred");
+            for (let i = 0; i < videos.length; i++) {
+                videos[i].classList.remove("blurred");
+            }
+            const buttons = window.document.querySelectorAll(".vjs-overlay-message-close-button");
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].click();
+            }
+            if (window.videoPlayers instanceof window.Object) {
+                for (let key in window.videoPlayers) {
+                    try {
+                        window.videoPlayers[key]._player.trigger("hideOverlayBlur");
+                    } catch (err) { }
+                }
+            }
+        });
+        observer.observe(window.document, {
+            childList: true,
+            subtree: true,
+        });
+    });
+}
+
+if (a.domCmp(["player.radioloyalty.com"])) {
+    a.beforeScript((script) => {
+        if (script.textContent &&
+            script.textContent.includes("mainView = new MainView({model: playerManager});")) {
+            script.textContent = script.textContent.replace("mainView", "window._mainView = mainView");
+            setTimeout(() => {
+                a.inject(() => {
+                    "use strict";
+                    window.setTimeout(() => {
+                        window.$("#videoPlayerModal").modal("hide");
+                    }, 1000);
+                    window.Object.defineProperty(window._mainView.player.player.attributes, "playingAd", {
+                        configurable: false,
+                        set() { },
+                        get() {
+                            return false;
+                        },
+                    });
+                });
+            }, 100);
+        }
     });
 }
 
