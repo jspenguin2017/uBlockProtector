@@ -736,5 +736,11 @@ redtube.com##div[class][style]:has(> div[class][style] > a.removeAdLink)
 ! === blockads.fivefilters.org
 ||blockads.fivefilters.org$inline-script
 blockads.fivefilters.org###no-blocking:style(display: block !important;)
+! === cheatsquad.gg
+@@||cheatsquad.gg/js/ads.js$script
+cheatsquad.gg#@#.adsbygoogle
+cheatsquad.gg#@#.ad_skyscraper
+cheatsquad.gg#@#.ad_leaderboard
+cheatsquad.gg#@#+js(acis, document.getElementById, ad)
 
 # ------------------------------------------------------------------------------------------------------------------- #
