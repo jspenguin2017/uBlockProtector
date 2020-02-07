@@ -51,10 +51,13 @@ things. Here are some extra notes that might be helpful.
 
 ### Requested permissions
 
-* `tabs`: To inject CSS and to forcefully close tabs
-* `webNavigation`: To know the URL of each tab and frame
-* `webRequest`: To redirect requests and to modify headers
+* `tabs`: To enforce UserCSS rules
+* `webNavigation`: To know the URL of each tab and frame in order to properly
+  enforce redirection rules
+* `webRequest`: To enforce redirection rules
 * `webRequestBlocking`: Some `webRequest` handling need to be synchronous
+* `http://*/*`, `https://*/*`: To enforce generic content script rules (along
+  with other rules)
 
 ### Permissions that might be useful
 
