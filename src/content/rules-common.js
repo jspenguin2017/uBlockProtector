@@ -303,8 +303,7 @@
 
     // ------------------------------------------------------------------------------------------------------------- //
 
-    // TODO: uBO-Extra is causing issues, disable for now, waiting for upstream to update
-    if (true) {
+    if (false) {
         a.uBOExtraExcluded = true;
         console.log("[Nano] Excluded :: uBO-Extra");
     }
