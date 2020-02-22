@@ -1453,7 +1453,7 @@ a.generic.CloudflareApps = () => {
                                 }
                             }
                         }
-                    } catch { }
+                    } catch (err) { }
                     return value;
                 },
             });

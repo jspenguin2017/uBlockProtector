@@ -9,4 +9,5 @@ before_script:
 - npm install esprima
 script:
 - set -e
+- npm ls
 - node ./tests/tests-main.js
