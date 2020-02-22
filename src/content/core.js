@@ -1312,7 +1312,9 @@ a.generic.Adfly = () => {
     // License: https://github.com/adsbypasser/adsbypasser/blob/master/LICENSE
     a.inject(() => {
         "use strict";
+        const err = new window.ReferenceError("ysmm is not defined");
         const isDigit = /^\d$/;
+
         const handler = (encodedURL) => {
             if (window.document.body)
                 return;
@@ -1365,7 +1367,10 @@ a.generic.Adfly = () => {
                     val = value;
                 },
                 get() {
-                    return val;
+                    if (flag)
+                        throw err;
+                    else
+                        return val;
                 },
             });
         } catch (err) {
