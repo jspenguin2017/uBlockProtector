@@ -1424,8 +1424,8 @@ a.generic.CloudflareApps = () => {
         try {
             const error = window.console.error.bind(window.console);
             const badApps = new window.Set([
-                "ngqhM7rZolNP", // AdBlock Minus
                 "RVaR_vPwa0_9", // AdBlock Blocker
+                "ngqhM7rZolNP", // AdBlock Minus
             ]);
             let logged = false;
             let value;
