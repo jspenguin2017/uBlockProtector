@@ -253,6 +253,9 @@
             // https://github.com/NanoMeow/QuickReports/issues/2950
             "freealtsgenerator.es",
             "uforum.us",
+            // https://github.com/NanoMeow/QuickReports/issues/3113
+            "ctrn.cc",
+            "cutearn.net",
         ], true) || a.domInc([
             // https://github.com/uBlockOrigin/uAssets/issues/6553
             "cutlinks",
