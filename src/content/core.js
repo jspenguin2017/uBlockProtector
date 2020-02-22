@@ -1423,33 +1423,38 @@ a.generic.CloudflareApps = () => {
         "use strict";
         try {
             const error = window.console.error.bind(window.console);
-            let needDefuse = true;
-            let installs = {};
-            window.CloudflareApps = {};
-            window.Object.defineProperty(window.CloudflareApps, "installs", {
-                configurable: false,
-                set(val) {
-                    installs = val;
+            const badApps = new window.Set([
+                "ngqhM7rZolNP", // AdBlock Minus
+                "RVaR_vPwa0_9", // AdBlock Blocker
+            ]);
+            let logged = false;
+            let value;
+            window.Object.defineProperty(window, "CloudflareApps", {
+                configurable: true,
+                set(arg) {
+                    value = arg;
                 },
                 get() {
-                    if (needDefuse && installs instanceof window.Object) {
-                        try {
-                            for (let key in installs) {
-                                if (installs[key].appId === "ngqhM7rZolNP" && installs[key].options) {
-                                    window.Object.defineProperty(installs[key], "URLPatterns", {
-                                        configurable: false,
-                                        set() { },
+                    try {
+                        if (value instanceof window.Object && value.installs instanceof window.Object) {
+                            for (const val of window.Object.values(value.installs)) {
+                                if (val instanceof window.Object && "options" in val && badApps.has(val.appId)) {
+                                    window.Object.defineProperty(val, "URLPatterns", {
+                                        configurable: true,
                                         get() {
                                             return ["$^"];
                                         },
+                                        set() { },
                                     });
-                                    needDefuse = false;
-                                    error("[Nano] Generic Solution Triggered :: Cloudflare Apps");
+                                    if (!logged) {
+                                        error("[Nano] Generic Solution Triggered :: Cloudflare Apps");
+                                        logged = true;
+                                    }
                                 }
                             }
-                        } catch (err) { }
-                    }
-                    return installs;
+                        }
+                    } catch { }
+                    return value;
                 },
             });
         } catch (err) {
