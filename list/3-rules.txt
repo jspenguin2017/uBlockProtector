@@ -428,8 +428,6 @@ amarujala.com##+js(abort-on-property-read.js, call_adblocker)
 ! === sportspyder.com
 sportspyder.com##+js(setTimeout-defuser.js, BlockerChecker)
 ||sportspyder.com/assets/application-$script,badfilter
-! === salon.com
-@@||salon.com/combo/js$script,first-party
 ! === tvnow.de
 tvnow.de##.no-flash-box:has-text(Adblocker)
 ! === kiss.com.tw

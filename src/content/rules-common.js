@@ -325,7 +325,6 @@ if (a.domCmp([
     "flashx.to",
     "flashx.tv",
     "linx.cloud",
-    "salon.com",
     "urle.co",
     "usapoliticstoday.com",
     "vidlox.tv",
