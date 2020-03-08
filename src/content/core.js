@@ -645,7 +645,11 @@ a.redirectToParam = (key) => {
     const href = params.get(key);
     if (typeof href === "string") {
         stop();
-        location.href = href;
+        try {
+            location.href = href;
+        } catch (err) {
+            console.error("[Nano] Failed :: Redirect To Param");
+        }
     }
 };
 
@@ -1393,7 +1397,7 @@ a.generic.Adfly = () => {
     });
 };
 
-a.generic.AdFlyForcedNotification = () => {
+a.generic.AdflyForcedNotification = () => {
     // https://github.com/NanoAdblocker/NanoFilters/issues/370
     if (location.pathname === "/pushredirect/") {
         const params = a.params();
@@ -1401,7 +1405,11 @@ a.generic.AdFlyForcedNotification = () => {
         const dest = params.get("dest");
         if (site === "adfly" && typeof dest === "string") {
             stop();
-            location.href = dest;
+            try {
+                location.href = dest;
+            } catch (err) {
+                console.error("[Nano] Failed :: Adfly Forced Notification Bypasser");
+            }
         }
     }
 };

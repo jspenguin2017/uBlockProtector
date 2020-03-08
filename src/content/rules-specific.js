@@ -107,6 +107,21 @@ if (a.domCmp([
     a.redirectToParam("url");
 }
 
+// https://github.com/NanoAdblocker/NanoFilters/issues/370
+if (a.domCmp([
+    "ouo.today",
+])) {
+    const params = a.params();
+    const href = params.get("cr");
+    if (typeof href === "string") {
+        try {
+            location.href = atob(href);
+        } catch (err) {
+            console.error("[Nano] Failed :: Specific Rule");
+        }
+    }
+}
+
 // ----------------------------------------------------------------------------------------------------------------- //
 
 // Unbreak for Chromium built-in adblocker

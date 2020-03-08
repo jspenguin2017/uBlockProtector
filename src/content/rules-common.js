@@ -268,7 +268,7 @@
         if (false) {
             console.log("[Nano] Excluded :: Adfly Forced Notification Bypasser");
         } else {
-            a.generic.AdFlyForcedNotification();
+            a.generic.AdflyForcedNotification();
         }
 
         if (false) {
