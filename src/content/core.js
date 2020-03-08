@@ -1400,6 +1400,7 @@ a.generic.AdFlyForcedNotification = () => {
         const site = params.get("site");
         const dest = params.get("dest");
         if (site === "adfly" && typeof dest === "string") {
+            stop();
             location.href = dest;
         }
     }
