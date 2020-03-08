@@ -640,7 +640,7 @@ a.params = () => {
     return url.searchParams;
 };
 
-a.redirectWithParam = (key) => {
+a.redirectToParam = (key) => {
     const params = a.params();
     const href = params.get(key);
     if (typeof href === "string") {
