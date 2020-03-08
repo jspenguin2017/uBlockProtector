@@ -635,6 +635,20 @@ a.noAccessExt = (chain) => {
 
 // ----------------------------------------------------------------------------------------------------------------- //
 
+a.params = () => {
+    const url = new URL(document.location);
+    return url.searchParams;
+};
+
+a.redirectWithParam = (key) => {
+    const params = a.params();
+    const href = params.get(key);
+    if (typeof href === "string") {
+        stop();
+        location.href = href;
+    }
+};
+
 // Omit value to get cookie
 a.cookie = (key, val, time = 31536000000, path = "/") => {
     if (val === undefined) {
@@ -1381,17 +1395,14 @@ a.generic.Adfly = () => {
 
 a.generic.AdFlyForcedNotification = () => {
     // https://github.com/NanoAdblocker/NanoFilters/issues/370
-    a.ready(() => {
-        if (location.pathname === "/pushredirect/") {
-            const url = new URL(document.location);
-            const params = url.searchParams;
-            const site = params.get("site");
-            const dest = params.get("dest");
-            if (site === "adfly" && typeof dest === "string") {
-                location.href = dest;
-            }
+    if (location.pathname === "/pushredirect/") {
+        const params = a.params();
+        const site = params.get("site");
+        const dest = params.get("dest");
+        if (site === "adfly" && typeof dest === "string") {
+            location.href = dest;
         }
-    });
+    }
 };
 
 a.generic.app_vars = () => {

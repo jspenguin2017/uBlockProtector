@@ -100,6 +100,13 @@ if (a.domCmp([
     a.filter("open");
 }
 
+// https://github.com/NanoAdblocker/NanoFilters/issues/370
+if (a.domCmp([
+    "news-fbe.com",
+])) {
+    a.redirectWithParam("url");
+}
+
 // ----------------------------------------------------------------------------------------------------------------- //
 
 // Unbreak for Chromium built-in adblocker
