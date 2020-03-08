@@ -117,7 +117,7 @@ if (a.domCmp([
         try {
             location.href = atob(href);
         } catch (err) {
-            console.error("[Nano] Failed :: Specific Rule");
+            console.error("[Nano] Failed :: Specific Solution");
         }
     }
 }
