@@ -266,6 +266,12 @@
         }
 
         if (false) {
+            console.log("[Nano] Excluded :: Adfly Forced Notification Bypasser");
+        } else {
+            a.generic.AdFlyForcedNotification();
+        }
+
+        if (false) {
             console.log("[Nano] Excluded :: app_vars Defuser");
         } else {
             a.generic.app_vars();

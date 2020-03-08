@@ -1379,6 +1379,23 @@ a.generic.Adfly = () => {
     });
 };
 
+a.generic.AdFlyForcedNotification = () => {
+    // https://github.com/NanoAdblocker/NanoFilters/issues/370
+    a.ready(() => {
+        if (location.pathname === "/pushredirect/") {
+            const p = document.querySelector(".logo-wrapper > p");
+            if (p && p.textContent === "Please press 'Allow' to continue") {
+                const url = new URL(document.location);
+                const params = url.searchParams;
+                const dest = params.get("dest");
+                if (typeof dest === "string") {
+                    location.href = dest;
+                }
+            }
+        }
+    });
+};
+
 a.generic.app_vars = () => {
     a.inject(() => {
         try {
