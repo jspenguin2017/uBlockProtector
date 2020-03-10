@@ -114,6 +114,7 @@ if (a.domCmp([
     const params = a.params();
     const href = params.get("cr");
     if (typeof href === "string") {
+        stop();
         try {
             location.href = atob(href);
         } catch (err) {
