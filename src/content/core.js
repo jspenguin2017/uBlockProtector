@@ -1410,7 +1410,7 @@ a.generic.AdflyForcedNotification = () => {
                 if (site === "adfly" && typeof dest === "string") {
                     stop();
                     try {
-                        console.log(dest);//location.href = dest;
+                        location.href = dest;
                     } catch (err) {
                         console.error("[Nano] Failed :: Adfly Forced Notification Blocker");
                     }
