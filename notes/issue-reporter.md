@@ -47,6 +47,8 @@ By using the Tool, you consent to:
    - You are responsible in ensuring information you entered into this form
      is not sensitive in nature and test accounts that you supply contains
      only test data
+   - Please refrain from submitting personally identifiable information in the
+     form
 
 Collected data will be used to improve the Projects, as well as related
 projects such as uAssets. Collected data may be shared with a selected group of
