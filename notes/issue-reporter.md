@@ -40,6 +40,10 @@ By using the Tool, you consent to:
    - If you supplied a test account in the form, that account will not be
      shared publicly (it may still be shared with a selected group of
      people)
+     - Please note that although the Author will only select people he trust to
+       be part of the group, there is no guarantee of any sort
+     - The Author takes no responsibility for the actions of other people in
+       the group
    - You are responsible in ensuring information you entered into this form
      is not sensitive in nature and test accounts that you supply contains
      only test data
