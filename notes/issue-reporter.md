@@ -69,7 +69,7 @@ systems in place to prevent unauthorized access:
 
 Moderated reports are stored in GitHub and/or GitLab issues trackers.
 
-Please note that although the Author is committed to keep his server secure,
+Please note that although the Author is committed in keeping his server secure,
 there is no guarantee of any sort. Like many other open source projects, the
 Tool is delivered as-is and comes with absolutely no warranty.
 
