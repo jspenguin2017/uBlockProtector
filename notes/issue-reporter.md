@@ -45,7 +45,7 @@ By using the Tool, you consent to:
      - The Author takes no responsibility for the actions of other people in
        the group
    - You are responsible in ensuring information you entered into this form
-     is not sensitive in nature and test accounts that you supply contains
+     is not sensitive in nature and test accounts that you supplied contain
      only test data
      - Please refrain from submitting personally identifiable information
 
