@@ -1367,7 +1367,7 @@ if (a.domCmp(["sthelensstar.co.uk", "runcornandwidnesworld.co.uk", "leighjournal
 if (a.domCmp(["nyheter24.se"])) {
     a.readOnly("_sp_", null);
 }
-if (a.domCmp(["history.com", "mylifetime.com"])) {
+if (a.domCmp(["history.com"])) {
     a.inject(() => {
         "use strict";
         const f = (e) => { e(false); };
