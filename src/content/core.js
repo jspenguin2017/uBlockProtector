@@ -1423,7 +1423,6 @@ a.generic.AdflyForcedNotification = () => {
 a.generic.app_vars = () => {
     a.inject(() => {
         try {
-            // const _setInterval = window.setInterval;
             let _app_vars;
             window.Object.defineProperty(window, "app_vars", {
                 configurable: true,
