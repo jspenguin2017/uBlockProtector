@@ -698,9 +698,6 @@ krassotaa.com###haider
 onvasortir.com##+js(abort-on-property-read.js, adBlockDetected)
 ! === kryminalnapolska.pl
 kryminalnapolska.pl##+js(abort-on-property-read.js, ai_adb_detected)
-! === nakednepaligirl.com
-nakednepaligirl.com##.rmedia
-nakednepaligirl.com##+js(window.open-defuser.js)
 ! === doublemesh.com
 doublemesh.com##+js(setTimeout-defuser.js, ads)
 ! === crockolinks.com
