@@ -108,16 +108,6 @@ playbb.me#@#div[style^="width:"]
 easyvideo.me#@#div[style^="width:"]
 videowing.me#@#div[style^="width:"]
 videozoo.me#@#div[style^="width:"]
-||gelbooru.com^$inline-script,badfilter
-@@||ajax.googleapis.com/ajax/libs/jquery/$script,domain=gelbooru.com
-gelbooru.com#@#[style*="height:"][width]
-gelbooru.com#@#[style*="width:"][height]
-gelbooru.com#@##paginator
-gelbooru.com#@#center > a[href]
-||assets.gelbooru.com/r19/
-||assets.gelbooru.com/r18/
-||gelbooru.com/script/application.js.php$important
-||thedoujin.com/bload.php
 ||games.softgames.de/assets/showads.js$script,redirect=noopjs
 ||softgames.de/sg-mc.js*$script,redirect=noopjs
 ||bidvertiser.com$important,domain=exrapidleech.info
