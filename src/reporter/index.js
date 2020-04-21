@@ -148,12 +148,12 @@ $("#send").on("click", async () => {
     if (domCmp(domain, knownBad))
         return void $("#msg-known-bad").addClass("open");
 
-    if (category === "Other" && details.length < 10) {
+    if (category === "Other" && details.length < 5) {
         return void showMessage(
             "Please add a quick explanation for the &quot;Other issues&quot; category that you have chosen.",
         );
     }
-    if (category === "Bug" && details.length < 100)
+    if (category === "Bug" && details.length < 50)
         return void showMessage("Please incude a detailed step-by-step reproduction guide of this issue.");
 
     if (details.length > detailsLengthLimit) {
