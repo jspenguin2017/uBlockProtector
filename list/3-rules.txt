@@ -465,8 +465,6 @@ grazia-magazin.de##.subNaviNotification:has-text(Adblocker)
 @@||afdah.to/show-ad$first-party
 ! === vertamedia.com
 @@||vertamedia.com/assets/img/adimage.png$first-party
-! === receivesmsonline.net
-receivesmsonline.net##+js(abort-current-inline-script.js, elms)
 ! === rallye-magazin.de
 rallye-magazin.de###billboardattention
 ! === schwarzwaelder-bote.de

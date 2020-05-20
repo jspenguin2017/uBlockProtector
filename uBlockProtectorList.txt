@@ -267,7 +267,6 @@ grazia-magazin.de##.subNaviNotification:has-text(Adblocker)
 ||metin2bot.net/kontrol/adb.js
 @@||afdah.to/show-ad$first-party
 @@||vertamedia.com/assets/img/adimage.png$first-party
-receivesmsonline.net##+js(abort-current-inline-script.js, elms)
 rallye-magazin.de###billboardattention
 schwarzwaelder-bote.de###blocker-note
 wer-weiss-was.de###hint
