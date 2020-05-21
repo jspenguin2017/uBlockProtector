@@ -842,7 +842,6 @@ rlsbb.com###contentArea > .information
 jetetroll.com#@##adsense
 flashback.org###top-banner-container
 toolslib.net##.panel.panel-default > .panel-body > .center-table.block-3x2
-socialblade.com#@##bottomAd
 binbox.io#@#.banner-ad
 @@||pastes.binbox.io/ad/banner$subdocument
 @@||bitcoinpuddle.com/show_ads.js$script
