@@ -136,6 +136,7 @@
         "bungie.net",
         "buxfer.com",
         "ccbluex.net",
+        "cfnc.org",
         "dallasnews.com",
         "derstandard.at",
         "di.fm",
