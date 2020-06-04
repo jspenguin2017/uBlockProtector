@@ -27,8 +27,8 @@ By using the Tool, you consent to:
    - We may use GeoJS and/or MaxMind to process your IP address
    - You can use a VPN, but make sure that the issue you are reporting can be
      reproduced while using your VPN
-   - The country (if not available, the ISP) that your IP address belongs to
-     may be shared publicly
+   - The country (if not available, the continent and/or the ISP) that your IP
+     address belongs to may be shared publicly
 2. User agent string of your browser
    - Do not try to mask or change it; if the maintainers are unable to
      reproduce the issue, your report will be ignored
