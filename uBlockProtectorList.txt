@@ -22,8 +22,6 @@ ani.gamer.com.tw##body > div:has(a[href="https://goo.gl/PmkwWS"])
 ||a.optnmnstr.com^$third-party
 ||a.optnmstr.com^$third-party
 ||adiode.com^$third-party
-||spike.itv.com/itv/tserver/size=*/viewid=
-||tom.itv.com/itv/tserver/size=
 ||zmovs.com^$csp=sandbox allow-forms allow-presentation allow-scripts allow-top-navigation allow-orientation-lock allow-pointer-lock allow-same-origin
 zmovs.com##.tc-col-sm-offset-7.hidden-xs
 zmovs.com##.closeBtn
@@ -1845,7 +1843,6 @@ trakt.tv##.huckster-dfp
 @@||s.tvp.pl/files/tvplayer/*/advertisement.gif$image
 @@||swagbucks.com^$generichide
 @@||pcbolsa.com^*/ads.js$script
-@@||tidaltv.com/ILogger.aspx$object,domain=itv.com
 @@||dvbtmap.eu/script/ads*.js$script
 @@||loksatta.com/*/ads$script
 8muses.com#@#[style*="background: transparent url(\"data:image/gif;base64,"]

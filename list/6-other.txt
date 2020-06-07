@@ -1377,7 +1377,6 @@ trakt.tv##.huckster-dfp
 @@||s.tvp.pl/files/tvplayer/*/advertisement.gif$image
 @@||swagbucks.com^$generichide
 @@||pcbolsa.com^*/ads.js$script
-@@||tidaltv.com/ILogger.aspx$object,domain=itv.com
 @@||dvbtmap.eu/script/ads*.js$script
 @@||loksatta.com/*/ads$script
 8muses.com#@#[style*="background: transparent url(\"data:image/gif;base64,"]

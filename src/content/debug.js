@@ -148,6 +148,9 @@ if (a.debugMode) {
     // ------------------------------------------------------------------------------------------------------------- //
 
     // https://github.com/NanoAdblocker/NanoFilters/issues/512
+    // Related filter rules:
+    //     ||spike.itv.com/itv/tserver/size=*/viewid=
+    //     ||tom.itv.com/itv/tserver/size=
     if (a.domCmp([
         "itv.com",
     ])) {

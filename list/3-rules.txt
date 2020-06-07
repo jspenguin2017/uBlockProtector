@@ -27,10 +27,6 @@
 # https://github.com/jspenguin2017/uBlockProtector/issues/346
 ||adiode.com^$third-party
 
-# https://github.com/jspenguin2017/uBlockProtector/issues/286
-||spike.itv.com/itv/tserver/size=*/viewid=
-||tom.itv.com/itv/tserver/size=
-
 # NSFW
 ||zmovs.com^$csp=sandbox allow-forms allow-presentation allow-scripts allow-top-navigation allow-orientation-lock allow-pointer-lock allow-same-origin
 zmovs.com##.tc-col-sm-offset-7.hidden-xs
