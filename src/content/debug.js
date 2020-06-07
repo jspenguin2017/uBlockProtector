@@ -147,26 +147,6 @@ if (a.debugMode) {
 
     // ------------------------------------------------------------------------------------------------------------- //
 
-    // https://github.com/NanoAdblocker/NanoFilters/issues/512
-    // Related filter rules:
-    //     ||spike.itv.com/itv/tserver/size=*/viewid=
-    //     ||tom.itv.com/itv/tserver/size=
-    if (a.domCmp([
-        "itv.com",
-    ])) {
-        a.loopbackXHR((_ignored, url) => {
-            if (url.startsWith("https://tom.itv.com/itv/tserver/size=")) {
-                return [
-                    '<?xml version="1.0" encoding="utf-8"?>',
-                    '<VAST version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="vast.xsd">',
-                    '</VAST>',
-                ].join("\n");
-            }
-        });
-    }
-
-    // ------------------------------------------------------------------------------------------------------------- //
-
 }
 
 // ----------------------------------------------------------------------------------------------------------------- //
