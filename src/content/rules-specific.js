@@ -1837,15 +1837,6 @@ if (a.domCmp(["digitalpoint.com"])) {
         });
     });
 }
-if (a.domCmp(["itv.com"])) {
-    a.loopbackXHR((ignored, url) => {
-        if (url.startsWith("https://tom.itv.com/itv/tserver/size=")) {
-            return `<?xml version="1.0" encoding="utf-8"?>
-<VAST version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="vast.xsd">
-</VAST>`;
-        }
-    });
-}
 if (a.domCmp(["stream.nbcsports.com"])) {
     a.loopbackXHR((ignored, url) => {
         if (url.includes(".v.fwmrm.net/ad/g/1")) {
