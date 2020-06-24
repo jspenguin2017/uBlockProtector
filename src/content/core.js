@@ -1001,7 +1001,7 @@ a.generic = () => {
                 }
             } catch (err) { }
 
-            // BetterStopAdblock, Antiblock.org v3, and BlockAdBlock
+            // BetterStopAdblock, Antiblock.org v3, and Legacy BlockAdBlock
             {
                 const re = /^[a-z0-9]{4,12}$/i;
                 for (let prop in window) {
@@ -1035,7 +1035,7 @@ a.generic = () => {
                                 window[prop] = null;
                             }
 
-                            // BlockAdBlock
+                            // Legacy BlockAdBlock
                             BlockAdBlock: {
                                 // https://github.com/jspenguin2017/uBlockProtector/issues/321
                                 if (method.length)
