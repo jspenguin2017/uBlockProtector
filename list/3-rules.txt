@@ -491,8 +491,6 @@ warforum.cz###popwrapper
 ! === randaris-anime.net
 randaris-anime.net##.advert1
 randaris-anime.net##.adblock-box
-! === reviewmeta.com
-reviewmeta.com##.ad_gu_tr
 ! === androidsage.com
 androidsage.com##+js(abort-on-property-read.js, blckad)
 ! === bento.de, pcgamer.com
@@ -691,8 +689,6 @@ fakeporn.tv##+js(abort-on-property-write.js, prPuShown)
 bigbtc.win##+js(abort-on-property-read.js, ad_block_test)
 ! === github.com
 @@/adguard.$domain=github.com
-! === reviewmeta.com
-reviewmeta.com##+js(setTimeout-defuser.js, adsbygoogle)
 ! === askleo.com
 askleo.com##[class^="askleo_adblock1"]
 ! === mope.io
