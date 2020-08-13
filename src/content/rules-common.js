@@ -182,6 +182,7 @@
         "wilmaa.com",
         "workday.com",
         "wp.pl",
+        "wstream.video",
 
         // Handled by a special private extension
         "boost.ink",
