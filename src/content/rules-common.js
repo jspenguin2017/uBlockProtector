@@ -131,6 +131,7 @@
         // Other false positives
         "anandabazar.com",
         "animesync.tv",
+        "aternos.org",
         "automobile-propre.com",
         "avgle.com",
         "babbel.com",
