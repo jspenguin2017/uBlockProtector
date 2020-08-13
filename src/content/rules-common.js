@@ -218,6 +218,7 @@
 
         // Other false positives
         "9anime",
+        "egybest",
         "italiashare",
         "imgdew",
         "imgfile",
