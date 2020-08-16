@@ -125,11 +125,11 @@
         "rmcmv.us",
         "yuukithemes.com",
 
-        // False positives from legacy BlockAdBlock defuser
-        "alternativeto.net",
-
         // False positives from Adfly skipper
         "programme-tv.net",
+
+        // False positives from legacy BlockAdBlock defuser
+        "alternativeto.net",
 
         // Other false positives
         "anandabazar.com",
