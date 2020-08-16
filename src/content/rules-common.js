@@ -128,6 +128,9 @@
         // False positives from legacy BlockAdBlock defuser
         "alternativeto.net",
 
+        // False positives from Adfly skipper
+        "programme-tv.net",
+
         // Other false positives
         "anandabazar.com",
         "animesync.tv",

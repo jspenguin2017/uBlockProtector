@@ -142,7 +142,7 @@ if (a.domCmp(["catchcoin.pw", "irc-source.com", "dashcatch.xyz"])) {
 if (a.domCmp(["mid-day.com", "happytrips.com", "jagranjunction.com"])) {
     a.readOnly("canRun", true);
 }
-if (a.domCmp(["voici.fr", "programme-tv.net"])) {
+if (a.domCmp(["voici.fr"])) {
     a.bait("div", "#sas_script2");
 }
 if (a.domCmp(["badtv.it", "badtaste.it", "badgames.it", "badcomics.it"])) {
