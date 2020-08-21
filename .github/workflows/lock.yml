@@ -12,7 +12,7 @@ jobs:
       with:
         github-token: ${{ github.token }}
         issue-lock-inactive-days: '14'
-        issue-lock-labels: 'archived'
+        issue-lock-labels: 'Archived'
         issue-lock-reason: ''
         pr-lock-inactive-days: '28'
         pr-lock-labels: 'Archived'
