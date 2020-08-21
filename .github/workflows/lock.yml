@@ -15,5 +15,5 @@ jobs:
         issue-lock-labels: 'archived'
         issue-lock-reason: ''
         pr-lock-inactive-days: '28'
-        pr-lock-labels: 'archived'
+        pr-lock-labels: 'Archived'
         pr-lock-reason: ''
