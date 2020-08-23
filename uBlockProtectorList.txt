@@ -1311,8 +1311,6 @@ cnx-software.com##img[src="/pic/support_cnx-software.png"]
 daciaclub.cz#@#.reklama
 @@||pagead2.googlesyndication.com/pagead/show_ads.js$script,domain=windows7themes.net
 @@||pagead2.googlesyndication.com/pagead/js/r*/r*/show_ads_impl.js$script,domain=windows7themes.net
-beforeitsnews.com###fancybox-overlay
-beforeitsnews.com###fancybox-wrap
 ||cloudfront.net^$script,domain=croydonguardian.co.uk
 tobys.dk#@#.adsbygoogle
 @@||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js$script,domain=tobys.dk
