@@ -154,8 +154,6 @@ animmex.*###M148617ScriptRootC75329
 animmex.*##a[href^="https://forum.animmex.com/viewtopic.php"]
 ! === gry.pl
 ||flakyfeast.com^$domain=gry.pl
-! === pixiv.net
-pixiv.net##.popular-introduction-overlay
 ! === youtube.com
 youtube.com###companion
 ! === pogdesign.co.uk
