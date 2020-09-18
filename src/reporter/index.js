@@ -33,17 +33,12 @@ const knownGood = [
     "hugoxu.com",
     "github.com",
     "jspenguin2017.github.io",
+    "local.ntp",
     "www.microsoft.com", // Do not remove "www"
 
     // Bad installation
     "blockadblock.com",
     "detectadblock.com",
-
-    // Broken by non-default ABP X Files
-    "hdblog.it",
-
-    // Broken by Firefox Tracking Protection
-    "bild.de",
 
     // Other known good
     "youtube.com",
@@ -52,12 +47,6 @@ const knownGood = [
 const knownBad = [
     // https://github.com/NanoMeow/QuickReports/issues/903
     "browserleaks.com",
-
-    // https://github.com/NanoMeow/QuickReports/issues/1711
-    "o2.pl",
-
-    // https://github.com/NanoMeow/QuickReports/issues/1760
-    "wp.pl",
 ];
 
 // ----------------------------------------------------------------------------------------------------------------- //
