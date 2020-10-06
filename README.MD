@@ -1,3 +1,7 @@
+# Important Announcements Regarding Recent Changes
+
+Please read important announcements here: https://github.com/NanoAdblocker/NanoCore/issues/362
+
 # Nano Defender [![Build Status](https://travis-ci.org/jspenguin2017/uBlockProtector.svg?branch=master)](https://travis-ci.org/jspenguin2017/uBlockProtector)
 
 An anti-adblock defuser for Nano Adblocker and uBlock Origin
